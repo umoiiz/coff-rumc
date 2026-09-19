@@ -35,7 +35,7 @@
 /// Used as placeholder turf when something went really wrong, as per /tg/ string lists handler
 /turf/closed/cordon/debug
 	name = "debug turf"
-	desc = "This turf shouldn't be here and probably result of incorrect turf replacement. Adminhelp about it or report it in an issue."
+	desc = "这块地形不应该在这里,可能是错误的地形替换导致的.请就此向管理员求助或在问题追踪中报告."
 	color = "#660088"
 	baseturfs = /turf/closed/cordon/debug
 
@@ -90,14 +90,14 @@
 		return
 	xeno_user.do_attack_animation(src)
 	playsound(src, 'sound/effects/alien/behemoth/earth_pillar_eating.ogg', 10, TRUE)
-	xeno_user.visible_message(span_xenowarning("\The [xeno_user] eats away at the [src.name]!"), \
+	xeno_user.visible_message(span_xenowarning("\The [xeno_user]侵蚀着[src.name]!"), \
 	span_xenonotice(BEHEMOTH_ROCK_EATING_MESSAGES), null, 5)
 
 /turf/closed/plasmacutter_act(mob/living/user, obj/item/tool/pickaxe/plasmacutter/I)
 	if(user.do_actions)
 		return FALSE
 	if(CHECK_BITFIELD(resistance_flags, PLASMACUTTER_IMMUNE) || CHECK_BITFIELD(resistance_flags, INDESTRUCTIBLE))
-		to_chat(user, span_warning("[I] can't cut through this!"))
+		to_chat(user, span_warning("[I]无法切穿这个!"))
 		return FALSE
 	if(!I.powered || (I.item_flags & NOBLUDGEON))
 		return FALSE
@@ -233,7 +233,7 @@
 /turf/closed/gm
 	icon = 'icons/turf/walls/jungle.dmi'
 	icon_state = "junglewall-0"
-	desc = "Some thick jungle."
+	desc = "一些茂密的丛林."
 	resistance_flags = UNACIDABLE
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_FLORA)
@@ -249,7 +249,7 @@
 /turf/closed/gm/tree
 	name = "dense jungle trees"
 	icon_state = "jungletree"
-	desc = "Some thick jungle trees."
+	desc = "一些茂密的丛林树木."
 
 /turf/closed/gm/ex_act(severity)
 	if(severity < EXPLODE_DEVASTATE)
@@ -300,7 +300,7 @@
 	name = "dense ice wall"
 	icon = 'icons/turf/icewall.dmi'
 	icon_state = "Single"
-	desc = "It is very thick."
+	desc = "它非常厚实."
 	baseturfs = /turf/open/floor/plating/ground/ice
 	open_turf_type = /turf/open/floor/plating/ground/ice
 
@@ -330,7 +330,7 @@
 	name = "volcanic glass wall"
 	icon = 'icons/turf/icewalllight.dmi'
 	icon_state = "Single"
-	desc = "Hardened volcanic glass."
+	desc = "硬化的火山玻璃."
 	opacity = FALSE
 
 /turf/closed/glass/thin/single
@@ -356,7 +356,7 @@
 	name = "thin ice wall"
 	icon = 'icons/turf/icewalllight.dmi'
 	icon_state = "Single"
-	desc = "It is very thin."
+	desc = "它非常薄."
 	opacity = FALSE
 
 /turf/closed/ice/thin/single

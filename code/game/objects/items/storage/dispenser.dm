@@ -1,7 +1,7 @@
 
 /obj/machinery/deployable/dispenser
 	name = "TX-9000 provisions dispenser"
-	desc = "The TX-9000 also known as \"Dispenser\" is a machine capable of holding a large amount of items on it, while also healing nearby synthetics. Your allies will often ask you to lay down one of these."
+	desc = "TX-9000也被称为\"Dispenser\",是一种能够在其上存放大量物品,同时治疗附近合成体的机器.你的盟友经常会要求你放下一个."
 	density = TRUE
 	anchored = TRUE
 	max_integrity = 250
@@ -90,7 +90,7 @@
 	if(!active)
 		return
 	active = FALSE
-	balloon_alert_to_viewers("Undeploying...")
+	balloon_alert_to_viewers("正在收起...")
 	for(var/turf/turfs AS in RANGE_TURFS(2, src))
 		UnregisterSignal(turfs, COMSIG_ATOM_ENTERED)
 	for(var/mob/living/carbon/human/affecting AS in affecting_list)
@@ -109,8 +109,8 @@
 	return ..()
 
 /obj/item/storage/backpack/dispenser
-	name = "TX-9000 provisions dispenser"
-	desc = "The TX-9000 also known as \"Dispenser\" is a machine capable of holding a big amount of items on it, while also healing nearby synthetics. Your allies will often ask you to lay down one of those."
+	name = "TX-9000补给分配器"
+	desc = "TX-9000也被称为\"Dispenser\",是一种能够在其上存放大量物品,同时治疗附近合成体的机器.你的盟友经常会要求你放下一个."
 	icon = 'icons/obj/items/storage/storage_48.dmi'
 	icon_state = "dispenser"
 	equip_slot_flags = ITEM_SLOT_BACK
@@ -127,4 +127,4 @@
 	storage_datum.open(user)
 
 /obj/item/storage/backpack/dispenser/do_quick_equip(mob/user)
-	to_chat(usr, span_notice("You can't grab anything out of [src] while it's not deployed."))
+	to_chat(usr, span_notice("当[src]未展开时,你无法从中取出任何东西."))

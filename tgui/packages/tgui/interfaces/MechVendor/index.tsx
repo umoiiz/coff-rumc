@@ -26,7 +26,7 @@ export const MechVendor = (props) => {
           <Section
             title={showDesc.name}
             buttons={
-              <Button content="Dismiss" onClick={() => setShowDesc(null)} />
+              <Button content="解散" onClick={() => setShowDesc(null)} />
             }
           >
             <Stack>

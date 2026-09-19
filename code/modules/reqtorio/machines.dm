@@ -1,6 +1,6 @@
 /obj/machinery/assembler
 	name = "Assembler"
-	desc = "You shouldnt be seeing this."
+	desc = "你不应该看到这个."
 	icon = 'icons/obj/factory/factory_machines.dmi'
 	density = TRUE
 	anchored = FALSE // start off unanchored so its easier to move
@@ -39,12 +39,12 @@
 
 /obj/machinery/assembler/wrench_act(mob/living/user, obj/item/I)
 	anchored = !anchored
-	balloon_alert(user, "[anchored ? "" : "un"]anchored")
+	balloon_alert(user, "[anchored ? "" : "un"]已锚定")
 	playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
 
 /obj/machinery/assembler/screwdriver_act(mob/living/user, obj/item/I)
 	setDir(turn(dir, 90))
-	balloon_alert(user, "Facing [dir2text(dir)]")
+	balloon_alert(user, "朝向[dir2text(dir)]")
 
 /obj/machinery/assembler/Bumped(atom/movable/bumper)
 	. = ..()
@@ -134,7 +134,7 @@
 	switch(action)
 		if("select")
 			if(!COOLDOWN_FINISHED(src, process_cooldown))
-				balloon_alert(usr, "assembly is still in progress")
+				balloon_alert(usr, "装配仍在进行中")
 				return
 			craft = SSreqtorio.assembly_crafts[text2path(params["id"])]
 			held_items = list()
@@ -144,7 +144,7 @@
 
 /obj/machinery/fabricator
 	name = "Metal fabricator"
-	desc = "Spends requisition points to create metal."
+	desc = "消耗征用点数以制造金属."
 	icon = 'icons/obj/factory/factory_machines.dmi'
 	icon_state = "reconstructor_inactive"
 	density = TRUE
@@ -182,12 +182,12 @@
 		icon_state = initial(icon_state)
 		STOP_PROCESSING(SSslowprocess, src)
 	faction = user.faction
-	balloon_alert(user, "[anchored ? "" : "un"]anchored")
+	balloon_alert(user, "[anchored ? "" : "un"]已锚定")
 	playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
 
 /obj/machinery/fabricator/screwdriver_act(mob/living/user, obj/item/I)
 	setDir(turn(dir, 90))
-	balloon_alert(user, "Facing [dir2text(dir)]")
+	balloon_alert(user, "朝向[dir2text(dir)]")
 
 /obj/machinery/fabricator/process()
 	if(!is_ground_level(z) && points_per_tick < SSpoints.supply_points[faction])
@@ -202,7 +202,7 @@
 
 /obj/machinery/fabricator/gunpowder
 	name = "Gunpowder fabricator"
-	desc = "Spends requisition points to create gunpowder."
+	desc = "消耗征用点数以制造火药."
 	item_to_fabricate = /obj/item/stack/gun_powder/large_stack
 
 /obj/machinery/fabricator/gunpowder/Destroy()
@@ -211,17 +211,17 @@
 
 /obj/machinery/fabricator/junk
 	name = "Junk fabricator"
-	desc = "Spends requisition points to create junk."
+	desc = "消耗征用点数以制造废料."
 	item_to_fabricate = /obj/item/stack/sheet/mineral/junk/large_stack
 
 /obj/machinery/fabricator/plasteel
 	name = "Plasteel fabricator"
-	desc = "Spends requisition points to create plasteel."
+	desc = "消耗征用点数以制造塑钢."
 	item_to_fabricate = /obj/item/stack/sheet/plasteel/large_stack
 
 /obj/machinery/splitter
 	name = "Splitter"
-	desc = "You shouldnt be seeing this."
+	desc = "你不应该看到这个."
 	icon = 'icons/obj/factory/factory_machines.dmi'
 	icon_state = "spitter_inactive"
 	density = TRUE
@@ -245,13 +245,13 @@
 /obj/machinery/splitter/wrench_act(mob/living/user, obj/item/I)
 	anchored = !anchored
 	icon_state = anchored ? processiconstate : initial(icon_state)
-	balloon_alert(user, "[anchored ? "" : "un"]anchored")
+	balloon_alert(user, "[anchored ? "" : "un"]已锚定")
 	playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
 
 /obj/machinery/splitter/screwdriver_act(mob/living/user, obj/item/I)
 	setDir(turn(dir, 90))
 	current_split_dir = (turn(current_split_dir, 90))
-	balloon_alert(user, "Facing [dir2text(dir)]")
+	balloon_alert(user, "朝向[dir2text(dir)]")
 
 /obj/machinery/splitter/Bumped(atom/movable/bumper)
 	. = ..()

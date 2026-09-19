@@ -10,8 +10,8 @@
 
 */
 /obj/item/clothing/suit/modular
-	name = "Jaeger XM-02 combat exoskeleton"
-	desc = "Designed to mount a variety of modular armor components and support systems. It comes installed with light-plating and a shoulder lamp. Mount armor pieces to it by clicking on the frame with the components. Use Alt-Click to remove any attached items."
+	name = "Jaeger XM-02战斗外骨骼"
+	desc = "设计用于安装各种模块化装甲组件和支援系统. 出厂预装轻型装甲板和肩灯. 用组件点击框架即可安装装甲部件. 使用Alt-Click移除任何已安装的物品."
 	icon = 'icons/mob/modular/modular_armor.dmi'
 	icon_state = "underarmor"
 	worn_icon_state = "underarmor"
@@ -172,7 +172,7 @@
 		var/mob/living/carbon/human/H = user
 		var/obj/item/clothing/under/undersuit = H.w_uniform
 		if(!istype(undersuit, allowed_uniform_type))
-			to_chat(user, span_warning("You must be wearing a marine jumpsuit to equip this."))
+			to_chat(user, span_warning("你必须穿着陆战队员连体服才能装备此物."))
 			return FALSE
 	return ..()
 
@@ -181,7 +181,7 @@
 	if(.)
 		return
 	if(!isturf(user.loc))
-		to_chat(user, span_warning("You cannot turn the light on while in [user.loc]."))
+		to_chat(user, span_warning("在[user.loc]中时无法打开灯光."))
 		return
 	if(TIMER_COOLDOWN_RUNNING(src, COOLDOWN_ARMOR_LIGHT) || !ishuman(user))
 		return
@@ -236,8 +236,8 @@
 		. += armor_info
 
 /obj/item/clothing/suit/modular/rownin
-	name = "\improper Rownin Skeleton"
-	desc = "A light armor, if you can even call it that, for marines that want to have agility in exchange for protection. Alt-Click to remove attached items. Use it to toggle the built-in flashlight."
+	name = "\improper Rownin骨架"
+	desc = "一种轻型装甲, 如果这也能算装甲的话, 适合那些愿意用防护换取灵活性的陆战队员. Alt-Click移除已安装的物品. 使用它来切换内置手电筒."
 	icon_state = "rownin_skeleton"
 	worn_icon_state = "rownin_skeleton"
 	allowed_uniform_type = /obj/item/clothing/under
@@ -246,40 +246,40 @@
 	attachments_allowed = general_list_of_marine_modules.Copy()
 
 /obj/item/clothing/suit/modular/rownin/erp
-	name = "\improper ERP rownin Skeleton"
-	desc = "A modified version of the Rowning Skeleton that offers much better, more entertaining and prank-inducing, design. Oh, also improved armor, but that part isn't as important. Alt-Click to remove attached items. Use it to toggle the built-in flashlight."
+	name = "\improper ERP rownin骨架"
+	desc = "Rownin骨架的改装版, 提供了更好, 更有趣, 更能整蛊的设计. 哦, 装甲也改进了, 不过那部分不重要. Alt-Click移除已安装的物品. 使用它来切换内置手电筒."
 	soft_armor = MARINE_ARMOR_MEDIUM
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
 	allowed_uniform_type = /obj/item/clothing/under/rank/clown/erp
 
 // GTA ERT — light rownin kits (modules mirrored from SW/SOM-style loadouts)
 /obj/item/clothing/suit/modular/rownin/gta
-	name = "\improper street rownin skeleton"
-	desc = "A light modular harness popular with gang shooters who want mobility over plating."
+	name = "\improper 街头rownin骨架"
+	desc = "一种轻型模块化背带, 在追求机动性胜过装甲的帮派枪手中很受欢迎."
 	starting_attachments = list(
 		/obj/item/armor_module/module/better_shoulder_lamp,
 		/obj/item/armor_module/storage/grenade,
 	)
 
 /obj/item/clothing/suit/modular/rownin/gta/medic
-	name = "\improper street medic rownin skeleton"
-	desc = "A light modular harness with a med pouch rack — for whoever is stuck patching the set."
+	name = "\improper 街头医疗兵rownin骨架"
+	desc = "一种轻型模块化背带, 带有医疗袋挂架——给那些被困在包扎伤口的人用."
 	starting_attachments = list(
 		/obj/item/armor_module/module/better_shoulder_lamp,
 		/obj/item/armor_module/storage/medical,
 	)
 
 /obj/item/clothing/suit/modular/rownin/gta/leader
-	name = "\improper street OG rownin skeleton"
-	desc = "A light modular harness with a general pouch — room for binos, radios, and bad decisions."
+	name = "\improper 街头大佬rownin骨架"
+	desc = "一种轻型模块化背带, 带有通用袋——有空间放望远镜, 无线电, 和糟糕的决定."
 	starting_attachments = list(
 		/obj/item/armor_module/module/better_shoulder_lamp,
 		/obj/item/armor_module/storage/general,
 	)
 
 /obj/item/clothing/suit/modular/hardsuit_exoskeleton
-	name = "\improper FleckTex WY-01 modular exoskeleton"
-	desc = "FleckTex Dynamics brand new modular hardsuit exoskeleton, designed for full compatiability with jaeger modules. Comes with pre-installed light armour-plating and a shoulder lamp. Mount armor pieces to it by clicking on the frame with the components. Use Alt-Click to remove any attached items."
+	name = "\improper FleckTex WY-01模块化外骨骼"
+	desc = "FleckTex Dynamics全新的模块化硬质外骨骼, 设计为与jaeger模块完全兼容. 出厂预装轻型装甲板和肩灯. 用组件点击框架即可安装装甲部件. 使用Alt-Click移除任何已安装的物品."
 	icon_state = "exoskeleton"
 	worn_icon_state = "exoskeleton"
 	greyscale_config = /datum/greyscale_config/exoskeleton
@@ -305,8 +305,8 @@
 	)
 
 /obj/item/clothing/suit/modular/vsd_exoskeleton
-	name = "\improper CrashCore MT/P modular exoskeleton"
-	desc = "CrashCore Industries modular hardsuit exoskeleton, made to lift up the 'Super-Heavy' armor system and designed for full compatiability with jaeger modules. Comes with pre-installed light armour-plating and a shoulder lamp. Mount armor pieces to it by clicking on the frame with the components. Use Alt-Click to remove any attached items."
+	name = "\improper CrashCore MT/P模块化外骨骼"
+	desc = "CrashCore Industries的模块化硬质外骨骼, 为支撑'超重型'装甲系统而制造, 设计为与jaeger模块完全兼容. 出厂预装轻型装甲板和肩灯. 用组件点击框架即可安装装甲部件. 使用Alt-Click移除任何已安装的物品."
 	icon_state = "exoskeleton"
 	worn_icon_state = "exoskeleton"
 	greyscale_config = /datum/greyscale_config/vsd_hardsuit/exoskeleton
@@ -334,8 +334,8 @@
 
 /** Core helmet module */
 /obj/item/clothing/head/modular
-	name = "Jaeger Pattern Helmet"
-	desc = "Usually paired with the Jaeger Combat Exoskeleton. Can mount utility functions on the helmet hard points."
+	name = "Jaeger型头盔"
+	desc = "通常与Jaeger战斗外骨骼搭配使用. 可在头盔挂载点上安装实用功能."
 	icon_state = "helm"
 	worn_icon_state = "helm"
 	worn_icon_state_worn = TRUE
@@ -494,8 +494,8 @@
 
 /** Colorable masks */
 /obj/item/clothing/mask/gas/modular
-	name = "style mask"
-	desc = "A cool sylish mask that through some arcane magic blocks gas attacks. How? Who knows. How did you even get this?"
+	name = "时尚面具"
+	desc = "一个酷炫有型的面具, 通过某种神秘魔法能阻挡毒气攻击. 怎么做到的? 谁知道呢. 你到底是怎么弄到这玩意的?"
 	breathy = FALSE
 	icon_state = "gas_alt"
 	worn_icon_state = "gas_alt"

@@ -53,8 +53,8 @@ GLOBAL_LIST_INIT(plasteel_radial_images, list(
 	))
 
 /obj/item/stack/sheet/metal
-	name = "metal"
-	desc = "Sheets made out of metal. It has been dubbed Metal Sheets."
+	name = "金属"
+	desc = "由金属制成的板材.它被称为金属板."
 	singular_name = "metal sheet"
 	icon_state = "sheet-metal"
 	worn_icon_state = "sheet-metal"
@@ -107,9 +107,9 @@ GLOBAL_LIST_INIT(plasteel_radial_images, list(
 */
 
 /obj/item/stack/sheet/plasteel
-	name = "plasteel"
+	name = "塑钢"
 	singular_name = "plasteel sheet"
-	desc = "This sheet is an alloy of iron and phoron."
+	desc = "这张板材是铁和phoron的合金."
 	icon_state = "sheet-plasteel"
 	worn_icon_state = "sheet-plasteel"
 	item_flags = NOBLUDGEON
@@ -170,8 +170,8 @@ GLOBAL_LIST_INIT(wood_radial_images, list(
 
 
 /obj/item/stack/sheet/wood
-	name = "wooden plank"
-	desc = "One can only guess that this is a bunch of wood."
+	name = "木板"
+	desc = "只能猜测这是一堆木头."
 	singular_name = "wood plank"
 	icon_state = "sheet-wood"
 	worn_icon_state = "sheet-wood"
@@ -228,8 +228,8 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 	amount = 50
 
 /obj/item/stack/sheet/wood/cyborg
-	name = "wooden plank"
-	desc = "One can only guess that this is a bunch of wood."
+	name = "木板"
+	desc = "只能猜测这是一堆木头."
 	singular_name = "wood plank"
 	icon_state = "sheet-wood"
 
@@ -237,8 +237,8 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 * Cloth
 */
 /obj/item/stack/sheet/cloth
-	name = "cloth"
-	desc = "This roll of cloth is made from only the finest chemicals and bunny rabbits."
+	name = "布料"
+	desc = "这卷布料仅由最优质的化学物质和兔子制成."
 	singular_name = "cloth roll"
 	icon_state = "sheet-cloth"
 	merge_type = /obj/item/stack/sheet/cloth
@@ -250,8 +250,8 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 * Cardboard
 */
 /obj/item/stack/sheet/cardboard
-	name = "cardboard"
-	desc = "Large sheets of card, like boxes folded flat."
+	name = "纸板"
+	desc = "大张的纸板,像折叠平的箱子."
 	singular_name = "cardboard sheet"
 	icon_state = "sheet-card"
 

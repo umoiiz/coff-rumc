@@ -1,6 +1,6 @@
 /obj/item/clothing/gloves/insulated
-	desc = "These gloves will protect the wearer from electric shock."
-	name = "insulated gloves"
+	desc = "这副手套将保护佩戴者免受电击."
+	name = "绝缘手套"
 	icon_state = "insulated"
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
@@ -10,8 +10,8 @@
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/yellow                             //Cheap Chinese Crap
-	desc = "These gloves are cheap copies of the coveted gloves, no way this can end badly."
-	name = "budget insulated gloves"
+	desc = "这些手套是那些令人垂涎的手套的廉价仿制品, 绝不可能出什么岔子."
+	name = "廉价绝缘手套"
 	icon_state = "yellow"
 	siemens_coefficient = 1			//Set to a default of 1, gets overridden in New()
 	permeability_coefficient = 0.05
@@ -21,8 +21,8 @@
 	siemens_coefficient = pick(0,0.5,0.5,0.5,0.5,0.75,1.5)
 
 /obj/item/clothing/gloves/black
-	desc = "These gloves are fire-resistant."
-	name = "black gloves"
+	desc = "这些手套是防火的."
+	name = "黑色手套"
 	icon_state = "black"
 	cold_protection_flags = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
@@ -30,53 +30,53 @@
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/orange
-	name = "orange gloves"
-	desc = "A pair of gloves, they don't look special in any way."
+	name = "橙色手套"
+	desc = "一副手套, 看起来没什么特别的."
 	icon_state = "orange"
 
 /obj/item/clothing/gloves/red
-	name = "red gloves"
-	desc = "A pair of gloves, they don't look special in any way."
+	name = "红色手套"
+	desc = "一副手套, 看起来没什么特别的."
 	icon_state = "red"
 
 /obj/item/clothing/gloves/rainbow
-	name = "rainbow gloves"
-	desc = "A pair of gloves, they don't look special in any way."
+	name = "彩虹手套"
+	desc = "一副手套, 看起来没什么特别的."
 	icon_state = "rainbow"
 
 /obj/item/clothing/gloves/blue
-	name = "blue gloves"
-	desc = "A pair of gloves, they don't look special in any way."
+	name = "蓝色手套"
+	desc = "一副手套, 看起来没什么特别的."
 	icon_state = "blue"
 
 /obj/item/clothing/gloves/purple
-	name = "purple gloves"
-	desc = "A pair of gloves, they don't look special in any way."
+	name = "紫色手套"
+	desc = "一副手套, 看起来没什么特别的."
 	icon_state = "purple"
 
 /obj/item/clothing/gloves/green
-	name = "green gloves"
-	desc = "A pair of gloves, they don't look special in any way."
+	name = "绿色手套"
+	desc = "一副手套, 看起来没什么特别的."
 	icon_state = "green"
 
 /obj/item/clothing/gloves/grey
-	name = "grey gloves"
-	desc = "A pair of gloves, they don't look special in any way."
+	name = "灰色手套"
+	desc = "一副手套, 看起来没什么特别的."
 	icon_state = "gray"
 
 /obj/item/clothing/gloves/light_brown
-	name = "light brown gloves"
-	desc = "A pair of gloves, they don't look special in any way."
+	name = "浅棕色手套"
+	desc = "一副手套, 看起来没什么特别的."
 	icon_state = "lightbrown"
 
 /obj/item/clothing/gloves/brown
-	name = "brown gloves"
-	desc = "A pair of gloves, they don't look special in any way."
+	name = "棕色手套"
+	desc = "一副手套, 看起来没什么特别的."
 	icon_state = "brown"
 
 /obj/item/clothing/gloves/sectoid
-	name = "psionic field"
-	desc = "A field of invisible energy, it protects the wearer but prevents any clothing from being worn."
+	name = "灵能场"
+	desc = "一片无形的能量场, 它能保护佩戴者, 但会阻止穿戴任何衣物."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "shield-blue"
 	item_flags = DELONDROP

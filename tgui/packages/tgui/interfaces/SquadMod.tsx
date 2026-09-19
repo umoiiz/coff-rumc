@@ -30,16 +30,16 @@ export const SquadMod = () => {
               </Button>
               {!has_id && (
                 <NoticeBox mt={1}>
-                  Insert the ID of the person you want to transfer.
+                  输入你想要转移的人的ID.
                 </NoticeBox>
               )}
             </Section>
           </Stack.Item>
           {!!has_id && (
             <Stack.Item grow>
-              <Section title="Squad Transfer" fill scrollable>
+              <Section title="小队转移" fill scrollable>
                 {!squads.length && (
-                  <Box color="label">No available squads.</Box>
+                  <Box color="label">没有可用的小队.</Box>
                 )}
                 {squads.map((entry) => (
                   <Button

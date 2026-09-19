@@ -1,6 +1,6 @@
 /obj/structure/gun_breech
-	name = "gun breech"
-	desc = "A gun breech used for loading large caliber rounds into the main gun."
+	name = "炮闩"
+	desc = "用于将大口径炮弹装填进主炮的炮闩。"
 	icon = 'icons/obj/armored/3x3/tank_interior.dmi'
 	icon_state = "breech"
 	resistance_flags = RESIST_ALL
@@ -27,21 +27,21 @@
 	. = ..()
 	var/obj/item/armored_weapon/weapon = is_secondary ? owner.secondary_weapon : owner.primary_weapon
 	if(!weapon)
-		balloon_alert(user, "no weapon")
+		balloon_alert(user, "无武器")
 		return
 	if(!weapon.ammo)
-		balloon_alert(user, "breech empty")
+		balloon_alert(user, "炮膛空")
 		return
 	if(user.do_actions)
-		balloon_alert(user, "busy")
+		balloon_alert(user, "忙碌")
 		return
 	if(!do_after(user, 1 SECONDS, NONE, src))
 		return
 	if(!weapon)
-		balloon_alert(user, "no weapon")
+		balloon_alert(user, "无武器")
 		return
 	if(!weapon.ammo)
-		balloon_alert(user, "breech empty")
+		balloon_alert(user, "炮膛空")
 		return
 	do_unload(user, weapon)
 
@@ -54,10 +54,10 @@
 	if(!reload_checks(user))
 		return
 	if(!(mag.type in weapon.accepted_ammo))
-		balloon_alert(user, "not accepted ammo")
+		balloon_alert(user, "弹药不被接受")
 		return
 	if(user.do_actions)
-		balloon_alert(user, "busy")
+		balloon_alert(user, "忙碌")
 		return
 	var/channel = SSsounds.random_available_channel()
 	var/sound = 'sound/weapons/guns/interact/working_the_bolt.ogg'
@@ -87,7 +87,7 @@
 
 ///Unloads the weapon attached to the breech
 /obj/structure/gun_breech/proc/do_unload(mob/living/user, obj/item/armored_weapon/weapon)
-	owner.balloon_alert(user, "breech unloaded")
+	owner.balloon_alert(user, "炮膛未装填")
 	user.put_in_hands(weapon.ammo)
 	weapon.ammo.update_appearance()
 	weapon.ammo = null
@@ -98,10 +98,10 @@
 /obj/structure/gun_breech/proc/reload_checks(mob/user)
 	var/obj/item/armored_weapon/weapon = is_secondary ? owner.secondary_weapon : owner.primary_weapon
 	if(!weapon)
-		balloon_alert(user, "no weapon")
+		balloon_alert(user, "无武器")
 		return FALSE
 	if(weapon.ammo && length(weapon.ammo_magazine) >= weapon.maximum_magazines)
-		balloon_alert(user, "already loaded")
+		balloon_alert(user, "已装填")
 		return FALSE
 	return TRUE
 
@@ -172,8 +172,8 @@
 	friction = generator(GEN_NUM, 0.1, 0.5)
 
 /obj/structure/gun_breech/secondary
-	name = "secondary loading mechanism"
-	desc = "A feeding mechanism for loading ammo into the secondary weapon."
+	name = "副装填机构"
+	desc = "用于将弹药装填进副武器的供弹机构。"
 	icon_state = "secondary_breech"
 	is_secondary = TRUE
 
@@ -272,13 +272,13 @@
 	layer = ABOVE_MOB_PLATFORM_LAYER
 
 /obj/structure/gun_breech/lvrt
-	name = "gun breech"
+	name = "炮闩"
 	icon = 'icons/obj/armored/2x2/icc_lvrt.dmi'
 	icon_state = "lvrt_breech"
 
 /obj/structure/gun_breech/secondary/lvrt
-	name = "coaxial loading mechanism"
-	desc = "A feeding mechanism for loading ammo into the vehicle's coaxial feed."
+	name = "同轴装填机构"
+	desc = "用于将弹药装填进载具同轴供弹的供弹机构。"
 	icon = 'icons/obj/armored/2x2/icc_lvrt.dmi'
 	icon_state = "lvrt_secondary_breech"
 	is_secondary = TRUE

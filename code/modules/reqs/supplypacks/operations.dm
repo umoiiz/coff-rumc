@@ -1,46 +1,46 @@
 /datum/supply_packs/operations
-	group = "Operations"
+	group = "作战"
 	containertype = /obj/structure/closet/crate/operations
 
 /datum/supply_packs/operations/standard_ammo
-	name = "Surplus standard ammo crate"
+	name = "剩余标准弹药箱"
 	notes = "Contains 22 ammo boxes of a wide variety which come prefilled. You lazy bum."
 	contains = list(/obj/structure/largecrate/supply/ammo/standard_ammo)
 	containertype = null
 	cost = 200
 
 /datum/supply_packs/operations/beacons_supply
-	name = "Supply beacon"
+	name = "补给信标"
 	contains = list(/obj/item/supply_beacon)
 	cost = 100
 
 /datum/supply_packs/operations/beacons_orbital
-	name = "orbital beacon"
+	name = "轨道信标"
 	contains = list(/obj/item/orbital_bombardment_beacon)
 	cost = 30
 
 /datum/supply_packs/operations/fulton_extraction_pack
-	name = "Fulton extraction pack"
+	name = "富尔顿提取包"
 	contains = list(/obj/item/fulton_extraction_pack)
 	cost = 50
 
 /datum/supply_packs/operations/autominer
-	name = "Autominer upgrade"
+	name = "自动采矿机升级"
 	contains = list(/obj/item/minerupgrade/automatic)
 	cost = 50
 
 /datum/supply_packs/operations/miningwelloverclock
-	name = "Mining well reinforcement upgrade"
+	name = "矿井加固升级"
 	contains = list(/obj/item/minerupgrade/reinforcement)
 	cost = 50
 
 /datum/supply_packs/operations/miningwellresistance
-	name = "Mining well overclock upgrade"
+	name = "矿井超频升级"
 	contains = list(/obj/item/minerupgrade/overclock)
 	cost = 50
 
 /datum/supply_packs/operations/binoculars_tactical
-	name = "Tactical binoculars crate"
+	name = "战术双筒望远镜箱"
 	contains = list(
 		/obj/item/binoculars/tactical,
 		/obj/item/encryptionkey/cas,
@@ -49,7 +49,7 @@
 	crash_restricted = TRUE
 
 /datum/supply_packs/operations/bincoulars_rangefinder
-	name = "Rangefinding binoculars"
+	name = "测距双筒望远镜"
 	contains = list(
 		/obj/item/binoculars/tactical/range,
 		/obj/item/encryptionkey/cas,
@@ -57,20 +57,20 @@
 	cost = 150
 
 /datum/supply_packs/operations/pinpointer
-	name = "Xeno structure tracker crate"
+	name = "异形结构追踪器箱"
 	contains = list(/obj/item/pinpointer)
 	cost = 200
 	crash_restricted = TRUE
 
 /datum/supply_packs/operations/xeno_iff_tag
-	name = "Xenomorph IFF tag crate" //Intended for corrupted or friendly rounies as rounds sometimes turn out. Avoid abuse or I'll have to admin-only it, which is no fun!
+	name = "异形IFF标签箱" //Intended for corrupted or friendly rounies as rounds sometimes turn out. Avoid abuse or I'll have to admin-only it, which is no fun!
 	notes = "Contains an IFF tag used to mark a xenomorph as friendly to IFF systems. Warning: Nanotrasen is not responsible for incidents related to attaching this to hostile entities."
 	contains = list(/obj/item/xeno_iff_tag)
 	access = ACCESS_MARINE_BRIDGE //Better be safe.
 	cost = 130
 
 /datum/supply_packs/operations/deployable_camera
-	name = "3 deployable cameras"
+	name = "3个可部署摄像头"
 	contains = list(
 		/obj/item/deployable_camera,
 		/obj/item/deployable_camera,
@@ -79,7 +79,7 @@
 	cost = 20
 
 /datum/supply_packs/operations/exportpad
-	name = "ASRS bluespace export point"
+	name = "ASRS蓝空间出口点"
 	contains = list(/obj/machinery/exportpad)
 	cost = 300
 
@@ -89,27 +89,27 @@
 	crash_restricted = TRUE
 
 /datum/supply_packs/operations/warhead/cluster
-	name = "Cluster orbital warhead"
+	name = "集束轨道弹头"
 	contains = list(/obj/structure/ob_ammo/warhead/cluster)
 	cost = 200
 
 /datum/supply_packs/operations/warhead/explosive
-	name = "HE orbital warhead"
+	name = "高爆轨道弹头"
 	contains = list(/obj/structure/ob_ammo/warhead/explosive)
 	cost = 300
 
 /datum/supply_packs/operations/warhead/incendiary
-	name = "Incendiary orbital warhead"
+	name = "燃烧轨道弹头"
 	contains = list(/obj/structure/ob_ammo/warhead/incendiary)
 	cost = 200
 
 /datum/supply_packs/operations/warhead/plasmaloss
-	name = "Plasma draining orbital warhead"
+	name = "等离子轨道排空弹头"
 	contains = list(/obj/structure/ob_ammo/warhead/plasmaloss)
 	cost = 150
 
 /datum/supply_packs/operations/ob_fuel
-	name = "Solid fuel"
+	name = "固体燃料"
 	contains = list(/obj/structure/ob_ammo/ob_fuel)
 	cost = 50
 	access = ACCESS_MARINE_ENGINEERING
@@ -117,21 +117,21 @@
 	crash_restricted = TRUE
 
 /datum/supply_packs/operations/droppod
-	name = "Zeus orbital drop pod"
+	name = "宙斯轨道空投舱"
 	contains = list(/obj/structure/droppod)
 	containertype = null
 	cost = 50
 	crash_restricted = TRUE
 
 /datum/supply_packs/operations/droppod_leader
-	name = "Zeus command drop pod"
+	name = "宙斯指挥空投舱"
 	contains = list(/obj/structure/droppod/leader)
 	containertype = null
 	cost = 100
 	crash_restricted = TRUE
 
 /datum/supply_packs/operations/researchcomp
-	name = "Research console"
+	name = "研究控制台"
 	contains = list(/obj/machinery/researchcomp)
 	containertype = null
 	cost = 200

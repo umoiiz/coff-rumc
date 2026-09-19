@@ -18,11 +18,11 @@ export function EORDMenu(props) {
           <Stack vertical fill>
             <Stack.Item>
               <Box bold fontSize="1.2em" mb={1}>
-                Раунд завершён!
+                回合结束!
               </Box>
               <Box color="label">
-                Вы можете спокойно дождаться начала следующего раунда или
-                вернуться в бой в Deathmatch в конце раунда.
+                您可以安心等待下一回合开始,或者
+                在回合结束时的死斗模式中重返战斗.
               </Box>
             </Stack.Item>
             <Stack.Item grow />
@@ -30,7 +30,7 @@ export function EORDMenu(props) {
               <Stack vertical>
                 <Stack.Item>
                   <Button fluid icon="clock" onClick={() => act('wait')}>
-                    Ждать в лобби следующий раунд
+                    在大厅等待下一回合
                   </Button>
                 </Stack.Item>
                 <Stack.Item>
@@ -40,7 +40,7 @@ export function EORDMenu(props) {
                     icon="user"
                     onClick={() => act('join_human')}
                   >
-                    Присоединиться к EORD за человека
+                    以人类身份加入EORD
                   </Button>
                 </Stack.Item>
                 <Stack.Item>
@@ -50,7 +50,7 @@ export function EORDMenu(props) {
                     icon="biohazard"
                     onClick={() => act('join_xeno')}
                   >
-                    Присоединиться к EORD за ксеноморфа
+                    以异形身份加入EORD
                   </Button>
                 </Stack.Item>
               </Stack>

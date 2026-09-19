@@ -1,6 +1,6 @@
 /obj/item/storage/surgical_tray
-	name = "surgical tray"
-	desc = "A small metallic tray covered in sterile tarp. Intended to store surgical tools in a neat and clean fashion."
+	name = "手术托盘"
+	desc = "一个覆盖着无菌防水布的小金属托盘. 用于整齐干净地存放手术工具."
 	icon_state = "surgical_tray"
 	icon = 'icons/obj/surgery.dmi'
 	atom_flags = CONDUCT

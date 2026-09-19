@@ -5,7 +5,7 @@
 
 /obj/machinery/power/smes
 	name = "power storage unit"
-	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit."
+	desc = "一个高容量超导磁储能(SMES)单元."
 	icon_state = "smes"
 	density = TRUE
 	anchored = TRUE
@@ -42,9 +42,9 @@
 /obj/machinery/power/smes/examine(user)
 	. = ..()
 	if(!terminal)
-		. += span_warning("This SMES has no power terminal!")
+		. += span_warning("这个SMES没有电力终端!")
 	if(CHECK_BITFIELD(machine_stat, PANEL_OPEN))
-		. += span_notice("The maintenance hatch is open.")
+		. += span_notice("维护舱门是打开的.")
 
 /obj/machinery/power/smes/Initialize(mapload)
 	. = ..()
@@ -205,23 +205,23 @@
 			return
 
 		if(terminal)
-			to_chat(user, span_warning("This SMES already has a power terminal!"))
+			to_chat(user, span_warning("这个SMES已经有电力终端了!"))
 			return
 
 		if(!CHECK_BITFIELD(machine_stat, PANEL_OPEN))
-			to_chat(user, span_warning("You must open the maintenance panel first!"))
+			to_chat(user, span_warning("你必须先打开维护面板!"))
 			return
 
 		var/turf/T = get_turf(user)
 		if(T.intact_tile) //is the floor plating removed ?
-			to_chat(user, span_warning("You must first remove the floor plating!"))
+			to_chat(user, span_warning("你必须先移除地板镀层!"))
 			return
 
 		if(C.get_amount() < 10)
-			to_chat(user, span_warning("You need more wires!"))
+			to_chat(user, span_warning("你需要更多电线!"))
 			return
 
-		to_chat(user, span_notice("You start building the power terminal..."))
+		to_chat(user, span_notice("你开始建造电力终端..."))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, 1)
 
 		if(!do_after(user, 50, NONE, src, BUSY_ICON_BUILD) || C.get_amount() < 10)
@@ -234,7 +234,7 @@
 		C.use(10)
 		user.visible_message(\
 			"[user.name] has built a power terminal.",\
-			span_notice("You build the power terminal."))
+			span_notice("你建造了电力终端."))
 
 		//build the terminal and link it to the network
 		make_terminal(T)
@@ -245,10 +245,10 @@
 	. = ..()
 	TOGGLE_BITFIELD(machine_stat, PANEL_OPEN)
 	if(CHECK_BITFIELD(machine_stat, PANEL_OPEN))
-		to_chat(user, span_notice("You open the maintenance hatch of [src]."))
+		to_chat(user, span_notice("你打开了[src]的维护舱门."))
 		icon_state = "[initial(icon_state)]_o"
 	else
-		to_chat(user, span_notice("You close the maintenance hatch of [src]."))
+		to_chat(user, span_notice("你关闭了[src]的维护舱门."))
 		icon_state = "[initial(icon_state)]"
 	update_icon()
 
@@ -301,7 +301,7 @@
 			var/target = params["target"]
 			var/adjust = text2num(params["adjust"])
 			if(target == "input")
-				target = tgui_input_number(usr, "New input target (0-[input_level_max]):", name, input_level)
+				target = tgui_input_number(usr, "新输入目标(0-[input_level_max]):", name, input_level)
 				if(!isnull(target) && !..())
 					. = TRUE
 			else if(target == "min")
@@ -322,7 +322,7 @@
 			var/target = params["target"]
 			var/adjust = text2num(params["adjust"])
 			if(target == "input")
-				target = tgui_input_number(usr, "New output target (0-[output_level_max]):", name, output_level)
+				target = tgui_input_number(usr, "新输出目标(0-[output_level_max]):", name, output_level)
 				if(!isnull(target) && !..())
 					. = TRUE
 			else if(target == "min")
@@ -360,7 +360,7 @@
 			if("max")
 				input_level = input_level_max
 			if("set")
-				input_level = tgui_input_number(usr, "Enter new input level (0-[input_level_max])", "SMES Input Power Control", input_level)
+				input_level = tgui_input_number(usr, "输入新的输入水平(0-[input_level_max])", "SMES输入功率控制", input_level)
 		input_level = clamp(input_level,0,input_level_max)
 
 	else if( href_list["output"] )
@@ -370,14 +370,14 @@
 			if("max")
 				output_level = output_level_max
 			if("set")
-				output_level = tgui_input_number(usr, "Enter new output level (0-[output_level_max])", "SMES Output Power Control", output_level)
+				output_level = tgui_input_number(usr, "输入新的输出水平(0-[output_level_max])", "SMES输出功率控制", output_level)
 		output_level = clamp(output_level,0,output_level_max)
 
 /obj/machinery/power/smes/proc/ion_act()
 	if(!is_ground_level(z))
 		return
 	if(prob(1)) //explosion
-		visible_message(span_warning("\The [src] is making strange noises!"), null, span_warning("You hear sizzling electronics."))
+		visible_message(span_warning("\The [src]正在发出奇怪的噪音!"), null, span_warning("你听到电子设备发出嘶嘶声."))
 		sleep(10 * pick(4, 5, 6, 7, 10, 14))
 		var/datum/effect_system/smoke_spread/smoke = new(src)
 		smoke.set_up(1, loc)
@@ -417,7 +417,7 @@
 
 /obj/machinery/power/smes/magical
 	name = "magical power storage unit"
-	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. Magically produces power."
+	desc = "一个高容量超导磁储能(SMES)单元. 神奇地产生电力."
 	capacity = 9000000
 	output_level = SMESMAXOUTPUT
 

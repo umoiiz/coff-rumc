@@ -23,8 +23,8 @@
 	mob_max = 10
 
 /datum/emergency_call/sw/rebels/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>Вы - солдат Альянса повстанцев, участник нерегулярных формирований, сражающихся с тиранией повсюду, где она возникает.</B>")
-	to_chat(H, "<B>Сигнал бедствия с[SSmapping.configs[SHIP_MAP].map_name] собрался до вашей ячейки. Уничтожьте союзников Империи.</B>")
+	to_chat(H, "<B>你是反抗联盟的一名士兵,是非正规部队的成员,在暴政出现的任何地方与之战斗.</B>")
+	to_chat(H, "<B>来自[SSmapping.configs[SHIP_MAP].map_name]的求救信号已传达到你的小队. 消灭帝国的盟友.</B>")
 
 /datum/emergency_call/sw/rebels/create_member(datum/mind/M)
 	. = ..()
@@ -63,9 +63,9 @@
 	var/max_pilots = 1
 
 /datum/emergency_call/sw/clone_basic/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>Ты - клон-солдат Великой армии Республики.</B>")
-	to_chat(H, "<B>Ваш штаб получил сигнал бедствия с [SSmapping.configs[SHIP_MAP].map_name]. Помогите союзникам Республики.</B>")
-	to_chat(H, "<B>Хороший солдат выполняет приказы.</B>")
+	to_chat(H, "<B>你是共和国大军团的克隆人士兵.</B>")
+	to_chat(H, "<B>你的指挥部收到了来自[SSmapping.configs[SHIP_MAP].map_name]的求救信号. 帮助共和国的盟友.</B>")
+	to_chat(H, "<B>好士兵服从命令.</B>")
 
 /datum/emergency_call/sw/clone_basic/create_member(datum/mind/M)
 	. = ..()
@@ -114,8 +114,8 @@
 	var/max_sgts = 1
 
 /datum/emergency_call/sw/clone_mk2/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>Ты - клон-солдат II фазы.</B>")
-	to_chat(H, "<B>Высадитесь на [SSmapping.configs[SHIP_MAP].map_name] и защитите союзников Республики от врагов.</B>")
+	to_chat(H, "<B>你是第二阶段克隆人士兵.</B>")
+	to_chat(H, "<B>登陆[SSmapping.configs[SHIP_MAP].map_name]并保护共和国的盟友免受敌人侵害.</B>")
 
 /datum/emergency_call/sw/clone_mk2/create_member(datum/mind/M)
 	. = ..()
@@ -144,7 +144,7 @@
 		mps++
 		return
 	H.apply_assigned_role_to_spawn(SSjob.GetJobType(/datum/job/sw/ert/clone_mk2/trooper))
-	to_chat(H, span_notice("Ты солдат второй фазы этой группы и Республики."))
+	to_chat(H, span_notice("你是该小组和共和国的第二阶段士兵."))
 
 ////////////////////////////////////////////////////////////////////////////////
 // 4) 501 легион
@@ -160,8 +160,8 @@
 	var/max_radiotechs = 1
 
 /datum/emergency_call/sw/legion501/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>Ты военный в 501й Легионе - кулак Верховного главнокомандующего.</B>")
-	to_chat(H, "<B>Ваше командование получило сигнал бедствия с [SSmapping.configs[SHIP_MAP].map_name]. Помогите союзникам Республики.</B>")
+	to_chat(H, "<B>你是501军团的士兵 - 最高指挥官之拳.</B>")
+	to_chat(H, "<B>你的指挥部收到了来自[SSmapping.configs[SHIP_MAP].map_name]的求救信号. 帮助共和国的盟友.</B>")
 
 /datum/emergency_call/sw/legion501/create_member(datum/mind/M)
 	. = ..()
@@ -180,7 +180,7 @@
 		radiotechs++
 		return
 	H.apply_assigned_role_to_spawn(SSjob.GetJobType(/datum/job/sw/ert/legion501/trooper))
-	to_chat(H, span_notice("Ты солдат 501 легиона."))
+	to_chat(H, span_notice("你是501军团的士兵."))
 
 ////////////////////////////////////////////////////////////////////////////////
 // 5) 212 батальон
@@ -194,9 +194,9 @@
 	mob_max = 12
 
 /datum/emergency_call/sw/battalion212/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>Ты солдан в 212й батальона - подразделение основанное великим коммандером Коди.</B>")
-	to_chat(H, "<B>Ваш батальон получил сигнал бедствия с [SSmapping.configs[SHIP_MAP].map_name].</B>")
-	to_chat(H, "<B>Коммандер разрешил отправку части батальона для помощи союзникам Республики.</B>")
+	to_chat(H, "<B>你是212营的士兵 - 由伟大的指挥官科迪创立的部队.</B>")
+	to_chat(H, "<B>你的营收到了来自[SSmapping.configs[SHIP_MAP].map_name]的求救信号.</B>")
+	to_chat(H, "<B>指挥官已批准派遣营的一部分去帮助共和国的盟友.</B>")
 
 /datum/emergency_call/sw/battalion212/create_member(datum/mind/M)
 	. = ..()
@@ -210,7 +210,7 @@
 		to_chat(H, "<p style='font-size:1.5em'>[span_notice("Ты командир этой части 212 батальона.")]</p>")
 		return
 	H.apply_assigned_role_to_spawn(SSjob.GetJobType(/datum/job/sw/ert/battalion212/trooper))
-	to_chat(H, span_notice("Ты солдат 212 батальона."))
+	to_chat(H, span_notice("你是212营的士兵."))
 
 ////////////////////////////////////////////////////////////////////////////////
 // 6) 442 батальон
@@ -224,8 +224,8 @@
 	mob_max = 12
 
 /datum/emergency_call/sw/battalion442/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>Ты служишь в 442 батальоне - специалисты по осаде.</B>")
-	to_chat(H, "<B>Штаб получил сигнал бедствия с судна [SSmapping.configs[SHIP_MAP].map_name]. Защитите союзников Республики.</B>")
+	to_chat(H, "<B>你服役于442营 - 围攻专家.</B>")
+	to_chat(H, "<B>指挥部收到了来自飞船[SSmapping.configs[SHIP_MAP].map_name]的求救信号. 保护共和国的盟友.</B>")
 
 /datum/emergency_call/sw/battalion442/create_member(datum/mind/M)
 	. = ..()
@@ -239,7 +239,7 @@
 		to_chat(H, "<p style='font-size:1.5em'>[span_notice("Ты командир 442 батальона.")]</p>")
 		return
 	H.apply_assigned_role_to_spawn(SSjob.GetJobType(/datum/job/sw/ert/battalion442/trooper))
-	to_chat(H, span_notice("Ты солдат 442 батальона."))
+	to_chat(H, span_notice("你是442营的士兵."))
 
 ////////////////////////////////////////////////////////////////////////////////
 // 7) Гвардия Сената
@@ -253,8 +253,8 @@
 	mob_max = 6
 
 /datum/emergency_call/sw/senateguard/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>Ты Гвардеец Сената - элитная защита первых лиц Республики.</B>")
-	to_chat(H, "<B>Эвакуируй или обеспечь безопасность VIP персон на [SSmapping.configs[SHIP_MAP].map_name]. Никто не должен тебе мешать.</B>")
+	to_chat(H, "<B>你是议会卫队 - 共和国要员的精英护卫.</B>")
+	to_chat(H, "<B>撤离或确保[SSmapping.configs[SHIP_MAP].map_name]上VIP人员的安全. 没人能阻挡你.</B>")
 
 /datum/emergency_call/sw/senateguard/create_member(datum/mind/M)
 	. = ..()
@@ -283,8 +283,8 @@
 	var/max_radiomen = 1
 
 /datum/emergency_call/sw/stormtroopers/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>Вы служите Галактической Империи. Порядок будет поддерживаться. При необходимости силой.</B>")
-	to_chat(H, "<B>Прибудьте на [SSmapping.configs[SHIP_MAP].map_name] и уничтожьте врагов Империи.</B>")
+	to_chat(H, "<B>你为银河帝国效力. 秩序将得到维持. 必要时以武力维持.</B>")
+	to_chat(H, "<B>抵达[SSmapping.configs[SHIP_MAP].map_name]并消灭帝国的敌人.</B>")
 
 /datum/emergency_call/sw/stormtroopers/create_member(datum/mind/M)
 	. = ..()
@@ -313,7 +313,7 @@
 		airborne++
 		return
 	H.apply_assigned_role_to_spawn(SSjob.GetJobType(/datum/job/sw/ert/stormtrooper/standard))
-	to_chat(H, span_danger("Ты имперский штурмовик."))
+	to_chat(H, span_danger("你是帝国冲锋队员."))
 
 ////////////////////////////////////////////////////////////////////////////////
 // 9) Красная (Алая) Гвардия
@@ -327,8 +327,8 @@
 	mob_max = 6
 
 /datum/emergency_call/sw/redguard/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>Ты - Алая Стража, багровая тень воли Императора.</B>")
-	to_chat(H, "<B>Захвати VIP персон на [SSmapping.configs[SHIP_MAP].map_name] и эвакуируй их. Не оставляй свидетелей.</B>")
+	to_chat(H, "<B>你是猩红卫队, 皇帝意志的绯红之影.</B>")
+	to_chat(H, "<B>在[SSmapping.configs[SHIP_MAP].map_name]上俘获VIP人员并撤离他们. 不留活口.</B>")
 
 /datum/emergency_call/sw/redguard/create_member(datum/mind/M)
 	. = ..()

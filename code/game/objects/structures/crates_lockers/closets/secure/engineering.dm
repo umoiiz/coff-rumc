@@ -1,5 +1,5 @@
 /obj/structure/closet/secure_closet/engineering_chief
-	name = "\improper Chief Engineer's locker"
+	name = "\improper 总工程师储物柜"
 	req_access = list(ACCESS_MARINE_CE)
 	icon_state = "securece1"
 	icon_closed = "securece"
@@ -33,7 +33,7 @@
 	new /obj/item/clothing/head/white_dress(src)
 
 /obj/structure/closet/secure_closet/engineering_electrical
-	name = "electrical supplies"
+	name = "电气用品"
 	req_access = list(ACCESS_MARINE_ENGINEERING)
 	icon_state = "secureengelec1"
 	icon_closed = "secureengelec"
@@ -58,7 +58,7 @@
 	new /obj/item/tool/multitool(src)
 
 /obj/structure/closet/secure_closet/engineering_welding
-	name = "welding supplies"
+	name = "焊接用品"
 	req_access = list(ACCESS_MARINE_ENGINEERING)
 	icon_state = "secureengweld1"
 	icon_closed = "secureengweld"
@@ -79,7 +79,7 @@
 	new /obj/item/tool/weldpack(src)
 
 /obj/structure/closet/secure_closet/engineering_personal
-	name = "engineer's locker"
+	name = "工程师储物柜"
 	req_access = list(ACCESS_MARINE_ENGINEERING)
 	icon_state = "secureeng1"
 	icon_closed = "secureeng"
@@ -118,7 +118,7 @@
 		new /obj/item/clothing/mask/rebreather(src)
 
 /obj/structure/closet/secure_closet/atmos_personal
-	name = "technician's locker"
+	name = "技术员储物柜"
 	req_access = list(ACCESS_MARINE_ENGINEERING)
 	icon_state = "secureatm1"
 	icon_closed = "secureatm"

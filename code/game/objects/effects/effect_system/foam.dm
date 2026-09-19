@@ -161,8 +161,8 @@
 	opacity = FALSE 	// changed in New()
 	anchored = TRUE
 	allow_pass_flags = NONE
-	name = "foamed metal"
-	desc = "A lightweight foamed metal wall."
+	name = "泡沫金属"
+	desc = "一堵轻质泡沫金属墙."
 	resistance_flags = XENO_DAMAGEABLE
 	max_integrity = 120
 	smoothing_flags = SMOOTH_BITMASK

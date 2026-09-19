@@ -1,8 +1,8 @@
 //Biosuit complete with shoes (in the item sprite)
 /obj/item/clothing/head/bio_hood
-	name = "bio hood"
+	name = "生物防护头罩"
 	icon_state = "bio"
-	desc = "A hood that protects the head and face from biological comtaminants."
+	desc = "一个保护头部和面部免受生物污染物侵害的头罩."
 	permeability_coefficient = 0.01
 	soft_armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 100, FIRE = 0, ACID = 0)
 	inventory_flags = COVEREYES|COVERMOUTH
@@ -11,8 +11,8 @@
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/suit/bio_suit
-	name = "bio suit"
-	desc = "A suit that protects against biological contamination."
+	name = "生物防护服"
+	desc = "一套能抵御生物污染的服装."
 	icon_state = "bio"
 	worn_icon_state = "bio_suit"
 	w_class = WEIGHT_CLASS_BULKY//bulky item
@@ -63,8 +63,8 @@
 
 //Plague Dr mask can be found in clothing/masks/gasmask.dm
 /obj/item/clothing/suit/bio_suit/plaguedoctorsuit
-	name = "Plague doctor suit"
-	desc = "It protected doctors from the Black Death, back then. You bet your arse it's gonna help you against viruses."
+	name = "瘟疫医生服"
+	desc = "当年它保护医生免受黑死病侵害. 你打赌它也能帮你抵御病毒."
 	icon_state = "plaguedoctor"
 	worn_icon_state = "bio_suit"
 	inv_hide_flags = HIDEGLOVES|HIDEJUMPSUIT

@@ -34,8 +34,8 @@
 
 /datum/job/xenomorph/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, "<b>Your job is to spread the hive and protect the Hive Leader. If there's no Hive Leader, you can become the Shrike or Queen yourself by evolving into a drone.</b><br>\
-	Talk in Hivemind using <strong>;</strong>, <strong>.a</strong>, or <strong>,a</strong> (e.g. ';My life for the queen!')")
+	to_chat(M, "<b>你的工作是扩散蜂巢并保护蜂巢领袖. 如果没有蜂巢领袖, 你可以通过进化为雄蜂来成为伯劳或女王.</b><br>\
+	使用<strong>;</strong>, <strong>.a</strong>, 或<strong>,a</strong>在蜂巢意识中交谈 (例如 ';My life for the queen!')")
 
 /datum/job/xenomorph/handle_special_preview(client/parent)
 	parent.show_character_previews(image('icons/Xeno/castes/larva/larva.dmi', icon_state = "Bloody Larva"), list(SOUTH))
@@ -81,9 +81,9 @@
 	return pick(GLOB.spawns_by_job[/datum/job/xenomorph])
 
 /datum/job/xenomorph/queen/radio_help_message(mob/M)
-	to_chat(M, "<b>You are now the alien ruler!<br>\
-	Your job is to spread the hive.</b><br>\
-	Talk in Hivemind using <strong>;</strong>, <strong>.a</strong>, or <strong>,a</strong> (e.g. ';My life for the hive!')")
+	to_chat(M, "<b>你现在是异形统治者!<br>\
+	你的工作是扩散蜂巢.</b><br>\
+	使用<strong>;</strong>, <strong>.a</strong>, 或<strong>,a</strong>在蜂巢意识中交谈 (例如 ';My life for the hive!')")
 
 /datum/job/xenomorph/queen/handle_special_preview(client/parent)
 	parent.show_character_previews(image('icons/Xeno/castes/larva/larva.dmi', icon_state = "Larva"), list(SOUTH))

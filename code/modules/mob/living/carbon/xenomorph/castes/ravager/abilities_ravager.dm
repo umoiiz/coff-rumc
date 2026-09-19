@@ -3,7 +3,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/charge
 	name = "Eviscerating Charge"
-	desc = "Charge up to 4 tiles and viciously attack your target."
+	desc = "冲锋至多4格并凶猛地攻击你的目标."
 	action_icon_state = "pounce"
 	action_icon = 'icons/Xeno/actions/runner.dmi'
 	cooldown_duration = 20 SECONDS
@@ -23,8 +23,8 @@
 	RegisterSignal(xeno_owner, COMSIG_MOVABLE_POST_THROW, PROC_REF(charge_complete))
 	RegisterSignal(xeno_owner, COMSIG_XENOMORPH_LEAP_BUMP, PROC_REF(mob_hit))
 
-	xeno_owner.visible_message(span_danger("[xeno_owner] charges towards \the [A]!"), \
-	span_danger("We charge towards \the [A]!") )
+	xeno_owner.visible_message(span_danger("[xeno_owner]向\the 冲锋[A]!"), \
+	span_danger("我们向\the 冲锋[A]!") )
 	xeno_owner.emote("roar")
 	xeno_owner.xeno_flags |= XENO_LEAPING //This has to come before throw_at, which checks impact. So we don't do end-charge specials when thrown
 
@@ -34,7 +34,7 @@
 	succeed_activate()
 
 /datum/action/ability/activable/xeno/charge/on_cooldown_finish()
-	to_chat(owner, span_xenodanger("Our exoskeleton quivers as we get ready to use [name] again."))
+	to_chat(owner, span_xenodanger("我们的外骨骼颤抖着,准备再次使用[name]."))
 	playsound(owner, 'sound/effects/alien/newlarva.ogg', 50, 0, 1)
 	return ..()
 
@@ -57,7 +57,7 @@
 	SIGNAL_HANDLER
 	if(istype(target, /obj/structure/table))
 		var/obj/structure/S = target
-		owner.visible_message(span_danger("[owner] plows straight through [S]!"), null, null, 5)
+		owner.visible_message(span_danger("[owner]径直冲过[S]!"), null, null, 5)
 		S.deconstruct(FALSE) //We want to continue moving, so we do not reset throwing.
 		return //stay registered
 
@@ -90,7 +90,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/ravage
 	name = "Ravage"
-	desc = "Attacks and knockbacks enemies in the direction your facing."
+	desc = "朝你面向的方向攻击并击退敌人."
 	action_icon_state = "ravage"
 	action_icon = 'icons/Xeno/actions/ravager.dmi'
 	ability_cost = 200
@@ -104,14 +104,14 @@
 	var/obj/effect/abstract/particle_holder/particle_holder
 
 /datum/action/ability/activable/xeno/ravage/on_cooldown_finish()
-	to_chat(owner, span_xenodanger("We gather enough strength to Ravage again."))
+	to_chat(owner, span_xenodanger("我们聚集足够的力量再次使用撕裂."))
 	playsound(owner, 'sound/effects/alien/newlarva.ogg', 50, 0, 1)
 	return ..()
 
 /datum/action/ability/activable/xeno/ravage/use_ability(atom/A)
 	xeno_owner.emote("roar")
-	xeno_owner.visible_message(span_danger("\The [xeno_owner] thrashes about in a murderous frenzy!"), \
-	span_xenowarning("We thrash about in a murderous frenzy!"))
+	xeno_owner.visible_message(span_danger("\The [xeno_owner]在杀戮狂怒中猛烈挣扎!"), \
+	span_xenowarning("我们在杀戮狂怒中猛烈挣扎!"))
 
 	xeno_owner.face_atom(A)
 	activate_particles(xeno_owner.dir)
@@ -192,7 +192,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/endure
 	name = "Endure"
-	desc = "For the next few moments you will not go into crit and become resistant to explosives and immune to stagger and slowdown, but you still die if you take damage exceeding your crit health."
+	desc = "在接下来的片刻内你不会进入濒死状态,并对爆炸具有抗性,免疫硬直和减速,但如果受到的伤害超过你的濒死生命值,你仍会死亡."
 	action_icon_state = "ignore_pain"
 	action_icon = 'icons/Xeno/actions/ravager.dmi'
 	ability_cost = 200
@@ -209,14 +209,14 @@
 	var/endure_warning_duration
 
 /datum/action/ability/xeno_action/endure/on_cooldown_finish()
-	to_chat(owner, span_xenodanger("We feel able to imbue ourselves with plasma to Endure once again!"))
+	to_chat(owner, span_xenodanger("我们感觉能够再次用等离子体灌注自身来忍耐!"))
 	owner.playsound_local(owner, 'sound/effects/alien/newlarva.ogg', 25, 0, 1)
 	return ..()
 
 /datum/action/ability/xeno_action/endure/action_activate()
 	xeno_owner.emote("roar")
-	xeno_owner.visible_message(span_danger("[xeno_owner]'s skin begins to glow!"), \
-	span_xenowarning("We feel the plasma coursing through our veins!"))
+	xeno_owner.visible_message(span_danger("[xeno_owner]的皮肤开始发光!"), \
+	span_xenowarning("我们感觉等离子体在血管中奔涌!"))
 
 	xeno_owner.endure = TRUE
 
@@ -244,7 +244,7 @@
 /datum/action/ability/xeno_action/endure/proc/endure_warning()
 	if(QDELETED(owner))
 		return
-	to_chat(owner,span_userdanger("We feel the plasma draining from our veins... [initial(name)] will last for only [timeleft(endure_duration) * 0.1] more seconds!"))
+	to_chat(owner,span_userdanger("我们感觉等离子体正从血管中流失...[initial(name)]仅能再持续[timeleft(endure_duration) * 0.1]秒!"))
 	owner.playsound_local(owner, 'sound/voice/alien/hiss8.ogg', 50, 0, 1)
 
 ///Turns off the Endure buff
@@ -272,14 +272,14 @@
 	endure_duration = initial(endure_duration)
 	endure_warning_duration = initial(endure_warning_duration)
 
-	to_chat(owner,span_userdanger("The last of the plasma drains from our body... We can no longer endure beyond our normal limits!"))
+	to_chat(owner,span_userdanger("最后的等离子体从我们体内流失...我们再也无法忍耐超过正常极限!"))
 	owner.playsound_local(owner, 'sound/voice/alien/hiss8.ogg', 50, 0, 1)
 
 ///Warns us when our health is critically low and tells us exactly how much more punishment we can take
 /datum/action/ability/xeno_action/endure/proc/damage_taken(mob/living/carbon/xenomorph/xeno_owner, damage_taken)
 	SIGNAL_HANDLER
 	if(xeno_owner.health < 0)
-		to_chat(xeno_owner, "<span class='xenouserdanger' style='color: red;'>We are critically wounded! We can only withstand [(RAVAGER_ENDURE_HP_LIMIT-xeno_owner.health) * -1] more damage before we perish!</span>")
+		to_chat(xeno_owner, "<span class='xenouserdanger' style='color: red;'>我们受到致命伤!我们只能再承受[(RAVAGER_ENDURE_HP_LIMIT-xeno_owner.health) * -1]点伤害就会死亡!</span>")
 		xeno_owner.overlay_fullscreen("endure", /atom/movable/screen/fullscreen/animated/bloodlust)
 	else
 		xeno_owner.clear_fullscreen("endure", 0.7 SECONDS)
@@ -315,7 +315,7 @@
 
 /datum/action/ability/xeno_action/vampirism
 	name = "Toggle vampirism"
-	desc = "Toggle on to enable boosting on "
+	desc = "开启以启用对以下目标的强化"
 	action_icon_state = "neuroclaws_off"
 	action_icon = 'icons/Xeno/actions/sentinel.dmi'
 	ability_cost = 0 //We're limited by nothing, rip and tear
@@ -357,7 +357,7 @@
 		RegisterSignal(xeno_owner, COMSIG_XENOMORPH_ATTACK_LIVING, PROC_REF(on_slash))
 	else
 		UnregisterSignal(xeno_owner, COMSIG_XENOMORPH_ATTACK_LIVING)
-	to_chat(xeno_owner, span_xenonotice("You will now[xeno_owner.vampirism ? "" : " no longer"] heal from attacking"))
+	to_chat(xeno_owner, span_xenonotice("你现在会[xeno_owner.vampirism ? "" : " no longer"]通过攻击治疗"))
 	update_button_icon()
 
 ///Adds the slashed mob to tracked damage mobs
@@ -384,7 +384,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/immortality
 	name = "Immortality"
-	desc = "We are too angry to die."
+	desc = "我们太愤怒了,无法死去."
 	action_icon_state = "enhancement"
 	action_icon = 'icons/Xeno/actions/drone.dmi'
 	ability_cost = 666
@@ -395,14 +395,14 @@
 	use_state_flags = ABILITY_USE_STAGGERED
 
 /datum/action/ability/xeno_action/immortality/on_cooldown_finish()
-	to_chat(owner, span_xenodanger("We are able to become immortal once again."))
+	to_chat(owner, span_xenodanger("我们能够再次变得不朽."))
 	owner.playsound_local(owner, 'sound/effects/alien/newlarva.ogg', 25, 0, 1)
 	return ..()
 
 /datum/action/ability/xeno_action/immortality/action_activate()
 	xeno_owner.emote("roar")
-	xeno_owner.visible_message(span_danger("[xeno_owner]'s skin begins to glow!"), \
-	span_xenowarning("We are too angry to die!"))
+	xeno_owner.visible_message(span_danger("[xeno_owner]的皮肤开始发光!"), \
+	span_xenowarning("我们太愤怒了,无法死去!"))
 
 	xeno_owner.add_filter("ravager_immortality_outline", 4, outline_filter(0.5, COLOR_TRANSPARENT_SHADOW))
 
@@ -423,5 +423,5 @@
 
 	xeno_owner.remove_filter("ravager_immortality_outline")
 
-	to_chat(owner,span_userdanger("We are now mortal again."))
+	to_chat(owner,span_userdanger("我们现在再次变为凡人."))
 	owner.playsound_local(owner, 'sound/voice/alien/hiss8.ogg', 50, 0, 1)

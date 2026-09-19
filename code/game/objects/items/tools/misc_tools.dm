@@ -1,6 +1,6 @@
 /obj/item/tool/hand_labeler
-	name = "hand labeler"
-	desc = "A hand labeler used to label objects"
+	name = "手持贴标机"
+	desc = "用于给物体贴标签的手持贴标机"
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "labeler0"
 	worn_icon_state = "flight"
@@ -16,23 +16,23 @@
 	if(!on)
 		return
 	if(!label)
-		to_chat(user, span_notice("No label set."))
+		to_chat(user, span_notice("未设置标签."))
 		return
 	if(length(A.name) + length(label) > 64)
-		to_chat(user, span_notice("Label too big."))
+		to_chat(user, span_notice("标签太大."))
 		return
 	if(!labels_left)
-		to_chat(user, span_notice("You've run out of labelling paper, feed some paper into it."))
+		to_chat(user, span_notice("你的标签纸用完了, 往里面装一些纸."))
 		return
 	if(isturf(A) || ismob(A))
-		to_chat(user, span_notice("The label won't stick to that."))
+		to_chat(user, span_notice("标签粘不到那上面."))
 		return
 	if(A.name == "[initial(A.name)] ([label])")
-		to_chat(user, span_notice("It already has the same label."))
+		to_chat(user, span_notice("它已经有相同的标签了."))
 		return
 
-	user.visible_message(span_notice("[user] labels [A] as \"[label]\"."), \
-						span_notice("You label [A] as \"[label]\"."))
+	user.visible_message(span_notice("[user]将[A]标记为\"[label]\"."), \
+						span_notice("你将[A]标记为\"[label]\"."))
 	A.name = "[initial(A.name)] ([label])"
 	labels_left--
 
@@ -40,36 +40,36 @@
 	on = !on
 	icon_state = "labeler[on]"
 	if(on)
-		to_chat(user, span_notice("You turn on \the [src]."))
+		to_chat(user, span_notice("你开启了\the [src]."))
 		var/str = reject_bad_text(stripped_input(user, "Label text?", "Set label","", MAX_NAME_LEN))
 		if(!str)
-			to_chat(user, span_notice("Invalid label."))
+			to_chat(user, span_notice("无效标签."))
 			on = !on
 			icon_state = "labeler[on]"
 			return
 		label = str
-		to_chat(user, span_notice("You set the label text to '[str]'."))
+		to_chat(user, span_notice("你将标签文本设置为'[str]'."))
 	else
-		to_chat(user, span_notice("You turn off \the [src]."))
+		to_chat(user, span_notice("你关闭了\the [src]."))
 
 /obj/item/tool/hand_labeler/attackby(obj/item/I, mob/user, params)
 	. = ..()
 	if(.)
 		return
 	if(istype(I, /obj/item/paper))
-		to_chat(user, span_notice("You insert [I] into [src]."))
+		to_chat(user, span_notice("你将[I]插入[src]."))
 		qdel(I)
 		labels_left = min(labels_left + 5, initial(labels_left))
 
 /obj/item/tool/hand_labeler/examine(mob/user)
 	. = ..()
-	. += span_notice("It has [labels_left] out of [initial(labels_left)] labels left.")
+	. += span_notice("它还剩下[labels_left]个标签, 共[initial(labels_left)]个.")
 
 /*
 * Pens
 */
 /obj/item/tool/pen
-	desc = "It's a normal black ink pen."
+	desc = "这是一支普通的黑色墨水笔."
 	name = "pen"
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "pen"
@@ -85,24 +85,24 @@
 	var/colour = "black"	//what colour the ink is!
 
 /obj/item/tool/pen/blue
-	desc = "It's a normal blue ink pen."
+	desc = "这是一支普通的蓝色墨水笔."
 	icon_state = "pen_blue"
 	colour = "blue"
 
 /obj/item/tool/pen/red
-	desc = "It's a normal red ink pen."
+	desc = "这是一支普通的红色墨水笔."
 	icon_state = "pen_red"
 	colour = "red"
 
 /obj/item/tool/pen/invisible
-	desc = "It's an invisble pen marker."
+	desc = "这是一支隐形笔标记器."
 	icon_state = "pen"
 	colour = "white"
 
 /obj/item/tool/pen/attack(mob/M as mob, mob/user as mob)
 	if(!ismob(M))
 		return
-	to_chat(user, span_warning("You stab [M] with the pen."))
+	to_chat(user, span_warning("你用笔刺向[M]."))
 //	to_chat(M, span_warning("You feel a tiny prick!"))
 	log_combat(user, M, "stabbed", src)
 
@@ -110,7 +110,7 @@
 * Sleepy Pens
 */
 /obj/item/tool/pen/sleepypen
-	desc = "It's a black ink pen with a sharp point and a carefully engraved \"Waffle Co.\""
+	desc = "这是一支带有尖锐笔尖和精心雕刻的\"Waffle Co.\"的黑色墨水笔."
 	equip_slot_flags = ITEM_SLOT_BELT
 
 /obj/item/tool/pen/sleepypen/Initialize(mapload)
@@ -146,8 +146,8 @@
 
 
 /obj/item/tool/stamp
-	name = "rubber stamp"
-	desc = "A rubber stamp for stamping important documents."
+	name = "橡皮图章"
+	desc = "用于在重要文件上盖章的橡皮图章."
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "stamp-qm"
 	worn_icon_list = list(
@@ -161,44 +161,44 @@
 	attack_verb = list("stamps")
 
 /obj/item/tool/stamp/qm
-	name = "quartermaster's stamp"
+	name = "军需官的印章"
 
 /obj/item/tool/stamp/captain
-	name = "captain's rubber stamp"
+	name = "舰长的橡皮图章"
 	icon_state = "stamp-cap"
 
 /obj/item/tool/stamp/hop
-	name = "head of personnel's rubber stamp"
+	name = "人事主管的橡皮图章"
 	icon_state = "stamp-hop"
 
 /obj/item/tool/stamp/hos
-	name = "head of security's rubber stamp"
+	name = "安全主管的橡皮图章"
 	icon_state = "stamp-hos"
 
 /obj/item/tool/stamp/ce
-	name = "chief ship engineer's rubber stamp"
+	name = "首席舰船工程师的橡皮图章"
 	icon_state = "stamp-ce"
 
 /obj/item/tool/stamp/rd
-	name = "research director's rubber stamp"
+	name = "研究主管的橡皮图章"
 	icon_state = "stamp-rd"
 
 /obj/item/tool/stamp/cmo
-	name = "chief medical officer's rubber stamp"
+	name = "首席医疗官的橡皮图章"
 	icon_state = "stamp-cmo"
 
 /obj/item/tool/stamp/denied
-	name = "\improper DENIED rubber stamp"
+	name = "\improper 拒绝橡皮图章"
 	icon_state = "stamp-deny"
 
 /obj/item/tool/stamp/clown
-	name = "clown's rubber stamp"
+	name = "小丑的橡皮图章"
 	icon_state = "stamp-clown"
 
 /obj/item/tool/stamp/internalaffairs
-	name = "internal affairs rubber stamp"
+	name = "内务部橡皮图章"
 	icon_state = "stamp-intaff"
 
 /obj/item/tool/stamp/centcom
-	name = "centcom rubber stamp"
+	name = "中央司令部橡皮图章"
 	icon_state = "stamp-cent"

@@ -4,7 +4,7 @@
 	icon = 'icons/obj/machines/atmos.dmi'
 	icon_state = "sheater0"
 	name = "space heater"
-	desc = "Made by Space Amish using traditional space techniques, this heater is guaranteed not to set the station on fire."
+	desc = "由太空阿米什人使用传统太空技术制造,这款加热器保证不会把空间站点燃."
 	allow_pass_flags = PASS_LOW_STRUCTURE|PASSABLE|PASS_WALKOVER
 	resistance_flags = XENO_DAMAGEABLE
 	max_integrity = 100
@@ -53,21 +53,21 @@
 /obj/machinery/space_heater/screwdriver_act(mob/living/user, obj/item/I)
 	. = ..()
 	open = !open
-	balloon_alert_to_viewers("[user] [open ? "opens" : "closes"] the hatch on the [src]")
+	balloon_alert_to_viewers("[user] [open ? "opens" : "closes"] [src]上的舱盖")
 	update_icon()
 
 /obj/machinery/space_heater/crowbar_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(on)
-		balloon_alert(user, "Turn [src] off first")
+		balloon_alert(user, "先关闭[src]")
 		return
 	if(!open)
-		balloon_alert(user, "The hatch is closed")
+		balloon_alert(user, "舱盖是关闭的")
 		return
 	if(!cell)
-		balloon_alert(user, "There isn't a cell to pry out")
+		balloon_alert(user, "没有电池可以撬出")
 		return
-	balloon_alert(user, "You pry the cell out")
+	balloon_alert(user, "你撬出了电池")
 	cell.forceMove(user.drop_location())
 	cell = null
 
@@ -78,11 +78,11 @@
 	if(!istype(I, /obj/item/cell))
 		return
 	if(!open)
-		balloon_alert(user, "Open the hatch")
+		balloon_alert(user, "打开舱盖")
 		return
 
 	if(cell)
-		balloon_alert(user, "[src] already has a cell.")
+		balloon_alert(user, "[src]已经有电池了.")
 		return
 
 	var/obj/item/cell/user_cell = I
@@ -94,7 +94,7 @@
 
 	cell = user_cell
 
-	balloon_alert_to_viewers("[user] inserts a cell into [src]")
+	balloon_alert_to_viewers("[user]将电池插入[src]")
 
 /obj/machinery/space_heater/attack_hand(mob/living/user)
 	. = ..()
@@ -107,12 +107,12 @@
 	else
 		stop_processing()
 
-	balloon_alert_to_viewers("[user] switches [src] [on ? "on" : "off"]")
+	balloon_alert_to_viewers("[user]将[src]切换为[on ? "on" : "off"]")
 	update_icon()
 
 /obj/machinery/space_heater/process()
 	if(!on || !cell || !cell.charge)
-		balloon_alert_to_viewers("[src] shuts off")
+		balloon_alert_to_viewers("[src]关闭了")
 		update_icon()
 		stop_processing()
 		return

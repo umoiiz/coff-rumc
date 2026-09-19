@@ -1,137 +1,137 @@
 /obj/item/clothing/under/rank/bartender
-	desc = "It looks like it could use some more flair."
-	name = "bartender's uniform"
+	desc = "它看起来还能再添点风采."
+	name = "调酒师制服"
 	icon_state = "barman"
 	adjustment_variants = list()
 
 /obj/item/clothing/under/rank/captain //Alright, technically not a 'civilian' but its better then giving a .dm file for a single define.
-	desc = "It's a blue jumpsuit with some gold markings denoting the rank of \"Captain\"."
-	name = "captain's jumpsuit"
+	desc = "这是一件蓝色连体服,上面带有一些金色标记,表示\"舰长\"的军衔."
+	name = "舰长连体服"
 	icon_state = "captain"
 
 /obj/item/clothing/under/rank/cargo
-	name = "quartermaster's jumpsuit"
-	desc = "It's a jumpsuit worn by the quartermaster. It's specially designed to prevent back injuries caused by pushing paper."
+	name = "军需官连体服"
+	desc = "这是军需官穿的连体服.它经过特殊设计,可防止推纸造成的背部损伤."
 	icon_state = "qm"
 	worn_icon_state = "lb_suit"
 
 /obj/item/clothing/under/rank/cargotech
-	name = "cargo technician's jumpsuit"
-	desc = "Shooooorts! They're comfy and easy to wear!"
+	name = "货物技术员连体服"
+	desc = "短裤!它们舒适又易穿!"
 	icon_state = "cargotech"
 	worn_icon_state = "lb_suit"
 	armor_protection_flags = CHEST|GROIN|ARMS
 
 /obj/item/clothing/under/rank/chaplain
-	desc = "It's a black jumpsuit, often worn by religious folk."
-	name = "chaplain's jumpsuit"
+	desc = "这是一件黑色连体服,常为宗教人士所穿."
+	name = "随军牧师连体服"
 	icon_state = "chaplain"
 	worn_icon_state = "bl_suit"
 	adjustment_variants = list()
 
 /obj/item/clothing/under/rank/chef
-	desc = "It's an apron which is given only to the most <b>hardcore</b> chefs."
-	name = "chef's uniform"
+	desc = "这是一条围裙,只发给最<b>硬核</b>的厨师."
+	name = "厨师制服"
 	icon_state = "chef"
 
 /obj/item/clothing/under/rank/chef/altchef
-	name = "red cook's suit"
-	desc = "A flashier chef's suit, if a bit more impractical."
+	name = "红色厨师服"
+	desc = "一件更花哨的厨师服,虽然有点不太实用."
 	icon_state = "altchef"
 
 /obj/item/clothing/under/rank/clown
-	name = "clown suit"
-	desc = "<i>'HONK!'</i>"
+	name = "小丑服"
+	desc = "<i>砰!</i>"
 	icon_state = "clown"
 	adjustment_variants = list()
 
 /obj/item/clothing/under/rank/clown/erp
-	name = "reinforced clown suit"
-	desc = "<b><i>'HONK!'</i></b>"
+	name = "强化小丑服"
+	desc = "<b><i>砰!</i></b>"
 	has_sensor = 2
 	siemens_coefficient = 0.9
 	attachments_allowed = list(/obj/item/armor_module/storage/uniform/webbing/erp)
 	starting_attachments = list(/obj/item/armor_module/storage/uniform/webbing/erp)
 
 /obj/item/clothing/under/rank/head_of_personnel
-	desc = "It's a jumpsuit worn by someone who works in the position of \"Head of Personnel\"."
-	name = "head of personnel's jumpsuit"
+	desc = "这是一件连体服,由担任\"人事主管\"职位的人所穿."
+	name = "人事主管连体服"
 	icon_state = "hop"
 	worn_icon_state = "b_suit"
 
 /obj/item/clothing/under/rank/head_of_personnel_whimsy
-	desc = "A blue jacket and red tie, with matching red cuffs! Snazzy. Wearing this makes you feel more important than your job title does."
-	name = "head of personnel's suit"
+	desc = "一件蓝色夹克配红色领带,还有相配的红色袖口!真时髦.穿上它让你感觉比你的职位头衔更重要."
+	name = "人事主管制服"
 	icon_state = "hopwhimsy"
 	adjustment_variants = list()
 
 /obj/item/clothing/under/rank/hydroponics
-	desc = "It's a jumpsuit designed to protect against minor plant-related hazards."
-	name = "botanist's jumpsuit"
+	desc = "这是一件连体服,旨在防护轻微的植物相关危害."
+	name = "植物学家连体服"
 	icon_state = "hydroponics"
 	worn_icon_state = "g_suit"
 	permeability_coefficient = 0.50
 
 /obj/item/clothing/under/rank/internalaffairs
-	desc = "The plain, professional attire of an Internal Affairs Agent. The collar is <i>immaculately</i> starched."
-	name = "Internal Affairs uniform"
+	desc = "内务特工朴素而专业的着装.衣领<i>一尘不染</i>地浆洗过."
+	name = "内务制服"
 	icon_state = "internalaffairs"
 	adjustment_variants = list()
 
 /obj/item/clothing/under/rank/janitor
-	desc = "It's the official uniform of the station's janitor. It has minor protection from biohazards."
-	name = "janitor's jumpsuit"
+	desc = "这是空间站清洁工的官方制服.它对生物危害有轻微防护."
+	name = "清洁工连体服"
 	icon_state = "janitor"
 
 /obj/item/clothing/under/lawyer
-	desc = "Slick threads."
-	name = "Lawyer suit"
+	desc = "时髦的衣服."
+	name = "律师西装"
 	adjustment_variants = list()
 
 /obj/item/clothing/under/lawyer/black
-	name = "black Lawyer suit"
+	name = "黑色律师西装"
 	icon_state = "lawyer_black"
 
 /obj/item/clothing/under/lawyer/female
-	name = "black Lawyer suit"
+	name = "黑色律师西装"
 	icon_state = "black_suit_fem"
 
 /obj/item/clothing/under/lawyer/red
-	name = "red Lawyer suit"
+	name = "红色律师西装"
 	icon_state = "lawyer_red"
 
 /obj/item/clothing/under/lawyer/blue
-	name = "blue Lawyer suit"
+	name = "蓝色律师西装"
 	icon_state = "lawyer_blue"
 
 /obj/item/clothing/under/lawyer/bluesuit
-	name = "Blue Suit"
-	desc = "A classy suit and tie"
+	name = "蓝色西装"
+	desc = "一套优雅的西装和领带"
 	icon_state = "bluesuit"
 
 /obj/item/clothing/under/lawyer/purpsuit
-	name = "Purple Suit"
+	name = "紫色西装"
 	icon_state = "lawyer_purp"
 	adjustment_variants = list()
 
 /obj/item/clothing/under/lawyer/oldman
-	name = "Old Man's Suit"
-	desc = "A classic suit for the older gentleman with built in back support."
+	name = "老人西装"
+	desc = "一套经典的老派绅士西装,内置背部支撑."
 	icon_state = "oldman"
 
 /obj/item/clothing/under/librarian
-	name = "sensible suit"
-	desc = "It's very... sensible."
+	name = "得体西装"
+	desc = "它非常...得体."
 	icon_state = "red_suit"
 	adjustment_variants = list()
 
 /obj/item/clothing/under/mime
-	name = "mime's outfit"
-	desc = "It's not very colourful."
+	name = "哑剧演员服装"
+	desc = "它不是很鲜艳."
 	icon_state = "mime"
 	adjustment_variants = list()
 
 /obj/item/clothing/under/rank/miner
-	desc = "It's a snappy jumpsuit with a sturdy set of overalls. It is very dirty."
-	name = "shaft miner's jumpsuit"
+	desc = "这是一件利落的连体服,配有一套结实的背带裤.它非常脏."
+	name = "矿工连体服"
 	icon_state = "miner"

@@ -9,7 +9,7 @@
  * (This means that any atom can have storage :D )
  */
 /obj/item/storage
-	name = "storage"
+	name = "储存"
 	icon = 'icons/obj/items/storage/misc.dmi'
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/items/containers_left.dmi',

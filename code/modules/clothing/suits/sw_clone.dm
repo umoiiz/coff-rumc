@@ -4,8 +4,8 @@
 // =============================================================================
 
 /obj/item/clothing/suit/storage/marine/clone
-	name = "\improper Clone trooper armor"
-	desc = "Standard plastoid armor covering most of the body."
+	name = "\improper 克隆士兵装甲"
+	desc = "覆盖身体大部分区域的标准塑钢装甲."
 	icon = 'icons/mob/clothing/suits/sw_suits.dmi'
 	worn_icon_state_worn = TRUE
 	worn_icon_list = list(
@@ -46,31 +46,31 @@
 // ----- Republic -----
 
 /obj/item/clothing/suit/storage/marine/clone/pilot
-	name = "\improper Clone pilot armor"
-	desc = "Light plastoid armor used by Republic Navy pilots."
+	name = "\improper 克隆飞行员装甲"
+	desc = "共和国海军飞行员使用的轻型塑钢装甲."
 	icon_state = "reppilot_armor"
 	worn_icon_state = "reppilot_armor"
 	soft_armor = list(MELEE = 35, BULLET = 60, LASER = 50, ENERGY = 50, BOMB = 45, BIO = 45, FIRE = 50, ACID = 40)
 	slowdown = 0
 
 /obj/item/clothing/suit/storage/marine/clone/mp
-	name = "\improper Clone military police armor"
-	desc = "Heavy plastoid armor used by Republic military police."
+	name = "\improper 克隆宪兵装甲"
+	desc = "共和国宪兵使用的重型塑钢装甲."
 	icon_state = "repmp_armor"
 	worn_icon_state = "repmp_armor"
 	// SOM veteran / medium-heavy
 	soft_armor = list(MELEE = 50, BULLET = 75, LASER = 65, ENERGY = 65, BOMB = 55, BIO = 55, FIRE = 60, ACID = 55)
 
 /obj/item/clothing/suit/storage/marine/clone/sgt
-	name = "\improper Clone sergeant armor"
-	desc = "Plastoid armor with green markings denoting sergeant rank."
+	name = "\improper 克隆中士装甲"
+	desc = "带有绿色标记表示中士军衔的塑钢装甲."
 	icon_state = "repsgt_armor"
 	worn_icon_state = "repsgt_armor"
 	soft_armor = list(MELEE = 45, BULLET = 70, LASER = 60, ENERGY = 60, BOMB = 50, BIO = 50, FIRE = 55, ACID = 50)
 
 /obj/item/clothing/suit/storage/marine/clone/lieutenant
-	name = "\improper Clone lieutenant armor"
-	desc = "Plastoid armor with blue markings denoting lieutenant rank."
+	name = "\improper 克隆中尉装甲"
+	desc = "带有蓝色标记表示中尉军衔的塑钢装甲."
 	icon_state = "replieutenant_armor"
 	worn_icon_state = "replieutenant_armor"
 	// SOM leader heavy
@@ -78,60 +78,60 @@
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 
 /obj/item/clothing/suit/storage/marine/clone/captain
-	name = "\improper Clone captain armor"
-	desc = "Plastoid armor with red markings denoting captain rank."
+	name = "\improper 克隆上尉装甲"
+	desc = "带有红色标记表示上尉军衔的塑钢装甲."
 	icon_state = "repcaptain_armor"
 	worn_icon_state = "repcaptain_armor"
 	soft_armor = list(MELEE = 60, BULLET = 80, LASER = 70, ENERGY = 70, BOMB = 60, BIO = 55, FIRE = 65, ACID = 55)
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 
 /obj/item/clothing/suit/storage/marine/clone/commander
-	name = "\improper Clone commander armor"
-	desc = "Plastoid armor with yellow markings denoting commander rank."
+	name = "\improper 克隆指挥官装甲"
+	desc = "带有黄色标记表示指挥官军衔的塑钢装甲."
 	icon_state = "repcommander_armor"
 	worn_icon_state = "repcommander_armor"
 	soft_armor = list(MELEE = 60, BULLET = 80, LASER = 70, ENERGY = 70, BOMB = 60, BIO = 55, FIRE = 65, ACID = 55)
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 
 /obj/item/clothing/suit/storage/marine/clone/mp/phase2
-	name = "\improper Clone military police armor, phase II"
-	desc = "Updated phase II armor used by Republic military police."
+	name = "\improper 克隆宪兵装甲,第二阶段"
+	desc = "共和国宪兵使用的更新版第二阶段装甲."
 	icon_state = "repmp_phase2armor"
 	worn_icon_state = "repmp_phase2armor"
 	soft_armor = list(MELEE = 50, BULLET = 75, LASER = 65, ENERGY = 65, BOMB = 55, BIO = 55, FIRE = 60, ACID = 55)
 
 /obj/item/clothing/suit/storage/marine/clone/legion501
-	name = "\improper 501st Legion clone armor"
-	desc = "Phase II plastoid armor bearing the blue markings of the 501st Legion."
+	name = "\improper 501军团克隆装甲"
+	desc = "带有501军团蓝色标记的第二阶段塑钢装甲."
 	icon_state = "rep_501st"
 	worn_icon_state = "rep_501st"
 	soft_armor = list(MELEE = 50, BULLET = 75, LASER = 65, ENERGY = 65, BOMB = 55, BIO = 55, FIRE = 60, ACID = 55)
 
 /obj/item/clothing/suit/storage/marine/clone/battalion212
-	name = "\improper 212th Battalion clone armor"
-	desc = "Phase II plastoid armor bearing the orange markings of the 212th Attack Battalion."
+	name = "\improper 212攻击营克隆装甲"
+	desc = "带有212攻击营橙色标记的第二阶段塑钢装甲."
 	icon_state = "rep_212th"
 	worn_icon_state = "rep_212th"
 	soft_armor = list(MELEE = 50, BULLET = 75, LASER = 65, ENERGY = 65, BOMB = 55, BIO = 55, FIRE = 60, ACID = 55)
 
 /obj/item/clothing/suit/storage/marine/clone/battalion442
-	name = "\improper 442nd Siege Battalion clone armor"
-	desc = "Phase II plastoid armor bearing the markings of the 442nd Siege Battalion."
+	name = "\improper 442围攻营克隆装甲"
+	desc = "带有442围攻营标记的第二阶段塑钢装甲."
 	icon_state = "rep_442nd"
 	worn_icon_state = "rep_442nd"
 	soft_armor = list(MELEE = 50, BULLET = 75, LASER = 65, ENERGY = 65, BOMB = 55, BIO = 55, FIRE = 60, ACID = 55)
 
 /obj/item/clothing/suit/storage/marine/clone/commando
-	name = "\improper Clone commando armor"
-	desc = "Heavy plastoid armor used by clone commandos."
+	name = "\improper 克隆突击队装甲"
+	desc = "克隆突击队使用的重型塑钢装甲."
 	icon_state = "repcommando"
 	worn_icon_state = "repcommando"
 	soft_armor = list(MELEE = 60, BULLET = 80, LASER = 70, ENERGY = 70, BOMB = 60, BIO = 55, FIRE = 65, ACID = 55)
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 
 /obj/item/clothing/suit/storage/marine/clone/reinforced
-	name = "\improper Reinforced clone trooper armor"
-	desc = "Heavy plastoid armor with an additional blast plate."
+	name = "\improper 强化克隆士兵装甲"
+	desc = "带有额外防爆板的重型塑钢装甲."
 	icon_state = "repreinforced"
 	worn_icon_state = "repreinforced"
 	soft_armor = list(MELEE = 50, BULLET = 75, LASER = 65, ENERGY = 65, BOMB = 55, BIO = 55, FIRE = 60, ACID = 55)
@@ -139,8 +139,8 @@
 
 // Imperial Royal Guard (crimson)
 /obj/item/clothing/suit/storage/marine/clone/guard
-	name = "\improper Imperial Royal Guard armor"
-	desc = "Extremely expensive plastoid armor with a crimson red robe attached."
+	name = "\improper 帝国皇家卫队装甲"
+	desc = "极其昂贵的塑钢装甲,附有深红色长袍."
 	icon_state = "redguard"
 	worn_icon_state = "redguard"
 	// SOM lorica-tier
@@ -148,8 +148,8 @@
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
 
 /obj/item/clothing/suit/storage/marine/clone/guard/senateguard
-	name = "\improper Senate Guard armor"
-	desc = "Extremely expensive plastoid armor with a royal blue robe attached."
+	name = "\improper 议会卫队装甲"
+	desc = "极其昂贵的塑钢装甲,附有宝蓝色长袍."
 	icon_state = "senateguard"
 	worn_icon_state = "senateguard"
 	soft_armor = list(MELEE = 60, BULLET = 85, LASER = 80, ENERGY = 80, BOMB = 65, BIO = 55, FIRE = 70, ACID = 60)
@@ -157,32 +157,32 @@
 // ----- Empire -----
 
 /obj/item/clothing/suit/storage/marine/clone/darth
-	name = "\improper Dark Lord armor"
-	desc = "A dark mechanical life-support suit. Breathing sounds ominously mechanical."
+	name = "\improper 黑暗尊主装甲"
+	desc = "一套黑暗的机械维生服.呼吸声发出不祥的机械声."
 	icon_state = "darth_armor"
 	worn_icon_state = "darth_armor"
 	soft_armor = list(MELEE = 60, BULLET = 85, LASER = 80, ENERGY = 80, BOMB = 65, BIO = 75, FIRE = 90, ACID = 60)
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 
 /obj/item/clothing/suit/storage/marine/clone/stormtrooper
-	name = "\improper Stormtrooper armor"
-	desc = "Standard Imperial plastoid armor covering most of the body."
+	name = "\improper 风暴兵装甲"
+	desc = "覆盖大部分身体的标准帝国塑钢装甲."
 	icon_state = "stormtrooper_armor"
 	worn_icon_state = "stormtrooper_armor"
 	soft_armor = list(MELEE = 45, BULLET = 70, LASER = 60, ENERGY = 60, BOMB = 50, BIO = 50, FIRE = 55, ACID = 50)
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
 
 /obj/item/clothing/suit/storage/marine/clone/stormsurgeon
-	name = "\improper Imperial stormtrooper surgeon armor"
-	desc = "Stormtrooper armor with mint green highlights for field medics."
+	name = "\improper 帝国风暴兵外科医生装甲"
+	desc = "带有薄荷绿标识的战地医疗兵风暴兵装甲."
 	icon_state = "sturmsurgeon_armor"
 	worn_icon_state = "sturmsurgeon_armor"
 	soft_armor = list(MELEE = 45, BULLET = 70, LASER = 60, ENERGY = 60, BOMB = 50, BIO = 50, FIRE = 55, ACID = 50)
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
 
 /obj/item/clothing/suit/storage/marine/clone/stormradio
-	name = "\improper Imperial stormtrooper radioman armor"
-	desc = "Lightened stormtrooper armor with removed plates for added mobility."
+	name = "\improper 帝国风暴兵报务员装甲"
+	desc = "减轻了装甲板以增加机动性的轻型风暴兵装甲."
 	icon_state = "stormradio_armor"
 	worn_icon_state = "stormradio_armor"
 	soft_armor = list(MELEE = 35, BULLET = 60, LASER = 50, ENERGY = 50, BOMB = 45, BIO = 45, FIRE = 50, ACID = 40)
@@ -190,6 +190,6 @@
 
 // Officer drip: leather jacket + style light equalizer (used by imp_stormofficer jacket loadout)
 /obj/item/clothing/suit/modular/style/leather_jacket/sw_officer
-	name = "\improper Imperial officer jacket"
-	desc = "A fashionable jacket issued to Imperial field officers."
+	name = "\improper 帝国军官夹克"
+	desc = "配发给帝国战地军官的时尚夹克."
 	starting_attachments = list(/obj/item/armor_module/module/style/light_armor)

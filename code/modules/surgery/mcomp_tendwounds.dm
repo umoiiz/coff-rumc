@@ -25,13 +25,13 @@
 
 /datum/surgery_step/mcomp_wounds/mstabilize_wounds/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	if(user == target)
-		user.visible_message(span_notice("[user] begins to stabilize wounds on their body with [tool]."),
-		span_notice("You begin to stabilize your wounds with [tool]."))
+		user.visible_message(span_notice("[user]开始用[tool]稳定自己身上的伤口。"),
+		span_notice("你开始用[tool]稳定自己的伤口。"))
 	else
 		user.affected_message(target,
-		span_notice("You begin to stabilize the wounds on [target]'s body with [tool]."),
-		span_notice("[user] begins to stabilize the wounds on your body with [tool]."),
-		span_notice("[user] begins to stabilize the wounds on [target]'s body with [tool]."))
+		span_notice("你开始用[tool]稳定[target]身上的伤口。"),
+		span_notice("[user]开始用[tool]稳定你身上的伤口。"),
+		span_notice("[user]开始用[tool]稳定[target]身上的伤口。"))
 
 /datum/surgery_step/mcomp_wounds/mstabilize_wounds/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	target.heal_overall_damage(40,40)
@@ -44,13 +44,13 @@
 
 	affected.surgery_open_stage = 0.25
 	if(user == target)
-		user.visible_message(span_notice("[user] finishes stabilizing the wounds on their body with [tool]."),
-			span_notice("You finish stabilizing your wounds with [tool]."))
+		user.visible_message(span_notice("[user]用[tool]完成了对自己身上伤口的稳定。"),
+			span_notice("你用[tool]完成了对自己伤口的稳定。"))
 	else
 		user.affected_message(target,
-			span_notice("You finish stabilizing [target]'s wounds with [tool]."),
-			span_notice("[user] finished stabilizing your wounds with [tool]."),
-			span_notice("[user] finished treating [target]'s wounds with [tool]."))
+			span_notice("你用[tool]完成了对[target]伤口的稳定。"),
+			span_notice("[user]用[tool]完成了对你伤口的稳定。"),
+			span_notice("[user]用[tool]完成了对[target]伤口的处理。"))
 
 /datum/surgery_step/mcomp_wounds/mstabilize_wounds/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	return FALSE
@@ -73,7 +73,7 @@
 
 	var/obj/item/tool/surgery/healing_gun/gun = tool
 	if(!gun.loaded)
-		to_chat(user, span_warning("You can't heal yourself without a capsule in the gun!"))
+		to_chat(user, span_warning("枪里没有胶囊你就无法治疗自己!"))
 		return FALSE
 	return TRUE
 
@@ -82,13 +82,13 @@
 	flick("healing_gun_on", tool)
 
 	if(user == target)
-		user.visible_message(span_notice("[user] begins to treat the stabilized wounds on their body with [tool]."),
-		span_notice("You begin to treat your stabilized wounds with [tool]."))
+		user.visible_message(span_notice("[user]开始用[tool]处理自己身上已稳定的伤口。"),
+		span_notice("你开始用[tool]处理自己已稳定的伤口。"))
 	else
 		user.affected_message(target,
-			span_notice("You begin to treat the stabilized wounds on [target]'s body with [tool]."),
-			span_notice("[user] begins to treat the stabilized wounds on your body with [tool]."),
-			span_notice("[user] begins to treat the stabilized wounds on [target]'s body with [tool]."))
+			span_notice("你开始用[tool]处理[target]身上已稳定的伤口。"),
+			span_notice("[user]开始用[tool]处理你身上已稳定的伤口。"),
+			span_notice("[user]开始用[tool]处理[target]身上已稳定的伤口。"))
 
 	target.custom_pain("It feels like your body is being stabbed with needles - because it is!")
 
@@ -105,13 +105,13 @@
 		target.emote("pain")
 
 	if(user == target)
-		user.visible_message(span_notice("[user] finishes treating the stabilized wounds on their body with [tool]."),
-			span_notice("You finish treating the stabilized wounds on your body with [tool]."))
+		user.visible_message(span_notice("[user]用[tool]完成了对自己身上已稳定伤口的处理。"),
+			span_notice("你用[tool]完成了对自己身上已稳定伤口的处理。"))
 	else
 		user.affected_message(target,
-			span_notice("You finish treating [target]'s stabilized wounds with [tool]."),
-			span_notice("[user] finished treating your stabilized wounds with [tool]."),
-			span_notice("[user] finished treating [target]'s stabilized wounds with [tool]."))
+			span_notice("你用[tool]完成了对[target]已稳定伤口的处理。"),
+			span_notice("[user]用[tool]完成了对你已稳定伤口的处理。"),
+			span_notice("[user]用[tool]完成了对[target]已稳定伤口的处理。"))
 
 	if(!istype(tool, /obj/item/tool/surgery/healing_gun))
 		return
@@ -137,26 +137,26 @@
 	flick("wound_clamp_on", tool)
 
 	if(user == target)
-		user.visible_message(span_notice("[user] begins to close the treated wounds on their body with [tool]."),
-			span_notice("You begin to close your treated wounds with [tool]."))
+		user.visible_message(span_notice("[user]开始用[tool]缝合自己身上已处理的伤口。"),
+			span_notice("你开始用[tool]缝合自己已处理的伤口。"))
 	else
 		user.affected_message(target,
-			span_notice("You begin to close the treated wounds on [target]'s body with [tool]."),
-			span_notice("[user] begins to clamp the treated wounds on your body with [tool]."),
-			span_notice("[user] begns to clamp the treated wounds on [target]'s body with [tool]."))
+			span_notice("你开始用[tool]缝合[target]身上已处理的伤口。"),
+			span_notice("[user]开始用[tool]夹合你身上已处理的伤口。"),
+			span_notice("[user]开始用[tool]夹合[target]身上已处理的伤口。"))
 
 /datum/surgery_step/mcomp_wounds/mclamp_wound/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	target.heal_overall_damage(65,65) //makes sure that all damage is healed
 	playsound(target, 'sound/misc/cautery.ogg', 25)
 
 	if(user == target)
-		user.visible_message(span_notice("[user] finshes closing the treated wounds on their body with [tool]."),
-			span_notice("You finish closing the treated wounds on your body with [tool]"))
+		user.visible_message(span_notice("[user]用[tool]完成了对自己身上已处理伤口的缝合。"),
+			span_notice("你用[tool]完成了对自己身上已处理伤口的缝合"))
 	else
 		user.affected_message(target,
-			span_notice("You finish closing [target]'s treated wounds with [tool]."),
-			span_notice("[user] finished closing your treated wounds with [tool]."),
-			span_notice("[user] finished closing [target]'s treated wounds with [tool]."))
+			span_notice("你用[tool]完成了对[target]已处理伤口的缝合。"),
+			span_notice("[user]用[tool]完成了对你已处理伤口的缝合。"),
+			span_notice("[user]用[tool]完成了对[target]已处理伤口的缝合。"))
 
 	if(isyautja(target))
 		target.emote("loudroar")

@@ -62,7 +62,7 @@ export const SquadSelector = (props) => {
                         })
                       }
                     >
-                      Join
+                      加入
                     </Button>
                   }
                 >

@@ -35,7 +35,7 @@
 
 /datum/outfit/quick/som/medic/standard_assaultrifle
 	name = "V-31 Medic"
-	desc = "Keeping your buddies alive and in the fight. Equipped with a V-31 assault rifle with integrated 'micro grenade' rail launcher, medium armor and a good selection of grenades. Packs a large amount of medical supplies, the squad medic is vital to maintaining combat viability. The rail launcher fires grenades that must arm mid flight, so are ineffective at close ranges, but add significant tactical options at medium range."
+	desc = "让你的战友活着并继续战斗. 配备了V-31突击步枪, 带有集成\"微型榴弹\"轨道发射器, 中型装甲以及种类丰富的榴弹. 携带大量医疗补给, 小队医疗兵对于维持战斗能力至关重要. 轨道发射器发射的榴弹必须在飞行途中解除保险, 因此在近距离无效, 但在中距离增加了重要的战术选择."
 
 	suit_store = /obj/item/weapon/gun/rifle/som/standard
 
@@ -57,7 +57,7 @@
 
 /datum/outfit/quick/som/medic/mpi
 	name = "MPI_KM Medic"
-	desc = "Keeping your buddies alive and in the fight. Equipped with an MPI_KM assault rifle, medium armor and a good selection of grenades. Packs a large amount of medical supplies, the squad medic is vital to maintaining combat viability. An old weapon that was a common sight during the original Martian rebellion, the MPI's good stopping power, reliability and a healthy dose of nostalgia means it is still seen in use by some among the SOM despite its age."
+	desc = "让你的战友活着并继续战斗. 配备了MPI_KM突击步枪, 中型装甲以及种类丰富的榴弹. 携带大量医疗补给, 小队医疗兵对于维持战斗能力至关重要. 这是一种旧式武器, 在最初的 Martian 叛乱期间很常见, MPI良好的停止力, 可靠性以及恰到好处的怀旧感意味着尽管它已经老旧, 在SOM中仍有一些人在使用."
 
 	suit_store = /obj/item/weapon/gun/rifle/mpi_km/black/magharness
 
@@ -76,7 +76,7 @@
 
 /datum/outfit/quick/som/medic/standard_carbine
 	name = "V-34 Medic"
-	desc = "Keeping your buddies alive and in the fight. Equipped with an V-34 carbine, medium armor for massive firepower and mobility, but poor ammo economy and range. Packs a large amount of medical supplies, the squad medic is vital to maintaining combat viability. The V-34 is a modern update of an old weapon that was a common sight during the original Martian rebellion. Very reliable and excellent stopping power in a small, lightweight package. Brought into service as a much cheaper alternative to the VX-32."
+	desc = "让你的战友活着并继续战斗. 配备了V-34卡宾枪, 中型装甲, 具有强大的火力和机动性, 但弹药经济性和射程较差. 携带大量医疗补给, 小队医疗兵对于维持战斗能力至关重要. V-34是一种旧式武器的现代化改进版, 该武器在最初的 Martian 叛乱期间很常见. 非常可靠, 在小型轻量化的包装中具有出色的停止力. 作为VX-32的廉价得多的替代品投入使用."
 
 	suit_store = /obj/item/weapon/gun/rifle/som_carbine/black/standard
 
@@ -95,7 +95,7 @@
 
 /datum/outfit/quick/som/medic/standard_smg
 	name = "V-21 Medic"
-	desc = "Keeping your buddies alive and in the fight. Equipped with a V-21 submachine gun with variable firerate allowing for extreme rates of fire when properly wielded, medium armor and a good selection of grenades. Packs a large amount of medical supplies, the squad medic is vital to maintaining combat viability."
+	desc = "让你的战友活着并继续战斗. 配备了V-21冲锋枪, 其可变射速在正确使用时可实现极高的射速, 中型装甲以及种类丰富的榴弹. 携带大量医疗补给, 小队医疗兵对于维持战斗能力至关重要."
 
 	suit_store = /obj/item/weapon/gun/smg/som/support
 
@@ -114,7 +114,7 @@
 
 /datum/outfit/quick/som/medic/standard_shotgun
 	name = "V-51 Medic"
-	desc = "Keeping your buddies alive and in the fight. Equipped with a V-51 semi-automatic shotgun, medium armor and a good selection of grenades. Packs a large amount of medical supplies, the squad medic is vital to maintaining combat viability."
+	desc = "让你的战友活着并继续战斗. 配备了V-51半自动霰弹枪, 中型装甲以及种类丰富的榴弹. 携带大量医疗补给, 小队医疗兵对于维持战斗能力至关重要."
 
 	r_pocket = /obj/item/storage/pouch/shotgun/som
 	suit_store = /obj/item/weapon/gun/shotgun/som/support

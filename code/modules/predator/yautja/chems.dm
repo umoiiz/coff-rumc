@@ -12,9 +12,9 @@
 
 /datum/reagent/thwei/on_mob_add(mob/living/L, metabolism)
 	if(isyautja(L))
-		to_chat(L, span_userdanger("You feel revitalized!"))
+		to_chat(L, span_userdanger("你感到恢复了活力！"))
 	else
-		to_chat(L, span_userdanger("Something feels off!"))
+		to_chat(L, span_userdanger("感觉有些不对劲！"))
 		L.AdjustParalyzed(20)
 
 /datum/reagent/thwei/on_mob_life(mob/living/carbon/L, metabolism)
@@ -50,9 +50,9 @@
 
 /datum/reagent/thwei/on_mob_delete(mob/living/L, metabolism)
 	if(isyautja(L))
-		to_chat(L, span_userdanger("You feel thwei powers wearing off!"))
+		to_chat(L, span_userdanger("你感到thwei之力正在消退！"))
 	else
-		to_chat(L, span_userdanger("Toxins are wearing off!"))
+		to_chat(L, span_userdanger("毒素正在消退！"))
 
 /datum/reagent/thwei/overdose_process(mob/living/L, metabolism)
 	L.take_limb_damage(2*effect_str, 0)

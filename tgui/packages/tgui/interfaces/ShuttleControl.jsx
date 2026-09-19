@@ -38,7 +38,7 @@ export const ShuttleControl = (props) => {
           )}
         </Section>
         {destinations.length >= 1 ? (
-          <Section title="Destinations">
+          <Section title="目的地">
             <Table>
               {destinations.map((DT) => (
                 <DestinationSelection
@@ -57,7 +57,7 @@ export const ShuttleControl = (props) => {
           </Section>
         ) : (
           <NoticeBox textAlign="center">
-            No available destinations found!
+            未找到可用目的地!
           </NoticeBox>
         )}
       </Window.Content>

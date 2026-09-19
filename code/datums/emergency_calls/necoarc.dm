@@ -9,8 +9,8 @@
 	var/max_psionics = 2
 
 /datum/emergency_call/necoarc/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>Ваши емоуты: *muda, *bubu, *dori, *sa, *sa2, *yanyan, *nya, *isa, *qahu.")
-	to_chat(H, "<B>Ваша миссия проста: уничтожить всех людей и любую другую расу, представляющую угрозу.</b>")
+	to_chat(H, "<B>你的表情: *muda, *bubu, *dori, *sa, *sa2, *yanyan, *nya, *isa, *qahu.")
+	to_chat(H, "<B>你的任务很简单: 消灭所有人类以及任何其他构成威胁的种族.</b>")
 
 /datum/emergency_call/necoarc/create_member(datum/mind/M)
 	. = ..()

@@ -18,7 +18,7 @@
 /datum/effect_system/reagents_explosion/start()
 	var/turf/_location = location?.resolve()
 	if(explosion_message)
-		_location.visible_message(span_danger("The solution violently explodes!"), \
-								span_hear("You hear an explosion!"))
+		_location.visible_message(span_danger("溶液剧烈爆炸!"), \
+								span_hear("你听到一声爆炸!"))
 
 	cell_explosion(_location, amount, amount / round((2 * amount)**GLOB.DYN_EX_SCALE))

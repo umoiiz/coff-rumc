@@ -1,6 +1,6 @@
 /obj/item/weapon/banhammer
-	desc = "A banhammer"
-	name = "banhammer"
+	desc = "一把封禁之锤"
+	name = "封禁之锤"
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "toyhammer"
 	equip_slot_flags = ITEM_SLOT_BELT
@@ -11,7 +11,7 @@
 
 /obj/item/weapon/nullrod
 	name = "null rod"
-	desc = "A rod of pure obsidian, its very presence disrupts and dampens the powers of paranormal phenomenae."
+	desc = "一根纯黑曜石制成的短棒, 它的存在本身就会扰乱并抑制超自然现象的力量."
 	icon_state = "nullrod"
 	worn_icon_state = "nullrod"
 	equip_slot_flags = ITEM_SLOT_BELT
@@ -22,10 +22,10 @@
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/weapon/harpoon
-	name = "harpoon"
+	name = "鱼叉"
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 0
-	desc = "Tharr she blows!"
+	desc = "它喷水啦!"
 	icon_state = "harpoon"
 	worn_icon_state = "harpoon"
 	force = 20
@@ -34,8 +34,8 @@
 	attack_verb = list("jabs","stabs","rips")
 
 /obj/item/weapon/baseballbat
-	name = "\improper wooden baseball bat"
-	desc = "A large wooden baseball bat. Commonly used in colony recreation, but also used as a means of self defense. Often carried by thugs and ruffians."
+	name = "\improper 木制棒球棍"
+	desc = "一根大型木制棒球棍. 常用于殖民地娱乐, 但也用作自卫手段. 常被暴徒和恶棍携带."
 	icon_state = "woodbat"
 	worn_icon_state = "woodbat"
 	sharp = 0
@@ -49,16 +49,16 @@
 	hitsound = 'sound/weapons/genhit3.ogg'
 
 /obj/item/weapon/baseballbat/metal
-	name = "\improper metal baseball bat"
-	desc = "A large metal baseball bat. Compared to its wooden cousin, the metal bat offers a bit more more force. Often carried by thugs and ruffians."
+	name = "\improper 金属棒球棍"
+	desc = "一根大型金属棒球棍. 与它的木制表亲相比, 金属棒球棍能提供稍大的力量. 常被暴徒和恶棍携带."
 	icon_state = "metalbat"
 	worn_icon_state = "metalbat"
 	force = 25
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/weapon/butterfly
-	name = "butterfly knife"
-	desc = "A basic metal blade concealed in a lightweight plasteel grip. Small enough when folded to fit in a pocket."
+	name = "蝴蝶刀"
+	desc = "一片隐藏在轻质塑钢握柄中的基础金属刀刃. 折叠后小到足以放进衣袋."
 	icon_state = "butterflyknife"
 	worn_icon_state = null
 	hitsound = null
@@ -75,7 +75,7 @@
 /obj/item/weapon/butterfly/attack_self(mob/user)
 	active = !active
 	if(active)
-		to_chat(user, span_notice("You flip out your [src]."))
+		to_chat(user, span_notice("你甩出了你的[src]."))
 		playsound(user, 'sound/weapons/flipblade.ogg', 15, 1)
 		force = 15
 		throwforce = 12
@@ -86,7 +86,7 @@
 		w_class = WEIGHT_CLASS_NORMAL
 		attack_verb = list("attacks", "slashes", "stabs", "slices", "tears", "rips", "dices", "cuts")
 		return
-	to_chat(user, span_notice("The [src] can now be concealed."))
+	to_chat(user, span_notice("[src]现在可以隐藏了."))
 	force = initial(force)
 	edge = FALSE
 	sharp = IS_NOT_SHARP_ITEM
@@ -96,13 +96,13 @@
 	attack_verb = initial(attack_verb)
 
 /obj/item/weapon/butterfly/switchblade
-	name = "switchblade"
-	desc = "A classic switchblade with gold engraving. Just holding it makes you feel like a gangster."
+	name = "弹簧刀"
+	desc = "一把带有金色雕花的经典弹簧刀. 光是握着它就让你感觉自己像个黑帮分子."
 	icon_state = "switchblade"
 
 /obj/item/weapon/wirerod
-	name = "wired rod"
-	desc = "A rod with some wire wrapped around the top. It'd be easy to attach something to the top bit."
+	name = "绕线棒"
+	desc = "一根顶部缠着一些金属线的棒子. 在顶部固定些东西会很容易."
 	icon_state = "wiredrod"
 	worn_icon_state = "rods"
 	atom_flags = CONDUCT
@@ -120,7 +120,7 @@
 		var/obj/item/weapon/twohanded/spear/S = new
 
 		user.put_in_hands(S)
-		to_chat(user, span_notice("You fasten the glass shard to the top of the rod with the cable."))
+		to_chat(user, span_notice("你用缆线将玻璃碎片固定到棒子顶部."))
 		qdel(I)
 		qdel(src)
 		update_icon()

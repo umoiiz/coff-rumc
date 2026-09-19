@@ -2,7 +2,7 @@
 
 /obj/machinery/computer/camera
 	name = "security camera console"
-	desc = "Used to access the various cameras on the station."
+	desc = "用于访问空间站上的各种摄像头."
 	icon_state = "computer_small"
 	screen_overlay = "cameras"
 	broken_icon = "computer_small_red_broken"

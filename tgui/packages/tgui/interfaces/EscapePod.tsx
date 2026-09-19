@@ -13,9 +13,9 @@ export const EscapePod = (props) => {
   return (
     <Window title="Escape Pod" width={400} height={140}>
       <Window.Content>
-        <Section title="Escape Pod">
-          Welcome to Nanotransens least luxurious survival pod! Have a pleasant
-          stay!
+        <Section title="逃生舱">
+          欢迎来到纳米传讯最简陋的生存舱! 祝您
+          旅途愉快!
           <Box width="100%" textAlign="center">
             <Button.Confirm
               m="50"

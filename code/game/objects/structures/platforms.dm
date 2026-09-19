@@ -1,6 +1,6 @@
 /obj/structure/platform
-	name = "platform"
-	desc = "A square metal surface resting on four legs."
+	name = "平台"
+	desc = "一个由四条腿支撑的方形金属表面."
 	icon = 'icons/obj/structures/platforms.dmi'
 	icon_state = "platform"
 	coverage = 10
@@ -82,8 +82,8 @@
 
 /obj/structure/platform/rockcliff
 	icon_state = "rockcliff"
-	name = "rock cliff"
-	desc = "A collection of stones and rocks that form a steep cliff, it looks climbable."
+	name = "岩崖"
+	desc = "一堆石头和岩石形成的陡峭悬崖,看起来可以攀爬."
 
 /obj/structure/platform/rockcliff/orange
 	icon_state = "rockcliff_orange"
@@ -109,8 +109,8 @@
 
 /obj/structure/platform/trench
 	icon_state = "platformtrench"
-	name = "trench wall"
-	desc = "A group of roughly cut planks forming the side of a dug in trench."
+	name = "战壕壁"
+	desc = "一组粗略切割的木板,构成挖好的战壕的侧壁."
 
 /obj/structure/platform/trench/nondense
 	density = FALSE
@@ -118,8 +118,8 @@
 	coverage = 0
 
 /obj/structure/platform/adobe
-	name = "brick wall"
-	desc = "A low adobe brick wall."
+	name = "砖墙"
+	desc = "一堵低矮的土坯砖墙."
 	icon_state = "adobe"
 
 /obj/structure/platform/adobe/nondense
@@ -129,8 +129,8 @@
 
 //decorative corner platform bits
 /obj/structure/platform_decoration
-	name = "platform"
-	desc = "A square metal surface resting on four legs."
+	name = "平台"
+	desc = "一个由四条腿支撑的方形金属表面."
 	icon = 'icons/obj/structures/platforms.dmi'
 	icon_state = "platform_deco"
 	atom_flags = ON_BORDER
@@ -151,8 +151,8 @@
 
 /obj/structure/platform_decoration/rockcliff_deco
 	icon_state = "rockcliff_deco"
-	name = "rock cliff"
-	desc = "A collection of stones and rocks that form a steep cliff, it looks climbable."
+	name = "岩崖"
+	desc = "一堆石头和岩石形成的陡峭悬崖,看起来可以攀爬."
 
 /obj/structure/platform_decoration/rockcliff_deco/orange
 	icon_state = "rockcliff_orange_deco"

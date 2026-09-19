@@ -43,7 +43,7 @@ const ChemMasterContent = (props) => {
   return (
     <>
       <Section
-        title="Beaker"
+        title="烧杯"
         buttons={
           !!data.isBeakerLoaded && (
             <>
@@ -53,7 +53,7 @@ const ChemMasterContent = (props) => {
               </Box>
               <Button
                 icon="eject"
-                content="Eject"
+                content="弹出"
                 onClick={() => act('eject')}
               />
             </>
@@ -62,12 +62,12 @@ const ChemMasterContent = (props) => {
       >
         {!isBeakerLoaded && (
           <Box color="label" mt="3px" mb="5px">
-            No beaker loaded.
+            未装载烧杯.
           </Box>
         )}
         {!!isBeakerLoaded && beakerContents.length === 0 && (
           <Box color="label" mt="3px" mb="5px">
-            Beaker is empty.
+            烧杯是空的.
           </Box>
         )}
         <ChemicalBuffer>
@@ -81,16 +81,16 @@ const ChemMasterContent = (props) => {
         </ChemicalBuffer>
       </Section>
       <Section
-        title="Buffer"
+        title="缓冲"
         buttons={
           <>
             <Box inline color="label" mr={1}>
-              Mode:
+              模式:
             </Box>
             <Button
               color={data.mode ? 'good' : 'bad'}
               icon={data.mode ? 'exchange-alt' : 'times'}
-              content={data.mode ? 'Transfer' : 'Destroy'}
+              content={data.mode ? '转移' : '销毁'}
               onClick={() => act('toggleMode')}
             />
           </>
@@ -98,7 +98,7 @@ const ChemMasterContent = (props) => {
       >
         {bufferContents.length === 0 && (
           <Box color="label" mt="3px" mb="5px">
-            Buffer is empty.
+            缓冲是空的.
           </Box>
         )}
         <ChemicalBuffer>
@@ -111,12 +111,12 @@ const ChemMasterContent = (props) => {
           ))}
         </ChemicalBuffer>
       </Section>
-      <Section title="Packaging">
+      <Section title="包装">
         <PackagingControls />
       </Section>
       {!!isPillBottleLoaded && (
         <Section
-          title="Pill Bottle"
+          title="药瓶"
           buttons={
             <>
               <Box inline color="label" mr={2}>
@@ -124,7 +124,7 @@ const ChemMasterContent = (props) => {
               </Box>
               <Button
                 icon="eject"
-                content="Eject"
+                content="弹出"
                 onClick={() => act('ejectPillBottle')}
               />
             </>
@@ -178,7 +178,7 @@ const ChemicalBufferEntry = (props) => {
           }
         />
         <Button
-          content="All"
+          content="全部"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
@@ -189,7 +189,7 @@ const ChemicalBufferEntry = (props) => {
         />
         <Button
           icon="ellipsis-h"
-          title="Custom amount"
+          title="自定义数量"
           onClick={() =>
             act('transfer', {
               id: chemical.id,
@@ -200,7 +200,7 @@ const ChemicalBufferEntry = (props) => {
         />
         <Button
           icon="question"
-          title="Analyze"
+          title="分析"
           onClick={() =>
             act('analyze', {
               id: chemical.id,
@@ -227,7 +227,7 @@ const PackagingControlsItem = (props) => {
         maxValue={10}
         onChange={onChangeAmount}
       />
-      <Button ml="6px" content="Create" onClick={onCreate} />
+      <Button ml="6px" content="创建" onClick={onCreate} />
       <Box inline ml="6px" color="label">
         {sideNote}
       </Box>
@@ -245,7 +245,7 @@ const PackagingControls = (props) => {
   return (
     <LabeledList>
       {!condi && (
-        <LabeledList.Item label="Pill type">
+        <LabeledList.Item label="药丸类型">
           {pillStyles.map((pill) => (
             <Button
               key={pill.id}
@@ -349,11 +349,11 @@ const AnalysisResults = (props) => {
   const { analyzeVars } = data;
   return (
     <Section
-      title="Analysis Results"
+      title="分析结果"
       buttons={
         <Button
           icon="arrow-left"
-          content="Back"
+          content="返回"
           onClick={() =>
             act('goScreen', {
               screen: 'home',
@@ -363,22 +363,22 @@ const AnalysisResults = (props) => {
       }
     >
       <LabeledList>
-        <LabeledList.Item label="Name">{analyzeVars.name}</LabeledList.Item>
-        <LabeledList.Item label="State">{analyzeVars.state}</LabeledList.Item>
-        <LabeledList.Item label="Color">
+        <LabeledList.Item label="名称">{analyzeVars.name}</LabeledList.Item>
+        <LabeledList.Item label="状态">{analyzeVars.state}</LabeledList.Item>
+        <LabeledList.Item label="颜色">
           <ColorBox color={analyzeVars.color} mr={1} />
           {analyzeVars.color}
         </LabeledList.Item>
-        <LabeledList.Item label="Description">
+        <LabeledList.Item label="描述">
           {analyzeVars.description}
         </LabeledList.Item>
-        <LabeledList.Item label="Metabolization Rate">
+        <LabeledList.Item label="代谢速率">
           {analyzeVars.metaRate} u/minute
         </LabeledList.Item>
-        <LabeledList.Item label="Overdose Threshold">
+        <LabeledList.Item label="过量阈值">
           {analyzeVars.overD}
         </LabeledList.Item>
-        <LabeledList.Item label="Addiction Threshold">
+        <LabeledList.Item label="成瘾阈值">
           {analyzeVars.addicD}
         </LabeledList.Item>
       </LabeledList>

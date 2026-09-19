@@ -1,6 +1,6 @@
 /obj/item/armor_module
-	name = "armor module"
-	desc = "A dis-figured armor module, in its prime this would've been a key item in your modular armor... now its just trash."
+	name = "装甲模块"
+	desc = "一个变形的装甲模块,在它鼎盛时期本是你模块化装甲中的关键部件...现在只是垃圾了."
 	icon = 'icons/mob/modular/modular_armor.dmi'
 	soft_armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0) // This is here to overwrite code over at objs.dm line 41. Marines don't get funny 200+ bio buff anymore.
 	slowdown = 0
@@ -131,7 +131,7 @@
  */
 
 /obj/item/armor_module/armor
-	name = "modular armor - armor module"
+	name = "模块化装甲 - 装甲模块"
 	icon = 'icons/mob/modular/modular_armor.dmi'
 	/// The additional armor provided by equipping this piece.
 	soft_armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
@@ -163,7 +163,7 @@
 
 /obj/item/armor_module/armor/proc/extra_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	examine_list += span_notice("<b>Right click</b> the [parent] with <b>facepaint</b> to color [src].")
+	examine_list += span_notice("<b>右键点击</b>带有<b>面部涂装</b>的[parent]来为其[src]上色.")
 
 ///Sends a list of available colored attachments to be colored when the parent is right clicked with paint.
 /obj/item/armor_module/armor/proc/handle_color(datum/source, mob/user, list/obj/item/secondaries)

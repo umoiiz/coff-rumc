@@ -7,7 +7,7 @@
 
 /obj/machinery/mining/drill
 	name = "mining drill head"
-	desc = "An enormous drill."
+	desc = "一个巨大的钻头."
 	icon_state = "mining_drill"
 
 /obj/machinery/mining/drill/braced
@@ -16,7 +16,7 @@
 
 /obj/machinery/mining/brace
 	name = "mining drill brace"
-	desc = "A machinery brace for an industrial drill. It looks easily two feet thick."
+	desc = "工业钻头的机械支架. 它看起来足足有两英尺厚."
 	icon_state = "mining_brace"
 
 /obj/machinery/mining/brace/active

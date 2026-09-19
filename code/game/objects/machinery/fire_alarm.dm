@@ -7,7 +7,7 @@
 
 /obj/machinery/firealarm
 	name = "fire alarm"
-	desc = "<i>\"Pull this in case of emergency\"</i>. Thus, keep pulling it forever."
+	desc = "<i>\"紧急情况下拉动此物\"</i>。因此,永远拉下去吧。"
 	icon = 'icons/obj/machines/fire_alarm.dmi'
 	icon_state = "fire0"
 	light_range = 1
@@ -118,9 +118,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/firealarm, (-32))
 		return
 	detecting = !detecting
 	if(detecting)
-		user.visible_message(span_warning("[user] has reconnected [src]'s detecting unit!"), span_warning("You have reconnected [src]'s detecting unit."))
+		user.visible_message(span_warning("[user]已重新连接[src]的探测单元!"), span_warning("你已重新连接[src]的探测单元。"))
 	else
-		user.visible_message(span_warning("[user] has disconnected [src]'s detecting unit!"), span_warning("You have disconnected [src]'s detecting unit."))
+		user.visible_message(span_warning("[user]已断开[src]的探测单元!"), span_warning("你已断开[src]的探测单元。"))
 
 /obj/machinery/firealarm/wirecutter_act(mob/living/user, obj/item/I)
 	. = ..()
@@ -128,7 +128,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/firealarm, (-32))
 		return
 	if(buildstage != FIRE_ALARM_BUILD_SECURED)
 		return
-	user.visible_message(span_warning("[user] has cut the wires inside \the [src]!"), "You have cut the wires inside \the [src].")
+	user.visible_message(span_warning("[user]已切断\the [src]内部的电线!"), "你已切断\the [src]内部的电线。")
 	playsound(loc, 'sound/items/wirecutter.ogg', 25, 1)
 	buildstage = FIRE_ALARM_BUILD_NO_WIRES
 	update_icon()
@@ -139,7 +139,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/firealarm, (-32))
 		return
 	if(buildstage != FIRE_ALARM_BUILD_NO_WIRES)
 		return
-	to_chat(user, "You start prying out the circuit!")
+	to_chat(user, "你开始撬出电路!")
 	playsound(loc, 'sound/items/crowbar.ogg', 25, 1)
 	if(!do_after(user, 2 SECONDS, NONE, src, BUSY_ICON_BUILD))
 		return
@@ -153,7 +153,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/firealarm, (-32))
 		return
 	if(buildstage != FIRE_ALARM_BUILD_NO_CIRCUIT)
 		return
-	to_chat(user, "You remove the fire alarm assembly from the wall!")
+	to_chat(user, "你从墙上拆下火灾报警器组件!")
 	var/obj/item/frame/fire_alarm/frame = new /obj/item/frame/fire_alarm
 	frame.forceMove(user.loc)
 	playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
@@ -172,15 +172,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/firealarm, (-32))
 			if(iscablecoil(I))
 				var/obj/item/stack/cable_coil/C = I
 				if(C.use(5))
-					to_chat(user, span_notice("You wire \the [src]."))
+					to_chat(user, span_notice("你给\the [src]接线。"))
 					buildstage = FIRE_ALARM_BUILD_SECURED
 					return
 				else
-					to_chat(user, span_warning("You need 5 pieces of cable to do wire \the [src]."))
+					to_chat(user, span_warning("你需要5段线缆才能给\the [src]接线。"))
 					return
 		if(FIRE_ALARM_BUILD_NO_CIRCUIT)
 			if(istype(I, /obj/item/circuitboard/firealarm))
-				to_chat(user, "You insert the circuit!")
+				to_chat(user, "你插入电路!")
 				qdel(I)
 				buildstage = FIRE_ALARM_BUILD_NO_WIRES
 				update_icon()
@@ -220,7 +220,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/firealarm, (-32))
 	A?.fire_alert()
 	update_icon()
 	if(user && !silent)
-		balloon_alert(user, "triggered alarm!")
+		balloon_alert(user, "触发了警报!")
 	playsound(loc, 'sound/ambience/signal.ogg', 50, 0)
 
 /obj/machinery/firealarm/proc/reset(mob/user, silent = FALSE)
@@ -228,4 +228,4 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/firealarm, (-32))
 	A?.fire_reset()
 	update_icon()
 	if(user && !silent)
-		balloon_alert(user, "reset alarm")
+		balloon_alert(user, "重置警报")

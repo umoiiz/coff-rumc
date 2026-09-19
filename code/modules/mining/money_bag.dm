@@ -1,6 +1,6 @@
 /obj/item/moneybag
 	icon = 'icons/obj/items/storage/bag.dmi'
-	name = "Money bag"
+	name = "钱袋"
 	icon_state = "money"
 	force = 10
 	throwforce = 2
@@ -57,7 +57,7 @@
 
 	if(istype(I, /obj/item/coin))
 		var/obj/item/coin/C = I
-		to_chat(user, span_notice("You add the [C] into the bag."))
+		to_chat(user, span_notice("你将[C]放入袋中."))
 		user.drop_held_item()
 		C.forceMove(src)
 
@@ -65,7 +65,7 @@
 		var/obj/item/moneybag/C = I
 		for(var/obj/O in C.contents)
 			O.forceMove(src)
-		to_chat(user, span_notice("You empty the [C] into the bag."))
+		to_chat(user, span_notice("你将[C]倒入袋中."))
 
 /obj/item/moneybag/Topic(href, href_list)
 	. = ..()
@@ -100,8 +100,8 @@
 	new /obj/item/coin/gold(src)
 
 /obj/item/moneybag/pred
-	desc = "A console designed by the Hunters to assist in flight pathing and navigation.";
+	desc = "一个由猎手设计的用于辅助飞行路径规划和导航的控制台.";
 	icon = 'icons/obj/machines/yautja_machines.dmi';
 	icon_state = "overwatch";
-	name = "Hunter Flight Console"
+	name = "猎手飞行控制台"
 	anchored = TRUE

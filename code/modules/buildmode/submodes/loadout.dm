@@ -16,12 +16,12 @@
 		[span_bold("Strip and delete current loadout")] -> Shift + Left Mouse Button Button on mob/living/carbon/human"))
 
 /datum/buildmode_mode/loadout/change_settings(client/user)
-	var/loadout_choice = tgui_input_list(user, "Choose a loadout", "Loadout choice", SSpersistence.custom_loadouts)
+	var/loadout_choice = tgui_input_list(user, "选择装备配置", "装备配置选择", SSpersistence.custom_loadouts)
 	if(!loadout_choice)
 		return
 	loadout = SSpersistence.load_loadout(loadout_choice)
 	if(!loadout)
-		to_chat(user, "Error when loading loadout")
+		to_chat(user, "加载装备配置时出错")
 
 /datum/buildmode_mode/loadout/handle_click(client/user, params, object)
 	var/list/pa = params2list(params)
@@ -41,7 +41,7 @@
 		loadout = create_empty_loadout(loadout_name, dollie.job.title)
 		loadout.save_mob_loadout(dollie, TRUE)
 		SSpersistence.save_loadout(loadout)
-		to_chat(user, span_notice("New loadout copied from [dollie]."))
+		to_chat(user, span_notice("已从[dollie]复制新装备配置."))
 		return
 
 	if(shift_click && left_click)
@@ -51,7 +51,7 @@
 	if(left_click)
 		dollie.delete_equipment()
 		if(isnull(loadout))
-			to_chat(user, span_warning("Pick an loadout first."))
+			to_chat(user, span_warning("请先选择一个装备配置."))
 			return
 		loadout.equip_mob(dollie)
 		dollie.job = SSjob.name_occupations[loadout.job]

@@ -2,7 +2,7 @@
 
 /obj/machinery/computer/supplydrop_console
 	name = "supply drop console"
-	desc = "used by shipside staff to issue supply drops to squad beacons"
+	desc = "由舰上人员使用, 向小队信标发送补给空投"
 	icon_state = "supplydrop"
 	screen_overlay = "supplydrop_screen"
 	interaction_flags = INTERACT_MACHINE_TGUI
@@ -84,7 +84,7 @@
 				if(!is_ground_level(beacon.drop_location.z))
 					beacon_list -= beacon_name
 					continue
-			var/datum/supply_beacon/supply_beacon_choice = beacon_list[tgui_input_list(ui.user, "Select the beacon to send supplies", "Beacon choice", beacon_list)]
+			var/datum/supply_beacon/supply_beacon_choice = beacon_list[tgui_input_list(ui.user, "选择信标以发送补给", "信标选择", beacon_list)]
 			if(!istype(supply_beacon_choice))
 				return
 			supply_beacon = supply_beacon_choice
@@ -161,8 +161,8 @@
 	x_offset = clamp(round(x_offset), -5, 5)
 	y_offset = clamp(round(y_offset), -5, 5)
 
-	supply_pad.visible_message(span_boldnotice("The supply drop is now loading into the launch tube! Stand by!"))
-	supply_pad.visible_message(span_warning("\The [supply_pad] whirrs as it beings to load the supply drop into a bluespace launch tube. Stand clear!"))
+	supply_pad.visible_message(span_boldnotice("补给空投正在装入发射管! 请稍候!"))
+	supply_pad.visible_message(span_warning("\The [supply_pad] 发出嗡嗡声, 开始将补给空投装入蓝空间发射管. 请远离!"))
 	for(var/obj/C in supplies)
 		C.anchored = TRUE //to avoid accidental pushes
 	playsound(supply_pad.loc, 'sound/effects/bamf.ogg', 50, TRUE)
@@ -191,7 +191,7 @@
 		visible_message("[icon2html(supply_pad, usr)] [span_warning("Launch aborted! No deployable object detected on the drop pad.")]")
 		return
 
-	supply_beacon.drop_location.visible_message(span_boldnotice("A supply drop appears suddenly!"))
+	supply_beacon.drop_location.visible_message(span_boldnotice("一个补给空投突然出现了!"))
 	playsound(supply_beacon.drop_location,'sound/effects/tadpolehovering.ogg', 30, TRUE)
 	playsound(supply_pad.loc,'sound/effects/phasein.ogg', 50, TRUE)
 	for(var/obj/C in supplies)

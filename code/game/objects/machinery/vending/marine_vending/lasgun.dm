@@ -1,6 +1,6 @@
 /obj/machinery/vending/lasgun
-	name = "\improper Terra Experimental cell field charger"
-	desc = "An automated power cell dispenser and charger. Used to recharge energy weapon power cells, including in the field. Has an internal battery that charges off the power grid when wrenched down."
+	name = "\improper 泰拉实验电池现场充电器"
+	desc = "一个自动化电池分配器和充电器. 用于为能量武器电池充电, 包括在战场上. 有一个内部电池, 当用扳手固定时从电网充电."
 	icon_state = "lascharger"
 	icon_vend = "lascharger-vend"
 	icon_deny = "lascharger-deny"
@@ -11,7 +11,7 @@
 	active_power_usage = 50
 	machine_current_charge = 50000 //integrated battery for recharging energy weapons. Normally 10000.
 	machine_max_charge = 50000
-	product_slogans = "Static Shock!;Power cell running low? Recharge here!;Need a charge?;Power up!;Electrifying!;Empower yourself!"
+	product_slogans = "静电冲击!;电池电量不足? 在这里充电!;需要充电?;通电!;电力十足!;给自己充能!"
 	products = list(
 		/obj/item/cell/lasgun/lasrifle = 10, /obj/item/cell/lasgun/volkite/powerpack/marine = 2,
 	)

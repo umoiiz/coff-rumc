@@ -4,20 +4,20 @@
 //NOTE: Do NOT set the price of any crates below 7 points. Doing so allows infinite points.
 
 GLOBAL_LIST_INIT(all_supply_groups, list(
-	"Operations",
-	"Weapons",
-	"Smartguns",
-	"Stationary",
-	"Launchers",
-	"Explosives",
-	"Armor",
-	"Clothing",
-	"Medical",
-	"Engineering",
-	"Supplies",
-	"Imports",
-	"Vehicles",
-	"Factory",
+	"作战",
+	"武器",
+	"智能枪",
+	"固定式",
+	"发射器",
+	"爆炸物",
+	"护甲",
+	"服装",
+	"医疗",
+	"工程",
+	"补给",
+	"进口",
+	"载具",
+	"工厂",
 ))
 
 /datum/supply_packs

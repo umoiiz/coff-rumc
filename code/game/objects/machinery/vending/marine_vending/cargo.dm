@@ -1,12 +1,12 @@
 /obj/machinery/vending/cargo_supply
-	name = "\improper Operational Supplies Vendor"
-	desc = "A large vendor for dispensing specialty and bulk supplies. Restricted to cargo personnel only."
+	name = "\improper 作战物资售卖机"
+	desc = "用于分发特种和散装物资的大型售卖机. 仅限货运人员使用."
 	icon_state = "requisitionop"
 	icon_vend = "requisitionop-vend"
 	icon_deny = "requisitionop-deny"
 	wrenchable = FALSE
 	products = list(
-		"Surplus Special Equipment" = list(
+		"剩余特种装备" = list(
 			/obj/item/pinpointer = 1,
 			/obj/item/supply_beacon = 1,
 			/obj/item/explosive/plastique = 5,
@@ -17,12 +17,12 @@
 			/obj/item/radio/headset/mainship/marine/charlie = -1,
 			/obj/item/radio/headset/mainship/marine/delta = -1,
 		),
-		"Mining Equipment" = list(
+		"采矿设备" = list(
 			/obj/item/minerupgrade/automatic = 1,
 			/obj/item/minerupgrade/reinforcement = 1,
 			/obj/item/minerupgrade/overclock = 1,
 		),
-		"Reqtorio Basics" = list(
+		"补给站基础" = list(
 			/obj/item/paper/factoryhowto = -1,
 			/obj/machinery/fabricator/gunpowder = 2,
 			/obj/machinery/fabricator/junk = 1,
@@ -31,7 +31,7 @@
 			/obj/item/stack/conveyor/thirty = -1,
 			/obj/item/conveyor_switch_construct = -1,
 		),
-		"Grenade Boxes" = list(
+		"手榴弹箱" = list(
 			/obj/item/storage/box/visual/grenade/frag = 1,
 			/obj/item/storage/box/visual/grenade/incendiary = 2,
 			/obj/item/storage/box/visual/grenade/m15 = 1,
@@ -39,7 +39,7 @@
 			/obj/item/storage/box/visual/grenade/sticky = 1,
 			/obj/item/storage/box/visual/grenade/trailblazer = 1,
 		),
-		"Ammo Boxes" = list(
+		"弹药箱" = list(
 			/obj/item/matter_ammo_box/light = -1,
 			/obj/item/matter_ammo_box = -1,
 			/obj/item/matter_ammo_box/big = -1,
@@ -66,7 +66,7 @@
 			/obj/item/storage/box/visual/magazine/compact/mg60/full = -1,
 			/obj/item/storage/box/visual/magazine/compact/mg27/full = -1,
 		),
-		"Mecha Ammo" = list(
+		"机甲弹药" = list(
 			/obj/item/mecha_ammo/vendable/pistol = -1,
 			/obj/item/mecha_ammo/vendable/burstpistol = -1,
 			/obj/item/mecha_ammo/vendable/smg = -1,

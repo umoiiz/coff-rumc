@@ -12,7 +12,7 @@ GLOBAL_VAR_INIT(message_delay, 0) // To make sure restarting the recentmessages 
 /obj/machinery/telecomms/broadcaster
 	name = "subspace broadcaster"
 	icon_state = "broadcaster"
-	desc = "A dish-shaped machine used to broadcast processed subspace signals."
+	desc = "一台用于广播已处理子空间信号的碟形机器."
 	telecomms_type = /obj/machinery/telecomms/broadcaster
 	density = TRUE
 	use_power = IDLE_POWER_USE

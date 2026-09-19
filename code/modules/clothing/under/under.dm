@@ -4,7 +4,7 @@
 		slot_l_hand_str = 'icons/mob/inhands/clothing/uniforms_left.dmi',
 		slot_r_hand_str = 'icons/mob/inhands/clothing/uniforms_right.dmi',
 	)
-	name = "under"
+	name = "下方"
 	armor_protection_flags = CHEST|GROIN|LEGS|ARMS
 	cold_protection_flags = CHEST|GROIN|LEGS|ARMS
 	heat_protection_flags = CHEST|GROIN|LEGS|ARMS
@@ -139,16 +139,16 @@
 	if (user.incapacitated(TRUE))
 		return
 	if(has_sensor >= 2)
-		to_chat(user, "The sensors in [src] can't be modified.")
+		to_chat(user, "[src]中的传感器无法修改.")
 		return FALSE
 	if(has_sensor <= 0)
-		to_chat(user, "[src] does not have any sensors.")
+		to_chat(user, "[src]没有任何传感器.")
 		return FALSE
 
 	var/list/modes = list("Off", "Binary sensors", "Vitals tracker", "Tracking beacon")
-	var/switchMode = tgui_input_list(user, "Select a sensor mode:", "Suit Sensor Mode", modes)
+	var/switchMode = tgui_input_list(user, "选择传感器模式:", "服装传感器模式", modes)
 	if(get_dist(user, src) > 1)
-		to_chat(user, "You have moved too far away.")
+		to_chat(user, "你移动得太远了.")
 		return
 	sensor_mode = modes.Find(switchMode) - 1
 
@@ -160,23 +160,23 @@
 	if (loc == user)
 		switch(sensor_mode)
 			if(0)
-				to_chat(user, "You disable your suit's remote sensing equipment.")
+				to_chat(user, "你关闭了服装的远程传感设备.")
 			if(1)
-				to_chat(user, "Your suit will now report whether you are live or dead.")
+				to_chat(user, "你的服装现在将报告你是生是死.")
 			if(2)
-				to_chat(user, "Your suit will now report your vital lifesigns.")
+				to_chat(user, "你的服装现在将报告你的生命体征.")
 			if(3)
-				to_chat(user, "Your suit will now report your vital lifesigns as well as your coordinate position.")
+				to_chat(user, "你的服装现在将报告你的生命体征以及坐标位置.")
 	else if (ismob(loc))
 		switch(sensor_mode)
 			if(0)
-				visible_message(span_warning("[user] disables [loc]'s remote sensing equipment."), null, null, 1)
+				visible_message(span_warning("[user]关闭了[loc]的远程传感设备."), null, null, 1)
 			if(1)
-				visible_message("[user] turns [loc]'s remote sensors to binary.", null, null, 1)
+				visible_message("[user]将[loc]的远程传感器切换为二进制.", null, null, 1)
 			if(2)
-				visible_message("[user] sets [loc]'s sensors to track vitals.", null, null, 1)
+				visible_message("[user]将[loc]的传感器设置为追踪生命体征.", null, null, 1)
 			if(3)
-				visible_message("[user] sets [loc]'s sensors to maximum.", null, null, 1)
+				visible_message("[user]将[loc]的传感器设置为最大.", null, null, 1)
 
 /obj/item/clothing/under/verb/toggle()
 	set name = "Toggle Suit Sensors"
@@ -193,7 +193,7 @@
 	if(usr.stat)
 		return
 	if(!length(adjustment_variants))
-		to_chat(usr, span_warning("You cannot roll down the uniform!"))
+		to_chat(usr, span_warning("你无法卷下制服!"))
 		return
 	var/variant = null
 	if(!adjustment_variant || length(adjustment_variants) > 1)
@@ -202,7 +202,7 @@
 		else
 			var/list/selection_list = list("Normal" = null)
 			selection_list += adjustment_variants
-			variant = tgui_input_list(usr, "Select Variant", "Variants", selection_list)
+			variant = tgui_input_list(usr, "选择变体", "变体", selection_list)
 	if(variant)
 		adjustment_variant = adjustment_variants[variant]
 	else

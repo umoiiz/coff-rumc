@@ -5,7 +5,7 @@
 	damtype = STAMINA
 
 /obj/item/weapon/holo/esword
-	desc = "May the force be within you. Sorta."
+	desc = "愿原力与你同在. 算是吧."
 	icon_state = "sword0"
 	force = 3
 	throw_speed = 1
@@ -29,13 +29,13 @@
 		icon_state = "sword[sword_color]"
 		w_class = WEIGHT_CLASS_BULKY
 		playsound(user, 'sound/weapons/saberon.ogg', 25, 1)
-		to_chat(user, span_notice("[src] is now active."))
+		to_chat(user, span_notice("[src]现在已激活."))
 	else
 		force = 3
 		icon_state = "sword0"
 		w_class = WEIGHT_CLASS_SMALL
 		playsound(user, 'sound/weapons/saberoff.ogg', 25, 1)
-		to_chat(user, span_notice("[src] can now be concealed."))
+		to_chat(user, span_notice("[src]现在可以隐藏了."))
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user

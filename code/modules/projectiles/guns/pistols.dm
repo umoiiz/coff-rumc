@@ -46,8 +46,8 @@
 //P-14 PISTOL
 
 /obj/item/weapon/gun/pistol/p14
-	name = "\improper P-14 pistol"
-	desc = "The P-14, produced by Terran Armories. A reliable sidearm that loads 9x19mm Parabellum Auto munitions. Capable of mounting a limited amount of attachments, and firing at a respectable rate of fire, often as fast as you can pull the trigger. Takes 21-round 9mm magazines."
+	name = "\improper P-14手枪"
+	desc = "P-14,由地球军械库生产.一款可靠的副武器,发射9x19mm帕拉贝鲁姆自动弹药.可安装有限数量的配件,射速相当可观,通常取决于你扣动扳机的速度.使用21发9mm弹匣."
 	icon_state = "tp14"
 	worn_icon_state = "tp14"
 	caliber = CALIBER_9X19 //codex
@@ -70,8 +70,8 @@
 //-------------------------------------------------------
 //PP-7 Plasma Pistol
 /obj/item/weapon/gun/pistol/plasma_pistol
-	name = "\improper PP-7 plasma pistol"
-	desc = "An experimental weapon designed to set the terrain and targets on fire. It hums with power as magnetic fields coil round each other."
+	name = "\improper PP-7等离子手枪"
+	desc = "一款实验性武器,设计用于点燃地形和目标.磁场相互缠绕时,它发出充满力量的嗡鸣声."
 	icon_state = "tx7"
 	worn_icon_state = "tx7"
 	caliber = CALIBER_PLASMA
@@ -122,7 +122,7 @@
 /obj/item/weapon/gun/pistol/plasma_pistol/can_attach(obj/item/attaching_to, mob/attacher)
 	if(!attachments_by_slot[ATTACHMENT_SLOT_RAIL])
 		return TRUE
-	to_chat(attacher, span_warning("You cannot attach [src] to [attaching_to] while [attachments_by_slot[ATTACHMENT_SLOT_RAIL]] occupies [src]'s rail slot."))
+	to_chat(attacher, span_warning("当[attachments_by_slot[ATTACHMENT_SLOT_RAIL]]占据[src]的导轨槽位时,你无法将[src]安装到[attaching_to]上."))
 	return FALSE
 
 /obj/item/weapon/gun/pistol/plasma_pistol/on_attach(obj/item/attached_to, mob/user)
@@ -134,8 +134,8 @@
 	return ..()
 
 /obj/item/weapon/gun/pistol/plasma_pistol/guardsman_pistol
-	name = "\improper Guardsman\'s plasma pistol"
-	desc = "FOR THE EMPEROR!"
+	name = "\improper 卫军\'的等离子手枪"
+	desc = "为了帝皇!"
 	icon_state = "tx7w"
 	worn_icon_state = "tx7"
 
@@ -143,8 +143,8 @@
 //RT-3 pistol
 
 /obj/item/weapon/gun/pistol/rt3
-	name = "\improper RT-3 target pistol"
-	desc = "An RT-3 target pistol, a common sight throughout the bubble. Fires 9mm in magazines."
+	name = "\improper RT-3靶射手枪"
+	desc = "一把RT-3靶射手枪,在整个气泡区内随处可见.发射9mm弹匣弹药."
 	icon_state = "rt3"
 	worn_icon_state = "rt3"
 	caliber = CALIBER_9X19 //codex
@@ -168,8 +168,8 @@
 // P-23 service pistol
 
 /obj/item/weapon/gun/pistol/p23
-	name = "\improper P-23 service pistol"
-	desc = "A standard P-23 chambered in .45 ACP. Has a smaller magazine capacity, but packs a better punch. Has an irremovable laser sight. Uses .45 magazines."
+	name = "\improper P-23制式手枪"
+	desc = "一把标准P-23,口径为.45 ACP.弹匣容量较小,但威力更强.配有不可拆卸的激光瞄准器.使用.45弹匣."
 	icon_state = "tp23"
 	worn_icon_state = "tp23"
 	caliber = CALIBER_45ACP //codex
@@ -217,8 +217,8 @@
 //P-1911
 
 /obj/item/weapon/gun/pistol/m1911
-	name = "\improper P-1911 service pistol"
-	desc = "A P-1911 chambered in .45 ACP. An archaic weapon, yet its popular and extremely reliable mechanism provided a template for many semi-automatic pistols to come."
+	name = "\improper P-1911制式手枪"
+	desc = "一把P-1911,口径为.45 ACP.一款老式武器,但其广受欢迎且极其可靠的机构为后世众多半自动手枪提供了模板."
 	icon_state = "m1911"
 	worn_icon_state = "m1911"
 	caliber = CALIBER_45ACP //codex
@@ -238,8 +238,8 @@
 	recoil = -2
 
 /obj/item/weapon/gun/pistol/m1911/custom
-	name = "\improper P-1911A1 custom pistol"
-	desc = "A handgun that has received several modifications. It seems to have been lovingly taken care of and passed down for generations. Lacks an auto magazine eject feature."
+	name = "\improper P-1911A1定制手枪"
+	desc = "一把经过多项改装的手枪.它似乎被精心保养并代代相传.缺少自动弹匣弹出功能."
 	icon_state = "m1911c"
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
@@ -259,8 +259,8 @@
 //P-22. Blocc
 
 /obj/item/weapon/gun/pistol/g22
-	name = "\improper P-22 pistol"
-	desc = "A popular police firearm in the modern day. Chambered in 9x19mm."
+	name = "\improper P-22手枪"
+	desc = "现代一款广受欢迎的警用枪械.口径为9x19mm."
 	icon_state = "g22"
 	worn_icon_state = "g22"
 	caliber = CALIBER_9X19 //codex
@@ -280,8 +280,8 @@
 	fire_delay = 0.2 SECONDS
 
 /obj/item/weapon/gun/pistol/g22/tranq
-	name = "\improper P-22 custom pistol"
-	desc = "A 20th century military firearm customized for special forces use, fires tranq darts to take down enemies nonlethally. It does not seem to accept any other attachments."
+	name = "\improper P-22定制手枪"
+	desc = "一把20世纪为特种部队使用而改装的军用枪械,发射麻醉镖以非致命方式制服敌人.它似乎不接受任何其他配件."
 	icon_state = "g22"
 	worn_icon_state = "g22"
 	caliber = CALIBER_9X19_TRANQUILIZER //codex
@@ -303,8 +303,8 @@
 //DEAGLE //Deagle Brand Deagle
 
 /obj/item/weapon/gun/pistol/heavy
-	name = "\improper Desert Eagle pistol"
-	desc = "A magnum chambered in .50AE that comes with a serious kick. This one is engraved, <i>\"Peace through superior firepower\"</i>."
+	name = "\improper 沙漠之鹰手枪"
+	desc = "一把口径为.50AE的马格南手枪,后坐力惊人.这一把刻有铭文,<i>\"以绝对优势火力带来和平\"</i>."
 	icon_state = "deagle"
 	worn_icon_state = "deagle"
 	caliber = CALIBER_50AE //codex
@@ -345,16 +345,16 @@
 	accuracy_mult_unwielded = 0.7
 
 /obj/item/weapon/gun/pistol/heavy/gold
-	name = "\improper Desert Eagle custom pistol"
-	desc = "A magnum chambered in .50AE that comes with a serious kick. This one is in a gold finish, with lots of stylistic engravings."
+	name = "\improper 沙漠之鹰定制手枪"
+	desc = "一把口径为.50AE的马格南手枪,后坐力惊人.这一把为金色表面,带有大量风格化雕刻."
 	icon_state = "g_deagle"
 	worn_icon_state = "g_deagle"
 //-------------------------------------------------------
 //MAUSER MERC PISTOL //Inspired by the Makarov.
 
 /obj/item/weapon/gun/pistol/c99
-	name = "\improper Korovin PK-9 pistol"
-	desc = "An updated variant of an old handgun design, Features an integrated silencer, and chambered in the razor small .22 rounds. This one is loaded with the more common .22 hollowpoint rounds and appears to be a mercenary version."
+	name = "\improper Korovin PK-9手枪"
+	desc = "一款旧式手枪设计的改进型号,配有集成消音器,口径为极小的.22子弹.这一把装填的是更常见的.22空尖弹,似乎是佣兵版本."
 	icon_state = "pk9"
 	worn_icon_state = "pk9"
 	caliber = CALIBER_22LR //codex
@@ -390,15 +390,15 @@
 	aim_slowdown = 0.1
 
 /obj/item/weapon/gun/pistol/c99/tranq
-	desc = "An updated variant of an old eastern design, dating back to from the 20th century. Features an integrated silencer, and chambered in the razor small .22 rounds. This one is usually loaded with special low-recoil .22 dart rounds, which act as a dangerous tranquilizer."
+	desc = "一款可追溯至20世纪的旧式东方设计的改进型号.配有集成消音器,口径为极小的.22子弹.这一把通常装填特殊的低后坐力.22镖弹,可作为危险的麻醉剂使用."
 	default_ammo_type = /obj/item/ammo_magazine/pistol/c99t
 
 //-------------------------------------------------------
 //PIZZACHIMP PROTECTION
 
 /obj/item/weapon/gun/pistol/holdout
-	name = "holdout pistol"
-	desc = "A tiny pistol meant for hiding in hard-to-reach areas. Best not ask where it came from."
+	name = "隐藏式手枪"
+	desc = "一把用于藏在难以触及之处的小型手枪.最好别问它从哪来的."
 	icon_state = "holdout"
 	worn_icon_state = "holdout"
 	caliber = CALIBER_22LR //codex
@@ -427,8 +427,8 @@
 //P-17 Pocket pistol. Based on a PMM.
 
 /obj/item/weapon/gun/pistol/p17
-	name = "\improper P-17 pocket pistol"
-	desc = "A tiny pistol used by the TGMC as an emergency handgun meant to be stored about anywhere. Fits in boots. Uses .380 ACP stored in an eight round magazine."
+	name = "\improper P-17袖珍手枪"
+	desc = "一把TGMC用作应急手枪的小型手枪,设计用于存放在几乎任何地方.可放入靴子.使用.380 ACP,装在八发弹匣中."
 	icon_state = "tp17"
 	worn_icon_state = "tp17"
 	caliber = CALIBER_380ACP //codex
@@ -460,8 +460,8 @@
 // Browning Hipower
 
 /obj/item/weapon/gun/pistol/highpower
-	name = "\improper Highpower automag"
-	desc = "A powerful semi-automatic pistol chambered in the devastating .50 AE caliber rounds. Used for centuries by law enforcement and criminals alike, recently recreated with this new model."
+	name = "\improper 高威力自动马格南手枪"
+	desc = "一把威力强大的半自动手枪,口径为毁灭性的.50 AE弹药.被执法者和罪犯使用了数百年,最近以这款新型号重现."
 	icon_state = "highpower"
 	worn_icon_state = "highpower"
 	caliber = CALIBER_50AE //codex
@@ -490,8 +490,8 @@
 //VP70
 
 /obj/item/weapon/gun/pistol/vp70
-	name = "\improper MK88 Mod 4 combat pistol"
-	desc = "An uncommon automatic handgun used for self defense, based on the original VP70 more than a century ago. Fires 9mm armor piercing rounds and is capable of 3-round burst or automatic fire."
+	name = "\improper MK88 Mod 4战斗手枪"
+	desc = "一把不常见的自动手枪,用于自卫,基于一个多世纪前的原始VP70.发射9mm穿甲弹,可进行三发点射或全自动射击."
 	icon_state = "88m4"
 	worn_icon_state = "88m4"
 	caliber = CALIBER_9X19 //codex
@@ -543,8 +543,8 @@
 //VP78
 
 /obj/item/weapon/gun/pistol/vp78
-	name = "\improper VP78 combat pistol"
-	desc = "A massive, formidable automatic handgun chambered in 9mm squash-head rounds. Commonly seen in the hands of wealthy Nanotrasen members."
+	name = "\improper VP78战斗手枪"
+	desc = "一把巨大而令人生畏的自动手枪,口径为9mm平头弹.常见于富有的Nanotrasen成员手中."
 	icon_state = "vp78"
 	worn_icon_state = "vp78"
 	caliber = CALIBER_9X19 //codex
@@ -573,8 +573,8 @@
 //SOM pistol
 
 /obj/item/weapon/gun/pistol/som
-	name = "\improper V-11 pistol"
-	desc = "The standard sidearm used by the Sons of Mars. A reliable and simple weapon that is often seen on the export market on the outer colonies. Typically chambered in 9mm armor piercing rounds."
+	name = "\improper V-11手枪"
+	desc = "火星之子使用的标准副武器.一款可靠而简单的武器,常在外围殖民地的出口市场上见到.通常口径为9mm穿甲弹."
 	icon_state = "v11"
 	worn_icon_state = "v11"
 	caliber = CALIBER_9X19
@@ -625,8 +625,8 @@
 //C96 based on P96
 
 /obj/item/weapon/gun/pistol/vsd_pistol
-	name = "\improper C96 pistol"
-	desc = "A 'riot control' weapon used by the protectors of colonies. Now adopted by the V.S.D, it is the standard side arm for all members. Firing armor piercing 9x19mm parabellum with a capacity of 15 rounds."
+	name = "\improper C96手枪"
+	desc = "一款由殖民地守护者使用的\"防暴\"武器.现已被V.S.D采用,是所有成员的标准副武器.发射穿甲9x19mm帕拉贝鲁姆弹,容量为15发."
 	icon_state = "c96"
 	worn_icon_state = "c96"
 	caliber = CALIBER_9X19
@@ -663,8 +663,8 @@
 	starting_attachment_types = list(/obj/item/attachable/reddot,/obj/item/attachable/compensator,/obj/item/attachable/lasersight,)
 
 /obj/item/weapon/gun/pistol/xmdivider
-	name = "\improper XM104 'Divider' Revolver"
-	desc = "Intertech's one of a kind revolver. Fires custom incendiary .357 rounds, has firemode switch of single action and burst fire. Kicks like a fucking mule. You remember High Command saying: 'Don't let this get into enemy hands'."
+	name = "\improper XM104\"分裂者\"左轮手枪"
+	desc = "Intertech独一无二的左轮手枪.发射定制燃烧性.357弹药,具有单动和点射两种射击模式切换.后坐力他妈的像头骡子.你记得最高指挥部说过:\"别让这玩意落到敌人手里\"."
 	icon = 'icons/obj/items/gun/pistol64.dmi'
 	icon_state = "xm104"
 	worn_icon_state = "xm104"
@@ -715,8 +715,8 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 */
 
 /obj/item/weapon/gun/pistol/auto9
-	name = "\improper Auto-9 pistol"
-	desc = "An advanced, select-fire machine pistol capable of three round burst. Last seen cleaning up the mean streets of Detroit."
+	name = "\improper Auto-9手枪"
+	desc = "一款先进的选射冲锋手枪,可进行三发点射.最后一次见到是在底特律清理肮脏的街道."
 	icon_state = "auto9"
 	worn_icon_state = "auto9"
 	caliber = CALIBER_9X19 //codex
@@ -737,8 +737,8 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 // PL-5 ICC Duty Pistol
 
 /obj/item/weapon/gun/pistol/icc_dpistol
-	name = "\improper PL-5B2 duty pistol"
-	desc = "The PL-5 is a true and tested ICCAF handgun, used for a very long time with minimal changes to the core design, best used at close quarters with its higher than usual magazine size for its caliber. It is chambered in .45 ACP."
+	name = "\improper PL-5B2执勤手枪"
+	desc = "PL-5是一款久经考验的ICCAF手枪,使用极长时间而核心设计改动极小,凭借其对于该口径而言超常的弹匣容量,最适合近距离使用.口径为.45 ACP."
 	icon_state = "pl5"
 	worn_icon_state = "pl5"
 	icon = 'icons/obj/items/gun/pistol64.dmi'
@@ -763,8 +763,8 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 //The first rule of monkey pistol is we don't talk about monkey pistol.
 
 /obj/item/weapon/gun/pistol/chimp
-	name = "\improper CHIMP70 pistol"
-	desc = "A powerful sidearm issued mainly to highly trained elite assassin necro-cyber-agents."
+	name = "\improper CHIMP70手枪"
+	desc = "一把威力强大的副武器,主要配发给训练有素的精英刺客死灵赛博特工."
 	icon_state = "c70"
 	worn_icon_state = "c70"
 	muzzleflash_iconstate = "muzzle_flash_medium"
@@ -785,8 +785,8 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	burst_amount = 2
 
 /obj/item/weapon/gun/pistol/knife
-	name = "\improper M6 'Eclipse Raider' ballistic knife"
-	desc = "The back issue survival knife issued to a few TerraGov Marine Corps marines. There are a surprisingly large amount of attachment points on this... knife."
+	name = "\improper M6\"日蚀掠袭者\"弹道刀"
+	desc = "配发给少数地球政府陆战队队员的备用生存刀.这把...刀上有着多得惊人的配件安装点."
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "elite_knife"
 	worn_icon_state = "knife"
@@ -832,8 +832,8 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 
 // Smart pistol, based on Calico M-950
 /obj/item/weapon/gun/pistol/smart_pistol
-	name = "\improper SP-13 smart pistol"
-	desc = "The SP-13 is a IFF-capable sidearm used by the TerraGov Marine Corps. A cutting-edge miniaturization technology allows mounting of a KTLD IFF system on the pistol, albeit at high manufactoring cost and the usual specialized training required to use such a pistol. Unique design feature high-capacity mag on top of the barrel, with integrated sight."
+	name = "\improper SP-13智能手枪"
+	desc = "SP-13是地球政府陆战队使用的具备敌我识别能力的副武器.尖端的微型化技术允许在手枪上安装KTLD敌我识别系统,尽管制造成本高昂,且使用此类手枪通常需要专业训练.独特的设计特点是将高容量弹匣置于枪管上方,并配有集成瞄具."
 	icon = 'icons/obj/items/gun/pistol64.dmi'
 	icon_state = "sp13"
 	worn_icon_state = "sp13"

@@ -24,10 +24,10 @@
 	return SURGERY_CANNOT_USE
 
 /datum/surgery_step/implant_removal/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] starts poking around inside the incision on [target]'s [affected.display_name] with \the [tool]."), \
-	span_notice("You start poking around inside the incision on [target]'s [affected.display_name] with \the [tool]."))
+	user.visible_message(span_notice("[user]开始用\the [tool]在[target]的[affected.display_name]上的切口里探查。"), \
+	span_notice("你开始用\the [tool]在[target]的[affected.display_name]上的切口里探查。"))
 	target.custom_pain("The pain in your chest is living hell!", 1)
-	target.balloon_alert_to_viewers("Checking...")
+	target.balloon_alert_to_viewers("检查中...")
 	..()
 
 /datum/surgery_step/implant_removal/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
@@ -36,28 +36,28 @@
 		if(choosen_object)
 			var/obj/item/implant_inside = choosen_object
 			implant_inside.unembed_ourself()
-			user.visible_message(span_notice("[user] takes something out of incision on [target]'s [affected.display_name] with \the [tool]."), \
-			span_notice("You take [choosen_object] out of incision on [target]'s [affected.display_name]s with \the [tool]."))
-			target.balloon_alert_to_viewers("Implant found")
+			user.visible_message(span_notice("[user]用\the [tool]从[target]的[affected.display_name]上的切口中取出了某样东西。"), \
+			span_notice("你用\the [tool]从[target]的[affected.display_name]上的切口中取出了[choosen_object]。"))
+			target.balloon_alert_to_viewers("发现植入物")
 
 	else if(affected.hidden)
-		user.visible_message(span_notice("[user] takes something out of incision on [target]'s [affected.display_name] with \the [tool]."), \
-		span_notice("You take something out of incision on [target]'s [affected.display_name]s with \the [tool]."))
-		target.balloon_alert_to_viewers("Shrapnel found")
+		user.visible_message(span_notice("[user]用\the [tool]从[target]的[affected.display_name]上的切口中取出了某样东西。"), \
+		span_notice("你用\the [tool]从[target]的[affected.display_name]上的切口中取出了某样东西。"))
+		target.balloon_alert_to_viewers("发现弹片")
 		affected.hidden.loc = get_turf(target)
 		affected.hidden.update_icon()
 		affected.hidden = null
 
 	else
-		user.visible_message(span_notice("[user] could not find anything inside [target]'s [affected.display_name], and pulls \the [tool] out."), \
-		span_notice("You could not find anything inside [target]'s [affected.display_name]."))
-		target.balloon_alert_to_viewers("Nothing found")
+		user.visible_message(span_notice("[user]在[target]的[affected.display_name]里什么也没找到,于是抽出了\the [tool]。"), \
+		span_notice("你在[target]的[affected.display_name]里什么也没找到。"))
+		target.balloon_alert_to_viewers("什么也没找到")
 	return ..()
 
 /datum/surgery_step/implant_removal/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_warning("[user]'s hand slips, scraping tissue inside [target]'s [affected.display_name] with \the [tool]!"), \
-	span_warning("Your hand slips, scraping tissue inside [target]'s [affected.display_name] with \the [tool]!"))
-	target.balloon_alert_to_viewers("Slipped!")
+	user.visible_message(span_warning("[user]的手滑了一下,用\the [tool]刮伤了[target]的[affected.display_name]里的组织!"), \
+	span_warning("你的手滑了一下,用\the [tool]刮伤了[target]的[affected.display_name]里的组织!"))
+	target.balloon_alert_to_viewers("滑脱了!")
 	affected.createwound(CUT, 20)
 	if(length(affected.implants))
 		var/fail_prob = 10
@@ -66,7 +66,7 @@
 			var/obj/item/I = affected.implants[1]
 			if(istype(I,/obj/item/implant))
 				var/obj/item/implant/imp = I
-				user.visible_message(span_warning("Something beeps inside [target]'s [affected.display_name]!"))
+				user.visible_message(span_warning("[target]的[affected.display_name]里有什么东西发出了哔哔声!"))
 				playsound(imp.loc, 'sound/items/countdown.ogg', 25, 1)
 				addtimer(CALLBACK(imp, TYPE_PROC_REF(/obj/item/implant, activate)), 25)
 	target.update_health()

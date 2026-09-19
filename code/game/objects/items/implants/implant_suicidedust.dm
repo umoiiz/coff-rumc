@@ -1,7 +1,7 @@
 ///Implant meant for admin ERTs that will dust a body upon death.
 ///In order to prevent Marines from looting things they should not ever have
 /obj/item/implant/suicide_dust
-	name = "self-dusting implant"
+	name = "自毁植入体"
 	implant_flags = NONE
 
 /obj/item/implant/suicide_dust/implant(mob/living/carbon/human/target, mob/living/user)

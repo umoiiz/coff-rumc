@@ -1,15 +1,15 @@
 /datum/supply_packs/supplies
-	group = "Supplies"
+	group = "补给"
 	containertype = /obj/structure/closet/crate/supply
 
 /datum/supply_packs/supplies/crayons
-	name = "PFC Jim special crayon pack"
+	name = "PFC Jim 特制蜡笔包"
 	contains = list(/obj/item/storage/fancy/crayons)
 	containertype = /obj/structure/closet/crate/operations
 	cost = 40
 
 /datum/supply_packs/supplies/provision
-	name = "Emergency provision crate"
+	name = "应急口粮箱"
 	notes = "Contains 10 special TGMC MRE racions."
 	contains = list(
 		/obj/item/storage/box/mre,
@@ -27,7 +27,7 @@
 	cost = 65
 
 /datum/supply_packs/supplies/janitor
-	name = "Assorted janitorial supplies"
+	name = "各类清洁用品"
 	contains = list(
 		/obj/item/reagent_containers/glass/bucket,
 		/obj/item/reagent_containers/glass/bucket,
@@ -48,32 +48,32 @@
 	cost = 50
 
 /datum/supply_packs/supplies/carpplush
-	name = "Carp plushie"
+	name = "鲤鱼毛绒玩具"
 	contains = list(/obj/item/toy/plush/carp)
 	cost = 50
 
 /datum/supply_packs/supplies/lizplush
-	name = "Lizard plushie"
+	name = "蜥蜴毛绒玩具"
 	contains = list(/obj/item/toy/plush/lizard)
 	cost = 50
 
 /datum/supply_packs/supplies/slimeplush
-	name = "Slime plushie"
+	name = "史莱姆毛绒玩具"
 	contains = list(/obj/item/toy/plush/slime)
 	cost = 50
 
 /datum/supply_packs/supplies/mothplush
-	name = "Moth plushie"
+	name = "飞蛾毛绒玩具"
 	contains = list(/obj/item/toy/plush/moth)
 	cost = 50
 
 /datum/supply_packs/supplies/rounyplush
-	name = "Rouny plushie"
+	name = "Rouny 毛绒玩具"
 	contains = list(/obj/item/toy/plush/rouny)
 	cost = 50
 
 /datum/supply_packs/supplies/games
-	name = "Games crate"
+	name = "游戏箱"
 	contains = list(
 		/obj/item/toy/beach_ball/basketball,
 		/obj/item/toy/bikehorn,
@@ -91,7 +91,7 @@
 	cost = 80
 
 /datum/supply_packs/supplies/games
-	name = "Therapy doll crate"
+	name = "治疗玩偶箱"
 	contains = list(
 		/obj/item/toy/plush/therapy_red,
 		/obj/item/toy/plush/therapy_orange,
@@ -103,32 +103,32 @@
 	cost = 40
 
 /datum/supply_packs/supplies/rubleten
-	name = "10 rubles"
+	name = "10 卢布"
 	contains = list(/obj/item/spacecash/bundle/c10)
 	cost = 1
 
 /datum/supply_packs/supplies/rublefifty
-	name = "50 rubles"
+	name = "50 卢布"
 	contains = list(/obj/item/spacecash/bundle/c50)
 	cost = 5
 
 /datum/supply_packs/supplies/rublehundred
-	name = "100 rubles"
+	name = "100 卢布"
 	contains = list(/obj/item/spacecash/bundle/c100)
 	cost = 10
 
 /datum/supply_packs/supplies/rubletwohundred
-	name = "200 rubles"
+	name = "200 卢布"
 	contains = list(/obj/item/spacecash/bundle/c200)
 	cost = 20
 
 /datum/supply_packs/supplies/rublefivehundred
-	name = "500 rubles"
+	name = "500 卢布"
 	contains = list(/obj/item/spacecash/bundle/c500)
 	cost = 50
 
 /datum/supply_packs/supplies/pigs
-	name = "Pig toys crate"
+	name = "猪玩具箱"
 	contains = list(/obj/item/toy/plush/pig, /obj/item/toy/plush/pig, /obj/item/toy/plush/pig, /obj/item/toy/plush/pig, /obj/item/toy/plush/pig)
 	cost = 100
 	containertype = /obj/structure/closet/crate/supply

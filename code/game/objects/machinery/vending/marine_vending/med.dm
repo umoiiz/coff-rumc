@@ -1,15 +1,15 @@
 /obj/machinery/vending/MarineMed
-	name = "\improper MarineMed"
-	desc = "Marine Medical drug dispenser - Provided by Nanotrasen Pharmaceuticals Division(TM)."
+	name = "\improper 陆战队医疗"
+	desc = "陆战队药品分配器 - 由纳米传思制药部门(TM)提供."
 	icon_state = "marinemed"
 	icon_vend = "marinemed-vend"
 	icon_deny = "marinemed-deny"
-	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;All natural chemicals!;This stuff saves lives.;Don't you want some?"
+	product_ads = "去救几条命吧!;给你的医疗舱最好的东西.;只有最好的工具.;全天然化学品!;这东西能救命.;你不想要点吗?"
 	req_one_access = ALL_MARINE_ACCESS
 	wrenchable = FALSE
 	isshared = TRUE
 	products = list(
-		"Pill Bottles" = list(
+		"药瓶" = list(
 			/obj/item/storage/pill_bottle/bicaridine = -1,
 			/obj/item/storage/pill_bottle/kelotane = -1,
 			/obj/item/storage/pill_bottle/tramadol = -1,
@@ -24,7 +24,7 @@
 			/obj/item/storage/pill_bottle/doctor_delight = -1,
 			/obj/item/storage/pill_bottle = -1,
 		),
-		"Auto Injector" = list(
+		"自动注射器" = list(
 			/obj/item/reagent_containers/hypospray/autoinjector/bicaridine = -1,
 			/obj/item/reagent_containers/hypospray/autoinjector/kelotane = -1,
 			/obj/item/reagent_containers/hypospray/autoinjector/tramadol = -1,
@@ -39,14 +39,14 @@
 			/obj/item/reagent_containers/hypospray/autoinjector/imidazoline = 20,
 			/obj/item/reagent_containers/hypospray/autoinjector/medicalnanites = 20,
 		),
-		"Heal Pack" = list(
+		"治疗包" = list(
 			/obj/item/stack/medical/heal_pack/gauze = -1,
 			/obj/item/stack/medical/heal_pack/ointment = -1,
 			/obj/item/stack/medical/splint = -1,
 			/obj/item/stack/medical/heal_pack/advanced/bruise_pack = 50,
 			/obj/item/stack/medical/heal_pack/advanced/burn_pack = 50,
 		),
-		"Misc" = list(
+		"杂项" = list(
 			/obj/item/defibrillator = 8,
 			/obj/item/healthanalyzer = 16,
 			/obj/item/bodybag/cryobag = 24,
@@ -58,7 +58,7 @@
 	use_power = NO_POWER_USE
 	req_one_access = null
 	products = list(
-		"Pill Bottles" = list(
+		"药瓶" = list(
 			/obj/item/storage/pill_bottle/bicaridine = -1,
 			/obj/item/storage/pill_bottle/kelotane = -1,
 			/obj/item/storage/pill_bottle/tramadol = -1,
@@ -73,7 +73,7 @@
 			/obj/item/storage/pill_bottle/doctor_delight = -1,
 			/obj/item/storage/pill_bottle = -1,
 		),
-		"Auto Injector" = list(
+		"自动注射器" = list(
 			/obj/item/reagent_containers/hypospray/autoinjector/bicaridine = -1,
 			/obj/item/reagent_containers/hypospray/autoinjector/kelotane = -1,
 			/obj/item/reagent_containers/hypospray/autoinjector/tramadol = -1,
@@ -90,20 +90,20 @@
 			/obj/item/reagent_containers/hypospray/autoinjector/medicalnanites = -1,
 			/obj/item/reagent_containers/hypospray/autoinjector/russian_red = -1,
 		),
-		"Heal Pack" = list(
+		"治疗包" = list(
 			/obj/item/stack/medical/heal_pack/gauze = -1,
 			/obj/item/stack/medical/heal_pack/ointment = -1,
 			/obj/item/stack/medical/heal_pack/advanced/bruise_pack = -1,
 			/obj/item/stack/medical/heal_pack/advanced/burn_pack = -1,
 			/obj/item/stack/medical/splint = -1,
 		),
-		"Misc" = list(
+		"杂项" = list(
 			/obj/item/defibrillator = -1,
 			/obj/item/healthanalyzer = -1,
 			/obj/item/clothing/gloves/healthanalyzer = -1,
 			/obj/item/bodybag/cryobag = -1,
 		),
-		"Valhalla" = list(
+		"英灵殿" = list(
 			/obj/item/reagent_containers/hypospray/autoinjector/virilyth = -1,
 			/obj/item/reagent_containers/hypospray/autoinjector/roulettium = -1,
 			/obj/item/reagent_containers/hypospray/autoinjector/rezadone = -1,
@@ -116,12 +116,12 @@
 		))
 
 /obj/machinery/vending/MarineMed/Blood
-	name = "\improper MM Blood Dispenser"
-	desc = "Marine Med brand Blood Pack dispensery."
+	name = "\improper MM血液分配器"
+	desc = "陆战队医疗品牌血液包分配器."
 	icon_state = "bloodvendor"
 	icon_vend = "bloodvendor-vend"
 	icon_deny = "bloodvendor-deny"
-	product_slogans = "The best blood on the market!;Totally came from an ethical source!;O negative is the universal donor, use it!;Prevent hypovolemic shock starting today!"
+	product_slogans = "市面上最好的血!;完全来自道德来源!;O型阴性是万能供血者,用它!;从今天开始预防低血容量性休克!"
 	products = list(
 		/obj/item/reagent_containers/blood/APlus = 5,
 		/obj/item/reagent_containers/blood/AMinus = 5,

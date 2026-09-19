@@ -24,7 +24,7 @@
 	//this may not be the right way to do it but..
 	if(base_icon_state)
 		base_icon_state = unique_reskin[pick]
-	to_chat(user, "[src] is now skinned as '[pick].'")
+	to_chat(user, "[src]现在被换皮为'[pick].'")
 	SEND_SIGNAL(src, COMSIG_OBJ_RESKIN, user, pick)
 	//correctly display item in hands
 	update_icon()

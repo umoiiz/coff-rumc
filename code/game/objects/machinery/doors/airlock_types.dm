@@ -172,14 +172,14 @@
 
 /obj/machinery/door/airlock/uranium
 	name = "\improper Uranium Airlock"
-	desc = "And they said I was crazy."
+	desc = "他们还说我是疯子."
 	icon = 'icons/obj/doors/Dooruranium.dmi'
 	mineral = "uranium"
 
 
 /obj/machinery/door/airlock/phoron
 	name = "\improper Phoron Airlock"
-	desc = "No way this can end badly."
+	desc = "这不可能有好结果."
 	icon = 'icons/obj/doors/Doorphoron.dmi'
 	mineral = "phoron"
 

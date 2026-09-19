@@ -11,7 +11,7 @@ const LoadoutNavigator = (props: Loadout) => {
   const { name, job } = props;
 
   return (
-    <Section title="Loadout Navigator" textAlign="center">
+    <Section title="装备导航器" textAlign="center">
       <Flex>
         <Flex.Item grow={1}>
           <div> </div>
@@ -22,7 +22,7 @@ const LoadoutNavigator = (props: Loadout) => {
               act('equipLoadout');
             }}
           >
-            Equip Loadout
+            装备配置
           </Button>
         </Flex.Item>
         <Flex.Item grow={1}>

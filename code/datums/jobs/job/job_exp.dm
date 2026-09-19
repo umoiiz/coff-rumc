@@ -185,14 +185,14 @@ GLOBAL_PROTECT(exp_to_update)
 	if(holder && !holder.deadmined)
 		play_records[EXP_TYPE_ADMIN] += minutes
 		if(announce_changes)
-			to_chat(src,span_notice("You got: [minutes] Admin EXP!"))
+			to_chat(src,span_notice("你获得了: [minutes] 管理员经验!"))
 
 	if(isliving(mob))
 		var/mob/living/living_mob = mob
 		if(mob.stat != DEAD)
 			play_records[EXP_TYPE_LIVING] += minutes
 			if(announce_changes)
-				to_chat(src,span_notice("You got: [minutes] Living EXP!"))
+				to_chat(src,span_notice("你获得了: [minutes] 生存经验!"))
 			if(living_mob.job)
 				if(!istype(living_mob.job, /datum/job/fallen))
 					if(isxeno(living_mob))
@@ -200,7 +200,7 @@ GLOBAL_PROTECT(exp_to_update)
 						play_records[xeno.xeno_caste.caste_name] += minutes
 					play_records[living_mob.job.title] += minutes
 					if(announce_changes)
-						to_chat(src,span_notice("You got: [minutes] [living_mob.job] EXP!"))
+						to_chat(src,span_notice("你获得了: [minutes] [living_mob.job] 经验!"))
 				else
 					play_records["Valhalla"] += minutes
 			else
@@ -208,11 +208,11 @@ GLOBAL_PROTECT(exp_to_update)
 		else
 			play_records[EXP_TYPE_GHOST] += minutes
 			if(announce_changes)
-				to_chat(src,span_notice("You got: [minutes] Ghost EXP!"))
+				to_chat(src,span_notice("你获得了: [minutes] 幽灵经验!"))
 	else if(isobserver(mob))
 		play_records[EXP_TYPE_GHOST] += minutes
 		if(announce_changes)
-			to_chat(src,span_notice("You got: [minutes] Ghost EXP!"))
+			to_chat(src,span_notice("你获得了: [minutes] 幽灵经验!"))
 	else if(minutes)	//Let "refresh" checks go through
 		return
 

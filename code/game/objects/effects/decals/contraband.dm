@@ -1,12 +1,12 @@
 /obj/item/contraband
-	name = "contraband item"
-	desc = "You probably shouldn't be holding this."
+	name = "违禁品"
+	desc = "你大概不该拿着这东西."
 	icon = 'icons/obj/contraband.dmi'
 	force = 0
 
 /obj/item/contraband/poster
-	name = "rolled-up poster"
-	desc = "The poster comes with its own automatic adhesive mechanism, for easy pinning to any vertical surface."
+	name = "卷起的海报"
+	desc = "海报自带自动粘合装置,方便贴到任何垂直表面上."
 	icon_state = "rolled_poster"
 	var/serial_number = 0
 
@@ -20,8 +20,8 @@
 	name += " - No. [serial_number]"
 
 /obj/structure/sign/poster
-	name = "poster"
-	desc = "A large piece of space-resistant printed paper. "
+	name = "海报"
+	desc = "一大张耐太空环境的印刷纸."
 	icon = 'icons/obj/contraband.dmi'
 	base_icon = 'icons/obj/contraband.dmi'
 	icon_state = "poster_map"
@@ -59,10 +59,10 @@
 	if(iswirecutter(I))
 		playsound(loc, 'sound/items/wirecutter.ogg', 25, 1)
 		if(ruined)
-			to_chat(user, span_notice("You remove the remnants of the poster."))
+			to_chat(user, span_notice("你清除了海报的残留物."))
 			qdel(src)
 		else
-			to_chat(user, span_notice("You carefully remove the poster from the wall."))
+			to_chat(user, span_notice("你小心地把海报从墙上取下来."))
 			roll_and_drop(user.loc)
 
 /obj/structure/sign/poster/attack_hand(mob/living/user)
@@ -72,11 +72,11 @@
 	if(ruined)
 		return
 	var/temp_loc = user.loc
-	switch(tgui_alert(user, "Do I want to rip the poster from the wall?", "You think...", list("Yes","No")))
+	switch(tgui_alert(user, "我想把海报从墙上撕下来吗?", "你想着...", list("Yes","No")))
 		if("Yes")
 			if(user.loc != temp_loc)
 				return
-			visible_message(span_warning("[user] rips [src] in a single, decisive motion!") )
+			visible_message(span_warning("[user]以一次果断的动作撕碎了[src]!") )
 			playsound(src.loc, 'sound/items/poster_ripped.ogg', 25, 1)
 			ruined = 1
 			icon_state = "poster_ripped"
@@ -95,20 +95,20 @@
 /turf/closed/wall/proc/place_poster(obj/item/contraband/poster/P, mob/user)
 
 	if(!istype(src,/turf/closed/wall))
-		to_chat(user, span_warning("You can't place this here!"))
+		to_chat(user, span_warning("你不能把它放在这里!"))
 		return
 
 	var/stuff_on_wall = 0
 	for(var/obj/O in contents) //Let's see if it already has a poster on it or too much stuff
 		if(istype(O,/obj/structure/sign/poster))
-			to_chat(user, span_notice("The wall is far too cluttered to place a poster!"))
+			to_chat(user, span_notice("墙上太杂乱了,没法贴海报!"))
 			return
 		stuff_on_wall++
 		if(stuff_on_wall == 3)
-			to_chat(user, span_notice("The wall is far too cluttered to place a poster!"))
+			to_chat(user, span_notice("墙上太杂乱了,没法贴海报!"))
 			return
 
-	to_chat(user, span_notice("You start placing the poster on the wall..."))
+	to_chat(user, span_notice("你开始把海报贴到墙上..."))
 
 	//declaring D because otherwise if P gets 'deconstructed' we lose our reference to P.resulting_poster
 	var/obj/structure/sign/poster/D = new(P.serial_number)
@@ -123,7 +123,7 @@
 	if(!D)	return
 
 	if(istype(src,/turf/closed/wall) && user && user.loc == temp_loc)//Let's check if everything is still there
-		to_chat(user, span_notice("You place the poster!"))
+		to_chat(user, span_notice("你贴好了海报!"))
 	else
 		D.roll_and_drop(temp_loc)
 

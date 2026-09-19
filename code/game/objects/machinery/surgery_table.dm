@@ -1,6 +1,6 @@
 /obj/item/deployable_optable
-	name = "\improper Deployable Operating Table"
-	desc = "An operating table able to be transported and deployed for medical procedures."
+	name = "\improper 可部署手术台"
+	desc = "一张可运输并部署用于医疗程序的手术台."
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "table_deployable"
 	max_integrity = 300
@@ -16,7 +16,7 @@
 	name = "Deployable Operating Table"
 	icon_state = "table_deployable_idle"
 	base_icon_state = "table_deployable"
-	desc = "Used for advanced medical procedures in field."
+	desc = "用于战地高级医疗程序."
 	use_power = NO_POWER_USE
 	resistance_flags = UNACIDABLE|XENO_DAMAGEABLE
 	max_integrity = 300
@@ -52,7 +52,7 @@
 ///Dissassembles the device
 /obj/machinery/optable/deployable/disassemble(mob/user)
 	if(CHECK_BITFIELD(internal_item.deploy_flags, DEPLOYED_NO_PICKUP))
-		balloon_alert(user, "cannot be disassembled")
+		balloon_alert(user, "无法拆卸")
 		return FALSE
 	if(anes_tank)
 		anes_tank.forceMove(get_turf(src))

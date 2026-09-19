@@ -1,8 +1,8 @@
 /obj/item/explosive/grenade/spawnergrenade/smartdisc
-	name = "smart-disc"
+	name = "智能飞盘"
 	spawner_type = /mob/living/simple_animal/hostile/smartdisc
 	deliveryamt = 1
-	desc = "A strange piece of alien technology. It has many jagged, whirring blades and bizarre writing."
+	desc = "一件奇怪的外星科技产物.它有许多锯齿状的、旋转的刀刃和奇异的文字."
 	item_flags = ITEM_PREDATOR
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	worn_icon_list = list(
@@ -31,20 +31,20 @@
 		var/obj/item/clothing/gloves/yautja/bracer = A
 		if(length(bracer.discs) < bracer.max_disc_cap)
 			if(src in bracer.discs)
-				to_chat(user, span_warning("You unlink [bracer] and [src]."))
+				to_chat(user, span_warning("你解除了[bracer]与[src]的连接."))
 				playsound(user.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 				bracer.discs -= src
 			else
 				bracer.discs += src
-				to_chat(user, span_warning("You link [src] to [bracer]."))
+				to_chat(user, span_warning("你将[src]连接到[bracer]."))
 				playsound(user.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 		else
 			if(src in bracer.discs)
-				to_chat(user, span_warning("You unlink [bracer] and [src]."))
+				to_chat(user, span_warning("你解除了[bracer]与[src]的连接."))
 				playsound(user.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 				bracer.discs -= src
 			else
-				to_chat(user, span_warning("Your limit is [bracer.max_disc_cap], unlink before disc, to add another one."))
+				to_chat(user, span_warning("你的上限是[bracer.max_disc_cap],在飞盘前解除连接,以添加另一个."))
 		bracer.owner.update_action_buttons()
 	..()
 
@@ -100,9 +100,9 @@
 
 	if(!isyautja(user))
 		if(prob(75))
-			to_chat(user, span_warning("You fiddle with the disc, but nothing happens. Try again maybe?"))
+			to_chat(user, span_warning("你摆弄着飞盘,但什么也没发生.也许再试一次?"))
 			return
-	to_chat(user, span_warning("You activate the smart-disc and it whirrs to life!"))
+	to_chat(user, span_warning("你激活了智能飞盘,它嗡嗡地转动起来!"))
 	activate(user)
 	add_fingerprint(user)
 	var/mob/living/carbon/C = user
@@ -141,7 +141,7 @@
 		var/mob/living/carbon/human/H = hit_atom
 		if(H.put_in_hands(src))
 			clear_boomerang()
-			hit_atom.visible_message("[hit_atom] expertly catches [src] out of the air.","You catch [src] easily.")
+			hit_atom.visible_message("[hit_atom]熟练地在空中接住了[src].","你轻松地接住了[src].")
 			throwing = FALSE
 			return TURF_ENTER_ALREADY_MOVED
 		return FALSE
@@ -149,7 +149,7 @@
 
 /mob/living/simple_animal/hostile/smartdisc
 	name = "smart-disc"
-	desc = "A furious, whirling array of blades and alien technology."
+	desc = "一阵狂暴旋转的刀刃与外星科技."
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "disc_active"
 	icon_living = "disc_active"
@@ -202,13 +202,13 @@
 	. = ..()
 	lifetime--
 	if(lifetime <= 0 || time_idle > 3)
-		visible_message("\The [src] stops whirring and spins out onto the floor.")
+		visible_message("\The [src]停止旋转,滑落到地板上.")
 		drop_real_disc()
 		qdel(src)
 		return
 
 /mob/living/simple_animal/hostile/smartdisc/death(gibbing = FALSE, deathmessage = "seizes up and falls limp...", silent = FALSE)
-	visible_message("\The [src] stops whirring and spins out onto the floor.")
+	visible_message("\The [src]停止旋转,滑落到地板上.")
 	drop_real_disc()
 	. = ..()
 	QDEL_IN(src, 0.1 SECONDS)
@@ -224,7 +224,7 @@
 	qdel(src)
 
 /mob/living/simple_animal/hostile/smartdisc/gib()
-	visible_message("\The [src] explodes!")
+	visible_message("\The [src]爆炸了!")
 	. = ..()
 	QDEL_IN(src, 0.1 SECONDS)
 
@@ -265,7 +265,7 @@
 		L.attack_animal(src)
 		if(prob(5))
 			L.apply_effect(3, EFFECT_PARALYZE)
-			L.visible_message(span_danger("\The [src] viciously slashes at \the [L]!"))
+			L.visible_message(span_danger("\The [src]凶猛地劈砍\the [L]!"))
 			log_attack("[key_name(L)] was knocked down by [src]")
 		log_attack("[key_name(L)] was attacked by [src]")
 		return L

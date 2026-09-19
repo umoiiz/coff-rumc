@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/defiler
 	caste_base_type = /datum/xeno_caste/defiler
 	name = "Defiler"
-	desc = "A large, powerfully muscled xeno replete with dripping spines and gas leaking dorsal vents."
+	desc = "一只体型庞大、肌肉发达的异形,浑身布满滴落的尖刺,背部排气孔泄漏着气体."
 	icon = 'icons/Xeno/castes/defiler/basic.dmi'
 	icon_state = "Defiler Walking"
 	effects_icon = 'icons/Xeno/castes/defiler/effects.dmi'

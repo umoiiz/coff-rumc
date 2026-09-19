@@ -2,7 +2,7 @@
 
 /obj/machinery/button
 	name = "button"
-	desc = "A remote control switch."
+	desc = "一个遥控开关。"
 	icon = 'icons/obj/machines/buttons.dmi'
 	icon_state = "door"
 	power_channel = ENVIRON
@@ -69,7 +69,7 @@
 		return
 
 	if(!allowed(user))
-		to_chat(user, span_danger("Access Denied"))
+		to_chat(user, span_danger("访问被拒绝"))
 		flick("[initial(icon_state)]_denied", src)
 		return
 
@@ -92,7 +92,7 @@
 
 /obj/machinery/button/door
 	name = "door button"
-	desc = "A door remote control switch."
+	desc = "一个门遥控开关。"
 	var/specialfunctions = NONE
 
 /obj/machinery/button/door/indestructible
@@ -117,7 +117,7 @@
 
 /obj/machinery/button/door/open_only
 	name = "open button"
-	desc = "Opens whatever it is linked to. Does not close. Careful on what you release."
+	desc = "打开它所连接的任何东西。不会关闭。释放什么时要小心。"
 	specialfunctions = DOOR_FLAG_OPEN_ONLY
 
 /obj/machinery/button/door/open_only/Initialize(mapload)
@@ -152,11 +152,11 @@
 		return
 	#ifndef TESTING
 	if(world.time < SSticker.round_start_time + SSticker.mode.deploy_time_lock)
-		to_chat(user, span_notice("The containment shutters can't open yet!"))
+		to_chat(user, span_notice("隔离闸门还不能打开!"))
 		return
 	#endif
 	if(!allowed(user))
-		to_chat(user, span_danger("Access Denied"))
+		to_chat(user, span_danger("访问被拒绝"))
 		flick("[initial(icon_state)]_denied", src)
 		return
 	if(alarm_played)
@@ -182,7 +182,7 @@
 	name = "mass driver button"
 	icon = 'icons/obj/machines/buttons.dmi'
 	icon_state = "launcher"
-	desc = "A remote control switch for a mass driver."
+	desc = "一个质量驱动器的遥控开关。"
 	anchored = TRUE
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 2
@@ -234,7 +234,7 @@
 	name = "ignition switch"
 	icon = 'icons/obj/machines/buttons.dmi'
 	icon_state = "launcher"
-	desc = "A remote control switch for a mounted igniter."
+	desc = "一个安装式点火器的遥控开关。"
 	anchored = TRUE
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 2
@@ -244,7 +244,7 @@
 
 /obj/machinery/flasher_button
 	name = "flasher button"
-	desc = "A remote control switch for a mounted flasher."
+	desc = "一个安装式闪光器的遥控开关。"
 	icon = 'icons/obj/machines/buttons.dmi'
 	icon_state = "launcher"
 	anchored = TRUE
@@ -255,7 +255,7 @@
 	var/active = 0
 
 /obj/machinery/crema_switch
-	desc = "Burn baby burn!"
+	desc = "燃烧吧宝贝燃烧吧!"
 	name = "crematorium igniter"
 	icon = 'icons/obj/power.dmi'
 	icon_state = "crema_switch"
@@ -270,7 +270,7 @@
 	name = "Medical attention required"
 	icon = 'icons/obj/machines/buttons.dmi'
 	icon_state = "button"
-	desc = "A button for alerting doctors that you require assistance."
+	desc = "一个用于通知医生你需要帮助的按钮。"
 	anchored = TRUE
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 2
@@ -293,7 +293,7 @@
 	if(!istype(user))
 		return
 	if(machine_stat & (NOPOWER|BROKEN))
-		to_chat(user, span_warning("[src] doesn't seem to be working."))
+		to_chat(user, span_warning("[src] 似乎不起作用。"))
 		return
 	if(active)
 		return
@@ -301,7 +301,7 @@
 	icon_state = "button"
 
 	radio.talk_into(src, "<b>[user.name] is requesting medical attention at: [get_area(src)].</b>", RADIO_CHANNEL_MEDICAL)
-	visible_message("Remain calm, someone will be with you shortly.")
+	visible_message("保持冷静,很快就会有人来帮你。")
 
 	active = TRUE
 	addtimer(CALLBACK(src, PROC_REF(icon_update_check)), 10 SECONDS)
@@ -330,14 +330,14 @@
 
 /obj/machinery/button/valhalla/proc/turf_check(mob/living/user)
 	if(!get_turf(GLOB.valhalla_button_spawn_landmark[spawn_link]))
-		to_chat(user, span_warning("An error occured, yell at the coders."))
+		to_chat(user, span_warning("发生了一个错误,去骂程序员吧。"))
 		CRASH("Valhalla button linked with an improper landmark: button ID: [spawn_link].")
 
 /obj/machinery/button/valhalla/marine_button
 	name = "Xeno spawner"
 
 /obj/machinery/button/valhalla/marine_button/attack_hand(mob/living/user)
-	var/xeno_wanted = tgui_input_list(user, "What xeno do you want to spawn?", "Xeno spawn", GLOB.all_xeno_types)
+	var/xeno_wanted = tgui_input_list(user, "你想生成什么异形?", "异形生成", GLOB.all_xeno_types)
 	if(!xeno_wanted)
 		return
 	QDEL_NULL(linked)
@@ -393,7 +393,7 @@
 		var/obj/item/I = item_type
 		options[initial(I.name)] = item_type
 
-	var/choice = tgui_input_list(user, "So, what are we spawning?", "Valhalla spawner", options)
+	var/choice = tgui_input_list(user, "那么,我们要生成什么?", "瓦尔哈拉生成器", options)
 	if(!choice || !options[choice])
 		return
 
@@ -453,12 +453,12 @@
 		/obj/vehicle/sealed/armored/multitile/lvrt,
 	)
 
-	var/selected_vehicle = tgui_input_list(user, "Which vehicle do you want to spawn?", "Vehicle spawn", spawnable_vehicles)
+	var/selected_vehicle = tgui_input_list(user, "你想生成什么载具?", "载具生成", spawnable_vehicles)
 	if(!selected_vehicle)
 		return
 	QDEL_NULL(linked)
 	if(!get_turf(GLOB.valhalla_button_spawn_landmark[spawn_link]))
-		to_chat(user, span_warning("An error occured, yell at the coders."))
+		to_chat(user, span_warning("发生了一个错误,去骂程序员吧。"))
 		CRASH("Valhalla button linked with an improper landmark: button ID: [spawn_link].")
 	linked = new selected_vehicle(get_turf(GLOB.valhalla_button_spawn_landmark[spawn_link]))
 

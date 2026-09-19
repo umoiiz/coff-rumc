@@ -38,11 +38,11 @@
 		return
 //RUTGMC EDIT ADDITION BEGIN - Preds
 	if(interference)
-		to_chat(src, span_warning("A headhunter temporarily cut off your psychic connection!"))
+		to_chat(src, span_warning("一个猎头者暂时切断了你的灵能连接!"))
 		return
 //RUTGMC EDIT ADDITION END
 	if(hivenumber == XENO_HIVE_NORMAL && !hive.living_xeno_ruler && hive.get_hivemind_conduit_death_timer() && timeleft(hive.get_hivemind_conduit_death_timer()) > hive.get_total_hivemind_conduit_time() * 0.5)
-		to_chat(src, span_warning("The ruler is dead. The hivemind is weakened. Despair!"))
+		to_chat(src, span_warning("统治者已死.虫群意识被削弱.绝望吧!"))
 		return
 
 	message = render_hivemind_message(message)

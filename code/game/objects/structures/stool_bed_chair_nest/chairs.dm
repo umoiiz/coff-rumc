@@ -13,8 +13,8 @@
 #define FC_CHAIR "_fc"
 
 /obj/structure/bed/chair //YES, chairs are a type of bed, which are a type of stool. This works, believe me.	-Pete
-	name = "chair"
-	desc = "A rectangular metallic frame sitting on four legs with a back panel. Designed to fit the sitting position, more or less comfortably."
+	name = "椅子"
+	desc = "一个坐在四条腿上并带有靠背板的矩形金属框架.设计上或多或少能舒适地适应坐姿."
 	icon_state = "chair"
 	buckle_lying = 0
 	buckling_y = 0
@@ -85,13 +85,13 @@
 
 //Chair types
 /obj/structure/bed/chair/reinforced
-	name = "reinforced chair"
-	desc = "Some say that the TGMC shouldn't spent this much money on reinforced chairs, but the documents from briefing riots prove otherwise."
+	name = "加固椅子"
+	desc = "有人说TGMC不该在加固椅子上花这么多钱,但简报室暴动的文件证明了事实并非如此."
 	buildstackamount = 2
 
 /obj/structure/bed/chair/reinforced/wrench_act(mob/living/user, obj/item/I)
 	. = ..()
-	to_chat(user, span_warning("You can only deconstruct this by welding it down!"))
+	to_chat(user, span_warning("你只能通过将其焊接固定来拆解它!"))
 
 /obj/structure/bed/chair/reinforced/welder_act(mob/living/user, obj/item/I)
 	. = ..()
@@ -100,8 +100,8 @@
 	var/obj/item/tool/weldingtool/WT = I
 
 	if(user.skills.getRating(SKILL_ENGINEER) < SKILL_ENGINEER_METAL)
-		user.visible_message(span_notice("[user] fumbles around figuring out how to weld down \the [src]."),
-		span_notice("You fumble around figuring out how to weld down \the [src]."))
+		user.visible_message(span_notice("[user]手忙脚乱地琢磨如何焊接固定\the [src]."),
+		span_notice("你笨手笨脚地摸索着如何将\the [src]焊接固定。"))
 		var/fumbling_time = 5 SECONDS * (SKILL_ENGINEER_METAL - user.skills.getRating(SKILL_ENGINEER))
 		if(!do_after(user, fumbling_time, NONE, src, BUSY_ICON_UNSKILLED, extra_checks = CALLBACK(WT, TYPE_PROC_REF(/obj/item/tool/weldingtool, isOn))))
 			return
@@ -109,12 +109,12 @@
 	if(!WT.remove_fuel(0, user))
 		return
 
-	user.visible_message(span_notice("[user] begins welding down \the [src]."),
-	span_notice("You begin welding down \the [src]."))
+	user.visible_message(span_notice("[user]开始将\the [src]焊接固定。"),
+	span_notice("你开始将\the [src]焊接固定。"))
 	if(!I.use_tool(src, user, 5 SECONDS, 1, 25, null, BUSY_ICON_FRIENDLY))
 		return
-	user.visible_message(span_notice("[user] welds down \the [src]."),
-	span_notice("You weld down \the [src]."))
+	user.visible_message(span_notice("[user]将\the [src]焊接固定。"),
+	span_notice("你将\the [src]焊接固定。"))
 	if(buildstacktype && dropmetal)
 		new buildstacktype(loc, buildstackamount)
 	qdel(src)
@@ -125,17 +125,17 @@
 
 /obj/structure/bed/chair/wood/normal
 	icon_state = "wooden_chair"
-	name = "wooden chair"
-	desc = "Old is never too old to not be in fashion."
+	name = "木椅"
+	desc = "老归老, 时尚永不老。"
 
 /obj/structure/bed/chair/wood/wings
 	icon_state = "wooden_chair_wings"
-	name = "wooden chair"
-	desc = "Old is never too old to not be in fashion."
+	name = "木椅"
+	desc = "老归老, 时尚永不老。"
 
 /obj/structure/bed/chair/comfy
-	name = "comfy chair"
-	desc = "It looks comfy."
+	name = "舒适椅子"
+	desc = "看起来很舒服。"
 	icon_state = "comfychair"
 	color = rgb(255,255,255)
 	hit_sound = 'sound/weapons/bladeslice.ogg'
@@ -160,32 +160,32 @@
 	color = rgb(255,251,0)
 
 /obj/structure/bed/chair/comfy/alpha
-	name = "Alpha squad chair"
-	desc = "A simple chair permanently attached to the floor. Covered with a squeaky and way too hard faux-leather, unevenly painted in Alpha squad red. Only for the bravest and freshest USCM recruits."
+	name = "阿尔法小队椅子"
+	desc = "一把永久固定在地板上的简易椅子。覆盖着吱吱作响且硬得离谱的仿皮, 不均匀地涂着阿尔法小队红色。只供最勇敢最新鲜的USCM新兵使用。"
 	icon_state = "comfychair_alpha"
 	icon = 'icons/obj/objects.dmi'
 
 /obj/structure/bed/chair/comfy/bravo
-	name = "Bravo squad chair"
-	desc = "A simple chair permanently attached to the floor. Covered with a squeaky and way too hard faux-leather, unevenly painted in Bravo squad brown. Certified fortified on all sides from enemy incursion."
+	name = "布拉沃小队椅子"
+	desc = "一把永久固定在地板上的简易椅子。覆盖着吱吱作响且硬得离谱的仿皮, 不均匀地涂着布拉沃小队棕色。经认证可从各方抵御敌人入侵。"
 	icon_state = "comfychair_bravo"
 	icon = 'icons/obj/objects.dmi'
 
 /obj/structure/bed/chair/comfy/charlie
-	name = "Charlie squad chair"
-	desc = "A simple chair permanently attached to the floor. Covered with a squeaky and way too hard faux-leather, unevenly painted in Charlie squad purple. Feels out of place without a full breakfast to accompany it."
+	name = "查理小队椅子"
+	desc = "一把永久固定在地板上的简易椅子。覆盖着吱吱作响且硬得离谱的仿皮, 不均匀地涂着查理小队紫色。没有一顿丰盛早餐相伴的话感觉格格不入。"
 	icon_state = "comfychair_charlie"
 	icon = 'icons/obj/objects.dmi'
 
 /obj/structure/bed/chair/comfy/delta
-	name = "Delta squad chair"
-	desc = "A simple chair permanently attached to the floor. Covered with a squeaky and way too hard faux-leather, unevenly painted in Delta squad blue. This chair is most likely to be the first to fight and first to die."
+	name = "德尔塔小队椅子"
+	desc = "一把永久固定在地板上的简易椅子。覆盖着吱吱作响且硬得离谱的仿皮, 不均匀地涂着德尔塔小队蓝色。这把椅子最有可能第一个投入战斗, 也第一个阵亡。"
 	icon_state = "comfychair_delta"
 	icon = 'icons/obj/objects.dmi'
 
 /obj/structure/bed/chair/sofa
-	name = "comfy sofa"
-	desc = "It looks comfy."
+	name = "舒适沙发"
+	desc = "看起来很舒服。"
 	icon_state = "sofamiddle"
 	resistance_flags = XENO_DAMAGEABLE
 
@@ -199,8 +199,8 @@
 	icon_state = "sofacorner"
 
 /obj/structure/bed/chair/sofa/corsat
-	name = "comfy sofa"
-	desc = "It looks comfy."
+	name = "舒适沙发"
+	desc = "看起来很舒服。"
 	icon_state = "couch_hori2"
 
 /obj/structure/bed/chair/sofa/corsat/left
@@ -221,13 +221,13 @@
 //cm benches do not have corners
 
 /obj/structure/bed/chair/pew
-	name = "chapel pew"
-	desc = "An old fashioned wood pew."
+	name = "教堂长椅"
+	desc = "一条老式木制长椅。"
 	icon_state = "pews"
 
 /obj/structure/bed/chair/office
-	name = "Office Chair"
-	desc = "A novel idea of a spinning chair with wheels on the bottom, for office work only."
+	name = "办公椅"
+	desc = "一种带底部轮子的旋转椅的新奇创意, 仅供办公使用。"
 	anchored = FALSE
 	buckle_flags = CAN_BUCKLE
 	drag_delay = 1 //Pulling something on wheels is easy
@@ -279,7 +279,7 @@
 		victim.apply_effect(6 SECONDS * armor_modifier, EFFECT_STUTTER)
 		victim.apply_damage(10 * armor_modifier, BRUTE, def_zone)
 		UPDATEHEALTH(victim)
-	occupant.visible_message(span_danger("[occupant] crashed into \the [A]!"))
+	occupant.visible_message(span_danger("[occupant]撞上了\the [A]!"))
 
 /obj/structure/bed/chair/office/light
 	icon_state = "officechair_white"
@@ -290,8 +290,8 @@
 	anchored = FALSE
 
 /obj/structure/bed/chair/dropship
-	name = "dropship chair"
-	desc = "Holds you in place during high altitude drops."
+	name = "运输机座椅"
+	desc = "在高空空投时固定住你。"
 	icon_state = "shuttle_chair"
 	/// Handles the chair buckle bars overlay
 	var/image/chairbar = null
@@ -317,20 +317,20 @@
 
 /obj/structure/bed/chair/dropship/pilot
 	icon_state = "pilot_chair"
-	name = "pilot's chair"
-	desc = "A specially designed chair for pilots to sit in."
+	name = "飞行员座椅"
+	desc = "专为飞行员乘坐而设计的座椅。"
 
 /obj/structure/bed/chair/dropship/pilot/rotate()
 	return // no
 
 /obj/structure/bed/chair/dropship/passenger
-	name = "passenger seat"
+	name = "乘客座椅"
 	resistance_flags = RESIST_ALL
 	var/is_animating = 0
 
 /obj/structure/bed/chair/dropship/passenger/CanAllowThrough(atom/movable/mover, turf/target, height = 0, air_group = 0)
 	if(chair_state == DROPSHIP_CHAIR_UNBUCKLED && istype(mover, /obj/vehicle/sealed) && !is_animating)
-		visible_message(span_danger("[mover] slams into [src] and breaks it!"))
+		visible_message(span_danger("[mover]猛撞[src]并将其撞坏!"))
 		INVOKE_ASYNC(src, PROC_REF(fold_down), TRUE)
 		return FALSE
 	return ..()
@@ -386,55 +386,55 @@
 	if(xeno_attacker.status_flags & INCORPOREAL)
 		return FALSE
 	if(chair_state != DROPSHIP_CHAIR_BROKEN)
-		xeno_attacker.visible_message(span_warning("[xeno_attacker] smashes \the [src], shearing the bolts!"),
-		span_warning("We smash \the [src], shearing the bolts!"))
+		xeno_attacker.visible_message(span_warning("[xeno_attacker]砸碎\the [src], 剪断了螺栓!"),
+		span_warning("我们砸碎\the [src], 剪断了螺栓!"))
 		fold_down(1)
 
 /obj/structure/bed/chair/dropship/passenger/wrench_act(mob/living/user, obj/item/I)
 	. = ..()
 	switch(chair_state)
 		if(DROPSHIP_CHAIR_UNBUCKLED)
-			user.visible_message(span_warning("[user] begins loosening the bolts on \the [src]."),
-			span_warning("You begin loosening the bolts on \the [src]."))
+			user.visible_message(span_warning("[user]开始拧松\the [src]上的螺栓。"),
+			span_warning("你开始拧松\the [src]上的螺栓。"))
 			playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
 
 			if(!do_after(user, 2 SECONDS, NONE, src, BUSY_ICON_BUILD))
 				return
 
-			user.visible_message(span_warning("[user] loosens the bolts on \the [src], folding it into the decking."),
-			span_warning("You loosen the bolts on \the [src], folding it into the decking."))
+			user.visible_message(span_warning("[user]拧松\the [src]上的螺栓, 将其折叠进地板。"),
+			span_warning("你拧松\the [src]上的螺栓, 将其折叠进地板。"))
 			fold_down()
 
 		if(DROPSHIP_CHAIR_FOLDED)
-			user.visible_message(span_warning("[user] begins unfolding \the [src]."),
-			span_warning("You begin unfolding \the [src]."))
+			user.visible_message(span_warning("[user]开始展开\the [src]。"),
+			span_warning("你开始展开\the [src]。"))
 			playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
 
 			if(!do_after(user, 2 SECONDS, NONE, src, BUSY_ICON_BUILD))
 				return
 
-			user.visible_message(span_warning("[user] unfolds \the [src] from the floor and tightens the bolts."),
-			span_warning("You unfold \the [src] from the floor and tighten the bolts."))
+			user.visible_message(span_warning("[user]从地板展开\the [src]并拧紧螺栓。"),
+			span_warning("你从地板展开\the [src]并拧紧螺栓。"))
 			unfold_up()
 
 		if(DROPSHIP_CHAIR_BROKEN)
-			to_chat(user, span_warning("\The [src] appears to be broken and needs welding."))
+			to_chat(user, span_warning("\The [src]似乎损坏了, 需要焊接。"))
 			return
 
 /obj/structure/bed/chair/dropship/passenger/welder_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(chair_state != DROPSHIP_CHAIR_BROKEN)
 		return
-	user.visible_message(span_warning("[user] begins repairing \the [src]."),
-	span_warning("You begin repairing \the [src]."))
+	user.visible_message(span_warning("[user]开始修理\the [src]。"),
+	span_warning("你开始修理\the [src]。"))
 	if(!I.use_tool(src, user, 2 SECONDS, 1, 25, null, BUSY_ICON_FRIENDLY))
 		return
-	user.visible_message(span_warning("[user] repairs \the [src]."),
-	span_warning("You repair \the [src]."))
+	user.visible_message(span_warning("[user]修理\the [src]。"),
+	span_warning("你修理\the [src]。"))
 	chair_state = DROPSHIP_CHAIR_FOLDED
 
 /obj/structure/bed/chair/dropship/doublewide
-	name = "doublewide seat"
+	name = "双人宽座椅"
 	icon_state = "doublewide_chair" //only facing south cause the rest are ugly
 	max_integrity = 130
 	/// Handles the color of the chair
@@ -451,7 +451,7 @@
 
 /obj/structure/bed/chair/dropship/doublewide/welder_act(mob/living/user, obj/item/I)
 	if(LAZYLEN(buckled_mobs))
-		balloon_alert_to_viewers("You cannot repair this chair while someone is sitting in it")
+		balloon_alert_to_viewers("有人坐在上面时你无法修理这把椅子")
 		return
 	welder_repair_act(user, I, 130, 1 SECONDS, 0, SKILL_ENGINEER_METAL, 1)
 	chair_state = DROPSHIP_CHAIR_UNBUCKLED
@@ -472,14 +472,14 @@
 		return
 	if(LAZYLEN(buckled_mobs) && chair_state == DROPSHIP_CHAIR_BROKEN)
 		unbuckle_mob(buckled_mobs[1])
-		balloon_alert_to_viewers("This chair is too damaged to stay sitting in")
+		balloon_alert_to_viewers("这把椅子损坏太严重, 无法继续坐在上面")
 
 /obj/structure/bed/chair/dropship/doublewide/buckle_mob(mob/living/buckling_mob, force = FALSE, check_loc = TRUE, lying_buckle = FALSE, hands_needed = 0, target_hands_needed = 0, silent)
 	if(chair_state == DROPSHIP_CHAIR_BROKEN)
-		balloon_alert_to_viewers("This chair is too damaged to sit in")
+		balloon_alert_to_viewers("这把椅子损坏太严重, 无法坐在上面")
 		return FALSE
 	if(leader_chair && buckling_mob.skills.getRating(SKILL_LEADERSHIP) < SKILL_LEAD_TRAINED)
-		balloon_alert(buckling_mob, "You don't feel worthy enough to sit in this chair")
+		balloon_alert(buckling_mob, "你觉得自己不配坐在这把椅子上")
 		return FALSE
 	if(buckling_x)
 		src.pixel_x = buckling_x
@@ -523,48 +523,48 @@
 	buckling_x = 9
 
 /obj/structure/bed/chair/dropship/doublewide/left/alpha
-	name = "Alpha Squad Leader's Chair"
-	desc = "A chair specially reserved for the Alpha Squad Leader."
+	name = "阿尔法小队队长之椅"
+	desc = "专为阿尔法小队队长保留的椅子。"
 	icon_state = "doublewide_chair_alpha"
 	chair_color = ALPHA_CHAIR
 	leader_chair = TRUE
 	max_integrity = 200
 
 /obj/structure/bed/chair/dropship/doublewide/right/bravo
-	name = "Bravo Squad Leader's Chair"
-	desc = "A chair specially reserved for the Bravo Squad Leader."
+	name = "布拉沃小队队长之椅"
+	desc = "专为布拉沃小队队长保留的椅子。"
 	icon_state = "doublewide_chair_bravo"
 	chair_color = BRAVO_CHAIR
 	leader_chair = TRUE
 	max_integrity = 200
 
 /obj/structure/bed/chair/dropship/doublewide/left/charlie
-	name = "Charlie Squad Leader's Chair"
-	desc = "A chair specially reserved for the Charlie Squad Leader."
+	name = "查理小队队长之椅"
+	desc = "专为查理小队队长保留的椅子。"
 	icon_state = "doublewide_chair_charlie"
 	chair_color = CHARLIE_CHAIR
 	leader_chair = TRUE
 	max_integrity = 200
 
 /obj/structure/bed/chair/dropship/doublewide/right/delta
-	name = "Delta Squad Leader's Chair"
-	desc = "A chair specially reserved for the Delta Squad Leader."
+	name = "德尔塔小队队长的椅子"
+	desc = "专为德尔塔小队队长保留的椅子."
 	icon_state = "doublewide_chair_delta"
 	chair_color = DELTA_CHAIR
 	leader_chair = TRUE
 	max_integrity = 200
 
 /obj/structure/bed/chair/dropship/doublewide/fieldcommander
-	name = "Field Commander's Chair"
-	desc = "A chair specially reserved for the Field Commander."
+	name = "战地指挥官的椅子"
+	desc = "专为战地指挥官保留的椅子."
 	icon_state = "doublewide_chair_fc"
 	chair_color = FC_CHAIR
 	leader_chair = TRUE
 	max_integrity = 200
 
 /obj/structure/bed/chair/ob_chair
-	name = "seat"
-	desc = "A comfortable seat."
+	name = "座位"
+	desc = "一个舒适的座位."
 	icon_state = "ob_chair"
 	buildstacktype = null
 	resistance_flags = UNACIDABLE

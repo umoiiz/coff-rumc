@@ -469,7 +469,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 
 	// Storage to storage transfer is instant
 	if(dest_object.storage_datum)
-		to_chat(user, span_notice("You dump the contents of [parent] into [dest_object]."))
+		to_chat(user, span_notice("你将[parent]的内容倒入[dest_object]."))
 
 		if(use_sound)
 			playsound(parent, SFX_RUSTLE, 50, TRUE)
@@ -482,7 +482,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		return
 
 	// Storage to loc transfer requires a do_after
-	to_chat(user, span_notice("You start dumping out the contents of [parent] onto [dest_object]..."))
+	to_chat(user, span_notice("你开始将[parent]的内容倒在[dest_object]上..."))
 	if(!do_after(user, 2 SECONDS, target = dest_object))
 		return
 
@@ -508,9 +508,9 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	var/datum/storage/our_storage = storage_datum
 	our_storage.collection_mode = !our_storage.collection_mode
 	if(our_storage.collection_mode)
-		to_chat(usr, span_notice("\The [our_storage.parent.name] now picks up all items in a tile at once."))
+		to_chat(usr, span_notice("\The [our_storage.parent.name] 现在会一次性拾取地格上的所有物品."))
 	else
-		to_chat(usr, span_notice("\The [our_storage.parent.name] now picks up one item at a time."))
+		to_chat(usr, span_notice("\The [our_storage.parent.name] 现在会一次拾取一个物品."))
 
 /atom/movable/proc/toggle_draw_mode()
 	set name = "Switch Storage Drawing Method"
@@ -519,9 +519,9 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	var/datum/storage/our_storage = storage_datum
 	our_storage.draw_mode = !our_storage.draw_mode
 	if(our_storage.draw_mode)
-		to_chat(usr, span_notice("Clicking [our_storage.parent.name] with an empty hand now puts the last stored item in your hand."))
+		to_chat(usr, span_notice("空手点击[our_storage.parent.name]现在会将最后存放的物品放入你手中."))
 	else
-		to_chat(usr, span_notice("Clicking [our_storage.parent.name] with an empty hand now opens the pouch storage menu."))
+		to_chat(usr, span_notice("空手点击[our_storage.parent.name]现在会打开袋装储存菜单."))
 
 /**
  * Gets the inventory of a storage
@@ -774,22 +774,22 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		return FALSE //Means the item is already in the storage item
 	if(storage_slots != null && length(parent.contents) >= storage_slots)
 		if(warning)
-			to_chat(user, span_notice("\The [parent.name] is full, make some space."))
+			to_chat(user, span_notice("\The [parent.name] 已满, 腾出一些空间."))
 		return FALSE //Storage item is full
 
 	if(length(can_hold) && !is_type_in_typecache(item_to_insert, typecacheof(can_hold)))
 		if(warning)
-			to_chat(user, span_notice("\The [parent.name] cannot hold [item_to_insert]."))
+			to_chat(user, span_notice("\The [parent.name] 无法容纳[item_to_insert]."))
 		return FALSE
 
 	if(is_type_in_typecache(item_to_insert, typecacheof(cant_hold))) //Check for specific items which this container can't hold.
 		if(warning)
-			to_chat(user, span_notice("\The [parent.name] cannot hold [item_to_insert]."))
+			to_chat(user, span_notice("\The [parent.name] 无法容纳[item_to_insert]."))
 		return FALSE
 
 	if(!is_type_in_typecache(item_to_insert, typecacheof(storage_type_limits)) && item_to_insert.w_class > max_w_class)
 		if(warning)
-			to_chat(user, span_notice("\The [item_to_insert] is too long for this [parent.name]."))
+			to_chat(user, span_notice("\The [item_to_insert] 对于这个[parent.name]来说太长了."))
 		return FALSE
 
 	var/sum_storage_cost = item_to_insert.w_class
@@ -798,7 +798,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 
 	if(sum_storage_cost > max_storage_space)
 		if(warning)
-			to_chat(user, span_notice("\The [parent.name] is full, make some space."))
+			to_chat(user, span_notice("\The [parent.name] 已满, 腾出一些空间."))
 		return FALSE
 
 	if(isitem(parent))
@@ -806,7 +806,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		if(item_to_insert.w_class >= parent_storage.w_class && istype(item_to_insert, /obj/item/storage) && !is_type_in_typecache(item_to_insert.type, typecacheof(storage_type_limits)))
 			if(!istype(src, /obj/item/storage/backpack/holding))	//bohs should be able to hold backpacks again. The override for putting a boh in a boh is in backpack.dm.
 				if(warning)
-					to_chat(user, span_notice("\The [parent.name] cannot hold \the [item_to_insert] as it's a storage item of the same size."))
+					to_chat(user, span_notice("\The [parent.name] 无法容纳\the [item_to_insert], 因为它是相同大小的储存物品."))
 				return FALSE //To prevent the stacking of same sized storage items.
 
 	for(var/limited_type in storage_type_limits_max)
@@ -814,7 +814,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 			continue
 		if(storage_type_limits_max[limited_type] == 0)
 			if(warning)
-				to_chat(user, span_warning("\The [parent.name] can't fit any more of those.") )
+				to_chat(user, span_warning("\The [parent.name] 装不下更多了.") )
 			return FALSE
 
 	if(istype(item_to_insert, /obj/item/tool/hand_labeler))
@@ -834,7 +834,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		return TRUE
 
 	if(LAZYLEN(user.do_actions))
-		to_chat(user, span_warning("You are busy doing something else!"))
+		to_chat(user, span_warning("你正忙着做其他事情!"))
 		return FALSE
 
 	var/atom/delay_target = parent // if we have a storage inside another item, we won't see the do_after without this
@@ -844,9 +844,9 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	if(!alert_user)
 		return do_after(user, access_delay, IGNORE_USER_LOC_CHANGE, delay_target)
 
-	to_chat(user, span_notice("You begin to [taking_out ? "take" : "put"] [accessed] [taking_out ? "out of" : "into"] \the [parent.name]"))
+	to_chat(user, span_notice("你开始[taking_out ? "take" : "put"] [accessed] [taking_out ? "out of" : "into"] \the [parent.name]"))
 	if(!do_after(user, access_delay, IGNORE_USER_LOC_CHANGE, delay_target))
-		to_chat(user, span_warning("You fumble [accessed]!"))
+		to_chat(user, span_warning("你笨手笨脚地弄掉了[accessed]!"))
 		return FALSE
 	return TRUE
 
@@ -906,8 +906,8 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 ///Output a message when an item is inserted into a storage object
 /datum/storage/proc/insertion_message(obj/item/item, mob/user)
 	var/visidist = item.w_class >= WEIGHT_CLASS_NORMAL ? 3 : 1
-	user.visible_message(span_notice("[user] puts \a [item] into \the [parent.name]."),\
-						span_notice("You put \the [item] into \the [parent.name]."),\
+	user.visible_message(span_notice("[user]将\a [item]放入\the [parent.name]."),\
+						span_notice("你将\the [item]放入\the [parent.name]."),\
 						null, visidist)
 
 /**
@@ -964,14 +964,14 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 ///Refills the storage from the refill_types item
 /datum/storage/proc/do_refill(obj/item/storage/refiller, mob/user)
 	if(!length(refiller.contents))
-		user.balloon_alert(user, "[refiller] is empty.")
+		user.balloon_alert(user, "[refiller]是空的.")
 		return
 
 	if(!can_be_inserted(refiller.contents[1], user))
-		user.balloon_alert(user, "\The [parent.name] is full.")
+		user.balloon_alert(user, "\The [parent.name] 已满.")
 		return
 
-	user.balloon_alert(user, "Refilling.")
+	user.balloon_alert(user, "重新装填.")
 
 	if(!do_after(user, 1.5 SECONDS, NONE, user, BUSY_ICON_GENERIC))
 		return
@@ -1068,7 +1068,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		close(watcher_mob)
 
 	// Now make the cardboard
-	to_chat(user, span_notice("You break down the [parent]."))
+	to_chat(user, span_notice("你拆解了[parent]."))
 	new foldable(get_turf(parent))
 	qdel(parent)
 //BubbleWrap END
@@ -1141,7 +1141,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	if(!ishuman(user) || user.incapacitated())
 		return
 	if(!length(parent.contents))
-		return user.balloon_alert(user, "Empty")
+		return user.balloon_alert(user, "空")
 	if(user.get_active_held_item())
 		return //User is already holding something.
 	if(holsterable_allowed && holstered_item) //If we have a holstered item in parent contents

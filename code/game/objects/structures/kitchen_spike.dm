@@ -1,10 +1,10 @@
 //////Kitchen Spike
 
 /obj/structure/kitchenspike
-	name = "a meat spike"
+	name = "一根肉刺"
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "spike"
-	desc = "A spike for collecting meat from animals"
+	desc = "用于从动物身上收集肉类的尖刺"
 	density = TRUE
 	anchored = TRUE
 	coverage = 5
@@ -22,15 +22,15 @@
 			occupied = 1
 			meat = 5
 			meattype = 1
-			visible_message(span_warning("[user] has forced [M] onto the spike, killing [M.p_them()] instantly!"))
+			visible_message(span_warning("[user]将[M]强行按到尖刺上,瞬间杀死了[M.p_them()]!"))
 			M.death(TRUE)
 			G.grabbed_thing = null
 			qdel(G)
 
 		else
-			to_chat(user, span_warning("The spike already has something on it, finish collecting its meat first!"))
+			to_chat(user, span_warning("尖刺上已经有东西了,先把它上面的肉收集完!"))
 	else
-		to_chat(user, span_warning("They are too big for the spike, try something smaller!"))
+		to_chat(user, span_warning("它们对尖刺来说太大了,试试小一点的!"))
 		return
 
 /obj/structure/kitchenspike/attack_hand(mob/user as mob)
@@ -41,21 +41,21 @@
 			if(src.meat > 1)
 				src.meat--
 				new /obj/item/reagent_containers/food/snacks/meat/monkey( src.loc )
-				to_chat(usr, "You remove some meat from the monkey.")
+				to_chat(usr, "你从猴子身上取下一些肉。")
 			else if(src.meat == 1)
 				src.meat--
 				new /obj/item/reagent_containers/food/snacks/meat/monkey(src.loc)
-				to_chat(usr, "You remove the last piece of meat from the monkey!")
+				to_chat(usr, "你从猴子身上取下了最后一块肉!")
 				src.icon_state = "spike"
 				src.occupied = 0
 		else if(src.meattype == 2)
 			if(src.meat > 1)
 				src.meat--
 				new /obj/item/reagent_containers/food/snacks/meat/xeno( src.loc )
-				to_chat(usr, "You remove some meat from the alien.")
+				to_chat(usr, "你从异形身上取下一些肉。")
 			else if(src.meat == 1)
 				src.meat--
 				new /obj/item/reagent_containers/food/snacks/meat/xeno(src.loc)
-				to_chat(usr, "You remove the last piece of meat from the alien!")
+				to_chat(usr, "你从异形身上取下了最后一块肉!")
 				src.icon_state = "spike"
 				src.occupied = 0

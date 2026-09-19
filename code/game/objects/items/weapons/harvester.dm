@@ -1,7 +1,7 @@
 //Vali Sword
 /obj/item/weapon/sword/harvester
-	name = "\improper HP-S Harvester blade"
-	desc = "TerraGov Marine Corps' experimental High Point-Singularity 'Harvester' blade. An advanced weapon that trades sheer force for the ability to apply a variety of debilitating effects when loaded with certain reagents. Activate after loading to prime a single use of an effect. It also harvests substances from alien lifeforms it strikes when connected to the Vali system."
+	name = "\improper HP-S收割者刀刃"
+	desc = "TerraGov陆战队的实验性高点-奇点\"收割者\"刀刃. 一种先进武器, 以纯粹的力量换取在装填特定试剂后施加各种削弱效果的能力. 装填后激活以准备一次性效果. 当连接到瓦利系统时, 它还会从击中的外星生命体上采集物质."
 	icon = 'icons/obj/items/vali.dmi'
 	icon_state = "vali_sword"
 	worn_icon_list = list(
@@ -27,8 +27,8 @@
 
 //Vali Knife
 /obj/item/weapon/combat_knife/harvester
-	name = "\improper HP-S Harvester knife"
-	desc = "TerraGov Marine Corps' experimental High Point-Singularity 'Harvester' knife. An advanced version of the HP-S Harvester blade, shrunken down to the size of the standard issue boot knife. It trades the harvester blades size and power for a smaller form, with the side effect of a miniscule chemical storage, yet it still keeps its ability to apply debilitating effects to its targets. Activate after loading to prime a single use of an effect. It also harvests substances from alien lifeforms it strikes when connected to the Vali system."
+	name = "\improper HP-S收割者匕首"
+	desc = "TerraGov陆战队的实验性高点-奇点\"收割者\"匕首. HP-S收割者刀刃的先进版本, 缩小到标准配发靴刀的尺寸. 它以收割者刀刃的尺寸和威力换取了更小的体型, 副作用是极小的化学储存量, 但仍保留了向目标施加削弱效果的能力. 装填后激活以准备一次性效果. 当连接到瓦利系统时, 它还会从击中的外星生命体上采集物质."
 	icon = 'icons/obj/items/vali.dmi'
 	icon_state = "vali_knife"
 	worn_icon_list = list(
@@ -59,8 +59,8 @@
 
 //Vali Claymore (That thing was too big to be called a sword. Too big, too thick, too heavy, and too rough, it was more like a large hunk of iron.)
 /obj/item/weapon/twohanded/glaive/harvester
-	name = "\improper HP-S Harvester claymore"
-	desc = "TerraGov Marine Corps' experimental High Point-Singularity 'Harvester' blade. An advanced weapon that trades sheer force for the ability to apply a variety of debilitating effects when loaded with certain reagents. Activate after loading to prime a single use of an effect. It also harvests substances from alien lifeforms it strikes when connected to the Vali system. This specific version is enlarged to fit the design of an old world claymore. Simply squeeze the hilt to activate."
+	name = "\improper HP-S收割者双手剑"
+	desc = "TerraGov陆战队的实验性高点-奇点\"收割者\"刀刃. 一种先进武器, 以纯粹的力量换取在装填特定试剂后施加各种削弱效果的能力. 装填后激活以准备一次性效果. 当连接到瓦利系统时, 它还会从击中的外星生命体上采集物质. 这个特定版本被放大以符合旧世界双手剑的设计. 只需握紧剑柄即可激活."
 	icon = 'icons/obj/items/vali.dmi'
 	icon_state = "vali_claymore"
 	worn_icon_list = list(
@@ -89,8 +89,8 @@
 
 //Vali rapier
 /obj/item/weapon/sword/officer/valirapier
-	name = "\improper HP-C Harvester rapier"
-	desc = "Extremely expensive looking blade, with a golden handle and engravings, unexpectedly effective in combat, despite its ceremonial looks, compacted with a vali module."
+	name = "\improper HP-C收割者刺剑"
+	desc = "一把看起来极其昂贵的刀刃, 带有金色手柄和雕刻, 尽管外观华丽, 但在战斗中出乎意料地有效, 并紧凑地集成了瓦利模块."
 	icon = 'icons/obj/items/vali.dmi'
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/weapons/vali_left.dmi',
@@ -108,8 +108,8 @@
 
 //Vali Spear
 /obj/item/weapon/twohanded/spear/tactical/harvester
-	name = "\improper HP-S Harvester spear"
-	desc = "TerraGov Marine Corps' experimental High Point-Singularity 'Harvester' spear. An advanced weapon that trades sheer force for the ability to apply a variety of debilitating effects when loaded with certain reagents. Activate after loading to prime a single use of an effect. It also harvests substances from alien lifeforms it strikes when connected to the Vali system."
+	name = "\improper HP-S收割者长矛"
+	desc = "TerraGov陆战队的实验性高点-奇点\"收割者\"长矛. 一种先进武器, 以纯粹的力量换取在装填特定试剂后施加各种削弱效果的能力. 装填后激活以准备一次性效果. 当连接到瓦利系统时, 它还会从击中的外星生命体上采集物质."
 	icon = 'icons/obj/items/vali.dmi'
 	icon_state = "vali_spear"
 	worn_icon_list = list(
@@ -129,8 +129,8 @@
 ////////////////// VAL-HAL-A, the Vali Halberd ////////////////////////
 ///////////////////////////////////////////////////////////////////////
 /obj/item/weapon/twohanded/glaive/halberd/harvester
-	name = "\improper VAL-HAL-A halberd harvester"
-	desc = "TerraGov Marine Corps' cutting-edge 'Harvester' halberd, with experimental plasma regulator. An advanced weapon that combines sheer force with the ability to apply a variety of debilitating effects when loaded with certain reagents, but should be used with both hands. Activate after loading to prime a single use of an effect. It also harvests substances from alien lifeforms it strikes when connected to the Vali system."
+	name = "\improper VAL-HAL-A戟式收割者"
+	desc = "TerraGov陆战队的尖端\"收割者\"戟, 带有实验性等离子调节器. 一种先进武器, 将纯粹的力量与在装填特定试剂后施加各种削弱效果的能力相结合, 但应双手使用. 装填后激活以准备一次性效果. 当连接到瓦利系统时, 它还会从击中的外星生命体上采集物质."
 	icon = 'icons/obj/items/vali.dmi'
 	icon_state = "VAL-HAL-A"
 	worn_icon_state = "VAL-HAL-A"

@@ -1,5 +1,5 @@
 /obj/item/storage/secure
-	name = "secstorage"
+	name = "安全储存"
 	w_class = WEIGHT_CLASS_NORMAL
 	storage_type = /datum/storage/secure
 	var/icon_locking = "secureb"
@@ -85,22 +85,22 @@
 			return
 
 		open = !open
-		user.show_message(span_notice("You [open ? "open" : "close"] the service panel."))
+		user.show_message(span_notice("你[open ? "open" : "close"]了服务面板."))
 
 	else if(ismultitool(I) && open && !l_hacking)
-		user.show_message(span_warning("Now attempting to reset internal memory, please hold."))
+		user.show_message(span_warning("正在尝试重置内部存储器, 请稍候."))
 		l_hacking = TRUE
 		if(!do_after(user, 100, NONE, src, BUSY_ICON_BUILD))
 			return
 
 		if(!prob(40))
-			user.show_message(span_warning("Unable to reset internal memory."), 1)
+			user.show_message(span_warning("无法重置内部存储器."), 1)
 			l_hacking = FALSE
 			return
 
 		l_setshort = TRUE
 		l_set = FALSE
-		user.show_message(span_warning("Internal memory reset.  Please give it a few seconds to reinitialize."))
+		user.show_message(span_warning("内部存储器已重置. 请稍等几秒让它重新初始化."))
 		sleep(8 SECONDS)
 		l_setshort = FALSE
 		l_hacking = FALSE
@@ -109,7 +109,7 @@
 //        Secure Briefcase
 // -----------------------------
 /obj/item/storage/secure/briefcase
-	name = "secure briefcase"
+	name = "安全公文包"
 	icon = 'icons/obj/items/storage/briefcase.dmi'
 	icon_state = "secure"
 	worn_icon_list = list(
@@ -117,7 +117,7 @@
 		slot_r_hand_str = 'icons/mob/inhands/items/containers_right.dmi',
 	)
 	worn_icon_state = "sec-case"
-	desc = "A large briefcase with a digital locking system."
+	desc = "一个带有数字锁定系统的大公文包."
 	force = 8
 	throw_speed = 1
 	throw_range = 4
@@ -129,7 +129,7 @@
 
 /obj/item/storage/secure/briefcase/attack_hand(mob/user)
 	if(loc == user && locked)
-		to_chat(user, span_warning("[src] is locked and cannot be opened!"))
+		to_chat(user, span_warning("[src]已锁定, 无法打开!"))
 		return
 
 	if(loc == user && !locked)
@@ -146,7 +146,7 @@
 // -----------------------------
 
 /obj/item/storage/secure/safe
-	name = "secure safe"
+	name = "保险箱"
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "safe"
 	icon_opened = "safe0"

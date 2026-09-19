@@ -1,10 +1,10 @@
 /datum/language/xenocommon
-	name = "Xenomorph"
-	desc = "The common tongue of the xenomorphs."
-	speech_verb = "hisses"
-	ask_verb = "hisses"
-	exclaim_verb = "hisses"
-	sing_verb = "hisses melodically"
+	name = "异形语"
+	desc = "异形的通用语言."
+	speech_verb = "嘶嘶道"
+	ask_verb = "嘶嘶道"
+	exclaim_verb = "嘶嘶道"
+	sing_verb = "旋律般地嘶嘶道"
 	key = "x"
 	syllables = list("sss", "sSs", "SSS")
 	default_priority = 50

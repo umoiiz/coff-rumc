@@ -14,6 +14,6 @@
 		var/mob/living/carbon/human/human_target = target
 		human_target.Knockdown(10 SECONDS)
 		human_target.jitter(150)
-	to_chat(target, span_userdanger("The gods have punished you for your sins!"), confidential = TRUE)
+	to_chat(target, span_userdanger("神明因你的罪孽而惩罚你!"), confidential = TRUE)
 
 #undef LIGHTNING_BOLT_DAMAGE

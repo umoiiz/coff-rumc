@@ -64,7 +64,7 @@
 	var/mob/dead/observer/ghost = usr
 	var/larva_position = SEND_SIGNAL(usr.client, COMSIG_CLIENT_GET_LARVA_QUEUE_POSITION)
 	if (larva_position) // If non-zero, we're in queue
-		var/confirm = tgui_alert(usr, "Returning to your corpse will make you leave the larva queue. Position: [larva_position]", "Confirm.", list("Yes", "No"))
+		var/confirm = tgui_alert(usr, "返回你的尸体会让你离开幼体队列. 位置: [larva_position]", "确认.", list("Yes", "No"))
 		if (confirm != "Yes")
 			return
 	ghost.reenter_corpse()

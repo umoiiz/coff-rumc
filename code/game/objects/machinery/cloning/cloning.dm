@@ -19,7 +19,7 @@ These act as a respawn mechanic growning a body and offering it up to ghosts.
 	if(COOLDOWN_FINISHED(src, relay_cooldown))
 		return
 	COOLDOWN_START(src, relay_cooldown, 2 SECONDS)
-	user.visible_message("You hear something bang on the window of \the [src]", "The door won't budge!")
+	user.visible_message("你听到有什么东西撞在\the [src]的窗户上", "门纹丝不动!")
 	return FALSE
 
 /obj/item/reagent_containers/glass/beaker/biomass
@@ -73,19 +73,19 @@ These act as a respawn mechanic growning a body and offering it up to ghosts.
 		// Try to find the machine nearby
 		linked_machine = locate() in get_step(src, REVERSE_DIR(dir))
 		if(!linked_machine)
-			visible_message("[icon2html(src, viewers(src))] <span><b>[src]</b> beeps in error, 'Connection not available'.</span>")
+			visible_message("[icon2html(src, viewers(src))] <span><b>[src]</b>发出错误提示音,'连接不可用'.</span>")
 			return TRUE
 
 		linked_machine.linked_console = src
-		visible_message("[icon2html(src, viewers(src))] <span><b>[src]</b> beeps as its boots up and connects to \the [linked_machine].</span>")
+		visible_message("[icon2html(src, viewers(src))] <span><b>[src]</b>在启动并连接到\the [linked_machine]时发出提示音.</span>")
 		return TRUE
 
 	if(linked_machine.occupant || linked_machine.timerid)
-		visible_message("[icon2html(src, viewers(src))] <span><b>[src]</b> beeps in error, 'Already processing clone'.</span>")
+		visible_message("[icon2html(src, viewers(src))] <span><b>[src]</b>发出错误提示音,'已在处理克隆'.</span>")
 		return TRUE
 
 	if(!linked_machine.beaker || linked_machine.beaker.reagents.total_volume < linked_machine.biomass_required)
-		visible_message("[icon2html(src, viewers(src))] <span><b>[src]</b> beeps in error, 'Not enough biomass'.</span>")
+		visible_message("[icon2html(src, viewers(src))] <span><b>[src]</b>发出错误提示音,'生物质不足'.</span>")
 		return TRUE
 
 
@@ -126,7 +126,7 @@ These act as a respawn mechanic growning a body and offering it up to ghosts.
 	. = ..()
 	if(!occupant)
 		return FALSE
-	if(tgui_alert(user, "Do you want to become a clone?", "Become a clone", list("Yes", "No")) != "Yes")
+	if(tgui_alert(user, "你想成为一个克隆体吗?", "成为克隆体", list("Yes", "No")) != "Yes")
 		return FALSE
 	occupant.take_over(user)
 	return TRUE
@@ -150,7 +150,7 @@ These act as a respawn mechanic growning a body and offering it up to ghosts.
 	if(!powered())
 		deltimer(timerid)
 		timerid = null
-		visible_message(span_warning("<b>[src]</b> beeps in error, 'Power failure, reverting clone progress due to safety concerns!'."))
+		visible_message(span_warning("<b>[src]</b>发出错误提示音,'电力故障,出于安全考虑正在回退克隆进度!'."))
 
 /obj/machinery/cloning/vats/relaymove(mob/user)
 	eject_user()
@@ -163,14 +163,14 @@ These act as a respawn mechanic growning a body and offering it up to ghosts.
 		return
 
 	if(user.a_intent == INTENT_HARM)
-		user.visible_message(span_notice("[user] bangs on the glass."), span_notice("You bang on the glass."))
+		user.visible_message(span_notice("[user]敲打着玻璃."), span_notice("你敲打着玻璃."))
 		return TRUE
 
 	if(!beaker)
 		return
 
 	if(timerid || occupant) // You need to stop the process or remove the human first.
-		to_chat(user, span_notice("You can't get to the beaker while the machine is growing a clone."))
+		to_chat(user, span_notice("当机器正在培育克隆体时,你无法拿到烧杯."))
 		return
 
 	beaker.forceMove(drop_location())
@@ -189,13 +189,13 @@ These act as a respawn mechanic growning a body and offering it up to ghosts.
 
 	if(istype(hit_by, /obj/item/reagent_containers/glass/beaker))
 		if(beaker)
-			to_chat(user, span_warning("A beaker is already loaded into the machine."))
+			to_chat(user, span_warning("机器中已经装有一个烧杯."))
 			return
 
 		// Check if the beaker contains anything other than biomass juice
 		for(var/datum/reagent/instance AS in hit_by.reagents.reagent_list)
 			if(!istype(instance, /datum/reagent/medicine/biomass) && !istype(instance, /datum/reagent/medicine/biomass/xeno))
-				to_chat(user, span_warning("\The [src] rejects the beaker due to incompatible contents."))
+				to_chat(user, span_warning("\The [src]因内容物不兼容而拒绝了烧杯."))
 				return
 
 		beaker = hit_by
@@ -210,13 +210,13 @@ These act as a respawn mechanic growning a body and offering it up to ghosts.
 /obj/machinery/cloning/vats/examine(mob/user)
 	. = ..()
 	if(!beaker)
-		. += span_notice("It doesn't have a beaker attached.")
+		. += span_notice("它没有连接烧杯.")
 		return
 	if(timerid)
-		. += span_notice("There is something weird inside.")
+		. += span_notice("里面有些奇怪的东西.")
 		return
 	if(occupant)
-		. += span_notice("It looks like there is a human in there!")
+		. += span_notice("里面好像有个人!")
 		return
 
 /obj/machinery/cloning/vats/update_icon()
@@ -254,7 +254,7 @@ These act as a respawn mechanic growning a body and offering it up to ghosts.
 		finish_growing_human()
 		return
 
-	visible_message("[icon2html(src, viewers(src))] <span><b>[src]</b> whirls as it starts to create a new clone.</span>")
+	visible_message("[icon2html(src, viewers(src))] <span><b>[src]</b>在开始制造新克隆体时旋转起来.</span>")
 	timerid = addtimer(CALLBACK(src, PROC_REF(finish_growing_human)), grow_timer, TIMER_STOPPABLE)
 	update_icon()
 
@@ -271,7 +271,7 @@ These act as a respawn mechanic growning a body and offering it up to ghosts.
 	// Blindness doenst't trigger with just the disability, you need to set_blindness
 
 	LAZYOR(GLOB.ssd_living_mobs, occupant)
-	notify_ghosts(span_boldnotice("A new clone is available! Name: [name]"), enter_link = "claim=[REF(occupant)]", source = src, action = NOTIFY_ORBIT, flashwindow = TRUE)
+	notify_ghosts(span_boldnotice("新克隆体已就绪! 姓名: [name]"), enter_link = "claim=[REF(occupant)]", source = src, action = NOTIFY_ORBIT, flashwindow = TRUE)
 
 	// Cleanup the timers
 	deltimer(timerid)
@@ -290,10 +290,10 @@ These act as a respawn mechanic growning a body and offering it up to ghosts.
 	occupant.disabilities &= ~(BLIND | DEAF)
 	occupant.set_blindness(10, TRUE)
 	to_chat(occupant, {"
-<span class='notice'>You are a frestly spawned clone, you appear as a Squad marine, but nothing more.
-You remember nothing of your past life.
+<span class='notice'>你是一个刚生成的克隆体,你看起来像一名小队陆战队员,但仅此而已.
+你对前世毫无记忆.
 
-You are weak, best rest up and get your strength before fighting.</span>"})
+你很虚弱,最好先休息恢复体力再战斗.</span>"})
 	occupant.vomit()
 	linked_console.radio.talk_into(src, "<b>New clone: [occupant] has been grown in [src] at: [get_area(src)].</b>", RADIO_CHANNEL_MEDICAL)
 	linked_console.radio.talk_into(src, "<b>New clone: [occupant] has been grown in [src] at: [get_area(src)]. Please move the fresh clone to a squad using the squad distribution console.</b>", RADIO_CHANNEL_COMMAND)

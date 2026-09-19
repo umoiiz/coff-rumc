@@ -26,7 +26,7 @@
 
 /datum/component/easy_restock/proc/on_examine(datum/source, mob/user, list/details)
 	SIGNAL_HANDLER
-	details += span_notice("You can easily restock magazines inside, via right click on the belt with any ammo box.")
+	details += span_notice("你可以用任何弹药箱右键点击弹带,轻松地在里面补充弹匣.")
 
 /datum/component/easy_restock/proc/on_parent_attackby_alternate(datum/source, obj/item/ammo_magazine/ammo_box, mob/user, params)
 	SIGNAL_HANDLER

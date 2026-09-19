@@ -1,6 +1,6 @@
 /obj/machinery/cell_charger
 	name = "heavy-duty cell charger"
-	desc = "A much more powerful version of the standard recharger that is specially designed for charging power cells."
+	desc = "标准充电器的一个更强大的版本,专为给能量电池充电而设计。"
 	icon = 'icons/obj/power.dmi'
 	icon_state = "ccharger0"
 	anchored = TRUE
@@ -45,11 +45,11 @@
 	if(istype(I, /obj/item/cell) && anchored)
 		var/obj/item/cell/our_cell = I
 		if(!our_cell.rechargable)
-			balloon_alert(user, "Not rechargeable")
+			balloon_alert(user, "不可充电")
 			return
 
 		if(charging)
-			to_chat(user, span_warning("There is already a cell in the charger."))
+			to_chat(user, span_warning("充电器中已经有一个电池了。"))
 			return
 
 		var/area/A = loc.loc
@@ -57,12 +57,12 @@
 			return
 
 		if(A.power_equip == 0) // There's no APC in this area, don't try to cheat power!
-			to_chat(user, span_warning("The [name] blinks red as you try to insert the cell!"))
+			to_chat(user, span_warning("当你试图插入电池时,[name] 闪烁着红光!"))
 			return
 
 		if(user.transferItemToLoc(our_cell, src))
 			charging = our_cell
-			user.visible_message("[user] inserts a cell into the charger.", "You insert a cell into the charger.")
+			user.visible_message("[user] 将一块电池插入充电器。", "你将一块电池插入充电器。")
 			chargelevel = -1
 			start_processing()
 
@@ -71,11 +71,11 @@
 /obj/machinery/cell_charger/wrench_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(charging)
-		to_chat(user, span_warning("Remove the cell first!"))
+		to_chat(user, span_warning("请先取出电池!"))
 		return
 
 	anchored = !anchored
-	to_chat(user, "You [anchored ? "attach" : "detach"] the cell charger [anchored ? "to" : "from"] the ground")
+	to_chat(user, "你 [anchored ? "attach" : "detach"] 电池充电器 [anchored ? "to" : "from"] 地面")
 	playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
 
 /obj/machinery/cell_charger/attack_hand(mob/living/user)
@@ -87,7 +87,7 @@
 		charging.update_icon()
 
 		src.charging = null
-		user.visible_message("[user] removes the cell from the charger.", "You remove the cell from the charger.")
+		user.visible_message("[user] 从充电器中取出了电池。", "你从充电器中取出了电池。")
 		chargelevel = -1
 		updateicon()
 		stop_processing()

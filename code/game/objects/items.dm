@@ -1,5 +1,5 @@
 /obj/item
-	name = "item"
+	name = "物品"
 	icon = 'icons/obj/items/items.dmi'
 	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
@@ -283,7 +283,7 @@
 	if(!istype(user))
 		return
 	if(anchored)
-		to_chat(user, "[src] is anchored to the ground.")
+		to_chat(user, "[src]固定在地面上.")
 		return
 
 	set_throwing(FALSE)
@@ -348,11 +348,11 @@
 			success = TRUE
 			attacked_storage.storage_datum.handle_item_insertion(IM, TRUE, user)	//The 1 stops the "You put the [src] into [S]" insertion message from being displayed.
 		if(success && !failure)
-			to_chat(user, span_notice("You put everything in [attacked_storage]."))
+			to_chat(user, span_notice("你把所有东西放进了[attacked_storage]."))
 		else if(success)
-			to_chat(user, span_notice("You put some things in [attacked_storage]."))
+			to_chat(user, span_notice("你把一些东西放进了[attacked_storage]."))
 		else
-			to_chat(user, span_notice("You fail to pick anything up with [attacked_storage]."))
+			to_chat(user, span_notice("你没能用[attacked_storage]捡起任何东西."))
 
 	else if(attacked_storage.storage_datum.can_be_inserted(src, user))
 		attacked_storage.storage_datum.handle_item_insertion(src, FALSE, user)
@@ -515,7 +515,7 @@
 
 	if(HAS_TRAIT(src, TRAIT_NODROP) && slot != SLOT_L_HAND && slot != SLOT_R_HAND && !override_nodrop) //No drops can only be equipped to a hand slot
 		if(slot == SLOT_L_HAND || slot == SLOT_R_HAND)
-			to_chat(user, span_notice("[src] is stuck to your hand!"))
+			to_chat(user, span_notice("[src]粘在了你手上!"))
 		return FALSE
 
 	if(!ishuman(user))
@@ -538,7 +538,7 @@
 			return FALSE
 
 	if(issynth(H) && CHECK_BITFIELD(item_flags, SYNTH_RESTRICTED) && !CONFIG_GET(flag/allow_synthetic_gun_use))
-		to_chat(H, span_warning("Your programming prevents you from wearing this."))
+		to_chat(H, span_warning("你的程序设定阻止你穿戴这个."))
 		return FALSE
 
 	var/obj/item/selected_slot //the item in the specific slot we're trying to insert into
@@ -612,7 +612,7 @@
 				return FALSE
 			if(!H.w_uniform && (SLOT_W_UNIFORM in mob_equip))
 				if(warning)
-					to_chat(H, span_warning("You need a jumpsuit before you can attach this [name]."))
+					to_chat(H, span_warning("你需要一件连体服才能附着这个[name]."))
 				return FALSE
 			equip_to_slot = TRUE
 		if(SLOT_BELT)
@@ -620,7 +620,7 @@
 				return FALSE
 			if(!H.w_uniform && (SLOT_W_UNIFORM in mob_equip))
 				if(warning)
-					to_chat(H, span_warning("You need a jumpsuit before you can attach this [name]."))
+					to_chat(H, span_warning("你需要一件连体服才能附着这个[name]."))
 				return FALSE
 			equip_to_slot = TRUE
 		if(SLOT_L_STORE)
@@ -628,7 +628,7 @@
 				return FALSE
 			if(!H.w_uniform && (SLOT_W_UNIFORM in mob_equip))
 				if(warning)
-					to_chat(H, span_warning("You need a jumpsuit before you can attach this [name]."))
+					to_chat(H, span_warning("你需要一件连体服才能附着这个[name]."))
 				return FALSE
 			if(w_class <= 2) //smaller or tiny items can all go in pocket slots, larger items require the flag to fit
 				return TRUE
@@ -638,7 +638,7 @@
 				return FALSE
 			if(!H.w_uniform && (SLOT_W_UNIFORM in mob_equip))
 				if(warning)
-					to_chat(H, span_warning("You need a jumpsuit before you can attach this [name]."))
+					to_chat(H, span_warning("你需要一件连体服才能附着这个[name]."))
 				return FALSE
 			if(w_class <= 2)
 				return TRUE
@@ -648,7 +648,7 @@
 				return FALSE
 			if(!H.wear_suit && (SLOT_WEAR_SUIT in mob_equip))
 				if(warning)
-					to_chat(H, span_warning("You need a suit before you can attach this [name]."))
+					to_chat(H, span_warning("你需要一件套装才能附着这个[name]."))
 				return FALSE
 			if(is_type_in_list(src, H.wear_suit.allowed))
 				return TRUE
@@ -722,7 +722,7 @@
 /// Checks whether the item can be unequipped from owner by stripper. Generates a message on failure and returns TRUE/FALSE
 /obj/item/proc/canStrip(mob/stripper, mob/owner)
 	if(HAS_TRAIT(src, TRAIT_NODROP))
-		stripper.balloon_alert(stripper, "[src] is stuck!")
+		stripper.balloon_alert(stripper, "[src]卡住了!")
 		return FALSE
 	return TRUE
 
@@ -878,7 +878,7 @@
 
 	var/obj/item/I = get_active_held_item()
 	if(I && !(I.item_flags & ITEM_ABSTRACT))
-		visible_message("[src] holds up [I]. <a href=?byond://src=[REF(usr)];lookitem=[REF(I)]>Take a closer look.</a>")
+		visible_message("[src]举起[I]. <a href=?byond://src=[REF(usr)];lookitem=[REF(I)]>仔细看看.</a>")
 
 /*
 For zooming with scope or binoculars. This is called from
@@ -898,8 +898,8 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 	if(zoom) //If we are zoomed out, reset that parameter.
 		if(TIMER_COOLDOWN_FINISHED(user, COOLDOWN_ZOOM)) //If we are spamming the zoom, cut it out
-			user.visible_message(span_notice("[user] looks up from [zoom_device]."),
-			span_notice("You look up from [zoom_device]."))
+			user.visible_message(span_notice("[user]从[zoom_device]中抬起头来."),
+			span_notice("你从[zoom_device]中抬起头来."))
 
 		zoom = FALSE
 		UnregisterSignal(user, COMSIG_ITEM_ZOOM)
@@ -917,20 +917,20 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		return
 
 	if(is_blind(user))
-		to_chat(user, span_warning("You are too blind to see anything."))
+		to_chat(user, span_warning("你太瞎了,什么也看不见."))
 		return
 
 	if(!user.dextrous)
-		to_chat(user, span_warning("You do not have the dexterity to use \the [zoom_device]."))
+		to_chat(user, span_warning("你没有足够的灵巧度来使用\the [zoom_device]."))
 		return
 
 	if(user.tinttotal >= TINT_5)
-		to_chat(user, span_warning("Your vision is too obscured for you to look through \the [zoom_device]."))
+		to_chat(user, span_warning("你的视线太模糊了,无法透过\the [zoom_device]观察."))
 		return
 
 	TIMER_COOLDOWN_START(user, COOLDOWN_ZOOM, 2 SECONDS)
 	if(SEND_SIGNAL(user, COMSIG_ITEM_ZOOM) & COMSIG_ITEM_ALREADY_ZOOMED)
-		to_chat(user, span_warning("You are already looking through another zoom device.."))
+		to_chat(user, span_warning("你已经在透过另一个缩放设备观察了.."))
 		return
 
 	if(user.client)
@@ -938,8 +938,8 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		change_zoom_offset(user, zoom_offset = tileoffset)
 
 	if(TIMER_COOLDOWN_FINISHED(user, COOLDOWN_ZOOM))
-		user.visible_message(span_notice("[user] peers through \the [zoom_device]."),
-		span_notice("You peer through \the [zoom_device]."))
+		user.visible_message(span_notice("[user]透过\the [zoom_device]窥视."),
+		span_notice("你透过\the [zoom_device]窥视."))
 	zoom = TRUE
 	RegisterSignal(user, COMSIG_ITEM_ZOOM, PROC_REF(zoom_check_return))
 	onzoom(user)
@@ -1015,19 +1015,19 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 			E.take_damage(rand(12, 16), TRUE)
 	if(safety<2)
 		if(E.damage >= E.min_broken_damage)
-			to_chat(H, span_danger("You can't see anything!"))
+			to_chat(H, span_danger("你什么也看不见!"))
 			H.blind_eyes(1)
 		else if (E.damage >= E.min_bruised_damage)
-			to_chat(H, span_warning("Your eyes are really starting to hurt. This can't be good for you!"))
+			to_chat(H, span_warning("你的眼睛真的开始疼了.这对你可不好!"))
 			H.blind_eyes(5)
 		else
 			switch(safety)
 				if(1)
-					to_chat(user, span_warning("Your eyes sting a little."))
+					to_chat(user, span_warning("你的眼睛有点刺痛."))
 				if(0)
-					to_chat(user, span_warning("Your eyes burn."))
+					to_chat(user, span_warning("你的眼睛灼痛."))
 				if(-1)
-					to_chat(user, span_danger("Your eyes itch and burn severely."))
+					to_chat(user, span_danger("你的眼睛发痒并严重灼痛."))
 
 //This proc is here to prevent Xenomorphs from picking up objects (default attack_hand behaviour)
 //Note that this is overriden by every proc concerning a child of obj unless inherited
@@ -1040,11 +1040,11 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 /obj/item/proc/extinguish(atom/target, mob/user)
 	if(reagents.total_volume < 1)
-		to_chat(user, span_warning("\The [src]'s water reserves are empty."))
+		to_chat(user, span_warning("\The [src]的水储备已空."))
 		return
 
-	user.visible_message(span_danger("[user] sprays water from [src]!"), \
-	span_warning("You spray water from [src]."),)
+	user.visible_message(span_danger("[user]从[src]中喷出水来!"), \
+	span_warning("你从[src]中喷出水来."),)
 
 	playsound(user.loc, 'sound/effects/extinguish.ogg', 52, 1, 7)
 
@@ -1350,9 +1350,9 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 					throw_catch_trick(user)
 	else
 		if(prob(10))
-			to_chat(user, span_warning("You fumble with [src] like an idiot... Uncool."))
+			to_chat(user, span_warning("你像个白痴一样笨拙地摆弄[src]... 太逊了."))
 		else
-			user.visible_message(span_info("<b>[user]</b> fumbles with [src] like a huge idiot!"))
+			user.visible_message(span_info("<b>[user]</b>像个大傻瓜一样笨拙地摆弄[src]!"))
 
 	TIMER_COOLDOWN_START(user, COOLDOWN_ITEM_TRICK, 6)
 
@@ -1363,10 +1363,10 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	set waitfor = 0
 	playsound(user, 'sound/effects/spin.ogg', 25, 1)
 	if(double)
-		user.visible_message("[user] deftly flicks and spins [src] and [double]!", span_notice("You flick and spin [src] and [double]!"))
+		user.visible_message("[user]灵巧地弹转[src]和[double]!", span_notice("你弹转[src]和[double]!"))
 		animation_wrist_flick(double, 1)
 	else
-		user.visible_message("[user] deftly flicks and spins [src]!", span_notice("You flick and spin [src]!"))
+		user.visible_message("[user]灵巧地弹转[src]!", span_notice("你弹转[src]!"))
 	animation_wrist_flick(src, direction)
 	sleep(0.3 SECONDS)
 	if(loc && user) playsound(user, 'sound/effects/thud.ogg', 25, 1)
@@ -1376,7 +1376,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	set waitfor = 0
 	if(HAS_TRAIT(src, TRAIT_NODROP))
 		return basic_spin_trick(user, pick(1, 1, -1))
-	user.visible_message("[user] deftly flicks [src] and tosses it into the air!", span_notice("You flick and toss [src] into the air!"))
+	user.visible_message("[user]灵巧地弹起[src]并将其抛向空中!", span_notice("你弹起[src]并将其抛向空中!"))
 	var/img_layer = MOB_LAYER + 0.1
 	var/image/trick = image(icon,user, icon_state, img_layer)
 
@@ -1399,9 +1399,9 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		return
 
 	if(user.get_inactive_held_item())
-		user.visible_message("[user] catches [src] with the same hand!", span_notice("You catch [src] as it spins in to your hand!"))
+		user.visible_message("[user]用同一只手接住了[src]!", span_notice("你接住了旋转着落入你手中的[src]!"))
 		return
-	user.visible_message("[user] catches [src] with his other hand!", span_notice("You snatch [src] with your other hand! Awesome!"))
+	user.visible_message("[user]用另一只手接住了[src]!", span_notice("你用另一只手夺过[src]! 太棒了!"))
 	user.temporarilyRemoveItemFromInventory(src)
 	user.put_in_inactive_hand(src)
 	user.swap_hand()
@@ -1435,7 +1435,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 ///Colors the item or selects variants.
 /obj/item/proc/color_item(obj/item/facepaint/paint, mob/living/carbon/human/user)
 	if(paint.uses < 1)
-		balloon_alert(user, "\the [paint] is out of color!")
+		balloon_alert(user, "\the [paint]没有颜色了!")
 		return
 
 	var/list/selection_list = list()
@@ -1452,7 +1452,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if(length(selection_list) == 1)
 		selection = selection_list[1]
 	else
-		selection = tgui_input_list(user, "Choose a setting", name, selection_list)
+		selection = tgui_input_list(user, "选择一项设置", name, selection_list)
 
 	var/new_color
 	var/hair_concealing_variants = list(
@@ -1463,7 +1463,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	)
 	switch(selection)
 		if(VARIANTS)
-			var/variant = tgui_input_list(user, "Choose a variant", "Variant", icon_state_variants)
+			var/variant = tgui_input_list(user, "选择一种变体", "变体", icon_state_variants)
 
 			if(!variant)
 				return
@@ -1477,12 +1477,12 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 			SEND_SIGNAL(src, COMSIG_ITEM_VARIANT_CHANGE, user, variant)
 			return
 		if(PRESET_COLORS)
-			var/color_selection = tgui_input_list(user, "Pick a color", "Pick color", colorable_colors)
+			var/color_selection = tgui_input_list(user, "选择一种颜色", "选择颜色", colorable_colors)
 			if(!color_selection)
 				return
 			if(islist(colorable_colors[color_selection]))
 				var/old_list = colorable_colors[color_selection]
-				color_selection = tgui_input_list(user, "Pick a color", "Pick color", old_list)
+				color_selection = tgui_input_list(user, "选择一种颜色", "选择颜色", old_list)
 				if(!color_selection)
 					return
 				new_color = old_list[color_selection]
@@ -1492,7 +1492,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 			new_color = input(user, "Pick a color", "Pick color") as null|color
 
 		if(HAIR_CONCEALING_CHANGE)
-			var/concealment_variant = tgui_input_list(user, "Choose how much hair you want to conceal?", "Hair Concealment", hair_concealing_variants)
+			var/concealment_variant = tgui_input_list(user, "选择你想遮盖多少毛发?", "毛发遮盖", hair_concealing_variants)
 			if(!concealment_variant || !do_after(user, 1 SECONDS, NONE, src, BUSY_ICON_GENERIC))
 				return
 
@@ -1528,7 +1528,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		secondaries[1].color_item(paint, user)
 		update_icon()
 		return
-	var/obj/item/selection = tgui_input_list(user, "Select secondary to color.", "Secondary Color Selection", secondaries)
+	var/obj/item/selection = tgui_input_list(user, "选择要染色的次要部位.", "次要颜色选择", secondaries)
 	if(!selection)
 		return
 	selection.color_item(paint, user)

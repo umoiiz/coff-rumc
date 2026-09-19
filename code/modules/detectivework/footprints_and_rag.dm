@@ -9,8 +9,8 @@
 	var/tied = SHOES_TIED
 
 /obj/item/reagent_containers/glass/rag
-	name = "damp rag"
-	desc = "For cleaning up messes, you suppose."
+	name = "湿抹布"
+	desc = "你想,是用来清理污渍的。"
 	w_class = WEIGHT_CLASS_TINY
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "rag"
@@ -24,7 +24,7 @@
 
 /obj/item/reagent_containers/glass/rag/attack(atom/target as obj|turf|area, mob/user as mob , flag)
 	if(ismob(target) && target.reagents && reagents.total_volume)
-		user.visible_message(span_warning("\The [target] has been smothered with \the [src] by \the [user]!"), span_warning("You smother \the [target] with \the [src]!"), "You hear some struggling and muffled cries of surprise")
+		user.visible_message(span_warning("\The [target]被\the [user]用\the [src]闷住了!"), span_warning("你用\the [src]闷住了\the [target]!"), "你听到一些挣扎声和被捂住的惊叫声")
 		src.reagents.reaction(target, TOUCH)
 		addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, clear_reagents)), 5)
 		return
@@ -34,8 +34,8 @@
 	if(!proximity)
 		return
 	if(istype(A) && (src in user))
-		user.visible_message("[user] starts to wipe down [A] with [src]!")
+		user.visible_message("[user]开始用[src]擦拭[A]!")
 		if(do_after(user, 3 SECONDS, NONE, A, , BUSY_ICON_GENERIC))
-			user.visible_message("[user] finishes wiping off the [A]!")
+			user.visible_message("[user]擦完了[A]!")
 			A.clean_blood()
 

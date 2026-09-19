@@ -145,7 +145,7 @@
 	smoke_system.set_up(effect_radius, target_turf)
 	smoke_system.start()
 	smoke_system = null
-	target_turf.visible_message(span_danger("The rocket explodes into white gas!") )
+	target_turf.visible_message(span_danger("火箭炸裂成一片白色气体!") )
 	playsound(target_turf, 'sound/weapons/guns/fire/flamethrower2.ogg', 50, 1, 4)
 	flame_radius(effect_radius, target_turf, 27, 27, 27, 17)
 
@@ -483,7 +483,7 @@
 	damage = 1
 
 /datum/ammo/rocket/toy/on_hit_mob(mob/target_mob,atom/movable/projectile/proj)
-	to_chat(target_mob, "<font size=6 color=red>NO BUGS</font>")
+	to_chat(target_mob, "<font size=6 color=red>没有虫子</font>")
 
 /datum/ammo/rocket/toy/on_hit_obj(obj/target_object,atom/movable/projectile/proj)
 	return

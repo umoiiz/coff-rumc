@@ -28,24 +28,24 @@
 	return SURGERY_CAN_USE
 
 /datum/surgery_step/cut_limb/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] is beginning to cut off [target]'s [affected.display_name] with \the [tool].") , \
-	span_notice("You are beginning to cut off [target]'s [affected.display_name] with \the [tool]."))
-	target.balloon_alert_to_viewers("Sawing...")
+	user.visible_message(span_notice("[user]正开始用\the [tool]切断[target]的[affected.display_name].") , \
+	span_notice("你正开始用\the [tool]切断[target]的[affected.display_name]."))
+	target.balloon_alert_to_viewers("锯切中...")
 	target.custom_pain("Your [affected.display_name] is being ripped apart!", 1)
 	return ..()
 
 /datum/surgery_step/cut_limb/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] cuts off [target]'s [affected.display_name] with \the [tool]."), \
-	span_notice("You cut off [target]'s [affected.display_name] with \the [tool]."))
-	target.balloon_alert_to_viewers("Success")
+	user.visible_message(span_notice("[user]用\the [tool]切断了[target]的[affected.display_name]."), \
+	span_notice("你用\the [tool]切断了[target]的[affected.display_name]."))
+	target.balloon_alert_to_viewers("成功")
 	affected.drop_limb(TRUE, silent = TRUE)
 	target.update_health()
 	return ..()
 
 /datum/surgery_step/generic/cut_limb/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_warning("[user]'s hand slips, sawing through the bone in [target]'s [affected.display_name] with \the [tool]!"), \
-	span_warning("Your hand slips, sawing through the bone in [target]'s [affected.display_name] with \the [tool]!"))
-	target.balloon_alert_to_viewers("Slipped!")
+	user.visible_message(span_warning("[user]的手一滑, 用\the [tool]锯穿了[target]的[affected.display_name]中的骨头!"), \
+	span_warning("你的手一滑, 用\the [tool]锯穿了[target]的[affected.display_name]中的骨头!"))
+	target.balloon_alert_to_viewers("失手!")
 	affected.createwound(CUT, 30)
 	affected.fracture()
 	affected.update_wounds()

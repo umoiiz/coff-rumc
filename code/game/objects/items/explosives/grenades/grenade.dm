@@ -1,6 +1,6 @@
 /obj/item/explosive/grenade
-	name = "\improper M40 HEDP grenade"
-	desc = "A small, but deceptively strong high explosive grenade that has been phasing out the M15 fragmentation grenades. Capable of being loaded in the any grenade launcher, or thrown by hand."
+	name = "\improper M40 HEDP榴弹"
+	desc = "一种小巧但威力出人意料地强的高爆榴弹，正在逐步取代M15破片榴弹。能够装填进任何榴弹发射器，或用手投掷。"
 	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/obj/items/grenade.dmi'
 	icon_state = "grenade"
@@ -55,16 +55,16 @@
 		return
 
 	if(!user.dextrous)
-		balloon_alert(user, "not enough dexterity")
+		balloon_alert(user, "敏捷度不足")
 		return
 
 	if(issynth(user) && dangerous && !CONFIG_GET(flag/allow_synthetic_gun_use))
-		balloon_alert(user, "can't, against your programming")
+		balloon_alert(user, "不能，与你的程序设定相悖")
 		return
 
 	activate(user)
 
-	balloon_alert_to_viewers("primes grenade")
+	balloon_alert_to_viewers("引爆榴弹")
 	if(dangerous && ishumanbasic(user))
 		var/nade_sound = user.gender == FEMALE ? SFX_FEMALE_FRAGOUT : SFX_MALE_FRAGOUT
 
@@ -122,8 +122,8 @@
 			idiot.amputate_limb(BODY_ZONE_PRECISE_R_HAND)
 			in_hand = TRUE
 		if(in_hand)
-			idiot.visible_message(span_danger("[idiot]'s hand is blown into tiny pieces by [src]!"),
-			span_userdanger("You feel incredible pain and stupidity as [src] blows your hand up."))
+			idiot.visible_message(span_danger("[idiot]的手被[src]炸成了碎片！"),
+			span_userdanger("当[src]炸掉你的手时，你感到难以置信的痛苦和愚蠢。"))
 			idiot.emote("scream")
 			var/datum/personal_statistics/personal_statistics = GLOB.personal_statistics_list[idiot.ckey]
 			personal_statistics.grenade_hand_delimbs ++

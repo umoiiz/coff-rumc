@@ -1,5 +1,5 @@
 /obj/structure/bookcase
-	name = "bookcase"
+	name = "书架"
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "book-0"
 	max_integrity = 200
@@ -41,7 +41,7 @@
 	if(.)
 		return
 	if(length(contents))
-		var/obj/item/book/choice = tgui_input_list(user, "Which book would you like to remove from the shelf?", null, contents)
+		var/obj/item/book/choice = tgui_input_list(user, "你想从书架上取下哪本书？", null, contents)
 		if(choice)
 			if(!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
 				return
@@ -69,7 +69,7 @@
 		icon_state = "book-5"
 
 /obj/structure/bookcase/manuals/medical
-	name = "Medical Manuals bookcase"
+	name = "医疗手册书架"
 
 /obj/structure/bookcase/manuals/medical/Initialize(mapload)
 	. = ..()
@@ -80,7 +80,7 @@
 	update_icon()
 
 /obj/structure/bookcase/manuals/engineering
-	name = "Engineering Manuals bookcase"
+	name = "工程手册书架"
 
 /obj/structure/bookcase/manuals/engineering/Initialize(mapload)
 	. = ..()
@@ -94,7 +94,7 @@
 	update_icon()
 
 /obj/structure/bookcase/manuals/research_and_development
-	name = "R&D Manuals bookcase"
+	name = "研发手册书架"
 
 /obj/structure/bookcase/manuals/research_and_development/Initialize(mapload)
 	. = ..()

@@ -58,8 +58,8 @@
 			return /obj/item/weapon/gun/sentry/flamer
 
 /obj/item/sentry_upgrade_kit
-	name = "Набор улучшения TUR-B"
-	desc = "Набор инструментов, используемый для улучшения базовой модели турелей."
+	name = "TUR-B升级套件"
+	desc = "用于升级基础型号炮塔的工具套件."
 
 	icon = 'icons/obj/sentry.dmi'
 	icon_state = "upgradekit"
@@ -83,7 +83,7 @@
 		return
 
 	if((user.get_active_held_item()) != src)
-		to_chat(user, span_warning("You must be holding [src] to upgrade [sentry]!"))
+		to_chat(user, span_warning("你必须手持[src]才能升级[sentry]!"))
 		return
 
 	var/type_to_change_to = sentry.upgrade_string_to_type(chosen_upgrade)
@@ -109,8 +109,8 @@
 	qdel(src)
 
 /obj/item/weapon/gun/sentry/basic
-	name = "\improper Турель TUR-B \"Базис\""
-	desc = "Развёртываемая автоматическая турель, имеет встроенный ИИ. Не имеет каких-либо модификаций. Ведёт эффективный и точный огонь."
+	name = "\improper TUR-B炮塔 \"基础型\""
+	desc = "可部署的自动炮塔,内置AI.没有任何改装.能进行高效精准的射击."
 	icon_state = "sentry"
 	worn_icon_state = "sentry"
 
@@ -133,8 +133,8 @@
 	)
 
 /obj/item/weapon/gun/sentry/pod_sentry
-	name = "\improper Турель TUR-B \"Базис\""
-	desc = "Развёртываемая автоматическая турель со встроенным ИИ. Не имеет каких-либо модификаций. Ведёт эффективный и точный огонь."
+	name = "\improper TUR-B炮塔 \"基础型\""
+	desc = "可部署的自动炮塔,内置AI.没有任何改装.能进行高效精准的射击."
 	icon_state = "podsentry"
 	turret_flags = TURRET_HAS_CAMERA|TURRET_ALERTS|TURRET_RADIAL
 	deploy_flags = IS_DEPLOYABLE|DEPLOY_ON_INITIALIZE|DEPLOYED_NO_PICKUP
@@ -153,8 +153,8 @@
 
 //thrown SOM sentry
 /obj/item/weapon/gun/energy/lasgun/lasrifle/volkite/cope
-	name = "\improper Турель COPE"
-	desc = "The Centurion Omnidirectional Point-defense Energy sentry is a man portable, automated weapon system utilised by the SOM. It is activated in hand then thrown into place before it deploys, where it's ground hugging profile makes it a difficult target to accurately hit. Equipped with a compact volkite weapon system, and a recharging battery to allow for prolonged use, but can take normal volkite cells in a pinch."
+	name = "\improper COPE炮塔"
+	desc = "百夫长全向点防御能量哨戒炮是火星之子使用的一种单兵便携式自动武器系统.先在手中激活,然后投掷到位进行部署,其贴地外形使其难以被准确命中.配备紧凑型沃尔凯特武器系统和可充电电池以支持长时间使用,但在紧急情况下也可使用普通沃尔凯特电池."
 	icon_state = "cope"
 	icon = 'icons/obj/sentry.dmi'
 	max_integrity = 225
@@ -193,13 +193,13 @@
 		return
 
 	if(!user.dextrous)
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("你没有足够的灵巧度来完成这个动作!"))
 		return
 
 	activate(user)
 
-	user.visible_message(span_warning("[user] primes \a [name]!"), \
-	span_warning("You prime \a [name]!"))
+	user.visible_message(span_warning("[user]启动\a [name]!"), \
+	span_warning("你启动了\a [name]!"))
 
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
@@ -282,8 +282,8 @@
 	allowed_ammo_types = list(/obj/item/ammo_magazine/sentry/fob_sentry)
 
 /obj/item/weapon/gun/sentry/mini
-	name = "\improper Турель TUR-M \"Гном\""
-	desc = "Развёртываемая автоматическая турель, имеет встроенный ИИ. Установлена модификация с уменьшением габаритов и калибра, крайне лёгок в установке."
+	name = "\improper TUR-M炮塔 \"侏儒\""
+	desc = "可部署的自动炮塔,内置AI.安装了缩小尺寸和口径的改装,部署极其轻便."
 	icon_state = "minisentry"
 	worn_icon_state = "sentry"
 
@@ -310,8 +310,8 @@
 	turret_flags = TURRET_HAS_CAMERA|TURRET_ALERTS
 
 /obj/item/weapon/gun/sentry/premade
-	name = "SG-577 Gauss Turret"
-	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an armor penetrating MIC Gauss Cannon and a high-capacity drum magazine."
+	name = "SG-577高斯炮塔"
+	desc = "可部署的半自动炮塔,具备AI瞄准能力.配备一门穿甲MIC高斯炮和大容量弹鼓."
 	icon_state = "sentry"
 	turret_flags = TURRET_HAS_CAMERA|TURRET_ON|TURRET_IMMOBILE|TURRET_SAFETY|TURRET_RADIAL
 	max_shells = 100
@@ -325,8 +325,8 @@
 	deploy_flags = IS_DEPLOYABLE|DEPLOYED_NO_PICKUP|DEPLOY_ON_INITIALIZE
 
 /obj/item/weapon/gun/sentry/premade/dumb
-	name = "\improper Modified ST-571 sentry gun"
-	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 500-round drum magazine. This one's IFF system has been disabled, and it will open fire on any targets within range."
+	name = "\improper 改装型ST-571哨戒炮"
+	desc = "可部署的半自动炮塔,具备AI瞄准能力.配备一门M30机炮和500发弹鼓.此台的敌我识别系统已被禁用,会向射程内的任何目标开火."
 	gun_features_flags = GUN_AMMO_COUNTER|GUN_DEPLOYED_FIRE_ONLY|GUN_WIELDED_FIRING_ONLY|GUN_SMOKE_PARTICLES
 	ammo_datum_type = /datum/ammo/bullet/turret/dumb
 	default_ammo_type = /obj/item/ammo_magazine/sentry_premade/dumb
@@ -335,21 +335,21 @@
 	turret_flags = TURRET_ON|TURRET_IMMOBILE|TURRET_SAFETY|TURRET_RADIAL
 
 /obj/item/weapon/gun/sentry/premade/dumb/hostile
-	name = "malfunctioning ST-571 sentry gun"
-	desc = "Oh god oh fuck."
+	name = "故障的ST-571哨戒炮"
+	desc = "天哪,完蛋了."
 	turret_flags = TURRET_LOCKED|TURRET_ON|TURRET_IMMOBILE|TURRET_RADIAL
 	sentry_iff_signal = NONE
 
 /obj/item/weapon/gun/sentry/premade/canterbury
-	name = "SG-577 Gauss Dropship Turret"
+	name = "SG-577高斯运输机炮塔"
 	ammo_datum_type = /datum/ammo/bullet/turret
 	sentry_iff_signal = TGMC_LOYALIST_IFF
 
 // Sniper Sentry
 
 /obj/item/weapon/gun/sentry/sniper
-	name = "\improper Турель TUR-SN \"Оса\""
-	desc = "Развёртываемая автоматическая турель, имеет встроенный ИИ. Установлена модификация для ведения огня большим калибром на дальние дистанции."
+	name = "\improper TUR-SN炮塔 \"黄蜂\""
+	desc = "可部署的自动炮塔,内置AI.安装了用于远距离大口径射击的改装."
 	icon_state = "sentry_sniper"
 	worn_icon_state = "sentry"
 
@@ -377,8 +377,8 @@
 // Shotgun Sentry
 
 /obj/item/weapon/gun/sentry/shotgun
-	name = "\improper Турель TUR-SH \"Бык\""
-	desc = "Развёртываемая автоматическая турель, имеет встроенный ИИ. Установлена модификация для ведения массивного огня на ближние дистанции."
+	name = "\improper TUR-SH炮塔 \"公牛\""
+	desc = "可部署的自动炮塔,内置AI.安装了用于近距离猛烈射击的改装."
 	icon_state = "sentry_shotgun"
 	worn_icon_state = "sentry"
 
@@ -409,8 +409,8 @@
 // Flamer Sentry
 
 /obj/item/weapon/gun/sentry/flamer
-	name = "\improper Турель TUR-F \"Феникс\""
-	desc = "Развёртываемая автоматическая турель, имеет встроенный ИИ. Установлена модификация для ведения огня подожёнными сгустками горючего."
+	name = "\improper TUR-F炮塔 \"凤凰\""
+	desc = "可部署的自动炮塔,内置人工智能.已安装改装件,用于发射燃烧的燃料团."
 	icon_state = "sentry_flamer"
 	worn_icon_state = "sentry"
 
@@ -436,8 +436,8 @@
 // Peashooter
 
 /obj/item/weapon/gun/sentry/sniper/pea
-	name = "\improper Горохострел"
-	desc = "Развёртываемая автоматическая... турель? Стреляет горохом по неприятелю."
+	name = "\improper 豌豆射手"
+	desc = "可部署的自动...炮塔?向敌人发射豌豆."
 	icon_state = "sentry_peashooter"
 	worn_icon_state = "sentry"
 

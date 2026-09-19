@@ -18,19 +18,19 @@
 	SIGNAL_HANDLER
 	if(current_flayer)
 		if(current_flayer != user)
-			to_chat(user, span_warning("You can't flay [target], [current_flayer] is already at work!"))
+			to_chat(user, span_warning("你无法剥取[target], [current_flayer]已经在进行了!"))
 	else
 		current_flayer = user
 		if(!ongoing_attempt)
 			playsound(user.loc, 'sound/weapons/pierce.ogg', 25)
-			user.visible_message(span_danger("<B>[user] resumes the flaying of [victim] with \a [tool]...</B>"),
-				span_danger("<B>You resume the flaying of [victim] with your [tool.name]...</B>"))
+			user.visible_message(span_danger("<B>[user]用\a [tool]继续剥取[victim]...</B>"),
+				span_danger("<B>你用自己的[tool.name]继续剥取[victim]...</B>"))
 		INVOKE_ASYNC(src, PROC_REF(flay), target, user, tool) //do_after sleeps.
 	return COMPONENT_ITEM_NO_ATTACK
 
 /datum/flaying_datum/proc/flay(mob/living/carbon/human/target, mob/living/carbon/human/user, obj/item/tool)
 	if(!do_after(user, 4 SECONDS, NONE, victim, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE))
-		to_chat(user, span_warning("You were interrupted before you could finish your work!"))
+		to_chat(user, span_warning("你在完成工作之前被打断了!"))
 		current_flayer = null
 		return
 
@@ -41,26 +41,26 @@
 			var/datum/limb/head/v_head = victim.get_limb("head")
 			if(!v_head || (v_head.limb_status & LIMB_DESTROYED)) //they might be beheaded
 				victim.apply_damage(10, BRUTE, "chest", sharp = TRUE)
-				user.visible_message(span_danger("<B>[user] peels the skin around the stump of [victim]'s head loose with \the [tool].</B>"),
-					span_danger("<B>[victim] is missing \his head. Pelts like this just aren't the same... You peel the skin around the stump loose with your [tool.name].</B>"))
+				user.visible_message(span_danger("<B>[user]用\the [tool]剥开了[victim]头部残端周围的皮肤.</B>"),
+					span_danger("<B>[victim]缺少\his 的头部. 这样的毛皮就是不一样... 你用自己的[tool.name]剥开了残端周围的皮肤.</B>"))
 			else
 				victim.apply_damage(10, BRUTE, v_head, sharp = TRUE)
 				v_head.disfigured = TRUE
 				create_leftovers(victim, has_meat = FALSE, skin_amount = 1)
 				if(victim.h_style == "Bald") //you can't scalp someone with no hair.
-					user.visible_message(span_danger("<B>[user] makes some rough cuts on [victim]'s head and face with \a [tool].</B>"),
-						span_danger("<B>You make some rough cuts on [victim]'s head and face.</B>"))
+					user.visible_message(span_danger("<B>[user]用\a [tool]在[victim]的头部和面部上粗略地划了几刀.</B>"),
+						span_danger("<B>你在[victim]的头部和面部上粗略地划了几刀.</B>"))
 				else
-					user.visible_message(span_danger("<B>[user] cuts around [victim]'s hairline, then tears \his scalp from \his head!</B>"),
-						span_danger("<B>You cut around [victim]'s hairline, then rip \his scalp from \his head.</B>"))
+					user.visible_message(span_danger("<B>[user]沿着[victim]的发际线切开, 然后将\his 的头皮从\his 头上撕下!</B>"),
+						span_danger("<B>你沿着[victim]的发际线切开, 然后将\his 的头皮从\his 头上撕下.</B>"))
 					var/obj/item/scalp/cut_scalp = new(get_turf(user), victim, user) //Create a scalp of the victim at the user's feet.
 					user.put_in_inactive_hand(cut_scalp) //Put it in the user's offhand if possible.
 					victim.h_style = "Bald"
 					victim.update_hair() //tear the hair off with the scalp
 
 		if(FLAY_STAGE_STRIP)
-			user.visible_message(span_danger("<B>[user] jabs \his [tool.name] into [victim]'s cuts, prying, cutting, then tearing off large areas of skin. The remainder hangs loosely.</B>"),
-				span_danger("<B>You jab your [tool.name] into [victim]'s cuts, prying, cutting, then tearing off large areas of skin. The remainder hangs loosely.</B>"))
+			user.visible_message(span_danger("<B>[user]将\his 的[tool.name]刺入[victim]的切口中, 撬开, 切割, 然后撕下大面积的皮肤. 剩余部分松散地悬挂着.</B>"),
+				span_danger("<B>你将你的[tool.name]刺入[victim]的切口中, 撬开, 切割, 然后撕下大面积的皮肤. 剩余部分松散地悬挂着.</B>"))
 			playsound(user.loc, 'sound/weapons/bladeslice.ogg', 25)
 			create_leftovers(victim, has_meat = FALSE, skin_amount = 3)
 			flaying_stage = FLAY_STAGE_SKIN
@@ -73,8 +73,8 @@
 			victim.add_flay_overlay(stage = 2)
 
 		if(FLAY_STAGE_SKIN)
-			user.visible_message(span_danger("<B>[user] completely flays [victim], pulling the remaining skin off of \his body like a glove!</B>"),
-				span_danger("<B>You completely flay [victim], pulling the remaining skin off of \his body like a glove.\nUse rope to hang \him from the ceiling.</B>"))
+			user.visible_message(span_danger("<B>[user]完全剥下了[victim]的皮, 像脱手套一样将剩余的皮肤从\his 身体上扯下!</B>"),
+				span_danger("<B>你完全剥下了[victim]的皮, 像脱手套一样将剩余的皮肤从\his 身体上扯下.\nUse绳子将\him 悬挂在天花板上.</B>"))
 			playsound(user.loc, 'sound/weapons/wristblades_hit.ogg', 25)
 			create_leftovers(victim, has_meat = TRUE, skin_amount = 2)
 			for(var/limb in victim.limbs)

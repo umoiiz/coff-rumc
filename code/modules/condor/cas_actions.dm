@@ -21,10 +21,10 @@
 /datum/action/innate/jump_to_lase/Activate()
 	if(!plane?.eyeobj)
 		return
-	var/obj/effect/overlay/temp/laser_target/caspoint = tgui_input_list(usr, "Select a CAS target", "CAS Targeting", GLOB.active_cas_targets)
+	var/obj/effect/overlay/temp/laser_target/caspoint = tgui_input_list(usr, "选择CAS目标", "CAS瞄准", GLOB.active_cas_targets)
 	if(QDELETED(caspoint))
-		to_chat(usr, span_warning("That marker has expired."))
+		to_chat(usr, span_warning("该标记已过期."))
 		return
 
-	to_chat(usr, span_notice("Jumped to [caspoint]."))
+	to_chat(usr, span_notice("已跳转至[caspoint]."))
 	plane.eyeobj.setLoc(get_turf(caspoint))

@@ -1,6 +1,6 @@
 /obj/machinery/computer/security
 	name = "security camera console"
-	desc = "Used to access the various cameras on the station."
+	desc = "用于访问空间站上的各种摄像头."
 	icon_state = "computer_small"
 	screen_overlay = "cameras"
 	broken_icon = "computer_small_red_broken"
@@ -95,7 +95,7 @@
 	if(!istype(user))
 		return
 	var/list/camera_list = get_available_cameras()
-	var/t = tgui_input_list(user, "Which camera should you change to?", null, camera_list)
+	var/t = tgui_input_list(user, "你要切换到哪个摄像头?", null, camera_list)
 	if(!t)
 		user.unset_interaction()
 		playsound(src, 'sound/machines/terminal_off.ogg', 25, 0)
@@ -160,7 +160,7 @@
 
 /obj/machinery/computer/security/telescreen
 	name = "Telescreen"
-	desc = "Used for watching an empty arena."
+	desc = "用于观看空荡荡的竞技场."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "telescreen"
 	screen_overlay = null
@@ -178,14 +178,14 @@
 
 /obj/machinery/computer/security/telescreen/entertainment
 	name = "entertainment monitor"
-	desc = "Damn, why do they never have anything interesting on these things?"
+	desc = "该死,为什么这些东西上从来都没有什么有趣的内容?"
 	icon = 'icons/obj/status_display.dmi'
 	icon_state = "entertainment"
 	circuit = null
 
 /obj/machinery/computer/security/wooden_tv
 	name = "Security Cameras"
-	desc = "An old TV hooked into the stations camera network."
+	desc = "一台接入空间站摄像头网络的旧电视."
 	icon_state = "security_det"
 	screen_overlay = "security_det_screen"
 	circuit = null
@@ -193,7 +193,7 @@
 
 /obj/machinery/computer/security/mining
 	name = "Outpost Cameras"
-	desc = "Used to access the various cameras on the outpost."
+	desc = "用于访问前哨站上的各种摄像头."
 	icon_state = "computer"
 	screen_overlay = "miningcameras"
 	broken_icon = "computer_blue_broken"
@@ -202,7 +202,7 @@
 
 /obj/machinery/computer/security/engineering
 	name = "Engineering Cameras"
-	desc = "Used to monitor fires and breaches."
+	desc = "用于监控火灾和破损."
 	icon_state = "computer"
 	screen_overlay = "engineeringcameras"
 	broken_icon = "computer_blue_broken"
@@ -211,7 +211,7 @@
 
 /obj/machinery/computer/security/nuclear
 	name = "Mission Monitor"
-	desc = "Used to access the built-in cameras in helmets."
+	desc = "用于访问头盔中的内置摄像头."
 	icon_state = "computer"
 	screen_overlay = "syndicam"
 	network = list("NUKE")
@@ -234,7 +234,7 @@
 
 /obj/machinery/computer/security/dropship
 	name = "abstract dropship camera computer"
-	desc = "A computer to monitor cameras linked to the dropship."
+	desc = "一台用于监控与运输机相连摄像头的电脑."
 	density = TRUE
 	icon = 'icons/obj/machines/shuttle_console.dmi'
 	icon_state = "consoleleft"

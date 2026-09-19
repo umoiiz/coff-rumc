@@ -1,6 +1,6 @@
 /obj/machinery/door/window
 	name = "interior door"
-	desc = "A strong door."
+	desc = "一扇坚固的门."
 	icon = 'icons/obj/doors/windoor.dmi'
 	icon_state = "left"
 	layer = ABOVE_WINDOW_LAYER
@@ -18,7 +18,7 @@
 
 /obj/machinery/door/window/secure
 	name = "Secure Door"
-	desc = "A strong, secure door."
+	desc = "一扇坚固且安全的门."
 	icon_state = "leftsecure"
 	base_state = "leftsecure"
 	max_integrity = 100
@@ -133,10 +133,10 @@
 	if(operating)
 		return
 	playsound(loc, 'sound/items/crowbar.ogg', 25, 1)
-	user.visible_message("[user] starts to remove the electronics from the windoor.", "You start to remove electronics from the windoor.")
+	user.visible_message("[user]开始拆除风门的电子元件.", "你开始拆除风门的电子元件.")
 	if(!do_after(user, 40, NONE, src, BUSY_ICON_BUILD))
 		return
-	to_chat(user, span_notice("You removed the windoor electronics!"))
+	to_chat(user, span_notice("你拆除了风门的电子元件!"))
 	var/obj/structure/windoor_assembly/WA = new(loc)
 	if(istype(src, /obj/machinery/door/window/secure))
 		WA.secure = "secure_"

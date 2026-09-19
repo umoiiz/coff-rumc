@@ -182,7 +182,7 @@
 	if(incoming_damage > parent_item.obj_integrity)
 		return_damage += incoming_damage - parent_item.obj_integrity //if we destroy the shield item, extra damage spills over
 	if(!silent)
-		to_chat(affected, span_avoidharm("\The [parent_item.name] [. ? "softens" : "soaks"] the damage!"))
+		to_chat(affected, span_avoidharm("\The [parent_item.name][. ? "softens" : "soaks"]了伤害!"))
 	parent_item.take_damage(incoming_damage)
 	return return_damage
 
@@ -249,7 +249,7 @@
 		unabsorbed_damage += absorbing_damage - shield_integrity
 	if(!silent)
 		var/obj/item/parent_item = parent
-		to_chat(affected, span_avoidharm("\The [parent_item.name] [. ? "softens" : "soaks"] the damage!"))
+		to_chat(affected, span_avoidharm("\The [parent_item.name][. ? "softens" : "soaks"]了伤害!"))
 	damage_overhealth(absorbing_damage)
 	return unabsorbed_damage
 

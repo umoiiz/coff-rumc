@@ -1,6 +1,6 @@
 //Seed packet object/procs.
 /obj/item/seeds
-	name = "packet of seeds"
+	name = "一包种子"
 	icon = 'icons/obj/items/seeds.dmi'
 	icon_state = "seed"
 	atom_flags = NONE
@@ -33,143 +33,143 @@
 	desc = "It has a picture of [seed.display_name] on the front."
 
 /obj/item/seeds/poppyseed
-	name = "poppy seed"
+	name = "罂粟种子"
 	seed_type = "poppies"
 
 /obj/item/seeds/chiliseed
-	name = "chili seed"
+	name = "辣椒种子"
 	seed_type = "chili"
 
 /obj/item/seeds/plastiseed
-	name = "plastic seed"
+	name = "塑料种子"
 	seed_type = "plastic"
 
 /obj/item/seeds/grapeseed
-	name = "grape seed"
+	name = "葡萄种子"
 	seed_type = "grapes"
 
 /obj/item/seeds/greengrapeseed
-	name = "green grape seed"
+	name = "绿葡萄种子"
 	seed_type = "greengrapes"
 
 /obj/item/seeds/peanutseed
-	name = "peanut seed"
+	name = "花生种子"
 	seed_type = "peanut"
 
 /obj/item/seeds/cabbageseed
-	name = "cabbage seed"
+	name = "卷心菜种子"
 	seed_type = "cabbage"
 
 /obj/item/seeds/berryseed
-	name = "berry seed"
+	name = "浆果种子"
 	seed_type = "berries"
 
 /obj/item/seeds/glowberryseed
-	name = "glowberry seed"
+	name = "发光浆果种子"
 	seed_type = "glowberries"
 
 /obj/item/seeds/bananaseed
-	name = "banana seed"
+	name = "香蕉种子"
 	seed_type = "banana"
 
 /obj/item/seeds/eggplantseed
-	name = "eggplant seed"
+	name = "茄子种子"
 	seed_type = "eggplant"
 
 /obj/item/seeds/eggyseed
-	name = "eggplant seed"
+	name = "茄子种子"
 	seed_type = "realeggplant"
 
 /obj/item/seeds/bloodtomatoseed
-	name = "blood tomato seed"
+	name = "血番茄种子"
 	seed_type = "bloodtomato"
 
 /obj/item/seeds/tomatoseed
-	name = "tomato seed"
+	name = "番茄种子"
 	seed_type = "tomato"
 
 /obj/item/seeds/killertomatoseed
-	name = "tomato seed"
+	name = "番茄种子"
 	seed_type = "killertomato"
 
 /obj/item/seeds/bluetomatoseed
-	name = "blue tomato seed"
+	name = "蓝番茄种子"
 	seed_type = "bluetomato"
 
 /obj/item/seeds/bluespacetomatoseed
-	name = "bluespace tomato seed"
+	name = "蓝空间番茄种子"
 	seed_type = "bluespacetomato"
 
 /obj/item/seeds/cornseed
-	name = "corn seed"
+	name = "玉米种子"
 	seed_type = "corn"
 
 /obj/item/seeds/potatoseed
-	name = "potato seed"
+	name = "土豆种子"
 	seed_type = "potato"
 
 /obj/item/seeds/icepepperseed
-	name = "ice chili seed"
+	name = "冰辣椒种子"
 	seed_type = "icechili"
 
 /obj/item/seeds/soyaseed
-	name = "soybean seed"
+	name = "大豆种子"
 	seed_type = "soybean"
 
 /obj/item/seeds/wheatseed
-	name = "wheat seed"
+	name = "小麦种子"
 	seed_type = "wheat"
 
 /obj/item/seeds/riceseed
-	name = "rice seed"
+	name = "水稻种子"
 	seed_type = "rice"
 
 /obj/item/seeds/carrotseed
-	name = "carrot seed"
+	name = "胡萝卜种子"
 	seed_type = "carrot"
 
 /obj/item/seeds/reishimycelium
-	name = "reishi mycelium seed"
+	name = "灵芝菌丝种子"
 	seed_type = "reishi"
 
 /obj/item/seeds/amanitamycelium
-	name = "amanita seed"
+	name = "鹅膏菌种子"
 	seed_type = "amanita"
 
 /obj/item/seeds/angelmycelium
-	name = "angel mycelium seed"
+	name = "天使菌丝种子"
 	seed_type = "destroyingangel"
 
 /obj/item/seeds/libertymycelium
-	name = "liberty cap seed"
+	name = "自由帽种子"
 	seed_type = "libertycap"
 
 /obj/item/seeds/chantermycelium
-	name = "mushroom seed"
+	name = "蘑菇种子"
 	seed_type = "mushrooms"
 
 /obj/item/seeds/towermycelium
-	name = "tower-cap seed"
+	name = "高塔帽种子"
 	seed_type = "towercap"
 
 /obj/item/seeds/glowshroom
-	name = "glowshroom seed"
+	name = "发光蘑菇种子"
 	seed_type = "glowshroom"
 
 /obj/item/seeds/plumpmycelium
-	name = "plumphelmet seed"
+	name = "丰胄菇种子"
 	seed_type = "plumphelmet"
 
 /obj/item/seeds/walkingmushroommycelium
-	name = "walking mushroom seed"
+	name = "行走蘑菇种子"
 	seed_type = "walkingmushroom"
 
 /obj/item/seeds/nettleseed
-	name = "nettle seed"
+	name = "荨麻种子"
 	seed_type = "nettle"
 
 /obj/item/seeds/deathnettleseed
-	name = "deathnettle seed"
+	name = "死亡荨麻种子"
 	seed_type = "deathnettle"
 
 /obj/item/seeds/weeds
@@ -179,22 +179,22 @@
 	seed_type = "harebells"
 
 /obj/item/seeds/sunflowerseed
-	name = "sunflower seed"
+	name = "向日葵种子"
 	seed_type = "sunflowers"
 
 /obj/item/seeds/brownmold
-	name = "brownmold seed"
+	name = "褐霉菌种子"
 	seed_type = "mold"
 
 /obj/item/seeds/appleseed
-	name = "apple seed"
+	name = "苹果种子"
 	seed_type = "apple"
 
 /obj/item/seeds/poisonedappleseed
 	seed_type = "poisonapple"
 
 /obj/item/seeds/goldappleseed
-	name = "goldenapple seed"
+	name = "金苹果种子"
 	seed_type = "goldapple"
 
 /obj/item/seeds/ambrosiavulgarisseed
@@ -204,31 +204,31 @@
 	seed_type = "ambrosiadeus"
 
 /obj/item/seeds/whitebeetseed
-	name = "whitebeet seed"
+	name = "白甜菜种子"
 	seed_type = "whitebeet"
 
 /obj/item/seeds/sugarcaneseed
-	name = "sugarcane seed"
+	name = "甘蔗种子"
 	seed_type = "sugarcane"
 
 /obj/item/seeds/watermelonseed
-	name = "watermelon seed"
+	name = "西瓜种子"
 	seed_type = "watermelon"
 
 /obj/item/seeds/pumpkinseed
-	name = "pumpkin seed"
+	name = "南瓜种子"
 	seed_type = "pumpkin"
 
 /obj/item/seeds/limeseed
-	name = "lime seed"
+	name = "青柠种子"
 	seed_type = "lime"
 
 /obj/item/seeds/lemonseed
-	name = "lemon seed"
+	name = "柠檬种子"
 	seed_type = "lemon"
 
 /obj/item/seeds/orangeseed
-	name = "orange seed"
+	name = "橙子种子"
 	seed_type = "orange"
 
 /obj/item/seeds/poisonberryseed
@@ -238,15 +238,15 @@
 	seed_type = "deathberries"
 
 /obj/item/seeds/grassseed
-	name = "grass seed"
+	name = "草种子"
 	seed_type = "grass"
 
 /obj/item/seeds/cocoapodseed
-	name = "cocoa seed"
+	name = "可可种子"
 	seed_type = "cocoa"
 
 /obj/item/seeds/cherryseed
-	name = "cherry seed"
+	name = "樱桃种子"
 	seed_type = "cherry"
 
 /obj/item/seeds/kudzuseed

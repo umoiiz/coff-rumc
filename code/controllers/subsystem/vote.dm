@@ -170,7 +170,7 @@ SUBSYSTEM_DEF(vote)
 			// No delay in case the restart is due to lag
 			SSticker.Reboot("Restart vote successful.", "restart vote", 1)
 		else
-			to_chat(world, "<span style='boltnotice'>Notice:Restart vote will not restart the server automatically because there are active admins on.</span>")
+			to_chat(world, "<span style='boltnotice'>注意:重启投票不会自动重启服务器,因为有活跃的管理员在线.</span>")
 			message_admins("A restart vote has passed, but there are active admins on with +SERVER, so it has been canceled. If you wish, you may restart the server.")
 
 /// Register the vote of one player
@@ -205,7 +205,7 @@ SUBSYSTEM_DEF(vote)
 /datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key, ignore_delay = FALSE, popup_override = FALSE)
 	//Server is still intializing.
 	if(!MC_RUNNING(init_stage))
-		to_chat(usr, span_warning("Cannot start vote, server is not done initializing."))
+		to_chat(usr, span_warning("无法发起投票,服务器尚未完成初始化."))
 		return FALSE
 	var/lower_admin = FALSE
 	if(initiator_key)
@@ -219,10 +219,10 @@ SUBSYSTEM_DEF(vote)
 		if(started_time && !ignore_delay)
 			var/next_allowed_time = (started_time + CONFIG_GET(number/vote_delay))
 			if(mode)
-				to_chat(usr, span_warning("There is already a vote in progress! please wait for it to finish."))
+				to_chat(usr, span_warning("已经有一个投票正在进行中! 请等待其结束."))
 				return FALSE
 			if(next_allowed_time > world.time && !lower_admin)
-				to_chat(usr, span_warning("A vote was initiated recently, you must wait [DisplayTimeText(next_allowed_time-world.time)] before a new vote can be started!"))
+				to_chat(usr, span_warning("最近已经发起过一次投票,你必须等待[DisplayTimeText(next_allowed_time-world.time)]才能发起新的投票!"))
 				return FALSE
 
 		reset()
@@ -243,7 +243,7 @@ SUBSYSTEM_DEF(vote)
 			if("groundmap")
 				multiple_vote = TRUE
 				if(!lower_admin && SSmapping.groundmap_voted)
-					to_chat(usr, span_warning("The next ground map has already been selected."))
+					to_chat(usr, span_warning("下一张地面地图已经被选定."))
 					return FALSE
 				var/datum/game_mode/next_gamemode = config.pick_mode(trim(file2text("data/mode.txt")))
 				var/list/maps = list()
@@ -280,12 +280,12 @@ SUBSYSTEM_DEF(vote)
 					if(!option || mode || !usr.client)
 						break
 					choices.Add(option)
-				multiple_vote = tgui_alert(usr, "Allow multiple voting?", "Multiple voting", list("Yes", "No")) == "Yes" ? TRUE : FALSE
-				forced_popup = tgui_alert(usr, "Pop the screen up for everyone?", "Pop up?", list("Yes", "No")) == "Yes" ? TRUE : FALSE
+				multiple_vote = tgui_alert(usr, "允许多选投票?", "多选投票", list("Yes", "No")) == "Yes" ? TRUE : FALSE
+				forced_popup = tgui_alert(usr, "为所有人弹出屏幕?", "弹出?", list("Yes", "No")) == "Yes" ? TRUE : FALSE
 			else
 				return FALSE
 		if(!length(choices))
-			to_chat(usr, span_warning("No choices available for that vote"))
+			to_chat(usr, span_warning("该投票没有可用的选项"))
 			reset()
 			return FALSE
 		mode = vote_type

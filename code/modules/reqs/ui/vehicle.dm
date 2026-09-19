@@ -163,7 +163,7 @@ GLOBAL_LIST_EMPTY(purchased_tanks)
 			var/obj/vehicle/sealed/armored/tank_type = newtype
 			var/is_assault = initial(tank_type.armored_flags) & ARMORED_PURCHASABLE_ASSAULT
 			if(GLOB.purchased_tanks[usr.faction]?["[is_assault]"])
-				to_chat(usr, span_danger("A vehicle of this type has already been purchased!"))
+				to_chat(usr, span_danger("此类载具已被购买!"))
 				return
 			current_veh_type = newtype
 			current_primary = null

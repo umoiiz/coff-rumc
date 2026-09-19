@@ -72,24 +72,24 @@ export const Cryo = () => {
   return (
     <Window width={400} height={550}>
       <Window.Content scrollable>
-        <Section title="Occupant">
+        <Section title="乘员">
           <LabeledList>
-            <LabeledList.Item label="Occupant">
+            <LabeledList.Item label="乘员">
               {occupant.name || 'No Occupant'}
             </LabeledList.Item>
             {!!occupant && (
               <>
-                <LabeledList.Item label="State" color={occupant.statstate}>
+                <LabeledList.Item label="状态" color={occupant.statstate}>
                   {occupant.stat}
                 </LabeledList.Item>
                 <LabeledList.Item
-                  label="Temperature"
+                  label="温度"
                   color={occupant.temperaturestatus}
                 >
                   <AnimatedNumber value={occupant.bodyTemperature} />
                   {' K'}
                 </LabeledList.Item>
-                <LabeledList.Item label="Health">
+                <LabeledList.Item label="生命值">
                   <ProgressBar
                     value={occupant.health / occupant.maxHealth}
                     color={occupant.health > 0 ? 'good' : 'average'}
@@ -111,9 +111,9 @@ export const Cryo = () => {
             )}
           </LabeledList>
         </Section>
-        <Section title="Cell">
+        <Section title="细胞">
           <LabeledList>
-            <LabeledList.Item label="Power">
+            <LabeledList.Item label="电力">
               <Button
                 icon={isOperating ? 'power-off' : 'times'}
                 onClick={() => act('power')}
@@ -122,16 +122,16 @@ export const Cryo = () => {
                 {isOperating ? 'On' : 'Off'}
               </Button>
             </LabeledList.Item>
-            <LabeledList.Item label="Temperature">
+            <LabeledList.Item label="温度">
               <AnimatedNumber value={cellTemperature} /> K
             </LabeledList.Item>
-            <LabeledList.Item label="Door">
+            <LabeledList.Item label="门">
               <Button
                 icon="eject"
                 disabled={!occupant}
                 onClick={() => act('eject')}
               >
-                Eject Patient
+                弹出患者
               </Button>
               <Button
                 icon={autoEject ? 'sign-out-alt' : 'sign-in-alt'}
@@ -143,14 +143,14 @@ export const Cryo = () => {
           </LabeledList>
         </Section>
         <Section
-          title="Beaker"
+          title="烧杯"
           buttons={
             <Button
               icon="eject"
               disabled={!isBeakerLoaded}
               onClick={() => act('ejectbeaker')}
             >
-              Eject
+              弹出
             </Button>
           }
         >

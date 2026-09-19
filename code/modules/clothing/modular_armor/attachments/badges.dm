@@ -1,6 +1,6 @@
 /obj/item/armor_module/armor/badge
-	name = "7E Chameleon Badge"
-	desc = "The 7E Chameloen Badge uses brand new and revolutionary technology to make your gear look even cooler. It is capable of changing into a variety of different shapes (Alt-Click), changing colors (Attack with Green Facepaint), and attaching to nearly all clothing, helmets, berets, and or armor!"
+	name = "7E变色龙徽章"
+	desc = "7E变色龙徽章使用全新且革命性的技术,让你的装备看起来更酷。它能够变成各种不同的形状(Alt-Click),改变颜色(用绿色面漆攻击),并且可以附着到几乎所有服装、头盔、贝雷帽和/或装甲上!"
 	greyscale_config = /datum/greyscale_config/badge/shield
 	icon_state = "in_hand"
 	slot = ATTACHMENT_SLOT_BADGE
@@ -40,7 +40,7 @@
 
 /obj/item/armor_module/armor/badge/examine(mob/user)
 	. = ..()
-	. += span_notice("Its current style is set to [current_style]")
+	. += span_notice("其当前样式设置为[current_style]")
 
 /obj/item/armor_module/armor/badge/can_attach(obj/item/attaching_to, mob/user)
 	. = ..()
@@ -52,7 +52,7 @@
 	if((current_style == "Left Helmet" || current_style == "Right Helmet") && !(istype(attaching_to, /obj/item/clothing/head)))
 		allowed = FALSE
 	if(!allowed)
-		to_chat(user, span_warning("The currently selected style, ([current_style]), is not compatable with [attaching_to]."))
+		to_chat(user, span_warning("当前选定的样式([current_style])与[attaching_to]不兼容。"))
 	return allowed
 
 /obj/item/armor_module/armor/badge/on_attach(obj/item/attaching_to, mob/user)
@@ -70,8 +70,8 @@
 	var/mob/living/living_user = user
 	if(!living_user.Adjacent(src) || (living_user.get_active_held_item() != src && living_user.get_inactive_held_item() != src))
 		return
-	var/new_style = tgui_input_list(living_user, "Pick a style", "Pick style", style_list)
-	var/new_shape = tgui_input_list(living_user, "Pick a shape", "Pick shape", shape_list)
+	var/new_style = tgui_input_list(living_user, "选择样式", "选择样式", style_list)
+	var/new_shape = tgui_input_list(living_user, "选择形状", "选择形状", shape_list)
 	if(!new_style && !new_shape)
 		return
 	if(!do_after(living_user, 1 SECONDS, NONE, src, BUSY_ICON_GENERIC))
@@ -85,7 +85,7 @@
 
 
 /obj/item/armor_module/armor/stylehat_badge
-	name = "Beret Badge"
+	name = "贝雷帽徽章"
 	icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/style_hat/badge
 	slot = ATTACHMENT_SLOT_CAPE_HIGHLIGHT
@@ -96,15 +96,15 @@
 	colorable_allowed = COLOR_WHEEL_ALLOWED
 
 /obj/item/armor_module/armor/stylehat_badge/classic
-	name = "Classic Beret Badge"
+	name = "经典贝雷帽徽章"
 	icon_state = "classic_beret_badge"
 
 /obj/item/armor_module/armor/stylehat_badge/ushanka
-	name = "Ushanka Badge"
+	name = "护耳帽徽章"
 	icon_state = "ushanka_badge"
 
 /obj/item/armor_module/armor/visor_glyph
-	name = "Visor Glyph"
+	name = "护目镜纹饰"
 	icon_state = "skull"
 	greyscale_config = /datum/greyscale_config/visors/glyphs
 	slot = ATTACHMENT_SLOT_CAPE_HIGHLIGHT

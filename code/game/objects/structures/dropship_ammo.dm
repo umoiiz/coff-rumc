@@ -52,7 +52,7 @@
 
 	ammo_count += transf_amt
 	SA.ammo_count -= transf_amt
-	to_chat(user, span_notice("You transfer [transf_amt] [ammo_name] to [src]."))
+	to_chat(user, span_notice("你将[transf_amt][ammo_name]转移到[src]."))
 	playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
 	if(!SA.ammo_count)
 		attached_clamp.loaded = null
@@ -188,9 +188,9 @@
 //30mm gun
 
 /obj/structure/ship_ammo/cas/heavygun
-	name = "\improper 30mm ammo crate"
+	name = "\improper 30毫米弹药箱"
 	icon_state = "30mm_crate"
-	desc = "A crate full of 30mm bullets used on the dropship heavy guns. Moving this will require some sort of lifter."
+	desc = "一个装满30毫米子弹的箱子,用于空投机载重炮. 移动它需要某种起重设备."
 	equipment_type = /obj/structure/dropship_equipment/cas/weapon/heavygun
 	travelling_time = 4 SECONDS
 	ammo_count = 2000
@@ -251,16 +251,16 @@
 		addtimer(CALLBACK(src, PROC_REF(strafe_turfs), strafelist), 2)
 
 /obj/structure/ship_ammo/cas/heavygun/highvelocity
-	name = "high-velocity 30mm ammo crate"
+	name = "高速30毫米弹药箱"
 	icon_state = "30mm_crate_hv"
-	desc = "A crate full of 30mm high-velocity bullets used on the dropship heavy guns. Moving this will require some sort of lifter."
+	desc = "一个装满30毫米高速子弹的箱子,用于空投机载重炮. 移动它需要某种起重设备."
 	travelling_time = 2 SECONDS
 	point_cost = 175
 
 //railgun
 /obj/structure/ship_ammo/railgun
-	name = "Railgun Ammo"
-	desc = "This is not meant to exist. Moving this will require some sort of lifter."
+	name = "电磁炮弹药"
+	desc = "这本不应存在. 移动它需要某种起重设备."
 	icon_state = "30mm_crate_hv"
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	equipment_type = /obj/structure/dropship_equipment/cas/weapon/minirocket_pod
@@ -292,9 +292,9 @@
 //laser battery
 
 /obj/structure/ship_ammo/cas/laser_battery
-	name = "high-capacity laser battery"
+	name = "高容量激光电池"
 	icon_state = "laser_battery"
-	desc = "A high-capacity laser battery used to power laser beam weapons. Moving this will require some sort of lifter."
+	desc = "一种用于为激光束武器供电的高容量激光电池. 移动它需要某种起重设备."
 	travelling_time = 1 SECONDS
 	ammo_count = 300
 	max_ammo_count = 300
@@ -350,7 +350,7 @@
 //Rockets
 
 /obj/structure/ship_ammo/cas/rocket
-	name = "abstract rocket"
+	name = "抽象火箭"
 	icon_state = "single"
 	icon = 'icons/obj/structures/mainship_props64.dmi'
 	equipment_type = /obj/structure/dropship_equipment/cas/weapon/rocket_pod
@@ -370,8 +370,8 @@
 
 //this one is air-to-air only
 /obj/structure/ship_ammo/cas/rocket/widowmaker
-	name = "\improper AGM-224 'Widowmaker'"
-	desc = "The AGM-224 is the latest in air to ground missile technology. Earning the nickname of 'Widowmaker' from various pilots after improvements allow it to land at incredibly high speeds, at the cost of explosive payload. Well suited for ground bombardment, its high velocity making it reach its target quickly. Moving this will require some sort of lifter."
+	name = "\improper AGM-224\"寡妇制造者\""
+	desc = "AGM-224是最新的空对地导弹技术. 由于改进使其能以极高速度命中目标,代价是爆炸载荷减少,因此被众多飞行员昵称为\"寡妇制造者\". 非常适合地面轰炸,其高速度使其能迅速抵达目标. 移动它需要某种起重设备."
 	icon_state = "single"
 	travelling_time = 2 SECONDS //very weak in damage, but quick to speed.
 	ammo_id = ""
@@ -386,8 +386,8 @@
 	qdel(src)
 
 /obj/structure/ship_ammo/cas/rocket/banshee
-	name = "\improper PGHM-227 'Banshee'"
-	desc = "The PGHM-227 missile is a mainstay of the fleet against any mobile or armored ground targets. It's earned the nickname of 'Banshee' from the sudden wail that it emitts right before hitting a target. Useful to clear out large areas. Moving this will require some sort of lifter."
+	name = "\improper PGHM-227\"报丧女妖\""
+	desc = "PGHM-227导弹是舰队对付任何机动或装甲地面目标的主力装备. 由于它在命中目标前会突然发出尖啸声,因此被昵称为\"报丧女妖\". 可用于清理大片区域. 移动它需要某种起重设备."
 	icon_state = "banshee"
 	travelling_time = 4 SECONDS
 	ammo_id = "b"
@@ -405,8 +405,8 @@
 	qdel(src)
 
 /obj/structure/ship_ammo/cas/rocket/keeper
-	name = "\improper AGM-67 'Keeper II'"
-	desc = "The AGM-67 'Keeper II' is the latest in a generation of laser guided weaponry that spans all the way back to the 20th century. Earning its nickname from a contract that developed its guidance system and the various uses of it during peacekeeping conflicts. Its payload is designed to devastate armored targets. Moving this will require some sort of lifter."
+	name = "\improper AGM-67\"守护者II\""
+	desc = "AGM-67\"守护者II\"是激光制导武器系列中的最新型号,其历史可追溯至20世纪.它的绰号来源于一份开发其制导系统的合同以及它在维和冲突中的各种用途.其弹头专为摧毁装甲目标而设计.移动此物需要某种起重设备."
 	icon_state = "keeper"
 	travelling_time = 4 SECONDS
 	ammo_id = "k"
@@ -421,8 +421,8 @@
 	qdel(src)
 
 /obj/structure/ship_ammo/cas/rocket/fatty
-	name = "\improper PHGM-17 'Fatty'"
-	desc = "The PHGM-17 'Fatty' is the most devestating rocket in TGMC arsenal, only second after its big cluster brother in Orbital Cannon. These rocket are also known for highest number of Friendly-on-Friendly incidents due to secondary cluster explosions as well as range of these explosions, TGMC recommends pilots to encourage usage of signal flares or laser for 'Fatty' support. Moving this will require some sort of lifter."
+	name = "\improper PHGM-17\"胖子\""
+	desc = "PHGM-17\"胖子\"是TGMC军火库中破坏力最强的火箭弹,仅次于其轨道炮中的大型集束兄弟.这些火箭弹也因二次集束爆炸及其爆炸范围而臭名昭著,友军误伤事件数量居高不下,TGMC建议飞行员鼓励使用信号弹或激光来引导\"胖子\"支援.移动此物需要某种起重设备."
 	icon_state = "fatty"
 	travelling_time = 5 SECONDS
 	ammo_id = "f"
@@ -453,8 +453,8 @@
 	qdel(src)
 
 /obj/structure/ship_ammo/cas/rocket/napalm
-	name = "\improper AGM-99 'Napalm'"
-	desc = "The AGM-99 'Napalm' is an incendiary rocket used to turn specific targeted areas into giant balls of fire for quite a long time, it has a smaller outer explosive payload than other AGMs, however. Moving this will require some sort of lifter."
+	name = "\improper AGM-99\"凝固汽油弹\""
+	desc = "AGM-99\"凝固汽油弹\"是一种燃烧火箭弹,用于将特定目标区域化为巨大的火球并持续相当长的时间,不过其外部爆炸载荷比其他AGM要小.移动此物需要某种起重设备."
 	icon_state = "napalm"
 	travelling_time = 6 SECONDS
 	ammo_id = "n"
@@ -477,8 +477,8 @@
 //unguided rockets
 
 /obj/structure/ship_ammo/cas/unguided_rocket
-	name = "RGA-13A 'Sting'"
-	desc = "Old unguided rockets found in the strategic warehouses of the UPP combat airfield. Moving this will require some sort of lifter."
+	name = "RGA-13A\"毒刺\""
+	desc = "在UPP战斗机场战略仓库中发现的旧式无制导火箭弹.移动此物需要某种起重设备."
 	icon_state = "unguided_rocket"
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	equipment_type = /obj/structure/dropship_equipment/cas/weapon/unguided_rocket_pod
@@ -510,8 +510,8 @@
 //minirockets
 
 /obj/structure/ship_ammo/cas/minirocket
-	name = "MGA-112A 'Candies'"
-	desc = "A pack of explosive mini-rockets. Moving this will require some sort of lifter."
+	name = "MGA-112A\"糖果\""
+	desc = "一包爆炸性迷你火箭弹.移动此物需要某种起重设备."
 	icon_state = "minirocket"
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	equipment_type = /obj/structure/dropship_equipment/cas/weapon/minirocket_pod
@@ -541,8 +541,8 @@
 	. += "It has [ammo_count] minirocket\s."
 
 /obj/structure/ship_ammo/cas/minirocket/incendiary
-	name = "MGA-110B incendiary"
-	desc = "A pack of incendiary mini-rockets. Moving this will require some sort of lifter."
+	name = "MGA-110B燃烧弹"
+	desc = "一包燃烧性迷你火箭弹.移动此物需要某种起重设备."
 	icon_state = "minirocket_inc"
 	point_cost = 175
 	travelling_time = 3 SECONDS
@@ -555,8 +555,8 @@
 	flame_radius(fire_range, impact)
 
 /obj/structure/ship_ammo/cas/minirocket/phosphorus
-	name = "MGA-110B phosphorus"
-	desc = "A pack of incendiary phosphorus mini-rockets. Moving this will require some sort of lifter."
+	name = "MGA-110B白磷弹"
+	desc = "一包燃烧性白磷迷你火箭弹.移动此物需要某种起重设备."
 	icon_state = "minirocket_inc_phos"
 	point_cost = 350
 	travelling_time = 4 SECONDS
@@ -573,8 +573,8 @@
 	flame_radius(fire_range, impact, burn_intensity = 75, burn_duration = 45, burn_damage = 15, fire_stacks = 75, colour = "blue")
 
 /obj/structure/ship_ammo/cas/minirocket/smoke
-	name = "MGA-108C smoke"
-	desc = "A pack of screening smoke mini-rockets. Moving this will require some sort of lifter."
+	name = "MGA-108C烟雾弹"
+	desc = "一包遮蔽烟雾迷你火箭弹.移动此物需要某种起重设备."
 	icon_state = "minirocket_smoke"
 	point_cost = 35
 	travelling_time = 2 SECONDS
@@ -590,8 +590,8 @@
 	S.start()
 
 /obj/structure/ship_ammo/cas/minirocket/tangle
-	name = "MGA-106D tangle"
-	desc = "A pack of mini-rockets loaded with plasma-draining Tanglefoot gas. Moving this will require some sort of lifter."
+	name = "MGA-106D缠绕弹"
+	desc = "一包装有等离子消耗性缠绕脚气体的迷你火箭弹.移动此物需要某种起重设备."
 	icon_state = "minirocket_tfoot"
 	point_cost = 150
 	travelling_time = 6 SECONDS
@@ -607,8 +607,8 @@
 	S.start()
 
 /obj/structure/ship_ammo/cas/minirocket/illumination
-	name = "MGA-104I illuminant"
-	desc = "A pack of mini-rockets, each loaded with a payload of white-star illuminant and a parachute, while extremely ineffective at damaging the enemy, it is very effective at lighting the battlefield so marines can damage the enemy. Moving this will require some sort of lifter."
+	name = "MGA-104I照明弹"
+	desc = "一包迷你火箭弹,每枚装有白星照明剂和降落伞,虽然对敌人造成伤害的效果极差,但在照亮战场方面非常有效,使陆战队员能够发现并打击敌人.移动此物需要某种起重设备."
 	icon_state = "minirocket_ilm"
 	point_cost = 25 // Not a real rocket, so its cheap
 	travelling_time = 2 SECONDS

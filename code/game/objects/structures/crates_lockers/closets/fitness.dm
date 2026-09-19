@@ -1,6 +1,6 @@
 /obj/structure/closet/athletic_mixed
-	name = "athletic wardrobe"
-	desc = "It's a storage unit for athletic wear."
+	name = "运动衣柜"
+	desc = "这是一个存放运动服装的储物柜."
 	icon_state = "mixed"
 	icon_closed = "mixed"
 
@@ -21,8 +21,8 @@
 	new /obj/item/clothing/shoes/swimmingfins(src)
 
 /obj/structure/closet/boxinggloves
-	name = "boxing gloves"
-	desc = "It's a storage unit for gloves for use in the boxing ring."
+	name = "拳击手套"
+	desc = "这是一个存放拳击台用手套的储物柜."
 
 /obj/structure/closet/boxinggloves/PopulateContents()
 	new /obj/item/clothing/gloves/heldgloves/boxing/blue(src)
@@ -31,8 +31,8 @@
 	new /obj/item/clothing/gloves/heldgloves/boxing(src)
 
 /obj/structure/closet/masks
-	name = "mask closet"
-	desc = "IT'S A STORAGE UNIT FOR FIGHTER MASKS OLE!"
+	name = "面罩储物柜"
+	desc = "这是一个存放格斗面罩的储物柜, 老铁!"
 
 /obj/structure/closet/masks/PopulateContents()
 	new /obj/item/clothing/mask/luchador(src)
@@ -40,8 +40,8 @@
 	new /obj/item/clothing/mask/luchador/tecnicos(src)
 
 /obj/structure/closet/lasertag/red
-	name = "red laser tag equipment"
-	desc = "It's a storage unit for laser tag equipment."
+	name = "红色激光标签装备"
+	desc = "这是一个存放激光标签装备的储物柜."
 	icon_state = "red"
 	icon_closed = "red"
 
@@ -50,8 +50,8 @@
 	new /obj/item/clothing/suit/redtag(src)
 
 /obj/structure/closet/lasertag/blue
-	name = "blue laser tag equipment"
-	desc = "It's a storage unit for laser tag equipment."
+	name = "蓝色激光标签装备"
+	desc = "这是一个存放激光标签装备的储物柜."
 	icon_state = "blue"
 	icon_closed = "blue"
 
@@ -60,8 +60,8 @@
 	new /obj/item/clothing/suit/bluetag(src)
 
 /obj/structure/closet/basketball
-	name = "basketball wardrobe"
-	desc = "It's a storage unit for basketball wear."
+	name = "篮球衣柜"
+	desc = "这是一个存放篮球服的储物柜."
 	icon_state = "mixed"
 	icon_closed = "mixed"
 
@@ -73,8 +73,8 @@
 	new /obj/item/clothing/under/shorts/green(src)
 
 /obj/structure/closet/swimsuit
-	name = "swimsuit wardrobe"
-	desc = "It's a storage unit for swimsuits."
+	name = "泳衣衣柜"
+	desc = "这是一个存放泳衣的储物柜."
 	icon_state = "mixed"
 	icon_closed = "mixed"
 

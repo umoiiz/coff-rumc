@@ -4,7 +4,7 @@
 
 /datum/action/ability/activable/xeno/nightfall
 	name = "Nightfall"
-	desc = "Shut down electrical lights for 10 seconds and extinguish flares in nearby range."
+	desc = "关闭电子灯光10秒,并熄灭附近范围内的照明弹."
 	action_icon_state = "nightfall"
 	action_icon = 'icons/Xeno/actions/king.dmi'
 	cooldown_duration = 45 SECONDS
@@ -18,7 +18,7 @@
 	var/duration = 10 SECONDS
 
 /datum/action/ability/activable/xeno/nightfall/on_cooldown_finish()
-	to_chat(owner, span_notice("We gather enough mental strength to shut down lights again."))
+	to_chat(owner, span_notice("我们聚集了足够的精神力量来再次关闭灯光."))
 	return ..()
 
 /datum/action/ability/activable/xeno/nightfall/use_ability()
@@ -44,7 +44,7 @@
 
 /datum/action/ability/xeno_action/petrify
 	name = "Petrify"
-	desc = "After a windup, petrifies all humans looking at you. While petrified humans are immune to damage, but also can't attack."
+	desc = "经过一段蓄力后,石化所有看着你的人类.被石化的人类免疫伤害,但也不能攻击."
 	action_icon_state = "petrify"
 	action_icon = 'icons/Xeno/actions/king.dmi'
 	ability_cost = 100
@@ -143,7 +143,7 @@
 
 /datum/action/ability/activable/xeno/off_guard
 	name = "Off-guard"
-	desc = "Muddles the mind of an enemy, making it harder for them to focus their aim for a while."
+	desc = "扰乱敌人的心智,使其在一段时间内更难集中瞄准."
 	action_icon_state = "off_guard"
 	action_icon = 'icons/Xeno/actions/king.dmi'
 	ability_cost = 100
@@ -159,20 +159,20 @@
 		return
 	if(!ishuman(A))
 		if(!silent)
-			A.balloon_alert(owner, "not human")
+			A.balloon_alert(owner, "不是人类")
 		return FALSE
 	if(!line_of_sight(owner, A, 9))
 		if(!silent)
-			owner.balloon_alert(owner, "Out of sight!")
+			owner.balloon_alert(owner, "不在视线内!")
 		return FALSE
 	if((A.z != owner.z) || get_dist(owner, A) > OFF_GUARD_RANGE)
 		if(!silent)
-			A.balloon_alert(owner, "too far")
+			A.balloon_alert(owner, "太远了")
 		return FALSE
 	var/mob/living/carbon/human/target = A
 	if(target.stat == DEAD)
 		if(!silent)
-			target.balloon_alert(owner, "already dead")
+			target.balloon_alert(owner, "已经死了")
 		return FALSE
 
 /datum/action/ability/activable/xeno/off_guard/use_ability(atom/target)
@@ -181,7 +181,7 @@
 	human_target.apply_status_effect(STATUS_EFFECT_GUN_SKILL_SCATTER_DEBUFF, 8 SECONDS)
 	human_target.apply_status_effect(/datum/status_effect/incapacitating/offguard_slowdown, 8 SECONDS)
 	human_target.log_message("has been off-guarded by [owner]", LOG_ATTACK, color="pink")
-	human_target.balloon_alert_to_viewers("confused")
+	human_target.balloon_alert_to_viewers("困惑")
 	playsound(human_target, 'sound/effects/off_guard_ability.ogg', 50)
 
 	add_cooldown()
@@ -199,7 +199,7 @@
 
 /datum/action/ability/activable/xeno/shattering_roar
 	name = "Shattering roar"
-	desc = "Unleash a mighty psychic roar, knocking down any foes in your path and weakening them."
+	desc = "释放一声强大的心灵咆哮,击倒你路径上的所有敌人并削弱他们."
 	action_icon_state = "shattering_roar"
 	action_icon = 'icons/Xeno/actions/king.dmi'
 	ability_cost = 225
@@ -223,7 +223,7 @@
 	ADD_TRAIT(owner, TRAIT_IMMOBILE, SHATTERING_ROAR_ABILITY_TRAIT)
 
 	if(!do_after(owner, SHATTERING_ROAR_CHARGE_TIME, NONE, owner, BUSY_ICON_DANGER, extra_checks = CALLBACK(src, PROC_REF(can_use_action), FALSE, ABILITY_USE_BUSY)))
-		owner.balloon_alert(owner, "interrupted!")
+		owner.balloon_alert(owner, "被打断了!")
 		finish_charging()
 		add_cooldown(10 SECONDS)
 		return fail_activate()
@@ -273,7 +273,7 @@
 			carbon_victim.add_slowdown(6 * severity)
 			shake_camera(carbon_victim, 3 * severity, 3 * severity)
 			carbon_victim.apply_effect(1 SECONDS, EFFECT_PARALYZE)
-			to_chat(carbon_victim, "You are smashed to the ground!")
+			to_chat(carbon_victim, "你被砸倒在地!")
 		else if(isvehicle(victim) || ishitbox(victim))
 			var/obj/obj_victim = victim
 			var/hitbox_penalty = 0
@@ -313,7 +313,7 @@
 
 /datum/action/ability/xeno_action/zero_form_beam
 	name = "Zero-Form Energy Beam"
-	desc = "After a windup, concentrates the hives energy into a forward-facing beam that pierces everything, but walls, damaging living beings, structures, machinery and vehicles."
+	desc = "经过一段蓄力后,将蜂巢的能量集中成一道向前的光束,穿透一切,但墙壁除外,伤害生物,建筑,机械和载具."
 	action_icon_state = "zero_form_beam"
 	action_icon = 'icons/Xeno/actions/king.dmi'
 	ability_cost = 25
@@ -352,7 +352,7 @@
 		return
 	if(is_ground_level(owner.z) && CHECK_BITFIELD(SSticker.mode?.round_type_flags, MODE_ALLOW_XENO_QUICKBUILD) && SSresinshaping.active)
 		if(!silent)
-			owner.balloon_alert(owner, "too early")
+			owner.balloon_alert(owner, "太早了")
 		return FALSE
 
 /datum/action/ability/xeno_action/zero_form_beam/action_activate()
@@ -480,7 +480,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/psychic_summon
 	name = "Psychic Summon"
-	desc = "Summons all xenos in a hive to the caller's location, uses all plasma to activate."
+	desc = "将蜂巢中的所有异形召唤到召唤者的位置,消耗所有等离子来激活."
 	action_icon_state = "stomp"
 	action_icon = 'icons/Xeno/actions/crusher.dmi'
 	ability_cost = 900
@@ -491,7 +491,7 @@
 	)
 
 /datum/action/ability/activable/xeno/psychic_summon/on_cooldown_finish()
-	to_chat(owner, span_warning("The hives power swells. We may summon our sisters again."))
+	to_chat(owner, span_warning("蜂巢的力量涌动.我们可以再次召唤我们的姐妹了."))
 	return ..()
 
 /datum/action/ability/xeno_action/psychic_summon/can_use_action(silent, override_flags)
@@ -500,7 +500,7 @@
 		return
 	if(length(xeno_owner.hive.get_all_xenos()) <= 1)
 		if(!silent)
-			owner.balloon_alert(owner, "noone to call")
+			owner.balloon_alert(owner, "无人可召唤")
 		return FALSE
 
 GLOBAL_LIST_EMPTY(active_summons)

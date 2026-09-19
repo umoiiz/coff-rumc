@@ -1,6 +1,6 @@
 /obj/structure/rock
-	name = "rock"
-	desc = "A rock. You shouldn't see this one."
+	name = "岩石"
+	desc = "一块岩石. 你不应该看到这个."
 	icon = 'icons/obj/flora/rocks2.dmi'
 	icon_state = "basalt"
 	max_integrity = 250
@@ -15,75 +15,75 @@
 	AddElement(/datum/element/debris, DEBRIS_ROCK, -40, 5, 1)
 
 /obj/structure/rock/basalt
-	name = "volcanic rock"
-	desc = "A volcanic rock. Pioneers used to ride these babies for miles."
+	name = "火山岩"
+	desc = "一块火山岩. 先驱者们曾骑着这些宝贝驰骋数英里."
 	icon = 'icons/obj/flora/rocks2.dmi'
 	icon_state = "basalt_1"
 
 /obj/structure/rock/basalt/alt
-	name = "volcanic rock"
+	name = "火山岩"
 	icon_state = "basalt_2"
 
 /obj/structure/rock/basalt/alt2
-	name = "volcanic rock"
+	name = "火山岩"
 	icon_state = "basalt_3"
 
 /obj/structure/rock/basalt/alt3
-	name = "volcanic rock"
+	name = "火山岩"
 	icon_state = "basalt_4"
 
 /obj/structure/rock/basalt/alt4
-	name = "volcanic rock"
+	name = "火山岩"
 	icon_state = "basalt_5"
 	color = "#c7bdbd"
 
 /obj/structure/rock/basalt/alt5
-	name = "volcanic rock"
+	name = "火山岩"
 	icon_state = "basalt_6"
 	color = "#c7bdbd"
 
 /obj/structure/rock/basalt/alt6
-	name = "volcanic rock"
+	name = "火山岩"
 	icon_state = "basalt_7"
 	color = "#c7bdbd"
 
 /obj/structure/rock/basalt/alt7
-	name = "volcanic rock"
+	name = "火山岩"
 	icon_state = "basalt_8"
 	color = "#c7bdbd"
 
 /obj/structure/rock/basalt/alt8
-	name = "volcanic rock"
+	name = "火山岩"
 	icon_state = "basalt_9"
 	color = "#c7bdbd"
 
 /obj/structure/rock/basalt/alt9
-	name = "volcanic rock"
+	name = "火山岩"
 	icon_state = "basalt_10"
 	color = "#c7bdbd"
 
 /obj/structure/rock/basalt/alt10
-	name = "volcanic rock"
+	name = "火山岩"
 	icon_state = "basalt_11"
 	color = "#c7bdbd"
 
 /obj/structure/rock/basalt/alt11
-	name = "volcanic rock"
+	name = "火山岩"
 	icon_state = "basalt_12"
 	color = "#c7bdbd"
 
 /obj/structure/rock/basalt/alt12
-	name = "volcanic rock"
+	name = "火山岩"
 	icon_state = "basalt_13"
 	color = "#c7bdbd"
 
 /obj/structure/rock/basalt/alt13
-	name = "volcanic rock"
+	name = "火山岩"
 	icon_state = "basalt_14"
 	color = "#c7bdbd"
 
 /obj/structure/rock/basalt/large_boulder
-	name = "giant volcanic rock"
+	name = "巨型火山岩"
 	icon = 'icons/obj/flora/rock_large.dmi'
 	icon_state = "boulder_1"
 	color = "#c7bdbd"
@@ -100,22 +100,22 @@
 	bound_width = 64
 
 /obj/structure/rock/basalt/pile
-	name = "rock pile"
-	desc = "pile of volcanic rocks."
+	name = "石堆"
+	desc = "一堆火山岩."
 	density = FALSE
 	icon_state = "lavarocks"
 
 /obj/structure/rock/basalt/pile/alt
-	name = "rock pile"
+	name = "石堆"
 	icon_state = "lavarocks1"
 
 /obj/structure/rock/basalt/pile/alt2
-	name = "rock pile"
+	name = "石堆"
 	icon_state = "lavarocks2"
 
 /obj/structure/rock/basalt/pile/alt3
-	name = "fossils"
-	desc = "A pile of ancient fossils. There are some oddly shaped skulls in here..."
+	name = "化石"
+	desc = "一堆古老的化石. 里面有一些形状奇特的头骨..."
 	icon_state = "lavarocks3"
 
 //randomised icons
@@ -128,14 +128,14 @@
 	icon_state = "[initial(icon_state)]_[rand(1, icon_variants)]"
 
 /obj/structure/rock/variable/basalt
-	name = "rock"
-	desc = "A large imposing rock."
+	name = "岩石"
+	desc = "一块巨大而威严的岩石."
 	icon_state = "basalt"
 	icon_variants = 4
 
 /obj/structure/rock/variable/tinyrock
-	name = "tiny rock pile"
-	desc = "A pile of tiny pebbles..."
+	name = "小石堆"
+	desc = "一堆小鹅卵石..."
 	icon_state = "tinyrock"
 	density = FALSE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -143,29 +143,29 @@
 	icon_variants = 8
 
 /obj/structure/rock/variable/stalagmite
-	name = "stalagmite"
-	desc = "An ancient mound of mineral deposits, typically found in caves."
+	name = "石笋"
+	desc = "一座古老的矿物沉积物, 通常出现在洞穴中."
 	icon = 'icons/obj/structures/cave_decor.dmi'
 	icon_state = "stalagmite"
 	icon_variants = 6
 
 /obj/structure/rock/variable/jungle
-	name = "rock"
-	desc = "A large bunch of slippery looking rocks."
+	name = "岩石"
+	desc = "一大堆看起来滑溜溜的岩石."
 	icon = 'icons/obj/flora/jungleflora.dmi'
 	icon_state = "rock"
 	density = FALSE
 	icon_variants = 5
 
 /obj/structure/rock/variable/jungle/big
-	desc = "A large imposing rock."
+	desc = "一块巨大而威严的岩石."
 	icon_state = "big_rock"
 	density = TRUE
 	icon_variants = 4
 
 /obj/structure/rock/variable/jungle_large
-	name = "rocks"
-	desc = "A large bunch of slippery looking rocks."
+	name = "岩石"
+	desc = "一大堆看起来滑溜溜的岩石."
 	icon = 'icons/obj/flora/largejungleflora.dmi'
 	icon_state = "rocks"
 	max_integrity = 350
@@ -189,8 +189,8 @@
 
 //drought rocks
 /obj/structure/rock/variable/drought
-	name = "rock"
-	desc = "Some dusty rocks."
+	name = "岩石"
+	desc = "一些布满灰尘的岩石."
 	icon = 'icons/obj/flora/desert_flora.dmi'
 	icon_state = "drought"
 	density = FALSE
@@ -198,8 +198,8 @@
 
 //crystal
 /obj/structure/rock/crystal
-	name = "strange crystal"
-	desc = "A strange glowing crystal. Not sure if you should touch it."
+	name = "奇怪的水晶"
+	desc = "一块奇怪的发光水晶. 不确定你是否应该碰它."
 	icon = 'icons/obj/flora/crystals.dmi'
 	icon_state = "big_crystal"
 	light_range = 2
@@ -219,8 +219,8 @@
 	light_range = 1
 
 /obj/structure/rock/variable/crystal_mound
-	name = "strange crystal"
-	desc = "Some strange crystals seem to be pushing out of the ground here..."
+	name = "奇怪的水晶"
+	desc = "一些奇怪的水晶似乎正从这里的土地中冒出来..."
 	icon = 'icons/obj/flora/crystals.dmi'
 	icon_state = "crystal_mound"
 	icon_variants = 3

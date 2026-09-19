@@ -3,8 +3,8 @@
 //Bought with points, which regenerate over time
 
 /obj/item/portable_vendor
-	name = "\improper Automated Storage Briefcase"
-	desc = "A suitcase-sized automated storage and retrieval system. Designed to efficiently store and selectively dispense small items."
+	name = "\improper 自动化储物手提箱"
+	desc = "一个手提箱大小的自动化存储与检索系统.设计用于高效存储和选择性分发小型物品."
 	icon = 'icons/obj/items/storage/briefcase.dmi'
 	icon_state = "secure"
 	worn_icon_list = list(
@@ -50,7 +50,7 @@
 	if(isliving(user))
 		var/obj/item/card/id/I = user.get_idcard()
 		if(!istype(I))
-			to_chat(usr, span_warning("Access denied. Authorized roles only."))
+			to_chat(usr, span_warning("访问被拒绝.仅限授权角色."))
 			return FALSE
 
 		if(I.registered_name != user.real_name)
@@ -59,7 +59,7 @@
 		if(req_role)
 			var/mob/living/living_user = user
 			if(!istype(living_user.job, req_role))
-				to_chat(usr, span_warning("Access denied. Authorized roles only."))
+				to_chat(usr, span_warning("访问被拒绝.仅限授权角色."))
 				return FALSE
 
 	return TRUE
@@ -107,11 +107,11 @@
 	switch(action)
 		if("vend")
 			if(!allowed(user))
-				balloon_alert(user, "Access denied.")
+				balloon_alert(user, "访问被拒绝.")
 				return
 
 			if(fabricating)
-				balloon_alert(user, "already fabricating")
+				balloon_alert(user, "已在制造中")
 				return
 			var/idx = text2num(params["vend"])
 
@@ -119,18 +119,18 @@
 			var/cost = L[2]
 
 			if(use_points && points < cost)
-				balloon_alert(user, "Not enough points")
+				balloon_alert(user, "点数不足")
 
 			var/turf/T = get_turf(src)
 			if(length(T.contents) > 25)
-				balloon_alert(user, "not enough space")
+				balloon_alert(user, "空间不足")
 				return
 
 			if(use_points)
 				points -= cost
 
 			playsound(src, 'sound/machines/fax.ogg', 5)
-			balloon_alert(user, "fabricating")
+			balloon_alert(user, "制造中")
 			fabricating = TRUE
 			update_appearance()
 			addtimer(CALLBACK(src, PROC_REF(do_vend), L[3], user), 1 SECONDS)
@@ -170,7 +170,7 @@
 
 /obj/item/portable_vendor/proc/malfunction()
 	var/turf/T = get_turf(src)
-	T.visible_message(span_warning("[src] shudders as its internal components break apart!"))
+	T.visible_message(span_warning("[src]在内部组件碎裂时剧烈震动!"))
 	broken = TRUE
 	STOP_PROCESSING(SSobj, src)
 	update_appearance()
@@ -188,8 +188,8 @@
 		malfunction()
 
 /obj/item/portable_vendor/corporate
-	name = "\improper Nanotrasen Automated Storage Briefcase"
-	desc = "A suitcase-sized automated storage and retrieval system. Designed to efficiently store and selectively dispense small items. This one has the Nanotrasen logo stamped on its side."
+	name = "\improper 纳米传讯自动化储物手提箱"
+	desc = "一个手提箱大小的自动化存储与检索系统.设计用于高效存储和选择性分发小型物品.这一个是侧面印有纳米传讯标志的."
 
 	req_access = list(ACCESS_NT_CORPORATE)
 	req_role = /datum/job/terragov/civilian/liaison

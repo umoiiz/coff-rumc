@@ -3,8 +3,8 @@
 
 /obj/item/armored_weapon/volkite_carronade
 	name = "Volkite Cardanelle"
-	desc = "A massive volkite weapon seen on SOM battle tanks, the cardanelle is a devestating anti infantry weapon, able to mow down whole groups of soft targets with ease. \
-	Against armored targets however, it can prove less effective."
+	desc = "一种在SOM主战坦克上可见的大型volkite武器, cardanelle是一种毁灭性的反步兵武器, 能够轻松割倒整群软目标. \
+	然而对装甲目标, 它可能被证明效果较差."
 	icon_state = "volkite"
 	fire_sound = 'sound/weapons/guns/fire/volkite_4.ogg'
 	interior_fire_sound = 'sound/vehicles/weapons/volkite_fire_interior.ogg'
@@ -96,8 +96,8 @@
 	animate(alpha = 0, time = 0.4 SECONDS, easing = SINE_EASING|EASE_IN)
 
 /obj/item/armored_weapon/particle_lance
-	name = "particle lance"
-	desc = "The particle lance is a powerful energy beam weapon, able to tear apart anything in its path with a concentrated beam of charged particles. Particularly potent against armored targets."
+	name = "粒子长矛"
+	desc = "粒子长矛是一种强大的能量束武器,能够用集中的带电粒子束撕裂路径上的一切。对装甲目标尤为有效。"
 	icon_state = "particle_beam"
 	ammo = /obj/item/ammo_magazine/tank/particle_lance
 	accepted_ammo = list(/obj/item/ammo_magazine/tank/particle_lance)
@@ -119,9 +119,9 @@
 #define COILGUN_HIGH_POWER 3
 
 /obj/item/armored_weapon/coilgun
-	name = "battle tank coilgun"
-	desc = "The coilgun is considered the standard main weapon for SOM battle tanks. \
-	While technologically very different from a traditional cannon, fundamentally both serve the same purpose - to accelerate a large projectile at a high speed towards the enemy."
+	name = "战车线圈炮"
+	desc = "线圈炮被认为是SOM战车的标准主武器。\
+	虽然技术上与传统火炮截然不同,但本质上两者用途相同 - 将大型弹丸以高速加速射向敌人。"
 	icon_state = "coilgun"
 	ammo = /obj/item/ammo_magazine/tank/coilgun
 	accepted_ammo = list(/obj/item/ammo_magazine/tank/coilgun)
@@ -219,7 +219,7 @@
 			current_ammo_type = /datum/ammo/rocket/coilgun/high
 			windup_delay = 1 SECONDS
 			projectile_delay = 4.5 SECONDS
-	to_chat(user, "power level set to [power_level]")
+	to_chat(user, "功率等级设为[power_level]")
 
 ///Gives the power setting action to the gunner
 /obj/item/armored_weapon/coilgun/proc/give_action(datum/source, mob/living/user, flags)
@@ -236,8 +236,8 @@
 	UnregisterSignal(chassis, COMSIG_VEHICLE_REVOKE_CONTROL_FLAG)
 
 /obj/item/armored_weapon/secondary_mlrs
-	name = "secondary MLRS"
-	desc = "A pair of forward facing multiple launch rocket systems with a total of 12 homing rockets. Can unleash its entire payload in rapid succession."
+	name = "副多管火箭系统"
+	desc = "一对朝前的多管火箭发射系统,共装有12枚追踪火箭。能够快速连续发射全部弹药。"
 	icon_state = "mlrs"
 	fire_sound = 'sound/vehicles/weapons/mlrs_fire.ogg'
 	interior_fire_sound = 'sound/vehicles/weapons/mlrs_interior.ogg'

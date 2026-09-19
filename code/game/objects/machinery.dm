@@ -62,7 +62,7 @@
 
 	wrench.play_tool_sound(src, 50)
 	setDir(turn(dir,-90))
-	to_chat(user, span_notice("You rotate [src]."))
+	to_chat(user, span_notice("你旋转[src]."))
 	return TRUE
 
 /obj/machinery/deconstruct(disassembled = TRUE, mob/living/blame_mob)
@@ -174,10 +174,10 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.get_brain_loss() >= 60)
-			visible_message(span_warning("[H] stares cluelessly at [src] and drools."))
+			visible_message(span_warning("[H]茫然地盯着[src]并流着口水."))
 			return FALSE
 		if(prob(H.get_brain_loss()))
-			to_chat(user, span_warning("You momentarily forget how to use [src]."))
+			to_chat(user, span_warning("你一时忘了如何使用[src]."))
 			return FALSE
 
 	return TRUE

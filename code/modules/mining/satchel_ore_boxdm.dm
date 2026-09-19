@@ -1,8 +1,8 @@
 /obj/structure/ore_box
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "orebox0"
-	name = "ore box"
-	desc = "A heavy box used for storing ore."
+	name = "矿石箱"
+	desc = "用于储存矿石的重型箱子."
 	density = TRUE
 	anchored = FALSE
 	resistance_flags = XENO_DAMAGEABLE

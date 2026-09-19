@@ -100,8 +100,8 @@
 	icon_state = "apc_interior_29"
 
 /obj/structure/bed/chair/dropship/doublewide/apc
-	name = "apc seat"
-	desc = "Stops you from bouncing around inside the APC. You don't see a seatbelt."
+	name = "装甲运兵车座位"
+	desc = "防止你在装甲运兵车内部四处弹跳.你看不到安全带."
 
 /area/interior/apc
 	name = "APC Interior"

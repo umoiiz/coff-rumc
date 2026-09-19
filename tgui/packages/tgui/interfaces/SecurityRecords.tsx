@@ -224,7 +224,7 @@ export const SecurityRecords = () => {
 
         {commentModal && (
           <Modal width="400px">
-            <Section title="Add Comment">
+            <Section title="添加评论">
               <TextArea
                 fluid
                 height="100px"
@@ -239,7 +239,7 @@ export const SecurityRecords = () => {
                     setCommentText('');
                   }}
                 >
-                  Cancel
+                  取消
                 </Button>
                 <Button
                   color="good"
@@ -250,7 +250,7 @@ export const SecurityRecords = () => {
                     setCommentText('');
                   }}
                 >
-                  Add Comment
+                  添加评论
                 </Button>
               </Stack>
             </Section>
@@ -259,9 +259,9 @@ export const SecurityRecords = () => {
 
         {searchModal && (
           <Modal width="400px">
-            <Section title="Search Records">
+            <Section title="搜索记录">
               <Box mb={1}>
-                Search by name, ID, fingerprints, or rank:
+                按姓名, ID, 指纹或军衔搜索:
               </Box>
               <Input
                 fluid
@@ -277,7 +277,7 @@ export const SecurityRecords = () => {
                     setSearchValue('');
                   }}
                 >
-                  Cancel
+                  取消
                 </Button>
                 <Button
                   color="good"
@@ -288,7 +288,7 @@ export const SecurityRecords = () => {
                     setSearchValue('');
                   }}
                 >
-                  Search
+                  搜索
                 </Button>
               </Stack>
             </Section>
@@ -310,12 +310,12 @@ const LoginPanel = (props: {
       <Stack vertical fill align="center" justify="center">
         <Stack.Item>
           <Box bold fontSize={2} textAlign="center">
-            SECURITY RECORDS DATABASE
+            安全记录数据库
           </Box>
         </Stack.Item>
         <Stack.Item>
           <Box textAlign="center" color="label">
-            Identity verification required
+            需要身份验证
           </Box>
         </Stack.Item>
         <Stack.Item width="70%">
@@ -328,12 +328,12 @@ const LoginPanel = (props: {
         </Stack.Item>
         <Stack.Item width="60%">
           <Button fluid icon="sign-in-alt" color="good" onClick={onLogin}>
-            Log In
+            登录
           </Button>
         </Stack.Item>
         <Stack.Item>
           <Box color="bad" textAlign="center">
-            Unauthorized use strictly prohibited
+            严禁未经授权使用
           </Box>
         </Stack.Item>
       </Stack>
@@ -378,7 +378,7 @@ const RecordsList = (props: {
     <Stack vertical fill>
       <Stack.Item>
         <Section
-          title="Security Records"
+          title="安全记录"
           buttons={
             <Stack>
               <Stack.Item>
@@ -389,7 +389,7 @@ const RecordsList = (props: {
               </Stack.Item>
               <Stack.Item>
                 <Button icon="sign-out-alt" onClick={onLogout}>
-                  Log Out
+                  登出
                 </Button>
               </Stack.Item>
             </Stack>
@@ -406,7 +406,7 @@ const RecordsList = (props: {
             </Stack.Item>
             <Stack.Item>
               <Button icon="search" onClick={onSearch}>
-                Search
+                搜索
               </Button>
             </Stack.Item>
           </Stack>
@@ -418,7 +418,7 @@ const RecordsList = (props: {
             </Stack.Item>
             <Stack.Item>
               <Button icon="plus" color="good" onClick={onNewGeneral}>
-                New Record
+                新建记录
               </Button>
             </Stack.Item>
             <Stack.Item>
@@ -488,7 +488,7 @@ const RecordsList = (props: {
             ))}
           </Table>
           {!records.length && (
-            <NoticeBox mt={2}>No records match the current filter.</NoticeBox>
+            <NoticeBox mt={2}>没有记录匹配当前筛选条件.</NoticeBox>
           )}
         </Section>
       </Stack.Item>
@@ -561,7 +561,7 @@ const RecordView = (props: {
               </Stack.Item>
               <Stack.Item>
                 <Button icon="sign-out-alt" onClick={onLogout}>
-                  Log Out
+                  登出
                 </Button>
               </Stack.Item>
             </Stack>
@@ -570,10 +570,10 @@ const RecordView = (props: {
           <Stack>
             <Stack.Item grow>
               {!record.has_general ? (
-                <NoticeBox danger>General Record Lost!</NoticeBox>
+                <NoticeBox danger>通用记录丢失!</NoticeBox>
               ) : (
                 <LabeledList>
-                  <LabeledList.Item label="Name">
+                  <LabeledList.Item label="姓名">
                     <EditableValue
                       value={record.name}
                       onEdit={() =>
@@ -599,8 +599,8 @@ const RecordView = (props: {
                       }
                     />
                   </LabeledList.Item>
-                  <LabeledList.Item label="Rank">{record.rank}</LabeledList.Item>
-                  <LabeledList.Item label="Sex">
+                  <LabeledList.Item label="军衔">{record.rank}</LabeledList.Item>
+                  <LabeledList.Item label="性别">
                     <EditableValue
                       value={record.sex}
                       onEdit={() =>
@@ -614,7 +614,7 @@ const RecordView = (props: {
                       }
                     />
                   </LabeledList.Item>
-                  <LabeledList.Item label="Age">
+                  <LabeledList.Item label="年龄">
                     <EditableValue
                       value={record.age}
                       onEdit={() =>
@@ -627,7 +627,7 @@ const RecordView = (props: {
                       }
                     />
                   </LabeledList.Item>
-                  <LabeledList.Item label="Fingerprint">
+                  <LabeledList.Item label="指纹">
                     <EditableValue
                       value={record.fingerprint}
                       onEdit={() =>
@@ -640,10 +640,10 @@ const RecordView = (props: {
                       }
                     />
                   </LabeledList.Item>
-                  <LabeledList.Item label="Physical Status">
+                  <LabeledList.Item label="身体状况">
                     {record.p_stat}
                   </LabeledList.Item>
-                  <LabeledList.Item label="Mental Status">
+                  <LabeledList.Item label="精神状态">
                     {record.m_stat}
                   </LabeledList.Item>
                 </LabeledList>
@@ -672,7 +672,7 @@ const RecordView = (props: {
                         textAlign: 'center',
                       }}
                     >
-                      No Photo
+                      无照片
                     </Box>
                   )}
                 </Box>
@@ -686,19 +686,19 @@ const RecordView = (props: {
       </Stack.Item>
 
       <Stack.Item>
-        <Section title="Security Data">
+        <Section title="安全数据">
           {!record.has_security ? (
             <>
-              <NoticeBox>Security Record Lost!</NoticeBox>
+              <NoticeBox>安全记录丢失!</NoticeBox>
               {!!record.has_general && (
                 <Button icon="plus" color="good" onClick={onNewRecord}>
-                  New Security Record
+                  新建安全记录
                 </Button>
               )}
             </>
           ) : (
             <LabeledList>
-              <LabeledList.Item label="Criminal Status">
+              <LabeledList.Item label="犯罪状态">
                 <EditableValue
                   value={record.criminal}
                   color={criminalColor(record.criminal)}
@@ -713,7 +713,7 @@ const RecordView = (props: {
                   }
                 />
               </LabeledList.Item>
-              <LabeledList.Item label="Minor Crimes">
+              <LabeledList.Item label="轻微罪行">
                 <EditableValue
                   value={record.mi_crim}
                   onEdit={() =>
@@ -726,7 +726,7 @@ const RecordView = (props: {
                   }
                 />
               </LabeledList.Item>
-              <LabeledList.Item label="Minor Details">
+              <LabeledList.Item label="轻微详情">
                 <EditableValue
                   value={record.mi_crim_d}
                   onEdit={() =>
@@ -739,7 +739,7 @@ const RecordView = (props: {
                   }
                 />
               </LabeledList.Item>
-              <LabeledList.Item label="Major Crimes">
+              <LabeledList.Item label="重大罪行">
                 <EditableValue
                   value={record.ma_crim}
                   onEdit={() =>
@@ -752,7 +752,7 @@ const RecordView = (props: {
                   }
                 />
               </LabeledList.Item>
-              <LabeledList.Item label="Major Details">
+              <LabeledList.Item label="重大详情">
                 <EditableValue
                   value={record.ma_crim_d}
                   onEdit={() =>
@@ -765,7 +765,7 @@ const RecordView = (props: {
                   }
                 />
               </LabeledList.Item>
-              <LabeledList.Item label="Important Notes">
+              <LabeledList.Item label="重要备注">
                 <EditableValue
                   value={record.notes}
                   onEdit={() =>
@@ -786,15 +786,15 @@ const RecordView = (props: {
       {!!record.has_security && (
         <Stack.Item>
           <Section
-            title="Comments / Log"
+            title="评论 / 日志"
             buttons={
               <Button icon="plus" onClick={onAddComment}>
-                Add Entry
+                添加条目
               </Button>
             }
           >
             {(record.comments ?? []).length === 0 && (
-              <Box color="label">No comments available.</Box>
+              <Box color="label">无可用评论.</Box>
             )}
             {(record.comments ?? []).map((comment) => (
               <Box key={comment.index} mb={1}>
@@ -807,7 +807,7 @@ const RecordView = (props: {
                   color="bad"
                   onClick={() => onDeleteComment(comment.index)}
                 >
-                  Delete Entry
+                  删除条目
                 </Button>
                 <Divider />
               </Box>
@@ -857,7 +857,7 @@ const RecordView = (props: {
             )}
           </Stack>
           <Button fluid mt={1} icon="arrow-left" onClick={onBack}>
-            Back
+            返回
           </Button>
         </Section>
       </Stack.Item>
@@ -905,9 +905,9 @@ const EditModal = (props: {
         )}
         {field.type !== 'select' && (
           <Stack justify="space-between" mt={2}>
-            <Button onClick={onCancel}>Cancel</Button>
+            <Button onClick={onCancel}>取消</Button>
             <Button color="good" onClick={() => onSave()}>
-              Save
+              保存
             </Button>
           </Stack>
         )}

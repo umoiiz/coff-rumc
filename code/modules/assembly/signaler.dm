@@ -1,6 +1,6 @@
 /obj/item/assembly/signaler
-	name = "remote signaling device"
-	desc = "Used to remotely activate devices. Allows for syncing when using a secure signaler on another. Unique action to activate, use to open the menu."
+	name = "远程信号装置"
+	desc = "用于远程激活设备. 在另一个信号装置上使用安全信号器时可以进行同步. 独特动作以激活, 使用以打开菜单."
 	icon_state = "signaller"
 	worn_icon_state = "signaler"
 	wires = WIRE_RECEIVE | WIRE_PULSE | WIRE_RADIO_PULSE | WIRE_RADIO_RECEIVE
@@ -96,7 +96,7 @@
 
 /obj/item/assembly/signaler/proc/try_send_signal()
 	if(TIMER_COOLDOWN_RUNNING(src, COOLDOWN_SIGNALLER_SEND))
-		balloon_alert(usr, "Recharging")
+		balloon_alert(usr, "正在充电")
 		return
 	TIMER_COOLDOWN_START(src, COOLDOWN_SIGNALLER_SEND, 1 SECONDS)
 	signal()
@@ -110,7 +110,7 @@
 		if(secured && signaler2.secured)
 			code = signaler2.code
 			set_frequency(signaler2.frequency)
-			to_chat(user, "You transfer the frequency and code of \the [signaler2.name] to \the [name]")
+			to_chat(user, "你将\the [signaler2.name]的频率和代码传输到\the [name]")
 
 /obj/item/assembly/signaler/proc/signal()
 	if(!radio_connection)
@@ -128,7 +128,7 @@
 	if(!(wires & WIRE_RADIO_RECEIVE))
 		return
 	pulse(TRUE)
-	audible_message("[icon2html(src, hearers(src))] *beep* *beep* *beep*", null, hearing_range)
+	audible_message("[icon2html(src, hearers(src))]*哔* *哔* *哔*", null, hearing_range)
 	for(var/CHM in get_hearers_in_view(hearing_range, src))
 		if(ismob(CHM))
 			var/mob/LM = CHM
@@ -155,7 +155,7 @@
 
 /obj/item/assembly/signaler/receiver/examine(mob/user)
 	. = ..()
-	. += span_notice("The radio receiver is [on?"on":"off"].")
+	. += span_notice("无线电接收器处于[on?"on":"off"]状态.")
 
 /obj/item/assembly/signaler/receiver/receive_signal(datum/signal/signal)
 	if(!on)

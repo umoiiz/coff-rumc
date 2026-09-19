@@ -1,19 +1,19 @@
 /obj/machinery/vending/cigarette
-	name = "cigarette machine" //OCD had to be uppercase to look nice with the new formating
-	desc = "A specialized vending machine designed to contribute to your slow and uncomfortable death."
-	product_slogans = "There's no better time to start smokin'.;\
-		Smoke now, and win the adoration of your peers.;\
-		They beat cancer centuries ago, so smoke away.;\
-		If you're not smoking, you must be joking.;\
-		Probably not bad for you!;\
-		Don't believe the scientists!;\
-		It's good for you!;\
-		Don't quit, buy more!;\
-		Smoke!;\
-		Nicotine heaven.;\
-		Best cigarettes since 2150.;\
-		Don't be so hard on yourself, kid. Smoke a Lucky Star!;\
-		Professionals. Better cigarettes for better people. Yes, better people."
+	name = "香烟机" //OCD had to be uppercase to look nice with the new formating
+	desc = "一台专门的自动售货机, 旨在助你缓慢而不适地死去."
+	product_slogans = "没有比现在更好的时机开始抽烟了.;\
+		现在就抽, 赢得同伴的崇拜.;\
+		他们几个世纪前就战胜了癌症, 所以尽管抽吧.;\
+		如果你不抽烟, 你一定是在开玩笑.;\
+		大概对你没坏处!;\
+		别信科学家!;\
+		对你有好处!;\
+		别戒, 多买!;\
+		抽!;\
+		尼古丁天堂.;\
+		自2150年以来最好的香烟.;\
+		别对自己太苛刻, 孩子. 抽根幸运星!;\
+		专业人士. 更好的香烟给更好的人. 是的, 更好的人."
 	icon_state = "cigs"
 	icon_vend = "cigs-vend"
 	icon_deny = "cigs-deny"
@@ -36,8 +36,8 @@
 	seasonal_items = list()
 
 /obj/machinery/vending/cigarette/colony
-	product_slogans = "Koorlander Gold, for the refined palate.;Lady Fingers, for the dainty smoker.;Lady Fingers, treat your palete with pink!;The big blue K means a cool fresh day!;For the taste that cools your mood, look for the big blue K!;Refined smokers go for Gold!;Lady Fingers are preferred by women who appreciate a cool smoke.;Lady Fingers are the number one cigarette this side of Gateway!;The tobacco connoisseur prefers Koorlander Gold.;For the cool, filtered feel, Lady Finger Cigarettes provide the smoothest draw of any cigarette on the market.;For the man who knows his place is at the top, Koorlander Gold shows the world that you're the best and no-one can say otherwise.;The Colonial Administration Bureau would like to remind you that smoking kills."
-	product_ads = "For the taste that cools your mood, look for the big blue K!;Refined smokers go for Gold!;Lady Fingers are preferred by women who appreciate a cool smoke.;Lady Fingers are the number one cigarette this side of Gateway!;The tobacco connoisseur prefers Koorlander Gold.;For the cool, filtered feel, Lady Finger Cigarettes provide the smoothest draw of any cigarette on the market.;For the man who knows his place is at the top, Koorlander Gold shows the world that you're the best and no-one can say otherwise.;The Colonial Administration Bureau would like to remind you that smoking kills."
+	product_slogans = "库兰德金装, 为精致味蕾.;淑女指, 为优雅的吸烟者.;淑女指, 用粉色款待你的味蕾!;大蓝K意味着凉爽清新的一天!;为了冷却你心情的味道, 寻找大蓝K!;精致的吸烟者选择金装!;淑女指是欣赏凉爽烟雾的女性首选.;淑女指是盖特威这边排名第一的香烟!;烟草鉴赏家偏爱库兰德金装.;为了凉爽, 过滤的感觉, 淑女指香烟提供市场上任何香烟中最顺滑的吸感.;对于知道自己位置在顶端的男人, 库兰德金装向世界展示你是最好的, 没人能说别的.;殖民管理局想提醒你吸烟致命."
+	product_ads = "为了冷却你心情的味道, 寻找大蓝K!;精致的吸烟者选择金装!;淑女指是欣赏凉爽烟雾的女性首选.;淑女指是盖特威这边排名第一的香烟!;烟草鉴赏家偏爱库兰德金装.;为了凉爽, 过滤的感觉, 淑女指香烟提供市场上任何香烟中最顺滑的吸感.;对于知道自己位置在顶端的男人, 库兰德金装向世界展示你是最好的, 没人能说别的.;殖民管理局想提醒你吸烟致命."
 	products = list(
 		/obj/item/storage/fancy/cigarettes/kpack = 15,
 		/obj/item/storage/fancy/cigarettes/lady_finger = 15,

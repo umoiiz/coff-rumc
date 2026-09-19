@@ -37,18 +37,18 @@
 	return SURGERY_CANNOT_USE
 
 /datum/surgery_step/internal/remove_embryo/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] starts to pull something out from [target]'s ribcage with \the [tool]."), \
-					span_notice("You start to pull something out from [target]'s ribcage with \the [tool]."))
-	target.balloon_alert_to_viewers("Pulling...")
+	user.visible_message(span_notice("[user]开始用\the [tool]从[target]的胸腔中拉出什么东西。"), \
+					span_notice("你开始用\the [tool]从[target]的胸腔中拉出什么东西。"))
+	target.balloon_alert_to_viewers("正在拉出...")
 	target.custom_pain("Something hurts horribly in your chest!",1)
 	..()
 
 /datum/surgery_step/internal/remove_embryo/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	var/obj/item/alien_embryo/A = locate() in target
 	if(A)
-		user.visible_message(span_warning("[user] rips a wriggling parasite out of [target]'s ribcage!"),
-							span_warning("You rip a wriggling parasite out of [target]'s ribcage!"))
-		target.balloon_alert_to_viewers("Success")
+		user.visible_message(span_warning("[user]从[target]的胸腔中扯出一条扭动的寄生虫!"),
+							span_warning("你从[target]的胸腔中扯出一条扭动的寄生虫!"))
+		target.balloon_alert_to_viewers("成功")
 		var/mob/living/carbon/xenomorph/larva/L = locate() in target //the larva was fully grown, ready to burst.
 		if(L)
 			L.forceMove(target.loc)
@@ -94,9 +94,9 @@
 /datum/surgery_step/internal/fix_organ/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	for(var/datum/internal_organ/I in affected.internal_organs)
 		if(I?.damage > 0)
-			user.visible_message(span_notice("[user] starts treating damage to [target]'s [I.name] with the surgical membrane."), \
-			span_notice("You start treating damage to [target]'s [I.name] with the surgical membrane.") )
-			target.balloon_alert_to_viewers("Fixing...")
+			user.visible_message(span_notice("[user]开始用手术膜治疗[target][I.name]的损伤。"), \
+			span_notice("你开始用手术膜治疗[target][I.name]的损伤。") )
+			target.balloon_alert_to_viewers("正在修复...")
 
 	target.custom_pain("The pain in your [affected.display_name] is living hell!", 1)
 	..()
@@ -105,16 +105,16 @@
 	for(var/datum/internal_organ/I in affected.internal_organs)
 		if(I?.damage > 0)
 
-			user.visible_message(span_notice("[user] treats damage to [target]'s [I.name] with surgical membrane."), \
-			span_notice("You treat damage to [target]'s [I.name] with surgical membrane.") )
+			user.visible_message(span_notice("[user]用手术膜治疗了[target][I.name]的损伤。"), \
+			span_notice("你用手术膜治疗了[target][I.name]的损伤。") )
 			I.heal_organ_damage(I.damage)
-			target.balloon_alert_to_viewers("Success")
+			target.balloon_alert_to_viewers("成功")
 	return ..()
 
 /datum/surgery_step/internal/fix_organ/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_warning("[user]'s hand slips, getting messy and tearing the inside of [target]'s [affected.display_name] with \the [tool]!"), \
-	span_warning("Your hand slips, getting messy and tearing the inside of [target]'s [affected.display_name] with \the [tool]!"))
-	target.balloon_alert_to_viewers("Slipped!")
+	user.visible_message(span_warning("[user]的手滑了一下,弄得一团糟,用\the [tool]撕裂了[target][affected.display_name]的内部!"), \
+	span_warning("你的手滑了一下,弄得一团糟,用\the [tool]撕裂了[target][affected.display_name]的内部!"))
+	target.balloon_alert_to_viewers("滑脱!")
 	var/dam_amt = 2
 
 	if(istype(tool, /obj/item/tool/surgery/surgical_membrane))

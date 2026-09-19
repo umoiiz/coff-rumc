@@ -1,6 +1,6 @@
 /obj/effect/plantsegment
 	name = "space vines"
-	desc = "An extremely expansionistic species of vine."
+	desc = "一种极具扩张性的藤蔓物种."
 	icon = 'icons/effects/spacevines.dmi'
 	icon_state = "Light1"
 	anchored = TRUE
@@ -74,23 +74,23 @@
 	if(!prob(seed ? min(max(0,100 - seed.potency),100) : 50))
 		var/text = pick("rips","tears","pulls")
 		user.visible_message(
-			span_notice("[user.name] [text] at [src]."),
-			span_notice("You [text] at [src]."),
-			span_warning("You hear shredding and ripping."))
+			span_notice("[user.name][text]在[src]."),
+			span_notice("你[text]在[src]."),
+			span_warning("你听到撕裂和扯碎的声音."))
 		return FALSE
 	var/mob/living/prisoner = buckled_mobs[1]
 	if(prisoner.buckled != src)
 		CRASH("[user] attempted to free [prisoner] by attacking [src], but it was buckled to [prisoner.buckled].")
 	if(prisoner != user)
 		prisoner.visible_message(
-			span_notice("[user.name] frees [prisoner.name] from [src]."),
-			span_notice("[user.name] frees you from [src]."),
-			span_warning("You hear shredding and ripping."))
+			span_notice("[user.name]将[prisoner.name]从[src]中解救出来."),
+			span_notice("[user.name]将你从[src]中解救出来."),
+			span_warning("你听到撕裂和扯碎的声音."))
 	else
 		prisoner.visible_message(
-			span_notice("[prisoner.name] struggles free of [src]."),
-			span_notice("You untangle [src] from around yourself."),
-			span_warning("You hear shredding and ripping."))
+			span_notice("[prisoner.name]挣扎着从[src]中脱身."),
+			span_notice("你将自己身上的[src]解开."),
+			span_warning("你听到撕裂和扯碎的声音."))
 	unbuckle_mob(prisoner)
 	return TRUE
 
@@ -119,7 +119,7 @@
 	var/mob/living/carbon/victim = locate() in loc
 	if(!QDELETED(victim) && victim.stat != DEAD && victim.buckled != src) // If mob exists and is not dead or captured.
 		buckle_mob(victim, silent = TRUE)
-		to_chat(victim, span_danger("The vines [pick("wind", "tangle", "tighten")] around you!"))
+		to_chat(victim, span_danger("藤蔓[pick("wind", "tangle", "tighten")]缠绕着你!"))
 
 	// FEED ME, SEYMOUR.
 	if(seed)
@@ -130,7 +130,7 @@
 
 			// Drink some blood/cause some brute.
 			if(seed.carnivorous == 2)
-				to_chat(victim, span_danger("\The [src] pierces your flesh greedily!"))
+				to_chat(victim, span_danger("\The [src]贪婪地刺入你的血肉!"))
 
 				var/damage = rand(round(seed.potency * 0.5),seed.potency)
 				if(!ishuman(victim))
@@ -148,7 +148,7 @@
 
 			// Inject some chems.
 			if(length(seed.chems) && ishuman(victim))
-				to_chat(victim, span_danger("You feel something seeping into your skin!"))
+				to_chat(victim, span_danger("你感觉有什么东西渗入了你的皮肤!"))
 				for(var/rid in seed.chems)
 					var/injecting = clamp(seed.potency * 0.2, 1, 5)
 					victim.reagents.add_reagent(rid, injecting)

@@ -1,8 +1,8 @@
 /obj/structure/lamarr
-	name = "Lab Cage"
+	name = "实验笼"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "labcage1"
-	desc = "A glass lab container for storing interesting creatures."
+	desc = "一个用于存放有趣生物的玻璃实验容器。"
 	density = TRUE
 	anchored = TRUE
 	resistance_flags = UNACIDABLE
@@ -27,12 +27,12 @@
 	. = ..()
 	if(.)
 		return
-	user.visible_message(span_warning("[user] kicks the lab cage."), span_notice("You kick the lab cage."))
+	user.visible_message(span_warning("[user]踢了实验笼。"), span_notice("你踢了实验笼。"))
 	take_damage(2, BRUTE, MELEE)
 
 /obj/item/clothing/mask/facehugger/lamarr
-	name = "Lamarr"
-	desc = "The worst she might do is attempt to... couple with your head."//hope we don't get sued over a harmless reference, rite?
+	name = "拉玛"
+	desc = "她最坏也不过是试图...和你的脑袋交配。"//hope we don't get sued over a harmless reference, rite?
 	sterile = TRUE
 	gender = FEMALE
 

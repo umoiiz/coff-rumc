@@ -1,5 +1,5 @@
 /obj/item/weapon/gun/energy/lasgun/lasrifle/plasma
-	name = "generic plasma weapon"
+	name = "通用等离子武器"
 	icon = 'icons/obj/items/gun/plasma64.dmi'
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/gun/plasma_lefthand_1.dmi',
@@ -22,8 +22,8 @@
 	ammo_level_icon = null
 
 /obj/item/weapon/gun/energy/lasgun/lasrifle/plasma/rifle
-	name = "\improper PL-38 plasma rifle"
-	desc = "The PL-38 Plasma Rifle is an experimental addition to the TerraGov Marine Corps arsenal, rumored to be the child of some back door contract deals, it is a versatile weapon if you mind the rather cheap cooling systems. It has a normal beam mode similar to a rifle, a hipower mode that easily pierces through soft targets, and a blast mode that will easily melt through the armor of anything hit by it."
+	name = "\improper PL-38等离子步枪"
+	desc = "PL-38等离子步枪是TerraGov陆战队军械库中的实验性装备,据传是某些幕后合同交易的产物,如果你能忍受其相当廉价的冷却系统,它是一把多用途武器.它拥有类似步枪的普通光束模式,一种能轻易穿透软目标的高能模式,以及一种能轻易熔化任何被击中目标装甲的爆破模式."
 	icon_state = "plasma_rifle"
 	worn_icon_state = "plasma_rifle"
 	fire_sound = 'sound/weapons/guns/fire/plasma_fire_med.ogg'
@@ -116,8 +116,8 @@
 	message_to_user = "You set the plasma rifle's charge mode to blast fire."
 
 /obj/item/weapon/gun/energy/lasgun/lasrifle/plasma/cannon
-	name = "\improper PL-96 plasma cannon"
-	desc = "The PL-96 Plasma Cannon is an experimental addition to the TerraGov Marine Corps arsenal, rumored to be the child of some back door contract deals, is an absolutely incredibly devastating weapon to behold... if you mind the incredibly poor cooling mechanisms and unwieldiness of the whole package. It has a normal beam mode similar to a machinegun, a fire glob mode that leaves devastating flames in the aftermath, and a Charge mode nicknamed the 'Femur breaker' due to its incredible armor shattering potiential upon hitting a target."
+	name = "\improper PL-96等离子炮"
+	desc = "PL-96等离子炮是TerraGov陆战队军械库中的实验性装备,据传是某些幕后合同交易的产物,是一件绝对令人难以置信的毁灭性武器...如果你能忍受其极其糟糕的冷却机制和整体笨重感的话.它拥有类似机枪的普通光束模式,一种能在事后留下毁灭性火焰的火焰弹模式,以及一种因其击中目标时惊人的破甲潜力而被昵称为\"股骨粉碎者\"的充能模式."
 	icon_state = "plasma_cannon"
 	worn_icon_state = "plasma_cannon"
 	gun_features_flags = GUN_AMMO_COUNTER|GUN_AMMO_COUNT_BY_SHOTS_REMAINING|GUN_WIELDED_FIRING_ONLY|GUN_WIELDED_STABLE_FIRING_ONLY
@@ -191,8 +191,8 @@
 	message_to_user = "You set the plasma cannon's charge mode to incendiary."
 
 /obj/item/weapon/gun/energy/lasgun/lasrifle/plasma/smg
-	name = "\improper PL-51 plasma SMG"
-	desc = "The PL-51 Plasma SMG is another experimental addition to the TGMC plasma weapon lineup, speculated by some to be part of a scheme to have AI design and generate weapon schematics and profiles. It shares the same cooling system as other plasma weapons, preventing sustained fire. In contrast to others in it's lineup, it is much lighter, easier to handle and can be fired one handed. Has two fire modes, Standard which is capable of ricochetting off walls and solid objects and Overcharge which is slower firing, but causes a small moderately damaging explosion on contact with a target."
+	name = "\improper PL-51等离子冲锋枪"
+	desc = "PL-51等离子冲锋枪是TGMC等离子武器系列中的又一实验性装备,有人推测它是让AI设计和生成武器图纸与档案计划的一部分.它与其他等离子武器共享相同的冷却系统,无法持续射击.与其系列中的其他武器相比,它更轻便,更易操控,且可以单手射击.拥有两种射击模式,标准模式能够从墙壁和固体物体上弹射,超载模式射速较慢,但接触目标时会产生一次小范围中等伤害的爆炸."
 	icon_state = "plasma_smg"
 	worn_icon_state = "plasma_smg"
 	gun_skill_category = SKILL_SMGS

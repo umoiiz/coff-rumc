@@ -1,8 +1,8 @@
 #define TURRET_HEALTH_REGEN 8
 
 /obj/structure/xeno/turret
-	name = "acid turret"
-	desc = "A menacing looking construct of resin, it seems to be alive. It fires acid against intruders."
+	name = "酸液炮塔"
+	desc = "一个看起来险恶的树脂构造物,它似乎是活的.它会向入侵者发射酸液."
 	icon = 'icons/Xeno/acid_turret.dmi'
 	icon_state = "acid_turret"
 	base_icon_state = "acid_turret"
@@ -208,8 +208,8 @@
 	update_minimap_icon()
 
 /obj/structure/xeno/turret/sticky
-	name = "Sticky resin turret"
-	desc = "A menacing looking construct of resin, it seems to be alive. It fires resin against intruders."
+	name = "粘性树脂炮塔"
+	desc = "一个看起来险恶的树脂构造物,它似乎是活的.它会向入侵者发射树脂."
 	icon_state = "resin_turret"
 	base_icon_state = "resin_turret"
 	light_initial_color = LIGHT_COLOR_PURPLE
@@ -222,8 +222,8 @@
 		new_proj.fire_at(null, null, src, range = rand(1, 4), angle = rand(1, 360), recursivity = TRUE)
 
 /obj/structure/xeno/turret/facehugger
-	name = "hugger turret"
-	desc = "A menacing looking construct of resin, it seems to be alive. It fires huggers against intruders."
+	name = "面罩虫炮塔"
+	desc = "一个看起来险恶的树脂构造物,它似乎是活的.它会向入侵者发射面罩虫."
 	icon_state = "hugger_turret"
 	base_icon_state = "hugger_turret"
 	obj_integrity = 400

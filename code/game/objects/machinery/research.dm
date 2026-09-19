@@ -18,7 +18,7 @@
 
 /obj/machinery/researchcomp
 	name = "research console"
-	desc = "A console for performing complex computations. Release the stabilizers to move it around."
+	desc = "一台用于执行复杂计算的控制台. 松开稳定器即可移动它."
 	icon = 'icons/obj/machines/bepis.dmi'
 	icon_state = "chamber"
 	interaction_flags = INTERACT_MACHINE_TGUI
@@ -157,7 +157,7 @@
 	switch(action)
 		if("switch_anchored")
 			if (researching)
-				to_chat(usr, span_notice("It is currently researching."))
+				to_chat(usr, span_notice("它目前正在研究."))
 				return
 
 			setAnchored(!anchored)
@@ -165,13 +165,13 @@
 
 		if("start_research")
 			if (!anchored)
-				to_chat(usr, span_notice("It needs to be fastened before researching."))
+				to_chat(usr, span_notice("研究前需要先将其固定."))
 				return
 			if (!init_resource)
-				to_chat(usr, span_notice("You have no resource to begin research."))
+				to_chat(usr, span_notice("你没有资源开始研究."))
 				return
 			if (researching)
-				to_chat(usr, span_notice("It is already researching something."))
+				to_chat(usr, span_notice("它已经在研究某样东西了."))
 				return
 
 			start_research(usr, 5 SECONDS)
@@ -232,7 +232,7 @@
 	if(total_points > 0)
 		var/datum/export_report/export_report = new /datum/export_report(total_points, "Research: [resource.name]", usr.faction)
 		SSpoints.export_history += export_report
-		visible_message(span_notice("[src] buzzes: Research completed and generated [total_points] point[total_points == 1 ? "" : "s"]."))
+		visible_message(span_notice("[src]发出蜂鸣声: 研究完成并生成了[total_points]点[total_points == 1 ? "" : "s"]."))
 
 ///Generates rewards using the resource's rarity modifiers and a list of potential rewards
 /obj/machinery/researchcomp/proc/generate_research_rewards_list(obj/item/research_resource/resource, list/potential_rewards, list/earned_rewards)
@@ -259,7 +259,7 @@
 ///
 
 /obj/item/research_resource
-	name = "Unknown substance"
+	name = "未知物质"
 	icon_state = "coin-mythril"
 	color = "#e2a4dd"
 	///Type of research the item is used for
@@ -273,7 +273,7 @@
 	)
 
 /obj/item/research_resource/money
-	desc = "Unidentified substance. The random data it provides could probably secure some funding."
+	desc = "未识别的物质. 它提供的随机数据或许能争取到一些资金."
 	research_type = RES_MONEY
 	reward_probs = list(
 		RES_TIER_BASIC = 100,
@@ -292,7 +292,7 @@
 	icon_state = "sample_[rand(0, 11)]"
 
 /obj/item/research_resource/xeno/tier_one
-	name = "Xenomorph research material - tier 1"
+	name = "异形研究材料 - 1级"
 	color = "#f0bee3"
 	reward_probs = list(
 		RES_TIER_BASIC = 100,
@@ -302,7 +302,7 @@
 	)
 
 /obj/item/research_resource/xeno/tier_two
-	name = "Xenomorph research material - tier 2"
+	name = "异形研究材料 - 2级"
 	color = "#d6e641"
 	reward_probs = list(
 		RES_TIER_BASIC = 100,
@@ -312,7 +312,7 @@
 	)
 
 /obj/item/research_resource/xeno/tier_three
-	name = "Xenomorph research material - tier 3"
+	name = "异形研究材料 - 3级"
 	color = "#e43939"
 	reward_probs = list(
 		RES_TIER_BASIC = 100,
@@ -322,7 +322,7 @@
 	)
 
 /obj/item/research_resource/xeno/tier_four
-	name = "Xenomorph research material - tier 4"
+	name = "异形研究材料 - 4级"
 	color = "#a800ad"
 	reward_probs = list(
 		RES_TIER_BASIC = 100,

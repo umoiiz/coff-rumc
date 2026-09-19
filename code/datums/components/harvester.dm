@@ -97,30 +97,30 @@
 		return
 
 	if(!isreagentcontainer(cont))
-		user.balloon_alert(user, "incompatible")
+		user.balloon_alert(user, "不兼容")
 		return
 
 	var/obj/item/reagent_containers/container = cont
 
 	if(!container.reagents.total_volume)
-		user.balloon_alert(user, "empty")
+		user.balloon_alert(user, "空的")
 		return
 
 	if(length(container.reagents.reagent_list) > 1)
-		user.balloon_alert(user, "homogeneous mixture required")
+		user.balloon_alert(user, "需要均匀混合物")
 		return
 
 	var/datum/reagent/reagent_to_load = container.reagents.reagent_list[1].type
 
 	if(!loadable_reagents[reagent_to_load])
-		user.balloon_alert(user, "incompatible reagent, check description")
+		user.balloon_alert(user, "不兼容的试剂,请查看描述")
 		return
 
 	if(loaded_reagents[reagent_to_load] >= max_loadable_reagent_amount)
-		user.balloon_alert(user, "full")
+		user.balloon_alert(user, "满")
 		return
 
-	user.balloon_alert(user, "filling up...")
+	user.balloon_alert(user, "正在填充...")
 	if(!do_after(user, 1 SECONDS, NONE, source, BUSY_ICON_BAR, null, PROGRESS_BRASS))
 		return
 
@@ -143,21 +143,21 @@
 		return
 
 	if(!selected_reagent)
-		user.balloon_alert(user, "no reagent")
+		user.balloon_alert(user, "没有试剂")
 		return
 
 	var/use_amount = loadable_reagents[selected_reagent]
 
 	if(loaded_reagents[selected_reagent] < use_amount)
-		user.balloon_alert(user, "insufficient liquid")
+		user.balloon_alert(user, "液体不足")
 		return
 
 	if(user.do_actions)
 		return
 
-	to_chat(user, span_rose("You start filling up the small chambers along the blade's edge."))
+	to_chat(user, span_rose("你开始填充刀刃边缘的小腔室."))
 	if(!do_after(user, 2 SECONDS, IGNORE_USER_LOC_CHANGE, source, BUSY_ICON_BAR))
-		to_chat(user, span_rose("Due to the sudden movement, the safety mechanism siphons the substance back."))
+		to_chat(user, span_rose("由于突然的移动,安全机制将物质吸了回去."))
 		return
 
 	loaded_reagent = selected_reagent
@@ -170,7 +170,7 @@
 	user.update_inv_r_hand()
 	user.update_inv_l_hand()
 
-	user.balloon_alert(user, "loaded")
+	user.balloon_alert(user, "已装填")
 
 ///Updates the color of the overlay on top of the item sprite based on what chem is loaded in
 /datum/component/harvester/proc/update_loaded_color(datum/source, list/overlays_list)
@@ -239,7 +239,7 @@
 
 	if(!loaded_reagents[loaded_reagent])
 		update_selected_reagent(null)
-		user.balloon_alert(user, "[initial(loaded_reagent.name)]: empty")
+		user.balloon_alert(user, "[initial(loaded_reagent.name)]: 空的")
 	loaded_reagent = null
 
 	var/obj/item/item_parent = parent
@@ -258,7 +258,7 @@
 		user.heal_overall_damage(5, 0, updating_health = TRUE)
 		return
 
-	to_chat(user, span_rose("You prepare to stab <b>[target != user ? "[target]" : "yourself"]</b>!"))
+	to_chat(user, span_rose("你准备刺向<b>[target != user ? "[target]" : "yourself"]</b>!"))
 	new /obj/effect/temp_visual/telekinesis(get_turf(target))
 
 	if(do_after(user, 2 SECONDS, TRUE, target, BUSY_ICON_DANGER)) //Channeled heal on help intent
@@ -273,7 +273,7 @@
 	for(var/datum/reagent/reagent_entry AS in loaded_reagents)
 		options += initial(reagent_entry.name)
 
-	var/selected_option = tgui_input_list(reagent_select_action.owner, "Selection", "Available reagents", options)
+	var/selected_option = tgui_input_list(reagent_select_action.owner, "选择", "可用试剂", options)
 
 	if(!selected_option)
 		return

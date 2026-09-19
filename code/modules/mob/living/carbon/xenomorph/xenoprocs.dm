@@ -11,7 +11,7 @@
 	set category = "Alien"
 
 	if(interference)
-		to_chat(src, span_warning("A headhunter temporarily cuts off your psychic connection!"))
+		to_chat(src, span_warning("一个猎头者暂时切断了你的灵能连接!"))
 		return
 
 	check_hive_status(src)
@@ -63,14 +63,14 @@
 
 /mob/living/carbon/xenomorph/proc/change_skin()
 	if(!length(skins))
-		balloon_alert(src, "Your caste does not have the ability to change appearance.")
+		balloon_alert(src, "你的种姓没有改变外观的能力.")
 		return
 
 	var/boosty_access_tier = SSdiscord.get_boosty_tier(ckey)
 	if(check_other_rights(client, R_ADMIN, FALSE))
 		boosty_access_tier = BOOSTY_TIER_3
 	if(boosty_access_tier < BOOSTY_TIER_1)
-		to_chat(usr, span_notice("You need a higher boosty tier to use this!"))
+		to_chat(usr, span_notice("你需要更高的boosty等级才能使用此功能!"))
 		return
 
 	var/datum/xenomorph_skin/selection
@@ -80,9 +80,9 @@
 			continue
 		available_skins[our_skin.name] = our_skin
 	if(length(available_skins) < 2)
-		to_chat(usr, span_notice("There aren't any skins that you can access!"))
+		to_chat(usr, span_notice("没有任何你可以访问的皮肤!"))
 		return
-	var/answer = tgui_input_list(src, "Choose a setting appearance", "Choose a setting appearance", available_skins)
+	var/answer = tgui_input_list(src, "选择一种外观设置", "选择一种外观设置", available_skins)
 	selection = available_skins[answer]
 
 	if(!selection)
@@ -110,7 +110,7 @@
 			else
 				if(X.nicknumber != xeno_name)
 					continue
-			to_chat(usr,span_notice("You will now track [X.name]"))
+			to_chat(usr,span_notice("你現在將追蹤[X.name]"))
 			set_tracked(X)
 			break
 
@@ -119,7 +119,7 @@
 		for(var/obj/structure/xeno/silo/resin_silo AS in GLOB.xeno_resin_silos_by_hive[hivenumber])
 			if(num2text(resin_silo.number_silo) == silo_number)
 				set_tracked(resin_silo)
-				to_chat(usr,span_notice("You will now track [resin_silo.name]"))
+				to_chat(usr,span_notice("你現在將追蹤[resin_silo.name]"))
 				break
 
 	if(href_list["watch_xeno_name"])
@@ -146,8 +146,8 @@
 	hive.upgrade_xeno(src, upgrade, newlevel)
 	upgrade = newlevel
 	if(!silent)
-		visible_message(span_xenonotice("\The [src] begins to twist and contort."), \
-		span_xenonotice("We begin to twist and contort."))
+		visible_message(span_xenonotice("\The [src]開始扭曲變形."), \
+		span_xenonotice("我們開始扭曲變形."))
 		do_jitter_animation(1000)
 	set_datum(FALSE)
 	var/selected_ability_type = selected_ability?.type
@@ -311,14 +311,14 @@
 //A simple handler for checking your state. Used in pretty much all the procs.
 /mob/living/carbon/xenomorph/proc/check_state()
 	if(incapacitated() || lying_angle)
-		to_chat(src, span_warning("We cannot do this in our current state."))
+		to_chat(src, span_warning("以我們目前的狀態無法做到."))
 		return 0
 	return 1
 
 ///A simple handler for checking your state. Will ignore if the xeno is lying down
 /mob/living/carbon/xenomorph/proc/check_concious_state()
 	if(incapacitated())
-		to_chat(src, span_warning("We cannot do this in our current state."))
+		to_chat(src, span_warning("以我們目前的狀態無法做到."))
 		return FALSE
 	return TRUE
 
@@ -390,7 +390,7 @@
 		return
 
 	if(evolution_stored == xeno_caste.evolution_threshold)
-		to_chat(src, span_xenodanger("Our carapace crackles and our tendons strengthen. We are ready to evolve!"))
+		to_chat(src, span_xenodanger("我們的甲殼劈啪作響,肌腱也變得更加強韌.我們已準備好進化!"))
 		SEND_SOUND(src, sound('sound/effects/alien/evolveready.ogg'))
 
 
@@ -484,7 +484,7 @@
 	var/obj/item/clothing/mask/facehugger/F = get_active_held_item()
 	if(istype(F))
 		if(locate(/turf/closed/wall/resin) in loc)
-			to_chat(src, span_warning("We decide not to drop [F] after all."))
+			to_chat(src, span_warning("我們最終決定不丟下[F]."))
 			return
 	return ..()
 
@@ -492,10 +492,10 @@
 /mob/living/carbon/xenomorph/proc/handle_xeno_leader_pheromones(mob/living/carbon/xenomorph/ruler)
 	QDEL_NULL(leader_current_aura)
 	if(QDELETED(ruler) || !(xeno_flags & XENO_LEADER) || !ruler.current_aura || ruler.loc.z != loc.z) //We are no longer a leader, or the Queen attached to us has dropped from her ovi, disabled her pheromones or even died
-		to_chat(src, span_xenowarning("Our pheromones wane. The Ruler is no longer granting us her pheromones."))
+		to_chat(src, span_xenowarning("我們的費洛蒙減弱了.女王不再賜予我們她的費洛蒙."))
 	else
 		leader_current_aura = SSaura.add_emitter(src, ruler.current_aura.aura_types.Copy(), ruler.current_aura.range, ruler.current_aura.strength, ruler.current_aura.duration, ruler.current_aura.faction, ruler.current_aura.hive_number)
-		to_chat(src, span_xenowarning("Our pheromones have changed. The Ruler has new plans for the Hive."))
+		to_chat(src, span_xenowarning("我們的費洛蒙改變了.女王對蟲巢有了新的計畫."))
 
 
 /mob/living/carbon/xenomorph/proc/update_spits(skip_ammo_choice = FALSE)
@@ -541,7 +541,7 @@
 
 	var/damage = X.xeno_caste.acid_spray_damage_on_hit
 	INVOKE_ASYNC(src, PROC_REF(apply_acid_spray_damage), damage)
-	to_chat(src, span_xenodanger("\The [X] showers you in corrosive acid!"))
+	to_chat(src, span_xenodanger("\The [X]向你潑灑腐蝕性酸液!"))
 
 /mob/living/carbon/proc/apply_acid_spray_damage(damage)
 	apply_damage(damage, BURN, null, ACID, updating_health = TRUE)
@@ -583,7 +583,7 @@
 		H.add_hud_to(src)
 	else
 		H.remove_hud_from(src)
-	to_chat(src, span_notice("You have [(xeno_flags & XENO_MOBHUD) ? "enabled" : "disabled"] the Xeno Status HUD."))
+	to_chat(src, span_notice("你已[(xeno_flags & XENO_MOBHUD) ? "enabled" : "disabled"]異形狀態HUD."))
 
 /mob/living/carbon/xenomorph/proc/recurring_injection(mob/living/carbon/C, datum/reagent/toxin = /datum/reagent/toxin/xeno_neurotoxin, channel_time = XENO_NEURO_CHANNEL_TIME, transfer_amount = XENO_NEURO_AMOUNT_RECURRING, count = 4)
 	if(!C?.can_sting() || !toxin)
@@ -591,8 +591,8 @@
 	if(!do_after(src, channel_time, NONE, C, BUSY_ICON_HOSTILE))
 		return FALSE
 	var/i = 1
-	to_chat(C, span_danger("You feel a tiny prick."))
-	to_chat(src, span_xenowarning("Our stinger injects our victim with [initial(toxin.name)]!"))
+	to_chat(C, span_danger("你感到一陣輕微刺痛."))
+	to_chat(src, span_xenowarning("我們的尾刺向受害者注入[initial(toxin.name)]!"))
 	playsound(C, 'sound/effects/spray3.ogg', 15, TRUE)
 	playsound(C, SFX_ALIEN_DROOL, 15, TRUE)
 	do
@@ -703,7 +703,7 @@
 	set category = "Alien"
 
 	if(xeno_caste.caste_flags & CASTE_IS_A_MINION)
-		to_chat(src, span_warning("We are too primitive to understand mutations."))
+		to_chat(src, span_warning("我們太過原始,無法理解突變."))
 		return
 
 	var/datum/mutation_menu/menu = new(src)
@@ -719,8 +719,8 @@
 		return ..()
 
 	if(anchored || (mob_size > charger.mob_size && charger.is_charging <= CHARGE_MAX))
-		charger.visible_message(span_danger("[charger] rams into [src] and skids to a halt!"),
-		span_xenowarning("We ram into [src] and skid to a halt!"))
+		charger.visible_message(span_danger("[charger]撞上[src]並滑行停下!"),
+		span_xenowarning("我們撞上[src]並滑行停下!"))
 		charge_datum.do_stop_momentum(FALSE)
 		if(!anchored)
 			step(src, charger.dir)

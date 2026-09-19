@@ -1,6 +1,6 @@
 /obj/machinery/computer/arcade
 	name = "Black Donnovan II: Double Revenge"
-	desc = "Does not support Pinball."
+	desc = "不支持弹球."
 	icon = 'icons/obj/machines/computer.dmi'
 	icon_state = "arcade"
 	screen_overlay = "arcade_screen"

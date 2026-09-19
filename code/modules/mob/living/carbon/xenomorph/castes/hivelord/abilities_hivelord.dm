@@ -8,7 +8,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/recycle
 	name = "Recycle"
-	desc = "We deconstruct the body of a fellow fallen xenomorph to avoid marines from harvesting our sisters in arms."
+	desc = "我们拆解一名倒下的异形同伴的尸体, 以避免陆战队员收割我们并肩作战的姐妹."
 	action_icon_state = "recycle"
 	action_icon = 'icons/Xeno/actions/drone.dmi'
 	use_state_flags = ABILITY_USE_STAGGERED //can't use while staggered, defender fortified or crest down
@@ -25,26 +25,26 @@
 		return FALSE
 	if(!xeno_owner.Adjacent(victim))
 		if(!silent)
-			xeno_owner.balloon_alert(xeno_owner, "Too far")
+			xeno_owner.balloon_alert(xeno_owner, "太远了")
 		return FALSE
 	if(xeno_owner.on_fire)
 		if(!silent)
-			xeno_owner.balloon_alert(xeno_owner, "Cannot while burning")
+			xeno_owner.balloon_alert(xeno_owner, "燃烧时无法进行")
 		return FALSE
 	if(!isxeno(target))
 		if(!silent)
-			xeno_owner.balloon_alert(xeno_owner, "Cannot recycle")
+			xeno_owner.balloon_alert(xeno_owner, "无法回收")
 		return FALSE
 	if(victim.stat != DEAD)
 		if(!silent)
-			xeno_owner.balloon_alert(xeno_owner, "Sister isn't dead")
+			xeno_owner.balloon_alert(xeno_owner, "姐妹没有死亡")
 		return FALSE
 
 /datum/action/ability/activable/xeno/recycle/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/recycled_xeno = target
 	xeno_owner.face_atom(recycled_xeno) //Face towards the target so we don't look silly
-	xeno_owner.visible_message(span_warning("\The [xeno_owner] starts breaking apart \the [recycled_xeno]'s carcass."), \
-	span_danger("We slowly deconstruct upon \the [recycled_xeno]'s carcass!"), null, 20)
+	xeno_owner.visible_message(span_warning("\The [xeno_owner]开始拆解\the [recycled_xeno]的残骸."), \
+	span_danger("我们在\the [recycled_xeno]的残骸上慢慢拆解!"), null, 20)
 	if(!do_after(owner, 7 SECONDS, IGNORE_HELD_ITEM, recycled_xeno, BUSY_ICON_GENERIC, extra_checks = CALLBACK(src, PROC_REF(can_use_ability), target, TRUE, ABILITY_USE_BUSY)))
 		return
 
@@ -53,8 +53,8 @@
 	recycled_xeno.gib()
 
 	playsound(xeno_owner, 'sound/effects/alien/recycler.ogg', 40)
-	xeno_owner.visible_message(span_xenowarning("\The [xeno_owner] brushes xenomorphs' bits off its claws."), \
-	span_danger("We brush xenomorphs' bits off of our claws."), null, 20)
+	xeno_owner.visible_message(span_xenowarning("\The [xeno_owner]将异形的碎块从爪子上刷掉."), \
+	span_danger("我们将异形的碎块从爪子上刷掉."), null, 20)
 	return succeed_activate() //dew it
 
 // ***************************************
@@ -78,7 +78,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/toggle_speed
 	name = "Resin Walker"
-	desc = "Move faster on resin."
+	desc = "在树脂上移动更快."
 	action_icon_state = "toggle_speed"
 	action_icon = 'icons/Xeno/actions/hivelord.dmi'
 	ability_cost = 50
@@ -109,7 +109,7 @@
 /datum/action/ability/xeno_action/toggle_speed/proc/resinwalk_on(silent = FALSE)
 	speed_activated = TRUE
 	if(!silent)
-		owner.balloon_alert(owner, "Resin walk active")
+		owner.balloon_alert(owner, "树脂行走已激活")
 	if(xeno_owner.loc_weeds_type)
 		speed_bonus_active = TRUE
 		xeno_owner.add_movespeed_modifier(type, TRUE, 0, NONE, TRUE, -1.5)
@@ -118,7 +118,7 @@
 
 /datum/action/ability/xeno_action/toggle_speed/proc/resinwalk_off(silent = FALSE)
 	if(!silent)
-		owner.balloon_alert(owner, "Resin walk ended")
+		owner.balloon_alert(owner, "树脂行走已结束")
 	if(speed_bonus_active)
 		xeno_owner.remove_movespeed_modifier(type)
 		speed_bonus_active = FALSE
@@ -129,7 +129,7 @@
 /datum/action/ability/xeno_action/toggle_speed/proc/resinwalk_on_moved(datum/source, atom/oldloc, direction, Forced = FALSE)
 	SIGNAL_HANDLER
 	if(!isturf(xeno_owner.loc) || xeno_owner.plasma_stored < 10)
-		owner.balloon_alert(owner, "Resin walk ended, no plasma")
+		owner.balloon_alert(owner, "树脂行走已结束, 没有等离子体")
 		resinwalk_off(TRUE)
 		return
 	if(xeno_owner.loc_weeds_type)
@@ -148,7 +148,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/build_tunnel
 	name = "Dig Tunnel"
-	desc = "Create a tunnel entrance. Use again to create the tunnel exit."
+	desc = "创建一个隧道入口. 再次使用以创建隧道出口."
 	action_icon_state = "build_tunnel"
 	action_icon = 'icons/Xeno/actions/hivelord.dmi'
 	ability_cost = 200
@@ -164,37 +164,37 @@
 	var/turf/T = get_turf(owner)
 	if(locate(/obj/structure/xeno/tunnel) in T)
 		if(!silent)
-			T.balloon_alert(owner, "Tunnel already here")
+			T.balloon_alert(owner, "隧道已经在这里了")
 		return
 	if(!T.can_dig_xeno_tunnel())
 		if(!silent)
-			T.balloon_alert(owner, "Cannot dig, bad terrain")
+			T.balloon_alert(owner, "无法挖掘,地形恶劣")
 		return FALSE
 	if(owner.get_active_held_item())
 		if(!silent)
-			owner.balloon_alert(owner, "Cannot dig, needs empty hand")
+			owner.balloon_alert(owner, "无法挖掘,需要空手")
 		return FALSE
 
 /datum/action/ability/xeno_action/build_tunnel/on_cooldown_finish()
-	to_chat(xeno_owner, span_notice("We are ready to dig a tunnel again."))
+	to_chat(xeno_owner, span_notice("我们准备好再次挖掘隧道了."))
 	return ..()
 
 /datum/action/ability/xeno_action/build_tunnel/action_activate()
 	var/turf/T = get_turf(owner)
 
-	xeno_owner.balloon_alert(xeno_owner, "Digging...")
-	xeno_owner.visible_message(span_xenonotice("[xeno_owner] begins digging out a tunnel entrance."), \
-	span_xenonotice("We begin digging out a tunnel entrance."), null, 5)
+	xeno_owner.balloon_alert(xeno_owner, "挖掘中...")
+	xeno_owner.visible_message(span_xenonotice("[xeno_owner]开始挖出一个隧道入口."), \
+	span_xenonotice("我们开始挖出一个隧道入口."), null, 5)
 	if(!do_after(xeno_owner, HIVELORD_TUNNEL_DIG_TIME, NONE, T, BUSY_ICON_BUILD))
-		xeno_owner.balloon_alert(xeno_owner, "Digging aborted")
+		xeno_owner.balloon_alert(xeno_owner, "挖掘已中止")
 		return fail_activate()
 
 	if(!can_use_action(TRUE))
 		return fail_activate()
 
-	T.balloon_alert(xeno_owner, "Tunnel dug")
-	xeno_owner.visible_message(span_xenonotice("\The [xeno_owner] digs out a tunnel entrance."), \
-	span_xenonotice("We dig out a tunnel, connecting it to our network."), null, 5)
+	T.balloon_alert(xeno_owner, "隧道已挖好")
+	xeno_owner.visible_message(span_xenonotice("\The [xeno_owner]挖出了一个隧道入口."), \
+	span_xenonotice("我们挖出了一条隧道,将其连接到我们的网络中."), null, 5)
 	var/obj/structure/xeno/tunnel/newt = new(T, xeno_owner.get_xeno_hivenumber())
 
 	playsound(T, 'sound/weapons/pierce.ogg', 25, 1)
@@ -206,7 +206,7 @@
 
 	add_cooldown()
 
-	to_chat(xeno_owner, span_xenonotice("We now have <b>[LAZYLEN(xeno_owner.tunnels)] of [HIVELORD_TUNNEL_SET_LIMIT]</b> tunnels."))
+	to_chat(xeno_owner, span_xenonotice("我们现在拥有<b>[LAZYLEN(xeno_owner.tunnels)]条,共[HIVELORD_TUNNEL_SET_LIMIT]</b>条隧道."))
 
 	newt.tunnel_desc = "[get_area(newt)] (X: [newt.x], Y: [newt.y])"
 
@@ -215,7 +215,7 @@
 	if(LAZYLEN(xeno_owner.tunnels) > HIVELORD_TUNNEL_SET_LIMIT) //if we exceed the limit, delete the oldest tunnel set.
 		var/obj/structure/xeno/tunnel/old_tunnel = xeno_owner.tunnels[1]
 		old_tunnel.deconstruct(FALSE)
-		to_chat(xeno_owner, span_xenodanger("Having exceeding our tunnel limit, our oldest tunnel has collapsed."))
+		to_chat(xeno_owner, span_xenodanger("由于超出了我们的隧道上限,我们最旧的隧道已经坍塌了."))
 
 	succeed_activate()
 	playsound(T, 'sound/weapons/pierce.ogg', 25, 1)
@@ -231,7 +231,7 @@
 
 /datum/action/ability/xeno_action/place_jelly_pod
 	name = "Place Resin Jelly pod"
-	desc = "Place down a dispenser that allows xenos to retrieve fireproof jelly."
+	desc = "放置一个分配器,让异形可以获取防火凝胶."
 	action_icon_state = "resin_jelly_pod"
 	action_icon = 'icons/Xeno/actions/hivelord.dmi'
 	ability_cost = 500
@@ -246,12 +246,12 @@
 	var/turf/T = get_turf(owner)
 	if(!T || !T.is_weedable() || T.density)
 		if(!silent)
-			T.balloon_alert(owner, "Cannot place pod")
+			T.balloon_alert(owner, "无法放置舱体")
 		return FALSE
 
 	if(!xeno_owner.loc_weeds_type)
 		if(!silent)
-			T.balloon_alert(owner, "Cannot place pod, no weeds")
+			T.balloon_alert(owner, "无法放置舱体,没有杂草")
 		return FALSE
 
 	if(!T.check_disallow_alien_fortification(owner, silent))
@@ -267,12 +267,12 @@
 
 	playsound(owner, SFX_ALIEN_RESIN_BUILD, 25)
 	var/obj/structure/xeno/resin_jelly_pod/pod = new(T, owner.get_xeno_hivenumber())
-	to_chat(owner, span_xenonotice("We shape some resin into \a [pod]."))
+	to_chat(owner, span_xenonotice("我们将一些树脂塑造成\a [pod]."))
 	add_cooldown()
 
 /datum/action/ability/xeno_action/create_jelly
 	name = "Create Resin Jelly"
-	desc = "Create a fireproof jelly."
+	desc = "制造防火凝胶."
 	action_icon_state = "resin_jelly"
 	action_icon = 'icons/Xeno/actions/hivelord.dmi'
 	ability_cost = 100
@@ -288,13 +288,13 @@
 		return
 	if(owner.l_hand || owner.r_hand)
 		if(!silent)
-			owner.balloon_alert(owner, "Cannot jelly, need empty hands")
+			owner.balloon_alert(owner, "无法制造凝胶,需要空手")
 		return FALSE
 
 /datum/action/ability/xeno_action/create_jelly/action_activate()
 	var/obj/item/resin_jelly/jelly = new(owner.loc)
 	owner.put_in_hands(jelly)
-	to_chat(owner, span_xenonotice("We create a globule of resin from our ovipositor.")) // Ewww...
+	to_chat(owner, span_xenonotice("我们从产卵器中制造出一团树脂.")) // Ewww...
 	add_cooldown()
 	succeed_activate()
 
@@ -303,7 +303,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/healing_infusion
 	name = "Healing Infusion"
-	desc = "Psychically infuses a friendly xeno with regenerative energies, greatly improving its natural healing. Doesn't work if the target can't naturally heal."
+	desc = "用再生能量对友方异形进行精神灌注,大幅提升其自然愈合能力.如果目标无法自然愈合则无效."
 	action_icon_state = "healing_infusion"
 	action_icon = 'icons/Xeno/actions/hivelord.dmi'
 	cooldown_duration = 12.5 SECONDS
@@ -322,13 +322,13 @@
 
 	if(!isxeno(target))
 		if(!silent)
-			target.balloon_alert(owner, "Cannot heal, only xenos")
+			target.balloon_alert(owner, "无法治疗,仅限异形")
 		return FALSE
 	var/mob/living/carbon/xenomorph/patient = target
 
 	if(!CHECK_BITFIELD(use_state_flags|override_flags, ABILITY_IGNORE_DEAD_TARGET) && patient.stat == DEAD)
 		if(!silent)
-			target.balloon_alert(owner, "Cannot heal, dead")
+			target.balloon_alert(owner, "无法治疗,已死亡")
 		return FALSE
 
 	if(!check_distance(patient, silent))
@@ -336,19 +336,19 @@
 
 	if(HAS_TRAIT(patient, TRAIT_HEALING_INFUSION))
 		if(!silent)
-			patient.balloon_alert(owner, "Cannot heal, already infused")
+			patient.balloon_alert(owner, "无法治疗,已被灌注")
 		return FALSE
 
 /datum/action/ability/activable/xeno/healing_infusion/proc/check_distance(atom/target, silent)
 	var/dist = get_dist(owner, target)
 	if(dist > heal_range)
 		if(!silent)
-			target.balloon_alert(owner, "Cannot reach")
-			to_chat(owner, span_warning("Too far for our reach... We need to be [dist - heal_range] steps closer!"))
+			target.balloon_alert(owner, "无法触及")
+			to_chat(owner, span_warning("超出我们的触及范围...我们需要再靠近[dist - heal_range]步!"))
 		return FALSE
 	else if(!line_of_sight(owner, target, heal_range))
 		if(!silent)
-			target.balloon_alert(owner, "Cannot heal, no line of sight")
+			target.balloon_alert(owner, "无法治疗,没有视线")
 		return FALSE
 	return TRUE
 
@@ -358,15 +358,15 @@
 
 	owner.face_atom(target) //Face the target so we don't look stupid
 
-	owner.visible_message(span_xenodanger("\the [owner] infuses [target] with mysterious energy!"), \
-	span_xenodanger("We empower [target] with our [src]!"))
+	owner.visible_message(span_xenodanger("\the [owner]用神秘能量灌注了[target]!"), \
+	span_xenodanger("我们用我们的[src]强化了[target]!"))
 
 	playsound(target, 'sound/effects/magic.ogg', 25) //Cool SFX
 	playsound(owner, 'sound/effects/magic.ogg', 25) //Cool SFX
 	owner.beam(target, "medbeam", time = 1 SECONDS, maxdistance = 10)
 	new /obj/effect/temp_visual/telekinesis(get_turf(owner))
 	new /obj/effect/temp_visual/telekinesis(get_turf(target))
-	to_chat(target, span_xenodanger("Our wounds begin to knit and heal rapidly as [owner]'s healing energies infuse us.")) //Let the target know.
+	to_chat(target, span_xenodanger("随着[owner]的治疗能量灌注我们,我们的伤口开始迅速愈合.")) //Let the target know.
 
 	var/mob/living/carbon/xenomorph/patient = target
 
@@ -386,7 +386,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/sow
 	name = "Sow"
-	desc = "Sow the seeds of an alien plant."
+	desc = "播下一颗异星植物的种子."
 	action_icon_state = "place_trap"
 	action_icon = 'icons/Xeno/actions/construction.dmi'
 	ability_cost = 200
@@ -401,7 +401,7 @@
 	. = ..()
 	if(!xeno_owner.loc_weeds_type)
 		if(!silent)
-			owner.balloon_alert(owner, "Cannot sow, no weeds")
+			owner.balloon_alert(owner, "无法播种,没有杂草")
 		return FALSE
 
 	var/turf/T = get_turf(owner)

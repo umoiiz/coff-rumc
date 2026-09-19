@@ -1,6 +1,6 @@
 /obj/machinery/chem_master
 	name = "ChemMaster 3000"
-	desc = "Used to separate chemicals and distribute them in a variety of forms."
+	desc = "用于分离化学物质并以多种形式分配."
 	icon = 'icons/obj/machines/chemical_machines.dmi'
 	icon_state = "mixer0"
 	density = TRUE
@@ -65,28 +65,28 @@
 	if(istype(I,/obj/item/reagent_containers) && I.is_open_container())
 		for(var/datum/reagent/X in I.reagents.reagent_list)
 			if(X.medbayblacklist)
-				balloon_alert(user, "Harmful substance detected")
+				balloon_alert(user, "检测到有害物质")
 				return
 		if(beaker)
-			balloon_alert(user, "Beaker already loaded")
+			balloon_alert(user, "烧杯已装入")
 			return
 		user.transferItemToLoc(I, src)
 		beaker = I
-		balloon_alert(user, "Adds beaker")
+		balloon_alert(user, "放入烧杯")
 		updateUsrDialog()
 		icon_state = "mixer1"
 
 	else if(istype(I,/obj/item/reagent_containers/glass))
-		balloon_alert(user, "Take off the lid first.")
+		balloon_alert(user, "先取下盖子.")
 
 	else if(istype(I, /obj/item/storage/pill_bottle))
 		if(loaded_pill_bottle)
-			balloon_alert(user, "Pill bottle already loaded")
+			balloon_alert(user, "药瓶已装入")
 			return
 
 		loaded_pill_bottle = I
 		user.transferItemToLoc(I, src)
-		balloon_alert(user, "Adds pill bottle into dispenser")
+		balloon_alert(user, "将药瓶放入分配器")
 		updateUsrDialog()
 
 /obj/machinery/chem_master/proc/transfer_chemicals(obj/dest, obj/source, amount, reagent_id)
@@ -119,7 +119,7 @@
 	var/mob/living/user = usr
 
 	if(user.skills.getRating("medical") < SKILL_MEDICAL_NOVICE)
-		to_chat(user, span_notice("You start fiddling with \the [src]..."))
+		to_chat(user, span_notice("你开始摆弄\the [src]..."))
 		if(!do_after(user, SKILL_TASK_EASY, IGNORE_HELD_ITEM, src, BUSY_ICON_UNSKILLED))
 			return
 
@@ -166,7 +166,7 @@
 		else if (href_list["addcustom"])
 
 			var/id = text2path(href_list["addcustom"])
-			useramount = tgui_input_number(usr, "Select the amount to transfer.", 30, useramount)
+			useramount = tgui_input_number(usr, "选择要转移的数量.", 30, useramount)
 			transfer_chemicals(src, beaker, useramount, id)
 
 		else if (href_list["remove"])
@@ -187,7 +187,7 @@
 		else if (href_list["removecustom"])
 
 			var/id = text2path(href_list["removecustom"])
-			useramount = tgui_input_number(usr, "Select the amount to transfer.", 30, useramount)
+			useramount = tgui_input_number(usr, "选择要转移的数量.", 30, useramount)
 			if(mode)
 				transfer_chemicals(beaker, src, useramount, id)
 			else
@@ -205,15 +205,15 @@
 		else if (href_list["createpillbottle"])
 			if(!condi)
 				if(loaded_pill_bottle)
-					balloon_alert(user, "Pill bottle already loaded")
+					balloon_alert(user, "药瓶已装填")
 					return
-				var/bottle_label = reject_bad_text(tgui_input_text(user, "Label:", "Enter desired bottle label", encode = FALSE))
+				var/bottle_label = reject_bad_text(tgui_input_text(user, "标签:", "输入所需的药瓶标签", encode = FALSE))
 				var/obj/item/storage/pill_bottle/I = new/obj/item/storage/pill_bottle
 				I.set_greyscale_config(pill_bottle_configs[text2num(pillbottlesprite)])
 				if(bottle_label)
 					I.name = "[bottle_label] pill bottle"
 				loaded_pill_bottle = I
-				balloon_alert(user, "The chemmaster dispenses a pill bottle into its slot")
+				balloon_alert(user, "化学大师将药瓶分配到其插槽中")
 				updateUsrDialog()
 
 		else if (href_list["createpill"] || href_list["createpill_multiple"])
@@ -223,7 +223,7 @@
 				return
 
 			if (href_list["createpill_multiple"])
-				count = tgui_input_number(usr, "Select the number of pills to make.", 16, pillamount, max_pill_count, 0)
+				count = tgui_input_number(usr, "选择要制作的药片数量.", 16, pillamount, max_pill_count, 0)
 				if(!count)
 					return
 
@@ -233,7 +233,7 @@
 			var/amount_per_pill = reagents.total_volume/count
 			if (amount_per_pill > 15) amount_per_pill = 15
 
-			var/name = reject_bad_text(tgui_input_text(user,"Name:","Name your pill!","[reagents.get_master_reagent_name()] ([amount_per_pill] units)", encode = FALSE))
+			var/name = reject_bad_text(tgui_input_text(user,"名称:","为你的药片命名!","[reagents.get_master_reagent_name()] ([amount_per_pill] units)", encode = FALSE))
 			if(!name)
 				return
 
@@ -255,7 +255,7 @@
 
 		else if (href_list["createbottle"])
 			if(!condi)
-				var/name = reject_bad_text(tgui_input_text(user,"Name:","Name your bottle!",reagents.get_master_reagent_name(), encode = FALSE))
+				var/name = reject_bad_text(tgui_input_text(user,"名称:","为你的药瓶命名!",reagents.get_master_reagent_name(), encode = FALSE))
 				if(!name)
 					return
 				var/obj/item/reagent_containers/glass/bottle/P = new/obj/item/reagent_containers/glass/bottle(loc)
@@ -272,7 +272,7 @@
 
 		else if (href_list["createautoinjector"])
 			if(!condi)
-				var/name = reject_bad_text(tgui_input_text(user,"Name:","Name your autoinjector!",reagents.get_master_reagent_name(), encode = FALSE))
+				var/name = reject_bad_text(tgui_input_text(user,"名称:","为你的自动注射器命名!",reagents.get_master_reagent_name(), encode = FALSE))
 				if(!name)
 					return
 				var/obj/item/reagent_containers/hypospray/autoinjector/fillable/P = new/obj/item/reagent_containers/hypospray/autoinjector/fillable(loc)

@@ -10,7 +10,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(/datum/str
 
 /mob/living/simple_animal/parrot
 	name = "parrot"
-	desc = "The parrot squaks, \"It's a Parrot! BAWWK!\""
+	desc = "鹦鹉尖叫道,\"这是一只鹦鹉! 呱呱!\""
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "parrot_fly"
 	icon_living = "parrot_fly"
@@ -296,7 +296,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(/datum/str
 			if(!isliving(parrot_interest) && (!parrot_perch || parrot_interest.loc != parrot_perch.loc))
 				held_item = parrot_interest
 				parrot_interest.forceMove(src)
-				visible_message("[src] grabs [held_item]!", span_notice("You grab [held_item]!"), span_italics("You hear the sounds of wings flapping furiously."))
+				visible_message("[src]抓住了[held_item]!", span_notice("你抓住了[held_item]!"), span_italics("你听到翅膀猛烈拍打的声音."))
 
 			parrot_interest = null
 			parrot_state = PARROT_SWOOP|PARROT_RETURN
@@ -377,7 +377,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(/datum/str
 
 		held_item = I
 		I.forceMove(src)
-		visible_message("[src] grabs [held_item]!", span_notice("You grab [held_item]!"), span_italics("You hear the sounds of wings flapping furiously."))
+		visible_message("[src]抓住了[held_item]!", span_notice("你抓住了[held_item]!"), span_italics("你听到翅膀猛烈拍打的声音."))
 		return held_item
 
 /mob/living/simple_animal/parrot/proc/search_for_perch()
@@ -414,7 +414,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(/datum/str
 
 /mob/living/simple_animal/parrot/Poly
 	name = "Poly"
-	desc = "Poly the Parrot. An expert on quantum cracker theory."
+	desc = "鹦鹉波利. 量子饼干理论专家."
 	speak = list("Poly wanna cracker!", ":e Check the engines, you chucklefucks!",":e Set up the engines, you lazy bums!",":e WHO TOOK THE DAMN HARDSUITS?")
 	speak_chance = 3
 	var/memory_saved = FALSE
@@ -475,7 +475,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(/datum/str
 
 /mob/living/simple_animal/parrot/Poly/ghost
 	name = "The Ghost of Poly"
-	desc = "Doomed to squawk the Earth."
+	desc = "注定要对着地球聒噪."
 	color = "#FFFFFF77"
 	speak_chance = 20
 	status_flags = GODMODE
@@ -522,7 +522,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(/datum/str
 	if(!.)
 		return FALSE
 	if(!istype(equipping, /obj/item/radio/headset))
-		to_chat(user, span_warning("[equipping] won't fit!"))
+		to_chat(user, span_warning("[equipping]放不进去!"))
 		return FALSE
 
 	return TRUE
@@ -545,7 +545,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(/datum/str
 
 	parrot_source.ears = radio
 
-	to_chat(user, span_notice("You fit [radio] onto [source]"))
+	to_chat(user, span_notice("你把[radio]装到了[source]上"))
 
 	parrot_source.available_channels.Cut()
 

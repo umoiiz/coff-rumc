@@ -3,7 +3,7 @@
 
 /obj/machinery/grill
 	name = "grill"
-	desc = "Just like the old days."
+	desc = "就像过去的日子一样。"
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "grill_open"
 	density = TRUE
@@ -38,7 +38,7 @@
 	if(istype(I, /obj/item/stack/sheet/wood))
 		var/obj/item/stack/S = I
 		var/stackamount = S.get_amount()
-		to_chat(user, span_notice("You put [stackamount] [I]s in [src]."))
+		to_chat(user, span_notice("您将[stackamount]个[I]放入[src]。"))
 		grill_fuel += (100 * stackamount)
 		S.use(stackamount)
 		update_icon()
@@ -49,11 +49,11 @@
 		return TRUE
 
 	if(grill_fuel <= 0)
-		to_chat(user, span_warning("No fuel!"))
+		to_chat(user, span_warning("没有燃料!"))
 		return ..()
 
 	if(I.resistance_flags & INDESTRUCTIBLE)
-		to_chat(user, span_warning("You don't feel it would be wise to grill [I]..."))
+		to_chat(user, span_warning("您觉得烤[I]不太明智..."))
 		return ..()
 
 	//else if(IS_EDIBLE(I))
@@ -61,16 +61,16 @@
 		if(HAS_TRAIT(I, TRAIT_NODROP) || (I.item_flags & (ITEM_ABSTRACT|DELONDROP)))
 			return ..()
 		else if(HAS_TRAIT(I, TRAIT_FOOD_GRILLED))
-			to_chat(user, span_notice("[I] has already been grilled!"))
+			to_chat(user, span_notice("[I]已经被烤过了!"))
 			return
 		else if(grill_fuel <= 0)
-			to_chat(user, span_warning("There is not enough fuel!"))
+			to_chat(user, span_warning("燃料不足!"))
 			return
 		else if(!grilled_item && user.transferItemToLoc(I, src))
 			grilled_item = I
 			RegisterSignal(grilled_item, COMSIG_GRILL_COMPLETED, PROC_REF(GrillCompleted))
 			ADD_TRAIT(grilled_item, TRAIT_FOOD_GRILLED, "boomers")
-			to_chat(user, span_notice("You put the [grilled_item] on [src]."))
+			to_chat(user, span_notice("您将[grilled_item]放在[src]上。"))
 			update_icon()
 			grill_loop.start(src)
 			return
@@ -88,18 +88,18 @@
 		return
 
 	if(user.grab_state <= GRAB_AGGRESSIVE)
-		to_chat(user, span_warning("You need a better grip to do that!"))
+		to_chat(user, span_warning("您需要更好的抓握力才能做到!"))
 		return
 
 	if(user.do_actions)
 		return
 
-	user.visible_message(span_danger("[user] starts to press [grabbed_mob] onto the [src]!"))
+	user.visible_message(span_danger("[user]开始将[grabbed_mob]按到[src]上!"))
 
 	if(!do_after(user, 0.5 SECONDS, NONE, grabbed_mob, BUSY_ICON_DANGER) || QDELETED(src))
 		return
 
-	user.visible_message(span_danger("[user] slams [grabbed_mob] onto the [src]!"))
+	user.visible_message(span_danger("[user]将[grabbed_mob]猛砸到[src]上!"))
 	grabbed_mob.apply_damage(40, BURN, BODY_ZONE_HEAD, FIRE, updating_health = TRUE)
 	playsound(src, 'sound/machines/grill/frying.ogg', 100, null, 9)
 	grabbed_mob.emote("scream")
@@ -136,12 +136,12 @@
 
 /obj/machinery/grill/wrench_act(mob/living/user, obj/item/I)
 	. = ..()
-	balloon_alert(user, "You begin [anchored ? "un" : ""]securing...")
+	balloon_alert(user, "你开始[anchored ? "un" : ""]固定...")
 	I.play_tool_sound(src, 50)
 	//as long as we're the same anchored state and we're either on a floor or are anchored, toggle our anchored state
 	if(!I.use_tool(src, user, 2 SECONDS))
 		return FALSE
-	balloon_alert(user, "You [anchored ? "un" : ""]secure.")
+	balloon_alert(user, "你[anchored ? "un" : ""]固定完毕.")
 	anchored = !anchored
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 	return TRUE
@@ -158,7 +158,7 @@
 
 /obj/machinery/grill/attack_hand(mob/user, list/modifiers)
 	if(grilled_item)
-		to_chat(user, span_notice("You take out [grilled_item] from [src]."))
+		to_chat(user, span_notice("你从[src]中取出[grilled_item]."))
 		grilled_item.forceMove(drop_location())
 		update_icon()
 		return

@@ -69,9 +69,9 @@
 		return
 
 	if(helper)
-		climber.visible_message(span_warning("[helper] starts helping [climber] [climb_target.atom_flags & ON_BORDER ? "climb over" : "climb onto"] \the [am_parent]!"))
+		climber.visible_message(span_warning("[helper]开始帮助[climber][climb_target.atom_flags & ON_BORDER ? "climb over" : "climb onto"]\the [am_parent]!"))
 	else
-		climber.visible_message(span_warning("[climber] starts [climb_target.atom_flags & ON_BORDER ? "leaping over" : "climbing onto"] \the [am_parent]!"))
+		climber.visible_message(span_warning("[climber]开始[climb_target.atom_flags & ON_BORDER ? "leaping over" : "climbing onto"]\the [am_parent]!"))
 
 	ADD_TRAIT(climber, TRAIT_IS_CLIMBING, REF(climb_target))
 	if(helper)
@@ -93,7 +93,7 @@
 	climber.forceMove(destination_turf)
 
 	if(helper)
-		climber.visible_message(span_warning("[helper] helps [climber] [climb_target.atom_flags & ON_BORDER ? "over" : "onto"] \the [am_parent]!"))
+		climber.visible_message(span_warning("[helper]帮助[climber][climb_target.atom_flags & ON_BORDER ? "over" : "onto"]\the [am_parent]!"))
 	else
 		climber.visible_message(span_warning("[climber] [climb_target.atom_flags & ON_BORDER ? "leaps over" : "climbs onto"] \the [am_parent]!"))
 
@@ -125,7 +125,7 @@
 		//for border objects specifically we need to either be on its turf, or the turf in front of it, depending which way we're going
 		var/valid_climb_turf = (destination_turf == am_parent.loc) ? get_step(am_parent, am_parent.dir) : am_parent.loc
 		if(helper.loc != valid_climb_turf)
-			to_chat(helper, span_warning("You need to be up against [am_parent] to leap over."))
+			to_chat(helper, span_warning("你需要紧贴[am_parent]才能跳过去."))
 			return
 
 	for(var/atom/movable/AM AS in destination_turf.contents)
@@ -138,7 +138,7 @@
 			if(structure.allow_pass_flags & PASS_WALKOVER)
 				continue
 		if(AM.density && (!(AM.atom_flags & ON_BORDER) || AM.dir & get_dir(destination_turf, climber)))
-			to_chat(helper, span_warning("There's \a [AM.name] in the way."))
+			to_chat(helper, span_warning("有\a [AM.name]挡在路上."))
 			return
 
 	for(var/atom/movable/AM AS in origin_turf.contents)
@@ -147,7 +147,7 @@
 			if(structure.allow_pass_flags & PASS_WALKOVER)
 				continue
 		if(AM.density && (AM.atom_flags & ON_BORDER) && AM.dir & get_dir(climber, destination_turf))
-			to_chat(helper, span_warning("There's \a [AM.name] in the way."))
+			to_chat(helper, span_warning("有\a [AM.name]挡路了."))
 			return
 
 	return destination_turf
@@ -190,7 +190,7 @@
 ///Adds to the parent's examine text
 /datum/component/climbable/proc/on_examine(datum/source, mob/user, list/details)
 	SIGNAL_HANDLER
-	details += span_notice("You can climb ontop of this.")
+	details += span_notice("你可以爬到这上面.")
 
 //The procs below allow us to utilise the component outside normal scenarios, such as NPC usage
 

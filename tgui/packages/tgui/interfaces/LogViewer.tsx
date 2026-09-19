@@ -93,7 +93,7 @@ const CategoryBar = (props: CategoryBarProps) => {
 
   return (
     <Section
-      title="Categories"
+      title="类别"
       scrollableHorizontal
       buttons={
         <Input
@@ -109,14 +109,14 @@ const CategoryBar = (props: CategoryBarProps) => {
           selected={props.active === ''}
           onClick={() => props.setActive('')}
         >
-          None
+          无
         </Button>
         <Button
-          tooltip="This can be slow!"
+          tooltip="这可能会很慢!"
           selected={props.active === CATEGORY_ALL}
           onClick={() => props.setActive(CATEGORY_ALL)}
         >
-          All
+          全部
         </Button>
         {sorted
           .filter((cat) =>
@@ -180,19 +180,19 @@ const CategoryViewer = (props: CategoryViewerProps) => {
           />
           <Button
             icon="code"
-            tooltip="RegEx Search"
+            tooltip="正则搜索"
             selected={searchRegex}
             onClick={() => setSearchRegex(!searchRegex)}
           />
           <Button
             icon="font"
             selected={caseSensitive}
-            tooltip="Case Sensitive"
+            tooltip="区分大小写"
             onClick={() => setCaseSensitive(!caseSensitive)}
           />
           <Button
             icon="trash"
-            tooltip="Clear Search"
+            tooltip="清除搜索"
             color="bad"
             onClick={() => {
               setSearch('');

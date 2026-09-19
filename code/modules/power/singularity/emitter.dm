@@ -2,7 +2,7 @@
 
 /obj/machinery/power/emitter
 	name = "Emitter"
-	desc = "It is a heavy duty industrial laser."
+	desc = "这是一台重型工业激光器."
 	icon = 'icons/obj/singularity.dmi'
 	icon_state = "emitter"
 	anchored = FALSE

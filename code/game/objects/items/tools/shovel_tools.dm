@@ -1,8 +1,8 @@
 /*****************************Shovels********************************/
 
 /obj/item/tool/shovel
-	name = "shovel"
-	desc = "A large tool for digging and moving dirt."
+	name = "铲子"
+	desc = "一种用于挖掘和移动泥土的大型工具."
 	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "shovel"
 	worn_icon_state = "shovel"
@@ -45,7 +45,7 @@
 
 	if(dirt_amt)
 		var/dirt_name = dirt_type == DIRT_TYPE_SNOW ? "snow" : "dirt"
-		balloon_alert(user, "Dumps the [dirt_name]")
+		balloon_alert(user, "倾倒[dirt_name]")
 		if(dirt_type == DIRT_TYPE_SNOW)
 			var/turf/T = get_turf(user.loc)
 			var/obj/item/stack/snow/S = locate() in T
@@ -70,7 +70,7 @@
 	var/turf/target_turf = target
 
 	if(dirt_amt)
-		balloon_alert(user, "Dumps the [dirt_type == DIRT_TYPE_SNOW ? "snow" : "dirt"]")
+		balloon_alert(user, "倾倒[dirt_type == DIRT_TYPE_SNOW ? "snow" : "dirt"]")
 		playsound(user.loc, SFX_RUSTLE, 30, 1, 6)
 		if(dirt_type == DIRT_TYPE_SNOW)
 			var/obj/item/stack/snow/S = locate() in target_turf
@@ -89,7 +89,7 @@
 		var/turf/open/floor/plating/ground/snow/ST = target_turf
 		if(!ST.slayer)
 			return
-	balloon_alert(user, "Starts digging")
+	balloon_alert(user, "开始挖掘")
 	playsound(user.loc, 'sound/effects/thud.ogg', 40, 1, 6)
 	if(!do_after(user, shovelspeed, NONE, target_turf, BUSY_ICON_BUILD))
 		return
@@ -101,9 +101,9 @@
 		ST.slayer -= 1
 		ST.update_appearance()
 		ST.update_sides()
-		balloon_alert(user, "Digs up snow")
+		balloon_alert(user, "挖出雪")
 	else
-		balloon_alert(user, "Digs up dirt")
+		balloon_alert(user, "挖出泥土")
 	dirt_amt = transf_amt
 	dirt_type = turfdirt
 	update_appearance(UPDATE_ICON)
@@ -114,8 +114,8 @@
 	return ..()
 
 /obj/item/tool/shovel/spade
-	name = "spade"
-	desc = "A small tool for digging and moving dirt."
+	name = "铲子"
+	desc = "用于挖掘和搬运泥土的小工具."
 	icon_state = "spade"
 	force = 5
 	throwforce = 7
@@ -126,16 +126,16 @@
 
 //Snow Shovel----------
 /obj/item/tool/shovel/snow
-	name = "snow shovel"
-	desc = "I had enough winter for this year!"
+	name = "雪铲"
+	desc = "今年的冬天我已经受够了!"
 	w_class = WEIGHT_CLASS_BULKY
 	force = 5
 	throwforce = 3
 
 // Entrenching tool.
 /obj/item/tool/shovel/etool
-	name = "entrenching tool"
-	desc = "Used to dig holes and bash heads in. Folds in to fit in small spaces. Use a sharp item on it to sharpen it."
+	name = "挖掘工具"
+	desc = "用于挖洞和敲碎脑袋. 可折叠以便放入狭小空间. 用锋利物品可将其磨利."
 	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "etool_c"
 	worn_icon_state = "etool_c"
@@ -162,7 +162,7 @@
 
 /obj/item/tool/shovel/etool/attack_self(mob/user as mob)
 	if(sharp)
-		balloon_alert(user, "Sharpened, can't fold")
+		balloon_alert(user, "已磨利, 无法折叠")
 		return
 	folded = !folded
 	if(!folded)
@@ -177,15 +177,15 @@
 	if(!I.sharp && !folded)
 		return ..()
 	if(sharp)
-		balloon_alert(user, "Already sharpened")
+		balloon_alert(user, "已经磨利了")
 		return
 	if(folded)
-		balloon_alert(user, "Cannot sharp, it's folded")
+		balloon_alert(user, "无法磨利, 已折叠")
 		return
 	if(user.do_actions)
-		balloon_alert(user, "Cannot, too busy")
+		balloon_alert(user, "不行, 太忙了")
 		return
-	user.balloon_alert_to_viewers("Begins to sharpen [src]")
+	user.balloon_alert_to_viewers("开始磨利[src]")
 	if(!do_after(user, 2 SECONDS, NONE, src, BUSY_ICON_FRIENDLY))
 		return
 	sharp = IS_SHARP_ITEM_SIMPLE
@@ -197,4 +197,4 @@
 /obj/item/tool/shovel/etool/examine(mob/user)
 	. = ..()
 	if(sharp)
-		. += span_notice("This one has been sharpened and can no longer be folded.")
+		. += span_notice("这把已经磨利, 无法再折叠.")

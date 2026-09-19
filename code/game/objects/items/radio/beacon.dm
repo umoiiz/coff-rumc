@@ -1,6 +1,6 @@
 /obj/item/radio/beacon
-	name = "Tracking Beacon"
-	desc = "A beacon used by a teleporter."
+	name = "追踪信标"
+	desc = "传送器使用的信标."
 	icon_state = "beacon"
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/equipment/tools_left.dmi',

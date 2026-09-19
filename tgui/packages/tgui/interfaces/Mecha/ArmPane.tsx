@@ -58,10 +58,10 @@ export const ArmPane = (props: { weapon: MechWeapon }) => {
               }
             />
           </LabeledList.Item>
-          <LabeledList.Item label="Energy per use">
+          <LabeledList.Item label="每次使用能量">
             {energy_per_use} energy per use
           </LabeledList.Item>
-          <LabeledList.Item label="Uses left">
+          <LabeledList.Item label="剩余使用次数">
             {power_level ? toFixed(power_level / energy_per_use) : 0} uses left
           </LabeledList.Item>
           <BallisticStats weapon={props.weapon} />
@@ -92,15 +92,15 @@ const BallisticStats = (props: { weapon: MechWeapon }) => {
   } else {
     return (
       <>
-        <LabeledList.Item label="Ammo loaded">
+        <LabeledList.Item label="已装填弹药">
           {projectiles} / {max_magazine}
         </LabeledList.Item>
         {disabledreload ? null : (
           <>
-            <LabeledList.Item label="Ammo stored">
+            <LabeledList.Item label="已存储弹药">
               {projectiles_cache} / {projectiles_cache_max}
             </LabeledList.Item>
-            <LabeledList.Item label="Reload">
+            <LabeledList.Item label="重新装填">
               <Button
                 icon={'redo'}
                 onClick={() =>
@@ -110,12 +110,12 @@ const BallisticStats = (props: { weapon: MechWeapon }) => {
                   })
                 }
               >
-                Reload
+                重新装填
               </Button>
             </LabeledList.Item>
           </>
         )}
-        <LabeledList.Item label="Ammo type">{ammo_type}</LabeledList.Item>
+        <LabeledList.Item label="弹药类型">{ammo_type}</LabeledList.Item>
       </>
     );
   }

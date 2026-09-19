@@ -1,7 +1,7 @@
 
 /obj/vehicle/ridden/atv
 	name = "all-terrain vehicle"
-	desc = "An all-terrain vehicle built for traversing rough terrain with ease. One of the few old-Earth technologies that are still relevant on most planet-bound outposts."
+	desc = "一辆为轻松穿越崎岖地形而建造的全地形载具。是少数在大多数行星前哨站仍然适用的旧地球技术之一。"
 	icon_state = "atv"
 	max_integrity = 150
 	soft_armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 0, BOMB = 30, FIRE = 60, ACID = 60)

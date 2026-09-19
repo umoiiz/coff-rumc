@@ -15,17 +15,17 @@
 		return NONE
 	if(M.a_intent == INTENT_HARM)
 		return NONE
-	M.visible_message(span_notice("[user] starts to tear into [M] with \the [source]") ,span_notice("You start hacking away at [M] with \the [source]"))
+	M.visible_message(span_notice("[user]开始用\the [source]撕开[M]") ,span_notice("你开始用\the [source]猛砍[M]"))
 	if(!do_after(user, 2 SECONDS, NONE, M))
 		return NONE
-	M.visible_message(span_danger("[user] brutally scalps [M]!"), span_danger("You brutally scalp [M] with \the [source]!"))
+	M.visible_message(span_danger("[user]残忍地剥下了[M]的头皮!"), span_danger("你用\the [source]残忍地剥下了[M]的头皮!"))
 	var/obj/item/scalp/scalp = new(get_turf(M))
 	scalp.name = M.name + "'s " + initial(scalp.name)
 	return COMPONENT_ITEM_NO_ATTACK
 
 /obj/item/scalp
-	name = "scalp"
-	desc = "The mutilated scalp of a slain xeno, proof of a great victory!"
+	name = "剥头皮"
+	desc = "被杀的异形的残缺头皮,伟大胜利的证明!"
 	icon = 'icons/Xeno/xeno_materials.dmi'
 	icon_state = "chitin-chunk"
 	w_class = WEIGHT_CLASS_TINY

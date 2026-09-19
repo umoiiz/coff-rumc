@@ -1,7 +1,7 @@
 // Fallow weapons are below.
 /obj/item/armored_weapon/icc_lvrt_sarden
-	name = "\improper EM-2600 'SARDEN' Autocannon"
-	desc = "A 30mm Autocannon for the LVRT 'Fallow'. A surprisingly powerful autocannon. Sadly, beltfeeding system was lost in the slew of budget cuts related to the system. It is loaded with 4 round clips."
+	name = "\improper EM-2600 'SARDEN'自动机炮"
+	desc = "一种用于LVRT 'Fallow'的30毫米自动机炮. 一种出乎意料的强大自动机炮. 遗憾的是, 弹链供弹系统在与该系统相关的预算削减浪潮中丢失了. 它装填4发弹夹."
 	icon_state = "icc_lvrt_autocannon"
 	fire_sound = SFX_AC_FIRE
 	interior_fire_sound = null
@@ -14,8 +14,8 @@
 	hud_state_empty = "rifle_empty"
 
 /obj/item/armored_weapon/icc_lvrt_cannon
-	name = "\improper EM-2500 Low Velocity Cannon"
-	desc = "A 76mm low velocity cannon for the LVRT 'Fallow'. It has slow travel speed and solid explosive performance. It is loaded with 76mm shells."
+	name = "\improper EM-2500低速炮"
+	desc = "一种用于LVRT 'Fallow'的76毫米低速炮. 它的弹速较慢, 但爆炸性能扎实. 它装填76毫米炮弹."
 	icon_state = "icc_lvrt_cannon"
 	fire_sound = SFX_AC_FIRE
 	interior_fire_sound = null
@@ -29,8 +29,8 @@
 // generic coax
 
 /obj/item/armored_weapon/icc_coaxial
-	name = "EM-94 Coaxial Chain gun (10x26mm)"
-	desc = "A beltfed coaxial with ICC markings that spews lead. Requires the Barrel shroud and power system of a vehicle to use in any way shape and form. Can use either standard ML-41 Boxes or vehicle specific boxes."
+	name = "EM-94同轴链式机炮 (10x26毫米)"
+	desc = "一种带有ICC标记的弹链供弹同轴机炮, 倾泻铅弹. 无论如何都需要载具的枪管护罩和动力系统才能使用. 可以使用标准ML-41弹箱或载具专用弹箱."
 	icon_state = "icc_lvrt_coax"
 	fire_sound = 'sound/weapons/guns/fire/tgmc/kinetic/gun_mg60.ogg'
 	armored_weapon_flags = MODULE_SECONDARY|MODULE_FIXED_FIRE_ARC

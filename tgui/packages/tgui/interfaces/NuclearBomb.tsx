@@ -62,7 +62,7 @@ const NuclearBombContent = (props) => {
             <NoticeBox>{status}</NoticeBox>
           </Box>
           <LabeledList>
-            <LabeledList.Item label="Time left">
+            <LabeledList.Item label="剩余时间">
               <ProgressBar
                 value={time_left / time}
                 ranges={{
@@ -74,9 +74,9 @@ const NuclearBombContent = (props) => {
                 <AnimatedNumber value={time_left} />s
               </ProgressBar>
             </LabeledList.Item>
-            <LabeledList.Item label="Timer">
+            <LabeledList.Item label="计时器">
               <Button
-                content={timer_enabled ? 'ACTIVATED' : 'DEACTIVATED'}
+                content={timer_enabled ? '已激活' : '已停用'}
                 onClick={() => act('toggle_timer')}
                 disabled={!has_auth || safety || !anchor}
                 color={timer_enabled ? 'green' : 'red'}
@@ -89,7 +89,7 @@ const NuclearBombContent = (props) => {
         <Stack.Item>
           <Section title={'Settings'}>
             <LabeledList>
-              <LabeledList.Item label="Time">
+              <LabeledList.Item label="时间">
                 <Button
                   content="-10"
                   onClick={() =>
@@ -128,16 +128,16 @@ const NuclearBombContent = (props) => {
                   disabled={timer_enabled}
                 />
               </LabeledList.Item>
-              <LabeledList.Item label="Safety">
+              <LabeledList.Item label="安全">
                 <Button
-                  content={safety ? 'Enabled' : 'Disabled'}
+                  content={safety ? '已启用' : '已禁用'}
                   onClick={() => act('toggle_safety')}
                   color={safety ? 'green' : 'red'}
                 />
               </LabeledList.Item>
-              <LabeledList.Item label="Anchor">
+              <LabeledList.Item label="锚定">
                 <Button
-                  content={anchor ? 'Engaged' : 'Off'}
+                  content={anchor ? '已接合' : '关闭'}
                   onClick={() => act('toggle_anchor')}
                   color={anchor ? 'green' : 'red'}
                 />
@@ -148,9 +148,9 @@ const NuclearBombContent = (props) => {
       ) : null}
       <Stack.Item>
         <Section title={'Input area'}>
-          <LabeledList.Item label="Red Auth. Disk">
+          <LabeledList.Item label="红色授权磁盘">
             <Button
-              content={!red ? 'INSERT' : 'EJECT'}
+              content={!red ? '插入' : '弹出'}
               onClick={() =>
                 act('toggle_disk', {
                   disktype: 'red',
@@ -159,9 +159,9 @@ const NuclearBombContent = (props) => {
               color={!red ? 'green' : 'red'}
             />
           </LabeledList.Item>
-          <LabeledList.Item label="Green Auth. Disk">
+          <LabeledList.Item label="绿色授权磁盘">
             <Button
-              content={!green ? 'INSERT' : 'EJECT'}
+              content={!green ? '插入' : '弹出'}
               onClick={() =>
                 act('toggle_disk', {
                   disktype: 'green',
@@ -170,9 +170,9 @@ const NuclearBombContent = (props) => {
               color={!green ? 'green' : 'red'}
             />
           </LabeledList.Item>
-          <LabeledList.Item label="Blue Auth. Disk">
+          <LabeledList.Item label="蓝色授权磁盘">
             <Button
-              content={!blue ? 'INSERT' : 'EJECT'}
+              content={!blue ? '插入' : '弹出'}
               onClick={() =>
                 act('toggle_disk', {
                   disktype: 'blue',

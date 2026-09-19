@@ -1,6 +1,6 @@
 /obj/item/storage/lockbox
-	name = "lockbox"
-	desc = "A locked box."
+	name = "锁箱"
+	desc = "一个上锁的箱子."
 	icon_state = "lockbox+l"
 	worn_icon_state = "syringe_kit"
 	icon = 'icons/obj/items/storage/briefcase.dmi'
@@ -16,29 +16,29 @@
 /obj/item/storage/lockbox/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/card/id))
 		if(broken)
-			to_chat(user, span_warning("It appears to be broken."))
+			to_chat(user, span_warning("它似乎坏了."))
 			return
 
 		if(!allowed(user))
-			to_chat(user, span_warning("Access Denied"))
+			to_chat(user, span_warning("访问被拒绝"))
 			return
 
 		locked = !locked
 		if(locked)
 			icon_state = icon_locked
-			to_chat(user, span_warning("You lock the [src]!"))
+			to_chat(user, span_warning("你锁上了[src]!"))
 		else
 			icon_state = icon_closed
-			to_chat(user, span_warning("You unlock the [src]!"))
+			to_chat(user, span_warning("你解锁了[src]!"))
 
 	if(locked)
-		to_chat(user, span_warning("Its locked!"))
+		to_chat(user, span_warning("它锁着!"))
 		return
 	return ..()
 
 /obj/item/storage/lockbox/vials
-	name = "secure vial storage box"
-	desc = "A locked box for keeping things away from children."
+	name = "安全药瓶储存盒"
+	desc = "一个上锁的盒子,用于让物品远离儿童."
 	icon = 'icons/obj/items/storage/vialbox.dmi'
 	icon_state = "vialbox0"
 	worn_icon_state = "syringe_kit"

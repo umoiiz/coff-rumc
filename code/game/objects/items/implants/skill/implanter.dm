@@ -1,6 +1,6 @@
 /obj/item/implanter/skill
-	name = "skill implanter"
-	desc = "A sterile implant injector, that is usually used to implant skill increasing implants."
+	name = "技能植入器"
+	desc = "一支无菌植入注射器, 通常用于植入技能增强植入体."
 	icon_state = "skill"
 	///Empty icon state
 	var/empty_icon = "skill_s"
@@ -11,7 +11,7 @@
 		return
 	var/obj/item/implant/skill/implant = internal_implant
 	for(var/skill AS in implant.max_skills)
-		. += span_notice("It will increase your skills only up to the [implant.max_skills[skill]] level.")
+		. += span_notice("它只会将你的技能提升至[implant.max_skills[skill]]级.")
 
 /obj/item/implanter/skill/update_icon_state()
 	icon_state = internal_implant ? icon_state : empty_icon
@@ -22,18 +22,18 @@
 		return
 	var/mob/living/carbon/human/human = target
 	if(!(user.zone_selected in internal_implant.allowed_limbs))
-		balloon_alert(user, "Wrong limb!")
+		balloon_alert(user, "肢体错误!")
 		return FALSE
 	var/datum/limb/targetlimb = human.get_limb(user.zone_selected)
 	for(var/obj/item/implant/skill/implant in targetlimb.implants)
 		if(!istype(implant, /obj/item/implant/skill))
-			balloon_alert(user, "Limb already implanted!")
+			balloon_alert(user, "肢体已植入!")
 			return FALSE
 	return TRUE
 
 /obj/item/implanter/skill/cargo
-	name = "cargo skill implanter"
-	desc = "A sterile implant injector. This one is used for implanting rogue skill implants and can be used only once."
+	name = "货物技能植入器"
+	desc = "一支无菌植入注射器. 这支用于植入非法技能植入体, 且只能使用一次."
 	icon_state = "cargo"
 	empty_icon = "cargo_full_s"
 	/// Was implanter already spent?

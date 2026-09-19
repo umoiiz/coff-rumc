@@ -5,8 +5,8 @@
 //WALL_LAYER 2.02
 //INTERIOR_WALL_SOUTH_LAYER 5.2
 /obj/structure/interior_wall
-	name = "interior wall"
-	desc = "An interior wall."
+	name = "内部墙壁"
+	desc = "一面内部墙壁."
 	icon = 'icons/obj/vehicles/interiors/tank.dmi'
 	density = TRUE
 	opacity = TRUE
@@ -22,7 +22,7 @@
 
 /obj/effect/vehicle_roof
 	name = "interior roof"
-	desc = "An interior roof."
+	desc = "一个内部车顶."
 	icon = 'icons/obj/vehicles/interiors/tank.dmi'
 	density = FALSE
 	opacity = FALSE

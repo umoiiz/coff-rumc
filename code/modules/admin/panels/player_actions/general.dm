@@ -12,7 +12,7 @@
 	if(!isliving(target))
 		return
 	var/mob/living/living_target = target
-	if(tgui_alert(user, "Are you sure you want to rejuvenate [key_name(living_target)]?", "Confirm", list("Yes", "No")) != "Yes")
+	if(tgui_alert(user, "你确定要让[key_name(living_target)]恢复活力吗?", "确认", list("Yes", "No")) != "Yes")
 		return
 	if(QDELETED(living_target))
 		return
@@ -31,7 +31,7 @@
 	if(!isliving(target))
 		return
 	var/mob/living/living_target = target
-	if(tgui_alert(user, "Are you sure you want to kill [key_name(living_target)]?", "Confirm", list("Yes", "No")) != "Yes")
+	if(tgui_alert(user, "你确定要杀死[key_name(living_target)]吗?", "确认", list("Yes", "No")) != "Yes")
 		return
 	if(QDELETED(living_target))
 		return
@@ -50,7 +50,7 @@
 	var/mob/living/living_target = target
 	if(!istype(living_target) || isobserver(living_target))
 		return
-	if(tgui_alert(user, "Are you sure you want to gib [key_name(living_target)]?", "Warning", list("Yes", "No")) != "Yes")
+	if(tgui_alert(user, "你确定要将[key_name(living_target)]碎尸吗?", "警告", list("Yes", "No")) != "Yes")
 		return
 	if(QDELETED(living_target))
 		return
@@ -82,10 +82,10 @@
 
 /datum/player_action/send_to_lobby/act(client/user, mob/target, list/params)
 	if(!target.client)
-		to_chat(user, span_warning("[target] doesn't seem to have an active client."))
+		to_chat(user, span_warning("[target]似乎没有活跃的客户端."))
 		return
 
-	if(tgui_alert(user, "Send [key_name(target)] back to Lobby?", "Send to Lobby", list("Yes", "No")) != "Yes")
+	if(tgui_alert(user, "将[key_name(target)]送回大厅?", "送回大厅", list("Yes", "No")) != "Yes")
 		return
 
 	if(QDELETED(target) || !target.client)
@@ -115,20 +115,20 @@
 		return
 	var/mob/living/living_target = target
 
-	if(tgui_alert(user, "Cryo [key_name(living_target)]?", "Cryosleep", list("Yes", "No")) != "Yes")
+	if(tgui_alert(user, "冷冻[key_name(living_target)]?", "冷冻睡眠", list("Yes", "No")) != "Yes")
 		return
 
 	if(QDELETED(living_target))
 		return
 
 	var/client/target_client = living_target.client
-	if(target_client && tgui_alert(user, "They have a client attached, are you sure?", "Cryosleep", list("Yes", "No")) != "Yes")
+	if(target_client && tgui_alert(user, "他们有一个已连接的客户端, 你确定吗?", "冷冻睡眠", list("Yes", "No")) != "Yes")
 		return
 
 	var/old_name = living_target.real_name
 
 	var/lobby
-	if(target_client?.mob?.mind && tgui_alert(user, "Do you also want to send them to the lobby?", "Cryosleep", list("Yes", "No")) == "Yes")
+	if(target_client?.mob?.mind && tgui_alert(user, "你还想将他们送回大厅吗?", "冷冻睡眠", list("Yes", "No")) == "Yes")
 		lobby = TRUE
 		var/mob/new_player/new_player_mob = new()
 		var/mob/current_mob = target_client.mob
@@ -156,7 +156,7 @@
 		return
 	target.say(params["to_say"], sanitize = FALSE)
 	log_admin("[key_name(user)] made [key_name(target)] at [AREACOORD(target)] say \"[params["to_say"]]\"")
-	message_admins(span_adminnotice("[key_name_admin(user)] made [ADMIN_TPMONTY(target)] say \"[params["to_say"]]\""))
+	message_admins(span_adminnotice("[key_name_admin(user)]让[ADMIN_TPMONTY(target)]说\"[params["to_say"]]\""))
 	return TRUE
 
 
@@ -214,7 +214,7 @@
 /datum/player_action/access_playtimes/act(client/user, mob/target, list/params)
 	var/client/target_client = target.client
 	if(!istype(target_client))
-		to_chat(user, span_warning("Target is no longer valid."))
+		to_chat(user, span_warning("目标不再有效."))
 		return
 
 	var/list/body = list()
@@ -287,7 +287,7 @@
 	if(!ismob(target) || !length(GLOB.tdome1))
 		return
 
-	if(tgui_alert(user, "Do you want to send [key_name(target)] to the Thunderdome?", "Confirmation", list("Yes", "No")) != "Yes")
+	if(tgui_alert(user, "你想将[key_name(target)]送往雷霆穹顶吗?", "确认", list("Yes", "No")) != "Yes")
 		return
 
 	if(QDELETED(target))
@@ -301,7 +301,7 @@
 			human_target.dropItemToGround(item_to_drop)
 
 	target.forceMove(pick(GLOB.tdome1))
-	to_chat(target, span_boldnotice("You have been sent to the Thunderdome!"))
+	to_chat(target, span_boldnotice("你已被送往雷霆穹顶!"))
 
 	log_admin("[key_name(user)] has sent [key_name(target)] to the thunderdome.")
 	message_admins("[ADMIN_TPMONTY(user.mob)] has sent [ADMIN_TPMONTY(target)] to the thunderdome.")

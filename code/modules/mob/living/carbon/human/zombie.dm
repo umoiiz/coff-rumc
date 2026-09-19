@@ -8,7 +8,7 @@
 	action_icon = 'icons/Xeno/actions/general.dmi'
 
 /datum/action/rally_zombie/action_activate()
-	owner.balloon_alert(owner, "Zombies Rallied!")
+	owner.balloon_alert(owner, "丧尸集结!")
 	global_rally_zombies(owner)
 	var/datum/action/set_agressivity/set_agressivity = owner.actions_by_path[/datum/action/set_agressivity]
 	if(set_agressivity)
@@ -31,7 +31,7 @@
 	return ..()
 
 /obj/item/weapon/zombie_claw
-	name = "claws"
+	name = "爪"
 	hitsound = 'sound/weapons/slice.ogg'
 	icon_state = "zombie_claw_left"
 	base_icon_state = "zombie_claw"
@@ -85,13 +85,13 @@
 	if(zombie.do_actions)
 		return
 	if(locked)
-		to_chat(zombie, span_warning("\The [src] is bolted down tight."))
+		to_chat(zombie, span_warning("\The [src]被牢牢栓紧."))
 		return
 	if(welded)
-		to_chat(zombie, span_warning("\The [src] is welded shut."))
+		to_chat(zombie, span_warning("\The [src]被焊接封死."))
 		return
 
-	balloon_alert_to_viewers("prying open [src]...")
+	balloon_alert_to_viewers("正在撬开[src]...")
 	if(!do_after(zombie, 4 SECONDS, IGNORE_HELD_ITEM, src))
 		return
 	playsound(zombie.loc, 'sound/effects/metal_creaking.ogg', 25, 1)
@@ -103,8 +103,8 @@
 
 /obj/machinery/power/apc/attack_zombie(mob/living/carbon/human/zombie, obj/item/weapon/zombie_claw/claw, params, rightclick)
 	zombie.do_attack_animation(src, ATTACK_EFFECT_CLAW)
-	zombie.visible_message(span_danger("[zombie] slashes \the [src]!"), \
-	span_danger("We slash \the [src]!"), null, 5)
+	zombie.visible_message(span_danger("[zombie]劈砍\the [src]!"), \
+	span_danger("我们劈砍\the [src]!"), null, 5)
 	playsound(loc, SFX_ALIEN_CLAW_METAL, 25, 1)
 
 	var/allcut = wires.is_all_cut()
@@ -112,12 +112,12 @@
 	if(beenhit >= pick(3, 4) && !CHECK_BITFIELD(machine_stat, PANEL_OPEN))
 		ENABLE_BITFIELD(machine_stat, PANEL_OPEN)
 		update_appearance()
-		visible_message(span_danger("\The [src]'s cover swings open, exposing the wires!"), null, null, 5)
+		visible_message(span_danger("\The [src]的盖板弹开,露出了电线!"), null, null, 5)
 
 	else if(CHECK_BITFIELD(machine_stat, PANEL_OPEN) && !allcut)
 		wires.cut_all()
 		update_appearance()
-		visible_message(span_danger("\The [src]'s wires snap apart in a rain of sparks!"), null, null, 5)
+		visible_message(span_danger("\The [src]的电线在火花中崩断!"), null, null, 5)
 	else
 		beenhit += 1
 	zombie.changeNext_move(claw.attack_speed)
@@ -125,11 +125,11 @@
 
 /obj/machinery/nuclearbomb/attack_zombie(mob/living/carbon/human/zombie, obj/item/weapon/zombie_claw/claw, params, rightclick)
 	if(!timer_enabled)
-		to_chat(zombie, span_warning("\The [name] isn't active."))
+		to_chat(zombie, span_warning("\The [name]未激活."))
 		return
 
-	zombie.visible_message(span_boldwarning("[zombie.name] begins to slash at the nuke."),
-	"Starts slashing at the nuke.")
+	zombie.visible_message(span_boldwarning("[zombie.name]开始劈砍核弹."),
+	"开始劈砍核弹.")
 	if(!do_after(zombie, 5 SECONDS, NONE, src, BUSY_ICON_DANGER, BUSY_ICON_HOSTILE))
 		return
 	disable(key_name(zombie))
@@ -149,7 +149,7 @@
 		return
 	if(zombie.a_intent != INTENT_HARM)
 		return
-	balloon_alert(zombie, "barbed wire slices into you!")
+	balloon_alert(zombie, "铁丝网割入你体内!")
 	zombie.apply_damage(20, blocked = MELEE , sharp = TRUE, updating_health = TRUE)//Higher damage since zombies have high healing rate, and theyre using their hands
 
 /obj/machinery/vending/attack_zombie(mob/living/carbon/human/zombie, obj/item/weapon/zombie_claw/claw, params, rightclick)

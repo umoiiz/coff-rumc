@@ -3,8 +3,8 @@
 #define FUEL_INDICATOR_HALF_FULL 20
 
 /obj/item/jetpack_marine
-	name = "marine jetpack"
-	desc = "A high powered jetpack with enough fuel to send a person flying for a short while. It allows for fast and agile movement on the battlefield. <b>Alt right click or middleclick to fly to a destination when the jetpack is equipped.</b>"
+	name = "陆战队喷气背包"
+	desc = "一个高功率喷气背包,燃料足以让人短距离飞行一段时间.它能让使用者在战场上快速灵活地移动.<b>装备喷气背包时,按住Alt右键或中键点击可飞向目的地.</b>"
 	icon = 'icons/obj/items/jetpack.dmi'
 	icon_state = "jetpack_marine"
 	worn_icon_list = list(
@@ -66,7 +66,7 @@
 ///Make the user fly toward the target atom
 /obj/item/jetpack_marine/proc/use_jetpack(atom/A, mob/living/carbon/human/human_user)
 	if(human_user.buckled)
-		balloon_alert(human_user, "Cannot fly while buckled")
+		balloon_alert(human_user, "被束缚时无法飞行")
 		return FALSE
 	if(human_user.do_actions)
 		return FALSE
@@ -136,7 +136,7 @@
 		return ..()
 	var/obj/structure/reagent_dispensers/fueltank/FT = target
 	if(FT.reagents.total_volume == 0)
-		balloon_alert(user, "No fuel")
+		balloon_alert(user, "没有燃料")
 		return
 
 	var/fuel_transfer_amount = min(FT.reagents.total_volume, (fuel_max - fuel_left))
@@ -146,7 +146,7 @@
 	change_fuel_indicator()
 	update_icon()
 	playsound(loc, 'sound/effects/refill.ogg', 30, 1, 3)
-	balloon_alert(user, "Refilled")
+	balloon_alert(user, "已补充")
 
 /obj/item/jetpack_marine/attackby(obj/item/I, mob/user, params)
 	. = ..()
@@ -156,7 +156,7 @@
 		return
 	var/obj/item/ammo_magazine/flamer_tank/FT = I
 	if(FT.current_rounds == 0)
-		balloon_alert(user, "No fuel")
+		balloon_alert(user, "没有燃料")
 		return
 
 	var/fuel_transfer_amount = min(FT.current_rounds, (fuel_max - fuel_left))
@@ -165,12 +165,12 @@
 	fuel_indicator = FUEL_INDICATOR_FULL
 	change_fuel_indicator()
 	playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
-	balloon_alert(user, "Refilled")
+	balloon_alert(user, "已补充")
 	update_icon()
 
 /datum/action/ability/activable/item_toggle/jetpack
 	name = "Use jetpack"
-	desc = "Briefly fly using your jetpack."
+	desc = "使用你的喷气背包短暂飞行."
 	action_icon_state = "123" // for whatever fucking reason, there's no proper icon state without this bullshit
 	use_state_flags = ABILITY_USE_STAGGERED|ABILITY_USE_BUSY
 	keybinding_signals = list(KEYBINDING_NORMAL = COMSIG_ITEM_TOGGLE_JETPACK)
@@ -186,7 +186,7 @@
 		return FALSE
 	var/obj/item/jetpack_marine/jetpack = holder_item
 	if(jetpack.fuel_left < FUEL_USE)
-		carbon_owner.balloon_alert(carbon_owner, "No fuel")
+		carbon_owner.balloon_alert(carbon_owner, "没有燃料")
 		return
 	return ..()
 
@@ -209,8 +209,8 @@
 	return TRUE
 
 /obj/item/jetpack_marine/heavy
-	name = "heavy lift jetpack"
-	desc = "An upgraded jetpack with enough fuel to send a person flying for a short while with extreme force. It provides better mobility for heavy users and enough thrust to be used in an aggressive manner. <b>Alt right click or middleclick to fly to a destination when the jetpack is equipped. Will collide with hostiles</b>"
+	name = "重型起重喷气背包"
+	desc = "一个升级版喷气背包,燃料足以让人以极大的力量短距离飞行一段时间.它为重型使用者提供了更好的机动性,并且推力足以用于进攻.<b>装备喷气背包时,按住Alt右键或中键点击可飞向目的地.会与敌对目标相撞</b>"
 	cooldown_time = 5 SECONDS
 	speed = 2
 
@@ -256,7 +256,7 @@
 			human_user.Knockdown(0.5 SECONDS)
 			human_user.set_throwing(FALSE)
 			INVOKE_NEXT_TICK(human_user, TYPE_PROC_REF(/atom/movable, knockback), human_target, 1, 5, null, MOVE_FORCE_VERY_STRONG)
-			human_user.visible_message(span_danger("[human_user] crashes into [hit_mob]!"))
+			human_user.visible_message(span_danger("[human_user]撞上了[hit_mob]!"))
 			return COMPONENT_MOVABLE_PREBUMP_STOPPED
 
 	var/knockdown_duration = 0.5 SECONDS
@@ -269,7 +269,7 @@
 		hit_mob.Knockdown(knockdown_duration)
 		human_user.forceMove(get_turf(hit_mob))
 	hit_mob.apply_damage(40, BRUTE, BODY_ZONE_CHEST, MELEE, updating_health = TRUE)
-	hit_mob.visible_message(span_danger("[human_user] slams into [hit_mob]!"))
+	hit_mob.visible_message(span_danger("[human_user]猛撞上了[hit_mob]!"))
 
 	human_user.set_throwing(FALSE)
 	return COMPONENT_MOVABLE_PREBUMP_STOPPED

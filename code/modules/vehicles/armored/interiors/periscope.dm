@@ -1,6 +1,6 @@
 /obj/structure/periscope
-	name = "tank periscope"
-	desc = "A periscope for viewing the outside of the vehicle. Resist or move to stop looking through it."
+	name = "坦克潜望镜"
+	desc = "用于观察载具外部的潜望镜。抵抗或移动以停止通过它观察。"
 	icon = 'icons/obj/armored/3x3/tank_interior.dmi'
 	icon_state = "periscope"
 	density = FALSE
@@ -42,7 +42,7 @@
 	user.update_sight()
 
 /obj/structure/periscope/apc
-	name = "apc periscope"
+	name = "运兵车潜望镜"
 
 /obj/structure/periscope/som
 	icon = 'icons/obj/armored/3x4/som_interior_small_props.dmi'
@@ -61,8 +61,8 @@
 // Окошко для просмотра чё снаружи машины творится
 // Текст взят с кумов, код взят с тгмс
 /obj/structure/periscope/interior_viewport
-	name = "External Cameras Terminal"
-	desc = "A small terminal connected to the external cameras of a vehicle, allowing a 360-degree visual survey of vehicle surroundings."
+	name = "外部摄像头终端"
+	desc = "一个连接到载具外部摄像头的小型终端,允许360度全方位观察载具周围环境。"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "viewport"
 	layer = ABOVE_MOB_LAYER
@@ -71,14 +71,14 @@
 
 // Окошко поменьше
 /obj/structure/periscope/interior_viewport/simple
-	name = "viewport"
-	desc = "Hey, I can see my base from here!"
+	name = "观察窗"
+	desc = "嘿,我从这里能看到我的基地!"
 	icon_state = "viewport_simple"
 
 // Для VAN машины
 /obj/structure/periscope/interior_viewport/simple/windshield
-	name = "windshield"
-	desc = "When it was cleaned last time? There is a squashed bug in the corner."
+	name = "挡风玻璃"
+	desc = "上次清洗是什么时候?角落里有一只被压扁的虫子。"
 	icon = 'icons/obj/vehicles/interiors/van.dmi'
 	icon_state = "windshield_viewport_top"
 	alpha = 80

@@ -32,7 +32,7 @@ const LoadoutItem = (props: LoadoutItemData) => {
             act('selectLoadout', { loadout_outfit: loadout.outfit });
           }}
         >
-          Select Loadout
+          选择配装
         </Button>
       }
       label={loadout.name}
@@ -117,7 +117,7 @@ export const Quickload = (props) => {
       {showDesc && (
         <Modal width="400px">
           <Box>{showDesc}</Box>
-          <Button content="Dismiss" onClick={() => setShowDesc(null)} />
+          <Button content="解散" onClick={() => setShowDesc(null)} />
         </Modal>
       )}
       <Window.Content>

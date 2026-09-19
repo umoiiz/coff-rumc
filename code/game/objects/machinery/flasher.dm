@@ -1,7 +1,7 @@
 // It is a gizmo that flashes a small area
 /obj/machinery/flasher
 	name = "Mounted flash"
-	desc = "A wall-mounted flashbulb device."
+	desc = "一种壁挂式闪光灯泡装置。"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "mflash1"
 	anchored = TRUE
@@ -27,7 +27,7 @@
 
 /obj/machinery/flasher/portable //Portable version of the flasher. Only flashes when anchored
 	name = "portable flasher"
-	desc = "A portable flashing device. Wrench to activate and deactivate. Cannot detect slow movements."
+	desc = "一种便携式闪光装置。用扳手激活和停用。无法探测缓慢移动。"
 	icon_state = "pflash1"
 	strength = 8
 	anchored = FALSE
@@ -44,9 +44,9 @@
 /obj/machinery/flasher/wirecutter_act(mob/living/user, obj/item/W)
 	disable = !disable
 	if(disable)
-		user.visible_message(span_warning("[user] has disconnected the [src]'s flashbulb!"), span_warning("You disconnect the [src]'s flashbulb!"))
+		user.visible_message(span_warning("[user]已断开[src]的闪光灯泡!"), span_warning("你断开[src]的闪光灯泡!"))
 	if(!disable)
-		user.visible_message(span_warning("[user] has connected the [src]'s flashbulb!"), span_warning("You connect the [src]'s flashbulb!"))
+		user.visible_message(span_warning("[user]已连接[src]的闪光灯泡!"), span_warning("你连接[src]的闪光灯泡!"))
 
 /obj/machinery/flasher/attack_ai()
 	if(anchored)
@@ -103,10 +103,10 @@
 	. = ..()
 	anchored = !anchored
 	if(!anchored)
-		user.show_message(span_warning("[src] is now secured."))
+		user.show_message(span_warning("[src]现已固定。"))
 		overlays += "[base_state]-s"
 	else
-		user.show_message(span_warning("[src] can now be moved."))
+		user.show_message(span_warning("[src]现在可以移动了。"))
 		overlays.Cut()
 
 /obj/machinery/flasher_button/attack_ai(mob/user as mob)
@@ -128,7 +128,7 @@
 		return
 
 	if(!allowed(user))
-		to_chat(user, span_warning("Access Denied."))
+		to_chat(user, span_warning("拒绝访问。"))
 		return
 
 	use_power(active_power_usage)

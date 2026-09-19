@@ -33,7 +33,7 @@ export const YautjaCustomization = () => {
 
   return has_wl ? (
     <>
-      <Section title="Yautja Information">
+      <Section title="铁血战士信息">
         <Flex>
           <Flex.Item>
             <LabeledList>
@@ -101,7 +101,7 @@ export const YautjaCustomization = () => {
           </Flex.Item>
         </Flex>
       </Section>
-      <Section title="Equipment Setup">
+      <Section title="装备配置">
         <Flex>
           <Flex.Item>
             <LabeledList>
@@ -158,7 +158,7 @@ export const YautjaCustomization = () => {
           </Flex.Item>
         </Flex>
       </Section>
-      <Section title="Clothing Setup">
+      <Section title="服装配置">
         <Flex>
           <Flex.Item>
             <LabeledList>
@@ -187,6 +187,6 @@ export const YautjaCustomization = () => {
       </Section>
     </>
   ) : (
-    <Box>WL required</Box>
+    <Box>需要白名单</Box>
   );
 };

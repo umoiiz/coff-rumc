@@ -9,15 +9,15 @@
 	)
 
 /obj/item/clothing/head/fun/bandana_ballas
-	name = "\improper Ballas bandana"
-	desc = "A purple bandana tied in the front."
+	name = "\improper 巴拉斯头巾"
+	desc = "一条系在前面的紫色头巾."
 	icon_state = "bandana_ballas"
 	worn_icon_state = "bandana_ballas"
 	inv_hide_flags = HIDETOPHAIR
 
 /obj/item/clothing/head/fun/bandana_grove
-	name = "\improper Grove Street bandana"
-	desc = "A green bandana tied in the front."
+	name = "\improper 格罗夫街头巾"
+	desc = "一条系在前面的绿色头巾."
 	icon_state = "bandana_grove"
 	worn_icon_state = "bandana_grove"
 	inv_hide_flags = HIDETOPHAIR
@@ -49,8 +49,8 @@
 	inv_hide_flags = HIDEEARS|HIDEEYES|HIDETOPHAIR
 
 /obj/item/clothing/head/helmet/marine/sw/rebel
-	name = "\improper Rebel trooper helmet"
-	desc = "A reinforced plastoid helmet of the Rebel Alliance."
+	name = "\improper 义军士兵头盔"
+	desc = "义军同盟的强化塑料头盔."
 	icon_state = "rebel_helmet"
 	worn_icon_state = "rebel_helmet"
 	attachments_allowed = list()
@@ -61,195 +61,195 @@
 	soft_armor = list(MELEE = 35, BULLET = 60, LASER = 50, ENERGY = 50, BOMB = 45, BIO = 45, FIRE = 50, ACID = 40)
 
 /obj/item/clothing/head/helmet/marine/sw/rebel/black
-	name = "\improper Rebel trooper black helmet"
-	desc = "A black variant of the Rebel Alliance trooper helmet."
+	name = "\improper 义军士兵黑色头盔"
+	desc = "义军同盟士兵头盔的黑色版本."
 	icon_state = "rebel_helmet_black"
 	worn_icon_state = "rebel_helmet_black"
 	soft_armor = list(MELEE = 40, BULLET = 65, LASER = 55, ENERGY = 55, BOMB = 50, BIO = 45, FIRE = 50, ACID = 45)
 
 /obj/item/clothing/head/helmet/marine/sw/clone/phase2
-	name = "\improper Phase II clone trooper helmet"
-	desc = "A phase II helmet used by clone troopers of the Grand Army of the Republic."
+	name = "\improper 第二阶段克隆士兵头盔"
+	desc = "共和国大军克隆士兵使用的第二阶段头盔."
 	icon_state = "replicant_helmet2"
 	worn_icon_state = "replicant_helmet2"
 
 /obj/item/clothing/head/helmet/marine/sw/clone/legion501
-	name = "\improper 501st Legion clone trooper helmet"
-	desc = "A phase II helmet bearing the blue markings of the 501st Legion."
+	name = "\improper 501军团克隆人部队头盔"
+	desc = "带有501军团蓝色标记的二期头盔."
 	icon_state = "replicant2_501st"
 	worn_icon_state = "replicant2_501st"
 	soft_armor = list(MELEE = 50, BULLET = 75, LASER = 65, ENERGY = 65, BOMB = 55, BIO = 55, FIRE = 60, ACID = 55)
 
 /obj/item/clothing/head/helmet/marine/sw/clone/battalion212
-	name = "\improper 212th Battalion clone trooper helmet"
-	desc = "A phase II helmet bearing the orange markings of the 212th Attack Battalion."
+	name = "\improper 212攻击营克隆人部队头盔"
+	desc = "带有212攻击营橙色标记的二期头盔."
 	icon_state = "replicant2_212th"
 	worn_icon_state = "replicant2_212th"
 	soft_armor = list(MELEE = 50, BULLET = 75, LASER = 65, ENERGY = 65, BOMB = 55, BIO = 55, FIRE = 60, ACID = 55)
 
 /obj/item/clothing/head/helmet/marine/sw/clone/scout
-	name = "\improper Clone scout trooper helmet"
-	desc = "A phase II helmet with additional plates for arctic and recon operations."
+	name = "\improper 克隆人侦察兵头盔"
+	desc = "带有附加装甲板,用于极地和侦察行动的二期头盔."
 	icon_state = "replicant_bilizard"
 	worn_icon_state = "replicant_bilizard"
 
 /obj/item/clothing/head/helmet/marine/sw/clone/radiotech
-	name = "\improper Clone radiotech helmet"
-	desc = "A clone trooper helmet fitted with a long-range communications antenna."
+	name = "\improper 克隆人无线电兵头盔"
+	desc = "装有远程通信天线的克隆人部队头盔."
 	icon_state = "replicant_radiotech"
 	worn_icon_state = "replicant_radiotech"
 
 /obj/item/clothing/head/helmet/marine/sw/clone/commando
-	name = "\improper Clone commando helmet"
-	desc = "A plastoid helmet used by clone commandos of the Republic Army."
+	name = "\improper 克隆人突击队头盔"
+	desc = "共和国军队克隆人突击队使用的塑甲头盔."
 	icon_state = "replicant_commando"
 	worn_icon_state = "replicant_commando"
 	// SOM leader / heavy
 	soft_armor = list(MELEE = 60, BULLET = 80, LASER = 70, ENERGY = 70, BOMB = 60, BIO = 55, FIRE = 65, ACID = 55)
 
 /obj/item/clothing/head/helmet/marine/sw/clone/artillery
-	name = "\improper Clone artillery crew helmet"
-	desc = "A clone trooper helmet used by vehicle and artillery crews."
+	name = "\improper 克隆人炮兵乘员头盔"
+	desc = "载具和炮兵乘员使用的克隆人部队头盔."
 	icon_state = "replicant_art"
 	worn_icon_state = "replicant_art"
 
 /obj/item/clothing/head/helmet/marine/sw/clone/engineer
-	name = "\improper Clone engineer helmet"
-	desc = "A reinforced plastoid engineer helmet of the Republic Army."
+	name = "\improper 克隆人工兵头盔"
+	desc = "共和国军队的强化塑甲工兵头盔."
 	icon_state = "replicant_engi"
 	worn_icon_state = "replicant_engi"
 
 /obj/item/clothing/head/helmet/marine/sw/clone/phase1
-	name = "\improper Phase I clone trooper helmet"
-	desc = "A reinforced plastoid phase I helmet of the Grand Army of the Republic."
+	name = "\improper 一期克隆人部队头盔"
+	desc = "共和国大军的一期强化塑甲头盔."
 	icon_state = "replicant_helmet"
 	worn_icon_state = "replicant_helmet"
 
 /obj/item/clothing/head/helmet/marine/sw/clone/sgt
-	name = "\improper Clone sergeant helmet, phase I"
-	desc = "A phase I helmet with green markings denoting sergeant rank."
+	name = "\improper 克隆人中士头盔,一期"
+	desc = "带有绿色标记表示中士军衔的一期头盔."
 	icon_state = "repsgt_helmet"
 	worn_icon_state = "repsgt_helmet"
 
 /obj/item/clothing/head/helmet/marine/sw/clone/lt
-	name = "\improper Clone lieutenant helmet, phase I"
-	desc = "A phase I helmet with blue markings denoting lieutenant rank."
+	name = "\improper 克隆人中尉头盔,一期"
+	desc = "带有蓝色标记表示中尉军衔的一期头盔."
 	icon_state = "replt_helmet"
 	worn_icon_state = "replt_helmet"
 
 /obj/item/clothing/head/helmet/marine/sw/clone/captain
-	name = "\improper Clone captain helmet, phase I"
-	desc = "A phase I helmet with red markings denoting captain rank."
+	name = "\improper 克隆人上尉头盔,一期"
+	desc = "带有红色标记表示上尉军衔的一期头盔."
 	icon_state = "repcaptain_helmet"
 	worn_icon_state = "repcaptain_helmet"
 	soft_armor = list(MELEE = 60, BULLET = 80, LASER = 70, ENERGY = 70, BOMB = 60, BIO = 55, FIRE = 65, ACID = 55)
 
 /obj/item/clothing/head/helmet/marine/sw/clone/pilot
-	name = "\improper Clone pilot helmet, phase I"
-	desc = "A reinforced plastoid pilot helmet of the Republic Navy."
+	name = "\improper 克隆人飞行员头盔,一期"
+	desc = "共和国海军的强化塑甲飞行员头盔."
 	icon_state = "reppilot_helmet"
 	worn_icon_state = "reppilot_helmet"
 
 /obj/item/clothing/head/helmet/marine/sw/clone/commander
-	name = "\improper Clone commander helmet, phase I"
-	desc = "A phase I helmet with yellow markings denoting commander rank."
+	name = "\improper 克隆人指挥官头盔,一期"
+	desc = "带有黄色标记表示指挥官军衔的一期头盔."
 	icon_state = "repcommander_helmet"
 	worn_icon_state = "repcommander_helmet"
 	soft_armor = list(MELEE = 60, BULLET = 80, LASER = 70, ENERGY = 70, BOMB = 60, BIO = 55, FIRE = 65, ACID = 55)
 
 /obj/item/clothing/head/helmet/marine/sw/clone/mp
-	name = "\improper Clone military police helmet"
-	desc = "A highly reinforced plastoid helmet of the Republic military police."
+	name = "\improper 克隆人宪兵头盔"
+	desc = "共和国宪兵的高度强化塑甲头盔."
 	icon_state = "repmp_helmet"
 	worn_icon_state = "repmp_helmet"
 	// SOM veteran
 	soft_armor = list(MELEE = 50, BULLET = 75, LASER = 65, ENERGY = 65, BOMB = 55, BIO = 55, FIRE = 60, ACID = 55)
 
 /obj/item/clothing/head/sw/cap/repensign
-	name = "\improper Republic Navy ensign cap"
-	desc = "A tight-fitting blue-grey officer's cap."
+	name = "\improper 共和国海军少尉帽"
+	desc = "紧身的蓝灰色军官帽."
 	icon_state = "repensign_cap"
 	worn_icon_state = "repensign_cap"
 
 /obj/item/clothing/head/sw/cap/repnavalcaptain
-	name = "\improper Republic Navy captain cap"
-	desc = "A tight-fitting green officer's cap."
+	name = "\improper 共和国海军上尉帽"
+	desc = "紧身的绿色军官帽."
 	icon_state = "repnavalcaptain_cap"
 	worn_icon_state = "repnavalcaptain_cap"
 
 /obj/item/clothing/head/sw/cap/repofficer_ensign
-	name = "\improper Imperial officer cap"
-	desc = "A tight-fitting grey officer's cap from the post-war Imperial Navy."
+	name = "\improper 帝国军官帽"
+	desc = "战后帝国海军的紧身灰色军官帽."
 	icon_state = "repofficer_ensign"
 	worn_icon_state = "repofficer_ensign"
 
 /obj/item/clothing/head/sw/cap/repofficer_med
-	name = "\improper Republic medical officer cap"
-	desc = "A tight-fitting grey medical officer's cap."
+	name = "\improper 共和国医疗军官帽"
+	desc = "紧身的灰色医疗军官帽."
 	icon_state = "repofficer_med"
 	worn_icon_state = "repofficer_med"
 
 /obj/item/clothing/head/sw/cap/repofficer_navcaptain
-	name = "\improper Imperial Navy captain cap"
-	desc = "A tight-fitting green Imperial Navy captain's cap."
+	name = "\improper 帝国海军上尉帽"
+	desc = "紧身的绿色帝国海军上尉帽."
 	icon_state = "repofficer_navcaptain"
 	worn_icon_state = "repofficer_navcaptain"
 
 /obj/item/clothing/head/sw/cap/imp_stormofficer
-	name = "\improper Imperial stormtrooper officer cap"
-	desc = "A tight-fitting black field cap worn by Stormtrooper Corps officers."
+	name = "\improper 帝国风暴兵军官帽"
+	desc = "风暴兵军团军官佩戴的紧身黑色野战帽."
 	icon_state = "impofficer_stormofficer"
 	worn_icon_state = "impofficer_stormofficer"
 
 /obj/item/clothing/head/helmet/marine/sw/repstormtrooper
-	name = "\improper Republic shock trooper helmet"
-	desc = "A reinforced helmet of the Republic's elite shock trooper corps."
+	name = "\improper 共和国震击兵头盔"
+	desc = "共和国精锐震击兵军团的强化头盔."
 	icon_state = "repstormtrooper_helmet"
 	worn_icon_state = "repstormtrooper_helmet"
 
 /obj/item/clothing/head/helmet/marine/sw/imperial/airborne
-	name = "\improper Imperial airborne trooper helmet"
-	desc = "A reinforced airborne helmet of the Imperial Army."
+	name = "\improper 帝国空降兵头盔"
+	desc = "帝国陆军的强化空降头盔."
 	icon_state = "repairborne_helmet"
 	worn_icon_state = "repairborne_helmet"
 	// SOM lorica (breacher)
 	soft_armor = list(MELEE = 60, BULLET = 85, LASER = 80, ENERGY = 80, BOMB = 65, BIO = 55, FIRE = 70, ACID = 60)
 
 /obj/item/clothing/head/helmet/marine/sw/clone/corps41
-	name = "\improper 41st Elite Corps clone trooper helmet"
-	desc = "A helmet bearing the distinctive markings of the 41st Elite Corps."
+	name = "\improper 第41精英军团克隆人部队头盔"
+	desc = "带有第41精英军团独特标记的头盔."
 	icon_state = "rep4RF_helmet"
 	worn_icon_state = "rep4RF_helmet"
 
 /obj/item/clothing/head/helmet/marine/sw/imp_stormofficer
-	name = "\improper Imperial stormtrooper officer helmet"
-	desc = "A reinforced helmet worn by officers of the Imperial Stormtrooper Corps."
+	name = "\improper 帝国风暴兵军官头盔"
+	desc = "帝国风暴兵军团军官佩戴的强化头盔."
 	icon_state = "impofficer_stormofficer"
 	worn_icon_state = "impofficer_stormofficer"
 
 /obj/item/clothing/head/helmet/marine/sw/redguard
-	name = "\improper Imperial Royal Guard helmet"
-	desc = "A reinforced plastoid helmet of the Emperor's Royal Guard."
+	name = "\improper 帝国皇家卫队头盔"
+	desc = "皇帝皇家卫队的强化塑甲头盔."
 	icon_state = "redguard"
 	worn_icon_state = "redguard"
 	// SOM lorica
 	soft_armor = list(MELEE = 60, BULLET = 85, LASER = 80, ENERGY = 80, BOMB = 65, BIO = 55, FIRE = 70, ACID = 60)
 
 /obj/item/clothing/head/helmet/marine/sw/senateguard
-	name = "\improper Senate Guard helmet"
-	desc = "A reinforced plastoid helmet of the Galactic Senate Guard."
+	name = "\improper 议会卫队头盔"
+	desc = "银河议会卫队的强化塑甲头盔."
 	icon_state = "senateguard"
 	worn_icon_state = "senateguard"
 	soft_armor = list(MELEE = 60, BULLET = 85, LASER = 80, ENERGY = 80, BOMB = 65, BIO = 55, FIRE = 70, ACID = 60)
 
 /obj/item/clothing/head/helmet/marine/sw/stormsurgeon
-	name = "\improper Imperial stormtrooper surgeon helmet"
-	desc = "A reinforced helmet of the Imperial Medical Corps field surgeons."
+	name = "\improper 帝国风暴兵军医头盔"
+	desc = "帝国医疗军团野战军医的强化头盔."
 	icon_state = "sturmsurgeon_helmet"
 	worn_icon_state = "sturmsurgeon_helmet"
 
 /obj/item/clothing/head/helmet/marine/sw/stormradio
-	name = "\improper Imperial stormtrooper radioman helmet"
-	desc = "A lighter stormtrooper helmet fitted for long-range communications."
+	name = "\improper 帝国风暴兵无线电兵头盔"
+	desc = "为远程通信而装配的轻型风暴兵头盔."
 	icon_state = "stormradio_helmet"
 	worn_icon_state = "stormradio_helmet"

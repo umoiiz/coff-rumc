@@ -1,6 +1,6 @@
 /obj/item/storage/backpack/marine/duffelbag/xenosaddle
-	name = "\improper Runner Saddle"
-	desc = "A rugged saddle, designed to be worn by runners. You can alt-click to change the style"
+	name = "\improper 奔跑者鞍座"
+	desc = "一个粗犷的鞍座,专为奔跑者设计.你可以按住Alt点击来更改样式"
 	icon = 'icons/Xeno/saddles/saddles.dmi'
 	icon_state = "cowboybags"
 	worn_icon_state = null
@@ -20,7 +20,7 @@
 
 /obj/item/storage/backpack/marine/duffelbag/xenosaddle/examine(mob/user)
 	. = ..()
-	. += span_notice("Its current style is set to [style_list_inverted[style]]. You can change it with Alt-Click.")
+	. += span_notice("其当前样式设置为[style_list_inverted[style]].你可以按住Alt点击来更改.")
 
 /obj/item/storage/backpack/marine/duffelbag/xenosaddle/AltClick(mob/user)
 	if(!ishuman(user))
@@ -28,7 +28,7 @@
 	var/mob/living/living_user = user
 	if(!living_user.Adjacent(src) || !(src in living_user.get_held_items()))
 		return
-	var/new_style = tgui_input_list(living_user, "Pick a style", "Pick style", style_list)
+	var/new_style = tgui_input_list(living_user, "选择一种样式", "选择样式", style_list)
 	if(!new_style)
 		return
 	style = style_list[new_style]
@@ -39,7 +39,7 @@
 		return FALSE
 	if(HAS_TRAIT(src, TRAIT_NODROP) && slot != SLOT_L_HAND && slot != SLOT_R_HAND && !override_nodrop) //No drops can only be equipped to a hand slot
 		if(slot == SLOT_L_HAND || slot == SLOT_R_HAND)
-			to_chat(user, span_notice("[src] is stuck to your hand!"))
+			to_chat(user, span_notice("[src]粘在了你的手上!"))
 			return FALSE
 	if(isxenorunner(user))
 		return TRUE
@@ -53,10 +53,10 @@
 		return
 	var/mob/living/carbon/xenomorph/runner/rouny = target
 	if(rouny.back)
-		balloon_alert(user,"This runner already has a saddle on!")
+		balloon_alert(user,"这个奔跑者已经装备了鞍座!")
 		return
 	if(rouny.stat == DEAD)
-		balloon_alert(user,"This runner is dead!")
+		balloon_alert(user,"这个奔跑者已经死了!")
 		return
 	if(!do_after(user, 3 SECONDS, NONE, target))
 		return

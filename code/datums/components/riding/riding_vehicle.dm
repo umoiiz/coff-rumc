@@ -16,40 +16,40 @@
 
 	if(!keycheck(user))
 		if(COOLDOWN_FINISHED(src, message_cooldown))
-			to_chat(user, span_warning("[vehicle_parent] has no key inserted!"))
+			to_chat(user, span_warning("[vehicle_parent]上没有插入钥匙!"))
 			COOLDOWN_START(src, message_cooldown, 5 SECONDS)
 		return COMPONENT_DRIVER_BLOCK_MOVE
 
 	if(HAS_TRAIT(user, TRAIT_INCAPACITATED))
 		if(ride_check_flags & UNBUCKLE_DISABLED_RIDER)
 			vehicle_parent.unbuckle_mob(user, TRUE)
-			user.visible_message(span_danger("[user] falls off \the [vehicle_parent]."),\
-			span_danger("You slip off \the [vehicle_parent] as your body slumps!"))
+			user.visible_message(span_danger("[user]从\the [vehicle_parent]上掉了下去."),\
+			span_danger("当你的身体瘫软时,你从\the [vehicle_parent]上滑了下来!"))
 
 		if(COOLDOWN_FINISHED(src, message_cooldown))
-			to_chat(user, span_warning("You cannot operate \the [vehicle_parent] right now!"))
+			to_chat(user, span_warning("你现在无法操作\the [vehicle_parent]!"))
 			COOLDOWN_START(src, message_cooldown, 5 SECONDS)
 		return COMPONENT_DRIVER_BLOCK_MOVE
 
 	if(ride_check_flags & RIDER_NEEDS_LEGS && HAS_TRAIT(user, TRAIT_FLOORED))
 		if(ride_check_flags & UNBUCKLE_DISABLED_RIDER)
 			vehicle_parent.unbuckle_mob(user, TRUE)
-			user.visible_message(span_danger("[user] falls off \the [vehicle_parent]."),\
-			span_danger("You fall off \the [vehicle_parent] while trying to operate it while unable to stand!"))
+			user.visible_message(span_danger("[user]从\the [vehicle_parent]上掉了下去."),\
+			span_danger("你在无法站立时试图操作它,结果从\the [vehicle_parent]上摔了下来!"))
 
 		if(COOLDOWN_FINISHED(src, message_cooldown))
-			to_chat(user, span_warning("You can't seem to manage that while unable to stand up enough to move \the [vehicle_parent]..."))
+			to_chat(user, span_warning("你在无法站起来以移动\the [vehicle_parent]时似乎做不到..."))
 			COOLDOWN_START(src, message_cooldown, 5 SECONDS)
 		return COMPONENT_DRIVER_BLOCK_MOVE
 
 	if(ride_check_flags & RIDER_NEEDS_ARMS && user.restrained())
 		if(ride_check_flags & UNBUCKLE_DISABLED_RIDER)
 			vehicle_parent.unbuckle_mob(user, TRUE)
-			user.visible_message(span_danger("[user] falls off \the [vehicle_parent]."),\
-			span_danger("You fall off \the [vehicle_parent] while trying to operate it without being able to hold on!"))
+			user.visible_message(span_danger("[user]从\the [vehicle_parent]上掉了下去."),\
+			span_danger("你在无法抓稳时试图操作它,结果从\the [vehicle_parent]上摔了下来!"))
 
 		if(COOLDOWN_FINISHED(src, message_cooldown))
-			to_chat(user, span_warning("You can't seem to hold onto \the [vehicle_parent] to move it..."))
+			to_chat(user, span_warning("你似乎无法抓住\the [vehicle_parent]来移动它..."))
 			COOLDOWN_START(src, message_cooldown, 5 SECONDS)
 		return COMPONENT_DRIVER_BLOCK_MOVE
 
@@ -68,7 +68,7 @@
 	if(!istype(next) || !istype(current))
 		return //not happening.
 	if(!turf_check(next, current))
-		to_chat(user, span_warning("\The [movable_parent] can not go onto [next]!"))
+		to_chat(user, span_warning("\The [movable_parent]无法到[next]上!"))
 		return
 	if(!isturf(movable_parent.loc))
 		return
@@ -131,7 +131,7 @@
 	if(!right_hand?.is_usable() || user.get_item_for_held_index(2))
 		working_hands--
 	if(!working_hands)
-		to_chat(user, span_warning("You have no arms to propel [movable_parent]!"))
+		to_chat(user, span_warning("你没有手臂来推动[movable_parent]!"))
 		return COMPONENT_DRIVER_BLOCK_MOVE // No hands to drive your chair? Tough luck!
 	return ..()
 

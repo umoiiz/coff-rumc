@@ -1,7 +1,7 @@
 /mob/camera/imaginary_friend
 	name = "imaginary friend"
 	real_name = "imaginary friend"
-	desc = "A wonderful yet fake friend."
+	desc = "一个美妙却虚假的朋友."
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	lighting_cutoff = LIGHTING_CUTOFF_HIGH
 	see_invisible = SEE_INVISIBLE_OBSERVER
@@ -60,7 +60,7 @@
 	name = client.prefs.real_name
 	real_name = name
 	gender = client.prefs.gender
-	var/outfit_choice = tgui_input_list(usr, "Choose your appearance:", "[src]", outfit_choices)
+	var/outfit_choice = tgui_input_list(usr, "选择你的外观:", "[src]", outfit_choices)
 	if(!outfit_choice)
 		outfit_choice = outfit_choices[1]
 	human_image = get_flat_human_icon(null, SSjob.GetJobType(outfit_choice), client.prefs)
@@ -114,7 +114,7 @@
 	set category = "Imaginary Friend"
 	set name = "Change Appearance"
 
-	var/outfit_choice = tgui_input_list(usr, "Choose your appearance:", "[src]", outfit_choices)
+	var/outfit_choice = tgui_input_list(usr, "选择你的外观:", "[src]", outfit_choices)
 	if(!outfit_choice)
 		return
 	human_image = get_flat_human_icon(null, SSjob.GetJobType(outfit_choice), client.prefs)
@@ -127,7 +127,7 @@
 	xeno_mobhud = !xeno_mobhud
 	var/datum/atom_hud/H = GLOB.huds[DATA_HUD_XENO_STATUS]
 	xeno_mobhud ? H.add_hud_to(src) : H.remove_hud_from(src)
-	to_chat(src, span_notice("You have [xeno_mobhud ? "enabled" : "disabled"] the Xeno Status HUD."))
+	to_chat(src, span_notice("你已[xeno_mobhud ? "enabled" : "disabled"]异形状态HUD."))
 
 /mob/camera/imaginary_friend/verb/toggle_human_mobhud()
 	set category = "Imaginary Friend"
@@ -138,7 +138,7 @@
 	med_squad_mobhud ? H.add_hud_to(src) : H.remove_hud_from(src)
 	H = GLOB.huds[DATA_HUD_SQUAD_TERRAGOV]
 	med_squad_mobhud ? H.add_hud_to(src) : H.remove_hud_from(src)
-	to_chat(src, span_notice("You have [med_squad_mobhud ? "enabled" : "disabled"] the Human Status HUD."))
+	to_chat(src, span_notice("你已[med_squad_mobhud ? "enabled" : "disabled"]人类状态HUD."))
 
 /mob/camera/imaginary_friend/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language, ignore_spam = FALSE, forced)
 	if(!message)
@@ -146,10 +146,10 @@
 
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, "You cannot send IC messages (muted).")
+			to_chat(src, "你无法发送IC消息 (已被静音).")
 			return
 		if(is_banned_from(ckey, "IC"))
-			to_chat(src, span_warning("You are banned from IC chat."))
+			to_chat(src, span_warning("你已被禁止使用IC聊天."))
 			return
 
 		if(client.handle_spam_prevention(message, MUTE_IC))
@@ -244,7 +244,7 @@
 
 /datum/action/innate/imaginary_join
 	name = "Join"
-	desc = "Join your owner, following them from inside their mind."
+	desc = "加入你的主人, 从他们的意识内部跟随他们."
 
 	action_icon_state = "joinmob"
 	background_icon_state = "template2"
@@ -257,7 +257,7 @@
 
 /datum/action/innate/imaginary_hide
 	name = "Hide"
-	desc = "Hide yourself from your owner's sight."
+	desc = "从你主人的视线中隐藏自己."
 
 	action_icon_state = "hidemob"
 	background_icon_state = "template2"

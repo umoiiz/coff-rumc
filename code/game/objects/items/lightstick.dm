@@ -3,8 +3,8 @@
 //Lightsticks----------
 //Blue
 /obj/item/lightstick
-	name = "blue lightstick"
-	desc = "You can stick them in the ground"
+	name = "蓝色荧光棒"
+	desc = "你可以把它们插在地上"
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "lightstick_blue0"
 	var/s_color = "blue"
@@ -21,7 +21,7 @@
 		return
 	if(L.mob_size != MOB_SIZE_BIG && prob(80))
 		return
-	visible_message(span_danger("[L] tramples the [src]!"))
+	visible_message(span_danger("[L]踩踏了[src]!"))
 	playsound(src, 'sound/weapons/genhit.ogg', 25, 1)
 	if(isxeno(L) && prob(40))
 		qdel(src)
@@ -38,12 +38,12 @@
 	if(!anchored)//If planted
 		return
 
-	to_chat(user, "You start pulling out \the [src].")
+	to_chat(user, "你开始拔出\the [src].")
 	if(!do_after(user,20, NONE, src, BUSY_ICON_GENERIC))
 		return
 
 	anchored = FALSE
-	user.visible_message("[user.name] removes \the [src] from the ground.","You remove the [src] from the ground.")
+	user.visible_message("[user.name]从地上取下了\the [src].","你从地上取下了[src].")
 	icon_state = "lightstick_[s_color][anchored]"
 	set_light(0,0)
 	playsound(user, 'sound/weapons/genhit.ogg', 25, 1)
@@ -60,7 +60,7 @@
 
 //Red
 /obj/item/lightstick/red
-	name = "red lightstick"
+	name = "红色荧光棒"
 	icon_state = "lightstick_red0"
 	s_color = "red"
 

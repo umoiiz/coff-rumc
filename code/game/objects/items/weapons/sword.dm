@@ -1,6 +1,6 @@
 /obj/item/weapon/sword
-	name = "claymore"
-	desc = "What are you standing around staring at this for? Get to killing!"
+	name = "阔剑地雷"
+	desc = "你站在这盯着它看什么？快去杀敌！"
 	icon_state = "claymore"
 	worn_icon_state = "claymore"
 	atom_flags = CONDUCT
@@ -39,7 +39,7 @@
 /datum/action/ability/activable/weapon_skill/sword_lunge
 	name = "Lunging strike"
 	action_icon_state = "sword_lunge"
-	desc = "A powerful leaping strike. Cannot stun."
+	desc = "一次强力的跳跃打击。无法眩晕。"
 	ability_cost = 8
 	cooldown_duration = 6 SECONDS
 	keybinding_signals = list(
@@ -60,7 +60,7 @@
 	RegisterSignals(carbon_owner, COMSIG_MOVABLE_BUMP, PROC_REF(lunge_impact))
 	RegisterSignal(carbon_owner, COMSIG_MOVABLE_POST_THROW, PROC_REF(charge_complete))
 
-	carbon_owner.visible_message(span_danger("[carbon_owner] charges towards \the [A]!"))
+	carbon_owner.visible_message(span_danger("[carbon_owner]向\the [A]冲锋！"))
 	playsound(owner, 'sound/effects/alien/tail_swipe2.ogg', 50, 0, 4)
 	carbon_owner.throw_at(A, lunge_range, 1, carbon_owner)
 	succeed_activate()
@@ -99,21 +99,21 @@
 	shake_camera(human_victim, 2, 1)
 
 /obj/item/weapon/sword/mercsword
-	name = "combat sword"
-	desc = "A dusty sword commonly seen in historical museums. Where you got this is a mystery, for sure. Only a mercenary would be nuts enough to carry one of these. Sharpened to deal massive damage."
+	name = "战斗剑"
+	desc = "一把常见于历史博物馆的布满灰尘的剑。你从哪弄到这个的绝对是个谜。只有佣兵才会疯到携带这种东西。经过打磨可造成巨大伤害。"
 	icon_state = "mercsword"
 	worn_icon_state = "machete"
 	force = 39
 
 /obj/item/weapon/sword/captain
-	name = "Ceremonial Sword"
-	desc = "A fancy ceremonial sword passed down from generation to generation. Despite this, it has been very well cared for, and is in top condition."
+	name = "礼仪剑"
+	desc = "一把代代相传的精美礼仪剑。尽管如此，它一直被精心保养，状态极佳。"
 	icon_state = "mercsword"
 	worn_icon_state = "machete"
 	force = 55
 
 /obj/item/weapon/sword/officer
-	name = "officer sabre"
+	name = "军官佩剑"
 	icon_state = "officer_sword"
 	worn_icon_state = "officer_sword"
 	force = 80
@@ -128,8 +128,8 @@
 	AddElement(/datum/element/strappable)
 
 /obj/item/weapon/sword/officer/sabre
-	name = "\improper ceremonial officer sabre"
-	desc = "Gold plated, smoked dark wood handle, your name on it, what else do you need?"
+	name = "\improper 礼仪军官佩剑"
+	desc = "镀金，烟熏深色木柄，上面刻有你的名字，你还需要什么？"
 	icon = 'icons/obj/items/weapons.dmi'
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/weapons/melee_left.dmi',
@@ -139,8 +139,8 @@
 	worn_icon_state = "saber"
 
 /obj/item/weapon/sword/machete
-	name = "\improper M2132 machete"
-	desc = "Latest issue of the TGMC Machete. Great for clearing out jungle or brush on outlying colonies. Found commonly in the hands of scouts and trackers, but difficult to carry with the usual kit."
+	name = "\improper M2132砍刀"
+	desc = "TGMC砍刀的最新配发型号。非常适合在偏远殖民地的丛林中开路。常见于侦察兵和追踪者手中，但难以用常规装备携带。"
 	icon_state = "machete"
 	worn_icon_state = "machete"
 	attack_speed = 12
@@ -161,8 +161,8 @@
 	AddElement(/datum/element/strappable)
 
 /obj/item/weapon/sword/machete/light
-	name = "\improper 'Recon' machete"
-	desc = "A lightweight and compact variant of the standard TGMC machete, designed for easy carry and rapid deployment. Its reduced weight and size make it a favored tool for scouts and trackers who prioritize mobility without sacrificing utility for clearing brush or in close-quarters combat."
+	name = "\improper '侦察'砍刀"
+	desc = "标准TGMC砍刀的轻量紧凑型变体，专为便于携带和快速部署而设计。其减轻的重量和尺寸使其成为侦察兵和追踪者的青睐工具，他们优先考虑机动性，同时不牺牲在丛林中开路或近身战斗中的实用性。"
 	icon_state = "machete_light"
 	worn_icon_state = "machete_light"
 	force = 70
@@ -179,13 +179,13 @@
 	return ..()
 
 /obj/item/weapon/sword/machete/alt
-	name = "machete"
-	desc = "A nice looking machete. Great for clearing out jungle or brush on outlying colonies. Found commonly in the hands of scouts and trackers, but difficult to carry with the usual kit."
+	name = "砍刀"
+	desc = "一把好看的砍刀。非常适合在偏远殖民地的丛林中开路。常见于侦察兵和追踪者手中，但难以用常规装备携带。"
 	icon_state = "machete_alt"
 
 /obj/item/weapon/sword/tomahawk // ah yes, the sword in form of axe
-	name = "Tomahawk H23"
-	desc = "A specialist tactical weapon, ancient and beloved by many. Issued to TGMC by CAU."
+	name = "战斧H23"
+	desc = "一种专家级战术武器，古老且深受许多人喜爱。由CAU配发给TGMC。"
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "tomahawk_tactic"
 	worn_icon_state = "tomahawk_tactic"
@@ -246,14 +246,14 @@
 		return
 
 /obj/item/weapon/sword/tomahawk/classic
-	name = "Tomahawk H17"
-	desc = "A specialist tactical weapon, very ancient and beloved by many. Issued to Delta by CAU."
+	name = "战斧H17"
+	desc = "一种专家级战术武器，非常古老且深受许多人喜爱。由CAU配发给德尔塔。"
 	icon_state = "tomahawk_classic"
 	worn_icon_state = "tomahawk_classic"
 
 /obj/item/weapon/sword/commissar
-	name = "\improper commissars sword"
-	desc = "The pride of an imperial commissar, held high as they charge into battle."
+	name = "\improper 政委剑"
+	desc = "帝国政委的骄傲，在冲锋陷阵时高高举起。"
 	icon_state = "comsword"
 	worn_icon_state = "comsword"
 	force = 80
@@ -261,8 +261,8 @@
 	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/weapon/sword/katana
-	name = "katana"
-	desc = "A finely made Japanese sword, with a well sharpened blade. The blade has been filed to a molecular edge, and is extremely deadly. Commonly found in the hands of mercenaries and yakuza."
+	name = "武士刀"
+	desc = "一把制作精良的日本刀，刀刃锋利。刀刃已被打磨至分子级别，极其致命。常见于佣兵和黑帮手中。"
 	icon_state = "katana"
 	atom_flags = CONDUCT
 	force = 50
@@ -274,14 +274,14 @@
 
 //To do: replace the toys.
 /obj/item/weapon/sword/katana/replica
-	name = "replica katana"
-	desc = "A cheap knock-off commonly found in regular knife stores. Can still do some damage."
+	name = "仿制武士刀"
+	desc = "常见于普通刀具店的廉价仿制品。仍然能造成一些伤害。"
 	force = 27
 	throwforce = 7
 
 /obj/item/weapon/sword/katana/samurai
-	name = "\improper tachi"
-	desc = "A genuine replica of an ancient blade. This one is in remarkably good condition. It could do some damage to everyone, including yourself."
+	name = "\improper 太刀"
+	desc = "一把古代刀刃的正品复制品。这一把状态极佳。它可以对所有人造成伤害，包括你自己。"
 	icon_state = "samurai_open"
 	force = 60
 	attack_speed = 12

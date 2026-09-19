@@ -1,5 +1,5 @@
 /obj/item/paper_bundle
-	name = "paper bundle"
+	name = "纸捆"
 	gender = PLURAL
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper"
@@ -29,7 +29,7 @@
 		if(istype(P, /obj/item/paper/carbon))
 			var/obj/item/paper/carbon/C = P
 			if(!C.iscopy && !C.copied)
-				to_chat(user, span_notice("Take off the carbon copy first."))
+				to_chat(user, span_notice("先取下复写纸."))
 				return
 
 		if(loc != user)
@@ -55,7 +55,7 @@
 		user.dropItemToGround(I)
 		for(var/obj/O in I)
 			attach_doc(O, user, TRUE)
-		to_chat(user, span_notice("You add \the [I] to [src]."))
+		to_chat(user, span_notice("你将\the [I]添加到[src]."))
 		qdel(I)
 
 	else if(istype(I, /obj/item/tool/pen) || istype(I, /obj/item/toy/crayon))
@@ -72,16 +72,16 @@
 	if(istype(P, /obj/item/tool/lighter/zippo))
 		class = "<span class='rose'>"
 
-	user.visible_message("[class][user] holds \the [P] up to \the [src], it looks like [user.p_theyre()] trying to burn it!</span>", \
+	user.visible_message("[class][user]拿着\the [P],最多\the [src],看起来像[user.p_theyre()]想烧掉它!</span>", \
 		"[class]You hold \the [P] up to \the [src], burning it slowly.")
 
 	if(!do_after(user, 2 SECONDS, NONE, src))
-		to_chat(user, span_warning("You must hold \the [P] steady to burn \the [src]."))
+		to_chat(user, span_warning("你必须稳稳地拿着\the [P]来烧\the [src]."))
 		return
 
 	if(!P.heat)
 		return
-	user.visible_message("[class][user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>", \
+	user.visible_message("[class][user]直接烧穿了\the [src],将其化为灰烬.灰烬在空中飘荡,然后落在地板上堆成一堆.</span>", \
 		"[class]You burn right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>")
 
 	if(user.get_inactive_held_item() == src)
@@ -95,7 +95,7 @@
 	if(in_range(user, src))
 		attack_self(user)
 	else
-		. += span_notice("It is too far away to read.")
+		. += span_notice("距离太远,无法阅读.")
 
 /obj/item/paper_bundle/attack_self(mob/user as mob)
 	if(ishuman(user))
@@ -157,7 +157,7 @@
 		if(href_list["remove"])
 			var/obj/item/W = contents[page]
 			usr.put_in_hands(W)
-			to_chat(usr, span_notice("You remove the [W.name] from the bundle."))
+			to_chat(usr, span_notice("你从纸捆中取出了[W.name]."))
 			amount--
 			if(amount == 1)
 				var/obj/item/paper/P = contents[1]
@@ -176,7 +176,7 @@
 		src.attack_self(src.loc)
 		updateUsrDialog()
 	else
-		to_chat(usr, span_notice("You need to hold it in hands!"))
+		to_chat(usr, span_notice("你需要把它拿在手里!"))
 
 /obj/item/paper_bundle/verb/rename()
 	set name = "Rename bundle"
@@ -192,7 +192,7 @@
 	set category = "IC.Object"
 	set src in usr
 
-	to_chat(usr, span_notice("You loosen the bundle."))
+	to_chat(usr, span_notice("你松开了纸捆."))
 	for(var/obj/O in src)
 		O.forceMove(usr.loc)
 	usr.dropItemToGround(src)
@@ -249,7 +249,7 @@
 	I.forceMove(src)
 	amount++
 	if(!no_message)
-		to_chat(user, span_notice("You add [I] to [src]."))
+		to_chat(user, span_notice("你将[I]添加到[src]."))
 	if(screen == 2)
 		screen = 1
 	update_icon()

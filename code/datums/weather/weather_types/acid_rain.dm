@@ -1,20 +1,20 @@
 //Acid rain is part of the natural weather cycle in the humid forests of LV, and cause acid damage to anyone unprotected.
 /datum/weather/acid_rain
 	name = "acid rain"
-	desc = "The planet's thunderstorms are by nature acidic, and will incinerate anyone standing beneath them without protection."
+	desc = "这颗行星的雷暴本质上是酸性的, 会烧尽任何站在其下没有防护的人."
 
 	telegraph_duration = 400
-	telegraph_message = span_userdanger("Thunder rumbles far above. You hear acidic droplets hissing against the canopy. Seek shelter!")
+	telegraph_message = span_userdanger("雷声在远处轰鸣. 你听到酸性水滴嘶嘶地打在顶篷上. 寻找掩护!")
 	telegraph_overlay = "rain_med"
 	telegraph_sound = 'sound/effects/siren.ogg'
 
-	weather_message = span_userdanger("<i>Acidic rain pours down around you! Get inside!</i>")
+	weather_message = span_userdanger("<i>酸性雨水倾泻在你周围! 快进去!</i>")
 	weather_overlay = "acid_rain"
 	weather_duration_lower = 600
 	weather_duration_upper = 1500
 
 	end_duration = 100
-	end_message = span_danger("The downpour gradually slows to a light shower. It should be safe outside now.")
+	end_message = span_danger("倾盆大雨逐渐减弱为小雨. 现在外面应该安全了.")
 	end_overlay = "rain_low"
 
 	area_type = /area
@@ -52,7 +52,7 @@
 		return
 	if(prob(L.modify_by_armor(100, ACID)))
 		L.adjust_fire_loss(7)
-		to_chat(L, span_danger("You feel the acid rain melting you away!"))
+		to_chat(L, span_danger("你感觉酸雨正在将你融化!"))
 	L.wash()
 	if(L.fire_stacks > -20)
 		L.fire_stacks = max(-20, L.fire_stacks - 1)
@@ -64,19 +64,19 @@
 		var/obj/item/clothing/gloves/yautja/hunter/gloves = human.gloves
 		if(gloves.cloaked)
 			gloves.decloak(L)
-			to_chat(L, span_userdanger("<i>Rain interferes with your cloaking device!</i>"))
+			to_chat(L, span_userdanger("<i>雨水干扰了你的隐形装置!</i>"))
 
 /datum/weather/acid_rain/harmless
 	target_trait = ZTRAIT_RAIN
 
-	telegraph_message = span_danger("Thunder rumbles far above. You hear droplets drumming against the canopy.")
+	telegraph_message = span_danger("雷声在远处轰鸣. 你听到水滴敲打在顶篷上.")
 	telegraph_overlay = "rain_med"
 	telegraph_sound = null
 
-	weather_message = span_danger("<i>Rain pours down around you!</i>")
+	weather_message = span_danger("<i>雨水倾泻在你周围!</i>")
 	weather_overlay = "rain_high"
 
-	end_message = span_danger("The downpour gradually slows to a light shower.")
+	end_message = span_danger("倾盆大雨逐渐减弱为小雨.")
 	end_overlay = "rain_low"
 
 	probability = 60
@@ -106,5 +106,5 @@
 		var/obj/item/clothing/gloves/yautja/hunter/gloves = human.gloves
 		if(gloves.cloaked)
 			gloves.decloak(L)
-			to_chat(L, span_userdanger("<i>Rain interferes with your cloaking device!</i>"))
+			to_chat(L, span_userdanger("<i>雨水干扰了你的隐形装置!</i>"))
 

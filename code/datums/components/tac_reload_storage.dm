@@ -41,7 +41,7 @@
 ///Hook into the examine of the parent to show the player that they can tac reload from this
 /datum/component/tac_reload_storage/proc/on_examine(datum/source, mob/user, list/details)
 	SIGNAL_HANDLER
-	details += span_notice("To perform a reload with the ammunition inside, right click on the belt with any compatible gun.")
+	details += span_notice("要用里面的弹药进行装填,请用任何兼容的枪右键点击弹带.")
 
 /**
  * When attacked by a gun, will attempt to tactical reload it from our set reloading storage.

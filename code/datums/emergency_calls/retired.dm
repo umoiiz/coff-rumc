@@ -4,9 +4,9 @@
 	alignement_factor = -1
 
 /datum/emergency_call/retired/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>You are an old, retired member of the TerraGov marine corps.</b>")
-	to_chat(H, "<B>Althought you may be past your prime, high command has deemed you capable enough to be sent to the [SSmapping.configs[SHIP_MAP].map_name], which has recently sent out a distress signal.</b>")
-	to_chat(H, "<B>Investigate why the distress signal was sent and show the younger generation how it's done!</b>")
+	to_chat(H, "<B>你是TerraGov陆战队的一名年迈的退役成员.</b>")
+	to_chat(H, "<B>尽管你可能已过巅峰,但最高指挥部认为你足够有能力,可以被派往[SSmapping.configs[SHIP_MAP].map_name],该舰最近发出了求救信号.</b>")
+	to_chat(H, "<B>调查求救信号为何发出,并向年轻一代展示该怎么做!</b>")
 
 /datum/emergency_call/retired/create_member(datum/mind/mind_to_assign)
 	. = ..()
@@ -40,9 +40,9 @@
 		leader = H
 		var/datum/job/J = SSjob.GetJobType(/datum/job/retired/leader)
 		H.apply_assigned_role_to_spawn(J)
-		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are the TGMC retired veteran expedition leader! Lead your fellow veterans to one last hurrah!</notice></p>")
+		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>你是TGMC退役老兵远征队队长! 带领你的老兵同伴们进行最后一次狂欢!</notice></p>")
 		return
 
 	var/datum/job/J = SSjob.GetJobType(/datum/job/retired)
 	H.apply_assigned_role_to_spawn(J)
-	to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are an augmented TGMC veteran, you may have had a few limbs replaced with synthetic versions, but at least you can walk! Follow the expedition leader and relive your glory days!</notice></p>")
+	to_chat(H, "<p style='font-size:1.5em'><span class='notice'>你是一名经过强化的TGMC老兵,你可能有几个肢体被替换成了合成版本,但至少你还能走路! 跟随远征队队长,重温你的荣耀岁月!</notice></p>")

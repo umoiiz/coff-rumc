@@ -74,7 +74,7 @@
 	if(!.)
 		return FALSE
 	if(get_dist(target, gun_user) <= 2)
-		to_chat(gun_user, span_warning("[src] beeps a warning noise. You are too close!"))
+		to_chat(gun_user, span_warning("[src]发出警告声.你离得太近了!"))
 		return FALSE
 
 
@@ -84,7 +84,7 @@
 	var/obj/item/explosive/grenade/grenade_to_launch = object_to_fire
 	var/turf/user_turf = get_turf(src)
 	grenade_to_launch.forceMove(user_turf)
-	gun_user?.visible_message(span_danger("[gun_user] fires a grenade from [gun_user?.p_their()] [src.name]!"), span_warning("You fire [src]!"))
+	gun_user?.visible_message(span_danger("[gun_user]从[gun_user?.p_their()][src.name]发射了一枚榴弹!"), span_warning("你发射了[src]!"))
 	log_bomber(gun_user, "fired a grenade ([grenade_to_launch]) from", src, "at [AREACOORD(user_turf)]")
 	play_fire_sound(loc)
 	grenade_to_launch.launched_det_time()
@@ -120,11 +120,11 @@
 
 /obj/item/weapon/gun/grenade_launcher/proc/toggle_overhead_launcher(mob/living/carbon/human/user)
 	if(!overhead_launch_mode)
-		balloon_alert(user, "You have activated overhead launcher mode.")
+		balloon_alert(user, "你已激活头顶发射器模式.")
 		overhead_launch_mode = TRUE
 		windup_delay += 0.5 SECONDS
 	else
-		balloon_alert(user, "You have deactivated overhead launcher mode.")
+		balloon_alert(user, "你已停用头顶发射器模式.")
 		overhead_launch_mode = FALSE
 		windup_delay -= 0.5 SECONDS
 
@@ -132,8 +132,8 @@
 //GL-70 Grenade Launcher.
 
 /obj/item/weapon/gun/grenade_launcher/multinade_launcher
-	name = "\improper GL-70 grenade launcher"
-	desc = "The GL-70 is the standard grenade launcher used by the TerraGov Marine Corps for area denial and big explosions."
+	name = "\improper GL-70榴弹发射器"
+	desc = "GL-70是TerraGov陆战队用于区域封锁和大规模爆炸的标准榴弹发射器."
 	icon = 'icons/obj/items/gun/special64.dmi'
 	icon_state = "t70"
 	worn_icon_state = "t70"
@@ -162,7 +162,7 @@
 	default_ammo_type = null
 
 /obj/item/weapon/gun/grenade_launcher/multinade_launcher/erp
-	name = "\improper PL-70 assault pie launcher"
+	name = "\improper PL-70突击派发射器"
 	icon_state = "t70_erp"
 	worn_icon_state = "t70_erp"
 	fire_animation = "t70_erp_fire"
@@ -170,8 +170,8 @@
 	default_ammo_type = /obj/item/explosive/grenade/creampie
 
 /obj/item/weapon/gun/grenade_launcher/underslung
-	name = "underslung grenade launcher"
-	desc = "A weapon-mounted, reloadable, two-shot grenade launcher."
+	name = "下挂式榴弹发射器"
+	desc = "一种安装在武器上的,可重新装填的,双发榴弹发射器."
 	icon = 'icons/obj/items/attachments/attachments.dmi'
 	icon_state = "grenade"
 
@@ -237,8 +237,8 @@
 	attach_features_flags = NONE
 
 /obj/item/weapon/gun/grenade_launcher/underslung/br64
-	name = "\improper BR-64 underslung grenade launcher"
-	desc = "A weapon-mounted, reloadable, two-shot grenade launcher designed to fit the BR-64."
+	name = "\improper BR-64下挂式榴弹发射器"
+	desc = "一种安装在武器上的,可重新装填的,双发榴弹发射器,专为适配BR-64而设计."
 	icon = 'icons/obj/items/attachments/attachments.dmi'
 
 	worn_icon_list = list( // for whatever fucking reason we can't set it null
@@ -259,8 +259,8 @@
 	attach_features_flags = ATTACH_REMOVABLE
 
 /obj/item/weapon/gun/grenade_launcher/single_shot
-	name = "\improper GL-81 grenade launcher"
-	desc = "A lightweight, single-shot grenade launcher used by the TerraGov Marine Corps for area denial and big explosions."
+	name = "\improper GL-81榴弹发射器"
+	desc = "一种轻量化的单发榴弹发射器,被TerraGov陆战队用于区域封锁和大规模爆炸."
 	icon_state = "m81"
 	worn_icon_state = "m81"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -283,16 +283,16 @@
 		if(active_attachable)
 			active_attachable.tactical_reload(new_magazine, user)
 			return
-		to_chat(user, span_warning("[new_magazine] cannot fit into [src]!"))
+		to_chat(user, span_warning("[new_magazine]无法装入[src]!"))
 		return
 	if(src != user.r_hand && src != user.l_hand && (!master_gun || (master_gun != user.r_hand && master_gun != user.l_hand)))
-		to_chat(user, span_warning("[src] must be in your hand to do that."))
+		to_chat(user, span_warning("[src]必须在你手中才能这样做."))
 		return
 	//no tactical reload for the untrained.
 	if(user.skills.getRating(SKILL_FIREARMS) < SKILL_FIREARMS_DEFAULT)
-		to_chat(user, span_warning("You don't know how to do tactical reloads."))
+		to_chat(user, span_warning("你不知道如何进行战术换弹."))
 		return
-	to_chat(user, span_notice("You start a tactical reload."))
+	to_chat(user, span_notice("你开始进行战术换弹."))
 	var/tac_reload_time = max(0.25 SECONDS, 0.75 SECONDS - user.skills.getRating(SKILL_FIREARMS) * 5)
 	if(length(chamber_items))
 		if(!do_after(user, tac_reload_time, IGNORE_USER_LOC_CHANGE, new_magazine) && loc == user)
@@ -308,15 +308,15 @@
 	reload(new_magazine, user)
 
 /obj/item/weapon/gun/grenade_launcher/single_shot/riot
-	name = "\improper GL-81 riot grenade launcher"
-	desc = "A lightweight, single-shot grenade launcher to launch tear gas grenades. Used by Nanotrasen security during riots."
+	name = "\improper GL-81防暴榴弹发射器"
+	desc = "一种轻量化的单发榴弹发射器,用于发射催泪瓦斯弹.曾被Nanotrasen安保在暴乱期间使用."
 	default_ammo_type = null
 	allowed_ammo_types = list(/obj/item/explosive/grenade/chem_grenade)
 	req_access = list(ACCESS_MARINE_BRIG)
 
 /obj/item/weapon/gun/grenade_launcher/single_shot/flare
-	name = "flare gun"
-	desc = "A gun that fires flares. Replace with flares. Simple! Equipped with long range irons."
+	name = "信号枪"
+	desc = "一把发射信号弹的枪.用信号弹替换.简单!配备远程机械瞄具."
 	icon_state = "flaregun"
 	worn_icon_state = "gun"
 	worn_icon_list = list(
@@ -335,6 +335,6 @@
 	starting_attachment_types = list(/obj/item/attachable/scope/unremovable/flaregun)
 
 /obj/item/weapon/gun/grenade_launcher/single_shot/flare/marine
-	name = "M30E2 flare gun"
-	desc = "A very tiny flaregun that fires flares equipped with long range irons, the mass amounts of markings on the back and barrel denote it as owned by the TGMC."
+	name = "M30E2信号枪"
+	desc = "一把非常小巧的信号枪,发射信号弹,配备远程机械瞄具,其后部和枪管上大量的标记表明它归TGMC所有."
 	icon_state = "marine_flaregun"

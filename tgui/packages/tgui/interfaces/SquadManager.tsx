@@ -70,7 +70,7 @@ export const SquadManager = (props) => {
                         })
                       }
                     >
-                      Create
+                      创建
                     </Button>
                   </Stack.Item>
                 </Stack>

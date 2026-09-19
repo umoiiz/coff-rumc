@@ -194,8 +194,8 @@
 		log_combat(xeno_attacker, src, "disarmed")
 	else
 		var/damage = rand(15, 30)
-		visible_message(span_danger("[xeno_attacker] has slashed at [src]!"), \
-				span_userdanger("[xeno_attacker] has slashed at [src]!"))
+		visible_message(span_danger("[xeno_attacker]已抓向[src]!"), \
+				span_userdanger("[xeno_attacker]已抓向[src]!"))
 		playsound(loc, 'sound/weapons/slice.ogg', 25, 1, -1)
 		attack_threshold_check(damage)
 		log_combat(xeno_attacker, src, "attacked")
@@ -231,7 +231,7 @@
 		temp_damage *= damage_coeff[damagetype]
 
 	if(temp_damage >= 0 && temp_damage <= force_threshold)
-		visible_message(span_warning("[src] looks unharmed."))
+		visible_message(span_warning("[src]看起来毫发无伤."))
 		return FALSE
 	else
 		apply_damage(damage, damagetype, blocked = armorcheck)

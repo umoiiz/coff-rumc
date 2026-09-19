@@ -1,7 +1,7 @@
 //stuff found in mines
 /obj/structure/mine_structure
-	name = "misc mine structure"
-	desc = "You shouldn't see this."
+	name = "杂项矿场结构"
+	desc = "你不应该看到这个。"
 	icon = 'icons/obj/structures/cave_decor.dmi'
 	icon_state = ""
 	max_integrity = 200
@@ -9,8 +9,8 @@
 	layer = ABOVE_NORMAL_TURF_LAYER
 
 /obj/structure/mine_structure/cart
-	name = "mine cart"
-	desc = "A big metal bucket on wheels for moving heavy loads. This one has fallen over."
+	name = "矿车"
+	desc = "一个带轮子的大金属桶,用于搬运重物。这个已经翻倒了。"
 	icon_state = "minecart_fallen"
 	max_integrity = 300
 	coverage = 85
@@ -20,8 +20,8 @@
 	take_damage(burn_level, BURN, FIRE)
 
 /obj/structure/mine_structure/wooden/support_wall
-	name = "wooden support"
-	desc = "A wooden bracing design to prevent cave collapse"
+	name = "木制支撑"
+	desc = "一种防止洞穴坍塌的木制支撑结构"
 	icon_state = "support_wall"
 	pixel_y = 26
 
@@ -36,29 +36,29 @@
 	dir = NORTH
 
 /obj/structure/mine_structure/wooden/support_wall/broken
-	desc = "A wooden bracing design to prevent cave collapse. Its seen better days."
+	desc = "一种防止洞穴坍塌的木制支撑结构。它已经饱经风霜了。"
 	icon_state = "support_wall_broken"
 
 /obj/structure/mine_structure/wooden/support_wall/broken/above
 	dir = NORTH
 
 /obj/structure/mine_structure/wooden/support_wall/t_bar
-	desc = "A simple wooden support beam designed to prevent cave collapse."
+	desc = "一根简单的木制支撑梁,用于防止洞穴坍塌。"
 	icon_state = "support"
 
 /obj/structure/mine_structure/wooden/support_wall/t_bar/above
 	dir = NORTH
 
 /obj/structure/mine_structure/wooden/support_wall/beams
-	desc = "A pair of wooden support beams designed to prevent cave collapse."
+	desc = "一对木制支撑梁,用于防止洞穴坍塌。"
 	icon_state = "support_beams"
 
 /obj/structure/mine_structure/wooden/support_wall/beams/above
 	dir = NORTH
 
 /obj/structure/mine_structure/wooden/plank
-	name = "wooden board"
-	desc = "A wood boarden. Good under foot."
+	name = "木板"
+	desc = "一块木板。踩上去不错。"
 	icon_state = "boards_drought_ns"
 	///number of icon variants this object has
 	var/icon_variants = 6
@@ -77,8 +77,8 @@
 	icon_state = "boards_mammoth_we"
 
 /obj/structure/mine_structure/wooden/sign
-	name = "wooden sign"
-	desc = "A wood sign post. It seems to be pointing somewhere."
+	name = "木制标牌"
+	desc = "一根木制标牌柱。它似乎指向某个方向。"
 	icon_state = "sign_left"
 
 /obj/structure/mine_structure/wooden/sign/right

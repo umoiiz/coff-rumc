@@ -3,9 +3,9 @@
 	base_probability = 0
 
 /datum/emergency_call/erp/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>You are a prankster, of the Emergency Response Pranksters, a dedicated responder to whatever situation needs entertainment</b>")
-	to_chat(H, "<B>Recently a beacon has been sent from [SSmapping.configs[SHIP_MAP].map_name], a plea for PRANKING and ENTERTAINMENT!</b>")
-	to_chat(H, "<B>Entertain the good people of the TGMC there and make sure all non-TGMC anti-fun-sources are PRANKED & eliminated post-haste!</b>")
+	to_chat(H, "<B>你是紧急响应恶作剧者中的一名恶作剧者,一个专门响应任何需要娱乐的情况的响应者</b>")
+	to_chat(H, "<B>最近从[SSmapping.configs[SHIP_MAP].map_name]发出了一个信标,一个请求恶作剧和娱乐的恳求!</b>")
+	to_chat(H, "<B>娱乐那里的TGMC好人,并确保所有非TGMC的反乐趣来源被恶作剧并立即消灭!</b>")
 
 /datum/emergency_call/erp/create_member(datum/mind/M)
 	. = ..()

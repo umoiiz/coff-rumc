@@ -1,13 +1,13 @@
 /obj/item/storage/kitchen_tray
-	name = "tray"
-	desc = "Use in hand to place items from tray to in front of yourself."
+	name = "托盘"
+	desc = "在手中使用以将托盘中的物品放置到你面前."
 	icon = 'icons/obj/items/kitchen_tools.dmi'
 	icon_state = "tray"
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/equipment/kitchen_left.dmi',
 		slot_r_hand_str = 'icons/mob/inhands/equipment/kitchen_right.dmi',
 	)
-	desc = "A metal tray to lay food on."
+	desc = "一个用来放食物的金属托盘."
 	throwforce = 12
 	throwforce = 10
 	throw_speed = 1
@@ -40,7 +40,7 @@
 /obj/item/storage/kitchen_tray/attack(mob/living/attacked, mob/living/user as mob)
 	. = ..()
 	if(length(contents))
-		visible_message(span_warning("The force of the blow sends the contents of [src] flying!"))
+		visible_message(span_warning("这一击的力量将[src]中的物品打飞了出去!"))
 
 	// Drop all the things. All of them.
 	for(var/obj/item/dropped_item in src)
@@ -54,7 +54,7 @@
 
 	var/mob/living/carbon/human/attacked_human = attacked
 	if(!(user.zone_selected == ("eyes" || "head")))
-		attacked_human.visible_message(span_danger("[user] slams [attacked_human] with the tray!"), span_warning("You get slammed with the tray!"))
+		attacked_human.visible_message(span_danger("[user]用托盘猛击[attacked_human]!"), span_warning("你被托盘猛击了!"))
 		log_combat(user, attacked_human, "attacked", src)
 
 		if(prob(15))
@@ -65,7 +65,7 @@
 		return
 
 	if(attacked_human?.head.inventory_flags & COVEREYES || attacked_human?.wear_mask.inventory_flags & COVEREYES || attacked_human?.glasses.inventory_flags & COVEREYES)
-		attacked_human.visible_message(span_danger("[user] slams [attacked_human] with the tray!"), span_warning("You get slammed in the face with the tray, against your mask!"))
+		attacked_human.visible_message(span_danger("[user]用托盘猛击[attacked_human]!"), span_warning("你被托盘隔着面罩猛击了脸部!"))
 
 		if(prob(10))
 			attacked_human.Stun(rand(2 SECONDS, 6 SECONDS))
@@ -76,7 +76,7 @@
 
 	//No eye or head protection, tough luck!
 
-	attacked_human.visible_message(span_danger("[user] slams [attacked_human] in the face with the tray!"), span_warning("You get slammed in the face with the tray!"))
+	attacked_human.visible_message(span_danger("[user]用托盘猛击[attacked_human]的脸部!"), span_warning("你被托盘猛击了脸部!"))
 
 	if(prob(30))
 		attacked_human.Stun(rand(4 SECONDS, 8 SECONDS))
@@ -96,7 +96,7 @@
 		return
 
 	if(cooldown < world.time - 25)
-		user.visible_message(span_warning("[user] bashes [src] with [I]!"))
+		user.visible_message(span_warning("[user]用[I]猛击[src]!"))
 		playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
 		cooldown = world.time
 

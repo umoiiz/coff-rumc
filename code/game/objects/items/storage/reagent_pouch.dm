@@ -1,8 +1,8 @@
 //Reagent Canister pouch. Including the canister inside the pouch, as well as the pouch item.
 
 /obj/item/reagent_containers/glass/reagent_canister // See the Reagent Canister Pouch, this is just the container
-	name = "pressurized reagent container"
-	desc = "A pressurized container. The inner part of a pressurized reagent canister pouch. Too large to fit in anything but the pouch it comes with."
+	name = "加压试剂容器"
+	desc = "一个加压容器。加压试剂罐袋的内部部分。太大,除了随附的袋子外装不进任何东西。"
 	icon = 'icons/obj/items/storage/pouches.dmi'
 	icon_state = "r_canister"
 	worn_icon_list = list(
@@ -23,9 +23,9 @@
 	if(isxeno(user))
 		return
 	if(!(user.skills.getRating(SKILL_MEDICAL) >= SKILL_MEDICAL_NOVICE) && !isobserver(usr)) //Failed skill check
-		return span_notice("You don't know what's in it.")
+		return span_notice("你不知道里面装的是什么。")
 	if(!reagents.total_volume)
-		return span_notice("[src] is empty!")
+		return span_notice("[src]是空的!")
 	var/list/dat = list()
 	dat += "\n \t [span_notice("<b>Total Reagents:</b> [reagents.total_volume]/[volume].")]</br>"
 	for(var/datum/reagent/R AS in reagents.reagent_list)
@@ -34,21 +34,21 @@
 			dat += "\n \t <b>[R]:</b> [R.volume]|[percent]%</br>"
 		else
 			dat += "\n \t <b>Unknown:</b> [R.volume]|[percent]%</br>"
-	return span_notice("[src]'s contents: [dat.Join(" ")]")
+	return span_notice("[src]的内容物:[dat.Join(" ")]")
 
 /obj/item/reagent_containers/hypospray/autoinjector/r_pouch //Custom empty autoinjector that we will manually fill the contents of
-	name = "custom autoinjector"
-	desc = "An autoinjector loaded with a custom mix. Useful whenever you need the rapid injection"
+	name = "定制自动注射剂"
+	desc = "一支装有定制混合液的自动注射剂。当你需要快速注射时很有用"
 	icon_state = "RedGreen"
 	amount_per_transfer_from_this = 30
 	list_reagents = null //This injector gets filled up by the pouch on Initialize()
 
 /obj/item/storage/pouch/pressurized_reagent_pouch //The actual pouch itself and all its function
-	name = "pressurized reagent pouch"
+	name = "加压试剂袋"
 	w_class = WEIGHT_CLASS_BULKY
 	icon_state = "reagent_pouch"
-	desc = "A very large reagent pouch. It is used to refill custom injectors, and can also store one.\
-	You can Alt-Click to remove the canister in order to refill it."
+	desc = "一个非常大的试剂袋。用于重新装填定制注射剂,也可以存放一支。\
+	你可以Alt-Click取出罐子以便重新装填。"
 	item_flags = NOBLUDGEON
 	///The internal container of the pouch. Holds the reagent that you use to refill the connected injector
 	var/obj/item/reagent_containers/glass/reagent_canister/inner
@@ -115,7 +115,7 @@
 ///Attempts to remove the reagent canister from the pouch. Returns FALSE if there is no canister to remove
 /obj/item/storage/pouch/pressurized_reagent_pouch/proc/remove_canister(mob/user)
 	if(!inner)
-		to_chat(user, span_warning("There is no container inside this pouch!"))
+		to_chat(user, span_warning("这个袋子里没有容器!"))
 		return FALSE
 	if(!user.put_in_active_hand(inner))
 		user.put_in_hands(inner) //If put_in_active fails, we still pick up or drop the canister
@@ -132,10 +132,10 @@
 		if(!inner)
 			user.temporarilyRemoveItemFromInventory(held_item)
 			inner = held_item
-			to_chat(user, span_notice("You insert [held_item] into [src]!"))
+			to_chat(user, span_notice("你将[held_item]插入[src]!"))
 			update_icon()
 			return
-		to_chat(user, span_warning("There already is a container inside [src]!"))
+		to_chat(user, span_warning("[src]里面已经有一个容器了!"))
 		return
 	return ..()
 
@@ -147,10 +147,10 @@
 ///Fills the hypo that gets stored in the pouch from the internal storage tank. Returns FALSE if you fail to refill your injector
 /obj/item/storage/pouch/pressurized_reagent_pouch/proc/fill_autoinjector(obj/item/reagent_containers/hypospray/autoinjector, mob/user)
 	if(!inner)
-		user.balloon_alert(user, "No container")
+		user.balloon_alert(user, "无容器")
 		return FALSE
 	if(!inner.reagents.total_volume)
-		user.balloon_alert(user, "No reagent left")
+		user.balloon_alert(user, "无剩余试剂")
 		return FALSE
 	inner.reagents.trans_to(autoinjector, autoinjector.volume)
 	playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
@@ -166,11 +166,11 @@
 	if(isxeno(user))
 		return
 	if(!(user.skills.getRating(SKILL_MEDICAL) >= SKILL_MEDICAL_NOVICE) && !isobserver(usr)) //Failed skill check
-		return span_notice("You don't know what's in it.")
+		return span_notice("你不知道里面装的是什么。")
 	if(!inner)
-		return span_notice("[src] has no container inside!")
+		return span_notice("[src]内部没有容器!")
 	if(!inner.reagents.total_volume)
-		return span_notice("[src] is empty!")
+		return span_notice("[src]是空的!")
 	var/list/dat = list()
 	dat += "\n \t [span_notice("<b>Total Reagents:</b> [inner.reagents.total_volume]/[inner.volume].")]</br>"
 	if(length(inner.reagents.reagent_list) > 0)
@@ -180,19 +180,19 @@
 				dat += "\n \t <b>[R]:</b> [R.volume]|[percent]%</br>"
 			else
 				dat += "\n \t <b>Unknown:</b> [R.volume]|[percent]%</br>"
-	return span_notice("[src]'s reagent display shows the following contents: [dat.Join(" ")]")
+	return span_notice("[src]的试剂显示如下内容: [dat.Join(" ")]")
 
 /obj/item/storage/pouch/pressurized_reagent_pouch/empty //So you can mix to your hearts content
-	desc = "A very large reagent pouch. It is used to refill custom injectors, and can also store one. \
-	You can Alt-Click to remove the canister in order to refill it. \
-	This one is empty, allowing you to freely mix whatever you want."
+	desc = "一个非常大的试剂袋. 它用于补充自定义注射器, 也可以储存一个. \
+	你可以Alt-Click移除罐子以便重新填充. \
+	这个是空的, 允许你自由混合任何你想要的东西."
 	chemicals_to_fill = null
 
 /obj/item/storage/pouch/pressurized_reagent_pouch/bktt //Pre-filled with equal parts BKTT and a basic auto injector
-	name = "bktt reagent pouch"
-	desc = "A very large reagent pouch. It is used to refill custom injectors, and can also store one.\
-	You can Alt-Click to remove the canister in order to refill it. \
-	This one comes preloaded with BKTT."
+	name = "bktt试剂袋"
+	desc = "一个非常大的试剂袋. 它用于补充自定义注射器, 也可以储存一个.\
+	你可以Alt-Click移除罐子以便重新填充. \
+	这个预装了BKTT."
 	chemicals_to_fill = list(
 		/datum/reagent/medicine/bicaridine = 300,
 		/datum/reagent/medicine/kelotane = 300,

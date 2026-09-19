@@ -48,7 +48,7 @@
 	var/list/datum/internal_organ/internal_organs
 
 	/// Message that displays when you feel pain from this limb
-	var/damage_msg = span_warning("You feel an intense pain")
+	var/damage_msg = span_warning("你感到一阵剧痛")
 	///We keep the description of how are we broken here
 	var/broken_description
 
@@ -199,7 +199,7 @@ RU TGMC EDIT */
 	if(limb_status & LIMB_SPLINTED)
 		if(splint_health <= 0)
 			remove_limb_flags(LIMB_SPLINTED)
-			to_chat(owner, span_userdanger("The splint on your [display_name] comes apart!"))
+			to_chat(owner, span_userdanger("你[display_name]上的夹板散开了!"))
 			playsound(owner, 'sound/items/splint_break.ogg', 100, sound_range = 1, falloff = 5)
 		else
 			splint_health = max(splint_health - (brute + burn), 0)
@@ -461,7 +461,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if (spaceacillin < MIN_ANTIBIOTICS)
 				germ_level++
 				if (COOLDOWN_FINISHED(src, next_infection_message) && (germ_level <= INFECTION_LEVEL_TWO) && !(limb_status & LIMB_NECROTIZED))
-					to_chat(owner, span_notice("Your [display_name] itches and feels warm..."))
+					to_chat(owner, span_notice("你的[display_name]发痒并且感觉发热..."))
 					COOLDOWN_START(src, next_infection_message, rand(60 SECONDS, 90 SECONDS))
 
 			if (prob(15))	//adjust this to tweak how fast people take toxin damage from infections
@@ -473,7 +473,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if (spaceacillin < MIN_ANTIBIOTICS)
 				germ_level++
 				if (COOLDOWN_FINISHED(src, next_infection_message) && (germ_level <= INFECTION_LEVEL_THREE) && !(limb_status & LIMB_NECROTIZED))
-					to_chat(owner, span_warning("Your infected [display_name] is turning off-color and stings like hell!"))
+					to_chat(owner, span_warning("你受感染的[display_name]正在变色并且疼得要命!"))
 					COOLDOWN_START(src, next_infection_message, rand(25 SECONDS, 40 SECONDS))
 
 		if (prob(25))	//adjust this to tweak how fast people take toxin damage from infections
@@ -494,14 +494,14 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(germ_level >= INFECTION_LEVEL_THREE && !polyhexanide)	//Need a chem with real drawbacks to stay safe at this point
 		if (!(limb_status & LIMB_NECROTIZED))
 			add_limb_flags(LIMB_NECROTIZED)
-			to_chat(owner, span_notice("You can't feel your [display_name] anymore..."))
+			to_chat(owner, span_notice("你已经感觉不到你的[display_name]了..."))
 			owner.update_body(1)
 
 		germ_level++
 		if (prob(50))	//adjust this to tweak how fast people take toxin damage from infections
 			owner.adjust_tox_loss(1)
 		if (prob(1))
-			to_chat(owner, span_notice("You have a high fever!"))
+			to_chat(owner, span_notice("你发高烧了!"))
 	//Not technically a germ effect, but derived from it
 	if(limb_status & LIMB_NECROTIZED)
 		for(var/datum/internal_organ/organ AS in internal_organs)
@@ -673,9 +673,9 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(delete_limb)
 		QDEL_NULL(organ)
 	else if(!silent)
-		owner.visible_message(span_warning("[owner.name]'s [display_name] flies off in an arc!"),
-		span_userdanger("<b>Your [display_name] goes flying off!</b>"),
-		span_warning("You hear a terrible sound of ripping tendons and flesh!"), 3)
+		owner.visible_message(span_warning("[owner.name]的[display_name]呈弧形飞了出去!"),
+		span_userdanger("<b>你的[display_name]飞了出去!</b>"),
+		span_warning("你听到一阵可怕的肌腱和血肉撕裂声!"), 3)
 
 	if(organ)
 		//Throw organs around
@@ -757,9 +757,9 @@ Note that amputating the affected organ does in fact remove the infection from t
 		return
 
 	owner.visible_message(\
-		span_warning("You hear a loud cracking sound coming from [owner]!"),
-		span_userdanger("Something feels like it shattered in your [display_name]!"),
-		span_warning("You hear a sickening crack!"))
+		span_warning("你听到从[owner]传来一阵响亮的碎裂声!"),
+		span_userdanger("你感觉你的[display_name]里有什么东西碎了!"),
+		span_warning("你听到一阵令人作呕的碎裂声!"))
 	playsound(owner, SFX_BONE_BREAK, 45, 1)
 	if(owner.species && !(owner.species.species_flags & NO_PAIN))
 		owner.emote("scream")
@@ -847,23 +847,23 @@ Note that amputating the affected organ does in fact remove the infection from t
 		return
 
 	if(limb_status & LIMB_DESTROYED)
-		target.balloon_alert(user, "limb missing")
+		target.balloon_alert(user, "肢体缺失")
 		return FALSE
 
 	if(limb_status & LIMB_SPLINTED && applied_health <= splint_health)
-		target.balloon_alert(user, "current splint is better")
+		target.balloon_alert(user, "当前夹板更好")
 		return FALSE
 
 	var/delay = SKILL_TASK_AVERAGE - (1 SECONDS + user.skills.getRating(SKILL_MEDICAL) * 5)
 	if(target == user)
 		delay *= 3
 
-	target.balloon_alert_to_viewers("Splinting [display_name]...")
+	target.balloon_alert_to_viewers("正在给[display_name]上夹板...")
 
 	if(!do_after(user, delay, NONE, target, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL, extra_checks = CALLBACK(src, PROC_REF(extra_splint_checks), applied_health)))
 		return FALSE
 
-	target.balloon_alert_to_viewers("Splinted [display_name]")
+	target.balloon_alert_to_viewers("已给[display_name]上夹板")
 	add_limb_flags(LIMB_SPLINTED)
 	splint_health = applied_health
 	return TRUE

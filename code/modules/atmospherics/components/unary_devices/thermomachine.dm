@@ -3,7 +3,7 @@
 	icon_state = "freezer"
 
 	name = "thermomachine"
-	desc = "Heats or cools gas in connected pipes."
+	desc = "加热或冷却连接管道中的气体."
 
 	density = TRUE
 	max_integrity = 300

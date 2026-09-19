@@ -1,12 +1,12 @@
 /obj/machinery/vending/marineFood
-	name = "\improper Marine Food and Drinks Vendor"
-	desc = "Standard Issue Food and Drinks Vendor, containing standard military food and drinks."
+	name = "\improper 陆战队食品饮料售卖机"
+	desc = "标准配给食品饮料售卖机, 包含标准军用食品和饮料."
 	icon_state = "sustenance"
 	icon_vend = "sustenance-vend"
 	icon_deny = "sustenance-deny"
 	wrenchable = FALSE
 	isshared = TRUE
-	product_ads = "Standard Issue Marine food!;It's good for you, and not the worst thing in the world.;Just fucking eat it.;You should have joined the Air Force if you wanted better food.;1200 calories in just a few bites!;Get that tabaso sauce to make it tasty!;Try the cornbread.;Try the pizza.;Try the pasta.;Try the tofu, wimp.;Try the pork.; 9 Flavors of Protein!; You'll never guess the mystery flavor!"
+	product_ads = "标准配给陆战队食品!;对你有好处, 也不是世界上最糟的东西.;他妈的吃就是了.;如果你想要更好的食物, 你该加入空军.;几口就1200卡路里!;拿点塔巴斯科酱让它好吃!;试试玉米面包.;试试披萨.;试试意面.;试试豆腐, 软蛋.;试试猪肉.; 9种口味的蛋白质!; 你永远猜不到神秘口味!"
 	products = list(
 		/obj/item/reagent_containers/food/snacks/protein_pack = -1,
 		/obj/item/reagent_containers/food/snacks/mre_pack/meal1 = -1,
@@ -29,7 +29,7 @@
 	use_power = NO_POWER_USE
 
 /obj/machinery/vending/marineFood/som
-	name = "\improper SOM Food and Drinks Vendor"
+	name = "\improper SOM食品饮料售卖机"
 	faction = FACTION_SOM
 	products = list(
 		/obj/item/reagent_containers/food/snacks/protein_pack/som = -1,

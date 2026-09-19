@@ -9,16 +9,16 @@
 * Banhammer
 */
 /obj/item/weapon/banhammer/attack(mob/M as mob, mob/user as mob)
-	to_chat(M, "<font color='red'><b> You have been banned FOR NO REISIN by [user]<b></font>")
-	to_chat(user, "<font color='red'> You have <b>BANNED</b> [M]</font>")
+	to_chat(M, "<font color='red'><b>你已被[user]以毫无理由为由封禁<b></font>")
+	to_chat(user, "<font color='red'>你已被<b>封禁</b>[M]</font>")
 
 
 /*
 * Classic Baton
 */
 /obj/item/weapon/classic_baton
-	name = "police baton"
-	desc = "A wooden truncheon for beating criminal scum."
+	name = "警棍"
+	desc = "一根用来殴打罪犯渣滓的木制警棍。"
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "baton"
 	worn_icon_state = "classic_baton"
@@ -31,12 +31,12 @@
 		return
 
 	M.set_timed_status_effect(16 SECONDS, /datum/status_effect/speech/stutter, only_if_higher = TRUE)
-	visible_message(span_danger("[M] has been beaten with \the [src] by [user]!"), null, span_warning("You hear someone fall"), 2)
+	visible_message(span_danger("[M]被[user]用\the [src]打了!"), null, span_warning("你听到有人倒下的声音"), 2)
 
 //Telescopic baton
 /obj/item/weapon/telebaton
-	name = "telescopic baton"
-	desc = "A compact yet rebalanced personal defense weapon. Can be concealed when folded."
+	name = "伸缩警棍"
+	desc = "一种紧凑但经过重新平衡的个人防卫武器.折叠时可以隐藏."
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "telebaton_0"
 	worn_icon_state = "telebaton_0"
@@ -49,8 +49,8 @@
 /obj/item/weapon/telebaton/attack_self(mob/user as mob)
 	on = !on
 	if(on)
-		user.visible_message(span_warning("With a flick of their wrist, [user] extends their telescopic baton."),\
-		span_warning("You extend the baton."),\
+		user.visible_message(span_warning("[user]手腕一抖,展开了伸缩警棍."),\
+		span_warning("你展开了警棍."),\
 		"You hear an ominous click.")
 		icon_state = "telebaton_1"
 		worn_icon_state = "telebaton_1"
@@ -58,8 +58,8 @@
 		force = 20
 		attack_verb = list("smacks", "strikes", "slaps")
 	else
-		user.visible_message(span_notice("[user] collapses their telescopic baton."),\
-		span_notice("You collapse the baton."),\
+		user.visible_message(span_notice("[user]收起了伸缩警棍."),\
+		span_notice("你收起了警棍."),\
 		"You hear a click.")
 		icon_state = "telebaton_0"
 		worn_icon_state = "telebaton_0"

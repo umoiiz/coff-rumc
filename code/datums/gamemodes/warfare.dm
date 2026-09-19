@@ -113,8 +113,8 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_OPEN_TIMED_SHUTTERS_CRASH)
 
 /datum/game_mode/infestation/warfare/announce()
-	to_chat(world, span_round_header("The current map is - [SSmapping.configs[GROUND_MAP].map_name]!"))
-	priority_announce("Высадка запланирована через 10 минут. Приготовьтесь к посадке. Предварительное сканирование показывает наличие агрессивных форм биологической жизни", title = "Доброе утро, товарищи!", type = ANNOUNCEMENT_PRIORITY, sound = 'sound/AI/crash_start.ogg', color_override = "red")
+	to_chat(world, span_round_header("当前地图为 - [SSmapping.configs[GROUND_MAP].map_name]!"))
+	priority_announce("登陆计划于10分钟后进行.请做好降落准备.初步扫描显示存在具有攻击性的生物生命形式", title = "早上好,同志们!", type = ANNOUNCEMENT_PRIORITY, sound = 'sound/AI/crash_start.ogg', color_override = "red")
 
 /datum/game_mode/infestation/warfare/proc/crash_shuttle(obj/docking_port/stationary/target)
 	shuttle_landed = TRUE
@@ -171,7 +171,7 @@
 	return !isnull(eta) ? round(eta) : 0
 
 /datum/game_mode/infestation/warfare/can_summon_dropship(mob/user)
-	to_chat(src, span_warning("This power doesn't work in this gamemode."))
+	to_chat(src, span_warning("此能力在此游戏模式下无法使用."))
 	return FALSE
 
 /datum/game_mode/infestation/warfare/process()
@@ -246,7 +246,7 @@
 		return FALSE
 	*/
 	if(isterragovjob(job) && marine_left < 1)
-		to_chat(usr, span_warning("No marines left. you can observ round without respawn penalty"))
+		to_chat(usr, span_warning("没有陆战队员剩余.你可以在不承担重生惩罚的情况下观战"))
 		return FALSE
 	return ..()
 

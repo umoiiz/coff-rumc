@@ -17,7 +17,7 @@ export function PatientLimbs() {
   const { data } = useBackend<MedScannerData>();
   const { limb_data_lists = {}, species, accessible_theme } = data;
   return (
-    <Section title="Limbs Damaged">
+    <Section title="肢体受损">
       <Stack vertical fill>
         <Stack height="20px" mb="-4px">
           <Stack.Item basis="80px" />

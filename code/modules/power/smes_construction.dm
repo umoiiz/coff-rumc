@@ -85,9 +85,9 @@
 			s.set_up(2, 1, src)
 			s.start()
 			if (user_protected && prob(80))
-				to_chat(h_user, "Small electrical arc almost burns your hand. Luckily you had your gloves on!")
+				to_chat(h_user, "小电弧差点烧伤你的手. 幸好你戴着手套!")
 			else
-				to_chat(h_user, "Small electrical arc sparks and burns your hand as you touch the [src]!")
+				to_chat(h_user, "当你触碰[src]时,小电弧闪烁并烧伤你的手!")
 				h_user.adjust_fire_loss(rand(5,10))
 				h_user.Unconscious(4 SECONDS)
 			charge = 0
@@ -98,9 +98,9 @@
 			s.set_up(4,1,src)
 			s.start()
 			if (user_protected && prob(25))
-				to_chat(h_user, "Medium electrical arc sparks and almost burns your hand. Luckily you had your gloves on!")
+				to_chat(h_user, "中等电弧闪烁并差点烧伤你的手. 幸好你戴着手套!")
 			else
-				to_chat(h_user, "Medium electrical sparks as you touch the [src], severely burning your hand!")
+				to_chat(h_user, "当你触碰[src]时,中等电弧闪烁,严重烧伤你的手!")
 				h_user.adjust_fire_loss(rand(10,25))
 				h_user.Unconscious(10 SECONDS)
 			INVOKE_ASYNC(src, PROC_REF(empulse), loc, 2, 4)
@@ -112,43 +112,43 @@
 			s.set_up(7,1,src)
 			s.start()
 			if (user_protected)
-				to_chat(h_user, "Strong electrical arc sparks between you and [src], ignoring your gloves and burning your hand!")
+				to_chat(h_user, "强电弧在你和[src]之间闪烁,无视你的手套并烧伤你的手!")
 				h_user.adjust_fire_loss(rand(25,60))
 				h_user.Unconscious(16 SECONDS)
 			else
-				to_chat(h_user, "Strong electrical arc sparks between you and [src], knocking you out for a while!")
+				to_chat(h_user, "强电弧在你和[src]之间闪烁,使你昏迷了一段时间!")
 				h_user.adjust_fire_loss(rand(35,75))
 				h_user.Unconscious(24 SECONDS)
 			INVOKE_ASYNC(src, PROC_REF(empulse), loc, 8, 16)
 			charge = 0
 			apcs_overload(1, 10)
-			visible_message("Caution. Output regulators malfunction. Uncontrolled discharge detected.")
+			visible_message("警告. 输出调节器故障. 检测到失控放电.")
 
 		if (61 to INFINITY)
 			// Massive overcharge
 			// Sparks, Near - instantkill shock, Strong EMP, 25% light overload, 5% APC failure. 50% of SMES explosion. This is bad.
 			s.set_up(10,1,src)
 			s.start()
-			to_chat(h_user, "Massive electrical arc sparks between you and [src]. Last thing you can think about is \"Oh shit...\"")
+			to_chat(h_user, "巨大电弧在你和[src]之间闪烁. 你能想到的最后一件事是\"哦该死...\"")
 			// Remember, we have few gigajoules of electricity here.. Turn them into crispy toast.
 			h_user.adjust_fire_loss(rand(150,195))
 			h_user.Unconscious(50 SECONDS)
 			INVOKE_ASYNC(src, PROC_REF(empulse), loc, 32, 64)
 			charge = 0
 			apcs_overload(5, 25)
-			visible_message("Caution. Output regulators malfunction. Significant uncontrolled discharge detected.")
+			visible_message("警告. 输出调节器故障. 检测到严重失控放电.")
 
 			if (prob(50))
-				visible_message("DANGER! Magnetic containment field unstable! Containment field failure imminent!")
+				visible_message("危险! 磁约束场不稳定! 约束场即将失效!")
 				failing = 1
 				addtimer(CALLBACK(src, PROC_REF(smes_overload)), rand(30 SECONDS, 60 SECONDS))
 
 /obj/machinery/power/smes/buildable/proc/smes_overload()
 	if(!failing) // Admin can manually set this var back to 0 to stop overload, for use when griffed.
 		update_icon()
-		visible_message("Magnetic containment stabilised.")
+		visible_message("磁约束已稳定.")
 		return
-	visible_message("DANGER! Magnetic containment field failure in 3 ... 2 ... 1 ...")
+	visible_message("危险! 磁约束场将在3 ... 2 ... 1 ...后失效")
 	cell_explosion(loc, 250, 50)
 	// Not sure if this is necessary, but just in case the SMES *somehow* survived..
 	qdel(src)
@@ -176,7 +176,7 @@
 /obj/machinery/power/smes/buildable/attackby(obj/item/I, mob/user, params)
 	// No more disassembling of overloaded SMESs. You broke it, now enjoy the consequences.
 	if(failing)
-		to_chat(user, span_warning("The [src]'s screen is flashing with alerts. It seems to be overloaded! Touching it now is probably not a good idea."))
+		to_chat(user, span_warning("[src]的屏幕闪烁着警报. 它似乎过载了! 现在触碰它可能不是个好主意."))
 		return
 	// If parent returned 1:
 	// - Hatch is open, so we can modify the SMES
@@ -188,11 +188,11 @@
 
 	// Charged above 1% and safeties are enabled.
 	if((charge > (capacity * 0.01)) && safeties_enabled && !ismultitool(I))
-		to_chat(user, span_warning("Safety circuit of [src] is preventing modifications while it's charged!"))
+		to_chat(user, span_warning("[src]的安全电路正在阻止修改,因为它已充电!"))
 		return
 
 	if(outputting || input_attempt)
-		to_chat(user, span_warning("Turn off the [src] first!"))
+		to_chat(user, span_warning("先关闭[src]!"))
 		return
 
 	// Probability of failure if safety circuit is disabled (in %)
@@ -205,11 +205,11 @@
 	// Crowbar - Disassemble the SMES.
 	if(iscrowbar(I))
 		if(terminal)
-			to_chat(user, span_warning("You have to disassemble the terminal first!"))
+			to_chat(user, span_warning("你必须先拆卸终端!"))
 			return
 
 		playsound(get_turf(src), 'sound/items/crowbar.ogg', 25, 1)
-		to_chat(user, span_warning("You begin to disassemble the [src]!"))
+		to_chat(user, span_warning("你开始拆卸[src]!"))
 
 		if(!do_after(user, 10 SECONDS * cur_coils, NONE, src, BUSY_ICON_BUILD)) // More coils = takes longer to disassemble. It's complex so largest one with 5 coils will take 50s
 			return
@@ -218,7 +218,7 @@
 			total_system_failure(failure_probability, user)
 			return
 
-		to_chat(user, span_warning("You have disassembled the SMES cell!"))
+		to_chat(user, span_warning("你已拆卸SMES电池!"))
 		var/obj/machinery/constructable_frame/machine_frame/M = new(loc)
 		M.state = 2
 		M.icon_state = "box_1"
@@ -229,14 +229,14 @@
 	// Superconducting Magnetic Coil - Upgrade the SMES
 	else if(istype(I, /obj/item/stock_parts/smes_coil))
 		if(cur_coils >= max_coils)
-			to_chat(user, span_warning("You can't insert more coils to this SMES unit!"))
+			to_chat(user, span_warning("你无法向此SMES单元插入更多线圈!"))
 			return
 
 		if(failure_probability && prob(failure_probability))
 			total_system_failure(failure_probability, user)
 			return
 
-		to_chat(user, "You install the coil into the SMES unit!")
+		to_chat(user, "你将线圈安装到SMES单元中!")
 		if(!user.transferItemToLoc(I, src))
 			return
 
@@ -247,5 +247,5 @@
 	// Multitool - Toggle the safeties.
 	else if(ismultitool(I))
 		safeties_enabled = !safeties_enabled
-		to_chat(user, span_warning("You [safeties_enabled ? "connected" : "disconnected"] the safety circuit."))
-		visible_message("[icon2html(src, viewers(src))] <b>[src]</b> beeps: \"Caution. Safety circuit has been: [safeties_enabled ? "re-enabled" : "disabled. Please excercise caution."]\"")
+		to_chat(user, span_warning("你[safeties_enabled ? "connected" : "disconnected"]安全电路."))
+		visible_message("[icon2html(src, viewers(src))] <b>[src]</b>发出哔声: \"警告. 安全电路已被: [safeties_enabled ? "re-enabled" : "disabled. Please excercise caution."]\"")

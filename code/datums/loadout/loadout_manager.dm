@@ -65,7 +65,7 @@
 	switch(action)
 		if("saveLoadout")
 			if(length(loadouts_data) >= MAXIMUM_LOADOUT)
-				to_chat(ui.user, span_warning("You've reached the maximum number of loadouts saved, please delete some before saving new ones."))
+				to_chat(ui.user, span_warning("你已达到保存配装的最大数量, 请在保存新配装前删除一些."))
 				return
 			var/loadout_name = params["loadout_name"]
 			if(isnull(loadout_name))
@@ -74,7 +74,7 @@
 			for(var/loadout_data in loadouts_data)
 				if(loadout_data[1] != loadout_job || loadout_data[2] != loadout_name)
 					continue
-				to_chat(ui.user, span_warning("Loadout [loadout_name] for [loadout_job] already exists. Try another name."))
+				to_chat(ui.user, span_warning("[loadout_name] 的 [loadout_job] 配装已存在. 请尝试其他名称."))
 				return
 			var/datum/loadout/loadout = create_empty_loadout(loadout_name, loadout_job)
 			loadout.save_mob_loadout(ui.user)
@@ -117,14 +117,14 @@
 				return
 			var/list/items = splittext(loadout_id, "//")
 			if(length(items) != 3)
-				to_chat(ui.user, span_warning("Wrong format!"))
+				to_chat(ui.user, span_warning("格式错误!"))
 				return
 			var/datum/loadout/loadout = load_player_loadout(items[1], items[2], items[3])
 			if(!istype(loadout))
-				to_chat(ui.user, span_warning("Loadout not found!"))
+				to_chat(ui.user, span_warning("未找到配装!"))
 				return
 			if(!(loadout.version in GLOB.accepted_loadout_versions))
-				to_chat(ui.user, span_warning("The loadouts was found but is from a past version, and cannot be imported."))
+				to_chat(ui.user, span_warning("找到了配装, 但它来自旧版本, 无法导入."))
 				return
 			if(loadout.version != CURRENT_LOADOUT_VERSION)
 				legacy_version_fix(loadout, params["loadout_name"], params["loadout_job"], ui)
@@ -145,7 +145,7 @@
 				return
 			var/datum/loadout/loadout = ui.user.client.prefs.load_loadout(name, job)
 			if(!loadout)
-				to_chat(ui.user, span_warning("Error when loading this loadout"))
+				to_chat(ui.user, span_warning("加载此配装时出错"))
 				delete_loadout(ui.user, name, job)
 				CRASH("Fail to load loadouts")
 			if(loadout.version != CURRENT_LOADOUT_VERSION)

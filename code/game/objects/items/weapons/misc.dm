@@ -1,6 +1,6 @@
 /obj/item/weapon/chainofcommand
-	name = "chain of command"
-	desc = "A tool used by great men to placate the frothing masses."
+	name = "指挥链"
+	desc = "伟人们用来安抚沸腾民众的工具."
 	icon_state = "chain"
 	worn_icon_state = "chain"
 	atom_flags = CONDUCT
@@ -11,8 +11,8 @@
 	attack_verb = list("flogs", "whips", "lashes", "disciplines")
 
 /obj/item/weapon/cane
-	name = "cane"
-	desc = "A cane used by a true gentlemen. Or a clown."
+	name = "手杖"
+	desc = "一根真正绅士使用的手杖. 或者小丑用的."
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "cane"
 	worn_icon_state = "cane"
@@ -23,8 +23,8 @@
 	attack_verb = list("bludgeons", "whacks", "disciplines", "thrashes")
 
 /obj/item/weapon/broken_bottle
-	name = "Broken Bottle"
-	desc = "A bottle with a sharp broken bottom."
+	name = "碎瓶子"
+	desc = "一个底部破碎锋利的瓶子."
 	icon = 'icons/obj/items/drinks.dmi'
 	icon_state = "broken_bottle"
 	force = 9
@@ -42,8 +42,8 @@
 	return ..()
 
 /obj/item/weapon/powerfist
-	name = "powerfist"
-	desc = "A metal gauntlet with a energy-powered fist to throw back enemies."
+	name = "动力拳套"
+	desc = "一只装有能量驱动拳头的金属护手, 可以将敌人击退."
 	icon_state = "powerfist"
 	worn_icon_state = "powerfist"
 	equip_slot_flags = ITEM_SLOT_BELT
@@ -70,12 +70,12 @@
 
 /obj/item/weapon/powerfist/examine(user)
 	. = ..()
-	. += span_notice("Use it <b>In-Hand</b> to change power settings. It's power setting is set to <b>[setting]</b>.")
+	. += span_notice("使用<b>手持</b>来更改功率设置. 当前功率设置为<b>[setting]</b>.")
 	if(cell)
-		. += span_notice("<b>Click</b> on the gauntlet to pop out the cell.")
-		. += span_notice("It has <b>[round(cell.charge / (setting * 20), 1)]</b> level <b>[setting]</b> punches remaining.")
+		. += span_notice("<b>点击</b>护手弹出电池.")
+		. += span_notice("它还剩余<b>[round(cell.charge / (setting * 20), 1)]</b>级<b>[setting]</b>拳击.")
 	else
-		. += span_notice("There is no <b>cell</b> installed!")
+		. += span_notice("没有安装<b>电池</b>!")
 
 /obj/item/weapon/powerfist/attack_self(mob/user)
 	. = ..()
@@ -83,11 +83,11 @@
 		setting = 1
 	else
 		setting++
-	balloon_alert(user, "Power level [setting].")
+	balloon_alert(user, "功率等级[setting].")
 
 /obj/item/weapon/powerfist/attack(mob/living/carbon/M, mob/living/carbon/user)
 	if(!cell)
-		to_chat(user, span_warning("\The [src] can't operate without a source of power!"))
+		to_chat(user, span_warning("\The [src]没有能量来源就无法运作!"))
 		return
 
 	if(M.status_flags & INCORPOREAL || user.status_flags & INCORPOREAL) //Incorporeal beings cannot attack or be attacked
@@ -95,25 +95,25 @@
 
 	var/powerused = setting * 20
 	if(powerused > cell.charge)
-		to_chat(user, span_warning("\The [src]'s cell doesn't have enough power!"))
+		to_chat(user, span_warning("\The [src]的电池电量不足!"))
 		M.apply_damage((force * 0.2), BRUTE, user.zone_selected, MELEE)
 		hitsound = 'sound/weapons/punch1.ogg'
 		if(M == user)
-			to_chat(user, span_userdanger("You punch yourself!"))
+			to_chat(user, span_userdanger("你打了自己一拳!"))
 		else
-			M.visible_message(span_danger("[user]'s powerfist lets out a dull thunk as they punch [M.name]!"), \
-				span_userdanger("[user] punches you!"))
+			M.visible_message(span_danger("[user]的动力拳套在击中[M.name]时发出沉闷的响声!"), \
+				span_userdanger("[user]打了你一拳!"))
 		return ..()
 	if(M == user)
 		user.apply_damage(force * setting, BRUTE, user.zone_selected, MELEE)
-		to_chat(user, span_userdanger("You punch yourself!"))
+		to_chat(user, span_userdanger("你打了自己一拳!"))
 		playsound(loc, 'sound/weapons/energy_blast.ogg', 50, TRUE)
 		playsound(loc, 'sound/weapons/genhit2.ogg', 50, TRUE)
 		cell.charge -= powerused
 		return ..()
 	M.apply_damage(force * setting, BRUTE, user.zone_selected, MELEE)
-	M.visible_message(span_danger("[user]'s powerfist shudders as they punch [M.name], flinging them away!"), \
-		span_userdanger("[user]'s punch flings you backwards!"))
+	M.visible_message(span_danger("[user]的动力拳套在击中[M.name]时剧烈震动, 将他们击飞!"), \
+		span_userdanger("[user]的一拳将你击飞!"))
 	playsound(loc, 'sound/weapons/energy_blast.ogg', 50, TRUE)
 	playsound(loc, 'sound/weapons/genhit2.ogg', 50, TRUE)
 	var/atom/throw_target = get_edge_target_turf(M, get_dir(src, get_step_away(M, src)))
@@ -126,34 +126,34 @@
 	if(!istype(I, /obj/item/cell))
 		return ..()
 	if(!islascell(I))
-		to_chat(user, span_warning("The powerfist only accepts lasgun cells!"))
+		to_chat(user, span_warning("动力拳套只接受激光枪电池!"))
 		return
 	if(I.w_class >= WEIGHT_CLASS_BULKY)
-		to_chat(user, span_warning("Too big to fit!"))
+		to_chat(user, span_warning("太大了装不进去!"))
 		return
 	if(cell)
 		unload(user)
 	user.transferItemToLoc(I, src)
 	cell = I
 	update_icon()
-	user.balloon_alert(user, "Cell inserted")
+	user.balloon_alert(user, "电池已插入")
 
 /obj/item/weapon/powerfist/attack_hand(mob/living/user)
 	if(!(user.get_inactive_held_item() == src))
 		return ..()
 	if(!cell)
-		user.balloon_alert(user, "No cell")
+		user.balloon_alert(user, "无电池")
 		return
 	unload(user)
-	user.balloon_alert(user, "Cell removed")
+	user.balloon_alert(user, "电池已取出")
 	return
 
 /obj/item/weapon/powerfist/attack_hand_alternate(mob/living/user)
 	if(!cell)
-		user.balloon_alert(user, "No cell")
+		user.balloon_alert(user, "无电池")
 		return
 	unload(user)
-	user.balloon_alert(user, "Cell removed")
+	user.balloon_alert(user, "电池已取出")
 	return
 
 /// Remove the cell from the powerfist
@@ -174,8 +174,8 @@
 	return ..()
 
 /obj/item/weapon/brick
-	name = "brick"
-	desc = "It's a brick. Commonly used to hit things, occasionally used to build stuff instead."
+	name = "砖块"
+	desc = "这是一块砖. 通常用来砸东西, 偶尔也用来盖东西."
 	icon_state = "brick"
 	force = 30
 	throwforce = 40
@@ -183,8 +183,8 @@
 	hitsound = 'sound/weapons/heavyhit.ogg'
 
 /obj/item/stack/throwing_knife/stone
-	name = "stone"
-	desc = "Capable of doing minor amounts of damage, these stones will annoy the hell out of the recipient."
+	name = "石头"
+	desc = "能造成少量伤害, 这些石头会让被砸中的人烦得要命."
 	icon_state = "stone"
 	force = 15
 	throwforce = 15

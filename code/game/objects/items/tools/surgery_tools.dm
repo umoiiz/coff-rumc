@@ -8,31 +8,31 @@
 	attack_speed = 11 //Used to be 4 which made them attack insanely fast.
 
 /obj/item/tool/surgery/retractor
-	name = "retractor"
-	desc = "For fine manipulation during surgery."
+	name = "牵开器"
+	desc = "用于手术中的精细操作."
 	icon_state = "retractor"
 	atom_flags = CONDUCT
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/tool/surgery/hemostat
-	name = "hemostat"
-	desc = "For removing foreign objects during surgery."
+	name = "止血钳"
+	desc = "用于手术中移除异物."
 	icon_state = "hemostat"
 	atom_flags = CONDUCT
 	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list("attacks", "pinches")
 
 /obj/item/tool/surgery/cautery
-	name = "cautery"
-	desc = "For closing incisions to finish a surgery."
+	name = "烧灼器"
+	desc = "用于闭合切口以完成手术."
 	icon_state = "cautery"
 	atom_flags = CONDUCT
 	w_class = WEIGHT_CLASS_TINY
 	attack_verb = list("burns")
 
 /obj/item/tool/surgery/surgicaldrill
-	name = "surgical drill"
-	desc = "You can drill using this item. You dig?"
+	name = "手术钻"
+	desc = "你可以用这个物品钻孔. 你懂吗?"
 	icon_state = "drill"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	atom_flags = CONDUCT
@@ -41,8 +41,8 @@
 	attack_verb = list("drills")
 
 /obj/item/tool/surgery/scalpel
-	name = "scalpel"
-	desc = "Cut, cut, and once more cut."
+	name = "手术刀"
+	desc = "切, 切, 再切一次."
 	icon_state = "scalpel"
 	atom_flags = CONDUCT
 	force = 20
@@ -58,15 +58,15 @@
 * Researchable Scalpels
 */
 /obj/item/tool/surgery/scalpel/laser3
-	name = "laser scalpel"
-	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field.  This one looks to be the pinnacle of precision energy cutlery!"
+	name = "激光手术刀"
+	desc = "附有定向激光的手术刀, 可进行更精确的切割, 且不会让血液进入术野. 这把看起来是精密能量刀具的巅峰之作!"
 	icon_state = "scalpel_laser3_on"
 	damtype = BURN
 	force = 15
 
 /obj/item/tool/surgery/scalpel/manager
-	name = "incision management system"
-	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares an incision allowing for the immediate commencement of therapeutic steps."
+	name = "切口管理系统"
+	desc = "外科医生身体的真正延伸, 这一奇迹能瞬间且完全地准备好切口, 以便立即开始治疗步骤."
 	icon_state = "scalpel_manager_on"
 	force = 7.5
 
@@ -74,8 +74,8 @@
 * Circular Saw
 */
 /obj/item/tool/surgery/circular_saw
-	name = "circular saw"
-	desc = "For opening someone's ribcage, surgically."
+	name = "圆锯"
+	desc = "用于以手术方式打开某人的胸腔."
 	icon_state = "saw"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	atom_flags = CONDUCT
@@ -90,8 +90,8 @@
 
 //misc, formerly from code/defines/weapons.dm
 /obj/item/tool/surgery/bonegel
-	name = "bone gel"
-	desc = "For repairing fractures and closing ribcages."
+	name = "骨胶"
+	desc = "用于修复骨折和闭合胸腔."
 	icon_state = "bone-gel"
 	force = 0
 	w_class = WEIGHT_CLASS_SMALL
@@ -99,7 +99,7 @@
 
 /obj/item/tool/surgery/FixOVein
 	name = "FixOVein"
-	desc = "For fixing internal bleeding."
+	desc = "用于修复内出血."
 	icon_state = "fixovein"
 	force = 0
 	throwforce = 1
@@ -107,8 +107,8 @@
 	var/usage_amount = 10
 
 /obj/item/tool/surgery/bonesetter
-	name = "bone setter"
-	desc = "For setting fractured bone after bone gel is applied."
+	name = "正骨器"
+	desc = "用于在涂抹骨胶后复位骨折的骨头."
 	icon_state = "bonesetter"
 	force = 8
 	throwforce = 9
@@ -118,8 +118,8 @@
 	attack_verb = list("attacks", "hits", "bludgeons")
 
 /obj/item/tool/surgery/suture
-	name = "surgical suture"
-	desc = "For healing basic brute and burn damage during surgery."
+	name = "手术缝合线"
+	desc = "用于在手术中治疗基本的钝击和烧伤伤害."
 	icon_state = "suture"
 	force = 3
 	throwforce = 0
@@ -127,8 +127,8 @@
 	attack_verb = list("needles", "sews", "stabs")
 
 /obj/item/tool/surgery/surgical_membrane
-	name = "surgical membrane"
-	desc = "For repairing damaged organs and necrotized tissue during surgery."
+	name = "手术膜"
+	desc = "用于在手术中修复受损器官和坏死组织."
 	icon_state = "surgical_membrane"
 	force = 0
 	throwforce = 0
@@ -137,50 +137,50 @@
 //pred shit
 
 /obj/item/tool/surgery/retractor/predatorretractor
-	name = "opener"
+	name = "开膛器"
 	icon = 'icons/obj/items/surgery_tools.dmi'
 	icon_state = "predator_retractor"
 
 /obj/item/tool/surgery/hemostat/predatorhemostat
-	name = "pincher"
+	name = "钳夹器"
 	icon = 'icons/obj/items/surgery_tools.dmi'
 	icon_state = "predator_hemostat"
 
 /obj/item/tool/surgery/cautery/predatorcautery
-	name = "cauterizer"
+	name = "烧灼器"
 	icon = 'icons/obj/items/surgery_tools.dmi'
 	icon_state = "predator_cautery"
 	item_flags = ITEM_PREDATOR
 
 /obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill
-	name = "bone drill"
+	name = "骨钻"
 	icon = 'icons/obj/items/surgery_tools.dmi'
 	icon_state = "predator_drill"
 
 /obj/item/tool/surgery/scalpel/predatorscalpel
-	name = "cutter"
+	name = "切割器"
 	icon_state = "predator_scalpel"
 	force = 20
 
 /obj/item/tool/surgery/circular_saw/predatorbonesaw
-	name = "bone saw"
+	name = "骨锯"
 	icon = 'icons/obj/items/surgery_tools.dmi'
 	icon_state = "predator_bonesaw"
 	item_flags = ITEM_PREDATOR
 	force = 20
 
 /obj/item/tool/surgery/bonegel/predatorbonegel
-	name = "gel gun"
+	name = "凝胶枪"
 	icon = 'icons/obj/items/surgery_tools.dmi'
 	icon_state = "predator_bone-gel"
 
 /obj/item/tool/surgery/FixOVein/predatorFixOVein
-	name = "vein fixer"
+	name = "静脉修复器"
 	icon = 'icons/obj/items/surgery_tools.dmi'
 	icon_state = "predator_fixovein"
 
 /obj/item/tool/surgery/bonesetter/predatorbonesetter
-	name = "bone placer"
+	name = "正骨器"
 	icon = 'icons/obj/items/surgery_tools.dmi'
 	icon_state = "predator_bonesetter"
 
@@ -189,8 +189,8 @@
  */
 
 /obj/item/tool/surgery/stabilizer_gel
-	name = "stabilizer gel vial"
-	desc = "Used for stabilizing wounds for treatment."
+	name = "稳定凝胶瓶"
+	desc = "用于稳定伤口以便治疗."
 	icon = 'icons/obj/items/surgery_tools.dmi'
 	icon_state = "stabilizer_gel"
 	force = 0
@@ -199,8 +199,8 @@
 	item_flags = ITEM_PREDATOR
 
 /obj/item/tool/surgery/healing_gun
-	name = "healing gun"
-	desc = "Used for mending stabilized wounds."
+	name = "治疗枪"
+	desc = "用于缝合已稳定的伤口."
 	icon = 'icons/obj/items/surgery_tools.dmi'
 	icon_state = "healing_gun"
 	force = 0
@@ -218,13 +218,13 @@
 
 /obj/item/tool/surgery/healing_gun/attackby(obj/item/O, mob/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, span_warning("You have no idea how to put \the [O] into \the [src]!"))
+		to_chat(user, span_warning("你不知道如何将\the [O]放入\the [src]!"))
 		return
 	if(istype(O, /obj/item/tool/surgery/healing_gel))
 		if(loaded)
-			to_chat(user, span_warning("There's already a capsule inside the healing gun!"))
+			to_chat(user, span_warning("治疗枪内已经有一个胶囊了!"))
 			return
-		user.visible_message(span_warning("[user] loads \the [src] with \a [O]."), span_warning("You load \the [src] with \a [O]."))
+		user.visible_message(span_warning("[user]将\a [O]装入\the [src]."), span_warning("你将\a [O]装入\the [src]."))
 		playsound(loc, 'sound/items/air_release.ogg',25)
 		loaded = TRUE
 		update_icon()
@@ -233,8 +233,8 @@
 	return ..()
 
 /obj/item/tool/surgery/healing_gel
-	name = "healing gel capsule"
-	desc = "Used for reloading the healing gun."
+	name = "治疗凝胶胶囊"
+	desc = "用于重新装填治疗枪."
 	icon = 'icons/obj/items/surgery_tools.dmi'
 	icon_state = "healing_gel"
 	force = 0
@@ -243,8 +243,8 @@
 	item_flags = ITEM_PREDATOR
 
 /obj/item/tool/surgery/wound_clamp
-	name = "wound clamp"
-	desc = "Used for clamping wounds after treatment."
+	name = "伤口夹"
+	desc = "用于在治疗后夹合伤口."
 	icon = 'icons/obj/items/surgery_tools.dmi'
 	icon_state = "wound_clamp"
 	force = 0

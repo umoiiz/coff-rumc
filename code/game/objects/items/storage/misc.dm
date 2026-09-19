@@ -1,6 +1,6 @@
 /obj/item/storage/pill_bottle/dice
-	name = "pack of dice"
-	desc = "It's a small container with dice inside."
+	name = "一包骰子"
+	desc = "一个小容器,里面有骰子."
 
 /obj/item/storage/pill_bottle/dice/PopulateContents()
 	new /obj/item/toy/dice(src)
@@ -11,8 +11,8 @@
 */
 
 /obj/item/storage/donut_box
-	name = "\improper Yum! donuts"
-	desc = "A box of mouth watering \"<i>Yum!</i>\" brand donuts."
+	name = "\improper 美味! 甜甜圈"
+	desc = "一盒令人垂涎的\"<i>美味!</i>\"品牌甜甜圈."
 	icon = 'icons/obj/items/food/donuts.dmi'
 	icon_state = "donutbox"
 	/// How many items spawn in src
@@ -31,7 +31,7 @@
 		new /obj/item/reagent_containers/food/snacks/donut/normal(src)
 
 /obj/item/storage/donut_box/attack_self(mob/user as mob)
-	to_chat(user, "You [open ? "close [src]. Another time, then." : "open [src]. Mmmmm... donuts."]")
+	to_chat(user, "你 [open ? "close [src]. Another time, then." : "open [src]. Mmmmm... donuts."]")
 	open = !open
 	update_icon()
 	if(!length(contents))

@@ -125,7 +125,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 
 /obj/effect/hallucination/simple/xeno
 	name = "Mature Runner"
-	desc = "A small red alien that looks like it could run fairly quickly..."
+	desc = "一只看起来能跑得相当快的小型红色异形..."
 	icon = 'icons/Xeno/castes/runner/basic.dmi'
 	icon_state = "Runner Walking"
 
@@ -139,7 +139,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		return
 	if(hit_atom == target && target.stat != DEAD)
 		target.Paralyze(3 SECONDS, TRUE, TRUE)
-		target.visible_message(span_danger("[target] flails around wildly."),span_xenowarning("\The [src] pounces at [target]!"))
+		target.visible_message(span_danger("[target]疯狂地挥舞着四肢。"),span_xenowarning("\The [src]扑向[target]!"))
 
 /datum/hallucination/xeno_attack
 	//Xeno crawls from nearby vent,jumps at you, and goes back in
@@ -161,9 +161,9 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		sleep(1 SECONDS)
 		xeno.throw_at(pump.loc, 7, 1, xeno, FALSE, TRUE)
 		sleep(1 SECONDS)
-		to_chat(target, span_notice("[xeno.name] begins climbing into the ventilation system..."))
+		to_chat(target, span_notice("[xeno.name]开始爬入通风系统..."))
 		sleep(1.5 SECONDS)
-		to_chat(target, span_notice("[xeno.name] scrambles into the ventilation ducts!"))
+		to_chat(target, span_notice("[xeno.name]迅速钻进了通风管道!"))
 		playsound(src, SFX_ALIEN_VENTPASS, 35, 1)
 		qdel(xeno)
 	qdel(src)
@@ -313,7 +313,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			fakemob = target //ever been so lonely you had to haunt yourself?
 		if(fakemob)
 			sleep(rand(20, 50))
-			to_chat(target, span_deadsay("<b>DEAD: [fakemob.name]</b> says, \"[pick("rip","why did i just drop dead?","hey [target.real_name]","git gud","you too?","did we get the [pick("nuke", "blue disk", "red disk", "green disk", "yellow disk")]?","i[prob(50)?" fucking":""] hate [pick("runners", "queens", "shrikes", "xenos", "this", "myself", "admins", "you")]")]\""))
+			to_chat(target, span_deadsay("<b>死亡: [fakemob.name]</b>说, \"[pick("rip","why did i just drop dead?","hey [target.real_name]","git gud","you too?","did we get the [pick("nuke", "blue disk", "red disk", "green disk", "yellow disk")]?","i[prob(50)?" fucking":""] hate [pick("runners", "queens", "shrikes", "xenos", "this", "myself", "admins", "you")]")]\""))
 	sleep(rand(7 SECONDS, 9 SECONDS))
 	target.set_screwyhud(SCREWYHUD_NONE)
 	target.SetSleeping(0)

@@ -6,7 +6,7 @@
 
 /datum/outfit/quick/beginner
 	name = "Beginner loadout base"
-	desc = "The base loadout for beginners. You shouldn't be able to see this"
+	desc = "新手的基础配装. 你不应该能看到这个"
 	jobtype = SQUAD_MARINE
 
 	w_uniform = /obj/item/clothing/under/marine

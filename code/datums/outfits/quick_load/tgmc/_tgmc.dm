@@ -1,7 +1,7 @@
 //Base TGMC outfit
 /datum/outfit/quick/tgmc
 	name = "TGMC base"
-	desc = "This is the base typepath for all TGMC quick vendor outfits. You shouldn't see this."
+	desc = "这是所有TGMC快速补给装备的基础类型路径. 你不应该看到这个."
 
 //Base TGMC marine outfit
 /datum/outfit/quick/tgmc/marine

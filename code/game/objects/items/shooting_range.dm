@@ -3,28 +3,28 @@
 
 // Targets, the things that actually get shot!
 /obj/item/target
-	name = "shooting target"
-	desc = "A shooting target."
+	name = "射击靶"
+	desc = "一个射击靶."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "target_h"
 	density = FALSE
 	resistance_flags = INDESTRUCTIBLE
 
 /obj/item/target/default
-	desc = "A shooting target with a distinctly human outline."
+	desc = "一个带有明显人形轮廓的射击靶."
 
 /obj/item/target/syndicate
 	icon_state = "target_s"
-	desc = "A shooting target that looks like a hostile agent."
+	desc = "一个看起来像敌对特工的射击靶."
 
 /obj/item/target/alien
 	icon_state = "target_q"
-	desc = "A shooting target with a threatening silhouette."
+	desc = "一个带有威胁性剪影的射击靶."
 
 ///Basically these are for the firing range
 /obj/structure/target_stake
-	name = "target stake"
-	desc = "A thin platform with negatively-magnetized wheels."
+	name = "靶架"
+	desc = "一个带有负磁化轮子的薄平台."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "target_stake"
 	density = TRUE
@@ -41,7 +41,7 @@
 	if(!istype(I, /obj/item/target))
 		return
 	var/obj/item/target/targetcushion = I
-	to_chat(user, "You start fitting the target onto the stake.")
+	to_chat(user, "你开始将靶子安装到靶架上.")
 	if(!do_after(user, TARGETTING_DUMMY_USE_DELAY, NONE, src, BUSY_ICON_FRIENDLY))
 		return
 	if(istype(targetcushion, /obj/item/target/default))
@@ -52,13 +52,13 @@
 		new /obj/structure/target_stake/occupied/syndicate(loc)
 	else //default to a regular human target
 		new /obj/structure/target_stake/occupied(loc)
-	to_chat(user, "You slide the target into the stake.")
+	to_chat(user, "你将靶子滑入靶架中.")
 	qdel(src) //delete original target_stake
 	qdel(I) //delete targetting dummy in users hand
 
 ///These are occupied variations for targetting stakes
 /obj/structure/target_stake/occupied
-	desc = "A thin platform with negatively-magnetized wheels, this one appears to have a target dummy mounted on it."
+	desc = "一个带有负磁化轮子的薄平台,这个上面似乎安装了一个靶子假人."
 	icon_state = "target_stake_target_h"
 	///what kind of target to drop when a player removes a dummy from the targetting stake
 	var/cushion_type = "default"
@@ -71,7 +71,7 @@
 	if(usedwelder.remove_fuel(2, user))
 		overlays.Cut()
 		obj_integrity = max_integrity
-		to_chat(usr, "You slice off [src]'s uneven chunks of aluminum and patch the bullet holes, it looks practically new.")
+		to_chat(usr, "你切掉[src]上不平整的铝块并修补了弹孔,它看起来几乎是全新的.")
 		return
 
 /obj/structure/target_stake/occupied/alien
@@ -83,13 +83,13 @@
 	cushion_type = "syndicate"
 
 /obj/structure/target_stake/occupied/attack_hand(mob/living/user)
-	to_chat(user, "You start removing the target from the stake.")
+	to_chat(user, "你开始从靶架上取下靶子.")
 	if(!do_after(user, TARGETTING_DUMMY_USE_DELAY, NONE, src, BUSY_ICON_FRIENDLY))
 		return
 	///create new target stake to create the illusion of a new one
 	new /obj/structure/target_stake(loc)
 	if(obj_integrity < 2000) //if critically damaged we don't give the user a new target dummy after removal
-		to_chat(user, "As remove the last shreds of the target from the stake, you conclude there's nothing worth salvaging from the mess.")
+		to_chat(user, "当你从靶架上取下靶子的最后残片时,你断定这堆残骸已经没有任何回收价值了.")
 		qdel(src)
 		return
 	///dump new target at the foot of the user
@@ -100,20 +100,20 @@
 			new /obj/item/target/alien(get_turf(user))
 		if("syndicate")
 			new /obj/item/target/syndicate(get_turf(user))
-	to_chat(user, "You take the target out of the stake.")
+	to_chat(user, "你从靶架中取出靶子.")
 	qdel(src)
 
 /obj/structure/target_stake/occupied/examine(mob/user)
 	. = ..()
 	switch(obj_integrity)
 		if(10000 to INFINITY)
-			. += span_info("It appears to be in good shape.")
+			. += span_info("它看起来状况良好.")
 		if(5000 to 10000)
-			. += span_warning("It's been damaged some, but it's still in good shape for target practice.")
+			. += span_warning("它受到了一些损坏,但仍然很适合用于射击练习.")
 		if(2000 to 5000)
-			. += span_warning("It's quite riddled with bullet holes and sagging slightly..")
+			. += span_warning("它布满了弹孔,并且微微下垂..")
 		if(-INFINITY to 2000)
-			. += span_warning("There's almost nothing left of it, it's been shredded away.")
+			. += span_warning("它几乎什么都不剩了,已经被打得粉碎.")
 
 #undef TARGETTING_DUMMY_USE_DELAY
 #undef TARGETTING_DUMMY_WELD_DELAY

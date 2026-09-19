@@ -1,6 +1,6 @@
 /obj/structure/closet/secure_closet/medical1
-	name = "medicine closet"
-	desc = "Filled with medical items."
+	name = "药品柜"
+	desc = "装满了医疗用品."
 	icon_state = "secure_locked_medical_white"
 	icon_closed = "secure_unlocked_medical_white"
 	icon_locked = "secure_locked_medical_white"
@@ -28,8 +28,8 @@
 	req_access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/closet/secure_closet/medical2
-	name = "anesthetic closet"
-	desc = "Used to knock people out."
+	name = "麻醉剂柜"
+	desc = "用于将人麻醉."
 	icon_state = "secure_locked_medical_white"
 	icon_closed = "secure_unlocked_medical_white"
 	icon_locked = "secure_locked_medical_white"
@@ -47,7 +47,7 @@
 	new /obj/item/clothing/mask/breath/medical(src)
 
 /obj/structure/closet/secure_closet/medical3
-	name = "medical doctor's locker"
+	name = "医生储物柜"
 	req_access = list(ACCESS_MARINE_MEDBAY)
 	icon_state = "secure_locked_medical_white"
 	icon_closed = "secure_unlocked_medical_white"
@@ -74,7 +74,7 @@
 	req_access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/closet/secure_closet/cmo
-	name = "chief medical officer's locker"
+	name = "首席医疗官储物柜"
 	req_access = list(ACCESS_MARINE_CMO)
 	icon_state = "cmosecure1"
 	icon_closed = "cmosecure"
@@ -100,7 +100,7 @@
 	new /obj/item/storage/box/trampop(src)
 
 /obj/structure/closet/secure_closet/animal
-	name = "animal control closet"
+	name = "动物管控柜"
 	req_access = list(ACCESS_MARINE_MEDBAY)
 
 /obj/structure/closet/secure_closet/animal/PopulateContents()
@@ -110,8 +110,8 @@
 	new /obj/item/electropack(src)
 
 /obj/structure/closet/secure_closet/chemical
-	name = "chemical closet"
-	desc = "Store dangerous chemicals in here."
+	name = "化学品柜"
+	desc = "在这里存放危险化学品."
 	icon_state = "secure_locked_medical_white"
 	icon_closed = "secure_unlocked_medical_white"
 	icon_locked = "secure_locked_medical_white"

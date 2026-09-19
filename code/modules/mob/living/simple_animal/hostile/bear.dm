@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/bear
 	name = "space bear"
-	desc = "You don't need to be faster than a space bear, you just need to outrun your crewmates."
+	desc = "你不需要跑得比太空熊快,你只需要跑得比你的船员快."
 	icon_state = "bear"
 	icon_living = "bear"
 	icon_dead = "bear_dead"
@@ -28,7 +28,7 @@
 /mob/living/simple_animal/hostile/bear/Hudson
 	name = "Hudson"
 	gender = MALE
-	desc = "Feared outlaw, this guy is one bad news bear."
+	desc = "令人恐惧的不法之徒,这家伙是个坏消息熊."
 
 
 /mob/living/simple_animal/hostile/bear/snow
@@ -36,12 +36,12 @@
 	icon_state = "snowbear"
 	icon_living = "snowbear"
 	icon_dead = "snowbear_dead"
-	desc = "It's a polar bear, in space, but not actually in space."
+	desc = "这是一只北极熊,在太空中,但实际上并不在太空中."
 
 
 /mob/living/simple_animal/hostile/bear/russian
 	name = "combat bear"
-	desc = "A ferocious brown bear decked out in armor plating, a red star with yellow outlining details the shoulder plating."
+	desc = "一只凶猛的棕熊,身披装甲板,肩甲上有一颗带黄色描边的红星."
 	icon_state = "combatbear"
 	icon_living = "combatbear"
 	icon_dead = "combatbear_dead"

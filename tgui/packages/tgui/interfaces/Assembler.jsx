@@ -16,17 +16,17 @@ import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
 
 const category_icon = {
-  Operations: 'parachute-box',
-  Weapons: 'fighter-jet',
-  Explosives: 'bomb',
-  Armor: 'hard-hat',
-  Clothing: 'tshirt',
-  Medical: 'medkit',
-  Engineering: 'tools',
-  Supplies: 'hamburger',
-  Imports: 'boxes',
-  Vehicles: 'road',
-  Factory: 'industry',
+  "作战": 'parachute-box',
+  "武器": 'fighter-jet',
+  "爆炸物": 'bomb',
+  "护甲": 'hard-hat',
+  "服装": 'tshirt',
+  "医疗": 'medkit',
+  "工程": 'tools',
+  "补给": 'hamburger',
+  "进口": 'boxes',
+  "载具": 'road',
+  "工厂": 'industry',
   'Pending Order': 'shopping-cart',
 };
 

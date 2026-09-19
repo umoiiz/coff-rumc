@@ -104,14 +104,14 @@ export const MutationMenu = (props: any) => {
     <Window theme="xeno" title="Mutation Menu" width={700} height={600}>
       <Window.Content scrollable>
         <Section
-          title="Biomass Status"
+          title="生物质状态"
           buttons={
             <Button
-              tooltip="Гайд на мутации от Фида:
-              Мутации с тирами заменяют друг-друга, а не стакаются --
-              При эволве ты теряешь все мутации и получаешь биомассу обратно --
-              Пси дрейн даёт 5 биомассы тебе и 0.05 пассивного прироста всему хайву --
-              Для того чтобы поддерживать пассивный приток биомассы улью нужны генераторы"
+              tooltip="Fid的突变指南:
+              同层级突变会互相替换, 而不是叠加 --
+              进化时你会失去所有突变并返还生物质 --
+              灵能吸取为你提供5生物质, 并为整个巢穴提供0.05被动增长 --
+              为了维持巢穴的生物质被动收入, 你需要生成器"
             >
               ?
             </Button>
@@ -577,18 +577,18 @@ const MutationNode = (props: { mutation: MutationEntry; level: number }) => {
                 }
                 tooltip={
                   !unlocked
-                    ? 'Locked - requires parent mutation'
+                    ? '锁定 - 需要前置突变'
                     : isLockedByTier2
-                      ? 'Locked - tier 2 mutation purchased'
+                      ? '锁定 - 已购买2级突变'
                       : isLockedByTier3
-                        ? 'Locked - tier 3 mutation purchased'
+                        ? '锁定 - 已购买3级突变'
                         : !available
-                          ? 'Not available'
+                          ? '不可用'
                           : !canAfford
-                            ? 'Not enough biomass'
+                            ? '生物质不足'
                             : purchased
-                              ? 'Already purchased'
-                              : 'Purchase this mutation'
+                              ? '已购买'
+                              : '购买此突变'
                 }
               >
                 {purchased
@@ -733,16 +733,16 @@ const MutationEntryComponent = (props: { mutation: MutationEntry }) => {
           onClick={() => act('purchase_mutation', { mutation_name: name })}
           tooltip={
             !available
-              ? 'Not available'
+              ? '不可用'
               : isLockedByTier2
-                ? 'Locked - tier 2 mutation purchased'
+                ? '锁定 - 已购买2级突变'
                 : isLockedByTier3
-                  ? 'Locked - tier 3 mutation purchased'
+                  ? '锁定 - 已购买3级突变'
                   : !canAfford
-                    ? 'Not enough biomass'
+                    ? '生物质不足'
                     : purchased
-                      ? 'Already purchased'
-                      : 'Purchase this mutation'
+                      ? '已购买'
+                      : '购买此突变'
           }
         >
           {purchased
@@ -766,11 +766,11 @@ const MutationEntryComponent = (props: { mutation: MutationEntry }) => {
           <Flex.Item grow={1}>
             <Box>
               <Box bold color="label">
-                Requirements:
+                需求:
               </Box>
               {purchased && (
                 <Box color="good" bold>
-                  • Already Owned
+                  • 已拥有
                 </Box>
               )}
             </Box>
@@ -784,7 +784,7 @@ const MutationEntryComponent = (props: { mutation: MutationEntry }) => {
             textAlign="center"
           >
             <Box bold color="good">
-              ✓ This mutation is already active!
+              ✓ 此突变已激活!
             </Box>
           </Box>
         )}

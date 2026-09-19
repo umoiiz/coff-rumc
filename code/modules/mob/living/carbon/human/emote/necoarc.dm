@@ -4,7 +4,7 @@
 /datum/emote/living/carbon/necoarc/mudamuda
 	key = "muda"
 	key_third_person = "muda muda"
-	message = "Muda Muda"
+	message = "木大木大"
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/voice/necoarc/Neco Muda muDa.ogg'
 

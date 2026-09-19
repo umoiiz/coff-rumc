@@ -5,7 +5,7 @@
 
 /obj/machinery/atmospherics/components/binary/circulator
 	name = "circulator/heat exchanger"
-	desc = "A gas circulator pump and heat exchanger."
+	desc = "一个气体循环泵和热交换器."
 	icon_state = "circ-off-0"
 
 	var/active = FALSE
@@ -36,7 +36,7 @@
 		return
 	anchored = !anchored
 	playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
-	to_chat(user, span_notice("You [anchored?"secure":"unsecure"] [src]."))
+	to_chat(user, span_notice("你[anchored?"secure":"unsecure"][src]."))
 
 
 	var/obj/machinery/atmospherics/node1 = nodes[1]
@@ -85,7 +85,7 @@
 
 /obj/machinery/atmospherics/components/binary/circulator/multitool_act(mob/living/user, obj/item/I)
 	mode = !mode
-	to_chat(user, span_notice("You set [src] to [mode?"cold":"hot"] mode."))
+	to_chat(user, span_notice("你将[src]设置为[mode?"cold":"hot"]模式."))
 	return TRUE
 
 /obj/machinery/atmospherics/components/binary/circulator/screwdriver_act(mob/user, obj/item/I)
@@ -93,7 +93,7 @@
 		return TRUE
 	TOGGLE_BITFIELD(machine_stat, PANEL_OPEN)
 	playsound(src.loc, 'sound/items/screwdriver.ogg', 25, 1)
-	to_chat(user, span_notice("You [CHECK_BITFIELD(machine_stat, PANEL_OPEN)?"open":"close"] the panel on [src]."))
+	to_chat(user, span_notice("你[CHECK_BITFIELD(machine_stat, PANEL_OPEN)?"open":"close"][src]上的面板."))
 	return TRUE
 
 /obj/machinery/atmospherics/components/binary/circulator/set_piping_layer(new_layer)
@@ -110,9 +110,9 @@
 		return
 
 	if(anchored)
-		to_chat(usr, span_danger("[src] is anchored!"))
+		to_chat(usr, span_danger("[src]已固定!"))
 		return
 
 	flipped = !flipped
-	to_chat(usr, span_notice("You flip [src]."))
+	to_chat(usr, span_notice("你翻转[src]."))
 	update_icon()

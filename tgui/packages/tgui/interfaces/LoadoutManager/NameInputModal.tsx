@@ -46,7 +46,7 @@ export const NameInputModal = (props: NameInputModalData) => {
               onBack(input);
             }}
           >
-            Cancel
+            取消
           </Button>
         </Flex.Item>
       </Flex>

@@ -46,7 +46,7 @@
 
 /datum/xeno_mutation/sentinel/comforting_acid
 	name = "Comforting Acid"
-	desc = "Toxic Slash пассивно лечит 2 здоровья за каждый стак Intoxicated"
+	desc = "毒性斩击每层中毒被动治疗2点生命值"
 	cost = 15
 	icon_state = "xenobuff_generic"
 	tier = 1
@@ -57,7 +57,7 @@
 
 /atom/movable/screen/alert/status_effect/sentinel/comforting_acid
 	name = "Comforting Acid"
-	desc = "Toxic Slash heals 2 hp per Intoxicated stack"
+	desc = "毒性斩击每层中毒治疗2点生命值"
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/sentinel/comforting_acid
@@ -88,7 +88,7 @@
 
 /datum/xeno_mutation/sentinel/healing_sting
 	name = "Healing Sting"
-	desc = "Drain Sting лечит в 2 раза больше, лишнее здоровье будет считаться как оверхил."
+	desc = "吸血刺治疗量翻倍, 多余的生命值将计为过量治疗."
 	cost = 10
 	icon_state = "xenobuff_generic"
 	tier = 1
@@ -99,7 +99,7 @@
 
 /atom/movable/screen/alert/status_effect/sentinel/healing_sting
 	name = "Healing Sting"
-	desc = "200% health from Drain Sting, with overheal"
+	desc = "吸血刺提供200%生命值, 包含过量治疗"
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/sentinel/healing_sting
@@ -130,7 +130,7 @@
 
 /datum/xeno_mutation/sentinel/acidic_slasher
 	name = "Acidic Slasher"
-	desc = "Скорость атак увеличена, теперь они накладывают 3 стака Intoxicated, но урон уменьшен вдвое"
+	desc = "攻击速度提高, 现在每次攻击施加3层中毒, 但伤害减半"
 	cost = 7.5
 	icon_state = "xenobuff_generic"
 	tier = 1
@@ -141,7 +141,7 @@
 
 /atom/movable/screen/alert/status_effect/sentinel/acidic_slasher
 	name = "Acidic Slasher"
-	desc = "-0.1 attack delay; +3 Intoxicated stacks per slash; -50% damage"
+	desc = "-0.1攻击延迟; 每次斩击+3层中毒; -50%伤害"
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/sentinel/acidic_slasher
@@ -183,7 +183,7 @@
 
 /datum/xeno_mutation/sentinel/far_sting
 	name = "Far Sting"
-	desc = "Drain Sting может быть использован на 1 тайл дальше, но с меньшей эффективностью"
+	desc = "吸血刺可以在远1格的距离使用, 但效果降低."
 	cost = 10
 	icon_state = "xenobuff_generic"
 	tier = 1
@@ -229,7 +229,7 @@
 
 /datum/xeno_mutation/sentinel/toxic_compatibility
 	name = "Toxic Compatibility"
-	desc = "Каждые 3u ксенореагентов в цели будут считаться как стак Intoxicated при Drain Sting."
+	desc = "目标体内每3u异形试剂在吸血刺作用下视为1层中毒."
 	cost = 5
 	icon_state = "xenobuff_generic"
 	tier = 1
@@ -240,7 +240,7 @@
 
 /atom/movable/screen/alert/status_effect/sentinel/toxic_compatibility
 	name = "Toxic Compatibility"
-	desc = "Each 3u xenoreagents == 1 Intoxicated stack for Drain Sting"
+	desc = "每3u异形试剂在吸血刺中视为1层中毒"
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/sentinel/toxic_compatibility
@@ -270,7 +270,7 @@
 
 /datum/xeno_mutation/sentinel/toxic_blood
 	name = "Toxic Blood"
-	desc = "За каждые полученные 40 урона, 1 стак Intoxicated будет накладываться на ближайших людей."
+	desc = "每受到40点伤害, 就会对附近的人类施加1层中毒."
 	cost = 5
 	icon_state = "xenobuff_generic"
 	tier = 1
@@ -281,7 +281,7 @@
 
 /atom/movable/screen/alert/status_effect/sentinel/toxic_blood
 	name = "Toxic Blood"
-	desc = "Every 40 damage you take, 1 stacks of Intoxicated will be applied to nearby humans."
+	desc = "你每受到40点伤害, 就会对附近的人类施加1层中毒."
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/sentinel/toxic_blood

@@ -80,8 +80,8 @@ Redefine as needed.
 	* Deletes itself if it is ever not in your hand, or if you should have no access to TK.
 */
 /obj/item/tk_grab
-	name = "Telekinetic Grab"
-	desc = "Magic"
+	name = "念力抓取"
+	desc = "魔法"
 	icon = 'icons/obj/magic.dmi'
 	icon_state = "2"
 	item_flags = NOBLUDGEON | ITEM_ABSTRACT | DELONDROP
@@ -172,7 +172,7 @@ Redefine as needed.
 /proc/tkMaxRangeCheck(mob/user, atom/target)
 	var/d = get_dist(user, target)
 	if(d > TK_MAXRANGE)
-		target.balloon_alert(user, "It's too far!")
+		target.balloon_alert(user, "太远了!")
 		return
 	return TRUE
 

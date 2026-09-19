@@ -157,13 +157,13 @@
 		if(drunkenness >= 81)
 			adjust_tox_loss(0.2)
 			if(prob(10) && !stat)
-				to_chat(src, span_warning("Maybe you should lie down for a bit..."))
+				to_chat(src, span_warning("也许你该躺下休息一会儿..."))
 				adjust_drowsyness(5)
 
 		if(drunkenness >= 91)
 			adjust_brain_loss(0.2, TRUE)
 			if(prob(15 && !stat))
-				to_chat(src, span_warning("Just a quick nap..."))
+				to_chat(src, span_warning("就小睡片刻..."))
 				Sleeping(80 SECONDS)
 
 		if(drunkenness >=101) //Let's be honest, you should be dead by now

@@ -15,7 +15,7 @@
 		set_resting(TRUE, FALSE)
 		return
 	if(do_actions)
-		balloon_alert(src, "Busy!")
+		balloon_alert(src, "忙碌!")
 		return
 	get_up()
 
@@ -34,12 +34,12 @@
 	if(resting)
 		ADD_TRAIT(src, TRAIT_FLOORED, RESTING_TRAIT)
 		if(!silent)
-			to_chat(src, span_notice("You are now resting."))
+			to_chat(src, span_notice("你现在正在休息."))
 		SEND_SIGNAL(src, COMSIG_XENOMORPH_REST)
 	else
 		REMOVE_TRAIT(src, TRAIT_FLOORED, RESTING_TRAIT)
 		if(!silent)
-			to_chat(src, span_notice("You get up."))
+			to_chat(src, span_notice("你站了起来."))
 		SEND_SIGNAL(src, COMSIG_XENOMORPH_UNREST)
 	hud_used?.rest_icon?.update_icon()
 
@@ -52,7 +52,7 @@
 		ghostize(TRUE)
 		return
 
-	if(!is_centcom_level(loc?.z) && tgui_alert(src, "Are you sure you want to ghost?\n(You are alive. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)", "Ghost", list("Yes", "No")) != "Yes")
+	if(!is_centcom_level(loc?.z) && tgui_alert(src, "你确定要幽灵化吗?\n(你还活着.如果你幽灵化,你将无法回到你的身体.你无法改变主意,所以请慎重选择!)", "幽灵", list("Yes", "No")) != "Yes")
 		return
 
 	set_resting(TRUE)
@@ -65,4 +65,4 @@
 		return FALSE
 	if(incapacitated() || HAS_TRAIT(src, TRAIT_FAKEDEATH))
 		return FALSE
-	visible_message(span_infoplain("[span_name("[src]")] points at [pointed_atom]."), span_notice("You point at [pointed_atom]."))
+	visible_message(span_infoplain("[span_name("[src]")]指向[pointed_atom]."), span_notice("你指向[pointed_atom]."))

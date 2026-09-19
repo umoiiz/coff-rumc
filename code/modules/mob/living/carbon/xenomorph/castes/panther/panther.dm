@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/panther
 	caste_base_type = /datum/xeno_caste/panther
 	name = "Panther"
-	desc = "What you have done with this cute little rouny?"
+	desc = "你对这只可爱的小龙做了什么?"
 	icon = 'icons/Xeno/castes/panther/basic.dmi'
 	icon_state = "Panther Walking" //Panther sprites by Drawsstuff (CC BY-NC-SA 3.0)
 	effects_icon = 'icons/Xeno/castes/panther/effects.dmi'
@@ -37,8 +37,8 @@
 		use_plasma(3)
 
 /obj/item/reagent_containers/food/drinks/pantherheart
-	name = "Panther heart"
-	desc = "This is Panther heart... Wait, what?"
+	name = "黑豹之心"
+	desc = "这是黑豹之心...等等,什么?"
 	icon = 'icons/obj/items/drinks.dmi'
 	icon_state = "pantherheart"
 	w_class = WEIGHT_CLASS_NORMAL

@@ -121,7 +121,7 @@
 
 ADMIN_VERB(deadmin, R_NONE, "DeAdmin", "Shed your admin powers.", ADMIN_CATEGORY_MAIN)
 	user.holder.deactivate()
-	to_chat(user, span_interface("You are now a normal player."))
+	to_chat(user, span_interface("你现在是一名普通玩家了."))
 	log_admin("[key_name(user)] deadminned themselves.")
 	message_admins("[key_name_admin(user)] deadminned themselves.")
 
@@ -167,12 +167,12 @@ ADMIN_VERB(deadmin, R_NONE, "DeAdmin", "Shed your admin powers.", ADMIN_CATEGORY
 		if(usr.client.holder?.rank && (usr.client.holder.rank.rights & rights_required))
 			return TRUE
 		else if(show_msg)
-			to_chat(usr, span_warning("You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required," ")]."))
+			to_chat(usr, span_warning("你没有足够的权限这样做. 你需要以下标志之一:[rights2text(rights_required," ")]."))
 	else
 		if(usr.client.holder)
 			return TRUE
 		else if(show_msg)
-			to_chat(usr, span_warning("You are not a holder."))
+			to_chat(usr, span_warning("你不是持有者."))
 	return FALSE
 
 /proc/check_other_rights(client/other, rights_required, show_msg = TRUE)
@@ -182,12 +182,12 @@ ADMIN_VERB(deadmin, R_NONE, "DeAdmin", "Shed your admin powers.", ADMIN_CATEGORY
 		if(rights_required & other.holder.rank.rights)
 			return TRUE
 		else if(show_msg)
-			to_chat(usr, span_warning("You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required," ")]."))
+			to_chat(usr, span_warning("你没有足够的权限这样做. 你需要以下标志之一:[rights2text(rights_required," ")]."))
 	else
 		if(other.holder)
 			return TRUE
 		else if(show_msg)
-			to_chat(usr, span_warning("You are not a holder."))
+			to_chat(usr, span_warning("你不是持有者."))
 	return FALSE
 
 /proc/check_if_greater_rights_than(client/other)
@@ -202,7 +202,7 @@ ADMIN_VERB(deadmin, R_NONE, "DeAdmin", "Shed your admin powers.", ADMIN_CATEGORY
 			return TRUE
 		if(usr.client.holder.rank.rights != other.holder.rank.rights && ((usr.client.holder.rank.rights & other.holder.rank.rights) == other.holder.rank.rights))
 			return TRUE
-	to_chat(usr, span_warning("They have more or equal rights than you."))
+	to_chat(usr, span_warning("他们拥有比你更多或同等的权限."))
 	return FALSE
 
 /datum/admins/proc/check_if_greater_rights_than_holder(datum/admins/other)
@@ -315,25 +315,25 @@ ADMIN_VERB(deadmin, R_NONE, "DeAdmin", "Shed your admin powers.", ADMIN_CATEGORY
 
 	switch(choice)
 		if(APICKER_CLIENT)
-			var/client/C = tgui_input_list(usr, "Please, select a key.", title, sortKey(GLOB.clients), timeout = 0)
+			var/client/C = tgui_input_list(usr, "请选择一个按键.", title, sortKey(GLOB.clients), timeout = 0)
 			chosen = C?.mob
 		if(APICKER_MOB)
-			chosen = tgui_input_list(usr, "Please, select a mob.", title, sortNames(GLOB.mob_list), timeout = 0)
+			chosen = tgui_input_list(usr, "请选择一个生物.", title, sortNames(GLOB.mob_list), timeout = 0)
 		if(APICKER_LIVING)
-			chosen = tgui_input_list(usr, "Please, select a living mob.", title, sortNames(GLOB.mob_living_list), timeout = 0)
+			chosen = tgui_input_list(usr, "请选择一个活着的生物.", title, sortNames(GLOB.mob_living_list), timeout = 0)
 		if(APICKER_AREA)
-			chosen = tgui_input_list(usr, "Please, select an area.", title, get_sorted_areas(), timeout = 0)
+			chosen = tgui_input_list(usr, "请选择一个区域.", title, get_sorted_areas(), timeout = 0)
 			chosen = pick(get_area_turfs(chosen))
 		if(APICKER_TURF)
 			chosen = input("Please, select a turf.", title) as null|turf in world
 		if(APICKER_COORDS)
-			var/X = tgui_input_number(usr, "X coordinate.", title, max_value = 255, min_value = 1, timeout = 0)
+			var/X = tgui_input_number(usr, "X坐标.", title, max_value = 255, min_value = 1, timeout = 0)
 			if(!X)
 				return
-			var/Y = tgui_input_number(usr, "Y coordinate.", title, max_value = 255, min_value = 1, timeout = 0)
+			var/Y = tgui_input_number(usr, "Y坐标.", title, max_value = 255, min_value = 1, timeout = 0)
 			if(!Y)
 				return
-			var/Z = tgui_input_number(usr, "Z coordinate.", title, max_value = 10, min_value = 1, timeout = 0)
+			var/Z = tgui_input_number(usr, "Z坐标.", title, max_value = 10, min_value = 1, timeout = 0)
 			if(!Z)
 				return
 			chosen = locate(X, Y, Z)

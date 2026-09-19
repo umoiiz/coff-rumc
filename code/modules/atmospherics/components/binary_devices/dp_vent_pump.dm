@@ -1,7 +1,7 @@
 //Acts like a normal vent, but has an input AND output.
 /obj/machinery/atmospherics/components/binary/dp_vent_pump
 	name = "dual-port air vent"
-	desc = "Has a valve and pump attached to it. There are two ports."
+	desc = "上面附有一个阀门和一个泵. 有两个端口."
 	icon = 'icons/obj/atmospherics/components/unary_devices.dmi' //We reuse the normal vent icons!
 	icon_state = "dpvent_map-2"
 	level = 1

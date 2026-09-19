@@ -40,13 +40,13 @@
 
 /datum/job/terragov/command/captain/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"As the captain of the [SSmapping.configs[SHIP_MAP].map_name] you are held by higher standard and are expected to act competently.
-While you may support Nanotrasen, you report to the TGMC High Command, not the corporate office.
-Your primary task is the safety of the ship and her crew, and ensuring the survival and success of the marines.
-Your first order of business should be briefing the marines on the mission they are about to undertake.
-You should not be voluntarily leaving your vessel under any circumstances. A captain goes down with their ship.
-If you require any help, use <b>mentorhelp</b> to ask mentors about what you're supposed to do.
-Godspeed, captain! And remember, you are not above the law."})
+	to_chat(M, {"作为 [SSmapping.configs[SHIP_MAP].map_name] 的舰长,你被要求以更高的标准行事,并应表现得称职.
+虽然你可能支持Nanotrasen,但你向TGMC最高指挥部汇报,而非公司办公室.
+你的首要任务是舰船及其船员的安全,并确保陆战队员的生存与成功.
+你的第一项事务应该是向陆战队员简报他们即将执行的任务.
+在任何情况下你都不应主动离开你的舰船.舰长与舰船共存亡.
+如果你需要任何帮助,请使用 <b>mentorhelp</b> 向导师询问你应该做什么.
+祝你好运,舰长!记住,你并不凌驾于法律之上."})
 
 /datum/job/terragov/command/captain/after_spawn(mob/living/new_mob, mob/user, latejoin)
 	. = ..()
@@ -110,10 +110,10 @@ Godspeed, captain! And remember, you are not above the law."})
 
 /datum/job/terragov/command/fieldcommander/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"You are charged with overseeing the operation on the ground, and are the highest-ranked deployed marine.
-Your duties are to ensure marines hold when ordered, and push when they are cowering behind barricades.
-Do not ask your men to do anything you would not do side by side with them.
-Make the TGMC proud!"})
+	to_chat(M, {"你负责监督地面行动,是部署在外的最高军衔陆战队员.
+你的职责是确保陆战队员在接到命令时坚守阵地,并在他们畏缩在路障后时推动他们前进.
+不要要求你的部下做任何你不会与他们并肩去做的事.
+让TGMC为你骄傲!"})
 
 /datum/job/terragov/command/fieldcommander/after_spawn(mob/living/carbon/new_mob, mob/user, latejoin = FALSE)
 	. = ..()
@@ -167,8 +167,8 @@ Make the TGMC proud!"})
 
 /datum/job/terragov/command/staffofficer/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"Your job is to monitor the marines, man the CIC, and listen to your superior officers.
-You are in charge of logistics and the overwatch system. You are also in line to take command after the captain."})
+	to_chat(M, {"你的工作是监视陆战队员,值守CIC,并听从上级军官.
+你负责后勤和监视系统.你也是继舰长之后接管指挥的人选."})
 
 /datum/job/terragov/command/staffofficer/after_spawn(mob/living/carbon/new_mob, mob/user, latejoin = FALSE)
 	. = ..()
@@ -250,8 +250,8 @@ You are in charge of logistics and the overwatch system. You are also in line to
 
 /datum/job/terragov/command/transportofficer/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"Your job is to support marines mobile dropship support with the Tadpole.
-You are to ensure the Tadpole's survival and to transport marines around, acting as a mobile bunker. In the case of it's death, you may perform the role of Combat Engineer.
+	to_chat(M, {"你的工作是使用蝌蚪号支援陆战队员的机动运输机支援.
+你要确保蝌蚪号的生存并运送陆战队员四处移动,充当移动堡垒.如果它被摧毁,你可以履行战斗工程师的职责.
 "})
 
 //Pilot Officer
@@ -308,9 +308,9 @@ You are to ensure the Tadpole's survival and to transport marines around, acting
 
 /datum/job/terragov/command/pilot/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"Your job is to support marines with either close air support via the Condor.
-You are expected to use the Condor as the Alamo is able to be ran automatically, though at some points you will be required to take control of the Alamo for the operation's success, though highly unlikey.
-Though you are an officer, your authority is limited to the dropship and the Condor, where you have authority over the enlisted personnel.
+	to_chat(M, {"你的工作是使用神鹰号通过近距离空中支援来支援陆战队员.
+你应该使用神鹰号,因为阿拉莫号能够自动运行,尽管在某些时候为了行动成功你将需要接管阿拉莫号,尽管可能性极低.
+虽然你是一名军官,但你的权限仅限于运输机和神鹰号,在那里你对士兵拥有权限.
 "})
 
 //Mech pilot
@@ -346,8 +346,8 @@ Though you are an officer, your authority is limited to the dropship and the Con
 
 /datum/job/terragov/command/mech_pilot/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"\nYou are the operator of a very expensive and valuable Mech, and are trained and expected to use it in the field of combat.
-You can serve your Division in a variety of roles, so choose carefully."})
+	to_chat(M, {"\nYou 是一台非常昂贵且有价值的机甲的驾驶员,受过训练并应在战场上使用它.
+你可以为你的师担任多种角色,所以要谨慎选择."})
 
 /datum/job/terragov/command/mech_pilot/after_spawn(mob/living/carbon/new_mob, mob/user, latejoin = FALSE)
 	. = ..()
@@ -399,7 +399,7 @@ You can serve your Division in a variety of roles, so choose carefully."})
 
 /datum/job/terragov/command/transport_crewman/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"You are a Transport Crewman. You operate the TGMC's transport vehciles to ensure that marines and equipment gets to the front in a timely and safe manner."})
+	to_chat(M, {"你是一名运输船员. 你操作TGMC的运输载具, 确保陆战队员和装备能及时安全地抵达前线."})
 
 /datum/job/terragov/command/transport_crewman/after_spawn(mob/living/carbon/new_mob, mob/user, latejoin = FALSE)
 	. = ..()
@@ -460,7 +460,7 @@ You can serve your Division in a variety of roles, so choose carefully."})
 
 /datum/job/terragov/command/assault_crewman/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"You are an Assault Crewman. You operate the TGMC's armored assault vehicles along with your partner, and in some cases a \"willing\" loader. Make sure that you work as a team to advance the front!"})
+	to_chat(M, {"你是一名突击船员. 你与你的搭档一起操作TGMC的装甲突击载具, 有时还会有一名\"自愿\"的装填手. 确保你们团队协作推进前线!"})
 
 /datum/job/terragov/command/assault_crewman/after_spawn(mob/living/carbon/new_mob, mob/user, latejoin = FALSE)
 	. = ..()
@@ -515,7 +515,7 @@ You can serve your Division in a variety of roles, so choose carefully."})
 
 /datum/job/terragov/command/transport_crewman/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"You are a Transport Crewman. You operate the TGMC's transport vehciles to ensure that marines and equipment gets to the front in a timely and safe manner."})
+	to_chat(M, {"你是一名运输船员. 你操作TGMC的运输载具, 确保陆战队员和装备能及时安全地抵达前线."})
 
 /datum/job/terragov/command/transport_crewman/after_spawn(mob/living/carbon/new_mob, mob/user, latejoin = FALSE)
 	. = ..()
@@ -593,8 +593,8 @@ You can serve your Division in a variety of roles, so choose carefully."})
 
 /datum/job/terragov/requisitions/tech/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"Your job is to make sure the ship is operational, you should firstly focus on manning the
-requisitions line and later on to be ready to send supplies for marines who are groundside."})
+	to_chat(M, {"你的工作是确保飞船正常运转, 你应首先专注于
+补给线, 之后再准备好为地面上的陆战队员发送物资."})
 
 /datum/job/terragov/requisitions
 	job_category = JOB_CAT_REQUISITIONS
@@ -659,9 +659,9 @@ requisitions line and later on to be ready to send supplies for marines who are 
 
 /datum/job/terragov/requisitions/officer/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"Your job is to dispense supplies to the marines, including weapon attachments.
-While you may request paperwork for supplies, do not go out of your way to screw with marines, unless you want to get deposed.
-A happy ship is a well-functioning ship."})
+	to_chat(M, {"你的工作是为陆战队员分发补给, 包括武器配件.
+虽然你可以要求补给 paperwork, 但不要刻意刁难陆战队员, 除非你想被罢免.
+一艘快乐的船才是一艘运转良好的船."})
 
 /datum/job/terragov/medical
 	job_category = JOB_CAT_MEDICAL
@@ -703,9 +703,9 @@ A happy ship is a well-functioning ship."})
 
 /datum/job/terragov/medical/professor/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"You are the chief medical officer aboard the [SSmapping.configs[SHIP_MAP].map_name] and supervisor to the medical department.
-You have final authority over the medical department, medications, and treatments.
-Make sure that the doctors and nurses are doing their jobs and keeping the marines healthy and strong."})
+	to_chat(M, {"你是[SSmapping.configs[SHIP_MAP].map_name]号上的首席医疗官, 也是医疗部门的监督者.
+你对医疗部门, 药物和治疗拥有最终决定权.
+确保医生和护士们做好本职工作, 让陆战队员保持健康强壮."})
 
 /datum/job/terragov/medical/professor/after_spawn(mob/living/carbon/new_mob, mob/user, latejoin = FALSE)
 	. = ..()
@@ -782,9 +782,9 @@ Make sure that the doctors and nurses are doing their jobs and keeping the marin
 
 /datum/job/terragov/medical/medicalofficer/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"You are a doctor stationed aboard the [SSmapping.configs[SHIP_MAP].map_name].
-You are tasked with keeping the marines healthy and strong, usually in the form of surgery.
-You are also an expert when it comes to medication and treatment. If you do not know what you are doing, <b>mentorhelp</b> so a mentor can assist you."})
+	to_chat(M, {"你是驻扎在[SSmapping.configs[SHIP_MAP].map_name]上的一名医生.
+你的任务是让陆战队员保持健康强壮, 通常以手术的形式.
+你在药物和治疗方面也是专家. 如果你不知道自己在做什么, 请<b>mentorhelp</b>, 以便导师能帮助你."})
 
 /datum/job/terragov/medical/researcher
 	title = FIELD_RESEARCHER
@@ -819,11 +819,11 @@ You are also an expert when it comes to medication and treatment. If you do not 
 
 /datum/job/terragov/medical/researcher/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"You are a civilian, working for the Nanotrasen Corporation, but you are still subject to the military chain of command.
-You are tasked with deploying with the marines and researching the remains of the colony to get funding for Requisitions.
-You are free to use any new technology you discover as you want, or give them out to the marines.
-If shipside medbay is unstaffed, you should consider working as a regular doctor until someone else is available to take over.
-It is also recommended that you gear up like a regular marine, or your 'internship' might be ending early..."})
+	to_chat(M, {"你是一名平民, 为Nanotrasen公司工作, 但你仍然受军事指挥链的约束.
+你的任务是与陆战队员一起部署, 并研究殖民地残骸, 为补给部门争取资金.
+你可以自由使用你发现的任何新技术, 或者将它们分发给陆战队员.
+如果船上医疗舱无人值守, 你应考虑担任普通医生, 直到有人可以接手.
+也建议你像普通陆战队员一样装备自己, 否则你的\"实习期\"可能会提前结束..."})
 
 /datum/job/terragov/medical/researcher/after_spawn(mob/living/carbon/new_mob, mob/user, latejoin = FALSE)
 	. = ..()
@@ -905,10 +905,10 @@ It is also recommended that you gear up like a regular marine, or your 'internsh
 
 /datum/job/terragov/civilian/liaison/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"As a representative of Nanotrasen Corporation you are expected to stay professional and loyal to the corporation at all times.
-You are not required to follow military orders; however, you cannot give military orders.
-Your primary job is to observe and report back your findings to Nanotrasen. Follow regular game rules unless told otherwise by your superiors.
-Use your office fax machine to communicate with corporate headquarters or to acquire new directives. You may not receive anything back (especially if the game staff is absent or otherwise busy), and this is normal."})
+	to_chat(M, {"作为Nanotrasen公司的代表, 你应始终保持专业, 并时刻忠于公司.
+你不需要服从军事命令; 但是, 你不能下达军事命令.
+你的主要工作是观察并将你的发现报告回Nanotrasen. 除非你的上级另有指示, 否则请遵守常规游戏规则.
+使用你办公室的传真机与公司总部通信或获取新指令. 你可能不会收到任何回复 (尤其是在游戏工作人员缺席或忙碌时), 这是正常的."})
 
 /datum/job/terragov/silicon
 	job_category = JOB_CAT_SILICON
@@ -992,8 +992,8 @@ Use your office fax machine to communicate with corporate headquarters or to acq
 
 /datum/job/terragov/silicon/synthetic/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"Your primary job is to support and assist all TGMC departments and personnel on-board.
-In addition, being a Synthetic gives you knowledge in every field and specialization possible on-board the ship."})
+	to_chat(M, {"你的主要工作是支援和协助船上所有TGMC部门和人员.
+此外, 作为合成人, 你拥有船上所有领域和专业的可能知识."})
 
 /datum/job/terragov/silicon/ai
 	title = SILICON_AI
@@ -1034,10 +1034,10 @@ In addition, being a Synthetic gives you knowledge in every field and specializa
 
 /datum/job/terragov/silicon/ai/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"Your primary job is to support and assist all TGMC departments and personnel on-board.
-However, your vision is limited through cameras from the ship or to marines groundside.
-Recon any threats and report findings at various communication channels.
-If you require any help, use <b>mentorhelp</b> to ask mentors about what you're supposed to do."})
+	to_chat(M, {"你的主要工作是支援和协助船上所有TGMC部门和人员.
+但是, 你的视野受限于船上的摄像头或地面上的陆战队员.
+侦察任何威胁, 并在各种通信频道报告发现.
+如果你需要任何帮助, 请使用<b>mentorhelp</b>向导师询问你应该做什么."})
 
 /datum/job/terragov/silicon/ai/announce(mob/living/announced_mob)
 	. = ..()
@@ -1084,8 +1084,8 @@ If you require any help, use <b>mentorhelp</b> to ask mentors about what you're 
 
 /datum/job/terragov/command/military_police/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"Your primary job is to uphold the law, order, peace and stability aboard the ship. Marines can get rowdy after a few weeks of cryosleep!
-	In addition, you are tasked with the security of high-ranking personnel, including the command staff. Keep them safe!"})
+	to_chat(M, {"你的主要工作是维护船上的法律, 秩序, 和平与稳定. 陆战队员在低温休眠几周后可能会变得吵闹!
+	此外, 你的任务还包括保护高级人员的安全, 包括指挥人员. 保护他们!"})
 
 /datum/job/terragov/civilian/clown
 	title = CLOWN
@@ -1153,5 +1153,5 @@ If you require any help, use <b>mentorhelp</b> to ask mentors about what you're 
 
 /datum/job/terragov/civilian/clown/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"Your primary job is to uphold the law, order, peace and stability aboard the ship. Marines can get rowdy after a few weeks of cryosleep!
-	In addition, you are tasked with the security of high-ranking personnel, including the command staff. Keep them safe!"})
+	to_chat(M, {"你的主要工作是维护船上的法律, 秩序, 和平与稳定. 陆战队员在低温休眠几周后可能会变得吵闹!
+	此外, 你的任务还包括保护高级人员的安全, 包括指挥人员. 保护他们!"})

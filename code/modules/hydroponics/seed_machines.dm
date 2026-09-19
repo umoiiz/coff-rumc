@@ -1,6 +1,6 @@
 /obj/item/disk/botany
-	name = "flora data disk"
-	desc = "A small disk used for carrying data on plant genetics."
+	name = "植物群数据磁盘"
+	desc = "用于携带植物遗传数据的小磁盘."
 	icon = 'icons/obj/items/disk.dmi'
 	icon_state = "botanydisk"
 	w_class = WEIGHT_CLASS_TINY
@@ -14,17 +14,17 @@
 
 /obj/item/disk/botany/attack_self(mob/user as mob)
 	if(length(genes))
-		var/choice = tgui_alert(user, "Are you sure you want to wipe the disk?", "Xenobotany Data", list("No", "Yes"))
+		var/choice = tgui_alert(user, "你确定要擦除磁盘吗?", "异星植物学数据", list("No", "Yes"))
 		if(src && user && genes && choice == "Yes")
-			to_chat(user, "You wipe the disk data.")
+			to_chat(user, "你擦除了磁盘数据.")
 			name = initial(name)
 			desc = initial(name)
 			genes = list()
 			genesource = "unknown"
 
 /obj/item/storage/box/botanydisk
-	name = "flora disk box"
-	desc = "A box of flora data disks, apparently."
+	name = "植物群磁盘盒"
+	desc = "显然是一盒植物群数据磁盘."
 	spawn_type = /obj/item/disk/botany
 	spawn_number = 7
 
@@ -59,15 +59,15 @@
 	active = 0
 	if(failed_task)
 		failed_task = 0
-		visible_message("[icon2html(src, viewers(src))] [src] pings unhappily, flashing a red warning light.")
+		visible_message("[icon2html(src, viewers(src))][src]不高兴地发出提示音,闪烁着红色警告灯.")
 	else
-		visible_message("[icon2html(src, viewers(src))] [src] pings happily.")
+		visible_message("[icon2html(src, viewers(src))][src]高兴地发出提示音.")
 
 	if(eject_disk)
 		eject_disk = 0
 		if(loaded_disk)
 			loaded_disk.loc = get_turf(src)
-			visible_message("[icon2html(src, viewers(src))] [src] beeps and spits out [loaded_disk].")
+			visible_message("[icon2html(src, viewers(src))][src]发出哔哔声并吐出了[loaded_disk].")
 			loaded_disk = null
 	stop_processing()
 
@@ -78,41 +78,41 @@
 
 	if(istype(I, /obj/item/seeds))
 		if(seed)
-			to_chat(user, "There is already a seed loaded.")
+			to_chat(user, "已经装入了种子.")
 			return
 		var/obj/item/seeds/S = I
 		if(S.seed?.immutable > 0)
-			to_chat(user, "That seed is not compatible with our genetics technology.")
+			to_chat(user, "该种子与我们的遗传技术不兼容.")
 			return
 
 		user.drop_held_item()
 		I.forceMove(src)
 		seed = I
-		to_chat(user, "You load [I] into [src].")
+		to_chat(user, "你将[I]装入[src].")
 
 	else if(istype(I, /obj/item/disk/botany))
 		var/obj/item/disk/botany/B = I
 
 		if(loaded_disk)
-			to_chat(user, "There is already a data disk loaded.")
+			to_chat(user, "已经装入了数据磁盘.")
 			return
 
 		if(length(B.genes) && !disk_needs_genes)
-			to_chat(user, "That disk already has gene data loaded.")
+			to_chat(user, "该磁盘已加载基因数据.")
 			return
 		else if(disk_needs_genes)
-			to_chat(user, "That disk does not have any gene data loaded.")
+			to_chat(user, "该磁盘未加载任何基因数据.")
 			return
 
 		user.drop_held_item()
 		I.forceMove(src)
 		loaded_disk = I
-		to_chat(user, "You load [I] into [src].")
+		to_chat(user, "你将[I]装入[src].")
 
 /obj/machinery/botany/screwdriver_act(mob/living/user, obj/item/I)
 	. = ..()
 	open = !open
-	to_chat(user, span_notice("You [open ? "open" : "close"] the maintenance panel."))
+	to_chat(user, span_notice("你[open ? "open" : "close"]维护面板."))
 
 /obj/machinery/botany/crowbar_act(mob/living/user, obj/item/I)
 	. = ..()
@@ -144,14 +144,14 @@
 			GLOB.seed_types[seed.seed.name] = seed.seed
 
 		seed.update_seed()
-		visible_message("[icon2html(src, viewers(src))] [src] beeps and spits out [seed].")
+		visible_message("[icon2html(src, viewers(src))][src]发出哔哔声并吐出[seed].")
 
 		seed = null
 
 	if(href_list["eject_disk"])
 		if(!loaded_disk) return
 		loaded_disk.loc = get_turf(src)
-		visible_message("[icon2html(src, viewers(src))] [src] beeps and spits out [loaded_disk].")
+		visible_message("[icon2html(src, viewers(src))][src]发出哔哔声并吐出[loaded_disk].")
 		loaded_disk = null
 
 /obj/machinery/botany/extractor/Topic(href, href_list)

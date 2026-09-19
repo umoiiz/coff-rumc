@@ -1,6 +1,6 @@
 /obj/item/assembly/prox_sensor
-	name = "proximity sensor"
-	desc = "Used for scanning and alerting when someone enters a certain proximity."
+	name = "接近传感器"
+	desc = "用于扫描并在有人进入一定范围时发出警报."
 	icon_state = "prox"
 	attachable = TRUE
 
@@ -23,7 +23,7 @@
 
 /obj/item/assembly/prox_sensor/examine(mob/user)
 	. = ..()
-	. += span_notice("The proximity sensor is [timing ? "arming" : (scanning ? "armed" : "disarmed")].")
+	. += span_notice("接近传感器处于[timing ? "arming" : (scanning ? "armed" : "disarmed")]状态.")
 
 /obj/item/assembly/prox_sensor/activate()
 	. = ..()
@@ -65,7 +65,7 @@
 	if(!scanning || !secured || next_activate > world.time)
 		return FALSE
 	pulse(FALSE)
-	audible_message("[icon2html(src, hearers(src))] *beep* *beep* *beep*", null, hearing_range)
+	audible_message("[icon2html(src, hearers(src))]*哔* *哔* *哔*", null, hearing_range)
 	for(var/CHM in get_hearers_in_view(hearing_range, src))
 		if(ismob(CHM))
 			var/mob/LM = CHM

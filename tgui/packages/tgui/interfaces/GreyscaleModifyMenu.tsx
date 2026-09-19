@@ -36,9 +36,9 @@ const ColorDisplay = (props) => {
   const { act, data } = useBackend<GreyscaleMenuData>();
   const colors = data.colors || [];
   return (
-    <Section title="Colors">
+    <Section title="颜色">
       <LabeledList>
-        <LabeledList.Item label="Full Color String">
+        <LabeledList.Item label="全彩字符串">
           <Input
             value={colors.map((item) => item.value).join('')}
             onChange={(value) =>
@@ -73,7 +73,7 @@ const ColorDisplay = (props) => {
 const PreviewDisplay = (props) => {
   const { data } = useBackend<GreyscaleMenuData>();
   return (
-    <Section title="Preview">
+    <Section title="预览">
       <Table>
         <Table.Row header>
           <Table.Cell textAlign="center">Step Layer</Table.Cell>
@@ -106,9 +106,9 @@ export const GreyscaleModifyMenu = (props) => {
       <Window.Content scrollable>
         <ColorDisplay />
         <Button onClick={() => act('refresh_file')}>
-          Refresh Icon File
+          刷新图标文件
         </Button>{' '}
-        <Button content="Apply" onClick={() => act('apply')} />
+        <Button content="应用" onClick={() => act('apply')} />
         <PreviewDisplay />
       </Window.Content>
     </Window>

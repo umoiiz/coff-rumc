@@ -25,13 +25,13 @@
 		return
 	if(!check_if_greater_rights_than(target.client))
 		return
-	if(tgui_alert(user, "Are you sure you want to kick [key_name(target)]?", "Warning", list("Yes", "No")) != "Yes")
+	if(tgui_alert(user, "你确定要踢出[key_name(target)]吗?", "警告", list("Yes", "No")) != "Yes")
 		return
 	if(!target?.client)
-		to_chat(user, span_warning("Error: [target] no longer has a client!"))
+		to_chat(user, span_warning("错误: [target]不再有客户端!"))
 		return
 
-	to_chat_immediate(target, span_danger("You have been kicked from the server by [user.holder?.fakekey ? "an Administrator" : "[user.key]"]."))
+	to_chat_immediate(target, span_danger("你已被[user.holder?.fakekey ? "an Administrator" : "[user.key]"]踢出服务器."))
 	qdel(target.client)
 
 	log_admin_private("[key_name(user)] kicked [key_name(target)].")
@@ -119,7 +119,7 @@
 
 /datum/player_action/centcom_lookup/act(client/user, mob/target, list/params)
 	if(!CONFIG_GET(string/centcom_ban_db))
-		to_chat(user, span_warning("Centcom Galactic Ban DB is disabled!"))
+		to_chat(user, span_warning("中央指挥部银河封禁数据库已禁用!"))
 		return
 
 	var/ckey = target.ckey

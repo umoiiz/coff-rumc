@@ -1,7 +1,7 @@
 /obj/item/stack/nanopaste
-	name = "nanopaste"
+	name = "纳米修复膏"
 	singular_name = "nanite swarm"
-	desc = "A tube of paste containing swarms of repair nanites. Very effective in repairing robotic machinery."
+	desc = "一管含有大量修复纳米机器人的膏体.在修复机械装置方面非常有效."
 	icon = 'icons/obj/items/surgery_tools.dmi'
 	icon_state = "tube"
 	amount = 10
@@ -27,13 +27,13 @@
 				if(S.get_damage())
 					S.heal_limb_damage(15, 15, robo_repair = TRUE, updating_health = TRUE)
 					use(1)
-					user.visible_message(span_notice("[user] applies some nanite paste at [user != M ? "[M]'s" : ""] [S.display_name] with [src]."),\
-					span_notice("You apply some nanite paste at [user == M ? "your" : "[M]'s"] [S.display_name]."))
+					user.visible_message(span_notice("[user]在[user != M ? "[M]'s" : ""][S.display_name]处涂抹了一些纳米修复膏,使用了[src]."),\
+					span_notice("你在[user == M ? "your" : "[M]'s"][S.display_name]处涂抹了一些纳米修复膏."))
 				else
-					to_chat(user, span_notice("Nothing to fix here."))
+					to_chat(user, span_notice("这里没有什么可修复的."))
 		else
 			if (H.can_be_operated_on())
 				if (do_surgery(H,user,src))
 					return
 			else
-				to_chat(user, span_notice("Nothing to fix in here."))
+				to_chat(user, span_notice("这里面没有什么可修复的."))

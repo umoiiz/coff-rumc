@@ -1,7 +1,7 @@
 /obj/structure/xeno/spawner
 	icon = 'icons/Xeno/2x2building.dmi.dmi'
-	name = "spawner"
-	desc = "A slimy, oozy resin bed filled with foul-looking egg-like ...things."
+	name = "生成器"
+	desc = "一张黏滑渗液的树脂床,里面装满了看起来恶心的蛋状...东西."
 	icon_state = "spawner"
 	bound_width = 64
 	bound_height = 64
@@ -28,15 +28,15 @@
 	var/current_integrity = (obj_integrity / max_integrity) * 100
 	switch(current_integrity)
 		if(0 to 20)
-			. += span_warning("It's barely holding, there's leaking oozes all around, and most eggs are broken. Yet it is not inert.")
+			. += span_warning("它勉强支撑着,四周到处都在渗漏黏液,大多数蛋都已破碎.但它并非毫无生机.")
 		if(20 to 40)
-			. += span_warning("It looks severely damaged, its movements slow.")
+			. += span_warning("它看起来严重受损,动作迟缓.")
 		if(40 to 60)
-			. += span_warning("It's quite beat up, but it seems alive.")
+			. += span_warning("它伤痕累累,但似乎还活着.")
 		if(60 to 80)
-			. += span_warning("It's slightly damaged, but still seems healthy.")
+			. += span_warning("它轻微受损,但看起来仍然健康.")
 		if(80 to 100)
-			. += span_info("It appears in good shape, pulsating healthily.")
+			. += span_info("它状态良好,健康地搏动着.")
 
 /obj/structure/xeno/spawner/Destroy()
 	GLOB.xeno_spawners_by_hive[hivenumber] -= src

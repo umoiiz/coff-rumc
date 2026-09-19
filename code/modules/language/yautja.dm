@@ -1,9 +1,9 @@
 /datum/language/yautja
-	name = "Sainja"
-	desc = "The deep, rumbling, guttural sounds of the Yautja predators. It is difficult to speak for those without facial mandibles."
-	speech_verb = "rumbles"
-	ask_verb = "rumbles"
-	exclaim_verb = "roars"
+	name = "塞恩加语"
+	desc = "亚乌贾掠食者发出的深沉, 隆隆作响, 粗哑的声音. 对于没有面部下颚的人来说很难说出这种语言."
+	speech_verb = "隆隆道"
+	ask_verb = "隆隆道"
+	exclaim_verb = "咆哮道"
 	icon_state = "pred"
 	key = "s"
 	space_chance = 20

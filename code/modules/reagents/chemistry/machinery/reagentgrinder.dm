@@ -1,6 +1,6 @@
 /obj/machinery/reagentgrinder
 	name = "\improper All-In-One Grinder"
-	desc = "From BlenderTech. Will It Blend? Let's test it out!"
+	desc = "来自BlenderTech. 它能搅拌吗? 让我们测试一下!"
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "juicer1"
 	layer = BELOW_OBJ_LAYER
@@ -81,7 +81,7 @@
 		return TRUE
 
 	else if(length(holdingitems) >= limit)
-		to_chat(user, "The machine cannot hold anymore items.")
+		to_chat(user, "机器无法容纳更多物品.")
 		return TRUE
 
 	else if(istype(I, /obj/item/storage/bag/plants))
@@ -90,16 +90,16 @@
 			G.forceMove(src)
 			holdingitems += G
 			if(length(holdingitems) >= limit)
-				to_chat(user, "You fill the All-In-One grinder to the brim.")
+				to_chat(user, "你将全能研磨机装得满满当当.")
 				break
 
 		if(!length(I.contents))
-			to_chat(user, "You empty the plant bag into the All-In-One grinder.")
+			to_chat(user, "你将植物袋倒入全能研磨机中.")
 
 		return TRUE
 
 	else if(!is_type_in_list(I, blend_items) && !is_type_in_list(I, juice_items))
-		to_chat(user, "Cannot refine into a reagent.")
+		to_chat(user, "无法精炼为试剂.")
 		return TRUE
 
 	user.transferItemToLoc(I, src)
@@ -109,25 +109,25 @@
 /obj/machinery/reagentgrinder/examine(mob/user)
 	. = ..()
 	if(operating)
-		. += span_notice("It's currently working. Please wait.")
+		. += span_notice("它目前正在工作. 请稍候.")
 		return
 
 	if(length(holdingitems))
-		. += span_notice("Its processing chamber contains:")
+		. += span_notice("其处理室内含有:")
 		for(var/obj/item/O in holdingitems)
 			. += span_notice("- \a [O.name].")
 	else
-		. += span_notice("Its processing chamber is empty.")
+		. += span_notice("其处理室是空的.")
 
 	if(beaker)
 		if(length(beaker.reagents.reagent_list))
-			. += span_notice("It has a beaker attached, containing:")
+			. += span_notice("它连接着一个烧杯, 其中含有:")
 			for(var/datum/reagent/R in beaker.reagents.reagent_list)
-				. += span_notice("- [R.volume]u of [R.name].")
+				. += span_notice("- [R.volume]u的[R.name].")
 		else
-			. += span_notice("It has an empty beaker attached.")
+			. += span_notice("它连接着一个空烧杯.")
 	else
-		. += span_warning("It has no beaker attached.")
+		. += span_warning("它没有连接烧杯.")
 
 /// Radial menu, RU/TG-style: Grind/Juice/Eject. Right-click to detach the beaker instead.
 /obj/machinery/reagentgrinder/interact(mob/user)
@@ -136,12 +136,12 @@
 		return
 
 	if(operating)
-		balloon_alert(user, "still working!")
+		balloon_alert(user, "仍在工作!")
 		return
 
 	var/is_chamber_empty = !length(holdingitems)
 	if(is_chamber_empty && !beaker)
-		balloon_alert(user, "it's empty!")
+		balloon_alert(user, "它是空的!")
 		return
 
 	var/list/choices = list()
@@ -178,10 +178,10 @@
 	//Consume the click regardless, so a plain RMB doesn't also fall through into an UnarmedAttack/interact().
 	. = TRUE
 	if(!Adjacent(user) || user.incapacitated())
-		balloon_alert(user, "you can't reach!")
+		balloon_alert(user, "你够不到!")
 		return .
 	if(operating)
-		balloon_alert(user, "still working!")
+		balloon_alert(user, "仍在工作!")
 		return .
 	detach(user)
 
@@ -196,7 +196,7 @@
 	if(user)
 		if(!user.put_in_active_hand(old_beaker) && !user.put_in_inactive_hand(old_beaker))
 			old_beaker.forceMove(get_turf(src))
-		balloon_alert(user, "detaches the beaker")
+		balloon_alert(user, "取下烧杯")
 	else
 		old_beaker.forceMove(get_turf(src))
 

@@ -1,19 +1,19 @@
 //Claim gear, same as the Hunter's get.
 /obj/item/clothing/gloves/yautja/thrall/buy_gear(mob/living/carbon/human/wearer)
 	if(wearer.gloves != src)
-		to_chat(wearer, span_warning("You need to be wearing your thrall bracers to do this."))
+		to_chat(wearer, span_warning("你需要佩戴你的奴仆护腕才能这样做."))
 		return
 
 	if(wearer.hunter_data.claimed_equipment)
-		to_chat(wearer, span_warning("You've already claimed your equipment."))
+		to_chat(wearer, span_warning("你已经领取了你的装备."))
 		return
 
 	if(wearer.stat || (wearer.lying_angle && !wearer.resting && !wearer.has_status_effect(STATUS_EFFECT_SLEEPING)) || (wearer.has_status_effect(STATUS_EFFECT_PARALYZED) || wearer.has_status_effect(STATUS_EFFECT_UNCONSCIOUS)) || wearer.lying_angle || wearer.buckled)
-		to_chat(wearer, span_warning("You're not able to do that right now."))
+		to_chat(wearer, span_warning("你现在无法这样做."))
 		return
 
 	if(!istype(get_area(wearer), /area/yautja))
-		to_chat(wearer, span_warning("Not here. Only on the ship."))
+		to_chat(wearer, span_warning("不在这里.只能在飞船上."))
 		return
 
 	var/sure = alert("An array of powerful weapons are displayed to you. Pick your gear carefully. If you cancel at any point, you will not claim your equipment.","Sure?","Begin the Hunt","No, not now")
@@ -31,11 +31,11 @@
 			return //We don't want them to cancel out then get nothing.
 
 		if(wearer.gloves != src)
-			to_chat(wearer, span_warning("You need to be wearing your thrall bracers to do this."))
+			to_chat(wearer, span_warning("你需要佩戴你的奴仆护腕才能这样做."))
 			return
 
 		if(wearer.hunter_data.claimed_equipment)
-			to_chat(src, span_warning("You've already claimed your equipment."))
+			to_chat(src, span_warning("你已经领取了你的装备."))
 			return
 
 		var/obj/item/spawned_weapon
@@ -89,26 +89,26 @@
 	if(!istype(user))
 		return
 	if(!user.hunter_data)
-		to_chat(user, span_warning("ERROR: No hunter_data detected."))
+		to_chat(user, span_warning("错误:未检测到hunter_data."))
 		return
 
 	if(linked_bracer)
-		to_chat(user, span_yautjabold("[icon2html(src)] \The <b>[src]</b> beeps: Link is already established!"))
+		to_chat(user, span_yautjabold("[icon2html(src)] \The <b>[src]</b>发出哔声:连接已建立!"))
 		return
 
 	if(user.gloves != src)
-		to_chat(user, span_warning("You are not wearing your bracer!"))
+		to_chat(user, span_warning("你没有佩戴你的护腕!"))
 		return
 	else if(!owner || user != owner)
-		to_chat(user, span_yautjabold("[icon2html(src)] \The <b>[src]</b> beeps: Wrong user detected!"))
+		to_chat(user, span_yautjabold("[icon2html(src)] \The <b>[src]</b>发出哔声:检测到错误用户!"))
 		return
 
 	var/mob/living/carbon/human/T = user.hunter_data.thrall
 	if(!T)
-		to_chat(user, span_warning("You do not have a thrall to link to!"))
+		to_chat(user, span_warning("你没有可连接的奴仆!"))
 		return
 	else if(!istype(T.gloves, /obj/item/clothing/gloves/yautja/thrall))
-		to_chat(user, span_yautjabold("[icon2html(src)] \The <b>[src]</b> beeps: Your thrall is not wearing a bracer!"))
+		to_chat(user, span_yautjabold("[icon2html(src)] \The <b>[src]</b>发出哔声:你的奴仆没有佩戴护腕!"))
 		return
 	else
 		var/obj/item/clothing/gloves/yautja/thrall/thrall_gloves = T.gloves
@@ -119,12 +119,12 @@
 		if(!T.hunter_data.claimed_equipment)
 			thrall_gloves.claim_equipment.give_action(T)
 
-		to_chat(user, span_yautjabold("[icon2html(src)] \The <b>[src]</b> beeps: Your bracer is now linked to your thrall."))
+		to_chat(user, span_yautjabold("[icon2html(src)] \The <b>[src]</b> 哔哔声: 你的护腕现已与你的奴仆连接."))
 		if(notification_sound)
 			playsound(loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
-		to_chat(T, span_warning("\The [thrall_gloves] locks around your wrist with a sharp click."))
-		to_chat(T, span_yautjabold("[icon2html(thrall_gloves)] \The <b>[thrall_gloves]</b> beeps: Your master has linked their bracer to yours."))
+		to_chat(T, span_warning("\The [thrall_gloves] 伴随着一声清脆的咔哒声锁在了你的手腕上."))
+		to_chat(T, span_yautjabold("[icon2html(thrall_gloves)] \The <b>[thrall_gloves]</b> 哔哔声: 你的主人已将他们的护腕与你的连接."))
 		if(thrall_gloves.notification_sound)
 			playsound(thrall_gloves.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
@@ -149,10 +149,10 @@
 		receiver_title = "thrall"
 
 	if(!istype(receiver))
-		to_chat(messenger, span_warning("You have no one to message!"))
+		to_chat(messenger, span_warning("你无人可发送消息!"))
 		return
 	if(!istype(receiver.gloves, /obj/item/clothing/gloves/yautja))
-		to_chat(messenger, span_warning("Your [receiver_title] isn't wearing their bracer!"))
+		to_chat(messenger, span_warning("你的[receiver_title]没有佩戴他们的护腕!"))
 		return
 
 	var/message = sanitize(input(messenger, "Enter the message you want to send:", "Send Message") as null|text)
@@ -160,15 +160,15 @@
 		return
 
 	if(!istype(receiver))
-		to_chat(messenger, span_warning("You have no one to message!"))
+		to_chat(messenger, span_warning("你无人可发送消息!"))
 		return
 	var/obj/item/clothing/gloves/yautja/receiver_gloves = receiver.gloves
 	if(!istype(receiver_gloves))
-		to_chat(messenger, span_warning("Your [receiver_title] isn't wearing their bracer!"))
+		to_chat(messenger, span_warning("你的[receiver_title]没有佩戴他们的护腕!"))
 		return
 
-	to_chat(receiver, span_yautjabold("\The <b>[receiver_gloves]</b> beeps with a message from your [messenger_title]: [message]"))
-	to_chat(messenger, span_yautjabold("\The <b>[src]</b> beeps: You have sent '[message]' to your [receiver_title]."))
+	to_chat(receiver, span_yautjabold("\The <b>[receiver_gloves]</b> 哔哔作响, 传来你[messenger_title]的消息: [message]"))
+	to_chat(messenger, span_yautjabold("\The <b>[src]</b> 哔哔声: 你已将'[message]'发送给你的[receiver_title]."))
 
 	if(notification_sound)
 		playsound(loc, 'sound/items/pred_bracer.ogg', 75, 1)

@@ -1,6 +1,6 @@
 /obj/item/tool/surgery/solderingtool
-	name = "soldering tool"
-	desc = "A hand tool to fix combat robot's trauma. You do not need welding goggles for this."
+	name = "焊接工具"
+	desc = "用于修复战斗机器人创伤的手持工具. 你不需要焊接护目镜."
 	icon = 'icons/obj/items/surgery_tools.dmi'
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/equipment/surgery_left.dmi',
@@ -18,27 +18,27 @@
 		return TRUE
 
 	if(!CHECK_BITFIELD(affecting.limb_status, LIMB_ROBOT))
-		balloon_alert(user, "Limb not robotic")
+		balloon_alert(user, "肢体不是机械的")
 		return TRUE
 
 	if(!affecting.burn_dam && !affecting.brute_dam)
-		balloon_alert(user, "Nothing to fix!")
+		balloon_alert(user, "没什么可修的!")
 		return TRUE
 
 	if(user.do_actions)
-		balloon_alert(user, "Already busy!")
+		balloon_alert(user, "已经在忙了!")
 		return TRUE
 
 	var/repair_time = 1.5 SECONDS
 	if(H == user)
 		repair_time *= 1.5
 
-	user.visible_message(span_notice("[user] starts to solder the wounds on [H == user ? "[H.p_their()]" : "[H]'s"] [affecting.display_name]."),\
-		span_notice("You start soldering the wounds on [H == user ? "your" : "[H]'s"] [affecting.display_name]."))
+	user.visible_message(span_notice("[user]开始焊接[H == user ? "[H.p_their()]" : "[H]'s"][affecting.display_name]上的伤口."),\
+		span_notice("你开始焊接[H == user ? "your" : "[H]'s"][affecting.display_name]上的伤口."))
 
 	while((affecting.burn_dam || affecting.brute_dam) && do_after(user, repair_time, NONE, H, BUSY_ICON_BUILD))
-		user.visible_message(span_warning("\The [user] solders the wounds on [H == user ? "[H.p_their()]" : "[H]'s"] [affecting.display_name] with \the [src]."), \
-			span_warning("You solder the wounds on [H == user ? "your" : "[H]'s"] [affecting.display_name]."))
+		user.visible_message(span_warning("\The [user]用\the [src]焊接了[H == user ? "[H.p_their()]" : "[H]'s"][affecting.display_name]上的伤口."), \
+			span_warning("你焊接了[H == user ? "your" : "[H]'s"][affecting.display_name]上的伤口."))
 		if(affecting.heal_limb_damage(10, 10, robo_repair = TRUE, updating_health = TRUE))
 			H.UpdateDamageIcon()
 		if(!(affecting.brute_dam || affecting.burn_dam))
@@ -51,6 +51,6 @@
 				affecting = checked_limb
 				break
 			if(previous_limb == affecting)
-				balloon_alert(user, "Fully repaired.")
+				balloon_alert(user, "完全修复.")
 				break
 	return TRUE

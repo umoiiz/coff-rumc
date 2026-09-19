@@ -32,9 +32,9 @@
 	playsound(loc, SFX_SPARKS, 25, TRUE)
 	if (shock_damage > 10)
 		src.visible_message(
-			span_warning("[src] was shocked by the [source]!"), \
-			span_danger("You feel a powerful shock course through your body!"), \
-			span_warning("You hear a heavy electrical crack.") \
+			span_warning("[src]被[source]电击了!"), \
+			span_danger("你感到一股强烈的电流穿过你的身体!"), \
+			span_warning("你听到一声沉重的电气爆裂声.") \
 		)
 		if(isxeno(src))
 			if(mob_size != MOB_SIZE_BIG)
@@ -43,9 +43,9 @@
 			Paralyze(8 SECONDS)
 	else
 		src.visible_message(
-			span_warning("[src] was mildly shocked by the [source]."), \
-			span_warning("You feel a mild shock course through your body."), \
-			span_warning("You hear a light zapping.") \
+			span_warning("[src]被[source]轻微电击了."), \
+			span_warning("你感到一股轻微的电流穿过你的身体."), \
+			span_warning("你听到一声轻微的噼啪声.") \
 		)
 
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
@@ -62,14 +62,14 @@
 		return
 
 	TIMER_COOLDOWN_START(src, COOLDOWN_PUKE, 40 SECONDS) //5 seconds before the actual action plus 35 before the next one.
-	to_chat(src, span_warning("You feel like you are about to throw up!"))
+	to_chat(src, span_warning("你感觉快要吐了!"))
 	addtimer(CALLBACK(src, PROC_REF(do_vomit)), 5 SECONDS)
 
 /mob/living/carbon/proc/do_vomit()
 	adjust_stagger(3 SECONDS)
 	add_slowdown(3)
 
-	visible_message(span_warning("[src] throws up!"), span_warning("You throw up!"), null, 5)
+	visible_message(span_warning("[src]吐了!"), span_warning("你吐了!"), null, 5)
 	playsound(loc, 'sound/effects/splat.ogg', 25, TRUE, 7)
 
 	var/turf/location = loc
@@ -87,7 +87,7 @@
 		return
 
 	if(IsAdminSleeping())
-		to_chat(shaker, span_userdanger("This player has been admin slept, do not interfere with them."))
+		to_chat(shaker, span_userdanger("该玩家已被管理员睡眠, 请勿干扰他们."))
 		return
 
 	if(lying_angle || has_status_effect(STATUS_EFFECT_SLEEPING))
@@ -95,8 +95,8 @@
 			AdjustSleeping(-10 SECONDS)
 		if(!has_status_effect(STATUS_EFFECT_SLEEPING))
 			set_resting(FALSE)
-		shaker.visible_message(span_notice("[shaker] shakes [src] trying to get [p_them()] up!"),
-			span_notice("You shake [src] trying to get [p_them()] up!"), null, 4)
+		shaker.visible_message(span_notice("[shaker]摇晃[src]试图让[p_them()]起来!"),
+			span_notice("你摇晃[src]试图让[p_them()]起来!"), null, 4)
 
 		AdjustUnconscious(-6 SECONDS)
 		AdjustStun(-6 SECONDS)
@@ -114,8 +114,8 @@
 		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, TRUE, 5)
 		return
 
-	shaker.visible_message(span_notice("[shaker] hugs [src] to make [p_them()] feel better!"),
-		span_notice("You hug [src] to make [p_them()] feel better!"), null, 4)
+	shaker.visible_message(span_notice("[shaker]拥抱[src]让[p_them()]感觉好一些!"),
+		span_notice("你拥抱[src]让[p_them()]感觉好一些!"), null, 4)
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, TRUE, 5)
 
 
@@ -185,7 +185,7 @@
 		inertia_dir = get_dir(target, src)
 		step(src, inertia_dir)
 
-	visible_message(span_warning("[src] throws [thrown_thing]."), null, null, 5)
+	visible_message(span_warning("[src]扔出了[thrown_thing]."), null, null, 5)
 
 	playsound(src, SFX_THROW, min(10*min(get_dist(loc,target),thrown_thing.throw_range), 30), 1)
 
@@ -228,12 +228,12 @@
 	set category = "IC"
 
 	if(species.species_flags & ROBOTIC_LIMBS)
-		to_chat(src, span_warning("Your artificial body does not require sleep."))
+		to_chat(src, span_warning("你的人工身体不需要睡眠."))
 		return
 	if(has_status_effect(STATUS_EFFECT_SLEEPING))
-		to_chat(src, span_warning("You are already sleeping"))
+		to_chat(src, span_warning("你已经在睡觉了"))
 		return
-	if(tgui_alert(src, "You sure you want to sleep for a while?", "Sleep", list("Yes","No")) == "Yes")
+	if(tgui_alert(src, "你确定要睡一会儿吗?", "睡觉", list("Yes","No")) == "Yes")
 		SetSleeping(40 SECONDS) //Short nap
 
 /mob/living/carbon/Bump(atom/movable/AM)
@@ -247,7 +247,7 @@
 		return FALSE //can't slip while buckled, if the slip is run only and we're not running or while resting
 
 	stop_pulling()
-	visible_message(span_warning("[src] slipped on \the [slip_source_name]!"), span_warning("You slipped on \the [slip_source_name]!"))
+	visible_message(span_warning("[src]在\the [slip_source_name]上滑倒了!"), span_warning("你在\the [slip_source_name]上滑倒了!"))
 	playsound(src, 'sound/misc/slip.ogg', 25, 1)
 	Stun(stun_time)
 	Paralyze(paralyze_time)
@@ -402,21 +402,21 @@
 		var/honor_value = max(life_kills_total + life_value, default_honor_value)
 		if(user.hunter_data && (hunter_data in user.hunter_data.targets))
 			honor_value += 3
-		. += span_blue("[src] is worth [honor_value] honor.")
+		. += span_blue("[src]价值[honor_value]荣誉.")
 		if(hunter_data.automatic_target)
-			. += span_red("[src] marked as target for [hunter_data.targeted.real_name]")
+			. += span_red("[src]被标记为[hunter_data.targeted.real_name]的目标")
 		if(hunter_data.hunted)
-			. += span_orange("[src] is being hunted by [hunter_data.hunter.real_name].")
+			. += span_orange("[src]正被[hunter_data.hunter.real_name]猎杀.")
 
 		if(hunter_data.dishonored)
-			. += span_green("[src] was marked as dishonorable for '[hunter_data.dishonored_reason]'.")
+			. += span_green("[src]因'[hunter_data.dishonored_reason]'被标记为不荣誉.")
 		else if(hunter_data.honored)
-			. += span_green("[src] was honored for '[hunter_data.honored_reason]'.")
+			. += span_green("[src]因'[hunter_data.honored_reason]'获得了荣誉.")
 
 		if(hunter_data.thralled)
-			. += span_green("[src] was thralled by [hunter_data.thralled_set.real_name] for '[hunter_data.thralled_reason]'.")
+			. += span_green("[src]因'[hunter_data.thralled_reason]'被[hunter_data.thralled_set.real_name]奴役.")
 		else if(hunter_data.gear)
-			. += span_red("[src] was marked as carrying gear by [hunter_data.gear_set].")
+			. += span_red("[src]被[hunter_data.gear_set]标记为携带装备.")
 
 /mob/living/carbon/plastique_act()
 	ex_act(500)

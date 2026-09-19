@@ -66,7 +66,7 @@
 
 /area/shuttle/transit
 	name = "Hyperspace"
-	desc = "Weeeeee"
+	desc = "呜~~~~~~"
 	base_lighting_alpha = 255
 
 

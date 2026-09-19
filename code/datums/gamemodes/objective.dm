@@ -241,7 +241,7 @@ GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
 	return
 
 /datum/objective/escape/admin_edit(mob/admin)
-	if(tgui_alert(admin, "Relax escape requirements (recommended for admin events)?", "Continue?", list("Yes", "No")) != "No")
+	if(tgui_alert(admin, "放宽撤离要求(推荐用于管理员活动)?", "继续?", list("Yes", "No")) != "No")
 		admin_event = TRUE
 
 /datum/objective/escape_with
@@ -275,7 +275,7 @@ GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
 
 /datum/objective/escape_with/admin_edit(mob/admin)
 	admin_simple_target_pick(admin)
-	if(tgui_alert(admin, "Relax escape requirements (recommended for admin events)?", "Continue?", list("Yes", "No")) != "No")
+	if(tgui_alert(admin, "放宽撤离要求(推荐用于管理员活动)?", "继续?", list("Yes", "No")) != "No")
 		admin_event = TRUE
 
 /datum/objective/survive
@@ -529,7 +529,7 @@ GLOBAL_LIST_EMPTY(possible_items)
 	var/area/defendedarea
 
 /datum/objective/seize_area/admin_edit(mob/admin)
-	if(tgui_alert(admin, "Use the area we are currently in?", "Continue?", list("Yes", "No")) != "No")
+	if(tgui_alert(admin, "使用我们当前所在的区域?", "继续?", list("Yes", "No")) != "No")
 		defendedarea = get_area(admin)
 	else
 		var/area/new_target = input(admin,"Select target:", "Objective target") as null|anything in get_sorted_areas()

@@ -1,8 +1,8 @@
 #define SANDEVISTAN_IMPLANT "sandevistan_implant"
 
 /obj/item/implant/sandevistan
-	name = "Sandevistan spinal implant"
-	desc = "Overloads your central nervous system in order to do everything faster. Careful not to overuse it."
+	name = "斯安威斯坦脊柱植入体"
+	desc = "超载你的中枢神经系统以使一切动作更快. 小心不要过度使用."
 	icon_state = "internal_implant_spinal"
 	implant_color = null
 	w_class = WEIGHT_CLASS_NORMAL
@@ -56,7 +56,7 @@
 		time_on = 0
 		STOP_PROCESSING(SSfastprocess, src)
 		if(exerted)
-			to_chat(implant_owner, "Your brains feels normal again.")
+			to_chat(implant_owner, "你的大脑感觉恢复正常了.")
 			exerted = FALSE
 		return
 
@@ -66,13 +66,13 @@
 	switch(time_on)
 		if(1 SECONDS to 2 SECONDS)
 			if(COOLDOWN_FINISHED(src, alertcooldown))
-				to_chat(implant_owner, span_alert("You feel your spine tingle."))
+				to_chat(implant_owner, span_alert("你感觉你的脊柱刺痛."))
 				COOLDOWN_START(src, alertcooldown, 10 SECONDS)
 			implant_owner.hallucination += 2
 			implant_owner.adjust_fire_loss(1)
 		if(2.1 SECONDS to 5 SECONDS)
 			if(COOLDOWN_FINISHED(src, alertcooldown) || !exerted)
-				to_chat(implant_owner, span_userdanger("Your spine and brain feel like they're burning!"))
+				to_chat(implant_owner, span_userdanger("你的脊柱和大脑感觉像在燃烧!"))
 				COOLDOWN_START(src, alertcooldown, 5 SECONDS)
 			exerted = TRUE
 			implant_owner.set_drugginess(10)
@@ -83,7 +83,7 @@
 			else
 				implant_owner.adjust_fire_loss(2)
 		if(5.1 SECONDS to INFINITY)//no infinite abuse
-			to_chat(implant_owner, span_userdanger("You feel a slight sense of shame as your brain and spine rip themselves apart from overexertion."))
+			to_chat(implant_owner, span_userdanger("当你的大脑和脊柱因过度劳累而撕裂时, 你感到一丝羞耻."))
 			implant_owner.gib()
 			return
 
@@ -121,7 +121,7 @@
 		implant_owner.adjust_mob_accuracy(-accuracy_mod)
 	toggle_active(!active)
 	if(!silent)
-		to_chat(implant_owner, span_notice("You turn your spinal implant [active? "on" : "off"]."))
+		to_chat(implant_owner, span_notice("你将你的脊柱植入体[active? "on" : "off"]."))
 	update_icon()
 	activation_action.update_button_icon()
 	return TRUE

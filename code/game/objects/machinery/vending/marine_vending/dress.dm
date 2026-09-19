@@ -1,11 +1,11 @@
 /obj/machinery/vending/dress_supply
-	name = "\improper TerraGovTech dress uniform vendor"
-	desc = "An automated rack hooked up to a colossal storage of dress uniforms."
+	name = "\improper 地球政府科技礼服售卖机"
+	desc = "一个自动化架子, 连接着巨大的礼服存储."
 	icon_state = "marineuniform"
 	icon_vend = "marineuniform_vend"
 	icon_deny = "marineuniform"
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_CARGO)
-	product_ads = "Hey! You! Stop looking like a turtle and start looking like a TRUE marine!;Dress whites, fresh off the ironing board!;Why kill in armor when you can kill in style?;These uniforms are so sharp you'd cut yourself just looking at them!"
+	product_ads = "嘿! 你! 别看起来像只乌龟, 开始看起来像个真正的陆战队员!;白色礼服, 刚下熨衣板!;当你能有型地杀戮时, 为什么要穿装甲杀戮?;这些制服如此笔挺, 光看着就能割伤自己!"
 	wrenchable = FALSE
 	isshared = TRUE
 	products = list(

@@ -109,12 +109,12 @@
 	//No sense worrying about a chem cap if we're in cryo anyway. Still need to clear tick counts.
 	if(overflow < 1 || owner.bodytemperature <= 170)
 		if(old_overflow)
-			to_chat(owner, span_notice("You don't feel as overwhelmed by all the drugs any more."))
+			to_chat(owner, span_notice("你不再感觉被各种药物压得那么难受了."))
 			old_overflow = FALSE
 		return
 
 	if(!old_overflow)
-		to_chat(owner, span_warning("All the different drugs in you are starting to make you feel off..."))
+		to_chat(owner, span_warning("你体内各种不同的药物开始让你感觉不对劲..."))
 		old_overflow = TRUE
 
 	owner.set_drugginess(3)
@@ -210,7 +210,7 @@
 		prob_mod = 0.05
 	if(prob(prob_mod * damage))
 		body.vomit()
-		to_chat(body, span_warning("Your stomach reels in pain as you're incapable of holding down it's contents!"))
+		to_chat(body, span_warning("你的胃痛苦地翻腾,你无法忍住里面的东西!"))
 		return
 
 /datum/internal_organ/eyes
@@ -260,4 +260,4 @@
 	if(H.mind)
 		H.mind.transfer_to(brainmob)
 
-	to_chat(brainmob, span_notice("You feel slightly disoriented. That's normal when you're just a brain."))
+	to_chat(brainmob, span_notice("你感到有些迷失方向.当你只是一个大脑时这很正常."))

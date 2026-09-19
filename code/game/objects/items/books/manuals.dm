@@ -8,7 +8,7 @@
 
 
 /obj/item/book/manual/engineering_construction
-	name = "Station Repairs and Construction"
+	name = "空间站维修与建造"
 	icon_state ="bookEngineering"
 	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
 	title = "Station Repairs and Construction"
@@ -28,7 +28,7 @@
 
 
 /obj/item/book/manual/engineering_particle_accelerator
-	name = "Particle Accelerator User's Guide"
+	name = "粒子加速器用户指南"
 	icon_state ="bookParticleAccelerator"
 	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
 	title = "Particle Accelerator User's Guide"
@@ -73,7 +73,7 @@
 
 
 /obj/item/book/manual/supermatter_engine
-	name = "Supermatter Engine User's Guide"
+	name = "超物质引擎用户指南"
 	icon_state = "bookSupermatter"
 	author = "Waleed Asad"
 	title = "Supermatter Engine User's Guide"
@@ -183,7 +183,7 @@
 			</html>"}
 
 /obj/item/book/manual/engineering_hacking
-	name = "Hacking"
+	name = "黑客技术"
 	icon_state ="bookHacking"
 	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
 	title = "Hacking"
@@ -203,7 +203,7 @@
 
 
 /obj/item/book/manual/engineering_singularity_safety
-	name = "Singularity Safety in Special Circumstances"
+	name = "特殊情况下的奇点安全"
 	icon_state ="bookEngineeringSingularitySafety"
 	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
 	title = "Singularity Safety in Special Circumstances"
@@ -254,7 +254,7 @@
 			"}
 
 /obj/item/book/manual/medical_cloning
-	name = "Cloning Techniques of the 26th Century"
+	name = "26世纪克隆技术"
 	icon_state ="bookCloning"
 	author = "Medical Journal, volume 3"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
 	title = "Cloning Techniques of the 26th Century"
@@ -347,7 +347,7 @@
 
 
 /obj/item/book/manual/ripley_build_and_repair
-	name = "APLU \"Ripley\" Construction and Operation Manual"
+	name = "APLU \"Ripley\"建造与操作手册"
 	icon_state ="book"
 	author = "Randall Varn, Einstein Engines Senior Mechanic"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
 	title = "APLU \"Ripley\" Construction and Operation Manual"
@@ -424,7 +424,7 @@
 
 
 /obj/item/book/manual/research_and_development
-	name = "Research and Development 101"
+	name = "研究与开发入门"
 	icon_state = "rdbook"
 	author = "Dr. L. Ight"
 	title = "Research and Development 101"
@@ -493,7 +493,7 @@
 
 
 /obj/item/book/manual/robotics_cyborgs
-	name = "Cyborgs for Dummies"
+	name = "机器人入门指南"
 	icon_state = "borgbook"
 	author = "XISC"
 	title = "Cyborgs for Dummies"
@@ -698,8 +698,8 @@
 
 
 /obj/item/book/manual/security_space_law
-	name = "Corporate Regulations"
-	desc = "A set of NanoTrasen guidelines for keeping law and order on their space stations."
+	name = "公司规章"
+	desc = "一套NanoTrasen用于在其空间站上维持法律与秩序的指导方针."
 	icon_state = "bookSpaceLaw"
 	author = "NanoTrasen"
 	title = "Corporate Regulations"
@@ -718,8 +718,8 @@
 		"}
 
 /obj/item/book/manual/marine_law
-	name = "Space Law"
-	desc = "A set of universal guidelines for keeping law and order on civilian, private and military vessels alike."
+	name = "太空法"
+	desc = "一套用于在民用, 私人和军用船只上维持法律与秩序的通用指导方针."
 	icon_state = "bookSpaceLaw"
 	author = "The Company"
 	title = "Space Law"
@@ -740,8 +740,8 @@
 
 
 /obj/item/book/manual/medical_diagnostics_manual
-	name = "NT Medical Diagnostics Manual"
-	desc = "First, do no harm. A detailed medical practitioner's guide."
+	name = "NT医疗诊断手册"
+	desc = "首先, 不可伤害. 一本详细的医疗从业者指南."
 	icon_state = "bookMedical"
 	author = "Nanotrasen Medicine Department"
 	title = "NT Medical Diagnostics Manual"
@@ -786,7 +786,7 @@
 
 
 /obj/item/book/manual/engineering_guide
-	name = "Engineering Textbook"
+	name = "工程学教科书"
 	icon_state ="bookEngineering2"
 	author = "Engineering Encyclopedia"
 	title = "Engineering Textbook"
@@ -805,7 +805,7 @@
 
 
 /obj/item/book/manual/chef_recipes
-	name = "Chef Recipes"
+	name = "厨师食谱"
 	icon_state = "cooked_book"
 	author = "Victoria Ponsonby"
 	title = "Chef Recipes"
@@ -864,7 +864,7 @@
 
 
 /obj/item/book/manual/barman_recipes
-	name = "Barman Recipes"
+	name = "酒保食谱"
 	icon_state = "barbook"
 	author = "Sir John Rose"
 	title = "Barman Recipes"
@@ -919,7 +919,7 @@
 
 
 /obj/item/book/manual/detective
-	name = "The Film Noir: Proper Procedures for Investigations"
+	name = "黑色电影: 调查的正确程序"
 	icon_state ="bookDetective"
 	author = "NanoTrasen"
 	title = "The Film Noir: Proper Procedures for Investigations"
@@ -962,7 +962,7 @@
 			</html>"}
 
 /obj/item/book/manual/nuclear
-	name = "Fission Mailed: Nuclear Sabotage 101"
+	name = "裂变邮件: 核破坏入门"
 	icon_state ="bookNuclear"
 	author = "Syndicate"
 	title = "Fission Mailed: Nuclear Sabotage 101"
@@ -1013,7 +1013,7 @@
 			"}
 
 /obj/item/book/manual/atmospipes
-	name = "Pipes and You: Getting To Know Your Scary Tools"
+	name = "管道与你: 了解你那些可怕工具"
 	icon_state = "pipingbook"
 	author = "Maria Crash, Senior Atmospherics Technician"
 	title = "Pipes and You: Getting To Know Your Scary Tools"
@@ -1120,7 +1120,7 @@
 			"}
 
 /obj/item/book/manual/evaguide
-	name = "EVA Gear and You: Not Spending All Day Inside"
+	name = "EVA装备与你: 不用整天待在里面"
 	icon_state = "evabook"
 	author = "Maria Crash, Senior Atmospherics Technician"
 	title = "EVA Gear and You: Not Spending All Day Inside"
@@ -1192,7 +1192,7 @@
 
 
 /obj/item/book/manual/hydroponics_beekeeping
-	name = "The Ins and Outs of Apiculture - A Precise Art"
+	name = "养蜂的来龙去脉 - 一门精密的艺术"
 	icon_state ="bookHydroponicsBees"
 	author = "Beekeeper Dave"
 	title = "The Ins and Outs of Apiculture - A Precise Art"
@@ -1228,7 +1228,7 @@
 
 
 /obj/item/book/manual/orbital_cannon_manual
-	name = "TGMC Orbital Bombardment System Manual"
+	name = "TGMC轨道轰炸系统手册"
 	icon_state = "bookEngineering"
 	author = "TGMC R&D"
 	title = "TGMC Orbital Bombardment System Manual"

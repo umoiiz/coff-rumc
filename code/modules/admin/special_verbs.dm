@@ -7,7 +7,7 @@
 	remove_verb(src, /client/proc/show_verbs)
 	add_admin_verbs()
 
-	to_chat(src, span_interface("All of your adminverbs are now visible."), confidential = TRUE)
+	to_chat(src, span_interface("你所有的管理员指令现在都可见了."), confidential = TRUE)
 	BLACKBOX_LOG_ADMIN_VERB("Show Adminverbs")
 
 /client/proc/readmin()

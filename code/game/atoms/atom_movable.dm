@@ -36,12 +36,12 @@
 
 	var/initial_language_holder = /datum/language_holder
 	var/datum/language_holder/language_holder
-	var/verb_say = "says"
-	var/verb_ask = "asks"
-	var/verb_exclaim = "exclaims"
-	var/verb_whisper = "whispers"
-	var/verb_sing = "sings"
-	var/verb_yell = "yells"
+	var/verb_say = "说道"
+	var/verb_ask = "问道"
+	var/verb_exclaim = "喊道"
+	var/verb_whisper = "低语道"
+	var/verb_sing = "唱道"
+	var/verb_yell = "大叫道"
 	var/speech_span
 
 	var/grab_state = GRAB_PASSIVE //if we're pulling a mob, tells us how aggressive our grab is.
@@ -924,7 +924,7 @@
 						qdel(Obj)
 					CHECK_TICK
 				if(!i)
-					to_chat(usr, "No objects of this type exist")
+					to_chat(usr, "不存在此类型的物体")
 					return
 			if("Type and subtypes")
 				for(var/obj/Obj in world)
@@ -933,7 +933,7 @@
 						qdel(Obj)
 					CHECK_TICK
 				if(!i)
-					to_chat(usr, "No objects of this type exist")
+					to_chat(usr, "不存在此类型的物体")
 					return
 		log_admin("[key_name(usr)] deleted all objects of type[strict ? "" : " and subtypes"] of [O_type] ([i] objects deleted).")
 		message_admins("[ADMIN_TPMONTY(usr)] deleted all objects of type[strict ? "" : " and subtypes"] of [O_type] ([i] objects deleted).")
@@ -1120,7 +1120,7 @@
 			M.set_glide_size(glide_size)
 		log_combat(src, M, "grabbed", addition = "passive grab")
 		if(!suppress_message)
-			visible_message(span_warning("[src] has grabbed [M] passively!"))
+			visible_message(span_warning("[src]被动抓住了[M]!"))
 	else
 		pulling.set_glide_size(glide_size)
 	return TRUE
@@ -1335,13 +1335,13 @@
 /atom/movable/proc/force_push(atom/movable/pushed_atom, force = move_force, direction, silent = FALSE)
 	. = pushed_atom.force_pushed(src, force, direction)
 	if(!silent && .)
-		visible_message(span_warning("[src] forcefully pushes against [pushed_atom]!"), span_warning("You forcefully push against [pushed_atom]!"))
+		visible_message(span_warning("[src]用力推挤[pushed_atom]!"), span_warning("你用力推挤[pushed_atom]!"))
 
 ///returns bool for if we want to get handle move crushing, return is bool if we can move an anchored obj
 /atom/movable/proc/move_crush(atom/movable/crushed_atom, force = move_force, direction, silent = FALSE)
 	. = crushed_atom.move_crushed(src, force, direction)
 	if(!silent && .)
-		visible_message(span_danger("[src] crushes past [crushed_atom]!"), span_danger("You crush [crushed_atom]!"))
+		visible_message(span_danger("[src]挤过[crushed_atom]!"), span_danger("你挤过[crushed_atom]!"))
 
 ///returns bool for if we want to get crushed
 /atom/movable/proc/move_crushed(atom/movable/pusher, force = MOVE_FORCE_DEFAULT, direction)

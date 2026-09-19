@@ -1,6 +1,6 @@
 /obj/item/card
-	name = "card"
-	desc = "Does card things."
+	name = "卡"
+	desc = "做卡该做的事."
 	icon = 'icons/obj/items/card.dmi'
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/equipment/id_left.dmi',
@@ -13,13 +13,13 @@
 	var/list/files = list(  )
 
 /obj/item/card/emag_broken // left as decor for maps
-	desc = "It's a card with a magnetic strip attached to some circuitry. It looks too busted to be used for anything but salvage."
-	name = "broken cryptographic sequencer"
+	desc = "这是一张带有磁条并连接到某些电路的卡.它看起来损坏得太严重,除了回收利用外别无他用."
+	name = "损坏的加密序列器"
 	icon_state = "emag"
 
 /obj/item/card/id
-	name = "identification card"
-	desc = "A card used to provide ID and determine access to a large array of machinery."
+	name = "身份卡"
+	desc = "一张用于提供身份证明并确定对大量机械访问权限的卡."
 	icon_state = "id"
 	equip_slot_flags = ITEM_SLOT_ID
 	///The access this id card has
@@ -62,7 +62,7 @@
 	return ..()
 
 /obj/item/card/id/attack_self(mob/user as mob)
-	user.visible_message("[user] shows you: [icon2html(src, viewers(user))] [name]: assignment: [assignment]")
+	user.visible_message("[user]向你展示:[icon2html(src, viewers(user))] [name]:职务:[assignment]")
 
 /obj/item/card/id/vv_edit_var(var_name, var_value)
 	. = ..()
@@ -93,8 +93,8 @@
 	set category = "IC.Clothing"
 	set src in usr
 
-	to_chat(usr, "[icon2html(src, usr)] [name]: The current assignment on the card is [assignment].")
-	to_chat(usr, "The blood type on the card is [blood_type].")
+	to_chat(usr, "[icon2html(src, usr)] [name]:卡上的当前职务是[assignment].")
+	to_chat(usr, "卡上的血型是[blood_type].")
 
 /obj/item/card/id/equipped(mob/living/carbon/human/H, slot)
 	if(istype(H))
@@ -110,20 +110,20 @@
 	return ..()
 
 /obj/item/card/id/silver
-	name = "identification card"
-	desc = "A silver card which shows honour and dedication."
+	name = "身份卡"
+	desc = "一张象征荣誉与奉献的银色卡."
 	icon_state = "silver"
 	worn_icon_state = "silver_id"
 
 /obj/item/card/id/gold
-	name = "identification card"
-	desc = "A golden card which shows power and might."
+	name = "身份卡"
+	desc = "一张象征权力与威严的金色卡."
 	icon_state = "gold"
 	worn_icon_state = "gold_id"
 	marine_points = list(CAT_SYNTH = SYNTH_TOTAL_BUY_POINTS)
 
 /obj/item/card/id/syndicate
-	name = "agent card"
+	name = "特工卡"
 	access = list(ACCESS_ILLEGAL_PIRATE)
 	var/registered_user = null
 
@@ -140,7 +140,7 @@
 /obj/item/card/id/syndicate/attack_self(mob/user as mob)
 	if(!src.registered_name)
 		//Stop giving the players unsanitized unputs! You are giving ways for players to intentionally crash clients! -Nodrak
-		var/newname = reject_bad_name(tgui_input_text(user, "What name would you like to put on this card?", "Agent card name", ishuman(user) ? user.real_name : user.name))
+		var/newname = reject_bad_name(tgui_input_text(user, "你想在这张卡上写什么名字?", "特工卡名称", ishuman(user) ? user.real_name : user.name))
 		if(!newname) //Same as mob/new_player/prefrences.dm
 			alert("Invalid name.")
 			return
@@ -153,13 +153,13 @@
 			return
 		src.assignment = newjob
 		src.name = "[src.registered_name]'s ID Card ([src.assignment])"
-		to_chat(user, span_notice("You successfully forge the ID card."))
+		to_chat(user, span_notice("你成功伪造了身份卡."))
 		registered_user = user
 	else if(!registered_user || registered_user == user)
 
 		if(!registered_user) registered_user = user  //
 
-		switch(tgui_alert(user, "Would you like to display the ID, or retitle it?", "Choose.", list("Rename","Show")))
+		switch(tgui_alert(user, "你想展示身份卡,还是重命名它?", "选择.", list("Rename","Show")))
 			if("Rename")
 				var/newname = stripped_input(user, "What name would you like to put on this card?", "Agent card name", ishuman(user) ? user.real_name : user.name, max_length = 26)
 				if(!newname || newname == "Unknown" || newname == "floor" || newname == "wall" || newname == "r-wall") //Same as mob/new_player/prefrences.dm
@@ -173,7 +173,7 @@
 					return
 				src.assignment = newjob
 				src.name = "[src.registered_name]'s ID Card ([src.assignment])"
-				to_chat(user, span_notice("You successfully forge the ID card."))
+				to_chat(user, span_notice("你成功伪造了身份卡."))
 				return
 			if("Show")
 				return ..()
@@ -181,15 +181,15 @@
 		return ..()
 
 /obj/item/card/id/syndicate_command
-	name = "syndicate ID card"
-	desc = "An ID straight from the Syndicate."
+	name = "辛迪加身份卡"
+	desc = "一张直接来自辛迪加的身份卡."
 	registered_name = "Syndicate"
 	assignment = "Syndicate Overlord"
 	access = list(ACCESS_ILLEGAL_PIRATE)
 
 /obj/item/card/id/captains_spare
-	name = "captain's spare ID"
-	desc = "The spare ID of the High Lord himself."
+	name = "舰长的备用身份卡"
+	desc = "至高领主本人的备用身份卡."
 	icon_state = "gold"
 	worn_icon_state = "gold_id"
 	registered_name = CAPTAIN
@@ -197,14 +197,14 @@
 	access = ALL_MARINE_ACCESS
 
 /obj/item/card/id/sec
-	name = "identification card"
-	desc = "A security card which shows law and order."
+	name = "身份卡"
+	desc = "一张象征法律与秩序的安保卡."
 	icon_state = "sec"
 	worn_icon_state = "silver_id"
 
 /obj/item/card/id/dogtag
-	name = "dog tag"
-	desc = "A marine dog tag."
+	name = "狗牌"
+	desc = "一枚陆战队员狗牌."
 	icon_state = "dogtag"
 	worn_icon_state = "dogtag"
 	iff_signal = TGMC_LOYALIST_IFF
@@ -213,14 +213,14 @@
 /obj/item/card/id/dogtag/examine(mob/user)
 	. = ..()
 	if(ishuman(user))
-		. += span_notice("It reads: \"[registered_name] - [assignment] - [blood_type]\"")
+		. += span_notice("上面写着:\"[registered_name] - [assignment] - [blood_type]\"")
 
 /obj/item/card/id/dogtag/canStrip(mob/stripper, mob/owner)
 	. = ..()
 	if(!.)
 		return
 	if(stripper.faction == owner.faction && owner.stat != DEAD) // no grief please
-		stripper.balloon_alert(stripper, "[owner.name] isn't dead yet")
+		stripper.balloon_alert(stripper, "[owner.name]还没死")
 		return FALSE
 
 // Vendor points for job override
@@ -255,8 +255,8 @@
 	)
 
 /obj/item/card/id/dogtag/som
-	name = "\improper Sons of Mars dogtag"
-	desc = "Used by the Sons of Mars."
+	name = "\improper 火星之子狗牌"
+	desc = "火星之子使用."
 	icon_state = "dogtag_som"
 	worn_icon_state = "dogtag_som"
 	iff_signal = SOM_IFF

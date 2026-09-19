@@ -201,7 +201,7 @@
 		CRASH("SDQL2 fatal error");};
 
 ADMIN_VERB(sdql2_query, R_DEBUG, "SDQL2 Query", "Run a SDQL2 query.", ADMIN_CATEGORY_DEBUG, query_text as message)
-	var/prompt = tgui_alert(user, "Run SDQL2 Query?", "SDQL2", list("Yes", "Cancel"))
+	var/prompt = tgui_alert(user, "运行 SDQL2 查询?", "SDQL2", list("Yes", "Cancel"))
 	if (prompt != "Yes")
 		return
 	var/list/results = world.SDQL2_query(query_text, key_name_admin(user), "[key_name(user)]")
@@ -275,7 +275,7 @@ ADMIN_VERB(sdql2_query, R_DEBUG, "SDQL2 Query", "Run a SDQL2 query.", ADMIN_CATE
 				finished = FALSE
 				if(query.state == SDQL2_STATE_ERROR)
 					if(usr)
-						to_chat(usr, span_admin("SDQL query [query.get_query_text()] errored. It will NOT be automatically garbage collected. Please remove manually."))
+						to_chat(usr, span_admin("SDQL 查询 [query.get_query_text()] 出错.它不会被自动垃圾回收.请手动移除."))
 					running -= query
 			else
 				if(query.finished)
@@ -297,14 +297,14 @@ ADMIN_VERB(sdql2_query, R_DEBUG, "SDQL2 Query", "Run a SDQL2 query.", ADMIN_CATE
 						next_query.ARun()
 				else
 					if(usr)
-						to_chat(usr, span_admin("SDQL query [query.get_query_text()] was halted. It will NOT be automatically garbage collected. Please remove manually."))
+						to_chat(usr, span_admin("SDQL 查询 [query.get_query_text()] 已停止.它不会被自动垃圾回收.请手动移除."))
 					running -= query
 	while(!finished)
 
 	var/end_time_total = REALTIMEOFDAY - start_time_total
-	return list(span_admin("SDQL query combined results: [query_text]"),\
-		span_admin("SDQL query completed: [objs_all] objects selected by path, and [selectors_used ? objs_eligible : objs_all] objects executed on after WHERE filtering/MAPping if applicable."),\
-		span_admin("SDQL combined querys took [DisplayTimeText(end_time_total)] to complete.")) + combined_refs
+	return list(span_admin("SDQL 查询合并结果: [query_text]"),\
+		span_admin("SDQL 查询完成: 按路径选中了 [objs_all] 个对象,并在 WHERE 过滤/映射(如适用)后对 [selectors_used ? objs_eligible : objs_all] 个对象执行了操作."),\
+		span_admin("SDQL组合查询耗时[DisplayTimeText(end_time_total)]完成.")) + combined_refs
 
 GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
 GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null, "VIEW VARIABLES (all)", null))
@@ -528,10 +528,10 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 		var/client/C = GLOB.directory[show_next_to_key]
 		if(C)
 			var/mob/showmob = C.mob
-			to_chat(showmob, span_admin("SDQL query results: [get_query_text()]<br>\
-			SDQL query completed: [islist(obj_count_all)? length(obj_count_all) : obj_count_all] objects selected by path, and \
+			to_chat(showmob, span_admin("SDQL查询结果: [get_query_text()]<br>\
+			SDQL查询完成: 按路径选中[islist(obj_count_all)? length(obj_count_all) : obj_count_all]个对象, 以及\
 			[where_switched? "[islist(obj_count_eligible)? length(obj_count_eligible) : obj_count_eligible] objects executed on after WHERE keyword selection." : ""]<br>\
-			SDQL query took [DisplayTimeText(end_time - start_time)] to complete."))
+			SDQL查询耗时[DisplayTimeText(end_time - start_time)]完成."))
 			if(length(select_text))
 				var/text = islist(select_text)? select_text.Join() : select_text
 				var/static/result_offset = 0
@@ -859,7 +859,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 				if("or", "||")
 					result = (result || val)
 				else
-					to_chat(usr, span_danger("SDQL2: Unknown op [op]"))
+					to_chat(usr, span_danger("SDQL2: 未知操作符[op]"))
 					result = null
 		else
 			result = val
@@ -969,7 +969,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 				querys[querys_pos] = parsed_tree
 				querys_pos++
 			else //There was an error so don't run anything, and tell the user which query has errored.
-				to_chat(usr, span_danger("Parsing error on [querys_pos]\th query. Nothing was executed."))
+				to_chat(usr, span_danger("[querys_pos]\th查询解析错误. 未执行任何操作."))
 				return list()
 			query_tree = list()
 			do_parse = 0
@@ -1015,16 +1015,16 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 		D = object
 
 	if (object == world && (!long || expression[start + 1] == ".") && !(expression[start] in exclude) && copytext(expression[start], 1, 3) != "SS") //3 == length("SS") + 1
-		to_chat(usr, span_danger("World variables are not allowed to be accessed. Use global."))
+		to_chat(usr, span_danger("不允许访问世界变量. 请使用global."))
 		return null
 
 	else if(expression [start] == "{" && long)
 		if(lowertext(copytext(expression[start + 1], 1, 3)) != "0x") //3 == length("0x") + 1
-			to_chat(usr, span_danger("Invalid pointer syntax: [expression[start + 1]]"))
+			to_chat(usr, span_danger("无效指针语法: [expression[start + 1]]"))
 			return null
 		v = locate("\[[expression[start + 1]]]")
 		if(!v)
-			to_chat(usr, span_danger("Invalid pointer: [expression[start + 1]]"))
+			to_chat(usr, span_danger("无效指针: [expression[start + 1]]"))
 			return null
 		start++
 		long = start < length(expression)
@@ -1087,7 +1087,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 			var/list/L = v
 			var/index = query.SDQL_expression(source, expression[start + 2])
 			if(isnum(index) && (!ISINTEGER(index) || length(L) < index))
-				to_chat(usr, span_danger("Invalid list index: [index]"))
+				to_chat(usr, span_danger("无效列表索引: [index]"))
 				return null
 			return L[index]
 	return v
@@ -1139,7 +1139,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 
 		else if(char == "'")
 			if(word != "")
-				to_chat(usr, span_danger("SDQL2: You have an error in your SDQL syntax, unexpected ' in query: \"<font color=gray>[query_text]</font>\" following \"<font color=gray>[word]</font>\". Please check your syntax, and try again."))
+				to_chat(usr, span_danger("SDQL2: 你的SDQL语法有错误, 查询中出现意外的': \"<font color=gray>[query_text]</font>\"位于\"<font color=gray>[word]</font>\"之后. 请检查你的语法, 然后重试."))
 				return null
 
 			word = "'"
@@ -1159,7 +1159,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 					word += char
 
 			if(i > len)
-				to_chat(usr, span_danger("SDQL2: You have an error in your SDQL syntax, unmatched ' in query: \"<font color=gray>[query_text]</font>\". Please check your syntax, and try again."))
+				to_chat(usr, span_danger("SDQL2: 你的SDQL语法有错误, 查询中'不匹配: \"<font color=gray>[query_text]</font>\". 请检查你的语法, 然后重试."))
 				return null
 
 			query_list += "[word]'"
@@ -1167,7 +1167,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 
 		else if(char == "\"")
 			if(word != "")
-				to_chat(usr, span_danger("SDQL2: You have an error in your SDQL syntax, unexpected \" in query: \"<font color=gray>[query_text]</font>\" following \"<font color=gray>[word]</font>\". Please check your syntax, and try again."))
+				to_chat(usr, span_danger("SDQL2: 你的SDQL语法有错误, 查询中出现意外的\": \"<font color=gray>[query_text]</font>\"位于\"<font color=gray>[word]</font>\"之后. 请检查你的语法, 然后重试."))
 				return null
 
 			word = "\""
@@ -1187,7 +1187,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 					word += char
 
 			if(i > len)
-				to_chat(usr, span_danger("SDQL2: You have an error in your SDQL syntax, unmatched \" in query: \"<font color=gray>[query_text]</font>\". Please check your syntax, and try again."))
+				to_chat(usr, span_danger("SDQL2: 你的SDQL语法有错误, 查询中\"不匹配: \"<font color=gray>[query_text]</font>\". 请检查你的语法, 然后重试."))
 				return null
 
 			query_list += "[word]\""

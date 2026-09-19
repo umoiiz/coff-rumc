@@ -499,7 +499,7 @@ SUBSYSTEM_DEF(minimaps)
 /datum/action/minimap/action_activate()
 	. = ..()
 	if(!map)
-		to_chat(owner, span_warning("This region doesn't seem to have a minimap!"))
+		to_chat(owner, span_warning("此区域似乎没有小地图!"))
 		return FALSE
 	return toggle_minimap()
 
@@ -515,7 +515,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/atom/movable/tracking = locator_override ? locator_override : owner
 	if(force_state)
 		if(locate(/atom/movable/screen/minimap) in owner?.client.screen) //This seems like the most effective way to do this without some wacky code
-			to_chat(owner, span_warning("You already have a minimap open!"))
+			to_chat(owner, span_warning("你已经打开了一个小地图!"))
 			return FALSE
 		owner.client.screen += map
 		owner.client.screen += locator

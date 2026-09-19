@@ -15,10 +15,11 @@ export const PlayerPreferences = (props) => {
   const { act, data } = useBackend<PlayerPreferencesData>();
 
   const { save_slot_names, slot, tabIndex } = data;
+  const activeTab = Number(tabIndex) || 1;
 
   let affectsSave = false;
   let CurrentTab = CharacterCustomization;
-  switch (tabIndex) {
+  switch (activeTab) {
     case 1:
       CurrentTab = CharacterCustomization;
       affectsSave = true;
@@ -53,7 +54,7 @@ export const PlayerPreferences = (props) => {
 
   // I dont like this shit, but it doesn't matter in the end
   // i'd rather massage the data in js than byond.
-  const slotNames = Object.values(save_slot_names).map(
+  const slotNames = Object.values(save_slot_names || {}).map(
     (name) => name.split(' ')[0],
   );
 
@@ -72,15 +73,15 @@ export const PlayerPreferences = (props) => {
       <Window.Content scrollable>
         <Flex>
           <Flex.Item>
-            <NavigationSelector tabIndex={tabIndex} />
+            <NavigationSelector tabIndex={activeTab} />
           </Flex.Item>
           <Flex.Item grow={1} basis={0}>
             {affectsSave ? (
-              <Section title="Save slot" buttons={saveSlots}>
-                <CurrentTab />
+              <Section title="保存槽位" buttons={saveSlots}>
+                <CurrentTab key={activeTab} />
               </Section>
             ) : (
-              <CurrentTab />
+              <CurrentTab key={activeTab} />
             )}
           </Flex.Item>
         </Flex>
@@ -98,49 +99,49 @@ const NavigationSelector = (props) => {
         selected={tabIndex === 1}
         onClick={() => act('tab_change', { tabIndex: 1 })}
       >
-        Character Customization
+        角色自定义
       </Tabs.Tab>
       <Tabs.Tab
         selected={tabIndex === 2}
         onClick={() => act('tab_change', { tabIndex: 2 })}
       >
-        Predator Customization
+        铁血战士自定义
       </Tabs.Tab>
       <Tabs.Tab
         selected={tabIndex === 3}
         onClick={() => act('tab_change', { tabIndex: 3 })}
       >
-        Background Information
+        背景信息
       </Tabs.Tab>
       <Tabs.Tab
         selected={tabIndex === 4}
         onClick={() => act('tab_change', { tabIndex: 4 })}
       >
-        Gear Customization
+        装备自定义
       </Tabs.Tab>
       <Tabs.Tab
         selected={tabIndex === 5}
         onClick={() => act('tab_change', { tabIndex: 5 })}
       >
-        Job Preferences
+        职业偏好
       </Tabs.Tab>
       <Tabs.Tab
         selected={tabIndex === 6}
         onClick={() => act('tab_change', { tabIndex: 6 })}
       >
-        Game Settings
+        游戏设置
       </Tabs.Tab>
       <Tabs.Tab
         selected={tabIndex === 7}
         onClick={() => act('tab_change', { tabIndex: 7 })}
       >
-        Keybindings
+        按键绑定
       </Tabs.Tab>
       <Tabs.Tab
         selected={tabIndex === 8}
         onClick={() => act('tab_change', { tabIndex: 8 })}
       >
-        Draw Order
+        绘制顺序
       </Tabs.Tab>
     </Tabs>
   );

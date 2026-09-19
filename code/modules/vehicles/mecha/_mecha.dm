@@ -19,7 +19,7 @@
  */
 /obj/vehicle/sealed/mecha
 	name = "mecha"
-	desc = "Exosuit"
+	desc = "外骨骼"
 	icon = 'icons/mecha/mecha.dmi'
 	move_force = MOVE_FORCE_VERY_STRONG
 	move_resist = MOVE_FORCE_OVERPOWERING
@@ -275,8 +275,8 @@
 		return
 	log_combat(src, crushed, "stomped on", addition = "(DAMTYPE: [uppertext(BRUTE)])")
 	crushed.visible_message(
-		span_danger("[src] crushes [crushed]!"),
-		span_userdanger("[src] steps on you!"),
+		span_danger("[src]碾碎[crushed]!"),
+		span_userdanger("[src]踩到了你!"),
 	)
 	crushed.emote(pick("scream", "pain"))
 	crushed.take_overall_damage(rand(10, 30) * move_delay, BRUTE, MELEE, FALSE, FALSE, TRUE, 0, 2)
@@ -289,7 +289,7 @@
 /obj/vehicle/sealed/mecha/proc/set_safety(mob/user)
 	weapons_safety = !weapons_safety
 	SEND_SOUND(user, sound('sound/machines/beep.ogg', volume = 25))
-	balloon_alert(user, "equipment [weapons_safety ? "safe" : "ready"]")
+	balloon_alert(user, "装备[weapons_safety ? "safe" : "ready"]")
 	set_mouse_pointer()
 
 /**
@@ -336,7 +336,7 @@
 	update_appearance(UPDATE_OVERLAYS)
 	for(var/mob/mob_occupant AS in occupants)
 		SEND_SOUND(mob_occupant, sound('sound/items/timer.ogg', volume=50))
-		to_chat(mob_occupant, span_notice("Equipment control unit has been rebooted successfully."))
+		to_chat(mob_occupant, span_notice("装备控制单元已成功重启。"))
 	set_mouse_pointer()
 
 /obj/vehicle/sealed/mecha/examine(mob/user)
@@ -376,7 +376,7 @@
 
 	for(var/mob/living/occupant AS in occupants)
 		if(!enclosed && occupant?.incapacitated()) //no sides mean it's easy to just sorta fall out if you're incapacitated.
-			visible_message(span_warning("[occupant] tumbles out of the cockpit!"))
+			visible_message(span_warning("[occupant]从驾驶舱中滚了出来!"))
 			mob_exit(occupant) //bye bye
 			continue
 		if(cell)
@@ -450,7 +450,7 @@
 	if(HAS_TRAIT(src, TRAIT_INCAPACITATED))
 		return
 	if(construction_state)
-		balloon_alert(user, "end maintenance first!")
+		balloon_alert(user, "先结束维护!")
 		return
 	if(!get_charge())
 		return
@@ -463,7 +463,7 @@
 		target = pick(view(3,target))
 	var/mob/living/livinguser = user
 	if(!is_equipment_controller(user))
-		balloon_alert(user, "wrong seat for equipment!")
+		balloon_alert(user, "座位错误,无法操作设备!")
 		return
 	var/obj/item/mecha_parts/mecha_equipment/selected
 	if(modifiers[BUTTON] == RIGHT_CLICK)
@@ -483,7 +483,7 @@
 		INVOKE_ASYNC(selected, TYPE_PROC_REF(/obj/item/mecha_parts/mecha_equipment, action), user, target, modifiers)
 		return
 	if(!(livinguser in return_controllers_with_flag(VEHICLE_CONTROL_MELEE)))
-		to_chat(livinguser, span_warning("You're in the wrong seat to interact with your hands."))
+		to_chat(livinguser, span_warning("你坐错了座位,无法用手进行交互."))
 		return
 	var/on_cooldown = TIMER_COOLDOWN_RUNNING(src, COOLDOWN_MECHA_MELEE_ATTACK)
 	var/adjacent = Adjacent(target)

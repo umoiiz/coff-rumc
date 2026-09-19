@@ -19,9 +19,9 @@ export const BackgroundInformation = (props) => {
   const [securityDesc, setSecurityDesc] = useState(sec_record);
   const [exploitsDesc, setExploitsDesc] = useState(exploit_record);
   return (
-    <Section title="Background information">
+    <Section title="背景信息">
       <Section
-        title="Character Description"
+        title="角色描述"
         buttons={
           <Box>
             <Button
@@ -29,10 +29,10 @@ export const BackgroundInformation = (props) => {
               disabled={characterDesc === flavor_text}
               onClick={() => act('flavor_text', { characterDesc })}
             >
-              Save
+              保存
             </Button>
             <Button icon="times" onClick={() => setCharacterDesc(flavor_text)}>
-              Reset
+              重置
             </Button>
           </Box>
         }
@@ -50,7 +50,7 @@ export const BackgroundInformation = (props) => {
       <Stack>
         <Stack.Item grow>
           <Section
-            title="Medical Records"
+            title="医疗记录"
             buttons={
               <Box>
                 <Button
@@ -58,10 +58,10 @@ export const BackgroundInformation = (props) => {
                   disabled={medicalDesc === med_record}
                   onClick={() => act('med_record', { medicalDesc })}
                 >
-                  Save
+                  保存
                 </Button>
                 <Button icon="times" onClick={() => setMedicalDesc(med_record)}>
-                  Reset
+                  重置
                 </Button>
               </Box>
             }
@@ -78,7 +78,7 @@ export const BackgroundInformation = (props) => {
         </Stack.Item>
         <Stack.Item grow>
           <Section
-            title="Employment Records"
+            title="雇佣记录"
             buttons={
               <Box>
                 <Button
@@ -86,13 +86,13 @@ export const BackgroundInformation = (props) => {
                   disabled={employmentDesc === gen_record}
                   onClick={() => act('gen_record', { employmentDesc })}
                 >
-                  Save
+                  保存
                 </Button>
                 <Button
                   icon="times"
                   onClick={() => setEmploymentDesc(gen_record)}
                 >
-                  Reset
+                  重置
                 </Button>
               </Box>
             }
@@ -111,7 +111,7 @@ export const BackgroundInformation = (props) => {
       <Stack>
         <Stack.Item grow>
           <Section
-            title="Security Records"
+            title="安全记录"
             buttons={
               <Box>
                 <Button
@@ -119,13 +119,13 @@ export const BackgroundInformation = (props) => {
                   disabled={securityDesc === sec_record}
                   onClick={() => act('sec_record', { securityDesc })}
                 >
-                  Save
+                  保存
                 </Button>
                 <Button
                   icon="times"
                   onClick={() => setSecurityDesc(sec_record)}
                 >
-                  Reset
+                  重置
                 </Button>
               </Box>
             }
@@ -142,7 +142,7 @@ export const BackgroundInformation = (props) => {
         </Stack.Item>
         <Stack.Item grow>
           <Section
-            title="Exploit Records"
+            title="漏洞记录"
             buttons={
               <Box>
                 <Button
@@ -150,13 +150,13 @@ export const BackgroundInformation = (props) => {
                   disabled={exploitsDesc === exploit_record}
                   onClick={() => act('exploit_record', { exploitsDesc })}
                 >
-                  Save
+                  保存
                 </Button>
                 <Button
                   icon="times"
                   onClick={() => setExploitsDesc(exploit_record)}
                 >
-                  Reset
+                  重置
                 </Button>
               </Box>
             }

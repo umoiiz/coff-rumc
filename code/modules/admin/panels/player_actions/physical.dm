@@ -70,7 +70,7 @@
 
 /datum/player_action/select_equipment/act(client/user, mob/target, list/params)
 	if(!ishuman(target) && !isobserver(target))
-		to_chat(user, span_warning("Invalid mob."))
+		to_chat(user, span_warning("无效的生物."))
 		return
 	SSadmin_verbs.dynamic_invoke_verb(user, /datum/admin_verb/cmd_select_equipment, target)
 	return TRUE
@@ -86,10 +86,10 @@
 		return
 	var/mob/living/carbon/human/human_target = target
 	if(!ismarinejob(human_target.job))
-		to_chat(user, span_warning("Only marine jobs may be part of squads."))
+		to_chat(user, span_warning("只有陆战队员职业可以加入小队."))
 		return
 
-	var/selected_squad = tgui_input_list(user, "Select a squad.", "Squad Selection", SSjob.squads)
+	var/selected_squad = tgui_input_list(user, "选择一个小队.", "小队选择", SSjob.squads)
 	if(!selected_squad || QDELETED(human_target))
 		return
 
@@ -110,7 +110,7 @@
 		return
 	var/mob/living/living_target = target
 
-	var/new_faction = tgui_input_list(user, "Select faction.", "Faction Choice", GLOB.faction_to_alignement)
+	var/new_faction = tgui_input_list(user, "选择阵营.", "阵营选择", GLOB.faction_to_alignement)
 	if(!new_faction || QDELETED(living_target))
 		return
 

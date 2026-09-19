@@ -12,8 +12,8 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 ))
 
 /obj/item/radio/headset
-	name = "radio headset"
-	desc = "An updated, modular intercom that fits over the head. Takes encryption keys."
+	name = "无线电耳机"
+	desc = "一种更新的模块化对讲机,可戴在头上.可插入加密钥匙."
 	icon_state = "headset"
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/clothing/ears_left.dmi',
@@ -56,7 +56,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	if(!istype(I, /obj/item/encryptionkey))
 		return
 	if(keyslot && keyslot2)
-		balloon_alert(user, "Can't, headset is full")
+		balloon_alert(user, "不行,耳机已满")
 		return
 	if(!keyslot)
 		if(!user.transferItemToLoc(I, src))
@@ -73,7 +73,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 /obj/item/radio/headset/screwdriver_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(!keyslot && !keyslot2)
-		balloon_alert(user, "No keys to remove")
+		balloon_alert(user, "没有可移除的钥匙")
 		return
 	for(var/ch_name in channels)
 		SSradio.remove_object(src, GLOB.radiochannels[ch_name])
@@ -87,7 +87,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 			keyslot2.forceMove(T)
 			keyslot2 = null
 	recalculateChannels()
-	balloon_alert_to_viewers("pops out keys")
+	balloon_alert_to_viewers("弹出钥匙")
 
 /obj/item/radio/headset/examine(mob/user)
 	. = ..()
@@ -103,12 +103,12 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 						avail_chans += "use [MODE_TOKEN_DEPARTMENT] for [lowertext(channels[i])]"
 				else
 					avail_chans += "use [GLOB.channel_tokens[channels[i]]] for [lowertext(channels[i])]"
-		. += span_notice("A small screen on the headset displays the following available frequencies:\n[english_list(avail_chans)].")
+		. += span_notice("耳机上的小屏幕显示以下可用频率:\n[english_list(avail_chans)].")
 
 		if(command)
-			. += span_info("Alt-click to toggle the high-volume mode.")
+			. += span_info("按住Alt点击可切换高音量模式.")
 	else
-		. += span_notice("A small screen on the headset flashes, it's too small to read without holding or wearing the headset.")
+		. += span_notice("耳机上的小屏幕闪烁了一下,不拿着或戴着耳机的话屏幕太小看不清.")
 
 
 /obj/item/radio/headset/recalculateChannels()
@@ -138,13 +138,13 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 
 	if(command)
 		use_command = !use_command
-		balloon_alert(user, "toggles loud mode")
+		balloon_alert(user, "切换响亮模式")
 
 /obj/item/radio/headset/attack_self(mob/living/user)
 	if(!istype(user) || !Adjacent(user) || user.incapacitated())
 		return
 	channels[RADIO_CHANNEL_REQUISITIONS] = !channels[RADIO_CHANNEL_REQUISITIONS]
-	balloon_alert(user, "toggles supply comms [channels[RADIO_CHANNEL_REQUISITIONS] ? "on" : "off"].")
+	balloon_alert(user, "切换补给通讯[channels[RADIO_CHANNEL_REQUISITIONS] ? "on" : "off"].")
 
 /obj/item/radio/headset/vendor_equip(mob/user)
 	..()
@@ -157,8 +157,8 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 
 //MARINE HEADSETS
 /obj/item/radio/headset/mainship
-	name = "marine radio headset"
-	desc = "A standard military radio headset."
+	name = "陆战队无线电耳机"
+	desc = "标准军用无线电耳机."
 	icon_state = "cargo_headset"
 	worn_icon_state = "headset"
 	frequency = FREQ_COMMON
@@ -195,7 +195,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 
 ///Explodes the headset if you put on an enemy's headset
 /obj/item/radio/headset/mainship/proc/safety_protocol(mob/living/carbon/human/user)
-	balloon_alert_to_viewers("Explodes")
+	balloon_alert_to_viewers("爆炸")
 	playsound(user, 'sound/effects/explosion/micro1.ogg', 50, 1)
 	if(user)
 		user.ex_act(EXPLODE_LIGHT)
@@ -237,7 +237,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	if(wearer.mind && wearer.assigned_squad && !sl_direction)
 		enable_sl_direction()
 	add_minimap()
-	balloon_alert(wearer, "toggles squad HUD on")
+	balloon_alert(wearer, "切换小队HUD开启")
 	playsound(loc, 'sound/machines/click.ogg', 15, 0, 1)
 
 
@@ -249,7 +249,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	if(sl_direction)
 		disable_sl_direction()
 	remove_minimap()
-	balloon_alert(wearer, "toggles squad HUD off")
+	balloon_alert(wearer, "切换小队HUD关闭")
 	playsound(loc, 'sound/machines/click.ogg', 15, 0, 1)
 
 /obj/item/radio/headset/mainship/proc/add_minimap()
@@ -322,7 +322,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 
 /obj/item/radio/headset/mainship/proc/enable_sl_direction()
 	if(!headset_hud_on)
-		balloon_alert(wearer, "turn it on first")
+		balloon_alert(wearer, "先把它打开")
 		return
 
 	if(wearer.mind && wearer.assigned_squad && wearer.hud_used?.SL_locator)
@@ -334,7 +334,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 			SSdirection.start_tracking(wearer.assigned_squad.tracking_id, wearer)
 
 	sl_direction = TRUE
-	balloon_alert(wearer, "toggles SL finder on")
+	balloon_alert(wearer, "切换SL定位器开启")
 	playsound(loc, 'sound/machines/click.ogg', 15, 0, 1)
 
 
@@ -352,7 +352,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 		SSdirection.stop_tracking(wearer.assigned_squad.tracking_id, wearer)
 
 	sl_direction = FALSE
-	balloon_alert(wearer, "toggles SL finder off")
+	balloon_alert(wearer, "切换SL定位器关闭")
 	playsound(loc, 'sound/machines/click.ogg', 15, 0, TRUE)
 
 
@@ -408,29 +408,29 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 
 
 /obj/item/radio/headset/mainship/st
-	name = "technician radio headset"
+	name = "技术员无线电耳机"
 	icon_state = "eng_headset"
 	keyslot = /obj/item/encryptionkey/general
 	keyslot2 = /obj/item/encryptionkey/engi
 
 /obj/item/radio/headset/mainship/res
-	name = "research radio headset"
+	name = "研究无线电耳机"
 	icon_state = "med_headset"
 	keyslot = /obj/item/encryptionkey/med
 	minimap_type = /datum/action/minimap/researcher
 
 /obj/item/radio/headset/mainship/doc
-	name = "medical radio headset"
+	name = "医疗无线电耳机"
 	icon_state = "med_headset"
 	keyslot = /obj/item/encryptionkey/med
 
 /obj/item/radio/headset/mainship/ct
-	name = "supply radio headset"
+	name = "补给无线电耳机"
 	icon_state = "cargo_headset"
 	keyslot = /obj/item/encryptionkey/general
 
 /obj/item/radio/headset/mainship/mcom
-	name = "marine command radio headset"
+	name = "陆战队指挥无线电耳机"
 	icon_state = "com_headset_alt"
 	keyslot = /obj/item/encryptionkey/mcom
 	use_command = TRUE
@@ -439,7 +439,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 
 /obj/item/radio/headset/mainship/mcom/examine(mob/user)
 	. = ..()
-	. += span_info("Ctrl-click to toggle the voice high-volume mode.")
+	. += span_info("按住Ctrl点击切换语音高音量模式.")
 
 /obj/item/radio/headset/mainship/mcom/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
@@ -464,29 +464,29 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	if(loud == TRUE)
 		UnregisterSignal(user, COMSIG_MOB_SAY)
 		loud = FALSE
-		balloon_alert(user, "Loud mode disabled")
+		balloon_alert(user, "高音量模式已禁用")
 	else
 		RegisterSignal(user, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 		loud = TRUE
-		balloon_alert(user, "Loud mode enabled")
+		balloon_alert(user, "高音量模式已启用")
 
 /obj/item/radio/headset/mainship/mcom/silicon
-	name = "silicon radio"
+	name = "硅基无线电"
 	keyslot = /obj/item/encryptionkey/mcom/ai
 
 /obj/item/radio/headset/mainship/mp
-	name = "security radio headset"
+	name = "安保无线电耳机"
 	icon_state = "mp_headset"
 	keyslot = /obj/item/encryptionkey/mcom
 
 /obj/item/radio/headset/mainship/spatial
-	name = "spatial agent headset"
+	name = "空间特工耳机"
 	icon_state = "headset_marine_generic"
 	keyslot = /obj/item/encryptionkey/mcom/ai
 	item_flags = DELONDROP
 
 /obj/item/radio/headset/mainship/service
-	name = "service radio headset"
+	name = "服务无线电耳机"
 	icon_state = "headset_marine_xray"
 	keyslot = /obj/item/encryptionkey/general
 
@@ -513,7 +513,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	return ..()
 
 /obj/item/radio/headset/mainship/marine/alpha
-	name = "marine alpha radio headset"
+	name = "陆战队阿尔法无线电耳机"
 	icon_state = "headset_marine_alpha"
 	frequency = FREQ_ALPHA //default frequency is alpha squad channel, not FREQ_COMMON
 	minimap_type = /datum/action/minimap/marine
@@ -524,24 +524,24 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 
 
 /obj/item/radio/headset/mainship/marine/alpha/lead
-	name = "marine alpha leader radio headset"
+	name = "陆战队阿尔法队长无线电耳机"
 	keyslot2 = /obj/item/encryptionkey/squadlead
 	use_command = TRUE
 	command = TRUE
 
 
 /obj/item/radio/headset/mainship/marine/alpha/engi
-	name = "marine alpha engineer radio headset"
+	name = "陆战队阿尔法工程师无线电耳机"
 	keyslot2 = /obj/item/encryptionkey/engi
 
 /obj/item/radio/headset/mainship/marine/alpha/med
-	name = "marine alpha corpsman radio headset"
+	name = "陆战队阿尔法医护兵无线电耳机"
 	keyslot2 = /obj/item/encryptionkey/med
 
 
 
 /obj/item/radio/headset/mainship/marine/bravo
-	name = "marine bravo radio headset"
+	name = "陆战队布拉沃无线电耳机"
 	icon_state = "headset_marine_bravo"
 	frequency = FREQ_BRAVO
 	minimap_type = /datum/action/minimap/marine
@@ -552,24 +552,24 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 
 
 /obj/item/radio/headset/mainship/marine/bravo/lead
-	name = "marine bravo leader radio headset"
+	name = "陆战队布拉沃队长无线电耳机"
 	keyslot2 = /obj/item/encryptionkey/squadlead
 	use_command = TRUE
 	command = TRUE
 
 
 /obj/item/radio/headset/mainship/marine/bravo/engi
-	name = "marine bravo engineer radio headset"
+	name = "陆战队布拉沃工程师无线电耳机"
 	keyslot2 = /obj/item/encryptionkey/engi
 
 
 /obj/item/radio/headset/mainship/marine/bravo/med
-	name = "marine bravo corpsman radio headset"
+	name = "陆战队布拉沃医护兵无线电耳机"
 	keyslot2 = /obj/item/encryptionkey/med
 
 
 /obj/item/radio/headset/mainship/marine/charlie
-	name = "marine charlie radio headset"
+	name = "陆战队查理无线电耳机"
 	icon_state = "headset_marine_charlie"
 	frequency = FREQ_CHARLIE
 	minimap_type = /datum/action/minimap/marine
@@ -580,25 +580,25 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 
 
 /obj/item/radio/headset/mainship/marine/charlie/lead
-	name = "marine charlie leader radio headset"
+	name = "陆战队查理队长无线电耳机"
 	keyslot2 = /obj/item/encryptionkey/squadlead
 	use_command = TRUE
 	command = TRUE
 
 
 /obj/item/radio/headset/mainship/marine/charlie/engi
-	name = "marine charlie engineer radio headset"
+	name = "陆战队查理工程师无线电耳机"
 	keyslot2 = /obj/item/encryptionkey/engi
 
 
 /obj/item/radio/headset/mainship/marine/charlie/med
-	name = "marine charlie corpsman radio headset"
+	name = "陆战队查理医护兵无线电耳机"
 	keyslot2 = /obj/item/encryptionkey/med
 
 
 
 /obj/item/radio/headset/mainship/marine/delta
-	name = "marine delta radio headset"
+	name = "陆战队德尔塔无线电耳机"
 	icon_state = "headset_marine_delta"
 	frequency = FREQ_DELTA
 	minimap_type = /datum/action/minimap/marine
@@ -609,95 +609,95 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 
 
 /obj/item/radio/headset/mainship/marine/delta/lead
-	name = "marine delta leader radio headset"
+	name = "陆战队德尔塔队长无线电耳机"
 	keyslot2 = /obj/item/encryptionkey/squadlead
 	use_command = TRUE
 	command = TRUE
 
 
 /obj/item/radio/headset/mainship/marine/delta/engi
-	name = "marine delta engineer radio headset"
+	name = "陆战队德尔塔工程师无线电耳机"
 	keyslot2 = /obj/item/encryptionkey/engi
 
 
 /obj/item/radio/headset/mainship/marine/delta/med
-	name = "marine delta corpsman radio headset"
+	name = "陆战队德尔塔医护兵无线电耳机"
 	keyslot2 = /obj/item/encryptionkey/med
 
 /obj/item/radio/headset/mainship/marine/generic
-	name = "marine generic radio headset"
+	name = "陆战队通用无线电耳机"
 	icon_state = "headset_marine_generic"
 	minimap_type = /datum/action/minimap/marine
 
 /obj/item/radio/headset/mainship/marine/generic/cas
-	name = "marine fire support specialist headset"
+	name = "陆战队火力支援专家耳机"
 	icon_state = "sec_headset"
 	keyslot2 = /obj/item/encryptionkey/cas
 
 //Distress headsets.
 /obj/item/radio/headset/distress
-	name = "operative headset"
+	name = "特工耳机"
 	freerange = TRUE
 	frequency = FREQ_COMMON
 
 /obj/item/radio/headset/distress/dutch
-	name = "colonist headset"
+	name = "殖民者耳机"
 	keyslot = /obj/item/encryptionkey/dutch
 	frequency = FREQ_COLONIST
 
 /obj/item/radio/headset/distress/pmc
-	name = "contractor headset"
+	name = "承包商耳机"
 	keyslot = /obj/item/encryptionkey/PMC
 	keyslot2 = /obj/item/encryptionkey/mcom
 	frequency = FREQ_PMC
 
 /obj/item/radio/headset/distress/usl
-	name = "non-standard headset"
+	name = "非标准耳机"
 	keyslot = /obj/item/encryptionkey/usl
 	frequency = FREQ_USL
 
 /obj/item/radio/headset/distress/commando
-	name = "commando headset"
+	name = "突击队耳机"
 	keyslot = /obj/item/encryptionkey/commando
 	keyslot2 = /obj/item/encryptionkey/mcom
 	frequency = FREQ_DEATHSQUAD
 
 /obj/item/radio/headset/distress/imperial
-	name = "imperial headset"
+	name = "帝国耳机"
 	keyslot = /obj/item/encryptionkey/imperial
 	frequency = FREQ_IMPERIAL
 
 /obj/item/radio/headset/distress/som
-	name = "miners' headset"
+	name = "矿工耳机"
 	keyslot = /obj/item/encryptionkey/som
 	frequency = FREQ_SOM
 
 /obj/item/radio/headset/distress/sectoid
-	name = "alien headset"
+	name = "异形耳机"
 	keyslot = /obj/item/encryptionkey/sectoid
 	frequency = FREQ_SECTOID
 
 
 /obj/item/radio/headset/distress/icc
-	name = "shiphands headset"
+	name = "船员耳机"
 	keyslot = /obj/item/encryptionkey/icc
 	frequency = FREQ_ICC
 
 /obj/item/radio/headset/distress/echo
-	name = "\improper Echo Task Force headset"
+	name = "\improper 回声特遣队耳机"
 	keyslot = /obj/item/encryptionkey/echo
 
 /obj/item/radio/headset/distress/retired
-	name = "retirement home headset"
+	name = "养老院耳机"
 	keyslot = /obj/item/encryptionkey/retired
 	frequency = FREQ_RETIRED
 
 /obj/item/radio/headset/distress/vsd
-	name = "security detail headset"
+	name = "安保小队耳机"
 	keyslot = /obj/item/encryptionkey/vsd
 	frequency = FREQ_VSD
 
 /obj/item/radio/headset/distress/erp
-	name = "prankster headset"
+	name = "恶作剧者耳机"
 	keyslot = /obj/item/encryptionkey/erp
 	frequency = FREQ_ERP

@@ -1,6 +1,6 @@
 /obj/item/electropack
-	name = "electropack"
-	desc = "Dance my monkeys! DANCE!!!"
+	name = "电击背包"
+	desc = "跳舞吧我的猴子们!跳啊!!!"
 	icon = 'icons/obj/items/radio.dmi'
 	icon_state = "electropack0"
 	worn_icon_list = list(
@@ -32,7 +32,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(C.back == src)
-			to_chat(user, span_warning("You need help taking this off!"))
+			to_chat(user, span_warning("你需要帮忙才能把它取下来!"))
 			return TRUE
 	return ..()
 
@@ -66,7 +66,7 @@
 
 	if(isliving(loc) && on)
 		var/mob/living/L = loc
-		to_chat(L, span_danger("You feel a sharp shock!"))
+		to_chat(L, span_danger("你感到一阵剧烈的电击!"))
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, L)
 		s.start()

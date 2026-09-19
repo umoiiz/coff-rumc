@@ -117,7 +117,7 @@
 
 	var/datum/admin_help/current_ticket = target.current_ticket
 	if(!current_ticket)
-		to_chat(admin, span_warning("[key_name(target)] had no active ahelp, aborting."))
+		to_chat(admin, span_warning("[key_name(target)]没有进行中的管理员求助,已中止."))
 		return
 
 	admin.private_message(target, message)

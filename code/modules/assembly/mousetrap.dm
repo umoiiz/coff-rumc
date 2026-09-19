@@ -1,6 +1,6 @@
 /obj/item/assembly/mousetrap
-	name = "mousetrap"
-	desc = "A handy little spring-loaded trap for catching pesty rodents."
+	name = "捕鼠夹"
+	desc = "一个方便的小型弹簧陷阱,用于捕捉有害的啮齿动物."
 	icon_state = "mousetrap"
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/items/janitor_left.dmi',
@@ -19,7 +19,7 @@
 
 /obj/item/assembly/mousetrap/examine(mob/user)
 	. = ..()
-	. += span_notice("The pressure plate is [armed ? "primed" : "safe"].")
+	. += span_notice("压力板[armed ? "primed" : "safe"].")
 
 
 /obj/item/assembly/mousetrap/activate()
@@ -57,7 +57,7 @@
 		affecting?.take_damage_limb(1, 0)
 	else if(ismouse(target))
 		var/mob/living/simple_animal/mouse/M = target
-		visible_message(span_boldannounce("SPLAT!"))
+		visible_message(span_boldannounce("啪!"))
 		M.death()
 	playsound(src, 'sound/effects/snap.ogg', 50, TRUE)
 	armed = FALSE
@@ -67,9 +67,9 @@
 
 /obj/item/assembly/mousetrap/attack_self(mob/living/carbon/human/user)
 	if(!armed)
-		to_chat(user, span_notice("You arm [src]."))
+		to_chat(user, span_notice("你武装了[src]."))
 	else
-		to_chat(user, span_notice("You disarm [src]."))
+		to_chat(user, span_notice("你解除了[src]的武装."))
 	armed = !armed
 	update_icon()
 	playsound(src, 'sound/weapons/handcuffs.ogg', 30, TRUE, -3)
@@ -83,8 +83,8 @@
 		var/mob/living/carbon/H = AM
 		if(H.m_intent == MOVE_INTENT_RUN)
 			INVOKE_ASYNC(src, PROC_REF(triggered), H)
-			H.visible_message(span_warning("[H] accidentally steps on [src]."), \
-							span_warning("You accidentally step on [src]"))
+			H.visible_message(span_warning("[H]不小心踩到了[src]."), \
+							span_warning("你不小心踩到了[src]"))
 	else if(ismouse(AM))
 		INVOKE_ASYNC(src, PROC_REF(triggered), AM)
 	else if(AM.density) // For mousetrap grenades, set off by anything heavy
@@ -94,12 +94,12 @@
 /obj/item/assembly/mousetrap/on_found(mob/finder)
 	if(armed)
 		if(finder)
-			finder.visible_message(span_warning("[finder] accidentally sets off [src], breaking [finder.p_their()] fingers."), \
-								span_warning("You accidentally trigger [src]!"))
+			finder.visible_message(span_warning("[finder]不小心触发了[src],打断了[finder.p_their()]根手指."), \
+								span_warning("你意外触发了[src]!"))
 			triggered(finder, pick(BODY_ZONE_PRECISE_R_HAND, BODY_ZONE_PRECISE_L_HAND))
 			return TRUE	//end the search!
 		else
-			visible_message(span_warning("[src] snaps shut!"))
+			visible_message(span_warning("[src]啪的一声合上了!"))
 			triggered(loc)
 			return FALSE
 	return FALSE
@@ -108,7 +108,7 @@
 /obj/item/assembly/mousetrap/hitby(atom/movable/AM, speed = 5)
 	if(!armed)
 		return ..()
-	visible_message(span_warning("[src] is triggered by [AM]."))
+	visible_message(span_warning("[src]被[AM]触发了."))
 	triggered(null)
 
 

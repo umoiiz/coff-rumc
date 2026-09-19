@@ -1,5 +1,5 @@
 /obj/item/assembly_holder
-	name = "Assembly"
+	name = "组装件"
 	icon = 'icons/obj/assemblies/new_assemblies.dmi'
 	icon_state = "holder"
 	worn_icon_state = "assembly"
@@ -105,7 +105,7 @@
 	. = ..()
 	if(.)
 		return TRUE
-	to_chat(user, span_notice("You disassemble [src]!"))
+	to_chat(user, span_notice("你拆解了[src]!"))
 	if(a_left)
 		a_left.on_detach()
 		a_left = null
@@ -118,10 +118,10 @@
 
 /obj/item/assembly_holder/attack_self(mob/user)
 	if(!a_left || !a_right)
-		to_chat(user, span_danger("Assembly part missing!"))
+		to_chat(user, span_danger("组装件缺失!"))
 		return
 	if(istype(a_left,a_right.type))//If they are the same type it causes issues due to window code
-		switch(tgui_alert(user, "Which side would you like to use?", null, list("Left","Right")))
+		switch(tgui_alert(user, "你想使用哪一侧?", null, list("Left","Right")))
 			if("Left")
 				a_left.attack_self(user)
 			if("Right")

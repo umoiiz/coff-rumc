@@ -129,14 +129,14 @@ SUBSYSTEM_DEF(ticker)
 					C.mob?.update_sight() // To reveal ghosts
 
 /datum/controller/subsystem/ticker/proc/setup()
-	to_chat(world, span_boldnotice("<b>Enjoy the game!</b>"))
+	to_chat(world, span_boldnotice("<b>享受游戏吧!</b>"))
 	var/init_start = world.timeofday
 	//Create and announce mode
 	mode = config.pick_mode(GLOB.master_mode)
 
 	CHECK_TICK
 	if(!mode.can_start(bypass_checks))
-		to_chat(world, "Reverting to pre-game lobby.")
+		to_chat(world, "正在恢复到游戏前大厅.")
 		QDEL_NULL(mode)
 		SSjob.ResetOccupations()
 		return FALSE
@@ -144,14 +144,14 @@ SUBSYSTEM_DEF(ticker)
 	CHECK_TICK
 	if(!mode.pre_setup() && !bypass_checks)
 		QDEL_NULL(mode)
-		to_chat(world, "<b>Error in pre-setup for [GLOB.master_mode].</b> Reverting to pre-game lobby.")
+		to_chat(world, "<b>为[GLOB.master_mode]进行预设时出错.</b> 正在恢复到游戏前大厅.")
 		SSjob.ResetOccupations()
 		return FALSE
 
 	CHECK_TICK
 	if(!mode.setup() && !bypass_checks)
 		QDEL_NULL(mode)
-		to_chat(world, "<b>Error in setup for [GLOB.master_mode].</b> Reverting to pre-game lobby.")
+		to_chat(world, "<b>为[GLOB.master_mode]进行设置时出错.</b> 正在恢复到游戏前大厅.")
 		SSjob.ResetOccupations()
 		return FALSE
 
@@ -303,17 +303,17 @@ SUBSYSTEM_DEF(ticker)
 
 	var/skip_delay = check_rights()
 	if(delay_end && !skip_delay)
-		to_chat(world, span_boldnotice("An admin has delayed the round end."))
+		to_chat(world, span_boldnotice("管理员已延迟回合结束."))
 		return
 
-	to_chat(world, span_boldnotice("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
+	to_chat(world, span_boldnotice("将在[DisplayTimeText(delay)]后重启世界. [reason]"))
 
 	var/start_wait = world.time
 	UNTIL(round_end_sound_sent || (world.time - start_wait) > (delay * 2)) //don't wait forever
 	sleep(delay - (world.time - start_wait))
 
 	if(delay_end && !skip_delay)
-		to_chat(world, span_boldnotice("Reboot was cancelled by an admin."))
+		to_chat(world, span_boldnotice("重启已被管理员取消."))
 		return
 
 	log_game("Rebooting World. [reason]")
@@ -343,7 +343,7 @@ SUBSYSTEM_DEF(ticker)
 	if(!hpc)
 		listclearnulls(queued_players)
 		for(var/mob/new_player/NP in queued_players)
-			to_chat(NP, span_userdanger("The alive players limit has been released!<br><a href='byond://?src=[REF(NP)];lobby_choice=late_join;override=1'>[html_encode(">>Join Game<<")]</a>"))
+			to_chat(NP, span_userdanger("存活玩家限制已解除!<br><a href='byond://?src=[REF(NP)];lobby_choice=late_join;override=1'>[html_encode(">>Join Game<<")]</a>"))
 			SEND_SOUND(NP, sound('sound/misc/notice1.ogg', channel = CHANNEL_NOTIFY))
 			NP.late_choices()
 		queued_players.Cut()
@@ -358,14 +358,14 @@ SUBSYSTEM_DEF(ticker)
 			listclearnulls(queued_players)
 			if(living_player_count() < hpc)
 				if(next_in_line?.client)
-					to_chat(next_in_line, span_userdanger("A slot has opened! You have approximately 20 seconds to join. <a href='byond://?src=[REF(next_in_line)];lobby_choice=latejoin;override=1'>\>\>Join Game\<\<</a>"))
+					to_chat(next_in_line, span_userdanger("有一个空位开放了! 你大约有20秒的时间加入. <a href='byond://?src=[REF(next_in_line)];lobby_choice=latejoin;override=1'>\>\>加入游戏\<\<</a>"))
 					SEND_SOUND(next_in_line, sound('sound/misc/notice1.ogg', channel = CHANNEL_NOTIFY))
 					next_in_line.late_choices()
 					return
 				queued_players -= next_in_line //Client disconnected, remove he
 			queue_delay = 0 //No vacancy: restart timer
 		if(25 to INFINITY)  //No response from the next in line when a vacancy exists, remove he
-			to_chat(next_in_line, span_danger("No response received. You have been removed from the line."))
+			to_chat(next_in_line, span_danger("未收到响应. 你已被移出队列."))
 			queued_players -= next_in_line
 			queue_delay = 0
 

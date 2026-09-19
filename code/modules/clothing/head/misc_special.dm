@@ -11,8 +11,8 @@
 * Welding mask
 */
 /obj/item/clothing/head/welding
-	name = "welding helmet"
-	desc = "A head-mounted face cover designed to protect the wearer completely from space-arc eye."
+	name = "焊接头盔"
+	desc = "一种戴在头上的面罩, 旨在完全保护佩戴者免受太空弧光眼的伤害."
 	icon_state = "welding"
 	worn_icon_state = "welding"
 	soft_armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
@@ -67,7 +67,7 @@
 	else
 		flip_down()
 	if(user)
-		to_chat(usr, "You [up ? "push [src] up out of your face" : "flip [src] down to protect your eyes"].")
+		to_chat(usr, "你[up ? "push [src] up out of your face" : "flip [src] down to protect your eyes"].")
 
 	update_clothing_icon()	//so our mob-overlays update
 
@@ -83,8 +83,8 @@
 
 
 /obj/item/clothing/head/welding/advanced
-	name = "Advanced welding helmet"
-	desc = "Heavy-duty welding helmet with extra armor plating. Comes with a built-in gear slots."
+	name = "高级焊接头盔"
+	desc = "带有额外装甲板的重型焊接头盔. 附带内置装备槽."
 	icon_state = "adv_welding"
 	worn_icon_state = "adv_welding"
 	soft_armor = MARINE_ARMOR_HEAVY
@@ -93,8 +93,8 @@
 	storage_type = /datum/storage/internal/marinehelmet
 
 /obj/item/clothing/head/welding/advanced/tagilla
-	name = "Advanced welding helmet"
-	desc = "A heavy welded helmet with the word 'УБЕЙ' across the front. It is imposing and remarkably resistant to melee attacks and bullets. Unfortunately, it is also vulnerable to acid."
+	name = "高级焊接头盔"
+	desc = "一顶重型焊接头盔, 正面印有'УБЕЙ'字样. 它气势逼人, 对近战攻击和子弹有着惊人的抗性. 不幸的是, 它同样易受酸液腐蚀."
 	icon_state = "tagilla"
 	worn_icon_state = "tagilla"
 	soft_armor = list(MELEE = 75, BULLET = 85, LASER = 85, ENERGY = 75, BOMB = 45, BIO = 40, FIRE = 65, ACID = 40)
@@ -111,8 +111,8 @@
 * Cakehat
 */
 /obj/item/clothing/head/cakehat
-	name = "cake-hat"
-	desc = "It's tasty looking!"
+	name = "蛋糕帽"
+	desc = "看起来很好吃!"
 	icon_state = "cake0"
 	inventory_flags = COVEREYES
 	var/onfire = 0
@@ -144,8 +144,8 @@
 */
 
 /obj/item/clothing/head/pumpkinhead
-	name = "carved pumpkin"
-	desc = "A jack o' lantern! Believed to ward off evil spirits."
+	name = "雕刻南瓜"
+	desc = "一个南瓜灯! 据说可以驱邪避鬼."
 	icon_state = "hardhat0_pumpkin"//Could stand to be renamed
 	worn_icon_state = "hardhat0_pumpkin"
 	inventory_flags = COVEREYES|COVERMOUTH

@@ -30,7 +30,7 @@
 
 /datum/outfit/quick/som/veteran/standard_assaultrifle
 	name = "V-31 Veteran Infantryman"
-	desc = "Heavily armed and armored SOM elite. Equipped with a V-31 assault rifle with integrated 'micro grenade' rail launcher, heavy armor, a large variety of grenades as well as AP ammunition. Excellent performance against heavily armored targets, while the plentiful grenade provide greater tactical flexibility."
+	desc = "全副武装的SOM精英. 配备了V-31突击步枪, 带有集成\"微型榴弹\"轨道发射器, 重型装甲, 种类繁多的榴弹以及穿甲弹药. 对重装甲目标表现优异, 同时充足的榴弹提供了更大的战术灵活性."
 
 	back = /obj/item/storage/backpack/lightpack/som
 	suit_store = /obj/item/weapon/gun/rifle/som/veteran
@@ -53,7 +53,7 @@
 
 /datum/outfit/quick/som/veteran/standard_smg
 	name = "V-21 Veteran Infantryman"
-	desc = "Close range high damage, high speed. Equipped with a V-21 submachine gun with variable firerate allowing for extreme rates of fire when properly wielded, heavy armor, a good variety of grenades and AP ammunition. Allows for excellent close to medium range firepower, especially against heavily armored targets, and is surprisingly mobile."
+	desc = "近距离高伤害, 高速度. 配备了V-21冲锋枪, 其可变射速在正确使用时可实现极高的射速, 重型装甲, 种类丰富的榴弹和穿甲弹药. 可实现出色的近到中距离火力, 尤其是对重装甲目标, 并且机动性出奇地好."
 
 	suit_store = /obj/item/weapon/gun/smg/som/veteran
 	belt = /obj/item/storage/belt/marine/som/som_smg_ap
@@ -72,7 +72,7 @@
 	)
 /datum/outfit/quick/som/veteran/breacher
 	name = "Charger Veteran Breacher"
-	desc = "Heavy armored breaching configuration. Equipped with a volkite charger configured for better one handed use, heavy armor upgraded with 'Lorica' armor reinforcements, a boarding shield and a good selection of grenades. Premier protection and deadly close range firepower."
+	desc = "重型装甲破门配置. 配备了为更好地单手使用而配置的沃尔凯特充能枪, 升级了\"洛里卡\"装甲加固的重型装甲, 一块登舰盾以及种类丰富的榴弹. 一流的防护和致命的近距离火力."
 
 	head = /obj/item/clothing/head/modular/som/lorica
 	glasses = /obj/item/clothing/glasses/welding/flipped
@@ -94,7 +94,7 @@
 
 /datum/outfit/quick/som/veteran/charger
 	name = "Charger Veteran Infantryman"
-	desc = "Heavily armed and armored SOM elite. Equipped with a volkite charger with motion sensor and gyrostabiliser for better one handed use, heavy armor and a good variety of grenades. Volkite weapons are exceptionally dangerous, especially against poorly armored or tightly grouped opponents. The charger is the SOM's premier close/medium range weapon, with good mobility, and can be used (with some difficulty) one handed."
+	desc = "全副武装的SOM精英. 配备了带有运动传感器和陀螺稳定器以便更好地单手使用的沃尔凯特充能枪, 重型装甲以及种类丰富的榴弹. 沃尔凯特武器异常危险, 尤其是对装甲薄弱或密集聚集的对手. 充能枪是SOM首屈一指的近/中距离武器, 具有良好的机动性, 并且可以(有些困难地)单手使用."
 
 	suit_store = /obj/item/weapon/gun/energy/lasgun/lasrifle/volkite/charger/scout
 	belt = /obj/item/storage/belt/marine/som/volkite
@@ -114,7 +114,7 @@
 
 /datum/outfit/quick/som/veteran/caliver
 	name = "Caliver Veteran Infantryman"
-	desc = "Heavily armed and armored SOM elite. Equipped with a volkite caliver, heavy armor and a good variety of grenades. Volkite weapons are exceptionally dangerous, especially against poorly armored or tightly grouped opponents. The caliver provides deadly firepower at all ranges. Approach with caution."
+	desc = "全副武装的SOM精英. 配备了沃尔凯特步枪, 重型装甲以及种类丰富的榴弹. 沃尔凯特武器异常危险, 尤其是对装甲薄弱或密集聚集的对手. 步枪可在所有距离上提供致命火力. 谨慎接近."
 
 	suit_store = /obj/item/weapon/gun/energy/lasgun/lasrifle/volkite/caliver/standard
 	belt = /obj/item/storage/belt/marine/som/volkite
@@ -134,7 +134,7 @@
 
 /datum/outfit/quick/som/veteran/caliver_pack
 	name = "Caliver Veteran Rifleman"
-	desc = "Heavily armed and armored SOM elite. Equipped with a volkite caliver with motion sensor, heavy armor, plenty of grenades and a back mounted self charging power supply. Volkite weapons are exceptionally dangerous, especially against poorly armored or tightly grouped opponents. The caliver provides deadly firepower at all ranges, and the power pack allows for sustained period of fire, although over extended periods of time the recharge may struggle to keep up with the demands of the weapon."
+	desc = "全副武装的SOM精英. 配备了带有运动传感器的沃尔凯特步枪, 重型装甲, 大量榴弹以及一个背挂式自充电电源. 沃尔凯特武器异常危险, 尤其是对装甲薄弱或密集聚集的对手. 步枪可在所有距离上提供致命火力, 而电源组允许持续射击一段时间, 尽管在长时间使用后, 充电可能难以跟上武器的需求."
 	quantity = 2
 
 	belt = /obj/item/storage/belt/grenade/som
@@ -161,7 +161,7 @@
 
 /datum/outfit/quick/som/veteran/mpi
 	name = "MPI_KM Veteran Infantryman"
-	desc = "Heavily armed and armored SOM elite, with a taste for nostalgia. Equipped with an MPI_KM assault rifle, with under barrel grenade launcher and a large supply of grenades. An old weapon that was a common sight during the original Martian rebellion, the MPI's good stopping power, reliability and a healthy dose of nostalgia means it is still seen in use by some among the SOM despite its age."
+	desc = "全副武装的SOM精英, 带有怀旧情结. 配备了MPI_KM突击步枪, 带有下挂式榴弹发射器以及大量榴弹. 这是一种旧式武器, 在最初的 Martian 叛乱期间很常见, MPI良好的停止力, 可靠性以及恰到好处的怀旧感意味着尽管它已经老旧, 在SOM中仍有一些人在使用."
 
 	suit_store = /obj/item/weapon/gun/rifle/mpi_km/grenadier
 	belt = /obj/item/storage/belt/marine/som/mpi_plum
@@ -181,7 +181,7 @@
 
 /datum/outfit/quick/som/veteran/carbine
 	name = "V-34 Veteran Infantryman"
-	desc = "Heavily armed and armored SOM elite, with a taste for nostalgia. Equipped with an heirloom V-34 carbine, and a large supply of grenades. An old weapon that saw extensive use during the original Martian rebellion, this one has been preserved and passed down the generations. The V-34 is largely surpassed by the VX-32, however with its high calibre rounds and good rate of fire, it cannot be underestimated."
+	desc = "全副武装的SOM精英, 带有怀旧情结. 配备了祖传的V-34卡宾枪, 以及大量榴弹. 这是一种在最初的 Martian 叛乱期间被广泛使用的旧式武器, 这一把被保存下来并代代相传. V-34在很大程度上已被VX-32超越, 然而凭借其高口径弹药和良好的射速, 它不容小觑."
 
 	suit_store = /obj/item/weapon/gun/rifle/som_carbine/mag_harness
 	belt = /obj/item/storage/belt/marine/som/carbine
@@ -201,7 +201,7 @@
 
 /datum/outfit/quick/som/veteran/culverin
 	name = "Culverin Veteran Machinegunner"
-	desc = "Heavily armored heavy firesupport. Equipped with a volkite culverin and self charging backpack power unit, and a shotgun sidearm. The culverin is the most powerful man portable weapon the SOM have been seen to field. Capabable of laying down a tremendous barrage of firepower for extended periods of time. Although the back-mounted powerpack is self charging, it cannot keep up with the immense power requirements of the gun, so sustained, prolonged use can degrade the weapon's effectiveness greatly."
+	desc = "重型装甲重型火力支援. 配备了沃尔凯特重炮和自充电背包电源组, 以及一把霰弹枪副武器. 重炮是SOM被观察到部署的最强大的单兵便携武器. 能够在长时间内倾泻巨大的火力. 尽管背挂式电源组是自充电的, 但它无法跟上该枪巨大的能量需求, 因此持续, 长时间的使用会大大降低武器的效能."
 	quantity = 2
 
 	belt = /obj/item/weapon/gun/shotgun/double/sawn
@@ -216,7 +216,7 @@
 
 /datum/outfit/quick/som/veteran/rocket_man
 	name = "V-71 Rocket Veteran"
-	desc = "War crimes have never been so easy. Equipped with a V-71 RPG and both incendiary and rad warheads, as well as a V-21 submachine gun with radioactive ammunition, heavy armor with a 'Mithridatius' environmental protection system, and rad grenades. Designed to inspire fear in the enemy and cripple them with deadly incendiary and radiological effects, providing excellent anti infantry support."
+	desc = "战争罪行从未如此简单. 配备了V-71火箭筒以及燃烧弹头和辐射弹头, 还有一把使用放射性弹药的V-21冲锋枪, 带有\"米特里达梯\"环境保护系统的重型装甲, 以及辐射榴弹. 旨在让敌人心生恐惧, 并以致命的燃烧和辐射效果削弱他们, 提供出色的反步兵支援."
 	quantity = 2
 
 	head = /obj/item/clothing/head/modular/som/bio
@@ -244,7 +244,7 @@
 
 /datum/outfit/quick/som/veteran/blinker
 	name = "Blink Assault Veteran"
-	desc = "Shock melee assault class. Equipped with a blink drive and energy sword, light armor and a backup burstfire V-11. The blink drive allows for short range teleports at some risk to the user, but allows them to effortless close the distance to cut down enemies when used correctly."
+	desc = "电击近战突击兵种. 配备闪现驱动器和能量剑, 轻型护甲以及备用连发V-11. 闪现驱动器允许使用者进行短距离传送并承担一定风险, 但若使用得当, 可以让他们毫不费力地拉近距离斩杀敌人."
 	quantity = 2
 
 	wear_suit = /obj/item/clothing/suit/modular/som/light/shield

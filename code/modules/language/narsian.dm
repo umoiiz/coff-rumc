@@ -1,10 +1,10 @@
 /datum/language/narsie
-	name = "Nar'Sian"
-	desc = "The ancient, blood-soaked, impossibly complex language of Nar'Sian cultists."
-	speech_verb = "intones"
-	ask_verb = "inquires"
-	exclaim_verb = "invokes"
-	sing_verb = "chants"
+	name = "纳尔西安语"
+	desc = "纳尔西安教徒那古老、血腥、极其复杂的语言."
+	speech_verb = "吟诵"
+	ask_verb = "询问"
+	exclaim_verb = "召唤"
+	sing_verb = "咏唱"
 	key = "n"
 	sentence_chance = 8
 	space_chance = 95 //very high due to the potential length of each syllable

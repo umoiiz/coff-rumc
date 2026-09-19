@@ -96,11 +96,11 @@
 	if(!isxeno(user) && !isobserver(user))
 		return // humans can check the codex for most of these- xenos should be able to know them "in the moment"
 	if(resistance_flags & CRUSHER_IMMUNE)
-		.[span_xenonotice("crusher-proof")] = "Charging Crushers can't damage this object."
+		.[span_xenonotice("防碾压")] = "Charging Crushers can't damage this object."
 	if(resistance_flags & XENO_DAMAGEABLE)
-		.[span_xenonotice("slashable")] = "Xenomorphs can slash this object."
+		.[span_xenonotice("可劈砍")] = "Xenomorphs can slash this object."
 	else if(!isitem(src))
-		.[span_xenonotice("not slashable")] = "Xenomorphs can't slash this object. Some objects, like airlocks, have special interactions when attacked."
+		.[span_xenonotice("不可劈砍")] = "Xenomorphs can't slash this object. Some objects, like airlocks, have special interactions when attacked."
 
 /obj/proc/setAnchored(anchorvalue)
 	SEND_SIGNAL(src, COMSIG_OBJ_SETANCHORED, anchorvalue)
@@ -283,14 +283,14 @@
 	if(href_list[VV_HK_MASS_DEL_TYPE]) // todo why isnt this just invoking the delete all verb? or why have that one exist?
 		if(!check_rights(R_DEBUG|R_SERVER))
 			return
-		var/action_type = tgui_alert(usr, "Strict type ([type]) or type and all subtypes?",,list("Strict type","Type and subtypes","Cancel"))
+		var/action_type = tgui_alert(usr, "严格类型([type])还是类型及所有子类型?",,list("Strict type","Type and subtypes","Cancel"))
 		if(action_type == "Cancel" || !action_type)
 			return
 
-		if(tgui_alert(usr, "Are you really sure you want to delete all objects of type [type]?",,list("Yes","No")) != "Yes")
+		if(tgui_alert(usr, "你真的确定要删除所有类型为[type]的对象吗?",,list("Yes","No")) != "Yes")
 			return
 
-		if(tgui_alert(usr, "Second confirmation required. Delete?",,list("Yes","No")) != "Yes")
+		if(tgui_alert(usr, "需要二次确认.删除?",,list("Yes","No")) != "Yes")
 			return
 
 		var/O_type = type
@@ -303,10 +303,10 @@
 						qdel(Obj)
 					CHECK_TICK
 				if(!i)
-					to_chat(usr, "No objects of this type exist")
+					to_chat(usr, "不存在此类型的对象")
 					return
 				log_admin("[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) ")
-				message_admins(span_notice("[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) "))
+				message_admins(span_notice("[key_name(usr)]删除了所有类型为[O_type]的对象(已删除[i]个对象)"))
 			if("Type and subtypes")
 				var/i = 0
 				for(var/obj/Obj in world)
@@ -315,10 +315,10 @@
 						qdel(Obj)
 					CHECK_TICK
 				if(!i)
-					to_chat(usr, "No objects of this type exist")
+					to_chat(usr, "不存在此类型的对象")
 					return
 				log_admin("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) ")
-				message_admins(span_notice("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) "))
+				message_admins(span_notice("[key_name(usr)]删除了所有类型为[O_type]或其子类型的对象(已删除[i]个对象)"))
 
 ///Called to return an internally stored item, currently for the deployable element
 /obj/proc/get_internal_item()
@@ -331,7 +331,7 @@
 ///Handles welder based repair of objects, normally called by welder_act
 /obj/proc/welder_repair_act(mob/living/user, obj/item/I, repair_amount = 150, repair_time = 5 SECONDS, repair_threshold = 0, skill_required = SKILL_ENGINEER_DEFAULT, fuel_req = 2, fumble_time)
 	if(user.do_actions)
-		balloon_alert(user, "busy")
+		balloon_alert(user, "忙碌")
 		return FALSE
 
 	if(user.a_intent == INTENT_HARM)
@@ -343,19 +343,19 @@
 		return FALSE
 
 	if(get_self_acid())
-		balloon_alert(user, "It's melting!")
+		balloon_alert(user, "它正在融化!")
 		return TRUE
 
 	if(obj_integrity <= max_integrity * repair_threshold)
 		return BELOW_INTEGRITY_THRESHOLD
 
 	if(obj_integrity >= max_integrity)
-		balloon_alert(user, "already repaired")
+		balloon_alert(user, "已经修复")
 		return TRUE
 
 	if(user.skills.getRating(SKILL_ENGINEER) < skill_required)
-		user.visible_message(span_notice("[user] fumbles around figuring out how to repair [src]."),
-		span_notice("You fumble around figuring out how to repair [src]."))
+		user.visible_message(span_notice("[user]笨手笨脚地摸索着如何修复[src]."),
+		span_notice("你笨手笨脚地摸索着如何修复[src]."))
 		if(!do_after(user, (fumble_time ? fumble_time : repair_time) * (skill_required - user.skills.getRating(SKILL_ENGINEER)), NONE, src, BUSY_ICON_BUILD))
 			return TRUE
 
@@ -363,7 +363,7 @@
 		repair_amount *= (1+(0.1*(user.skills.getRating(SKILL_ENGINEER) - (skill_required + 1))))
 
 	repair_time *= welder.toolspeed
-	balloon_alert_to_viewers("starting repair...")
+	balloon_alert_to_viewers("开始修复...")
 	while(needs_welder_repair(user))
 		if(!I.use_tool(src, user, repair_time, fuel_req, 2.5 SECONDS, CALLBACK(src, PROC_REF(is_repaired_enough), user, repair_threshold), BUSY_ICON_FRIENDLY))
 			return TRUE
@@ -371,7 +371,7 @@
 		repair_damage(repair_amount, user)
 		update_icon()
 
-	balloon_alert_to_viewers("repaired")
+	balloon_alert_to_viewers("已修复")
 	return TRUE
 
 ///callback check to see if we're done repairing
@@ -390,7 +390,7 @@
 	if(!isliving(grab.grabbed_thing))
 		return
 	if(user.grab_state <= GRAB_AGGRESSIVE)
-		to_chat(user, span_warning("You need a better grip to do that!"))
+		to_chat(user, span_warning("你需要更好的抓握力才能做到!"))
 		return
 
 	var/mob/living/grabbed_mob = grab.grabbed_thing
@@ -400,8 +400,8 @@
 	step_towards(grabbed_mob, src)
 	var/damage = base_damage + (user.skills.getRating(SKILL_CQC) * CQC_SKILL_DAMAGE_MOD)
 	grabbed_mob.apply_damage(damage, BRUTE, "head", MELEE, is_sharp, updating_health = TRUE)
-	user.visible_message(span_danger("[user] slams [grabbed_mob]'s face against [src]!"),
-	span_danger("You slam [grabbed_mob]'s face against [src]!"))
+	user.visible_message(span_danger("[user]把[grabbed_mob]的脸猛撞向[src]!"),
+	span_danger("你把[grabbed_mob]的脸猛撞向[src]!"))
 	log_combat(user, grabbed_mob, "slammed", "", "against \the [src]")
 	take_damage(damage, BRUTE, MELEE)
 	return TRUE
@@ -442,7 +442,7 @@
 		return FALSE
 	if(internal_item.deploy_flags & DEPLOYED_NO_PICKUP)
 		if(user)
-			balloon_alert(user, "Cannot disassemble")
+			balloon_alert(user, "无法拆解")
 		return FALSE
 	SEND_SIGNAL(src, COMSIG_ITEM_UNDEPLOY, user)
 	return TRUE

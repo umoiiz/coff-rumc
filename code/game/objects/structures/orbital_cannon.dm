@@ -7,8 +7,8 @@ GLOBAL_DATUM(rail_gun, /obj/structure/ship_rail_gun)
 GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 
 /obj/structure/orbital_cannon
-	name = "\improper Orbital Cannon"
-	desc = "The TGMC Orbital Cannon System. Used for shooting large targets on the planet that is orbited. It accelerates its payload with solid fuel for devastating results upon impact."
+	name = "\improper 轨道炮"
+	desc = "TGMC轨道炮系统.用于射击所环绕行星上的大型目标.它用固体燃料加速其弹头,撞击时产生毁灭性效果."
 	icon = 'icons/obj/machines/artillery.dmi'
 	icon_state = "OBC_unloaded"
 	density = TRUE
@@ -71,15 +71,15 @@ GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 
 	if(!tray.warhead)
 		if(user)
-			to_chat(user, span_warning("No warhead in the tray, loading operation cancelled."))
+			to_chat(user, span_warning("托盘内没有弹头,装填操作已取消."))
 		return
 
 	if(tray.fuel_amt < 1)
-		to_chat(user, span_warning("No solid fuel in the tray, loading operation cancelled."))
+		to_chat(user, span_warning("托盘内没有固体燃料,装填操作已取消."))
 		return
 
 	if(loaded_tray)
-		to_chat(user, span_warning("The tray is already loaded."))
+		to_chat(user, span_warning("托盘已经装填完毕."))
 		return
 
 	tray.forceMove(src)
@@ -108,11 +108,11 @@ GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 		return
 
 	if(chambered_tray)
-		to_chat(user, span_warning("The tray cannot be unloaded after its chambered, fire the gun first."))
+		to_chat(user, span_warning("托盘在进入膛室后无法卸载,请先开火."))
 		return
 
 	if(!loaded_tray)
-		to_chat(user, span_warning("The tray is not loaded."))
+		to_chat(user, span_warning("托盘未装填."))
 		return
 
 	flick("OBC_unloading",src)
@@ -140,7 +140,7 @@ GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 	set waitfor = 0
 
 	if(!loaded_tray)
-		to_chat(user, span_warning("You need to load the tray before chambering it."))
+		to_chat(user, span_warning("你需要先装填托盘才能将其送入膛室."))
 		return
 
 	if(ob_cannon_busy)
@@ -152,12 +152,12 @@ GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 		return
 	if(!tray.warhead)
 		if(user)
-			to_chat(user, span_warning("No warhead in the tray, cancelling chambering operation."))
+			to_chat(user, span_warning("托盘内没有弹头,取消送入膛室操作."))
 		return
 
 	if(tray.fuel_amt < 1)
 		if(user)
-			to_chat(user, span_warning("No solid fuel in the tray, cancelling chambering operation."))
+			to_chat(user, span_warning("托盘内没有固体燃料,取消送入膛室操作."))
 		return
 
 	flick("OBC_chambering",src)
@@ -182,7 +182,7 @@ GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 			if(get_dist(src, current_mob) > 20)
 				current_mob.playsound_local(current_mob, 'sound/effects/obalarm.ogg', 25)
 			shake_camera(current_mob, 0.7 SECONDS)
-			to_chat(current_mob, span_warning("The deck of the [SSmapping.configs[SHIP_MAP].map_name] shudders as her orbital cannon opens fire."))
+			to_chat(current_mob, span_warning("[SSmapping.configs[SHIP_MAP].map_name]的甲板随着其轨道炮开火而震颤."))
 			continue
 		playsound(loc, 'sound/effects/obfire.ogg', 100, FALSE, 20, 4)
 		if(current_mob.z != target.z)
@@ -225,8 +225,8 @@ GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 	GLOB.round_statistics.obs_fired++
 	SSblackbox.record_feedback("tally", "round_statistics", 1, "obs_fired")
 	priority_announce(
-		message = "Немедленно покиньте зону поражения!<br><br>Тип боеголовки: [tray.warhead.warhead_kind_rus].<br>[fuel_warning]<br>Цель: [get_area(T)].",
-		title = "Обнаружена команда на запуск орбитальной бомбардировки!",
+		message = "立即离开打击区域!<br><br>弹头类型: [tray.warhead.warhead_kind_rus].<br>[fuel_warning]<br>目标: [get_area(T)].",
+		title = "检测到轨道轰炸发射指令!",
 		type = ANNOUNCEMENT_PRIORITY,
 		sound = 'sound/effects/OB_warning_announce.ogg',
 		channel_override = SSsounds.random_available_channel(), // This way, we can't have it be cut off by other sounds.
@@ -262,8 +262,8 @@ GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 	update_icon()
 
 /obj/structure/orbital_tray
-	name = "loading tray"
-	desc = "The orbital cannon's loading tray."
+	name = "装填托盘"
+	desc = "轨道炮的装填托盘."
 	icon = 'icons/obj/structures/mainship_props64.dmi'
 	icon_state = "cannon_tray"
 	density = TRUE
@@ -303,21 +303,21 @@ GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 
 		if(OA.is_solid_fuel)
 			if(fuel_amt >= 6)
-				to_chat(user, span_warning("[src] can't accept more solid fuel."))
+				to_chat(user, span_warning("[src]无法接受更多固体燃料."))
 				return
 
 			if(!warhead)
-				to_chat(user, span_warning("A warhead must be placed in [src] first."))
+				to_chat(user, span_warning("必须先在[src]中放置弹头."))
 				return
 			fuel_amt++
 			qdel(OA)
 		else
 			if(warhead)
-				to_chat(user, span_warning("[src] already has a warhead."))
+				to_chat(user, span_warning("[src]已经有弹头了."))
 				return
 			warhead = OA
 
-		to_chat(user, span_notice("You load [OA] into [src]."))
+		to_chat(user, span_notice("你将[OA]装入[src]."))
 		playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 
 		if(!QDELETED(OA))
@@ -339,12 +339,12 @@ GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 
 	attached_clamp.update_icon()
 	playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
-	to_chat(user, span_notice("You grab [attached_clamp.loaded] with [attached_clamp]."))
+	to_chat(user, span_notice("你用[attached_clamp]抓住[attached_clamp.loaded]."))
 	update_icon()
 
 
 /obj/structure/ob_ammo
-	name = "theoretical ob ammo"
+	name = "理论轨道炮弹药"
 	density = TRUE
 	anchored = TRUE
 	climbable = TRUE
@@ -364,7 +364,7 @@ GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 	return ..()
 
 /obj/structure/ob_ammo/warhead
-	name = "theoretical orbital ammo"
+	name = "理论轨道炮弹药"
 	var/warhead_kind
 	var/warhead_kind_rus
 
@@ -379,8 +379,8 @@ GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 			relative_dir = 0
 		else
 			relative_dir = get_dir(our_mob, target)
-		our_mob.show_message(span_userdanger("Небо вспыхнуло <u>[relative_dir ? ("с " + dir2rutext(relative_dir) + "а от тебя") : "прямо над тобой"]</u>!"), EMOTE_VISIBLE,
-			span_userdanger("Громкий шум слышно из неба <u>[relative_dir ? ("примерно с " + dir2rutext(relative_dir) + "а от тебя") : "прямо над тобой"]</u>!"), EMOTE_AUDIBLE)
+		our_mob.show_message(span_userdanger("天空闪起了<u>[relative_dir ? ("с " + dir2rutext(relative_dir) + "а от тебя") : "прямо над тобой"]</u>!"), EMOTE_VISIBLE,
+			span_userdanger("从天空中传来巨大的声响<u>[relative_dir ? ("примерно с " + dir2rutext(relative_dir) + "а от тебя") : "прямо над тобой"]</u>!"), EMOTE_AUDIBLE)
 
 	sleep(impact_time / 3)
 	for(var/mob/living/our_mob in range(25, target))
@@ -388,16 +388,16 @@ GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 			relative_dir = 0
 		else
 			relative_dir = get_dir(our_mob, target)
-		our_mob.show_message(span_userdanger("Небо ревет все громче <u>[relative_dir ? ("с " + dir2rutext(relative_dir) + "а от тебя") : "прямо над тобой"]</u>!"), EMOTE_VISIBLE,
-			span_userdanger("Шум становится громче <u>[relative_dir ? ("где-то с " + dir2rutext(relative_dir) + "а от тебя") : "прямо над тобой"]</u>!"), EMOTE_AUDIBLE)
+		our_mob.show_message(span_userdanger("天空越来越响地咆哮着<u>[relative_dir ? ("с " + dir2rutext(relative_dir) + "а от тебя") : "прямо над тобой"]</u>!"), EMOTE_VISIBLE,
+			span_userdanger("噪音变得更响了<u>[relative_dir ? ("где-то с " + dir2rutext(relative_dir) + "а от тебя") : "прямо над тобой"]</u>!"), EMOTE_AUDIBLE)
 
 	sleep(impact_time / 3)
 	for(var/mob/living/our_mob in range(15, target))
-		our_mob.show_message(span_userdanger("О БОЖЕ, НЕБО СЕЙЧАС ВЗОРВЕТСЯ!!!"), EMOTE_VISIBLE,
-			span_userdanger("СМАТЫВАЙСЯ ОТСЮДА!"), EMOTE_AUDIBLE)
+		our_mob.show_message(span_userdanger("天哪,天空现在要炸开了!!!"), EMOTE_VISIBLE,
+			span_userdanger("快从这里滚开!"), EMOTE_AUDIBLE)
 
 /obj/structure/ob_ammo/warhead/explosive
-	name = "\improper HE orbital warhead"
+	name = "\improper 高爆轨道弹头"
 	warhead_kind = "explosive"
 	warhead_kind_rus = "взрывной"
 	icon_state = "ob_warhead_1"
@@ -408,7 +408,7 @@ GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 	cell_explosion(target, explosion_power, explosion_falloff + (inaccuracy_amt * 10)) // inaccuracy adds up fallof in result range decreases
 
 /obj/structure/ob_ammo/warhead/incendiary
-	name = "\improper Incendiary orbital warhead"
+	name = "\improper 燃烧轨道弹头"
 	warhead_kind = "incendiary"
 	warhead_kind_rus = "зажигательный"
 	icon_state = "ob_warhead_2"
@@ -426,7 +426,7 @@ GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 	warcrime.start()
 
 /obj/structure/ob_ammo/warhead/cluster
-	name = "\improper Cluster orbital warhead"
+	name = "\improper 集束轨道弹头"
 	warhead_kind = "cluster"
 	warhead_kind_rus = "кластер"
 	icon_state = "ob_warhead_3"
@@ -448,7 +448,7 @@ GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 		sleep(0.1 SECONDS)
 
 /obj/structure/ob_ammo/warhead/plasmaloss
-	name = "\improper Plasma draining orbital warhead"
+	name = "\improper 等离子汲取轨道弹头"
 	warhead_kind = "plasma"
 	warhead_kind_rus = "Т-ГАЗ"
 	icon_state = "ob_warhead_4"
@@ -461,7 +461,7 @@ GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 	smoke.start()
 
 /obj/structure/ob_ammo/ob_fuel
-	name = "solid fuel"
+	name = "固体燃料"
 	icon_state = "ob_fuel"
 	is_solid_fuel = TRUE
 
@@ -472,7 +472,7 @@ GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 
 /obj/machinery/computer/orbital_cannon_console
 	name = "\improper Orbital Cannon Console"
-	desc = "The console controlling the orbital cannon loading systems."
+	desc = "控制轨道炮装填系统的控制台."
 	icon_state = "ob_console"
 	screen_overlay = "ob_console_screen"
 	dir = WEST
@@ -500,8 +500,8 @@ GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 		return FALSE
 
 	if(!isobserver(user) && user.skills.getRating(SKILL_ENGINEER) < SKILL_ENGINEER_ENGI)
-		user.visible_message(span_notice("[user] fumbles around figuring out how to use the console."),
-		span_notice("You fumble around figuring out how to use the console."))
+		user.visible_message(span_notice("[user]笨手笨脚地摸索着如何使用控制台."),
+		span_notice("你笨手笨脚地摸索着如何使用控制台."))
 		var/fumbling_time = 5 SECONDS * ( SKILL_ENGINEER_ENGI - user.skills.getRating(SKILL_ENGINEER) )
 		if(!do_after(user, fumbling_time, NONE, src, BUSY_ICON_UNSKILLED))
 			return FALSE
@@ -558,8 +558,8 @@ GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 
 
 /obj/structure/ship_rail_gun
-	name = "\improper Rail Gun"
-	desc = "A powerful ship-to-ship weapon sometimes used for ground support at reduced efficiency."
+	name = "\improper 电磁炮"
+	desc = "一种强大的舰对舰武器,有时也用于地面支援,但效率会降低."
 	icon = 'icons/obj/machines/artillery.dmi'
 	icon_state = "Railgun"
 	density = TRUE
@@ -593,7 +593,7 @@ GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 	if(cannon_busy && !ignore_cooldown)
 		return
 	if(!rail_gun_ammo?.ammo_count)
-		to_chat(user, span_warning("[src] has ran out of ammo."))
+		to_chat(user, span_warning("[src]的弹药已经耗尽."))
 		return
 	flick("Railgun_firing",src)
 	cannon_busy = TRUE
@@ -605,7 +605,7 @@ GLOBAL_LIST_EMPTY(ob_type_fuel_requirements)
 	playsound(loc, 'sound/weapons/guns/fire/pred_plasma_shot.ogg', 70, 1)
 	var/turf/target = locate(T.x + rand(-4, 4), T.y + rand(-4, 4), T.z)
 	for(var/mob/living/silicon/ai/AI AS in GLOB.ai_list)
-		to_chat(AI, span_notice("NOTICE - \The [src] has fired."))
+		to_chat(AI, span_notice("通知 - \The [src]已开火."))
 	rail_gun_ammo.ammo_count = max(0, rail_gun_ammo.ammo_count - rail_gun_ammo.ammo_used_per_firing)
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/ship_rail_gun, impact_rail_gun), target), 1 SECONDS + (RG_FLY_TIME * (GLOB.current_orbit/3)))
 

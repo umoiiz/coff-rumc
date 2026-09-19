@@ -1,6 +1,6 @@
 /mob/living/simple_animal/cat
 	name = "cat"
-	desc = "Kitty!!"
+	desc = "小猫咪!!"
 	icon = 'icons/mob/pets.dmi'
 	icon_state = "cat"
 	icon_living = "cat"
@@ -22,7 +22,7 @@
 
 /mob/living/simple_animal/cat/space
 	name = "space cat"
-	desc = "It's a cat... in space!"
+	desc = "这是一只猫... 在太空中!"
 	icon_state = "spacecat"
 	icon_living = "spacecat"
 	icon_dead = "spacecat_dead"
@@ -30,7 +30,7 @@
 
 /mob/living/simple_animal/cat/original
 	name = "Batsy"
-	desc = "The product of alien DNA and bored geneticists."
+	desc = "外星DNA和无聊的遗传学家的产物."
 	gender = FEMALE
 	icon_state = "original"
 	icon_living = "original"
@@ -39,7 +39,7 @@
 
 /mob/living/simple_animal/cat/kitten
 	name = "kitten"
-	desc = "D'aaawwww."
+	desc = "哎呀呀."
 	icon_state = "kitten"
 	icon_living = "kitten"
 	icon_dead = "kitten_dead"
@@ -58,7 +58,7 @@
 /mob/living/simple_animal/cat/Jones
 	name = "Jones"
 	real_name = "Jones"
-	desc = "Old and grumpy cat."
+	desc = "又老又暴躁的猫."
 	icon_state = "cat2"
 	icon_living = "cat2"
 	icon_dead = "cat2_dead"
@@ -67,7 +67,7 @@
 /mob/living/simple_animal/cat/floppa
 	name = "\improper floppa"
 	real_name = "floppa"
-	desc = "A caracal with very floppy ears. Its mere presence inspires fear."
+	desc = "一只耳朵非常耷拉的狞猫. 它的存在本身就令人恐惧."
 	icon = 'icons/mob/pets.dmi'
 	icon_state = "floppa"
 	icon_living = "floppa"
@@ -77,7 +77,7 @@
 
 /mob/living/simple_animal/cat/martin
 	name = "Martin"
-	desc = "Requisition's very own caracal. You wonder how much requisition paid to get this dogdang creature on board."
+	desc = "后勤部自己的狞猫. 你很好奇后勤部花了多少钱才把这只该死的生物弄上船."
 	icon = 'icons/mob/pets.dmi'
 	icon_state = "martin"
 	icon_living = "martin"
@@ -134,8 +134,8 @@
 
 
 /obj/item/clothing/head/cat
-	name = "Cat"
-	desc = "Kitty!!"
+	name = "猫"
+	desc = "小猫咪!!"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "cat2"
 	worn_icon_list = list(

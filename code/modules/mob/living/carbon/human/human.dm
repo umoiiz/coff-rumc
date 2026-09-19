@@ -277,7 +277,7 @@
 			return
 		if(!(assigned_squad == H.assigned_squad)) //still same squad
 			return
-		var/newfireteam = tgui_input_list(usr, "Assign this marine to a fireteam.", "Fire Team Assignment", list("None", "Fire Team 1", "Fire Team 2", "Fire Team 3"))
+		var/newfireteam = tgui_input_list(usr, "将此陆战队员分配到火力小组.", "火力小组分配", list("None", "Fire Team 1", "Fire Team 2", "Fire Team 3"))
 		if(!newfireteam || H.incapacitated() || get_dist(H, src) >= 7) //We might've moved away or gotten incapacitated in the meantime
 			return
 		ID = get_idcard()
@@ -317,7 +317,7 @@
 		for(var/datum/data/record/general_record in GLOB.datacore.general)
 			if(!(general_record.fields["name"] == perpname) || !(general_record.fields["id"] == general_record.fields["id"]))
 				continue
-			var/setmedical = tgui_input_list(usr, "Specify a new medical status for this person.", "Medical HUD", list("*SSD*", "*Deceased*", "Physically Unfit", "Active", "Disabled"))
+			var/setmedical = tgui_input_list(usr, "为此人指定新的医疗状态.", "医疗HUD", list("*SSD*", "*Deceased*", "Physically Unfit", "Active", "Disabled"))
 			if(!setmedical)
 				return
 			general_record.fields["p_stat"] = setmedical
@@ -327,7 +327,7 @@
 				U.handle_regular_hud_updates()
 			return
 
-		to_chat(usr, span_warning("Unable to locate a data core entry for this person."))
+		to_chat(usr, span_warning("无法找到此人的数据核心条目."))
 
 	if(href_list["medrecord"])
 		if(!hasHUD(usr, "medical"))
@@ -351,17 +351,17 @@
 			for(var/datum/data/record/medical_record in GLOB.datacore.medical)
 				if(!(medical_record.fields["id"] == general_record.fields["id"]))
 					continue
-				to_chat(usr, "<b>Name:</b> [medical_record.fields["name"]]	<b>Blood Type:</b> [medical_record.fields["b_type"]]")
+				to_chat(usr, "<b>姓名:</b> [medical_record.fields["name"]]	<b>血型:</b> [medical_record.fields["b_type"]]")
 				to_chat(usr, "<b>DNA:</b> [medical_record.fields["b_dna"]]")
-				to_chat(usr, "<b>Minor Disabilities:</b> [medical_record.fields["mi_dis"]]")
-				to_chat(usr, "<b>Details:</b> [medical_record.fields["mi_dis_d"]]")
-				to_chat(usr, "<b>Major Disabilities:</b> [medical_record.fields["ma_dis"]]")
-				to_chat(usr, "<b>Details:</b> [medical_record.fields["ma_dis_d"]]")
-				to_chat(usr, "<b>Notes:</b> [medical_record.fields["notes"]]")
-				to_chat(usr, "<a href='byond://?src=[text_ref(src)];medrecordComment=`'>\[View Comment Log\]</a>")
+				to_chat(usr, "<b>轻微残疾:</b> [medical_record.fields["mi_dis"]]")
+				to_chat(usr, "<b>详情:</b> [medical_record.fields["mi_dis_d"]]")
+				to_chat(usr, "<b>严重残疾:</b> [medical_record.fields["ma_dis"]]")
+				to_chat(usr, "<b>详情:</b> [medical_record.fields["ma_dis_d"]]")
+				to_chat(usr, "<b>备注:</b> [medical_record.fields["notes"]]")
+				to_chat(usr, "<a href='byond://?src=[text_ref(src)];medrecordComment=`'>\[查看评论日志\]</a>")
 				return
 
-		to_chat(usr, span_warning("Unable to locate a data core entry for this person."))
+		to_chat(usr, span_warning("无法找到此人的数据核心条目."))
 
 	if(href_list["medrecordComment"])
 		if(!hasHUD(usr, "medical"))
@@ -390,11 +390,11 @@
 					to_chat(usr, "[medical_record.fields["com_[counter]"]]")
 					counter++
 				if(counter == 1)
-					to_chat(usr, "No comment found")
-				to_chat(usr, "<a href='byond://?src=[text_ref(src)];medrecordadd=`'>\[Add comment\]</a>")
+					to_chat(usr, "未找到评论")
+				to_chat(usr, "<a href='byond://?src=[text_ref(src)];medrecordadd=`'>\[添加评论\]</a>")
 				return
 
-		to_chat(usr, span_warning("Unable to locate a data core entry for this person."))
+		to_chat(usr, span_warning("无法找到此人的数据核心条目."))
 
 	if(href_list["medrecordadd"])
 		if(!hasHUD(usr, "medical"))
@@ -429,31 +429,31 @@
 
 	if(href_list["medholocard"])
 		if(!species?.count_human)
-			to_chat(usr, span_warning("Triage holocards only works on organic humanoid entities."))
+			to_chat(usr, span_warning("分诊全息卡仅对有机人形实体有效."))
 			return
-		var/newcolor = tgui_input_list(usr, "Choose a triage holo card to add to the patient:", "Triage holo card", list("black", "red", "orange", "none"))
+		var/newcolor = tgui_input_list(usr, "选择一张分诊全息卡添加到该患者身上:", "分诊全息卡", list("black", "red", "orange", "none"))
 		if(!newcolor)
 			return
 		if(get_dist(usr, src) > 7)
-			to_chat(usr, span_warning("[src] is too far away."))
+			to_chat(usr, span_warning("[src]距离太远."))
 			return
 		if(newcolor == "none")
 			if(!holo_card_color)
 				return
 			holo_card_color = null
-			to_chat(usr, span_notice("You remove the holo card on [src]."))
+			to_chat(usr, span_notice("你移除了[src]身上的全息卡."))
 		else if(newcolor != holo_card_color)
 			holo_card_color = newcolor
-			to_chat(usr, span_notice("You add a [newcolor] holo card on [src]."))
+			to_chat(usr, span_notice("你在[src]身上添加了一张[newcolor]全息卡."))
 
 	if(href_list["scanreport"])
 		if(!hasHUD(usr,"medical"))
 			return
 		if(!ishuman(src))
-			to_chat(usr, span_warning("This only works on humanoids."))
+			to_chat(usr, span_warning("这仅对人形生物有效."))
 			return
 		if(get_dist(usr, src) > 7)
-			to_chat(usr, span_warning("[src] is too far away."))
+			to_chat(usr, span_warning("[src]距离太远."))
 			return
 
 		var/datum/data/record/medical_record = find_medical_record(src)
@@ -486,13 +486,13 @@
 
 /mob/living/carbon/human/proc/fireman_carry(mob/living/carbon/target)
 	if(!can_be_firemanned(target) || incapacitated(restrained_flags = RESTRAINED_NECKGRAB))
-		to_chat(src, span_warning("You can't fireman carry [target] while they're standing!"))
+		to_chat(src, span_warning("[target]站着的时候你无法进行消防员式背负!"))
 		return
-	visible_message(span_notice("[src] starts lifting [target] onto [p_their()] back..."),
-	span_notice("You start to lift [target] onto your back..."))
+	visible_message(span_notice("[src]开始将[target]抬到[p_their()]背上..."),
+	span_notice("你开始将[target]抬到你的背上..."))
 	var/delay = 5 SECONDS - LERP(0 SECONDS, 4 SECONDS, skills.getPercent(SKILL_MEDICAL, SKILL_MEDICAL_MASTER))
 	if(!do_after(src, delay, NONE, target, target_display = BUSY_ICON_HOSTILE))
-		visible_message(span_warning("[src] fails to fireman carry [target]!"))
+		visible_message(span_warning("[src]未能消防员式背负[target]!"))
 		return
 	//Second check to make sure they're still valid to be carried
 	if(!can_be_firemanned(target) || incapacitated(restrained_flags = RESTRAINED_NECKGRAB))
@@ -542,7 +542,7 @@
 
 
 /mob/living/carbon/human/proc/play_xylophone()
-	visible_message(span_warning("[src] begins playing his ribcage like a xylophone. It's quite spooky."),span_notice("You begin to play a spooky refrain on your ribcage."),span_warning("You hear a spooky xylophone melody."))
+	visible_message(span_warning("[src]开始像敲木琴一样弹奏自己的肋骨.真是相当诡异."),span_notice("你开始在自己的肋骨上弹奏一段诡异的旋律."),span_warning("你听到一段诡异的木琴旋律."))
 	var/song = pick('sound/effects/xylophone1.ogg','sound/effects/xylophone2.ogg','sound/effects/xylophone3.ogg')
 	playsound(loc, song, 25, 1)
 
@@ -573,25 +573,25 @@
 		self = TRUE
 
 	if(!self)
-		usr.visible_message(span_notice("[usr] kneels down, puts [usr.p_their()] hand on [src]'s wrist and begins counting their pulse."),
-		span_notice("You begin counting [src]'s pulse."), null, 3)
+		usr.visible_message(span_notice("[usr]跪下来,把[usr.p_their()]的手放在[src]的手腕上,开始数他们的脉搏."),
+		span_notice("你开始数[src]的脉搏."), null, 3)
 	else
-		usr.visible_message(span_notice("[usr] begins counting their pulse."),
-		span_notice("You begin counting your pulse."), null, 3)
+		usr.visible_message(span_notice("[usr]开始数自己的脉搏."),
+		span_notice("你开始数自己的脉搏."), null, 3)
 
 	if(handle_pulse())
-		to_chat(usr, span_notice("[self ? "You have a" : "[src] has a"] pulse! Counting..."))
+		to_chat(usr, span_notice("[self ? "You have a" : "[src] has a"]脉搏!正在计数..."))
 	else
-		to_chat(usr, span_warning("[src] has no pulse!"))
+		to_chat(usr, span_warning("[src]没有脉搏!"))
 		return
 
-	to_chat(usr, "You must[self ? "" : " both"] remain still until counting is finished.")
+	to_chat(usr, "你必须在计数结束前[self ? "" : " both"]保持不动.")
 
 	if(!do_after(usr, 6 SECONDS, NONE, src))
-		to_chat(usr, span_warning("You failed to check the pulse. Try again."))
+		to_chat(usr, span_warning("你未能检查到脉搏.再试一次."))
 		return
 
-	to_chat(usr, span_notice("[self ? "Your" : "[src]'s"] pulse is [get_pulse(GETPULSE_HAND)]."))
+	to_chat(usr, span_notice("[self ? "Your" : "[src]'s"]的脉搏为[get_pulse(GETPULSE_HAND)]."))
 
 
 /mob/living/carbon/human/verb/view_manifest()
@@ -749,19 +749,19 @@
 		spark_system.start(src)
 	if(!silent)
 		if(goes_out && light_off)
-			to_chat(src, span_notice("Your sources of light short and fizzle out."))
+			to_chat(src, span_notice("你的光源短路并熄灭了."))
 			return
 		if(goes_out)
 			if(goes_out > 1)
-				to_chat(src, span_notice("Your sources of light fizzle out."))
+				to_chat(src, span_notice("你的光源熄灭了."))
 				return
-			to_chat(src, span_notice("Your source of light fizzles out."))
+			to_chat(src, span_notice("你的光源熄灭了."))
 			return
 		if(light_off)
 			if(light_off > 1)
-				to_chat(src, span_notice("Your sources of light short out."))
+				to_chat(src, span_notice("你的光源短路了."))
 				return
-			to_chat(src, span_notice("Your source of light shorts out."))
+			to_chat(src, span_notice("你的光源短路了."))
 
 /mob/living/carbon/human/proc/randomize_appearance()
 	gender = pick(MALE, FEMALE)

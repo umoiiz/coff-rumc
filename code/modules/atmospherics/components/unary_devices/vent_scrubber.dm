@@ -3,7 +3,7 @@
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber
 	name = "air scrubber"
-	desc = "Has a valve and pump attached to it."
+	desc = "附有阀门和泵."
 	icon_state = "scrub_map-2"
 	base_icon_state = "scrub"
 	use_power = IDLE_POWER_USE
@@ -67,7 +67,7 @@
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber/plasmacutter_act(mob/living/user, obj/item/tool/pickaxe/plasmacutter/I)
 	if(!welded)
-		to_chat(user, span_warning("\The [I] can only cut open welds!"))
+		to_chat(user, span_warning("\The [I]只能切开焊缝!"))
 		return FALSE
 	if(!(I.start_cut(user, src.name, src, PLASMACUTTER_BASE_COST * PLASMACUTTER_VLOW_MOD)))
 		return FALSE
@@ -82,29 +82,29 @@
 	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.isOn())
-			user.visible_message(span_notice("[user] starts welding [src] with [WT]."), \
-			span_notice("You start welding [src] with [WT]."))
+			user.visible_message(span_notice("[user]开始用[WT]焊接[src]."), \
+			span_notice("你开始用[WT]焊接[src]."))
 			if(WT.use_tool(src, user, 5 SECONDS, 1, 25, null, BUSY_ICON_BUILD))
 				if(!welded)
-					user.visible_message(span_notice("[user] welds [src] shut."), \
-					span_notice("You weld [src] shut."))
+					user.visible_message(span_notice("[user]将[src]焊接封闭."), \
+					span_notice("你将[src]焊接封闭."))
 					welded = TRUE
 				else
-					user.visible_message(span_notice("[user] welds [src] open."), \
-					span_notice("You weld [src] open."))
+					user.visible_message(span_notice("[user]将[src]焊接打开."), \
+					span_notice("你将[src]焊接打开."))
 					welded = FALSE
 				update_icon()
 				pipe_vision_img = image(src, loc, dir = dir)
 				SET_PLANE_EXPLICIT(pipe_vision_img, ABOVE_HUD_PLANE, src)
 				return TRUE
 		else
-			to_chat(user, span_warning("[WT] needs to be on to start this task."))
+			to_chat(user, span_warning("[WT]需要开启才能开始此任务."))
 	return FALSE
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational())
-		to_chat(user, span_warning("You cannot unwrench [src], turn it off first!"))
+		to_chat(user, span_warning("你无法松开[src],先将其关闭!"))
 		return FALSE
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber/attack_facehugger(mob/living/carbon/xenomorph/facehugger/F, damage_amount = F.xeno_caste.melee_damage, damage_type = BRUTE, damage_flag = MELEE, effects = TRUE, armor_penetration = 0, isrightclick = FALSE)
@@ -112,7 +112,7 @@
 		return
 	if(!welded || !(do_after(F, 3 SECONDS, IGNORE_HELD_ITEM, src, BUSY_ICON_HOSTILE)))
 		return
-	F.visible_message("[F] furiously claws at [src]!", "We manage to clear away the stuff blocking the scrubber.", "You hear loud scraping noises.")
+	F.visible_message("[F]疯狂地抓挠[src]!", "我们设法清除了堵塞洗涤器的东西.", "你听到巨大的刮擦声.")
 	welded = FALSE
 	update_icon()
 	pipe_vision_img = image(src, loc, dir = dir)
@@ -122,14 +122,14 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/examine(mob/user)
 	. = ..()
 	if(welded)
-		. += span_notice("It seems welded shut.")
+		. += span_notice("它似乎被焊接封闭了.")
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber/attack_alien(mob/living/carbon/xenomorph/xeno_attacker, damage_amount = xeno_attacker.xeno_caste.melee_damage, damage_type = BRUTE, damage_flag = MELEE, effects = TRUE, armor_penetration = xeno_attacker.xeno_caste.melee_ap, isrightclick = FALSE)
 	if(xeno_attacker.status_flags & INCORPOREAL)
 		return
 	if(!welded || !(do_after(xeno_attacker, 2 SECONDS, IGNORE_HELD_ITEM, src, BUSY_ICON_HOSTILE)))
 		return
-	xeno_attacker.visible_message("[xeno_attacker] furiously claws at [src]!", "We manage to clear away the stuff blocking the scrubber.", "You hear loud scraping noises.")
+	xeno_attacker.visible_message("[xeno_attacker]疯狂地抓挠[src]!", "我们设法清除了堵塞洗涤器的东西.", "你听到巨大的刮擦声.")
 	welded = FALSE
 	update_icon()
 	pipe_vision_img = image(src, loc, dir = dir)

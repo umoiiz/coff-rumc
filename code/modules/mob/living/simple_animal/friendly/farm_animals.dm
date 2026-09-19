@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/goat
 	name = "goat"
-	desc = "Not known for their pleasant disposition."
+	desc = "以其不友善的性情而闻名."
 	icon_state = "goat"
 	icon_living = "goat"
 	icon_dead = "goat_dead"
@@ -38,15 +38,15 @@
 	if(length(enemies) && prob(10))
 		enemies = list()
 		LoseTarget()
-		visible_message(span_notice("[src] calms down."))
+		visible_message(span_notice("[src]冷静下来了."))
 
 /mob/living/simple_animal/hostile/retaliate/goat/Retaliate()
 	. = ..()
-	visible_message(span_danger("[src] gets an evil-looking gleam in [p_their()] eye."))
+	visible_message(span_danger("[src]的[p_their()]眼中闪过一丝邪恶的光芒."))
 
 /mob/living/simple_animal/cow
 	name = "cow"
-	desc = "Known for their milk, just don't tip them over."
+	desc = "以其产奶而闻名,只是别把它们推倒."
 	icon_state = "cow"
 	icon_living = "cow"
 	icon_dead = "cow_dead"
@@ -72,9 +72,9 @@
 
 /mob/living/simple_animal/cow/attack_hand(mob/living/user)
 	if(!stat && user.a_intent == INTENT_DISARM && icon_state != icon_dead)
-		user.visible_message(span_warning("[user] tips over [src]."),
-			span_notice("You tip over [src]."))
-		to_chat(src, span_userdanger("You are tipped over by [user]!"))
+		user.visible_message(span_warning("[user]推倒了[src]."),
+			span_notice("你推倒了[src]."))
+		to_chat(src, span_userdanger("你被[user]推倒了!"))
 		Paralyze(20 SECONDS)
 		icon_state = icon_dead
 		addtimer(CALLBACK(src, PROC_REF(tip_message), user), rand(2 SECONDS, 5 SECONDS))
@@ -98,7 +98,7 @@
 
 /mob/living/simple_animal/chick
 	name = "\improper chick"
-	desc = "Adorable! They make such a racket though."
+	desc = "真可爱! 不过它们吵得要命."
 	icon_state = "chick"
 	icon_living = "chick"
 	icon_dead = "chick_dead"
@@ -147,7 +147,7 @@
 
 /mob/living/simple_animal/chicken
 	name = "\improper chicken"
-	desc = "Hopefully the eggs are good this season."
+	desc = "希望这个季节的蛋不错."
 	gender = FEMALE
 	icon_state = "chicken_brown"
 	icon_living = "chicken_brown"
@@ -205,7 +205,7 @@
 			qdel(O)
 			eggsleft += rand(1, 4)
 		else
-			to_chat(user, span_warning("[name] doesn't seem hungry!"))
+			to_chat(user, span_warning("[name]似乎不饿!"))
 	else
 		..()
 
@@ -232,7 +232,7 @@
 	if(isturf(loc))
 		amount_grown += rand(1, 2)
 		if(amount_grown >= 100)
-			visible_message("[src] hatches with a quiet cracking sound.")
+			visible_message("[src]伴随着一声轻轻的裂开声孵化了.")
 			new /mob/living/simple_animal/chick(get_turf(src))
 			STOP_PROCESSING(SSobj, src)
 			qdel(src)

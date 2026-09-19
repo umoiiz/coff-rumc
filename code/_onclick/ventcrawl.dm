@@ -6,12 +6,12 @@
 		if(U.vent_movement & VENTCRAWL_ENTRANCE_ALLOWED && Adjacent(U))
 			pipes |= U
 	if(!pipes || !length(pipes))
-		balloon_alert(src, "No pipes in range!")
+		balloon_alert(src, "范围内没有管道!")
 		return
 	if(length(pipes) == 1)
 		pipe = pipes[1]
 	else
-		pipe = tgui_input_list(usr, "Crawl Through Vent", "Pick a pipe",  pipes)
+		pipe = tgui_input_list(usr, "爬过通风管", "选择一条管道",  pipes)
 	if(!incapacitated() && pipe)
 		return pipe
 
@@ -23,18 +23,18 @@
 	if(!Adjacent(ventcrawl_target))
 		return FALSE
 	if(stat)
-		to_chat(src, span_warning("You must be conscious to do this!"))
+		to_chat(src, span_warning("你必须保持清醒才能这样做!"))
 		return FALSE
 	if(buckled)
-		to_chat(src, span_warning("You can't vent crawl while buckled!"))
+		to_chat(src, span_warning("被扣住时无法爬通风管!"))
 		return FALSE
 	if(istype(ventcrawl_target, /obj/machinery/atmospherics/components))
 		var/obj/machinery/atmospherics/components/ventcrawl_component = ventcrawl_target
 		if(ventcrawl_component.welded)
-			to_chat(src, span_warning("You can't crawl around a welded vent!"))
+			to_chat(src, span_warning("无法爬过焊接的通风口!"))
 			return FALSE
 	if(ventcrawl_target.loc.density || ventcrawl_target.covered_by_shuttle)
-		to_chat(src, span_notice("You cannot climb out, the exit is blocked!"))
+		to_chat(src, span_notice("你无法爬出去,出口被堵住了!"))
 		return FALSE
 	return TRUE
 
@@ -49,7 +49,7 @@
 	if(TIMER_COOLDOWN_RUNNING(src, COOLDOWN_VENTCRAWL))
 		return
 	TIMER_COOLDOWN_START(src, COOLDOWN_VENTCRAWL,  crawl_time)
-	visible_message(span_notice("[src] begins climbing out from the ventilation system..."), span_notice("You begin climbing out from the ventilation system..."))
+	visible_message(span_notice("[src]开始从通风系统爬出..."), span_notice("你开始从通风系统爬出..."))
 	if(!do_after(src, crawl_time, target = ventcrawl_target))
 		TIMER_COOLDOWN_END(src, COOLDOWN_VENTCRAWL)
 		return
@@ -57,7 +57,7 @@
 		return
 	if(!stealthy) //Xenos with stealth vent crawling can silently enter/exit vents.
 		playsound(src, get_sfx(SFX_ALIEN_VENTPASS), 35, TRUE)
-	visible_message(span_notice("[src] scrambles out from the ventilation ducts!"), span_notice("You scramble out from the ventilation ducts."))
+	visible_message(span_notice("[src]从通风管道中爬了出来!"), span_notice("你从通风管道中爬了出来."))
 	forceMove(ventcrawl_target.loc)
 	REMOVE_TRAIT(src, TRAIT_MOVE_VENTCRAWLING, VENTCRAWLING_TRAIT)
 	update_pipe_vision()
@@ -76,14 +76,14 @@
 		return
 	//Handle the exit here
 	if(HAS_TRAIT(src, TRAIT_MOVE_VENTCRAWLING) && istype(loc, /obj/machinery/atmospherics))
-		visible_message(span_notice("[src] begins climbing out from the ventilation system..."), span_notice("You begin climbing out from the ventilation system..."))
+		visible_message(span_notice("[src]开始从通风系统爬出..."), span_notice("你开始从通风系统爬出..."))
 		if(!do_after(src, crawl_time, target = ventcrawl_target))
 			return
 		if(!client)
 			return
 		if(!stealthy) //Xenos with stealth vent crawling can silently enter/exit vents.
 			playsound(src, get_sfx(SFX_ALIEN_VENTPASS), 35, TRUE)
-		visible_message(span_notice("[src] scrambles out from the ventilation ducts!"), span_notice("You scramble out from the ventilation ducts."))
+		visible_message(span_notice("[src]从通风管道中爬了出来!"), span_notice("你从通风管道中爬了出来."))
 		forceMove(ventcrawl_target.loc)
 		REMOVE_TRAIT(src, TRAIT_MOVE_VENTCRAWLING, VENTCRAWLING_TRAIT)
 		update_pipe_vision()
@@ -93,16 +93,16 @@
 	else
 		var/datum/pipeline/vent_parent = ventcrawl_target.parents[1]
 		if(!(vent_parent && (vent_parent.members.len || vent_parent.other_atmosmch)))
-			to_chat(src, span_warning("This ventilation duct is not connected to anything!"))
+			to_chat(src, span_warning("这个通风管道没有连接到任何地方!"))
 			return
-		visible_message(span_notice("[src] begins climbing into the ventilation system...") ,span_notice("You begin climbing into the ventilation system..."))
+		visible_message(span_notice("[src]开始爬入通风系统...") ,span_notice("你开始爬入通风系统..."))
 		if(!do_after(src, crawl_time, target = ventcrawl_target))
 			return
 		if(!client)
 			return
 		if(!stealthy) //Xenos with stealth vent crawling can silently enter/exit vents.
 			playsound(src, get_sfx(SFX_ALIEN_VENTPASS), 35, TRUE)
-		visible_message(span_notice("[src] scrambles into the ventilation ducts!"),span_notice("You climb into the ventilation ducts."))
+		visible_message(span_notice("[src]爬进了通风管道!"),span_notice("你爬进了通风管道."))
 		move_into_vent(ventcrawl_target)
 		log_game("[src] crawled into the [ventcrawl_target] at [AREACOORD(ventcrawl_target)]")
 

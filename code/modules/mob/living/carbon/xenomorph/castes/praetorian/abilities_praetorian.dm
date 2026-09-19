@@ -26,7 +26,7 @@
 	SSblackbox.record_feedback(FEEDBACK_TALLY, "round_statistics", 1, "spitter_scatter_spits")
 
 /datum/action/ability/activable/xeno/scatter_spit/on_cooldown_finish()
-	to_chat(owner, span_xenodanger("Our auxiliary sacks fill to bursting; we can use scatter spit again."))
+	to_chat(owner, span_xenodanger("我们的辅助囊袋胀满到快要爆裂;我们可以再次使用散射唾液了."))
 	owner.playsound_local(owner, 'sound/voice/alien/drool1.ogg', 25, 0, 1)
 	return ..()
 
@@ -36,7 +36,7 @@
 
 /datum/action/ability/activable/xeno/spray_acid/cone
 	name = "Spray Acid Cone"
-	desc = "Spray a cone of dangerous acid at your target."
+	desc = "向你的目标喷射一锥危险酸液."
 	ability_cost = 300
 	cooldown_duration = 20 SECONDS
 
@@ -58,8 +58,8 @@
 	succeed_activate()
 
 	playsound(xeno_owner.loc, 'sound/effects/refill.ogg', 25, 1)
-	xeno_owner.visible_message(span_xenowarning("\The [xeno_owner] spews forth a wide cone of acid!"), \
-	span_xenowarning("We spew forth a cone of acid!"), null, 5)
+	xeno_owner.visible_message(span_xenowarning("\The [xeno_owner]喷出一大片锥形酸液!"), \
+	span_xenowarning("我们喷出一锥酸液!"), null, 5)
 
 	start_acid_spray_cone(target, xeno_owner.xeno_caste.acid_spray_range)
 	add_cooldown()
@@ -152,7 +152,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 // ***************************************
 /datum/action/ability/activable/xeno/charge/dash
 	name = "Dash"
-	desc = "Instantly dash to the selected tile."
+	desc = "瞬间冲刺到选定的格子."
 	action_icon_state = "pounce"
 	action_icon = 'icons/Xeno/actions/runner.dmi'
 	ability_cost = 100
@@ -203,7 +203,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 // ***************************************
 /datum/action/ability/activable/xeno/spray_acid/line/short
 	name = "Spray Acid"
-	desc = "Spray a short line of dangerous acid at your target."
+	desc = "向你的目标喷射一短条危险酸液."
 	ability_cost = 100
 	cooldown_duration = 10 SECONDS
 	keybinding_signals = list(
@@ -312,7 +312,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 // ***************************************
 /datum/action/ability/activable/xeno/charge/acid_dash
 	name = "Acid Dash"
-	desc = "Instantly dash, tackling the first marine in your path. If you manage to tackle someone, gain another weaker cast of the ability."
+	desc = "瞬间冲刺,撞倒路径上的第一个陆战队员.如果你成功撞倒某人,获得该技能的另一次较弱施放."
 	ability_cost = 250
 	cooldown_duration = 30 SECONDS
 	keybinding_signals = list(
@@ -338,8 +338,8 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 	RegisterSignal(xeno_owner, COMSIG_XENOMORPH_LEAP_BUMP, PROC_REF(mob_hit))
 	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, PROC_REF(acid_steps)) //We drop acid on every tile we pass through
 
-	xeno_owner.visible_message(span_danger("[xeno_owner] slides towards \the [A]!"), \
-	span_danger("We dash towards \the [A], spraying acid down our path!") )
+	xeno_owner.visible_message(span_danger("[xeno_owner]滑向\the [A]!"), \
+	span_danger("我们冲向\the [A],沿途喷洒酸液!") )
 	xeno_owner.emote("roar")
 	xeno_owner.xeno_flags |= XENO_LEAPING //This has to come before throw_at, which checks impact. So we don't do end-charge specials when thrown
 	succeed_activate()
@@ -356,9 +356,9 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 	var/mob/living/carbon/carbon_victim = living_target
 	carbon_victim.ParalyzeNoChain(0.5 SECONDS)
 
-	to_chat(carbon_victim, span_userdanger("The [owner] tackles us, sending us behind them!"))
-	owner.visible_message(span_xenodanger("\The [owner] tackles [carbon_victim], swapping location with them!"), \
-		span_xenodanger("We push [carbon_victim] in our acid trail!"), visible_message_flags = COMBAT_MESSAGE)
+	to_chat(carbon_victim, span_userdanger("[owner]撞倒了我们,把我们甩到他们身后!"))
+	owner.visible_message(span_xenodanger("\The [owner]撞倒了[carbon_victim],与他们交换了位置!"), \
+		span_xenodanger("我们把[carbon_victim]推进了我们的酸液轨迹中!"), visible_message_flags = COMBAT_MESSAGE)
 
 /datum/action/ability/activable/xeno/charge/acid_dash/charge_complete()
 	. = ..()
@@ -387,7 +387,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 // ***************************************
 /datum/action/ability/xeno_action/dodge
 	name = "Dodge"
-	desc = "Flood your body with adrenaline, gaining a speed boost upon activation and the ability to pass through mobs. Enemies automatically receive bump attacks when passed."
+	desc = "让你的身体充满肾上腺素,激活时获得速度提升,并能够穿过生物.穿过敌人时自动对其造成撞击攻击."
 	action_icon_state = "dodge"
 	action_icon = 'icons/Xeno/actions/praetorian.dmi'
 	ability_cost = 100
@@ -407,7 +407,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 	var/obj/effect/abstract/particle_holder/particle_holder
 
 /datum/action/ability/xeno_action/dodge/action_activate(atom/A)
-	owner.balloon_alert(owner, "Dodge ready!")
+	owner.balloon_alert(owner, "闪避就绪!")
 	toggle_particles(TRUE)
 
 	owner.add_movespeed_modifier(MOVESPEED_ID_PRAETORIAN_DANCER_DODGE_SPEED, TRUE, 0, NONE, TRUE, speed_buff)
@@ -439,7 +439,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 
 /// Removes the movespeed modifier and various pass_flags that was given by the dodge ability.
 /datum/action/ability/xeno_action/dodge/proc/remove_effects()
-	owner.balloon_alert(owner, "Dodge inactive!")
+	owner.balloon_alert(owner, "闪避未激活!")
 	toggle_particles(FALSE)
 
 	owner.remove_movespeed_modifier(MOVESPEED_ID_PRAETORIAN_DANCER_DODGE_SPEED)
@@ -462,7 +462,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 // ***************************************
 /datum/action/ability/activable/xeno/impale
 	name = "Impale"
-	desc = "Skewer an object next to you with your tail. The more debuffs on a living target, the greater the damage done. Penetrates the armor of marked targets."
+	desc = "用你的尾巴刺穿你旁边的一个物体.活体目标身上的减益越多,造成的伤害越高.穿透被标记目标的护甲."
 	action_icon_state = "impale"
 	action_icon = 'icons/Xeno/actions/praetorian.dmi'
 	ability_cost = 150
@@ -477,21 +477,21 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 		return FALSE
 	if(!iscarbon(A) && !ishitbox(A) && !isvehicle(A) && !ismachinery(A))
 		if(!silent)
-			A.balloon_alert(owner, "cannot impale")
+			A.balloon_alert(owner, "无法刺穿")
 		return FALSE
 	if(isxeno(A))
 		var/mob/living/carbon/xenomorph/xenomorph_target = A
 		if(owner.issamexenohive(xenomorph_target))
-			A.balloon_alert(owner, "cannot impale ally")
+			A.balloon_alert(owner, "无法刺穿友军")
 			return FALSE
 	if(!A.Adjacent(owner))
-		A.balloon_alert(owner, "too far")
+		A.balloon_alert(owner, "太远了")
 		return FALSE
 
 	if(isliving(A))
 		var/mob/living/living_target = A
 		if(living_target.stat == DEAD)
-			living_target.balloon_alert(owner, "already dead")
+			living_target.balloon_alert(owner, "已经死了")
 			return FALSE
 
 /datum/action/ability/activable/xeno/impale/use_ability(atom/target_atom)
@@ -500,7 +500,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 	xeno_owner.face_atom(target_atom)
 	xeno_owner.do_attack_animation(target_atom, ATTACK_EFFECT_REDSTAB)
 	playsound(xeno_owner, get_sfx(SFX_ALIEN_TAIL_ATTACK), 30, TRUE)
-	xeno_owner.visible_message(span_danger("\The [xeno_owner] violently spears \the [target_atom] with their tail!"))
+	xeno_owner.visible_message(span_danger("\The [xeno_owner]用尾巴猛烈刺穿\the [target_atom]!"))
 	if(!ishuman(target_atom))
 		target_atom.attack_alien(xeno_owner, xeno_owner.xeno_caste.melee_damage * DANCER_NONHUMAN_IMPALE_MULT)
 	else
@@ -550,7 +550,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 // ***************************************
 /datum/action/ability/activable/xeno/tail_trip
 	name = "Tail Trip"
-	desc = "Twirl your tail around low to the ground, knocking over and disorienting any adjacent marines. Marked enemies receive stronger debuffs and are briefly stunned."
+	desc = "将你的尾巴贴近地面旋转,击倒并扰乱任何相邻的陆战队员.被标记的敌人受到更强的减益并短暂眩晕."
 	action_icon_state = "tail_trip"
 	action_icon = 'icons/Xeno/actions/praetorian.dmi'
 	ability_cost = 75
@@ -571,7 +571,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 	xeno_owner.spin(0.6 SECONDS, 1)
 	xeno_owner.emote("tail")
 	xeno_owner.enable_throw_parry(0.6 SECONDS)
-	xeno_owner.visible_message(span_danger("\The [xeno_owner] sweeps its tail in a low circle!"))
+	xeno_owner.visible_message(span_danger("\The [xeno_owner]低扫尾巴画出一个圆圈!"))
 
 	var/damage = xeno_owner.xeno_caste.melee_damage * xeno_owner.xeno_melee_damage_modifier
 
@@ -580,7 +580,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 	for (var/mob/living/carbon/human/living_target in inrange)
 		if(living_target.stat == DEAD)
 			continue
-		to_chat(living_target, span_xenowarning("Our legs are struck by \the [xeno_owner]'s tail!"))
+		to_chat(living_target, span_xenowarning("我们的腿被\the [xeno_owner]的尾巴击中!"))
 		var/buffed = living_target.has_status_effect(STATUS_EFFECT_DANCER_TAGGED)
 		if(buffed)
 			living_target.ParalyzeNoChain(1.5 SECONDS)
@@ -614,7 +614,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 	name = "Tail Hook"
 	action_icon_state = "tail_hook"
 	action_icon = 'icons/Xeno/actions/praetorian.dmi'
-	desc = "Swing your tail high, sending the hooked edge gouging into any targets within 2 tiles. Hooked marines have their movement slowed and are dragged, spinning, towards you. Marked marines are slowed for longer and briefly knocked over."
+	desc = "高高挥动你的尾巴,将钩状边缘刺入2格内的任何目标.被钩住的陆战队员移动速度减慢,并被旋转着拖向你.被标记的陆战队员减速时间更长并被短暂击倒."
 	cooldown_duration = 12 SECONDS
 	keybind_flags = ABILITY_KEYBIND_USE_ABILITY
 	ability_cost = 100
@@ -630,7 +630,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 	xeno_owner.spin(0.8 SECONDS, 1)
 	xeno_owner.enable_throw_parry(0.6 SECONDS)
 	xeno_owner.emote("tail")
-	xeno_owner.visible_message(span_danger("\The [xeno_owner] swings the hook on its tail through the air!"))
+	xeno_owner.visible_message(span_danger("\The [xeno_owner]挥动尾巴上的钩子划过空气!"))
 
 	var/damage = (xeno_owner.xeno_caste.melee_damage * xeno_owner.xeno_melee_damage_modifier) * 0.5
 	var/list/inrange = orange(2, xeno_owner)
@@ -642,7 +642,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 			continue
 		if(living_target.stat == DEAD)
 			continue
-		to_chat(living_target, span_xenowarning("\The [xeno_owner] hooks into our flesh and yanks us towards them!"))
+		to_chat(living_target, span_xenowarning("\The [xeno_owner]钩入我们的血肉,把我们拽向他们!"))
 		var/buffed = living_target.has_status_effect(STATUS_EFFECT_DANCER_TAGGED)
 		living_target.apply_damage(damage, BRUTE, blocked = MELEE, updating_health = TRUE)
 		living_target.Shake(duration = 0.1 SECONDS)
@@ -678,7 +678,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 	name = "Baton Pass"
 	action_icon_state = "baton_pass"
 	action_icon = 'icons/Xeno/actions/praetorian.dmi'
-	desc = "Dose adjacent xenomorphs with your adrenaline, increasing their movement speed for 6 seconds. Less effect on quick xenos."
+	desc = "为你附近的异形注入肾上腺素,提高它们的移动速度6秒.对速度快的异形效果较弱."
 	cooldown_duration = 35 SECONDS
 	ability_cost = 150
 	keybinding_signals = list(
@@ -693,7 +693,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 	xeno_owner.spin(0.8 SECONDS, 1)
 
 	playsound(xeno_owner, SFX_ALIEN_TAIL_SWIPE, 25, 1)
-	xeno_owner.visible_message(span_danger("\The [xeno_owner] empowers nearby xenos with increased speed!"))
+	xeno_owner.visible_message(span_danger("\The [xeno_owner]为附近的异形注入能量,提高速度!"))
 
 	for(var/mob/living/carbon/xenomorph/xeno_target in orange(1, xeno_owner))
 		if(xeno_target.stat == DEAD)
@@ -735,7 +735,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 	name = "Abduct"
 	action_icon_state = "abduct"
 	action_icon = 'icons/Xeno/actions/praetorian.dmi'
-	desc = "Throw your tail out and hook in any humans caught in it. Ends prematurely if blocked or hits anything dense."
+	desc = "甩出你的尾巴,钩住任何被卷入其中的人类.如果被阻挡或击中任何致密物体则提前结束."
 	ability_cost = 50
 	cooldown_duration = 12 SECONDS
 	keybinding_signals = list(
@@ -760,7 +760,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 		return FALSE
 	if(ability_timer)
 		if(!silent)
-			A.balloon_alert(xeno_owner, "already abducting")
+			A.balloon_alert(xeno_owner, "已经在绑架")
 		return FALSE
 	if(A.z != xeno_owner.z)
 		return FALSE
@@ -769,12 +769,12 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 		return FALSE
 	if(distance == 0 || distance == -1 )
 		if(!silent)
-			A.balloon_alert(xeno_owner, "too short")
+			A.balloon_alert(xeno_owner, "太短了")
 		return FALSE
 	var/start_turf = get_step(xeno_owner, get_cardinal_dir(xeno_owner, A))
 	if(check_path(xeno_owner, start_turf, PASS_THROW) != start_turf)
 		if(!silent)
-			A.balloon_alert(xeno_owner, "path blocked")
+			A.balloon_alert(xeno_owner, "路径被阻挡")
 		return FALSE
 
 /datum/action/ability/activable/xeno/oppressor/abduct/use_ability(atom/A)
@@ -871,7 +871,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 	name = "Dislocate"
 	action_icon_state = "punch"
 	action_icon = 'icons/Xeno/actions/warrior.dmi'
-	desc = "Shrike a human with enough force that they are thrown backwards."
+	desc = "以足够的力量刺穿一个人类,使其被向后抛出."
 	ability_cost = 50
 	cooldown_duration = 10 SECONDS
 	keybinding_signals = list(
@@ -889,14 +889,14 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 		var/mob/living/carbon/xenomorph/xenomorph_target = target
 		if(xeno_owner.issamexenohive(xenomorph_target))
 			if(!silent)
-				target.balloon_alert(xeno_owner, "cannot dislocate ally")
+				target.balloon_alert(xeno_owner, "无法使友军脱臼")
 			return FALSE
 	var/mob/living/carbon/carbon_target = target
 	if(!xeno_owner.Adjacent(carbon_target))
-		carbon_target.balloon_alert(xeno_owner, "too far")
+		carbon_target.balloon_alert(xeno_owner, "太远了")
 		return FALSE
 	if(carbon_target.stat == DEAD)
-		carbon_target.balloon_alert(xeno_owner, "already dead")
+		carbon_target.balloon_alert(xeno_owner, "已经死了")
 		return FALSE
 
 /datum/action/ability/activable/xeno/oppressor/dislocate/use_ability(atom/target)
@@ -932,7 +932,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 	name = "Item Throw"
 	action_icon_state = "item_throw"
 	action_icon = 'icons/Xeno/actions/praetorian.dmi'
-	desc = "Pick up a nearby item momentarily and throw it in a chosen direction. The item's size determines elements such as how fast or hard it hits."
+	desc = "暂时捡起附近的一个物品,并向选定方向投掷.物品的大小决定诸如飞行速度或击中力度等要素."
 	ability_cost = 50
 	cooldown_duration = 10 SECONDS
 	keybinding_signals = list(
@@ -958,16 +958,16 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 		return TRUE
 	if(!isitem(A) || isgrabitem(A))
 		if(!silent)
-			A.balloon_alert(owner, "not an item")
+			A.balloon_alert(owner, "不是物品")
 		return FALSE
 	var/obj/item/item_atom = A
 	if(!owner.Adjacent(item_atom))
 		if(!silent)
-			item_atom.balloon_alert(owner, "too far")
+			item_atom.balloon_alert(owner, "太远了")
 		return FALSE
 	if(item_atom.anchored)
 		if(!silent)
-			item_atom.balloon_alert(owner, "item is anchored")
+			item_atom.balloon_alert(owner, "物品已固定")
 		return FALSE
 
 /datum/action/ability/activable/xeno/item_throw/use_ability(atom/A)
@@ -1078,7 +1078,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 	name = "Tail Lash"
 	action_icon_state = "tail_lash"
 	action_icon = 'icons/Xeno/actions/praetorian.dmi'
-	desc = "Knock back humans that are in front of you."
+	desc = "击退你前方的人类."
 	ability_cost = 50
 	cooldown_duration = 11 SECONDS
 	keybind_flags = ABILITY_KEYBIND_USE_ABILITY | ABILITY_IGNORE_SELECTED_ABILITY
@@ -1140,7 +1140,7 @@ GLOBAL_LIST_INIT(acid_spray_hit, typecacheof(list(/obj/structure/barricade, /obj
 	name = "Advance"
 	action_icon_state = "advance"
 	action_icon = 'icons/Xeno/actions/praetorian.dmi'
-	desc = "Launch yourself with tremendous speed toward a location. If you hit a marine, they are launched incredibly far."
+	desc = "以极快的速度冲向一个位置.如果你撞到一名陆战队员,他们会被击飞得极远."
 	ability_cost = 50
 	cooldown_duration = 10 SECONDS
 	keybinding_signals = list(

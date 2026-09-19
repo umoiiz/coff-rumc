@@ -1,5 +1,5 @@
 /obj/structure/paper_bin
-	name = "paper bin"
+	name = "纸篓"
 	icon = 'icons/obj/items/paper.dmi'
 	density = FALSE
 	anchored = FALSE
@@ -21,12 +21,12 @@
 		return
 	var/response = ""
 	if(!length(papers))
-		response = tgui_alert(user, "Do you take regular paper, or Carbon copy paper?", "Paper type request", list("Regular", "Carbon-Copy", "Cancel"))
+		response = tgui_alert(user, "你要普通纸,还是复写纸?", "纸张类型请求", list("Regular", "Carbon-Copy", "Cancel"))
 		if(response != "Regular" && response != "Carbon-Copy")
 			return
 
 	if(amount < 1)
-		to_chat(user, span_notice("[src] is empty!"))
+		to_chat(user, span_notice("[src]是空的!"))
 		return
 
 	amount--
@@ -43,7 +43,7 @@
 
 	P.forceMove(user.loc)
 	user.put_in_hands(P)
-	to_chat(user, span_notice("You take [P] out of the [src]."))
+	to_chat(user, span_notice("你从[src]中取出了[P]."))
 
 /obj/structure/paper_bin/attackby(obj/item/I, mob/user, params)
 	. = ..()
@@ -54,7 +54,7 @@
 		if(!user.transferItemToLoc(I, src))
 			return
 
-		to_chat(user, span_notice("You put [I] in [src]."))
+		to_chat(user, span_notice("你将[I]放入了[src]."))
 		LAZYADD(papers, I)
 		amount++
 
@@ -63,7 +63,7 @@
 	if(amount)
 		. += span_notice("There " + (amount > 1 ? "are [amount] papers" : "is one paper") + " in the bin.")
 	else
-		. += span_notice("There are no papers in the bin.")
+		. += span_notice("纸篓里没有纸张.")
 
 /obj/structure/paper_bin/update_icon_state()
 	. = ..()

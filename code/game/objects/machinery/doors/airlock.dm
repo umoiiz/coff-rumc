@@ -61,7 +61,7 @@
 	else if(ishuman(user) && user.hallucination > 50 && prob(10) && !operating)
 		var/mob/living/carbon/human/H = user
 		if(!H.gloves || H.gloves.siemens_coefficient)
-			to_chat(H, span_danger("You feel a powerful shock course through your body!"))
+			to_chat(H, span_danger("你感到一股强烈的电流穿过你的身体!"))
 			H.adjust_stamina_loss(200)
 			return
 	return ..(user)
@@ -288,15 +288,15 @@
 		if(shock(xeno_attacker, 70))
 			return
 	if(locked)
-		to_chat(xeno_attacker, span_warning("\The [src] is bolted down tight."))
+		to_chat(xeno_attacker, span_warning("\The [src]被螺栓牢牢固定."))
 		return FALSE
 	if(welded)
-		to_chat(xeno_attacker, span_warning("\The [src] is welded shut."))
+		to_chat(xeno_attacker, span_warning("\The [src]被焊接封死."))
 		return FALSE
 	if(!istype(cur_loc))
 		return FALSE //Some basic logic here
 	if(!density)
-		to_chat(xeno_attacker, span_warning("\The [src] is already open!"))
+		to_chat(xeno_attacker, span_warning("\The [src]已经是打开的!"))
 		return FALSE
 
 	if(xeno_attacker.do_actions)
@@ -305,32 +305,32 @@
 	playsound(loc, 'sound/effects/metal_creaking.ogg', 25, 1)
 
 	if(hasPower())
-		xeno_attacker.visible_message(span_warning("\The [xeno_attacker] digs into \the [src] and begins to pry it open."), \
-		span_warning("We dig into \the [src] and begin to pry it open."), null, 5)
+		xeno_attacker.visible_message(span_warning("\The [xeno_attacker]插入\the [src]并开始将其撬开."), \
+		span_warning("我们插入\the [src]并开始将其撬开."), null, 5)
 		if(!do_after(xeno_attacker, 4 SECONDS, IGNORE_HELD_ITEM, src, BUSY_ICON_HOSTILE) && !xeno_attacker.lying_angle)
 			return FALSE
 	if(locked)
-		to_chat(xeno_attacker, span_warning("\The [src] is bolted down tight."))
+		to_chat(xeno_attacker, span_warning("\The [src]被螺栓牢牢固定."))
 		return FALSE
 	if(welded)
-		to_chat(xeno_attacker, span_warning("\The [src] is welded shut."))
+		to_chat(xeno_attacker, span_warning("\The [src]被焊接封死."))
 		return FALSE
 
 	if(density) //Make sure it's still closed
 		open(TRUE)
-		xeno_attacker.visible_message(span_danger("\The [xeno_attacker] pries \the [src] open."), \
-			span_danger("We pry \the [src] open."), null, 5)
+		xeno_attacker.visible_message(span_danger("\The [xeno_attacker]撬开了\the [src]."), \
+			span_danger("我们撬开了\the [src]."), null, 5)
 
 /obj/machinery/door/airlock/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	for(var/atom/movable/AM in get_turf(src))
 		if(AM != src && AM.density && !AM.CanPass(M, M.loc))
-			to_chat(M, span_warning("\The [AM] prevents you from squeezing under \the [src]!"))
+			to_chat(M, span_warning("\The [AM]阻止你从\the [src]下面挤过去!"))
 			return
 	if(locked || welded) //Can't pass through airlocks that have been bolted down or welded
-		to_chat(M, span_warning("\The [src] is locked down tight. You can't squeeze underneath!"))
+		to_chat(M, span_warning("\The [src]被牢牢锁死.你无法从下面挤过去!"))
 		return
-	M.visible_message(span_warning("\The [M] scuttles underneath \the [src]!"), \
-	span_warning("You squeeze and scuttle underneath \the [src]."), null, 5)
+	M.visible_message(span_warning("\The [M]从\the [src]下面快速爬过!"), \
+	span_warning("你挤过并从\the [src]下面快速爬过."), null, 5)
 	M.forceMove(loc)
 
 /obj/machinery/door/airlock/attack_hand(mob/living/user)
@@ -363,13 +363,13 @@
 /obj/machinery/door/airlock/attack_facehugger(mob/living/carbon/xenomorph/facehugger/M, isrightclick = FALSE)
 	for(var/atom/movable/AM in get_turf(src))
 		if(AM != src && AM.density && !AM.CanPass(M, M.loc))
-			to_chat(M, span_warning("\The [AM] prevents you from squeezing under \the [src]!"))
+			to_chat(M, span_warning("\The [AM]阻止你从\the [src]下面挤过去!"))
 			return
 	if(locked || welded) //Can't pass through airlocks that have been bolted down or welded
-		to_chat(M, span_warning("\The [src] is locked down tight. You can't squeeze underneath!"))
+		to_chat(M, span_warning("\The [src]被牢牢锁死.你无法从下面挤过去!"))
 		return
-	M.visible_message(span_warning("\The [M] scuttles underneath \the [src]!"), \
-	span_warning("You squeeze and scuttle underneath \the [src]."), null, 5)
+	M.visible_message(span_warning("\The [M]从\the [src]下面快速爬过!"), \
+	span_warning("你挤过并从\the [src]下面快速爬过."), null, 5)
 	M.forceMove(loc)
 
 /obj/machinery/door/airlock/attacked_by(obj/item/I, mob/living/user, def_zone)
@@ -386,7 +386,7 @@
 
 	if(istype(I, /obj/item/clothing/mask/cigarette) && isElectrified())
 		var/obj/item/clothing/mask/cigarette/L = I
-		L.light(span_notice("[user] lights their [L] on an electrical arc from the [src]"))
+		L.light(span_notice("[user]用来自[src]的电弧点燃了他们的[L]"))
 
 	else if(!issilicon(user) && isElectrified())
 		shock(user, 75)
@@ -395,43 +395,43 @@
 		var/obj/item/tool/weldingtool/W = I
 
 		if(not_weldable)
-			to_chat(user, span_warning("\The [src] would require something a lot stronger than [W] to weld!"))
+			to_chat(user, span_warning("\The [src]需要比[W]强得多的东西才能焊接!"))
 			return
 
 		if(user.a_intent != INTENT_HELP)
 			if(!W.tool_start_check(user, amount = 0))
 				return
 
-			user.visible_message(span_notice("[user] is [welded ? "unwelding":"welding"] the airlock."), \
-				span_notice("You begin [welded ? "unwelding":"welding"] the airlock..."), \
-				span_italics("You hear welding."))
+			user.visible_message(span_notice("[user]正在[welded ? "unwelding":"welding"]气闸."), \
+				span_notice("你开始[welded ? "unwelding":"welding"]气闸..."), \
+				span_italics("你听到了焊接声."))
 
 			if(!W.use_tool(src, user, 40, volume = 50, extra_checks = CALLBACK(src, PROC_REF(weld_checks))))
 				return
 
 			welded = !welded
-			user.visible_message("[user.name] has [welded? "welded shut":"unwelded"] [src].", \
-				span_notice("You [welded ? "weld the airlock shut":"unweld the airlock"]."))
+			user.visible_message("[user.name]已经[welded? "welded shut":"unwelded"][src].", \
+				span_notice("你[welded ? "weld the airlock shut":"unweld the airlock"]."))
 			update_icon()
 		else
 			if(obj_integrity >= max_integrity)
-				to_chat(user, span_notice("The airlock doesn't need repairing."))
+				to_chat(user, span_notice("气闸不需要修理."))
 				return
 
 			if(!W.tool_start_check(user, amount=0))
 				return
 
-			user.visible_message(span_notice("[user] is welding the airlock."), \
-				span_notice("You begin repairing the airlock..."), \
-				span_italics("You hear welding."))
+			user.visible_message(span_notice("[user]正在焊接气闸."), \
+				span_notice("你开始修理气闸..."), \
+				span_italics("你听到了焊接声."))
 
 			if(!W.use_tool(src, user, 40, volume = 50, extra_checks = CALLBACK(src, PROC_REF(weld_checks))))
 				return
 
 			repair_damage(max_integrity, user)
 			DISABLE_BITFIELD(machine_stat, BROKEN)
-			user.visible_message(span_notice("[user.name] has repaired [src]."), \
-				span_notice("You finish repairing the airlock."))
+			user.visible_message(span_notice("[user.name]已经修理了[src]."), \
+				span_notice("你完成了气闸的修理."))
 			update_icon()
 
 	else if(iswirecutter(I))
@@ -448,24 +448,24 @@
 
 	else if(I.pry_capable == IS_PRY_CAPABLE_CROWBAR && CHECK_BITFIELD(machine_stat, PANEL_OPEN) && (operating == -1 || (density && welded && operating != 1 && !hasPower() && !locked)))
 		if(user.skills.getRating(SKILL_ENGINEER) < SKILL_ENGINEER_ENGI)
-			user.visible_message(span_notice("[user] fumbles around figuring out how to deconstruct [src]."),
-			span_notice("You fumble around figuring out how to deconstruct [src]."))
+			user.visible_message(span_notice("[user]摸索着弄清楚如何拆解[src]."),
+			span_notice("你摸索着弄清楚如何拆解[src]."))
 
 			var/fumbling_time = 50 * ( SKILL_ENGINEER_ENGI - user.skills.getRating(SKILL_ENGINEER) )
 			if(!do_after(user, fumbling_time, NONE, src, BUSY_ICON_UNSKILLED))
 				return
 
 		if(width > 1)
-			to_chat(user, span_warning("Large doors seem impossible to disassemble."))
+			to_chat(user, span_warning("大型门似乎无法拆解."))
 			return
 
 		playsound(loc, 'sound/items/crowbar.ogg', 25, 1)
-		user.visible_message("[user] starts removing the electronics from the airlock assembly.", "You start removing electronics from the airlock assembly.")
+		user.visible_message("[user]开始从气闸组件中移除电子设备.", "你开始从气闸组件中拆除电子设备.")
 
 		if(!do_after(user, 40, NONE, src, BUSY_ICON_BUILD))
 			return
 
-		to_chat(user, span_notice("You removed the airlock electronics!"))
+		to_chat(user, span_notice("你拆除了气闸电子设备!"))
 
 		var/obj/structure/door_assembly/DA = new assembly_type(loc)
 		if(istype(DA, /obj/structure/door_assembly/multi_tile))
@@ -499,13 +499,13 @@
 		qdel(src)
 
 	else if(hasPower() && I.pry_capable != IS_PRY_CAPABLE_FORCE)
-		to_chat(user, span_warning("The airlock's motors resist your efforts to force it."))
+		to_chat(user, span_warning("气闸的马达抵抗你强行打开它的尝试."))
 
 	else if(locked)
-		to_chat(user, span_warning("The airlock's bolts prevent it from being forced."))
+		to_chat(user, span_warning("气闸的螺栓阻止了它被强行打开."))
 
 	else if(welded)
-		to_chat(user, span_warning("The airlock is welded shut."))
+		to_chat(user, span_warning("气闸被焊接封死了."))
 
 	else if(I.pry_capable == IS_PRY_CAPABLE_FORCE)
 		return FALSE //handled by the item's afterattack
@@ -520,15 +520,15 @@
 /obj/machinery/door/airlock/screwdriver_act(mob/user, obj/item/I)
 	. = ..()
 	if(no_panel)
-		to_chat(user, span_warning("\The [src] has no panel to open!"))
+		to_chat(user, span_warning("\The [src]没有可打开的面板!"))
 		return
 
 	machine_stat ^= PANEL_OPEN
 	if(machine_stat & PANEL_OPEN)
-		to_chat(user, span_notice("You open [src]'s panel."))
+		to_chat(user, span_notice("你打开了[src]的面板."))
 		playsound(loc, 'sound/items/screwdriver2.ogg', 25, 1)
 	else
-		to_chat(user, span_notice("You close [src]'s panel."))
+		to_chat(user, span_notice("你关闭了[src]的面板."))
 		playsound(loc, 'sound/items/screwdriver.ogg', 25, 1)
 	update_icon()
 
@@ -588,7 +588,7 @@
 		return
 
 	locked = TRUE
-	audible_message("You hear a click from the bottom of the door.", null, 1)
+	audible_message("你听到门底部传来咔嗒声.", null, 1)
 	update_icon()
 
 /obj/machinery/door/airlock/proc/unlock(forced = FALSE)
@@ -597,7 +597,7 @@
 
 	if(forced || hasPower()) //only can raise bolts if power's on
 		locked = FALSE
-		audible_message("You hear a click from the bottom of the door.", null, 1)
+		audible_message("你听到门底部传来咔嗒声.", null, 1)
 		update_icon()
 		return TRUE
 	return FALSE
@@ -652,11 +652,11 @@
 		return
 
 	if(welded)
-		to_chat(user, span_warning("The airlock has been welded shut."))
+		to_chat(user, span_warning("气闸已被焊接封死."))
 		return
 
 	if(locked)
-		to_chat(user, span_warning("The door bolts are down."))
+		to_chat(user, span_warning("门螺栓已放下."))
 		return
 
 	if(!density)
@@ -669,7 +669,7 @@
 		return
 
 	if(wires.is_cut(WIRE_SHOCK))
-		to_chat(user, span_warning("The electrification wire is cut."))
+		to_chat(user, span_warning("通电线路被切断."))
 		return
 
 	if(isElectrified())
@@ -680,7 +680,7 @@
 		return
 
 	if(wires.is_cut(WIRE_SHOCK))
-		to_chat(user, span_warning("The electrification wire is cut."))
+		to_chat(user, span_warning("通电线路被切断."))
 		return
 
 	set_electrified(MACHINE_DEFAULT_ELECTRIFY_TIME, user)
@@ -690,7 +690,7 @@
 		return
 
 	if(wires.is_cut(WIRE_SHOCK))
-		to_chat(user, span_warning("The electrification wire is cut."))
+		to_chat(user, span_warning("通电线路被切断."))
 		return
 
 	set_electrified(MACHINE_ELECTRIFIED_PERMANENT, user)
@@ -700,7 +700,7 @@
 		return
 
 	if(emergency)
-		to_chat(user, span_warning("Emergency access is already enabled."))
+		to_chat(user, span_warning("紧急通道已启用."))
 		return
 
 	emergency = TRUE
@@ -711,7 +711,7 @@
 		return
 
 	if(!emergency)
-		to_chat(user, span_warning("Emergency access is already disabled."))
+		to_chat(user, span_warning("紧急通道已禁用."))
 		return
 
 	emergency = FALSE
@@ -722,15 +722,15 @@
 		return
 
 	if(wires.is_cut(WIRE_BOLTS))
-		to_chat(user, span_warning("The door bolt wire is cut."))
+		to_chat(user, span_warning("门螺栓线路被切断."))
 		return
 
 	if(!locked)
-		to_chat(user, span_warning("The door bolts are already up."))
+		to_chat(user, span_warning("门螺栓已经升起."))
 		return
 
 	if(!hasPower())
-		to_chat(user, span_warning("Cannot raise door bolts due to power failure."))
+		to_chat(user, span_warning("因电力故障无法升起门螺栓."))
 		return
 
 	unbolt()
@@ -740,7 +740,7 @@
 		return
 
 	if(wires.is_cut(WIRE_BOLTS))
-		to_chat(user, span_warning("The door bolt wire is cut."))
+		to_chat(user, span_warning("门螺栓线路被切断."))
 		return
 
 	bolt()
@@ -751,7 +751,7 @@
 
 	locked = TRUE
 	playsound(src, 'sound/machines/boltsdown.ogg', 30, 0, 3)
-	audible_message(span_notice("You hear a click from the bottom of the door."), null,  1)
+	audible_message(span_notice("你听到门底部传来咔嗒声."), null,  1)
 	update_icon()
 
 /obj/machinery/door/airlock/proc/unbolt()
@@ -760,7 +760,7 @@
 
 	locked = FALSE
 	playsound(src, 'sound/machines/boltsup.ogg', 30, 0, 3)
-	audible_message(span_notice("You hear a click from the bottom of the door."), null,  1)
+	audible_message(span_notice("你听到门底部传来咔嗒声."), null,  1)
 	update_icon()
 
 /obj/machinery/door/airlock/proc/weld_checks()
@@ -768,15 +768,15 @@
 
 /obj/machinery/door/airlock/psi_act(psi_power, mob/living/user)
 	if(operating)
-		to_chat(user, span_warning("The airlock is already in motion."))
+		to_chat(user, span_warning("气闸已经在移动中."))
 		return
 	if(welded)
-		to_chat(user, span_warning("The airlock is welded shut."))
+		to_chat(user, span_warning("气闸被焊接封死了."))
 		return
 	if(locked)
-		to_chat(user, span_warning("The airlock's bolts prevent it from being forced."))
+		to_chat(user, span_warning("气闸的螺栓阻止了它被强行打开."))
 		return
 	if(psi_power < PSIONIC_INTERACTION_STRENGTH_STANDARD && hasPower())
-		to_chat(user, span_warning("The airlock's motors resist your efforts to force it."))
+		to_chat(user, span_warning("气闸的马达抵抗你强行打开它的尝试."))
 		return
 	return ..()

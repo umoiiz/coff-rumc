@@ -6,7 +6,7 @@ It's like a regular ol' straight pipe, but you can turn it on and off.
 	icon_state = "mvalve_map-2"
 
 	name = "manual valve"
-	desc = "A pipe with a valve that can be used to disable flow of gas through it."
+	desc = "一个带有阀门的管道, 可用于阻止气体通过."
 
 	can_unwrench = FALSE
 	shift_underlay_only = FALSE
@@ -50,7 +50,7 @@ It's like a regular ol' straight pipe, but you can turn it on and off.
 	icon_state = "dvalve_map-2"
 
 	name = "digital valve"
-	desc = "A digitally controlled valve."
+	desc = "一个数字控制的阀门."
 	valve_type = "d"
 	pipe_state = "dvalve"
 

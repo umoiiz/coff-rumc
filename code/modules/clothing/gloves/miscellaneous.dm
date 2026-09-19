@@ -1,6 +1,6 @@
 /obj/item/clothing/gloves/captain
-	desc = "Regal blue gloves, with a nice gold trim. Swanky."
-	name = "captain's gloves"
+	desc = "华丽的蓝色手套, 带有漂亮的金色镶边. 时髦."
+	name = "舰长手套"
 	icon_state = "captain"
 	cold_protection_flags = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
@@ -8,8 +8,8 @@
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/swat
-	desc = "These tactical gloves are somewhat fire and impact-resistant."
-	name = "\improper SWAT Gloves"
+	desc = "这双战术手套具有一定的防火和抗冲击能力."
+	name = "\improper SWAT手套"
 	icon_state = "black"
 	siemens_coefficient = 0.6
 	permeability_coefficient = 0.05
@@ -20,8 +20,8 @@
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/combat //Combined effect of SWAT gloves and insulated gloves
-	desc = "These tactical gloves are somewhat fire and impact resistant."
-	name = "combat gloves"
+	desc = "这双战术手套具有一定的防火和抗冲击能力."
+	name = "战斗手套"
 	icon_state = "black"
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
@@ -31,8 +31,8 @@
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/ruggedgloves
-	desc = "A pair of gloves used by workers in dangerous environments."
-	name = "rugged gloves"
+	desc = "一双在危险环境中工作的工人使用的手套."
+	name = "粗犷手套"
 	icon_state = "black"
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
@@ -43,8 +43,8 @@
 	soft_armor = list(MELEE = 10, BULLET = 10, LASER = 15, ENERGY = 10, BOMB = 10, BIO = 10, FIRE = 10, ACID = 10)
 
 /obj/item/clothing/gloves/latex
-	name = "latex gloves"
-	desc = "Sterile latex gloves."
+	name = "乳胶手套"
+	desc = "无菌乳胶手套."
 	icon_state = "latex"
 	siemens_coefficient = 0.30
 	permeability_coefficient = 0.01
@@ -53,15 +53,15 @@
 	icon_state = "bluelatex"
 
 /obj/item/clothing/gloves/botanic_leather
-	desc = "These leather gloves protect against thorns, barbs, prickles, spikes and other harmful objects of floral origin."
-	name = "botanist's leather gloves"
+	desc = "这双皮革手套可以抵御荆棘, 倒刺, 尖刺以及其他植物来源的有害物体."
+	name = "植物学家皮革手套"
 	icon_state = "leather"
 	permeability_coefficient = 0.9
 	siemens_coefficient = 0.9
 
 //Special type of gloves. Alt click and you get some special nodrop gloves
 /obj/item/clothing/gloves/heldgloves
-	name = "gloves"
+	name = "手套"
 	/// What type of glove we use for the right hand
 	var/rightglove_path
 	/// What type of glove we use for the left hand
@@ -122,7 +122,7 @@
 	return removed
 
 /obj/item/weapon/heldglove
-	name = "glove"
+	name = "手套"
 
 /obj/item/weapon/heldglove/Initialize(mapload)
 	. = ..()
@@ -130,8 +130,8 @@
 
 //Boxing gloves
 /obj/item/clothing/gloves/heldgloves/boxing
-	name = "boxing gloves"
-	desc = "Because you really needed another excuse to punch your crewmates."
+	name = "拳击手套"
+	desc = "因为你真的需要另一个借口来揍你的船员."
 	icon = 'icons/obj/clothing/boxing.dmi'
 	icon_state = "boxing"
 	rightglove_path = /obj/item/weapon/heldglove/boxing/hook
@@ -139,13 +139,13 @@
 
 /obj/item/clothing/gloves/heldgloves/boxing/attackby(obj/item/I, mob/user, params)
 	if(iswirecutter(I) || istype(I, /obj/item/tool/surgery/scalpel))
-		to_chat(user, span_notice("That won't work."))
+		to_chat(user, span_notice("那样行不通."))
 		return
 	return ..()
 
 /obj/item/weapon/heldglove/boxing
-	name = "boxing glove"
-	desc = "Because you really needed another excuse to punch your crewmates."
+	name = "拳击手套"
+	desc = "因为你真的需要另一个借口来揍你的船员."
 	icon = 'icons/obj/clothing/boxing.dmi'
 	icon_state = "boxing"
 	damtype = STAMINA
@@ -163,7 +163,7 @@
 		return
 
 	playsound(loc, 'sound/effects/knockout.ogg', 25, FALSE)
-	target.balloon_alert_to_viewers("[target] collapses to the ground in exhaustion! K.O!", "You give up and collapse! K.O!")
+	target.balloon_alert_to_viewers("[target]精疲力竭地倒在地上! K.O!", "你放弃了并倒下! K.O!")
 	target.Sleeping(10 SECONDS)
 
 /obj/item/weapon/heldglove/boxing/hook
@@ -209,8 +209,8 @@
 
 //Punching bag. Both punches and attacking with weapons causes it to
 /obj/structure/punching_bag
-	name = "punching bag"
-	desc = "A Nanotrasen punching bag. A common sight this far from Sol.\nCheap and flimsy, might break if hit by something too heavy."
+	name = "沙袋"
+	desc = "一个纳米传讯沙袋. 在离太阳系这么远的地方很常见.\nCheap而且很脆弱, 如果被太重的东西击中可能会破裂."
 	max_integrity = 750 //This is going to get hit, a lot
 	icon = 'icons/obj/clothing/boxing.dmi'
 	icon_state = "punchingbag"
@@ -220,11 +220,11 @@
 	flick("[icon_state]-punch", src)
 
 /obj/item/clothing/gloves/white
-	name = "white gloves"
-	desc = "These look pretty fancy."
+	name = "白手套"
+	desc = "这些看起来相当花哨."
 	icon_state = "white"
 
 /obj/item/clothing/gloves/techpriest
-	name = "Techpriest gloves"
-	desc = "Praise the Omnissiah!"
+	name = "技术神甫手套"
+	desc = "赞美万机神!"
 	icon_state = "tp_gloves"

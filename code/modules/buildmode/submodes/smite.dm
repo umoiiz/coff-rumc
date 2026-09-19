@@ -35,7 +35,7 @@
 		return
 
 	if(selected_smite == null)
-		to_chat(user, span_notice("No smite selected."))
+		to_chat(user, span_notice("未选择惩罚."))
 		return
 
 	selected_smite.effect(user, object)

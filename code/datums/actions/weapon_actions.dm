@@ -37,7 +37,7 @@
 	var/mob/living/carbon/carbon_owner = owner
 	if(carbon_owner.get_stamina_loss() > 0) //this specifically lets you use these abilities with no stamina, but not if you have actual stamina loss
 		if(!silent)
-			carbon_owner.balloon_alert(owner, "Catch your breath!")
+			carbon_owner.balloon_alert(owner, "喘口气!")
 		return FALSE
 
 /datum/action/ability/activable/weapon_skill/succeed_activate(ability_cost_override)

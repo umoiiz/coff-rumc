@@ -1,6 +1,6 @@
 /obj/item/explosive/grenade/flashbang
-	name = "flashbang"
-	desc = "A grenade sometimes used by police, civilian or military, to stun targets with a flash, then a bang. May cause hearing loss, and induce feelings of overwhelming rage in victims."
+	name = "闪光弹"
+	desc = "一种有时被警察、平民或军队使用的榴弹，先用闪光再用巨响来震慑目标。可能导致听力损伤，并使受害者产生难以抑制的暴怒情绪。"
 	icon_state = "flashbang2"
 	worn_icon_state = "flashbang2"
 	hud_state = "flashbang"
@@ -19,7 +19,7 @@
 
 /obj/item/explosive/grenade/flashbang/attack_self(mob/user)
 	if(mp_only && (user.skills.getRating(SKILL_POLICE) < SKILL_POLICE_MP))
-		to_chat(user, span_warning("You don't seem to know how to use [src]..."))
+		to_chat(user, span_warning("你似乎不知道如何使用[src]..."))
 		return
 	..()
 
@@ -36,7 +36,7 @@
 
 ///Applies the flashbang effects based off range and ear protection
 /obj/item/explosive/grenade/flashbang/proc/bang(turf/T , mob/living/carbon/M)
-	to_chat(M, span_danger("BANG"))
+	to_chat(M, span_danger("砰"))
 
 	//Checking for protection
 	var/ear_safety = 0
@@ -67,14 +67,14 @@
 	if(M.flash_act())
 		M.apply_effects(stun = 4 SECONDS, paralyze = 2 SECONDS)
 	if(M.ear_damage >= 15)
-		to_chat(M, span_warning("Your ears start to ring badly!"))
+		to_chat(M, span_warning("你的耳朵开始剧烈耳鸣！"))
 		if(!banglet)
 			if (prob(M.ear_damage - 10 + 5))
-				to_chat(M, span_warning("You can't hear anything!"))
+				to_chat(M, span_warning("你什么都听不见了！"))
 				M.disabilities |= DEAF
 	else
 		if(M.ear_damage >= 5)
-			to_chat(M, span_warning("Your ears start to ring!"))
+			to_chat(M, span_warning("你的耳朵开始耳鸣！"))
 
 ///The effects applied to mobs in the inner_range
 /obj/item/explosive/grenade/flashbang/proc/inner_effect(turf/T , mob/living/carbon/M, ear_safety)
@@ -101,8 +101,8 @@
 
 //Slows and staggers instead of hardstunning, balanced for HvH
 /obj/item/explosive/grenade/flashbang/stun
-	name = "stun grenade"
-	desc = "A grenade designed to disorientate the senses of anyone caught in the blast radius with a blinding flash of light and viciously loud noise. Repeated use can cause deafness."
+	name = "震撼弹"
+	desc = "一种榴弹，旨在用刺眼的闪光和极其响亮的噪音扰乱爆炸半径内任何人的感官。反复使用可导致耳聋。"
 	icon_state = "flashbang2"
 	worn_icon_state = "flashbang2"
 	inner_range = 3
@@ -112,13 +112,13 @@
 
 /obj/item/explosive/grenade/flashbang/stun/base_effect(turf/T , mob/living/carbon/M, ear_safety)
 	if(M.ear_damage >= 15)
-		to_chat(M, span_warning("Your ears start to ring badly!"))
+		to_chat(M, span_warning("你的耳朵开始剧烈耳鸣！"))
 		if(prob(M.ear_damage - 15)) //You have to eat a lot of stun grenades to risk permanently deafening you
-			to_chat(M, span_warning("You can't hear anything!"))
+			to_chat(M, span_warning("你什么都听不见了！"))
 			M.disabilities |= DEAF
 	else
 		if(M.ear_damage >= 5)
-			to_chat(M, span_warning("Your ears start to ring!"))
+			to_chat(M, span_warning("你的耳朵开始耳鸣！"))
 
 /obj/item/explosive/grenade/flashbang/stun/inner_effect(turf/T , mob/living/carbon/M, ear_safety)
 	if(M.flash_act(duration = 10))

@@ -7,7 +7,7 @@
 
 //loose sand overlay
 /obj/structure/desertdam/decals/loose_sand_overlay
-	name = "loose sand"
+	name = "散沙"
 	icon_state = "loosesand0"
 
 /obj/structure/desertdam/decals/loose_sand_overlay/alt
@@ -15,7 +15,7 @@
 
 //road decal
 /obj/structure/desertdam/decals/road
-	name = "road"
+	name = "道路"
 	icon_state = "road"
 	layer = LOW_OBJ_LAYER
 
@@ -34,8 +34,8 @@
 //TODO:
 //Relocate me somewhere that makes more sense
 /obj/structure/chigusa_sign
-	name = "Chigusa Sign"
-	desc = "A large sign reading 'lazarus landing pop. 73', there's blood smeared on it."
+	name = "千草标牌"
+	desc = "一块写着'lazarus landing pop. 73'的大标牌, 上面沾着血迹."
 	icon = 'icons/obj/landing_signs.dmi'
 	icon_state = "laz_sign"
 	bound_width = 64

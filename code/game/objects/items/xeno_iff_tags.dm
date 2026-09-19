@@ -1,8 +1,8 @@
 
 //These small little things allow you to give xenos an IFF signature. No more crying because your corrupted keep dying to smartgunners!
 /obj/item/xeno_iff_tag
-	name = "Terragov xenomorph IFF tag"
-	desc = "A small metallic card that can be clamped onto a xenomorph, allowing IFF systems to recognize the target as friendly."
+	name = "地球政府异形敌我识别标签"
+	desc = "一张小型金属卡片,可以夹在异形身上,让敌我识别系统将该目标识别为友方."
 	icon = 'icons/obj/items/card.dmi'
 	icon_state = "guest" //Better I reuse this unused sprite for something that you'll see for ten seconds pre-attach than use my spriting "skills".
 	///The IFF signal this tag will create a component with
@@ -14,36 +14,36 @@
 	. = TRUE
 	var/mob/living/carbon/xenomorph/xeno = M
 	if(xeno.stat == DEAD)
-		to_chat(user, span_warning("[xeno] is dead, why would you waste a tag on it?"))
+		to_chat(user, span_warning("[xeno]已经死了,你为什么要浪费一个标签在它身上?"))
 		return
 	if(xeno.GetComponent(/datum/component/xeno_iff))
-		to_chat(user, span_warning("[xeno] already has an IFF tag attached, and attaching another might mess with its signal!"))
+		to_chat(user, span_warning("[xeno]已经附有一个敌我识别标签了,再附一个可能会干扰它的信号!"))
 		return
-	user.visible_message(span_notice("[user] starts attaching [src] to [xeno]."), span_notice("You start attaching [src] to [xeno]."), ignored_mob = xeno)
+	user.visible_message(span_notice("[user]开始将[src]附着到[xeno]上."), span_notice("你开始将[src]附着到[xeno]上."), ignored_mob = xeno)
 	if(xeno.client)
-		to_chat(xeno, span_xenowarning("[user] starts attaching [src] to us!"))
+		to_chat(xeno, span_xenowarning("[user]开始将[src]附着到我们身上!"))
 	if(!do_after(user, 5 SECONDS, IGNORE_HELD_ITEM, xeno, BUSY_ICON_FRIENDLY, BUSY_ICON_DANGER))
 		return
 	if(xeno.GetComponent(/datum/component/xeno_iff))
-		to_chat(user, span_warning("Someone already attached a tag to [xeno] while you were busy!"))
+		to_chat(user, span_warning("你忙活的时候已经有人给[xeno]附上标签了!"))
 		return
-	user.balloon_alert_to_viewers("Attached IFF tag")
-	to_chat(xeno, span_xenonotice("[user] attaches [src] to us!"))
+	user.balloon_alert_to_viewers("已附着的敌我识别标签")
+	to_chat(xeno, span_xenonotice("[user]将[src]附着到我们身上!"))
 	xeno.AddComponent(/datum/component/xeno_iff, carried_iff)
 	qdel(src)
 
 //Eventmins are fun so I'll make your job a tiny bit easier.
 
 /obj/item/xeno_iff_tag/som
-	name = "Sons of Mars xenomorph IFF tag"
+	name = "火星之子异形敌我识别标签"
 	carried_iff = SOM_IFF
 
 /obj/item/xeno_iff_tag/deathsquad
-	name = "\[redacted\] xenomorph IFF tag"
+	name = "\[已涂黑\]异形敌我识别标签"
 	carried_iff = DEATHSQUAD_IFF
 
 /obj/item/xeno_iff_tag/sectoid
-	name = "Sectoid xenomorph IFF tag"
+	name = "灰人异形敌我识别标签"
 	carried_iff = SECTOIDS_IFF
 
 //Adding more options should be super easy anyways just varedit the carried IFF (or manually add the component if you know how!)

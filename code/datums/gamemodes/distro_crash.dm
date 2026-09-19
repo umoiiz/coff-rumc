@@ -95,8 +95,8 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_OPEN_TIMED_SHUTTERS_CRASH)
 
 /datum/game_mode/infestation/distro_crush/announce()
-	to_chat(world, span_round_header("The current map is - [SSmapping.configs[GROUND_MAP].map_name]!"))
-	priority_announce("Высадка запланирована через 10 минут. Приготовьтесь к посадке. Предварительное сканирование показывает наличие агрессивных форм биологической жизни", title = "Доброе утро, товарищи!", type = ANNOUNCEMENT_PRIORITY, sound = 'sound/AI/crash_start.ogg', color_override = "red")
+	to_chat(world, span_round_header("当前地图是 - [SSmapping.configs[GROUND_MAP].map_name]!"))
+	priority_announce("登陆计划在10分钟后进行.准备降落.初步扫描显示存在具有攻击性的生物生命形式", title = "早上好,同志们!", type = ANNOUNCEMENT_PRIORITY, sound = 'sound/AI/crash_start.ogg', color_override = "red")
 
 /datum/game_mode/infestation/distro_crush/proc/crash_shuttle(obj/docking_port/stationary/target)
 	shuttle_landed = TRUE
@@ -150,5 +150,5 @@
 	return !isnull(eta) ? round(eta) : 0
 
 /datum/game_mode/infestation/distro_crush/can_summon_dropship(mob/user)
-	to_chat(src, span_warning("This power doesn't work in this gamemode."))
+	to_chat(src, span_warning("此能力在此游戏模式中无效."))
 	return FALSE

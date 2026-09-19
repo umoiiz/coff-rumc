@@ -35,7 +35,7 @@
 	. = ..()
 	if(!holding)
 		return
-	balloon_alert(user, "You pry [holding] out of [src]")
+	balloon_alert(user, "你将[holding]从[src]中撬出")
 	playsound(src, 'sound/items/crowbar.ogg', 25, 1)
 	holding.forceMove(drop_location())
 	holding = null
@@ -70,7 +70,7 @@
 
 	playsound(src, 'sound/items/ratchet.ogg', 25, TRUE)
 	if(user)
-		balloon_alert(user, "Connected to [new_port]")
+		balloon_alert(user, "已连接到[new_port]")
 
 	return TRUE
 
@@ -91,12 +91,12 @@
 
 	playsound(src, 'sound/items/ratchet.ogg', 25, TRUE)
 	if(user)
-		balloon_alert(user, "Disconnected")
+		balloon_alert(user, "已断开连接")
 
 	return TRUE
 
 /obj/machinery/portable_atmospherics/examine(mob/user)
 	. = ..()
 	if(holding)
-		. += span_notice("\The [src] contains [holding]. Alt-click [src] to remove it.")
-		. += span_notice("Click [src] with another gas tank to hot swap [holding].")
+		. += span_notice("\The [src]包含[holding]. 按住Alt点击[src]将其移除.")
+		. += span_notice("用另一个气罐点击[src]以热插拔[holding].")

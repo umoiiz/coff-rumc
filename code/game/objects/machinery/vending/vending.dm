@@ -52,8 +52,8 @@
 		display_color = "white"
 
 /obj/machinery/vending
-	name = "Vendomat"
-	desc = "A generic vending machine."
+	name = "自动售货机"
+	desc = "一台通用自动售货机."
 	icon = 'icons/obj/machines/vending.dmi'
 	icon_state = "generic"
 	anchored = TRUE
@@ -267,22 +267,22 @@
 		xeno_attacker.do_attack_animation(src, ATTACK_EFFECT_SMASH)
 		if(prob(xeno_attacker.xeno_caste.melee_damage))
 			playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
-			xeno_attacker.visible_message(span_danger("\The [xeno_attacker] smashes \the [src] beyond recognition!"), \
-			span_danger("We enter a frenzy and smash \the [src] apart!"), null, 5)
+			xeno_attacker.visible_message(span_danger("\The [xeno_attacker]把\the [src]砸得面目全非!"), \
+			span_danger("我们陷入狂乱,把\the [src]砸成了碎片!"), null, 5)
 			malfunction()
 			return TRUE
 		else
-			xeno_attacker.visible_message(span_danger("[xeno_attacker] slashes \the [src]!"), \
-			span_danger("We slash \the [src]!"), null, 5)
+			xeno_attacker.visible_message(span_danger("[xeno_attacker]劈砍\the [src]!"), \
+			span_danger("我们劈砍\the [src]!"), null, 5)
 			playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
 		return TRUE
 
 	if(tipped_level)
-		to_chat(xeno_attacker, span_warning("There's no reason to bother with that old piece of trash."))
+		to_chat(xeno_attacker, span_warning("没必要去理会那堆旧垃圾."))
 		return FALSE
 
-	xeno_attacker.visible_message(span_warning("\The [xeno_attacker] begins to lean against \the [src]."), \
-	span_warning("You begin to lean against \the [src]."), null, 5)
+	xeno_attacker.visible_message(span_warning("\The [xeno_attacker]开始靠在\the [src]上."), \
+	span_warning("你开始靠在\the [src]上."), null, 5)
 	tipped_level = 1
 	var/shove_time = 1 SECONDS
 	if(xeno_attacker.mob_size == MOB_SIZE_BIG)
@@ -290,8 +290,8 @@
 	if(istype(xeno_attacker,/mob/living/carbon/xenomorph/crusher))
 		shove_time = 1.5 SECONDS
 	if(do_after(xeno_attacker, shove_time, IGNORE_HELD_ITEM, src, BUSY_ICON_HOSTILE))
-		xeno_attacker.visible_message(span_danger("\The [xeno_attacker] knocks \the [src] down!"), \
-		span_danger("You knock \the [src] down!"), null, 5)
+		xeno_attacker.visible_message(span_danger("\The [xeno_attacker]把\the [src]撞倒了!"), \
+		span_danger("你把\the [src]撞倒了!"), null, 5)
 		tip_over()
 	else
 		tipped_level = 0
@@ -322,7 +322,7 @@
 		return
 
 	if(tipped_level)
-		to_chat(user, "Tip it back upright first!")
+		to_chat(user, "先把它扶正!")
 		return
 
 	if(isitem(I))
@@ -332,11 +332,11 @@
 /obj/machinery/vending/screwdriver_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(tipped_level)
-		to_chat(user, span_warning("Tip it back upright first!"))
+		to_chat(user, span_warning("先把它扶正!"))
 		return
 
 	TOGGLE_BITFIELD(machine_stat, PANEL_OPEN)
-	to_chat(user, "You [CHECK_BITFIELD(machine_stat, PANEL_OPEN) ? "open" : "close"] the maintenance panel.")
+	to_chat(user, "你[CHECK_BITFIELD(machine_stat, PANEL_OPEN) ? "open" : "close"]了维护面板.")
 	overlays.Cut()
 	if(CHECK_BITFIELD(machine_stat, PANEL_OPEN))
 		overlays += image(icon, "[initial(icon_state)]-panel")
@@ -344,7 +344,7 @@
 /obj/machinery/vending/multitool_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(tipped_level)
-		to_chat(user, span_warning("Tip it back upright first!"))
+		to_chat(user, span_warning("先把它扶正!"))
 		return
 
 	if(!CHECK_BITFIELD(machine_stat, PANEL_OPEN))
@@ -354,7 +354,7 @@
 /obj/machinery/vending/wirecutter_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(tipped_level)
-		to_chat(user, span_warning("Tip it back upright first!"))
+		to_chat(user, span_warning("先把它扶正!"))
 		return
 
 	if(!CHECK_BITFIELD(machine_stat, PANEL_OPEN))
@@ -364,7 +364,7 @@
 /obj/machinery/vending/wrench_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(tipped_level)
-		to_chat(user, span_warning("Tip it back upright first!"))
+		to_chat(user, span_warning("先把它扶正!"))
 		return
 	if(!wrenchable)
 		return
@@ -373,12 +373,12 @@
 	playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
 	anchored = !anchored
 	if(anchored)
-		user.visible_message("[user] tightens the bolts securing \the [src] to the floor.", "You tighten the bolts securing \the [src] to the floor.")
+		user.visible_message("[user]拧紧了将\the [src]固定在地板上的螺栓.", "你拧紧了将\the [src]固定在地板上的螺栓.")
 		var/turf/current_turf = get_turf(src)
 		if(current_turf && density)
 			current_turf.atom_flags |= AI_BLOCKED
 	else
-		user.visible_message("[user] unfastens the bolts securing \the [src] to the floor.", "You unfasten the bolts securing \the [src] to the floor.")
+		user.visible_message("[user]松开了将\the [src]固定在地板上的螺栓.", "你松开了将\the [src]固定在地板上的螺栓.")
 		var/turf/current_turf = get_turf(src)
 		if(current_turf && density)
 			current_turf.atom_flags &= ~AI_BLOCKED
@@ -389,11 +389,11 @@
 		return FALSE
 
 	if(tipped_level == 2)
-		user.visible_message(span_notice("[user] begins to heave the vending machine back into place!"), span_notice("You start heaving the vending machine back into place.."))
+		user.visible_message(span_notice("[user]开始把自动售货机推回原位!"), span_notice("你开始把自动售货机推回原位.."))
 		if(!do_after(user, 8 SECONDS, IGNORE_HELD_ITEM, src, BUSY_ICON_FRIENDLY))
 			return FALSE
 
-		user.visible_message(span_notice("[user] rights the [src]!"), span_notice("You right the [src]!"))
+		user.visible_message(span_notice("[user]扶正了[src]!"), span_notice("你扶正了[src]!"))
 		flip_back()
 	return TRUE
 
@@ -409,10 +409,10 @@
 		return
 	if(!iscarbon(user)) // AI can't heave remotely
 		return
-	user.visible_message(span_notice("[user] begins to heave the vending machine back into place!"),span_notice("You start heaving the vending machine back into place.."))
+	user.visible_message(span_notice("[user]开始把自动售货机推回原位!"),span_notice("你开始把自动售货机推回原位.."))
 	if(!do_after(user, 80, IGNORE_HELD_ITEM, src, BUSY_ICON_FRIENDLY))
 		return FALSE
-	user.visible_message(span_notice("[user] rights the [src]!"),span_notice("You right the [src]!"))
+	user.visible_message(span_notice("[user]把[src]扶正了!"),span_notice("你把[src]扶正了!"))
 	flip_back()
 	return TRUE
 
@@ -471,7 +471,7 @@
 	switch(action)
 		if("vend")
 			if(!allowed(usr) && (!wires.is_cut(WIRE_IDSCAN) || hacking_safety))
-				to_chat(usr, span_warning("Access denied."))
+				to_chat(usr, span_warning("访问被拒绝."))
 				flick(icon_deny, src)
 				return
 
@@ -495,7 +495,7 @@
 	if(!vend_ready)
 		return
 	if(!allowed(user) && (!wires.is_cut(WIRE_IDSCAN) || hacking_safety)) //For SECURE VENDING MACHINES YEAH
-		to_chat(user, span_warning("Access denied."))
+		to_chat(user, span_warning("访问被拒绝."))
 		if(icon_deny)
 			flick(icon_deny, src)
 		return
@@ -505,7 +505,7 @@
 
 	var/turf/T = loc
 	if(length(T.contents) > 30 || locate(/obj/structure/closet/crate) in loc) // let's make crashing the server a bit harder
-		to_chat(user, span_warning("The floor is too cluttered, make some space."))
+		to_chat(user, span_warning("地板太杂乱了,腾出一些空间."))
 		if(icon_deny)
 			flick(icon_deny, src)
 		return
@@ -588,7 +588,7 @@
 		record = checked_record
 
 	if(!record) //Item isn't listed in the vending records.
-		user?.balloon_alert(user, "[item_to_stock] doesn't belong here!")
+		user?.balloon_alert(user, "[item_to_stock]不属于这里!")
 		return FALSE
 
 	return do_stock(item_to_stock, user, show_feedback, record)
@@ -639,13 +639,13 @@
 	if(item_to_stock.storage_datum) //Nice try, specialists/engis
 		var/datum/storage/storage_to_stock = item_to_stock.storage_datum
 		if(!(storage_to_stock.storage_flags & BYPASS_VENDOR_CHECK)) //If your storage has this flag, it can be restocked
-			user?.balloon_alert(user, "Can't restock containers!")
+			user?.balloon_alert(user, "无法补充容器!")
 			return FALSE
 
 	else if(isgrenade(item_to_stock))
 		var/obj/item/explosive/grenade/grenade = item_to_stock
 		if(grenade.active) //Machine ain't gonna save you from your dumb decisions now
-			user?.balloon_alert(user, "You panic and erratically fumble around!")
+			user?.balloon_alert(user, "你惊慌失措地胡乱摸索!")
 			return FALSE
 
 	else if(amount >= 0) //Item is finite so we are more strict on its condition
@@ -653,25 +653,25 @@
 		if(isammomagazine(item_to_stock))
 			var/obj/item/ammo_magazine/A = item_to_stock
 			if(A.current_rounds < A.max_rounds)
-				user?.balloon_alert(user, "Magazine isn't full!")
+				user?.balloon_alert(user, "弹匣未装满!")
 				return FALSE
 
 		if(iscell(item_to_stock))
 			var/obj/item/cell/cell = item_to_stock
 			if(cell.charge < cell.maxcharge)
-				user?.balloon_alert(user, "Cell isn't at full charge!")
+				user?.balloon_alert(user, "电池未充满!")
 				return FALSE
 
 		if(isitemstack(item_to_stock))
 			var/obj/item/stack/stack = item_to_stock
 			if(stack.amount != initial(stack.amount))
-				user?.balloon_alert(user, "[stack] has been partially used. Refill it!")
+				user?.balloon_alert(user, "[stack]已被部分使用.请重新填充!")
 				return FALSE
 
 		if(isreagentcontainer(item_to_stock))
 			var/obj/item/reagent_containers/reagent_container = item_to_stock
 			if(!reagent_container.free_refills && !reagent_container.has_initial_reagents())
-				user?.balloon_alert(user, "\The [reagent_container] is missing some of its reagents!")
+				user?.balloon_alert(user, "\The [reagent_container]缺少部分试剂!")
 				return FALSE
 
 	//Actually restocks the item after our checks
@@ -817,7 +817,7 @@
 	if (!throw_item)
 		return FALSE
 	INVOKE_ASYNC(throw_item, TYPE_PROC_REF(/atom/movable, throw_at), target, 16, 3, src)
-	src.visible_message(span_warning("[src] launches [throw_item.name] at [target]!"))
+	src.visible_message(span_warning("[src]将[throw_item.name]发射向[target]!"))
 	. = TRUE
 
 /obj/machinery/vending/take_damage(damage_amount, damage_type = BRUTE, damage_flag = null, effects = TRUE, attack_dir, armour_penetration = 0, mob/living/blame_mob)
@@ -831,8 +831,8 @@
 	tip_over()
 	if(density)
 		return PRECRUSH_STOPPED
-	charger.visible_message(span_danger("[charger] slams [src] into the ground!"),
-	span_xenowarning("We slam [src] into the ground!"))
+	charger.visible_message(span_danger("[charger]将[src]猛砸向地面!"),
+	span_xenowarning("我们将[src]猛砸向地面!"))
 	return PRECRUSH_PLOWED
 
 /obj/machinery/vending/punch_act(...)

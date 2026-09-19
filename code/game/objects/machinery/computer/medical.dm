@@ -1,6 +1,6 @@
 /obj/machinery/computer/med_data
 	name = "Medical Records"
-	desc = "This can be used to check medical records."
+	desc = "这可以用来查看医疗记录."
 	icon_state = "computer"
 	screen_overlay = "medcomp"
 	req_one_access = list(ACCESS_MARINE_MEDBAY, ACCESS_NT_CORPORATE)
@@ -28,13 +28,13 @@
 		return
 
 	if(scan)
-		to_chat(usr, "You remove \the [scan] from \the [src].")
+		to_chat(usr, "你从\the [src]中移除了\the [scan].")
 		scan.loc = get_turf(src)
 		if(!usr.get_active_held_item() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(scan)
 		scan = null
 	else
-		to_chat(usr, "There is nothing to remove from the console.")
+		to_chat(usr, "控制台上没有可移除的东西.")
 
 /obj/machinery/computer/med_data/attackby(obj/item/I, mob/user, params)
 	. = ..()
@@ -46,7 +46,7 @@
 			return
 		I.forceMove(src)
 		scan = I
-		to_chat(user, "You insert [I].")
+		to_chat(user, "你插入了[I].")
 
 /obj/machinery/computer/med_data/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -171,7 +171,7 @@
 				return FALSE
 			var/datum/data/record/R = find_general_record(id)
 			if(!R)
-				to_chat(ui.user, span_warning("Record not found."))
+				to_chat(ui.user, span_warning("未找到记录."))
 				return FALSE
 			active1 = R
 			active2 = find_medical_record_for(R)
@@ -194,7 +194,7 @@
 					active2 = R
 					break
 			if(!active2)
-				to_chat(ui.user, span_warning("Could not locate record [params["value"]]."))
+				to_chat(ui.user, span_warning("无法找到记录[params["value"]]."))
 				return TRUE
 			for(var/datum/data/record/E in GLOB.datacore.general)
 				if(E.fields["name"] == active2.fields["name"] || E.fields["id"] == active2.fields["id"])
@@ -259,7 +259,7 @@
 				GLOB.datacore.medical -= R
 				qdel(R)
 			active2 = null
-			to_chat(ui.user, span_notice("All medical records deleted."))
+			to_chat(ui.user, span_notice("所有医疗记录已删除."))
 			return TRUE
 
 		if("print_record")
@@ -475,7 +475,7 @@
 
 /obj/machinery/computer/med_data/laptop
 	name = "Medical Laptop"
-	desc = "Cheap Nanotrasen Laptop."
+	desc = "廉价的纳米传讯笔记本电脑."
 	icon_state = "computer_small"
 	screen_overlay = "medlaptop"
 	density = FALSE

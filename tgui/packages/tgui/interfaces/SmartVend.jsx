@@ -10,7 +10,7 @@ export const SmartVend = (props) => {
     <Window width={440} height={550}>
       <Window.Content scrollable>
         <Section
-          title="Storage"
+          title="储存"
           buttons={
             !!data.isdryer && (
               <Button
@@ -42,13 +42,13 @@ export const SmartVend = (props) => {
                         disabled={value < 1}
                         onClick={() => act('Release', { name: key, amount: 1 })}
                       >
-                        One
+                        一
                       </Button>
                       <Button
                         disabled={value <= 1}
                         onClick={() => act('Release', { name: key })}
                       >
-                        Many
+                        多
                       </Button>
                     </Table.Cell>
                   </Table.Row>

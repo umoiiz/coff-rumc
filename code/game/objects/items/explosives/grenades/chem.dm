@@ -3,8 +3,8 @@
 #define CG_READY 3
 
 /obj/item/explosive/grenade/chem_grenade
-	name = "chemical grenade"
-	desc = "A custom made grenade."
+	name = "化学手榴弹"
+	desc = "一枚定制手榴弹."
 	icon_state = "chemg"
 	worn_icon_state = "flashbang"
 	w_class = WEIGHT_CLASS_SMALL
@@ -42,47 +42,47 @@
 			return ..()
 
 /obj/item/explosive/grenade/chem_grenade/razorburn_small/attackby(obj/item/I, mob/user, params)
-	to_chat(user, span_notice("The [initial(name)] is hermetically sealed, and does not open."))
+	to_chat(user, span_notice("[initial(name)]是密封的,无法打开."))
 	return
 
 /obj/item/explosive/grenade/chem_grenade/razorburn_large/attackby(obj/item/I, mob/user, params)
-	to_chat(user, span_notice("The [initial(name)] is hermetically sealed, and does not open."))
+	to_chat(user, span_notice("[initial(name)]是密封的,无法打开."))
 	return
 
 /obj/item/explosive/grenade/chem_grenade/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
 		if(stage == CG_WIRED)
 			if(!length(beakers))
-				to_chat(user, span_warning("You need to add at least one beaker before locking the [initial(name)] assembly!"))
+				to_chat(user, span_warning("在锁定[initial(name)]组件之前,你至少需要添加一个烧杯!"))
 			else
 				stage_change(CG_READY)
-				to_chat(user, span_notice("You lock the [initial(name)] assembly."))
+				to_chat(user, span_notice("你锁定了[initial(name)]组件."))
 				I.play_tool_sound(src, 25)
 
 		else if(stage == CG_READY && !nadeassembly)
 			det_time = det_time == 50 ? 30 : 50	//toggle between 30 and 50
-			to_chat(user, span_notice("You modify the time delay. It's set for [DisplayTimeText(det_time)]."))
+			to_chat(user, span_notice("你修改了时间延迟.它被设置为[DisplayTimeText(det_time)]."))
 		else if(stage == CG_EMPTY)
-			to_chat(user, span_warning("You need to add an activation mechanism!"))
+			to_chat(user, span_warning("你需要添加一个激活装置!"))
 
 	else if(stage == CG_WIRED && is_type_in_list(I, allowed_containers))
 		. = TRUE //no afterattack
 		if(is_type_in_list(I, banned_containers))
-			to_chat(user, span_warning("[src] is too small to fit [I]!")) // this one hits home huh anon?
+			to_chat(user, span_warning("[src]太小,装不下[I]!")) // this one hits home huh anon?
 			return
 		if(length(beakers) == 2)
-			to_chat(user, span_warning("[src] can not hold more containers!"))
+			to_chat(user, span_warning("[src]无法容纳更多容器!"))
 			return
 		else
 			if(I.reagents.total_volume)
 				if(!user.transferItemToLoc(I, src))
 					return
-				to_chat(user, span_notice("You add [I] to the [initial(name)] assembly."))
+				to_chat(user, span_notice("你将[I]添加到[initial(name)]组件中."))
 				beakers += I
 				var/reagent_list = pretty_string_from_reagent_list(I.reagents)
 				user.log_message("inserted [I] ([reagent_list]) into [src]",LOG_GAME)
 			else
-				to_chat(user, span_warning("[I] is empty!"))
+				to_chat(user, span_warning("[I]是空的!"))
 
 	else if(stage == CG_EMPTY && istype(I, /obj/item/assembly_holder))
 		. = 1 // no afterattack
@@ -97,20 +97,20 @@
 		assemblyattacher = user.ckey
 
 		stage_change(CG_WIRED)
-		to_chat(user, span_notice("You add [A] to the [initial(name)] assembly."))
+		to_chat(user, span_notice("你将[A]添加到[initial(name)]组件中."))
 
 	else if(stage == CG_EMPTY && istype(I, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/C = I
 		if (C.use(1))
 			det_time = 50 // In case the cable_coil was removed and readded.
 			stage_change(CG_WIRED)
-			to_chat(user, span_notice("You rig the [initial(name)] assembly."))
+			to_chat(user, span_notice("你组装好了[initial(name)]组件."))
 		else
-			to_chat(user, span_warning("You need one length of coil to wire the assembly!"))
+			to_chat(user, span_warning("你需要一段线圈来给组件接线!"))
 			return
 
 	else if(stage == CG_READY && I.tool_behaviour == TOOL_WIRECUTTER && !active)
-		to_chat(user, span_notice("Patented marine-proof Dura-Cable prevents you from taking apart the grenade."))
+		to_chat(user, span_notice("专利防陆战队破坏的耐用线缆可防止你拆解这枚手榴弹."))
 		return
 
 	else if(stage == CG_WIRED && I.tool_behaviour == TOOL_WRENCH)
@@ -122,7 +122,7 @@
 				var/reagent_list = pretty_string_from_reagent_list(O.reagents)
 				user.log_message("removed [O] ([reagent_list]) from [src]", LOG_GAME)
 			beakers = list()
-			to_chat(user, span_notice("You open the [initial(name)] assembly and remove the payload."))
+			to_chat(user, span_notice("你打开[initial(name)]组件并取出装药."))
 			return // First use of the wrench remove beakers, then use the wrench to remove the activation mechanism.
 		if(nadeassembly)
 			nadeassembly.forceMove(drop_location())
@@ -131,7 +131,7 @@
 		else // If "nadeassembly = null && stage == CG_WIRED", then it most have been cable_coil that was used.
 			new /obj/item/stack/cable_coil(get_turf(src),1)
 		stage_change(CG_EMPTY)
-		to_chat(user, span_notice("You remove the activation mechanism from the [initial(name)] assembly."))
+		to_chat(user, span_notice("你从[initial(name)]组件中拆下激活装置."))
 	else
 		return ..()
 
@@ -141,20 +141,20 @@
 	. = ..()
 	if((user.skills.getRating(SKILL_MEDICAL) > SKILL_MEDICAL_NOVICE) || isobserver(usr))
 		if(length(beakers))
-			. += span_notice("You scan the grenade and detect the following reagents:")
+			. += span_notice("你扫描手榴弹并检测到以下试剂:")
 			for(var/obj/item/reagent_containers/glass/G in beakers)
 				for(var/datum/reagent/R in G.reagents.reagent_list)
-					. += span_notice("[R.volume] units of [R.name] in the [G.name].")
+					. += span_notice("[G.name]中有[R.volume]单位的[R.name].")
 			if(length(beakers) == 1)
-				. += span_notice("You detect no second beaker in the grenade.")
+				. += span_notice("你在手榴弹中未检测到第二个烧杯.")
 		else
-			. += span_notice("You scan the grenade, but detect nothing.")
+			. += span_notice("你扫描手榴弹,但什么也没检测到.")
 	else if(stage != CG_READY && length(beakers))
 		if(length(beakers) == 2 && beakers[1].name == beakers[2].name)
-			. += span_notice("You see two [beakers[1].name]s inside the grenade.")
+			. += span_notice("你看到手榴弹内有两个[beakers[1].name].")
 		else
 			for(var/obj/item/reagent_containers/glass/G in beakers)
-				. += span_notice("You see a [G.name] inside the grenade.")
+				. += span_notice("你看到手榴弹内有一个[G.name].")
 
 
 /obj/item/explosive/grenade/chem_grenade/proc/stage_change(N)
@@ -210,16 +210,16 @@
 
 
 /obj/item/explosive/grenade/chem_grenade/large
-	name = "Large Chem Grenade"
-	desc = "An oversized grenade that affects a larger area."
+	name = "大型化学手榴弹"
+	desc = "一种超大号手榴弹,影响范围更大."
 	icon_state = "large_grenade"
 	allowed_containers = list(/obj/item/reagent_containers/glass)
 	affected_area = 4
 
 
 /obj/item/explosive/grenade/chem_grenade/metalfoam
-	name = "Metal-Foam Grenade"
-	desc = "Used for emergency sealing of air breaches."
+	name = "金属泡沫手榴弹"
+	desc = "用于紧急封堵空气泄漏."
 	dangerous = FALSE
 	stage = CG_READY
 
@@ -239,8 +239,8 @@
 
 
 /obj/item/explosive/grenade/chem_grenade/razorburn_small
-	name = "Razorburn Grenade"
-	desc = "Contains construction nanites ready to turn a small area into razorwire after a few seconds. DO NOT ENTER AREA WHILE ACTIVE."
+	name = "剃刀燃烧手榴弹"
+	desc = "内含建筑纳米机器人,几秒后可将一小片区域变成剃刀铁丝网.激活期间切勿进入该区域."
 	icon_state = "grenade_razorburn"
 	worn_icon_state = "grenade_razorburn"
 	hud_state = "grenade_razor"
@@ -262,8 +262,8 @@
 	icon_state = initial(icon_state) +"_locked"
 
 /obj/item/explosive/grenade/chem_grenade/razorburn_large
-	name = "Razorburn Canister"
-	desc = "Contains construction nanites ready to turn a large area into razorwire after a few seconds. DO NOT ENTER AREA WHILE ACTIVE."
+	name = "剃刀燃烧罐"
+	desc = "内含建筑纳米机器人,几秒后可将一大片区域变成剃刀铁丝网.激活期间切勿进入该区域."
 	icon_state = "grenade_large_razorburn"
 	stage = CG_READY
 	icon_state_mini = "grenade_chem_yellow"
@@ -287,8 +287,8 @@
 
 
 /obj/item/explosive/grenade/chem_grenade/incendiary
-	name = "Incendiary Grenade"
-	desc = "Used for clearing rooms of living things."
+	name = "燃烧手榴弹"
+	desc = "用于清除房间内的生物."
 	stage = CG_READY
 
 
@@ -307,8 +307,8 @@
 
 
 /obj/item/explosive/grenade/chem_grenade/antiweed
-	name = "weedkiller grenade"
-	desc = "Used for purging large areas of invasive plant species. Contents under pressure. Do not directly inhale contents."
+	name = "除草手榴弹"
+	desc = "用于清除大片区域的入侵植物物种.内容物处于加压状态.请勿直接吸入内容物."
 	dangerous = FALSE
 	stage = CG_READY
 
@@ -329,8 +329,8 @@
 
 
 /obj/item/explosive/grenade/chem_grenade/cleaner
-	name = "cleaner grenade"
-	desc = "BLAM!-brand foaming space cleaner. In a special applicator for rapid cleaning of wide areas."
+	name = "清洁手榴弹"
+	desc = "BLAM!品牌泡沫太空清洁剂.装在特殊喷洒器中,用于快速清洁大片区域."
 	dangerous = FALSE
 	stage = CG_READY
 
@@ -350,8 +350,8 @@
 
 
 /obj/item/explosive/grenade/chem_grenade/teargas
-	name = "\improper M66 teargas grenade"
-	desc = "Tear gas grenade used for nonlethal riot control. Please wear adequate gas protection."
+	name = "\improper M66催泪瓦斯手榴弹"
+	desc = "用于非致命防暴控制的催泪瓦斯手榴弹.请佩戴足够的气体防护装备."
 	stage = CG_READY
 
 
@@ -373,13 +373,13 @@
 
 /obj/item/explosive/grenade/chem_grenade/teargas/attack_self(mob/user)
 	if(user.skills.getRating(SKILL_POLICE) < SKILL_POLICE_MP)
-		to_chat(user, span_warning("You don't seem to know how to use [src]..."))
+		to_chat(user, span_warning("你似乎不知道如何使用[src]..."))
 		return
 	return ..()
 
 /obj/item/explosive/grenade/chem_grenade/healing_foam
-	name = "\improper EMS-02 Healing Foam Grenade"
-	desc = "An advanced foam grenade designed by BioCourse Pharmaceuticals. Deploys a foam that quickly rejuvenates those inside."
+	name = "\improper EMS-02治疗泡沫手榴弹"
+	desc = "由BioCourse Pharmaceuticals设计的高级泡沫手榴弹.释放一种泡沫,能迅速恢复其中人员的状态."
 	stage = CG_READY
 	dangerous = FALSE
 	icon_state = "grenade_healfoam"
@@ -401,7 +401,7 @@
 	icon_state = initial(icon_state) +"_locked"
 
 /obj/item/explosive/grenade/chem_grenade/healing_foam/attackby(obj/item/I, mob/user, params)
-	to_chat(user, span_notice("The [initial(name)] is hermetically sealed, and does not open."))
+	to_chat(user, span_notice("[initial(name)]是密封的,无法打开."))
 	return
 
 #undef CG_READY

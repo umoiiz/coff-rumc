@@ -99,7 +99,7 @@ export const AccessList = (props) => {
   });
 
   return (
-    <Section title="Access" buttons={extraButtons}>
+    <Section title="权限" buttons={extraButtons}>
       <Flex wrap="wrap">
         <Flex.Item width="100%">
           <FormatWildcards
@@ -154,7 +154,7 @@ export const FormatWildcards = (props) => {
           selected={selectedWildcard === 'None'}
           onClick={() => setWildcardTab('None')}
         >
-          Trim:
+          修剪:
           <br />
           {basicUsed + '/' + basicMax}
         </Tabs.Tab>

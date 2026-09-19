@@ -1,5 +1,5 @@
 /obj/item/storage/pouch
-	name = "abstract pouch"
+	name = "抽象袋"
 	icon = 'icons/obj/items/storage/pouches.dmi'
 	icon_state = "small_drop"
 	w_class = WEIGHT_CLASS_BULKY //does not fit in backpack
@@ -34,8 +34,8 @@
 	return user.equip_to_appropriate_slot(src)
 
 /obj/item/storage/pouch/general
-	name = "light general pouch"
-	desc = "A general purpose pouch used to carry small items."
+	name = "轻型通用袋"
+	desc = "用于携带小物品的通用袋."
 	icon_state = "small_drop"
 
 /obj/item/storage/pouch/general/Initialize(mapload, ...)
@@ -44,7 +44,7 @@
 	storage_datum.storage_type_limits = list(/obj/item/ammo_magazine/packet, /obj/item/ammo_magazine/shotgun)
 
 /obj/item/storage/pouch/general/medium
-	name = "medium general pouch"
+	name = "中型通用袋"
 	icon_state = "medium_drop"
 
 /obj/item/storage/pouch/general/medium/Initialize(mapload, ...)
@@ -54,7 +54,7 @@
 	storage_datum.draw_mode = FALSE
 
 /obj/item/storage/pouch/general/large
-	name = "general pouch"
+	name = "通用袋"
 	icon_state = "large_drop"
 
 /obj/item/storage/pouch/general/large/Initialize(mapload)
@@ -70,8 +70,8 @@
 	new /obj/item/pinpointer(src)
 
 /obj/item/storage/pouch/general/som
-	name = "mining general pouch"
-	desc = "A general purpose pouch used to carry small items used during mining."
+	name = "采矿通用袋"
+	desc = "用于携带采矿时使用的小物品的通用袋."
 	icon_state = "general_som"
 
 /obj/item/storage/pouch/general/som/Initialize(mapload, ...)
@@ -80,7 +80,7 @@
 	storage_datum.draw_mode = TRUE
 
 /obj/item/storage/pouch/general/large/som
-	desc = "A general purpose pouch used to carry small items used during mining."
+	desc = "用于携带采矿时使用的小物品的通用袋."
 	icon_state = "large_drop_som"
 
 /obj/item/storage/pouch/general/large/som/Initialize(mapload, ...)
@@ -88,8 +88,8 @@
 	storage_datum.sprite_slots = null
 
 /obj/item/storage/pouch/bayonet
-	name = "bayonet sheath"
-	desc = "A pouch for your knives."
+	name = "刺刀鞘"
+	desc = "用于放置刀具的袋子."
 	icon_state = "bayonet"
 
 /obj/item/storage/pouch/bayonet/Initialize(mapload, ...)
@@ -111,8 +111,8 @@
 	fill_number = 1
 
 /obj/item/storage/pouch/survival
-	name = "survival pouch"
-	desc = "It can contain flashlights, a pill, a crowbar, metal sheets, and some bandages."
+	name = "生存袋"
+	desc = "可以装入闪光灯, 一片药, 一根撬棍, 金属板和一些绷带."
 	icon_state = "survival"
 
 /obj/item/storage/pouch/survival/Initialize(mapload, ...)
@@ -130,8 +130,8 @@
 	new /obj/item/tool/crowbar/red(src)
 
 /obj/item/storage/pouch/firstaid
-	name = "first-aid pouch"
-	desc = "Standard marine first-aid pouch. It can contain most common medical supplies."
+	name = "急救袋"
+	desc = "标准陆战队急救袋. 可以装入大多数常见的医疗用品."
 	icon_state = "firstaid"
 
 /obj/item/storage/pouch/firstaid/Initialize(mapload, ...)
@@ -169,8 +169,8 @@
 	new /obj/item/reagent_containers/hypospray/advanced/inaprovaline(src)
 
 /obj/item/storage/pouch/firstaid/som
-	name = "mining first aid pouch"
-	desc = "A basic first aid pouch originally used by miners due to dangerous working conditions on the mining colonies. This one is marked as belonging to the SOM."
+	name = "采矿急救袋"
+	desc = "一种基础急救袋, 最初由矿工使用, 因为采矿殖民地危险的工作条件. 这个被标记为属于SOM."
 	icon_state = "firstaid_som"
 
 /obj/item/storage/pouch/firstaid/som/Initialize(mapload, ...)
@@ -202,8 +202,8 @@
 	new /obj/item/reagent_containers/hypospray/advanced/inaprovaline(src)
 
 /obj/item/storage/pouch/pistol
-	name = "sidearm pouch"
-	desc = "It can contain a pistol or revolver. Useful for emergencies."
+	name = "随身武器袋"
+	desc = "可以装入一把手枪或左轮手枪. 用于紧急情况."
 	icon_state = "pistol"
 	///the snowflake item(s) that will update the sprite.
 	var/list/holsterable_allowed = list(
@@ -268,7 +268,7 @@
 	new /obj/item/weapon/gun/energy/lasgun/lasrifle/standard_marine_pistol/tactical(src)
 
 /obj/item/storage/pouch/pistol/som
-	desc = "It can contain a pistol or revolver. Useful for emergencies, and made out of stylish leather in the old SOM tradition."
+	desc = "可以装入一把手枪或左轮手枪. 用于紧急情况, 并按照SOM传统由时尚皮革制成."
 	icon_state = "pistol_som"
 
 /obj/item/storage/pouch/pistol/som/Initialize(mapload, ...)
@@ -276,7 +276,7 @@
 	storage_datum.sprite_slots = null
 
 /obj/item/storage/pouch/pistol/icc
-	desc = "It can contain a pistol or revolver. Useful for emergencies, and made is out of a syntheic tan fabric."
+	desc = "可以装入一把手枪或左轮手枪. 用于紧急情况, 由合成棕褐色织物制成."
 	icon_state = "pistol_icc"
 
 /obj/item/storage/pouch/pistol/icc/Initialize(mapload, ...)
@@ -286,8 +286,8 @@
 //// MAGAZINE POUCHES /////
 
 /obj/item/storage/pouch/magazine
-	name = "magazine pouch"
-	desc = "It can contain ammo magazines."
+	name = "弹匣袋"
+	desc = "可以装入弹药弹匣."
 	icon_state = "medium_ammo_mag"
 
 /obj/item/storage/pouch/magazine/Initialize(mapload, ...)
@@ -312,8 +312,8 @@
 	fill_number = 2
 
 /obj/item/storage/pouch/magazine/large
-	name = "magazine pouch"
-	desc = "This pouch can contain three ammo magazines."
+	name = "弹匣袋"
+	desc = "此袋可以装入三个弹药弹匣."
 	icon_state = "large_ammo_mag"
 
 /obj/item/storage/pouch/magazine/large/Initialize(mapload, ...)
@@ -334,7 +334,7 @@
 	fill_number = 3
 
 /obj/item/storage/pouch/magazine/large/som
-	desc = "This pouch can contain three ammo magazines. Made with traditional SOM leather."
+	desc = "此袋可以装入三个弹药弹匣. 由传统SOM皮革制成."
 	icon_state = "mag_som"
 
 /obj/item/storage/pouch/magazine/large/som/Initialize(mapload, ...)
@@ -342,7 +342,7 @@
 	storage_datum.sprite_slots = null
 
 /obj/item/storage/pouch/magazine/large/icc
-	desc = "This pouch can contain three ammo magazines, appears to be made with a synthetic tan fiber."
+	desc = "此袋可以装入三个弹药弹匣, 似乎由合成棕褐色纤维制成."
 	icon_state = "mag_icc"
 
 /obj/item/storage/pouch/magazine/large/icc/Initialize(mapload, ...)
@@ -350,8 +350,8 @@
 	storage_datum.sprite_slots = null
 
 /obj/item/storage/pouch/magazine/pistol
-	name = "pistol magazine pouch"
-	desc = "It can contain pistol and revolver ammo magazines."
+	name = "手枪弹匣袋"
+	desc = "可以装入手枪和左轮手枪弹药弹匣."
 	icon_state = "pistol_mag"
 
 /obj/item/storage/pouch/magazine/pistol/Initialize(mapload, ...)
@@ -368,8 +368,8 @@
 	))
 
 /obj/item/storage/pouch/magazine/pistol/large
-	name = "pistol magazine pouch"
-	desc = "This pouch can contain six pistol and revolver ammo magazines."
+	name = "手枪弹匣袋"
+	desc = "此袋可以装入六个手枪和左轮手枪弹药弹匣."
 	icon_state = "large_pistol_mag"
 
 /obj/item/storage/pouch/magazine/pistol/large/Initialize(mapload, ...)
@@ -430,8 +430,8 @@
 	fill_number = 3
 
 /obj/item/storage/pouch/magazine/drum
-	name = "drum magazine pouch"
-	desc = "It can contain four drum magazines."
+	name = "弹鼓袋"
+	desc = "可以装入四个弹鼓."
 	icon_state = "large_ammo_drum"
 
 /obj/item/storage/pouch/magazine/drum/Initialize(mapload, ...)
@@ -443,8 +443,8 @@
 	))
 
 /obj/item/storage/pouch/explosive
-	name = "explosive pouch"
-	desc = "It can contain grenades, plastiques, mine boxes, and other explosives."
+	name = "爆炸物袋"
+	desc = "可以装入手榴弹, 塑胶炸药, 地雷盒和其他爆炸物."
 	icon_state = "explosive"
 
 /obj/item/storage/pouch/explosive/Initialize(mapload, ...)
@@ -489,8 +489,8 @@
 	fill_number = 4
 
 /obj/item/storage/pouch/explosive/som
-	name = "\improper S26 explosive pouch"
-	desc = "A leather pouch for storing grenades, rockets, mine boxes, and other explosives."
+	name = "\improper S26爆炸物袋"
+	desc = "用于存放手榴弹, 火箭, 地雷盒和其他爆炸物的皮革袋."
 	icon_state = "explosive_som"
 
 /obj/item/storage/pouch/explosive/som/Initialize(mapload, ...)
@@ -498,7 +498,7 @@
 	storage_datum.sprite_slots = null
 
 /obj/item/storage/pouch/explosive/icc
-	desc = "It can contain grenades, plastiques, mine boxes, and other explosives. Clearly made from with a synthetic tan fiber."
+	desc = "可以装入手榴弹, 塑胶炸药, 地雷盒和其他爆炸物. 明显由合成棕褐色纤维制成."
 	icon_state = "large_explosive_icc"
 
 /obj/item/storage/pouch/explosive/icc/Initialize(mapload, ...)
@@ -506,8 +506,8 @@
 	storage_datum.sprite_slots = null
 
 /obj/item/storage/pouch/grenade
-	name = "grenade pouch"
-	desc = "It can contain grenades."
+	name = "手雷袋"
+	desc = "可以装手雷。"
 	icon_state = "grenade"
 
 /obj/item/storage/pouch/grenade/Initialize(mapload, ...)
@@ -543,7 +543,7 @@
 		new /obj/item/explosive/grenade/emp(src)
 
 /obj/item/storage/pouch/grenade/som
-	desc = "It can contain grenades. This one looks to be made out of traditional SOM leather."
+	desc = "可以装手雷。这个看起来是用传统SOM皮革制成的。"
 	icon_state = "grenade_som"
 
 /obj/item/storage/pouch/grenade/Initialize(mapload, ...)
@@ -579,8 +579,8 @@
 		new /obj/item/explosive/grenade/emp(src)
 
 /obj/item/storage/pouch/medkit
-	name = "medkit pouch"
-	desc = "A standard use medkit pouch that can contain all kinds of medical supplies and equipment."
+	name = "医疗包"
+	desc = "标准用途的医疗包,可以装各种医疗用品和装备。"
 	icon_state = "medkit"
 	w_class = WEIGHT_CLASS_BULKY //does not fit in backpack
 
@@ -602,7 +602,7 @@
 	))
 
 /obj/item/storage/pouch/medkit/firstaid
-	desc = "Standard marine first-aid pouch. Contains basic pills, splints, and a stabilizing injector."
+	desc = "标准陆战队急救包。内含基础药片、夹板和一支稳定注射剂。"
 
 /obj/item/storage/pouch/medkit/firstaid/PopulateContents()
 	new /obj/item/storage/pill_bottle/bicaridine(src)
@@ -622,7 +622,7 @@
 	new /obj/item/reagent_containers/hypospray/advanced/nanoblood(src)
 
 /obj/item/storage/pouch/medkit/som
-	desc = "A standard use medkit pouch that can contain all kinds of medical supplies and equipment. Made with traditional SOM leather."
+	desc = "标准用途的医疗包,可以装各种医疗用品和装备。用传统SOM皮革制成。"
 	icon_state = "medkit_som"
 
 /obj/item/storage/pouch/medkit/som/Initialize(mapload, ...)
@@ -637,8 +637,8 @@
 		new /obj/item/reagent_containers/hypospray/autoinjector/elite(src)
 
 /obj/item/storage/pouch/medical_injectors
-	name = "medical injector pouch"
-	desc = "A specialized medical pouch that can only hold auto-injectors."
+	name = "医疗注射剂袋"
+	desc = "一种专用医疗袋,只能装自动注射剂。"
 	icon_state = "firstaid_injector"
 
 /obj/item/storage/pouch/medical_injectors/Initialize(mapload, ...)
@@ -649,7 +649,7 @@
 	storage_datum.set_holdable(can_hold_list = list(/obj/item/reagent_containers/hypospray/autoinjector))
 
 /obj/item/storage/pouch/medical_injectors/firstaid
-	desc = "Standard marine first-aid injector pouch. Specialized to store only auto-injectors. Contains basic injectors, a stabilizing injector, stimulant injector, and an emergency injector."
+	desc = "标准陆战队急救注射剂袋。专门用于存放自动注射剂。内含基础注射剂、一支稳定注射剂、兴奋剂注射剂和一支紧急注射剂。"
 
 /obj/item/storage/pouch/medical_injectors/firstaid/PopulateContents()
 	new /obj/item/reagent_containers/hypospray/autoinjector/bicaridine (src)
@@ -684,7 +684,7 @@
 	new /obj/item/reagent_containers/hypospray/autoinjector/peridaxon(src)
 
 /obj/item/storage/pouch/medical_injectors/som
-	desc = "A specialized medical pouch that can only hold auto-injectors. This one looks to be made out of traditional SOM leather."
+	desc = "一种专用医疗袋,只能装自动注射剂。这个看起来是用传统SOM皮革制成的。"
 	icon_state = "firstaid_injector_som"
 
 /obj/item/storage/pouch/medical_injectors/som/Initialize(mapload, ...)
@@ -712,7 +712,7 @@
 	new /obj/item/reagent_containers/hypospray/autoinjector/peridaxon(src)
 
 /obj/item/storage/pouch/medical_injectors/icc
-	desc = "A specialized medical pouch that can only hold auto-injectors. This one looks to be made out of a synthetic tan fabric."
+	desc = "一种专用医疗袋,只能装自动注射剂。这个看起来是用合成棕褐色织物制成的。"
 	icon_state = "firstaid_injector_icc"
 
 /obj/item/storage/pouch/medical_injectors/icc/Initialize(mapload, ...)
@@ -729,8 +729,8 @@
 	new /obj/item/reagent_containers/hypospray/autoinjector/russian_red (src)
 
 /obj/item/storage/pouch/med_lolipops
-	name = "medical lolipop pouch"
-	desc = "A small medical pouch with three seperate pockets to sort your medical lollipops."
+	name = "医疗棒棒糖袋"
+	desc = "一个小型医疗袋,有三个独立的口袋用来分类你的医疗棒棒糖。"
 	icon_state = "medlolly"
 
 /obj/item/storage/pouch/med_lolipops/Initialize(mapload, ...)
@@ -745,8 +745,8 @@
 	new /obj/item/storage/box/combat_lolipop/tramadol(src)
 
 /obj/item/storage/pouch/berrypouch
-	name = "berry bar pouch"
-	desc = "A pouch containing all of your berry needs."
+	name = "浆果棒袋"
+	desc = "一个装有你所需全部浆果的袋子。"
 	icon_state = "barpouch"
 	fill_type = /obj/item/reagent_containers/food/snacks/wrapped/berrybar
 	fill_number = 6
@@ -758,8 +758,8 @@
 	storage_datum.set_holdable(can_hold_list = list(/obj/item/reagent_containers/food/snacks/wrapped/berrybar))
 
 /obj/item/storage/pouch/surgery
-	name = "surgery tools pouch"
-	desc = "An eye catching white medical pouch capable of holding all your surgical tools."
+	name = "手术工具袋"
+	desc = "一个显眼的白色医疗袋,能够装下你所有的手术工具。"
 	icon_state = "surgery"
 
 /obj/item/storage/pouch/surgery/Initialize(mapload, ...)
@@ -787,8 +787,8 @@
 	new /obj/item/tool/surgery/suture(src)
 
 /obj/item/storage/pouch/document
-	name = "document pouch"
-	desc = "It can contain papers and clipboards."
+	name = "文件袋"
+	desc = "可以装纸张和剪贴板。"
 	icon_state = "document"
 
 /obj/item/storage/pouch/document/Initialize(mapload, ...)
@@ -800,8 +800,8 @@
 	))
 
 /obj/item/storage/pouch/field_pouch
-	name = "field utility pouch"
-	desc = "It can contain a motion detector, signaller, beacons, map tablets, radios, papers and other handy battlefield communication, navigation, and detection devices."
+	name = "野战通用袋"
+	desc = "可以装运动探测器、信号器、信标、地图平板、无线电、纸张和其他实用的战场通信、导航和探测设备。"
 	icon_state = "utility"
 
 /obj/item/storage/pouch/field_pouch/Initialize(mapload, ...)
@@ -840,8 +840,8 @@
 	new /obj/item/binoculars/tactical (src)
 
 /obj/item/storage/pouch/electronics
-	name = "electronics pouch"
-	desc = "It is designed to hold most electronics, power cells and circuitboards."
+	name = "电子袋"
+	desc = "设计用于装大多数电子产品、电池和电路板。"
 	icon_state = "electronics"
 
 /obj/item/storage/pouch/electronics/Initialize(mapload, ...)
@@ -859,8 +859,8 @@
 	new /obj/item/cell/high (src)
 
 /obj/item/storage/pouch/construction
-	name = "construction pouch"
-	desc = "It's designed to hold construction materials - glass/metal sheets, metal rods, barbed wire, cable coil, and empty sandbags. It also has a hook for an entrenching tool."
+	name = "建筑袋"
+	desc = "设计用于装建筑材料 - 玻璃/金属板、金属杆、铁丝网、电缆线圈和空沙袋。它还有一个挂载挖掘工具的挂钩。"
 	icon_state = "construction"
 
 /obj/item/storage/pouch/construction/Initialize(mapload, ...)
@@ -889,7 +889,7 @@
 	new /obj/item/stack/sheet/plasteel/medium_stack (src)
 
 /obj/item/storage/pouch/construction/som
-	desc = "It's designed to hold construction materials - glass/metal sheets, metal rods, barbed wire, cable coil, and empty sandbags. It also has a hook for an entrenching tool. Made with traditional SOM leather."
+	desc = "设计用于装建筑材料 - 玻璃/金属板、金属杆、铁丝网、电缆线圈和空沙袋。它还有一个挂载挖掘工具的挂钩。用传统SOM皮革制成。"
 	icon_state = "construction_som"
 
 /obj/item/storage/pouch/construction/som/Initialize(mapload, ...)
@@ -897,7 +897,7 @@
 	storage_datum.sprite_slots = null
 
 /obj/item/storage/pouch/construction/icc
-	desc = "It's designed to hold construction materials - glass/metal sheets, metal rods, barbed wire, cable coil, and empty sandbags. It also has a hook for an entrenching tool. Made with synthetic tan."
+	desc = "设计用于装建筑材料 - 玻璃/金属板、金属杆、铁丝网、电缆线圈和空沙袋。它还有一个挂载挖掘工具的挂钩。用合成棕褐色材料制成。"
 	icon_state = "construction_icc"
 
 /obj/item/storage/pouch/construction/icc/Initialize(mapload, ...)
@@ -910,8 +910,8 @@
 	new /obj/item/stack/sheet/plasteel/medium_stack (src)
 
 /obj/item/storage/pouch/tools
-	name = "tools pouch"
-	desc = "It's designed to hold maintenance tools - screwdriver, wrench, cable coil, etc. It also has a hook for an entrenching tool."
+	name = "工具袋"
+	desc = "设计用于装维护工具 - 螺丝刀、扳手、电缆线圈等。它还有一个挂载挖掘工具的挂钩。"
 	icon_state = "tools"
 
 /obj/item/storage/pouch/tools/Initialize(mapload, ...)
@@ -950,7 +950,7 @@
 	new /obj/item/tool/crowbar (src)
 
 /obj/item/storage/pouch/tools/som
-	desc = "It's designed to hold maintenance tools - screwdriver, wrench, cable coil, etc. It also has a hook for an entrenching tool. Made with traditional SOM leather."
+	desc = "设计用于装维护工具 - 螺丝刀、扳手、电缆线圈等。它还有一个挂载挖掘工具的挂钩。用传统SOM皮革制成。"
 	icon_state = "tools_som"
 
 /obj/item/storage/pouch/tools/som/Initialize(mapload, ...)
@@ -965,7 +965,7 @@
 	new /obj/item/tool/crowbar (src)
 
 /obj/item/storage/pouch/tools/icc
-	desc = "It's designed to hold maintenance tools - screwdriver, wrench, cable coil, etc. It also has a hook for an entrenching tool. Made with a synthetic tan fiber."
+	desc = "设计用于装维护工具 - 螺丝刀、扳手、电缆线圈等。它还有一个挂载挖掘工具的挂钩。用合成棕褐色纤维制成。"
 	icon_state = "tools_icc"
 
 /obj/item/storage/pouch/tools/icc/Initialize(mapload, ...)
@@ -980,8 +980,8 @@
 	new /obj/item/tool/crowbar (src)
 
 /obj/item/storage/pouch/shotgun
-	name = "shotgun shell pouch"
-	desc = "A pouch specialized for holding shotgun ammo."
+	name = "霰弹枪弹药袋"
+	desc = "专门用于装霰弹枪弹药的袋子。"
 	icon_state = "shotshells"
 
 /obj/item/storage/pouch/shotgun/Initialize(mapload, ...)
@@ -1002,14 +1002,14 @@
 		return ..()
 
 	if(!M.current_rounds)
-		to_chat(user, span_warning("[M] is empty."))
+		to_chat(user, span_warning("[M]是空的。"))
 		return
 
 	if(length(contents) >= storage_datum.storage_slots)
-		to_chat(user, span_warning("[src] is full."))
+		to_chat(user, span_warning("[src]是满的。"))
 		return
 
-	to_chat(user, span_notice("You start refilling [src] with [M]."))
+	to_chat(user, span_notice("你开始用[M]重新装填[src]。"))
 	if(!do_after(user, 1.5 SECONDS, NONE, src, BUSY_ICON_GENERIC))
 		return
 
@@ -1019,11 +1019,11 @@
 			break
 
 	playsound(user.loc, SFX_RUSTLE, 15, TRUE, 6)
-	to_chat(user, span_notice("You refill [src] with [M]."))
+	to_chat(user, span_notice("你用[M]重新装填了[src]。"))
 	return TRUE
 
 /obj/item/storage/pouch/shotgun/som
-	desc = "A pouch specialized for holding shotgun ammo. Made with traditional SOM leather."
+	desc = "专门用于装霰弹枪弹药的袋子。用传统SOM皮革制成。"
 	icon_state = "shotshells_som"
 
 /obj/item/storage/pouch/shotgun/som/Initialize(mapload, ...)
@@ -1031,8 +1031,8 @@
 	storage_datum.sprite_slots = null
 
 /obj/item/storage/pouch/protein_pack
-	name = "\improper protein pack pouch"
-	desc = "A storage pouch designed to hold a moderate amount of protein packs."
+	name = "\improper 蛋白棒袋"
+	desc = "一个设计用于装适量蛋白棒的储物袋。"
 	icon_state = "p_pouch"
 	worn_icon_state = "survival"
 	fill_type = /obj/item/reagent_containers/food/snacks/protein_pack
@@ -1047,8 +1047,8 @@
 	storage_datum.set_holdable(can_hold_list = list(/obj/item/reagent_containers/food/snacks/protein_pack))
 
 /obj/item/storage/pouch/machete
-	name = "'Recon' machete scabbard"
-	desc = "A large pouch designed for the lightweight 'Recon' machete."
+	name = "'侦察'砍刀刀鞘"
+	desc = "一个为轻型'侦察'砍刀设计的大袋子。"
 	icon_state = "machete"
 
 /obj/item/storage/pouch/machete/Initialize(mapload, ...)
@@ -1064,8 +1064,8 @@
 	new /obj/item/weapon/sword/machete/light(src)
 
 /obj/item/storage/pouch/medkit/t312
-	name = "BMSS medkit pouch"
-	desc = "Advanced medkit pouch made by BMSS. It is also capable of holding R-312 ammo and tweezers."
+	name = "BMSS医疗包"
+	desc = "BMSS制造的先进医疗包。它也能装R-312弹药和镊子。"
 	icon_state = "t312"
 
 /obj/item/storage/pouch/medkit/t312/Initialize(mapload, ...)

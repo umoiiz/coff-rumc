@@ -33,12 +33,12 @@ export const MarineSelector = (props) => {
       {!!showDesc && (
         <Modal width="400px">
           <Box>{showDesc}</Box>
-          <Button content="Dismiss" onClick={() => setShowDesc(null)} />
+          <Button content="解散" onClick={() => setShowDesc(null)} />
         </Modal>
       )}
       <Window.Content scrollable>
         <Section
-          title="Choose your equipment"
+          title="选择你的装备"
           buttons={
             <>
               <Box inline width="4px" />
@@ -47,14 +47,14 @@ export const MarineSelector = (props) => {
                 selected={showEmpty}
                 onClick={() => setShowEmpty(!showEmpty)}
               >
-                Show Empty Categories
+                显示空类别
               </Button>
             </>
           }
         >
-          Make selections in each of the categories below to get equipped.
-          Surplus of some of the equipment found in this machine may be found in
-          surplus vendors nearby.
+          在以下每个类别中进行选择以获得装备.
+          此机器中的部分装备可能有多余的,可在
+          附近的补给贩卖机中找到.
         </Section>
         {categories.map((category) => (
           <ItemCategory
@@ -171,82 +171,82 @@ const ItemLine = (props) => {
         <>
           {color === 'white' && (
             <Box inline mr="6px" ml="6px">
-              Essential
+              必需
             </Box>
           )}
           {color === 'orange' && (
             <Box inline mr="6px" ml="6px" color="green">
-              Recommended
+              推荐
             </Box>
           )}
           {color === 'orange2' && (
             <Box inline mr="6px" ml="6px" color="orange">
-              Munition
+              弹药
             </Box>
           )}
           {color === 'orange3' && (
             <Box inline mr="6px" ml="6px" color="orange">
-              Explosive
+              爆炸物
             </Box>
           )}
           {color === 'yellow' && (
             <Box inline mr="6px" ml="6px" color="yellow">
-              Tool
+              工具
             </Box>
           )}
           {color === 'yellow2' && (
             <Box inline mr="6px" ml="6px" color="yellow">
-              Money
+              资金
             </Box>
           )}
           {color === 'blue' && (
             <Box inline mr="6px" ml="6px" color="blue">
-              Specialist
+              专家
             </Box>
           )}
           {color === 'cyan' && (
             <Box inline mr="6px" ml="6px" color="cyan">
-              Medicine
+              药品
             </Box>
           )}
           {color === 'cyan2' && (
             <Box inline mr="6px" ml="6px" color="cyan">
-              Implant
+              植入物
             </Box>
           )}
           {color === 'red' && (
             <Box inline mr="6px" ml="6px" color="red">
-              Weapon
+              武器
             </Box>
           )}
           {color === 'synth-cosmetic' && (
             <Box inline mr="6px" ml="6px" color="blue">
-              Cosmetic
+              外观
             </Box>
           )}
           {color === 'synth-storage' && (
             <Box inline mr="6px" ml="6px" color="magenta">
-              Storage
+              储存
             </Box>
           )}
           {color === 'synth-armor' && (
             <Box inline mr="6px" ml="6px" color="red">
-              Armor
+              护甲
             </Box>
           )}
           {color === 'synth-rcmarmor' && (
             <Box inline mr="6px" ml="6px" color="orange">
-              Recommended - Armor
+              推荐 - 护甲
             </Box>
           )}
           {color === 'synth-rcmarmstorage' && (
             <Box inline mr="6px" ml="6px" color="green">
-              Recommended - Armor and Suit Storage
+              推荐 - 护甲和服装储存
             </Box>
           )}
           {color === 'synth-attachable' && (
             <Box inline mr="6px" ml="6px" color="green">
-              Recommended - Attachable to Flak Jacket
+              推荐 - 可附着于防弹衣
             </Box>
           )}
           {cost > 0 && (
@@ -259,7 +259,7 @@ const ItemLine = (props) => {
             onClick={() => act('vend', { vend: index })}
             selected={color === 'white'}
           >
-            Vend
+            售出
           </Button>
         </>
       }

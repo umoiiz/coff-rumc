@@ -6,8 +6,8 @@
 #define SYRINGE_BROKEN 2
 
 /obj/item/reagent_containers/syringe
-	name = "syringe"
-	desc = "A syringe."
+	name = "注射器"
+	desc = "一支注射器."
 	icon = 'icons/obj/items/syringe.dmi'
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/equipment/medical_left.dmi',
@@ -62,7 +62,7 @@
 		return
 
 	if(mode == SYRINGE_BROKEN)
-		to_chat(user, span_warning("This syringe is broken!"))
+		to_chat(user, span_warning("这支注射器坏了!"))
 		return
 
 	if (user.a_intent == INTENT_HARM && ismob(target) && isliving(user))
@@ -75,7 +75,7 @@
 		if(SYRINGE_DRAW)
 
 			if(reagents.holder_full())
-				to_chat(user, span_warning("The syringe is full."))
+				to_chat(user, span_warning("注射器是满的."))
 				return
 
 			if(ismob(target))//Blood!
@@ -83,16 +83,16 @@
 					var/amount = src.reagents.maximum_volume - src.reagents.total_volume
 					var/mob/living/carbon/T = target
 					if(T.get_blood_id() && reagents.has_reagent(T.get_blood_id()))
-						to_chat(user, span_warning("There is already a blood sample in this syringe."))
+						to_chat(user, span_warning("这支注射器里已经有血样了."))
 						return
 					if(!T.blood_type)
-						to_chat(user, span_warning("You are unable to locate any blood."))
+						to_chat(user, span_warning("你找不到任何血液."))
 						return
 
 					if(ishuman(T))
 						var/mob/living/carbon/human/H = T
 						if(H.species.species_flags & NO_BLOOD)
-							to_chat(user, span_warning("You are unable to locate any blood."))
+							to_chat(user, span_warning("你找不到任何血液."))
 							return
 						else
 							T.take_blood(src,amount)
@@ -101,35 +101,35 @@
 
 					on_reagent_change()
 					reagents.handle_reactions()
-					user.visible_message("<span clas='warning'>[user] takes a blood sample from [target].</span>",
-										span_notice("You take a blood sample from [target]."), null, 4)
+					user.visible_message("<span clas='warning'>[user]从[target]身上采集了血样.</span>",
+										span_notice("你从[target]身上采集了血样."), null, 4)
 
 			else //if not mob
 				if(!target.reagents.total_volume)
-					to_chat(user, span_warning("[target] is empty."))
+					to_chat(user, span_warning("[target]是空的."))
 					return
 
 				if(!target.is_drawable())
-					to_chat(user, span_warning("You cannot directly remove reagents from this object."))
+					to_chat(user, span_warning("你无法直接从这个物体中移除试剂."))
 					return
 
 				var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this) // transfer from, transfer to - who cares?
 
-				to_chat(user, span_notice("You fill the syringe with [trans] units of the solution."))
+				to_chat(user, span_notice("你将注射器装入了[trans]单位的溶液."))
 			if (reagents.holder_full())
 				mode=!mode
 				update_icon()
 
 		if(SYRINGE_INJECT)
 			if(!reagents.total_volume)
-				to_chat(user, span_warning("The syringe is empty."))
+				to_chat(user, span_warning("注射器是空的."))
 				return
 
 			if(!target.is_injectable() && !ismob(target))
-				to_chat(user, span_warning("You cannot directly fill this object."))
+				to_chat(user, span_warning("你无法直接填充这个物体."))
 				return
 			if(target.reagents.holder_full())
-				to_chat(user, span_warning("[target] is full."))
+				to_chat(user, span_warning("[target]是满的."))
 				return
 
 			if(ismob(target))
@@ -151,14 +151,14 @@
 							return
 
 					if(injection_time != 6 SECONDS)
-						user.visible_message(span_danger("[user] is trying to inject [target]!"))
+						user.visible_message(span_danger("[user]正试图向[target]注射!"))
 					else
-						user.visible_message(span_danger("[user] begins hunting for an injection port on [target]'s suit!"))
+						user.visible_message(span_danger("[user]开始在[target]的防护服上寻找注射口!"))
 
 					if(!do_after(user, injection_time, NONE, target, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL))
 						return
 
-					user.visible_message(span_warning("[user] injects [target] with the syringe!"))
+					user.visible_message(span_warning("[user]用注射器向[target]注射!"))
 
 					if(istype(target,/mob/living))
 						var/mob/living/M = target
@@ -179,7 +179,7 @@
 			else
 				trans = reagents.trans_to(target, amount_per_transfer_from_this)
 
-			to_chat(user, span_notice("You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units."))
+			to_chat(user, span_notice("你注射了[trans]单位的溶液. 注射器中现在含有[src.reagents.total_volume]单位."))
 			if (reagents.total_volume <= 0 && mode==SYRINGE_INJECT)
 				mode = SYRINGE_DRAW
 				update_icon()
@@ -243,18 +243,18 @@
 			return
 
 		if (target != user && !prob(target.modify_by_armor(100, MELEE, penetration, target_zone)))
-			visible_message(span_danger("[user] tries to stab [target] in \the [hit_area] with [src], but the attack is deflected by armor!"))
+			visible_message(span_danger("[user]试图用[src]刺向[target]的\the [hit_area], 但攻击被护甲挡开了!"))
 			user.temporarilyRemoveItemFromInventory(src)
 			qdel(src)
 			return
 
-		visible_message(span_danger("[user] stabs [target] in \the [hit_area] with [src]!"))
+		visible_message(span_danger("[user]用[src]刺中了[target]的\the [hit_area]!"))
 
 		if(affecting.take_damage_limb(3))
 			target:UpdateDamageIcon()
 
 	else
-		visible_message(span_danger("[user] stabs [target] with [src]!"))
+		visible_message(span_danger("[user]用[src]刺中了[target]!"))
 		target.take_limb_damage(3)// 7 is the same as crowbar punch
 
 	reagents.reaction(target, INJECT)
@@ -267,8 +267,8 @@
 
 
 /obj/item/reagent_containers/syringe/ld50_syringe
-	name = "Lethal Injection Syringe"
-	desc = "A syringe used for lethal injections."
+	name = "致命注射器"
+	desc = "用于执行致命注射的注射器."
 	amount_per_transfer_from_this = 50
 	possible_transfer_amounts = null //list(5,10,15)
 	volume = 50
@@ -281,46 +281,46 @@
 		if(SYRINGE_DRAW)
 
 			if(reagents.total_volume >= reagents.maximum_volume)
-				to_chat(user, span_warning("The syringe is full."))
+				to_chat(user, span_warning("注射器是满的."))
 				return
 
 			if(ismob(target))
 				if(iscarbon(target))//I Do not want it to suck 50 units out of people
-					to_chat(usr, span_warning("This needle isn't designed for drawing blood."))
+					to_chat(usr, span_warning("这根针不是用来抽血的."))
 					return
 			else //if not mob
 				if(!target.reagents.total_volume)
-					to_chat(user, span_warning("[target] is empty."))
+					to_chat(user, span_warning("[target]是空的."))
 					return
 
 				if(!target.is_drawable())
-					to_chat(user, span_warning("You cannot directly remove reagents from this object."))
+					to_chat(user, span_warning("你无法直接从这个物体中移除试剂."))
 					return
 
 				var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this) // transfer from, transfer to - who cares?
 
-				to_chat(user, span_notice("You fill the syringe with [trans] units of the solution."))
+				to_chat(user, span_notice("你将注射器装入了[trans]单位的溶液."))
 			if (reagents.total_volume >= reagents.maximum_volume)
 				mode=!mode
 				update_icon()
 
 		if(SYRINGE_INJECT)
 			if(!reagents.total_volume)
-				to_chat(user, span_warning("[src] is empty."))
+				to_chat(user, span_warning("[src]是空的."))
 				return
 
 			if(!target.is_injectable() && !ismob(target))
-				to_chat(user, span_warning("You cannot directly fill this object."))
+				to_chat(user, span_warning("你无法直接填充这个物体."))
 				return
 			if(target.reagents.holder_full())
-				to_chat(user, span_warning("[target] is full."))
+				to_chat(user, span_warning("[target]是满的."))
 				return
 
 			if(ismob(target) && target != user)
-				user.visible_message(span_danger("[user] is trying to inject [target] with a giant syringe!"))
+				user.visible_message(span_danger("[user]正试图用巨型注射器向[target]注射!"))
 				if(!do_after(user, 30 SECONDS, NONE, target, BUSY_ICON_DANGER, BUSY_ICON_DANGER))
 					return
-				user.visible_message(span_warning("[user] injects [target] with a giant syringe!"))
+				user.visible_message(span_warning("[user]用巨型注射器向[target]注射!"))
 			if(!do_after(user, 0.5 SECONDS, NONE, target, BUSY_ICON_DANGER, BUSY_ICON_DANGER))
 				return
 			var/trans = reagents.trans_to(target, amount_per_transfer_from_this)
@@ -330,7 +330,7 @@
 			else
 				reagents.reaction(target, INJECT)
 				trans = reagents.trans_to(target, amount_per_transfer_from_this)
-			to_chat(user, span_notice("You inject [trans] units of the solution. The syringe now contains [reagents.total_volume] units."))
+			to_chat(user, span_notice("你注射了[trans]单位的溶液. 注射器中现在含有[reagents.total_volume]单位."))
 			if(reagents.total_volume >= reagents.maximum_volume && mode == SYRINGE_INJECT)
 				mode = SYRINGE_DRAW
 				update_icon()
@@ -342,8 +342,8 @@
 
 
 /obj/item/reagent_containers/syringe/inaprovaline
-	name = "syringe (inaprovaline)"
-	desc = "Contains inaprovaline - used to stabilize patients."
+	name = "注射器(依那普利)"
+	desc = "含有依那普利 - 用于稳定伤员."
 	list_reagents = list(/datum/reagent/medicine/inaprovaline = 15)
 
 /obj/item/reagent_containers/syringe/inaprovaline/Initialize(mapload)
@@ -352,8 +352,8 @@
 	update_icon()
 
 /obj/item/reagent_containers/syringe/dylovene
-	name = "syringe (dylovene)"
-	desc = "Contains anti-toxins."
+	name = "注射器(地洛韦)"
+	desc = "含有抗毒素."
 	list_reagents = list(/datum/reagent/medicine/dylovene = 15)
 
 /obj/item/reagent_containers/syringe/dylovene/Initialize(mapload)
@@ -362,8 +362,8 @@
 	update_icon()
 
 /obj/item/reagent_containers/syringe/antiviral
-	name = "syringe (spaceacillin)"
-	desc = "Contains antiviral agents. Can also be used to treat infected wounds."
+	name = "注射器(太空青霉素)"
+	desc = "含有抗病毒剂. 也可用于治疗感染伤口."
 	list_reagents = list(/datum/reagent/medicine/spaceacillin = 15)
 
 /obj/item/reagent_containers/syringe/antiviral/Initialize(mapload)
@@ -372,8 +372,8 @@
 	update_icon()
 
 /obj/item/reagent_containers/syringe/drugs
-	name = "syringe (drugs)"
-	desc = "Contains aggressive drugs meant for torture."
+	name = "注射器(药物)"
+	desc = "含有用于折磨人的烈性药物."
 	list_reagents = list(/datum/reagent/space_drugs = 5, /datum/reagent/toxin/mindbreaker = 5, /datum/reagent/cryptobiolin = 5)
 
 /obj/item/reagent_containers/syringe/drugs/Initialize(mapload)
@@ -390,8 +390,8 @@
 	update_icon()
 
 /obj/item/reagent_containers/syringe/mixed
-	name = "syringe (mixed)"
-	desc = "Contains inaprovaline & dylovene."
+	name = "注射器(混合)"
+	desc = "含有依那普利和地洛韦."
 	list_reagents = list(/datum/reagent/medicine/inaprovaline = 7, /datum/reagent/medicine/dylovene = 8)
 
 /obj/item/reagent_containers/syringe/mixed/Initialize(mapload)

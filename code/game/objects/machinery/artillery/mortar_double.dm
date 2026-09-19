@@ -1,6 +1,6 @@
 /obj/item/mortar_kit/double
-	name = "\improper TA-55DB mortar"
-	desc = "A manual, crew-operated mortar system intended to rain down 80mm goodness on anything it's aimed at. Needs to be set down first to fire. This one is a double barreled mortar that can hold 4 rounds usually fitted in TAV's."
+	name = "\improper TA-55DB迫击炮"
+	desc = "一种手动操作的班组迫击炮系统,旨在向瞄准的任何目标倾泻80毫米的\"祝福\"。需要先架设才能开火。这是一门双管迫击炮,通常安装在TAV中,可容纳4发炮弹。"
 	icon_state = "mortar_db"
 	icon = 'icons/obj/artillery/mortar_double.dmi'
 	max_integrity = 400

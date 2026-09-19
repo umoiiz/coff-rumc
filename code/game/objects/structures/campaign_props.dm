@@ -1,6 +1,6 @@
 /obj/structure/prop/som_fighter
-	name = "\improper Harbinger"
-	desc = "A state of the art Harbinger class fighter. The premier fighter for SOM forces in space and atmosphere, bristling with high tech systems and weapons."
+	name = "\improper 先驱者"
+	desc = "一架最先进的先驱者级战斗机。SOM部队在太空和大气层中的首选战斗机,装备着大量高科技系统和武器。"
 	icon = 'icons/obj/structures/mainship_props96.dmi'
 	icon_state = "SOM_fighter"
 	pixel_x = -33
@@ -10,11 +10,11 @@
 
 /obj/structure/prop/som_fighter/empty
 	icon_state = "SOM_fighter_empty"
-	desc = "A state of the art Harbinger class fighter. The premier fighter for SOM forces in space and atmosphere, this one seems to be unarmed currently."
+	desc = "一架最先进的先驱者级战斗机。SOM部队在太空和大气层中的首选战斗机,这一架目前似乎没有武装。"
 
 /obj/structure/prop/train
-	name = "locomotive"
-	desc = "A heavy duty maglev locomotive. Designed for moving large quantities of goods from point A to point B."
+	name = "机车"
+	desc = "一台重型磁悬浮机车。专为将大量货物从A点运送到B点而设计。"
 	icon = 'icons/obj/structures/train.dmi'
 	icon_state = "maglev"
 	density = TRUE
@@ -31,63 +31,63 @@
 	. += new_overlay
 
 /obj/structure/prop/train/carriage
-	name = "rail carriage"
-	desc = "A heavy duty maglev carriage. I wonder what's inside?."
+	name = "轨道车厢"
+	desc = "一节重型磁悬浮车厢。不知道里面装的是什么?。"
 	icon_state = "carriage"
 
 /obj/structure/prop/train/carriage_lit
-	name = "rail carriage"
-	desc = "A heavy duty maglev carriage. I wonder what's inside?."
+	name = "轨道车厢"
+	desc = "一节重型磁悬浮车厢。不知道里面装的是什么?。"
 	icon_state = "carriage_lit"
 
 /obj/structure/prop/train/cargo_nt
-	name = "railcar"
-	desc = "A heavy duty maglev railcar. This one has a large cargo container on it."
+	name = "轨道车"
+	desc = "一辆重型磁悬浮轨道车。这一辆上面装着一个大型货运集装箱。"
 	icon_state = "nt"
 
 /obj/structure/prop/train/cargo_sat
-	name = "railcar"
-	desc = "A heavy duty maglev railcar. This one has a large cargo container on it."
+	name = "轨道车"
+	desc = "一辆重型磁悬浮轨道车。这一辆上面装着一个大型货运集装箱。"
 	icon_state = "sat"
 
 /obj/structure/prop/train/cargo_hyperdyne
-	name = "railcar"
-	desc = "A heavy duty maglev railcar. This one has a large cargo container on it."
+	name = "轨道车"
+	desc = "一辆重型磁悬浮轨道车。这一辆上面装着一个大型货运集装箱。"
 	icon_state = "hyperdyne"
 
 /obj/structure/prop/train/construction
-	name = "railcar"
-	desc = "A heavy duty maglev railcar. This one is carrying a variety of construction materials."
+	name = "轨道车"
+	desc = "一辆重型磁悬浮轨道车。这一辆运载着各种建筑材料。"
 	icon_state = "construction"
 	allow_pass_flags = PASSABLE
 
 /obj/structure/prop/train/crates
-	name = "railcar"
-	desc = "A heavy duty maglev railcar. This one has a variety of crates on it."
+	name = "轨道车"
+	desc = "一辆重型磁悬浮轨道车。这一辆上面装着各种板条箱。"
 	icon_state = "crates"
 	allow_pass_flags = PASSABLE
 
 /obj/structure/prop/train/weapons
-	name = "railcar"
-	desc = "A heavy duty maglev railcar. This one is carrying a shipment of weapons."
+	name = "轨道车"
+	desc = "一辆重型磁悬浮轨道车。这一辆运载着一批武器。"
 	icon_state = "weapons"
 	allow_pass_flags = PASSABLE
 
 /obj/structure/prop/train/mech
-	name = "railcar"
-	desc = "A heavy duty maglev railcar. This one has a variety of mech equipment on it."
+	name = "轨道车"
+	desc = "一辆重型磁悬浮轨道车。这一辆上面装着各种机甲装备。"
 	icon_state = "mech"
 	allow_pass_flags = PASSABLE
 
 /obj/structure/prop/train/empty
-	name = "railcar"
-	desc = "A heavy duty maglev railcar. This one is currently empty."
+	name = "轨道车"
+	desc = "一辆重型磁悬浮轨道车。这一辆目前是空的。"
 	icon_state = "empty"
 	allow_pass_flags = PASS_LOW_STRUCTURE|PASSABLE|PASS_WALKOVER
 
 /obj/structure/prop/nt_computer
-	name = "server rack"
-	desc = "A server rack. Who knows what's on it?."
+	name = "服务器机架"
+	desc = "一个服务器机架。谁知道上面有什么?。"
 	icon = 'icons/obj/structures/campaign/tall_structures.dmi'
 	icon_state = "serverrack_on"
 	layer = ABOVE_MOB_LAYER
@@ -107,21 +107,21 @@
 		. += emissive_appearance(icon, "[icon_state]_emissive", src, alpha = src.alpha)
 
 /obj/structure/prop/nt_computer/rack
-	name = "control rack"
-	desc = "A system control rack. Who knows what's on it?."
+	name = "控制机架"
+	desc = "一个系统控制机架。谁知道上面有什么?。"
 	icon_state = "recorder_on"
 	use_emissive = FALSE
 
 /obj/structure/prop/nt_computer/recorder
-	name = "backup recorder"
-	desc = "A backup data recorder. Who knows what's on it?."
+	name = "备份记录器"
+	desc = "一个备份数据记录器。谁知道上面有什么?。"
 	icon_state = "rack_on"
 	light_range = 0
 	light_power = 0
 
 /obj/structure/gauss_cannon
-	name = "\improper Gauss Cannon"
-	desc = "A powerful gauss cannon. Designed to punch holes through hostile spacecraft."
+	name = "\improper 高斯炮"
+	desc = "一门威力强大的高斯炮。专为击穿敌方航天器而设计。"
 	icon = 'icons/obj/machines/artillery.dmi'
 	icon_state = "gauss_cannon"
 	density = TRUE

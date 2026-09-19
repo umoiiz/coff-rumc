@@ -34,7 +34,7 @@ ADMIN_VERB_AND_CONTEXT_MENU(cmd_select_equipment, R_FUN, "Select equipment", "Se
 	user = CLIENT_FROM_VAR(_user)
 
 	if(!ishuman(target) && !isobserver(target))
-		tgui_alert(usr,"Invalid mob")
+		tgui_alert(usr,"无效的生物")
 		return
 	target_mob = target
 
@@ -193,7 +193,7 @@ ADMIN_VERB_AND_CONTEXT_MENU(cmd_select_equipment, R_FUN, "Select equipment", "Se
 
 /client/proc/admin_apply_outfit(mob/target, dresscode)
 	if(!ishuman(target) && !isobserver(target))
-		tgui_alert(usr,"Invalid mob")
+		tgui_alert(usr,"无效的生物")
 		return
 
 	if(!dresscode)
@@ -209,7 +209,7 @@ ADMIN_VERB_AND_CONTEXT_MENU(cmd_select_equipment, R_FUN, "Select equipment", "Se
 	else
 		human_target = target
 		if(human_target.l_store || human_target.r_store || human_target.s_store) //saves a lot of time for admins and coders alike
-			if(tgui_alert(usr,"Drop Items in Pockets? No will delete them.", "Robust quick dress shop", list("Yes", "No")) == "No")
+			if(tgui_alert(usr,"丢弃口袋中的物品? 选择否将删除它们.", "快速换装商店", list("Yes", "No")) == "No")
 				delete_pocket = TRUE
 
 	for(var/obj/item/item in human_target.get_equipped_items(include_pockets = delete_pocket))
@@ -221,6 +221,6 @@ ADMIN_VERB_AND_CONTEXT_MENU(cmd_select_equipment, R_FUN, "Select equipment", "Se
 	human_target.regenerate_icons()
 
 	log_admin("[key_name(usr)] changed the equipment of [key_name(human_target)] to [dresscode].")
-	message_admins(span_adminnotice("[key_name_admin(usr)] changed the equipment of [ADMIN_LOOKUPFLW(human_target)] to [dresscode]."))
+	message_admins(span_adminnotice("[key_name_admin(usr)] 将 [ADMIN_LOOKUPFLW(human_target)] 的装备更换为 [dresscode]."))
 
 	return dresscode

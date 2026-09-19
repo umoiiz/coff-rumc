@@ -35,16 +35,16 @@
 	failure_sound = 'sound/misc/surgery/organ2.ogg'
 
 /datum/surgery_step/generic/incision_manager/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] starts to construct a prepared incision on and within [target]'s [affected.display_name] with \the [tool]."), \
-	span_notice("You start to construct a prepared incision on and within [target]'s [affected.display_name] with \the [tool]."))
-	target.balloon_alert_to_viewers("Incising...")
+	user.visible_message(span_notice("[user]开始用\the [tool]在[target]的[affected.display_name]上及其内部构造预备切口."), \
+	span_notice("你开始用\the [tool]在[target]的[affected.display_name]上及其内部构造预备切口."))
+	target.balloon_alert_to_viewers("切割中...")
 	target.custom_pain("You feel a horrible, searing pain in your [affected.display_name] as it is pushed apart!",1)
 	return ..()
 
 /datum/surgery_step/generic/incision_manager/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] has constructed a prepared incision on and within [target]'s [affected.display_name] with \the [tool]."), \
-	span_notice("You have constructed a prepared incision on and within [target]'s [affected.display_name] with \the [tool]."),)
-	target.balloon_alert_to_viewers("Success")
+	user.visible_message(span_notice("[user]已经用\the [tool]在[target]的[affected.display_name]上及其内部构造好了预备切口."), \
+	span_notice("你已经用\the [tool]在[target]的[affected.display_name]上及其内部构造好了预备切口."),)
+	target.balloon_alert_to_viewers("成功")
 	affected.surgery_open_stage = 1
 
 	if(istype(target) && !(target.species.species_flags & NO_BLOOD))
@@ -57,9 +57,9 @@
 	return ..()
 
 /datum/surgery_step/generic/incision_manager/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_warning("[user]'s hand jolts as the system sparks, ripping a gruesome hole in [target]'s [affected.display_name] with \the [tool]!"), \
-	span_warning("Your hand jolts as the system sparks, ripping a gruesome hole in [target]'s [affected.display_name] with \the [tool]!"))
-	target.balloon_alert_to_viewers("Slipped!")
+	user.visible_message(span_warning("[user]的手因系统迸出火花而猛地一颤,用\the [tool]在[target]的[affected.display_name]上撕开了一个骇人的洞!"), \
+	span_warning("你的手因系统迸出火花而猛地一颤,用\the [tool]在[target]的[affected.display_name]上撕开了一个骇人的洞!"))
+	target.balloon_alert_to_viewers("滑脱了!")
 	affected.createwound(CUT, 20)
 	affected.createwound(BURN, 15)
 	affected.update_wounds()
@@ -81,16 +81,16 @@
 	failure_sound = 'sound/misc/surgery/organ2.ogg'
 
 /datum/surgery_step/generic/cut_with_laser/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] starts the bloodless incision on [target]'s [affected.display_name] with \the [tool]."), \
-	span_notice("You start the bloodless incision on [target]'s [affected.display_name] with \the [tool]."))
+	user.visible_message(span_notice("[user]开始用\the [tool]在[target]的[affected.display_name]上进行无血切口."), \
+	span_notice("你开始用\the [tool]在[target]的[affected.display_name]上进行无血切口."))
 	target.custom_pain("You feel a horrible, searing pain in your [affected.display_name]!", 1)
-	target.balloon_alert_to_viewers("Incising...")
+	target.balloon_alert_to_viewers("切割中...")
 	return ..()
 
 /datum/surgery_step/generic/cut_with_laser/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] has made a bloodless incision on [target]'s [affected.display_name] with \the [tool]."), \
-	span_notice("You have made a bloodless incision on [target]'s [affected.display_name] with \the [tool]."))
-	target.balloon_alert_to_viewers("Success")
+	user.visible_message(span_notice("[user]已经用\the [tool]在[target]的[affected.display_name]上做好了无血切口."), \
+	span_notice("你已经用\the [tool]在[target]的[affected.display_name]上做好了无血切口."))
+	target.balloon_alert_to_viewers("成功")
 	//Could be cleaner
 	affected.surgery_open_stage = 1
 
@@ -104,9 +104,9 @@
 	return ..()
 
 /datum/surgery_step/generic/cut_with_laser/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_warning("[user]'s hand slips as the blade sputters, searing a long gash in [target]'s [affected.display_name] with \the [tool]!"), \
-	span_warning("Your hand slips as the blade sputters, searing a long gash in [target]'s [affected.display_name] with \the [tool]!"))
-	target.balloon_alert_to_viewers("Slipped!")
+	user.visible_message(span_warning("[user]的手滑了一下,刀锋噼啪作响,用\the [tool]在[target]的[affected.display_name]上灼出一道长长的切口!"), \
+	span_warning("你的手滑了一下,刀锋噼啪作响,用\the [tool]在[target]的[affected.display_name]上灼出一道长长的切口!"))
+	target.balloon_alert_to_viewers("滑脱了!")
 	affected.createwound(CUT, 7.5)
 	affected.createwound(BURN, 12.5)
 	affected.update_wounds()
@@ -130,16 +130,16 @@
 	failure_sound = 'sound/misc/surgery/organ2.ogg'
 
 /datum/surgery_step/generic/cut_open/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] starts the incision on [target]'s [affected.display_name] with \the [tool]."), \
-	span_notice("You start the incision on [target]'s [affected.display_name] with \the [tool]."))
+	user.visible_message(span_notice("[user]开始用\the [tool]在[target]的[affected.display_name]上做切口."), \
+	span_notice("你开始用\the [tool]在[target]的[affected.display_name]上做切口."))
 	target.custom_pain("You feel a horrible pain as if from a sharp knife in your [affected.display_name]!", 1)
-	target.balloon_alert_to_viewers("Incising...")
+	target.balloon_alert_to_viewers("切割中...")
 	return ..()
 
 /datum/surgery_step/generic/cut_open/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] has made an incision on [target]'s [affected.display_name] with \the [tool]."), \
-	span_notice("You have made an incision on [target]'s [affected.display_name] with \the [tool]."),)
-	target.balloon_alert_to_viewers("Success")
+	user.visible_message(span_notice("[user]已经用\the [tool]在[target]的[affected.display_name]上做好了切口."), \
+	span_notice("你已经用\the [tool]在[target]的[affected.display_name]上做好了切口."),)
+	target.balloon_alert_to_viewers("成功")
 	affected.surgery_open_stage = 1
 
 	if(istype(target) && !(target.species.species_flags & NO_BLOOD))
@@ -150,9 +150,9 @@
 	return ..()
 
 /datum/surgery_step/generic/cut_open/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_warning("[user]'s hand slips, slicing open [target]'s [affected.display_name] in the wrong place with \the [tool]!"), \
-	span_warning("Your hand slips, slicing open [target]'s [affected.display_name] in the wrong place with \the [tool]!"))
-	target.balloon_alert_to_viewers("Slipped!")
+	user.visible_message(span_warning("[user]的手滑了一下,用\the [tool]在错误的位置切开了[target]的[affected.display_name]!"), \
+	span_warning("你的手滑了一下,用\the [tool]在错误的位置切开了[target]的[affected.display_name]!"))
+	target.balloon_alert_to_viewers("滑脱了!")
 	affected.createwound(CUT, 10)
 	affected.update_wounds()
 
@@ -179,24 +179,24 @@
 	return SURGERY_CANNOT_USE
 
 /datum/surgery_step/generic/clamp_bleeders/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] starts clamping bleeders in [target]'s [affected.display_name] with \the [tool]."), \
-	span_notice("You start clamping bleeders in [target]'s [affected.display_name] with \the [tool]."))
+	user.visible_message(span_notice("[user]开始用\the [tool]在[target]的[affected.display_name]中钳夹出血点."), \
+	span_notice("你开始用\the [tool]在[target]的[affected.display_name]中钳夹出血点."))
 	target.custom_pain("The pain in your [affected.display_name] is maddening!", 1)
-	target.balloon_alert_to_viewers("Clamping...")
+	target.balloon_alert_to_viewers("钳夹中...")
 	return ..()
 
 /datum/surgery_step/generic/clamp_bleeders/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] clamps bleeders in [target]'s [affected.display_name] with \the [tool]."),	\
-	span_notice("You clamp bleeders in [target]'s [affected.display_name] with \the [tool]."))
-	target.balloon_alert_to_viewers("Success")
+	user.visible_message(span_notice("[user]用\the [tool]在[target]的[affected.display_name]中钳夹出血点."),	\
+	span_notice("你用\the [tool]在[target]的[affected.display_name]中钳夹出血点."))
+	target.balloon_alert_to_viewers("成功")
 	affected.clamp_bleeder()
 	spread_germs_to_organ(affected, user)
 	return ..()
 
 /datum/surgery_step/generic/clamp_bleeders/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_warning("[user]'s hand slips, tearing blood vessals and causing massive bleeding in [target]'s [affected.display_name] with \the [tool]!"),	\
-	span_warning("Your hand slips, tearing blood vessels and causing massive bleeding in [target]'s [affected.display_name] with \the [tool]!"),)
-	target.balloon_alert_to_viewers("Slipped!")
+	user.visible_message(span_warning("[user]的手滑了一下,用\the [tool]撕裂了[target]的[affected.display_name]中的血管并造成大量出血!"),	\
+	span_warning("你的手滑了一下,用\the [tool]撕裂了[target]的[affected.display_name]中的血管并造成大量出血!"),)
+	target.balloon_alert_to_viewers("滑脱了!")
 	affected.createwound(CUT, 10)
 	affected.update_wounds()
 
@@ -219,40 +219,40 @@
 
 /datum/surgery_step/generic/retract_skin/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	if(target_zone == "groin")
-		user.visible_message(span_notice("[user] starts to pry open the incision and rearrange the organs in [target]'s lower abdomen with \the [tool]."), \
-		span_notice("You start to pry open the incision and rearrange the organs in [target]'s lower abdomen with \the [tool]."))
+		user.visible_message(span_notice("[user]开始用\the [tool]撬开切口并重新排列[target]下腹部的器官."), \
+		span_notice("你开始用\the [tool]撬开切口并重新排列[target]下腹部的器官."))
 	else
-		user.visible_message(span_notice("[user] starts to pry open the incision on [target]'s [affected.display_name] with \the [tool]."), \
-		span_notice("You start to pry open the incision on [target]'s [affected.display_name] with \the [tool]."))
+		user.visible_message(span_notice("[user]开始用\the [tool]撬开[target]的[affected.display_name]上的切口."), \
+		span_notice("你开始用\the [tool]撬开[target]的[affected.display_name]上的切口."))
 	target.custom_pain("It feels like the skin on your [affected.display_name] is on fire!", 1)
-	target.balloon_alert_to_viewers("Incising...")
+	target.balloon_alert_to_viewers("切割中...")
 	return ..()
 
 /datum/surgery_step/generic/retract_skin/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	if(target_zone == "chest")
-		user.visible_message(span_notice("[user] keeps the ribcage open on [target]'s torso with \the [tool]."), \
-		span_notice("You keep the ribcage open on [target]'s torso with \the [tool]."))
+		user.visible_message(span_notice("[user]用\the [tool]保持[target]躯干的胸腔敞开."), \
+		span_notice("你用\the [tool]保持[target]躯干的胸腔敞开."))
 	else if(target_zone == "groin")
-		user.visible_message(span_notice("[user] keeps the incision open on [target]'s lower abdomen with \the [tool]."), \
-		span_notice("You keep the incision open on [target]'s lower abdomen with \the [tool]."))
+		user.visible_message(span_notice("[user]用\the [tool]保持[target]下腹部的切口敞开."), \
+		span_notice("你用\the [tool]保持[target]下腹部的切口敞开."))
 	else
-		user.visible_message(span_notice("[user] keeps the incision open on [target]'s [affected.display_name] with \the [tool]."), \
-		span_notice("You keep the incision open on [target]'s [affected.display_name] with \the [tool]."))
-	target.balloon_alert_to_viewers("Success")
+		user.visible_message(span_notice("[user]用\the [tool]保持[target]的[affected.display_name]上的切口敞开."), \
+		span_notice("你用\the [tool]保持[target]的[affected.display_name]上的切口敞开."))
+	target.balloon_alert_to_viewers("成功")
 	affected.surgery_open_stage = 2
 	return ..()
 
 /datum/surgery_step/generic/retract_skin/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	if(target_zone == "chest")
-		user.visible_message(span_warning("[user]'s hand slips, damaging several organs in [target]'s torso with \the [tool]!"), \
-		span_warning("Your hand slips, damaging several organs in [target]'s torso with \the [tool]!"))
+		user.visible_message(span_warning("[user]的手滑了一下,用\the [tool]损伤了[target]躯干中的数个器官!"), \
+		span_warning("你的手滑了一下,用\the [tool]损伤了[target]躯干中的数个器官!"))
 	if(target_zone == "groin")
-		user.visible_message(span_warning("[user]'s hand slips, damaging several organs in [target]'s lower abdomen with \the [tool]!"), \
-		span_warning("Your hand slips, damaging several organs in [target]'s lower abdomen with \the [tool]!"))
+		user.visible_message(span_warning("[user]的手滑了一下,用\the [tool]损伤了[target]下腹部中的数个器官!"), \
+		span_warning("你的手滑了一下,用\the [tool]损伤了[target]下腹部中的数个器官!"))
 	else
-		user.visible_message(span_warning("[user]'s hand slips, tearing the edges of the incision on [target]'s [affected.display_name] with \the [tool]!"), \
-		span_warning("Your hand slips, tearing the edges of the incision on [target]'s [affected.display_name] with \the [tool]!"))
-	target.balloon_alert_to_viewers("Slipped!")
+		user.visible_message(span_warning("[user]的手滑了一下,用\the [tool]撕裂了[target]的[affected.display_name]上切口的边缘!"), \
+		span_warning("你的手滑了一下,用\the [tool]撕裂了[target]的[affected.display_name]上切口的边缘!"))
+	target.balloon_alert_to_viewers("滑脱了!")
 	target.apply_damage(12, BRUTE, affected, 0, TRUE, updating_health = TRUE)
 	affected.update_wounds()
 
@@ -280,25 +280,25 @@
 	return SURGERY_CANNOT_USE
 
 /datum/surgery_step/generic/cauterize/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] is beginning to cauterize the incision on [target]'s [affected.display_name] with \the [tool].") , \
-	span_notice("You are beginning to cauterize the incision on [target]'s [affected.display_name] with \the [tool]."))
+	user.visible_message(span_notice("[user]开始用\the [tool]烧灼[target]的[affected.display_name]上的切口.") , \
+	span_notice("你开始用\the [tool]烧灼[target]的[affected.display_name]上的切口."))
 	target.custom_pain("Your [affected.display_name] is being burned!", 1)
-	target.balloon_alert_to_viewers("Cauterizing...")
+	target.balloon_alert_to_viewers("烧灼中...")
 	return ..()
 
 /datum/surgery_step/generic/cauterize/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] cauterizes the incision on [target]'s [affected.display_name] with \the [tool]."), \
-	span_notice("You cauterize the incision on [target]'s [affected.display_name] with \the [tool]."))
-	target.balloon_alert_to_viewers("Success")
+	user.visible_message(span_notice("[user]用\the [tool]烧灼了[target]的[affected.display_name]上的切口."), \
+	span_notice("你用\the [tool]烧灼了[target]的[affected.display_name]上的切口."))
+	target.balloon_alert_to_viewers("成功")
 	affected.surgery_open_stage = 0
 	affected.remove_limb_flags(LIMB_BLEEDING)
 	DISABLE_BITFIELD(affected.limb_wound_status, LIMB_WOUND_CLAMPED) //Once the incision is closed, any clamping we did doesn't matter
 	return ..()
 
 /datum/surgery_step/generic/cauterize/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_warning("[user]'s hand slips, leaving a small burn on [target]'s [affected.display_name] with \the [tool]!"), \
-	span_warning("Your hand slips, leaving a small burn on [target]'s [affected.display_name] with \the [tool]!"))
-	target.balloon_alert_to_viewers("Slipped!")
+	user.visible_message(span_warning("[user]的手滑了,用\the [tool]在[target]的[affected.display_name]上留下了一处小烧伤!"), \
+	span_warning("你的手滑了,用\the [tool]在[target]的[affected.display_name]上留下了一处小烧伤!"))
+	target.balloon_alert_to_viewers("滑脱!")
 	target.apply_damage(3, BURN, affected, updating_health = TRUE)
 
 ///Sewing people closed. Not fast, but works on corpses.
@@ -324,20 +324,20 @@
 		return SURGERY_CANNOT_USE
 	if(affected.has_external_wound())//limb has treatable damage
 		return SURGERY_CAN_USE
-	to_chat(user, span_notice("[target]'s [affected.display_name] has no external injuries.") )
+	to_chat(user, span_notice("[target]的[affected.display_name]没有外伤.") )
 	return SURGERY_INVALID
 
 /datum/surgery_step/generic/repair/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] is beginning to suture the wounds on [target]'s [affected.display_name].")  , \
-	span_notice("You are beginning to suture the wounds on [target]'s [affected.display_name].") )
+	user.visible_message(span_notice("[user]开始缝合[target]的[affected.display_name]上的伤口.")  , \
+	span_notice("你开始缝合[target]的[affected.display_name]上的伤口.") )
 	target.custom_pain("Your [affected.display_name] is getting stabbed!!", 1)
-	target.balloon_alert_to_viewers("Suturing...")
+	target.balloon_alert_to_viewers("缝合中...")
 	return ..()
 
 /datum/surgery_step/generic/repair/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] sews some of the wounds on [target]'s [affected.display_name] shut.") , \
-	span_notice("You finish suturing some of the wounds on [target]'s [affected.display_name].") )
-	target.balloon_alert_to_viewers("Success")
+	user.visible_message(span_notice("[user]缝合了[target]的[affected.display_name]上的一些伤口.") , \
+	span_notice("你完成了对[target]的[affected.display_name]上一些伤口的缝合.") )
+	target.balloon_alert_to_viewers("成功")
 	var/skilled_healing = base_healing * max(user.skills.getPercent(SKILL_SURGERY, SKILL_SURGERY_MASTER), 0.1)
 	var/burn_heal = min(skilled_healing, affected.burn_dam)
 	var/brute_heal = max(skilled_healing - burn_heal, 0)
@@ -345,7 +345,7 @@
 	return ..()
 
 /datum/surgery_step/generic/repair/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_warning("[user]'s hand slips, tearing through [target]'s skin with \the [tool]!") , \
-	span_warning("Your hand slips, tearing \the [tool] through [target]'s skin!") )
-	target.balloon_alert_to_viewers("Slipped!")
+	user.visible_message(span_warning("[user]的手滑了,用\the [tool]撕裂了[target]的皮肤!") , \
+	span_warning("你的手滑了,用\the [tool]撕裂了[target]的皮肤!") )
+	target.balloon_alert_to_viewers("滑脱!")
 	affected.take_damage_limb(5, updating_health = TRUE)

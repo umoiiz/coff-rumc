@@ -5,11 +5,11 @@
 
 /mob/proc/toggle_health_scan()
 	if(health_scan)
-		to_chat(src, span_notice("Health scan disabled."))
+		to_chat(src, span_notice("健康扫描已禁用."))
 		health_scan = FALSE
 		QDEL_NULL(scanner_functionality)
 	else
-		to_chat(src, span_notice("Health scan enabled."))
+		to_chat(src, span_notice("健康扫描已启用."))
 		health_scan = TRUE
 		scanner_functionality = new(src, SKILL_MEDICAL_UNTRAINED)
 

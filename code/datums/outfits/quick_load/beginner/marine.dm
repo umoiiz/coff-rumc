@@ -5,9 +5,9 @@
 
 /datum/outfit/quick/beginner/marine/rifleman
 	name = "Rifleman"
-	desc = "A typical rifleman for the marines. \
-	Wields the AR-12, a versatile all-rounder assault rifle with a powerful underbarrel grenade launcher attached. \
-	Also carries the strong P-23 sidearm and a variety of flares, medical equipment, and more for every situation."
+	desc = "海军陆战队的典型步枪兵. \
+	手持AR-12, 这是一款多功能全能突击步枪, 附带有强大的下挂式榴弹发射器. \
+	还携带了强大的P-23副武器以及各种照明弹, 医疗设备等, 以应对各种情况."
 
 	wear_suit = /obj/item/clothing/suit/modular/xenonauten/hodgrenades
 	head = /obj/item/clothing/head/modular/m10x/hod
@@ -36,8 +36,8 @@
 
 /datum/outfit/quick/beginner/marine/machinegunner
 	name = "Machinegunner"
-	desc = "The king of suppressive fire. Uses the MG-60, a fully automatic 200 round machine gun with a bipod attached. \
-	Excels at denying large areas to the enemy and eliminating those who refuse to leave."
+	desc = "压制火力之王. 使用MG-60, 这是一款全自动200发弹链机枪, 附带有两脚架. \
+	擅长封锁大片区域不让敌人进入, 并消灭那些拒绝离开的人."
 
 	wear_suit = /obj/item/clothing/suit/modular/xenonauten/heavy/tyr_onegeneral
 	head = /obj/item/clothing/head/modular/m10x/tyr
@@ -66,8 +66,8 @@
 
 /datum/outfit/quick/beginner/marine/marksman
 	name = "Marksman"
-	desc = "Quality over quantity. Equipped with the DMR-37, an accurate long-range designated marksman rifle with a scope attached. \
-	While subpar in close quarters, the precision of the DMR is unmatched, exceeding at taking out threats from afar."
+	desc = "质量胜于数量. 配备了DMR-37, 这是一款精准的远程指定射手步枪, 附带有瞄准镜. \
+	虽然在近距离表现不佳, 但DMR的精准度无与伦比, 擅长从远处消灭威胁."
 
 	wear_suit = /obj/item/clothing/suit/modular/xenonauten/lightmedical
 	head = /obj/item/clothing/head/modular/m10x/tyr
@@ -103,8 +103,8 @@
 
 /datum/outfit/quick/beginner/marine/shotgunner
 	name = "Shotgunner"
-	desc = "Up close and personal. Wields the SH-39, a semi-automatic shotgun loaded with slugs. \
-	An absolute monster at short to mid range, the shotgun will do heavy damage to any target hit, as well as stunning them briefly, staggering them, and knocking them back."
+	desc = "近距离面对面. 手持SH-39, 这是一款装填独头弹的半自动霰弹枪. \
+	在短到中距离上绝对是怪物, 霰弹枪会对任何被击中的目标造成严重伤害, 同时短暂地震慑他们, 使其踉跄并将其击退."
 
 	w_uniform = /obj/item/clothing/under/marine/holster
 	wear_suit = /obj/item/clothing/suit/modular/xenonauten/lightgeneral
@@ -136,8 +136,8 @@
 
 /datum/outfit/quick/beginner/marine/shocktrooper
 	name = "Shocktrooper"
-	desc = "The bleeding edge of the corps. \
-	Equipped with the experimental battery-fed laser rifle, featuring four different modes that can be freely swapped between, with an underbarrel flamethrower for area denial and clearing mazes."
+	desc = "军团的尖端科技. \
+	配备了实验性电池供能激光步枪, 具有四种可自由切换的不同模式, 并带有下挂式火焰喷射器用于区域封锁和清理迷宫."
 
 	suit_store = /obj/item/weapon/gun/energy/lasgun/lasrifle/standard_marine_rifle/medic
 	belt = /obj/item/storage/belt/marine/te_cells
@@ -171,9 +171,9 @@
 
 /datum/outfit/quick/beginner/marine/hazmat
 	name = "Hazmat"
-	desc = "Designed for danger. \
-	Wields the Type 71 'GROZA', a powerful yet innacurate assault rifle that fires auto-bursts. \
-	Wears Mimir combat armor, rendering the user immune to the dangerous toxic gas possessed by many xenomorphs."
+	desc = "为危险而设计. \
+	手持71式\"GROZA\", 这是一款强大但不精准的突击步枪, 可进行自动点射. \
+	穿着密米尔战斗装甲, 使用户对许多异形所拥有的危险毒气免疫."
 
 	head = /obj/item/clothing/head/modular/m10x/mimir
 	suit_store = /obj/item/weapon/gun/rifle/type71/beginner
@@ -204,8 +204,8 @@
 
 /datum/outfit/quick/beginner/marine/cqc
 	name = "CQC"
-	desc = "Swift and lethal. \
-	Equipped with the AR-18, a lightweight carbine with a rapid-fire burst mode. Designed for maximum mobility, soldiers are able to rush in, assault the enemy, and retreat before they can respond."
+	desc = "迅捷而致命. \
+	配备了AR-18, 这是一款轻量化的卡宾枪, 具有快速连发模式. 为最大机动性而设计, 士兵能够冲入, 突袭敌人, 并在他们反应过来之前撤退."
 
 	suit_store = /obj/item/weapon/gun/rifle/ar18/beginner
 	wear_suit = /obj/item/clothing/suit/modular/xenonauten/lightgeneral

@@ -5,13 +5,13 @@
 	key = "anytime"
 	sound = 'sound/voice/predator/anytime.ogg'
 	key_third_person = "anytime"
-	message = "any time"
+	message = "任何时候"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/click
 	key = "click"
 	key_third_person = "click"
-	message = "clicks"
+	message = "咔嗒声"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/click/get_sound(mob/living/user)
@@ -24,62 +24,62 @@
 	key = "helpme"
 	sound = 'sound/voice/predator/helpme.ogg'
 	key_third_person = "helpme"
-	message = "help me!"
+	message = "救救我!"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/iseeyou
 	key = "iseeyou"
 	sound = 'sound/hallucinations/i_see_you2.ogg'
 	key_third_person = "iseeyou"
-	message = "i see you!"
+	message = "我看见你了!"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/itsatrap
 	key = "itsatrap"
 	sound = 'sound/voice/predator/itsatrap.ogg'
 	key_third_person = "itsatrap"
-	message = "it's a trap!"
+	message = "这是个陷阱!"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/laugh1
 	key = "laugh1"
 	sound = 'sound/voice/predator/laugh1.ogg'
 	key_third_person = "laugh1"
-	message = "laughs"
+	message = "大笑"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/laugh2
 	key = "laugh2"
 	sound = 'sound/voice/predator/laugh2.ogg'
 	key_third_person = "laugh2"
-	message = "laughs"
+	message = "大笑"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/laugh3
 	key = "laugh3"
 	sound = 'sound/voice/predator/laugh3.ogg'
 	key_third_person = "laugh3"
-	message = "laughs"
+	message = "大笑"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/laugh4
 	key = "laugh4"
 	sound = 'sound/voice/predator/laugh4.ogg'
 	key_third_person = "laugh4"
-	message = "laughs"
+	message = "大笑"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/overhere
 	key = "overhere"
 	sound = 'sound/voice/predator/overhere.ogg'
 	key_third_person = "overhere"
-	message = "over here!"
+	message = "这边!"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/predroar
 	key = "predroar"
 	key_third_person = "predroars"
-	message = "roars!"
+	message = "咆哮!"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/predroar/get_sound(mob/living/user)
@@ -89,13 +89,13 @@
 	key = "predroar2"
 	key_third_person = "predroars2"
 	sound = 'sound/voice/predator/roar3.ogg'
-	message = "roars!"
+	message = "咆哮!"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/loudroar
 	key = "loudroar"
 	key_third_person = "loudroar"
-	message = "roars loudly!"
+	message = "大声咆哮!"
 	cooldown = 120 SECONDS
 	emote_type = EMOTE_AUDIBLE
 
@@ -112,19 +112,19 @@
 			continue
 		var/relative_dir = get_dir(current_mob, user)
 		var/final_dir = dir2text(relative_dir)
-		to_chat(current_mob, span_userdanger("You hear a loud roar coming from [final_dir ? "the [final_dir]" : "nearby"]!"))
+		to_chat(current_mob, span_userdanger("你听到从[final_dir ? "the [final_dir]" : "nearby"]传来一声响亮的咆哮!"))
 
 /datum/emote/living/carbon/human/yautja/turnaround
 	key = "turnaround"
 	key_third_person = "turnaround"
-	message = "turn around!"
+	message = "转过身去!"
 	sound = 'sound/voice/predator/turnaround.ogg'
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/click2
 	key = "click2"
 	key_third_person = "click2"
-	message = "clicks"
+	message = "咔嗒声"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/click2/get_sound(mob/living/user)
@@ -133,7 +133,7 @@
 /datum/emote/living/carbon/human/yautja/aliengrowl
 	key = "aliengrowl"
 	key_third_person = "aliengrowl"
-	message = "growls!"
+	message = "低吼!"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/aliengrowl/get_sound(mob/living/user)
@@ -142,7 +142,7 @@
 /datum/emote/living/carbon/human/yautja/alienhelp
 	key = "alienhelp"
 	key_third_person = "alienhelp"
-	message = "needs help!"
+	message = "需要帮助!"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/alienhelp/get_sound(mob/living/user)
@@ -151,20 +151,20 @@
 /datum/emote/living/carbon/human/yautja/comeonout
 	key = "comeonout"
 	key_third_person = "comeonout"
-	message = "come on out!"
+	message = "出来吧!"
 	sound = 'sound/voice/predator/come_on_out.ogg'
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/overthere
 	key = "overthere"
 	key_third_person = "overthere"
-	message = "over there!"
+	message = "那边!"
 	sound = 'sound/voice/predator/over_there.ogg'
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/yautja/uglyfreak
 	key = "uglyfreak"
 	key_third_person = "uglyfreak"
-	message = "ugly freak!"
+	message = "丑陋的怪物!"
 	sound = 'sound/voice/predator/ugly_freak.ogg'
 	emote_type = EMOTE_AUDIBLE

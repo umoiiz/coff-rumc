@@ -19,8 +19,8 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
  */
 
 /obj/item/attachable
-	name = "attachable item"
-	desc = "It's an attachment. You should never see this."
+	name = "可附加物品"
+	desc = "这是一个配件. 你本不该看到这个."
 	icon = 'icons/obj/items/attachments/attachments.dmi'
 	icon_state = null
 	worn_icon_state = null
@@ -317,7 +317,7 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 			playsound(user, activation_sound, 15, 1)
 			return TRUE
 	else
-		to_chat(user, span_warning("[G] must be in our hands to do this."))
+		to_chat(user, span_warning("[G]必须在我们手中才能这样做."))
 
 ///Called when the attachment is activated.
 /obj/item/attachable/proc/activate(mob/user, turn_off) //This is for activating stuff like flamethrowers, or switching weapon modes, or flashlights.
@@ -391,12 +391,12 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 			return TRUE
 		master_gun.active_attachable = null
 		set_gun_user(null)
-		to_chat(user, span_notice("You stop using [src]."))
+		to_chat(user, span_notice("你停止使用[src]."))
 	else
 		master_gun.active_attachable = src
 		set_gun_user(null)
 		set_gun_user(master_gun.gun_user)
-		to_chat(user, span_notice("You start using [src]."))
+		to_chat(user, span_notice("你开始使用[src]."))
 	return TRUE
 
 ///Called when the attachment is trying to be attached. If the attachment is allowed to go through, return TRUE.

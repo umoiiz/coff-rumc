@@ -76,7 +76,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 	if(filter_result)
 		//The filter warning message shows the sanitized message though.
-		to_chat(src, span_warning("That message contained a word prohibited in IC chat! Consider reviewing the server rules."))
+		to_chat(src, span_warning("该消息包含了一个在IC聊天中被禁止的词语! 请考虑查看服务器规则."))
 		to_chat(src, span_warning("\"[message]\""))
 		REPORT_CHAT_FILTER_TO_USER(src, filter_result)
 		log_filter("IC", message, filter_result)
@@ -84,7 +84,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		return FALSE
 
 	if(soft_filter_result)
-		if(tgui_alert(usr,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to say it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr,"你的消息包含\"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", 你确定要说出来吗?", "软屏蔽词", list("Yes", "No")) != "Yes")
 			SSblackbox.record_feedback(FEEDBACK_TALLY, "soft_ic_blocked_words", 1, lowertext(config.soft_ic_filter_regex.match))
 			log_filter("Soft IC", message, filter_result)
 			return FALSE
@@ -130,7 +130,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		return
 
 	if(!can_speak_vocal(message))
-		to_chat(src, span_warning("You find yourself unable to speak!"))
+		to_chat(src, span_warning("你发现自己无法说话!"))
 		return
 
 	var/message_range = 7
@@ -193,7 +193,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			deaf_message = "[span_name("[speaker]")] [speaker.verb_say] something but you cannot hear [speaker.p_them()]."
 			deaf_type = 1
 	else
-		deaf_message = span_notice("You can't hear yourself!")
+		deaf_message = span_notice("你听不到自己的声音!")
 		deaf_type = 2 // Since you should be able to hear yourself without looking
 
 	// Recompose message for AI hrefs, language incomprehension.
@@ -358,10 +358,10 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 /mob/living/proc/can_speak_basic(message, ignore_spam = FALSE) //Check BEFORE handling of xeno and ling channels
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, span_danger("You cannot speak in IC (muted)."))
+			to_chat(src, span_danger("你无法在IC中说话(已禁言)."))
 			return FALSE
 		if(is_banned_from(ckey, "IC"))
-			to_chat(src, span_warning("You are banned from IC chat."))
+			to_chat(src, span_warning("你被禁止使用IC聊天."))
 			return
 		if(!ignore_spam && client.handle_spam_prevention(message, MUTE_IC))
 			return FALSE

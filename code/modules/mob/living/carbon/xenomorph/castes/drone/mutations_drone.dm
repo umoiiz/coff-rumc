@@ -26,7 +26,7 @@
 
 /atom/movable/screen/alert/status_effect/drone/scout
 	name = "Scout"
-	desc = "+15 armor while on weeds"
+	desc = "在杂草上时+15护甲"
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/drone/scout
@@ -112,7 +112,7 @@
 
 /atom/movable/screen/alert/status_effect/drone/together_in_claws
 	name = "Together In Claws"
-	desc = "+20% heal from partner's damage"
+	desc = "从伙伴造成的伤害中回复20%"
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/drone/together_in_claws
@@ -162,7 +162,7 @@
 
 /atom/movable/screen/alert/status_effect/drone/revenge
 	name = "Revenge"
-	desc = "+100% damage to survivour if someone dies in link"
+	desc = "如果链接中有人死亡导致精华链接中断,幸存者获得+100%伤害,持续15秒"
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/drone/revenge
@@ -212,7 +212,7 @@
 
 /atom/movable/screen/alert/status_effect/drone/saving_grace
 	name = "Saving Grace"
-	desc = "No cast time for Salve Heal if healing linked partner"
+	desc = "治疗已链接伙伴时,药膏治疗没有施法时间"
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/drone/saving_grace

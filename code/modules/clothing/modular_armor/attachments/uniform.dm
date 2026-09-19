@@ -7,8 +7,8 @@
 	mob_overlay_icon = 'icons/mob/ties.dmi'
 
 /obj/item/armor_module/storage/uniform/webbing
-	name = "webbing"
-	desc = "A sturdy mess of synthcotton belts and buckles, ready to share your burden."
+	name = "织带"
+	desc = "由合成棉腰带和扣环组成的坚固织带，准备好分担你的负担。"
 	icon_state = "webbing"
 	storage_type = /datum/storage/internal/webbing
 
@@ -16,26 +16,26 @@
 	storage_type = /datum/storage/internal/vest
 
 /obj/item/armor_module/storage/uniform/black_vest
-	name = "black webbing vest"
-	desc = "Robust black synthcotton vest with lots of pockets to hold whatever you need, but cannot hold in hands."
+	name = "黑色织带背心"
+	desc = "坚固的黑色合成棉背心，有许多口袋，可存放你需要但无法拿在手中的任何东西。"
 	icon_state = "vest_black"
 	storage_type = /datum/storage/internal/vest
 
 /obj/item/armor_module/storage/uniform/brown_vest
-	name = "brown webbing vest"
-	desc = "Worn brownish synthcotton vest with lots of pockets to unload your hands."
+	name = "棕色织带背心"
+	desc = "破旧的棕色合成棉背心，有许多口袋来解放你的双手。"
 	icon_state = "vest_brown"
 	storage_type = /datum/storage/internal/vest
 
 /obj/item/armor_module/storage/uniform/white_vest
-	name = "white webbing vest"
-	desc = "A clean white Nylon vest with large pockets specially designed for medical supplies"
+	name = "白色织带背心"
+	desc = "干净的白色尼龙背心，带有专为医疗用品设计的大口袋"
 	icon_state = "vest_white"
 	storage_type = /datum/storage/internal/white_vest
 
 /obj/item/armor_module/storage/uniform/surgery_webbing
-	name = "surgical webbing"
-	desc = "A clean white Nylon webbing composed of many straps and pockets to hold surgical tools."
+	name = "手术织带"
+	desc = "干净的白色尼龙织带，由许多带子和口袋组成，用于存放手术工具。"
 	icon_state = "webbing_white"
 	storage_type = /datum/storage/internal/surgery_webbing
 
@@ -52,8 +52,8 @@
 	new /obj/item/tool/surgery/suture(src)
 
 /obj/item/armor_module/storage/uniform/holster
-	name = "shoulder holster"
-	desc = "A handgun holster"
+	name = "肩式枪套"
+	desc = "手枪枪套"
 	icon_state = "holster"
 	storage_type = /datum/storage/internal/holster
 
@@ -86,12 +86,12 @@
 	new /obj/item/weapon/gun/revolver/mateba(src)
 
 /obj/item/armor_module/storage/uniform/holster/armpit
-	name = "shoulder holster"
-	desc = "A worn-out handgun holster. Perfect for concealed carry"
+	name = "肩式枪套"
+	desc = "破旧的手枪枪套。非常适合隐蔽携带"
 	icon_state = "holster"
 
 /obj/item/armor_module/storage/uniform/holster/waist
-	name = "shoulder holster"
-	desc = "A handgun holster. Made of expensive leather."
+	name = "肩式枪套"
+	desc = "手枪枪套。由昂贵皮革制成。"
 	icon_state = "holster"
 	worn_icon_state = "holster_low"

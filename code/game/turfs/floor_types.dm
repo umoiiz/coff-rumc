@@ -159,7 +159,7 @@
 //Cargo elevator
 /turf/open/floor/mainship/empty
 	name = "empty space"
-	desc = "There seems to be an awful lot of machinery down below"
+	desc = "下面似乎有非常多的机械装置"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "1"
 	hull_floor = TRUE
@@ -482,8 +482,8 @@
 
 /turf/open/floor/engine/wrench_act(mob/living/user, obj/item/I)
 	. = ..()
-	user.visible_message(span_notice("[user] starts removing [src]'s protective cover."),
-	span_notice("You start removing [src]'s protective cover."))
+	user.visible_message(span_notice("[user]开始移除[src]的保护盖."),
+	span_notice("你开始移除[src]的保护盖."))
 	playsound(src, 'sound/items/ratchet.ogg', 25, 1)
 
 	if(!do_after(user, 3 SECONDS, NONE, src, BUSY_ICON_BUILD))

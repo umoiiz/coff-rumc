@@ -1,6 +1,6 @@
 /obj/item/assembly/infra
-	name = "infrared emitter"
-	desc = "Emits a visible or invisible beam and is triggered when the beam is interrupted."
+	name = "红外发射器"
+	desc = "发射可见或不可见的光束,并在光束被中断时触发."
 	icon_state = "infrared"
 	is_position_sensitive = TRUE
 
@@ -35,7 +35,7 @@
 
 /obj/item/assembly/infra/examine(mob/user)
 	. = ..()
-	. += span_notice("The infrared trigger is [on?"on":"off"].")
+	. += span_notice("红外触发器[on?"on":"off"].")
 
 /obj/item/assembly/infra/activate()
 	. = ..()
@@ -155,7 +155,7 @@
 	if(!secured || !on || next_activate > world.time)
 		return FALSE
 	pulse(FALSE)
-	audible_message("[icon2html(src, hearers(src))] *beep* *beep* *beep*", null, hearing_range)
+	audible_message("[icon2html(src, hearers(src))] *哔* *哔* *哔*", null, hearing_range)
 	for(var/CHM in get_hearers_in_view(hearing_range, src))
 		if(ismob(CHM))
 			var/mob/LM = CHM

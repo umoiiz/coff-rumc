@@ -1,6 +1,6 @@
 /obj/item/clothing/falcon_drone
-	name = "falcon drone"
-	desc = "An agile drone used by Yautja to survey the hunting grounds."
+	name = "猎鹰无人机"
+	desc = "一种由Yautja用于勘察狩猎场的敏捷无人机."
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "falcon_drone"
 	worn_icon_list = list(
@@ -28,11 +28,11 @@
 
 	var/mob/living/carbon/human/H = usr
 	if(!istype(H) || !HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
-		to_chat(usr, span_warning("You do not know how to use this."))
+		to_chat(usr, span_warning("你不知道如何使用这个."))
 		return
 
 	if(!istype(H.gloves, /obj/item/clothing/gloves/yautja))
-		to_chat(usr, span_warning("You need your bracers to control \the [src]!"))
+		to_chat(usr, span_warning("你需要你的护腕来控制\the [src]!"))
 		return
 
 	var/mob/hologram/falcon/hologram = new /mob/hologram/falcon(usr.loc, usr, src, H.gloves)
@@ -46,7 +46,7 @@
 	pass_flags = HOVERING
 	var/obj/item/clothing/falcon_drone/parent_drone
 	var/obj/item/clothing/gloves/yautja/owned_bracers
-	desc = "An agile drone used by Yautja to survey the hunting grounds."
+	desc = "一种由Yautja用于勘察狩猎场的敏捷无人机."
 
 /mob/hologram/falcon/Initialize(mapload, mob/M, obj/item/clothing/falcon_drone/drone, obj/item/clothing/gloves/yautja/bracers)
 	. = ..()
@@ -105,13 +105,13 @@
 	qdel(src)
 
 /obj/item/trash/falcon_drone
-	name = "destroyed falcon drone"
-	desc = "The wreckage of a Yautja drone."
+	name = "被摧毁的猎鹰无人机"
+	desc = "Yautja无人机的残骸."
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "falcon_drone_destroyed"
 	item_flags = ITEM_PREDATOR
 
 /obj/item/trash/falcon_drone/emp
-	name = "disabled falcon drone"
-	desc = "An intact Yautja drone. The internal electronics are completely fried."
+	name = "失能的猎鹰无人机"
+	desc = "一架完好的Yautja无人机.内部电子设备已完全烧毁."
 	icon_state = "falcon_drone_emped"

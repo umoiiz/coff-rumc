@@ -4,13 +4,13 @@
 //Also need to change the icons
 /obj/effect/xenomorph
 	name = "alien thing"
-	desc = "You shouldn't be seeing this."
+	desc = "你不应该看到这个."
 	icon = 'icons/Xeno/Effects.dmi'
 	layer = FLY_LAYER
 
 /obj/effect/xenomorph/splatter
 	name = "splatter"
-	desc = "It burns! It burns like hygiene!"
+	desc = "好烫! 烫得像卫生一样!"
 	icon_state = "splatter"
 	density = FALSE
 	opacity = FALSE
@@ -22,7 +22,7 @@
 
 /obj/effect/xenomorph/splatterblob
 	name = "splatter"
-	desc = "It burns! It burns like hygiene!"
+	desc = "好烫! 烫得像卫生一样!"
 	icon_state = "acidblob"
 	density = FALSE
 	opacity = FALSE
@@ -34,7 +34,7 @@
 
 /obj/effect/xenomorph/spray
 	name = "splatter"
-	desc = "It burns! It burns like hygiene!"
+	desc = "好烫! 烫得像卫生一样!"
 	icon = 'icons/Xeno/Effects.dmi'
 	icon_state = "acid2"
 	density = FALSE
@@ -97,9 +97,9 @@
 	TIMER_COOLDOWN_START(src, COOLDOWN_ACID, 1 SECONDS)
 	if(HAS_TRAIT(src, TRAIT_FLOORED))
 		INVOKE_ASYNC(src, PROC_REF(take_overall_damage), acid_damage, BURN, ACID, FALSE, FALSE, TRUE, 0, 3)
-		to_chat(src, span_danger("You are scalded by the burning acid!"))
+		to_chat(src, span_danger("你被燃烧的酸液烫伤了!"))
 		return
-	to_chat(src, span_danger("Your feet scald and burn! Argh!"))
+	to_chat(src, span_danger("你的双脚灼烫燃烧! 啊!"))
 	if(!(species.species_flags & NO_PAIN))
 		INVOKE_ASYNC(src, PROC_REF(emote), "pain")
 
@@ -142,7 +142,7 @@
 //Medium-strength acid // todo please god make me into an overlay and component already...
 /obj/effect/xenomorph/acid
 	name = "acid"
-	desc = "Burbling corrosive stuff. I wouldn't want to touch it."
+	desc = "冒着泡的腐蚀性物质. 我可不想碰它."
 	icon_state = "acid_normal"
 	density = FALSE
 	opacity = FALSE
@@ -208,13 +208,13 @@
 		return
 	switch(strength_t - ticks)
 		if(0 to 1)
-			visible_message(span_xenowarning("\The [acid_t] begins to crumble under the acid!"))
+			visible_message(span_xenowarning("\The [acid_t]开始在酸液中崩解!"))
 		if(2)
-			visible_message(span_xenowarning("\The [acid_t] is struggling to withstand the acid!"))
+			visible_message(span_xenowarning("\The [acid_t]正艰难地抵御酸液!"))
 		if(4)
-			visible_message(span_xenowarning("\The [acid_t]\s structure is being melted by the acid!"))
+			visible_message(span_xenowarning("\The [acid_t]\s 结构正被酸液融化!"))
 		if(6)
-			visible_message(span_xenowarning("\The [acid_t] is barely holding up against the acid!"))
+			visible_message(span_xenowarning("\The [acid_t]几乎抵挡不住酸液了!"))
 
 ///cleans up if the target is destroyed
 /obj/effect/xenomorph/acid/proc/on_target_del(atom/source)
@@ -241,8 +241,8 @@
 
 ///Sig handler to show this acid is attached to something
 /obj/effect/xenomorph/acid/proc/on_pickup(obj/item/item, mob/living/carbon/human/human_user)
-	human_user.visible_message(span_danger("Corrosive substances seethe all over [human_user] as [human_user.p_they()] retrieves the acid-soaked [item]!"),
-	span_danger("Corrosive substances burn and seethe all over you upon retrieving the acid-soaked [item]!"))
+	human_user.visible_message(span_danger("当[human_user.p_they()]取回浸透酸液的[item]时, 腐蚀性物质在[human_user]上翻腾!"),
+	span_danger("当你取回浸透酸液的[item]时, 腐蚀性物质在你全身燃烧翻腾!"))
 	playsound(human_user, SFX_ACID_HIT, 25)
 	human_user.emote("pain")
 	var/list/affected_limbs = list("l_hand", "r_hand", "l_arm", "r_arm")

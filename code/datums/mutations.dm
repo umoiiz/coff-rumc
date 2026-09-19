@@ -15,7 +15,7 @@
 	// Minions can't access mutations
 	var/mob/living/carbon/xenomorph/xeno = user
 	if(xeno.xeno_caste.caste_flags & CASTE_IS_A_MINION)
-		to_chat(user, span_warning("We are too primitive to understand mutations."))
+		to_chat(user, span_warning("我们太原始了, 无法理解突变."))
 		return
 
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -84,42 +84,42 @@
 	var/datum/xeno_mutation/mutation_datum = get_xeno_mutation_by_name(mutation_name)
 
 	if(!xeno_owner)
-		to_chat(usr, span_warning("Invalid xenomorph reference!"))
+		to_chat(usr, span_warning("无效的异形引用!"))
 		return
 
 	if(xeno_owner.incapacitated(TRUE))
-		to_chat(usr, span_warning("Can't do that right now!"))
+		to_chat(usr, span_warning("现在无法这么做!"))
 		return
 
 	if(xeno_owner.fortify)
-		to_chat(usr, span_warning("You cannot buy mutations while fortified!"))
+		to_chat(usr, span_warning("你在加固时无法购买突变!"))
 		return
 
 	if(xeno_owner.stat == DEAD)
-		to_chat(usr, span_warning("You're dead!"))
+		to_chat(usr, span_warning("你死了!"))
 		return
 
 	if(!mutation_datum)
-		to_chat(usr, span_warning("Invalid mutation name!"))
+		to_chat(usr, span_warning("无效的变异名称!"))
 		return
 
 	if(!mutation_datum.is_available(xeno_owner))
-		to_chat(usr, span_warning("This mutation is not available for your caste!"))
+		to_chat(usr, span_warning("此变异不适用于你的等级!"))
 		return
 
 	if(!mutation_datum.is_unlocked(xeno_owner))
-		to_chat(usr, span_warning("This mutation is not unlocked yet!"))
+		to_chat(usr, span_warning("此变异尚未解锁!"))
 		return
 
 	var/mutation_cost = get_mutation_cost_for_caste(mutation_datum, xeno_owner.xeno_caste.caste_name)
 
 	if(xeno_owner.biomass < mutation_cost)
-		to_chat(usr, span_warning("You don't have enough biomass! You need [mutation_cost] biomass, but you only have [xeno_owner.biomass]."))
+		to_chat(usr, span_warning("你没有足够的生物质! 你需要[mutation_cost]生物质, 但你只有[xeno_owner.biomass]."))
 		return
 
 	var/upgrade = locate(mutation_datum.status_effect_type) in xeno_owner.status_effects
 	if(upgrade)
-		to_chat(usr, span_xenonotice("Existing mutation chosen. No biomass spent."))
+		to_chat(usr, span_xenonotice("已选择现有变异. 未消耗生物质."))
 		return
 
 	//Remove parent mutations if purchasing higher tier
@@ -142,7 +142,7 @@
 					xeno_owner.upgrades_holder.Remove(parent_mutation.ability_type)
 
 	xeno_owner.biomass -= mutation_cost
-	to_chat(usr, span_xenonotice("[mutation_name] mutation gained."))
+	to_chat(usr, span_xenonotice("获得[mutation_name]变异."))
 
 	//Add to purchase history
 	xeno_owner.purchased_mutations += mutation_name

@@ -2,8 +2,8 @@
 ############## Misc Weapons ###############
 #########################################*/
 /obj/item/weapon/harpoon/yautja
-	name = "large harpoon"
-	desc = "A huge metal spike with a hook at the end. It's carved with mysterious alien writing."
+	name = "大型鱼叉"
+	desc = "一根末端带钩的巨大金属尖刺.上面刻有神秘的异形文字."
 
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "spike"
@@ -23,8 +23,8 @@
 	throwforce = 30
 
 /obj/item/weapon/wristblades
-	name = "\proper wrist blades"
-	desc = "A pair of huge, serrated blades extending out from metal gauntlets."
+	name = "\proper 腕刃"
+	desc = "一对从金属护手伸出的巨大锯齿状刀刃."
 
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "wrist"
@@ -87,10 +87,10 @@
 		var/obj/machinery/door/airlock/door = attacked_target
 		if(!door.density || door.locked)
 			return FALSE
-		user.visible_message(span_danger("[user] jams their [name] into [door] and strains to rip it open..."), span_danger("You jam your [name] into [door] and strain to rip it open..."))
+		user.visible_message(span_danger("[user]把他们的[name]插入[door]并用力将其撕开..."), span_danger("你把你的[name]插入[door]并用力将其撕开..."))
 		playsound(loc, 'sound/effects/metal_creaking.ogg', 25, TRUE)
 		if(do_after(user, 3 SECONDS, NONE, door, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE) && door.density)
-			user.visible_message(span_danger("[user] forces [door] open with the [name]!"), span_danger("You force [door] open with the [name]."))
+			user.visible_message(span_danger("[user]用[name]强行撬开了[door]!"), span_danger("你用[name]强行撬开了[door]."))
 			door.open(TRUE)
 
 	else if(istype(attacked_target, /obj/structure/mineral_door/resin))
@@ -98,16 +98,16 @@
 		if(door.switching_states || user.a_intent == INTENT_HARM)
 			return
 		if(door.density)
-			user.visible_message(span_danger("[user] jams their [name] into [door] and strains to rip it open..."), span_danger("You jam your [name] into [door] and strain to rip it open..."))
+			user.visible_message(span_danger("[user]把他们的[name]插入[door]并用力将其撕开..."), span_danger("你把你的[name]插入[door]并用力将其撕开..."))
 			playsound(loc, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 			if(do_after(user, 1.5 SECONDS, NONE, door, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE) && door.density)
-				user.visible_message(span_danger("[user] forces [door] open using the [name]!"), span_danger("You force [door] open with your [name]."))
+				user.visible_message(span_danger("[user]用[name]强行撬开了[door]!"), span_danger("你用你的[name]强行撬开了[door]."))
 				door.toggle_state()
 		else
-			user.visible_message(span_danger("[user] pushes [door] with their [name] to force it closed..."), span_danger("You push [door] with your [name] to force it closed..."))
+			user.visible_message(span_danger("[user]用他们的[name]推动[door]以强行将其关闭..."), span_danger("你用你的[name]推动[door]以强行将其关闭..."))
 			playsound(loc, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 			if(do_after(user, 2 SECONDS, NONE, door, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE) && !door.density)
-				user.visible_message(span_danger("[user] forces [door] closed using the [name]!"), span_danger("You force [door] closed with your [name]."))
+				user.visible_message(span_danger("[user]用[name]强行关闭了[door]!"), span_danger("你用你的[name]强行关闭了[door]."))
 				door.toggle_state()
 
 /obj/item/weapon/wristblades/attack_self(mob/living/carbon/human/user)
@@ -117,8 +117,8 @@
 		gloves.wristblades_internal(user, TRUE) // unlikely that the yaut would have gloves without blades, so if they do, runtime logs here would be handy
 
 /obj/item/weapon/wristblades/scimitar
-	name = "\proper wrist scimitar"
-	desc = "A huge, serrated blade extending from metal gauntlets."
+	name = "\proper 腕弯刀"
+	desc = "一把从金属护手伸出的巨大锯齿状刀刃."
 	icon_state = "scim"
 	worn_icon_state = "scim"
 	attack_speed = 5

@@ -2,8 +2,8 @@
 #define TABLE_STATUS_FIRM 2
 
 /obj/structure/table
-	name = "table"
-	desc = "A square metal surface resting on four legs. Useful to put stuff on. Can be flipped in emergencies to act as cover."
+	name = "桌子"
+	desc = "一个由四条腿支撑的方形金属表面. 适合放东西. 紧急情况下可以翻过来当掩体."
 	icon = 'icons/obj/smooth_objects/table_regular.dmi'
 	icon_state = "table_regular-0"
 	base_icon_state = "table_regular"
@@ -105,15 +105,15 @@
 	if(reinforced && table_status != TABLE_STATUS_WEAKENED)
 		return FALSE
 
-	user.visible_message(span_notice("[user] starts disassembling [src]."),
-		span_notice("You start disassembling [src]."))
+	user.visible_message(span_notice("[user]开始拆解[src]."),
+		span_notice("你开始拆解[src]."))
 
 	playsound(loc, 'sound/items/ratchet.ogg', 25, TRUE)
 	if(!do_after(user, 5 SECONDS, NONE, src, BUSY_ICON_BUILD))
 		return TRUE
 
-	user.visible_message(span_notice("[user] disassembles [src]."),
-		span_notice("You disassemble [src]."))
+	user.visible_message(span_notice("[user]拆解了[src]."),
+		span_notice("你拆解了[src]."))
 	deconstruct(TRUE)
 	return TRUE
 
@@ -149,8 +149,8 @@
 	var/mob/living/grabbed_mob = grab.grabbed_thing
 	grabbed_mob.forceMove(loc)
 	grabbed_mob.Paralyze(2 SECONDS)
-	user.visible_message(span_danger("[user] throws [grabbed_mob] on [src]."),
-	span_danger("You throw [grabbed_mob] on [src]."))
+	user.visible_message(span_danger("[user]把[grabbed_mob]扔到[src]上."),
+	span_danger("你把[grabbed_mob]扔到[src]上."))
 	return TRUE
 
 ///Updates connected tables when required
@@ -168,7 +168,7 @@
 		return
 	var/mob/living/carbon/xenomorph/M = O
 	if(!M.stat) //No dead xenos jumpin on the bed~
-		visible_message(span_danger("[O] plows straight through [src]!"))
+		visible_message(span_danger("[O]径直冲过[src]!"))
 		deconstruct(FALSE)
 
 /obj/structure/table/proc/straight_table_check(direction)
@@ -196,11 +196,11 @@
 		return
 
 	if(!flip(get_cardinal_dir(usr, src)))
-		to_chat(usr, span_warning("[src] won't budge."))
+		to_chat(usr, span_warning("[src]纹丝不动."))
 		return
 
-	usr.visible_message(span_warning("[usr] flips [src]!"),
-	span_warning("You flip [src]!"))
+	usr.visible_message(span_warning("[usr]掀翻了[src]!"),
+	span_warning("你掀翻了[src]!"))
 
 	if(climbable)
 		structure_shaken()
@@ -240,7 +240,7 @@
 		return
 
 	if(!unflipping_check())
-		to_chat(usr, span_warning("[src] won't budge."))
+		to_chat(usr, span_warning("[src]纹丝不动."))
 		return
 
 	unflip(TRUE)
@@ -322,8 +322,8 @@
 * Wooden tables
 */
 /obj/structure/table/wood
-	name = "wooden table"
-	desc = "A square wood surface resting on four legs. Useful to put stuff on. Can be flipped in emergencies to act as cover."
+	name = "木桌"
+	desc = "一个由四条腿支撑的方形木质表面. 适合放东西. 紧急情况下可以翻过来当掩体."
 	icon = 'icons/obj/smooth_objects/wood_table_reinforced.dmi'
 	icon_state = "wood_table_reinforced-0"
 	sheet_type = /obj/item/stack/sheet/wood
@@ -339,24 +339,24 @@
 	footstep_overrides[FOOTSTEP_WOOD] = layer
 
 /obj/structure/table/wood/fancy
-	name = "fancy wooden table"
-	desc = "An expensive fancy wood surface resting on four legs. Useful to put stuff on. Can be flipped in emergencies to act as cover."
+	name = "精致木桌"
+	desc = "一个由四条腿支撑的昂贵精致木质表面. 适合放东西. 紧急情况下可以翻过来当掩体."
 	icon = 'icons/obj/smooth_objects/fancy_table.dmi'
 	icon_state = "fancy_table-0"
 	base_icon_state = "fancy_table"
 	parts = /obj/item/frame/table/fancywood
 
 /obj/structure/table/wood/rustic
-	name = "rustic wooden table"
-	desc = "A rustic wooden surface resting on four legs. Useful to put stuff on. Can be flipped in emergencies to act as cover."
+	name = "乡村木桌"
+	desc = "一个由四条腿支撑的乡村风格木质表面. 适合放东西. 紧急情况下可以翻过来当掩体."
 	icon = 'icons/obj/smooth_objects/rustic_table.dmi'
 	icon_state = "rustic_table-0"
 	base_icon_state = "rustic_table"
 	parts = /obj/item/frame/table/rusticwood
 
 /obj/structure/table/black
-	name = "black metal table"
-	desc = "A sleek black metallic surface resting on four legs. Useful to put stuff on. Can be flipped in emergencies to act as cover."
+	name = "黑色金属桌"
+	desc = "一个由四条腿支撑的光滑黑色金属表面. 适合放东西. 紧急情况下可以翻过来当掩体."
 	icon = 'icons/obj/smooth_objects/black_table.dmi'
 	icon_state = "black_table-0"
 	base_icon_state = "black_table"
@@ -366,8 +366,8 @@
 * Gambling tables
 */
 /obj/structure/table/wood/gambling
-	name = "gambling table"
-	desc = "A curved wood and carpet surface resting on four legs. Used for gambling games. Can be flipped in emergencies to act as cover."
+	name = "赌桌"
+	desc = "一个由四条腿支撑的弧形木质和地毯表面. 用于赌博游戏. 紧急情况下可以翻过来当掩体."
 	icon = 'icons/obj/smooth_objects/pool_table.dmi'
 	icon_state = "pool_table-0"
 	base_icon_state = "pool_table"
@@ -380,8 +380,8 @@
 * Reinforced tables
 */
 /obj/structure/table/reinforced
-	name = "reinforced table"
-	desc = "A square metal surface resting on four legs. This one has side panels, making it useful as a desk, but impossible to flip."
+	name = "加固桌"
+	desc = "一个由四条腿支撑的方形金属表面. 这个带有侧板, 可以当桌子用, 但无法翻过来."
 	icon = 'icons/obj/smooth_objects/table_reinforced.dmi'
 	icon_state = "table_reinforced-0"
 	base_icon_state = "table_reinforced"
@@ -408,35 +408,35 @@
 		return FALSE
 
 	if(table_status == TABLE_STATUS_FIRM)
-		user.visible_message(span_notice("[user] starts weakening [src]."),
-		span_notice("You start weakening [src]"))
+		user.visible_message(span_notice("[user]开始削弱[src]."),
+		span_notice("你开始削弱[src]"))
 		if(!I.use_tool(src, user, 5 SECONDS, 1, 25, null, BUSY_ICON_BUILD))
 			return
 
-		user.visible_message(span_notice("[user] weakens [src]."),
-			span_notice("You weaken [src]"))
+		user.visible_message(span_notice("[user]削弱了[src]."),
+			span_notice("你削弱了[src]"))
 		table_status = TABLE_STATUS_WEAKENED
 		return TRUE
 
-	user.visible_message(span_notice("[user] starts welding [src] back together."),
-		span_notice("You start welding [src] back together."))
+	user.visible_message(span_notice("[user]开始将[src]焊接回去."),
+		span_notice("你开始将[src]焊接回去."))
 	if(!I.use_tool(src, user, 5 SECONDS, 1, 25, null, BUSY_ICON_BUILD))
 		return
 
-	user.visible_message(span_notice("[user] welds [src] back together."),
-		span_notice("You weld [src] back together."))
+	user.visible_message(span_notice("[user]将[src]焊接了回去."),
+		span_notice("你将[src]焊接了回去."))
 	table_status = TABLE_STATUS_FIRM
 	return TRUE
 
 /obj/structure/table/reinforced/prison
-	desc = "A square metal surface resting on four legs. This one has side panels, making it useful as a desk, but impossible to flip."
+	desc = "一个由四条腿支撑的方形金属表面. 这个带有侧板, 可以当桌子用, 但无法翻过来."
 	icon = 'icons/obj/smooth_objects/prison_table.dmi'
 	icon_state = "prison_table-0"
 	base_icon_state = "prison_table"
 
 /obj/structure/table/reinforced/fabric
-	name = "cloth table"
-	desc = "A fancy cloth-topped wooden table, bolted to the floor. Fit for formal occasions."
+	name = "布桌"
+	desc = "一张铺着精致布面的木桌, 用螺栓固定在地板上. 适合正式场合."
 	icon = 'icons/obj/smooth_objects/table_fabric.dmi'
 	icon_state = "table_fabric-0"
 	base_icon_state = "table_fabric"

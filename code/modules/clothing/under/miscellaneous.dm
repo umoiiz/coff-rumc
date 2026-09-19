@@ -1,87 +1,87 @@
 /obj/item/clothing/under/pj/red
-	name = "red pj's"
-	desc = "Sleepwear."
+	name = "红色睡衣"
+	desc = "睡衣."
 	icon_state = "red_pyjamas"
 	worn_icon_state = "w_suit"
 
 /obj/item/clothing/under/pj/blue
-	name = "blue pj's"
-	desc = "Sleepwear."
+	name = "蓝色睡衣"
+	desc = "睡衣."
 	icon_state = "blue_pyjamas"
 	worn_icon_state = "w_suit"
 
 /obj/item/clothing/under/scratch
-	name = "white suit"
-	desc = "A white suit, suitable for an excellent host"
+	name = "白色西装"
+	desc = "一套白色西装,适合一位出色的主人"
 	icon_state = "scratch"
 
 /obj/item/clothing/under/sl_suit
-	desc = "It's a very amish looking suit."
-	name = "amish suit"
+	desc = "这是一套看起来非常阿米什风格的西装."
+	name = "阿米什西装"
 	icon_state = "sl_suit"
 
 /obj/item/clothing/under/waiter
-	name = "waiter's outfit"
-	desc = "It's a very smart uniform with a special pocket for tip."
+	name = "服务员制服"
+	desc = "这是一套非常整洁的制服,带有一个专门放小费的口袋."
 	icon_state = "waiter"
 
 /obj/item/clothing/under/rank/prisoner
-	name = "prison jumpsuit"
-	desc = "It's standardised Nanotrasen prisoner-wear. Its suit sensors are stuck in the \"Fully On\" position."
+	name = "囚犯连体服"
+	desc = "这是标准化的纳米传讯囚犯服装.它的服装传感器卡在了\"完全开启\"的位置."
 	icon_state = "prisoner"
 	worn_icon_state = "prisoner"
 	has_sensor = LOCKED_SENSORS
 	sensor_mode = SENSOR_COORDS
 
 /obj/item/clothing/under/sexyclown
-	name = "sexy-clown suit"
-	desc = "It makes you look HONKable!"
+	name = "性感小丑服"
+	desc = "它让你看起来很想被HONK!"
 	icon_state = "sexyclown"
 	worn_icon_state = "sexyclown"
 	armor_protection_flags = CHEST|GROIN
 
 /obj/item/clothing/under/rank/vice
-	name = "vice officer's jumpsuit"
-	desc = "It's the standard issue pretty-boy outfit, as seen on Holo-Vision."
+	name = "副官连体服"
+	desc = "这是标准配发的帅哥制服,在全息视讯上可以看到."
 	icon_state = "vice"
 	worn_icon_state = "gy_suit"
 	adjustment_variants = list()
 
 /obj/item/clothing/under/rank/centcom_officer
-	desc = "It's a jumpsuit worn by CentCom Officers."
-	name = "\improper CentCom officer's jumpsuit"
+	desc = "这是中央指挥部军官穿的连体服."
+	name = "\improper 中央指挥部军官连体服"
 	icon_state = "officer"
 	worn_icon_state = "g_suit"
 	adjustment_variants = list()
 
 /obj/item/clothing/under/rank/centcom_commander
-	desc = "It's a jumpsuit worn by CentCom's highest-tier Commanders."
-	name = "\improper CentCom officer's jumpsuit"
+	desc = "这是中央指挥部最高级指挥官穿的连体服."
+	name = "\improper 中央指挥部军官连体服"
 	icon_state = "centcom"
 	worn_icon_state = "dg_suit"
 	adjustment_variants = list()
 
 /obj/item/clothing/under/rank/centcom_commander/sa
-	desc = "It's a jumpsuit worn by Spatial Agents."
-	name = "\improper spatial agent's jumpsuit"
+	desc = "这是空间特工穿的连体服."
+	name = "\improper 空间特工连体服"
 	has_sensor = 0
 	sensor_mode = 0
 	siemens_coefficient = 0
 	item_flags = DELONDROP
 
 /obj/item/clothing/under/owl
-	name = "owl uniform"
-	desc = "A jumpsuit with owl wings. Photorealistic owl feathers! Twooooo!"
+	name = "猫头鹰制服"
+	desc = "一件带有猫头鹰翅膀的连体服.照片级逼真的猫头鹰羽毛!两对!"
 	icon_state = "owl"
 
 /obj/item/clothing/under/gentlesuit
-	name = "Gentlemans Suit"
-	desc = "A silk black shirt with a white tie and a matching gray vest and slacks. Feels proper."
+	name = "绅士西装"
+	desc = "一件黑色丝绸衬衫,配白色领带和相配的灰色马甲与长裤.感觉很得体."
 	icon_state = "gentlesuit"
 
 /obj/item/clothing/under/suit_jacket
-	name = "black suit"
-	desc = "A black suit and red tie. Very formal."
+	name = "黑色西装"
+	desc = "一套黑色西装和红色领带.非常正式."
 	icon_state = "black_suit"
 	worn_icon_state = "bl_suit"
 
@@ -92,42 +92,42 @@
 	icon_state = "greydet"
 
 /obj/item/clothing/under/overalls
-	name = "laborer's overalls"
-	desc = "A set of durable overalls for getting the job done."
+	name = "劳工工装裤"
+	desc = "一套耐用的工装裤,用来把活干完."
 	icon_state = "overalls"
 	worn_icon_state = "lb_suit"
 
 /obj/item/clothing/under/pirate
-	name = "pirate outfit"
-	desc = "Yarr."
+	name = "海盗装束"
+	desc = "呀哈."
 	icon_state = "pirate"
 	armor_protection_flags = CHEST|GROIN|LEGS
 
 /obj/item/clothing/under/soviet
-	name = "soviet uniform"
-	desc = "For the Motherland!"
+	name = "苏联制服"
+	desc = "为了祖国!"
 	icon_state = "soviet"
 
 /obj/item/clothing/under/redcoat
-	name = "redcoat uniform"
-	desc = "Looks old."
+	name = "红虾兵制服"
+	desc = "看起来很旧."
 	icon_state = "redcoat"
 
 /obj/item/clothing/under/kilt
-	name = "kilt"
-	desc = "Includes shoes and plaid"
+	name = "苏格兰短裙"
+	desc = "包含鞋子和格子呢"
 	icon_state = "kilt"
 	armor_protection_flags = CHEST|GROIN|FEET
 
 /obj/item/clothing/under/sexymime
-	name = "sexy mime outfit"
-	desc = "The only time when you DON'T enjoy looking at someone's rack."
+	name = "性感默剧演员服装"
+	desc = "这是唯一一个你不会享受盯着别人胸看的时候."
 	icon_state = "sexymime"
 	armor_protection_flags = CHEST|GROIN
 
 /obj/item/clothing/under/gladiator
-	name = "gladiator uniform"
-	desc = "Are you not entertained? Is that not why you are here?"
+	name = "角斗士制服"
+	desc = "你们难道不觉得有趣吗?你们不就是为此而来的吗?"
 	icon_state = "gladiator"
 	armor_protection_flags = GROIN
 
@@ -136,76 +136,76 @@
 	armor_protection_flags = CHEST|GROIN
 
 /obj/item/clothing/under/dress/dress_saloon
-	name = "saloon girl dress"
-	desc = "A old western inspired gown for the girl who likes to drink."
+	name = "酒馆女郎连衣裙"
+	desc = "一件受老西部启发的礼服,适合喜欢喝酒的女孩."
 	icon_state = "dress_saloon"
 
 /obj/item/clothing/under/dress/dress_cap
-	name = "captain's dress uniform"
-	desc = "Feminine fashion for the style concious captain."
+	name = "舰长礼服制服"
+	desc = "为注重风格的舰长准备的女性时装."
 	icon_state = "dress_cap"
 	armor_protection_flags = CHEST|GROIN|ARMS
 
 /obj/item/clothing/under/dress/dress_hop
-	name = "head of personnel dress uniform"
-	desc = "Feminine fashion for the style concious HoP."
+	name = "人事主管礼服制服"
+	desc = "为注重风格的人事主管准备的女性时装."
 	icon_state = "dress_hop"
 	armor_protection_flags = CHEST|GROIN|ARMS
 
 /obj/item/clothing/under/dress/dress_hr
-	name = "human resources director uniform"
-	desc = "Superior class for the nosy H.R. Director."
+	name = "人力资源总监制服"
+	desc = "为爱管闲事的人力资源总监准备的高级阶级服装."
 	icon_state = "huresource"
 	armor_protection_flags = CHEST|GROIN|ARMS
 
 /obj/item/clothing/under/dress/plaid_blue
-	name = "blue plaid skirt"
-	desc = "A preppy blue skirt with a white blouse."
+	name = "蓝色格子裙"
+	desc = "一条学院风蓝色裙子配白色衬衫."
 	icon_state = "plaid_blue"
 
 /obj/item/clothing/under/dress/plaid_red
-	name = "red plaid skirt"
-	desc = "A preppy red skirt with a white blouse."
+	name = "红色格子裙"
+	desc = "一条学院风红色裙子配白色衬衫."
 	icon_state = "plaid_red"
 
 /obj/item/clothing/under/dress/plaid_purple
-	name = "blue purple skirt"
-	desc = "A preppy purple skirt with a white blouse."
+	name = "蓝紫色裙子"
+	desc = "一条学院风紫色裙子配白色衬衫."
 	icon_state = "plaid_purple"
 
 /obj/item/clothing/under/wedding_bride
-	name = "silky wedding dress"
-	desc = "A white wedding gown made from the finest silk."
+	name = "丝绸婚纱"
+	desc = "一件由最上等丝绸制成的白色婚纱。"
 	icon_state = "bride_white"
 	inv_hide_flags = HIDESHOES
 	armor_protection_flags = CHEST|GROIN
 
 /obj/item/clothing/under/sundress
-	name = "sundress"
-	desc = "Makes you want to frolic in a field of daisies."
+	name = "太阳裙"
+	desc = "让人想在雏菊丛中嬉戏。"
 	icon_state = "sundress"
 	armor_protection_flags = CHEST|GROIN
 
 /obj/item/clothing/under/captainformal
-	name = "captain's formal uniform"
-	desc = "A captain's formal-wear, for special occasions."
+	name = "上尉礼服制服"
+	desc = "上尉的礼服,用于特殊场合。"
 	icon_state = "captain_formal"
 	worn_icon_state = "by_suit"
 
 /obj/item/clothing/under/hosformalfem
-	name = "head of security's formal uniform"
-	desc = "A female head of security's formal-wear, for special occasions."
+	name = "安保主管礼服制服"
+	desc = "女性安保主管的礼服,用于特殊场合。"
 	icon_state = "hos_formal_fem"
 	worn_icon_state = "r_suit"
 
 /obj/item/clothing/under/suit_jacket/charcoal
-	name = "charcoal suit"
-	desc = "A charcoal suit and red tie. Very professional."
+	name = "炭灰色西装"
+	desc = "炭灰色西装和红色领带。非常专业。"
 	icon_state = "charcoal_suit"
 
 /obj/item/clothing/under/techpriest
-	name = "Techpriest Robes"
-	desc = "Praise the omnissiah!"
+	name = "技术神甫长袍"
+	desc = "赞美万机神!"
 	icon_state = "tp_bodyrobes"
 	worn_icon_state = "tp_bodyrobes"
 	armor_protection_flags = CHEST|GROIN|LEGS|ARMS

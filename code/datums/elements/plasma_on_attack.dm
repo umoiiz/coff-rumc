@@ -21,7 +21,7 @@
 	SIGNAL_HANDLER
 	var/mob/living/carbon/xenomorph/furious = source
 	if(attacked.stat == DEAD)
-		to_chat(furious, span_notice("This thing is already dead. Why bother touching it?"))
+		to_chat(furious, span_notice("这东西已经死了. 为什么还要碰它?"))
 		return NONE
 	furious.gain_plasma(damage * damage_plasma_multiplier)
 

@@ -33,29 +33,29 @@ export const Minidropship = (_props) => {
       <Window.Content scrollable>
         <Section title={`Fly state - ${fly_state}`}>
           <Button disabled={take_off_locked} onClick={() => act('take_off')}>
-            Take off
+            脱下
           </Button>
           <Button onClick={() => act('toggle_shutters')}>
-            Toggle shutters
+            切换百叶窗
           </Button>
           <Button
             disabled={return_to_ship_locked}
             onClick={() => act('return_to_ship')}
           >
-            Return to ship
+            返回飞船
           </Button>
           <Button onClick={() => act('toggle_nvg')}>
-            Toggle night vision mode
+            切换夜视模式
           </Button>
           <Button
             onClick={() => act('takeoff_alarm')}
-            tooltip="This will alert everyone nearby. Use with care. Sending the dropship to a new destination will turn this off automatically."
+            tooltip="这会警告附近的所有人. 请谨慎使用. 将运输机送往新目的地会自动关闭此功能."
             color={takeoff_alarm ? 'red' : 'yellow'}
           >
             {takeoff_alarm ? 'Stop' : 'Start'} takeoff alarm
           </Button>
         </Section>
-        <Section title="Equipment Installed">
+        <Section title="已安装装备">
           {equipment_data.length > 0 ? (
             equipment_data.map((equipment) => (
               <Box key={equipment.eqp_tag}>
@@ -70,7 +70,7 @@ export const Minidropship = (_props) => {
               </Box>
             ))
           ) : (
-            <Box>No equipment installed.</Box>
+            <Box>未安装装备.</Box>
           )}
         </Section>
       </Window.Content>

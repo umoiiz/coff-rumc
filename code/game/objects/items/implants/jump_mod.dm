@@ -1,6 +1,6 @@
 /obj/item/implant/jump_mod
-	name = "fortified ankles"
-	desc = "This augmentation enhances the users ability to jump with graphene fibre reinforcements and nanogel joint fluid capsules. Hold jump to jump higher."
+	name = "强化脚踝"
+	desc = "这种增强通过石墨烯纤维增强和纳米凝胶关节液囊提高了使用者的跳跃能力. 按住跳跃键可跳得更高."
 	implant_flags = BENEFICIAL_IMPLANT
 	w_class = WEIGHT_CLASS_NORMAL
 	allowed_limbs = list(BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_PRECISE_R_FOOT)
@@ -18,7 +18,7 @@
 		RegisterSignal(target, COMSIG_LIVING_SET_JUMP_COMPONENT, PROC_REF(modify_jump))
 		RegisterSignal(target, COMSIG_ELEMENT_JUMP_STARTED, PROC_REF(handle_jump))
 		target.set_jump_component()
-		to_chat(implant_owner, "You can now jump further and higher by holding the jump key for a charged jump!")
+		to_chat(implant_owner, "现在你可以通过按住跳跃键进行蓄力跳跃来跳得更远更高!")
 
 /obj/item/implant/jump_mod/unimplant()
 	if(!implant_owner)

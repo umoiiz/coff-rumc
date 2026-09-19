@@ -1,10 +1,10 @@
 // 'basic' language; spoken by default.
 /datum/language/common
-	name = "Galactic Common"
-	desc = "The common galactic tongue."
-	speech_verb = "says"
+	name = "银河通用语"
+	desc = "银河系通用语言."
+	speech_verb = "说"
 	whisper_verb = "whispers"
-	sing_verb = "sings"
+	sing_verb = "唱"
 	key = "0"
 	flags = TONGUELESS_SPEECH | LANGUAGE_HIDE_ICON_IF_UNDERSTOOD
 	default_priority = 100

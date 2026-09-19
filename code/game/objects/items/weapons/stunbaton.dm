@@ -1,6 +1,6 @@
 /obj/item/weapon/baton
-	name = "stunbaton"
-	desc = "A stun baton for incapacitating people with."
+	name = "电击棍"
+	desc = "一根用于制服人员的电击棍."
 	icon_state = "stunbaton"
 	worn_icon_state = "baton"
 	equip_slot_flags = ITEM_SLOT_BELT
@@ -47,9 +47,9 @@
 /obj/item/weapon/baton/examine(mob/user)
 	. = ..()
 	if(bcell)
-		. += span_notice("The baton is [round(bcell.percent())]% charged.")
+		. += span_notice("电击棍已充能[round(bcell.percent())]%.")
 	else
-		. += span_warning("The baton does not have a power source installed.")
+		. += span_warning("电击棍没有安装电源.")
 
 /obj/item/weapon/baton/attack_hand(mob/living/user)
 	. = ..()
@@ -69,9 +69,9 @@
 	if(istype(H))
 		var/obj/item/card/id/I = H.wear_id
 		if(!istype(I) || !check_access(I))
-			H.visible_message(span_notice("[src] beeeps as [H] picks it up"), span_danger("WARNING: Unauthorized user detected. Denying access..."))
+			H.visible_message(span_notice("[src]发出哔哔声，[H]将它捡起"), span_danger("警告：检测到未授权用户。拒绝访问..."))
 			H.Paralyze(40 SECONDS)
-			H.visible_message(span_warning("[src] beeps and sends a shock through [H]'s body!"))
+			H.visible_message(span_warning("[src]发出哔哔声并向[H]的身体发送电击！"))
 			deductcharge(hitcost)
 			return FALSE
 	return TRUE
@@ -86,7 +86,7 @@
 
 	if(istype(I, /obj/item/cell))
 		if(bcell)
-			to_chat(user, span_notice("[src] already has a cell."))
+			to_chat(user, span_notice("[src]已经装有电池。"))
 			return
 
 		if(!user.drop_held_item())
@@ -94,7 +94,7 @@
 
 		I.forceMove(src)
 		bcell = I
-		to_chat(user, span_notice("You install a cell in [src]."))
+		to_chat(user, span_notice("你在[src]中安装了一块电池。"))
 
 	else if(isscrewdriver(I))
 		if(!bcell)
@@ -103,33 +103,33 @@
 		bcell.forceMove(get_turf(src))
 		bcell.update_icon()
 		bcell = null
-		to_chat(user, span_notice("You remove the cell from the [src]."))
+		to_chat(user, span_notice("你从[src]中取出了电池。"))
 		status = 0
 
 	update_icon()
 
 /obj/item/weapon/baton/attack_self(mob/user)
 	if(has_user_lock && user.skills.getRating(SKILL_POLICE) < SKILL_POLICE_MP)
-		to_chat(user, span_warning("You don't seem to know how to use [src]..."))
+		to_chat(user, span_warning("你似乎不知道如何使用[src]..."))
 		return
 	if(bcell?.charge > hitcost)
 		status = !status
-		to_chat(user, span_notice("[src] is now [status ? "on" : "off"]."))
+		to_chat(user, span_notice("[src]现在是[status ? "on" : "off"]。"))
 		playsound(loc, SFX_SPARKS, 25, 1, 6)
 		update_icon()
 	else
 		status = 0
 		if(!bcell)
-			to_chat(user, span_warning("[src] does not have a power source!"))
+			to_chat(user, span_warning("[src]没有电源！"))
 		else
-			to_chat(user, span_warning("[src] is out of charge."))
+			to_chat(user, span_warning("[src]电量耗尽。"))
 
 /obj/item/weapon/baton/attack(mob/M, mob/user)
 	if(M.status_flags & INCORPOREAL || user.status_flags & INCORPOREAL) //Incorporeal beings cannot attack or be attacked
 		return
 
 	if(has_user_lock && user.skills.getRating(SKILL_POLICE) < SKILL_POLICE_MP)
-		to_chat(user, span_warning("You don't seem to know how to use [src]..."))
+		to_chat(user, span_warning("你似乎不知道如何使用[src]..."))
 		return
 
 	var/stamloss_applied = agonyforce
@@ -151,23 +151,23 @@
 				target_zone = get_zone_with_miss_chance(user.zone_selected, L)
 
 			if(!target_zone)
-				L.visible_message(span_danger("[user] misses [L] with \the [src]!"))
+				L.visible_message(span_danger("[user]用\the [src]攻击[L]但未命中！"))
 				return 0
 
 			var/mob/living/carbon/human/H = L
 			var/datum/limb/affecting = H.get_limb(target_zone)
 			if (affecting)
 				if(!status)
-					L.visible_message(span_warning("[L] has been prodded in the [affecting.display_name] with [src] by [user]. Luckily it was off."))
+					L.visible_message(span_warning("[L]被[user]用[src]戳中了[affecting.display_name]。幸运的是它是关闭的。"))
 					return 1
 				else
-					H.visible_message(span_danger("[L] has been prodded in the [affecting.display_name] with [src] by [user]!"))
+					H.visible_message(span_danger("[L]被[user]用[src]戳中了[affecting.display_name]！"))
 		else
 			if(!status)
-				L.visible_message(span_warning("[L] has been prodded with [src] by [user]. Luckily it was off."))
+				L.visible_message(span_warning("[L]被[user]用[src]戳中了。幸运的是它是关闭的。"))
 				return 1
 			else
-				L.visible_message(span_danger("[L] has been prodded with [src] by [user]!"))
+				L.visible_message(span_danger("[L]被[user]用[src]戳中了！"))
 
 	//stun effects
 	if(!HAS_TRAIT(L, TRAIT_BATONIMMUNE))
@@ -188,8 +188,8 @@
 
 //Makeshift stun baton. Replacement for stun gloves.
 /obj/item/weapon/baton/cattleprod
-	name = "stunprod"
-	desc = "An improvised stun baton."
+	name = "电击棒"
+	desc = "一种简易的电击棍。"
 	icon_state = "stunprod_nocell"
 	worn_icon_state = "prod"
 	force = 3
@@ -202,8 +202,8 @@
 	has_user_lock = FALSE
 
 /obj/item/weapon/stunprod
-	name = "electrified prodder"
-	desc = "A specialised prod designed for incapacitating xenomorphic lifeforms with."
+	name = "电击赶牛棒"
+	desc = "一种专门设计用于使异形生命体丧失行动能力的赶牛棒。"
 	icon_state = "stunbaton"
 	worn_icon_state = "baton"
 	equip_slot_flags = ITEM_SLOT_BELT
@@ -223,26 +223,26 @@
 /obj/item/weapon/stunprod/attack_self(mob/user)
 	if(charges > 0)
 		status = !status
-		to_chat(user, span_notice("\The [src] is now [status ? "on" : "off"]."))
+		to_chat(user, span_notice("\The [src]现在是[status ? "on" : "off"]。"))
 		playsound(loc, SFX_SPARKS, 15, 1)
 		update_icon()
 	else
 		status = 0
-		to_chat(user, span_warning("\The [src] is out of charge."))
+		to_chat(user, span_warning("\The [src]电量耗尽。"))
 
 /obj/item/weapon/stunprod/attack(mob/M, mob/user)
 	if(user.a_intent == INTENT_HARM)
 		return
 
 	else if(!status)
-		M.visible_message(span_warning("[M] has been poked with [src] whilst it's turned off by [user]."))
+		M.visible_message(span_warning("[M]在关闭状态下被[user]用[src]戳了一下。"))
 		return
 
 	if(status && isliving(M))
 		var/mob/living/L = M
 		L.Paralyze(12 SECONDS)
 		charges -= 2
-		L.visible_message(span_danger("[L] has been prodded with the [src] by [user]!"))
+		L.visible_message(span_danger("[L]被[user]用[src]戳中了！"))
 
 		log_combat(user, L, "stunned", src)
 
@@ -263,8 +263,8 @@
 
 /obj/item/weapon/stunprod/improved
 	charges = 30
-	name = "improved electrified prodder"
-	desc = "A specialised prod designed for incapacitating xenomorphic lifeforms with. This one seems to be much more effective than its predecessor."
+	name = "改进型电击赶牛棒"
+	desc = "一种专门设计用于使异形生命体丧失行动能力的赶牛棒。这一把似乎比前代有效得多。"
 	color = "#FF6666"
 
 /obj/item/weapon/stunprod/improved/attack(mob/M, mob/user)
@@ -276,4 +276,4 @@
 
 /obj/item/weapon/stunprod/improved/examine(mob/user)
 	. = ..()
-	. += span_notice("It has [charges] charges left.")
+	. += span_notice("它还剩[charges]次充能。")

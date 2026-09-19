@@ -77,7 +77,7 @@
 		return
 	if(!anchored && (move_resist < MOVE_FORCE_STRONG))
 		step(src, AM.dir)
-	visible_message(span_warning("[src] was hit by [AM]."), visible_message_flags = COMBAT_MESSAGE)
+	visible_message(span_warning("[src]被[AM]击中了."), visible_message_flags = COMBAT_MESSAGE)
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 40
@@ -94,7 +94,7 @@
 	if(proj.damage < 1)
 		return
 	if(proj.damage > 30)
-		visible_message(span_warning("\The [src] is damaged by \the [proj]!"), visible_message_flags = COMBAT_MESSAGE)
+		visible_message(span_warning("\The [src]被\the [proj]损坏了!"), visible_message_flags = COMBAT_MESSAGE)
 	take_damage(proj.damage, proj.ammo.damage_type, proj.ammo.armor_type, 0, REVERSE_DIR(proj.dir), proj.ammo.penetration, isliving(proj.firer) ? proj.firer : null)
 
 /obj/proc/attack_generic(mob/user, damage_amount = 0, damage_type = BRUTE, damage_flag = MELEE, effects = TRUE, armor_penetration = 0) //used by attack_alien, attack_animal, and attack_slime
@@ -123,19 +123,19 @@
 	if(SEND_SIGNAL(src, COMSIG_OBJ_ATTACK_ALIEN, xeno_attacker) & COMPONENT_NO_ATTACK_ALIEN)
 		return FALSE
 	if(!(resistance_flags & XENO_DAMAGEABLE))
-		to_chat(xeno_attacker, span_warning("We stare at \the [src] cluelessly."))
+		to_chat(xeno_attacker, span_warning("我们茫然地盯着\the [src]."))
 		return FALSE
 	if(effects)
-		xeno_attacker.visible_message(span_danger("[xeno_attacker] has slashed [src]!"),
-		span_danger("We slash [src]!"))
+		xeno_attacker.visible_message(span_danger("[xeno_attacker]劈砍了[src]!"),
+		span_danger("我们劈砍[src]!"))
 		xeno_attacker.do_attack_animation(src, ATTACK_EFFECT_CLAW)
 		playsound(loc, SFX_ALIEN_CLAW_METAL, 25)
 	attack_generic(xeno_attacker, damage_amount, damage_type, damage_flag, effects, armor_penetration)
 	return TRUE
 
 /obj/attack_larva(mob/living/carbon/xenomorph/larva/larva_attacker)
-	larva_attacker.visible_message(span_danger("[larva_attacker] nudges its head against [src]."), \
-	span_danger("You nudge your head against [src]."))
+	larva_attacker.visible_message(span_danger("[larva_attacker]用头蹭了蹭[src]."), \
+	span_danger("你用头蹭了蹭[src]."))
 
 ///the obj is deconstructed into pieces, whether through careful disassembly or when destroyed.
 /obj/proc/deconstruct(disassembled = TRUE, mob/living/blame_mob)
@@ -203,8 +203,8 @@
 
 /obj/post_crush_act(mob/living/carbon/xenomorph/charger, datum/action/ability/xeno_action/ready_charge/charge_datum)
 	if(anchored) //Did it manage to stop it?
-		charger.visible_message(span_danger("[charger] rams into [src] and skids to a halt!"),
-		span_xenowarning("We ram into [src] and skid to a halt!"))
+		charger.visible_message(span_danger("[charger]撞向[src]并滑行停下!"),
+		span_xenowarning("我们撞向[src]并滑行停下!"))
 		if(charger.is_charging > CHARGE_OFF)
 			charge_datum.do_stop_momentum(FALSE)
 		return PRECRUSH_STOPPED
@@ -212,15 +212,15 @@
 	var/fling_dist = min(round(CHARGE_SPEED(charge_datum)) + 1, 3)
 	if(!step(src, fling_dir) && density)
 		charge_datum.do_stop_momentum(FALSE) //Failed to be tossed away and returned, more powerful than ever, to block the charger's path.
-		charger.visible_message(span_danger("[charger] rams into [src] and skids to a halt!"),
-			span_xenowarning("We ram into [src] and skid to a halt!"))
+		charger.visible_message(span_danger("[charger]撞向[src]并滑行停下!"),
+			span_xenowarning("我们撞向[src]并滑行停下!"))
 		return PRECRUSH_STOPPED
 	if(--fling_dist)
 		for(var/i in 1 to fling_dist)
 			if(!step(src, fling_dir))
 				break
 	charger.visible_message("[span_warning("[charger] knocks [src] aside.")]!",
-	span_xenowarning("We knock [src] aside.")) //Canisters, crates etc. go flying.
+	span_xenowarning("我们把[src]撞到一边.")) //Canisters, crates etc. go flying.
 	charge_datum.speed_down(2) //Lose two turfs worth of speed.
 	return PRECRUSH_PLOWED
 

@@ -1,4 +1,4 @@
-GLOBAL_LIST_INIT(all_assembly_craft_groups, list("Operations", "Weapons", "Explosives", "Armor", "Clothing", "Medical", "Engineering", "Supplies", "Imports", "Vehicles", "Factory"))
+GLOBAL_LIST_INIT(all_assembly_craft_groups, list("作战", "武器", "爆炸物", "护甲", "服装", "医疗", "工程", "补给", "进口", "载具", "工厂"))
 
 /datum/assembly_craft
 	var/name
@@ -21,7 +21,7 @@ GLOBAL_LIST_INIT(all_assembly_craft_groups, list("Operations", "Weapons", "Explo
 //junk ~ 6.6 points so expensive.. for junk
 
 /datum/assembly_craft/engineering
-	group = "Engineering"
+	group = "工程"
 	craft_time = 10 SECONDS
 
 /datum/assembly_craft/engineering/plas50
@@ -100,7 +100,7 @@ GLOBAL_LIST_INIT(all_assembly_craft_groups, list("Operations", "Weapons", "Explo
 CLOTHING
 *******************************************************************************/
 /datum/assembly_craft/clothing
-	group = "Clothing"
+	group = "服装"
 
 /datum/assembly_craft/clothing/swat_mask
 	name = "SWAT mask"
@@ -112,7 +112,7 @@ CLOTHING
 EXPLOSIVES
 *******************************************************************************/
 /datum/assembly_craft/explosives
-	group = "Explosives"
+	group = "爆炸物"
 	craft_time = 8 SECONDS
 
 /datum/assembly_craft/explosives/claymore
@@ -216,7 +216,7 @@ WEAPONS
 *******************************************************************************/
 
 /datum/assembly_craft/weapons
-	group = "Weapons"
+	group = "武器"
 	craft_time = 5 SECONDS
 
 /datum/assembly_craft/weapons/smartgun_minigun_box

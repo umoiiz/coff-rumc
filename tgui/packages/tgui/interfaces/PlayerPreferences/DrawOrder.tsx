@@ -13,10 +13,10 @@ export const DrawOrder = (props) => {
   const { act, data } = useBackend<DrawOrder>();
   const { draw_order = [], quick_equip = [] } = data;
   return (
-    <Section title="Draw Order">
+    <Section title="绘制顺序">
       <Stack fill>
         <Stack.Item grow>
-          <Section title="Equip Slot Order">
+          <Section title="装备槽位顺序">
             <Section>
               <Table>
                 {draw_order.map((item) => (
@@ -47,7 +47,7 @@ export const DrawOrder = (props) => {
           </Section>
         </Stack.Item>
         <Stack.Item grow>
-          <Section title="Keybinding Settings">
+          <Section title="按键绑定设置">
             <LabeledList>
               {quick_equip.map((equip_slot, index_slot) => (
                 <>

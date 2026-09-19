@@ -2,7 +2,7 @@
 // for the moment, just report the status of all APCs in the same powernet
 /obj/machinery/power/monitor
 	name = "power monitoring computer"
-	desc = "It monitors power levels across the station."
+	desc = "它监测整个站点的电力水平."
 	icon = 'icons/obj/machines/computer.dmi'
 	icon_state = "computer"
 	//computer stuff
@@ -138,12 +138,12 @@
 	for(var/obj/C in src)
 		C.forceMove(loc)
 	if(machine_stat & BROKEN)
-		to_chat(user, span_notice("The broken glass falls out."))
+		to_chat(user, span_notice("破碎的玻璃掉了出来."))
 		new /obj/item/shard(loc)
 		A.state = 3
 		A.icon_state = "3"
 	else
-		to_chat(user, span_notice("You disconnect the monitor."))
+		to_chat(user, span_notice("你断开了监测器."))
 		A.state = 4
 		A.icon_state = "4"
 	M.deconstruct(src)

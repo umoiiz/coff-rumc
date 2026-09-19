@@ -1,6 +1,6 @@
 /obj/machinery/keycard_auth
 	name = "Keycard Authentication Device"
-	desc = "This device is used to trigger station functions, which require more than one ID card to authenticate."
+	desc = "该设备用于触发空间站功能,需要多于一张ID卡才能认证."
 	icon = 'icons/obj/monitors.dmi'
 	icon_state = "auth_off"
 	anchored = TRUE
@@ -35,7 +35,7 @@
 		return
 
 	if(machine_stat & (NOPOWER|BROKEN))
-		to_chat(user, "This device is not powered.")
+		to_chat(user, "该设备未通电.")
 		return
 
 	if(istype(I, /obj/item/card/id))
@@ -140,7 +140,7 @@
 			if(!istype(id_card))
 				id_card = user.get_idcard()
 			if(!istype(id_card) || !(ACCESS_MARINE_BRIDGE in id_card.access))
-				to_chat(user, span_warning("You need a bridge-level ID to authorize this."))
+				to_chat(user, span_warning("你需要舰桥级别的ID才能授权此操作."))
 				return FALSE
 			event_source.confirmed = TRUE
 			event_source.event_confirmed_by = user
@@ -220,9 +220,9 @@ GLOBAL_VAR_INIT(maint_all_access, FALSE)
 	GLOB.maint_all_access = TRUE
 
 	priority_announce(
-		title = "Внимание!",
-		subtitle = "На корабле объявлена чрезвычайная ситуация.",
-		message = "Требование служебного доступа для входа в технические тоннели было аннулировано.",
+		title = "注意!",
+		subtitle = "舰船上已宣布紧急情况.",
+		message = "进入技术隧道的服务访问要求已被取消.",
 		sound = 'sound/misc/notice1.ogg',
 		color_override = "grey"
 	)
@@ -232,9 +232,9 @@ GLOBAL_VAR_INIT(maint_all_access, FALSE)
 /proc/revoke_maint_all_access()
 	GLOB.maint_all_access = FALSE
 	priority_announce(
-		title = "Внимание!",
-		subtitle = "Чрезвычайная ситуация на корабле отменена.",
-		message = "Требование служебного доступа для входа в технические тоннели было восстановлено.",
+		title = "注意!",
+		subtitle = "舰船上的紧急情况已解除.",
+		message = "进入技术隧道的服务访问要求已恢复.",
 		sound = 'sound/misc/notice2.ogg',
 		color_override = "grey"
 	)

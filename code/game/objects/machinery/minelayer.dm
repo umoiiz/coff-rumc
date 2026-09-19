@@ -1,6 +1,6 @@
 /obj/item/minelayer
-	name = "\improper M21 APRDS \"Minelayer\""
-	desc = "Anti-Personnel Rapid Deploy System, APRDS for short, is a device designed to quickly deploy M20 mines in large quantities. WARNING: Operating in tight places or existing mine fields will result in reduced efficiency."
+	name = "\improper M21 APRDS \"布雷器\""
+	desc = "反人员快速部署系统,简称APRDS,是一种设计用于快速大量部署M20地雷的装置.警告:在狭窄空间或已有雷区中操作将导致效率降低."
 	icon = 'icons/obj/items/mine.dmi'
 	icon_state = "minelayer"
 	max_integrity = 200
@@ -85,4 +85,4 @@
 
 /obj/machinery/deployable/minelayer/examine(mob/user)
 	. = ..()
-	. += span_info("[src] currently has [stored_amount]/[max_amount] stored mines.")
+	. += span_info("[src]当前存有[stored_amount]/[max_amount]枚地雷.")

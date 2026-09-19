@@ -1,6 +1,6 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/junction
 	name = "junction"
-	desc = "A one meter junction that connects regular and heat-exchanging pipe."
+	desc = "连接普通管道和换热管道的一米长接头."
 	icon = 'icons/obj/atmospherics/pipes/he-junction.dmi'
 	icon_state = "pipe11-2"
 	dir = SOUTH

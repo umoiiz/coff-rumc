@@ -1,6 +1,6 @@
 /obj/item/resin_jelly
-	name = "resin jelly"
-	desc = "A foul, viscous resin jelly that doesnt seem to burn easily."
+	name = "树脂凝胶"
+	desc = "一种恶心、黏稠的树脂凝胶,似乎不容易燃烧."
 	icon = 'icons/Xeno/xeno_materials.dmi'
 	icon_state = "resin_jelly"
 	soft_armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 200, ACID = 0)
@@ -34,7 +34,7 @@
 	if(!isxeno(user))
 		return TRUE
 	if(!isxeno(M))
-		M.balloon_alert(user, "Cannot apply")
+		M.balloon_alert(user, "无法施加")
 		return FALSE
 	if(user.do_actions || !isnull(current_user))
 		return FALSE
@@ -44,7 +44,7 @@
 	return FALSE
 
 /obj/item/resin_jelly/proc/activate_jelly(mob/living/carbon/xenomorph/user)
-	user.visible_message(span_notice("[user]'s chitin begins to gleam with an unseemly glow..."), span_xenonotice("We feel powerful as we are covered in [src]!"))
+	user.visible_message(span_notice("[user]的甲壳开始散发出一种不祥的光芒..."), span_xenonotice("被[src]覆盖时我们感到强大!"))
 	user.emote("roar")
 	user.apply_status_effect(STATUS_EFFECT_RESIN_JELLY_COATING)
 	SEND_SIGNAL(user, COMSIG_XENOMORPH_RESIN_JELLY_APPLIED)
@@ -63,7 +63,7 @@
 	var/mob/living/carbon/xenomorph/xenomorph_target = hit_atom
 	if(xenomorph_target.xeno_caste.caste_flags & CASTE_FIRE_IMMUNE)
 		return
-	xenomorph_target.visible_message(span_notice("[xenomorph_target] is splattered with jelly!"))
+	xenomorph_target.visible_message(span_notice("[xenomorph_target]被黏液溅满了!"))
 	INVOKE_ASYNC(src, PROC_REF(activate_jelly), xenomorph_target)
 
 ///////////////////////
@@ -71,8 +71,8 @@
 ///////////////////////
 
 /obj/structure/xeno/acid_mine
-	name = "acid mine"
-	desc = "A weird bulb, filled with acid."
+	name = "酸性地雷"
+	desc = "一个奇怪的球茎,装满了酸液."
 	icon = 'icons/obj/items/mine.dmi'
 	icon_state = "acid_mine"
 	density = FALSE
@@ -114,8 +114,8 @@
 	qdel(src)
 
 /obj/structure/xeno/acid_mine/gas_mine
-	name = "gas mine"
-	desc = "A weird bulb, overflowing with acid. Small wisps of gas escape every so often."
+	name = "毒气地雷"
+	desc = "一个奇怪的球茎,溢满了酸液.时不时有小股气体逸出."
 	icon_state = "gas_mine"
 	acid_damage = 40
 
@@ -129,8 +129,8 @@
 //////////////////
 
 /obj/structure/xeno/acid_mine/incen_mine
-	name = "incendiary mine"
-	desc = "A purple blob that sparks like lightning."
+	name = "燃烧地雷"
+	desc = "一个紫色的团块,像闪电一样迸发火花."
 	icon_state = "incen_mine"
 
 /obj/structure/xeno/acid_mine/incen_mine/detonate(triggerer)
@@ -142,8 +142,8 @@
 //////////////////
 
 /obj/structure/xeno/acid_mine/resin_mine
-	name = "resin mine"
-	desc = "A translucent purple blob, insides lined with clear ampoules of resin."
+	name = "树脂地雷"
+	desc = "一个半透明的紫色团块,内部排列着清澈的树脂安瓿."
 	icon_state = "resin_mine"
 
 /obj/structure/xeno/acid_mine/resin_mine/detonate(triggerer)
@@ -174,8 +174,8 @@
 //////////////////
 
 /obj/structure/xeno/acid_mine/neuro_mine
-	name = "neurotoxin mine"
-	desc = "An oddly colored weed sac, filled with dense orange gas."
+	name = "神经毒素地雷"
+	desc = "一个颜色怪异的杂草囊,装满了浓密的橙色气体."
 	icon_state = "neuro_mine"
 
 /obj/structure/xeno/acid_mine/neuro_mine/detonate(triggerer)
@@ -186,7 +186,7 @@
 	if(ishuman(triggerer))
 		var/mob/living/carbon/human/victim = triggerer
 		victim.reagents.add_reagent(/datum/reagent/toxin/xeno_neurotoxin, 5)
-		to_chat(victim, span_userdanger("You are pricked by a spike on the mine!"))
+		to_chat(victim, span_userdanger("你被地雷上的尖刺刺到了!"))
 	qdel(src)
 
 //////////////////////
@@ -194,8 +194,8 @@
 //////////////////////
 
 /obj/structure/xeno/acid_mine/drain_mine
-	name = "drain mine"
-	desc = "A cyan blob that crackles with lifeblood."
+	name = "汲取地雷"
+	desc = "一个青色的团块,闪烁着生命之血的光芒."
 	icon_state = "emp_mine"
 
 /obj/structure/xeno/acid_mine/drain_mine/detonate(triggerer)

@@ -1,6 +1,6 @@
 /obj/structure/closet/secure_closet
-	name = "secure locker"
-	desc = "It's an immobile card-locked storage unit."
+	name = "安全储物柜"
+	desc = "这是一个固定的刷卡储物单元."
 	icon_state = "secure1"
 	density = TRUE
 	opened = FALSE

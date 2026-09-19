@@ -39,29 +39,29 @@ export const DisposalUnit = (props) => {
       <Window.Content>
         <Section>
           <LabeledList>
-            <LabeledList.Item label="State" color={stateColor}>
+            <LabeledList.Item label="状态" color={stateColor}>
               {stateText}
             </LabeledList.Item>
-            <LabeledList.Item label="Pressure">
+            <LabeledList.Item label="压力">
               <ProgressBar value={per} color="good" />
             </LabeledList.Item>
-            <LabeledList.Item label="Handle">
+            <LabeledList.Item label="手柄">
               <Button
                 icon={flush ? 'toggle-on' : 'toggle-off'}
                 disabled={!!isai || !!panel_open}
-                content={flush ? 'Disengage' : 'Engage'}
+                content={flush ? '解除' : '接合'}
                 onClick={() => act(flush ? 'handle-0' : 'handle-1')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Eject">
+            <LabeledList.Item label="弹出">
               <Button
                 icon="sign-out-alt"
                 disabled={!!isai}
-                content="Eject Contents"
+                content="弹出内容物"
                 onClick={() => act('eject')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Power">
+            <LabeledList.Item label="电力">
               <Button
                 icon="power-off"
                 disabled={!!panel_open}

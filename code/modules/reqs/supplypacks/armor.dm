@@ -1,19 +1,19 @@
 /datum/supply_packs/armor
-	group = "Armor"
+	group = "护甲"
 	containertype = /obj/structure/closet/crate
 
 /datum/supply_packs/armor/masks
-	name = "SWAT protective mask"
+	name = "特警防护面罩"
 	contains = list(/obj/item/clothing/mask/gas/swat)
 	cost = 50
 
 /datum/supply_packs/armor/adv_welding
-	name = "Advanced welding helmet"
+	name = "高级焊接头盔"
 	contains = list(/obj/item/clothing/head/welding/advanced)
 	cost = 100
 
 /datum/supply_packs/armor/riot
-	name = "Heavy riot armor set"
+	name = "重型防暴护甲套装"
 	contains = list(
 		/obj/item/clothing/suit/storage/marine/riot,
 		/obj/item/clothing/head/helmet/marine/riot,
@@ -21,17 +21,17 @@
 	cost = 120
 
 /datum/supply_packs/armor/marine_shield
-	name = "TL-172 defensive shield"
+	name = "TL-172防御护盾"
 	contains = list(/obj/item/weapon/shield/riot/marine)
 	cost = 100
 
 /datum/supply_packs/armor/marine_shield/deployable
-	name = "TL-182 deployable shield"
+	name = "TL-182可部署护盾"
 	contains = list(/obj/item/weapon/shield/riot/marine/deployable)
 	cost = 30
 
 /datum/supply_packs/armor/b18
-	name = "B18 armor set"
+	name = "B18护甲套装"
 	contains = list(
 		/obj/item/clothing/suit/storage/marine/specialist,
 		/obj/item/clothing/head/helmet/marine/specialist,
@@ -41,7 +41,7 @@
 	crash_restricted = TRUE
 
 /datum/supply_packs/armor/b17
-	name = "B17 armor set"
+	name = "B17护甲套装"
 	contains = list(
 		/obj/item/clothing/suit/storage/marine/B17,
 		/obj/item/clothing/head/helmet/marine/grenadier,
@@ -50,29 +50,29 @@
 	crash_restricted = TRUE
 
 /datum/supply_packs/armor/scout_cloak
-	name = "Scout cloak"
+	name = "侦察兵披风"
 	contains = list(/obj/item/storage/backpack/marine/satchel/scout_cloak)
 	cost = 500
 
 /datum/supply_packs/armor/sniper_cloak
-	name = "Sniper cloak"
+	name = "狙击手披风"
 	contains = list(/obj/item/storage/backpack/marine/satchel/scout_cloak/sniper)
 	cost = 500
 
 /datum/supply_packs/armor/grenade_belt
-	name = "High capacity grenade belt"
+	name = "大容量手榴弹腰带"
 	contains = list(/obj/item/storage/belt/grenade/b17)
 	cost = 200
 
 /datum/supply_packs/armor/modular/attachments/valkyrie_autodoc
-	name = "Valkyrie automedical system"
+	name = "瓦尔基里自动医疗系统"
 	contains = list(
 		/obj/item/armor_module/module/valkyrie_autodoc,
 	)
 	cost = 200
 
 /datum/supply_packs/armor/modular/attachments/fire_proof
-	name = "Surt thermal insulation system"
+	name = "苏尔特隔热系统"
 	contains = list(
 		/obj/item/armor_module/module/fire_proof,
 		/obj/item/armor_module/module/fire_proof_helmet,
@@ -80,7 +80,7 @@
 	cost = 120
 
 /datum/supply_packs/armor/modular/attachments/tyr_extra_armor
-	name = "Tyr Mk.2 armor reinforcement system"
+	name = "提尔Mk.2护甲强化系统"
 	contains = list(
 		/obj/item/armor_module/module/tyr_extra_armor,
 		/obj/item/armor_module/module/tyr_head/mark2,
@@ -88,7 +88,7 @@
 	cost = 120
 
 /datum/supply_packs/armor/modular/attachments/mimir_extra_armor
-	name = "Mimir Mk.2 environmental resistance system"
+	name = "密米尔Mk.2环境抗性系统"
 	contains = list(
 		/obj/item/armor_module/module/mimir_environment_protection/mimir_helmet,
 		/obj/item/armor_module/module/mimir_environment_protection,
@@ -96,14 +96,14 @@
 	cost = 160
 
 /datum/supply_packs/armor/modular/attachments/artemis_mark_two
-	name = "Freyr Mk.2 visual assistance helmet system"
+	name = "弗雷Mk.2视觉辅助头盔系统"
 	contains = list(
 		/obj/item/armor_module/module/binoculars/artemis_mark_two,
 	)
 	cost = 40
 
 /datum/supply_packs/armor/robot/advanced/physical
-	name = "Cingulata physical protection armor set"
+	name = "卷甲虫物理防护护甲套装"
 	contains = list(
 		/obj/item/clothing/head/helmet/marine/robot/advanced/physical,
 		/obj/item/clothing/suit/storage/marine/robot/advanced/physical,
@@ -111,7 +111,7 @@
 	cost = 600
 
 /datum/supply_packs/armor/robot/advanced/acid
-	name = "Exidobate acid protection armor set"
+	name = "潮虫酸液防护护甲套装"
 	contains = list(
 		/obj/item/clothing/head/helmet/marine/robot/advanced/acid,
 		/obj/item/clothing/suit/storage/marine/robot/advanced/acid,
@@ -119,7 +119,7 @@
 	cost = 600
 
 /datum/supply_packs/armor/robot/advanced/bomb
-	name = "Tardigrada bomb protection armor set"
+	name = "缓步动物防爆护甲套装"
 	contains = list(
 		/obj/item/clothing/head/helmet/marine/robot/advanced/bomb,
 		/obj/item/clothing/suit/storage/marine/robot/advanced/bomb,
@@ -127,7 +127,7 @@
 	cost = 600
 
 /datum/supply_packs/armor/robot/advanced/fire
-	name = "Urodela fire protection armor set"
+	name = "蝾螈防火护甲套装"
 	contains = list(
 		/obj/item/clothing/head/helmet/marine/robot/advanced/fire,
 		/obj/item/clothing/suit/storage/marine/robot/advanced/fire,

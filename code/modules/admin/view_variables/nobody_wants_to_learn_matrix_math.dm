@@ -51,7 +51,7 @@
 			var/matrix_var_name = params["var_name"]
 			var/matrix_var_value = params["var_value"]
 			if(testing_matrix.vv_edit_var(matrix_var_name, matrix_var_value) == FALSE)
-				to_chat(src, "Your edit was rejected by the object. This is a bug with the matrix tester, not your fault, so report it on github.", confidential = TRUE)
+				to_chat(src, "你的编辑被对象拒绝了.这是矩阵测试器的bug,不是你的错,请在github上报告.", confidential = TRUE)
 				return
 			set_transform()
 		if("scale")

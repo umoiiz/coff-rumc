@@ -20,7 +20,7 @@ const MutationsDisplay = (props: { mutations: string }) => {
   const { mutations } = props;
 
   if (!mutations || mutations === 'None') {
-    return <Box textColor="label">None</Box>;
+    return <Box textColor="label">无</Box>;
   }
 
   // Parse mutations string like "0 S; 1 O; 0 C; 2 E"
@@ -266,7 +266,7 @@ const BlessingsButton = (_props: any) => {
         onClick={() => act('Blessings', { xeno: user_ref })}
         icon={'store'}
       >
-        Blessings
+        祝福
       </Button>
     </Box>
   );
@@ -289,7 +289,7 @@ const GeneralInfo = (_props: any) => {
     <Box className="Section">
       <Box className="Section__title">
         <Box as="span" className="Section__titleText">
-          Psy Points:
+          灵能点数:
           <Box
             as="span"
             color={
@@ -302,7 +302,7 @@ const GeneralInfo = (_props: any) => {
           >
             {' ' + hive_psy_points + ' '}
           </Box>
-          | Burrowed Larva:
+          | 埋藏的幼虫:
           <Box as="span" color={hive_larva_burrowed > 0 ? 'good' : 'bad'}>
             {' ' + hive_larva_burrowed}
           </Box>
@@ -429,10 +429,10 @@ const BiomassBar = (_props: any) => {
     <Flex>
       <Flex.Item mr={2} width={bar_text_width}>
         <Button
-          tooltip="Open Mutations Menu"
+          tooltip="打开变异菜单"
           onClick={() => act('Mutations', { xeno: user_ref })}
         >
-          Total Biomass:
+          总生物质:
         </Button>
       </Flex.Item>
       <Flex.Item grow>
@@ -459,10 +459,10 @@ const EvolutionBar = (_props: any) => {
     <Flex>
       <Flex.Item mr={2} width={bar_text_width}>
         <Button
-          tooltip="Open Panel"
+          tooltip="打开面板"
           onClick={() => act('Evolve', { xeno: user_ref })}
         >
-          Evolution Progress:
+          进化进度:
         </Button>
       </Flex.Item>
       <Flex.Item grow>
@@ -595,7 +595,7 @@ const PopulationPyramid = (_props: any) => {
             tier === 2 || tier === 3 ? <TierSlots /> : tier_info.total;
           const primordial = primos[tier] ? (
             <Box as="span" textColor="good">
-              [Primordial]
+              [原初]
             </Box>
           ) : (
             ''
@@ -890,7 +890,7 @@ const XenoList = (_props: any) => {
                     tooltip={
                       user_ruler && !static_entry.is_ruler &&
                       entry.can_be_leader
-                        ? 'Toggle leadership'
+                        ? '切换领导'
                         : ''
                     }
                     verticalAlignContent="middle"
@@ -936,8 +936,8 @@ const XenoList = (_props: any) => {
                     tooltip={
                       user_ref !== entry.ref
                         ? user_tracked === entry.ref
-                          ? 'Stop tracking'
-                          : 'Track'
+                          ? '停止追踪'
+                          : '追踪'
                         : ''
                     }
                     onClick={() => {
@@ -1013,7 +1013,7 @@ const ActionButtons = (props: ActionButtonProps) => {
       fluid
       height="16px"
       fontSize={0.75}
-      tooltip={observing ? 'Cancel' : 'Watch'}
+      tooltip={observing ? '取消' : '监视'}
       align="center"
       verticalAlignContent="middle"
       icon="eye"
@@ -1036,7 +1036,7 @@ const ActionButtons = (props: ActionButtonProps) => {
             fluid
             height="16px"
             fontSize={0.75}
-            tooltip={'Punishment'} /* RUTGMC EDIT, ORIGINAL : 'Deevolve'*/
+            tooltip={'惩罚'} /* RUTGMC EDIT, ORIGINAL : 'Deevolve'*/
             align="center"
             verticalAlignContent="middle"
             icon="bolt"
@@ -1051,7 +1051,7 @@ const ActionButtons = (props: ActionButtonProps) => {
             fluid
             height="16px"
             fontSize={0.75}
-            tooltip={props.can_transfer_plasma ? 'Give plasma' : ''}
+            tooltip={props.can_transfer_plasma ? '给予等离子体' : ''}
             align="center"
             verticalAlignContent="middle"
             icon="arrow-down"
@@ -1126,7 +1126,7 @@ const StructureList = (_props: any) => {
                     fluid
                     height="16px"
                     fontSize={0.8}
-                    tooltip={'Track structure'}
+                    tooltip={'追踪结构'}
                     align="center"
                     verticalAlignContent="middle"
                     selected={user_tracked === entry.ref}
@@ -1137,7 +1137,7 @@ const StructureList = (_props: any) => {
                       })
                     }
                   >
-                    Track
+                    追踪
                   </Button>
                 </Flex.Item>
                 <Flex.Item

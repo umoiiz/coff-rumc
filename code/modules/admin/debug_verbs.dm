@@ -13,7 +13,7 @@ ADMIN_VERB(delete_all, R_DEBUG, "Delete Instances", "Delete all instances of som
 	if(!ispath(/mob) && !ispath(/obj))
 		to_chat(user,
 			type = MESSAGE_TYPE_DEBUG,
-			html = span_warning("Only works for types of /obj or /mob."))
+			html = span_warning("仅适用于 /obj 或 /mob 类型."))
 		return
 
 	var/hsbitem = input(user, "Choose an object to delete.", "Delete:") as null|anything in typesof(chosen_deletion)
@@ -46,7 +46,7 @@ ADMIN_VERB(generate_powernets, R_DEBUG, "Generate Powernets", "Regenerate all po
 
 ADMIN_VERB(debug_mob_lists, R_DEBUG, "Debug Mob Lists", "Debug mob globals", ADMIN_CATEGORY_DEBUG)
 	var/list/options = list("Players", "Observers", "New Players", "Admins", "Clients", "Mobs", "Living Mobs", "Alive Living Mobs", "Dead Mobs", "Xenos", "Alive Xenos", "Dead Xenos", "Humans", "Alive Humans", "Dead Humans")
-	var/choice = tgui_input_list(user, "Which list?", "Global Mob List debugging", options)
+	var/choice = tgui_input_list(user, "哪个列表?", "全局生物列表调试", options)
 	if(!choice)
 		return
 
@@ -196,7 +196,7 @@ ADMIN_VERB(debug_controller, R_DEBUG, "Debug Controller", "Debug the various per
 
 ADMIN_VERB(reestablish_db_connection, R_DEBUG, "Reestablish DB Connection", "Attempts to (re)establish the DB Connection", ADMIN_CATEGORY_SERVER)
 	if(!CONFIG_GET(flag/sql_enabled))
-		to_chat(usr, span_adminnotice("The Database is not enabled!"))
+		to_chat(usr, span_adminnotice("数据库未启用!"))
 		return
 
 	if(SSdbcore.IsConnected(TRUE))
@@ -342,10 +342,10 @@ ADMIN_VERB(display_sendmaps, R_DEBUG, "Send Maps Profile", "View the profile.", 
 
 ADMIN_VERB(allow_browser_inspect, R_DEBUG, "Allow Browser Inspect", "Allow browser debugging via inspect", ADMIN_CATEGORY_DEBUG)
 	if(user.byond_version < 516)
-		to_chat(user, span_warning("You can only use this on 516!"))
+		to_chat(user, span_warning("你只能在 516 上使用这个!"))
 		return
 
-	to_chat(user, span_notice("You can now right click to use inspect on browsers."))
+	to_chat(user, span_notice("你现在可以右键点击以在浏览器上使用检查."))
 	winset(user, null, list("browser-options" = "+devtools"))
 
 #ifdef TESTING

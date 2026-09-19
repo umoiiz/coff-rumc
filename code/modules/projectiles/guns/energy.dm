@@ -43,8 +43,8 @@
 	return cell?.reload_delay
 
 /obj/item/weapon/gun/energy/taser
-	name = "taser gun"
-	desc = "An advanced stun device capable of firing balls of ionized electricity. Used for nonlethal takedowns."
+	name = "电击枪"
+	desc = "一种先进的眩晕装置,能够发射电离电球.用于非致命制服."
 	icon_state = "taser"
 	worn_icon_state = "taser"
 	muzzle_flash = null //TO DO.
@@ -68,15 +68,15 @@
 	if (!.)
 		return
 	if(user.skills.getRating(SKILL_POLICE) < SKILL_POLICE_MP)
-		to_chat(user, span_warning("You don't seem to know how to use [src]..."))
+		to_chat(user, span_warning("你似乎不知道如何使用[src]..."))
 		return FALSE
 
 //-------------------------------------------------------
 //Lasguns
 
 /obj/item/weapon/gun/energy/lasgun
-	name = "\improper Lasgun"
-	desc = "A laser based firearm. Uses power cells."
+	name = "\improper 激光枪"
+	desc = "一种基于激光的枪械.使用能量电池."
 	reload_sound = 'sound/weapons/guns/interact/rifle_reload.ogg'
 	fire_sound = 'sound/weapons/guns/fire/laser.ogg'
 	load_method = CELL //codex
@@ -103,16 +103,16 @@
 /obj/item/weapon/gun/energy/lasgun/unique_action(mob/user, dont_operate = FALSE)
 	QDEL_NULL(in_chamber)
 	if(ammo_diff == null)
-		to_chat(user, "[icon2html(src, user)] You need an appropriate lens to enable overcharge mode.")
+		to_chat(user, "[icon2html(src, user)]你需要合适的透镜才能启用超载模式.")
 		return
 	if(overcharge == FALSE)
 		if(!length(chamber_items))
 			playsound(user, 'sound/machines/buzz-two.ogg', 15, 0, 2)
-			to_chat(user, span_warning("You attempt to toggle on [src]'s overcharge mode but you have no battery loaded."))
+			to_chat(user, span_warning("你尝试开启[src]的超载模式,但没有装载电池."))
 			return
 		if(rounds < ENERGY_OVERCHARGE_AMMO_COST)
 			playsound(user, 'sound/machines/buzz-two.ogg', 15, 0, 2)
-			to_chat(user, span_warning("You attempt to toggle on [src]'s overcharge mode but your battery pack lacks adequate charge to do so."))
+			to_chat(user, span_warning("你尝试开启[src]的超载模式,但你的电池组电量不足."))
 			return
 		//While overcharge is active, double ammo consumption, and
 		playsound(user, 'sound/weapons/emitter.ogg', 5, 0, 2)
@@ -120,7 +120,7 @@
 		ammo_datum_type = ammo_diff
 		fire_delay += 7 // 1 shot per second fire rate
 		fire_sound = 'sound/weapons/guns/fire/laser3.ogg'
-		to_chat(user, "[icon2html(src, user)] You [overcharge? "<B>disable</b>" : "<B>enable</b>" ] [src]'s overcharge mode.")
+		to_chat(user, "[icon2html(src, user)]你[overcharge? "<B>disable</b>" : "<B>enable</b>" ]了[src]的超载模式.")
 		overcharge = TRUE
 	else
 		playsound(user, 'sound/weapons/emitter2.ogg', 5, 0, 2)
@@ -128,7 +128,7 @@
 		ammo_datum_type = /datum/ammo/energy/lasgun/m43
 		fire_delay -= 7
 		fire_sound = 'sound/weapons/guns/fire/laser.ogg'
-		to_chat(user, "[icon2html(src, user)] You [overcharge? "<B>disable</b>" : "<B>enable</b>" ] [src]'s overcharge mode.")
+		to_chat(user, "[icon2html(src, user)]你[overcharge? "<B>disable</b>" : "<B>enable</b>" ]了[src]的超载模式.")
 		overcharge = FALSE
 
 	user?.hud_used.update_ammo_hud(src, get_ammo_list(), get_display_ammo_count())
@@ -139,8 +139,8 @@
 //M43 Sunfury Lasgun MK1
 
 /obj/item/weapon/gun/energy/lasgun/M43
-	name = "\improper M43 Sunfury Lasgun MK1"
-	desc = "An accurate, recoilless laser based battle rifle with an integrated charge selector. Ideal for longer range engagements. It was the standard lasrifle for TGMC soldiers until it was replaced by the LR-73, due to its extremely modular lens system."
+	name = "\improper M43烈日激光枪MK1"
+	desc = "一种精准、无后坐力的激光战斗步枪,带有集成式充能选择器.非常适合远距离交战.它曾是TGMC士兵的标准激光步枪,后因LR-73的出现而被取代,原因是其极其模块化的透镜系统."
 	force = 20 //Large and hefty! Includes stock bonus.
 	icon_state = "m43"
 	worn_icon_state = "m43"
@@ -186,8 +186,8 @@
 //Deathsquad-only gun -- Model 2419 pulse rifle, the M19C4.
 
 /obj/item/weapon/gun/energy/lasgun/pulse
-	name = "\improper M19C4 pulse energy rifle"
-	desc = "A heavy-duty, multifaceted energy weapon that uses pulse-based beam generation technology to emit powerful laser blasts. Because of its complexity and cost, it is rarely seen in use except by specialists and front-line combat personnel. This is a testing model issued only for Asset Protection units and offshore elite Nanotrasen squads."
+	name = "\improper M19C4脉冲能量步枪"
+	desc = "一种重型、多面手能量武器,采用脉冲式光束生成技术发射强力激光束.由于其复杂性和成本,除了专家和前线战斗人员外很少见到使用.这是仅配发给资产保护单位和近海精英纳米传讯小队的测试型号."
 	force = 23 //Slightly more heftier than the M43, but without the stock.
 	icon_state = "m19c4"
 	worn_icon_state = "m19c4"
@@ -224,8 +224,8 @@
 //A practice version of M43, only for memes
 
 /obj/item/weapon/gun/energy/lasgun/M43/practice
-	name = "\improper M43-P Sunfury Lasgun MK1"
-	desc = "An accurate, recoilless laser based battle rifle, based on the outdated M43 design. Only accepts practice power cells and it doesn't have a charge selector. Uses power cells instead of ballistic magazines."
+	name = "\improper M43-P烈日激光枪MK1"
+	desc = "一种精准、无后坐力的激光战斗步枪,基于过时的M43设计.仅接受训练用能量电池,且没有充能选择器.使用能量电池而非实弹弹匣."
 	force = 8 //Well, it's not complicted compared to the original.
 	ammo_datum_type = /datum/ammo/energy/lasgun/m43/practice
 	attachable_allowed = list(/obj/item/attachable/stock/lasgun/practice)
@@ -240,8 +240,8 @@
 	return
 
 /obj/item/weapon/gun/energy/lasgun/lasrifle
-	name = "\improper LR-73 lasrifle MK2"
-	desc = "A multifunctional laser based rifle with an integrated mode selector. Ideal for any situation. Uses power cells instead of ballistic magazines."
+	name = "\improper LR-73激光步枪MK2"
+	desc = "一种多功能激光步枪,带有集成式模式选择器.适合任何情况.使用能量电池而非实弹弹匣."
 	icon = 'icons/obj/items/gun/energy64.dmi'
 	icon_state = "tx73"
 	worn_icon_state = "tx73"
@@ -361,8 +361,8 @@
 
 //Tesla gun
 /obj/item/weapon/gun/energy/lasgun/lasrifle/tesla
-	name = "\improper Terra Experimental tesla shock rifle"
-	desc = "A Terra Experimental energy rifle that fires balls of elecricity that shock all those near them, it is meant to drain the plasma of unidentified creatures from within, limiting their abilities. As with all TE Laser weapons, they use a lightweight alloy combined without the need for bullets any longer decreases their weight and aiming speed quite some vs their ballistic counterparts. Uses standard Terra Experimental (TE) power cells."
+	name = "\improper Terra实验型特斯拉电击步枪"
+	desc = "一种Terra实验型能量步枪,发射电球电击附近的所有目标,旨在从内部消耗未知生物的等离子体,限制其能力.与所有TE激光武器一样,它们采用轻质合金制造,不再需要子弹,使其重量和瞄准速度相比实弹同类武器有相当大的提升.使用标准Terra实验型(TE)能量电池."
 	icon_state = "tesla"
 	worn_icon_state = "tesla"
 	icon = 'icons/obj/items/gun/energy64.dmi'
@@ -419,8 +419,8 @@
 //TE Standard Laser rifle
 
 /obj/item/weapon/gun/energy/lasgun/lasrifle/standard_marine_rifle
-	name = "\improper Terra Experimental laser rifle"
-	desc = "A Terra Experimental laser rifle, abbreviated as the TE-R. Has multiple firemodes for tactical flexibility. Uses standard Terra Experimental (abbreviated as TE) power cells. As with all TE Laser weapons, they use a lightweight alloy combined without the need for bullets any longer decreases their weight and aiming speed quite some vs their ballistic counterparts."
+	name = "\improper Terra实验型激光步枪"
+	desc = "一种Terra实验型激光步枪,缩写为TE-R.具有多种射击模式以实现战术灵活性.使用标准Terra实验型(缩写为TE)能量电池.与所有TE激光武器一样,它们采用轻质合金制造,不再需要子弹,使其重量和瞄准速度相比实弹同类武器有相当大的提升."
 	reload_sound = 'sound/weapons/guns/interact/standard_laser_rifle_reload.ogg'
 	fire_sound = 'sound/weapons/guns/fire/Laser Rifle Standard.ogg'
 	icon_state = "ter"
@@ -526,8 +526,8 @@
 ///TE Standard Laser Pistol
 
 /obj/item/weapon/gun/energy/lasgun/lasrifle/standard_marine_pistol
-	name = "\improper Terra Experimental laser pistol"
-	desc = "A TerraGov standard issue laser pistol abbreviated as TE-P. It has an integrated charge selector for normal, heat and taser settings. Uses standard Terra Experimental (abbreviated as TE) power cells. As with all TE Laser weapons, they use a lightweight alloy combined without the need for bullets any longer decreases their weight and aiming speed quite some vs their ballistic counterparts."
+	name = "\improper Terra实验型激光手枪"
+	desc = "一种TerraGov标准配发激光手枪,缩写为TE-P.带有集成式充能选择器,可切换普通、高热和电击设置.使用标准Terra实验型(缩写为TE)能量电池.与所有TE激光武器一样,它们采用轻质合金制造,不再需要子弹,使其重量和瞄准速度相比实弹同类武器有相当大的提升."
 	w_class = WEIGHT_CLASS_NORMAL
 	reload_sound = 'sound/weapons/guns/interact/standard_laser_pistol_reload.ogg'
 	fire_sound = 'sound/weapons/guns/fire/Laser Pistol Standard.ogg'
@@ -607,8 +607,8 @@
 //TE Standard Laser Carbine
 
 /obj/item/weapon/gun/energy/lasgun/lasrifle/standard_marine_carbine
-	name = "\improper Terra Experimental laser carbine"
-	desc = "A TerraGov standard issue laser carbine, otherwise known as TE-C for short. Has multiple firemodes for tactical flexibility. Uses standard Terra Experimental (abbreviated as TE) power cells. As with all TE Laser weapons, they use a lightweight alloy combined without the need for bullets any longer decreases their weight and aiming speed quite some vs their ballistic counterparts."
+	name = "\improper Terra实验型激光卡宾枪"
+	desc = "一种TerraGov标准配发激光卡宾枪,简称TE-C.具有多种射击模式以实现战术灵活性.使用标准Terra实验型(缩写为TE)能量电池.与所有TE激光武器一样,它们采用轻质合金制造,不再需要子弹,使其重量和瞄准速度相比实弹同类武器有相当大的提升."
 	reload_sound = 'sound/weapons/guns/interact/standard_laser_rifle_reload.ogg'
 	fire_sound = 'sound/weapons/guns/fire/Laser Rifle Standard.ogg'
 	icon_state = "tec"
@@ -738,8 +738,8 @@
 //TE Standard Sniper
 
 /obj/item/weapon/gun/energy/lasgun/lasrifle/standard_marine_sniper
-	name = "\improper Terra Experimental laser sniper rifle"
-	desc = "The T-ES, a Terra Experimental standard issue laser sniper rifle, it has an integrated charge selector for normal, heat, and overcharge settings. Uses standard Terra Experimental (abbreviated as TE) power cells. As with all TE Laser weapons, they use a lightweight alloy combined without the need for bullets any longer decreases their weight and aiming speed quite some vs their ballistic counterparts."
+	name = "\improper Terra实验型激光狙击步枪"
+	desc = "T-ES,一种Terra实验型标准配发激光狙击步枪,带有集成式充能选择器,可切换普通、高热和超载设置.使用标准Terra实验型(缩写为TE)能量电池.与所有TE激光武器一样,它们采用轻质合金制造,不再需要子弹,使其重量和瞄准速度相比实弹同类武器有相当大的提升."
 	reload_sound = 'sound/weapons/guns/interact/standard_laser_sniper_reload.ogg'
 	fire_sound = 'sound/weapons/guns/fire/Laser Sniper Standard.ogg'
 	windup_sound = 'sound/weapons/guns/fire/Laser Sniper Overcharge Charge.ogg'
@@ -875,8 +875,8 @@
 // TE Standard MG
 
 /obj/item/weapon/gun/energy/lasgun/lasrifle/standard_marine_mlaser
-	name = "\improper Terra Experimental laser machine gun"
-	desc = "A Terra Experimental standard issue machine laser gun, often called as the TE-M by marines. High efficiency modulators ensure the TE-M has an extremely high fire count, and multiple firemodes makes it a flexible infantry support gun. Uses standard Terra Experimental (abbreviated as TE) power cells. As with all TE Laser weapons, they use a lightweight alloy combined without the need for bullets any longer decreases their weight and aiming speed quite some vs their ballistic counterparts."
+	name = "\improper Terra实验型激光机枪"
+	desc = "一种Terra实验型标准配发激光机枪,陆战队员常称之为TE-M.高效调制器确保TE-M具有极高的射击次数,多种射击模式使其成为灵活的步兵支援武器.使用标准Terra实验型(缩写为TE)能量电池.与所有TE激光武器一样,它们采用轻质合金制造,不再需要子弹,使其重量和瞄准速度相比实弹同类武器有相当大的提升."
 	reload_sound = 'sound/weapons/guns/interact/standard_machine_laser_reload.ogg'
 	fire_sound = 'sound/weapons/guns/fire/Laser Rifle Standard.ogg'
 	icon_state = "tem"
@@ -985,8 +985,8 @@
 // TE X-Ray
 
 /obj/item/weapon/gun/energy/lasgun/lasrifle/xray
-	name = "\improper Terra Experimental X-Ray laser rifle"
-	desc = "A Terra Experimental X-Ray laser rifle, abbreviated as the TE-X. It has an integrated charge selector for normal and high settings. Uses standard Terra Experimental (abbreviated as TE) power cells. As with all TE Laser weapons, they use a lightweight alloy combined without the need for bullets any longer decreases their weight and aiming speed quite some vs their ballistic counterparts."
+	name = "\improper Terra实验型X射线激光步枪"
+	desc = "一种Terra实验型X射线激光步枪,缩写为TE-X.带有集成式充能选择器,可切换普通和高强度设置.使用标准Terra实验型(缩写为TE)能量电池.与所有TE激光武器一样,它们采用轻质合金制造,不再需要子弹,使其重量和瞄准速度相比实弹同类武器有相当大的提升."
 	reload_sound = 'sound/weapons/guns/interact/standard_laser_rifle_reload.ogg'
 	fire_sound = 'sound/weapons/guns/fire/laser3.ogg'
 	icon_state = "tex"
@@ -1051,8 +1051,8 @@
 
 //Martian death rays
 /obj/item/weapon/gun/energy/lasgun/lasrifle/volkite
-	name = "volkite gun"
-	desc = "you shouldn't see this gun."
+	name = "沃尔基特枪"
+	desc = "你不应该看到这把枪."
 	icon_state = "charger"
 	worn_icon_state = "charger"
 	ammo_level_icon = ""
@@ -1108,8 +1108,8 @@
 		standing.overlays.Add(emissive_overlay)
 
 /obj/item/weapon/gun/energy/lasgun/lasrifle/volkite/serpenta
-	name = "\improper VX-12 Serpenta"
-	desc = "Volkite weapons are the pride of Martian weapons manufacturing, their construction being a tightly guarded secret. Infamous for its ability to deflagrate organic targets with its tremendous thermal energy, explosively burning flesh in a fiery blast that can be deadly to anyone unfortunate enough to be nearby. The 'serpenta' is pistol typically seen in the hands of SOM officers and some NCOs, and is quite dangerous for it's size."
+	name = "\improper VX-12蛇形"
+	desc = "沃尔基特武器是火星武器制造业的骄傲,其构造是严格保守的秘密.因其能够以巨大的热能引爆有机目标而臭名昭著,爆炸性地燃烧血肉,形成致命的火焰爆炸,对附近任何不幸的人都可能致命.'蛇形'是通常出现在SOM军官和一些士官手中的手枪,就其尺寸而言相当危险."
 	icon_state = "vx12"
 	worn_icon_state = "vx12"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -1132,8 +1132,8 @@
 	wield_delay = 0.4 SECONDS
 
 /obj/item/weapon/gun/energy/lasgun/lasrifle/volkite/serpenta/custom
-	name = "\improper VX-12c Serpenta"
-	desc = "The 'serpenta' is pistol typically seen in the hands of SOM officers and some NCOs, and is quite dangerous for it's size. This particular weapon appears to be a custom model with improved performance."
+	name = "\improper VX-12c蛇形"
+	desc = "'蛇形'是通常出现在SOM军官和一些士官手中的手枪,就其尺寸而言相当危险.这把武器似乎是性能改进的定制型号."
 	icon_state = "vx12c"
 	worn_icon_state = "vx12"
 	ammo_datum_type = /datum/ammo/energy/volkite/medium/custom
@@ -1145,8 +1145,8 @@
 	accuracy_mult_unwielded = 0.95
 
 /obj/item/weapon/gun/energy/lasgun/lasrifle/volkite/charger
-	name = "\improper VX-32 Charger"
-	desc = "Volkite weapons are the pride of Martian weapons manufacturing, their construction being a tightly guarded secret. Infamous for its ability to deflagrate organic targets with its tremendous thermal energy, explosively burning flesh in a fiery blast that can be deadly to anyone unfortunate enough to be nearby. The charger is a light weight weapon with a high rate of fire, designed for high mobility and easy handling. Ineffective at longer ranges."
+	name = "\improper VX-32冲锋者"
+	desc = "沃尔基特武器是火星武器制造业的骄傲,其构造是严格保守的秘密.因其能够以巨大的热能引爆有机目标而臭名昭著,爆炸性地燃烧血肉,形成致命的火焰爆炸,对附近任何不幸的人都可能致命.冲锋者是一种轻量武器,射速高,专为高机动性和易操作性而设计.在远距离效果不佳."
 	icon_state = "charger"
 	worn_icon_state = "charger"
 	max_shots = 45
@@ -1183,8 +1183,8 @@
 	starting_attachment_types = list(/obj/item/attachable/motiondetector, /obj/item/attachable/gyro)
 
 /obj/item/weapon/gun/energy/lasgun/lasrifle/volkite/caliver
-	name = "\improper VX-33 Caliver"
-	desc = "Volkite weapons are the pride of Martian weapons manufacturing, their construction being a tightly guarded secret. Infamous for its ability to deflagrate organic targets with its tremendous thermal energy, explosively burning flesh in a fiery blast that can be deadly to anyone unfortunate enough to be nearby. The caliver is the primary rifle of the volkite family, and effective at most ranges and situations. Drag click the powerpack to the gun to use that instead of magazines."
+	name = "\improper VX-33卡利弗"
+	desc = "沃尔基特武器是火星武器制造业的骄傲,其构造是严格保守的秘密.因其能够以巨大的热能引爆有机目标而臭名昭著,爆炸性地燃烧血肉,形成致命的火焰爆炸,对附近任何不幸的人都可能致命.卡利弗是沃尔基特系列的主要步枪,在大多数距离和情况下都有效.将电源包拖拽点击到枪上以使用它代替弹匣."
 	icon = 'icons/obj/items/gun/energy64.dmi'
 	icon_state = "caliver"
 	worn_icon_state = "caliver"
@@ -1235,8 +1235,8 @@
 	starting_attachment_types = list(/obj/item/attachable/reddot, /obj/item/attachable/lasersight)
 
 /obj/item/weapon/gun/energy/lasgun/lasrifle/volkite/culverin
-	name = "\improper VX-42 Culverin"
-	desc = "Volkite weapons are the pride of Martian weapons manufacturing, their construction being a tightly guarded secret. Infamous for its ability to deflagrate organic targets with its tremendous thermal energy, explosively burning flesh in a fiery blast that can be deadly to anyone unfortunate enough to be nearby. The culverin is the largest man portable example of volkite weaponry, and can lay down a staggering torrent of fire due to its linked back-mounted powerpack. Drag click the powerpack to the gun to load."
+	name = "\improper VX-42长炮"
+	desc = "沃尔基特武器是火星武器制造业的骄傲,其构造是严格保守的秘密.因其能够以巨大的热能引爆有机目标而臭名昭著,爆炸性地燃烧血肉,形成致命的火焰爆炸,对附近任何不幸的人都可能致命.长炮是沃尔基特武器中最大的单兵便携型号,由于其连接式背挂电源包,可以倾泻出惊人的火力.将电源包拖拽点击到枪上以装填."
 	icon_state = "culverin"
 	worn_icon_state = "culverin"
 	inhand_x_dimension = 64
@@ -1271,8 +1271,8 @@
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness)
 
 /obj/item/weapon/gun/energy/lasgun/lasrifle/pocket_beam
-	name = "\improper pocket beam"
-	desc = "A Terra Experimental underbarrel laser system. Has multiple firemodes for tactical flexibility. Uses standard Terra Experimental (abbreviated as TE) power cells."
+	name = "\improper 袖珍光束"
+	desc = "一种Terra实验型下挂式激光系统.具有多种射击模式以实现战术灵活性.使用标准Terra实验型(缩写为TE)能量电池."
 	reload_sound = 'sound/weapons/guns/interact/standard_laser_rifle_reload.ogg'
 	fire_sound = 'sound/weapons/guns/fire/Laser Rifle Standard.ogg'
 	icon = 'icons/obj/items/attachments/attachments.dmi'
@@ -1339,8 +1339,8 @@
 
 // E-50 laser emitter
 /obj/item/weapon/gun/energy/lasgun/lasrifle/e50
-	name = "\improper E-50 laser emitter"
-	desc = "A heavy laser emitter cannon. Devastating at range and liable to set the ground ablaze, but each shot drains a TerraGov power cell dry in short order."
+	name = "\improper E-50激光发射器"
+	desc = "一种重型激光发射器炮.在远距离具有毁灭性,且容易点燃地面,但每发都会迅速耗尽一块TerraGov能量电池."
 	icon = 'icons/obj/items/gun/energy64.dmi'
 	icon_state = "e50"
 	worn_icon_state = "e50"

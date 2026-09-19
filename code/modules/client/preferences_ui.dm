@@ -313,7 +313,7 @@
 			var/newValue = params["newValue"]
 			newValue = reject_bad_name(newValue, TRUE)
 			if(!newValue)
-				tgui_alert(user, "Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .", "Invalid name", list("Ok"))
+				tgui_alert(user, "无效的名字. 你的名字应至少2个字符且最多[MAX_NAME_LEN]个字符. 它只能包含字符A-Z, a-z, -, ' 和 .", "无效的名字", list("Ok"))
 				return
 			real_name = newValue
 
@@ -332,12 +332,12 @@
 			var/newValue = params["newValue"]
 			newValue = reject_bad_name(newValue, TRUE)
 			if(!newValue)
-				tgui_alert(user, "Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .", "Invalid name", list("Ok"))
+				tgui_alert(user, "无效的名字. 你的名字应至少2个字符且最多[MAX_NAME_LEN]个字符. 它只能包含字符A-Z, a-z, -, ' 和 .", "无效的名字", list("Ok"))
 				return
 			synthetic_name = newValue
 
 		if("synthetic_type")
-			var/choice = tgui_input_list(ui.user, "What kind of synthetic do you want to play with?", "Synthetic type choice", SYNTH_TYPES)
+			var/choice = tgui_input_list(ui.user, "你想使用哪种合成人?", "合成人类型选择", SYNTH_TYPES)
 			if(!choice)
 				return
 			synthetic_type = choice
@@ -348,65 +348,65 @@
 			if(raw_name) // Check to ensure that the user entered text (rather than cancel.)
 				var/new_name = reject_bad_name(raw_name)
 				if(new_name) predator_name = new_name
-				else to_chat(user, "Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .")
+				else to_chat(user, "无效的名字. 你的名字应至少2个字符且最多[MAX_NAME_LEN]个字符. 它只能包含字符A-Z, a-z, -, ' 和 .")
 
 		if("predator_gender")
 			predator_gender = predator_gender == MALE ? FEMALE : MALE
 
 		if("predator_age")
-			var/new_predator_age = tgui_input_number(user, "Choose your Predator's age(20 to 10000):", "Character Preference", 1234, 10000, 20)
+			var/new_predator_age = tgui_input_number(user, "选择你的掠食者年龄(20到10000):", "角色偏好", 1234, 10000, 20)
 			if(new_predator_age) predator_age = max(min( round(text2num(new_predator_age)), 10000),20)
 
 		if("predator_use_legacy")
-			var/legacy_choice = tgui_input_list(user, "What legacy set do you wish to use?", "Legacy Set", PRED_LEGACIES)
+			var/legacy_choice = tgui_input_list(user, "你想使用哪套传承套装?", "传承套装", PRED_LEGACIES)
 			if(!legacy_choice)
 				return
 			predator_use_legacy = legacy_choice
 
 		if("predator_translator_type")
-			var/new_translator_type = tgui_input_list(user, "Choose your translator type.", "Translator Type", PRED_TRANSLATORS)
+			var/new_translator_type = tgui_input_list(user, "选择你的翻译器类型.", "翻译器类型", PRED_TRANSLATORS)
 			if(!new_translator_type)
 				return
 			predator_translator_type = new_translator_type
 
 		if("predator_mask_type")
-			var/new_predator_mask_type = tgui_input_number(user, "Choose your mask type:\n(1-12)", "Mask Selection", 1, 12, 1)
+			var/new_predator_mask_type = tgui_input_number(user, "选择你的面具类型:\n(1-12)", "面具选择", 1, 12, 1)
 			if(new_predator_mask_type) predator_mask_type = round(text2num(new_predator_mask_type))
 			update_preview_icon(SSjob.GetJobType(/datum/job/predator), DUMMY_PRED_SLOT_PREFERENCES)
 
 		if("predator_armor_type")
-			var/new_predator_armor_type = tgui_input_number(user, "Choose your armor type:\n(1-7)", "Armor Selection", 1, 7, 1)
+			var/new_predator_armor_type = tgui_input_number(user, "选择你的护甲类型:\n(1-7)", "护甲选择", 1, 7, 1)
 			if(new_predator_armor_type) predator_armor_type = round(text2num(new_predator_armor_type))
 			update_preview_icon(SSjob.GetJobType(/datum/job/predator), DUMMY_PRED_SLOT_PREFERENCES)
 
 		if("predator_boot_type")
-			var/new_predator_boot_type = tgui_input_number(user, "Choose your greaves type:\n(1-4)", "Greave Selection", 1, 4, 1)
+			var/new_predator_boot_type = tgui_input_number(user, "选择你的护胫类型:\n(1-4)", "护胫选择", 1, 4, 1)
 			if(new_predator_boot_type) predator_boot_type = round(text2num(new_predator_boot_type))
 			update_preview_icon(SSjob.GetJobType(/datum/job/predator), DUMMY_PRED_SLOT_PREFERENCES)
 
 		if("predator_mask_material")
-			var/new_pred_mask_mat = tgui_input_list(user, "Choose your mask material:", "Mask Material", PRED_MATERIALS)
+			var/new_pred_mask_mat = tgui_input_list(user, "选择你的面具材质:", "面具材质", PRED_MATERIALS)
 			if(!new_pred_mask_mat)
 				return
 			predator_mask_material = new_pred_mask_mat
 			update_preview_icon(SSjob.GetJobType(/datum/job/predator), DUMMY_PRED_SLOT_PREFERENCES)
 
 		if("predator_armor_material")
-			var/new_pred_armor_mat = tgui_input_list(user, "Choose your armor material:", "Armor Material", PRED_MATERIALS)
+			var/new_pred_armor_mat = tgui_input_list(user, "选择你的护甲材质:", "护甲材质", PRED_MATERIALS)
 			if(!new_pred_armor_mat)
 				return
 			predator_armor_material = new_pred_armor_mat
 			update_preview_icon(SSjob.GetJobType(/datum/job/predator), DUMMY_PRED_SLOT_PREFERENCES)
 
 		if("predator_greave_material")
-			var/new_pred_greave_mat = tgui_input_list(user, "Choose your greave material:", "Greave Material", PRED_MATERIALS)
+			var/new_pred_greave_mat = tgui_input_list(user, "选择你的护胫材质:", "护胫材质", PRED_MATERIALS)
 			if(!new_pred_greave_mat)
 				return
 			predator_greave_material = new_pred_greave_mat
 			update_preview_icon(SSjob.GetJobType(/datum/job/predator), DUMMY_PRED_SLOT_PREFERENCES)
 
 		if("predator_caster_material")
-			var/new_pred_caster_mat = tgui_input_list(user, "Choose your caster material:", "Caster Material", PRED_MATERIALS + "retro")
+			var/new_pred_caster_mat = tgui_input_list(user, "选择你的腕炮材质:", "腕炮材质", PRED_MATERIALS + "retro")
 			if(!new_pred_caster_mat)
 				return
 			predator_caster_material = new_pred_caster_mat
@@ -422,7 +422,7 @@
 				if(whitelist_status >= initial(cape.clan_rank_required) || (initial(cape.councillor_override) && (GLOB.roles_whitelist[user.ckey] & (WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_COUNCIL_LEGACY))))
 					options += cape_name
 
-			var/new_cape = tgui_input_list(user, "Choose your cape type:", "Cape Type", options)
+			var/new_cape = tgui_input_list(user, "选择你的披风类型:", "披风类型", options)
 			if(!new_cape)
 				return
 			predator_cape_type = new_cape
@@ -443,7 +443,7 @@
 			update_preview_icon(SSjob.GetJobType(/datum/job/predator), DUMMY_PRED_SLOT_PREFERENCES)
 
 		if("predator_skin_color")
-			var/new_skin_color = tgui_input_list(user, "Choose your skin color:", "Skin Color", PRED_SKIN_COLOR)
+			var/new_skin_color = tgui_input_list(user, "选择你的肤色:", "肤色", PRED_SKIN_COLOR)
 			if(!new_skin_color)
 				return
 			predator_skin_color = new_skin_color
@@ -473,7 +473,7 @@
 			if(GLOB.roles_whitelist[user.ckey] & WHITELIST_YAUTJA_LEADER)
 				options += list("Leader" = WHITELIST_LEADER)
 
-			var/new_yautja_status = tgui_input_list(user, "Choose your new Yautja Whitelist Status.", "Yautja Status", options)
+			var/new_yautja_status = tgui_input_list(user, "选择你新的Yautja白名单状态.", "Yautja状态", options)
 			if(!new_yautja_status)
 				return
 
@@ -483,12 +483,12 @@
 			var/newValue = params["newValue"]
 			newValue = reject_bad_name(newValue, TRUE)
 			if(!newValue)
-				tgui_alert(user, "Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .", "Invalid name", list("Ok"))
+				tgui_alert(user, "无效名称. 你的名称长度应至少为2个字符且最多为[MAX_NAME_LEN]个字符. 只能包含字符 A-Z, a-z, -, ' 和 .", "无效名称", list("Ok"))
 				return
 			squad_robot_name = newValue
 
 		if("squad_robot_type")
-			var/choice = tgui_input_list(ui.user, "What model of robot do you want to play with?", "Robot model choice", ROBOT_TYPES)
+			var/choice = tgui_input_list(ui.user, "你想使用哪种机器人模型?", "机器人模型选择", ROBOT_TYPES)
 			if(!choice)
 				return
 			squad_robot_type = choice
@@ -501,7 +501,7 @@
 			else
 				newValue = reject_bad_name(newValue)
 				if(!newValue)
-					tgui_alert(user, "Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .", "Invalid name", list("Ok"))
+					tgui_alert(user, "无效名称. 你的名称长度应至少为2个字符且最多为[MAX_NAME_LEN]个字符. 只能包含字符 A-Z, a-z, -, ' 和 .", "无效名称", list("Ok"))
 					return
 				xeno_name = newValue
 
@@ -512,7 +512,7 @@
 			else
 				newValue = reject_bad_name(newValue, TRUE)
 				if(!newValue)
-					tgui_alert(user, "Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .", "Invalid name", list("Ok"))
+					tgui_alert(user, "无效名称. 你的名称长度应至少为2个字符且最多为[MAX_NAME_LEN]个字符. 只能包含字符 A-Z, a-z, -, ' 和 .", "无效名称", list("Ok"))
 					return
 				ai_name = newValue
 
@@ -537,14 +537,14 @@
 
 
 		if("ethnicity")
-			var/choice = tgui_input_list(ui.user, "What ethnicity do you want to play with?", "Ethnicity choice", GLOB.human_ethnicities_list)
+			var/choice = tgui_input_list(ui.user, "你想使用哪个种族?", "种族选择", GLOB.human_ethnicities_list)
 			if(!choice)
 				return
 			ethnicity = choice
 			update_preview_icon()
 
 		if("species")
-			var/choice = tgui_input_list(ui.user, "What species do you want to play with?", "Species choice", get_playable_species())
+			var/choice = tgui_input_list(ui.user, "你想使用哪个物种?", "物种选择", get_playable_species())
 			if(!choice || species == choice)
 				return
 			species = choice
@@ -628,9 +628,9 @@
 				if(!islist(gear))
 					gear = list()
 				gear += choice
-				to_chat(user, span_notice("Added '[choice]' for [C.cost] points ([MAX_GEAR_COST - total_cost] points remaining)."))
+				to_chat(user, span_notice("已添加'[choice]', 花费[C.cost]点数 (剩余[MAX_GEAR_COST - total_cost]点数)."))
 			else
-				to_chat(user, span_warning("Adding '[choice]' will exceed the maximum loadout cost of [MAX_GEAR_COST] points."))
+				to_chat(user, span_warning("添加'[choice]'将超出[MAX_GEAR_COST]点数的最大装备配置费用."))
 
 		if("loadoutremove")
 			gear.Remove(params["gear"])
@@ -643,7 +643,7 @@
 				gear = list()
 
 		if("ui")
-			var/choice = tgui_input_list(ui.user, "What UI style do you want?", "UI style choice", UI_STYLES)
+			var/choice = tgui_input_list(ui.user, "你想要哪种UI风格?", "UI风格选择", UI_STYLES)
 			if(!choice)
 				return
 			ui_style = choice
@@ -669,7 +669,7 @@
 					continue
 
 				valid_hairstyles[hairstyle] = GLOB.hair_styles_list[hairstyle]
-			var/choice = tgui_input_list(ui.user, "What hair style do you want?", "Hair style choice", valid_hairstyles)
+			var/choice = tgui_input_list(ui.user, "你想要哪种发型?", "发型选择", valid_hairstyles)
 			if(!choice)
 				return
 			h_style = choice
@@ -701,7 +701,7 @@
 
 				valid_grads[grad] = GLOB.hair_gradients_list[grad]
 
-			var/choice = tgui_input_list(ui.user, "What hair grad style do you want?", "Hair grad style choice", valid_grads)
+			var/choice = tgui_input_list(ui.user, "你想要哪种渐变发型?", "渐变发型选择", valid_grads)
 			if(choice)
 				grad_style = choice
 			update_preview_icon()
@@ -717,7 +717,7 @@
 
 				valid_facialhairstyles[facialhairstyle] = GLOB.facial_hair_styles_list[facialhairstyle]
 
-			var/choice = tgui_input_list(ui.user, "What facial hair style do you want?", "Facial hair style choice", valid_facialhairstyles)
+			var/choice = tgui_input_list(ui.user, "你想要哪种胡须样式?", "胡须样式选择", valid_facialhairstyles)
 			if(!choice)
 				return
 			f_style = choice
@@ -742,13 +742,13 @@
 			update_preview_icon()
 
 		if("citizenship")
-			var/choice = tgui_input_list(ui.user, "Where do you hail from?", "Place of Origin", CITIZENSHIP_CHOICES)
+			var/choice = tgui_input_list(ui.user, "你来自哪里?", "出身地", CITIZENSHIP_CHOICES)
 			if(!choice)
 				return
 			citizenship = choice
 
 		if("religion")
-			var/choice = tgui_input_list(ui.user, "What religion do you belive in?", "Belief", RELIGION_CHOICES)
+			var/choice = tgui_input_list(ui.user, "你信仰什么宗教?", "信仰", RELIGION_CHOICES)
 			if(!choice)
 				return
 			religion = choice
@@ -768,7 +768,7 @@
 					filtered_voices += v
 				else if(gender == FEMALE && (v in female_voices))
 					filtered_voices += v
-			var/choice = tgui_input_list(ui.user, "What do you sound like?", "TTS", filtered_voices)
+			var/choice = tgui_input_list(ui.user, "你的声音听起来像什么?", "TTS", filtered_voices)
 			if(!choice)
 				return
 			tts_voice = choice
@@ -828,7 +828,7 @@
 			parent?.attempt_auto_fit_viewport()
 
 		if("sound_tts")
-			var/choice = tgui_input_list(ui.user, "What kind of TTS do you want?", "TTS choice", GLOB.all_tts_options)
+			var/choice = tgui_input_list(ui.user, "你想要哪种TTS?", "TTS选择", GLOB.all_tts_options)
 			if(!choice)
 				return
 			sound_tts = choice
@@ -921,11 +921,11 @@
 
 		if("change_quick_equip")
 			var/editing_slot = params["selection"]
-			var/slot = tgui_input_list(usr, "Which slot would you like to draw/equip from?", "Preferred Slot", SLOT_FLUFF_DRAW)
+			var/slot = tgui_input_list(usr, "你想从哪个槽位抽取/装备?", "首选槽位", SLOT_FLUFF_DRAW)
 			if(!slot)
 				return
 			quick_equip[editing_slot] = slot_fluff_to_flag(slot)
-			to_chat(src, span_notice("You will now equip/draw from the [slot] slot first."))
+			to_chat(src, span_notice("你现在将优先从[slot]槽位装备/抽取."))
 
 		if("equip_slot_equip_position")
 			var/returned_item_list_position = slot_draw_order_pref.Find(slot_fluff_to_flag(params["changing_item"]))
@@ -1084,7 +1084,7 @@
 			var/expires = "This is a permanent ban."
 			if(ban_details["expiration_time"])
 				expires = " The ban is for [DisplayTimeText(text2num(ban_details["duration"]) MINUTES)] and expires on [ban_details["expiration_time"]] (server time)."
-			to_chat(user, span_danger("You, or another user of this computer or connection ([ban_details["key"]]) is banned from playing [params["role"]].<br>The ban reason is: [ban_details["reason"]]<br>This ban (BanID #[ban_details["id"]]) was applied by [ban_details["admin_key"]] on [ban_details["bantime"]] during round ID [ban_details["round_id"]].<br>[expires]"))
+			to_chat(user, span_danger("你, 或此电脑或连接的另一位用户 ([ban_details["key"]]) 已被禁止游玩[params["role"]].<br>封禁原因为: [ban_details["reason"]]<br>此封禁 (封禁ID #[ban_details["id"]]) 由[ban_details["admin_key"]]于[ban_details["bantime"]]在回合ID [ban_details["round_id"]]期间施加.<br>[expires]"))
 
 		if("widescreenpref")
 			widescreenpref = !widescreenpref

@@ -1,6 +1,6 @@
 /obj/item/explosive/grenade/emp
-	name = "\improper EMP grenade"
-	desc = "A compact device that releases a strong electromagnetic pulse on activation. Is capable of damaging or degrading various electronic system. Capable of being loaded in the any grenade launcher, or thrown by hand."
+	name = "\improper EMP手榴弹"
+	desc = "一种紧凑装置,激活时释放强电磁脉冲.能够损坏或降低各种电子系统的性能.可装入任何榴弹发射器,也可用手投掷."
 	icon_state = "emp"
 	worn_icon_state = "emp"
 	overlay_type = "blue"

@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/cup/glass/drinking_glass
-	name = "drinking glass"
-	desc = "Your standard drinking glass."
+	name = "玻璃杯"
+	desc = "你的标准玻璃杯."
 	icon_state = "glass_empty"
 	base_icon_state = "glass_empty"
 	amount_per_transfer_from_this = 10
@@ -39,7 +39,7 @@
 /obj/item/reagent_containers/cup/glass/drinking_glass/examine(mob/user)
 	. = ..()
 	if(HAS_TRAIT(src, TRAIT_WAS_RENAMED))
-		. += span_notice("This glass has been given a custom name. It can be removed by washing it.")
+		. += span_notice("这个玻璃杯被赋予了自定义名称.清洗后可以移除.")
 
 /obj/item/reagent_containers/cup/glass/drinking_glass/attack_alien(mob/living/carbon/xenomorph/xeno_attacker, damage_amount = xeno_attacker.xeno_caste.melee_damage, damage_type = BRUTE, armor_type = MELEE, effects = TRUE, armor_penetration = 0, isrightclick = FALSE)
 	if(!CONFIG_GET(flag/fun_allowed))
@@ -63,8 +63,8 @@
 //  This is on a case-by-case basis, and you can even make a separate sprite for shot glasses if you want. //
 
 /obj/item/reagent_containers/cup/glass/drinking_glass/shotglass
-	name = "shot glass"
-	desc = "A shot glass - the universal symbol for bad decisions."
+	name = "烈酒杯"
+	desc = "一个烈酒杯 - 糟糕决定的通用象征."
 	icon = 'icons/obj/drinks/shot_glasses.dmi'
 	icon_state = "shotglass"
 	base_icon_state = "shotglass"
@@ -97,24 +97,24 @@
 	update_appearance()
 
 /obj/item/reagent_containers/cup/glass/drinking_glass/filled/soda
-	name = "Soda Water"
+	name = "苏打水"
 	list_reagents = list(/datum/reagent/consumable/sodawater = 50)
 
 /obj/item/reagent_containers/cup/glass/drinking_glass/filled/cola
-	name = "Space Cola"
+	name = "太空可乐"
 	list_reagents = list(/datum/reagent/consumable/space_cola = 50)
 
 /obj/item/reagent_containers/cup/glass/drinking_glass/filled/nuka_cola
-	name = "Nuka Cola"
+	name = "核子可乐"
 	list_reagents = list(/datum/reagent/consumable/nuka_cola = 50)
 
 /obj/item/reagent_containers/cup/glass/drinking_glass/filled/pina_colada
-	name = "Pina Colada"
+	name = "椰林飘香"
 	list_reagents = list(/datum/reagent/consumable/ethanol/pina_colada = 50)
 
 /obj/item/reagent_containers/cup/glass/drinking_glass/filled/half_full
-	name = "half full glass of water"
-	desc  = "It's a glass of water. It seems half full. Or is it half empty? You're pretty sure it's full of shit."
+	name = "半杯水"
+	desc  = "这是一杯水.看起来是半满的.还是半空的?你相当确定它装的全是狗屎."
 	list_reagents = list(/datum/reagent/water = 25)
 
 /obj/item/reagent_containers/cup/glass/drinking_glass/filled/half_full/Initialize(mapload, vol)

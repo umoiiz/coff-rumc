@@ -1,10 +1,10 @@
 /datum/language/moth
-	name = "Lepidopterian"
-	desc = "The common language of moths, composed of various noises made of wing fluttering and clicks."
-	speech_verb = "flutters"
-	ask_verb = "clicks"
-	exclaim_verb = "buzzes"
-	sing_verb = "hums"
+	name = "鳞翅目语"
+	desc = "蛾类的通用语言,由翅膀扑动和咔嗒声组成的各种噪音."
+	speech_verb = "扑动"
+	ask_verb = "咔嗒"
+	exclaim_verb = "嗡嗡"
+	sing_verb = "哼鸣"
 	key = "m"
 	space_chance = 45
 	syllables = list("bz", "ba", "mah", "fa", "ki", "nr")

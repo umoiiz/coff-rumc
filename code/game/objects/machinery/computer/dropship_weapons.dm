@@ -1,7 +1,7 @@
 
 /obj/machinery/computer/dropship_weapons
 	name = "abstract dropship weapons controls"
-	desc = "A computer to manage equipments and weapons installed on the dropship."
+	desc = "一台用于管理安装在投放艇上的装备和武器的计算机."
 	density = TRUE
 	icon = 'icons/obj/machines/shuttle_console.dmi'
 	icon_state = "consoleright"
@@ -80,8 +80,8 @@
 			if(!istype(L))
 				return
 			if(!L.skills.getRating(SKILL_PILOT)) //everyone can fire dropship weapons while fumbling.
-				L.visible_message(span_notice("[L] fumbles around figuring out how to use the automated targeting system."),
-				span_notice("You fumble around figuring out how to use the automated targeting system."))
+				L.visible_message(span_notice("[L]笨拙地摸索着如何使用自动瞄准系统."),
+				span_notice("你笨拙地摸索着如何使用自动瞄准系统."))
 				var/fumbling_time = 10 SECONDS
 				if(!do_after(L, fumbling_time, NONE, src, BUSY_ICON_UNSKILLED))
 					return FALSE
@@ -89,19 +89,19 @@
 				var/obj/effect/overlay/temp/laser_target/LT = X
 				if(LT.target_id == targ_id)
 					if(shuttle.mode != SHUTTLE_CALL)
-						to_chat(L, span_warning("Dropship can only fire while in flight."))
+						to_chat(L, span_warning("投放艇只能在飞行时开火."))
 						return
 					if(shuttle.mode == SHUTTLE_HIJACK_LOCK)
 						return
 					if(!(selected_equipment?.dropship_equipment_flags & IS_WEAPON))
-						to_chat(L, span_warning("No weapon selected."))
+						to_chat(L, span_warning("未选择武器."))
 						return
 					var/obj/structure/dropship_equipment/cas/weapon/DEW = selected_equipment
 					if(!DEW.ammo_equipped || DEW.ammo_equipped.ammo_count <= 0)
-						to_chat(L, span_warning("[DEW] has no ammo."))
+						to_chat(L, span_warning("[DEW]没有弹药了."))
 						return
 					if(!COOLDOWN_FINISHED(DEW, last_fired))
-						to_chat(L, span_warning("[DEW] just fired, wait for it to cool down."))
+						to_chat(L, span_warning("[DEW]刚刚开火,等待其冷却."))
 						return
 					if(QDELETED(LT)) // Quick final check on the Laser target
 						return

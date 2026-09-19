@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/hypospray
-	name = "Hypospray"
-	desc = "The hypospray is a sterile, air-needle reusable autoinjector for rapid administration of drugs to patients with customizable dosages."
+	name = "注射器"
+	desc = "注射器是一种无菌、无针的可重复使用自动注射器,可为患者快速注射可自定义剂量的药物。"
 	icon = 'icons/obj/items/syringe.dmi'
 	worn_icon_state = "hypo"
 	icon_state = "hypo"
@@ -20,10 +20,10 @@
 	var/description_overlay = ""
 
 /obj/item/reagent_containers/hypospray/proc/empty(mob/user)
-	if(tgui_alert(user, "Are you sure you want to empty [src]?", "Flush [src]:", list("Yes", "No")) != "Yes")
+	if(tgui_alert(user, "你确定要清空[src]吗?", "冲洗[src]:", list("Yes", "No")) != "Yes")
 		return
 	if(isturf(user.loc))
-		user.balloon_alert(user, "Flushes hypospray.")
+		user.balloon_alert(user, "冲洗注射器。")
 		reagents.reaction(user.loc)
 		reagents.clear_reagents()
 
@@ -39,13 +39,13 @@
 		return
 
 	if(!reagents.total_volume)
-		balloon_alert(user, "Hypospray is Empty.")
+		balloon_alert(user, "注射器是空的。")
 		return
 	if(!A.is_injectable() && !ismob(A))
 		return
 	if(skilllock && user.skills.getRating(SKILL_MEDICAL) < SKILL_MEDICAL_NOVICE)
-		user.visible_message(span_notice("[user] fumbles around figuring out how to use the [src]."),
-		span_notice("You fumble around figuring out how to use the [src]."))
+		user.visible_message(span_notice("[user]笨手笨脚地摸索着如何使用[src]。"),
+		span_notice("你笨手笨脚地摸索着如何使用[src]。"))
 		if(!do_after(user, SKILL_TASK_EASY, NONE, A, BUSY_ICON_UNSKILLED) || (!in_range(A, user) || !user.Adjacent(A)))
 			return
 	if(ismob(A))
@@ -53,8 +53,8 @@
 		if(!M.can_inject(user, TRUE, user.zone_selected, TRUE))
 			return
 		if(M.faction != user.faction && !M.incapacitated())
-			user.visible_message(span_notice("[user] attempts to inject [M] with [src]."),
-			span_notice("You attempt to inject [M] with [src]."))
+			user.visible_message(span_notice("[user]试图用[src]注射[M]。"),
+			span_notice("你试图用[src]注射[M]。"))
 			if(!do_after(user, SKILL_TASK_VERY_EASY, NONE, A, BUSY_ICON_HOSTILE) || (!in_range(A, user) || !user.Adjacent(A)))
 				return
 
@@ -65,8 +65,8 @@
 
 	if(ismob(A))
 		var/mob/M = A
-		balloon_alert(user, "Injects [M]")
-		to_chat(M, span_warning("You feel a tiny prick!")) // inject self doubleposting
+		balloon_alert(user, "注射[M]")
+		to_chat(M, span_warning("你感到一阵轻微的刺痛!")) // inject self doubleposting
 		record_reagent_consumption(min(amount_per_transfer_from_this, reagents.total_volume), injected, user, M)
 
 	// /mob/living/carbon/human/attack_hand causes
@@ -77,7 +77,7 @@
 	playsound(loc, 'sound/items/hypospray.ogg', 50, 1)
 	reagents.reaction(A, INJECT, min(amount_per_transfer_from_this, reagents.total_volume) / reagents.total_volume)
 	var/trans = reagents.trans_to(A, amount_per_transfer_from_this)
-	to_chat(user, span_notice("[trans] units injected. [reagents.total_volume] units remaining in [src]. ")) // better to not balloon
+	to_chat(user, span_notice("已注射[trans]单位。[src]中还剩余[reagents.total_volume]单位。")) // better to not balloon
 	return TRUE
 
 /obj/item/reagent_containers/hypospray/afterattack_alternate(atom/A, mob/living/user)
@@ -92,15 +92,15 @@
 	if(!A.reagents)
 		return FALSE
 	if(reagents.holder_full())
-		balloon_alert(user, "Hypospray is full.")
+		balloon_alert(user, "注射器是满的。")
 		inject_mode = HYPOSPRAY_INJECT_MODE_INJECT
 		update_icon() //So we now display as Inject
 		return FALSE
 	if(!A.reagents.total_volume)
-		balloon_alert(user, "Hypospray is empty.")
+		balloon_alert(user, "注射器是空的。")
 		return
 	if(!A.is_drawable())
-		balloon_alert(user, "Can't remove reagents.")
+		balloon_alert(user, "无法移除试剂。")
 		return
 
 	if(iscarbon(A))
@@ -116,32 +116,32 @@
 	var/amount = min(reagents.maximum_volume - reagents.total_volume, amount_per_transfer_from_this)
 	var/mob/living/carbon/C = A
 	if(C.get_blood_id() && reagents.has_reagent(C.get_blood_id()))
-		balloon_alert(user, "Already have a blood sample.")
+		balloon_alert(user, "已经有血液样本了。")
 		return
 	if(!C.blood_type)
-		balloon_alert(user, "Can't locate blood.")
+		balloon_alert(user, "找不到血液。")
 		return
 	if(C.blood_volume <= BLOOD_VOLUME_SURVIVE)
-		balloon_alert(user, "No blood to draw.")
+		balloon_alert(user, "没有血液可抽取。")
 		return
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
 		if(H.species.species_flags & NO_BLOOD)
-			balloon_alert(user, "Can't locate blood.")
+			balloon_alert(user, "找不到血液。")
 			return
 		else
 			C.take_blood(src,amount)
 	else
 		C.take_blood(src,amount)
 	reagents.handle_reactions()
-	user.visible_message("<span clas='warning'>[user] takes a blood sample from [A].</span>",
-						span_notice("You take a blood sample from [A]."), null, 4)
+	user.visible_message("<span clas='warning'>[user]从[A]中抽取了血液样本。</span>",
+						span_notice("你从[A]中抽取了血液样本。"), null, 4)
 	on_reagent_change()
 
 ///Checks if a container is drawable, then draw reagents from the container
 /obj/item/reagent_containers/hypospray/proc/draw_reagent(atom/A, mob/living/user)
 	var/trans = A.reagents.trans_to(src, amount_per_transfer_from_this)
-	balloon_alert(user, "Fills with [trans] units.")
+	balloon_alert(user, "装满[trans]单位。")
 
 	on_reagent_change()
 
@@ -206,35 +206,35 @@
 	switch(action)
 		if("ActivateAutolabeler")
 			var/mob/user = usr
-			var/str = copytext(reject_bad_text(tgui_input_text(user,"Hypospray label text?", "Set label", "", MAX_NAME_LEN, timeout = 0)), 1, MAX_NAME_LEN)
+			var/str = copytext(reject_bad_text(tgui_input_text(user,"注射器标签文本?", "设置标签", "", MAX_NAME_LEN, timeout = 0)), 1, MAX_NAME_LEN)
 			if(!length(str))
-				user.balloon_alert(user, "Invalid text.")
+				user.balloon_alert(user, "无效文本。")
 				return
-			balloon_alert(user, "Labeled \"[str]\".")
+			balloon_alert(user, "已标记为\"[str]\"。")
 			name = "[core_name] ([str])"
 			label = str
 
 		if("ActivateTagger")
 			var/mob/user = usr
-			var/str = copytext(reject_bad_text(tgui_input_text(user,"Hypospray tag text?", "Set tag", "", MAX_NAME_HYPO, timeout = 0)), 1, MAX_NAME_HYPO)
+			var/str = copytext(reject_bad_text(tgui_input_text(user,"注射器标记文本?", "设置标签", "", MAX_NAME_HYPO, timeout = 0)), 1, MAX_NAME_HYPO)
 			if(!length(str))
-				user.balloon_alert(user, "Invalid text.")
+				user.balloon_alert(user, "无效文本.")
 				return
-			user.balloon_alert(user, "You tag [src] as \"[str]\".")
+			user.balloon_alert(user, "你将[src]标记为\"[str]\".")
 			description_overlay = str
 			update_icon()
 
 		if("ToggleMode")
 			if(inject_mode)
-				to_chat(usr, span_notice("[src] has been set to draw mode. It will now drain reagents."))
+				to_chat(usr, span_notice("[src]已设置为抽取模式. 现在将抽取试剂."))
 
 			else
-				to_chat(usr, span_notice("[src] has been set to inject mode. It will now inject reagents."))
+				to_chat(usr, span_notice("[src]已设置为注射模式. 现在将注射试剂."))
 			inject_mode = !inject_mode
 			update_icon()
 
 		if("SetTransferAmount")
-			var/N = tgui_input_list(usr, "Amount per transfer from this:", "[src]", possible_transfer_amounts)
+			var/N = tgui_input_list(usr, "每次转移量:", "[src]", possible_transfer_amounts)
 			if(!N)
 				return
 
@@ -244,8 +244,8 @@
 			empty(usr)
 
 /obj/item/reagent_containers/hypospray/advanced
-	name = "Advanced hypospray"
-	desc = "The hypospray is a sterile, air-needle reusable autoinjector for rapid administration of drugs to patients with customizable dosages. Comes complete with an internal reagent analyzer, digital labeler and 2 letter tagger. Handy."
+	name = "高级注射器"
+	desc = "注射器是一种无菌、无针可重复使用的自动注射器, 用于以可自定义的剂量快速向患者给药. 配有内置试剂分析仪、数字标签器和2字母标记器. 很方便."
 	core_name = "hypospray"
 	icon_state = "hypo"
 	reagent_flags = REFILLABLE|DRAINABLE
@@ -320,12 +320,12 @@
 /obj/item/reagent_containers/hypospray/advanced/examine(mob/user as mob)
 	. = ..()
 	if(get_dist(user,src) > 2)
-		. += span_warning("You're too far away to see [src]'s reagent display!")
+		. += span_warning("你离得太远, 看不到[src]的试剂显示!")
 		return
 
 	. += "" // for some weird reason, without this lower lines get in line with item's size line
 	. += display_reagents(user)
-	. += span_warning("<b>Use</b> to inject into yourself. <b>Unique Action</b> to configure injection amount.")
+	. += span_warning("<b>使用</b>注射到自己体内. <b>独特动作</b>来配置注射量.")
 
 /// The proc display_reagents controls the information utilised in the hypospray menu/. Specifically how much of a chem there is, what percent that entails, and what type of chem it is if that is a known chem.
 /obj/item/reagent_containers/hypospray/advanced/proc/display_reagents(mob/user)
@@ -341,51 +341,51 @@
 				dat += "\n \t <b>[R]:</b> [R.volume]|[percent]% <b>Amount per dose:</b> [dose]</br>"
 			else
 				dat += "\n \t <b>Unknown:</b> [R.volume]|[percent]% <b>Amount per dose:</b> [dose]</br>"
-	return span_notice("[src]'s reagent display shows the following contents: [dat.Join(" ")]")
+	return span_notice("[src]的试剂显示如下内容: [dat.Join(" ")]")
 
 /obj/item/reagent_containers/hypospray/advanced/bicaridine
-	name = "bicaridine hypospray"
-	desc = "A hypospray loaded with bicaridine. A chemical that heal cuts and bruises."
+	name = "双卡利定注射器"
+	desc = "装有双卡利定的注射器. 一种治疗割伤和瘀伤的化学物质."
 	list_reagents = list(
 		/datum/reagent/medicine/bicaridine = 120,
 	)
 	description_overlay = "Bi"
 
 /obj/item/reagent_containers/hypospray/advanced/kelotane
-	name = "kelotane hypospray"
-	desc = "A hypospray loaded with kelotane. A chemical that heal burns."
+	name = "凯洛坦注射器"
+	desc = "装有凯洛坦的注射器. 一种治疗烧伤的化学物质."
 	list_reagents = list(
 		/datum/reagent/medicine/kelotane = 120,
 	)
 	description_overlay = "Ke"
 
 /obj/item/reagent_containers/hypospray/advanced/tramadol
-	name = "tramadol hypospray"
-	desc = "A hypospray loaded with tramadol. A chemical that numbs pain."
+	name = "曲马多注射器"
+	desc = "装有曲马多的注射器. 一种麻痹疼痛的化学物质."
 	list_reagents = list(
 		/datum/reagent/medicine/tramadol = 120,
 	)
 	description_overlay = "Ta"
 
 /obj/item/reagent_containers/hypospray/advanced/tricordrazine
-	name = "tricordrazine hypospray"
-	desc = "A hypospray loaded with tricordrazine. A chemical that heal cuts, bruises, burns, toxicity, and oxygen deprivation."
+	name = "三科德拉嗪注射器"
+	desc = "装有三科德拉嗪的注射器. 一种治疗割伤、瘀伤、烧伤、中毒和缺氧的化学物质."
 	list_reagents = list(
 		/datum/reagent/medicine/tricordrazine = 120,
 	)
 	description_overlay = "Ti"
 
 /obj/item/reagent_containers/hypospray/advanced/dylovene
-	name = "dylovene hypospray"
-	desc = "A hypospray loaded with dylovene. A chemical that heal toxicity whilst purging toxins, hindering stamina in the process."
+	name = "地洛芬注射器"
+	desc = "装有地洛芬的注射器. 一种治疗中毒同时清除毒素的化学物质, 在此过程中会削弱耐力."
 	list_reagents = list(
 		/datum/reagent/medicine/dylovene = 120,
 	)
 	description_overlay = "Dy"
 
 /obj/item/reagent_containers/hypospray/advanced/inaprovaline
-	name = "inaprovaline hypospray"
-	desc = "A hypospray loaded with inaprovaline."
+	name = "英诺普洛瓦林注射器"
+	desc = "装有英诺普洛瓦林的注射器."
 	amount_per_transfer_from_this = 15
 	list_reagents = list(
 		/datum/reagent/medicine/inaprovaline = 120,
@@ -393,8 +393,8 @@
 	description_overlay = "In"
 
 /obj/item/reagent_containers/hypospray/advanced/meralyne
-	name = "meralyne hypospray"
-	desc = "A hypospray loaded with meralyne. An advanced chemical that heal cuts and bruises rapidly."
+	name = "美拉林注射器"
+	desc = "装有美拉林的注射器. 一种快速治疗割伤和瘀伤的高级化学物质."
 	amount_per_transfer_from_this = 5
 	list_reagents = list(
 		/datum/reagent/medicine/meralyne = 120,
@@ -402,8 +402,8 @@
 	description_overlay = "Mr"
 
 /obj/item/reagent_containers/hypospray/advanced/dermaline
-	name = "dermaline hypospray"
-	desc = "A hypospray loaded with dermaline. An advanced chemical that heal burns rapdily."
+	name = "德马林注射器"
+	desc = "装有德马林的注射器. 一种快速治疗烧伤的高级化学物质."
 	amount_per_transfer_from_this = 5
 	list_reagents = list(
 		/datum/reagent/medicine/dermaline = 120,
@@ -411,8 +411,8 @@
 	description_overlay = "Dr"
 
 /obj/item/reagent_containers/hypospray/advanced/combat_advanced
-	name = "advanced combat hypospray"
-	desc = "A hypospray loaded with several doses of advanced healing and painkilling chemicals. Intended for use in active combat."
+	name = "高级战斗注射器"
+	desc = "装有数剂高级治疗和止痛化学物质的注射器. 用于实战."
 	list_reagents = list(
 		/datum/reagent/medicine/meralyne = 40,
 		/datum/reagent/medicine/dermaline = 40,
@@ -421,8 +421,8 @@
 	description_overlay = "Av"
 
 /obj/item/reagent_containers/hypospray/advanced/meraderm
-	name = "meraderm hypospray"
-	desc = "A hypospray loaded with meralyne and dermaline."
+	name = "美拉德姆注射器"
+	desc = "装有美拉林和德马林的注射器."
 	list_reagents = list(
 		/datum/reagent/medicine/meralyne = 60,
 		/datum/reagent/medicine/dermaline = 60,
@@ -430,14 +430,14 @@
 	description_overlay = "MD"
 
 /obj/item/reagent_containers/hypospray/advanced/oxycodone
-	name = "oxycodone hypospray"
-	desc = "A hypospray loaded with oxycodone. An advanced but highly addictive chemical which almost entirely negates pain and shock."
+	name = "羟考酮注射器"
+	desc = "装有羟考酮的注射器. 一种高级但极易成瘾的化学物质, 几乎可以完全消除疼痛和休克."
 	list_reagents = list(/datum/reagent/medicine/oxycodone = 120)
 	description_overlay = "Ox"
 
 /obj/item/reagent_containers/hypospray/advanced/hypervene
-	name = "hypervene hypospray"
-	desc = "A hypospray loaded with hypervene. A chemical that rapdidly flushes the body of all chemicals and toxins."
+	name = "超维恩注射器"
+	desc = "装有超维恩的注射器. 一种能迅速冲洗体内所有化学物质和毒素的化学物质."
 	amount_per_transfer_from_this = 3
 	list_reagents = list(
 		/datum/reagent/hypervene = 120,
@@ -445,8 +445,8 @@
 	description_overlay = "Ht"
 
 /obj/item/reagent_containers/hypospray/advanced/nanoblood
-	name = "nanoblood hypospray"
-	desc = "A hypospray loaded with nanoblood. A chemical which rapidly restores blood at the cost of minor toxic damage."
+	name = "纳米血注射器"
+	desc = "装有纳米血的注射器. 一种能迅速恢复血液的化学物质, 代价是轻微的毒性伤害."
 	amount_per_transfer_from_this = 5
 	volume = 60
 	list_reagents = list(
@@ -455,8 +455,8 @@
 	description_overlay = "Na"
 
 /obj/item/reagent_containers/hypospray/advanced/peridaxon
-	name = "Peridaxon hypospray"
-	desc = "A hypospray loaded with Peridaxon,  a chemical that removes the consequences from organs !DO NOT USE MORE THAN ONCE AT A TIME!"
+	name = "哌利达松注射器"
+	desc = "装有哌利达松的注射器, 一种能消除器官损伤后果的化学物质! 一次不要使用超过一次!"
 	amount_per_transfer_from_this = 5
 	list_reagents = list(
 		/datum/reagent/medicine/peridaxon = 120,
@@ -464,8 +464,8 @@
 	description_overlay = "Pe"
 
 /obj/item/reagent_containers/hypospray/advanced/peridaxonplus
-	name = "Peridaxon+ hypospray"
-	desc = "A hypospray loaded with Peridaxon Plus, a chemical that heals organs while causing a buildup of toxins. Use with antitoxin. !DO NOT USE IN ACTIVE COMBAT!"
+	name = "哌利达松+注射器"
+	desc = "装有哌利达松+的注射器, 一种能治疗器官同时导致毒素积累的化学物质. 与抗毒素一起使用. !不要在实战中使用!"
 	amount_per_transfer_from_this = 3
 	list_reagents = list(
 		/datum/reagent/medicine/peridaxon_plus = 40,
@@ -474,8 +474,8 @@
 	description_overlay = "Pe+"
 
 /obj/item/reagent_containers/hypospray/advanced/peridaxonplus_medkit
-	name = "Peridaxon+ hypospray"
-	desc = "A hypospray loaded with Peridaxon Plus, a chemical that heals organs while causing a buildup of toxins. Use with antitoxin. !DO NOT USE IN ACTIVE COMBAT!"
+	name = "哌利达松+注射器"
+	desc = "装有哌利达松+的注射器, 一种能治疗器官同时导致毒素积累的化学物质. 与抗毒素一起使用. !不要在实战中使用!"
 	amount_per_transfer_from_this = 3
 	list_reagents = list(
 		/datum/reagent/medicine/peridaxon_plus = 6,
@@ -484,8 +484,8 @@
 	description_overlay = "Pe+"
 
 /obj/item/reagent_containers/hypospray/advanced/quickclot
-	name = "Quickclot hypospray"
-	desc = "A hypospray loaded with quick-clot, a a chemical designed to pause all bleeding. Renew doses as needed."
+	name = "速凝注射器"
+	desc = "装有速凝的注射器, 一种旨在暂停所有出血的化学物质. 根据需要补充剂量."
 	amount_per_transfer_from_this = 15
 	list_reagents = list(
 		/datum/reagent/medicine/quickclot = 120,
@@ -493,8 +493,8 @@
 	description_overlay = "Qk"
 
 /obj/item/reagent_containers/hypospray/advanced/quickclotplus
-	name = "Quickclot+ hypospray"
-	desc = "A hypospray loaded with quick-clot plus, a chemical designed to remove internal bleeding. Use with antitoxin. !DO NOT USE IN ACTIVE COMBAT!"
+	name = "速凝+注射器"
+	desc = "装有速凝+的注射器, 一种旨在消除内出血的化学物质. 与抗毒素一起使用. !不要在实战中使用!"
 	amount_per_transfer_from_this = 5
 	list_reagents = list(
 		/datum/reagent/medicine/quickclotplus = 120,
@@ -502,8 +502,8 @@
 	description_overlay = "Qk+"
 
 /obj/item/reagent_containers/hypospray/advanced/quickclotplus_medkit
-	name = "Quickclot+ hypospray"
-	desc = "A hypospray loaded with quick-clot plus, a chemical designed to remove internal bleeding. Use with antitoxin. !DO NOT USE IN ACTIVE COMBAT!"
+	name = "速凝+注射器"
+	desc = "装有速凝+的注射器, 一种旨在消除内出血的化学物质. 与抗毒素一起使用. !不要在实战中使用!"
 	amount_per_transfer_from_this = 5
 	list_reagents = list(
 		/datum/reagent/medicine/quickclotplus = 30,
@@ -511,8 +511,8 @@
 	description_overlay = "Qk+"
 
 /obj/item/reagent_containers/hypospray/advanced/russian_red
-	name = "Russian Red hypospray"
-	desc = "A hypospray loaded with Russian Red, a chemical that heals all damage rapidly at the cost of small amounts of unhealable damage."
+	name = "俄罗斯红注射器"
+	desc = "装有俄罗斯红的注射器, 一种能快速治疗所有伤害的化学物质, 代价是少量无法治疗的伤害."
 	amount_per_transfer_from_this = 10
 	list_reagents = list(
 		/datum/reagent/medicine/russian_red = 120,
@@ -520,8 +520,8 @@
 	description_overlay = "Rr"
 
 /obj/item/reagent_containers/hypospray/advanced/big
-	name = "big hypospray"
-	desc = "MK2 medical hypospray, which manages to fit even more reagents. Comes complete with an internal reagent analyzer, digital labeler and 2 letter tagger. Handy. This one is a 120 unit version."
+	name = "大型注射器"
+	desc = "MK2医疗注射器, 能容纳更多试剂. 配有内置试剂分析仪、数字标签器和2字母标记器. 很方便. 这个是120单位版本."
 	worn_icon_state = "hypomed"
 	icon_state = "hypomed"
 	core_name = "hypospray"
@@ -529,40 +529,40 @@
 	possible_transfer_amounts = list(1, 3, 5, 10, 15, 20, 30, 60, 120, 240)
 
 /obj/item/reagent_containers/hypospray/advanced/big/bicaridine
-	name = "big bicaridine hypospray"
-	desc = "A hypospray loaded with bicaridine. A chemical that heal cuts and bruises."
+	name = "大型双卡利定注射器"
+	desc = "装有双卡利定的注射器. 一种治疗割伤和瘀伤的化学物质."
 	list_reagents = list(
 		/datum/reagent/medicine/bicaridine = 240,
 	)
 	description_overlay = "Bi"
 
 /obj/item/reagent_containers/hypospray/advanced/big/kelotane
-	name = "big kelotane hypospray"
-	desc = "A hypospray loaded with kelotane. A chemical that heal burns."
+	name = "大型凯洛坦注射器"
+	desc = "装有凯洛坦的注射器. 一种治疗烧伤的化学物质."
 	list_reagents = list(
 		/datum/reagent/medicine/kelotane = 240,
 	)
 	description_overlay = "Ke"
 
 /obj/item/reagent_containers/hypospray/advanced/big/tramadol
-	name = "big tramadol hypospray"
-	desc = "A hypospray loaded with tramadol. A chemical that numbs pain."
+	name = "大型曲马多注射器"
+	desc = "装有曲马多的注射器. 一种麻痹疼痛的化学物质."
 	list_reagents = list(
 		/datum/reagent/medicine/tramadol = 240,
 	)
 	description_overlay = "Ta"
 
 /obj/item/reagent_containers/hypospray/advanced/big/tricordrazine
-	name = "big tricordrazine hypospray"
-	desc = "A hypospray loaded with tricordrazine. A chemical that heal cuts, bruises, burns, toxicity, and oxygen deprivation."
+	name = "大型三科德拉嗪注射器"
+	desc = "一种装有三卡因的注射器. 一种能治疗割伤, 瘀伤, 烧伤, 中毒和缺氧的化学物质."
 	list_reagents = list(
 		/datum/reagent/medicine/tricordrazine = 240,
 	)
 	description_overlay = "Ti"
 
 /obj/item/reagent_containers/hypospray/advanced/big/combatmix
-	name = "big combat mix hypospray"
-	desc = "A hypospray loaded with combat mix. There's a tag that reads BKTT 80:80:40:40."
+	name = "大型战斗混合注射器"
+	desc = "一种装有战斗混合物的注射器. 上面有个标签写着 BKTT 80:80:40:40."
 	amount_per_transfer_from_this = 15
 	list_reagents = list(
 		/datum/reagent/medicine/bicaridine = 80,
@@ -573,16 +573,16 @@
 	description_overlay = "Cm"
 
 /obj/item/reagent_containers/hypospray/advanced/big/dylovene
-	name = "big dylovene hypospray"
-	desc = "A hypospray loaded with dylovene. A chemical that heal toxicity whilst purging toxins, hindering stamina in the process."
+	name = "大型二氯苯注射器"
+	desc = "一种装有二氯苯的注射器. 一种能治疗中毒同时清除毒素的化学物质, 但会削弱耐力."
 	list_reagents = list(
 		/datum/reagent/medicine/dylovene = 240,
 	)
 	description_overlay = "Dy"
 
 /obj/item/reagent_containers/hypospray/advanced/big/inaprovaline
-	name = "big inaprovaline hypospray"
-	desc = "A hypospray loaded with inaprovaline. An emergency chemical used to stabilize and heal critical patients."
+	name = "大型肌苷注射器"
+	desc = "一种装有肌苷的注射器. 一种用于稳定和治疗危重病人的急救化学物质."
 	amount_per_transfer_from_this = 15
 	list_reagents = list(
 		/datum/reagent/medicine/inaprovaline = 240,
@@ -590,24 +590,24 @@
 	description_overlay = "In"
 
 /obj/item/reagent_containers/hypospray/advanced/big/isotonic
-	name = "big isotonic hypospray"
-	desc = "A hypospray loaded with isotonic. A chemical that aids in replenishing blood."
+	name = "大型等渗注射器"
+	desc = "一种装有等渗液的注射器. 一种有助于补充血液的化学物质."
 	list_reagents = list(
 		/datum/reagent/medicine/saline_glucose = 240,
 	)
 	description_overlay = "Is"
 
 /obj/item/reagent_containers/hypospray/advanced/big/spaceacillin
-	name = "big spaceacillin hypospray"
-	desc = "A hypospray loaded with spaceacillin. A chemical which fights viral and bacterial infections."
+	name = "大型太空青霉素注射器"
+	desc = "一种装有太空青霉素的注射器. 一种对抗病毒和细菌感染的化学物质."
 	list_reagents = list(
 		/datum/reagent/medicine/spaceacillin = 240,
 	)
 	description_overlay = "Sp"
 
 /obj/item/reagent_containers/hypospray/advanced/imialky
-	name = "big imialky hypospray"
-	desc = "A hypospray loaded with a mixture of imidazoline and alkysine. Chemicals that will heal brain, eyes, and ears."
+	name = "大型伊米亚基注射器"
+	desc = "一种装有咪唑啉和烷基胺混合物的注射器. 能治疗大脑, 眼睛和耳朵的化学物质."
 	amount_per_transfer_from_this = 5
 	list_reagents = list(
 		/datum/reagent/medicine/imidazoline = 60,
@@ -616,8 +616,8 @@
 	description_overlay = "Im"
 
 /obj/item/reagent_containers/hypospray/advanced/big/quickclot
-	name = "big quick-clot hypospray"
-	desc = "A hypospray loaded with quick-clot. A chemical that halts internal bleeding and restores blood."
+	name = "大型速凝注射器"
+	desc = "一种装有速凝剂的注射器. 一种能止住内出血并恢复血液的化学物质."
 	list_reagents = list(
 		/datum/reagent/medicine/quickclot = 240,
 	)

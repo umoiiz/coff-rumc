@@ -1,6 +1,6 @@
 /obj/machinery/bioprinter
 	name = "bio/synthetic printer"
-	desc = "It's a machine that can either grow replacement or manufacture synthetic organs."
+	desc = "这是一台可以培育替换器官或制造合成器官的机器。"
 	icon = 'icons/obj/surgery.dmi'
 
 	anchored = TRUE
@@ -33,29 +33,29 @@
 	if(.)
 		return
 	if(working)
-		to_chat(user, "Something is already being printed...")
+		to_chat(user, "已经有东西正在打印了...")
 		return
-	var/choice = tgui_input_list(user, "What would you like to print?", null, products)
+	var/choice = tgui_input_list(user, "您想要打印什么?", null, products)
 	if(!choice)
 		return
 	if(stored_matter >= products[choice][2] && stored_metal >= products[choice][3]) //Matter and metal
 		if(working)
-			to_chat(user, "Something is already being printed...")
+			to_chat(user, "已经有东西正在打印了...")
 			return
 		stored_matter -= products[choice][2] //Matter
 		stored_metal -= products[choice][3] //Metal
-		to_chat(user, span_notice("\The [src] is now printing the selected organ. Please hold."))
+		to_chat(user, span_notice("\The [src] 正在打印选定的器官。请稍候。"))
 		working = 1
 		update_icon()
 		addtimer(CALLBACK(src, PROC_REF(spawn_new_organ), choice), products[choice][4])
 	else
-		to_chat(user, "There is not enough materials in the printer.")
+		to_chat(user, "打印机中的材料不足。")
 
 /obj/machinery/bioprinter/proc/spawn_new_organ(choice)
 	var/new_organ = products[choice][1]
 	new new_organ(get_turf(src))
 	working = 0
-	visible_message("The bio/synthetic printer spits out a new organ.")
+	visible_message("生物/合成打印机吐出了一个新器官。")
 	update_icon()
 
 /obj/machinery/bioprinter/attackby(obj/item/I, mob/user, params)
@@ -65,19 +65,19 @@
 	if(istype(I, /obj/item/reagent_containers/glass/beaker))
 		var/obj/item/reagent_containers/glass/beaker/B = I
 		if(B.reagents.has_reagent(/datum/reagent/medicine/biomass, 30))
-			to_chat(user, span_notice("\The [src] processes \the [I]."))
+			to_chat(user, span_notice("\The [src] 处理 \the [I]。"))
 			stored_matter += 200
 			B.reagents.remove_reagent(/datum/reagent/medicine/biomass, 30)
 
 	else if(istype(I, /obj/item/limb))
-		to_chat(user, span_notice("\The [src] processes \the [I]."))
+		to_chat(user, span_notice("\The [src] 处理 \the [I]。"))
 		stored_matter += 50
 		user.drop_held_item()
 		qdel(I)
 
 	else if(istype(I, /obj/item/stack/sheet/metal))
 		var/obj/item/stack/sheet/metal/M = I
-		to_chat(user, span_notice("\The [src] processes \the [I]."))
+		to_chat(user, span_notice("\The [src] 处理 \the [I]。"))
 		stored_metal += M.amount * 100
 		user.drop_held_item()
 		qdel(I)

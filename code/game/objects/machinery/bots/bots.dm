@@ -1,6 +1,6 @@
 /obj/machinery/bot
 	name = "generic utility robot"
-	desc = "a generic utility robot, ahelp if you see this in game."
+	desc = "一个通用型实用机器人,如果你在游戏中看到这个请使用ahelp。"
 	icon = 'icons/obj/aibots.dmi'
 	density = FALSE
 	anchored = FALSE
@@ -40,7 +40,7 @@
 ///Turns the bot around when it leaves an area to make sure it doesnt wander off
 /obj/machinery/bot/proc/turn_around(datum/target)
 	SIGNAL_HANDLER
-	visible_message(span_warning("\The [src] beeps angrily as it is moved out of it's designated area!"))
+	visible_message(span_warning("\The [src]在被移出其指定区域时愤怒地发出哔哔声!"))
 	step_to(src, get_step(src,REVERSE_DIR(dir)))
 
 /obj/machinery/bot/process()
@@ -76,7 +76,7 @@
 	if(++stuck_counter <= 3)
 		step_to(src, get_step(src, turn(dir, pick(90, -90))))
 		return
-	visible_message(span_warning("\The [src] beeps angrily as it gets stuck!"))
+	visible_message(span_warning("\The [src]在卡住时愤怒地发出哔哔声!"))
 	stop_processing()
 	addtimer(CALLBACK(src, PROC_REF(reactivate)), 20 SECONDS)
 
@@ -85,11 +85,11 @@
 	if(!ishuman(user))
 		return
 	if(!alter_operating_mode)
-		to_chat(user, "This robot doesn't have a switch.")
+		to_chat(user, "这个机器人没有开关。")
 		return
 	if(user.a_intent != INTENT_HELP)
 		return
-	switch(tgui_alert(user, "Do you want to turn \the [src] [is_active ? "off" : "on"]?" , "Bot activation", list("No", "Yes")))
+	switch(tgui_alert(user, "你想要打开\the [src][is_active ? "off" : "on"]吗?" , "机器人激活", list("No", "Yes")))
 		if("No")
 			return
 		if("Yes")
@@ -100,9 +100,9 @@
 
 /obj/machinery/bot/attack_ai(mob/user)
 	if(!alter_operating_mode)
-		to_chat(user, "This robot has a firewall and cannot be remotely accessed.")
+		to_chat(user, "这个机器人有防火墙,无法远程访问。")
 		return
-	switch(tgui_alert(user, "Do you want to turn \the [src] [is_active ? "off" : "on"]?" , "Bot activation", list("No", "Yes")))
+	switch(tgui_alert(user, "你想要打开\the [src][is_active ? "off" : "on"]吗?" , "机器人激活", list("No", "Yes")))
 		if("No")
 			return
 		if("Yes")
@@ -113,7 +113,7 @@
 
 ///handles bot deactivation process
 /obj/machinery/bot/proc/bot_shutdown()
-	balloon_alert_to_viewers("Powers off")
+	balloon_alert_to_viewers("关闭电源")
 	if(deactivation_animation)
 		flick("[deactivation_animation]", src)
 	if(length(shutdownsentences))
@@ -124,7 +124,7 @@
 
 ///handles bot activation process
 /obj/machinery/bot/proc/bot_startup()
-	balloon_alert_to_viewers("Powers on")
+	balloon_alert_to_viewers("开启电源")
 	if(activation_animation)
 		flick("[activation_animation]", src)
 	if(length(awakeningsentences))
@@ -143,7 +143,7 @@
 //these bots are mostly for decoration, you can't turn them on and they have no behavior aside from randomly moving
 /obj/machinery/bot/medbot
 	name = "Medibot"
-	desc = "A little medical robot. He looks somewhat underwhelmed."
+	desc = "一个小型医疗机器人。他看起来有些无精打采。"
 	icon = 'icons/obj/aibots.dmi'
 	icon_state = "medibot0"
 	density = FALSE
@@ -151,7 +151,7 @@
 
 /obj/machinery/bot/mulebot
 	name = "Mulebot"
-	desc = "A Multiple Utility Load Effector bot."
+	desc = "一个多功能装载效应机器人。"
 	icon_state = "mulebot0"
 	density = TRUE
 	anchored = TRUE

@@ -133,30 +133,30 @@ SUBSYSTEM_DEF(points)
 		if(!is_ground_level(beacon.drop_location.z))
 			beacon_list -= beacon_name
 			continue // does this continue even does something?
-	var/datum/supply_beacon/supply_beacon = beacon_list[tgui_input_list(user, "Select the beacon to send supplies", "Beacon choice", beacon_list)]
+	var/datum/supply_beacon/supply_beacon = beacon_list[tgui_input_list(user, "选择信标以发送补给", "信标选择", beacon_list)]
 	if(!istype(supply_beacon))
-		to_chat(user, span_warning("Beacon was not selected"))
+		to_chat(user, span_warning("未选择信标"))
 		return
 
 	if(!fast_delivery_is_active)
-		to_chat(user, span_warning("Fast delivery is not ready"))
+		to_chat(user, span_warning("快速投递尚未就绪"))
 		return FALSE
 	if(!iscrashgamemode(SSticker.mode) && !isdistrocrashgamemode(SSticker.mode) && !iswarfaregamemode(SSticker.mode)) // no RO on crash
 		if(FAST_DELIVERY_COST > supply_points[our_order.faction])
-			to_chat(user, span_warning("Cargo does not have enough points for fast delivery."))
+			to_chat(user, span_warning("货物点数不足以进行快速投递."))
 			return
 
 		supply_points[user.faction] -= FAST_DELIVERY_COST
 
 	//Same checks as for supply console
 	if(!supply_beacon)
-		to_chat(user, span_warning("There was an issue with that beacon. Check it's still active."))
+		to_chat(user, span_warning("该信标出现问题. 请检查它是否仍然有效."))
 		return
 	if(!istype(supply_beacon.drop_location))
-		to_chat(user, span_warning("The [supply_beacon.name] was not detected on the ground."))
+		to_chat(user, span_warning("未在地面上检测到[supply_beacon.name]."))
 		return
 	if(isspaceturf(supply_beacon.drop_location) || supply_beacon.drop_location.density)
-		to_chat(user, span_warning("The [supply_beacon.name]'s landing zone appears to be obstructed or out of bounds."))
+		to_chat(user, span_warning("[supply_beacon.name]的着陆区似乎被阻挡或超出边界."))
 		return
 
 	//Just in case
@@ -173,7 +173,7 @@ SUBSYSTEM_DEF(points)
 	delivery_to_turf(our_order, TC)
 
 	//effects
-	supply_beacon.drop_location.visible_message(span_boldnotice("A supply drop appears suddendly!"))
+	supply_beacon.drop_location.visible_message(span_boldnotice("一个补给空投突然出现!"))
 	playsound(supply_beacon.drop_location,'sound/effects/tadpolehovering.ogg', 30, TRUE)
 
 /datum/controller/subsystem/points/proc/delivery_to_turf(datum/supply_order/our_order, turf/TC)
@@ -258,7 +258,7 @@ SUBSYSTEM_DEF(points)
 	supply_points[user.faction] -= cost
 	LAZYADDASSOCSIMPLE(shoppinglist[O.faction], "[O.id]", O)
 	if(GLOB.directory[O.orderer])
-		to_chat(GLOB.directory[O.orderer], span_notice("Your request [O.id] has been approved!"))
+		to_chat(GLOB.directory[O.orderer], span_notice("你的请求[O.id]已获批准!"))
 	if(GLOB.personal_statistics_list[O.orderer_ckey])
 		var/datum/personal_statistics/personal_statistics = GLOB.personal_statistics_list[O.orderer_ckey]
 		personal_statistics.req_points_used += cost
@@ -268,7 +268,7 @@ SUBSYSTEM_DEF(points)
 	deniedrequests["[O.id]"] = O
 	O.authorised_by = "denied"
 	if(GLOB.directory[O.orderer])
-		to_chat(GLOB.directory[O.orderer], span_notice("Your request [O.id] has been denied!"))
+		to_chat(GLOB.directory[O.orderer], span_notice("你的请求[O.id]已被拒绝!"))
 
 /datum/controller/subsystem/points/proc/copy_order(datum/supply_order/O)
 	var/datum/supply_order/NO = new

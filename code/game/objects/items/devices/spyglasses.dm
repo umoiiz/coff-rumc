@@ -1,6 +1,6 @@
 //antag spyglasses. meant to be an example for map_popups.dm
 /obj/item/clothing/glasses/regular/spy
-	desc = "Made by Nerd. Co's infiltration and surveillance department. Upon closer inspection, there's a small screen in each lens."
+	desc = "由Nerd. Co的渗透与监视部门制造. 仔细观察的话, 每个镜片里都有一个小屏幕."
 	var/obj/item/spy_bug/linked_bug
 
 /obj/item/clothing/glasses/regular/spy/proc/show_to_user(mob/user)//this is the meat of it. most of the map_popup usage is in this.
@@ -9,7 +9,7 @@
 	if(!user.client)
 		return
 	if(!linked_bug)
-		user.audible_message(span_warning("[src] lets off a shrill beep!"))
+		user.audible_message(span_warning("[src]发出刺耳的哔哔声!"))
 	if("spypopup_map" in user.client.screen_maps) //alright, the popup this object uses is already IN use, so the window is open. no point in doing any other work here, so we're good.
 		return
 	user.client.setup_popup("spypopup", 3, 3, 2)
@@ -40,10 +40,10 @@
 
 
 /obj/item/spy_bug
-	name = "pocket protector"
+	name = "口袋保护套"
 	icon = 'icons/obj/clothing/accessories.dmi'
 	icon_state = "pocketprotector"
-	desc = "an advanced peice of espionage equipment in the shape of a pocket protector. it has a built in 360 degree camera for all your nefarious needs. Microphone not included."
+	desc = "一件伪装成口袋保护套的高级间谍设备. 它内置了360度摄像头, 满足你所有不可告人的需求. 不包含麦克风."
 
 	var/obj/item/clothing/glasses/regular/spy/linked_glasses
 	var/atom/movable/screen/map_view/cam_screen
@@ -72,13 +72,13 @@
 
 //it needs to be linked, hence a kit.
 /obj/item/storage/box/rxglasses/spyglasskit
-	name = "spyglass kit"
-	desc = "this box contains <i>cool</i> nerd glasses; with built-in displays to view a linked camera."
+	name = "间谍眼镜套件"
+	desc = "这个盒子里装有<i>酷炫</i>的书呆子眼镜; 内置显示器可查看连接的摄像头."
 
 /obj/item/paper/fluff/nerddocs
-	name = "Espionage For Dummies"
+	name = "间谍活动入门指南"
 	color = "#FFFF00"
-	desc = "An eye gougingly yellow pamphlet with a badly designed image of a detective on it. the subtext says \" The Latest way to violate privacy guidelines!\" "
+	desc = "一本刺眼到令人眼瞎的黄色小册子, 上面印着一个设计拙劣的侦探图像. 副标题写着\"侵犯隐私准则的最新方式!\""
 	info = @{"
 
 Thank you for your purchase of the Nerd Co SpySpeks <small>tm</small>, this paper will be your quick-start guide to violating the privacy of your crewmates in three easy steps!<br><br>Step One: Nerd Co SpySpeks <small>tm</small> upon your face. <br>

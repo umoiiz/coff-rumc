@@ -57,7 +57,7 @@
 	user.changeNext_move(CLICK_CD_MELEE) // Ugh. Ideally we shouldn't be setting cooldowns outside of click code.
 	user.do_attack_animation(src, ATTACK_EFFECT_PUNCH)
 	playsound(loc, 'sound/weapons/tap.ogg', 40, TRUE, -1)
-	user.visible_message(span_danger("[user] hits [src]. Nothing happens."), null, null, COMBAT_MESSAGE_RANGE)
+	user.visible_message(span_danger("[user]击中了[src]. 什么也没发生."), null, null, COMBAT_MESSAGE_RANGE)
 	log_message("Attack by hand/paw (no damage). Attacker - [user].", LOG_MECHA, color="red")
 
 /obj/vehicle/sealed/mecha/bullet_act(atom/movable/projectile/proj, def_zone, piercing_hit) //wrapper
@@ -103,7 +103,7 @@
 	if(!disable_time)
 		return
 	if(!equipment_disabled && LAZYLEN(occupants)) //prevent spamming this message with back-to-back EMPs
-		to_chat(occupants, span_warning("Error -- Connection to equipment control unit has been lost."))
+		to_chat(occupants, span_warning("错误 -- 与设备控制单元的连接已丢失."))
 	mech_emped = TRUE
 	update_appearance(UPDATE_OVERLAYS)
 	var/time_left = timeleft(emp_timer)
@@ -156,9 +156,9 @@
 
 	var/hit_verb = length(attacking_item.attack_verb) ? "[pick(attacking_item.attack_verb)]" : "hit"
 	user.visible_message(
-		span_danger("[user] [hit_verb][plural_s(hit_verb)] [src] with [attacking_item][damage_taken ? "." : ", without leaving a mark!"]"),
-		span_danger("You [hit_verb] [src] with [attacking_item][damage_taken ? "." : ", without leaving a mark!"]"),
-		span_hear("You hear a [hit_verb]."),
+		span_danger("[user] [hit_verb][plural_s(hit_verb)] [src] 用 [attacking_item][damage_taken ? "." : ", without leaving a mark!"]"),
+		span_danger("你[hit_verb] [src] 用 [attacking_item][damage_taken ? "." : ", without leaving a mark!"]"),
+		span_hear("你听到一声[hit_verb]."),
 		COMBAT_MESSAGE_RANGE,
 	)
 
@@ -175,22 +175,22 @@
 	. = TRUE
 	if(construction_state == MECHA_SECURE_BOLTS)
 		construction_state = MECHA_LOOSE_BOLTS
-		to_chat(user, span_notice("You undo the securing bolts."))
+		to_chat(user, span_notice("你拧下固定螺栓."))
 		return
 	if(construction_state == MECHA_LOOSE_BOLTS)
 		construction_state = MECHA_SECURE_BOLTS
-		to_chat(user, span_notice("You tighten the securing bolts."))
+		to_chat(user, span_notice("你拧紧固定螺栓."))
 
 /obj/vehicle/sealed/mecha/crowbar_act(mob/living/user, obj/item/I)
 	. = ..()
 	. = TRUE
 	if(construction_state == MECHA_LOOSE_BOLTS)
 		construction_state = MECHA_OPEN_HATCH
-		to_chat(user, span_notice("You open the hatch to the power unit."))
+		to_chat(user, span_notice("你打开动力单元的舱盖."))
 		return
 	if(construction_state == MECHA_OPEN_HATCH)
 		construction_state = MECHA_LOOSE_BOLTS
-		to_chat(user, span_notice("You close the hatch to the power unit."))
+		to_chat(user, span_notice("你关闭动力单元的舱盖."))
 
 /obj/vehicle/sealed/mecha/welder_act(mob/living/user, obj/item/I)
 	return welder_repair_act(user, I, 100, 4 SECONDS, 0, SKILL_ENGINEER_ENGI, 2, 4 SECONDS)
@@ -218,7 +218,7 @@
 /obj/vehicle/sealed/mecha/proc/ammo_resupply(obj/item/mecha_ammo/reload_box, mob/user,fail_chat_override = FALSE)
 	if(!reload_box.rounds)
 		if(!fail_chat_override)
-			to_chat(user, span_warning("This box of ammo is empty!"))
+			to_chat(user, span_warning("这盒弹药是空的!"))
 		return FALSE
 	var/found_gun
 	for(var/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/gun in flat_equipment)
@@ -246,7 +246,7 @@
 		amount_filled += amount_to_fill
 
 		playsound(get_turf(user), reload_box.load_audio, 50, TRUE)
-		to_chat(user, span_notice("You add [amount_filled] [reload_box.ammo_type][amount_filled > 1?"s":""] to the [gun.name]"))
+		to_chat(user, span_notice("你将[amount_filled] [reload_box.ammo_type][amount_filled > 1?"s":""]添加到[gun.name]"))
 
 		if(!reload_box.rounds && reload_box.qdel_on_empty)
 			qdel(reload_box)
@@ -255,9 +255,9 @@
 
 	if(!fail_chat_override)
 		if(found_gun)
-			to_chat(user, span_notice("You can't fit any more ammo of this type!"))
+			to_chat(user, span_notice("你无法再装入更多这种类型的弹药!"))
 		else
-			to_chat(user, span_notice("None of the equipment on this exosuit can use this ammo!"))
+			to_chat(user, span_notice("这套外骨骼上的任何设备都无法使用这种弹药!"))
 	return FALSE
 
 /obj/vehicle/sealed/mecha/projectile_hit(atom/movable/projectile/proj, cardinal_move, uncrossing)

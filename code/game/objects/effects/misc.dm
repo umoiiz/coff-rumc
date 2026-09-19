@@ -25,7 +25,7 @@
 //The effect when you wrap a dead body in gift wrap
 /obj/effect/spresent
 	name = "strange present"
-	desc = "It's a ... present?"
+	desc = "这是个... 礼物?"
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "strangepresent"
 	density = TRUE
@@ -53,7 +53,7 @@
 
 /obj/effect/projection
 	name = "Projection"
-	desc = "This looks like a projection of something."
+	desc = "这看起来像是某种东西的投影."
 	anchored = TRUE
 
 /obj/effect/rune/attunement
@@ -132,7 +132,7 @@
 
 /obj/effect/forcefield/fog
 	name = "dense fog"
-	desc = "It looks way too dangerous to traverse. Best wait until it has cleared up."
+	desc = "看起来太危险了无法通过. 最好等它消散."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	opacity = TRUE
@@ -147,7 +147,7 @@
 	return ..()
 
 /obj/effect/forcefield/fog/attack_hand(mob/living/user)
-	to_chat(user, span_notice("You peer through the fog, but it's impossible to tell what's on the other side..."))
+	to_chat(user, span_notice("你透过雾气窥视, 但无法分辨另一边有什么..."))
 	return TRUE
 
 /obj/effect/forcefield/fog/attack_alien(mob/living/carbon/xenomorph/xeno_attacker, damage_amount = xeno_attacker.xeno_caste.melee_damage, damage_type = BRUTE, damage_flag = MELEE, effects = TRUE, armor_penetration = xeno_attacker.xeno_caste.melee_ap, isrightclick = FALSE)
@@ -170,7 +170,7 @@
 
 /obj/effect/forcefield/fog/passable_fog
 	name = "fog"
-	desc = "It looks dangerous to traverse."
+	desc = "看起来通过很危险."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	density = FALSE
@@ -225,7 +225,7 @@
 
 /obj/effect/dummy/lighting_obj
 	name = "lighting fx obj"
-	desc = "Tell a coder if you're seeing this."
+	desc = "如果你看到这个, 请告诉程序员."
 	icon_state = "nothing"
 	light_color = "#FFFFFF"
 	light_range = MINIMUM_USEFUL_LIGHT_RANGE

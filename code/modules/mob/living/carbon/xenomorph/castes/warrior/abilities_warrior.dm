@@ -207,7 +207,7 @@
 	desc = "Lunge towards a target within [WARRIOR_LUNGE_RANGE] tiles, putting them in our grasp. Usable on allies."
 
 /datum/action/ability/activable/xeno/warrior/lunge/on_cooldown_finish()
-	xeno_owner.balloon_alert(xeno_owner, "[initial(name)] ready")
+	xeno_owner.balloon_alert(xeno_owner, "[initial(name)]就绪")
 	return ..()
 
 /datum/action/ability/activable/xeno/warrior/lunge/can_use_ability(atom/A, silent = FALSE, override_flags)
@@ -216,16 +216,16 @@
 		return FALSE
 	if(!isliving(A))
 		if(!silent)
-			owner.balloon_alert(owner, "Invalid target")
+			owner.balloon_alert(owner, "无效目标")
 		return FALSE
 	var/mob/living/living_target = A
 	if(living_target.stat == DEAD && !living_target.issamexenohive(owner))
 		if(!silent)
-			owner.balloon_alert(owner, "Dead")
+			owner.balloon_alert(owner, "已死亡")
 		return FALSE
 	if(get_dist_euclidean_square(living_target, owner) > WARRIOR_LUNGE_RANGE * 5)
 		if(!silent)
-			owner.balloon_alert(owner, "Too far")
+			owner.balloon_alert(owner, "太远了")
 		return FALSE
 
 /datum/action/ability/activable/xeno/warrior/lunge/use_ability(atom/A)
@@ -271,7 +271,7 @@
 		living_target.resistance_flags |= RESTRAINED_NECKGRAB
 		living_target.drop_all_held_items()
 		living_target.Paralyze(0.1 SECONDS)
-		living_target.balloon_alert(xeno_owner, "Grabbed [living_target]")
+		living_target.balloon_alert(xeno_owner, "抓住了[living_target]")
 
 	xeno_owner.swap_hand()
 	var/datum/action/ability/xeno_action/empower/empower_action = xeno_owner.actions_by_path[/datum/action/ability/xeno_action/empower]
@@ -323,16 +323,16 @@
 		return FALSE
 	if(!isliving(A))
 		if(!silent)
-			owner.balloon_alert(owner, "Invalid target")
+			owner.balloon_alert(owner, "无效目标")
 		return FALSE
 	var/mob/living/living_target = A
 	if(living_target.stat == DEAD && !living_target.issamexenohive(owner))
 		if(!silent)
-			owner.balloon_alert(owner, "Dead")
+			owner.balloon_alert(owner, "已死亡")
 		return FALSE
 	if(!living_target.Adjacent(owner))
 		if(!silent)
-			owner.balloon_alert(owner, "Not adjacent")
+			owner.balloon_alert(owner, "不相邻")
 		return FALSE
 
 /datum/action/ability/activable/xeno/warrior/fling/use_ability(atom/A)
@@ -401,7 +401,7 @@
 
 /datum/action/ability/activable/xeno/warrior/grapple_toss/on_cooldown_finish()
 	var/datum/action/ability/activable/xeno/warrior/fling/fling_action = xeno_owner.actions_by_path[/datum/action/ability/activable/xeno/warrior/fling]
-	xeno_owner.balloon_alert(xeno_owner, "[fling_action ? "[initial(fling_action.name)] / " : ""][initial(name)] ready")
+	xeno_owner.balloon_alert(xeno_owner, "[fling_action ? "[initial(fling_action.name)] / " : ""][initial(name)]就绪")
 	return ..()
 
 /datum/action/ability/activable/xeno/warrior/grapple_toss/can_use_ability(atom/A, silent = FALSE, override_flags)
@@ -410,15 +410,15 @@
 		return FALSE
 	if(!owner.pulling)
 		if(!silent)
-			owner.balloon_alert(owner, "Nothing to toss")
+			owner.balloon_alert(owner, "没有可投掷的东西")
 		return FALSE
 	if(!owner.issamexenohive(owner.pulling)) //xenos should be able to fling xenos into xeno passable areas!
 		for(var/obj/effect/forcefield/fog/fog in owner.loc)
-			owner.pulling.balloon_alert(owner, "Cannot, fog")
+			owner.pulling.balloon_alert(owner, "不能,迷雾")
 			return fail_activate()
 	if(!owner.Adjacent(owner.pulling))
 		if(!silent)
-			owner.balloon_alert(owner, "Target not adjacent")
+			owner.balloon_alert(owner, "目标不相邻")
 		return FALSE
 
 /datum/action/ability/activable/xeno/warrior/grapple_toss/use_ability(atom/A)
@@ -457,7 +457,7 @@
 
 /datum/action/ability/activable/xeno/warrior/punch
 	name = "Punch"
-	desc = "Strike a target, inflicting stamina damage, stagger and slowdown. Deals double damage, stagger and slowdown to grappled targets. Deals quadruple damage to structures and machinery."
+	desc = "打击一个目标,造成耐力伤害、踉跄和减速. 对被抓住的目标造成双倍伤害、踉跄和减速. 对建筑和机械造成四倍伤害."
 	action_icon_state = "punch"
 	action_icon = 'icons/Xeno/actions/warrior.dmi'
 	ability_cost = 15
@@ -469,7 +469,7 @@
 	var/range = 1
 
 /datum/action/ability/activable/xeno/warrior/punch/on_cooldown_finish()
-	xeno_owner.balloon_alert(xeno_owner, "[initial(name)] ready")
+	xeno_owner.balloon_alert(xeno_owner, "[initial(name)]就绪")
 	return ..()
 
 /datum/action/ability/activable/xeno/warrior/punch/can_use_ability(atom/A, silent = FALSE, override_flags)
@@ -478,25 +478,25 @@
 		return
 	if(!isliving(A) && !isstructure(A) && !ismachinery(A) && !isvehicle(A))
 		if(!silent)
-			owner.balloon_alert(owner, "Cannot punch")
+			owner.balloon_alert(owner, "无法出拳")
 		return FALSE
 	if(A.resistance_flags & (INDESTRUCTIBLE|CRUSHER_IMMUNE))
 		if(!silent)
-			owner.balloon_alert(owner, "Cannot damage")
+			owner.balloon_alert(owner, "无法造成伤害")
 		return FALSE
 	if(isliving(A))
 		var/mob/living/living_target = A
 		if(living_target.issamexenohive(owner))
 			if(!silent)
-				owner.balloon_alert(owner, "Cannot punch")
+				owner.balloon_alert(owner, "无法出拳")
 			return FALSE
 		if(living_target.stat == DEAD)
 			if(!silent)
-				owner.balloon_alert(owner, "Dead")
+				owner.balloon_alert(owner, "已死亡")
 			return FALSE
 	if(!line_of_sight(owner, A, range))
 		if(!silent)
-			owner.balloon_alert(owner, "Too far")
+			owner.balloon_alert(owner, "太远了")
 		return FALSE
 
 /datum/action/ability/activable/xeno/warrior/punch/use_ability(atom/A)
@@ -557,7 +557,7 @@
 
 /datum/action/ability/activable/xeno/warrior/punch/flurry
 	name = "Flurry"
-	desc = "Strike at your target with blinding speed."
+	desc = "以令人目眩的速度打击你的目标."
 	action_icon_state = "jab"
 	ability_cost = 10
 	cooldown_duration = 7 SECONDS
@@ -590,7 +590,7 @@
 
 /datum/action/ability/activable/xeno/warrior/punch/flurry/on_cooldown_finish()
 	current_charges = clamp(current_charges+1, 0, initial(current_charges))
-	owner.balloon_alert(owner, "[initial(name)] ready[current_charges > 1 ? " ([current_charges]/[initial(current_charges)])" : ""]")
+	owner.balloon_alert(owner, "[initial(name)]就绪[current_charges > 1 ? " ([current_charges]/[initial(current_charges)])" : ""]")
 	update_button_icon()
 	if(current_charges < initial(current_charges))
 		cooldown_timer = addtimer(CALLBACK(src, PROC_REF(on_cooldown_finish)), cooldown_duration, TIMER_STOPPABLE)
@@ -624,7 +624,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/warrior/punch/jab
 	name = "Jab"
-	desc = "Precisely strike your target from further away, heavily slowing them."
+	desc = "从更远处精准打击你的目标,使其大幅减速."
 	action_icon_state = "jab"
 	ability_cost = 10
 	range = 2
@@ -641,7 +641,7 @@
 		jab_damage *= WARRIOR_PUNCH_EMPOWER_MULTIPLIER
 		if(ishuman(A))
 			var/mob/living/carbon/human/target = A
-			to_chat(target, span_userdanger("The concussion from the [xeno_owner]'s blow blinds us!"))
+			to_chat(target, span_userdanger("[xeno_owner]的一击造成的震荡使我们目眩!"))
 			target.apply_status_effect(STATUS_EFFECT_CONFUSED, 3 SECONDS)
 			target.Paralyze(0.5 SECONDS)
 	GLOB.round_statistics.warrior_punches++
@@ -650,7 +650,7 @@
 	add_cooldown()
 
 /datum/action/ability/activable/xeno/warrior/punch/jab/on_cooldown_finish()
-	xeno_owner.balloon_alert(xeno_owner, "Jab ready")
+	xeno_owner.balloon_alert(xeno_owner, "刺拳就绪")
 	owner.playsound_local(owner, 'sound/effects/alien/newlarva.ogg', 25, 0, 1)
 	return ..()\
 
@@ -660,7 +660,7 @@
 
 /datum/action/ability/xeno_action/toggle_plates
 	name = "Encased Plates"
-	desc = "Raise your plates: +front armor and knockdown immunity, but slower movement and weaker claws."
+	desc = "举起你的甲板: +正面护甲和击倒免疫,但移动更慢且爪击更弱."
 	action_icon_state = "encased_plates"
 	action_icon = 'icons/Xeno/actions/warrior.dmi'
 	cooldown_duration = 1 SECONDS
@@ -689,7 +689,7 @@
 	var/datum/xeno_caste/warrior/bulwark/caste = B.xeno_caste
 	if(on)
 		if(!silent)
-			to_chat(B, span_xenowarning("We raise our plates and form a shield."))
+			to_chat(B, span_xenowarning("我们举起甲板形成护盾."))
 		ADD_TRAIT(B, TRAIT_STAGGERIMMUNE, TRAIT_PLATES)
 		B.move_resist = MOVE_FORCE_EXTREMELY_STRONG
 		B.front_armor_bonus += caste.plates_armor
@@ -698,7 +698,7 @@
 		B.add_movespeed_modifier(MOVESPEED_ID_BULWARK_PLATES, TRUE, 0, NONE, TRUE, caste.plates_slowdown)
 	else
 		if(!silent)
-			to_chat(B, span_xenowarning("We lower our plates."))
+			to_chat(B, span_xenowarning("我们放下甲板."))
 		REMOVE_TRAIT(B, TRAIT_STAGGERIMMUNE, TRAIT_PLATES)
 		B.move_resist = initial(B.move_resist)
 		B.front_armor_bonus -= caste.plates_armor
@@ -720,7 +720,7 @@
 
 /datum/action/ability/activable/xeno/plate_bash
 	name = "Plate Bash"
-	desc = "Dash up to 2 tiles and shove the target 1 tile away. While encased: adjacent only, but launches 3 tiles with knockdown and stun."
+	desc = "冲刺至多2格并将目标推开1格. 被包裹时: 仅限相邻,但会将其击飞3格并造成击倒和眩晕."
 	action_icon_state = "plate_bash"
 	action_icon = 'icons/Xeno/actions/warrior.dmi'
 	cooldown_duration = 5 SECONDS
@@ -741,7 +741,7 @@
 	var/max_dist = (B && B.plates_active) ? 1 : 2
 	if(!line_of_sight(owner, target, max_dist))
 		if(!silent)
-			to_chat(owner, span_warning("We must get closer!"))
+			to_chat(owner, span_warning("我们必须靠得更近!"))
 		return FALSE
 	var/mob/living/carbon/human/victim = target
 	if(isnestedhost(victim) || victim.stat == DEAD)
@@ -758,8 +758,8 @@
 		return
 
 	owner.visible_message(
-		span_xenowarning("[owner] slams [victim] with its armored plates!"),
-		span_xenowarning("We slam [victim] with our armored plates!"))
+		span_xenowarning("[owner]用其装甲甲板猛击[victim]!"),
+		span_xenowarning("我们用装甲甲板猛击[victim]!"))
 	victim.apply_damage(base_damage, BRUTE, BODY_ZONE_CHEST, MELEE)
 	xeno_owner.do_attack_animation(victim)
 
@@ -807,7 +807,7 @@
 
 /datum/action/ability/xeno_action/reflective_shield
 	name = "Reflective Shield"
-	desc = "Lock your facing and reflect frontal bullets back for half damage, up to 6 seconds. You cannot attack while active. Cooldown 6-18s."
+	desc = "锁定你的朝向并将正面子弹以半伤害反弹回去,持续至多6秒. 激活期间你无法攻击. 冷却6-18秒."
 	action_icon_state = "reflective_shield"
 	action_icon = 'icons/Xeno/actions/warrior.dmi'
 	ability_cost = 80
@@ -828,7 +828,7 @@
 		return FALSE
 	if(!active && !B.plates_active)
 		if(!silent)
-			to_chat(owner, span_xenowarning("We need to encase our plates first!"))
+			to_chat(owner, span_xenowarning("我们需要先包裹我们的甲板!"))
 		return FALSE
 
 /datum/action/ability/xeno_action/reflective_shield/action_activate()
@@ -843,7 +843,7 @@
 	ADD_TRAIT(B, TRAIT_REFLECTIVE_SHIELD, TRAIT_REFLECTIVESHIELD)
 	B.stop_pulling()
 	B.update_icons()
-	to_chat(B, span_xenowarning("We lock our stance, focusing on incoming frontal attacks!"))
+	to_chat(B, span_xenowarning("我们锁定姿态,专注于应对正面来袭的攻击!"))
 	reflect_timer_id = addtimer(CALLBACK(src, PROC_REF(deactivate)), 6 SECONDS, TIMER_STOPPABLE)
 	succeed_activate()
 
@@ -864,7 +864,7 @@
 	cooldown_duration = clamp(6 SECONDS + held * 2 SECONDS, 6 SECONDS, 18 SECONDS)
 	add_cooldown()
 	cooldown_duration = initial(cooldown_duration)
-	to_chat(B, span_xenowarning("We adjust our plates and stance back to normal."))
+	to_chat(B, span_xenowarning("我们将甲板和姿态调整回正常状态."))
 
 // ***************************************
 // *********** Shield Shatter (Primordial)
@@ -872,7 +872,7 @@
 
 /datum/action/ability/xeno_action/shield_shatter
 	name = "Shield Shatter"
-	desc = "Detonate your plates outward, throwing nearby enemies back. Sends your Reflective Shield into an 18 second cooldown. Primordial only."
+	desc = "向外引爆你的甲板,将附近的敌人击退. 使你的反射护盾进入18秒冷却. 仅限原初."
 	action_icon_state = "psy_shield_reflect" // посмотри в warlock.dmi state взрыва щита и подставь нужный
 	action_icon = 'icons/Xeno/actions/warlock.dmi'
 	cooldown_duration = 30 SECONDS
@@ -889,11 +889,11 @@
 		return FALSE
 	if(!istype(B.xeno_caste, /datum/xeno_caste/warrior/bulwark/primordial))
 		if(!silent)
-			to_chat(owner, span_xenowarning("Only a primordial bulwark can shatter its plates!"))
+			to_chat(owner, span_xenowarning("只有原始壁垒才能击碎它的甲片!"))
 		return FALSE
 	if(!B.plates_active)
 		if(!silent)
-			to_chat(owner, span_xenowarning("We must encase our plates first!"))
+			to_chat(owner, span_xenowarning("我们必须先包裹住我们的甲片!"))
 		return FALSE
 
 /datum/action/ability/xeno_action/shield_shatter/action_activate()
@@ -902,8 +902,8 @@
 	playsound(B, 'sound/effects/bamf.ogg', 75, TRUE)
 	playsound(B, 'sound/voice/alien/roar_warlock.ogg', 25)
 	B.visible_message(
-		span_xenowarning("[B] shatters its plates outward!"),
-		span_xenowarning("We shatter our plates outward!"))
+		span_xenowarning("[B]向外击碎了它的甲片!"),
+		span_xenowarning("我们向外击碎了我们的甲片!"))
 
 
 	for(var/turf/T AS in RANGE_TURFS(1, B))

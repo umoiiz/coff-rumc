@@ -1,6 +1,6 @@
 /obj/structure/razorwire
-	name = "razorwire obstacle"
-	desc = "A bundle of barbed wire supported by metal rods. Used to deny access to areas under (literal) pain of entanglement and injury. A classic fortification since the 1900s."
+	name = "铁丝网障碍"
+	desc = "一捆由金属杆支撑的铁丝网. 用于阻止人员进入特定区域, 代价是(字面意义上的)被缠住和受伤的痛苦. 自20世纪以来就是一种经典的防御工事."
 	icon = 'icons/obj/structures/barbedwire.dmi'
 	icon_state = "barbedwire_x"
 	base_icon_state = "barbedwire_x"
@@ -59,8 +59,8 @@
 	if(QDELETED(src)) //Sanity check so that you can't get entangled if the razorwire is destroyed; this happens apparently.
 		CRASH("QDELETED razorwire called razorwire_tangle()")
 	TIMER_COOLDOWN_START(entangled, COOLDOWN_ENTANGLE, duration)
-	entangled.visible_message(span_danger("[entangled] gets entangled in the barbed wire!"),
-	span_danger("You got entangled in the barbed wire! Resist to untangle yourself after [duration * 0.1] seconds since you were entangled!"), null, null, 5)
+	entangled.visible_message(span_danger("[entangled]被铁丝网缠住了!"),
+	span_danger("你被铁丝网缠住了! 在被缠住[duration * 0.1]秒后挣扎以挣脱!"), null, null, 5)
 	do_razorwire_tangle(entangled)
 
 /obj/structure/razorwire/proc/do_razorwire_tangle(mob/living/entangled)
@@ -74,8 +74,8 @@
 /obj/structure/razorwire/resisted_against(datum/source)
 	var/mob/living/entangled = source
 	if(TIMER_COOLDOWN_RUNNING(entangled, COOLDOWN_ENTANGLE))
-		entangled.visible_message(span_danger("[entangled] attempts to disentangle itself from [src] but is unsuccessful!"),
-		span_warning("You fail to disentangle yourself!"))
+		entangled.visible_message(span_danger("[entangled]试图从[src]中挣脱, 但未能成功!"),
+		span_warning("你未能挣脱!"))
 		return FALSE
 	return razorwire_untangle(entangled)
 
@@ -84,7 +84,7 @@
 	if((entangled.pass_flags & PASS_DEFENSIVE_STRUCTURE) || entangled.status_flags & INCORPOREAL)
 		return
 	do_razorwire_untangle(entangled)
-	visible_message(span_danger("[entangled] disentangles from [src]!"))
+	visible_message(span_danger("[entangled]从[src]中挣脱了!"))
 	playsound(src, 'sound/effects/barbed_wire_movement.ogg', 25, TRUE)
 	var/def_zone = ran_zone()
 	entangled.apply_damage(RAZORWIRE_BASE_DAMAGE * RAZORWIRE_MIN_DAMAGE_MULT_MED, BRUTE, def_zone, MELEE, TRUE, updating_health = TRUE) //Apply damage as we tear free
@@ -119,7 +119,7 @@
 		if(obj_integrity >= max_integrity)
 			return
 
-		balloon_alert(user, "Repairing!")
+		balloon_alert(user, "修复中!")
 		if(!do_after(user, 2 SECONDS, NONE, src, BUSY_ICON_FRIENDLY))
 			return
 
@@ -128,7 +128,7 @@
 			return
 
 		repair_damage(max_integrity * 0.60, user)
-		visible_message(span_notice("[user] repairs \the [src]."))
+		visible_message(span_notice("[user]修复了\the [src]."))
 		update_icon()
 		return
 
@@ -137,26 +137,26 @@
 		return
 	var/mob/living/M = grab.grabbed_thing
 	if(user.grab_state < GRAB_NECK) // warrior is technically able to do that
-		to_chat(user, span_warning("You need a better grip to do that!"))
+		to_chat(user, span_warning("你需要更好的抓握力才能做到!"))
 		return
 	M.forceMove(loc)
 	M.Paralyze(5 SECONDS)
 	var/def_zone = ran_zone()
 	M.apply_damage(RAZORWIRE_BASE_DAMAGE, BRUTE, def_zone, MELEE, TRUE, updating_health = TRUE)
-	user.visible_message(span_danger("[user] throws [M] on [src]."),
-	span_danger("You throw [M] on [src]."))
+	user.visible_message(span_danger("[user]将[M]扔向[src]."),
+	span_danger("你将[M]扔向[src]."))
 	playsound(src, 'sound/effects/barbed_wire_movement.ogg', 25, 1)
 
 /obj/structure/razorwire/wirecutter_act(mob/living/user, obj/item/I)
-	user.visible_message(span_notice("[user] starts disassembling [src]."),
-	span_notice("You start disassembling [src]."))
+	user.visible_message(span_notice("[user]开始拆卸[src]."),
+	span_notice("你开始拆卸[src]."))
 	var/delay_disassembly = SKILL_TASK_AVERAGE - (0.5 SECONDS + user.skills.getRating(SKILL_ENGINEER))
 
 	if(!do_after(user, delay_disassembly, NONE, src, BUSY_ICON_BUILD))
 		return TRUE
 
-	user.visible_message(span_notice("[user] disassembles [src]."),
-	span_notice("You disassemble [src]."))
+	user.visible_message(span_notice("[user]拆卸了[src]."),
+	span_notice("你拆卸了[src]."))
 	playsound(loc, 'sound/items/wirecutter.ogg', 25, 1)
 	deconstruct(TRUE)
 	return TRUE
@@ -201,8 +201,8 @@
 	if(!anchored)
 		return ..()
 	razorwire_tangle(charger, 0.5 SECONDS)
-	charger.visible_message(span_danger("The barbed wire slices into [charger]!"),
-	span_danger("The barbed wire slices into you!"), null, 5)
+	charger.visible_message(span_danger("铁丝网割入了[charger]!"),
+	span_danger("铁丝网割入了你!"), null, 5)
 	charger.Paralyze(0.5 SECONDS)
 	charger.apply_damage(RAZORWIRE_BASE_DAMAGE * RAZORWIRE_MIN_DAMAGE_MULT_MED, BRUTE, sharp = TRUE, updating_health = TRUE	) //Armor is being ignored here.
 	playsound(src, 'sound/effects/barbed_wire_movement.ogg', 25, 1)

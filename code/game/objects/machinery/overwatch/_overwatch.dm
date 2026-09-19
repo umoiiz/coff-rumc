@@ -38,7 +38,7 @@ GLOBAL_LIST_EMPTY(active_cas_targets)
 
 /obj/machinery/computer/camera_advanced/overwatch
 	name = "Overwatch Console"
-	desc = "State of the art machinery for giving orders to a squad. <b>Shift click</b> to send order when watching squads."
+	desc = "用于向小队下达命令的最先进设备. 观察小队时<b>Shift点击</b>发送命令."
 	density = FALSE
 	icon_state = "overwatch"
 	screen_overlay = "overwatch_screen"
@@ -161,8 +161,8 @@ GLOBAL_LIST_EMPTY(active_cas_targets)
 				var/obj/item/card/id/id_card = operator.get_idcard()
 				var/rank_text = id_card ? "[id_card.rank] " : ""
 				if(issilicon(operator))
-					to_chat(operator, span_boldnotice("Main overwatch systems initialized. Welcome, [rank_text][operator.name]."))
-				visible_message(span_boldnotice("Main overwatch systems initialized. Welcome, [rank_text][operator.name]."))
+					to_chat(operator, span_boldnotice("主监视系统已初始化. 欢迎,[rank_text][operator.name]."))
+				visible_message(span_boldnotice("主监视系统已初始化. 欢迎,[rank_text][operator.name]."))
 			else
 				if(current_squad)
 					current_squad.overwatch_officer = user
@@ -170,8 +170,8 @@ GLOBAL_LIST_EMPTY(active_cas_targets)
 				var/obj/item/card/id/id_card = operator.get_idcard()
 				var/rank_text = id_card ? "[id_card.rank] " : ""
 				if(issilicon(operator))
-					to_chat(operator, span_boldnotice("Basic overwatch systems initialized. Welcome, [rank_text][operator.name]. Please select a squad."))
-				visible_message(span_boldnotice("Basic overwatch systems initialized. Welcome, [rank_text][operator.name]. Please select a squad."))
+					to_chat(operator, span_boldnotice("基础监视系统已初始化. 欢迎,[rank_text][operator.name]. 请选择一个小队."))
+				visible_message(span_boldnotice("基础监视系统已初始化. 欢迎,[rank_text][operator.name]. 请选择一个小队."))
 			. = TRUE
 
 		if("logout")
@@ -184,7 +184,7 @@ GLOBAL_LIST_EMPTY(active_cas_targets)
 			if(operator != user)
 				return FALSE
 			if(current_squad)
-				to_chat(operator, span_warning("[icon2html(src, operator)] You are already selecting a squad."))
+				to_chat(operator, span_warning("[icon2html(src, operator)]你已经在选择一个小队了."))
 				return FALSE
 			var/selected_id = params["squad_id"]
 			var/datum/squad/selected
@@ -197,8 +197,8 @@ GLOBAL_LIST_EMPTY(active_cas_targets)
 			selected.overwatch_officer = operator
 			current_squad = selected
 			if(issilicon(operator))
-				to_chat(operator, span_boldnotice("Tactical data for squad '[current_squad]' loaded. All tactical functions initialized."))
-			visible_message(span_boldnotice("Tactical data for squad '[current_squad]' loaded. All tactical functions initialized."))
+				to_chat(operator, span_boldnotice("小队'[current_squad]'的战术数据已加载. 所有战术功能已初始化."))
+			visible_message(span_boldnotice("小队'[current_squad]'的战术数据已加载. 所有战术功能已初始化."))
 			. = TRUE
 
 		if("monitor")
@@ -270,8 +270,8 @@ GLOBAL_LIST_EMPTY(active_cas_targets)
 		var/obj/item/card/id/id_card = operator.get_idcard()
 		var/rank_text = id_card ? "[id_card.rank] " : ""
 		if(issilicon(operator))
-			to_chat(operator, span_boldnotice("Overwatch systems deactivated. Goodbye, [rank_text][operator ? "[operator.name]":"sysadmin"]."))
-		visible_message(span_boldnotice("Overwatch systems deactivated. Goodbye, [rank_text][operator ? "[operator.name]":"sysadmin"]."))
+			to_chat(operator, span_boldnotice("监视系统已停用. 再见,[rank_text][operator ? "[operator.name]":"sysadmin"]."))
+		visible_message(span_boldnotice("监视系统已停用. 再见,[rank_text][operator ? "[operator.name]":"sysadmin"]."))
 	if(current_squad)
 		current_squad.overwatch_officer = null
 	operator = null
@@ -422,7 +422,7 @@ GLOBAL_LIST_EMPTY(active_cas_targets)
 //This is an effect to be sure it is properly deleted and it does not interfer with existing lights too much.
 /obj/effect/overwatch_light
 	name = "overwatch beam of light"
-	desc = "You are not supposed to see this. Please report it."
+	desc = "你不应该看到这个. 请上报此问题."
 	icon_state = "" //No sprite
 	invisibility = INVISIBILITY_MAXIMUM
 	resistance_flags = RESIST_ALL
@@ -435,5 +435,5 @@ GLOBAL_LIST_EMPTY(active_cas_targets)
 	. = ..()
 	set_light(light_range, light_power)
 	playsound(src,'sound/mecha/heavylightswitch.ogg', 25, 1, 20)
-	visible_message(span_warning("You see a twinkle in the sky before your surroundings are hit with a beam of light!"))
+	visible_message(span_warning("你看到天空中闪过一道光,随后你周围被一道光束击中!"))
 	QDEL_IN(src, SPOTLIGHT_DURATION)

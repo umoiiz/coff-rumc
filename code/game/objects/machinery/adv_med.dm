@@ -63,10 +63,10 @@
 	if(!ishuman(target) || !ishuman(user) || user.incapacitated(TRUE))
 		return
 	if(occupant)
-		to_chat(user, span_boldnotice("The scanner is already occupied!"))
+		to_chat(user, span_boldnotice("扫描仪已经被占用了!"))
 		return
 	if(target.abiotic())
-		to_chat(user, span_boldnotice("Subject cannot have abiotic items on."))
+		to_chat(user, span_boldnotice("对象身上不能有非生物物品."))
 		return
 	target.forceMove(src)
 	occupant = target
@@ -118,7 +118,7 @@
 		return
 
 	if(occupant)
-		to_chat(user, span_warning("The scanner is already occupied!"))
+		to_chat(user, span_warning("扫描仪已经被占用了!"))
 		return
 
 	var/mob/grabbed_mob
@@ -127,7 +127,7 @@
 	else if(istype(grab.grabbed_thing, /obj/structure/closet/bodybag/cryobag))
 		var/obj/structure/closet/bodybag/cryobag/cryobag = grab.grabbed_thing
 		if(!cryobag.bodybag_occupant)
-			to_chat(user, span_warning("The stasis bag is empty!"))
+			to_chat(user, span_warning("停滞袋是空的!"))
 			return
 		user.start_pulling(grabbed_mob)
 		grabbed_mob = cryobag.bodybag_occupant
@@ -138,7 +138,7 @@
 		return
 
 	if(grabbed_mob.abiotic())
-		to_chat(user, span_warning("Subject cannot have abiotic items on."))
+		to_chat(user, span_warning("对象身上不能有非生物物品."))
 		return
 
 	grabbed_mob.forceMove(src)
@@ -150,11 +150,11 @@
 
 /obj/machinery/bodyscanner/attack_alien(mob/living/carbon/xenomorph/xeno_attacker, damage_amount, damage_type, damage_flag, effects, armor_penetration, isrightclick)
 	if(!occupant)
-		to_chat(xeno_attacker, span_xenowarning("There is nothing of interest in there."))
+		to_chat(xeno_attacker, span_xenowarning("里面没有任何有趣的东西."))
 		return
 	if(xeno_attacker.status_flags & INCORPOREAL || xeno_attacker.do_actions)
 		return
-	visible_message(span_warning("[xeno_attacker] begins to pry the [src]'s cover!"), 3)
+	visible_message(span_warning("[xeno_attacker]开始撬开[src]的盖板!"), 3)
 	playsound(src,'sound/effects/metal_creaking.ogg', 25, 1)
 	if(!do_after(xeno_attacker, 2 SECONDS))
 		return
@@ -218,8 +218,8 @@
 	. = ..()
 	if(!occupant)
 		return
-	. += span_notice("It contains: [occupant].")
-	. += span_notice("Scans performed will be archived and viewable when someone with a medical HUD examines a previous patient.")
+	. += span_notice("它包含: [occupant].")
+	. += span_notice("进行的扫描将被存档, 当拥有医疗HUD的人检查之前的病人时可以查看.")
 
 ///Wrapper to guarantee connected bodyscanner references are properly nulled and avoid hard deletes.
 /obj/machinery/computer/body_scanconsole/proc/set_connected(obj/machinery/bodyscanner/new_connected)

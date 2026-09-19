@@ -1,6 +1,6 @@
 /obj/item/attachable/flamer_nozzle
-	name = "standard flamer nozzle"
-	desc = "The standard flamer nozzle. This one fires a stream of fire for direct and accurate flames. Though not as area filling as its counterpart, this one excels at directed frontline combat."
+	name = "标准火焰喷射器喷嘴"
+	desc = "标准火焰喷射器喷嘴. 这个喷嘴喷射出一道火焰,用于直接而精准的喷射. 虽然不像其对应型号那样能覆盖大片区域,但它在定向前线作战中表现出色."
 	icon_state = "flame_directional"
 	slot = ATTACHMENT_SLOT_FLAMER_NOZZLE
 	attach_delay = 2 SECONDS
@@ -43,8 +43,8 @@
 	icon_state = null
 
 /obj/item/attachable/flamer_nozzle/wide
-	name = "spray flamer nozzle"
-	desc = "This specialized nozzle sprays the flames of an attached flamer in a much more broad way than the standard nozzle. It serves for wide area denial as opposed to offensive directional flaming."
+	name = "喷洒式火焰喷射器喷嘴"
+	desc = "这种特殊喷嘴以比标准喷嘴更宽广的方式喷洒所连接火焰喷射器的火焰. 它用于大范围区域封锁,而非进攻性定向喷射."
 	icon_state = "flame_wide"
 	pixel_shift_y = 17
 	stream_type = FLAMER_STREAM_CONE
@@ -53,16 +53,16 @@
 
 ///Funny red wide nozzle that can fill entire screens with flames. Admeme only.
 /obj/item/attachable/flamer_nozzle/wide/red
-	name = "red spray flamer nozzle"
-	desc = "It is red, therefore its obviously more effective."
+	name = "红色喷洒式火焰喷射器喷嘴"
+	desc = "它是红色的,因此显然更有效."
 	icon_state = "flame_wide_red"
 	range_modifier = 3
 
 ///Flamer ammo is a normal ammo datum, which means we can shoot it if we want
 /obj/item/attachable/flamer_nozzle/long
-	name = "extended flamer nozzle"
+	name = "加长型火焰喷射器喷嘴"
 	icon_state = "flame_long"
-	desc = "Rather than spreading the supplied fuel over an area, this nozzle launches a single fireball to ignite a target at range. Reduced volume per shot also means the next is ready quicker."
+	desc = "这个喷嘴不是将供应的燃料散布到一片区域,而是发射单个火球来点燃远处的目标. 每次射击的燃料量减少也意味着下一发准备得更快."
 	stream_type = FLAMER_STREAM_RANGED
 	delay_mod = -10
 

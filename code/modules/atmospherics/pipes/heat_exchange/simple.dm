@@ -3,7 +3,7 @@
 	icon_state = "pipe11-2"
 
 	name = "pipe"
-	desc = "A one meter section of heat-exchanging pipe."
+	desc = "一米长的换热管道段."
 
 	dir = SOUTH
 	initialize_directions = SOUTH|NORTH

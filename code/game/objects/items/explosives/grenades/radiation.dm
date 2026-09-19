@@ -1,7 +1,7 @@
 ////RAD GRENADE - TOTALLY RAD MAN
 /obj/item/explosive/grenade/rad
-	name = "\improper V-40 rad grenade"
-	desc = "Rad grenades release an extremely potent but short lived burst of radiation, debilitating organic life and frying electronics in a moderate radius. After the initial detonation, the radioactive effects linger for a time. Handle with extreme care."
+	name = "\improper V-40辐射榴弹"
+	desc = "辐射榴弹会释放极其强效但持续时间短暂的辐射爆发，使有机生命衰弱，并在中等半径内烧毁电子设备。初次引爆后，放射性效应会残留一段时间。务必极其小心地处理。"
 	icon_state = "grenade_rad" //placeholder
 	worn_icon_state = "grenade_rad" //placeholder
 	icon_state_mini = "grenade_red" //placeholder

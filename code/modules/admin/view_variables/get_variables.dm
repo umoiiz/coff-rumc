@@ -321,10 +321,10 @@
 					break
 				D = locate(ref)
 				if(!D)
-					tgui_alert(usr,"Invalid ref!")
+					tgui_alert(usr,"无效引用!")
 					continue
 				if(!D.can_vv_mark())
-					tgui_alert(usr,"Datum can not be marked!")
+					tgui_alert(usr,"数据对象无法被标记!")
 					continue
 			while(!D)
 			.["type"] = D.type

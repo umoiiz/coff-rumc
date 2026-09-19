@@ -1,6 +1,6 @@
 /obj/item/frame/table
-	name = "table parts"
-	desc = "A kit for a table, including a large, flat metal surface and four legs. Some assembly required."
+	name = "桌子部件"
+	desc = "一套桌子套件,包括一块大型平整金属桌面和四条桌腿.需要一些组装."
 	gender = PLURAL
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "table_parts"
@@ -25,11 +25,11 @@
 	if(istype(I, /obj/item/stack/rods))
 		var/obj/item/stack/rods/R = I
 		if(!R.use(4))
-			to_chat(user, span_warning("You need at least four rods to reinforce [src]."))
+			to_chat(user, span_warning("你至少需要四根金属棒来加固[src]."))
 			return
 
 		new /obj/item/frame/table/reinforced(table_turf)
-		to_chat(user, span_notice("You reinforce [src]."))
+		to_chat(user, span_notice("你加固了[src]."))
 		user.temporarilyRemoveItemFromInventory(src)
 		qdel(src)
 
@@ -37,12 +37,12 @@
 		var/obj/item/stack/sheet/wood/S = I
 
 		if(!S.use(2))
-			to_chat(user, span_warning("You need at least two wood sheets to swap the metal parts of [src]."))
+			to_chat(user, span_warning("你至少需要两张木板来替换[src]的金属部件."))
 			return
 
 		new /obj/item/frame/table/wood(table_turf)
 		new /obj/item/stack/sheet/metal(table_turf)
-		to_chat(user, span_notice("You replace the metal parts of [src]."))
+		to_chat(user, span_notice("你替换了[src]的金属部件."))
 		user.temporarilyRemoveItemFromInventory(src)
 		qdel(src)
 
@@ -56,10 +56,10 @@
 
 /obj/item/frame/table/attack_self(mob/user)
 	if(locate(/obj/structure/table) in get_turf(user))
-		to_chat(user, span_warning("There is another table built in here already."))
+		to_chat(user, span_warning("这里已经建了另一张桌子了."))
 		return
 	if(istype(get_area(loc), /area/shuttle))  //HANGAR/SHUTTLE BUILDING
-		to_chat(user, span_warning("No. This area is needed for the dropship."))
+		to_chat(user, span_warning("不行.这片区域需要留给运输机."))
 		return
 
 	new table_type(user.loc)
@@ -85,8 +85,8 @@
 */
 
 /obj/item/frame/table/reinforced
-	name = "reinforced table parts"
-	desc = "A kit for a table, including a large, flat metal surface and four legs. This kit has side panels. Some assembly required."
+	name = "加固桌子部件"
+	desc = "一套桌子套件,包括一块大型平整金属桌面和四条桌腿.这套套件带有侧板.需要一些组装."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "reinf_tableparts"
 	table_type = /obj/structure/table/reinforced
@@ -96,8 +96,8 @@
 */
 
 /obj/item/frame/table/wood
-	name = "wooden table parts"
-	desc = "A kit for a table, including a large, flat wooden surface and four legs. Some assembly required."
+	name = "木桌部件"
+	desc = "一套桌子套件,包括一块大型平整木质桌面和四条桌腿.需要一些组装."
 	icon_state = "wood_tableparts"
 	atom_flags = null
 	table_type = /obj/structure/table/wood
@@ -113,7 +113,7 @@
 		if(!C.use(1))
 			return
 
-		to_chat(user, span_notice("You put a layer of carpet on [src]."))
+		to_chat(user, span_notice("你在[src]上铺了一层地毯."))
 		new /obj/item/frame/table/gambling(get_turf(src))
 		qdel(src)
 
@@ -128,8 +128,8 @@
 */
 
 /obj/item/frame/table/gambling
-	name = "gamble table parts"
-	desc = "A kit for a table, including a large, flat wooden and carpet surface and four legs. Some assembly required."
+	name = "赌桌部件"
+	desc = "一套桌子套件,包括一块大型平整木质和地毯桌面和四条桌腿.需要一些组装."
 	icon_state = "gamble_tableparts"
 	atom_flags = null
 	table_type = /obj/structure/table/wood/gambling
@@ -137,7 +137,7 @@
 
 /obj/item/frame/table/gambling/crowbar_act(mob/living/user, obj/item/I)
 	. = ..()
-	to_chat(user, span_notice("You pry the carpet out of [src]."))
+	to_chat(user, span_notice("你从[src]上撬出了地毯."))
 	new /obj/item/stack/tile/carpet(loc)
 	new /obj/item/frame/table/wood(loc)
 	qdel(src)

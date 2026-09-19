@@ -3,7 +3,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/hive_message
 	name = "Hive Message" // Also known as Word of Queen.
-	desc = "Announces a message to the hive."
+	desc = "向巢穴发送一条公告."
 	action_icon_state = "queen_order"
 	action_icon = 'icons/Xeno/actions/general.dmi'
 	ability_cost = 50
@@ -22,13 +22,13 @@
 		return
 	var/filter_result = is_ic_filtered(input)
 	if(filter_result)
-		to_chat(xeno_owner, span_warning("That announcement contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[input]\"</span>"))
+		to_chat(xeno_owner, span_warning("该公告包含了一个在IC聊天中被禁止的词语!请考虑查阅服务器规则.\n<span replaceRegex='show_filtered_ic_chat'>\"[input]\"</span>"))
 		SSblackbox.record_feedback(FEEDBACK_TALLY, "ic_blocked_words", 1, lowertext(config.ic_filter_regex.match))
 		REPORT_CHAT_FILTER_TO_USER(src, filter_result)
 		log_filter("IC", input, filter_result)
 		return FALSE
 	if(NON_ASCII_CHECK(input))
-		to_chat(xeno_owner, span_warning("That announcement contained characters prohibited in IC chat! Consider reviewing the server rules."))
+		to_chat(xeno_owner, span_warning("该公告包含了在IC聊天中被禁止的字符!请考虑查阅服务器规则."))
 		return FALSE
 
 	log_game("[key_name(xeno_owner)] has messaged the hive with: \"[input]\"")
@@ -40,8 +40,8 @@
 	var/list/xeno_listeners = xeno_owner.hive.get_all_xenos()
 	for(var/mob/living/carbon/xenomorph/xeno AS in xeno_listeners)
 		to_chat(xeno, assemble_alert(
-			title = "Hive Announcement",
-			subtitle = "From [xeno_owner.name]",
+			title = "巢穴公告",
+			subtitle = "来自[xeno_owner.name]",
 			message = input,
 			color_override = "purple"
 		))
@@ -72,7 +72,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/screech
 	name = "Screech"
-	desc = "A large area knockdown that causes pain and screen-shake."
+	desc = "大范围击倒,造成疼痛和屏幕震动."
 	action_icon_state = "screech"
 	action_icon = 'icons/Xeno/actions/queen.dmi'
 	ability_cost = 250
@@ -83,7 +83,7 @@
 	)
 
 /datum/action/ability/activable/xeno/screech/on_cooldown_finish()
-	to_chat(owner, span_warning("We feel our throat muscles vibrate. We are ready to screech again."))
+	to_chat(owner, span_warning("我们感到喉咙肌肉在振动.我们准备好再次尖啸了."))
 	return ..()
 
 /datum/action/ability/activable/xeno/screech/use_ability(atom/A)
@@ -102,7 +102,7 @@
 	add_cooldown()
 
 	playsound(xeno_owner.loc, 'sound/voice/alien/queen/screech.ogg', 75, 0)
-	xeno_owner.visible_message(span_xenouserdanger("\The [xeno_owner] emits an ear-splitting guttural roar!"))
+	xeno_owner.visible_message(span_xenouserdanger("\The [xeno_owner]发出一声震耳欲聋的嘶吼!"))
 	GLOB.round_statistics.queen_screech++
 	SSblackbox.record_feedback(FEEDBACK_TALLY, "round_statistics", 1, "queen_screech")
 	xeno_owner.create_shriekwave() //Adds the visual effect. Wom wom wom
@@ -143,7 +143,7 @@
 
 /datum/action/ability/activable/xeno/plasma_screech
 	name = "Plasma Screech"
-	desc = "Screech that increases plasma regeneration for nearby xenos."
+	desc = "尖啸,提高附近异形的等离子体再生."
 	action_icon_state = "plasma_screech"
 	action_icon = 'icons/Xeno/actions/queen.dmi'
 	ability_cost = 300
@@ -165,7 +165,7 @@
 		affected_xeno.apply_status_effect(/datum/status_effect/plasma_surge, affected_xeno.xeno_caste.plasma_max / 3, bonus_regen, duration)
 
 	playsound(xeno_owner.loc, 'sound/voice/alien/queen/screech_plasma.ogg', 75, 0)
-	xeno_owner.visible_message(span_xenouserdanger("\The [xeno_owner] emits an ear-splitting guttural roar!"))
+	xeno_owner.visible_message(span_xenouserdanger("\The [xeno_owner]发出一声震耳欲聋的嘶吼!"))
 
 	succeed_activate()
 	add_cooldown()
@@ -179,7 +179,7 @@
 
 /datum/action/ability/activable/xeno/frenzy_screech
 	name = "Frenzy Screech"
-	desc = "Screech that increases damage for nearby xenos."
+	desc = "尖啸,提高附近异形的伤害."
 	action_icon_state = "frenzy_screech"
 	action_icon = 'icons/Xeno/actions/queen.dmi'
 	ability_cost = 300
@@ -199,7 +199,7 @@
 		affected_xeno.apply_status_effect(/datum/status_effect/frenzy_screech, buff_duration, buff_damage_modifier)
 
 	playsound(xeno_owner.loc, 'sound/voice/alien/queen/screech_frenzy.ogg', 75, 0)
-	xeno_owner.visible_message(span_xenouserdanger("\The [xeno_owner] emits an ear-splitting guttural roar!"))
+	xeno_owner.visible_message(span_xenouserdanger("\The [xeno_owner]发出一声震耳欲聋的嘶吼!"))
 
 	succeed_activate()
 	add_cooldown()
@@ -213,9 +213,9 @@
 
 /// Promote the passed xeno to a hive leader, should not be called direct
 /datum/action/ability/xeno_action/set_xeno_lead/proc/set_xeno_leader(mob/living/carbon/xenomorph/selected_xeno)
-	xeno_owner.balloon_alert(xeno_owner, "Xeno promoted")
-	selected_xeno.balloon_alert(selected_xeno, "Promoted to leader")
-	to_chat(selected_xeno, span_xenoannounce("[xeno_owner] has selected us as a Hive Leader. The other Xenomorphs must listen to us. We will also act as a beacon for the Ruler's pheromones."))
+	xeno_owner.balloon_alert(xeno_owner, "异形晋升")
+	selected_xeno.balloon_alert(selected_xeno, "晋升为领袖")
+	to_chat(selected_xeno, span_xenoannounce("[xeno_owner]已选择我们作为巢穴领袖.其他异形必须听从我们.我们还将作为女王的费洛蒙信标."))
 
 	xeno_owner.hive.add_leader(selected_xeno)
 	selected_xeno.hud_set_queen_overwatch()
@@ -229,7 +229,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/watch_xeno
 	name = "Watch Xenomorph"
-	desc = "See from the target Xenomorphs vision. Click again the ability to stop observing"
+	desc = "以目标异形的视角观察.再次点击该技能以停止观察"
 	action_icon_state = "watch_xeno"
 	action_icon = 'icons/Xeno/actions/queen.dmi'
 	ability_cost = 0
@@ -316,7 +316,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/toggle_queen_zoom
 	name = "Toggle Queen Zoom"
-	desc = "Zoom out for a larger view around wherever you are looking."
+	desc = "拉远视角,以在你所看之处获得更大的视野."
 	action_icon_state = "toggle_queen_zoom"
 	action_icon = 'icons/Xeno/actions/queen.dmi'
 	ability_cost = 0
@@ -337,15 +337,15 @@
 /datum/action/ability/xeno_action/toggle_queen_zoom/proc/zoom_xeno_in(message = TRUE)
 	RegisterSignal(xeno_owner, COMSIG_MOVABLE_MOVED, PROC_REF(on_movement))
 	if(message)
-		xeno_owner.visible_message(span_notice("[xeno_owner] emits a broad and weak psychic aura."),
-		span_notice("We start focusing our psychic energy to expand the reach of our senses."), null, 5)
+		xeno_owner.visible_message(span_notice("[xeno_owner]发出一个广泛而微弱的精神光环."),
+		span_notice("我们开始集中精神能量以扩展我们感官的范围."), null, 5)
 	xeno_owner.zoom_in(0, 12)
 
 /datum/action/ability/xeno_action/toggle_queen_zoom/proc/zoom_xeno_out(message = TRUE)
 	UnregisterSignal(xeno_owner, COMSIG_MOVABLE_MOVED)
 	if(message)
-		xeno_owner.visible_message(span_notice("[xeno_owner] stops emitting its broad and weak psychic aura."),
-		span_notice("We stop the effort of expanding our senses."), null, 5)
+		xeno_owner.visible_message(span_notice("[xeno_owner]停止发出其广泛而微弱的精神光环."),
+		span_notice("我们停止扩展感官的努力."), null, 5)
 	xeno_owner.zoom_out()
 
 /datum/action/ability/xeno_action/toggle_queen_zoom/proc/on_movement(datum/source, atom/oldloc, direction, Forced)
@@ -356,7 +356,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/set_xeno_lead
 	name = "Choose/Follow Xenomorph Leaders"
-	desc = "Make a target Xenomorph a leader."
+	desc = "使目标异形成为领袖."
 	action_icon_state = "xeno_lead"
 	action_icon = 'icons/Xeno/actions/queen.dmi'
 	ability_cost = 200
@@ -385,15 +385,15 @@
 		return
 
 	if(xeno_owner.xeno_caste.queen_leader_limit <= length(xeno_owner.hive.xeno_leader_list))
-		xeno_owner.balloon_alert(xeno_owner, "No more leadership slots")
+		xeno_owner.balloon_alert(xeno_owner, "没有更多领袖名额")
 		return
 
 	set_xeno_leader(selected_xeno)
 
 /// Remove the passed xeno's leadership
 /datum/action/ability/xeno_action/set_xeno_lead/proc/unset_xeno_leader(mob/living/carbon/xenomorph/selected_xeno)
-	xeno_owner.balloon_alert(xeno_owner, "Xeno demoted")
-	selected_xeno.balloon_alert(selected_xeno, "Leadership removed")
+	xeno_owner.balloon_alert(xeno_owner, "异形降职")
+	selected_xeno.balloon_alert(selected_xeno, "领袖身份已移除")
 	selected_xeno.hive.remove_leader(selected_xeno)
 	selected_xeno.hud_set_queen_overwatch()
 	selected_xeno.handle_xeno_leader_pheromones(xeno_owner)
@@ -405,7 +405,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/psychic_cure/queen_give_heal
 	name = "Heal"
-	desc = "Apply a minor heal to the target."
+	desc = "对目标施加一次轻微治疗."
 	cooldown_duration = 5 SECONDS
 	ability_cost = 150
 	keybinding_signals = list(
@@ -420,7 +420,7 @@
 	owner.face_atom(target) //Face the target so we don't look stupid
 	if(!do_after(owner, 1 SECONDS, NONE, target, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL))
 		return FALSE
-	target.visible_message(span_xenowarning("\the [owner] vomits acid over [target], mending their wounds!"))
+	target.visible_message(span_xenowarning("\the [owner]向[target]吐出酸液,治愈了他们的伤口!"))
 	playsound(target, SFX_ALIEN_DROOL, 25)
 	new /obj/effect/temp_visual/telekinesis(get_turf(target))
 	var/mob/living/carbon/xenomorph/patient = target
@@ -447,7 +447,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/queen_give_plasma
 	name = "Give Plasma"
-	desc = "Give plasma to a target Xenomorph (you must be overwatching them.)"
+	desc = "将等离子体给予目标异形(你必须正在监视它们.)"
 	action_icon_state = "queen_give_plasma"
 	action_icon = 'icons/Xeno/actions/queen.dmi'
 	ability_cost = 150
@@ -467,19 +467,19 @@
 	var/mob/living/carbon/xenomorph/receiver = target
 	if(!CHECK_BITFIELD(use_state_flags|override_flags, ABILITY_IGNORE_DEAD_TARGET) && receiver.stat == DEAD)
 		if(!silent)
-			receiver.balloon_alert(owner, "Cannot give plasma, dead")
+			receiver.balloon_alert(owner, "无法给予等离子体,已死亡")
 		return FALSE
 	if(!CHECK_BITFIELD(receiver.xeno_caste.can_flags, CASTE_CAN_BE_GIVEN_PLASMA))
 		if(!silent)
-			receiver.balloon_alert(owner, "Cannot give plasma")
+			receiver.balloon_alert(owner, "无法给予等离子体")
 			return FALSE
 	if(xeno_owner.z != receiver.z)
 		if(!silent)
-			receiver.balloon_alert(owner, "Cannot give plasma, too far")
+			receiver.balloon_alert(owner, "无法给予等离子体,距离太远")
 		return FALSE
 	if(receiver.plasma_stored >= receiver.xeno_caste.plasma_max)
 		if(!silent)
-			receiver.balloon_alert(owner, "Cannot give plasma, full")
+			receiver.balloon_alert(owner, "无法给予等离子体,已满")
 		return FALSE
 
 /datum/action/ability/activable/xeno/queen_give_plasma/give_action(mob/living/L)
@@ -502,7 +502,7 @@
 	add_cooldown()
 	receiver.gain_plasma(300)
 	succeed_activate()
-	receiver.balloon_alert_to_viewers("Queen plasma", ignored_mobs = GLOB.alive_human_list)
+	receiver.balloon_alert_to_viewers("女王等离子体", ignored_mobs = GLOB.alive_human_list)
 	if (get_dist(owner, receiver) > 7)
 		// Out of screen transfer.
-		owner.balloon_alert(owner, "Transferred plasma")
+		owner.balloon_alert(owner, "已转移等离子体")

@@ -1,18 +1,18 @@
 //Ash storms happen frequently on lavaland. They heavily obscure vision, and cause high fire damage to anyone caught outside.
 /datum/weather/ash_storm
 	name = "ash storm"
-	desc = "An intense atmospheric storm lifts ash off of the planet's surface and billows it down across the area, dealing intense fire damage to the unprotected."
+	desc = "一场强烈的风暴将灰烬从行星表面卷起并席卷整个区域, 对没有防护的人造成强烈的火焰伤害."
 
-	telegraph_message = span_userdanger("An eerie moan rises on the wind. Sheets of burning ash blacken the horizon. Seek shelter.")
+	telegraph_message = span_userdanger("风中升起一阵诡异的哀鸣. 燃烧的灰烬遮蔽了地平线. 寻找掩护.")
 	telegraph_duration = 300
 	telegraph_overlay = "light_ash"
 
-	weather_message = span_userdanger("<i>Smoldering clouds of scorching ash billow down around you! Get inside!</i>")
+	weather_message = span_userdanger("<i>灼热的灰烬云翻滚着涌向你周围! 快进去!</i>")
 	weather_duration_lower = 600
 	weather_duration_upper = 1200
 	weather_overlay = "ash_storm"
 
-	end_message = span_danger("The shrieking wind whips away the last of the ash and falls to its usual murmur. It should be safe to go outside now.")
+	end_message = span_danger("尖啸的风吹走了最后的灰烬, 归于往常的低语. 现在出去应该安全了.")
 	end_duration = 300
 	end_overlay = "light_ash"
 
@@ -80,14 +80,14 @@
 //Emberfalls are the result of an ash storm passing by close to the playable area of lavaland. They have a 10% chance to trigger in place of an ash storm.
 /datum/weather/ash_storm/emberfall
 	name = "emberfall"
-	desc = "A passing ash storm blankets the area in harmless embers."
+	desc = "一场过境的灰烬风暴用无害的余烬覆盖了该区域."
 
-	telegraph_message = span_danger("An eerie moan rises on the wind. Sheets of burning ash blacken the horizon.")
+	telegraph_message = span_danger("风中传来一声诡异的呻吟. 燃烧的灰烬遮蔽了地平线.")
 
-	weather_message = span_notice("Gentle embers waft down around you like grotesque snow. The storm seems to have passed you by...")
+	weather_message = span_notice("温和的余烬如怪异的雪花般飘落在你周围. 风暴似乎已经绕过了你...")
 	weather_overlay = "light_ash"
 
-	end_message = span_notice("The emberfall slows, stops. Another layer of hardened soot to the basalt beneath your feet.")
+	end_message = span_notice("灰烬飘落减缓,停止. 你脚下的玄武岩上又多了一层坚硬的煤烟.")
 	end_sound = null
 
 	aesthetic = TRUE

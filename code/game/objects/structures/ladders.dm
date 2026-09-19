@@ -1,6 +1,6 @@
 /obj/structure/ladder
-	name = "ladder"
-	desc = "A sturdy metal ladder."
+	name = "梯子"
+	desc = "一架坚固的金属梯子。"
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "ladder11"
 	anchored = TRUE
@@ -43,7 +43,7 @@
 
 /obj/structure/ladder/examine(mob/user)
 	. = ..()
-	. += span_info("[EXAMINE_HINT("Left-click")] it to start moving up or down.")
+	. += span_info("[EXAMINE_HINT("Left-click")]它以开始向上或向下移动。")
 
 /obj/structure/ladder/Destroy()
 	if(down)
@@ -90,7 +90,7 @@
 	var/ladder_dir_name
 	var/obj/structure/ladder/ladder_dest
 	if(up && down)
-		ladder_dir_name = tgui_alert(user, "Go up or down the ladder?", "Ladder", list("Up", "Down", "Cancel"))
+		ladder_dir_name = tgui_alert(user, "向上还是向下爬梯子?", "梯子", list("Up", "Down", "Cancel"))
 		switch(ladder_dir_name)
 			if("Up")
 				ladder_dir_name = "up"
@@ -109,21 +109,21 @@
 	else return //just in case
 
 	step(user, get_dir(user, src))
-	user.visible_message(span_notice("[user] starts climbing [ladder_dir_name] [src]."),
-	span_notice("You start climbing [ladder_dir_name] [src]."))
+	user.visible_message(span_notice("[user]开始攀爬[ladder_dir_name][src]。"),
+	span_notice("你开始攀爬[ladder_dir_name][src]。"))
 	if(!do_after(user, 20, IGNORE_HELD_ITEM, src, BUSY_ICON_GENERIC) || user.lying_angle || user.anchored)
 		return
 	user.trainteleport(ladder_dest.loc)
-	visible_message(span_notice("[user] climbs [ladder_dir_name] [src].")) //Hack to give a visible message to the people here without duplicating user message
-	user.visible_message(span_notice("[user] climbs [ladder_dir_name] [src]."),
-	span_notice("You climb [ladder_dir_name] [src]."))
+	visible_message(span_notice("[user]攀爬[ladder_dir_name][src]。")) //Hack to give a visible message to the people here without duplicating user message
+	user.visible_message(span_notice("[user]攀爬[ladder_dir_name][src]。"),
+	span_notice("你攀爬[ladder_dir_name][src]。"))
 
 /obj/structure/ladder/attack_ghost(mob/dead/observer/user)
 	. = ..()
 	if(.)
 		return
 	if(up && down)
-		switch(tgui_alert(user, "Go up or down the ladder?", "Ladder", list("Up", "Down", "Cancel")))
+		switch(tgui_alert(user, "向上还是向下爬梯子?", "梯子", list("Up", "Down", "Cancel")))
 			if("Up")
 				user.forceMove(get_turf(up))
 			if("Down")
@@ -171,22 +171,22 @@
 /obj/structure/ladder/MouseDrop(over_object, src_location, over_location)
 	if((over_object == usr && (in_range(src, usr))))
 		if(isxenolarva(usr) || isobserver(usr) || usr.incapacitated() || is_blind(usr) || usr.lying_angle)
-			to_chat(usr, "You can't do that in your current state.")
+			to_chat(usr, "你当前的状态下无法这样做。")
 			return
 		if(is_watching)
-			to_chat(usr, "Someone's already looking through [src].")
+			to_chat(usr, "已经有人在查看[src]了。")
 			return
 		if(up && down)
-			switch(tgui_alert(usr, "Look up or down the ladder?", "Ladder", list("Up", "Down", "Cancel")))
+			switch(tgui_alert(usr, "向上还是向下看梯子?", "梯子", list("Up", "Down", "Cancel")))
 				if("Up")
-					usr.visible_message(span_notice("[usr] looks up [src]!"),
-					span_notice("You look up [src]!"))
+					usr.visible_message(span_notice("[usr]向上看[src]!"),
+					span_notice("你向上看[src]!"))
 					is_watching = 2
 					usr.set_interaction(src)
 
 				if("Down")
-					usr.visible_message(span_notice("[usr] looks down [src]!"),
-					span_notice("You look down [src]!"))
+					usr.visible_message(span_notice("[usr]向下看[src]!"),
+					span_notice("你向下看[src]!"))
 					is_watching = 1
 					usr.set_interaction(src)
 
@@ -194,15 +194,15 @@
 					return
 
 		else if(up)
-			usr.visible_message(span_notice("[usr] looks up [src]!"),
-			span_notice("You look up [src]!"))
+			usr.visible_message(span_notice("[usr]向上看[src]!"),
+			span_notice("你向上看[src]!"))
 			is_watching = 2
 			usr.set_interaction(src)
 
 
 		else if(down)
-			usr.visible_message(span_notice("[usr] looks down [src]!"),
-			span_notice("You look down [src]!"))
+			usr.visible_message(span_notice("[usr]向下看[src]!"),
+			span_notice("你向下看[src]!"))
 			is_watching = 1
 			usr.set_interaction(src)
 
@@ -218,7 +218,7 @@
 		var/obj/structure/ladder/ladder_dest
 
 		if(up && down)
-			ladder_dir_name = tgui_alert(user, "Throw up or down?", "Ladder", list("Up", "Down", "Cancel"), 0)
+			ladder_dir_name = tgui_alert(user, "向上还是向下扔?", "梯子", list("Up", "Down", "Cancel"), 0)
 			switch(ladder_dir_name)
 				if("Up")
 					ladder_dest = up
@@ -238,14 +238,14 @@
 		else
 			return
 
-		user.visible_message(span_warning("[user] takes position to throw [G] [ladder_dir_name] [src]."),
-		span_warning("You take position to throw [G] [ladder_dir_name] [src]."))
+		user.visible_message(span_warning("[user]摆好姿势准备将[G][ladder_dir_name]扔向[src]。"),
+		span_warning("你摆好姿势准备将[G][ladder_dir_name]扔向[src]。"))
 
 		if(!do_after(user, 10, NONE, src, BUSY_ICON_HOSTILE))
 			return
 
-		user.visible_message(span_warning("[user] throws [G] [ladder_dir_name] [src]!"),
-		span_warning("You throw [G] [ladder_dir_name] [src]"))
+		user.visible_message(span_warning("[user]将[G][ladder_dir_name]扔向[src]!"),
+		span_warning("你将[G][ladder_dir_name]扔向[src]"))
 		user.drop_held_item()
 		G.forceMove(ladder_dest.loc)
 		G.setDir(pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
@@ -259,7 +259,7 @@
 		var/ladder_dir_name
 		var/obj/structure/ladder/ladder_dest
 		if(up && down)
-			ladder_dir_name = tgui_alert(user, "Throw up or down?", "Ladder", list("Up", "Down", "Cancel"), 0)
+			ladder_dir_name = tgui_alert(user, "向上还是向下扔?", "梯子", list("Up", "Down", "Cancel"), 0)
 			switch(ladder_dir_name)
 				if("Up")
 					ladder_dir_name = "up"
@@ -278,14 +278,14 @@
 		else
 			return //just in case
 
-		user.visible_message(span_warning("[user] takes position to throw [F] [ladder_dir_name] [src]."),
-		span_warning("You take position to throw [F] [ladder_dir_name] [src]."))
+		user.visible_message(span_warning("[user]摆好姿势准备将[F][ladder_dir_name]扔向[src]。"),
+		span_warning("你摆好姿势准备将[F][ladder_dir_name]扔向[src]。"))
 
 		if(!do_after(user, 10, NONE, src, BUSY_ICON_HOSTILE))
 			return
 
-		user.visible_message(span_warning("[user] throws [F] [ladder_dir_name] [src]!"),
-		span_warning("You throw [F] [ladder_dir_name] [src]"))
+		user.visible_message(span_warning("[user]将[F][ladder_dir_name]扔向[src]!"),
+		span_warning("你将[F][ladder_dir_name]扔向[src]"))
 		user.drop_held_item()
 		F.forceMove(ladder_dest.loc)
 		F.setDir(pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))

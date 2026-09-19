@@ -41,7 +41,7 @@
 	var/list/waves_spawner = list()
 
 /datum/game_mode/last_stand/announce()
-	to_chat(world, "<b>The current game mode is - Last Stand!</b>")
+	to_chat(world, "<b>当前游戏模式为 - 背水一战!</b>")
 
 /datum/game_mode/last_stand/pre_setup()
 	. = ..()
@@ -144,7 +144,7 @@
 	if(!.)
 		return
 	if(!length(GLOB.ready_players) && !bypass_checks)
-		to_chat(world, "<b>Unable to start [name].</b> No candidate found.")
+		to_chat(world, "<b>无法启动 [name].</b> 未找到候选人.")
 		return FALSE
 
 /datum/game_mode/last_stand/declare_completion()

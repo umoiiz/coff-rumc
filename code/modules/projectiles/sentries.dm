@@ -121,7 +121,7 @@ GLOBAL_LIST_INIT(sentry_ignore_List, set_sentry_ignore_List())
 
 /obj/machinery/deployable/mounted/sentry/AltClick(mob/user)
 	if(!match_iff(user))
-		to_chat(user, span_notice("Доступ запрещён."))
+		to_chat(user, span_notice("访问被拒绝."))
 		return
 	return ..()
 
@@ -130,26 +130,26 @@ GLOBAL_LIST_INIT(sentry_ignore_List, set_sentry_ignore_List())
 
 /obj/machinery/deployable/mounted/sentry/on_set_interaction(mob/user)
 	. = ..()
-	to_chat(user, span_notice("Вы отключили ИИ [src] для перехода на ручное управление."))
+	to_chat(user, span_notice("你已断开AI [src]以切换到手动控制."))
 	set_on(FALSE)
 
 /obj/machinery/deployable/mounted/sentry/on_unset_interaction(mob/user)
 	. = ..()
-	to_chat(user, span_notice("Вы прекратили использовать [src], автоматика ИИ возобновляет работу."))
+	to_chat(user, span_notice("你已停止使用[src],AI自动化正在恢复运行."))
 	set_on(TRUE)
 
 /obj/machinery/deployable/mounted/sentry/attack_hand(mob/living/user)
 	. = ..()
 	if(!. || !CHECK_BITFIELD(machine_stat, KNOCKED_DOWN))
 		return
-	user.visible_message(span_notice("[user] начинает поднимать [src]."),
-		span_notice("Вы начинаете поднимать [src].</span>"))
+	user.visible_message(span_notice("[user]开始抬起[src]."),
+		span_notice("你开始抬起[src].</span>"))
 
 	if(!do_after(user, 2 SECONDS, NONE, src, BUSY_ICON_BUILD))
 		return
 
-	user.visible_message(span_notice("[user] поднял [src] на место."),
-		span_notice("Вы поставили [src] на место."))
+	user.visible_message(span_notice("[user]已将[src]抬回原位."),
+		span_notice("你已将[src]放回原位."))
 
 	DISABLE_BITFIELD(machine_stat, KNOCKED_DOWN)
 	density = initial(density)
@@ -162,14 +162,14 @@ GLOBAL_LIST_INIT(sentry_ignore_List, set_sentry_ignore_List())
 
 /obj/machinery/deployable/mounted/sentry/reload(mob/user, ammo_magazine)
 	if(!match_iff(user)) //You can't pull the ammo out of hostile turrets
-		to_chat(user, span_notice("Доступ запрещён."))
+		to_chat(user, span_notice("访问被拒绝."))
 		return
 	. = ..()
 	update_static_data(user)
 
 /obj/machinery/deployable/mounted/sentry/interact(mob/user, manual_mode = FALSE)
 	if(!match_iff(user)) //You can't mess with hostile turrets
-		to_chat(user, span_notice("Доступ запрещён."))
+		to_chat(user, span_notice("访问被拒绝."))
 		return
 	var/obj/item/weapon/gun/gun = get_internal_item()
 	if(manual_mode)
@@ -179,7 +179,7 @@ GLOBAL_LIST_INIT(sentry_ignore_List, set_sentry_ignore_List())
 		return TRUE
 
 	if(CHECK_BITFIELD(gun?.turret_flags, TURRET_IMMOBILE))
-		to_chat(user, span_warning("Панель управления [src] заблокирована."))
+		to_chat(user, span_warning("[src]的控制面板已锁定."))
 		return TRUE
 
 	ui_interact(user)
@@ -233,9 +233,9 @@ GLOBAL_LIST_INIT(sentry_ignore_List, set_sentry_ignore_List())
 		if("safety")
 			TOGGLE_BITFIELD(gun.turret_flags, TURRET_SAFETY)
 			var/safe = CHECK_BITFIELD(gun.turret_flags, TURRET_SAFETY)
-			user.visible_message(span_warning("[user] [safe ? "включ" : "отключ"]ил предокранитель у [src]."),
-				span_warning("Вы [safe ? "включ" : "отключ"]или предохранитель у [src]</span>"))
-			visible_message(span_warning("Красный светодиод на [src] ярко мигает!"))
+			user.visible_message(span_warning("[user][safe ? "включ" : "отключ"]了[src]的保险."),
+				span_warning("你[safe ? "включ" : "отключ"]了[src]</span>的保险"))
+			visible_message(span_warning("[src]上的红色LED灯明亮地闪烁着!"))
 			update_static_data(user)
 			. = TRUE
 
@@ -257,8 +257,8 @@ GLOBAL_LIST_INIT(sentry_ignore_List, set_sentry_ignore_List())
 		if("toggle_alert")
 			TOGGLE_BITFIELD(gun.turret_flags, TURRET_ALERTS)
 			var/alert = CHECK_BITFIELD(gun.turret_flags, TURRET_ALERTS)
-			user.visible_message(span_notice("[user] [alert ? "включ" : "отключ"]ил систему оповещений у [src]."),
-				span_notice("Вы [alert ? "включ" : "отключ"]или систему оповещений [src]."))
+			user.visible_message(span_notice("[user][alert ? "включ" : "отключ"]了[src]的警报系统."),
+				span_notice("你[alert ? "включ" : "отключ"]了[src]的警报系统."))
 			say("Система оповещений [alert ? "включена" : "отключена"]")
 			update_static_data(user)
 			. = TRUE
@@ -270,7 +270,7 @@ GLOBAL_LIST_INIT(sentry_ignore_List, set_sentry_ignore_List())
 			else
 				range = gun.turret_range - 2
 			var/rad_msg = CHECK_BITFIELD(gun.turret_flags, TURRET_RADIAL) ? "включ" : "отключ"
-			user.visible_message(span_notice("[user] [rad_msg]ил  радиальный режим у [src]."), span_notice("Вы [rad_msg]или радиальный режим у [src]."))
+			user.visible_message(span_notice("[user][rad_msg]了[src]的径向模式."), span_notice("你[rad_msg]了[src]的径向模式."))
 			say("Радиальный режим [rad_msg]ён.")
 			update_static_data(user)
 			. = TRUE
@@ -281,7 +281,7 @@ GLOBAL_LIST_INIT(sentry_ignore_List, set_sentry_ignore_List())
 /obj/machinery/deployable/mounted/sentry/proc/set_on(new_state)
 	var/obj/item/weapon/gun/gun = get_internal_item()
 	if(!new_state)
-		visible_message(span_notice("[name] выключается и затихает."))
+		visible_message(span_notice("[name]关闭并安静下来."))
 		DISABLE_BITFIELD(gun.turret_flags, TURRET_ON)
 		gun?.set_target(null)
 		soundloop.stop()
@@ -294,7 +294,7 @@ GLOBAL_LIST_INIT(sentry_ignore_List, set_sentry_ignore_List())
 
 	ENABLE_BITFIELD(gun?.turret_flags, TURRET_ON)
 	soundloop.start()
-	visible_message(span_notice("[name] включается и начинает жужжать."))
+	visible_message(span_notice("[name]开启并开始嗡嗡作响."))
 	set_light_range(initial(light_power))
 	set_light_color(initial(light_color))
 	set_light(SENTRY_LIGHT_POWER,SENTRY_LIGHT_POWER)
@@ -308,7 +308,7 @@ GLOBAL_LIST_INIT(sentry_ignore_List, set_sentry_ignore_List())
 	if(CHECK_BITFIELD(machine_stat, KNOCKED_DOWN))
 		return
 	sentry_stop_fire()
-	visible_message(span_userdanger("[name] была опрокинута!"))
+	visible_message(span_userdanger("[name]被掀翻了!"))
 	sentry_alert(SENTRY_ALERT_FALLEN)
 	playsound(loc, 'sound/items/turrets/turret_breakdown.ogg', 50, FALSE)
 	ENABLE_BITFIELD(machine_stat, KNOCKED_DOWN)
@@ -546,7 +546,7 @@ GLOBAL_LIST_INIT(sentry_ignore_List, set_sentry_ignore_List())
 
 /obj/machinery/deployable/mounted/sentry/disassemble(mob/user)
 	if(!match_iff(user)) //You can't steal other faction's turrets
-		to_chat(user, span_notice("Доступ запрещён."))
+		to_chat(user, span_notice("访问被拒绝."))
 		return
 	var/obj/item/weapon/gun/internal_gun = get_internal_item()
 	. = ..()
@@ -576,7 +576,7 @@ GLOBAL_LIST_INIT(sentry_ignore_List, set_sentry_ignore_List())
 
 /obj/machinery/deployable/mounted/sentry/buildasentry
 	name = "broken build-a-sentry"
-	desc = "You should not be seeing this unless a mapper, coder or admin screwed up."
+	desc = "除非是地图制作者,程序员或管理员搞砸了,否则你不应该看到这个."
 
 /obj/machinery/deployable/mounted/sentry/buildasentry/Initialize(mapload, obj/item/_internal_item, mob/deployer) //I know the istype spam is a bit much, but I don't think there is a better way.
 	. = ..()

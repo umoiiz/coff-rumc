@@ -1,6 +1,6 @@
 /obj/structure/musician
-	name = "Not A Piano"
-	desc = "Something broke, contact coderbus."
+	name = "不是钢琴"
+	desc = "出了点问题,请联系代码维护人员."
 	interaction_flags = INTERACT_OBJ_DEFAULT
 	var/can_play_unanchored = FALSE
 	var/list/allowed_instrument_ids = list("r3grand","r3harpsi","crharpsi","crgrand1","crbright1", "crichugan", "crihamgan","piano")
@@ -33,12 +33,12 @@
 
 /obj/structure/musician/wrench_act(mob/living/user, obj/item/I)
 	anchored = !anchored
-	user.visible_message("[user] unfastens [src]", "you unfasten the [src]")
+	user.visible_message("[user]解开[src]", "你解开了[src]")
 	playsound(loc, 'sound/items/ratchet.ogg', 25, TRUE)
 	return TRUE
 
 /obj/structure/musician/piano
-	name = "space minimoog"
+	name = "太空迷你穆格"
 	icon = 'icons/obj/musician.dmi'
 	icon_state = "minimoog"
 	anchored = TRUE

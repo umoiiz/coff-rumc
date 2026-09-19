@@ -5,7 +5,7 @@
 	name = "Emit Gas"
 	action_icon_state = "emit_neurogas"
 	action_icon = 'icons/Xeno/actions/defiler.dmi'
-	desc = "Use to emit a cloud of blinding smoke."
+	desc = "使用以释放一团致盲烟雾."
 	cooldown_duration = 30 SECONDS
 	keybind_flags = ABILITY_KEYBIND_USE_ABILITY|ABILITY_IGNORE_SELECTED_ABILITY
 	keybinding_signals = list(
@@ -22,7 +22,7 @@
 
 /datum/action/ability/emit_gas/on_cooldown_finish()
 	playsound(owner.loc, 'sound/effects/alien/newlarva.ogg', 50, 0)
-	to_chat(owner, span_xenodanger("We feel our smoke filling us once more. We can emit gas again."))
+	to_chat(owner, span_xenodanger("我们感到烟雾再次充满我们.我们可以再次释放气体了."))
 	toggle_particles(TRUE)
 	return ..()
 
@@ -80,7 +80,7 @@
 
 /datum/action/ability/activable/pounce
 	name = "Pounce"
-	desc = "Leap at your target, tackling and disarming them."
+	desc = "跃向你的目标,将其扑倒并缴械."
 	action_icon_state = "pounce"
 	action_icon = 'icons/Xeno/actions/runner.dmi'
 	cooldown_duration = 10 SECONDS
@@ -96,7 +96,7 @@
 	var/self_immobilize_duration = 1 SECONDS
 
 /datum/action/ability/activable/pounce/on_cooldown_finish()
-	owner.balloon_alert(owner, "pounce ready")
+	owner.balloon_alert(owner, "扑击就绪")
 	owner.playsound_local(owner, 'sound/effects/alien/newlarva.ogg', 25, 0, 1)
 	return ..()
 
@@ -181,7 +181,7 @@
 	name = "Boomer Explode"
 	action_icon_state = "baneling_explode"
 	action_icon = 'icons/Xeno/actions/general.dmi'
-	desc = "Explode and spread dangerous toxins to hinder or kill your foes. You die."
+	desc = "爆炸并散播危险毒素来阻碍或杀死你的敌人.你会死亡."
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_BANELING_EXPLODE,
 	)
@@ -237,7 +237,7 @@
 	name = "Bile spit"
 	action_icon_state = "spray_acid"
 	action_icon = 'icons/Xeno/actions/boiler.dmi'
-	desc = "Hurl a glob of bile at your foes."
+	desc = "向你的敌人投掷一团胆汁."
 	cooldown_duration = 12 SECONDS
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_PSYCHIC_BLAST,
@@ -246,7 +246,7 @@
 	var/spit_type = /datum/ammo/bile_spit
 
 /datum/action/ability/activable/bile_spit/on_cooldown_finish()
-	owner.balloon_alert(owner, "Bile ready")
+	owner.balloon_alert(owner, "胆汁就绪")
 	playsound(owner, 'sound/effects/refill.ogg', 50, 1)
 	return ..()
 

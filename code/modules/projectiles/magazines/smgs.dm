@@ -1,6 +1,6 @@
 /obj/item/ammo_magazine/smg
-	name = "\improper SMG magazine"
-	desc = "A submachinegun magazine."
+	name = "\improper 冲锋枪弹匣"
+	desc = "冲锋枪弹匣."
 	default_ammo = /datum/ammo/bullet/smg
 	max_rounds = 30
 	icon = 'icons/obj/items/ammo/smg.dmi'
@@ -10,8 +10,8 @@
 //M25 SMG ammo
 
 /obj/item/ammo_magazine/smg/m25
-	name = "\improper SMG-25 magazine (10x20mm)"
-	desc = "A 10x20mm caseless submachinegun magazine."
+	name = "\improper SMG-25弹匣 (10x20mm)"
+	desc = "10x20mm无壳冲锋枪弹匣."
 	caliber = CALIBER_10X20_CASELESS
 	icon_state = "m25"
 	max_rounds = 60
@@ -19,14 +19,14 @@
 	ammo_band_icon = "m25_band"
 
 /obj/item/ammo_magazine/smg/m25/ap
-	name = "\improper SMG-25 AP magazine (10x20mm)"
+	name = "\improper SMG-25穿甲弹匣 (10x20mm)"
 	default_ammo = /datum/ammo/bullet/smg/ap
 	icon_state_mini = "mag_smg_green"
 	bonus_overlay = "m25_ap"
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/smg/m25/extended
-	name = "\improper SMG-25 extended magazine (10x20mm)"
+	name = "\improper SMG-25加长弹匣 (10x20mm)"
 	max_rounds = 90
 	icon_state_mini = "mag_smg_yellow"
 	bonus_overlay = "m25_ex"
@@ -36,8 +36,8 @@
 //MP-19 Machinepistol ammo
 
 /obj/item/ammo_magazine/smg/mp19
-	name = "\improper MP-19 machinepistol magazine (10x20mm)"
-	desc = "A 10x20mm caseless machine pistol magazine."
+	name = "\improper MP-19冲锋手枪弹匣 (10x20mm)"
+	desc = "10x20mm无壳冲锋手枪弹匣."
 	caliber = CALIBER_10X20_CASELESS
 	icon_state = "t19"
 	icon_state_mini = "mag_smg"
@@ -48,8 +48,8 @@
 //SMG-90 SMG ammo
 
 /obj/item/ammo_magazine/smg/smg90
-	name = "\improper SMG-90 submachine gun magazine (10x20mm)"
-	desc = "A 10x20mm caseless submachine gun magazine."
+	name = "\improper SMG-90冲锋枪弹匣 (10x20mm)"
+	desc = "一把10x20mm无壳冲锋枪弹匣."
 	caliber = CALIBER_10X20_CASELESS
 	icon_state = "t90"
 	max_rounds = 80
@@ -60,8 +60,8 @@
 //SMG-45 SMG ammo
 
 /obj/item/ammo_magazine/smg/t45
-	name = "\improper SMG-45 magazine (.41 AE)"
-	desc = "A .41 AE caseless submachinegun magazine."
+	name = "\improper SMG-45弹匣(.41 AE)"
+	desc = "一把.41 AE无壳冲锋枪弹匣."
 	default_ammo = /datum/ammo/bullet/smg/heavy
 	caliber = CALIBER_41AE
 	icon_state = "t45"
@@ -71,8 +71,8 @@
 	bonus_overlay = "t45_mag"
 
 /obj/item/ammo_magazine/smg/t45/squashhead
-	name = "\improper SMG-45 squash-head magazine (.41 AE)"
-	desc = "A .41 AE caseless submachinegun magazine that does a miniature explosion upon contact."
+	name = "\improper SMG-45平头弹匣(.41 AE)"
+	desc = "一把.41 AE无壳冲锋枪弹匣,接触时会产生微型爆炸."
 	default_ammo = /datum/ammo/bullet/smg/squash
 	icon_state = "t45_sh"
 	icon_state_mini = "mag_heavy_smg_yellow"
@@ -82,8 +82,8 @@
 //SMG-27, based on the SMG-27, based on the M7.
 
 /obj/item/ammo_magazine/smg/mp7
-	name = "\improper SMG-27 magazine (4.6x30mm)"
-	desc = "A 4.6mm magazine for the SMG-27."
+	name = "\improper SMG-27弹匣(4.6x30mm)"
+	desc = "一把用于SMG-27的4.6mm弹匣."
 	default_ammo = /datum/ammo/bullet/smg/ap
 	caliber = CALIBER_46X30
 	icon_state = "mp7"
@@ -95,8 +95,8 @@
 //SKORPION //Based on the same thing.
 
 /obj/item/ammo_magazine/smg/skorpion
-	name = "\improper CZ-81 magazine (.32ACP)"
-	desc = "A .32ACP caliber magazine for the CZ-81."
+	name = "\improper CZ-81弹匣(.32ACP)"
+	desc = "一把用于CZ-81的.32ACP口径弹匣."
 	caliber = CALIBER_32ACP
 	icon_state = "skorpion"
 	icon_state_mini = "mag_rifle"
@@ -107,8 +107,8 @@
 //PPSH //Based on the PPSh-41.
 
 /obj/item/ammo_magazine/smg/ppsh
-	name = "\improper PPSh-17b magazine (7.62x25mm)"
-	desc = "A drum magazine for the PPSh submachinegun."
+	name = "\improper PPSh-17b弹匣(7.62x25mm)"
+	desc = "一把用于PPSh冲锋枪的弹鼓."
 	default_ammo = /datum/ammo/bullet/smg
 	w_class = WEIGHT_CLASS_SMALL
 	caliber = CALIBER_762X25
@@ -119,7 +119,7 @@
 
 
 /obj/item/ammo_magazine/smg/ppsh/extended
-	name = "\improper PPSh-17b drum magazine (7.62x25mm)"
+	name = "\improper PPSh-17b弹鼓(7.62x25mm)"
 	icon_state = "ppsh_ext"
 	icon_state_mini = "mag_drum_yellow"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -131,15 +131,15 @@
 //GENERIC UZI //Based on the uzi submachinegun, of course.
 
 /obj/item/ammo_magazine/smg/uzi
-	name = "\improper SMG-2 magazine (9mm)"
-	desc = "A magazine for the SMG-2."
+	name = "\improper SMG-2弹匣(9mm)"
+	desc = "一把用于SMG-2的弹匣."
 	caliber = CALIBER_9X21
 	icon_state = "uzi"
 	icon_state_mini = "mag_smg_dark"
 	max_rounds = 32
 
 /obj/item/ammo_magazine/smg/uzi/extended
-	name = "\improper SMG-2 extended magazine (9mm)"
+	name = "\improper SMG-2加长弹匣(9mm)"
 	icon_state = "uzi_ext"
 	max_rounds = 50
 	bonus_overlay = "uzi_ex"
@@ -149,8 +149,8 @@
 //V-21 SOM SMG
 
 /obj/item/ammo_magazine/smg/som
-	name = "\improper V-21 submachinegun magazine (10x20mm)"
-	desc = "A 10x20mm caseless submachinegun magazine."
+	name = "\improper V-21冲锋枪弹匣(10x20mm)"
+	desc = "一把10x20mm无壳冲锋枪弹匣."
 	caliber = CALIBER_10X20_CASELESS
 	icon_state = "v21"
 	icon_state_mini = "mag_smg"
@@ -159,22 +159,22 @@
 	ammo_band_icon = "v21_band"
 
 /obj/item/ammo_magazine/smg/som/ap
-	name = "\improper V-21 AP submachinegun magazine (10x20mm)"
-	desc = "A 10x20mm caseless submachinegun magazine, loaded in armor piercing rounds."
+	name = "\improper V-21穿甲冲锋枪弹匣(10x20mm)"
+	desc = "一把10x20mm无壳冲锋枪弹匣,装填有穿甲弹."
 	default_ammo = /datum/ammo/bullet/smg/ap
 	icon_state_mini = "mag_smg_green"
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/smg/som/incendiary
-	name = "\improper V-21 incendiary submachinegun magazine (10x20mm)"
-	desc = "A 10x20mm caseless submachinegun magazine, loaded in incendiary rounds."
+	name = "\improper V-21燃烧冲锋枪弹匣(10x20mm)"
+	desc = "一把10x20mm无壳冲锋枪弹匣,装填有燃烧弹."
 	default_ammo = /datum/ammo/bullet/smg/incendiary
 	icon_state_mini = "mag_smg_red"
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/smg/som/extended
-	name = "\improper V-21 extended submachinegun magazine (10x20mm)"
-	desc = "An extended 10x20mm caseless submachinegun magazine."
+	name = "\improper V-21加长冲锋枪弹匣(10x20mm)"
+	desc = "一把加长的10x20mm无壳冲锋枪弹匣."
 	icon_state = "v21_extended"
 	max_rounds = 75
 	icon_state_mini = "mag_smg_yellow"
@@ -183,8 +183,8 @@
 	ammo_band_color = AMMO_BAND_COLOR_EXTENDED
 
 /obj/item/ammo_magazine/smg/som/rad
-	name = "\improper V-21 radioactive submachinegun magazine (10x20mm)"
-	desc = "A 10x20mm caseless submachinegun magazine, loaded with radioactive rounds. Handle with care."
+	name = "\improper V-21放射性冲锋枪弹匣(10x20mm)"
+	desc = "一把10x20mm无壳冲锋枪弹匣,装填有放射性弹药.小心处理."
 	icon_state = "v21_rad"
 	default_ammo = /datum/ammo/bullet/smg/rad
 	icon_state_mini = "mag_smg_greenyellow"
@@ -193,8 +193,8 @@
 //PL-38, ICC Machinepistol
 
 /obj/item/ammo_magazine/smg/icc_machinepistol
-	name = "\improper PL-38 AP machinepistol magazine (10x20mm)"
-	desc = "A 10x20mm caseless armor-piercing machine pistol magazine."
+	name = "\improper PL-38穿甲冲锋手枪弹匣(10x20mm)"
+	desc = "一把10x20mm无壳穿甲冲锋手枪弹匣."
 	caliber = CALIBER_10X20_CASELESS
 	icon_state = "pl38"
 	icon_state_mini = "mag_smg_dark"
@@ -204,8 +204,8 @@
 	ammo_band_icon = "pl38_band"
 
 /obj/item/ammo_magazine/smg/icc_machinepistol/hp
-	name = "\improper PL-38 HP machinepistol magazine (10x20mm)"
-	desc = "A 10x20mm caseless hollow point machine pistol magazine."
+	name = "\improper PL-38空尖冲锋手枪弹匣(10x20mm)"
+	desc = "一把10x20mm无壳空尖冲锋手枪弹匣."
 	icon_state_mini = "mag_smg_dark_blue"
 	default_ammo = /datum/ammo/bullet/smg/hollow
 	ammo_band_color = AMMO_BAND_COLOR_HOLLOWPOINT
@@ -214,8 +214,8 @@
 //L-40, ICC PDW
 
 /obj/item/ammo_magazine/smg/icc_pdw
-	name = "\improper L-40 AP personal defense weapon magazine (4.6mm)"
-	desc = "A 4.6mm caseless armor-piercing PDW magazine."
+	name = "\improper L-40穿甲个人防卫武器弹匣(4.6mm)"
+	desc = "一把4.6mm无壳穿甲PDW弹匣."
 	caliber = CALIBER_46X30
 	icon_state = "l40"
 	icon_state_mini = "mag_smg_dark"
@@ -227,8 +227,8 @@
 //vector
 
 /obj/item/ammo_magazine/smg/vector
-	name = "\improper Vector drum magazine (.45ACP)"
-	desc = "A .45ACP drum magazine for the Vector, with even more dakka."
+	name = "\improper Vector弹鼓(.45ACP)"
+	desc = "一把用于Vector的.45ACP弹鼓,火力更加凶猛."
 	ammo_band_icon = "ppsh_ext_band"
 	default_ammo = /datum/ammo/bullet/smg/acp
 	w_class = WEIGHT_CLASS_SMALL
@@ -237,8 +237,8 @@
 	max_rounds = 40 // HI-Point .45 ACP Drum mag
 
 /obj/item/ammo_magazine/smg/vector/incendiary
-	name = "\improper Vector incendiary drum magazine (.45ACP)"
-	desc = "A .45ACP incendiary drum magazine for the Vector, with even more dakka."
+	name = "\improper Vector燃烧弹鼓(.45ACP)"
+	desc = "一把用于Vector的.45ACP燃烧弹鼓,火力更加凶猛."
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 	default_ammo = /datum/ammo/bullet/smg/acp/incendiary
 
@@ -246,8 +246,8 @@
 //C17 riot PDW
 
 /obj/item/ammo_magazine/smg/vsd_pdw
-	name = "\improper C17 drum mag (.45 ACP)"
-	desc = "An Armor-Piercing .45 ACP caseless submachinegun magazine."
+	name = "\improper C17弹鼓(.45 ACP)"
+	desc = "一把.45 ACP无壳穿甲冲锋枪弹匣."
 	default_ammo = /datum/ammo/bullet/smg/ap/hv
 	caliber = CALIBER_45ACP
 	icon_state = "ppsh_ext"

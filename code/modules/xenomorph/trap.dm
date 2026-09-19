@@ -1,6 +1,6 @@
 /obj/structure/xeno/trap
-	desc = "It looks like a hiding hole."
-	name = "resin hole"
+	desc = "它看起来像一个藏身洞."
+	name = "树脂洞"
 	icon = 'icons/Xeno/Effects.dmi'
 	icon_state = "trap"
 	density = FALSE
@@ -70,22 +70,22 @@
 	. = ..()
 	if(!isxeno(user))
 		return
-	. += span_notice("A hole for a little one to hide in ambush or for spewing acid.")
+	. += span_notice("一个供小家伙埋伏或喷吐酸液的洞.")
 	switch(trap_type)
 		if(TRAP_HUGGER_LARVAL, TRAP_HUGGER_NEURO, TRAP_HUGGER_ACID, TRAP_HUGGER_RESIN, TRAP_HUGGER_SLASH, TRAP_HUGGER_OZELOMELYN)
-			. += span_notice("There's a little one inside.")
+			. += span_notice("里面有一个小家伙.")
 		if(TRAP_SMOKE_NEURO)
-			. += span_notice("There's pressurized neurotoxin inside.")
+			. += span_notice("里面有加压的神经毒素.")
 		if(TRAP_SMOKE_ACID)
-			. += span_notice("There's pressurized acid gas inside.")
+			. += span_notice("里面有加压的酸性气体.")
 		if(TRAP_ACID_WEAK)
-			. += span_notice("There's pressurized weak acid inside.")
+			. += span_notice("里面有加压的弱酸.")
 		if(TRAP_ACID_NORMAL)
-			. += span_notice("There's pressurized normal acid inside.")
+			. += span_notice("里面有加压的普通酸液.")
 		if(TRAP_ACID_STRONG)
-			. += span_notice("There's strong pressurized acid inside.")
+			. += span_notice("里面有加压的强酸.")
 		else
-			. += span_notice("It's empty.")
+			. += span_notice("它是空的.")
 
 /obj/structure/xeno/trap/fire_act(burn_level, flame_color)
 	hugger?.kill_hugger()
@@ -104,7 +104,7 @@
 		if(CHECK_BITFIELD(AM.pass_flags, PASS_LOW_STRUCTURE))
 			return
 		var/mob/living/carbon/crosser = AM
-		crosser.visible_message(span_warning("[crosser] trips on [src]!"), span_danger("You trip on [src]!"))
+		crosser.visible_message(span_warning("[crosser]被[src]绊倒了!"), span_danger("你被[src]绊倒了!"))
 		crosser.ParalyzeNoChain(4 SECONDS)
 	switch(trap_type)
 		if(TRAP_HUGGER_LARVAL, TRAP_HUGGER_NEURO, TRAP_HUGGER_ACID, TRAP_HUGGER_RESIN, TRAP_HUGGER_SLASH, TRAP_HUGGER_OZELOMELYN)
@@ -135,7 +135,7 @@
 /obj/structure/xeno/trap/proc/drop_hugger()
 	hugger.forceMove(loc)
 	hugger.go_active(TRUE, TRUE) //Removes stasis
-	visible_message(span_warning("[hugger] gets out of [src]!") )
+	visible_message(span_warning("[hugger]从[src]中出来了!") )
 	hugger = null
 	set_trap_type(null)
 
@@ -149,13 +149,13 @@
 		if(!(xeno_attacker.xeno_caste.can_flags & CASTE_CAN_HOLD_FACEHUGGERS))
 			return
 		if(!hugger)
-			balloon_alert(xeno_attacker, "It is empty")
+			balloon_alert(xeno_attacker, "它是空的")
 			return
 		xeno_attacker.put_in_active_hand(hugger)
 		hugger.go_active(TRUE)
 		hugger = null
 		set_trap_type(null)
-		balloon_alert(xeno_attacker, "Removed facehugger")
+		balloon_alert(xeno_attacker, "已移除抱脸虫")
 		return
 	var/datum/action/ability/activable/xeno/corrosive_acid/acid_action = locate(/datum/action/ability/activable/xeno/corrosive_acid) in xeno_attacker.actions
 	if(istype(xeno_attacker.ammo, /datum/ammo/xeno/boiler_gas))
@@ -175,7 +175,7 @@
 	else
 		return // nothing happened!
 	playsound(xeno_attacker.loc, 'sound/effects/refill.ogg', 25, 1)
-	balloon_alert(xeno_attacker, "Filled with [trap_type]")
+	balloon_alert(xeno_attacker, "已装满[trap_type]")
 
 /obj/structure/xeno/trap/attackby(obj/item/I, mob/user, params)
 	. = ..()
@@ -186,27 +186,27 @@
 		return
 	var/obj/item/clothing/mask/facehugger/FH = I
 	if(trap_type)
-		balloon_alert(user, "Already occupied")
+		balloon_alert(user, "已被占用")
 		return
 
 	if(FH.stat == DEAD)
-		balloon_alert(user, "Cannot insert facehugger")
+		balloon_alert(user, "无法插入面罩虫")
 		return
 
 	user.transferItemToLoc(FH, src)
 	FH.go_idle(TRUE)
 	hugger = FH
 	set_trap_type(FH.trap_type)
-	balloon_alert(user, "Inserted facehugger")
+	balloon_alert(user, "已插入面罩虫")
 
 //Sentient facehugger can get in the trap
 /obj/structure/xeno/trap/attack_facehugger(mob/living/carbon/xenomorph/facehugger/F, isrightclick = FALSE)
 	. = ..()
 	if(trap_type)
-		F.balloon_alert(F, "The trap is occupied")
+		F.balloon_alert(F, "陷阱已被占用")
 		return
 
-	if(tgui_alert(F, "Do you want to get into the trap?", "Get inside the trap", list("Yes", "No")) != "Yes")
+	if(tgui_alert(F, "你想进入陷阱吗?", "进入陷阱", list("Yes", "No")) != "Yes")
 		return
 
 	var/obj/item/clothing/mask/facehugger/FH = new(src)
@@ -214,7 +214,7 @@
 	hugger = FH
 	set_trap_type(TRAP_HUGGER_LARVAL)
 
-	F.visible_message(span_xenowarning("[F] slides back into [src]."),span_xenonotice("You slides back into [src]."))
+	F.visible_message(span_xenowarning("[F]滑回[src]中."),span_xenonotice("你滑回[src]中."))
 	F.ghostize()
 	F.death(deathmessage = "get inside the trap", silent = TRUE)
 	qdel(F)

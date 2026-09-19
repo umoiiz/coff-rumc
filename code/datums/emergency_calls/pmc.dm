@@ -6,13 +6,13 @@
 
 
 /datum/emergency_call/pmc/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>After leaving your [pick(75;"distant", 20;"close", 5;"ever-lovingly close")] [pick("family", "friends", "band of friends", "friend group", "relatives", "cousins")] [pick("behind", "behind in safety", "behind secretly", "behind regrettably")], you decided to join the ranks of a private military contracting group working for Nanotrasen.</b>")
-	to_chat(H, "<B>Working there has proven to be [pick(50;"very", 20;"somewhat", 5;"astoundingly")] profitable for you.</b>")
-	to_chat(H, "<B>While you are [pick("enlisted as", "officially", "part-time officially", "privately")] [pick("an employee", "a security officer", "an officer")], much of your work is off the books. You work as a skilled rapid-response contractor.</b>")
+	to_chat(H, "<B>在离开你的[pick(75;"distant", 20;"close", 5;"ever-lovingly close")] [pick("family", "friends", "band of friends", "friend group", "relatives", "cousins")] [pick("behind", "behind in safety", "behind secretly", "behind regrettably")]后,你决定加入一家为Nanotrasen工作的私人军事承包集团.</b>")
+	to_chat(H, "<B>在那里工作被证明对你来说[pick(50;"very", 20;"somewhat", 5;"astoundingly")]有利可图.</b>")
+	to_chat(H, "<B>虽然你是[pick("enlisted as", "officially", "part-time officially", "privately")] [pick("an employee", "a security officer", "an officer")],你的大部分工作都不在账面上. 你作为一名熟练的快速响应承包商工作.</b>")
 	to_chat(H, "")
-	to_chat(H, "<B>Today, a TGMC vessel, [SSmapping.configs[SHIP_MAP].map_name], has sent out a distress signal on the orbit of [SSmapping.configs[GROUND_MAP].map_name]. Your time is running short, get your shuttle launching!</b>")
-	to_chat(H, "<B>Make sure the Corporate Liaison is safe.</b>")
-	to_chat(H, "<B>If there is no Liaison, eliminate the threat and cooperate with the Captain before returning back home.</b>")
+	to_chat(H, "<B>今天,一艘TGMC舰船,[SSmapping.configs[SHIP_MAP].map_name],在[SSmapping.configs[GROUND_MAP].map_name]的轨道上发出了求救信号. 你的时间不多了,让你的穿梭机起飞!</b>")
+	to_chat(H, "<B>确保企业联络官安全.</b>")
+	to_chat(H, "<B>如果没有联络官,则消灭威胁,并在返回家乡前与舰长合作.</b>")
 
 
 /datum/emergency_call/pmc/create_member(datum/mind/M)

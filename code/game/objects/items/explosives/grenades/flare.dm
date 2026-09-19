@@ -1,8 +1,8 @@
 #define FLARE_FIRE_STACKS 5
 
 /obj/item/explosive/grenade/flare
-	name = "\improper M40 FLDP grenade"
-	desc = "A TGMC standard issue flare utilizing the standard DP canister chassis. Capable of being loaded in any grenade launcher, or thrown by hand."
+	name = "\improper M40 FLDP手榴弹"
+	desc = "一种TGMC标准配发照明弹,采用标准DP罐体.可装入任何榴弹发射器,也可用手投掷."
 	icon_state = "flare_grenade"
 	worn_icon_state = "flare_grenade"
 	det_time = 0
@@ -102,12 +102,12 @@
 
 /obj/item/explosive/grenade/flare/attack_self(mob/user)
 	if(!fuel)
-		to_chat(user, span_notice("It's out of fuel."))
+		to_chat(user, span_notice("它没燃料了."))
 		return
 	if(active)
 		return
 
-	user.visible_message(span_notice("[user] activates the flare."), span_notice("You depress the ignition button, activating it!"))
+	user.visible_message(span_notice("[user]激活了照明弹."), span_notice("你按下点火按钮,将其激活!"))
 	turn_on(user)
 
 /obj/item/explosive/grenade/flare/activate(mob/user)
@@ -158,14 +158,14 @@
 	turn_on()
 
 /obj/item/explosive/grenade/flare/civilian
-	name = "flare"
-	desc = "A NT standard emergency flare. There are instructions on the side, it reads 'pull cord, make light'."
+	name = "照明弹"
+	desc = "一种NT标准应急照明弹.侧面有说明,写着\"拉绳,发光\"."
 	icon_state = "flare"
 	worn_icon_state = "flare"
 
 /obj/item/explosive/grenade/flare/cas
-	name = "\improper M50 CFDP signal flare"
-	desc = "A TGMC signal flare utilizing the standard DP canister chassis. Capable of being loaded in any grenade launcher, or thrown by hand. When activated, provides a target for CAS pilots."
+	name = "\improper M50 CFDP信号照明弹"
+	desc = "一种TGMC信号照明弹,采用标准DP罐体.可装入任何榴弹发射器,也可用手投掷.激活后,为CAS飞行员提供目标."
 	icon_state = "cas_flare_grenade"
 	worn_icon_state = "cas_flare_grenade"
 	hud_state = "grenade_frag"

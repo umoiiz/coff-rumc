@@ -28,7 +28,7 @@
 
 /datum/outfit/quick/tgmc/leader/ar12
 	name = "AR-12 Patrol Leader"
-	desc = "Gives the orders. Equipped with an AR-12 assault rifle with UGL, plenty of grenades, some support kit such as deployable cameras, as well as heavy armor with a 'valkyrie' autodoc module. You can provide excellent support to your squad thanks to your kit and order shouting talents."
+	desc = "发号施令. 配备一把带有下挂榴弹发射器的AR-12突击步枪, 大量手雷, 一些支援装备如可部署摄像头, 以及带有'瓦尔基里'自动医疗模块的重型护甲. 凭借你的装备和喊命令的天赋, 你可以为你的小队提供出色的支援."
 
 	suit_store = /obj/item/weapon/gun/rifle/ar12/rifleman
 	belt = /obj/item/storage/belt/marine/ar12
@@ -56,7 +56,7 @@
 
 /datum/outfit/quick/tgmc/leader/ar18
 	name = "AR-18 Patrol Leader"
-	desc = "Gives the orders. Equipped with an AR-18 carbine with plasma pistol attachment, plenty of grenades, as well as heavy armor with a 'valkyrie' autodoc module. You can provide excellent support to your squad thanks to your kit and order shouting talents, while unleashing excellent damage at medium range."
+	desc = "发号施令. 配备一把带有等离子手枪附件的AR-18卡宾枪, 大量手雷, 以及带有'瓦尔基里'自动医疗模块的重型护甲. 凭借你的装备和喊命令的天赋, 你可以为你的小队提供出色的支援, 同时在中距离造成出色伤害."
 
 	suit_store = /obj/item/weapon/gun/rifle/ar18/plasma_pistol
 	belt = /obj/item/storage/belt/marine/ar18
@@ -85,7 +85,7 @@
 
 /datum/outfit/quick/tgmc/leader/combat_rifle
 	name = "AR-11 Patrol Leader"
-	desc = "Gives the orders. Equipped with an AR-11 combat rifle, plenty of grenades, as well as heavy armor with a 'valkyrie' autodoc module. You can provide excellent support to your squad thanks to your kit and order shouting talents, with excellent damage at all ranges."
+	desc = "发号施令. 配备一把AR-11战斗步枪, 大量手雷, 以及带有'瓦尔基里'自动医疗模块的重型护甲. 凭借你的装备和喊命令的天赋, 你可以为你的小队提供出色的支援, 并在所有距离造成出色伤害."
 
 	suit_store = /obj/item/weapon/gun/rifle/ar11/standard
 	belt = /obj/item/storage/belt/marine/combat_rifle
@@ -113,7 +113,7 @@
 
 /datum/outfit/quick/tgmc/leader/br64
 	name = "BR-64 Patrol Leader"
-	desc = "Gives the orders. Equipped with an BR-64 battle rifle with UGL, plenty of grenades, as well as heavy armor with a 'valkyrie' autodoc module. The battle rifle offers improved damage and penetration compared to more common rifles, but still retains a grenade launcher that the AR-11 lacks."
+	desc = "发号施令. 配备一把带有下挂榴弹发射器的BR-64战斗步枪, 大量手雷, 以及带有'瓦尔基里'自动医疗模块的重型护甲. 与更常见的步枪相比, 战斗步枪提供更高的伤害和穿透力, 但仍保留了AR-11所缺少的榴弹发射器."
 
 	suit_store = /obj/item/weapon/gun/rifle/br64/standard
 	belt = /obj/item/storage/belt/marine/br64
@@ -136,7 +136,7 @@
 
 /datum/outfit/quick/tgmc/leader/auto_shotgun
 	name = "SH-15 Patrol Leader"
-	desc = "Gives the orders. Equipped with an SH-15 auto shotgun, plenty of grenades, as well as heavy armor with a 'valkyrie' autodoc module. You can provide excellent support to your squad thanks to your kit and order shouting talents, with strong damage and control."
+	desc = "发号施令. 配备一把SH-15自动霰弹枪, 大量手雷, 以及带有'瓦尔基里'自动医疗模块的重型护甲. 凭借你的装备和喊命令的天赋, 你可以为你的小队提供出色的支援, 并拥有强大的伤害和控制能力."
 
 	suit_store = /obj/item/weapon/gun/rifle/sh15/plasma_pistol
 	belt = /obj/item/storage/belt/marine/auto_shotgun
@@ -160,7 +160,7 @@
 
 /datum/outfit/quick/tgmc/leader/standard_laserrifle
 	name = "Laser Rifle Patrol Leader"
-	desc = "Gives the orders. Equipped with a laser rifle with UGL for better armor penetration against SOM, some support kit such as deployable cameras, as well as heavy armor with a 'valkyrie' autodoc module. You can provide excellent support to your squad thanks to your kit and order shouting talents."
+	desc = "发号施令. 配备一把带有下挂榴弹发射器的激光步枪, 以更好地穿透SOM护甲, 一些支援装备如可部署摄像头, 以及带有'瓦尔基里'自动医疗模块的重型护甲. 凭借你的装备和喊命令的天赋, 你可以为你的小队提供出色的支援."
 
 	suit_store = /obj/item/weapon/gun/energy/lasgun/lasrifle/standard_marine_rifle/rifleman
 	belt = /obj/item/storage/belt/marine/te_cells
@@ -187,7 +187,7 @@
 
 /datum/outfit/quick/tgmc/leader/oicw
 	name = "AR-55 Patrol Leader"
-	desc = "Gives the orders. Equipped with an AR-55 OICW with plenty of grenades for its integrated grenade launcher, some support kit such as deployable cameras, as well as heavy armor with a 'valkyrie' autodoc module. You can provide excellent support to your squad thanks to your kit and order shouting talents."
+	desc = "发号施令. 配备一把AR-55 OICW, 为其集成榴弹发射器携带大量手雷, 一些支援装备如可部署摄像头, 以及带有'瓦尔基里'自动医疗模块的重型护甲. 凭借你的装备和喊命令的天赋, 你可以为你的小队提供出色的支援."
 	quantity = 2
 
 	suit_store = /obj/item/weapon/gun/rifle/tx55/combat_patrol

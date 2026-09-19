@@ -1,11 +1,11 @@
 /obj/machinery/vending/valhalla_req
 	name = "\improper TerraGovTech requisition vendor"
-	desc = "An automated rack hooked up to a colossal storage of items."
+	desc = "一个自动化的货架,连接着一个巨大的物品储藏库."
 	icon_state = "requisitionop"
 	resistance_flags = INDESTRUCTIBLE
 	use_power = NO_POWER_USE
 	products = list(
-		"Weapon" = list(
+		"武器" = list(
 			/obj/item/weapon/gun/energy/lasgun/lasrifle/tesla = -1,
 			/obj/item/cell/lasgun/lasrifle/recharger = -1,
 			/obj/item/weapon/gun/rifle/railgun = -1,
@@ -56,7 +56,7 @@
 			/obj/item/ammo_magazine/rifle/famas = -1,
 			/obj/item/weapon/brick = -1,
 		),
-		"Mounted" = list(
+		"挂载" = list(
 			/obj/structure/largecrate/supply/weapons/at36 = -1,
 			/obj/item/ammo_magazine/at36 = -1,
 			/obj/item/ammo_magazine/at36/apcr = -1,
@@ -82,7 +82,7 @@
 			/obj/item/weapon/gun/energy/lasgun/lasrifle/heavy_laser/deployable = -1,
 			/obj/item/cell/lasgun/heavy_laser = -1,
 		),
-		"Equipment" = list(
+		"装备" = list(
 			/obj/item/clothing/glasses/hud/xenohud = -1,
 			/obj/item/clothing/glasses/night_vision = -1,
 			/obj/item/cell/night_vision_battery = -1,
@@ -110,7 +110,7 @@
 			/obj/item/clothing/head/helmet/marine/robot/advanced/fire = -1,
 			/obj/item/clothing/suit/storage/marine/boomvest = -1,
 		),
-		"Modules" = list(
+		"模块" = list(
 			/obj/item/armor_module/module/night_vision = -1,
 			/obj/item/cell/night_vision_battery = -1,
 			/obj/item/armor_module/module/valkyrie_autodoc = -1,
@@ -123,7 +123,7 @@
 			/obj/item/armor_module/module/mimir_environment_protection/mimir_helmet = -1,
 			/obj/item/armor_module/module/binoculars/artemis_mark_two = -1,
 		),
-		"Implants" = list(
+		"植入物" = list(
 			/obj/item/implanter/sandevistan = -1,
 			/obj/item/implanter/suicide_dust = -1,
 			/obj/item/implanter/blade = -1,
@@ -143,12 +143,12 @@
 
 /obj/machinery/vending/valhalla_seasonal_req
 	name = "\improper TerraGovTech seasonal vendor"
-	desc = "An automated rack hooked up to a colossal storage of items."
+	desc = "一个自动化的货架,连接着一个巨大的物品储藏库."
 	icon_state = "requisitionop"
 	resistance_flags = INDESTRUCTIBLE
 	use_power = NO_POWER_USE
 	products = list(
-		"Seasonal" = list(
+		"季节性" = list(
 			/obj/item/weapon/gun/revolver/small = -1,
 			/obj/item/ammo_magazine/revolver/small = -1,
 			/obj/item/weapon/gun/revolver/single_action/m44 = -1,
@@ -207,7 +207,7 @@
 			/obj/item/ammo_magazine/shotgun/mbx900/buckshot = -1,
 			/obj/item/ammo_magazine/shotgun/mbx900/tracking = -1,
 		),
-		"Sons of Mars" = list(
+		"火星之子" = list(
 			/obj/item/weapon/gun/rifle/som = -1,
 			/obj/item/ammo_magazine/rifle/som = -1,
 			/obj/item/ammo_magazine/handful/micro_grenade = -1,
@@ -281,13 +281,13 @@
 			/obj/item/weapon/gun/rifle/m412/elite = -1,
 			/obj/item/ammo_magazine/rifle/ap = -1,
 		),
-		"Misc" = list(
+		"杂项" = list(
 			/obj/item/weapon/gun/shotgun/double = -1,
 			/obj/item/weapon/gun/shotgun/double/sawn = -1,
 			/obj/item/weapon/gun/pistol/auto9 = -1,
 			/obj/item/ammo_magazine/pistol/auto9 = -1,
 		),
-		"Syndicate" = list(
+		"辛迪加" = list(
 			/obj/item/weapon/gun/rifle/vsd_rifle = -1,
 			/obj/item/ammo_magazine/rifle/vsd_rifle = -1,
 			/obj/item/weapon/gun/rifle/vsd_lmg = -1,
@@ -304,7 +304,7 @@
 			/obj/item/ammo_magazine/rocket/vsd/incendiary = -1,
 			/obj/item/ammo_magazine/rocket/vsd/chemical = -1,
 		),
-		"Smartguns/IFF" = list(
+		"智能枪/IFF" = list(
 			/obj/item/weapon/gun/rifle/t25 = -1,
 			/obj/item/ammo_magazine/rifle/t25 = -1,
 			/obj/item/ammo_magazine/rifle/t25/extended = -1,
@@ -338,14 +338,14 @@
 	)
 
 /obj/machinery/vending/mech_vendor
-	name = "\improper Mech equipment vendor"
-	desc = "An automated rack hooked up to a colossal storage of items."
+	name = "\improper 机甲装备贩卖机"
+	desc = "一个自动化的货架,连接着一个巨大的物品储藏库."
 	icon_state = "requisitionop"
 	resistance_flags = INDESTRUCTIBLE
 	use_power = NO_POWER_USE
 	wrenchable = FALSE
 	products = list(
-		"Weapon" = list(
+		"武器" = list(
 			/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/pistol = -1,
 			/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/burstpistol = -1,
 			/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/smg = -1,
@@ -365,7 +365,7 @@
 			/obj/item/mecha_parts/mecha_equipment/laser_sword = -1,
 			/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser_spear = -1,
 		),
-		"Ammo" = list(
+		"弹药" = list(
 			/obj/item/mecha_ammo/vendable/lmg = -1,
 			/obj/item/mecha_ammo/vendable/rifle = -1,
 			/obj/item/mecha_ammo/vendable/burstrifle = -1,
@@ -380,7 +380,7 @@
 			/obj/item/mecha_ammo/vendable/grenade = -1,
 			/obj/item/mecha_ammo/vendable/flamer = -1,
 		),
-		"Equipment" = list(
+		"装备" = list(
 			/obj/item/mecha_parts/mecha_equipment/armor/melee = -1,
 			/obj/item/mecha_parts/mecha_equipment/armor/acid = -1,
 			/obj/item/mecha_parts/mecha_equipment/armor/explosive = -1,
@@ -394,14 +394,14 @@
 	)
 
 /obj/machinery/vending/tank_vendor
-	name = "\improper Tank equipment vendor"
-	desc = "An automated rack hooked up to a colossal storage of items."
+	name = "\improper 坦克装备贩卖机"
+	desc = "一个自动化的货架,连接着一个巨大的物品储藏库."
 	icon_state = "requisitionop"
 	resistance_flags = INDESTRUCTIBLE
 	use_power = NO_POWER_USE
 	wrenchable = FALSE
 	products = list(
-		"Assault Vehicle" = list(
+		"突击载具" = list(
 			/obj/item/armored_weapon = -1,
 			/obj/item/ammo_magazine/tank/ltb_cannon = -1,
 			/obj/item/ammo_magazine/tank/ltb_cannon/apfds = -1,
@@ -426,7 +426,7 @@
 			/obj/item/tank_module/ability/smoke_launcher = -1,
 			/obj/item/tank_module/interior/medical = -1,
 		),
-		"SOM Assault Vehicle" = list(
+		"SOM突击载具" = list(
 			/obj/item/armored_weapon/volkite_carronade = -1,
 			/obj/item/armored_weapon/particle_lance = -1,
 			/obj/item/armored_weapon/coilgun = -1,
@@ -436,7 +436,7 @@
 			/obj/item/ammo_magazine/tank/coilgun = -1,
 			/obj/item/ammo_magazine/tank/secondary_mlrs = -1,
 		),
-		"ICC Assault Vehicle" = list(
+		"ICC突击载具" = list(
 			/obj/item/armored_weapon/icc_lvrt_sarden = -1,
 			/obj/item/armored_weapon/icc_lvrt_cannon = -1,
 			/obj/item/armored_weapon/icc_coaxial = -1,
@@ -445,7 +445,7 @@
 			/obj/item/ammo_magazine/tank/icc_lowvel_cannon = -1,
 			/obj/item/ammo_magazine/tank/icc_lowvel_cannon/high_explosive = -1,
 		),
-		"Recon Assault Vehicle" = list(
+		"侦察突击载具" = list(
 			/obj/item/armored_weapon/lvrt_sarden = -1,
 			/obj/item/armored_weapon/lvrt_cannon = -1,
 			/obj/item/armored_weapon/lvrt_flamer = -1,

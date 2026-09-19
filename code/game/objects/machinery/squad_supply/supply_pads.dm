@@ -1,7 +1,7 @@
 
 /obj/structure/supply_drop
-	name = "Supply Drop Pad"
-	desc = "Place unanchored supplies on here to allow bridge Overwatch officers to drop them on people's heads."
+	name = "补给空投平台"
+	desc = "将未固定的补给放置于此, 以便舰桥监督官将其空投到别人头上."
 	icon = 'icons/turf/decals.dmi'
 	icon_state = "stripe_box_thick"
 	anchored = TRUE

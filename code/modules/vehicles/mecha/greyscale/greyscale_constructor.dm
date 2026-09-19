@@ -249,14 +249,14 @@ GLOBAL_LIST_INIT(greyscale_weapons_data, generate_greyscale_weapons_data())
 			if(!new_name)
 				return FALSE
 			if(is_ic_filtered(new_name) || NON_ASCII_CHECK(new_name))
-				tgui_alert(usr, "You cannot set a name that contains a word prohibited in IC chat!")
+				tgui_alert(usr, "你不能设置包含IC聊天禁用词的名称!")
 				return
 			selected_name = new_name
 
 		if("assemble")
 			var/mob/living/user = usr
 			if(HAS_TRAIT(user, TRAIT_HAS_SPAWNED_MECH))
-				tgui_alert(user, "You have already deployed a mech!")
+				tgui_alert(user, "你已经部署了一台机甲!")
 				return FALSE
 			if(S_TIMER_COOLDOWN_TIMELEFT(src, COOLDOWN_MECHA))
 				return FALSE
@@ -375,7 +375,7 @@ GLOBAL_LIST_INIT(greyscale_weapons_data, generate_greyscale_weapons_data())
 	mech.pixel_y = 240
 	animate(mech, time=4 SECONDS, pixel_y=initial(mech.pixel_y), easing=SINE_EASING|EASE_OUT)
 
-	balloon_alert_to_viewers("Beep. Mecha ready for use.")
+	balloon_alert_to_viewers("哔. 机甲已准备就绪.")
 	playsound(src, 'sound/machines/chime.ogg', 30, 1)
 
 ///updates the current_stats data for the UI

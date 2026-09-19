@@ -7,9 +7,9 @@
 
 
 /datum/emergency_call/xenomorphs/print_backstory(mob/living/carbon/xenomorph/X)
-	to_chat(X, "<B>We are a Xenomorph from a distant hive.</b>")
-	to_chat(X, "<B>We've been cruising in space for years until a new leader reached out to us and took over the control of our shuttle.</b>") // It may be a shrike or a queen.
-	to_chat(X, "<B>Help our leader take over this sector. For the new Hive!</b>")
+	to_chat(X, "<B>我们是来自遥远巢穴的异形.</b>")
+	to_chat(X, "<B>我们在太空中巡航了多年, 直到一位新领袖联系了我们并接管了我们穿梭机的控制权.</b>") // It may be a shrike or a queen.
+	to_chat(X, "<B>帮助我们的领袖接管这个区域. 为了新巢穴!</b>")
 
 
 /datum/emergency_call/xenomorphs/spawn_items()

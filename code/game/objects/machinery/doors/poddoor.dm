@@ -1,6 +1,6 @@
 /obj/machinery/door/poddoor
 	name = "\improper Podlock"
-	desc = "That looks like it doesn't open easily."
+	desc = "那东西看起来不容易打开."
 	icon = 'icons/obj/doors/rapid_pdoor.dmi'
 	icon_state = "pdoor1"
 	soft_armor = list(MELEE = 50, BULLET = 90, LASER = 90, ENERGY = 100, BOMB = 50, BIO = 100, FIRE = 100, ACID = 70)
@@ -265,7 +265,7 @@
 
 /obj/machinery/door/poddoor/timed_late/containment
 	name = "Containment shutters"
-	desc = "Safety shutters triggered by some kind of lockdown event."
+	desc = "由某种封锁事件触发的安全闸门."
 	resistance_flags = DROPSHIP_IMMUNE|RESIST_ALL|BLOCK_PASSTHROUGH_PROJECTILES
 	open_layer = ABOVE_NORMAL_TURF_LAYER //No longer needs to be interacted with.
 	closed_layer = ABOVE_WINDOW_LAYER //Higher than usual, this is only around on the start of the round.

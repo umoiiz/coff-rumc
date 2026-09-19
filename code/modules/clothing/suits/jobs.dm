@@ -4,8 +4,8 @@
 
 //Botonist
 /obj/item/clothing/suit/storage/apron
-	name = "apron"
-	desc = "A basic blue apron."
+	name = "围裙"
+	desc = "一件基本的蓝色围裙."
 	icon_state = "apron"
 	worn_icon_state = "apron"
 	blood_overlay_type = "armor"
@@ -27,8 +27,8 @@
 
 
 /obj/item/clothing/suit/surgical
-	name = "surgical apron"
-	desc = "A plastic covering to prevent the passage of bodily fluids during surgery."
+	name = "手术围裙"
+	desc = "一件用于在手术期间防止体液通过的塑料覆盖物."
 	icon_state = "surgical"
 	worn_icon_state = "surgical"
 	armor_protection_flags = CHEST
@@ -55,16 +55,16 @@
 
 //Captain
 /obj/item/clothing/suit/captunic
-	name = "captain's parade tunic"
-	desc = "Worn by a Captain to show their class."
+	name = "舰长阅兵礼服"
+	desc = "由舰长穿着以彰显其阶级."
 	icon_state = "captunic"
 	worn_icon_state = "bio_suit"
 	armor_protection_flags = CHEST|ARMS
 	inv_hide_flags = HIDEJUMPSUIT
 
 /obj/item/clothing/suit/captunic/capjacket
-	name = "captain's uniform jacket"
-	desc = "A less formal jacket for everyday captain use."
+	name = "舰长制服夹克"
+	desc = "一件用于舰长日常穿着的较不正式的夹克."
 	icon_state = "capjacket"
 	worn_icon_state = "bio_suit"
 	armor_protection_flags = CHEST|GROIN|LEGS|ARMS
@@ -72,15 +72,15 @@
 
 //Chaplain
 /obj/item/clothing/suit/chaplain_hoodie
-	name = "chaplain hoodie"
-	desc = "This suit says to you 'hush'!"
+	name = "牧师连帽衫"
+	desc = "这套衣服对你说\"嘘\"!"
 	icon_state = "chaplain_hoodie"
 	worn_icon_state = "chaplain_hoodie"
 	armor_protection_flags = CHEST|ARMS
 
 /obj/item/clothing/suit/nun
-	name = "nun robe"
-	desc = "Maximum piety in this star system."
+	name = "修女长袍"
+	desc = "这个星系中最虔诚的象征."
 	icon_state = "nun"
 	worn_icon_state = "nun"
 	armor_protection_flags = CHEST|GROIN|LEGS|ARMS
@@ -88,8 +88,8 @@
 
 //Chef
 /obj/item/clothing/suit/storage/chef
-	name = "Chef's apron"
-	desc = "An apron used by a high class chef."
+	name = "厨师围裙"
+	desc = "高级厨师使用的围裙."
 	icon_state = "chef"
 	worn_icon_state = "chef"
 	gas_transfer_coefficient = 0.90
@@ -101,16 +101,16 @@
 	)
 
 /obj/item/clothing/suit/storage/chef/classic
-	name = "A classic chef's apron."
-	desc = "A basic, dull, white chef's apron."
+	name = "经典的厨师围裙."
+	desc = "一条基本、单调的白色厨师围裙."
 	icon_state = "apronchef"
 	worn_icon_state = "apronchef"
 	blood_overlay_type = "armor"
 	armor_protection_flags = NONE
 
 /obj/item/clothing/suit/storage/chef/military
-	name = "Chef's military apron"
-	desc = "A pretty military apron. Looks like some emblem teared off from it."
+	name = "厨师军用围裙"
+	desc = "一条漂亮的军用围裙. 看起来上面有些徽章被撕掉了."
 	icon_state = "fartumasti"
 	worn_icon_state = "fartumasti"
 	allowed = list(
@@ -124,17 +124,17 @@
 
 //Security
 /obj/item/clothing/suit/security
-	desc = "You shouldn't see this"
+	desc = "你不该看到这个"
 	armor_protection_flags = CHEST|GROIN|ARMS
 
 /obj/item/clothing/suit/security/formal
-	name = "formal jacket"
-	desc = "A formal military jacket. Not recommended for combat use."
+	name = "正式夹克"
+	desc = "一件正式的军用夹克. 不建议在战斗中使用."
 	icon_state = "officerbluejacket"
 
 /obj/item/clothing/suit/storage/security/formal/senior_officer
-	name = "senior officer's jacket"
-	desc = "This piece of clothing was specifically designed for asserting superior authority."
+	name = "高级军官夹克"
+	desc = "这件衣物专为彰显上级权威而设计."
 	icon_state = "hosbluejacket"
 
 /obj/item/clothing/suit/storage/security/formal/senior_officer/tan
@@ -142,8 +142,8 @@
 
 //Detective
 /obj/item/clothing/suit/storage/det_suit
-	name = "coat"
-	desc = "An 18th-century multi-purpose trenchcoat. Someone who wears this means serious business."
+	name = "大衣"
+	desc = "一件18世纪的多用途风衣. 穿它的人意味着是认真的."
 	icon_state = "detective"
 	worn_icon_state = "det_suit"
 	blood_overlay_type = "coat"
@@ -171,8 +171,8 @@
 
 //Forensics
 /obj/item/clothing/suit/storage/forensics
-	name = "jacket"
-	desc = "A forensics technician jacket."
+	name = "夹克"
+	desc = "一件法医技术员夹克."
 	worn_icon_state = "det_suit"
 	armor_protection_flags = CHEST|ARMS
 	allowed = list(
@@ -189,19 +189,19 @@
 	soft_armor = list(MELEE = 10, BULLET = 10, LASER = 15, ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 10, ACID = 10)
 
 /obj/item/clothing/suit/storage/forensics/red
-	name = "red jacket"
-	desc = "A red forensics technician jacket."
+	name = "红色夹克"
+	desc = "一件红色法医技术员夹克."
 	icon_state = "forensics_red"
 
 /obj/item/clothing/suit/storage/forensics/blue
-	name = "blue jacket"
-	desc = "A blue forensics technician jacket."
+	name = "蓝色夹克"
+	desc = "一件蓝色法医技术员夹克."
 	icon_state = "forensics_blue"
 
 //Engineering
 /obj/item/clothing/suit/storage/hazardvest
-	name = "orange reflective safety vest"
-	desc = "A high-visibility vest used in work zones."
+	name = "橙色反光安全背心"
+	desc = "工作区域使用的高可见度背心."
 	icon_state = "hazard"
 	worn_icon_state = "hazard"
 	blood_overlay_type = "armor"
@@ -224,27 +224,27 @@
 	armor_protection_flags = CHEST
 
 /obj/item/clothing/suit/storage/hazardvest/lime
-	name = "lime reflective safety vest"
+	name = "青柠色反光安全背心"
 	icon_state = "hazard_lime"
 	worn_icon_state = "hazard_lime"
 
 /obj/item/clothing/suit/storage/hazardvest/blue
-	name = "blue reflective safety vest"
+	name = "蓝色反光安全背心"
 	icon_state = "hazard_blue"
 	worn_icon_state = "hazard_blue"
 
 //Lawyer
 /obj/item/clothing/suit/storage/lawyer/bluejacket
-	name = "Blue Suit Jacket"
-	desc = "A snappy dress jacket."
+	name = "蓝色西装外套"
+	desc = "一件时髦的礼服外套."
 	icon_state = "suitjacket_blue_open"
 	worn_icon_state = "suitjacket_blue_open"
 	blood_overlay_type = "coat"
 	armor_protection_flags = CHEST|ARMS
 
 /obj/item/clothing/suit/storage/lawyer/purpjacket
-	name = "Purple Suit Jacket"
-	desc = "A snappy dress jacket."
+	name = "紫色西装外套"
+	desc = "一件时髦的礼服外套."
 	icon_state = "suitjacket_purp"
 	worn_icon_state = "suitjacket_purp"
 	blood_overlay_type = "coat"
@@ -252,8 +252,8 @@
 
 //Medical
 /obj/item/clothing/suit/storage/fr_jacket
-	name = "first responder jacket"
-	desc = "A high-visibility jacket worn by medical first responders."
+	name = "急救员夹克"
+	desc = "医疗急救人员穿的高可见度夹克."
 	icon_state = "fr_jacket_open"
 	worn_icon_state = "fr_jacket"
 	blood_overlay_type = "armor"
@@ -280,24 +280,24 @@
 	switch(icon_state)
 		if("fr_jacket_open")
 			src.icon_state = "fr_jacket"
-			to_chat(usr, "You button up the jacket.")
+			to_chat(usr, "你扣上了夹克.")
 		if("fr_jacket")
 			src.icon_state = "fr_jacket_open"
-			to_chat(usr, "You unbutton the jacket.")
+			to_chat(usr, "你解开了夹克.")
 	update_clothing_icon()	//so our overlays update
 
 //Mime
 /obj/item/clothing/suit/suspenders
-	name = "suspenders"
-	desc = "They suspend the illusion of the mime's play."
+	name = "吊带"
+	desc = "它们支撑着哑剧表演的幻象."
 	icon = 'icons/obj/clothing/belts.dmi'
 	icon_state = "suspenders"
 	blood_overlay_type = "armor" //it's the less thing that I can put here
 	armor_protection_flags = NONE
 
 /obj/item/clothing/suit/storage/snow_suit
-	name = "snow suit"
-	desc = "A standard snow suit. It can protect the wearer from extreme cold."
+	name = "雪地服"
+	desc = "一件标准雪地服. 可以保护穿戴者免受极寒."
 	icon_state = "snowsuit"
 	armor_protection_flags = CHEST|GROIN|ARMS
 	cold_protection_flags = CHEST|GROIN|ARMS|LEGS
@@ -309,12 +309,12 @@
 	allowed = list (/obj/item/flashlight, /obj/item/tank/emergency_oxygen)
 
 /obj/item/clothing/suit/storage/snow_suit/doctor
-	name = "doctor's snow suit"
+	name = "医生雪地服"
 	icon_state = "snowsuit_doctor"
 	permeability_coefficient = 0.6
 	soft_armor = list(MELEE = 25, BULLET = 35, LASER = 35, ENERGY = 20, BOMB = 10, BIO = 0, FIRE = 20, ACID = 20)
 
 /obj/item/clothing/suit/storage/snow_suit/engineer
-	name = "engineer's snow suit"
+	name = "工程师雪地服"
 	icon_state = "snowsuit_engineer"
 	soft_armor = list(MELEE = 25, BULLET = 35, LASER = 35, ENERGY = 20, BOMB = 10, BIO = 0, FIRE = 20, ACID = 20)

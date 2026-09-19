@@ -264,17 +264,17 @@
 /// Called by [/mob/living/carbon/proc/help_shake_act], the act of hugging someone
 /datum/species/proc/hug(mob/living/carbon/human/H, mob/living/target)
 	if(H.zone_selected == "head")
-		H.visible_message(span_notice("[H] pats [target] on the head."), \
-			span_notice("You pat [target] on the head."), null, 4)
+		H.visible_message(span_notice("[H]拍了拍[target]的头."), \
+			span_notice("你拍了拍[target]的头."), null, 4)
 	else if(H.zone_selected == "l_hand" && CONFIG_GET(flag/fun_allowed))
-		H.visible_message(span_notice("[H] holds [target] 's left hand."), \
-			span_notice("You hold [target]'s left hand."), null, 4)
+		H.visible_message(span_notice("[H]握住[target]的左手."), \
+			span_notice("你握住[target]的左手."), null, 4)
 	else if (H.zone_selected == "r_hand" && CONFIG_GET(flag/fun_allowed))
-		H.visible_message(span_notice("[H] holds [target] 's right hand."), \
-			span_notice("You hold [target]'s right hand."), null, 4)
+		H.visible_message(span_notice("[H]握住[target]的右手."), \
+			span_notice("你握住[target]的右手."), null, 4)
 	else
-		H.visible_message(span_notice("[H] hugs [target] to make [target.p_them()] feel better!"), \
-			span_notice("You hug [target] to make [target.p_them()] feel better!"), null, 4)
+		H.visible_message(span_notice("[H]拥抱[target]来让[target.p_them()]感觉好些!"), \
+			span_notice("你拥抱[target]来让[target.p_them()]感觉好些!"), null, 4)
 
 /// Generates a random name from namepool
 /datum/species/proc/random_name(gender)

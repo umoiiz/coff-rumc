@@ -8,11 +8,11 @@
 	. = ..()
 
 	if (!ishuman(target))
-		to_chat(user, span_warning("Xenomorph blood is protected by the Queen Mother you silly goose. Aborting."), confidential = TRUE)
+		to_chat(user, span_warning("异形血液受到女王母亲的保护, 你这傻瓜. 中止."), confidential = TRUE)
 		return
 
-	var/bloodlossamount = tgui_alert(usr, "How much blood should [target] lose?", "Bloodloss amount", list("A little", "A lot", "So fucking much", "FUCK THIS DUDE"))
-	to_chat(target, span_userdanger("You feel your skin growing pale as your blood drains away..."), confidential = TRUE)
+	var/bloodlossamount = tgui_alert(usr, "[target]应该失去多少血液?", "失血量", list("A little", "A lot", "So fucking much", "FUCK THIS DUDE"))
+	to_chat(target, span_userdanger("你感觉自己的皮肤随着血液流失而变得苍白..."), confidential = TRUE)
 	
 	switch (bloodlossamount)
 		if("A little")

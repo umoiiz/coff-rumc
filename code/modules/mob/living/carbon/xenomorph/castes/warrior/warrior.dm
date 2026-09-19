@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/warrior
 	caste_base_type = /datum/xeno_caste/warrior
 	name = "Warrior"
-	desc = "A beefy, alien with an armored carapace."
+	desc = "一只强壮的异形,拥有装甲甲壳."
 	icon = 'icons/Xeno/castes/warrior/basic.dmi'
 	icon_state = "Warrior Walking"
 	effects_icon = 'icons/Xeno/castes/warrior/effects.dmi'
@@ -111,7 +111,7 @@
 
 /mob/living/carbon/xenomorph/warrior/bulwark/UnarmedAttack(atom/A, mods)
 	if(reflective_active)
-		to_chat(src, span_xenowarning("We cannot attack while our reflective shield is raised!"))
+		to_chat(src, span_xenowarning("我们的反射护盾升起时无法攻击!"))
 		return
 	return ..()
 

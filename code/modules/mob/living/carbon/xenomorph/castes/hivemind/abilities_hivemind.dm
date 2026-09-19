@@ -16,7 +16,7 @@ GLOBAL_LIST_INIT(hivemind_resin_images_list, list(
 
 /datum/action/ability/xeno_action/return_to_core
 	name = "Return to Core"
-	desc = "Teleport back to your core."
+	desc = "传送回你的核心."
 	action_icon_state = "lay_hivemind"
 	action_icon = 'icons/Xeno/actions/hivemind.dmi'
 	use_state_flags = ABILITY_USE_CLOSEDTURF
@@ -47,7 +47,7 @@ GLOBAL_LIST_INIT(hivemind_resin_images_list, list(
 
 /datum/action/ability/xeno_action/change_form
 	name = "Change form"
-	desc = "Change from your incorporeal form to your physical on and vice-versa."
+	desc = "在你的无形形态和实体形态之间切换."
 	action_icon_state = "manifest"
 	action_icon = 'icons/Xeno/actions/hivemind.dmi'
 	keybinding_signals = list(
@@ -60,7 +60,7 @@ GLOBAL_LIST_INIT(hivemind_resin_images_list, list(
 
 /datum/action/ability/activable/xeno/command_minions
 	name = "Command minions"
-	desc = "Command all minions, ordering them to converge on this location. Rightclick to change minion behaviour."
+	desc = "命令所有仆从,让它们向此位置集结.右键点击可更改仆从行为."
 	action_icon_state = "minion_agressive"
 	action_icon = 'icons/Xeno/actions/general.dmi'
 	ability_cost = 100
@@ -122,7 +122,7 @@ GLOBAL_LIST_INIT(hivemind_resin_images_list, list(
 
 /datum/action/ability/xeno_action/teleport
 	name = "Teleport"
-	desc = "Pick a location on the map and instantly manifest there if possible."
+	desc = "在地图上选择一个位置,如果可能的话立即显现在那里."
 	action_icon_state = "resync"
 	action_icon = 'icons/Xeno/actions/hivemind.dmi'
 	keybinding_signals = list(
@@ -154,7 +154,7 @@ GLOBAL_LIST_INIT(hivemind_resin_images_list, list(
 		return
 
 	if(!xeno_owner.check_weeds(turf_to_teleport_to, TRUE))
-		owner.balloon_alert(owner, "No weeds in selected location")
+		owner.balloon_alert(owner, "所选位置没有杂草")
 		return
 	if(!(xeno_owner.status_flags & INCORPOREAL) && isxenohivemind(xeno_owner))
 		var/mob/living/carbon/xenomorph/hivemind/hivemind_owner = xeno_owner
@@ -203,7 +203,7 @@ GLOBAL_LIST_INIT(hivemind_resin_images_list, list(
 // ***************************************
 /datum/action/ability/xeno_action/psy_gain/hivemind
 	name = "Psy Gain"
-	desc = "Gives your hive 100 psy points, if marines are on the ground."
+	desc = "如果陆战队员在地面上,给予你的巢穴100点灵能点数."
 	action_icon_state = "psy_gain"
 	action_icon = 'icons/Xeno/actions/hivemind.dmi'
 	cooldown_duration = 200 SECONDS

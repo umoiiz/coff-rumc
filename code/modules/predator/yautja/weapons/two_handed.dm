@@ -20,8 +20,8 @@
 	var/human_adapted = FALSE
 
 /obj/item/weapon/twohanded/yautja/spear
-	name = "hunter spear"
-	desc = "A spear of exquisite design, used by an ancient civilisation."
+	name = "猎人长矛"
+	desc = "一把设计精美的长矛,由一个古老文明使用."
 	icon_state = "spearhunter"
 	worn_icon_state = "spearhunter"
 	item_flags = TWOHANDED
@@ -33,8 +33,8 @@
 	attack_verb = list("attacked", "stabbed", "jabbed", "torn", "gored")
 
 /obj/item/weapon/twohanded/yautja/glaive
-	name = "war glaive"
-	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon."
+	name = "战刃"
+	desc = "一把巨大的,强大的刀刃装在金属杆上.武器上刻有神秘的文字."
 	icon_state = "glaive"
 	worn_icon_state = "glaive"
 	force = 20
@@ -60,18 +60,18 @@
 		return ..()
 	if(!HAS_TRAIT(src, TRAIT_NODROP))
 		ADD_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)
-		to_chat(user, span_warning("You tighten the grip around [src]!"))
+		to_chat(user, span_warning("你握紧了[src]!"))
 	else
 		REMOVE_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)
-		to_chat(user, span_notice("You loosen the grip around [src]!"))
+		to_chat(user, span_notice("你松开了[src]!"))
 
 /obj/item/weapon/twohanded/yautja/glaive/alt
 	icon_state = "glaive_alt"
 	worn_icon_state = "glaive_alt"
 
 /obj/item/weapon/twohanded/yautja/glaive/damaged
-	name = "ancient war glaive"
-	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon. This one is ancient and has suffered serious acid damage, making it near-useless."
+	name = "远古战刃"
+	desc = "一把巨大的,强大的刀刃装在金属杆上.武器上刻有神秘的文字.这一把年代久远,遭受了严重的酸蚀,几乎无法使用."
 	force = 10
 	force_activated = 25
 	penetration = 5

@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/pyrogen
 	caste_base_type = /datum/xeno_caste/pyrogen
 	name = "Pyrogen"
-	desc = "A skittish alien, it burns with fury."
+	desc = "一种胆小的异形,它燃烧着怒火."
 	icon = 'icons/Xeno/castes/pyrogen/pyrogen.dmi'
 	effects_icon = 'icons/Xeno/castes/pyrogen/pyrogen.dmi' // Позже закинуть в отдельный .dmi
 	icon_state = "pyrogen Walking"

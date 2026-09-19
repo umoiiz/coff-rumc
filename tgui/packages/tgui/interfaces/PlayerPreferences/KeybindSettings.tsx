@@ -36,12 +36,12 @@ export const KeybindSettings = (props) => {
       color="bad"
       onClick={() => act('reset-keybindings')}
     >
-      Reset keybindings
+      重置按键绑定
     </Button>
   );
 
   return (
-    <Section title="Keybindings" buttons={resetButton}>
+    <Section title="按键绑定" buttons={resetButton}>
       {captureSentence && (
         <TextInputModal
           label="Choose a custom sentence"
@@ -68,7 +68,7 @@ export const KeybindSettings = (props) => {
       </Box>
       <Stack>
         <Stack.Item grow>
-          <Section title="Main">
+          <Section title="主要">
             {all_keybindings['MOVEMENT']
               ?.filter(filterSearch)
               .map((kb) => <KeybindingPreference key={kb.name} keybind={kb} />)}
@@ -95,12 +95,12 @@ export const KeybindSettings = (props) => {
               ?.filter(filterSearch)
               .map((kb) => <KeybindingPreference key={kb.name} keybind={kb} />)}
           </Section>
-          <Section title="Emotes">
+          <Section title="表情">
             {all_keybindings['EMOTE']
               ?.filter(filterSearch)
               .map((kb) => <KeybindingPreference key={kb.name} keybind={kb} />)}
           </Section>
-          <Section title="Custom emotes">
+          <Section title="自定义表情">
             {all_keybindings['CUSTOM_EMOTE']
               ?.filter(filterSearch)
               .map((kb) => (
@@ -112,7 +112,7 @@ export const KeybindSettings = (props) => {
               ))}
           </Section>
           {!!is_admin && (
-            <Section title="Administration (admin only)">
+            <Section title="管理 (仅管理员)">
               {all_keybindings['ADMIN']
                 ?.filter(filterSearch)
                 .map((kb) => (
@@ -122,7 +122,7 @@ export const KeybindSettings = (props) => {
           )}
         </Stack.Item>
         <Stack.Item grow>
-          <Section title="Abilities">
+          <Section title="技能">
             <LabeledList.Item>
               <h3>Human</h3>
             </LabeledList.Item>
@@ -233,7 +233,7 @@ const KeybindingPreference = (props) => {
         }}
       />
       <Button
-        content="Clear"
+        content="清除"
         onClick={() =>
           act('clear_keybind', {
             keybinding: keybind.name,
@@ -272,7 +272,7 @@ const CustomSentence = (props) => {
         onClick={() => setCaptureSentence({ name: keybind.name })}
         tooltip={currentSentence && currentSentence.sentence}
       >
-        Choose a custom sentence
+        选择自定义语句
       </Button>
       {current &&
         current.map((key) => (
@@ -316,7 +316,7 @@ const CustomSentence = (props) => {
         }}
       />
       <Button
-        content="Clear"
+        content="清除"
         onClick={() =>
           act('clear_keybind', {
             keybinding: keybind.name,

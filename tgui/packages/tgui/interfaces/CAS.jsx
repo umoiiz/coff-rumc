@@ -26,7 +26,7 @@ const WeaponSelection = (props) => {
   const { act, data } = useBackend();
 
   return (
-    <Section title="Equipment Installed">
+    <Section title="已安装设备">
       {data.equipment_data.length > 0 ? (
         data.equipment_data.map((equipment) => (
           <Box key={equipment.id}>
@@ -41,7 +41,7 @@ const WeaponSelection = (props) => {
           </Box>
         ))
       ) : (
-        <Box>No equipment installed.</Box>
+        <Box>未安装设备.</Box>
       )}
     </Section>
   );
@@ -54,16 +54,16 @@ const FiringMode = (props) => {
     <>
       <Section
         title={'Weapon Selected: ' + data.selected_eqp}
-        buttons={<Button onClick={() => act('deselect')}>Deselect</Button>}
+        buttons={<Button onClick={() => act('deselect')}>取消选择</Button>}
       >
         {!data.selected_eqp_ammo_name ? (
-          <Box color="bad">No ammo loaded</Box>
+          <Box color="bad">未装填弹药</Box>
         ) : (
           <LabeledList>
-            <LabeledList.Item label="Ammo loaded">
+            <LabeledList.Item label="已装填弹药">
               {data.selected_eqp_ammo_name}
             </LabeledList.Item>
-            <LabeledList.Item label="Ammo count">
+            <LabeledList.Item label="弹药数量">
               <ProgressBar
                 ranges={{
                   good: [0.5, Infinity],
@@ -83,7 +83,7 @@ const FiringMode = (props) => {
           </LabeledList>
         )}
       </Section>
-      <Section title="Available Targets">
+      <Section title="可用目标">
         {data.targets_data.length > 0 ? (
           data.targets_data.map((target) => (
             <Box key={target.id}>
@@ -98,7 +98,7 @@ const FiringMode = (props) => {
             </Box>
           ))
         ) : (
-          <Box>No laser targets detected.</Box>
+          <Box>未检测到激光目标.</Box>
         )}
       </Section>
     </>

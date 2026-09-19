@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/drone
 	caste_base_type = /datum/xeno_caste/drone
 	name = "Drone"
-	desc = "An Alien Drone"
+	desc = "一只异形雄蜂"
 	icon = 'icons/Xeno/castes/drone/basic.dmi'
 	icon_state = "Drone Walking"
 	effects_icon = 'icons/Xeno/castes/drone/effects.dmi'

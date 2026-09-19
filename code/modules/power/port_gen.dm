@@ -1,7 +1,7 @@
 //Baseline portable generator. Has all the default handling. Not intended to be used on it's own (since it generates unlimited power).
 /obj/machinery/power/port_gen
 	name = "portable generator"
-	desc = "A portable generator for emergency backup power."
+	desc = "一种用于紧急备用电源的便携式发电机."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "portgen0"
 	density = TRUE
@@ -139,11 +139,11 @@
 
 /obj/machinery/power/port_gen/pacman/examine(mob/user)
 	. = ..()
-	. += span_notice("The generator has [sheets] units of [sheet_name] fuel left, producing [DisplayPower(power_gen)] per cycle.")
+	. += span_notice("发电机剩余[sheets]单位的[sheet_name]燃料,每周期产生[DisplayPower(power_gen)].")
 	if(anchored)
-		. += span_notice("It is anchored to the ground.")
+		. += span_notice("它已固定在地面上.")
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Fuel efficiency increased by <b>[(consumption*100)-100]%</b>.")
+		. += span_notice("状态显示为:燃料效率提高了<b>[(consumption*100)-100]%</b>.")
 
 /obj/machinery/power/port_gen/pacman/HasFuel()
 	if(sheets >= 1 / (time_per_sheet / power_output) - sheet_left)
@@ -198,9 +198,9 @@
 		var/obj/item/stack/addstack = O
 		var/amount = min((max_sheets - sheets), addstack.amount)
 		if(amount < 1)
-			to_chat(user, span_notice("The [src.name] is full!"))
+			to_chat(user, span_notice("[src.name]已满!"))
 			return
-		to_chat(user, span_notice("You add [amount] sheets to the [src.name]."))
+		to_chat(user, span_notice("你将[amount]张板材添加到[src.name]."))
 		sheets += amount
 		addstack.use(amount)
 		return
@@ -209,11 +209,11 @@
 			if(!anchored)
 				anchored = TRUE
 				connect_to_network()
-				to_chat(user, span_notice("You secure the generator to the floor."))
+				to_chat(user, span_notice("你将发电机固定在地板上."))
 			else if(anchored)
 				anchored = FALSE
 				disconnect_from_network()
-				to_chat(user, span_notice("You unsecure the generator from the floor."))
+				to_chat(user, span_notice("你将发电机从地板上解除固定."))
 
 			playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 			return
@@ -221,9 +221,9 @@
 			TOGGLE_BITFIELD(machine_stat, PANEL_OPEN)
 			O.play_tool_sound(src)
 			if(machine_stat & PANEL_OPEN)
-				to_chat(user, span_notice("You open the access panel."))
+				to_chat(user, span_notice("你打开了检修面板."))
 			else
-				to_chat(user, span_notice("You close the access panel."))
+				to_chat(user, span_notice("你关闭了检修面板."))
 			return
 		//else if(default_deconstruction_crowbar(O))
 		//	return

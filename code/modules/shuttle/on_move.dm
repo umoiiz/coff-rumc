@@ -26,7 +26,7 @@
 			if(M.pulledby)
 				M.pulledby.stop_pulling()
 			M.stop_pulling()
-			M.visible_message(span_warning("[shuttle] slams into [M]!"))
+			M.visible_message(span_warning("[shuttle]猛然撞上[M]!"))
 			M.gib()
 		if(ismovable(thing))
 			var/atom/movable/movable_thing = thing

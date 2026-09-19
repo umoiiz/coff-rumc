@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/mantis
 	caste_base_type = /datum/xeno_caste/mantis
 	name = "Mantis"
-	desc = "A red, violent alien with four legs and two deadly scythes. Its eyes hone sharply onto its prey..."
+	desc = "一种红色,暴力的异形,有四条腿和两把致命的镰刀.它的眼睛锐利地锁定猎物..."
 	icon = 'icons/Xeno/castes/mantis/basic.dmi'
 	icon_state = "Mantis Walking"
 	effects_icon = 'icons/Xeno/castes/mantis/effects.dmi'

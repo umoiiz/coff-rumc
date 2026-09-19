@@ -24,10 +24,10 @@
 	var/turf/build_area = get_area(build_target)
 
 	if(build_area.density)
-		fobdrone.balloon_alert(owner, "No space to build anything here.")
+		fobdrone.balloon_alert(owner, "这里没有空间建造任何东西.")
 		return FALSE
 	if(fobdrone.do_actions)
-		fobdrone.balloon_alert(owner, "You are already building something.")
+		fobdrone.balloon_alert(owner, "你已经在建造某样东西了.")
 		return FALSE
 	return TRUE
 
@@ -45,7 +45,7 @@
 		return
 
 	if(console.metal_remaining < 4)
-		to_chat(owner, span_warning("Out of material."))
+		to_chat(owner, span_warning("材料耗尽."))
 		return
 
 	var/turf/buildplace = get_turf(fobdrone)
@@ -54,11 +54,11 @@
 		if(!thing.density) //not dense, move on
 			continue
 		if(!(thing.atom_flags & ON_BORDER)) //dense and non-directional, end
-			fobdrone.balloon_alert(owner, "No space here for a barricade")
+			fobdrone.balloon_alert(owner, "这里没有空间放置路障")
 			return
 		if(thing.dir != fobdrone.dir)
 			continue
-		fobdrone.balloon_alert(owner, "No space here for a barricade")
+		fobdrone.balloon_alert(owner, "这里没有空间放置路障")
 		return
 	if(!do_after(fobdrone, 1.5 SECONDS, IGNORE_HELD_ITEM, buildplace, BUSY_ICON_BUILD))
 		return
@@ -67,13 +67,13 @@
 	cade.setDir(fobdrone.dir)
 	if(console.do_wiring)
 		if(!console.metal_remaining)
-			fobdrone.balloon_alert(owner, "Not enough material for razor-wiring.")
+			fobdrone.balloon_alert(owner, "没有足够材料安装刀片铁丝网.")
 			return
 		console.metal_remaining -= 1
 		cade.wire()
-		fobdrone.balloon_alert(owner, "Barricade placed with wiring. [console.metal_remaining] metal sheets remaining.")
+		fobdrone.balloon_alert(owner, "路障已放置并安装了铁丝网. 剩余 [console.metal_remaining] 块金属板.")
 		return
-	fobdrone.balloon_alert(owner, "Barricade placed. [console.metal_remaining] metal sheets remaining.")
+	fobdrone.balloon_alert(owner, "路障已放置. 剩余 [console.metal_remaining] 块金属板.")
 
 /datum/action/innate/remote_fob/metal_folding_cade
 	name = "Place Metal Folding Barricade"
@@ -86,7 +86,7 @@
 		return
 
 	if(console.metal_remaining < 6)
-		fobdrone.balloon_alert(owner, "Out of material")
+		fobdrone.balloon_alert(owner, "材料耗尽")
 		return
 
 	var/turf/buildplace = get_turf(fobdrone)
@@ -95,11 +95,11 @@
 		if(!thing.density) //not dense, move on
 			continue
 		if(!(thing.atom_flags & ON_BORDER)) //dense and non-directional, end
-			fobdrone.balloon_alert(owner, "No space here for a barricade")
+			fobdrone.balloon_alert(owner, "这里没有空间放置路障")
 			return
 		if(thing.dir != fobdrone.dir)
 			continue
-		fobdrone.balloon_alert(owner, "No space here for a barricade")
+		fobdrone.balloon_alert(owner, "这里没有空间放置路障")
 		return
 	if(!do_after(fobdrone, 1.5 SECONDS, IGNORE_HELD_ITEM, buildplace, BUSY_ICON_BUILD))
 		return
@@ -111,13 +111,13 @@
 	cade.update_icon()
 	if(console.do_wiring)
 		if(console.metal_remaining <= 1)
-			fobdrone.balloon_alert(owner, "Not enough material for razor-wiring")
+			fobdrone.balloon_alert(owner, "没有足够材料安装刀片铁丝网")
 			return
 		cade.wire()
 		console.metal_remaining -=2
-		fobdrone.balloon_alert(owner, "Barricade placed with wiring. [console.plasteel_remaining] plasteel sheets, [console.metal_remaining] metal sheets remaining.")
+		fobdrone.balloon_alert(owner, "路障已放置并安装了铁丝网. 剩余 [console.plasteel_remaining] 块塑钢板, [console.metal_remaining] 块金属板.")
 		return
-	fobdrone.balloon_alert(owner, "Barricade placed. [console.metal_remaining] metal sheets remaining.")
+	fobdrone.balloon_alert(owner, "路障已放置. 剩余 [console.metal_remaining] 块金属板.")
 
 /datum/action/innate/remote_fob/plasteel_cade
 	name = "Place Plasteel Barricade"
@@ -130,7 +130,7 @@
 		return
 
 	if(console.plasteel_remaining < 4)
-		fobdrone.balloon_alert(owner, "Out of material")
+		fobdrone.balloon_alert(owner, "材料耗尽")
 		return
 
 	var/turf/buildplace = get_turf(fobdrone)
@@ -139,11 +139,11 @@
 		if(!thing.density) //not dense, move on
 			continue
 		if(!(thing.atom_flags & ON_BORDER)) //dense and non-directional, end
-			fobdrone.balloon_alert(owner, "No space here for a barricade")
+			fobdrone.balloon_alert(owner, "这里没有空间放置路障")
 			return
 		if(thing.dir != fobdrone.dir)
 			continue
-		fobdrone.balloon_alert(owner, "No space here for a barricade")
+		fobdrone.balloon_alert(owner, "这里没有空间放置路障")
 		return
 	if(!do_after(fobdrone, 1.5 SECONDS, FALSE, buildplace, BUSY_ICON_BUILD))
 		return
@@ -155,13 +155,13 @@
 	cade.update_icon()
 	if(console.do_wiring)
 		if(console.metal_remaining <= 1)
-			fobdrone.balloon_alert(owner, "Not enough material for razor-wiring")
+			fobdrone.balloon_alert(owner, "没有足够材料安装刀片铁丝网")
 			return
 		cade.wire()
 		console.metal_remaining -=2
-		fobdrone.balloon_alert(owner, "Barricade placed with wiring. [console.plasteel_remaining] plasteel sheets, [console.metal_remaining] metal sheets remaining.")
+		fobdrone.balloon_alert(owner, "路障已放置并安装了铁丝网. 剩余 [console.plasteel_remaining] 块塑钢板, [console.metal_remaining] 块金属板.")
 		return
-	fobdrone.balloon_alert(owner, "Barricade placed. [console.plasteel_remaining] plasteel sheets remaining.")
+	fobdrone.balloon_alert(owner, "路障已放置. 剩余 [console.plasteel_remaining] 块塑钢板.")
 
 /datum/action/innate/remote_fob/plast_folding_cade
 	name = "Place Plasteel Barricade"
@@ -174,7 +174,7 @@
 		return
 
 	if(console.plasteel_remaining < 6)
-		fobdrone.balloon_alert(owner, "Out of material")
+		fobdrone.balloon_alert(owner, "材料耗尽")
 		return
 
 	var/turf/buildplace = get_turf(fobdrone)
@@ -183,11 +183,11 @@
 		if(!thing.density) //not dense, move on
 			continue
 		if(!(thing.atom_flags & ON_BORDER)) //dense and non-directional, end
-			fobdrone.balloon_alert(owner, "No space here for a barricade")
+			fobdrone.balloon_alert(owner, "这里没有空间放置路障")
 			return
 		if(thing.dir != fobdrone.dir)
 			continue
-		fobdrone.balloon_alert(owner, "No space here for a barricade")
+		fobdrone.balloon_alert(owner, "这里没有空间放置路障")
 		return
 	if(!do_after(fobdrone, 1.5 SECONDS, FALSE, buildplace, BUSY_ICON_BUILD))
 		return
@@ -199,13 +199,13 @@
 	cade.update_icon()
 	if(console.do_wiring)
 		if(console.metal_remaining <= 1)
-			fobdrone.balloon_alert(owner, "Not enough material for razor-wiring")
+			fobdrone.balloon_alert(owner, "没有足够的材料来架设铁丝网")
 			return
 		cade.wire()
 		console.metal_remaining -=2
-		fobdrone.balloon_alert(owner, "Barricade placed with wiring. [console.plasteel_remaining] plasteel sheets, [console.metal_remaining] metal sheets remaining.")
+		fobdrone.balloon_alert(owner, "路障已放置并接线. 剩余[console.plasteel_remaining]块塑钢, [console.metal_remaining]块金属.")
 		return
-	fobdrone.balloon_alert(owner, "Barricade placed. [console.plasteel_remaining] plasteel sheets remaining.")
+	fobdrone.balloon_alert(owner, "路障已放置. 剩余[console.plasteel_remaining]块塑钢.")
 
 /datum/action/innate/remote_fob/toggle_wiring
 	name = "Toggle Razorwire"
@@ -217,7 +217,7 @@
 	if(.)
 		return
 	console.do_wiring = !console.do_wiring
-	to_chat(owner, span_notice("Will now [console.do_wiring ? "do wiring" : "stop wiring"]."))
+	to_chat(owner, span_notice("现在将[console.do_wiring ? "do wiring" : "stop wiring"]."))
 
 /datum/action/innate/remote_fob/eject_metal_action
 	name = "Eject All Metal"
@@ -228,10 +228,10 @@
 	if(.)
 		return
 	if(console.metal_remaining <= 0)
-		fobdrone.balloon_alert(owner, "No metal to eject")
+		fobdrone.balloon_alert(owner, "没有金属可弹出")
 		return
 	console.eject_mat(EJECT_METAL)
-	fobdrone.balloon_alert(owner, "Metal sheets ejected")
+	fobdrone.balloon_alert(owner, "金属板已弹出")
 
 /datum/action/innate/remote_fob/eject_plasteel_action
 	name = "Eject All Plasteel"
@@ -242,7 +242,7 @@
 	if(.)
 		return
 	if(console.plasteel_remaining <= 0)
-		fobdrone.balloon_alert(owner, "No plasteel to eject")
+		fobdrone.balloon_alert(owner, "没有塑钢可弹出")
 		return
 	console.eject_mat(EJECT_PLASTEEL)
-	fobdrone.balloon_alert(owner, "Plasteel sheets ejected")
+	fobdrone.balloon_alert(owner, "塑钢板已弹出")

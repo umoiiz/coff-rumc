@@ -33,18 +33,18 @@
 		return
 
 	if(charging)
-		to_chat(user, span_warning("\A [charging] is already charging here."))
+		to_chat(user, span_warning("\A [charging]已经在这里充电了."))
 		return
 	// Checks to make sure he's not in space doing it, and that the area got proper power.
 	var/area/A = get_area(src)
 	if(!isarea(A) || (A.power_equip == 0 && A.requires_power))
-		to_chat(user, span_warning("The [name] blinks red as you try to insert the item!"))
+		to_chat(user, span_warning("当你尝试插入物品时,[name]闪烁着红光!"))
 		return
 
 	if(istype(I, /obj/item/defibrillator))
 		var/obj/item/defibrillator/D = I
 		if(D.ready)
-			to_chat(user, span_warning("It won't fit, put the paddles back into [D] first!"))
+			to_chat(user, span_warning("它装不进去,先把桨叶放回[D]里!"))
 			return
 
 	if(!user.transferItemToLoc(I, src))
@@ -58,10 +58,10 @@
 /obj/machinery/recharger/wrench_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(charging)
-		to_chat(user, span_warning("Remove [charging] first!"))
+		to_chat(user, span_warning("先移除[charging]!"))
 		return
 	anchored = !anchored
-	to_chat(user, "You [anchored ? "attached" : "detached"] the recharger.")
+	to_chat(user, "你[anchored ? "attached" : "detached"]了充电器.")
 	playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
 
 /obj/machinery/recharger/attack_hand(mob/living/user)

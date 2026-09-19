@@ -20,12 +20,12 @@ GLOBAL_LIST_EMPTY(medal_awards)
 		var/rcpt_name = t.fields["name"]
 		listed_rcpt_ranks[rcpt_name] = t.fields["rank"]
 		possible_recipients += rcpt_name
-	var/chosen_recipient = tgui_input_list(usr, "Who do you want to award a medal to?", "Medal Recipient", possible_recipients)
+	var/chosen_recipient = tgui_input_list(usr, "你想向谁授予勋章?", "勋章获得者", possible_recipients)
 	if(!chosen_recipient || chosen_recipient == "Cancel") 
 		return
 	var/recipient_rank = listed_rcpt_ranks[chosen_recipient]
 	var/posthumous = 1
-	var/medal_type = tgui_input_list(usr, "What type of medal do you want to award?", "Medal Type", list("distinguished conduct medal", "bronze heart medal","medal of valor", "medal of exceptional heroism", "letter of commendation"))
+	var/medal_type = tgui_input_list(usr, "你想授予什么类型的勋章?", "勋章类型", list("distinguished conduct medal", "bronze heart medal","medal of valor", "medal of exceptional heroism", "letter of commendation"))
 	if(!medal_type) 
 		return
 	var/citation = stripped_input(usr, "What should the medal citation read?", "Medal Citation")

@@ -9,7 +9,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/acid_charge
 	name = "Acid Charge"
-	desc = "The acid charge, deal small damage to yourself and start leaving acid puddles after your steps."
+	desc = "酸液冲锋, 对你自己造成少量伤害, 并开始在你的脚步后留下酸液池."
 	action_icon_state = "bull_charge"
 	action_icon = 'icons/Xeno/actions/bull.dmi'
 	keybinding_signals = list(
@@ -83,7 +83,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/headbutt
 	name = "Headbutt Charge"
-	desc = "The headbutt charge, when it hits a host, stops your charge while push them away."
+	desc = "头槌冲锋, 当它击中宿主时, 停止你的冲锋并将其推开."
 	action_icon_state = "bull_headbutt"
 	action_icon = 'icons/Xeno/actions/bull.dmi'
 	keybinding_signals = list(
@@ -126,8 +126,8 @@
 	target.Paralyze(1 SECONDS)
 
 	playsound(target,'sound/weapons/alien_knockdown.ogg', 75, 1)
-	xeno_owner.visible_message(span_danger("[xeno_owner] pushed away [target]!"),
-		span_xenowarning("We push away [target] and skid to a halt!"))
+	xeno_owner.visible_message(span_danger("[xeno_owner]推开了[target]!"),
+		span_xenowarning("我们推开[target]并滑行停下!"))
 	headbutt_charge_deactivate()
 
 /datum/action/ability/xeno_action/headbutt/proc/headbutt_charge_deactivate()
@@ -147,7 +147,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/gore
 	name = "Gore Charge"
-	desc = "The gore charge, when it hits a host, stops your charge while dealing a large amount of damage."
+	desc = "血肉冲锋, 当它击中宿主时, 停止你的冲锋并造成大量伤害."
 	action_icon_state = "bull_gore"
 	action_icon = 'icons/Xeno/actions/bull.dmi'
 	keybinding_signals = list(
@@ -189,8 +189,8 @@
 	target.apply_damage(damage, BRUTE, xeno_owner.zone_selected, MELEE)
 	playsound(target,'sound/weapons/alien_tail_attack.ogg', 75, 1)
 	target.emote_gored()
-	xeno_owner.visible_message(span_danger("[xeno_owner] gores [target]!"),
-		span_xenowarning("We gore [target] and skid to a halt!"))
+	xeno_owner.visible_message(span_danger("[xeno_owner]用角刺穿[target]!"),
+		span_xenowarning("我们用角刺穿[target]并滑行停下!"))
 	gore_charge_deactivate()
 
 /datum/action/ability/xeno_action/gore/proc/gore_charge_deactivate()
@@ -211,7 +211,7 @@
 
 /datum/action/ability/xeno_action/tolerate
 	name = "Tolerate"
-	desc = "For the next few seconds, you will become resistant to slowdown, stagger and stuns."
+	desc = "在接下来的几秒内, 你将抵抗减速、踉跄和眩晕."
 	action_icon_state = "bull_ready_charge"
 	action_icon = 'icons/Xeno/actions/bull.dmi'
 	use_state_flags = ABILITY_USE_STAGGERED

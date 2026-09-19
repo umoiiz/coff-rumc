@@ -1,17 +1,17 @@
 /obj/alien/resin
 	name = "resin"
-	desc = "Looks like some kind of slimy growth."
+	desc = "看起来像是某种黏滑的增生组织."
 	icon_state = "Resin1"
 	max_integrity = 200
 	resistance_flags = XENO_DAMAGEABLE
 
 /obj/alien/resin/attack_hand(mob/living/user)
-	balloon_alert(user, "You only scrape at it")
+	balloon_alert(user, "你只是刮了刮它")
 	return TRUE
 
 /obj/alien/resin/sticky
 	name = STICKY_RESIN
-	desc = "A layer of disgusting sticky slime."
+	desc = "一层令人恶心的黏滑黏液."
 	icon_state = "sticky"
 	density = FALSE
 	opacity = FALSE
@@ -75,7 +75,7 @@
 // Praetorian Sticky Resin spit uses this.
 /obj/alien/resin/sticky/thin
 	name = "thin sticky resin"
-	desc = "A thin layer of disgusting sticky slime."
+	desc = "薄薄一层令人恶心的黏滑黏液."
 	max_integrity = 6
 	slow_amt = 4
 

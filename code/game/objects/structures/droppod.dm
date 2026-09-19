@@ -7,8 +7,8 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 
 ///base marine drop pod. can be controlled by an attached [/obj/structure/droppod/leader] or [/obj/machinery/computer/droppod_control]
 /obj/structure/droppod
-	name = "\improper TGMC Zeus orbital drop pod"
-	desc = "A menacing metal hunk of steel that is used by the TGMC for quick tactical redeployment."
+	name = "\improper TGMC宙斯轨道空投舱"
+	desc = "一块由TGMC用于快速战术重新部署的险恶钢铁巨块."
 	icon = 'icons/obj/structures/droppod.dmi'
 	icon_state = "singlepod_green"
 	density = TRUE
@@ -118,7 +118,7 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 /obj/structure/droppod/buckle_mob(mob/living/buckling_mob, force, check_loc, lying_buckle, hands_needed, target_hands_needed, silent)
 	if(drop_state != DROPPOD_READY)
 		if(!silent)
-			balloon_alert(buckling_mob, "Already used")
+			balloon_alert(buckling_mob, "已被使用")
 		return FALSE
 	setDir(SOUTH) //this is dirty but supply elevator still tehnically being a shuttle forced my hand TODO: undirty this
 	. = ..()
@@ -143,36 +143,36 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 	var/mob/notified_user = LAZYACCESS(buckled_mobs, 1)
 	. = checklanding(notified_user)
 	if(notified_user && .)
-		balloon_alert(notified_user, "Coordinates updated")
+		balloon_alert(notified_user, "坐标已更新")
 
 ///returns boolean if the currently set target/optionally passed turf are valid to drop to
 /obj/structure/droppod/proc/checklanding(mob/user, optional_turf)
 	var/turf/target = optional_turf ? optional_turf : locate(target_x, target_y, target_z)
 	if(target.density)
 		if(user)
-			balloon_alert(user, "Dense area")
+			balloon_alert(user, "密集区域")
 		return FALSE
 	if(is_type_in_typecache(target, GLOB.blocked_droppod_tiles))
 		if(user)
-			balloon_alert(user, "Hazardous zone")
+			balloon_alert(user, "危险区域")
 		return FALSE
 	var/area/targetarea = get_area(target)
 	if(targetarea.area_flags & NO_DROPPOD) // Thou shall not pass!
 		if(user)
-			balloon_alert(user, "Invalid area")
+			balloon_alert(user, "无效区域")
 		return FALSE
 	if(!targetarea.outside)
 		if(user)
-			balloon_alert(user, "Roofed area")
+			balloon_alert(user, "有顶区域")
 		return FALSE
 	if(targetarea.ceiling > CEILING_METAL)
 		if(user)
-			balloon_alert(user, "Area underground")
+			balloon_alert(user, "地下区域")
 		return FALSE
 	for(var/atom/movable/object AS in target.contents)
 		if(object.density)
 			if(user)
-				balloon_alert(user, "Dense object detected")
+				balloon_alert(user, "检测到密集物体")
 			return FALSE
 	return TRUE
 
@@ -183,18 +183,18 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 	#ifndef TESTING
 	if(!operation_started && world.time < SSticker.round_start_time + SSticker.mode.deploy_time_lock + DROPPOD_DEPLOY_DELAY)
 		if(user)
-			to_chat(user, span_notice("Unable to launch, the ship has not yet reached the combat area."))
+			to_chat(user, span_notice("无法发射,飞船尚未抵达战斗区域."))
 		return
 	#endif
 
 	if(!locate(/obj/structure/drop_pod_launcher) in get_turf(src))
 		if(user)
-			to_chat(user, span_notice("Error. Cannot launch [name] without a droppod launcher."))
+			to_chat(user, span_notice("错误. 没有空投舱发射器,无法发射[name]."))
 		return
 
 	if(!launch_allowed)
 		if(user)
-			to_chat(user, span_notice("Error. Ship calibration unavailable. Please %#&ç:*"))
+			to_chat(user, span_notice("错误. 飞船校准不可用. 请%#&ç:*"))
 		return
 
 	if(drop_state != DROPPOD_READY)
@@ -211,7 +211,7 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 		log_game("[key_name(user)] launched pod [src] at [AREACOORD(target)]")
 	deadchat_broadcast("has been launched", src, turf_target = target)
 	for(var/mob/living/silicon/ai/AI AS in GLOB.ai_list)
-		to_chat(AI, span_notice("[user ? user : "unknown"] has launched [src] towards [target.loc] at X:[target_x] Y:[target_y]"))
+		to_chat(AI, span_notice("[user ? user : "unknown"]已将[src]发射至[target.loc],坐标X:[target_x] Y:[target_y]"))
 	reserved_area = SSmapping.request_turf_block_reservation(3,3)
 
 	drop_state = DROPPOD_ACTIVE
@@ -229,7 +229,7 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 			deployed.forceMove(loc)
 		update_icon()
 		if(user)
-			to_chat(user, span_notice("Error. Ship calibration unavailable. Please %#&ç:*"))
+			to_chat(user, span_notice("错误. 飞船校准不可用. 请%#&ç:*"))
 		return
 
 	playsound(src, 'sound/effects/escape_pod_launch.ogg', 70)
@@ -249,8 +249,8 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 		var/atom/target = a
 		if(target.density)	//if theres something dense in the turf try to recalculate a new turf
 			if(user)
-				to_chat(user, span_warning("[icon2html(src, user)] WARNING! TARGET ZONE OCCUPIED! EVADING!"))
-				balloon_alert(user, "EVADING")
+				to_chat(user, span_warning("[icon2html(src, user)]警告! 目标区域已被占用! 正在规避!"))
+				balloon_alert(user, "正在规避")
 			var/turf/T0 = locate(target_x + 2,target_y + 2, target_z)
 			var/turf/T1 = locate(target_x - 2,target_y - 2, target_z)
 			var/list/block = block(T0,T1) - targetturf
@@ -261,7 +261,7 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 					break
 			if(targetturf.density)//We tried and failed, revert to the old one, which has a new dense obj but is at least not dense
 				if(user)
-					to_chat(user, span_warning("[icon2html(src, user)] RECALCULATION FAILED!"))
+					to_chat(user, span_warning("[icon2html(src, user)]重新计算失败!"))
 				targetturf = locate(target_x, target_y, target_z)
 			break
 
@@ -287,14 +287,14 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 	update_icon()
 
 /obj/structure/droppod/leader
-	name = "\improper TGMC Zeus command drop pod"
-	desc = "A menacing metal hunk of steel that is used by the TGMC for quick tactical redeployment. This one comes with command capabilities."
+	name = "\improper TGMC宙斯指挥空投舱"
+	desc = "一块由TGMC用于快速战术重新部署的险恶钢铁巨块. 此型号具备指挥能力."
 	icon_state = "singlepod_red"
 	light_color = LIGHT_COLOR_EMISSIVE_RED
 
 /obj/structure/droppod/leader/buckle_mob(mob/living/buckling_mob, force, check_loc, lying_buckle, hands_needed, target_hands_needed, silent)
 	if(buckling_mob.skills.getRating(SKILL_LEADERSHIP) < SKILL_LEAD_TRAINED)
-		balloon_alert(buckling_mob, "Can't use that!") // basically squad lead+ cant touch this
+		balloon_alert(buckling_mob, "无法使用那个!") // basically squad lead+ cant touch this
 		return FALSE
 	return ..()
 
@@ -339,11 +339,11 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 /obj/structure/droppod/leader/start_launch_pod(mob/user, commanded_drop = FALSE)
 	#ifndef TESTING
 	if(!operation_started && world.time < SSticker.round_start_time + SSticker.mode.deploy_time_lock + DROPPOD_DEPLOY_DELAY)
-		to_chat(user, span_notice("Unable to launch, the ship has not yet reached the combat area."))
+		to_chat(user, span_notice("无法发射,飞船尚未抵达战斗区域."))
 		return
 	#endif
 	if(!launch_allowed)
-		to_chat(user, span_notice("Error. Ship calibration unavailable. Please %#&ç:*"))
+		to_chat(user, span_notice("错误. 飞船校准不可用. 请%#&ç:*"))
 		return
 	if(commanded_drop)
 		return ..()
@@ -406,8 +406,8 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 	update_icon()
 
 /obj/structure/droppod/nonmob/supply_pod
-	name = "\improper TGMC Zeus supply drop pod"
-	desc = "A menacing metal hunk of steel that is used by the TGMC for quick tactical redeployment. This one is designed to carry supplies."
+	name = "\improper TGMC宙斯补给空投舱"
+	desc = "一块由TGMC用于快速战术重新部署的险恶钢铁巨块. 此型号专为运载补给而设计."
 	icon_state = "supplypod"
 	light_color = LIGHT_COLOR_EMISSIVE_ORANGE
 
@@ -420,7 +420,7 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 		if(istype(attached_clamp.loaded, /obj/structure/droppod))
 			return //no recursive pods please
 		if(stored_object)
-			balloon_alert(user, "Occupied")
+			balloon_alert(user, "已占用")
 			return
 		var/obj/structure/closet/clamped_closet = attached_clamp.loaded
 		playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
@@ -432,7 +432,7 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 		attached_clamp.loaded = null
 		playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
 		attached_clamp.update_icon()
-		to_chat(user, span_notice("You load [clamped_closet] into [src]."))
+		to_chat(user, span_notice("你将[clamped_closet]装入[src]."))
 	else if(stored_object)
 		playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
 		if(!do_after(user, 30, IGNORE_HELD_ITEM, src, BUSY_ICON_BUILD))
@@ -440,7 +440,7 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 		if(!stored_object || !LAZYLEN(attached_clamp.linked_powerloader?.buckled_mobs) || attached_clamp.linked_powerloader.buckled_mobs[1] != user)
 			return
 		playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
-		to_chat(user, span_notice("You've removed [stored_object] from [src] and loaded it into [attached_clamp]."))
+		to_chat(user, span_notice("你已将[stored_object]从[src]中取出并装入[attached_clamp]."))
 		attached_clamp.loaded = stored_object
 		stored_object.forceMove(attached_clamp.linked_powerloader)
 		attached_clamp.update_icon()
@@ -448,8 +448,8 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 		return ..()
 
 /obj/structure/droppod/nonmob/turret_pod
-	name = "\improper TGMC Zeus sentry drop pod"
-	desc = "A menacing metal hunk of steel that is used by the TGMC for quick tactical redeployment. This one carries a self deploying sentry system."
+	name = "\improper TGMC宙斯哨戒空投舱"
+	desc = "一块由TGMC用于快速战术重新部署的险恶钢铁巨块. 此型号搭载一套自部署哨戒系统."
 	icon_state = "sentrypod"
 	light_color = LIGHT_COLOR_EMISSIVE_RED
 
@@ -461,8 +461,8 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 	load_package(contents[1])
 
 /obj/structure/droppod/nonmob/mech_pod
-	name = "\improper TGMC Zeus mech drop pod"
-	desc = "A menacing metal hunk of steel that is used by the TGMC for quick tactical redeployment. This is a larger model designed specifically to carry mechs."
+	name = "\improper TGMC宙斯机甲空投舱"
+	desc = "一块由TGMC用于快速战术重新部署的险恶钢铁巨块. 这是专为运载机甲而设计的更大型号."
 	icon = 'icons/obj/structures/big_droppod.dmi'
 	icon_state = "mechpod"
 	light_range = 2
@@ -529,7 +529,7 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 	. = ..()
 	var/obj/structure/droppod/pod = target
 	if(!pod.target_z)
-		to_chat(owner, span_danger("No active combat zone detected."))
+		to_chat(owner, span_danger("未检测到活跃战斗区域."))
 		return
 	var/atom/movable/screen/minimap/map = SSminimaps.fetch_minimap_object(pod.target_z, MINIMAP_FLAG_MARINE)
 	owner.client.screen += map
@@ -551,8 +551,8 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 	return ..()
 
 /obj/structure/drop_pod_launcher
-	name = "Zeus pod launch bay"
-	desc = "A hatch in the ground wih support for a Zeus drop pod launch."
+	name = "宙斯空投舱发射舱"
+	desc = "地面上的一个舱口,带有宙斯空投舱发射支撑结构."
 	icon = 'icons/obj/structures/droppod.dmi'
 	icon_state = "launch_bay"
 	density = FALSE
@@ -571,8 +571,8 @@ GLOBAL_LIST_INIT(blocked_droppod_tiles, typecacheof(list(/turf/open/space/transi
 /obj/structure/drop_pod_launcher/attack_powerloader(mob/living/user, obj/item/powerloader_clamp/attached_clamp)
 	if(!istype(attached_clamp.loaded, /obj/structure/droppod))
 		return ..()
-	user.visible_message(span_notice("[user] drops [attached_clamp.loaded] onto [src] and it clicks into place!"),
-	span_notice("You drop [attached_clamp.loaded] onto [src] and it clicks into place!"))
+	user.visible_message(span_notice("[user]将[attached_clamp.loaded]投放到[src]上,它咔哒一声就位!"),
+	span_notice("你将[attached_clamp.loaded]投放到[src]上,它咔哒一声就位!"))
 	attached_clamp.loaded.forceMove(get_turf(src))
 	attached_clamp.loaded = null
 	playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)

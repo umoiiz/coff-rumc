@@ -7,7 +7,7 @@
 
 /datum/smite/bread/effect(client/user, mob/living/target)
 	. = ..()
-	if(tgui_alert(usr, "Irreversibly transform [target] into a delectable loaf of bread?", "Continue?", list("Yes", "No")) != "Yes")
+	if(tgui_alert(usr, "将[target]不可逆地变成一条美味的面包?", "继续?", list("Yes", "No")) != "Yes")
 		return
 	var/mutable_appearance/bread_appearance = mutable_appearance('icons/obj/items/food/bread.dmi', "breadtg")
 	var/mutable_appearance/transform_scanline = mutable_appearance('icons/effects/effects.dmi', "transform_effect")

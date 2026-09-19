@@ -8,7 +8,7 @@
 
 /obj/machinery/power/apc
 	name = "area power controller"
-	desc = "A control terminal for the area electrical systems."
+	desc = "区域电力系统的控制终端."
 	icon = 'icons/obj/machines/apc.dmi'
 	icon_state = "apc_closed"
 	anchored = TRUE
@@ -189,23 +189,23 @@
 	. = ..()
 
 	if(machine_stat & BROKEN)
-		. += span_info("It appears to be completely broken. It's hard to see what else is wrong with it.")
+		. += span_info("它似乎完全损坏了. 很难看出它还有什么其他问题.")
 		return
 
 	if(opened)
 		if(has_electronics && terminal)
-			. += span_info("The cover is [opened == APC_COVER_REMOVED ? "removed":"open"] and the power cell is [cell ? "installed":"missing"].")
+			. += span_info("盖子[opened == APC_COVER_REMOVED ? "removed":"open"],电池[cell ? "installed":"missing"].")
 		else
-			. += span_info("It's [ !terminal ? "not" : "" ] wired up.")
-			. += span_info("The electronics are[!has_electronics?"n't":""] installed.")
+			. += span_info("它[ !terminal ? "not" : "" ]接线.")
+			. += span_info("电子元件[!has_electronics?"n't":""]安装.")
 	else
 		if(machine_stat & MAINT)
-			. += span_info("The cover is closed. Something is wrong with it, it doesn't work.")
+			. += span_info("盖子已关闭. 它出了问题,无法工作.")
 		else
-			. += span_info("The cover is closed.")
+			. += span_info("盖子已关闭.")
 
 	if(CHECK_BITFIELD(machine_stat, PANEL_OPEN))
-		. += span_info("The wiring is exposed.")
+		. += span_info("接线暴露在外.")
 
 /obj/machinery/power/apc/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -275,7 +275,7 @@
 		return TRUE
 	if(isAI(user) && aidisabled)
 		if(!loud)
-			balloon_alert(user, "eee is disabled")
+			balloon_alert(user, "eee已禁用")
 		return FALSE
 	return TRUE
 
@@ -287,7 +287,7 @@
 		if("lock")
 			if(usr.has_unlimited_silicon_privilege)
 				if((machine_stat & (BROKEN|MAINT)))
-					balloon_alert(usr, "APC unresponsive")
+					balloon_alert(usr, "APC无响应")
 				else
 					locked = !locked
 					update_icon()
@@ -553,11 +553,11 @@
 
 /obj/machinery/power/apc/proc/set_broken()
 	//Aesthetically much better!
-	visible_message(span_warning("[src]'s screen flickers with warnings briefly!"))
+	visible_message(span_warning("[src]的屏幕短暂闪烁出警告!"))
 	addtimer(CALLBACK(src, PROC_REF(do_break)), rand(2, 5))
 
 /obj/machinery/power/apc/proc/do_break()
-	visible_message(span_danger("[src]'s screen suddenly explodes in rain of sparks and small debris!"))
+	visible_message(span_danger("[src]的屏幕突然爆裂,火花和碎片四溅!"))
 	machine_stat |= BROKEN
 	operating = FALSE
 	update_icon()
@@ -629,5 +629,5 @@
 
 /obj/machinery/power/apc/mainship/hardened
 	name = "hardened area power controller"
-	desc = "A control terminal for the area electrical systems. This one is hardened against sudden power fluctuations caused by electrical grid damage."
+	desc = "区域电力系统的控制终端. 这个终端经过加固,可抵御电网损坏引起的突发电力波动."
 	crash_break_probability = 0

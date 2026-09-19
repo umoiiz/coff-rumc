@@ -1,6 +1,6 @@
 /obj/item/mass_spectrometer
-	desc = "A hand-held mass spectrometer which identifies trace chemicals in a blood sample."
-	name = "mass-spectrometer"
+	desc = "一个手持式质谱仪,可识别血液样本中的痕量化学物质."
+	name = "质谱仪"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "spectrometer"
 	worn_icon_state = "analyzer"
@@ -32,7 +32,7 @@
 	for(var/datum/reagent/R in reagents.reagent_list)
 		if(R.type != /datum/reagent/blood)
 			reagents.clear_reagents()
-			to_chat(user, span_warning("The sample was contaminated! Please insert another sample"))
+			to_chat(user, span_warning("样本被污染了!请插入另一个样本"))
 			return
 		else
 			blood_traces = params2list(R.data["trace_chem"])
@@ -45,6 +45,6 @@
 
 
 /obj/item/mass_spectrometer/adv
-	name = "advanced mass-spectrometer"
+	name = "高级质谱仪"
 	icon_state = "adv_spectrometer"
 	details = TRUE

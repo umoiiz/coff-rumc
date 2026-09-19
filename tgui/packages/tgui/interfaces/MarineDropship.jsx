@@ -21,8 +21,8 @@ export const MarineDropship = (props) => {
           <Window.Content scrollable>
             {!data.hijack_state ? (
               <NoticeBox>
-                <Box>POSSIBLE HIJACK</Box>
-                <Box>SYSTEMS REBOOTING...</Box>
+                <Box>可能被劫持</Box>
+                <Box>系统重启中...</Box>
               </NoticeBox>
             ) : (
               <NormalOperation />
@@ -61,22 +61,22 @@ const NormalOperation = (props) => {
   ];
   return (
     <>
-      <Section title="Ship Status">{data.ship_status}</Section>
-      <Section title="Automation Status">
+      <Section title="飞船状态">{data.ship_status}</Section>
+      <Section title="自动化状态">
         <Button
           onClick={() => act('automation_on', { automation_on: 1 })}
           selected={data.automatic_cycle_on}
         >
-          On
+          开
         </Button>
         <Button
           onClick={() => act('automation_on', { automation_on: 0 })}
           selected={!data.automatic_cycle_on}
         >
-          Off
+          关
         </Button>
       </Section>
-      <Section title="Cycle Time">
+      <Section title="循环时间">
         <Stack>
           {delayBetweenFlight.map((time_between_cycle) => {
             return (
@@ -98,7 +98,7 @@ const NormalOperation = (props) => {
           })}
         </Stack>
       </Section>
-      <Section title="Destinations">
+      <Section title="目的地">
         {data.destinations.map((destination) => (
           <Box key={destination.id}>
             <Button
@@ -110,20 +110,20 @@ const NormalOperation = (props) => {
           </Box>
         ))}
       </Section>
-      <Section title="Door Controls">
+      <Section title="门控制">
         <LabeledList>
-          <LabeledList.Item label="All">
+          <LabeledList.Item label="全部">
             <Button
               onClick={() => act('lockdown')}
               disabled={data.lockdown === 2}
             >
-              Lockdown
+              封锁
             </Button>
             <Button
               onClick={() => act('release')}
               disabled={data.lockdown === 0}
             >
-              Release
+              解除
             </Button>
           </LabeledList.Item>
           {doorLocks.map((doorLock) => (
@@ -132,25 +132,25 @@ const NormalOperation = (props) => {
                 onClick={() => act('lock', { lock: doorLock.name })}
                 disabled={doorLock.lockdown === 2}
               >
-                Lockdown
+                封锁
               </Button>
               <Button
                 onClick={() => act('unlock', { unlock: doorLock.name })}
                 disabled={doorLock.lockdown === 0}
               >
-                Unlock
+                解锁
               </Button>
             </LabeledList.Item>
           ))}
         </LabeledList>
       </Section>
       {data.show_hunt ? (
-        <Section title="Hunt">
+        <Section title="狩猎">
           <Button disabled={!data.can_hunt} onClick={() => act('hunt')}>
-            Start hunting
+            开始狩猎
           </Button>
           <Button disabled={!data.can_hunt} onClick={() => act('minor')}>
-            Capture Ground
+            占领地面
           </Button>
         </Section>
       ) : null}

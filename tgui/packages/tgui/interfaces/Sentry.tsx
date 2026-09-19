@@ -39,7 +39,7 @@ export const Sentry = (props) => {
       <Window.Content>
         <Section title={name}>
           <LabeledList>
-            <LabeledList.Item label="Structural Integrity">
+            <LabeledList.Item label="结构完整性">
               <ProgressBar
                 value={health / health_max}
                 ranges={{
@@ -49,7 +49,7 @@ export const Sentry = (props) => {
                 }}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Current Rounds">
+            <LabeledList.Item label="当前弹药">
               <ProgressBar
                 value={rounds / rounds_max}
                 ranges={{
@@ -68,18 +68,18 @@ export const Sentry = (props) => {
                   onClick={() => act('safety')}
                   icon={safety_toggle ? 'check' : 'times'}
                 >
-                  Safety
+                  保险
                 </Button>
               }
-              label="Weapon Safety"
+              label="武器保险"
             >
               {safety_toggle ? 'Only Xenos' : 'Everything'}
             </LabeledList.Item>
             <LabeledList.Item
               buttons={
-                <Button onClick={() => act('firemode')}>Fire Mode</Button>
+                <Button onClick={() => act('firemode')}>射击模式</Button>
               }
-              label="Fire Mode"
+              label="射击模式"
             >
               {fire_mode}
             </LabeledList.Item>
@@ -90,10 +90,10 @@ export const Sentry = (props) => {
                   onClick={() => act('manual')}
                   icon={manual_override ? 'check' : 'times'}
                 >
-                  Manual Override
+                  手动控制
                 </Button>
               }
-              label="Manual Override"
+              label="手动控制"
             />
             <LabeledList.Item
               buttons={
@@ -102,10 +102,10 @@ export const Sentry = (props) => {
                   onClick={() => act('toggle_radial')}
                   icon={radial_mode ? 'check' : 'times'}
                 >
-                  Radial Mode
+                  径向模式
                 </Button>
               }
-              label="Radial Mode"
+              label="径向模式"
             />
             <LabeledList.Item
               buttons={
@@ -114,10 +114,10 @@ export const Sentry = (props) => {
                   onClick={() => act('toggle_alert')}
                   icon={alerts_on ? 'check' : 'times'}
                 >
-                  Alert Mode
+                  警戒模式
                 </Button>
               }
-              label="Alert Mode"
+              label="警戒模式"
             />
           </LabeledList>
         </Section>

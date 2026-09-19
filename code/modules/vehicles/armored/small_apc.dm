@@ -1,6 +1,6 @@
 /obj/vehicle/sealed/armored/apc
 	name = "TAV - Nike"
-	desc = "A miniaturized replica of a popular personnel carrier. For ages 5 and up."
+	desc = "一种流行的人员运输车的迷你复制品. 适合5岁及以上儿童."
 	icon = 'icons/obj/armored/1x1/tinytank.dmi'
 	turret_icon = 'icons/obj/armored/1x1/tinytank_gun.dmi'
 	turret_icon_state = "apc_turret"

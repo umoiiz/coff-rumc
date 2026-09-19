@@ -1,65 +1,65 @@
 /datum/glass_style/drinking_glass/bilk
 	required_drink_type = /datum/reagent/consumable/ethanol/bilk
 	name = "glass of bilk"
-	desc = "A brew of milk and beer. For those alcoholics who fear osteoporosis."
+	desc = "牛奶和啤酒的混合酿造.献给那些害怕骨质疏松的酒鬼."
 	icon_state = "glass_brown"
 
 /datum/glass_style/drinking_glass/threemileisland
 	required_drink_type = /datum/reagent/consumable/ethanol/threemileisland
 	name = "Three Mile Island Ice Tea"
-	desc = "A glass of this is sure to prevent a meltdown."
+	desc = "一杯下肚,保证不会崩溃."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "threemileislandglass"
 
 /datum/glass_style/drinking_glass/gintonic
 	required_drink_type = /datum/reagent/consumable/ethanol/gintonic
 	name = "Gin and Tonic"
-	desc = "A mild but still great cocktail. Drink up, like a true Englishman."
+	desc = "一款温和但依然很棒的鸡尾酒.干杯吧,像个真正的英国人."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "gintonicglass"
 
 /datum/glass_style/drinking_glass/rum_coke
 	required_drink_type = /datum/reagent/consumable/ethanol/rum_coke
 	name = "Rum and Coke"
-	desc = "The classic go-to of space-fratboys."
+	desc = "太空兄弟会的经典首选."
 	icon_state = "whiskeycolaglass"
 
 /datum/glass_style/drinking_glass/cuba_libre
 	required_drink_type = /datum/reagent/consumable/ethanol/cuba_libre
 	name = "Cuba Libre"
-	desc = "A classic mix of rum, cola, and lime. A favorite of revolutionaries everywhere!"
+	desc = "朗姆酒,可乐和青柠的经典混合.各地革命者的最爱!"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "cubalibreglass"
 
 /datum/glass_style/drinking_glass/whiskey_cola
 	required_drink_type = /datum/reagent/consumable/ethanol/whiskey_cola
 	name = "whiskey cola"
-	desc = "An innocent-looking mixture of cola and whiskey. Delicious."
+	desc = "看似无害的可乐和威士忌混合物.美味."
 	icon_state = "whiskeycolaglass"
 
 /datum/glass_style/drinking_glass/martini
 	required_drink_type = /datum/reagent/consumable/ethanol/martini
 	name = "Classic Martini"
-	desc = "Damn, the bartender even stirred it, not shook it."
+	desc = "该死,酒保居然还搅拌了它,而不是摇晃。"
 	icon_state = "martiniglass"
 
 /datum/glass_style/drinking_glass/vodkamartini
 	required_drink_type = /datum/reagent/consumable/ethanol/vodkamartini
 	name = "Vodka martini"
-	desc = "A bastardisation of the classic martini. Still great."
+	desc = "经典马提尼的粗劣变种。不过还是很棒。"
 	icon_state = "martiniglass"
 
 /datum/glass_style/drinking_glass/white_russian
 	required_drink_type = /datum/reagent/consumable/ethanol/white_russian
 	name = "White Russian"
-	desc = "A very nice looking drink. But that's just, like, your opinion, man."
+	desc = "一杯非常好看的饮品。但这只是,呃,你的个人看法,老兄。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "whiterussianglass"
 
 /datum/glass_style/drinking_glass/screwdrivercocktail
 	required_drink_type = /datum/reagent/consumable/ethanol/screwdrivercocktail
 	name = "Screwdriver"
-	desc = "A simple, yet superb mixture of Vodka and orange juice. Just the thing for the tired engineer."
+	desc = "伏特加和橙汁的简单却绝妙的混合。正是疲惫工程师所需之物。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "screwdriverglass"
 
@@ -73,714 +73,714 @@
 /datum/glass_style/drinking_glass/bloody_mary
 	required_drink_type = /datum/reagent/consumable/ethanol/bloody_mary
 	name = "Bloody Mary"
-	desc = "Tomato juice, mixed with Vodka and a li'l bit of lime. Tastes like liquid murder."
+	desc = "番茄汁,混合伏特加和一点点青柠。尝起来像液态谋杀。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "bloodymaryglass"
 
 /datum/glass_style/drinking_glass/brave_bull
 	required_drink_type = /datum/reagent/consumable/ethanol/brave_bull
 	name = "Brave Bull"
-	desc = "Tequila and Coffee liqueur, brought together in a mouthwatering mixture. Drink up."
+	desc = "龙舌兰和咖啡利口酒,融合成令人垂涎的混合饮品。干杯吧。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "bravebullglass"
 
 /datum/glass_style/drinking_glass/tequila_sunrise
 	required_drink_type = /datum/reagent/consumable/ethanol/tequila_sunrise
 	name = "tequila Sunrise"
-	desc = "Oh great, now you feel nostalgic about sunrises back on Terra..."
+	desc = "哦太好了,现在你开始怀念起泰拉上的日出了..."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "tequilasunriseglass"
 
 /datum/glass_style/drinking_glass/toxins_special
 	required_drink_type = /datum/reagent/consumable/ethanol/toxins_special
 	name = "Toxins Special"
-	desc = "Whoah, this thing is on FIRE!"
+	desc = "哇哦,这东西着火了!"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "toxinsspecialglass"
 
 /datum/glass_style/drinking_glass/beepsky_smash
 	required_drink_type = /datum/reagent/consumable/ethanol/beepsky_smash
 	name = "Beepsky Smash"
-	desc = "Heavy, hot and strong. Just like the Iron fist of the LAW."
+	desc = "浓烈、灼热而强劲。就像法律的铁拳。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "beepskysmashglass"
 
 /datum/glass_style/drinking_glass/irish_cream
 	required_drink_type = /datum/reagent/consumable/ethanol/irish_cream
 	name = "Irish Cream"
-	desc = "It's cream, mixed with whiskey. What else would you expect from the Irish?"
+	desc = "这是奶油,混合了威士忌。你还指望爱尔兰人能拿出什么别的?"
 	icon_state = "irishcreamglass"
 
 /datum/glass_style/drinking_glass/manly_dorf
 	required_drink_type = /datum/reagent/consumable/ethanol/manly_dorf
 	name = "The Manly Dorf"
-	desc = "A manly concoction made from Ale and Beer. Intended for true men only."
+	desc = "由麦芽酒和啤酒调制而成的硬汉饮品。仅供真男人享用。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "manlydorfglass"
 
 /datum/glass_style/drinking_glass/longislandicedtea
 	required_drink_type = /datum/reagent/consumable/ethanol/longislandicedtea
 	name = "Long Island Iced Tea"
-	desc = "The liquor cabinet, brought together in a delicious mix. Intended for middle-aged alcoholic women only."
+	desc = "把整个酒柜混在一起的美味调酒。仅供中年酗酒女性享用。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "longislandicedteaglass"
 
 /datum/glass_style/drinking_glass/moonshine
 	required_drink_type = /datum/reagent/consumable/ethanol/moonshine
 	name = "Moonshine"
-	desc = "You've really hit rock bottom now... your liver packed its bags and left last night."
+	desc = "你现在真的跌到谷底了...你的肝脏昨晚收拾行李走人了。"
 	icon_state = "glass_clear"
 
 /datum/glass_style/drinking_glass/b52
 	required_drink_type = /datum/reagent/consumable/ethanol/b52
 	name = "B-52"
-	desc = "Kahlua, Irish Cream, and cognac. You will get bombed."
+	desc = "甘露咖啡、爱尔兰奶油和白兰地。你会被炸翻的。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "b52glass"
 
 /datum/glass_style/drinking_glass/irishcoffee
 	required_drink_type = /datum/reagent/consumable/ethanol/irishcoffee
 	name = "Irish Coffee"
-	desc = "Coffee and alcohol. More fun than a Mimosa to drink in the morning."
+	desc = "咖啡加酒精。早上喝比含羞草鸡尾酒更有趣。"
 	icon = 'icons/obj/drinks/coffee.dmi'
 	icon_state = "irishcoffeeglass"
 
 /datum/glass_style/drinking_glass/margarita
 	required_drink_type = /datum/reagent/consumable/ethanol/margarita
 	name = "Margarita"
-	desc = "On the rocks with salt on the rim. Arriba~!"
+	desc = "加冰,杯口抹盐。Arriba~!"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "margaritaglass"
 
 /datum/glass_style/drinking_glass/black_russian
 	required_drink_type = /datum/reagent/consumable/ethanol/black_russian
 	name = "Black Russian"
-	desc = "For the lactose-intolerant. Still as classy as a White Russian."
+	desc = "给乳糖不耐受者的选择。依然和白俄罗斯一样有格调。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "blackrussianglass"
 
 /datum/glass_style/drinking_glass/manhattan
 	required_drink_type = /datum/reagent/consumable/ethanol/manhattan
 	name = "Manhattan"
-	desc = "The Detective's undercover drink of choice. He never could stomach gin..."
+	desc = "侦探的卧底首选饮品。他就是受不了金酒..."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "manhattanglass"
 
 /datum/glass_style/drinking_glass/manhattan_proj
 	required_drink_type = /datum/reagent/consumable/ethanol/manhattan_proj
 	name = "Manhattan Project"
-	desc = "A scientist's drink of choice, for thinking how to blow up the station."
+	desc = "科学家的首选饮品,用来思考怎么炸掉空间站。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "proj_manhattanglass"
 
 /datum/glass_style/drinking_glass/whiskeysoda
 	required_drink_type = /datum/reagent/consumable/ethanol/whiskeysoda
 	name = "whiskey soda"
-	desc = "Ultimate refreshment."
+	desc = "终极提神饮品。"
 	icon_state = "whiskeysodaglass2"
 
 /datum/glass_style/drinking_glass/antifreeze
 	required_drink_type = /datum/reagent/consumable/ethanol/antifreeze
 	name = "Anti-freeze"
-	desc = "The ultimate refreshment."
+	desc = "终极提神饮品。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "antifreeze"
 
 /datum/glass_style/drinking_glass/barefoot
 	required_drink_type = /datum/reagent/consumable/ethanol/barefoot
 	name = "Barefoot"
-	desc = "Barefoot and pregnant."
+	desc = "赤脚怀孕。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "b&p"
 
 /datum/glass_style/drinking_glass/snowwhite
 	required_drink_type = /datum/reagent/consumable/ethanol/snowwhite
 	name = "Snow White"
-	desc = "A cold refreshment."
+	desc = "一杯冰爽的提神饮品。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "snowwhite"
 
 /datum/glass_style/drinking_glass/demonsblood
 	required_drink_type = /datum/reagent/consumable/ethanol/demonsblood
 	name = "Demons Blood"
-	desc = "Just looking at this thing makes the hair at the back of your neck stand up."
+	desc = "光是看着这东西就让你后颈的汗毛竖起来。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "demonsblood"
 
 /datum/glass_style/drinking_glass/devilskiss
 	required_drink_type = /datum/reagent/consumable/ethanol/devilskiss
 	name = "Devils Kiss"
-	desc = "Creepy time!"
+	desc = "惊悚时刻!"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "devilskiss"
 
 /datum/glass_style/drinking_glass/vodkatonic
 	required_drink_type = /datum/reagent/consumable/ethanol/vodkatonic
 	name = "vodka and tonic"
-	desc = "For when a gin and tonic isn't Russian enough."
+	desc = "当金汤力不够俄罗斯的时候。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "vodkatonicglass"
 
 /datum/glass_style/drinking_glass/ginfizz
 	required_drink_type = /datum/reagent/consumable/ethanol/ginfizz
 	name = "gin fizz"
-	desc = "Refreshingly lemony, deliciously dry."
+	desc = "清爽的柠檬味,美妙的干冽。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "ginfizzglass"
 
 /datum/glass_style/drinking_glass/bahama_mama
 	required_drink_type = /datum/reagent/consumable/ethanol/bahama_mama
 	name = "Bahama Mama"
-	desc = "A tropical cocktail with a complex blend of flavors."
+	desc = "一款风味复杂的热带鸡尾酒。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "bahama_mama"
 
 /datum/glass_style/drinking_glass/singulo
 	required_drink_type = /datum/reagent/consumable/ethanol/singulo
 	name = "Singulo"
-	desc = "A blue-space beverage."
+	desc = "一种蓝空间饮品。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "singulo"
 
 /datum/glass_style/drinking_glass/sbiten
 	required_drink_type = /datum/reagent/consumable/ethanol/sbiten
 	name = "Sbiten"
-	desc = "A spicy mix of Vodka and Spice. Very hot."
+	desc = "伏特加和香料的辛辣混合。非常火热。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "sbitenglass"
 
 /datum/glass_style/drinking_glass/red_mead
 	required_drink_type = /datum/reagent/consumable/ethanol/red_mead
 	name = "Red Mead"
-	desc = "A true Viking's beverage, made with the blood of their enemies."
+	desc = "真正的维京饮品,用敌人的血酿成。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "red_meadglass"
 
 /datum/glass_style/drinking_glass/mead
 	required_drink_type = /datum/reagent/consumable/ethanol/mead
 	name = "Mead"
-	desc = "A drink from Valhalla."
+	desc = "来自英灵殿的饮品。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "meadglass"
 
 /datum/glass_style/drinking_glass/iced_beer
 	required_drink_type = /datum/reagent/consumable/ethanol/iced_beer
 	name = "iced beer"
-	desc = "A beer so frosty, the air around it freezes."
+	desc = "一杯冰得连周围空气都结霜的啤酒。"
 	icon_state = "iced_beerglass"
 
 /datum/glass_style/drinking_glass/grog
 	required_drink_type = /datum/reagent/consumable/ethanol/grog
 	name = "Grog"
-	desc = "A fine and cepa drink for Space."
+	desc = "一款上好的太空佳酿。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "grogglass"
 
 /datum/glass_style/drinking_glass/aloe
 	required_drink_type = /datum/reagent/consumable/ethanol/aloe
 	name = "Aloe"
-	desc = "Very, very, very good."
+	desc = "非常、非常、非常好。"
 	icon_state = "aloe"
 
 /datum/glass_style/drinking_glass/andalusia
 	required_drink_type = /datum/reagent/consumable/ethanol/andalusia
 	name = "Andalusia"
-	desc = "A nice, strangely named drink."
+	desc = "一杯不错、名字古怪的饮品。"
 	icon_state = "andalusia"
 
 /datum/glass_style/drinking_glass/alliescocktail
 	required_drink_type = /datum/reagent/consumable/ethanol/alliescocktail
 	name = "Allies cocktail"
-	desc = "A drink made from your allies."
+	desc = "用你的盟友调制的饮品。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "alliescocktail"
 
 /datum/glass_style/drinking_glass/acid_spit
 	required_drink_type = /datum/reagent/consumable/ethanol/acid_spit
 	name = "Acid Spit"
-	desc = "A drink from Nanotrasen. Made from live aliens."
+	desc = "来自纳米传讯的饮品。用活体异形制成。"
 	icon_state = "acidspitglass"
 
 /datum/glass_style/drinking_glass/amasec
 	required_drink_type = /datum/reagent/consumable/ethanol/amasec
 	name = "Amasec"
-	desc = "Always handy before COMBAT!!!"
+	desc = "战斗前总是很方便!!!"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "amasecglass"
 
 /datum/glass_style/drinking_glass/changelingsting
 	required_drink_type = /datum/reagent/consumable/ethanol/changelingsting
 	name = "Changeling Sting"
-	desc = "A stingy drink."
+	desc = "一杯吝啬的饮品。"
 	icon = 'icons/obj/drinks/soda.dmi'
 	icon_state = "changelingsting"
 
 /datum/glass_style/drinking_glass/irishcarbomb
 	required_drink_type = /datum/reagent/consumable/ethanol/irishcarbomb
 	name = "Irish Car Bomb"
-	desc = "An Irish car bomb."
+	desc = "一杯爱尔兰汽车炸弹。"
 	icon_state = "irishcarbomb"
 
 /datum/glass_style/drinking_glass/syndicatebomb
 	required_drink_type = /datum/reagent/consumable/ethanol/syndicatebomb
 	name = "Syndicate Bomb"
-	desc = "A syndicate bomb."
+	desc = "一杯辛迪加炸弹。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "syndicatebomb"
 
 /datum/glass_style/drinking_glass/hiveminderaser
 	required_drink_type = /datum/reagent/consumable/ethanol/hiveminderaser
 	name = "Hivemind Eraser"
-	desc = "For when even mindshields can't save you."
+	desc = "当连心灵护盾都救不了你的时候。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "hiveminderaser"
 
 /datum/glass_style/drinking_glass/erikasurprise
 	required_drink_type = /datum/reagent/consumable/ethanol/erikasurprise
 	name = "Erika Surprise"
-	desc = "The surprise is, it's green!"
+	desc = "惊喜是,它是绿色的!"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "erikasurprise"
 
 /datum/glass_style/drinking_glass/driestmartini
 	required_drink_type = /datum/reagent/consumable/ethanol/driestmartini
 	name = "Driest Martini"
-	desc = "Only for the experienced. You think you see sand floating in the glass."
+	desc = "仅供老手享用。你觉得你看到杯子里漂浮着沙子。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "driestmartiniglass"
 
 /datum/glass_style/drinking_glass/bananahonk
 	required_drink_type = /datum/reagent/consumable/ethanol/bananahonk
 	name = "Banana Honk"
-	desc = "A drink from Clown Heaven."
+	desc = "来自小丑天堂的饮品。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "bananahonkglass"
 
 /datum/glass_style/drinking_glass/silencer
 	required_drink_type = /datum/reagent/consumable/ethanol/silencer
 	name = "Silencer"
-	desc = "A drink from Mime Heaven."
+	desc = "来自哑剧天堂的饮品。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "silencerglass"
 
 /datum/glass_style/drinking_glass/drunkenblumpkin
 	required_drink_type = /datum/reagent/consumable/ethanol/drunkenblumpkin
 	name = "Drunken Blumpkin"
-	desc = "A drink for the drunks."
+	desc = "给酒鬼们的饮品。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "drunkenblumpkin"
 
 /datum/glass_style/drinking_glass/whiskey_sour
 	required_drink_type = /datum/reagent/consumable/ethanol/whiskey_sour
 	name = "whiskey sour"
-	desc = "Lemon juice mixed with whiskey and a dash of sugar. Surprisingly satisfying."
+	desc = "柠檬汁混合威士忌和少许糖。出乎意料地令人满足。"
 	icon_state = "whiskey_sour"
 
 /datum/glass_style/drinking_glass/hcider
 	required_drink_type = /datum/reagent/consumable/ethanol/hcider
 	name = "hard cider"
-	desc = "Tastes like autumn... no wait, fall!"
+	desc = "尝起来像秋天...不,等等,是坠落!"
 	icon_state = "whiskeyglass"
 
 /datum/glass_style/drinking_glass/fetching_fizz
 	required_drink_type = /datum/reagent/consumable/ethanol/fetching_fizz
 	name = "Fetching Fizz"
-	desc = "Induces magnetism in the imbiber. Started as a barroom prank but evolved to become popular with miners and scrappers. Metallic aftertaste."
+	desc = "让饮用者产生磁性。起初只是酒吧恶作剧,后来在矿工和拾荒者中流行起来。金属余味。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "fetching_fizz"
 
 /datum/glass_style/drinking_glass/hearty_punch
 	required_drink_type = /datum/reagent/consumable/ethanol/hearty_punch
 	name = "Hearty Punch"
-	desc = "Aromatic beverage served piping hot. According to folk tales it can almost wake the dead."
+	desc = "滚烫上桌的芳香饮品。据民间传说,它几乎能把死人唤醒。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "hearty_punch"
 
 /datum/glass_style/drinking_glass/bacchus_blessing
 	required_drink_type = /datum/reagent/consumable/ethanol/bacchus_blessing
 	name = "Bacchus' Blessing"
-	desc = "You didn't think it was possible for a liquid to be so utterly revolting. Are you sure about this...?"
+	desc = "你没想到液体能如此彻底地令人作呕。你确定要这样吗...?"
 	icon_state = "glass_brown2"
 
 /datum/glass_style/drinking_glass/atomicbomb
 	required_drink_type = /datum/reagent/consumable/ethanol/atomicbomb
 	name = "Atomic Bomb"
-	desc = "Nanotrasen cannot take legal responsibility for your actions after imbibing."
+	desc = "纳米传讯无法为你在饮用后的行为承担法律责任。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "atomicbombglass"
 
 /datum/glass_style/drinking_glass/gargle_blaster
 	required_drink_type = /datum/reagent/consumable/ethanol/gargle_blaster
 	name = "Pan-Galactic Gargle Blaster"
-	desc = "Like having your brain smashed out by a slice of lemon wrapped around a large gold brick."
+	desc = "就像被一片裹着大金砖的柠檬砸碎了脑袋。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "gargleblasterglass"
 
 /datum/glass_style/drinking_glass/neurotoxin
 	required_drink_type = /datum/reagent/consumable/ethanol/neurotoxin
 	name = "Neurotoxin"
-	desc = "A drink that is guaranteed to knock you silly."
+	desc = "一杯保证把你灌得晕头转向的饮品。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "neurotoxinglass"
 
 /datum/glass_style/drinking_glass/hippies_delight
 	required_drink_type = /datum/reagent/consumable/ethanol/hippies_delight
 	name = "Hippie's Delight"
-	desc = "A drink enjoyed by people during the 1960's."
+	desc = "一款在20世纪60年代人们爱喝的饮品。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "hippiesdelightglass"
 
 /datum/glass_style/has_foodtype/drinking_glass/eggnog
 	required_drink_type = /datum/reagent/consumable/ethanol/eggnog
 	name = "eggnog"
-	desc = "For enjoying the most wonderful time of the year."
+	desc = "用来享受一年中最美好的时光。"
 	icon_state = "glass_yellow"
 	drink_type = FRUIT
 
 /datum/glass_style/has_foodtype/juicebox/eggnog
 	required_drink_type = /datum/reagent/consumable/ethanol/eggnog
 	name = "carton of eggnog"
-	desc = "A big juicebox for adults."
+	desc = "给成年人的大号果汁盒。"
 	icon_state = "nog2"
 	drink_type = FRUIT
 
 /datum/glass_style/has_foodtype/drinking_glass/dreadnog
 	required_drink_type = /datum/reagent/consumable/ethanol/dreadnog
 	name = "eggnog"
-	desc = "For suffering during the best time of the year."
+	desc = "为了在一年中最美好的时光里受苦。"
 	drink_type = FRUIT | GROSS
 
 /datum/glass_style/drinking_glass/narsour
 	required_drink_type = /datum/reagent/consumable/ethanol/narsour
 	name = "Nar'Sour"
-	desc = "A new hit cocktail inspired by THE ARM Breweries will have you shouting Fuu ma'jin in no time!"
+	desc = "一款受THE ARM酿酒厂启发的新款热门鸡尾酒,会让你立刻高呼Fuu ma'jin!"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "narsour"
 
 /datum/glass_style/drinking_glass/triple_sec
 	required_drink_type = /datum/reagent/consumable/ethanol/triple_sec
 	name = "Triple Sec"
-	desc = "A glass of straight Triple Sec."
+	desc = "一杯纯饮的三倍橙皮酒。"
 	icon_state = "glass_orange"
 
 /datum/glass_style/drinking_glass/creme_de_menthe
 	required_drink_type = /datum/reagent/consumable/ethanol/creme_de_menthe
 	name = "Creme de Menthe"
-	desc = "You can almost feel the first breath of spring just looking at it."
+	desc = "光是看着它,你几乎就能感受到春天的第一缕气息。"
 	icon_state = "glass_green"
 
 /datum/glass_style/drinking_glass/creme_de_cacao
 	required_drink_type = /datum/reagent/consumable/ethanol/creme_de_cacao
 	name = "Creme de Cacao"
-	desc = "A million hazing lawsuits and alcohol poisonings have started with this humble ingredient."
+	desc = "无数起欺凌诉讼和酒精中毒事件都是从这种不起眼的原料开始的。"
 	icon_state = "glass_brown"
 
 /datum/glass_style/drinking_glass/creme_de_coconut
 	required_drink_type = /datum/reagent/consumable/ethanol/creme_de_coconut
 	name = "Creme de Coconut"
-	desc = "An unintimidating glass of coconut liqueur."
+	desc = "一杯平易近人的椰子利口酒。"
 	icon_state = "glass_white"
 
 /datum/glass_style/drinking_glass/quadruple_sec
 	required_drink_type = /datum/reagent/consumable/ethanol/quadruple_sec
 	name = "Quadruple Sec"
-	desc = "An intimidating and lawful beverage dares you to violate the law and make its day. Still can't drink it on duty, though."
+	desc = "一款令人生畏且合法的饮品,挑衅你违法乱纪,毁掉它的一天。不过执勤时还是不能喝。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "quadruple_sec"
 
 /datum/glass_style/drinking_glass/quintuple_sec
 	required_drink_type = /datum/reagent/consumable/ethanol/quintuple_sec
 	name = "Quintuple Sec"
-	desc = "Now you are become law, destroyer of clowns."
+	desc = "如今你化身为法律,小丑的毁灭者。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "quintuple_sec"
 
 /datum/glass_style/drinking_glass/grasshopper
 	required_drink_type = /datum/reagent/consumable/ethanol/grasshopper
 	name = "Grasshopper"
-	desc = "You weren't aware edible beverages could be that green."
+	desc = "你不知道可饮用的饮料居然能绿成那样。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "grasshopper"
 
 /datum/glass_style/drinking_glass/stinger
 	required_drink_type = /datum/reagent/consumable/ethanol/stinger
 	name = "Stinger"
-	desc = "You wonder what would happen if you pointed this at a heat source..."
+	desc = "你想知道如果把它对准火源会发生什么..."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "stinger"
 
 /datum/glass_style/drinking_glass/bastion_bourbon
 	required_drink_type = /datum/reagent/consumable/ethanol/bastion_bourbon
 	name = "Bastion Bourbon"
-	desc = "If you're feeling low, count on the buttery flavor of our own bastion bourbon."
+	desc = "如果你心情低落,就靠我们自己堡垒波本威士忌的黄油风味来振作吧。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "bastion_bourbon"
 
 /datum/glass_style/drinking_glass/squirt_cider
 	required_drink_type = /datum/reagent/consumable/ethanol/squirt_cider
 	name = "Squirt Cider"
-	desc = "Squirt cider will toughen you right up. Too bad about the musty aftertaste."
+	desc = "喷射苹果酒会让你变得强硬起来。可惜有股霉味余韵。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "squirt_cider"
 
 /datum/glass_style/drinking_glass/fringe_weaver
 	required_drink_type = /datum/reagent/consumable/ethanol/fringe_weaver
 	name = "Fringe Weaver"
-	desc = "It's a wonder it doesn't spill out of the glass."
+	desc = "它居然没从杯子里溢出来,真是奇迹。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "fringe_weaver"
 
 /datum/glass_style/drinking_glass/sugar_rush
 	required_drink_type = /datum/reagent/consumable/ethanol/sugar_rush
 	name = "Sugar Rush"
-	desc = "If you can't mix a Sugar Rush, you can't tend bar."
+	desc = "如果你调不出一杯糖分冲击,你就不配当酒保。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "sugar_rush"
 
 /datum/glass_style/drinking_glass/crevice_spike
 	required_drink_type = /datum/reagent/consumable/ethanol/crevice_spike
 	name = "Crevice Spike"
-	desc = "It'll either knock the drunkenness out of you or knock you out cold. Both, probably."
+	desc = "它要么帮你驱散醉意,要么直接把你打晕。大概两者都会。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "crevice_spike"
 
 /datum/glass_style/drinking_glass/peppermint_patty
 	required_drink_type = /datum/reagent/consumable/ethanol/peppermint_patty
 	name = "Peppermint Patty"
-	desc = "A boozy minty hot cocoa that warms your belly on a cold night."
+	desc = "一杯加了薄荷的热可可酒,在寒夜里温暖你的肚子。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "peppermint_patty"
 
 /datum/glass_style/drinking_glass/alexander
 	required_drink_type = /datum/reagent/consumable/ethanol/alexander
 	name = "Alexander"
-	desc = "A creamy, indulgent delight that is stronger than it seems."
+	desc = "一款奶油般浓郁、令人放纵的享受,比看起来更烈。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "alexander"
 
 /datum/glass_style/drinking_glass/amaretto_alexander
 	required_drink_type = /datum/reagent/consumable/ethanol/amaretto_alexander
 	name = "Amaretto Alexander"
-	desc = "A creamy, indulgent delight that is in fact as gentle as it seems."
+	desc = "一款奶油般浓郁、令人放纵的享受,实际上确实如看起来那般温和。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "alexanderam"
 
 /datum/glass_style/drinking_glass/sidecar
 	required_drink_type = /datum/reagent/consumable/ethanol/sidecar
 	name = "Sidecar"
-	desc = "The one ride you'll gladly give up the wheel for."
+	desc = "唯一一种你乐意放弃方向盘去享受的旅程。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "sidecar"
 
 /datum/glass_style/drinking_glass/between_the_sheets
 	required_drink_type = /datum/reagent/consumable/ethanol/between_the_sheets
 	name = "Between the Sheets"
-	desc = "The only drink that comes with a label reminding you of Nanotrasen's zero-tolerance promiscuity policy."
+	desc = "唯一一种标签上提醒你Nanotrasen零容忍滥交政策的饮品。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "between_the_sheets"
 
 /datum/glass_style/drinking_glass/kamikaze
 	required_drink_type = /datum/reagent/consumable/ethanol/kamikaze
 	name = "Kamikaze"
-	desc = "Divinely windy."
+	desc = "神圣地令人眩晕。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "kamikaze"
 
 /datum/glass_style/drinking_glass/mojito
 	required_drink_type = /datum/reagent/consumable/ethanol/mojito
 	name = "Mojito"
-	desc = "A drink that looks as refreshing as it tastes."
+	desc = "一杯看起来和喝起来一样清爽的饮品。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "mojito"
 
 /datum/glass_style/drinking_glass/moscow_mule
 	required_drink_type = /datum/reagent/consumable/ethanol/moscow_mule
 	name = "Moscow Mule"
-	desc = "A chilly drink that reminds you of the Derelict."
+	desc = "一杯让你想起废弃站的冰凉饮品。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "moscow_mule"
 
 /datum/glass_style/drinking_glass/fernet_cola
 	required_drink_type = /datum/reagent/consumable/ethanol/fernet_cola
 	name = "glass of fernet cola"
-	desc = "A sawed-off cola bottle filled with Fernet Cola. Nothing better after eating like a lardass."
+	desc = "一个装满Fernet可乐的锯短可乐瓶。像猪一样大吃一顿后,没有比这更好的了。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "godlyblend"
 
 /datum/glass_style/drinking_glass/fanciulli
 	required_drink_type = /datum/reagent/consumable/ethanol/fanciulli
 	name = "glass of fanciulli"
-	desc = "A glass of Fanciulli. It's just Manhattan with Fernet."
+	desc = "一杯Fanciulli。其实就是加了Fernet的曼哈顿。"
 	icon_state = "fanciulli"
 
 /datum/glass_style/drinking_glass/branca_menta
 	required_drink_type = /datum/reagent/consumable/ethanol/branca_menta
 	name = "glass of branca menta"
-	desc = "A glass of Branca Menta, perfect for those lazy and hot Sunday summer afternoons." //Get lazy literally by drinking this
+	desc = "一杯Branca Menta,非常适合那些慵懒炎热的夏日周日下午。" //Get lazy literally by drinking this
 	icon_state = "minted_fernet"
 
 /datum/glass_style/drinking_glass/blank_paper
 	required_drink_type = /datum/reagent/consumable/ethanol/blank_paper
 	name = "glass of blank paper"
-	desc = "A fizzy cocktail for those looking to start fresh."
+	desc = "一款为想要重新开始的人准备的气泡鸡尾酒。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "blank_paper"
 
 /datum/glass_style/drinking_glass/wizz_fizz
 	required_drink_type = /datum/reagent/consumable/ethanol/wizz_fizz
 	name = "Wizz Fizz"
-	desc = "The glass bubbles and froths with an almost magical intensity."
+	desc = "杯中气泡翻腾,带着近乎魔幻的强度。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "wizz_fizz"
 
 /datum/glass_style/drinking_glass/bug_spray
 	required_drink_type = /datum/reagent/consumable/ethanol/bug_spray
 	name = "Bug Spray"
-	desc = "Your eyes begin to water as the sting of alcohol reaches them."
+	desc = "当酒精的刺激触及双眼,你的眼睛开始湿润。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "bug_spray"
 
 /datum/glass_style/drinking_glass/applejack
 	required_drink_type = /datum/reagent/consumable/ethanol/applejack
 	name = "Applejack"
-	desc = "You feel like you could drink this all neight."
+	desc = "你觉得你可以整晚都喝这个。"
 	icon_state = "applejack_glass"
 
 /datum/glass_style/drinking_glass/jack_rose
 	required_drink_type = /datum/reagent/consumable/ethanol/jack_rose
 	name = "Jack Rose"
-	desc = "Enough of these, and you really will start to suppose your toeses are roses."
+	desc = "喝够了这些,你真的会开始以为你的脚趾是玫瑰。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "jack_rose"
 
 /datum/glass_style/drinking_glass/turbo
 	required_drink_type = /datum/reagent/consumable/ethanol/turbo
 	name = "Turbo"
-	desc = "A turbulent cocktail for outlaw hoverbikers."
+	desc = "一款为亡命悬浮摩托手准备的狂野鸡尾酒。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "turbo"
 
 /datum/glass_style/drinking_glass/old_timer
 	required_drink_type = /datum/reagent/consumable/ethanol/old_timer
 	name = "Old Timer"
-	desc = "WARNING! May cause premature aging!"
+	desc = "警告!可能导致早衰!"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "old_timer"
 
 /datum/glass_style/drinking_glass/rubberneck
 	required_drink_type = /datum/reagent/consumable/ethanol/rubberneck
 	name = "Rubberneck"
-	desc = "A popular drink amongst those adhering to an all synthetic diet."
+	desc = "一款在纯合成饮食者中很受欢迎的饮品。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "rubberneck"
 
 /datum/glass_style/drinking_glass/duplex
 	required_drink_type = /datum/reagent/consumable/ethanol/duplex
 	name = "Duplex"
-	desc = "To imbibe one component separately from the other is consider a great faux pas."
+	desc = "将一种成分与另一种分开饮用被视为极大的失礼。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "duplex"
 
 /datum/glass_style/drinking_glass/trappist
 	required_drink_type = /datum/reagent/consumable/ethanol/trappist
 	name = "Trappist Beer"
-	desc = "boozy Catholicism in a glass."
+	desc = "杯中装着醉人的天主教。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "trappistglass"
 
 /datum/glass_style/drinking_glass/blazaam
 	required_drink_type = /datum/reagent/consumable/ethanol/blazaam
 	name = "Blazaam"
-	desc = "The glass seems to be sliding between realities. Doubles as a Berenstain remover."
+	desc = "杯子似乎在现实之间滑动。还能兼作Berenstain消除器。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "blazaamglass"
 
 /datum/glass_style/drinking_glass/planet_cracker
 	required_drink_type = /datum/reagent/consumable/ethanol/planet_cracker
 	name = "Planet Cracker"
-	desc = "Although historians believe the drink was originally created to commemorate the end of an important conflict in man's past, its origins have largely been forgotten and it is today seen more as a general symbol of human supremacy."
+	desc = "尽管历史学家认为这种饮品最初是为了纪念人类过去一场重要冲突的结束而创造的,但它的起源已基本被遗忘,如今更多地被视为人类至上的普遍象征。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "planet_cracker"
 
 /datum/glass_style/drinking_glass/mauna_loa
 	required_drink_type = /datum/reagent/consumable/ethanol/mauna_loa
 	name = "Mauna Loa"
-	desc = "Lavaland in a drink... mug... volcano... thing."
+	desc = "一杯拉瓦兰...杯子...火山...玩意儿。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "mauna_loa"
 
 /datum/glass_style/drinking_glass/painkiller
 	required_drink_type = /datum/reagent/consumable/ethanol/painkiller
 	name = "Painkiller"
-	desc = "A combination of tropical juices and rum. Surely this will make you feel better."
+	desc = "热带果汁和朗姆酒的组合。这肯定会让你感觉好些。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "painkiller"
 
 /datum/glass_style/drinking_glass/pina_colada
 	required_drink_type = /datum/reagent/consumable/ethanol/pina_colada
 	name = "Pina Colada"
-	desc = "If you like pina coladas, and getting caught in the rain... well, you'll like this drink."
+	desc = "如果你喜欢椰林飘香,还喜欢在雨中淋湿...好吧,你会喜欢这杯饮品的。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "pina_colada"
 
 /datum/glass_style/drinking_glass/pina_olivada
 	required_drink_type = /datum/reagent/consumable/ethanol/pina_olivada
 	name = "Piña Olivada"
-	desc = "A balance of fruity pineapple with thick, rich olive oil. Stir well before drinking."
+	desc = "果味菠萝与浓郁醇厚的橄榄油的平衡。喝前充分搅拌。"
 	icon_state = "pina_olivada"
 
 /datum/glass_style/drinking_glass/ginger_amaretto
 	required_drink_type = /datum/reagent/consumable/ethanol/ginger_amaretto
 	name = "Ginger Amaretto"
-	desc = "The sprig of rosemary adds a nice aroma to the drink, and isn't just to be pretentious afterall!"
+	desc = "迷迭香枝为饮品增添了宜人的香气,毕竟不只是为了装腔作势!"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "gingeramaretto"
 
 /datum/glass_style/drinking_glass/godfather
 	required_drink_type = /datum/reagent/consumable/ethanol/godfather
 	name = "Godfather"
-	desc = "A classic from old Italy and enjoyed by gangsters, pray the orange peel doesnt end up in your mouth."
+	desc = "来自旧意大利的经典,深受黑帮喜爱,祈祷橙皮不会跑进你嘴里。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "godfather"
 
 /datum/glass_style/drinking_glass/godmother
 	required_drink_type = /datum/reagent/consumable/ethanol/godmother
 	name = "Godmother"
-	desc = "A lovely fresh smelling cocktail, a true Sicilian delight."
+	desc = "一杯可爱清新的鸡尾酒,真正的西西里之乐。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "godmother"
 
 /datum/glass_style/drinking_glass/kortara
 	required_drink_type = /datum/reagent/consumable/ethanol/kortara
 	name = "glass of kortara"
-	desc = "The fermented nectar of the Korta nut, as enjoyed by lizards galaxywide."
+	desc = "科塔坚果的发酵花蜜,全银河的蜥蜴都爱喝。"
 	icon_state = "kortara_glass"
 
 /datum/glass_style/drinking_glass/sea_breeze
 	required_drink_type = /datum/reagent/consumable/ethanol/sea_breeze
 	name = "Sea Breeze"
-	desc = "Minty, chocolatey, and creamy. It's like drinkable mint chocolate chip!"
+	desc = "薄荷、巧克力、奶油。就像能喝的薄荷巧克力碎!"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "sea_breeze"
 
 /datum/glass_style/drinking_glass/white_tiziran
 	required_drink_type = /datum/reagent/consumable/ethanol/white_tiziran
 	name = "White Tiziran"
-	desc = "I had a rough night and I hate the fucking humans, man."
+	desc = "我昨晚过得很糟,我恨透了该死的人类,老兄。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "white_tiziran"
 
 /datum/glass_style/drinking_glass/drunken_espatier
 	required_drink_type = /datum/reagent/consumable/ethanol/drunken_espatier
 	name = "Drunken Espatier"
-	desc = "A drink to make facing death easier."
+	desc = "一杯让面对死亡变得更容易的饮品。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "drunken_espatier"
 
 /datum/glass_style/drinking_glass/protein_blend
 	required_drink_type = /datum/reagent/consumable/ethanol/protein_blend
 	name = "Protein Blend"
-	desc = "Vile, even by lizard standards."
+	desc = "即使以蜥蜴的标准来看也很恶心。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "protein_blend"
 
@@ -792,83 +792,83 @@
 /datum/glass_style/drinking_glass/triumphal_arch
 	required_drink_type = /datum/reagent/consumable/ethanol/triumphal_arch
 	name = "Triumphal Arch"
-	desc = "A toast to the Empire, long may it stand."
+	desc = "为帝国干杯,愿它长存。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "triumphal_arch"
 
 /datum/glass_style/drinking_glass/the_juice
 	required_drink_type = /datum/reagent/consumable/ethanol/the_juice
 	name = "The Juice"
-	desc = "A concoction of not-so-edible things that apparently lets you feel like you're in two places at once"
+	desc = "一种由不太可食用的东西调制的混合物,据说能让你感觉同时身处两地。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "thejuice"
 
 /datum/glass_style/drinking_glass/admiralty
 	required_drink_type = /datum/reagent/consumable/ethanol/admiralty
 	name = "Admiralty"
-	desc = "Hail to the Admiral, for he brings fair tidings, and rum too."
+	desc = "向海军上将致敬,因为他带来好消息,还有朗姆酒。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "admiralty"
 
 /datum/glass_style/drinking_glass/long_haul
 	required_drink_type = /datum/reagent/consumable/ethanol/long_haul
 	name = "Long Haul"
-	desc = "A perfect companion for a lonely long haul flight."
+	desc = "孤独长途飞行中的完美伴侣。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "long_haul"
 
 /datum/glass_style/drinking_glass/long_john_silver
 	required_drink_type = /datum/reagent/consumable/ethanol/long_john_silver
 	name = "Long John Silver"
-	desc = "Named for a famous pirate, who may or may not have been fictional. But hey, why let the truth get in the way of a good yarn?" //Chopper Reid says "How the fuck are ya?"
+	desc = "以一位著名海盗命名,他可能是虚构的也可能不是。但嘿,何必让真相妨碍一个好故事呢?" //Chopper Reid says "How the fuck are ya?"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "long_john_silver"
 
 /datum/glass_style/drinking_glass/tropical_storm
 	required_drink_type = /datum/reagent/consumable/ethanol/tropical_storm
 	name = "Tropical Storm"
-	desc = "Less destructive than the real thing."
+	desc = "比真货破坏性小一些。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "tropical_storm"
 
 /datum/glass_style/drinking_glass/dark_and_stormy
 	required_drink_type = /datum/reagent/consumable/ethanol/dark_and_stormy
 	name = "Dark and Stormy"
-	desc = "Thunder and lightning, very very frightening."
+	desc = "雷电交加,非常非常吓人。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "dark_and_stormy"
 
 /datum/glass_style/drinking_glass/salt_and_swell
 	required_drink_type = /datum/reagent/consumable/ethanol/salt_and_swell
 	name = "Salt and Swell"
-	desc = "Ah, I do like to be beside the seaside."
+	desc = "啊,我确实喜欢待在海边。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "salt_and_swell"
 
 /datum/glass_style/drinking_glass/tiltaellen
 	required_drink_type = /datum/reagent/consumable/ethanol/tiltaellen
 	name = "glass of tiltällen"
-	desc = "Eww... it's curdled."
+	desc = "呃...它凝结了。"
 	icon_state = "tiltaellen"
 
 /datum/glass_style/drinking_glass/tich_toch
 	required_drink_type = /datum/reagent/consumable/ethanol/tich_toch
 	name = "Tich Toch"
-	desc = "Oh god."
+	desc = "天啊。"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "tich_toch"
 
 /datum/glass_style/drinking_glass/helianthus
 	required_drink_type = /datum/reagent/consumable/ethanol/helianthus
 	name = "Helianthus"
-	desc = "Another reason to cut off an ear..."
+	desc = "又一个割耳朵的理由..."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "helianthus"
 
 /datum/glass_style/drinking_glass/plumwine
 	required_drink_type = /datum/reagent/consumable/ethanol/plumwine
 	name = "plum wine"
-	desc = "Looks like an evening of writing fine poetry."
+	desc = "看来今晚要写一首好诗了."
 	icon_state = "plumwineglass"
 
 /datum/glass_style/drinking_glass/the_hat
@@ -880,161 +880,161 @@
 /datum/glass_style/drinking_glass/gin_garden
 	required_drink_type = /datum/reagent/consumable/ethanol/gin_garden
 	name = "gin garden"
-	desc = "Hey, someone forgot the herb and... the cucumber in my cocktail!"
+	desc = "嘿,有人忘了在我的鸡尾酒里加香草和...黄瓜!"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "gin_garden"
 
 /datum/glass_style/drinking_glass/wine_voltaic
 	required_drink_type = /datum/reagent/consumable/ethanol/wine_voltaic
 	name = "Voltaic Yellow Wine"
-	desc = "Electrically charged wine. Recharges ethereals, but also nontoxic."
+	desc = "带电的葡萄酒.能为虚体充能,而且无毒."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "wine_voltaic"
 
 /datum/glass_style/drinking_glass/telepole
 	required_drink_type = /datum/reagent/consumable/ethanol/telepole
 	name = "Telepole"
-	desc = "A liquid grounding rod. Recharges ethereals and grants temporary shock resistance."
+	desc = "液体接地棒.能为虚体充能并提供临时电击抗性."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "telepole"
 
 /datum/glass_style/drinking_glass/pod_tesla
 	required_drink_type = /datum/reagent/consumable/ethanol/pod_tesla
 	name = "Pod Tesla"
-	desc = "Ride the lightning! Recharges ethereals, suppresses phobias, and grants strong temporary shock resistance."
+	desc = "驾驭闪电!能为虚体充能,抑制恐惧症,并提供强大的临时电击抗性."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "pod_tesla"
 
 /datum/glass_style/drinking_glass/yuyakita
 	required_drink_type = /datum/reagent/consumable/ethanol/yuyakita
 	name = "Yūyakita"
-	desc = "And I looked, and behold a pale horse: and his name that sat on him was Death, and Hell followed with him."
+	desc = "我观看,见有一匹灰色马.骑在马上的,名字叫作死,阴府也随着他."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "yuyakita"
 
 /datum/glass_style/drinking_glass/saibasan
 	required_drink_type = /datum/reagent/consumable/ethanol/saibasan
 	name = "Saibāsan"
-	desc = "A drink made in honour of Cybersun Industries' 600th year of continual business. Officially, you're meant to call this a \"Hong Kong Cooler\" on Nanotrasen stations, but that name sucks."
+	desc = "为纪念赛博太阳工业连续经营600周年而调制的饮品.在纳米传讯空间站上,官方要求你称其为\"香港冰爽\",但这名字太烂了."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "saibasan"
 
 /datum/glass_style/drinking_glass/banzai_ti
 	required_drink_type = /datum/reagent/consumable/ethanol/banzai_ti
 	name = "Banzai-Tī"
-	desc = "A drink to last ten-thousand years- better sip slowly then."
+	desc = "一杯能撑一万年的酒--还是慢慢啜饮吧."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "banzai_ti"
 
 /datum/glass_style/drinking_glass/sanraizusoda
 	required_drink_type = /datum/reagent/consumable/ethanol/sanraizusoda
 	name = "Sanraizusōda"
-	desc = "A popular children's dessert from Japan, made adult with the addition of booze. Kanpai!"
+	desc = "来自日本的流行儿童甜点,加入酒精后变成了成人版.干杯!"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "sanraizusoda"
 
 /datum/glass_style/drinking_glass/kumicho
 	required_drink_type = /datum/reagent/consumable/ethanol/kumicho
 	name = "Kumichō"
-	desc = "Much like the American Godfather, the Kumichō is sophisticated, strong, and almost certainly tied to illicit activities."
+	desc = "如同美国的教父,组长的风格是精致,浓烈,而且几乎肯定与非法活动有关."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "kumicho"
 
 /datum/glass_style/drinking_glass/red_planet
 	required_drink_type = /datum/reagent/consumable/ethanol/red_planet
 	name = "Red Planet"
-	desc = "A patriotic drink from Mars, commonly enjoyed on September 15th: the day that peace was declared following the Martian uprising, with the Martian Concession granting Mars proper representation as part of the Terran Federation."
+	desc = "来自火星的爱国饮品,通常在9月15日享用:这一天是火星起义后宣布和平的日子,火星特许权授予火星作为泰拉联邦一部分的正式代表权."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "red_planet"
 
 /datum/glass_style/drinking_glass/amaterasu
 	required_drink_type = /datum/reagent/consumable/ethanol/amaterasu
 	name = "Amaterasu"
-	desc = "And so Amaterasu emerged from the Heavenly Rock Cave, and light was restored to the world."
+	desc = "于是天照大神从天上石屋中现身,光明重归世间."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "amaterasu"
 
 /datum/glass_style/drinking_glass/nekomimosa
 	required_drink_type = /datum/reagent/consumable/ethanol/nekomimosa
 	name = "Nekomimosa"
-	desc = "A syrupy mess of a cocktail, dedicated to a felinid popstar that took Mars by storm a few years ago."
+	desc = "一杯糖浆般浓稠的混合鸡尾酒,献给几年前席卷火星的猫人族流行歌星."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "nekomimosa"
 
 /datum/glass_style/drinking_glass/sentai_quencha
 	required_drink_type = /datum/reagent/consumable/ethanol/sentai_quencha
 	name = "Sentai Quencha"
-	desc = "Tastes like ultimate ninja power. And melon. And citrus. And some other stuff."
+	desc = "尝起来像终极忍者之力.还有甜瓜.还有柑橘.还有其他一些东西."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "sentai_quencha"
 
 /datum/glass_style/drinking_glass/bosozoku
 	required_drink_type = /datum/reagent/consumable/ethanol/bosozoku
 	name = "Bōsōzoku"
-	desc = "A refreshing summer drink enjoyed across Mars and beyond. Any resemblance to shandies or radlers is unintentional."
+	desc = "一款在火星及更远处广受欢迎的清爽夏日饮品.与香迪或拉德勒的任何相似之处纯属巧合."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "bosozoku"
 
 /datum/glass_style/drinking_glass/ersatzche
 	required_drink_type = /datum/reagent/consumable/ethanol/ersatzche
 	name = "Ersatzche"
-	desc = "An interesting drink invented in the Blue Room Bar and Grill in New Osaka. It's a tasty take on Mexican tepache, made with a beer base."
+	desc = "一款在新大阪蓝屋酒吧烧烤店发明的有趣饮品.它是对墨西哥特帕切的美味改良,以啤酒为基底."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "ersatzche"
 
 /datum/glass_style/drinking_glass/red_city_am
 	required_drink_type = /datum/reagent/consumable/ethanol/red_city_am
 	name = "Red City AM"
-	desc = "A popular breakfast drink from New Osaka's bars- for the enterprising day drinker."
+	desc = "新大阪酒吧的流行早餐饮品--适合有进取心的白日饮酒者."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "red_city_am"
 
 /datum/glass_style/drinking_glass/kings_ransom
 	required_drink_type = /datum/reagent/consumable/ethanol/kings_ransom
 	name = "King's Ransom"
-	desc = "A weird drink that manages to marry a number of seemingly conflicting flavours into a single harmonious taste."
+	desc = "一款奇特的饮品,成功地将多种看似冲突的风味融合成一种和谐的口感."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "kings_ransom"
 
 /datum/glass_style/drinking_glass/four_bit
 	required_drink_type = /datum/reagent/consumable/ethanol/four_bit
 	name = "Four Bit"
-	desc = "Straight out of the pits of a Martian hacking convention."
+	desc = "直接来自火星黑客大会的深渊."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "four_bit"
 
 /datum/glass_style/drinking_glass/white_hawaiian
 	required_drink_type = /datum/reagent/consumable/ethanol/white_hawaiian
 	name = "White Hawaiian"
-	desc = "One of the infinite variations on the White Russian, this drink gets away from the frozen north and into the heat of the ring of fire with a host of toasty coconut flavours."
+	desc = "白色俄罗斯的无数变体之一,这款饮品远离冰封的北方,进入火环的炎热之中,带来一系列温暖的椰子风味."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "white_hawaiian"
 
 /datum/glass_style/drinking_glass/maui_sunrise
 	required_drink_type = /datum/reagent/consumable/ethanol/maui_sunrise
 	name = "Maui Sunrise"
-	desc = "Take a sip and be transported to the Aloha state. Metaphorically, of course."
+	desc = "啜饮一口,仿佛置身阿罗哈州.当然,是比喻意义上的."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "maui_sunrise"
 
 /datum/glass_style/drinking_glass/imperial_mai_tai
 	required_drink_type = /datum/reagent/consumable/ethanol/imperial_mai_tai
 	name = "Imperial Mai Tai"
-	desc = "I mean, who springs for orgeat these days anyway? Korta nut's the new big thing, baby."
+	desc = "我是说,现在谁还舍得用杏仁糖浆啊?科塔坚果才是新潮流,宝贝."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "imperial_mai_tai"
 
 /datum/glass_style/drinking_glass/konococo_rumtini
 	required_drink_type = /datum/reagent/consumable/ethanol/konococo_rumtini
 	name = "Konococo Rumtini"
-	desc = "Considered an acceptable breakfast drink in Little Hawaii."
+	desc = "在小夏威夷被认为是可接受的早餐饮品."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "konococo_rumtini"
 
 /datum/glass_style/drinking_glass/blue_hawaiian
 	required_drink_type = /datum/reagent/consumable/ethanol/blue_hawaiian
 	name = "Blue Hawaiian"
-	desc = "It's a tropical vacation in a glass."
+	desc = "杯中的热带度假."
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "blue_hawaiian"
 

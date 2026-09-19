@@ -4,14 +4,14 @@
 //MARINE COMBAT LIGHT
 
 /obj/item/flashlight/combat
-	name = "combat flashlight"
-	desc = "A robust flashlight designed to be held in the hand, or attached to a rifle"
+	name = "战斗手电筒"
+	desc = "一款坚固的手电筒,设计用于手持或安装在步枪上"
 	force = 10 //This is otherwise no different from a normal flashlight minus the flavour.
 	throwforce = 12 //"combat" flashlight
 
 /obj/structure/broken_apc
-	name = "\improper M577 armored personnel carrier"
-	desc = "A large, armored behemoth capable of ferrying marines around. \nThis one is sitting nonfunctional."
+	name = "\improper M577装甲运兵车"
+	desc = "一辆大型装甲巨兽,能够运送陆战队员. \nThis一辆已无法运作."
 	anchored = TRUE
 	opacity = TRUE
 	density = TRUE
@@ -20,8 +20,8 @@
 
 
 /obj/item/storage/box/tgmc_mre
-	name = "\improper TGMC meal ready to eat"
-	desc = "<B>Instructions:</B> Extract food using maximum firepower. Eat.\n\nOn the box is a picture of a shouting Squad Leader. \n\"YOU WILL EAT YOUR NUTRIENT GOO AND YOU WILL ENJOY IT, MAGGOT.\""
+	name = "\improper TGMC即食口粮"
+	desc = "<B>说明:</B> 使用最大火力提取食物.食用.\n\nOn 盒子上印着一个正在大喊的小队长. \n\"你会吃掉你的营养糊,而且你会享受它,蛆虫.\""
 	icon_state = "mre1"
 
 /obj/item/storage/box/tgmc_mre/Initialize(mapload, ...)
@@ -46,8 +46,8 @@
 		new picked(src)
 
 /obj/item/reagent_containers/food/snacks/protein_pack
-	name = "TGMC protein bar"
-	desc = "The most fake looking protein bar you have ever laid eyes on, comes in many flavors"
+	name = "TGMC蛋白棒"
+	desc = "你见过的最假的蛋白棒,有多种口味"
 	icon = 'icons/obj/items/food/mre.dmi'
 	icon_state = "yummers"
 	filling_color = "#ED1169"
@@ -96,29 +96,29 @@
 	reagents.add_reagent(/datum/reagent/consumable/nutriment, 8, picked[4])
 
 /obj/item/reagent_containers/food/snacks/protein_pack/som
-	name = "SOM protein bar"
-	desc = "The most fake looking protein bar you have ever laid eyes on, comes in many flavors"
+	name = "SOM蛋白棒"
+	desc = "你见过的最假的蛋白棒,有多种口味"
 	icon = 'icons/obj/items/food/mre.dmi'
 	faction = FACTION_SOM
 
 /obj/item/reagent_containers/food/snacks/req_pizza
-	name = "\improper TGMC PFC Jim pizza"
-	desc = "You think that is a pizza. You definitely shouldn't eat this, but you can sell this for a PROFIT! While it certainly looks like one, the first, active, primary, and only ingredient that went into it was a rounded metal plate. Maybe it'll taste better after it sat in the ASRS for a while? Oh well, time to sell it to some poor customer in space."
+	name = "\improper TGMC一等兵吉姆披萨"
+	desc = "你认为那是披萨.你绝对不该吃这个,但你可以把它卖掉赚一笔!虽然它看起来确实像披萨,但放入其中的第一个,活跃的,主要的,也是唯一的原料是一块圆形金属板.也许它在ASRS里放一段时间后会更好吃?算了,是时候把它卖给太空里某个可怜的顾客了."
 	icon = 'icons/obj/items/food/pizzaspaghetti.dmi'
 	icon_state = "mushroompizza"
 	list_reagents = list(/datum/reagent/iron = 8)
 	tastes = list("metal" = 3, "one of your teeth cracking" = 1)
 
 /obj/item/reagent_containers/food/snacks/mre_pack
-	name = "\improper generic MRE pack"
+	name = "\improper 通用即食口粮包"
 	//trash = /obj/item/trash/TGMCtray
 	trash = null
 	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/obj/items/food/mre.dmi'
 
 /obj/item/reagent_containers/food/snacks/mre_pack/meal1
-	name = "\improper TGMC Prepared Meal (banana bread)"
-	desc = "A slice of banana bread with cream pie spread. A slippery combination."
+	name = "\improper TGMC预制餐(香蕉面包)"
+	desc = "一片涂有奶油派酱的香蕉面包.一种滑溜溜的组合."
 	icon_state = "MREa"
 	filling_color = "#ED1169"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 9)
@@ -126,31 +126,31 @@
 	tastes = list("something funny" = 2, "bread" = 4)
 
 /obj/item/reagent_containers/food/snacks/mre_pack/meal2
-	name = "\improper TGMC Prepared Meal (pork)"
-	desc = "It's hard to go wrong with rice and pork."
+	name = "\improper TGMC预制餐(猪肉)"
+	desc = "米饭配猪肉很难出错."
 	icon_state = "MREb"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 9)
 	bitesize = 2
 	tastes = list("rice and pork" = 1)
 
 /obj/item/reagent_containers/food/snacks/mre_pack/meal3
-	name = "\improper TGMC Prepared Meal (spag)"
-	desc = "That's-a spicy meat-aball!"
+	name = "\improper TGMC预制餐(意面)"
+	desc = "那-a辣肉-丸!"
 	icon_state = "MREc"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 9)
 	tastes = list("pasta" = 3, "ground beef" = 1)
 	bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/mre_pack/meal4
-	name = "\improper TGMC Prepared Meal (pizza)"
-	desc = "Aubergine, carrot and sweetcorn, all on a bed of cheese and tomato sauce."
+	name = "\improper TGMC预制餐(披萨)"
+	desc = "茄子,胡萝卜和甜玉米,全部铺在奶酪和番茄酱上."
 	icon_state = "MREd"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 8)
 	tastes = list("pizza" = 3, "vegetables" = 1)
 	bitesize = 1
 
 /obj/item/reagent_containers/food/snacks/mre_pack/meal5
-	name = "\improper TGMC Prepared Meal (monkey)"
+	name = "\improper TGMC预制餐(猴子)"
 	desc = "Sopa de Macaco, Uma Delicia."
 	icon_state = "MREe"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 10)
@@ -158,40 +158,40 @@
 	bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/mre_pack/meal6
-	name = "\improper TGMC Prepared Meal (tofu)"
-	desc = "BBQ sticky tofu in a bun, hand crafted by Hungarian children who believe in a galaxy with soldiers that kill people, not animals."
+	name = "\improper TGMC预制餐(豆腐)"
+	desc = "烧烤酱汁豆腐夹在面包里,由相信银河系里有杀人的士兵而非杀动物的士兵的匈牙利儿童手工制作."
 	icon_state = "MREf"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 8)
 	tastes = list("grilled tofu" = 2, "grass" = 1)
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/mre_pack/xmas1
-	name = "\improper Xmas Prepared Meal:sugar cookies"
-	desc = "Delicious Sugar Cookies"
+	name = "\improper 圣诞预制餐:糖霜饼干"
+	desc = "美味的糖霜饼干"
 	icon_state = "mreCookies"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 9, /datum/reagent/consumable/sugar = 1)
 	bitesize = 2
 	tastes = list("cookies" = 1, "artificial flavoring" = 1)
 
 /obj/item/reagent_containers/food/snacks/mre_pack/xmas2
-	name = "\improper Xmas Prepared Meal:gingerbread cookie"
-	desc = "A cookie without a soul."
+	name = "\improper 圣诞预制餐:姜饼饼干"
+	desc = "一块没有灵魂的饼干."
 	icon_state = "mreGingerbread"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 9, /datum/reagent/consumable/sugar = 1)
 	tastes = list("batter" = 3, "ginger" = 1)
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/mre_pack/xmas3
-	name = "\improper Xmas Prepared Meal:fruitcake"
-	desc = "Also known as ''the Commander''."
+	name = "\improper 圣诞预制餐:水果蛋糕"
+	desc = "也被称为''指挥官''."
 	icon_state = "mreFruitcake"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 9, /datum/reagent/consumable/sugar = 1)
 	tastes = list("fruits" = 3, "leadership" = 1)
 	bitesize = 2
 
 /obj/item/storage/box/pizza
-	name = "food delivery box"
-	desc = "A space-age food storage device, capable of keeping food extra fresh. Actually, it's just a box."
+	name = "食物配送箱"
+	desc = "一个太空时代的食物储存装置,能够保持食物格外新鲜.实际上,它只是个箱子."
 
 /obj/item/storage/box/pizza/Initialize(mapload, ...)
 	. = ..()
@@ -211,13 +211,13 @@
 		new picked(src)
 
 /obj/item/paper/janitor
-	name = "crumbled paper"
+	name = "揉皱的纸"
 	icon_state = "pamphlet"
 	info = "In loving memory of Cub Johnson."
 
 /obj/item/storage/box/nt_mre
-	name = "\improper Nanotrasen brand MRE"
-	desc = "A prepackaged, long-lasting food box from Nanotrasen Industries.\nOn the box is the Nanotrasen logo, with a slogan surrounding it: \n<b>NANOTRASEN. BUILDING BETTER LUNCHES</b>"
+	name = "\improper Nanotrasen品牌即食口粮"
+	desc = "一个来自Nanotrasen工业的预包装,保质期长的食品盒.\nOn 盒子上是Nanotrasen的标志,周围环绕着一句标语: \n<b>NANOTRASEN. 打造更好的午餐</b>"
 	icon_state = "mre2"
 	w_class = WEIGHT_CLASS_BULKY
 
@@ -246,8 +246,8 @@
 
 //Harness Belts
 /obj/item/belt_harness
-	name = "gun sling"
-	desc = "A leather sling with a clip to attach something. Should keep you from losing your weapon, hopefully."
+	name = "枪背带"
+	desc = "一条带有夹子的皮革背带,用于挂载物品.希望能让你不弄丢你的武器."
 	icon = 'icons/obj/clothing/belts.dmi'
 	icon_state = "gun_sling"
 	worn_icon_state = "gun_sling"
@@ -279,13 +279,13 @@
 		return
 	var/mob/living/carbon/human/huser = user
 	if(huser.belt != src)
-		to_chat(user, span_notice("You need to be wearing [src] to attach something to it!"))
+		to_chat(user, span_notice("你需要穿着[src]才能将物品挂载到上面!"))
 		return
 	if(reequip_component)
 		if(reequip_component.parent == I)
 			detach_item(I, user)
 			return
-		to_chat(user, span_notice("[src] already has \a [reequip_component.parent] hooked into it!"))
+		to_chat(user, span_notice("[src] 已经挂载了 \a [reequip_component.parent]!"))
 		return
 	attach_item(I, user)
 
@@ -301,7 +301,7 @@
 	reequip_component = to_attach.AddComponent(/datum/component/reequip, list(SLOT_S_STORE, SLOT_BACK))
 	RegisterSignals(reequip_component, list(COMSIG_REEQUIP_FAILURE, COMSIG_QDELETING), PROC_REF(detach_item))
 	playsound(src,'sound/machines/click.ogg', 15, FALSE, 1)
-	to_chat(user, span_notice("[src] clicks as you hook \the [to_attach] into it."))
+	to_chat(user, span_notice("当你将 \the [to_attach] 挂入[src]时,它发出咔嗒声."))
 	update_icon()
 
 ///Clean out attachment refs/signals
@@ -311,7 +311,7 @@
 		return
 	UnregisterSignal(reequip_component, list(COMSIG_REEQUIP_FAILURE, COMSIG_QDELETING))
 	if(ishuman(loc))
-		to_chat(loc, span_notice("[src] clicks as \the [reequip_component.parent] unhook[reequip_component.parent.p_s()] from it."))
+		to_chat(loc, span_notice("当 \the [reequip_component.parent] 从[src]上解开[reequip_component.parent.p_s()]时,它发出咔嗒声."))
 		playsound(src,'sound/machines/click.ogg', 15, FALSE, 1)
 	if(!QDELING(reequip_component)) //We might've come here from parent qdeling, so we can't just qdel_null it
 		qdel(reequip_component)
@@ -323,8 +323,8 @@
 	return user.equip_to_appropriate_slot(src)
 
 /obj/item/belt_harness/marine
-	name = "\improper M45 pattern belt harness"
-	desc = "A shoulder worn strap with clamps that can attach to most anything. Should keep you from losing your weapon, hopefully."
+	name = "\improper M45型腰带背带"
+	desc = "一条带有夹子的肩带,几乎可以挂载任何东西.希望能让你不弄丢你的武器."
 	icon_state = "heavy_harness"
 	worn_icon_state = "heavy_harness"
 
@@ -332,18 +332,18 @@
 	. = ..()
 	if(slot == SLOT_BELT)
 		playsound(src,'sound/machines/click.ogg', 15, FALSE, 1)
-		to_chat(user, span_danger("!!REMEMBER TO ATTACH YOUR WEAPON TO YOUR HARNESS OR IT WON'T WORK!!"))
+		to_chat(user, span_danger("!!记住将你的武器挂载到你的背带上,否则它不会起作用!!"))
 
 /obj/item/compass
-	name = "compass"
-	desc = "A small compass that can tell you your coordinates on use."
+	name = "指南针"
+	desc = "一个小指南针,使用时可告诉你你的坐标."
 	icon_state = "compass"
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/compass/attack_self(mob/living/user)
 	. = ..()
 	var/turf/location = get_turf(src)
-	to_chat(user, span_notice("After looking at the [src] you can tell your general coordinates.") + span_bold(" LONGITUDE [location.x]. LATITUDE [location.y]."))
+	to_chat(user, span_notice("看过[src]后,你可以得知你的大致坐标.") + span_bold(" 经度 [location.x]. 纬度 [location.y]."))
 
 /obj/item/compass/afterattack(atom/target, mob/user, has_proximity, click_parameters)
 	. = ..()
@@ -352,4 +352,4 @@
 	var/turf/target_turf = isturf(target)? target : get_turf(target)
 	if(!do_after(user, 1 SECONDS))
 		return
-	to_chat(user, span_notice("Given your current position, target coordinates are:") + span_bold(" LONGITUDE [target_turf.x]. LATITUDE [target_turf.y]."))
+	to_chat(user, span_notice("根据你当前的位置,目标坐标为:") + span_bold(" 经度 [target_turf.x]. 纬度 [target_turf.y]."))

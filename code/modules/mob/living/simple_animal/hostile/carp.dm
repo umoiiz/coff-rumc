@@ -2,7 +2,7 @@
 
 /mob/living/simple_animal/hostile/carp
 	name = "space carp"
-	desc = "A ferocious, fang-bearing creature that resembles a fish."
+	desc = "一只凶猛的,长着獠牙的,形似鱼的生物."
 	icon_state = "carp"
 	icon_living = "carp"
 	icon_dead = "carp_dead"
@@ -32,7 +32,7 @@
 /mob/living/simple_animal/hostile/carp/megacarp
 	icon = 'icons/mob/broadMobs.dmi'
 	name = "Mega Space Carp"
-	desc = "A ferocious, fang bearing creature that resembles a shark. This one seems especially ticked off."
+	desc = "一只凶猛的,长着獠牙的,形似鲨鱼的生物.这只看起来格外恼火."
 	icon_state = "megacarp"
 	icon_living = "megacarp"
 	icon_dead = "megacarp_dead"
@@ -60,14 +60,14 @@
 
 /mob/living/simple_animal/hostile/carp/cayenne
 	name = "Cayenne"
-	desc = "A failed Syndicate experiment in weaponized space carp technology, it now serves as a lovable mascot."
+	desc = "一次失败的辛迪加武器化太空鲤鱼技术实验,如今它成了一个可爱的吉祥物."
 	gender = FEMALE
 	speak_emote = list("squeaks")
 	AIStatus = AI_OFF
 
 /mob/living/simple_animal/hostile/carp/swine
 	name = "swine carp"
-	desc = "A genetic experiment made by NT RnD department."
+	desc = "NT研发部门进行的一项基因实验."
 	icon =  'icons/mob/animal.dmi'
 	icon_state = "swinecarp"
 	icon_living = "swinecarp"
@@ -80,7 +80,7 @@
 
 /mob/living/simple_animal/hostile/carp/swine/franko
 	name = "Franko"
-	desc = "A genetic experiment, resulted in a gluttonous monstrosity, but beloved by the marines."
+	desc = "一项基因实验,结果产生了一个贪吃的怪物,但深受陆战队员们的喜爱."
 	gender = MALE
 	AIStatus = AI_OFF
 

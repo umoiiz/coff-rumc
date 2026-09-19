@@ -17,7 +17,7 @@
 
 /datum/xeno_mutation/defender/brittle_upclose
 	name = "Brittle Upclose"
-	desc = "Стаггер игнорируется и резист к пулям увеличен ценой сильной уязвимости к ближним атакам."
+	desc = "眩晕被忽略, 子弹抗性提高, 代价是对近战攻击极度脆弱."
 	cost = 7.5
 	icon_state = "xenobuff_generic"
 	tier = 1
@@ -28,7 +28,7 @@
 
 /atom/movable/screen/alert/status_effect/defender/brittle_upclose
 	name = "Brittle Upclose"
-	desc = "No stagger; +10 bullet soft armor; -40 melee soft armor"
+	desc = "无硬直; +10 子弹软护甲; -40 近战软护甲"
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/defender/brittle_upclose
@@ -76,7 +76,7 @@
 
 /datum/xeno_mutation/defender/breathtaking_spin
 	name = "Breathtaking Spin"
-	desc = "Tail Swipe теперь наносит только урон стамине и не парализует, но наносит в 2 раза больше урона."
+	desc = "Tail Swipe现在只造成耐力伤害且不会麻痹,但造成2倍伤害."
 	cost = 5
 	icon_state = "xenobuff_generic"
 	tier = 1
@@ -87,7 +87,7 @@
 
 /atom/movable/screen/alert/status_effect/defender/breathtaking_spin
 	name = "Breathtaking Spin"
-	desc = "Tail Swipe doubles damage, but deals stamina damage only and doesnt paralyze."
+	desc = "Tail Swipe伤害翻倍,但只造成耐力伤害且不会麻痹."
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/defender/breathtaking_spin
@@ -126,7 +126,7 @@
 
 /datum/xeno_mutation/defender/power_spin
 	name = "Power Spin"
-	desc = "Tail Swipe отталкивает на тайл дальше и накладывает 3 секунды стаггера."
+	desc = "Tail Swipe将目标击退额外一格并施加3秒硬直."
 	cost = 5
 	icon_state = "xenobuff_generic"
 	tier = 1
@@ -137,7 +137,7 @@
 
 /atom/movable/screen/alert/status_effect/defender/power_spin
 	name = "Power Spin"
-	desc = "+1 knockback and 3 sec stagger from Tail Swipe"
+	desc = "Tail Swipe额外+1击退和3秒硬直"
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/defender/power_spin
@@ -172,7 +172,7 @@
 
 /datum/xeno_mutation/defender/sharpening_claws
 	name = "Sharpening Claws"
-	desc = "Урон базовых атак увеличивается на 10% за каждые 5 потерянной брони."
+	desc = "每损失5点护甲,基础攻击伤害增加10%."
 	cost = 5
 	icon_state = "xenobuff_generic"
 	tier = 1
@@ -183,7 +183,7 @@
 
 /atom/movable/screen/alert/status_effect/defender/sharpening_claws
 	name = "Sharpening Claws"
-	desc = "+10% damage from each 5 sunder loss, stackable"
+	desc = "每损失5点护甲+10%伤害,可叠加"
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/defender/sharpening_claws

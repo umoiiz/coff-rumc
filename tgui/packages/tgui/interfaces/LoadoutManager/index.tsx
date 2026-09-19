@@ -57,7 +57,7 @@ const LoadoutItem = (props: LoadoutItemData) => {
                 });
               }}
             >
-              Select Loadout
+              选择装备配置
             </Button>
           </>
         }
@@ -101,49 +101,49 @@ const JobTabs = (props: LoadoutTabData) => {
               selected={job === 'Squad Marine'}
               onClick={() => setJob('Squad Marine')}
             >
-              Squad Marine
+              小队步枪兵
             </Tabs.Tab>
             <Tabs.Tab
               selected={job === 'Squad Robot'}
               onClick={() => setJob('Squad Robot')}
             >
-              Squad Robot
+              小队机器人
             </Tabs.Tab>
             <Tabs.Tab
               selected={job === 'Squad Engineer'}
               onClick={() => setJob('Squad Engineer')}
             >
-              Squad Engineer
+              小队工程师
             </Tabs.Tab>
             <Tabs.Tab
               selected={job === 'Squad Corpsman'}
               onClick={() => setJob('Squad Corpsman')}
             >
-              Squad Corpsman
+              小队医护兵
             </Tabs.Tab>
             <Tabs.Tab
               selected={job === 'Squad Smartgunner'}
               onClick={() => setJob('Squad Smartgunner')}
             >
-              Squad Smartgunner
+              小队智能枪手
             </Tabs.Tab>
             <Tabs.Tab
               selected={job === 'Squad Leader'}
               onClick={() => setJob('Squad Leader')}
             >
-              Squad Leader
+              小队队长
             </Tabs.Tab>
             <Tabs.Tab
               selected={job === 'Field Commander'}
               onClick={() => setJob('Field Commander')}
             >
-              Field Commander
+              战地指挥官
             </Tabs.Tab>
             <Tabs.Tab
               selected={job === 'Synthetic'}
               onClick={() => setJob('Synthetic')}
             >
-              Synthetic
+              合成人
             </Tabs.Tab>
           </Tabs>
         </Flex.Item>
@@ -177,7 +177,7 @@ export const LoadoutManager = (props) => {
             </Flex.Item>
             <Flex.Item>
               <Button onClick={() => setSaveNewLoadout(true)}>
-                Save your equipped loadout
+                保存你已装备的配置
               </Button>
             </Flex.Item>
             <Flex.Item grow={1}>
@@ -185,7 +185,7 @@ export const LoadoutManager = (props) => {
             </Flex.Item>
             <Flex.Item>
               <Button onClick={() => setImportNewLoadout(true)}>
-                Import Loadout
+                导入配置
               </Button>
             </Flex.Item>
             <Flex.Item grow={1}>

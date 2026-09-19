@@ -1,6 +1,6 @@
 /obj/machinery/computer/camera_advanced/remote_fob
 	name = "FOB Construction Drone Control"
-	desc = "A computer console equipped with camera screen and controls for a planetside deployed construction drone. Materials or equipment vouchers can be added simply by inserting them into the computer."
+	desc = "一台配备摄像头屏幕和控制装置的电脑控制台, 用于控制部署在地表的建筑无人机. 材料或设备兑换券只需插入电脑即可添加."
 	icon = 'icons/obj/machines/fob.dmi'
 	icon_state = "fob"
 	screen_overlay = "fob_emissive"
@@ -56,8 +56,8 @@
 /obj/machinery/computer/camera_advanced/remote_fob/examine(mob/user)
 	. = ..()
 	var/list/details = list()
-	details += span_notice("It has [metal_remaining] sheets of metal remaining.</br>")
-	details += span_notice("It has [plasteel_remaining] sheets of plasteel remaining.</br>")
+	details += span_notice("剩余[metal_remaining]块金属板.</br>")
+	details += span_notice("剩余[plasteel_remaining]块塑钢板.</br>")
 	. += details.Join(" ")
 
 /obj/machinery/computer/camera_advanced/remote_fob/give_eye_control(mob/user)
@@ -90,22 +90,22 @@
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	if(!allowed(user))
-		to_chat(user, span_warning("Access Denied!"))
+		to_chat(user, span_warning("访问被拒绝!"))
 		return
 	if(!drone_creation_allowed)
-		to_chat(user, span_notice("Communication with the drone impossible due to fuel-residue in deployment zone atmosphere."))
+		to_chat(user, span_notice("由于部署区大气中存在燃料残留, 无法与无人机通信."))
 		return
 	spawn_spot = FALSE
-	switch(tgui_alert(user, "Summon Drone in:", "FOB Construction Drone Control", list("LZ1","LZ2", "Cancel")))
+	switch(tgui_alert(user, "召唤无人机倒计时:", "前线作战基地建筑无人机控制台", list("LZ1","LZ2", "Cancel")))
 		if("LZ1")
 			spawn_spot = locate(/obj/docking_port/stationary/marine_dropship/lz1) in SSshuttle.stationary_docking_ports
 			if(!spawn_spot)
-				to_chat(user, span_warning("No valid location for drone deployment found."))
+				to_chat(user, span_warning("未找到有效的无人机部署位置."))
 				return
 		if("LZ2")
 			spawn_spot = locate(/obj/docking_port/stationary/marine_dropship/lz2) in SSshuttle.stationary_docking_ports
 			if(!spawn_spot)
-				to_chat(user, span_warning("No valid location for drone deployment found."))
+				to_chat(user, span_warning("未找到有效的无人机部署位置."))
 				return
 		else
 			return
@@ -124,14 +124,14 @@
 			var/useamount = attacking_stack.amount
 			metal_remaining += useamount
 			attacking_stack.use(useamount)
-			to_chat(user, span_notice("Inserted [useamount] metal sheets."))
+			to_chat(user, span_notice("已插入[useamount]块金属板."))
 			flick("fob_insert", src)
 			return
 		if(istype(attacking_stack, /obj/item/stack/sheet/plasteel))
 			var/useamount = attacking_stack.amount
 			plasteel_remaining += useamount
 			attacking_stack.use(useamount)
-			to_chat(user, span_notice("Inserted [useamount] plasteel sheets."))
+			to_chat(user, span_notice("已插入[useamount]块塑钢板."))
 			flick("fob_insert", src)
 			return
 	return ..()
@@ -190,7 +190,7 @@
 
 /obj/machinery/computer/camera_advanced/remote_fob/check_eye(mob/living/user)
 	if(!drone_creation_allowed)
-		to_chat(user, span_notice("Communication with the drone has been disrupted."))
+		to_chat(user, span_notice("与无人机的通信已被中断."))
 		user.unset_interaction()
 		return
 	return ..()

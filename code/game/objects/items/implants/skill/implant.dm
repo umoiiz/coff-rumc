@@ -31,7 +31,7 @@
 		return
 	for(var/skill in max_skills)
 		if(target.skills.getRating(skill) >= max_skills[skill])
-			balloon_alert(user, "Nothing to learn!")
+			balloon_alert(user, "没有可学习的!")
 			return FALSE
 	return TRUE
 
@@ -55,7 +55,7 @@
 	if(istype(target, /obj/item/implanter/skill/cargo))
 		var/obj/item/implanter/skill/cargo/implanter = target
 		if(implanter.spent)
-			balloon_alert(user, "Already spent!")
+			balloon_alert(user, "已用完!")
 			return
 		user?.temporarilyRemoveItemFromInventory(src)
 		forceMove(implanter)
@@ -90,10 +90,10 @@
 
 	if(hud_active)
 		H.add_hud_to(implant_owner)
-		to_chat(implant_owner, span_notice("You activate your [name]."))
+		to_chat(implant_owner, span_notice("你激活了你的[name]."))
 	else
 		H.remove_hud_from(implant_owner)
-		to_chat(implant_owner, span_notice("You deactivate your [name]."))
+		to_chat(implant_owner, span_notice("你停用了你的[name]."))
 
 	return TRUE
 

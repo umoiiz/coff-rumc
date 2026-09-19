@@ -12,7 +12,7 @@
 
 /obj/machinery/computer3/laptop
 	name = "Laptop Computer"
-	desc = "A clamshell portable computer. It is open."
+	desc = "一台翻盖式便携计算机.它是打开的."
 
 	icon_state = "laptop"
 
@@ -29,8 +29,8 @@
 	icon_state = "rackframe"
 
 /obj/item/laptop
-	name = "Laptop Computer"
-	desc = "A clamshell portable computer.  It is closed."
+	name = "笔记本电脑"
+	desc = "一台翻盖式便携计算机.它是合上的."
 	icon = 'icons/obj/machines/computer3.dmi'
 	icon_state =  "laptop-closed"
 	worn_icon_state =  "laptop-inhand"
@@ -40,7 +40,7 @@
 
 /obj/machinery/lapvend
 	name = "Laptop Vendor"
-	desc = "A generic vending machine."
+	desc = "一台通用自动售货机."
 	icon = 'icons/obj/machines/vending.dmi'
 	icon_state = "robotics"
 	layer = BELOW_OBJ_LAYER
@@ -50,7 +50,7 @@
 /obj/structure/computer3frame
 	density = TRUE
 	anchored = FALSE
-	name = "computer frame"
+	name = "计算机框架"
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "0"
 
@@ -62,26 +62,26 @@
 	anchored = TRUE
 
 /obj/item/computer3_part
-	name = "computer part"
-	desc = "Holy jesus you donnit now"
+	name = "计算机零件"
+	desc = "我的天,你这下可搞砸了"
 	gender = PLURAL
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "hdd1"
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/computer3_part/storage
-	name = "Storage Device"
-	desc = "A device used for storing and retrieving digital information."
+	name = "存储设备"
+	desc = "一种用于存储和检索数字信息的设备."
 
 /obj/item/computer3_part/storage/hdd
-	name = "Hard Drive"
+	name = "硬盘"
 	icon_state = "hdd1"
 
 /obj/item/computer3_part/storage/hdd/big
-	name = "Big Hard Drive"
+	name = "大硬盘"
 	icon_state = "hdd2"
 
 /obj/item/clothing/shoes/centcom
-	name = "dress shoes"
-	desc = "They appear impeccably polished."
+	name = "礼服鞋"
+	desc = "它们看起来擦得锃亮."
 	icon_state = "laceups"

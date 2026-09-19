@@ -36,7 +36,7 @@ export const Arcade = (props) => {
             {temp}
           </Box>
           <LabeledList>
-            <LabeledList.Item label="Your Health">
+            <LabeledList.Item label="你的生命值">
               <ProgressBar
                 value={player_hp / 30}
                 ranges={{
@@ -48,7 +48,7 @@ export const Arcade = (props) => {
                 {player_hp}
               </ProgressBar>
             </LabeledList.Item>
-            <LabeledList.Item label="Your Magic">
+            <LabeledList.Item label="你的魔力">
               <ProgressBar value={player_mp / 10} color="blue">
                 {player_mp}
               </ProgressBar>
@@ -75,7 +75,7 @@ export const Arcade = (props) => {
         <Section align="center">
           {gameover ? (
             <Button icon="rotate-right" onClick={() => act('newgame')}>
-              New Game
+              新游戏
             </Button>
           ) : (
             <>
@@ -84,21 +84,21 @@ export const Arcade = (props) => {
                 disabled={!!blocked}
                 onClick={() => act('attack')}
               >
-                Attack
+                攻击
               </Button>
               <Button
                 icon="heart"
                 disabled={!!blocked}
                 onClick={() => act('heal')}
               >
-                Heal
+                治疗
               </Button>
               <Button
                 icon="bolt"
                 disabled={!!blocked}
                 onClick={() => act('charge')}
               >
-                Recharge Power
+                充能
               </Button>
             </>
           )}

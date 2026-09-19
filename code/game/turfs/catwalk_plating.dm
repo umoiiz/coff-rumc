@@ -1,6 +1,6 @@
 /turf/open/floor/plating/plating_catwalk // TODO: repath it to just floor/catwalk_floor
 	name = "catwalk"
-	desc = "Cats really don't like these things."
+	desc = "猫真的很不喜欢这些东西."
 	icon = 'icons/turf/catwalk_plating.dmi'
 	icon_state = "catwalk_above"
 	base_icon_state = "catwalk"

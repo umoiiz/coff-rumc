@@ -42,9 +42,9 @@ export const NavigationConsole = () => {
 const LoginPage = () => {
   const { act } = useBackend<Data>();
   return (
-    <Section title="Authentication">
+    <Section title="身份验证">
       <Button fluid icon="sign-in-alt" onClick={() => act('login')}>
-        LOG IN
+        登录
       </Button>
     </Section>
   );
@@ -74,7 +74,7 @@ const MainPage = () => {
           title={ship_map_name}
           buttons={
             <Button icon="sign-out-alt" onClick={() => act('logout')}>
-              LOG OUT
+              登出
             </Button>
           }
         >
@@ -82,17 +82,17 @@ const MainPage = () => {
             {current_orbit}
           </Box>
           <LabeledList>
-            <LabeledList.Item label="Power Level">
+            <LabeledList.Item label="功率等级">
               {Math.round(power_amount)}
             </LabeledList.Item>
-            <LabeledList.Item label="Engines prepared">
+            <LabeledList.Item label="引擎已准备">
               {engines_ready ? (
-                <Box color="good">Ready</Box>
+                <Box color="good">就绪</Box>
               ) : (
-                <Box color="average">Recalculating</Box>
+                <Box color="average">重新计算中</Box>
               )}
             </LabeledList.Item>
-            <LabeledList.Item label="Required Power">
+            <LabeledList.Item label="所需电力">
               {required_power}
             </LabeledList.Item>
           </LabeledList>
@@ -100,13 +100,13 @@ const MainPage = () => {
       </Stack.Item>
 
       <Stack.Item grow>
-        <Section title="Orbital Control" fill>
+        <Section title="轨道控制" fill>
           {!!changing_orbit && (
-            <NoticeBox>Orbit change in progress.</NoticeBox>
+            <NoticeBox>轨道变更进行中.</NoticeBox>
           )}
           {!can_change_orbit ? (
             <NoticeBox color="bad">
-              Insufficient Power Reserves to change orbit
+              电力储备不足,无法变更轨道
             </NoticeBox>
           ) : (
             <Flex>
@@ -117,14 +117,14 @@ const MainPage = () => {
                   disabled={!engines_ready || atHighOrbit}
                   tooltip={
                     atHighOrbit
-                      ? 'Already at the highest orbit.'
+                      ? '已处于最高轨道.'
                       : !engines_ready
-                        ? 'Engines are recalculating.'
+                        ? '引擎正在重新计算.'
                         : undefined
                   }
                   onClick={() => act('UP')}
                 >
-                  Increase orbital level
+                  提升轨道等级
                 </Button>
               </Flex.Item>
               <Flex.Item grow>
@@ -134,14 +134,14 @@ const MainPage = () => {
                   disabled={!engines_ready || atLowOrbit}
                   tooltip={
                     atLowOrbit
-                      ? 'Already at the lowest orbit.'
+                      ? '已处于最低轨道.'
                       : !engines_ready
-                        ? 'Engines are recalculating.'
+                        ? '引擎正在重新计算.'
                         : undefined
                   }
                   onClick={() => act('DOWN')}
                 >
-                  Decrease orbital level
+                  降低轨道等级
                 </Button>
               </Flex.Item>
             </Flex>

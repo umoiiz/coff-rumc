@@ -38,8 +38,8 @@
 			if (admin)
 				log_admin("The admin [key] has been allowed to bypass the whitelist")
 				if (message)
-					message_admins(span_adminnotice("The admin [key] has been allowed to bypass the whitelist"))
-					addclientmessage(ckey,span_adminnotice("You have been allowed to bypass the whitelist"))
+					message_admins(span_adminnotice("管理员[key]已被允许绕过白名单"))
+					addclientmessage(ckey,span_adminnotice("你已被允许绕过白名单"))
 			else
 				log_access("Failed Login: [key] - Not on whitelist")
 				return list("reason"="whitelist", "desc" = "\nReason: You are not on the white list for this server")
@@ -82,7 +82,7 @@
 						log_admin(msg)
 						if (message)
 							message_admins(msg)
-							addclientmessage(ckey,span_adminnotice("Admin [key] has been allowed to bypass a matching non-admin ban on [i["key"]] [i["ip"]]-[i["computerid"]]."))
+							addclientmessage(ckey,span_adminnotice("管理员[key]已被允许绕过对[i["key"]] [i["ip"]]-[i["computerid"]]的匹配非管理员封禁。"))
 						continue
 				var/expires = "This is a permanent ban."
 				if(i["expiration_time"])
@@ -215,12 +215,12 @@
 		if (admin)
 			log_admin("The admin [key] has been allowed to bypass a matching host/sticky ban on [bannedckey]")
 			if (message)
-				message_admins(span_adminnotice("The admin [key] has been allowed to bypass a matching host/sticky ban on [bannedckey]"))
-				addclientmessage(ckey,span_adminnotice("You have been allowed to bypass a matching host/sticky ban on [bannedckey]"))
+				message_admins(span_adminnotice("管理员[key]已被允许绕过对[bannedckey]的匹配主机/粘性封禁"))
+				addclientmessage(ckey,span_adminnotice("你已被允许绕过对[bannedckey]的匹配主机/粘性封禁"))
 			return null
 
 		if (C) //user is already connected!.
-			to_chat(C, span_redtext("You are about to get disconnected for matching a sticky ban after you connected. If this turns out to be the ban evasion detection system going haywire, we will automatically detect this and revert the matches. if you feel that this is the case, please wait EXACTLY 6 seconds then reconnect using file -> reconnect to see if the match was automatically reversed."))
+			to_chat(C, span_redtext("你因在连接后匹配到粘性封禁即将被断开连接。如果这被证明是封禁规避检测系统出现了故障,我们将自动检测到并撤销匹配。如果你认为情况如此,请等待正好6秒,然后使用文件 -> 重新连接来查看匹配是否被自动撤销。"))
 
 		var/desc = "\nReason:(StickyBan) You, or another user of this computer or connection ([bannedckey]) is banned from playing here. The ban reason is:\n[ban["message"]]\nThis ban was applied by [ban["admin"]]\nThis is a BanEvasion Detection System ban, if you think this ban is a mistake, please wait EXACTLY 6 seconds, then try again before filing an appeal.\n"
 		. = list("reason" = "Stickyban", "desc" = desc)

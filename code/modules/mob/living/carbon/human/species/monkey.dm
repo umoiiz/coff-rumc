@@ -32,14 +32,14 @@
 		return FALSE
 	var/mob/living/carbon/victim = target
 	if(prob(25))
-		victim.visible_message(span_danger("[user]'s bite misses [victim]!"),
-			span_danger("You avoid [user]'s bite!"), span_hear("You hear jaws snapping shut!"))
-		to_chat(user, span_danger("Your bite misses [victim]!"))
+		victim.visible_message(span_danger("[user]的撕咬没有咬中[victim]!"),
+			span_danger("你避开了[user]的撕咬!"), span_hear("你听到下颚咬合的声音!"))
+		to_chat(user, span_danger("你的撕咬没有咬中[victim]!"))
 		return TRUE
 	victim.apply_damage(rand(10, 20), BRUTE, "chest", updating_health = TRUE)
-	victim.visible_message(span_danger("[name] bites [victim]!"),
-		span_userdanger("[name] bites you!"), span_hear("You hear a chomp!"))
-	to_chat(user, span_danger("You bite [victim]!"))
+	victim.visible_message(span_danger("[name]咬了[victim]!"),
+		span_userdanger("[name]咬了你!"), span_hear("你听到一声咀嚼!"))
+	to_chat(user, span_danger("你咬了[victim]!"))
 	target.attack_hand(user)
 	return TRUE
 

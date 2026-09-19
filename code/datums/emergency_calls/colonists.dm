@@ -4,8 +4,8 @@
 
 
 /datum/emergency_call/colonist/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>You are a simple colonist hoping to be something else.</b>")
-	to_chat(H, "<B>Follow all instructions assigned by the staff or your leader in-character.</b>")
+	to_chat(H, "<B>你只是一个希望成为其他什么的普通殖民者.</b>")
+	to_chat(H, "<B>在角色扮演中遵循工作人员或你的领袖分配的所有指示.</b>")
 
 
 /datum/emergency_call/colonist/create_member(datum/mind/M)

@@ -1,6 +1,6 @@
 /obj/item/alien_embryo
-	name = "alien embryo"
-	desc = "All slimy and yucky."
+	name = "异形胚胎"
+	desc = "黏糊糊的,真恶心。"
 	icon = 'icons/Xeno/castes/larva/larva.dmi'
 	icon_state = "Embryo"
 	var/grinder_datum = /datum/reagent/consumable/larvajelly //good ol cookin
@@ -108,7 +108,7 @@
 			if(prob(2))
 				to_chat(affected_mob, span_warning("[pick("Your throat feels sore", "Mucous runs down the back of your throat")]."))
 			else if(prob(1))
-				to_chat(affected_mob, span_warning("Your muscles ache."))
+				to_chat(affected_mob, span_warning("你的肌肉酸痛。"))
 				if(prob(20))
 					affected_mob.take_limb_damage(1)
 			else if(prob(2))
@@ -116,8 +116,8 @@
 		if(4)
 			if(prob(1))
 				if(!affected_mob.has_status_effect(STATUS_EFFECT_UNCONSCIOUS))
-					affected_mob.visible_message(span_danger("\The [affected_mob] starts shaking uncontrollably!"), \
-												span_danger("You start shaking uncontrollably!"))
+					affected_mob.visible_message(span_danger("\The [affected_mob]开始不受控制地颤抖!"), \
+												span_danger("你开始不受控制地颤抖!"))
 					affected_mob.Unconscious(20 SECONDS)
 					affected_mob.jitter(105)
 					affected_mob.take_limb_damage(1)
@@ -153,7 +153,7 @@
 
 	if(isyautja(affected_mob))
 		new_xeno = new /mob/living/carbon/xenomorph/larva/predalien(affected_mob)
-		yautja_announcement(span_yautjaboldbig("ТРЕВОГА!\n\nЗамечено Отродье в [get_area_name(new_xeno)]. Это слишком низко для нашей чести. Ошибка природы. Уничтожьте его немедленно.\n\nОткрыт доступ к Тяжелому Вооружению."))
+		yautja_announcement(span_yautjaboldbig("警报!\n\n在[get_area_name(new_xeno)]发现了孽种。这对我们的荣耀而言太过低劣。自然的错误。立刻消灭它。\n\n重型武器权限已开放。"))
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_ARMORY_OPENED)
 	else
 		new_xeno = new(affected_mob)
@@ -164,7 +164,7 @@
 	//If we have a candidate, transfer it over.
 	if(picked)
 		picked.mind.transfer_to(new_xeno, TRUE)
-		to_chat(new_xeno, span_xenoannounce("We are a xenomorph larva inside a host! Move to burst out of it!"))
+		to_chat(new_xeno, span_xenoannounce("我们是寄生在宿主体内的异形幼体!移动以破胸而出!"))
 		new_xeno << sound('sound/effects/alien/newlarva.ogg')
 
 	stage = 6
@@ -176,11 +176,11 @@
 
 	victim.chestburst = CARBON_IS_CHEST_BURSTING
 	ADD_TRAIT(victim, TRAIT_PSY_DRAINED, TRAIT_PSY_DRAINED)
-	to_chat(src, span_danger("We start bursting out of [victim]'s chest!"))
+	to_chat(src, span_danger("我们开始从[victim]的胸膛中破出!"))
 
 	victim.Unconscious(40 SECONDS)
-	victim.visible_message(span_danger("\The [victim] starts shaking uncontrollably!"), \
-		span_danger("You feel something ripping up your insides!"))
+	victim.visible_message(span_danger("\The [victim]开始不受控制地颤抖!"), \
+		span_danger("你感觉有什么东西在撕裂你的内脏!"))
 	victim.jitter(300)
 
 	victim.emote_burstscream()

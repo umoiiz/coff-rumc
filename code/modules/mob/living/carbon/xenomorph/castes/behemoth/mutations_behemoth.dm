@@ -14,7 +14,7 @@
 
 /datum/xeno_mutation/behemoth/foundations
 	name = "Foundations"
-	desc = "You can now create additional Earth Pillars, but their maximum health is reduced."
+	desc = "你現在可以創建額外的土柱,但其最大生命值會降低."
 	cost = 10
 	icon_state = "shell_foundations"
 	tier = 1
@@ -25,7 +25,7 @@
 
 /atom/movable/screen/alert/status_effect/behemoth/foundations
 	name = "Foundations"
-	desc = "Increased Earth Pillars limit, reduced pillar health."
+	desc = "提高土柱上限,降低柱子生命值."
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/behemoth/foundations
@@ -53,7 +53,7 @@
 
 /datum/xeno_mutation/behemoth/earth_might
 	name = "Earth's Might"
-	desc = "While holding an Earth Pillar, Geocrush will deal additional damage, but damage the pillar in the process."
+	desc = "手持土柱時,地裂將造成額外傷害,但會在此過程中損壞柱子."
 	cost = 10
 	icon_state = "spur_earth_might"
 	tier = 1
@@ -64,7 +64,7 @@
 
 /atom/movable/screen/alert/status_effect/behemoth/earth_might
 	name = "Earth's Might"
-	desc = "Geocrush deals more damage while holding a Pillar, but takes damage."
+	desc = "手持柱子時地裂造成更多傷害,但會受到傷害."
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/behemoth/earth_might
@@ -88,7 +88,7 @@
 
 /datum/xeno_mutation/behemoth/guided_claim
 	name = "Guided Claim"
-	desc = "Seize's range is increased."
+	desc = "奪取的範圍增加."
 	cost = 10
 	icon_state = "veil_guided_claim"
 	tier = 1
@@ -99,7 +99,7 @@
 
 /atom/movable/screen/alert/status_effect/behemoth/guided_claim
 	name = "Guided Claim"
-	desc = "Increased Seize range."
+	desc = "增加奪取範圍."
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/behemoth/guided_claim

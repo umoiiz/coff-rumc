@@ -1,6 +1,6 @@
 /obj/machinery/computer/teleporter
 	name = "Teleporter"
-	desc = "Used to control a linked teleportation Hub and Station."
+	desc = "用于控制已连接的传送枢纽和传送站."
 	icon_state = "computer"
 	screen_overlay = "teleport"
 
@@ -14,11 +14,11 @@
 
 /obj/machinery/teleport/hub
 	name = "teleporter hub"
-	desc = "It's the hub of a teleporting machine."
+	desc = "它是传送机器的枢纽."
 	icon_state = "tele0"
 
 
 /obj/machinery/teleport/station
 	name = "station"
-	desc = "It's the station teleporter."
+	desc = "它是传送站."
 	icon_state = "controller"

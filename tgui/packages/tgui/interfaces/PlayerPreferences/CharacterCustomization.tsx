@@ -51,7 +51,7 @@ export const CharacterCustomization = (props) => {
   };
   return (
     <>
-      <Section title="Profile">
+      <Section title="个人资料">
         <Flex>
           <Flex.Item>
             <LabeledList>
@@ -91,10 +91,10 @@ export const CharacterCustomization = (props) => {
         </Flex>
       </Section>
       <Section
-        title="Body"
+        title="身体"
         buttons={
           <Button color="bad" icon="power-off" onClick={() => act('random')}>
-            Randomize everything
+            全部随机化
           </Button>
         }
       >

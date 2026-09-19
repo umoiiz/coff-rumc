@@ -49,14 +49,14 @@ export const STUI = () => {
           <Box height="10px" />
           <Flex.Item>
             <LabeledList>
-              <LabeledList.Item label="Search">
+              <LabeledList.Item label="搜索">
                 <Input
                   value={searchTerm}
                   onChange={(value) => setSearchTerm(value)}
                   width="810px"
                 />
               </LabeledList.Item>
-              <LabeledList.Item label="Font Size">
+              <LabeledList.Item label="字体大小">
                 <Slider
                   inline
                   maxValue={20}
@@ -135,7 +135,7 @@ const STUItabs = (props: {
         selected
         onClick={() => act('update')}
       >
-        Update
+        更新
       </Tabs.Tab>
       {tabs.map((tab) => (
         <Tabs.Tab

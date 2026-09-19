@@ -2,7 +2,7 @@
 
 /mob/living/simple_animal/catslug
 	name = "catslug"
-	desc = "It's a cat . . . Thing from another planet, maybe from another world. You think it's not dangerous, but you can't be sure. The researcher should know more about this creature."
+	desc = "这是一只猫... 也许是来自另一个星球,另一个世界的东西. 你觉得它不危险,但你不能确定. 研究员应该对这种生物了解更多."
 	icon = 'icons/mob/pets.dmi'
 	icon_state = "catslug"
 	icon_living = "catslug"
@@ -23,7 +23,7 @@
 /mob/living/simple_animal/catslug/newt
 	name = "Newt"
 	real_name = "Newt"
-	desc = "You recalled in another PowerPoint presentation that military loves to use that Newt is a survivor from the current Xenomorph menace. Researchers found this poor thing amidst its kins, possibly gutted by xenomorphs. Who knows if Newt is the last of her kind."
+	desc = "你回想起在另一个幻灯片演示中,军方喜欢用那个纽特是当前异形威胁的幸存者. 研究人员在它的同类中发现了这个可怜的东西,可能是被异形开膛破肚的. 谁知道纽特是不是她种族中最后一个."
 	icon_state = "catslug"
 	icon_living = "catslug"
 	icon_dead = "catslug_dead"

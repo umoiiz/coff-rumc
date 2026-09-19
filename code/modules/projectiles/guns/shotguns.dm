@@ -42,8 +42,8 @@
 //TACTICAL SHOTGUN
 
 /obj/item/weapon/gun/shotgun/combat
-	name = "\improper SH-221 tactical shotgun"
-	desc = "The Nanotrasen SH-221 Shotgun, a quick-firing semi-automatic shotgun based on the centuries old Benelli M4 shotgun. Only issued to the TGMC in small numbers."
+	name = "\improper SH-221战术霰弹枪"
+	desc = "Nanotrasen SH-221霰弹枪,一款基于数百年历史的Benelli M4霰弹枪设计的快速射击半自动霰弹枪.仅少量配发给TGMC."
 	equip_slot_flags = ITEM_SLOT_BACK
 	icon_state = "mk221"
 	worn_icon_state = "mk221"
@@ -76,8 +76,8 @@
 //SH-39 semi automatic shotgun. Used by marines.
 
 /obj/item/weapon/gun/shotgun/combat/standardmarine
-	name = "\improper SH-39 combat shotgun"
-	desc = "The Terran Armories SH-39 combat shotgun is a semi automatic shotgun used by breachers and pointmen within the TGMC squads. Uses 12 gauge shells."
+	name = "\improper SH-39战斗霰弹枪"
+	desc = "Terran Armories SH-39战斗霰弹枪是一款半自动霰弹枪,由TGMC小队中的破门手和尖兵使用.使用12号口径弹药."
 	force = 20 //Has a stock already
 	equip_slot_flags = ITEM_SLOT_BACK
 	icon = 'icons/obj/items/gun/shotgun64.dmi'
@@ -126,8 +126,8 @@
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/heavy_barrel, /obj/item/attachable/verticalgrip, /obj/item/attachable/stock/t39stock)
 
 /obj/item/weapon/gun/shotgun/combat/masterkey
-	name = "masterkey shotgun"
-	desc = "A weapon-mounted, three-shot shotgun. Reloadable with any normal 12 gauge shell. The short barrel reduces the ammo's effectiveness drastically in exchange for fitting as a attachment.."
+	name = "万能钥匙霰弹枪"
+	desc = "一款安装在武器上的三发霰弹枪.可使用任何标准12号口径弹药重新装填.短枪管大幅降低了弹药效能,以换取作为配件安装的能力."
 	icon = 'icons/obj/items/attachments/attachments.dmi'
 	icon_state = "masterkey"
 
@@ -156,8 +156,8 @@
 //DOUBLE SHOTTY
 
 /obj/item/weapon/gun/shotgun/double
-	name = "double barrel shotgun"
-	desc = "A double barreled over and under shotgun of archaic, but sturdy design. Uses 12 gauge shells, but can only hold 2 at a time."
+	name = "双管霰弹枪"
+	desc = "一款上下排列的双管霰弹枪,设计古老但坚固.使用12号口径弹药,但一次只能装填2发."
 	equip_slot_flags = ITEM_SLOT_BACK
 	icon_state = "dshotgun"
 	worn_icon_state = "dshotgun"
@@ -188,8 +188,8 @@
 	aim_slowdown = 0.6
 
 /obj/item/weapon/gun/shotgun/double/sawn
-	name = "sawn-off shotgun"
-	desc = "A double barreled shotgun whose barrel has been artificially shortened to reduce range for further CQC potiential."
+	name = "截短霰弹枪"
+	desc = "一款双管霰弹枪,其枪管被人为缩短以降低射程,从而获得更强的近战潜力."
 	icon_state = "sshotgun"
 	worn_icon_state = "sshotgun"
 	equip_slot_flags = ITEM_SLOT_BELT
@@ -209,8 +209,8 @@
 //MARINE DOUBLE SHOTTY
 
 /obj/item/weapon/gun/shotgun/double/marine
-	name = "\improper SH-34 double barrel shotgun"
-	desc = "A double barreled shotgun of archaic, but sturdy design used by the TGMC. Due to reports of barrel bursting, the abiility to fire both barrels has been disabled. Uses 12 gauge shells, but can only hold 2 at a time."
+	name = "\improper SH-34双管霰弹枪"
+	desc = "一款TGMC使用的古老但坚固的双管霰弹枪.由于有枪管爆裂的报告,同时发射两根枪管的能力已被禁用.使用12号口径弹药,但一次只能装填2发."
 	equip_slot_flags = ITEM_SLOT_BACK
 	icon_state = "ts34"
 	worn_icon_state = "ts34"
@@ -246,8 +246,8 @@
 //Shotguns in this category will need to be pumped each shot.
 
 /obj/item/weapon/gun/shotgun/pump
-	name = "\improper V10 pump shotgun"
-	desc = "A classic design, using the outdated shotgun frame. The V10 combines close-range firepower with long term reliability.\n<b>Requires a pump, which is the Unique Action key.</b>"
+	name = "\improper V10泵动霰弹枪"
+	desc = "经典设计,采用过时的霰弹枪框架.V10将近距离火力与长期可靠性结合在一起.\n<b>需要泵动,即独特动作键.</b>"
 	equip_slot_flags = ITEM_SLOT_BACK
 	icon_state = "v10"
 	worn_icon_state = "v10"
@@ -294,8 +294,8 @@
 //-------------------------------------------------------
 //A shotgun, how quaint.
 /obj/item/weapon/gun/shotgun/pump/cmb
-	name = "\improper SH-12 Paladin pump shotgun"
-	desc = "A nine-round pump action shotgun. A shotgun used for hunting, home defence and police work, many versions of it exist and are used by just about anyone."
+	name = "\improper SH-12圣骑士泵动霰弹枪"
+	desc = "一款九发泵动霰弹枪.一款用于狩猎、家庭防卫和警务工作的霰弹枪,存在许多版本,几乎任何人都在使用."
 	icon = 'icons/obj/items/gun/shotgun64.dmi'
 	icon_state = "pal12"
 	worn_icon_state = "pal12"
@@ -339,8 +339,8 @@
 //-------------------------------------------------------
 //A shotgun, how quaint.
 /obj/item/weapon/gun/shotgun/pump/trenchgun
-	name = "\improper L-4034 trenchgun"
-	desc = "A six-round pump action shotgun. A shotgun used for hunting, home defence and police work, many versions of it exist and are used by just about anyone."
+	name = "\improper L-4034堑壕枪"
+	desc = "一款六发泵动霰弹枪.一款用于狩猎、家庭防卫和警务工作的霰弹枪,存在许多版本,几乎任何人都在使用."
 	icon = 'icons/obj/items/gun/shotgun64.dmi'
 	icon_state = "trenchgun"
 	worn_icon_state = "trenchgun"
@@ -394,8 +394,8 @@
 // ML-101 Heavy Shotgun
 
 /obj/item/weapon/gun/shotgun/pump/icc_heavyshotgun
-	name = "\improper ML-101 heavy pump shotgun"
-	desc = "Curiously using a rifled barrel in a shotgun. The ML-101 shotgun is used by ICC personnel forces to devastate targets at close range. Uses 6 gauge shells.\n<b>Requires a pump, which is the Unique Action key.</b>"
+	name = "\improper ML-101重型泵动霰弹枪"
+	desc = "奇特地在霰弹枪上使用了膛线枪管.ML-101霰弹枪由ICC人员部队使用,用于在近距离摧毁目标.使用6号口径弹药.\n<b>需要泵动,即独特动作键.</b>"
 	equip_slot_flags = ITEM_SLOT_BACK
 	icon = 'icons/obj/items/gun/shotgun64.dmi'
 	icon_state = "ks23"
@@ -451,8 +451,8 @@
 //A hacky bolt action rifle. in here for the "pump" or bolt working action.
 
 /obj/item/weapon/gun/shotgun/pump/bolt
-	name = "\improper Mosin Nagant rifle"
-	desc = "A mosin nagant rifle, even just looking at it you can feel the cosmoline already. Commonly known by its slang, \"Moist Nugget\", by downbrained colonists and outlaws."
+	name = "\improper 莫辛-纳甘步枪"
+	desc = "一把莫辛-纳甘步枪,光是看着它你就能感受到防锈油了.常被愚蠢的殖民者和亡命之徒以其俚语\"湿坚果\"而闻名."
 	icon = 'icons/obj/items/gun/marksman64.dmi'
 	icon_state = "mosin"
 	worn_icon_state = "mosin"
@@ -521,8 +521,8 @@
 // Martini Henry
 
 /obj/item/weapon/gun/shotgun/double/martini
-	name = "\improper Martini Henry lever action rifle"
-	desc = "A lever action with room for a single round of .557/440 ball. Perfect for any kind of hunt, be it elephant or xeno with how quick to the draw it is."
+	name = "\improper 马蒂尼-亨利杠杆步枪"
+	desc = "一款杠杆步枪,可装填一发.557/440弹丸.非常适合任何类型的狩猎,无论是大象还是异形,因为它的出枪速度极快."
 	equip_slot_flags = ITEM_SLOT_BACK
 	icon = 'icons/obj/items/gun/marksman64.dmi'
 	icon_state = "martini"
@@ -578,8 +578,8 @@
 // Old but powerful
 
 /obj/item/weapon/gun/shotgun/double/musket
-	name = "\improper Croweson musket"
-	desc = "A breech-loading rifle with room for a single round of 19mm ball."
+	name = "\improper 克罗森火枪"
+	desc = "一款后膛装填步枪,可装填一发19毫米弹丸."
 	icon = 'icons/obj/items/gun/special64.dmi'
 	icon_state = "musket"
 	worn_icon_state = "musket"
@@ -628,8 +628,8 @@
 // Younger brother of musket
 
 /obj/item/weapon/gun/shotgun/double/musketoon
-	name = "\improper Croweson musketoon"
-	desc = "Shorter-barrelled version of the musket with room for a single round of 19mm ball."
+	name = "\improper 克罗森短火枪"
+	desc = "火枪的短枪管版本,可装填一发19毫米弹丸."
 	icon = 'icons/obj/items/gun/special64.dmi'
 	icon_state = "musketoon"
 	worn_icon_state = "musketoon"
@@ -678,8 +678,8 @@
 // Derringer
 
 /obj/item/weapon/gun/shotgun/double/derringer
-	name = "\improper R-2395 Derringer"
-	desc = "The R-2395 Derringer has been a classic for centuries. This latest iteration combines plasma propulsion powder with the classic design to make an assasination weapon that will leave little to chance."
+	name = "\improper R-2395德林杰手枪"
+	desc = "R-2395德林杰手枪数百年来一直是经典.这一最新迭代将等离子推进火药与经典设计相结合,打造出一款几乎不留任何机会的暗杀武器."
 	icon_state = "derringer"
 	icon = 'icons/obj/items/gun/pistol.dmi'
 	worn_icon_list = list(
@@ -719,8 +719,8 @@
 // Yee Haw it's a cowboy lever action gun!
 
 /obj/item/weapon/gun/shotgun/pump/lever
-	name = "lever action rifle"
-	desc = "A .44 magnum lever action rifle with side loading port. It has a low fire rate, but it packs quite a punch in hunting."
+	name = "杠杆步枪"
+	desc = "一款.44马格南杠杆步枪,带有侧装填口.射速较低,但在狩猎中威力十足."
 	icon_state = "mares_leg"
 	worn_icon_state = "mares_leg"
 	fire_sound = 'sound/weapons/guns/fire/leveraction.ogg'//I like how this one sounds.
@@ -759,8 +759,8 @@
 // Leicester Rifle. The gun that won the west.
 
 /obj/item/weapon/gun/shotgun/pump/lever/repeater
-	name = "\improper Leicester Repeater"
-	desc = "The gun that won the west or so they say. But space is a very different kind of frontier all together, chambered for .45-70 Governemnt."
+	name = "\improper 莱斯特连发枪"
+	desc = "据说就是这把枪赢得了西部.但太空是一种完全不同的边疆,该枪使用.45-70政府弹."
 	icon = 'icons/obj/items/gun/marksman64.dmi'
 	icon_state = "leicrepeater"
 	worn_icon_state = "leicrepeater"
@@ -815,8 +815,8 @@
 //------------------------------------------------------
 //MBX900 Lever Action Shotgun
 /obj/item/weapon/gun/shotgun/pump/lever/mbx900
-	name = "\improper MBX lever action shotgun"
-	desc = "A .410 bore lever action shotgun that fires nearly as fast as you can operate the lever. Renowed due to its devastating and extremely reliable design."
+	name = "\improper MBX杠杆霰弹枪"
+	desc = "一款.410口径杠杆霰弹枪,其射速几乎与你操作杠杆的速度一样快.因其毁灭性且极其可靠的设计而闻名."
 	icon_state = "mbx900"
 	worn_icon_state = "mbx900"
 	fire_sound = 'sound/weapons/guns/fire/shotgun_light.ogg'//I like how this one sounds.
@@ -859,8 +859,8 @@
 //------------------------------------------------------
 //SH-35 Pump shotgun
 /obj/item/weapon/gun/shotgun/pump/t35
-	name = "\improper SH-35 pump shotgun"
-	desc = "The Terran Armories SH-35 is the shotgun used by the TerraGov Marine Corps. It's used as a close quarters tool when someone wants something more suited for close range than most people, or as an odd sidearm on your back for emergencies. Uses 12 gauge shells.\n<b>Requires a pump, which is the Unique Action key.</b>"
+	name = "\improper SH-35泵动霰弹枪"
+	desc = "Terran Armories SH-35是TerraGov陆战队使用的霰弹枪.当有人想要比大多数人更适合作战距离的近距离工具时,它被用作近战工具,或者作为背上的应急副武器.使用12号口径弹药.\n<b>需要泵动,即独特动作键.</b>"
 	equip_slot_flags = ITEM_SLOT_BACK
 	icon = 'icons/obj/items/gun/shotgun64.dmi'
 	icon_state = "t35"
@@ -932,8 +932,8 @@
 //THE MYTH, THE GUN, THE LEGEND, THE DEATH, THE ZX
 
 /obj/item/weapon/gun/shotgun/zx76
-	name = "\improper ZX-76 assault shotgun"
-	desc = "The ZX-76 Assault Shotgun, a incredibly rare, double barreled semi-automatic combat shotgun with a twin shot mode. Possibly the unrivaled master of CQC. Has a 9 round internal magazine."
+	name = "\improper ZX-76突击霰弹枪"
+	desc = "ZX-76突击霰弹枪,一款极其罕见的双管半自动战斗霰弹枪,带有双发模式.可能是无与伦比的近战之王.拥有9发内置弹匣."
 	icon = 'icons/obj/items/gun/shotgun64.dmi'
 	icon_state = "zx-76"
 	worn_icon_state = "zx-76"
@@ -978,8 +978,8 @@
 
 
 /obj/item/weapon/gun/shotgun/som
-	name = "\improper V-51 combat shotgun"
-	desc = "The V-51 is the main shotgun utilised by the Sons of Mars. Slower firing than some other semi automatic shotguns, but packs more of a kick."
+	name = "\improper V-51战斗霰弹枪"
+	desc = "V-51是火星之子使用的主要霰弹枪.射速比某些其他半自动霰弹枪慢,但后坐力更强."
 	equip_slot_flags = ITEM_SLOT_BACK
 	icon_state = "v51"
 	icon = 'icons/obj/items/gun/shotgun64.dmi'
@@ -1027,8 +1027,8 @@
 	starting_attachment_types = list(/obj/item/attachable/bayonet, /obj/item/attachable/magnetic_harness)
 
 /obj/item/weapon/gun/shotgun/som/burst
-	name = "\improper V-51B assault shotgun"
-	desc = "V-51B custom. An upgraded version of the standard SOM shotgun with a burst fire mode and a snazzy paintjob. Rare as it is deadly."
+	name = "\improper V-51B突击霰弹枪"
+	desc = "V-51B定制版.标准SOM霰弹枪的升级版本,带有爆发射击模式和炫酷的涂装.稀有且致命."
 	icon_state = "v51b"
 	burst_amount = 2
 	burst_delay = 0.5 SECONDS
@@ -1047,8 +1047,8 @@
 //-------------------------------------------------------
 //Inbuilt launcher for the V-31
 /obj/item/weapon/gun/shotgun/micro_grenade
-	name = "\improper VA-61 micro rail launcher"
-	desc = "An in-built railgun designed to fire so called 'micro grenades'. By using railgun technology, the projectile does not need any propellant, helping greatly increase usable space for the payload."
+	name = "\improper VA-61微型轨道发射器"
+	desc = "一款内置轨道炮,设计用于发射所谓的\"微型榴弹\".通过使用轨道炮技术,弹丸不需要任何推进剂,极大地增加了有效载荷的可用空间."
 	icon = 'icons/obj/items/attachments/attachments.dmi'
 	icon_state = "va61"
 
@@ -1075,8 +1075,8 @@
 //SH-46 semi automatic shotgun.
 
 /obj/item/weapon/gun/shotgun/combat/shq6
-	name = "\improper SH-46 combat shotgun"
-	desc = "The SH-46, is a semi-automatic, 12 Gauge, gas piston-operated shotgun, released for TGMC by CAU."
+	name = "\improper SH-46战斗霰弹枪"
+	desc = "SH-46是一款半自动、12号口径、气动活塞式霰弹枪,由CAU为TGMC发布."
 	force = 20 //Has a stock already
 	equip_slot_flags = ITEM_SLOT_BACK
 	icon = 'icons/obj/items/gun/shotgun64.dmi'
@@ -1138,8 +1138,8 @@
 // KSG
 
 /obj/item/weapon/gun/shotgun/pump/ksg
-	name = "\improper L12 pump-action shotgun"
-	desc = "A fourteen-round pump action shotgun. A sight to behold. Fires 12 gauge shotgun rounds, it's fourteen-round capacity makes it smooth when clearing rooms. A label on the side says: 'ONLY FOR CQC!!'."
+	name = "\improper L12泵动霰弹枪"
+	desc = "一款十四发泵动霰弹枪.令人叹为观止.发射12号口径霰弹,其十四发容量使其在清理房间时非常流畅.侧面标签写着:\"仅限近战!!\"."
 	icon = 'icons/obj/items/gun/shotgun64.dmi'
 	icon_state = "l12"
 	worn_icon_state = "l12"

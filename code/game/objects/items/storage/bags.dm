@@ -24,8 +24,8 @@
 //          Trash bag
 // -----------------------------
 /obj/item/storage/bag/trash
-	name = "trash bag"
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!"
+	name = "垃圾袋"
+	desc = "重型黑色聚合物材质.该倒垃圾了!"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "trash0"
 	worn_icon_state = "trashbag"
@@ -49,8 +49,8 @@
 // -----------------------------
 
 /obj/item/storage/bag/plasticbag
-	name = "plastic bag"
-	desc = "It's a very flimsy, very noisy alternative to a bag."
+	name = "塑料袋"
+	desc = "一种非常脆弱、非常吵的袋子替代品."
 	icon = 'icons/obj/items/trash.dmi'
 	icon_state = "plasticbag"
 	worn_icon_state = "plasticbag"
@@ -62,8 +62,8 @@
 // -----------------------------
 
 /obj/item/storage/bag/ore
-	name = "Mining Satchel"
-	desc = "This little bugger can be used to store and transport ores."
+	name = "采矿挎包"
+	desc = "这个小家伙可以用来储存和运输矿石."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "satchel"
 	equip_slot_flags = ITEM_SLOT_BELT|ITEM_SLOT_POCKET
@@ -76,7 +76,7 @@
 
 /obj/item/storage/bag/plants
 	icon_state = "plant"
-	name = "Plant Bag"
+	name = "植物袋"
 	w_class = WEIGHT_CLASS_SMALL
 	storage_type = /datum/storage/bag/plants
 
@@ -89,8 +89,8 @@
 /obj/item/storage/bag/sheetsnatcher
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "sheetsnatcher"
-	name = "Sheet Snatcher"
-	desc = "A patented Nanotrasen storage system designed for any kind of mineral sheet."
+	name = "取片器"
+	desc = "一种专利的纳米特雷森储存系统,专为各种矿物片设计."
 	w_class = WEIGHT_CLASS_NORMAL
 	storage_type = /datum/storage/bag/sheetsnatcher
 	///the number of sheets it can carry.
@@ -98,7 +98,7 @@
 
 /obj/item/storage/bag/cash
 	icon_state = "cash"
-	name = "Cash bag"
-	desc = "A bag for carrying lots of cash. It's got a big dollar sign printed on the front."
+	name = "现金袋"
+	desc = "一个用来装大量现金的袋子.正面印着一个大大的美元符号."
 	w_class = WEIGHT_CLASS_SMALL
 	storage_type = /datum/storage/bag/cash

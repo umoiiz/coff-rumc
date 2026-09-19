@@ -28,24 +28,24 @@
 	eye_step = 0
 
 /datum/surgery_step/eye/cut_open/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] starts to separate the cornea on [target]'s eyes with \the [tool]."), \
-	span_notice("You start to separate the cornea on [target]'s eyes with \the [tool]."))
-	target.balloon_alert_to_viewers("Separating...")
+	user.visible_message(span_notice("[user]开始用\the [tool]分离[target]眼睛上的角膜."), \
+	span_notice("你开始用\the [tool]分离[target]眼睛上的角膜."))
+	target.balloon_alert_to_viewers("分离中...")
 	return ..()
 
 /datum/surgery_step/eye/cut_open/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] has separated the cornea on [target]'s eyes with \the [tool].") , \
-	span_notice("You have separated the cornea on [target]'s eyes with \the [tool]."),)
-	target.balloon_alert_to_viewers("Success")
+	user.visible_message(span_notice("[user]用\the [tool]分离了[target]眼睛上的角膜.") , \
+	span_notice("你用\the [tool]分离了[target]眼睛上的角膜."),)
+	target.balloon_alert_to_viewers("成功")
 	var/datum/internal_organ/eyes/our_eyes = target.get_organ_slot(ORGAN_SLOT_EYES)
 	our_eyes.eye_surgery_stage = 1
 	target.disabilities |= NEARSIGHTED // code\#define\mobs.dm
 	return ..()
 
 /datum/surgery_step/eye/cut_open/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_warning("[user]'s hand slips, slicing [target]'s eyes with \the [tool]!") , \
-	span_warning("Your hand slips, slicing [target]'s eyes with \the [tool]!") )
-	target.balloon_alert_to_viewers("Slipped!")
+	user.visible_message(span_warning("[user]的手滑了,用\the [tool]割伤了[target]的眼睛!") , \
+	span_warning("你的手滑了,用\the [tool]割伤了[target]的眼睛!") )
+	target.balloon_alert_to_viewers("失手!")
 	affected.createwound(CUT, 10)
 	var/datum/internal_organ/eyes/our_eyes = target.get_organ_slot(ORGAN_SLOT_EYES)
 	our_eyes.take_damage(5, 0)
@@ -63,23 +63,23 @@
 	eye_step = 1
 
 /datum/surgery_step/eye/lift_eyes/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] starts lifting the cornea from [target]'s eyes with \the [tool]."), \
-	span_notice("You start lifting the cornea from [target]'s eyes with \the [tool]."))
-	target.balloon_alert_to_viewers("Lifting...")
+	user.visible_message(span_notice("[user] 开始用 \the [tool] 从 [target] 的眼睛上提起角膜."), \
+	span_notice("你开始用 \the [tool] 从 [target] 的眼睛上提起角膜."))
+	target.balloon_alert_to_viewers("提起中...")
 	return ..()
 
 /datum/surgery_step/eye/lift_eyes/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] has lifted the cornea from [target]'s eyes with \the [tool].") , \
-	span_notice("You have lifted the cornea from [target]'s eyes with \the [tool].") )
-	target.balloon_alert_to_viewers("Success")
+	user.visible_message(span_notice("[user] 已用 \the [tool] 从 [target] 的眼睛上提起角膜.") , \
+	span_notice("你已用 \the [tool] 从 [target] 的眼睛上提起角膜.") )
+	target.balloon_alert_to_viewers("成功")
 	var/datum/internal_organ/eyes/our_eyes = target.get_organ_slot(ORGAN_SLOT_EYES)
 	our_eyes.eye_surgery_stage = 2
 	return ..()
 
 /datum/surgery_step/eye/lift_eyes/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_warning("[user]'s hand slips, damaging [target]'s eyes with \the [tool]!"),
-	span_warning("Your hand slips, damaging [target]'s eyes with \the [tool]!"))
-	target.balloon_alert_to_viewers("Slipped!")
+	user.visible_message(span_warning("[user] 的手滑了, 用 \the [tool] 损伤了 [target] 的眼睛!"),
+	span_warning("你的手滑了, 用 \the [tool] 损伤了 [target] 的眼睛!"))
+	target.balloon_alert_to_viewers("滑脱了!")
 	var/datum/internal_organ/eyes/eyes = target.get_organ_slot(ORGAN_SLOT_EYES)
 	eyes.take_damage(5, 0)
 	target.apply_damage(10, BRUTE, affected, updating_health = TRUE)
@@ -96,23 +96,23 @@
 	eye_step = 2
 
 /datum/surgery_step/eye/mend_eyes/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] starts mending the nerves and lenses in [target]'s eyes with \the [tool]."), \
-	span_notice("You start mending the nerves and lenses in [target]'s eyes with the [tool]."))
-	target.balloon_alert_to_viewers("Mending...")
+	user.visible_message(span_notice("[user] 开始用 \the [tool] 修补 [target] 眼睛里的神经和晶状体."), \
+	span_notice("你开始用 [tool] 修补 [target] 眼睛里的神经和晶状体."))
+	target.balloon_alert_to_viewers("修补中...")
 	return ..()
 
 /datum/surgery_step/eye/mend_eyes/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] mends the nerves and lenses in [target]'s with \the [tool].") ,	\
-	span_notice("You mend the nerves and lenses in [target]'s with \the [tool]."))
-	target.balloon_alert_to_viewers("Success")
+	user.visible_message(span_notice("[user] 用 \the [tool] 修补了 [target] 的神经和晶状体.") ,	\
+	span_notice("你用 \the [tool] 修补了 [target] 的神经和晶状体."))
+	target.balloon_alert_to_viewers("成功")
 	var/datum/internal_organ/eyes/our_eyes = target.get_organ_slot(ORGAN_SLOT_EYES)
 	our_eyes.eye_surgery_stage = 3
 	return ..()
 
 /datum/surgery_step/eye/mend_eyes/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_warning("[user]'s hand slips, stabbing \the [tool] into [target]'s eye!"),
-	span_warning("Your hand slips, stabbing \the [tool] into [target]'s eye!"))
-	target.balloon_alert_to_viewers("Slipped!")
+	user.visible_message(span_warning("[user] 的手滑了, 把 \the [tool] 刺入 [target] 的眼睛!"),
+	span_warning("你的手滑了, 把 \the [tool] 刺入 [target] 的眼睛!"))
+	target.balloon_alert_to_viewers("滑脱了!")
 	var/datum/internal_organ/eyes/our_eyes = target.get_organ_slot(ORGAN_SLOT_EYES)
 	our_eyes.take_damage(5, 0)
 	target.apply_damage(10, BRUTE, affected, 0, TRUE, updating_health = TRUE)
@@ -130,14 +130,14 @@
 	eye_step = 3
 
 /datum/surgery_step/eye/cauterize/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] is beginning to cauterize the incision around [target]'s eyes with \the [tool].") , \
-	span_notice("You are beginning to cauterize the incision around [target]'s eyes with \the [tool]."))
-	target.balloon_alert_to_viewers("Cauterizing...")
+	user.visible_message(span_notice("[user] 开始用 \the [tool] 烧灼 [target] 眼睛周围的切口.") , \
+	span_notice("你开始用 \the [tool] 烧灼 [target] 眼睛周围的切口."))
+	target.balloon_alert_to_viewers("烧灼中...")
 
 /datum/surgery_step/eye/cauterize/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] cauterizes the incision around [target]'s eyes with \the [tool]."), \
-	span_notice("You cauterize the incision around [target]'s eyes with \the [tool]."))
-	target.balloon_alert_to_viewers("Success")
+	user.visible_message(span_notice("[user] 用 \the [tool] 烧灼了 [target] 眼睛周围的切口."), \
+	span_notice("你用 \the [tool] 烧灼了 [target] 眼睛周围的切口."))
+	target.balloon_alert_to_viewers("成功")
 	target.disabilities &= ~NEARSIGHTED
 	target.disabilities &= ~BLIND
 	var/datum/internal_organ/eyes/our_eyes = target.get_organ_slot(ORGAN_SLOT_EYES)
@@ -146,9 +146,9 @@
 	return ..()
 
 /datum/surgery_step/eye/cauterize/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_warning("[user]'s hand slips, searing [target]'s eyes with \the [tool]!"),
-	span_warning("Your hand slips, searing [target]'s eyes with \the [tool]!"))
-	target.balloon_alert_to_viewers("Slipped!")
+	user.visible_message(span_warning("[user] 的手滑了, 用 \the [tool] 灼烧了 [target] 的眼睛!"),
+	span_warning("你的手滑了, 用 \the [tool] 灼烧了 [target] 的眼睛!"))
+	target.balloon_alert_to_viewers("滑脱了!")
 	var/datum/internal_organ/eyes/our_eyes = target.get_organ_slot(ORGAN_SLOT_EYES)
 	our_eyes.take_damage(5, 0)
 	target.apply_damage(5, BURN, affected, updating_health = TRUE)

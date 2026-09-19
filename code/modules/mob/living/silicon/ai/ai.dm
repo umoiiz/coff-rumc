@@ -160,7 +160,7 @@
 /mob/living/silicon/ai/proc/send_order(datum/source, atom/target)
 	SIGNAL_HANDLER
 	if(!current_order)
-		to_chat(src, span_warning("You have no order selected."))
+		to_chat(src, span_warning("你没有选择任何命令."))
 		return
 	current_order.send_order(target)
 
@@ -172,7 +172,7 @@
 ///This gives the stupid computer a notification whenever the dropship takes off. Crutch for a supercomputer.
 /mob/living/silicon/ai/proc/shuttle_takeoff_notification(datum/source, shuttleId, D)
 	SIGNAL_HANDLER
-	to_chat(src, span_notice("NOTICE - [shuttleId] taking off towards \the [D]"))
+	to_chat(src, span_notice("通知 - [shuttleId]正飞向\the [D]"))
 
 /mob/living/silicon/ai/restrained(ignore_checks)
 	SHOULD_CALL_PARENT(FALSE)
@@ -220,7 +220,7 @@
 		if(name == string)
 			target += src
 		if(!length(target))
-			to_chat(src, span_warning("Target is not on or near any active cameras on the station."))
+			to_chat(src, span_warning("目标不在空间站上任何活跃摄像头处或附近."))
 			return
 
 		ai_actual_track(pick(target))
@@ -245,10 +245,10 @@
 		for(var/obj/machinery/camera/C in lit_cameras)
 			C.set_light(initial(C.light_range), initial(C.light_power))
 			lit_cameras = list()
-		to_chat(src, span_notice("Camera lights deactivated."))
+		to_chat(src, span_notice("摄像头灯已停用."))
 	else
 		light_cameras()
-		to_chat(src, span_notice("Camera lights activated."))
+		to_chat(src, span_notice("摄像头灯已启用."))
 	camera_light_on = !camera_light_on
 
 /mob/living/silicon/ai/proc/light_cameras()
@@ -446,7 +446,7 @@
 	SIGNAL_HANDLER
 	linked_artillery.unset_targeter()
 	linked_artillery = null
-	to_chat(src, span_notice("NOTICE: Connection closed with linked mortar."))
+	to_chat(src, span_notice("通知:与链接迫击炮的连接已关闭."))
 
 /datum/action/control_vehicle
 	name = "Select vehicle to control"
@@ -462,13 +462,13 @@
 		clear_vehicle()
 		return
 	if(!length(GLOB.unmanned_vehicles))
-		to_chat(ai, span_warning("No unmanned vehicles detected"))
+		to_chat(ai, span_warning("未检测到无人载具"))
 		return
-	var/obj/vehicle/unmanned/new_vehicle = tgui_input_list(ai, "What vehicle do you want to control?","vehicle choice", GLOB.unmanned_vehicles)
+	var/obj/vehicle/unmanned/new_vehicle = tgui_input_list(ai, "你想控制哪辆载具?","载具选择", GLOB.unmanned_vehicles)
 	if(!new_vehicle)
 		return
 	if(new_vehicle.controlled)
-		to_chat(ai, span_warning("Something is already controlling this vehicle"))
+		to_chat(ai, span_warning("已有其他东西在控制这辆载具"))
 		return
 	link_with_vehicle(new_vehicle)
 	ai.controlling = TRUE
@@ -507,10 +507,10 @@
 /datum/action/innate/squad_message/can_use_action()
 	. = ..()
 	if(owner.stat)
-		to_chat(owner, span_warning("You cannot give orders in your current state."))
+		to_chat(owner, span_warning("你在当前状态下无法下达命令."))
 		return FALSE
 	if(TIMER_COOLDOWN_RUNNING(owner, COOLDOWN_HUD_ORDER))
-		to_chat(owner, span_warning("Your last order was too recent."))
+		to_chat(owner, span_warning("你上一条命令下达得太近了."))
 		return FALSE
 
 /datum/action/innate/squad_message/action_activate()
@@ -521,7 +521,7 @@
 		return
 	var/filter_result = CAN_BYPASS_FILTER(owner) ? null : is_ic_filtered(text)
 	if(filter_result)
-		to_chat(owner, span_warning("That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[text]\"</span>"))
+		to_chat(owner, span_warning("该消息包含了一个IC聊天中禁止的词语!请考虑查阅服务器规则.\n<span replaceRegex='show_filtered_ic_chat'>\"[text]\"</span>"))
 		SSblackbox.record_feedback(FEEDBACK_TALLY, "ic_blocked_words", 1, lowertext(config.ic_filter_regex.match))
 		REPORT_CHAT_FILTER_TO_USER(src, filter_result)
 		log_filter("IC", text, filter_result)
@@ -543,10 +543,10 @@
 	if(is_mainship_level(A.z)) //if our target is shipside, we always use the lowest cooldown between pings
 		cooldown = COOLDOWN_AI_PING_EXTRA_LOW
 	if(!COOLDOWN_FINISHED(src, last_pinged_marines)) //delay between alerts, both for balance and to prevent chat spam from overeager AIs
-		to_chat(src, span_alert("You must wait before issuing an alert again"))
+		to_chat(src, span_alert("你必须等待后才能再次发出警报"))
 		return
 	COOLDOWN_START(src, last_pinged_marines, cooldown)
-	to_chat(src, span_alert("<b>You issue an alert for [A.name] to all living personnel.</b>"))
+	to_chat(src, span_alert("<b>你向所有存活人员发出了关于[A.name]的警报.</b>"))
 	for(var/mob/M in receivers)
 		if(M.z != A.z || M.stat == DEAD)
 			continue
@@ -555,7 +555,7 @@
 		if(istype(A, /obj/effect/xenomorph/acid)) //special check for acid
 			var/obj/effect/xenomorph/acid/pingedacid = A
 			playsound(M, 'sound/machines/beepalert.ogg', 25)
-			to_chat(M, span_alert("AI telemetry indicates that the <b>[pingedacid.acid_t]</b> which is <b>[newdistance]</b> units away at: [AREACOORD_NO_Z(A)] is <b> being melted</b>! by [pingedacid.name]!"))
+			to_chat(M, span_alert("AI遥测显示,位于[AREACOORD_NO_Z(A)]的<b>[pingedacid.acid_t]</b>,距离<b>[newdistance]</b>单位,正被[pingedacid.name]熔化<b></b>!"))
 			return
 		if(newdistance <= AI_PING_RADIUS && newdistance != 0)
 			///time for calculations
@@ -573,11 +573,11 @@
 				generaldirection = pick("northeast","north","east")
 
 			playsound(M, 'sound/machines/beepalert.ogg', 25)
-			to_chat(M, span_alert("<b>ALERT! The ship AI has detected Hostile/Unknown: [A.name] at: [AREACOORD_NO_Z(A)].</b>"))
-			to_chat(M, span_alert("AI telemetry indicates that <b>[A.name]</b> is <b>[newdistance]</b> units away to the <b>[generaldirection]</b>."))
+			to_chat(M, span_alert("<b>警报!舰船AI检测到敌对/未知目标:[A.name]位于:[AREACOORD_NO_Z(A)].</b>"))
+			to_chat(M, span_alert("AI遥测显示,<b>[A.name]</b>位于<b>[generaldirection]</b>方向,距离<b>[newdistance]</b>单位."))
 		else //if the receiver is outside AI_PING_RADIUS, give them a name and coords
 			playsound(M, 'sound/machines/twobeep.ogg', 20)
-			to_chat(M, span_notice("<b>ALERT! The ship AI has detected Hostile/Unknown: [A.name] at: [AREACOORD_NO_Z(A)].</b>"))
+			to_chat(M, span_notice("<b>警报!舰船AI检测到敌对/未知目标:[A.name]位于:[AREACOORD_NO_Z(A)].</b>"))
 
 /mob/living/silicon/ai/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)

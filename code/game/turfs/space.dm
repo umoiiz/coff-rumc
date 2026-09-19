@@ -80,14 +80,14 @@
 		if(!R.use(1))
 			return
 
-		to_chat(user, span_notice("Constructing support lattice ..."))
+		to_chat(user, span_notice("正在建造支撑格栅..."))
 		playsound(src, 'sound/weapons/genhit.ogg', 25, 1)
 		ReplaceWithLattice()
 
 	else if(istype(I, /obj/item/stack/tile/plasteel))
 		var/obj/structure/lattice/L = locate(/obj/structure/lattice) in src
 		if(!L)
-			to_chat(user, span_warning("The plating is going to need some support."))
+			to_chat(user, span_warning("这块装甲板需要一些支撑."))
 			return
 
 		var/obj/item/stack/tile/plasteel/S = I
@@ -104,7 +104,7 @@
 		var/mob/living/spaceman = arrived
 		if(isxenohivemind(spaceman))
 			var/mob/living/carbon/xenomorph/hivemind/hivemind = spaceman
-			to_chat(hivemind, span_xenonotice("We returned to our core to avoid damaging ourselves."))
+			to_chat(hivemind, span_xenonotice("我们回到了核心以避免伤到自己."))
 			hivemind.return_to_core()
 			return
 		if(!spaceman.has_status_effect(debuff_type))

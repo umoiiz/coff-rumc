@@ -34,7 +34,7 @@ export const OutfitEditor = (props) => {
                   ml={0.5}
                   color="transparent"
                   icon="pencil-alt"
-                  title="Rename this outfit"
+                  title="重命名此装备"
                   onClick={() => act('rename', {})}
                 />
                 {outfit.name}
@@ -43,12 +43,12 @@ export const OutfitEditor = (props) => {
                 <Button
                   color="transparent"
                   icon="info"
-                  tooltip="Ctrl-click a button to select *any* item instead of what will probably fit in that slot."
+                  tooltip="按住Ctrl点击按钮可选择*任意*物品,而非默认适合该槽位的物品."
                   tooltipPosition="bottom-start"
                 />
                 <Button
                   icon="code"
-                  tooltip="Edit this outfit on a VV window"
+                  tooltip="在VV窗口中编辑此装备"
                   tooltipPosition="bottom-start"
                   onClick={() => act('vv')}
                 />
@@ -57,8 +57,8 @@ export const OutfitEditor = (props) => {
                   icon={saveable ? 'save' : 'trash-alt'}
                   tooltip={
                     saveable
-                      ? 'Save this outfit to the custom outfit list'
-                      : 'Remove this outfit from the custom outfit list'
+                      ? '将此装备保存到自定义装备列表'
+                      : '从自定义装备列表中移除此装备'
                   }
                   tooltipPosition="bottom-start"
                   onClick={() => act(saveable ? 'save' : 'delete')}

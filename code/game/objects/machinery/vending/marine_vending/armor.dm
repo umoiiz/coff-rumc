@@ -1,14 +1,14 @@
 /obj/machinery/vending/armor_supply
-	name = "\improper Surplus Armor Equipment Vendor"
-	desc = "An automated equipment rack hooked up to a colossal storage of armor and accessories. Nanotrasen designed a new vendor that utilizes bluespace technology to send surplus equipment from outer colonies' sweatshops to your hands! Be grateful."
+	name = "\improper 剩余装甲设备售卖机"
+	desc = "一个自动化设备架, 连接着巨大的装甲和配件存储. 纳米传思设计了一款新售卖机, 利用蓝空间技术将外殖民地血汗工厂的剩余设备送到你手中! 感恩吧."
 	icon_state = "surplus_armor"
 	icon_vend = "surplus_armor_vend"
 	icon_deny = "surplus_armor_deny"
 	isshared = TRUE
 	wrenchable = FALSE
-	product_ads = "You are out of uniform, marine! Where is your armor? Don't have any? You expect me to believe that, maggot?;Why wear heavy armor and unable to chase the enemy when you can go light and zoom by your peers?;Thank your armor later when you didn't die!;I remember PAS, do you remember PAS?;Time to paint the rainbow!;So many selections to choose from!"
+	product_ads = "你制服不整, 陆战队员! 你的装甲呢? 没有? 你指望我相信这个, 蛆虫?;当你能轻装上阵超越同伴时, 为什么要穿重甲而无法追击敌人?;等你没死的时候再感谢你的装甲吧!;我记得PAS, 你记得PAS吗?;是时候画彩虹了!;这么多选择可供挑选!"
 	products = list(
-		"Xenonauten" = list(
+		"异星战士" = list(
 			/obj/item/clothing/suit/modular/xenonauten/light = -1,
 			/obj/item/clothing/suit/modular/xenonauten = -1,
 			/obj/item/clothing/suit/modular/xenonauten/heavy = -1,
@@ -19,7 +19,7 @@
 			/obj/item/clothing/suit/modular/xenonauten/heavy/mk1 = -1,
 			/obj/item/clothing/head/modular/m10x/mk1 = -1,
 		),
-		"Jaeger" = list(
+		"猎手" = list(
 			/obj/item/clothing/suit/modular/jaeger/light = -1,
 			/obj/item/clothing/suit/modular/jaeger/light/skirmisher = -1,
 			/obj/item/clothing/suit/modular/jaeger/light/trooper = -1,
@@ -43,7 +43,7 @@
 			/obj/item/clothing/head/modular/marine/assault = -1,
 			/obj/item/clothing/head/modular/marine/eod = -1,
 		),
-		"Combat Robot" = list(
+		"战斗机器人" = list(
 			/obj/item/clothing/suit/modular/robot/light = -1,
 			/obj/item/clothing/suit/modular/robot = -1,
 			/obj/item/clothing/suit/modular/robot/heavy = -1,
@@ -51,7 +51,7 @@
 			/obj/item/clothing/head/modular/robot = -1,
 			/obj/item/clothing/head/modular/robot/heavy = -1,
 		),
-		"General" = list(
+		"通用" = list(
 			/obj/item/clothing/suit/modular = -1,
 			/obj/item/clothing/suit/modular/rownin = -1,
 			/obj/item/clothing/suit/armor/bulletproof = -1,
@@ -60,7 +60,7 @@
 			/obj/item/facepaint/black = -1,
 			/obj/item/facepaint/brown = -1,
 		),
-		"Armor modules" = list(
+		"装甲模块" = list(
 			/obj/item/armor_module/storage/general = -1,
 			/obj/item/armor_module/storage/ammo_mag = -1,
 			/obj/item/armor_module/storage/integrated = -1,
@@ -86,7 +86,7 @@
 			/obj/item/armor_module/module/mirage = -1,
 			/obj/item/armor_module/module/armorlock = -1,
 		),
-		"Style Line" = list(
+		"风格系列" = list(
 			/obj/item/clothing/suit/modular/style/leather_jacket = -1,
 			/obj/item/clothing/suit/modular/style/duster = -1,
 			/obj/item/clothing/suit/modular/style/Alpha_greatcoat = -1,
@@ -97,7 +97,7 @@
 			/obj/item/armor_module/module/style/medium_armor = -1,
 			/obj/item/armor_module/module/style/heavy_armor = -1,
 		),
-		"Jaeger Mk.I chestpieces" = list(
+		"猎手Mk.I胸甲" = list(
 			/obj/item/armor_module/armor/chest/marine/skirmisher = -1,
 			/obj/item/armor_module/armor/chest/marine/skirmisher/scout = -1,
 			/obj/item/armor_module/armor/chest/marine/skirmisher/trooper = -1,
@@ -112,7 +112,7 @@
 			/obj/item/armor_module/armor/chest/marine/hotaru = -1,
 			/obj/item/armor_module/armor/chest/marine/dashe = -1,
 		),
-		"Jaeger Mk.I armpiece" = list(
+		"猎手Mk.I臂甲" = list(
 			/obj/item/armor_module/armor/arms/marine/skirmisher = -1,
 			/obj/item/armor_module/armor/arms/marine/scout = -1,
 			/obj/item/armor_module/armor/arms/marine/trooper = -1,
@@ -127,7 +127,7 @@
 			/obj/item/armor_module/armor/arms/marine/hotaru = -1,
 			/obj/item/armor_module/armor/arms/marine/dashe = -1,
 		),
-		"Jaeger Mk.I legpiece" = list(
+		"猎手Mk.I腿甲" = list(
 			/obj/item/armor_module/armor/legs/marine/skirmisher = -1,
 			/obj/item/armor_module/armor/legs/marine/scout = -1,
 			/obj/item/armor_module/armor/legs/marine/trooper = -1,
@@ -143,7 +143,7 @@
 			/obj/item/armor_module/armor/legs/marine/hotaru = -1,
 			/obj/item/armor_module/armor/legs/marine/dashe = -1,
 		),
-		"Jaeger Mk.I helmets" = list(
+		"猎手Mk.I头盔" = list(
 			/obj/item/clothing/head/modular/marine/old/skirmisher = -1,
 			/obj/item/clothing/head/modular/marine/old/scout = -1,
 			/obj/item/clothing/head/modular/marine/old = -1,
@@ -158,7 +158,7 @@
 			/obj/item/clothing/head/modular/marine/hotaru = -1,
 			/obj/item/clothing/head/modular/marine/dashe = -1,
 		),
-		"Hardsuits" = list(
+		"硬质装甲" = list(
 			/obj/item/clothing/suit/modular/hardsuit_exoskeleton = -1,
 			/obj/item/clothing/head/modular/marine/hardsuit_helm/markfive = -1,
 			/obj/item/armor_module/armor/chest/marine/hardsuit/syndicate_markfive = -1,

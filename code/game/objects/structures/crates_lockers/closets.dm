@@ -3,8 +3,8 @@
 #define CLOSET_INSERT_SUCCESS 1
 
 /obj/structure/closet
-	name = "closet"
-	desc = "It's a basic storage unit."
+	name = "储物柜"
+	desc = "这是一个基本的储物单元."
 	icon = 'icons/obj/structures/closet.dmi'
 	icon_state = "closed"
 	density = TRUE
@@ -115,7 +115,7 @@
 /obj/structure/closet/proc/can_open(mob/living/user)
 	if(welded || locked)
 		if(user)
-			balloon_alert(user, "Won't budge")
+			balloon_alert(user, "纹丝不动")
 		return FALSE
 	return TRUE
 
@@ -123,12 +123,12 @@
 	for(var/obj/structure/closet/blocking_closet in loc)
 		if(blocking_closet != src && !blocking_closet.wall_mounted && !blocking_closet.opened)
 			if(user)
-				balloon_alert(user, "Can't close, too cramped")
+				balloon_alert(user, "无法关闭,太拥挤了")
 			return FALSE
 	for(var/mob/living/mob_to_stuff in loc)
 		if(mob_to_stuff.anchored || mob_to_stuff.mob_size > max_mob_size)
 			if(user)
-				balloon_alert(user, "Can't close, [mob_to_stuff] in the way")
+				balloon_alert(user, "无法关闭,[mob_to_stuff]挡住了")
 			return FALSE
 	return TRUE
 
@@ -188,7 +188,7 @@
 
 /obj/structure/closet/attack_animal(mob/living/user)
 	if(user.wall_smash)
-		balloon_alert_to_viewers("[user] destroys the [src]")
+		balloon_alert_to_viewers("[user]摧毁了[src]")
 		dump_contents()
 		qdel(src)
 
@@ -220,7 +220,7 @@
 		return
 
 	if(!attached_clamp.loaded && mob_size_counter)
-		balloon_alert(user, "Can't, creature is inside")
+		balloon_alert(user, "不行,生物在里面")
 		return
 
 /obj/structure/closet/welder_act(mob/living/user, obj/item/tool/weldingtool/welder)
@@ -232,7 +232,7 @@
 	if(opened)
 		if(!welder.use_tool(src, user, 10 SECONDS, 1, 50, CALLBACK(src, PROC_REF(check_opened))))
 			return TRUE
-		balloon_alert_to_viewers("\The [src] is cut apart by [user]!")
+		balloon_alert_to_viewers("\The [src]被[user]切开了!")
 		deconstruct()
 		return TRUE
 
@@ -240,18 +240,18 @@
 		return TRUE
 	welded = !welded
 	update_icon()
-	balloon_alert_to_viewers("[src] has been [welded ? "welded shut" : "unwelded"]")
+	balloon_alert_to_viewers("[src]已被[welded ? "welded shut" : "unwelded"]")
 	return TRUE
 
 /obj/structure/closet/wrench_act(mob/living/user, obj/item/tool/wrench/wrenchy_tool)
 	if(opened)
 		return FALSE
 	if(isspaceturf(loc) && !anchored)
-		balloon_alert(user, "Need firmer floor")
+		balloon_alert(user, "需要更坚固的地板")
 		return TRUE
 	setAnchored(!anchored)
 	wrenchy_tool.play_tool_sound(src, 75)
-	balloon_alert_to_viewers("[user] [anchored ? "anchors" : "unanchors"] the [src]")
+	balloon_alert_to_viewers("[user][anchored ? "anchors" : "unanchors"][src]")
 	return TRUE
 
 /obj/structure/closet/relaymove(mob/user, direct)
@@ -267,11 +267,11 @@
 	if(open())
 		return
 
-	balloon_alert(user, "Won't budge")
+	balloon_alert(user, "纹丝不动")
 	if(!lastbang)
 		lastbang = TRUE
 		for(var/mob/M in hearers(src, null))
-			to_chat(M, "<FONT size=[max(0, 5 - get_dist(src, M))]>BANG, bang!</FONT>")
+			to_chat(M, "<FONT size=[max(0, 5 - get_dist(src, M))]>砰,砰!</FONT>")
 		addtimer(VARSET_CALLBACK(src, lastbang, FALSE), 3 SECONDS)
 
 /obj/structure/closet/attack_hand(mob/living/user)
@@ -320,15 +320,15 @@
 	//okay, so the closet is either welded or locked... resist!!!
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	TIMER_COOLDOWN_START(user, COOLDOWN_RESIST, CLICK_CD_BREAKOUT)
-	balloon_alert_to_viewers("Begins to shake violently", ignored_mobs = user)
-	balloon_alert(user, "You push on the door... [DisplayTimeText(breakout_time)] until escape")
+	balloon_alert_to_viewers("开始剧烈摇晃", ignored_mobs = user)
+	balloon_alert(user, "你推着门...[DisplayTimeText(breakout_time)]直到逃脱")
 	if(!do_after(user, breakout_time, target = src))
 		if(!opened) //Didn't get opened in the meatime.
-			balloon_alert(user, "You fail to break out of [src]")
+			balloon_alert(user, "你未能从[src]中挣脱")
 		return FALSE
 	if(opened || (!locked && !welded) ) //Did get opened in the meatime.
 		return TRUE
-	balloon_alert_to_viewers("breaks out")
+	balloon_alert_to_viewers("挣脱了")
 	return bust_open()
 
 /obj/structure/closet/proc/bust_open()
@@ -351,24 +351,24 @@
 		return FALSE
 	if(!user.dextrous)
 		if(!silent)
-			balloon_alert(user, "Not enough dexterity")
+			balloon_alert(user, "敏捷度不足")
 		return
 	if(opened)
 		if(!silent)
-			balloon_alert(user, "Close \the [src] first.")
+			balloon_alert(user, "先关闭\the [src]。")
 		return
 	if(broken)
 		if(!silent)
-			balloon_alert(user, "Cannot, [src] is broken")
+			balloon_alert(user, "不行,[src]坏了")
 		return FALSE
 
 	if(!allowed(user))
 		if(!silent)
-			balloon_alert(user, "Access Denied")
+			balloon_alert(user, "拒绝访问")
 		return FALSE
 
 	locked = !locked
-	balloon_alert_to_viewers("[locked ? "" : "un"]locked")
+	balloon_alert_to_viewers("[locked ? "" : "un"]已锁定")
 	update_icon()
 	return TRUE
 
@@ -435,15 +435,15 @@
 /mob/living/proc/on_closet_dump(obj/structure/closet/origin)
 	SetStun(origin.closet_stun_delay)
 	if(!lying_angle && has_status_effect(STATUS_EFFECT_STUN))
-		balloon_alert_to_viewers("Gets out of [origin]", ignored_mobs = src)
-		balloon_alert(src, "You struggle to get your bearings")
+		balloon_alert_to_viewers("从[origin]中出来", ignored_mobs = src)
+		balloon_alert(src, "你挣扎着辨认方向")
 
 /obj/structure/closet/pred
 	icon = 'icons/obj/machines/yautja_machines.dmi'
 	icon_state = "closed"
 
 /obj/structure/closet/marine
-	name = "marine's locker"
+	name = "陆战队员储物柜"
 	icon = 'icons/obj/structures/closet.dmi'
 	icon_state = "marine_closed"
 	icon_closed = "marine_closed"
@@ -462,7 +462,7 @@
 		new /obj/item/clothing/mask/rebreather/scarf(src)
 
 /obj/structure/closet/marine/alpha
-	name = "alpha equipment locker"
+	name = "阿尔法装备储物柜"
 	squad = "alpha"
 
 /obj/structure/closet/marine/alpha/PopulateContents()
@@ -476,7 +476,7 @@
 	new /obj/effect/spawner/random/misc/plushie/fiftyfifty(src)
 
 /obj/structure/closet/marine/bravo
-	name = "bravo equipment locker"
+	name = "布拉沃装备储物柜"
 	squad = "bravo"
 
 /obj/structure/closet/marine/bravo/PopulateContents()
@@ -491,7 +491,7 @@
 	new /obj/effect/spawner/random/misc/plushie/fiftyfifty(src)
 
 /obj/structure/closet/marine/charlie
-	name = "charlie equipment locker"
+	name = "查理装备储物柜"
 	squad = "charlie"
 
 /obj/structure/closet/marine/charlie/PopulateContents()
@@ -505,7 +505,7 @@
 	new /obj/effect/spawner/random/misc/prizemecha(src)
 
 /obj/structure/closet/marine/delta
-	name = "delta equipment locker"
+	name = "德尔塔装备储物柜"
 	squad = "delta"
 
 /obj/structure/closet/marine/delta/PopulateContents()

@@ -280,7 +280,7 @@
 
 /datum/ammo/grenade_container/drop_nade(turf/target_turf)
 	var/obj/item/explosive/grenade/G = new nade_type(target_turf)
-	G.visible_message(span_warning("\A [G] lands on [target_turf]!"))
+	G.visible_message(span_warning("\A [G]落在[target_turf]上!"))
 	G.det_time = 10
 	G.activate()
 

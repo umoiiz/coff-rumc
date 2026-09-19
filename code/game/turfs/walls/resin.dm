@@ -1,6 +1,6 @@
 /turf/closed/wall/resin
 	name = RESIN_WALL
-	desc = "Weird slime solidified into a wall."
+	desc = "奇怪的黏液凝固成了一堵墙."
 	icon = 'icons/obj/smooth_objects/resin-wall.dmi'
 	icon_state = "resin-wall-0"
 	walltype = "resin-wall"
@@ -43,7 +43,7 @@
 
 /turf/closed/wall/resin/thick
 	name = "thick resin wall"
-	desc = "Weird slime solidified into a thick wall."
+	desc = "奇怪的黏液凝固成了一堵厚墙."
 	max_integrity = 300
 	icon_state = "thickresin0"
 	walltype = "thickresin"
@@ -53,7 +53,7 @@
 
 /turf/closed/wall/resin/membrane
 	name = "resin membrane"
-	desc = "Weird slime translucent enough to let light pass through."
+	desc = "奇怪的黏液半透明,足以让光线透过."
 	icon_state = "membrane0"
 	walltype = "membrane"
 	max_integrity = 120
@@ -69,7 +69,7 @@
 
 /turf/closed/wall/resin/membrane/thick
 	name = "thick resin membrane"
-	desc = "Weird thick slime just translucent enough to let light pass through."
+	desc = "奇怪的厚重黏液刚好半透明到足以让光线透过."
 	max_integrity = 240
 	icon_state = "thickmembrane0"
 	walltype = "thickmembrane"
@@ -87,20 +87,20 @@
 		SSresinshaping.decrement_build_counter(xeno_attacker)
 		dismantle_wall()
 		return
-	xeno_attacker.visible_message(span_xenonotice("\The [xeno_attacker] starts tearing down \the [src]!"), \
-	span_xenonotice("We start to tear down \the [src]."))
+	xeno_attacker.visible_message(span_xenonotice("\The [xeno_attacker]开始拆毁\the [src]!"), \
+	span_xenonotice("我们开始拆毁\the [src]."))
 	if(!do_after(xeno_attacker, 1 SECONDS, NONE, xeno_attacker, BUSY_ICON_GENERIC))
 		return
 	if(!istype(src))
 		return
 	xeno_attacker.do_attack_animation(src, ATTACK_EFFECT_CLAW)
-	xeno_attacker.visible_message(span_xenonotice("\The [xeno_attacker] tears down \the [src]!"), \
-	span_xenonotice("We tear down \the [src]."))
+	xeno_attacker.visible_message(span_xenonotice("\The [xeno_attacker]拆毁了\the [src]!"), \
+	span_xenonotice("我们拆毁了\the [src]."))
 	playsound(src, SFX_ALIEN_RESIN_BREAK, 25)
 	dismantle_wall()
 
 /turf/closed/wall/resin/attack_hand(mob/living/user)
-	to_chat(user, span_warning("You scrape ineffectively at \the [src]."))
+	to_chat(user, span_warning("你徒劳地刮擦着\the [src]."))
 	return TRUE
 
 /turf/closed/wall/resin/attackby(obj/item/I, mob/living/user, params)
@@ -190,7 +190,7 @@
 
 /turf/closed/wall/resin/regenerating/bulletproof
 	name = RESIN_WALL_BULLET
-	desc = "Weird slime solidified into a wall. Looks like it could be resistant to bullets and energy weaponry."
+	desc = "奇怪的黏液凝固成了一堵墙.看起来能抵抗子弹和能量武器."
 	icon = 'icons/obj/smooth_objects/resin-wall-bullet.dmi'
 	icon_state = "resin-wall-0"
 	walltype = "resin-wall"
@@ -200,7 +200,7 @@
 
 /turf/closed/wall/resin/regenerating/fireproof
 	name = RESIN_WALL_FIRE
-	desc = "Weird slime solidified into a wall. Looks like it could be resistant to fire."
+	desc = "奇怪的黏液凝固成了一堵墙.看起来能抵抗火焰."
 	icon = 'icons/obj/smooth_objects/resin-wall-fire.dmi'
 	icon_state = "resin-wall-0"
 	walltype = "resin-wall"
@@ -210,7 +210,7 @@
 
 /turf/closed/wall/resin/regenerating/hardy
 	name = RESIN_WALL_HARDY
-	desc = "Weird slime solidified into a wall. Looks like it could be resistant to melee attacks and explosives."
+	desc = "奇怪的黏液凝固成了一堵墙.看起来能抵抗近战攻击和爆炸."
 	icon = 'icons/obj/smooth_objects/resin-wall-hardy.dmi'
 	icon_state = "resin-wall-0"
 	walltype = "resin-wall"

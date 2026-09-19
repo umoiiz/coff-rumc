@@ -1,10 +1,10 @@
 #define GIRDER_DECONSTRUCTING (new_state < girder_state)
 
 /obj/structure/girder
-	name = "girder"
+	name = "钢梁"
 	icon_state = "girder-0"
 	icon = 'icons/obj/smooth_objects/girder.dmi'
-	desc = "A large structural assembly made out of metal. It requires some layers of metal before it can be considered a wall."
+	desc = "由金属制成的大型结构组件. 它需要几层金属才能被视为一堵墙."
 	anchored = TRUE
 	density = TRUE
 	layer = OBJ_LAYER
@@ -70,13 +70,13 @@
 				var/obj/item/stack/sheet/stack = I
 				if(stack.amount < 2)
 					return
-				to_chat(user, span_notice("Now adding plating..."))
+				to_chat(user, span_notice("正在添加覆板..."))
 				if(!do_after(user, 4 SECONDS, NONE, src, BUSY_ICON_BUILD))
 					return TRUE
 				if(QDELETED(stack) || stack.amount < 2 || girder_state != GIRDER_BROKEN)
 					return TRUE
 				stack.use(2)
-				to_chat(user, span_notice("You added the metal to the girder!"))
+				to_chat(user, span_notice("你将金属添加到了钢梁上!"))
 				change_state(GIRDER_BROKEN_PATCHED)
 				return TRUE
 			if(GIRDER_NORMAL)
@@ -84,13 +84,13 @@
 				var/reinforced = istype(I, GIRDER_REINF_PLASTEEL)
 				if(stack.amount < (reinforced ? 15 : 2))
 					return TRUE
-				to_chat(user, span_notice("Now adding plating..."))
+				to_chat(user, span_notice("正在添加覆板..."))
 				if(!do_after(user, 4 SECONDS * (reinforced ? 2 : 1), NONE, src, BUSY_ICON_BUILD))
 					return TRUE
 				if(QDELETED(stack) || stack.amount < (reinforced ? 15 : 2) || girder_state != GIRDER_NORMAL)
 					return TRUE
 				stack.use(reinforced ? 15 : 2)
-				to_chat(user, span_notice("You added the plating!"))
+				to_chat(user, span_notice("你添加了覆板!"))
 				change_state(GIRDER_BUILDING1_LOOSE)
 				reinforcement = (reinforced ? GIRDER_REINF_PLASTEEL : GIRDER_REINF_METAL)
 				return TRUE
@@ -102,13 +102,13 @@
 				if(stack.amount < (reinforced ? 15 : 2))
 					return TRUE
 				var/old_girder_state = girder_state
-				to_chat(user, span_notice("Now adding plating..."))
+				to_chat(user, span_notice("正在添加覆板..."))
 				if(!do_after(user, 4 SECONDS * (reinforced ? 2 : 1), NONE, src, BUSY_ICON_BUILD))
 					return TRUE
 				if(QDELETED(stack) || stack.amount < (reinforced ? 15 : 2) || girder_state != old_girder_state)
 					return TRUE
 				stack.use(reinforced ? 15 : 2)
-				to_chat(user, span_notice("You added the plating!"))
+				to_chat(user, span_notice("你添加了覆板!"))
 				change_state(girder_state + 1)
 				return TRUE
 		return FALSE
@@ -132,7 +132,7 @@
 			if(!welder.remove_fuel(1, user))
 				return TRUE
 			playsound(loc, 'sound/items/welder2.ogg', 25, 1)
-			to_chat(user, span_notice("You weld the [girder_state == GIRDER_BROKEN_PATCHED ? "girder together" : "metal to the girder"]!"))
+			to_chat(user, span_notice("你焊接了[girder_state == GIRDER_BROKEN_PATCHED ? "girder together" : "metal to the girder"]!"))
 			change_state(girder_state + 1, user)
 			return TRUE
 	return FALSE
@@ -143,12 +143,12 @@
 	switch(girder_state)
 		if(GIRDER_BROKEN)
 			playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
-			to_chat(user, span_notice("Now unbolting the remaining girder base."))
+			to_chat(user, span_notice("正在松开剩余的钢梁底座."))
 			if(!do_after(user, 1.5 SECONDS, NONE, src, BUSY_ICON_BUILD))
 				return TRUE
 			if(girder_state != GIRDER_BROKEN)
 				return TRUE
-			to_chat(user, span_notice("You scrap what is left from the girder!"))
+			to_chat(user, span_notice("你拆解了钢梁剩下的部分!"))
 			new /obj/item/stack/sheet/metal(loc)
 			qdel(src)
 			return TRUE
@@ -157,15 +157,15 @@
 			if(anchored)
 				return FALSE
 			if(!isfloorturf(T) && !isbasalt(T) && !isopengroundturf(T))
-				to_chat(usr, span_warning("The girder must be secured on the floor!"))
+				to_chat(usr, span_warning("钢梁必须固定在地板上!"))
 				return FALSE
 			playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
-			to_chat(user, span_notice("Now securing the girder"))
+			to_chat(user, span_notice("正在固定钢梁"))
 			if(!do_after(user, 4 SECONDS, NONE, src, BUSY_ICON_BUILD))
 				return TRUE
 			if(anchored || girder_state != GIRDER_NORMAL)
 				return TRUE
-			to_chat(user, span_notice("You secured the girder!"))
+			to_chat(user, span_notice("你固定了钢梁!"))
 			anchored = TRUE
 			modify_max_integrity(150)
 			update_icon()
@@ -180,12 +180,12 @@
 			if(!anchored)
 				return FALSE
 			playsound(loc, 'sound/items/crowbar.ogg', 25, 1)
-			to_chat(user, span_notice("Now dislodging the girder..."))
+			to_chat(user, span_notice("正在撬动钢梁..."))
 			if(!do_after(user, 4 SECONDS, NONE, src, BUSY_ICON_BUILD))
 				return TRUE
 			if(!anchored || girder_state != GIRDER_NORMAL)
 				return TRUE
-			to_chat(user, span_notice("You dislodged the girder!"))
+			to_chat(user, span_notice("你撬动了钢梁!"))
 			anchored = FALSE
 			modify_max_integrity(50)
 			update_icon()
@@ -200,7 +200,7 @@
 			if(girder_state != old_girder_state)
 				return TRUE
 			playsound(loc, 'sound/items/crowbar.ogg', 25, 1)
-			to_chat(user, span_notice("You pry the external reinforcement layer out of the girder!"))
+			to_chat(user, span_notice("你从钢梁中撬出了外部加固层!"))
 			new reinforcement(loc) //This should come before change_state() as the var may get nulled there.
 			change_state(girder_state - 1)
 			return TRUE
@@ -214,17 +214,17 @@
 			if(anchored)
 				return FALSE
 			playsound(loc, 'sound/items/screwdriver.ogg', 25, 1)
-			to_chat(user, span_notice("Now dissassembling the girder"))
+			to_chat(user, span_notice("正在拆解钢梁"))
 			if(!do_after(user, 4 SECONDS, NONE, src, BUSY_ICON_BUILD))
 				return TRUE
 			if(anchored || girder_state != GIRDER_NORMAL)
 				return TRUE
-			to_chat(user, span_notice("You finished dissassembling the girder!"))
+			to_chat(user, span_notice("你完成了钢梁的拆解!"))
 			new /obj/item/stack/sheet/metal(loc)
 			qdel(src)
 			return TRUE
 		if(GIRDER_BUILDING1_LOOSE, GIRDER_BUILDING2_LOOSE)
-			to_chat(user, span_notice("Now securing support struts"))
+			to_chat(user, span_notice("正在固定支撑杆"))
 			var/old_girder_state = girder_state
 			var/work_time = 3 SECONDS
 			if(reinforcement == GIRDER_REINF_PLASTEEL)
@@ -234,11 +234,11 @@
 			if(girder_state != old_girder_state)
 				return TRUE
 			playsound(loc, 'sound/items/screwdriver.ogg', 25, 1)
-			to_chat(user, span_notice("You secured the support struts!"))
+			to_chat(user, span_notice("你固定了支撑杆!"))
 			change_state(girder_state + 1)
 			return TRUE
 		if(GIRDER_BUILDING1_SECURED, GIRDER_BUILDING2_SECURED)
-			to_chat(user, span_notice("Now unsecuring support struts"))
+			to_chat(user, span_notice("正在松开支撑杆"))
 			var/old_girder_state = girder_state
 			var/work_time = 3 SECONDS
 			if(reinforcement == GIRDER_REINF_PLASTEEL)
@@ -248,7 +248,7 @@
 			if(girder_state != old_girder_state)
 				return TRUE
 			playsound(loc, 'sound/items/crowbar.ogg', 25, 1)
-			to_chat(user, span_notice("You unsecured the support struts!"))
+			to_chat(user, span_notice("你松开了支撑杆!"))
 			change_state(girder_state - 1)
 			return TRUE
 	return FALSE
@@ -259,10 +259,10 @@
 	switch(girder_state)
 		if(GIRDER_BROKEN_PATCHED)
 			playsound(loc, 'sound/items/wirecutter.ogg', 25, 1)
-			to_chat(user, span_notice("Now cutting the metal plate..."))
+			to_chat(user, span_notice("正在切割金属板..."))
 			if(!do_after(user, 4 SECONDS, NONE, src, BUSY_ICON_BUILD))
 				return TRUE
-			to_chat(user, span_notice("You finished cutting the metal plate!"))
+			to_chat(user, span_notice("你完成了金属板的切割!"))
 			deconstruct()
 			return TRUE
 		if(GIRDER_BUILDING1_WELDED)
@@ -270,13 +270,13 @@
 			var/work_time = 3 SECONDS
 			if(reinforcement == GIRDER_REINF_PLASTEEL)
 				work_time += 3 SECONDS
-			to_chat(user, span_notice("Now cutting the support struts..."))
+			to_chat(user, span_notice("正在切割支撑杆..."))
 			if(!do_after(user, 4 SECONDS, NONE, src, BUSY_ICON_BUILD))
 				return
 			if(girder_state != old_girder_state)
 				return TRUE
 			playsound(loc, 'sound/items/wirecutter.ogg', 25, 1)
-			to_chat(user, span_notice("You've cut the support struts!"))
+			to_chat(user, span_notice("你切断了支撑杆!"))
 			change_state(girder_state - 1)
 	return FALSE
 

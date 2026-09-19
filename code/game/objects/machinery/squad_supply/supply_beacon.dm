@@ -1,6 +1,6 @@
 /obj/item/supply_beacon
-	name = "supply beacon"
-	desc = "A rugged, glorified laser pointer capable of sending a beam into space. Activate and throw this to call for a supply drop."
+	name = "补给信标"
+	desc = "一个坚固的, 增强版激光指示器, 能够将光束发射到太空中. 激活并投掷它以呼叫补给空投."
 	icon = 'icons/obj/items/beacon.dmi'
 	icon_state = "motion0"
 	w_class = WEIGHT_CLASS_SMALL
@@ -13,7 +13,7 @@
 
 /obj/item/supply_beacon/examine(mob/user)
 	. = ..()
-	. += span_notice("Right-Click with empty hand when anchored to open requisitions interface.")
+	. += span_notice("空手右键点击已固定的信标以打开补给界面.")
 
 /obj/item/supply_beacon/attack_hand_alternate(mob/living/user)
 	if(!allowed(user) || !anchored)

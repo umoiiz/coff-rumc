@@ -14,6 +14,10 @@
 #define CHAT_MESSAGE_APPROX_LHEIGHT 11
 /// Max width of chat message in pixels
 #define CHAT_MESSAGE_WIDTH 112
+/// BYOND's MeasureText underestimates fallback CJK glyphs. Give those
+/// messages extra room so a wrapped line is not clipped at the top.
+#define CHAT_MESSAGE_CJK_EXTRA 4
+#define CHAT_MESSAGE_WIDTH_MAX 224
 /// Max length of chat message in characters
 #define CHAT_MESSAGE_MAX_LENGTH 110
 
@@ -46,6 +50,14 @@
 	var/animate_start = 0
 	/// Our animation lifespan, how long this message will last
 	var/animate_lifespan = 0
+
+
+/proc/chat_message_width(text)
+	// DM's byte length is still useful here: UTF-8 CJK characters use three
+	// bytes while length_char() counts one glyph. This also covers other wide
+	// fallback glyphs without relying on a locale-specific character table.
+	var/wide_glyphs = round(max(0, length(text) - length_char(text)) / 2)
+	return min(CHAT_MESSAGE_WIDTH_MAX, CHAT_MESSAGE_WIDTH + wide_glyphs * CHAT_MESSAGE_CJK_EXTRA)
 
 
 /**
@@ -150,13 +162,14 @@
 
 	var/complete_text = "<span style='color: [tgt_color]'><span class='center [extra_classes.Join(" ")]'>[owner.say_emphasis(text)]</span></span>"
 
+	var/message_width = chat_message_width(text)
 	var/mheight
-	WXH_TO_HEIGHT(owned_by.MeasureText(complete_text, null, CHAT_MESSAGE_WIDTH), mheight)
+	WXH_TO_HEIGHT(owned_by.MeasureText(complete_text, null, message_width), mheight)
 
 	if(!VERB_SHOULD_YIELD)
-		return finish_image_generation(mheight, target, owner, complete_text, lifespan)
+		return finish_image_generation(mheight, message_width, target, owner, complete_text, lifespan)
 
-	var/datum/callback/our_callback = CALLBACK(src, PROC_REF(finish_image_generation), mheight, target, owner, complete_text, lifespan)
+	var/datum/callback/our_callback = CALLBACK(src, PROC_REF(finish_image_generation), mheight, message_width, target, owner, complete_text, lifespan)
 	SSrunechat.message_queue += our_callback
 	return
 
@@ -175,7 +188,7 @@
 
 ///finishes the image generation after the MeasureText() call in generate_image().
 ///necessary because after that call the proc can resume at the end of the tick and cause overtime.
-/datum/chatmessage/proc/finish_image_generation(mheight, atom/target, mob/owner, complete_text, lifespan)
+/datum/chatmessage/proc/finish_image_generation(mheight, message_width, atom/target, mob/owner, complete_text, lifespan)
 	var/rough_time = REALTIMEOFDAY
 	approx_lines = max(1, mheight / CHAT_MESSAGE_APPROX_LHEIGHT)
 	var/starting_height = target.maptext_height
@@ -245,9 +258,9 @@
 	message.alpha = 0
 	message.pixel_z = starting_height
 	message.pixel_w = -target.pixel_x
-	message.maptext_width = CHAT_MESSAGE_WIDTH
+	message.maptext_width = message_width
 	message.maptext_height = mheight * 1.25 // We add extra because some characters are superscript, like actions
-	message.maptext_x = (CHAT_MESSAGE_WIDTH - owner.bound_width) * -0.5
+	message.maptext_x = (message_width - owner.bound_width) * -0.5
 	message.maptext = MAPTEXT(complete_text)
 
 	animate_start = rough_time

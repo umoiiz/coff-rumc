@@ -19,17 +19,17 @@
 	. = ..()
 	if(get_dist(user, src) > 2 && user != loc)
 		if(!is_open_container())
-			. += span_info("An airtight lid seals it completely.")
+			. += span_info("密封盖将其完全密封。")
 
 /obj/item/reagent_containers/glass/verb/attach_lid()
 	set name = "Attach/Detach lid"
 	set category = "IC.Object"
 	if(is_open_container())
-		to_chat(usr, span_notice("You put the lid on \the [src]."))
+		to_chat(usr, span_notice("你把盖子盖在\the [src]上。"))
 		DISABLE_BITFIELD(reagents.reagent_flags, OPENCONTAINER)
 		ENABLE_BITFIELD(reagents.reagent_flags, TRANSPARENT)
 	else
-		to_chat(usr, span_notice("You take the lid off \the [src]."))
+		to_chat(usr, span_notice("你把盖子从\the [src]上取下。"))
 		DISABLE_BITFIELD(reagents.reagent_flags, TRANSPARENT)
 		ENABLE_BITFIELD(reagents.reagent_flags, OPENCONTAINER)
 	update_icon()
@@ -42,31 +42,31 @@
 
 	if(target.is_refillable()) //Something like a glass. Player probably wants to transfer TO it.
 		if(!is_drainable())
-			to_chat(user, span_warning("take [src]'s lid off first!"))
+			to_chat(user, span_warning("先把[src]的盖子取下!"))
 			return
 		if(!reagents.total_volume)
-			to_chat(user, span_warning("[src] is empty!"))
+			to_chat(user, span_warning("[src]是空的!"))
 			return
 		if(target.reagents.holder_full())
-			to_chat(user, span_warning("[target] is full."))
+			to_chat(user, span_warning("[target]是满的。"))
 			return
 
 		var/trans = reagents.trans_to(target, amount_per_transfer_from_this)
-		to_chat(user, span_notice("You transfer [trans] unit\s of the solution to [target]."))
+		to_chat(user, span_notice("你将[trans]单位\s 的溶液转移到[target]中。"))
 
 	else if(target.is_drainable()) //A dispenser. Transfer FROM it TO us.
 		if(!is_refillable())
-			to_chat(user, span_warning("take [src]'s lid off first!"))
+			to_chat(user, span_warning("先把[src]的盖子取下!"))
 			return
 		if(!target.reagents.total_volume)
-			to_chat(user, span_warning("[target] is empty and can't be refilled!"))
+			to_chat(user, span_warning("[target]是空的,无法重新装填!"))
 			return
 		if(reagents.holder_full())
-			to_chat(user, span_warning("[src] is full."))
+			to_chat(user, span_warning("[src]是满的。"))
 			return
 
 		var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this)
-		to_chat(user, span_notice("You fill [src] with [trans] unit\s of the contents of [target]."))
+		to_chat(user, span_notice("你将[target]中的[trans]单位\s 装入[src]。"))
 
 	if(user.a_intent == INTENT_HARM)
 		try_splash(user, target)
@@ -79,11 +79,11 @@
 	if(istype(I, /obj/item/tool/pen) || istype(I, /obj/item/flashlight/pen))
 		var/tmp_label = stripped_input(user, "Enter a label for [name]", "Label", label_text)
 		if(length(tmp_label) > MAX_NAME_LEN)
-			to_chat(user, span_warning("The label can be at most [MAX_NAME_LEN] characters long."))
+			to_chat(user, span_warning("标签最多只能有[MAX_NAME_LEN]个字符。"))
 			return
 
-		user.visible_message(span_notice("[user] labels [src] as \"[tmp_label]\"."), \
-			span_notice("You label [src] as \"[tmp_label]\"."))
+		user.visible_message(span_notice("[user]将[src]标记为\"[tmp_label]\"。"), \
+			span_notice("你将[src]标记为\"[tmp_label]\"。"))
 
 		label_text = tmp_label
 		update_name_label()
@@ -95,8 +95,8 @@
 		name = "[base_name] ([label_text])"
 
 /obj/item/reagent_containers/glass/beaker
-	name = "beaker"
-	desc = "A beaker. Can hold up to 60 units."
+	name = "烧杯"
+	desc = "一个烧杯。最多可容纳60单位。"
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "beaker"
 	worn_icon_state = "beaker"
@@ -150,32 +150,32 @@
 		. += lid
 
 /obj/item/reagent_containers/glass/beaker/large
-	name = "large beaker"
-	desc = "A large beaker. Can hold up to 120 units."
+	name = "大烧杯"
+	desc = "一个大烧杯。最多可容纳120单位。"
 	icon_state = "beakerlarge"
 	volume = 120
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,20,30,40,60,120)
 
 /obj/item/reagent_containers/glass/beaker/noreact
-	name = "cryostasis beaker"
-	desc = "A cryostasis beaker that allows for chemical storage without reactions. Can hold up to 60 units."
+	name = "低温烧杯"
+	desc = "一个低温烧杯,可以在不发生反应的情况下储存化学物质。最多可容纳60单位。"
 	icon_state = "beakernoreact"
 	volume = 60
 	reagent_flags = OPENCONTAINER|NO_REACT
 	amount_per_transfer_from_this = 10
 
 /obj/item/reagent_containers/glass/beaker/bluespace
-	name = "bluespace beaker"
-	desc = "A bluespace beaker, powered by experimental bluespace technology. Can hold up to 300 units."
+	name = "蓝空间烧杯"
+	desc = "一个蓝空间烧杯,由实验性蓝空间技术驱动。最多可容纳300单位。"
 	icon_state = "beakerbluespace"
 	volume = 300
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5, 10, 15, 20, 30, 50, 60, 100, 120, 150, 300)
 
 /obj/item/reagent_containers/glass/beaker/vial
-	name = "vial"
-	desc = "A small glass vial. Can hold up to 30 units."
+	name = "小瓶"
+	desc = "一个小玻璃瓶。最多可容纳30单位。"
 	icon_state = "vial"
 	volume = 30
 	amount_per_transfer_from_this = 10
@@ -224,8 +224,8 @@
 	update_icon()
 
 /obj/item/reagent_containers/glass/bucket
-	desc = "It's a bucket."
-	name = "bucket"
+	desc = "这是一个水桶。"
+	name = "水桶"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "bucket"
 	worn_icon_list = list(
@@ -246,10 +246,10 @@
 	if(!istype(I, /obj/item/tool/mop))
 		return
 	if(reagents.total_volume < 1)
-		to_chat(user, "[src] is out of water!</span>")
+		to_chat(user, "[src]没水了!</span>")
 		return
 	reagents.trans_to(I, 5)
-	to_chat(user, span_notice("You wet [I] in [src]."))
+	to_chat(user, span_notice("你在[src]中弄湿了[I]。"))
 	playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 
 /obj/item/reagent_containers/glass/bucket/update_overlays()
@@ -260,8 +260,8 @@
 		. += lid
 
 /obj/item/reagent_containers/glass/bucket/janibucket
-	name = "janitorial bucket"
-	desc = "It's a large bucket that fits in a janitorial cart."
+	name = "清洁工水桶"
+	desc = "这是一个可以放进清洁工推车的大水桶。"
 	icon_state = "janibucket"
 
 /obj/item/reagent_containers/glass/bucket/janibucket/on_reagent_change()

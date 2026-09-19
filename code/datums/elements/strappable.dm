@@ -24,18 +24,18 @@
 	if(!strapped)
 		RegisterSignal(item_source, COMSIG_ITEM_UNEQUIPPED, PROC_REF(on_unequip))
 		ADD_TRAIT(item_source, TRAIT_NODROP, STRAPPABLE_ITEM_TRAIT)
-		item_source.balloon_alert(user, "Tightened strap")
+		item_source.balloon_alert(user, "系紧绑带")
 	else
 		UnregisterSignal(item_source, COMSIG_ITEM_UNEQUIPPED)
 		REMOVE_TRAIT(item_source, TRAIT_NODROP, STRAPPABLE_ITEM_TRAIT)
-		item_source.balloon_alert(user, "Loosened strap")
+		item_source.balloon_alert(user, "松开绑带")
 
 ///Adds additional text for the element when examining the item it is attached to
 /datum/element/strappable/proc/on_examine(datum/source, mob/user, list/examine_text)
 	SIGNAL_HANDLER
 	var/obj/item/item_source = source
 	var/strapped = HAS_TRAIT_FROM(item_source, TRAIT_NODROP, STRAPPABLE_ITEM_TRAIT)
-	examine_text += span_notice("Use <b>Alt-Click</b> to [strapped ? "loosen" : "tighten"] the strap.")
+	examine_text += span_notice("使用<b>Alt-Click</b>来[strapped ? "loosen" : "tighten"]绑带.")
 
 ///Unstraps if the target is somehow forcefully unequipped
 /datum/element/strappable/proc/on_unequip(obj/item/item_source, mob/unequipper, slot)

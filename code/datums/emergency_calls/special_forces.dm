@@ -6,11 +6,11 @@
 	var/max_specialists = 1
 
 /datum/emergency_call/special_forces/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>You are part of the local Special Responses unit, based within this isolated system, having received good training and equipment.</b>")
-	to_chat(H, "<B>Usually, you spend most of your time providing security to the few big shots around here, in between RnR in your base and the occasional hostage situations.</b>")
+	to_chat(H, "<B>你是当地特别响应部队的一员,驻扎在这个与世隔绝的星系中,接受过良好的训练和装备.</b>")
+	to_chat(H, "<B>通常,你大部分时间都在为这里为数不多的大人物提供安保,期间在你的基地休息放松,偶尔处理人质事件.</b>")
 	to_chat(H, "")
-	to_chat(H, "<B>However, recently, one of the local settlement recently went dark, broadcasting a distress signal, just as a TGMC vessel, [SSmapping.configs[SHIP_MAP].map_name] showed up in orbit, and the two are probably linked.</b>")
-	to_chat(H, "<B>Investigate their presence, and do your best to help the colony below!</b>")
+	to_chat(H, "<B>然而,最近,当地的一个定居点最近陷入沉寂,广播出求救信号,与此同时一艘TGMC舰船,[SSmapping.configs[SHIP_MAP].map_name],出现在轨道上,这两者很可能有关联.</b>")
+	to_chat(H, "<B>调查他们的存在,并尽你所能帮助下面的殖民地!</b>")
 
 /datum/emergency_call/special_forces/create_member(datum/mind/M)
 	. = ..()
@@ -32,7 +32,7 @@
 		leader = H
 		var/datum/job/J = SSjob.GetJobType(/datum/job/special_forces/leader)
 		H.apply_assigned_role_to_spawn(J)
-		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are the Special Forces captain assigned to lead this group in responding to the TGMC distress signal sent nearby. Keep your team in one piece and get the job done!</notice></p>")
+		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>你是特种部队队长,被指派带领这个小组响应附近发送的TGMC求救信号. 让你的队伍保持完整并完成任务!</notice></p>")
 		return
 	if(max_specialists > 0)
 		var/datum/job/J = SSjob.GetJobType(/datum/job/special_forces/drone_operator)
@@ -47,4 +47,4 @@
 		return
 	var/datum/job/J = SSjob.GetJobType(/datum/job/special_forces/standard)
 	H.apply_assigned_role_to_spawn(J)
-	to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are a trained member of this special force group directed to investigate the TGMC distress signal sent nearby. Don't let you and your team's guard down!</notice></p>")
+	to_chat(H, "<p style='font-size:1.5em'><span class='notice'>你是这支特种部队的训练有素的成员,被指派前往调查附近发送的TGMC求救信号. 不要让你和你的队伍放松警惕!</notice></p>")

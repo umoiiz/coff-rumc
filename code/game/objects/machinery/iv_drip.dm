@@ -65,7 +65,7 @@
 			return
 
 		if(attached)
-			H.visible_message("[H] detaches \the [src] from \the [attached].", \
+			H.visible_message("[H]将\the [src]从\the [attached]上拆下.", \
 			"You detach \the [src] from \the [attached].")
 			attached = null
 			update_beam()
@@ -74,7 +74,7 @@
 			return
 
 		if(in_range(src, usr) && ishuman(over_object) && get_dist(over_object, src) <= 1)
-			H.visible_message("[H] attaches \the [src] to \the [over_object].", \
+			H.visible_message("[H]将\the [src]安装到\the [over_object]上.", \
 			"You attach \the [src] to \the [over_object].")
 			attached = over_object
 			update_beam()
@@ -88,11 +88,11 @@
 
 	if(istype(I, /obj/item/reagent_containers))
 		if(beaker)
-			to_chat(user, span_warning("There is already a reagent container loaded!"))
+			to_chat(user, span_warning("已经装有一个试剂容器了!"))
 			return
 
 		if((!istype(I, /obj/item/reagent_containers/blood) && !istype(I, /obj/item/reagent_containers/glass)) || istype(I, /obj/item/reagent_containers/glass/bucket))
-			to_chat(user, span_warning("That won't fit!"))
+			to_chat(user, span_warning("那个装不进去!"))
 			return
 
 		if(!user.transferItemToLoc(I, src))
@@ -104,7 +104,7 @@
 		for(var/datum/reagent/R in beaker.reagents.reagent_list)
 			reagentnames += ";[R.name]"
 
-		to_chat(user, "You attach \the [I] to \the [src].")
+		to_chat(user, "你将\the [I]安装到\the [src]上.")
 		update_icon()
 		update_beam()
 
@@ -113,7 +113,7 @@
 		return
 
 	if(!(get_dist(src, attached) <= 1 && isturf(attached.loc)))
-		visible_message("The needle is ripped out of [attached], doesn't that hurt?")
+		visible_message("针头从[attached]中被扯出,那难道不疼吗?")
 		attached.apply_damage(3, BRUTE, pick("r_arm", "l_arm"))
 		attached = null
 		update_beam()
@@ -138,7 +138,7 @@
 		amount = min(amount, 4)
 		// If the beaker is full, ping
 		if(amount == 0 && TIMER_COOLDOWN_FINISHED(src, COOLDOWN_IV_PING))
-			visible_message("\The [src] pings.")
+			visible_message("\The [src]发出提示音.")
 			TIMER_COOLDOWN_START(src, COOLDOWN_IV_PING, 2 SECONDS)
 			return
 
@@ -154,7 +154,7 @@
 
 		// If the human is losing too much blood, beep.
 		if(T.blood_volume < BLOOD_VOLUME_SAFE && TIMER_COOLDOWN_FINISHED(src, COOLDOWN_IV_PING))
-			visible_message("\The [src] beeps loudly.")
+			visible_message("\The [src]大声蜂鸣.")
 			TIMER_COOLDOWN_START(src, COOLDOWN_IV_PING, 2 SECONDS)
 
 		T.take_blood(beaker, amount)
@@ -181,7 +181,7 @@
 		return
 
 	mode = !mode
-	to_chat(usr, "The IV drip is now [mode ? "injecting" : "taking blood"].")
+	to_chat(usr, "静脉滴注现在为[mode ? "injecting" : "taking blood"].")
 
 /obj/machinery/iv_drip/examine(mob/user)
 	. = ..()
@@ -189,12 +189,12 @@
 
 	if(beaker)
 		if(beaker.reagents && length(beaker.reagents.reagent_list))
-			. += span_notice("Attached is \a [beaker] with [beaker.reagents.total_volume] units of liquid.")
+			. += span_notice("已连接\a [beaker],内含[beaker.reagents.total_volume]单位液体.")
 		else
-			. += span_notice("Attached is an empty [beaker].")
+			. += span_notice("已连接一个空的[beaker].")
 	else
-		. += span_notice("No chemicals are attached.")
-	. += span_notice("[attached ? attached : "No one"] is attached.")
+		. += span_notice("未连接任何化学试剂.")
+	. += span_notice("[attached ? attached : "No one"]已连接.")
 
 /obj/machinery/iv_drip/Destroy()
 	attached = null

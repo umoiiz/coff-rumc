@@ -3,9 +3,9 @@
 	base_probability = 0
 
 /datum/emergency_call/imperial/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>You grew up [pick("on Cadia, the guardsmen factory", "on Holy Terra, the cradle of the Imperium")] to [pick(5;"a wealthy family of nobles, but you weren't as good as they wanted you to be, so they kicked you out",95;"a poor family that let you go on your own after you reached mature age, you never saw them again")].</B>")
-	to_chat(H, "<B>You joined the Imperial Guard because [pick("you had nothing to lose, so you went with the worst, at least you could be somewhat useful", "after having your life be nothing but misery, you decided to make it even worse")].</B>")
-	to_chat(H, "<B>Wait for the Emperor to give you objectives.</B>") // admin only ERT so have admins tell them what to do
+	to_chat(H, "<B>你在[pick("on Cadia, the guardsmen factory", "on Holy Terra, the cradle of the Imperium")]长大,直到[pick(5;"a wealthy family of nobles, but you weren't as good as they wanted you to be, so they kicked you out",95;"a poor family that let you go on your own after you reached mature age, you never saw them again")].</B>")
+	to_chat(H, "<B>你加入帝国卫队是因为[pick("you had nothing to lose, so you went with the worst, at least you could be somewhat useful", "after having your life be nothing but misery, you decided to make it even worse")].</B>")
+	to_chat(H, "<B>等待皇帝给你下达目标.</B>") // admin only ERT so have admins tell them what to do
 
 /datum/emergency_call/imperial/create_member(datum/mind/M)
 	. = ..()

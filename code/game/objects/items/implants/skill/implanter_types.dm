@@ -1,48 +1,48 @@
 /obj/item/implanter/skill/firearms
-	name = "firearms skill implanter"
-	desc = "A sterile implant injector, that is usually used to implant skill increasing implants. This one will increase your firearms skills."
+	name = "枪械技能植入器"
+	desc = "一支无菌植入注射器, 通常用于植入技能增强植入体. 这支会提升你的枪械技能."
 	icon_state = "weapon"
 	internal_implant = /obj/item/implant/skill/combat/firearms
 
 /obj/item/implanter/skill/melee
-	name = "CQC skill implanter"
-	desc = "A sterile implant injector, that is usually used to implant skill increasing implants. This one will increase your CQC skills."
+	name = "近身格斗技能植入器"
+	desc = "一支无菌植入注射器, 通常用于植入技能增强植入体. 这支会提升你的近身格斗技能."
 	icon_state = "melee"
 	internal_implant = /obj/item/implant/skill/combat/melee
 
 /obj/item/implanter/skill/medical
-	name = "medical skill implanter"
-	desc = "A sterile implant injector, that is usually used to implant skill increasing implants. This one will increase your medical skills."
+	name = "医疗技能植入器"
+	desc = "一支无菌植入注射器, 通常用于植入技能增强植入体. 这支会提升你的医疗技能."
 	icon_state = "medical"
 	internal_implant = /obj/item/implant/skill/codex/medical
 
 /obj/item/implanter/skill/surgery
-	name = "surgery skill implanter"
-	desc = "A sterile implant injector, that is usually used to implant skill increasing implants. This one will increase your surgery skills."
+	name = "手术技能植入器"
+	desc = "一支无菌植入注射器, 通常用于植入技能增强植入体. 这支会提升你的手术技能."
 	icon_state = "surgery"
 	internal_implant = /obj/item/implant/skill/codex/surgery
 
 /obj/item/implanter/skill/engineer
-	name = "engineering skill implanter"
-	desc = "A sterile implant injector, that is usually used to implant skill increasing implants. This one will increase your engineering skills."
+	name = "工程技能植入器"
+	desc = "一支无菌植入注射器, 通常用于植入技能增强植入体. 这支会提升你的工程技能."
 	icon_state = "enginering"
 	internal_implant = /obj/item/implant/skill/codex/engineer
 
 /obj/item/implanter/skill/construct
-	name = "construction skill implanter"
-	desc = "A sterile implant injector, that is usually used to implant skill increasing implants. This one will increase your construction skills."
+	name = "建造技能植入器"
+	desc = "一支无菌植入注射器, 通常用于植入技能增强植入体. 这支会提升你的建造技能."
 	icon_state = "enginering"
 	internal_implant = /obj/item/implant/skill/codex/construct
 
 /obj/item/implanter/skill/leadership
-	name = "command leadership skill implanter"
-	desc = "A sterile implant injector, that is usually used to implant skill increasing implants. This one will increase your leadership skills."
+	name = "指挥领导技能植入器"
+	desc = "一支无菌植入注射器, 通常用于植入技能增强植入体. 这支会提升你的领导技能."
 	icon_state = "leadership"
 	empty_icon = "leadership_s"
 	internal_implant = /obj/item/implant/skill/tactical/leadership
 
 /obj/item/implanter/hud/medical
-	name = "Medical HUD implanter"
-	desc = "A sterile implant injector, containing a retinal medical HUD implant. Injects directly into the head."
+	name = "医疗HUD植入器"
+	desc = "一支无菌植入注射器, 内含视网膜医疗HUD植入体. 直接注入头部."
 	icon_state = "medical"
 	internal_implant = /obj/item/implant/hud/medical

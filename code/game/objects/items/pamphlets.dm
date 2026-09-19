@@ -1,7 +1,7 @@
 //skill modifying item
 /obj/item/pamphlet
-	name = "generic phamplet"
-	desc = "you shouldnt see this"
+	name = "通用手册"
+	desc = "你不应该看到这个"
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper_words"
 	w_class = WEIGHT_CLASS_TINY
@@ -33,7 +33,7 @@
 	. = ..()
 	for(var/skill in max_skills)
 		if(user.skills.getRating(skill) >= max_skills[skill])
-			balloon_alert(user, "nothing to learn!")
+			balloon_alert(user, "没什么可学的!")
 			return
 	if(!do_after(user, 5 SECONDS, NONE, user))
 		return
@@ -43,13 +43,13 @@
 	qdel(src)
 
 /obj/item/pamphlet/tank_loader
-	name = "loader's instruction manual"
-	desc = "A crude drawing depicting what you think is loading a tank gun. Is that crayon?"
+	name = "装填手操作手册"
+	desc = "一幅粗糙的图画,描绘的似乎是你认为的坦克炮装填过程.那是蜡笔画吗?"
 	large_vehicle = 1
 	max_skills = list(SKILL_LARGE_VEHICLE = SKILL_LARGE_VEHICLE_TRAINED)
 
 /obj/item/pamphlet/tank_crew
-	name = "tank crew instruction manual"
-	desc = "Operating tanks for dummies."
+	name = "坦克车组操作手册"
+	desc = "傻瓜式坦克操作指南."
 	large_vehicle = 3
 	max_skills = list(SKILL_LARGE_VEHICLE = SKILL_LARGE_VEHICLE_VETERAN)

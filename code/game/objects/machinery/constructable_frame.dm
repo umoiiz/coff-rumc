@@ -38,33 +38,33 @@
 			if(iscablecoil(I))
 				var/obj/item/stack/cable_coil/C = I
 				if(C.get_amount() < 5)
-					to_chat(user, span_warning("You need five lengths of cable to add them to the frame."))
+					to_chat(user, span_warning("你需要五段线缆才能将它们添加到框架上."))
 					return
 
 				playsound(loc, 'sound/items/deconstruct.ogg', 25, 1)
-				user.visible_message(span_notice("[user] starts adding cables to [src]."),
-				span_notice("You start adding cables to [src]."))
+				user.visible_message(span_notice("[user]开始将线缆添加到[src]."),
+				span_notice("你开始将线缆添加到[src]."))
 				if(!do_after(user, 20, NONE, src, BUSY_ICON_BUILD) || state != 1 || QDELETED(C))
 					return
 
 				if(!C.use(5))
 					return
 
-				user.visible_message(span_notice("[user] adds cables to [src]."),
-				span_notice("You add cables to [src]."))
+				user.visible_message(span_notice("[user]将线缆添加到[src]."),
+				span_notice("你将线缆添加到[src]."))
 				state = 2
 				icon_state = "box_1"
 
 			if(iswrench(I))
 				playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
-				to_chat(user, span_notice("You dismantle the frame"))
+				to_chat(user, span_notice("你拆解了框架"))
 				new /obj/item/stack/sheet/metal(loc, 5)
 				qdel(src)
 
 		if(2)
 			if(istype(I, /obj/item/circuitboard/machine))
 				playsound(loc, 'sound/items/deconstruct.ogg', 25, 1)
-				to_chat(user, span_notice("You add the circuit board to the frame."))
+				to_chat(user, span_notice("你将电路板添加到框架上."))
 				var/obj/item/circuitboard/machine/circuit = I
 				if(!user.transferItemToLoc(I, src))
 					return
@@ -83,7 +83,7 @@
 
 			if(iswirecutter(I))
 				playsound(loc, 'sound/items/wirecutter.ogg', 25, 1)
-				to_chat(user, span_notice("You remove the cables."))
+				to_chat(user, span_notice("你移除了线缆."))
 				state = 1
 				icon_state = "box_0"
 				var/obj/item/stack/cable_coil/A = new /obj/item/stack/cable_coil(loc)
@@ -96,9 +96,9 @@
 				circuit.forceMove(loc)
 				circuit = null
 				if(!length(components))
-					to_chat(user, span_notice("You remove the circuit board."))
+					to_chat(user, span_notice("你移除了电路板."))
 				else
-					to_chat(user, span_notice("You remove the circuit board and other components."))
+					to_chat(user, span_notice("你移除了电路板和其他组件."))
 					for(var/obj/item/W in components)
 						W.forceMove(loc)
 

@@ -1,10 +1,10 @@
 /datum/language/piratespeak
-	name = "Piratespeak"
-	desc = "The language of space pirates."
-	speech_verb = "says"
-	ask_verb = "asks"
-	exclaim_verb = "exclaims"
-	sing_verb = "shanties"
+	name = "海盗语"
+	desc = "太空海盗的语言."
+	speech_verb = "说"
+	ask_verb = "询问道"
+	exclaim_verb = "感叹道"
+	sing_verb = "船歌"
 	key = "p"
 	space_chance = 100
 	default_priority = 90

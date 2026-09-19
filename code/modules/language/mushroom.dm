@@ -1,11 +1,11 @@
 /datum/language/mushroom
-	name = "Mushroom"
-	desc = "A language that consists of the sound of periodic gusts of spore-filled air being released."
-	speech_verb = "puffs"
-	ask_verb = "puffs inquisitively"
-	exclaim_verb = "poofs loudly"
+	name = "蘑菇语"
+	desc = "一种由周期性释放充满孢子的气流声组成的语言."
+	speech_verb = "噗噗"
+	ask_verb = "好奇地噗噗"
+	exclaim_verb = "大声噗噗"
 	whisper_verb = "puffs quietly"
-	sing_verb = "puffs musically"
+	sing_verb = "有节奏地噗噗"
 	key = "y"
 	sentence_chance = 0
 	default_priority = 80

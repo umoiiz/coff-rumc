@@ -24,9 +24,9 @@
 	if(!(buckling_mob.buckle_flags & CAN_BE_BUCKLED) && !force)
 		if(!silent)
 			if(buckling_mob == usr)
-				balloon_alert_to_viewers("can't buckle")
+				balloon_alert_to_viewers("无法系紧")
 			else
-				balloon_alert_to_viewers("can't buckle [buckling_mob] to [src]")
+				balloon_alert_to_viewers("无法将[buckling_mob]系紧到[src]")
 		return FALSE
 
 	// This signal will check if the mob is mounting this atom to ride it. There are 3 possibilities for how this goes
@@ -127,13 +127,13 @@
 		return FALSE
 	if(!silent)
 		if(buckling_mob == user)
-			buckling_mob.visible_message(span_notice("[buckling_mob] buckles [buckling_mob.p_them()]self to [src]."),
-				span_notice("You buckle yourself to [src]."),
-				span_hear("You hear metal clanking."))
+			buckling_mob.visible_message(span_notice("[buckling_mob]将[buckling_mob.p_them()]自身系紧到[src]."),
+				span_notice("你将自己系紧到[src]."),
+				span_hear("你听到金属碰撞声."))
 		else
-			buckling_mob.visible_message(span_warning("[user] buckles [buckling_mob] to [src]!"),
-				span_warning("[user] buckles you to [src]!"),
-				span_hear("You hear metal clanking."))
+			buckling_mob.visible_message(span_warning("[user]将[buckling_mob]系紧到[src]!"),
+				span_warning("[user]将你系紧到[src]!"),
+				span_hear("你听到金属碰撞声."))
 	return TRUE
 
 
@@ -144,15 +144,15 @@
 	if(!silent)
 		if(buckled_mob == user)
 			buckled_mob.visible_message(
-				span_notice("[buckled_mob] unbuckled [buckled_mob.p_them()]self from [src]."),
-				span_notice("You unbuckle yourself from [src]."),
-				span_notice("You hear metal clanking"))
+				span_notice("[buckled_mob]将[buckled_mob.p_them()]自身从[src]解开."),
+				span_notice("你将自己从[src]解开."),
+				span_notice("你听到金属碰撞声"))
 		else
 			var/by_user = user ? " by [user]" : ""
 			buckled_mob.visible_message(
-				span_notice("[buckled_mob] was unbuckled[by_user]!"),
-				span_notice("You were unbuckled from [src][by_user]]."),
-				span_notice("You hear metal clanking."))
+				span_notice("[buckled_mob]被解开了[by_user]!"),
+				span_notice("你被从[src]解开了[by_user]\]."),
+				span_notice("你听到金属碰撞声."))
 	add_fingerprint(user, "unbuckle")
 	if(isliving(unbuckling_living.pulledby))
 		var/mob/living/pulling_living = unbuckling_living.pulledby

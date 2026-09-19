@@ -2,8 +2,8 @@
 #define HOOD "hood"
 
 /obj/item/armor_module/armor/cape
-	name = "6E Chameleon cape"
-	desc = "A chromatic cape to improve on the design of the 7E badge, this cape is capable of two colors, for all your fashion needs. It also is equipped with thermal insulators so it will double as a blanket."
+	name = "6E变色斗篷"
+	desc = "一款改进7E徽章设计的变色斗篷,这款斗篷支持两种颜色,满足你所有的时尚需求.它还配备了隔热层,因此可以兼作毯子使用."
 	icon_state = "cape"
 	slot = ATTACHMENT_SLOT_CAPE
 	attachment_layer = CAPE_LAYER
@@ -256,8 +256,8 @@
 
 /obj/item/armor_module/armor/cape/examine(user)
 	. = ..()
-	. += span_notice("Interact with <b>facepaint</b> to color or change the variant.")
-	. += span_notice("Attaches to <b>uniform</b>.")
+	. += span_notice("与<b>面部涂装</b>互动以着色或更改变体.")
+	. += span_notice("可附着于<b>制服</b>.")
 
 
 /obj/item/armor_module/armor/cape/color_item(obj/item/facepaint/paint, mob/user)
@@ -295,8 +295,8 @@
 	user.update_inv_w_uniform()
 
 /obj/item/armor_module/armor/cape/kama
-	name = "6E Chameleon kama"
-	desc = "A chromatic kama to improve on the design of the 7E badge, this kama is capable of two colors, for all your fashion needs. Hanged from the belt, it serves to flourish the lower extremities.  \n Interact with facepaint to color. Attaches onto a uniform."
+	name = "6E变色腰帘"
+	desc = "一款改进7E徽章设计的变色腰帘,这款腰帘支持两种颜色,满足你所有的时尚需求.悬挂在腰带上,用于装饰下肢. \n 与面部涂装互动以着色.可附着于制服."
 	slot = ATTACHMENT_SLOT_KAMA
 	attachment_layer = KAMA_LAYER
 	attach_features_flags = ATTACH_REMOVABLE|ATTACH_SAME_ICON|ATTACH_APPLY_ON_MOB|ATTACH_NO_HANDS
@@ -326,8 +326,8 @@
 
 
 /obj/item/armor_module/armor/cape_highlight
-	name = "Cape Highlight"
-	desc = "A cape to improve on the design of the 7E badge, this cape is capable of six colors, for all your fashion needs. This variation of the cape functions more as a scarf. \n Interact with facepaint to color. Attaches onto a uniform. Activate it to toggle the hood."
+	name = "斗篷高亮"
+	desc = "一款改进7E徽章设计的斗篷,这款斗篷支持六种颜色,满足你所有的时尚需求.这款斗篷的变体功能更接近围巾. \n 与面部涂装互动以着色.可附着于制服.激活它以切换兜帽."
 	icon_state = "highlight"
 	slot = ATTACHMENT_SLOT_CAPE_HIGHLIGHT
 	attach_features_flags = ATTACH_SAME_ICON|ATTACH_APPLY_ON_MOB|ATTACH_NO_HANDS

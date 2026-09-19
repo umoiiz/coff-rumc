@@ -28,10 +28,10 @@ export const OrbitalCannonConsole = (props) => {
     <Window title="Orbital Cannon System Control Console" width={480} height={430}>
       <Window.Content scrollable>
         {(!cannon_linked && (
-          <NoticeBox danger>No Orbital Cannon System Detected!</NoticeBox>
+          <NoticeBox danger>未检测到轨道炮系统!</NoticeBox>
         )) ||
           (!tray_linked && (
-            <NoticeBox danger>Orbital Cannon System Tray is missing!</NoticeBox>
+            <NoticeBox danger>轨道炮系统托盘缺失!</NoticeBox>
           )) || <OrbitalCannonControls />}
       </Window.Content>
     </Window>
@@ -61,9 +61,9 @@ const OrbitalCannonControls = (props) => {
 
   return (
     <>
-      <Section title="Tray Status">
+      <Section title="托盘状态">
         <Box>
-          Orbital Cannon Tray is <Box as="span" bold color={trayColor}>{trayStatus}</Box>
+          轨道炮托盘 <Box as="span" bold color={trayColor}>{trayStatus}</Box>
         </Box>
         <Box>
           {warhead ? `${warhead} Detected` : 'No Warhead Detected'}
@@ -72,7 +72,7 @@ const OrbitalCannonControls = (props) => {
           {fuel} Solid Fuel Block{fuel === 1 ? '' : 's'} Detected
         </Box>
       </Section>
-      <Section title="Tray Controls">
+      <Section title="托盘控制">
         <Button
           fluid
           mb={1}
@@ -80,7 +80,7 @@ const OrbitalCannonControls = (props) => {
           disabled={!!busy || !!loaded_tray}
           onClick={() => act('load_tray')}
         >
-          Load Tray
+          装载托盘
         </Button>
         <Button
           fluid
@@ -89,7 +89,7 @@ const OrbitalCannonControls = (props) => {
           disabled={!!busy || !loaded_tray || !!chambered_tray}
           onClick={() => act('unload_tray')}
         >
-          Unload Tray
+          卸载托盘
         </Button>
         <Button.Confirm
           fluid

@@ -12,7 +12,7 @@
 #define EARTH_PILLAR_REPAIR_AMOUNT 0.1 // percent
 
 /obj/structure/xeno/earth_pillar
-	name = "earth pillar"
+	name = "土柱"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "earth_pillar"
 	layer = MOB_BELOW_PIGGYBACK_LAYER
@@ -84,7 +84,7 @@
 	if(xeno_attacker.a_intent == INTENT_HELP)
 		// If it's at full integrity, then we don't need to do this.
 		if(obj_integrity >= max_integrity)
-			balloon_alert(xeno_attacker, "No repairs needed")
+			balloon_alert(xeno_attacker, "無需修理")
 			return
 		// While loop to make this repeat until we cancel it or finish repairing it.
 		while(do_after(xeno_attacker, EARTH_PILLAR_REPAIR_DELAY, NONE, src, BUSY_ICON_CLOCK))
@@ -95,14 +95,14 @@
 			playsound(src, SFX_BEHEMOTH_EARTH_PILLAR_HIT, 15, TRUE, 5)
 			// If it's back to full integrity, we can stop.
 			if(obj_integrity >= max_integrity)
-				balloon_alert(xeno_attacker, "Fully repaired ([obj_integrity]/[max_integrity])")
+				balloon_alert(xeno_attacker, "已完全修理([obj_integrity]/[max_integrity])")
 				return
 			balloon_alert(xeno_attacker, "+[repair_amount] ([obj_integrity]/[max_integrity])")
 	// Otherwise, we just get a cute little fluff interaction of the Behemoth eating rock.
 	xeno_attacker.do_attack_animation(src)
 	do_jitter_animation(jitter_loops = 1)
 	playsound(src, 'sound/effects/alien/behemoth/earth_pillar_eating.ogg', 30, TRUE)
-	xeno_attacker.visible_message(span_xenowarning("\The [xeno_attacker] eats away at the [src.name]!"), \
+	xeno_attacker.visible_message(span_xenowarning("\The [xeno_attacker]侵蝕著[src.name]!"), \
 	span_xenonotice(BEHEMOTH_ROCK_EATING_MESSAGES), null, 5)
 	return TRUE
 
@@ -213,7 +213,7 @@
 	animate(0.2 SECONDS, alpha = 0)
 
 /obj/item/pillar_item
-	name = "Earth Pillar"
+	name = "土柱"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "earth_pillar_held"
 	item_flags = NOBLUDGEON|DELONDROP|ITEM_ABSTRACT
@@ -233,7 +233,7 @@
 
 /datum/action/ability/activable/xeno/behemoth_seize
 	name = "Seize"
-	desc = "Dash towards a target Earth Pillar and grab it. Alternate use finds the nearest one for this purpose."
+	desc = "朝目標土柱衝刺並抓住它.再次使用會尋找最近的土柱用於此目的."
 	action_icon = 'icons/Xeno/actions/runner.dmi'
 	action_icon_state = "pounce"
 	ability_cost = 40
@@ -258,10 +258,10 @@
 	. = ..()
 	// If it's not an Earth Pillar, we don't care about it.
 	if(!isearthpillar(target))
-		xeno_owner.balloon_alert(xeno_owner, "Not an Earth Pillar")
+		xeno_owner.balloon_alert(xeno_owner, "不是土柱")
 		return
 	if(!line_of_sight(xeno_owner, target, WORLD_VIEW_NUM))
-		xeno_owner.balloon_alert(xeno_owner, "No line of sight")
+		xeno_owner.balloon_alert(xeno_owner, "沒有視線")
 		return
 	// Using this ability will automatically unbuckle us, to ensure it can happen.
 	if(xeno_owner.buckled)
@@ -289,7 +289,7 @@
 			break
 	// If we don't have a target at this point, then the ability fails.
 	if(!pillar_target)
-		xeno_owner.balloon_alert(xeno_owner, "No pillar within range")
+		xeno_owner.balloon_alert(xeno_owner, "範圍內沒有柱子")
 		return
 	dash_to_pillar(pillar_target)
 
@@ -343,7 +343,7 @@
 
 /datum/action/ability/activable/xeno/earth_riser
 	name = "Earth Riser"
-	desc = "Create or interact with an Earth Pillar. If holding one, you will instead throw it."
+	desc = "創建或與土柱互動.若手持一個,則會改為投擲它."
 	action_icon = 'icons/Xeno/actions/behemoth.dmi'
 	action_icon_state = "earth_riser"
 	cooldown_duration = 30 SECONDS
@@ -397,13 +397,13 @@
 		// If we're holding an Earth Pillar, then we want to throw it.
 		if(xeno_owner.held_pillar)
 			if(xeno_owner.plasma_stored < EARTH_RISER_THROW_COST)
-				xeno_owner.balloon_alert(xeno_owner, "Need [EARTH_RISER_THROW_COST - xeno_owner.plasma_stored] more plasma")
+				xeno_owner.balloon_alert(xeno_owner, "還需[EARTH_RISER_THROW_COST - xeno_owner.plasma_stored]電漿")
 				return
 			if(!action_COOLDOWN_FINISHED())
-				xeno_owner.balloon_alert(xeno_owner, "Wait [cooldown_remaining()] seconds!")
+				xeno_owner.balloon_alert(xeno_owner, "等待[cooldown_remaining()]秒!")
 				return
 			if(!line_of_sight(xeno_owner, target, WORLD_VIEW_NUM))
-				xeno_owner.balloon_alert(xeno_owner, "No line of sight")
+				xeno_owner.balloon_alert(xeno_owner, "沒有視線")
 				return
 			throw_pillar(get_turf(target))
 			return
@@ -413,27 +413,27 @@
 			target_pillar.when_grabbed(xeno_owner)
 			return
 	if(length(active_pillars) >= creation_limit)
-		xeno_owner.balloon_alert(xeno_owner, "Creation limit reached ([creation_limit])")
+		xeno_owner.balloon_alert(xeno_owner, "已達創建上限([creation_limit])")
 		return
 	if(xeno_owner.plasma_stored < EARTH_RISER_CREATION_COST)
-		xeno_owner.balloon_alert(xeno_owner, "Need [EARTH_RISER_CREATION_COST - xeno_owner.plasma_stored] more plasma")
+		xeno_owner.balloon_alert(xeno_owner, "還需[EARTH_RISER_CREATION_COST - xeno_owner.plasma_stored]電漿")
 		return
 	if(!action_COOLDOWN_FINISHED())
-		xeno_owner.balloon_alert(xeno_owner, "Wait [cooldown_remaining()] seconds!")
+		xeno_owner.balloon_alert(xeno_owner, "等待[cooldown_remaining()]秒!")
 		return
 	target = get_turf(target)
 	if((xeno_owner.client?.prefs?.toggles_gameplay & DIRECTIONAL_ATTACKS) && get_dist(xeno_owner, target) > EARTH_RISER_CREATION_RANGE) // When directional attacks are enabled, if the distance to our target exceeds the range, we correct the target.
 		var/list/turf/line_to_target = get_line(xeno_owner, target)
 		target = line_to_target[EARTH_RISER_CREATION_RANGE + 1] // Gives us the intended tile.
 	if(!line_of_sight(xeno_owner, target, WORLD_VIEW_NUM)) // Check it again after correcting the target.
-		xeno_owner.balloon_alert(xeno_owner, "No line of sight")
+		xeno_owner.balloon_alert(xeno_owner, "沒有視線")
 		return
 	for(var/atom/atom_checked AS in target)
 		if(!isobj(atom_checked))
 			continue
 		var/obj/object_checked = atom_checked
 		if(object_checked.density && !(object_checked.allow_pass_flags & (PASS_MOB|PASS_XENO)) || object_checked.obj_flags & BLOCKS_CONSTRUCTION)
-			xeno_owner.balloon_alert(xeno_owner, "Blocked")
+			xeno_owner.balloon_alert(xeno_owner, "受阻")
 			return
 	create_pillar(target)
 
@@ -442,7 +442,7 @@
 	if(!can_use_action(FALSE))
 		return
 	if(!length(active_pillars))
-		xeno_owner.balloon_alert(xeno_owner, "No active pillars")
+		xeno_owner.balloon_alert(xeno_owner, "沒有可用柱子")
 		return
 	var/obj/structure/xeno/earth_pillar/oldest_pillar = popleft(active_pillars)
 	qdel(oldest_pillar)
@@ -599,7 +599,7 @@
 
 /datum/action/ability/activable/xeno/landslide
 	name = "Landslide"
-	desc = "Charge forward in the nearest cardinal direction, affecting eligible targets in a wide path."
+	desc = "朝最近的基準方向衝鋒,影響寬闊路徑上的合格目標."
 	action_icon = 'icons/Xeno/actions/behemoth.dmi'
 	action_icon_state = "landslide"
 	ability_cost = 40
@@ -618,7 +618,7 @@
 	if(xeno_owner.stat >= DEAD)
 		return
 	xeno_owner.playsound_local(xeno_owner, 'sound/effects/alien/newlarva.ogg', 20, 0)
-	xeno_owner.balloon_alert(xeno_owner, "[initial(name)] ready")
+	xeno_owner.balloon_alert(xeno_owner, "[initial(name)]就緒")
 
 /datum/action/ability/activable/xeno/landslide/can_use_action(silent, override_flags, selecting)
 	. = ..()
@@ -636,7 +636,7 @@
 	target = get_ranged_target_turf(target, direction, LANDSLIDE_RANGE)
 	// If the tile in front of us is blocked, or if we're targeting the tile we're on, we abort.
 	if(LinkBlocked(xeno_owner.loc, get_step(xeno_owner, direction), pass_flags_checked = PASS_AIR) || xeno_owner.loc == get_turf(target))
-		xeno_owner.balloon_alert(xeno_owner, "No space!")
+		xeno_owner.balloon_alert(xeno_owner, "沒有空間!")
 		return
 	xeno_owner.set_canmove(FALSE)
 	xeno_owner.face_atom(target)
@@ -900,7 +900,7 @@
 
 /datum/action/ability/activable/xeno/geocrush
 	name = "Geocrush"
-	desc = "Attack a target, dealing heavy damage and applying various debuffs; you can also detonate the pillar remotely or push it if you are standing right next to it."
+	desc = "攻擊目標,造成大量傷害並施加各種減益;你也可以遠端引爆柱子,或者若你緊鄰柱子站立則可推動它."
 	action_icon = 'icons/Xeno/actions/behemoth.dmi'
 	action_icon_state = "geocrush"
 	ability_cost = 40
@@ -918,7 +918,7 @@
 	if(xeno_owner.stat >= DEAD)
 		return
 	xeno_owner.playsound_local(xeno_owner, 'sound/effects/alien/newlarva.ogg', 20, 0)
-	xeno_owner.balloon_alert(xeno_owner, "[initial(name)] ready")
+	xeno_owner.balloon_alert(xeno_owner, "[initial(name)]就緒")
 
 /datum/action/ability/activable/xeno/geocrush/proc/geocrush_pillar_explosion(obj/structure/xeno/earth_pillar/pillar, turf/target_turf)
 	if(QDELETED(pillar))
@@ -937,7 +937,7 @@
 	if(isearthpillar(target))
 		if(!target.Adjacent(xeno_owner))
 			if(get_dist(xeno_owner, target) > EARTH_RISER_THROW_RANGE || !line_of_sight(xeno_owner, target, EARTH_RISER_THROW_RANGE))
-				xeno_owner.balloon_alert(xeno_owner, "Out of range or no line of sight")
+				xeno_owner.balloon_alert(xeno_owner, "超出範圍或沒有視線")
 				return
 			var/obj/structure/xeno/earth_pillar/pillar = target
 			var/list/turf/affected_turfs = filled_circle_turfs(get_turf(pillar), EARTH_RISER_THROW_RADIUS)
@@ -969,7 +969,7 @@
 					break
 			// If we STILL don't have a new target at this point, we assume there's nothing valid, so we stop.
 			if(!new_target)
-				xeno_owner.balloon_alert(xeno_owner, "Invalid target")
+				xeno_owner.balloon_alert(xeno_owner, "無效目標")
 				return
 			// Otherwise, we replace the target and keep going.
 			target = new_target
@@ -980,18 +980,18 @@
 
 ///////////////////// TARGET CHECKS /////////////////////
 	if(!isliving(target) && !isstructure(target) && !ismachinery(target) && !isvehicle(target))
-		xeno_owner.balloon_alert(xeno_owner, "Invalid target")
+		xeno_owner.balloon_alert(xeno_owner, "無效目標")
 		return
 	if(target.resistance_flags & (INDESTRUCTIBLE|CRUSHER_IMMUNE))
-		xeno_owner.balloon_alert(xeno_owner, "Cannot damage")
+		xeno_owner.balloon_alert(xeno_owner, "無法造成傷害")
 		return
 	if(isliving(target))
 		var/mob/living/living_target = target
 		if(xeno_owner.issamexenohive(living_target))
-			xeno_owner.balloon_alert(xeno_owner, "Cannot use on allies")
+			xeno_owner.balloon_alert(xeno_owner, "無法對盟友使用")
 			return
 		if(living_target.stat == DEAD)
-			xeno_owner.balloon_alert(xeno_owner, "Target is dead")
+			xeno_owner.balloon_alert(xeno_owner, "目標已死亡")
 			return
 
 ///////////////////// THE ACTUAL ABILITY /////////////////////
@@ -1117,7 +1117,7 @@
 	name = "Primal Wrath"
 	action_icon = 'icons/Xeno/actions/behemoth.dmi'
 	action_icon_state = "primal_wrath"
-	desc = "Recover all damage recently received, and gain a brief moment of invulnerability, in exchange for a stacking debuff."
+	desc = "恢復近期受到的所有傷害,並獲得短暫的無敵時間,代價是獲得一層可堆疊的減益."
 	ability_cost = 100
 	cooldown_duration = 90 SECONDS
 	action_type = ACTION_TOGGLE
@@ -1165,7 +1165,7 @@
 	if(xeno_owner.stat >= DEAD)
 		return
 	xeno_owner.playsound_local(xeno_owner, 'sound/effects/alien/newlarva.ogg', 20, 0)
-	xeno_owner.balloon_alert(xeno_owner, "[initial(name)] ready")
+	xeno_owner.balloon_alert(xeno_owner, "[initial(name)]就緒")
 	RegisterSignals(xeno_owner, list(COMSIG_XENOMORPH_BRUTE_DAMAGE, COMSIG_XENOMORPH_BURN_DAMAGE), PROC_REF(on_damage))
 
 /datum/action/ability/xeno_action/primal_wrath/can_use_action(silent, override_flags, selecting)
@@ -1174,7 +1174,7 @@
 		return
 	if(debuff_counter >= PRIMAL_WRATH_DEBUFF_LIMIT)
 		if(!silent)
-			xeno_owner.balloon_alert(xeno_owner, "[initial(name)]'s limit reached")
+			xeno_owner.balloon_alert(xeno_owner, "已達[initial(name)]的上限")
 		return FALSE
 
 /datum/action/ability/xeno_action/primal_wrath/action_activate()

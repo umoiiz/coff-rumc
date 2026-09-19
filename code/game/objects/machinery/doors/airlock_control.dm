@@ -165,7 +165,7 @@
 	if(.)
 		return
 	if(!allowed(user))
-		to_chat(user, span_warning("Access Denied"))
+		to_chat(user, span_warning("拒绝进入"))
 
 	else if(radio_connection)
 		var/datum/signal/signal = new

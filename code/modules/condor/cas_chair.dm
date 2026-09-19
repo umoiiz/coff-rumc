@@ -1,5 +1,5 @@
 /obj/structure/caspart/caschair
-	name = "\improper Condor Jet pilot seat"
+	name = "\improper 秃鹰喷气机驾驶座"
 	icon_state = "chair"
 	layer = ABOVE_MOB_LAYER
 	req_access = list(ACCESS_MARINE_PILOT)
@@ -33,14 +33,14 @@
 	SIGNAL_HANDLER
 	playsound(src, 'sound/effects/binoctarget.ogg', 15)
 	if(occupant)
-		to_chat(occupant, span_notice("CAS laser detected, [incoming_laser.name] [CAS_JUMP_LINK(incoming_laser)]"))
+		to_chat(occupant, span_notice("检测到CAS激光,[incoming_laser.name] [CAS_JUMP_LINK(incoming_laser)]"))
 
 /obj/structure/caspart/caschair/proc/cas_usable(datum/source)
 	SIGNAL_HANDLER
 	UnregisterSignal(SSdcs, list(COMSIG_GLOB_OPEN_TIMED_SHUTTERS_LATE, COMSIG_GLOB_OPEN_SHUTTERS_EARLY, COMSIG_GLOB_TADPOLE_LANDED_OUT_LZ))
 	cas_usable = TRUE
 	if(occupant)
-		to_chat(occupant, span_notice("Combat initiated, CAS now available."))
+		to_chat(occupant, span_notice("战斗已开始,CAS现已可用."))
 
 ///Handles updating the cockpit overlay
 /obj/structure/caspart/caschair/proc/set_cockpit_overlay(new_state)
@@ -59,7 +59,7 @@
 
 /obj/structure/caspart/caschair/attack_hand(mob/living/user)
 	if(!allowed(user))
-		to_chat(user, span_warning("Access denied!"))
+		to_chat(user, span_warning("访问被拒绝!"))
 		return
 
 	switch(owner.state)
@@ -71,7 +71,7 @@
 			return
 
 		if(PLANE_STATE_PREPARED, PLANE_STATE_FLYING)
-			to_chat(user, span_warning("The plane is in-flight!"))
+			to_chat(user, span_warning("飞机正在飞行中!"))
 			return
 
 		if(PLANE_STATE_ACTIVATED)
@@ -80,17 +80,17 @@
 				return
 
 			else if(occupant)
-				to_chat(user, span_warning("Someone is already inside!"))
+				to_chat(user, span_warning("已经有人在里面了!"))
 				return
 
-			to_chat(user, span_notice("You start climbing into the cockpit..."))
+			to_chat(user, span_notice("你开始爬进驾驶舱..."))
 			if(!do_after(user, 2 SECONDS, NONE, src))
 				return
 
-			user.visible_message(span_notice("[user] climbs into the plane cockpit!"), span_notice("You get in the seat!"))
+			user.visible_message(span_notice("[user]爬进了飞机驾驶舱!"), span_notice("你坐进了座位!"))
 
 			if(occupant)
-				to_chat(user, span_warning("[occupant] got in before you!"))
+				to_chat(user, span_warning("[occupant]比你先坐了进去!"))
 				return
 
 			user.forceMove(src)
@@ -105,21 +105,21 @@
 	if(!istype(I, /obj/item/reagent_containers/jerrycan))
 		return ..()
 	if(owner.state == PLANE_STATE_FLYING)
-		to_chat(user, span_warning("You can't refuel mid-air!"))
+		to_chat(user, span_warning("你无法在空中加油!"))
 		return
 	var/obj/item/reagent_containers/jerrycan/gascan = I
 	if(gascan.reagents.total_volume == 0)
-		to_chat(user, span_warning("Out of fuel!"))
+		to_chat(user, span_warning("燃料耗尽!"))
 		return
 	if(owner.fuel_left >= owner.fuel_max)
-		to_chat(user, span_notice("The plane is already fully fuelled!"))
+		to_chat(user, span_notice("飞机已经加满燃料了!"))
 		return
 
 	var/fuel_transfer_amount = min(gascan.fuel_usage*2, gascan.reagents.total_volume)
 	gascan.reagents.remove_reagent(/datum/reagent/fuel, fuel_transfer_amount)
 	owner.fuel_left = min(owner.fuel_left + CAS_FUEL_PER_CAN_POUR, owner.fuel_max)
 	playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
-	to_chat(user, span_notice("You refill the plane with fuel. New fuel level [owner.fuel_left/owner.fuel_max*100]%"))
+	to_chat(user, span_notice("你为飞机补充了燃料.新燃料量[owner.fuel_left/owner.fuel_max*100]%"))
 
 /obj/structure/caspart/caschair/resisted_against(datum/source)
 	if(owner.state)
@@ -131,9 +131,9 @@
 /obj/structure/caspart/caschair/proc/eject_user(forced = FALSE)
 	if(!forced)
 		if(SSmapping.level_trait(z, ZTRAIT_RESERVED))
-			to_chat(occupant, span_notice("Getting out of the cockpit while flying seems like a bad idea to you."))
+			to_chat(occupant, span_notice("在飞行时离开驾驶舱对你来说似乎是个坏主意."))
 			return
-		to_chat(occupant, span_notice("You start getting out of the cockpit."))
+		to_chat(occupant, span_notice("你开始离开驾驶舱."))
 		if(!do_after(occupant, 2 SECONDS, NONE, src))
 			return
 	set_cockpit_overlay("cockpit_opening")
@@ -145,11 +145,11 @@
 
 /obj/structure/caspart/caschair/attack_alien(mob/living/carbon/xenomorph/xeno_attacker, damage_amount, damage_type, damage_flag, effects, armor_penetration, isrightclick)
 	if(!occupant)
-		to_chat(xeno_attacker, span_xenowarning("There is nothing of interest in there."))
+		to_chat(xeno_attacker, span_xenowarning("那里面没有任何有趣的东西."))
 		return
 	if(xeno_attacker.status_flags & INCORPOREAL || xeno_attacker.do_actions)
 		return
-	visible_message(span_warning("[xeno_attacker] begins to pry the [src]'s cover!"), 3)
+	visible_message(span_warning("[xeno_attacker]开始撬开[src]的盖子!"), 3)
 	playsound(src,'sound/effects/metal_creaking.ogg', 25, 1)
 	if(!do_after(xeno_attacker, 2 SECONDS))
 		return
@@ -203,12 +203,12 @@
 	switch(action)
 		if("launch")
 			if(!cas_usable)
-				to_chat(usr, span_warning("Combat has not yet initiated, CAS unavailable."))
+				to_chat(usr, span_warning("战斗尚未开始,CAS不可用."))
 				return
 			if(owner.state == PLANE_STATE_FLYING || owner.mode != SHUTTLE_IDLE)
 				return
 			if(owner.fuel_left <= LOW_FUEL_THRESHOLD)
-				to_chat(usr, span_warning("Unable to launch, low fuel."))
+				to_chat(usr, span_warning("无法起飞,燃料不足."))
 				return
 			SSshuttle.moveShuttleToDock(owner.shuttle_id, SSshuttle.generate_transit_dock(owner), TRUE)
 			owner.currently_returning = FALSE

@@ -20,5 +20,5 @@
 /datum/round_event/intel_computer/proc/activate(obj/machinery/computer/intel_computer/I)
 	I.active = TRUE
 	I.update_minimap_icon()
-	priority_announce("Обнаружена ценная информация в [get_area(I)]. Если эти данные будут восстановлены наземными силами, будет выдано вознаграждение.", title = "Отдел Разведки UPP", sound = 'sound/AI/bonus_found.ogg')
+	priority_announce("在[get_area(I)]中发现了有价值的情报。如果这些数据被地面部队回收, 将会发放奖励。", title = "UPP情报部门", sound = 'sound/AI/bonus_found.ogg')
 	xeno_message("Кажется в [get_area(I)] есть что-то полезное для морпехов. Следует держать их подальше от этого места.")

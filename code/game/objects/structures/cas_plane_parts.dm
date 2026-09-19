@@ -74,7 +74,7 @@
 
 /turf/closed/shuttle/cas/computer
 	name = "Condor piloting computer"
-	desc = "Does not support Pinball."
+	desc = "不支持弹球。"
 	icon_state = "cockpit"
 
 /turf/closed/shuttle/cas/computer/Initialize(mapload)
@@ -173,7 +173,7 @@
 
 ///Base cas plane structure, we use this instead of turfs if we want to peek onto the turfs below
 /obj/structure/caspart
-	name = "\improper Condor Jet"
+	name = "\improper 秃鹰喷气机"
 	icon = 'icons/obj/structures/cas/ship.dmi'
 	icon_state = "2"
 	layer = OBJ_LAYER
@@ -203,8 +203,8 @@
 	add_overlay(overlay)
 
 /obj/structure/caspart/minigun
-	name = "\improper Condor Jet minigun"
-	desc = " A terrifying radial-mounted GAU-30mm minigun. You don't want to be on the wrong end of this."
+	name = "\improper 秃鹰喷气机转轮机枪"
+	desc = " 一把可怕的径向安装GAU-30毫米转轮机枪. 你不会想站在它的枪口前的."
 	icon_state = "1"
 	///static weapon we start with at the tip
 	var/static_weapon_type = /obj/structure/dropship_equipment/cas/weapon/heavygun/radial_cas

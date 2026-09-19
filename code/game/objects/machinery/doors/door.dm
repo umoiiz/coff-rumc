@@ -1,6 +1,6 @@
 /obj/machinery/door
 	name = "\improper Door"
-	desc = "It opens and closes."
+	desc = "它会开也会关."
 	icon = 'icons/obj/doors/Doorint.dmi'
 	icon_state = "door1"
 	anchored = TRUE

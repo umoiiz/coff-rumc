@@ -100,7 +100,7 @@
 /obj/handle_airdrop(turf/target)
 	. = ..()
 	if(!CHECK_BITFIELD(resistance_flags, INDESTRUCTIBLE) && prob(30)) // throwing objects from the air is not always a good idea
-		visible_message(span_danger("[src] falls out of the sky and mangles into the uselessness by the impact!"))
+		visible_message(span_danger("[src]从天空中坠落,在撞击中摔得粉碎,变得毫无用处!"))
 		playsound(src, 'sound/effects/metal_crash.ogg', 35, 1)
 		deconstruct(FALSE)
 
@@ -122,7 +122,7 @@
 	if(QDELETED(src))
 		return
 	if(!CHECK_BITFIELD(resistance_flags, INDESTRUCTIBLE) && w_class < WEIGHT_CLASS_NORMAL) //tiny and small items will be lost, good riddance
-		visible_message(span_danger("[src] falls out of the sky and mangles into the uselessness by the impact!"))
+		visible_message(span_danger("[src]从天空中坠落,在撞击中摔得粉碎,变得毫无用处!"))
 		playsound(src, 'sound/effects/metal_crash.ogg', 35, 1)
 		deconstruct(FALSE)
 		return
@@ -146,7 +146,7 @@
 	take_overall_damage(300, BRUTE, BOMB, updating_health = TRUE)
 	take_overall_damage(300, BRUTE, MELEE, updating_health = TRUE)
 	spawn_gibs()
-	visible_message(span_warning("[src] falls out of the sky."), span_userdanger("As you fall out of the sky, you plummet towards the ground."))
+	visible_message(span_warning("[src]从天空中坠落."), span_userdanger("当你从天空中坠落时,你朝着地面直坠而下."))
 
 /mob/living/carbon/human/handle_airdrop(turf/target_turf)
 	. = ..()

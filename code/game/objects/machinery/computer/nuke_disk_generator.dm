@@ -1,12 +1,12 @@
 // -- Print disk computer
 /obj/item/circuitboard/computer/nuke_disk_generator
-	name = "circuit board (nuke disk generator)"
+	name = "电路板(核弹磁盘生成器)"
 	build_path = /obj/machinery/computer/nuke_disk_generator
 
 
 /obj/machinery/computer/nuke_disk_generator
 	name = "nuke disk generator"
-	desc = "Used to generate the correct auth discs for the nuke."
+	desc = "用于为核弹生成正确的授权磁盘."
 	icon_state = "computer"
 	screen_overlay = "nuke_red"
 	broken_icon = "computer_red_broken"
@@ -80,7 +80,7 @@
 	deltimer(current_timer)
 	current_timer = null
 	update_minimap_icon()
-	visible_message("<b>[src]</b> shuts down as it loses power. Any running programs will now exit")
+	visible_message("<b>[src]</b>因断电而关闭.所有正在运行的程序都将退出")
 
 /obj/machinery/computer/nuke_disk_generator/attackby(obj/item/I, mob/living/user, params)
 	return attack_hand(user)
@@ -92,12 +92,12 @@
 		return
 
 	if(xeno_attacker.do_actions)
-		return balloon_alert(xeno_attacker, "busy")
+		return balloon_alert(xeno_attacker, "忙碌")
 	if(!do_after(xeno_attacker, 2 SECONDS, NONE, src, BUSY_ICON_DANGER, BUSY_ICON_HOSTILE))
 		return
 	xeno_attacker.do_attack_animation(src, ATTACK_EFFECT_CLAW)
-	xeno_attacker.visible_message(span_danger("[xeno_attacker] slashes \the [src]!"), \
-	span_danger("We slash \the [src]!"), null, 5)
+	xeno_attacker.visible_message(span_danger("[xeno_attacker]劈砍\the [src]!"), \
+	span_danger("我们劈砍\the [src]!"), null, 5)
 	playsound(loc, SFX_ALIEN_CLAW_METAL, 25, TRUE)
 
 	seconds_elapsed = (segment_time * 0.1) * completed_segments
@@ -105,7 +105,7 @@
 	deltimer(current_timer)
 	current_timer = null
 	update_minimap_icon()
-	visible_message("<b>[src]</b> shuts down. Any running programs will now exit")
+	visible_message("<b>[src]</b>关闭了.所有正在运行的程序都将退出")
 
 /obj/machinery/computer/nuke_disk_generator/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -152,26 +152,26 @@
 	switch(action)
 		if("run_program")
 			if(busy || current_timer)
-				to_chat(usr, span_warning("A program is already running."))
+				to_chat(usr, span_warning("已有程序正在运行."))
 				return
 
 			if(completed_segments == total_segments) //If we're done, there's no need to run a segment again
 				busy = TRUE
 
-				usr.visible_message("[usr] started a program to generate a new copy of the program.", "You started a program to generate a new copy of the program.")
+				usr.visible_message("[usr]启动了一个程序来生成该程序的新副本.", "你启动了一个程序来生成该程序的新副本.")
 				if(!do_after(usr, printing_time, NONE, src, BUSY_ICON_GENERIC, null, null, CALLBACK(src, TYPE_PROC_REF(/datum, process))))
 					busy = FALSE
 					return
 
 				new disk_type(get_turf(src))
-				visible_message(span_notice("[src] beeps as it finishes printing the disc."))
+				visible_message(span_notice("[src]在完成光盘打印时发出哔哔声."))
 				SEND_GLOBAL_SIGNAL(COMSIG_GLOB_DISK_GENERATED, src)
 				busy = FALSE
 				return
 
 			busy = TRUE
 
-			usr.visible_message("[usr] started a program to generate a nuclear disk code.", "You started a program to generate a nuclear disk code.")
+			usr.visible_message("[usr]启动了一个生成核弹盘代码的程序.", "你启动了一个生成核弹盘代码的程序.")
 			if(!do_after(usr, start_time, NONE, src, BUSY_ICON_GENERIC, null, null, CALLBACK(src, TYPE_PROC_REF(/datum, process))))
 				busy = FALSE
 				return
@@ -194,14 +194,14 @@
 	running = FALSE
 
 	if(completed_segments == total_segments)
-		visible_message(span_notice("[src] beeps as it ready to print."))
+		visible_message(span_notice("[src]在准备打印时发出哔哔声."))
 		return
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_DISK_PROGRESS, src)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_AI_MINION_RALLY, src)
 	global_rally_zombies(src, TRUE)
 
-	visible_message(span_notice("[src] beeps as it's program requires attention."))
+	visible_message(span_notice("[src]发出哔哔声,因为它的程序需要处理."))
 
 ///Change minimap icon if its on or off
 /obj/machinery/computer/nuke_disk_generator/proc/update_minimap_icon()
@@ -233,8 +233,8 @@ GLOBAL_LIST_INIT(nuke_disk_generator_types, list(/obj/machinery/computer/nuke_di
 /obj/structure/nuke_disk_candidate
 	icon = 'icons/obj/machines/computer.dmi'
 	icon_state = "nuke_rand"
-	name = "computer"
-	desc = "Some dusty old computer. Looks non-functional"
+	name = "电脑"
+	desc = "某台积满灰尘的旧电脑.看起来无法运行"
 	density = TRUE
 	anchored = TRUE
 	resistance_flags = RESIST_ALL

@@ -536,7 +536,7 @@
 	var/area/ourarea = loc
 	if(ourarea.area_flags & DISALLOW_WEEDING)
 		if(!silent)
-			to_chat(builder, span_warning("We cannot build in this area before the talls are out!"))
+			to_chat(builder, span_warning("在高个子们出来之前我们无法在此区域建造!"))
 		return FALSE
 	return TRUE
 
@@ -551,19 +551,19 @@
 			var/obj/item/clothing/mask/facehugger/hugger_check = O
 			if(hugger_check.stat != DEAD) //We don't care about dead huggers.
 				if(!silent)
-					to_chat(builder, span_warning("There is a little one here already. Best move it."))
+					to_chat(builder, span_warning("这里已经有一个小家伙了.最好把它移开."))
 				return FALSE
 		if(istype(O, /obj/alien/egg))
 			if(!silent)
-				to_chat(builder, span_warning("There's already an egg here."))
+				to_chat(builder, span_warning("这里已经有一个蛋了."))
 			return FALSE
 		if(istype(O, /obj/structure/xeno))
 			if(!silent)
-				to_chat(builder, span_warning("There's already a resin structure here!"))
+				to_chat(builder, span_warning("这里已经有一个树脂结构了!"))
 			return FALSE
 		if(istype(O, /obj/structure/xeno/plant))
 			if(!silent)
-				to_chat(builder, span_warning("There is a plant growing here, destroying it would be a waste to the hive."))
+				to_chat(builder, span_warning("这里长着一株植物,摧毁它会是蜂巢的浪费."))
 			return FALSE
 		if(istype(O, /obj/structure/mineral_door) || istype(O, /obj/structure/ladder) || istype(O, /obj/alien/resin))
 			has_obstacle = TRUE
@@ -594,13 +594,13 @@
 
 	if(density || has_obstacle)
 		if(!silent)
-			to_chat(builder, span_warning("There's something built here already."))
+			to_chat(builder, span_warning("这里已经建了什么东西了."))
 		return FALSE
 	return TRUE
 
 /turf/closed/check_alien_construction(mob/living/builder, silent = FALSE, planned_building)
 	if(!silent)
-		to_chat(builder, span_warning("There's something built here already."))
+		to_chat(builder, span_warning("这里已经建了什么东西了."))
 	return FALSE
 
 /turf/proc/can_dig_xeno_tunnel()
@@ -826,7 +826,7 @@
 
 /turf/baseturf_bottom
 	name = "Z-level baseturf placeholder"
-	desc = "Marker for z-level baseturf, usually resolves to space."
+	desc = "z轴基础地形的标记,通常解析为太空."
 	baseturfs = /turf/baseturf_bottom
 
 /turf/proc/add_vomit_floor(mob/living/carbon/M, toxvomit = 0)

@@ -1,6 +1,6 @@
 /obj/machinery/deployable/reagent_tank
 	name = "portable reagent dispenser"
-	desc = "A large vessel for transporting chemicals. Has a cabinet for storing chemical supplies."
+	desc = "用于运输化学品的大型容器. 带有一个用于存放化学用品的柜子."
 	resistance_flags = XENO_DAMAGEABLE
 	density = TRUE
 	max_integrity = 200
@@ -74,22 +74,22 @@
 ///Process for drinking reagents directly from the dispenser's nozzle
 /obj/machinery/deployable/reagent_tank/proc/drink_from_nozzle(mob/living/user, is_xeno = FALSE)
 	if(isrobot(user) || issynth(user))
-		balloon_alert(user, "You are incapable of drinking!")
+		balloon_alert(user, "你无法饮用!")
 		return FALSE
 	if(reagents?.total_volume)
 		if(!is_xeno)
 			//Everyone will be made aware of your nasty habits!
-			visible_message(span_alert("[user] is putting [user.p_their()] mouth on [src]'s nozzle. Gross!"))
+			visible_message(span_alert("[user]正在把[user.p_their()]的嘴放到[src]的管口上. 真恶心!"))
 		if(!do_after(user, 0.5 SECONDS, IGNORE_HELD_ITEM, src, BUSY_ICON_DANGER))
 			return FALSE
 		if(is_xeno)
-			visible_message(span_alert("[user] sips from [src]'s nozzle. Adorable."))
+			visible_message(span_alert("[user]从[src]的管口啜饮. 真可爱."))
 		record_sippies(5, reagents.reagent_list, user)
 		playsound(user.loc,'sound/items/drink.ogg', 25, 2)
 		reagents.reaction(user, INGEST)
 		reagents.trans_to(user, 5, transfer_to_stomach = TRUE)
 		return TRUE
-	balloon_alert(user, "It's empty!")
+	balloon_alert(user, "它是空的!")
 
 /obj/machinery/deployable/reagent_tank/attackby(obj/item/I, mob/user, params)
 	if(I.is_refillable())
@@ -98,11 +98,11 @@
 
 /obj/machinery/deployable/reagent_tank/AltClick(mob/user)
 	if(is_refillable())
-		balloon_alert(user, "Dispense mode!")
+		balloon_alert(user, "分配模式!")
 		reagents.reagent_flags &= ~REFILLABLE
 		reagents.reagent_flags |= DRAINABLE
 	else
-		balloon_alert(user, "Refill mode!")
+		balloon_alert(user, "补充模式!")
 		reagents.reagent_flags &= ~DRAINABLE
 		reagents.reagent_flags |= REFILLABLE
 	playsound(src, 'sound/effects/pop.ogg', 100)
@@ -116,8 +116,8 @@
 	return ..()
 
 /obj/item/storage/reagent_tank
-	name = "portable reagent dispenser"
-	desc = "A large vessel for transporting chemicals. Has a cabinet for storing chemical supplies."
+	name = "便携式试剂分配器"
+	desc = "用于运输化学品的大型容器. 带有一个用于存放化学用品的柜子."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "dispenser"
 	worn_icon_state_worn = TRUE
@@ -174,27 +174,27 @@
 	return ..()
 
 /obj/item/storage/reagent_tank/do_quick_equip(mob/user)
-	balloon_alert(user, "Not deployed")
+	balloon_alert(user, "未部署")
 
 //Preset tanks so you can have these ready for a round and not need to drain the chem master's energy
 /obj/item/storage/reagent_tank/bicaridine
-	name = "portable Bicaridine dispenser"
+	name = "便携式双卡因分配器"
 	starting_reagents = list(/datum/reagent/medicine/bicaridine = 3000)
 
 /obj/item/storage/reagent_tank/kelotane
-	name = "portable Kelotane dispenser"
+	name = "便携式凯洛坦分配器"
 	starting_reagents = list(/datum/reagent/medicine/kelotane = 3000)
 
 /obj/item/storage/reagent_tank/tramadol
-	name = "portable Tramadol dispenser"
+	name = "便携式曲马多分配器"
 	starting_reagents = list(/datum/reagent/medicine/tramadol = 3000)
 
 /obj/item/storage/reagent_tank/tricordrazine
-	name = "portable Tricordrazine dispenser"
+	name = "便携式三科德拉嗪分配器"
 	starting_reagents = list(/datum/reagent/medicine/tricordrazine = 3000)
 
 /obj/item/storage/reagent_tank/bktt
-	name = "portable BKTT-mix dispenser"
+	name = "便携式BKTT混合分配器"
 	starting_reagents = list(
 		/datum/reagent/medicine/bicaridine = 750,
 		/datum/reagent/medicine/kelotane = 750,

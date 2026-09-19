@@ -1,7 +1,7 @@
 //drones that can be deployed and undeployed
 /obj/item/deployable_vehicle
-	name = "\improper UV-L Iguana"
-	desc = "An Iguana B-type drone, ready to be deployed."
+	name = "\improper UV-L 鬣蜥"
+	desc = "一台鬣蜥B型无人机, 已准备部署."
 	icon = 'icons/obj/unmanned_vehicles.dmi'
 	icon_state = "light_uv_folded"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -25,7 +25,7 @@
 
 /obj/vehicle/unmanned/deployable
 	name = "UV-L Iguana"
-	desc = "A small remote-controllable vehicle, usually owned by the TGMC and other major armies. This one is configured to be foldable for portability."
+	desc = "一种小型遥控载具, 通常由TGMC和其他主要军队拥有. 这台被配置为可折叠以便携带."
 	///Whether this item can be deployed or undeployed
 	var/deploy_flags = IS_DEPLOYABLE
 	///What it deploys into. typecast version of internal_item
@@ -71,8 +71,8 @@
 		current_internal_item?.stored_ammo = current_rounds
 
 /obj/item/deployable_vehicle/tiny
-	name = "\improper UV-T Skink"
-	desc = "A Skink B-type drone, ready to be deployed."
+	name = "\improper UV-T 石龙子"
+	desc = "一台石龙子B型无人机, 已准备部署."
 	icon_state = "tiny_uv_folded"
 	max_integrity = 50
 	w_class = WEIGHT_CLASS_SMALL
@@ -93,8 +93,8 @@
 	allow_explosives = FALSE
 
 /obj/structure/closet/crate/uvt_crate
-	name = "\improper UV-T Skink Crate"
-	desc = "A crate containing a scouting drone and a controller."
+	name = "\improper UV-T 石龙子箱"
+	desc = "一个装有侦察无人机和控制器的箱子."
 	icon = 'icons/obj/structures/crates.dmi'
 	icon_state = "closed_weapons"
 	icon_opened = "open_weapons"

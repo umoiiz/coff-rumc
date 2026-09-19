@@ -2,8 +2,8 @@
 // *********** Modular Style Line
 // ***************************************
 /obj/item/clothing/suit/modular/style
-	name = "\improper Drip"
-	desc = "They got that drip, doe."
+	name = "\improper 潮服"
+	desc = "他们穿得可真潮."
 	item_map_variant_flags = NONE
 	allowed_uniform_type = /obj/item/clothing/under
 	icon = 'icons/obj/clothing/suits/marine_suits.dmi'
@@ -30,8 +30,8 @@
 	. += jointext(codex_info, "<br>")
 
 /obj/item/clothing/suit/modular/style/leather_jacket
-	name = "\improper leather jacket"
-	desc = "A fashionable jacket. Get them with style."
+	name = "\improper 皮夹克"
+	desc = "一件时尚的夹克.用风格击败他们."
 	icon_state = "leather_jacket"
 	worn_icon_state = "leather_jacket_worn"
 	icon_state_variants = list(
@@ -45,8 +45,8 @@
 	colorable_allowed = ICON_STATE_VARIANTS_ALLOWED|PRESET_COLORS_ALLOWED
 
 /obj/item/clothing/suit/modular/style/duster
-	name = "\improper duster"
-	desc = "A light, loose-fitting colorable long coat, for those that want to have more style."
+	name = "\improper 风衣"
+	desc = "一件轻便、宽松的可染色长外套,适合那些想要更有风格的人."
 	icon_state = "duster"
 	worn_icon_state = "duster_worn"
 	greyscale_colors = ARMOR_PALETTE_BLACK
@@ -55,34 +55,34 @@
 	colorable_allowed = PRESET_COLORS_ALLOWED
 
 /obj/item/clothing/suit/modular/style/Alpha_greatcoat
-	name = "\improper Alpha greatcoat"
-	desc = "An old greatcoat, it's unclear how it hasn't completely torn yet.."
+	name = "\improper 阿尔法大衣"
+	desc = "一件旧大衣,不清楚它怎么还没完全撕裂.."
 	icon_state = "Alpha_greatcoat"
 	worn_icon_state = "Alpha_greatcoat_worn"
 
 /obj/item/clothing/suit/modular/style/Delta_greatcoat
-	name = "\improper Delta greatcoat"
-	desc = "An old greatcoat, it's unclear how it hasn't completely torn yet.."
+	name = "\improper 德尔塔大衣"
+	desc = "一件旧大衣,不清楚它怎么还没完全撕裂.."
 	icon_state = "Delta_greatcoat"
 	worn_icon_state = "Delta_greatcoat_worn"
 
 /obj/item/clothing/suit/modular/style/Bravo_greatcoat
-	name = "\improper Bravo greatcoat"
-	desc = "An old greatcoat, it's unclear how it hasn't completely torn yet.."
+	name = "\improper 布拉沃大衣"
+	desc = "一件旧大衣,不清楚它怎么还没完全撕裂.."
 	icon_state = "Bravo_greatcoat"
 	worn_icon_state = "Bravo_greatcoat_worn"
 
 /obj/item/clothing/suit/modular/style/Charlie_greatcoat
-	name = "\improper Charlie greatcoat"
-	desc = "An old greatcoat, it's unclear how it hasn't completely torn yet.."
+	name = "\improper 查理大衣"
+	desc = "一件旧大衣,不清楚它怎么还没完全撕裂.."
 	icon_state = "Charlie_greatcoat"
 	worn_icon_state = "Charlie_greatcoat_worn"
 
 // ***************************************
 //  Modular hats
 /obj/item/clothing/head/modular/style
-	name = "\improper Nice Hat"
-	desc = "Nice hat bro. How did you find this?"
+	name = "\improper 好帽子"
+	desc = "好帽子,兄弟.你是怎么找到这个的?"
 	item_map_variant_flags = ITEM_JUNGLE_VARIANT|ITEM_ICE_VARIANT|ITEM_DESERT_VARIANT
 	attachments_allowed = list(
 		/obj/item/armor_module/armor/badge,
@@ -113,83 +113,83 @@
 
 //marine hats
 /obj/item/clothing/head/modular/style/beret
-	name = "TGMC beret"
-	desc = "A hat used by the TGMC, typically considered the most iconic military headgear. Often reserved for higher ranking officers, they occasionally they find their way down the ranks into the hands of squad-leaders and decorated grunts."
+	name = "TGMC贝雷帽"
+	desc = "TGMC使用的帽子,通常被认为是最具标志性的军用头饰.通常留给高级军官,但偶尔也会流传到军衔较低的小队队长和受勋老兵手中."
 	icon_state = "beret_inhand"
 	worn_icon_state = "beret"
 	starting_attachments = list(/obj/item/armor_module/storage/helmet, /obj/item/armor_module/armor/stylehat_badge)
 	species_exception = list(/datum/species/robot)
 
 /obj/item/clothing/head/modular/style/classic_beret
-	name = "TGMC beret (classic)"
-	desc = "A hat used by the TGMC, typically considered the most iconic military headgear. Often reserved for higher ranking officers, they occasionally they find their way down the ranks into the hands of squad-leaders and decorated grunts. This one is in a classic style."
+	name = "TGMC贝雷帽(经典)"
+	desc = "TGMC使用的帽子,通常被认为是最具标志性的军用头饰.通常留给高级军官,但偶尔也会流传到军衔较低的小队队长和受勋老兵手中.这顶是经典款式."
 	icon_state = "classic_beret_inhand"
 	worn_icon_state = "classic_beret"
 	starting_attachments = list(/obj/item/armor_module/storage/helmet, /obj/item/armor_module/armor/stylehat_badge/classic)
 	species_exception = list(/datum/species/robot)
 
 /obj/item/clothing/head/modular/style/boonie
-	name = "TGMC boonie"
-	desc = "A boonie hat used by the TGMC, purpose made for operations in enviroments with a lot of sun, or dense vegetation."
+	name = "TGMC奔尼帽"
+	desc = "TGMC使用的奔尼帽,专为在阳光充足或植被茂密的环境中作战而设计."
 	icon_state = "boonie_inhand"
 	worn_icon_state = "boonie"
 	species_exception = list(/datum/species/robot)
 
 /obj/item/clothing/head/modular/style/cap
-	name = "TGMC cap"
-	desc = "A common patrol cap used by the TGMC, stylish and comes in many colors. Mostly useful to keep the sun and officers away."
+	name = "TGMC巡逻帽"
+	desc = "TGMC使用的常见巡逻帽,时尚且有多种颜色.主要用于遮挡阳光和避开军官."
 	icon_state = "cap_inhand"
 	worn_icon_state = "cap"
 	species_exception = list(/datum/species/robot)
 
 /obj/item/clothing/head/modular/style/slouchhat
-	name = "TGMC slouch hat"
-	desc = "A slouch hat, makes you feel down under, doesn't it? Has 'PROPERTY OF THE TGMC' markings under the hat."
+	name = "TGMC垂边帽"
+	desc = "一顶垂边帽,让你感觉身处澳洲内陆,对吧?帽子下方有\"TGMC财产\"标记."
 	icon_state = "slouch_inhand"
 	worn_icon_state = "slouch"
 	species_exception = list(/datum/species/robot)
 
 
 /obj/item/clothing/head/modular/style/ushanka
-	name = "TGMC ushanka"
-	desc = "A comfortable ushanka used by the TGMC. Will keep you warm in even the most harshest artic enviroments."
+	name = "TGMC护耳冬帽"
+	desc = "TGMC使用的舒适护耳冬帽.即使在最严酷的极地环境中也能让你保持温暖."
 	icon_state = "ushanka_inhand"
 	worn_icon_state = "ushanka"
 	starting_attachments = list(/obj/item/armor_module/storage/helmet, /obj/item/armor_module/armor/stylehat_badge/ushanka)
 	species_exception = list(/datum/species/robot)
 
 /obj/item/clothing/head/modular/style/campaignhat
-	name = "TGMC campaign hat"
-	desc = "A campaign hat, you can feel the menacing aura that this hat erodes just by looking at it."
+	name = "TGMC战役帽"
+	desc = "一顶战役帽,光是看着它就能感受到它散发出的威压气场."
 	icon_state = "campaign_inhand"
 	worn_icon_state = "campaign"
 	species_exception = list(/datum/species/robot)
 
 /obj/item/clothing/head/modular/style/beanie
-	name = "TGMC beanie"
-	desc = "A beanie, just looking at it makes you feel like an 'Oussama', or in better terms- A modern phenomenon of people suddenly needing to bench once they put on a beanie."
+	name = "TGMC毛线帽"
+	desc = "一顶毛线帽,光是看着它就让你感觉自己像个\"乌萨马\",或者更准确地说--一种现代现象,人们一戴上毛线帽就突然需要去卧推."
 	icon_state = "beanie_inhand"
 	worn_icon_state = "beanie"
 	species_exception = list(/datum/species/robot)
 
 /obj/item/clothing/head/modular/style/headband
-	name = "TGMC headband"
-	desc = "A headband. Will keep the sweat off your eyes and also keep you looking cool."
+	name = "TGMC头带"
+	desc = "一条头带.能挡住汗水不流进眼睛,还能让你看起来很酷."
 	icon_state = "headband_inhand"
 	worn_icon_state = "headband"
 	species_exception = list(/datum/species/robot)
 
 /obj/item/clothing/head/modular/style/bandana
-	name = "TGMC bandana"
-	desc = "A bandana that goes on your head. Has TGMC markings on the back tie, and it seems that the knot will never come undone somehow."
+	name = "TGMC头巾"
+	desc = "一条戴在头上的头巾.后侧系带上有TGMC标记,而且不知为何这个结似乎永远不会松开."
 	icon_state = "headbandana_inhand"
 	worn_icon_state = "headbandana"
 	species_exception = list(/datum/species/robot)
 
 // style masks
 /obj/item/clothing/mask/gas/modular/skimask
-	name = "ski mask"
-	desc = "A stylish skimask, can be recolored. Makes you feel like an operator just looking at it."
+	name = "滑雪面罩"
+	desc = "一个时尚的滑雪面罩,可以重新染色.光是看着它就让你感觉自己像个特战队员."
 	icon_state = "ski_inhand"
 	worn_icon_state = "ski"
 	inv_hide_flags = HIDEALLHAIR|HIDEEARS
@@ -198,8 +198,8 @@
 
 
 /obj/item/clothing/mask/gas/modular/coofmask
-	name = "combat face cloth covering"
-	desc = "The CFCC is a prime and readied, yet stylish facemask ready to... cover your face."
+	name = "战斗面罩"
+	desc = "CFCC是一款精良且现成的、又不失时尚的面罩,随时准备...遮住你的脸."
 	icon_state = "coof_inhand"
 	worn_icon_state = "coof"
 	item_map_variant_flags = ITEM_JUNGLE_VARIANT|ITEM_ICE_VARIANT|ITEM_DESERT_VARIANT

@@ -18,4 +18,4 @@
 		return
 	var/mob/living/carbon/human/howner = owner
 	howner.apply_status_effect(STATUS_EFFECT_REPAIR_MODE, 10 SECONDS)
-	howner.balloon_alert_to_viewers("Repairing")
+	howner.balloon_alert_to_viewers("修理中")

@@ -126,7 +126,7 @@
 		if(plasma_stored < pheromone_cost)
 			use_plasma(plasma_stored, FALSE)
 			QDEL_NULL(current_aura)
-			src.balloon_alert(src, "Stop emitting, no plasma")
+			src.balloon_alert(src, "停止排放,没有等离子体")
 		else
 			use_plasma(pheromone_cost * seconds_per_tick * XENO_PER_SECOND_LIFE_MOD, FALSE)
 
@@ -291,11 +291,11 @@
 /mob/living/carbon/xenomorph/handle_slowdown()
 	if(slowdown)
 		#if DEBUG_XENO_LIFE
-		world << span_debuginfo("Regen: Initial slowdown is: <b>[slowdown]</b>")
+		world << span_debuginfo("再生: 初始减速为: <b>[slowdown]</b>")
 		#endif
 		adjust_slowdown(-XENO_SLOWDOWN_REGEN)
 		#if DEBUG_XENO_LIFE
-		world << span_debuginfo("Regen: Final slowdown is: <b>[slowdown]</b>")
+		world << span_debuginfo("再生: 最终减速为: <b>[slowdown]</b>")
 		#endif
 	return slowdown
 

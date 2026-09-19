@@ -18,18 +18,18 @@
 	if(!ispath(objholder))
 		objholder = pick_closest_path(target_path)
 		if(!objholder)
-			tgui_alert(user, "No path has been selected.")
+			tgui_alert(user, "未选择任何路径.")
 			return
 		if(ispath(objholder, /area))
 			objholder = null
-			tgui_alert(user, "Area paths are not supported for this mode, use the area edit mode instead.")
+			tgui_alert(user, "此模式不支持区域路径,请改用区域编辑模式.")
 			return
 	BM.preview_selected_item(objholder)
 	deselect_region()
 
 /datum/buildmode_mode/selection/fill/handle_click(client/user, params, obj/object)
 	if(isnull(objholder))
-		to_chat(user, span_warning("Select an object type first."))
+		to_chat(user, span_warning("请先选择一个物体类型."))
 		deselect_region()
 		return
 	return ..()

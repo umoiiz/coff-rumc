@@ -11,36 +11,36 @@ export const CentcomPodLauncher = (props) => {
     <Window title="Config/Launch Supplypod" width={700} height={700}>
       <Window.Content>
         <NoticeBox>
-          To use this, simply spawn the atoms you want in one of the five
-          Centcom Supplypod Bays. Items in the bay will then be launched inside
-          your supplypod, one turf-full at a time! You can optionally use the
-          following buttons to configure how the supplypod acts.
+          要使用此功能,只需在五个
+          中央司令部补给舱舱位之一中生成您想要的原子.舱位中的物品随后将被发射到
+          您的补给舱内,一次一个地块!您可以选择使用
+          以下按钮来配置补给舱的行为.
         </NoticeBox>
-        <Section title="Centcom Pod Customization">
+        <Section title="中央司令部补给舱自定义">
           <LabeledList>
-            <LabeledList.Item label="Supply Bay">
+            <LabeledList.Item label="补给舱位">
               <Button
-                content="Bay #1"
+                content="舱位 #1"
                 selected={data.bayNumber === 1}
                 onClick={() => act('bay1')}
               />
               <Button
-                content="Bay #2"
+                content="舱位 #2"
                 selected={data.bayNumber === 2}
                 onClick={() => act('bay2')}
               />
               <Button
-                content="Bay #3"
+                content="舱位 #3"
                 selected={data.bayNumber === 3}
                 onClick={() => act('bay3')}
               />
               <Button
-                content="Bay #4"
+                content="舱位 #4"
                 selected={data.bayNumber === 4}
                 onClick={() => act('bay4')}
               />
               <Button
-                content="ERT Bay"
+                content="紧急响应小组舱位"
                 selected={data.bayNumber === 5}
                 tooltip={`
                   This bay is located on the western edge of CentCom. Its the
@@ -51,7 +51,7 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('bay5')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Teleport to">
+            <LabeledList.Item label="传送至">
               <Button
                 content={data.bay}
                 onClick={() => act('teleportCentcom')}
@@ -62,9 +62,9 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('teleportBack')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Clone Mode">
+            <LabeledList.Item label="克隆模式">
               <Button
-                content="Launch Clones"
+                content="发射克隆体"
                 selected={data.launchClone}
                 tooltip={`
                   Choosing this will create a duplicate of the item to be
@@ -75,9 +75,9 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('launchClone')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Launch style">
+            <LabeledList.Item label="发射方式">
               <Button
-                content="Ordered"
+                content="有序"
                 selected={data.launchChoice === 1}
                 tooltip={`
                   Instead of launching everything in the bay at once, this
@@ -88,7 +88,7 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('launchOrdered')}
               />
               <Button
-                content="Random"
+                content="随机"
                 selected={data.launchChoice === 2}
                 tooltip={`
                   Instead of launching everything in the bay at once, this
@@ -97,9 +97,9 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('launchRandom')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Explosion">
+            <LabeledList.Item label="爆炸">
               <Button
-                content="Custom Size"
+                content="自定义大小"
                 selected={data.explosionChoice === 1}
                 tooltip={`
                   This will cause an explosion of whatever size you like
@@ -109,7 +109,7 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('explosionCustom')}
               />
               <Button
-                content="Adminbus"
+                content="管理员巴士"
                 selected={data.explosionChoice === 2}
                 tooltip={`
                   This will cause a maxcap explosion (dependent on server
@@ -119,9 +119,9 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('explosionBus')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Damage">
+            <LabeledList.Item label="伤害">
               <Button
-                content="Custom Damage"
+                content="自定义伤害"
                 selected={data.damageChoice === 1}
                 tooltip={`
                   Anyone caught under the pod when it lands will be dealt
@@ -130,7 +130,7 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('damageCustom')}
               />
               <Button
-                content="Gib"
+                content="碎尸"
                 selected={data.damageChoice === 2}
                 tooltip={`
                   This will attempt to gib any mob caught under the pod when
@@ -140,9 +140,9 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('damageGib')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Effects">
+            <LabeledList.Item label="效果">
               <Button
-                content="Stun"
+                content="眩晕"
                 selected={data.effectStun}
                 tooltip={`
                   Anyone who is on the turf when the supplypod is launched
@@ -152,7 +152,7 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('effectStun')}
               />
               <Button
-                content="Delimb"
+                content="断肢"
                 selected={data.effectLimb}
                 tooltip={`
                   This will cause anyone caught under the pod to lose a limb,
@@ -161,9 +161,9 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('effectLimb')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Movement">
+            <LabeledList.Item label="移动">
               <Button
-                content="Bluespace"
+                content="蓝空间"
                 selected={data.effectBluespace}
                 tooltip={`
                   Gives the supplypod an advanced Bluespace Recyling Device.
@@ -173,7 +173,7 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('effectBluespace')}
               />
               <Button
-                content="Stealth"
+                content="隐形"
                 selected={data.effectStealth}
                 tooltip={`
                   This hides the red target icon from appearing when you
@@ -183,7 +183,7 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('effectStealth')}
               />
               <Button
-                content="Quiet"
+                content="安静"
                 selected={data.effectQuiet}
                 tooltip={`
                   This will keep the supplypod from making any sounds, except
@@ -192,7 +192,7 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('effectQuiet')}
               />
               <Button
-                content="Reverse Mode"
+                content="反向模式"
                 selected={data.effectReverse}
                 tooltip={`
                   This pod will not send any items. Instead, after landing,
@@ -203,7 +203,7 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('effectReverse')}
               />
               <Button
-                content="Missile Mode"
+                content="导弹模式"
                 selected={data.effectMissile}
                 tooltip={`
                   This pod will not send any items. Instead, it will immediately
@@ -214,7 +214,7 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('effectMissile')}
               />
               <Button
-                content="Any Descent Angle"
+                content="任意下降角度"
                 selected={data.effectCircle}
                 tooltip={`
                   This will make the supplypod come in from any angle. Im not
@@ -223,7 +223,7 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('effectCircle')}
               />
               <Button
-                content="Machine Gun Mode"
+                content="机枪模式"
                 selected={data.effectBurst}
                 tooltip={`
                   This will make each click launch 5 supplypods inaccuratly
@@ -233,7 +233,7 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('effectBurst')}
               />
               <Button
-                content="Specific Target"
+                content="特定目标"
                 selected={data.effectTarget}
                 tooltip={`
                   This will make the supplypod target a specific atom, instead
@@ -242,15 +242,15 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('effectTarget')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Name/Desc">
+            <LabeledList.Item label="名称/描述">
               <Button
-                content="Custom Name/Desc"
+                content="自定义名称/描述"
                 selected={data.effectName}
-                tooltip="Allows you to add a custom name and description."
+                tooltip="允许你添加自定义名称和描述."
                 onClick={() => act('effectName')}
               />
               <Button
-                content="Alert Ghosts"
+                content="警报幽灵"
                 selected={data.effectAnnounce}
                 tooltip={`
                   Alerts ghosts when a pod is launched. Useful if some dumb
@@ -259,9 +259,9 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('effectAnnounce')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Sound">
+            <LabeledList.Item label="声音">
               <Button
-                content="Custom Falling Sound"
+                content="自定义下落音效"
                 selected={data.fallingSound}
                 tooltip={`
                   Choose a sound to play as the pod falls. Note that for this
@@ -271,19 +271,19 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('fallSound')}
               />
               <Button
-                content="Custom Landing Sound"
+                content="自定义着陆音效"
                 selected={data.landingSound}
-                tooltip="Choose a sound to play when the pod lands."
+                tooltip="选择空投舱着陆时播放的音效."
                 onClick={() => act('landingSound')}
               />
               <Button
-                content="Custom Opening Sound"
+                content="自定义开启音效"
                 selected={data.openingSound}
-                tooltip="Choose a sound to play when the pod opens."
+                tooltip="选择空投舱开启时播放的音效."
                 onClick={() => act('openingSound')}
               />
               <Button
-                content="Custom Leaving Sound"
+                content="自定义离开音效"
                 selected={data.leavingSound}
                 tooltip={`
                   Choose a sound to play when the pod departs (whether that be
@@ -293,7 +293,7 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('leavingSound')}
               />
               <Button
-                content="Admin Sound Volume"
+                content="管理员音量"
                 selected={data.soundVolume}
                 tooltip={`
                   Choose the volume for the sound to play at. Default values
@@ -303,9 +303,9 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('soundVolume')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Timers">
+            <LabeledList.Item label="计时器">
               <Button
-                content="Custom Falling Duration"
+                content="自定义下落时长"
                 selected={data.fallDuration !== 4}
                 tooltip={`
                   Set how long the animation for the pod falling lasts. Create
@@ -314,7 +314,7 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('fallDuration')}
               />
               <Button
-                content="Custom Landing Time"
+                content="自定义着陆时间"
                 selected={data.landingDelay !== 20}
                 tooltip={`
                   Choose the amount of time it takes for the supplypod to hit
@@ -323,7 +323,7 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('landingDelay')}
               />
               <Button
-                content="Custom Opening Time"
+                content="自定义开启时间"
                 selected={data.openingDelay !== 30}
                 tooltip={`
                   Choose the amount of time it takes for the supplypod to open
@@ -333,7 +333,7 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('openingDelay')}
               />
               <Button
-                content="Custom Leaving Time"
+                content="自定义离开时间"
                 selected={data.departureDelay !== 30}
                 tooltip={`
                   Choose the amount of time it takes for the supplypod to leave
@@ -342,7 +342,7 @@ export const CentcomPodLauncher = (props) => {
                 onClick={() => act('departureDelay')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Style">
+            <LabeledList.Item label="样式">
               {data.styles.map((style) => (
                 <Button
                   key={style.id}
@@ -362,7 +362,7 @@ export const CentcomPodLauncher = (props) => {
               buttons={
                 <>
                   <Button
-                    content="undo Pody Bay"
+                    content="撤销空投舱"
                     tooltip={`
                       Manually undoes the possible things to launch in the
                       pod bay.
@@ -370,13 +370,13 @@ export const CentcomPodLauncher = (props) => {
                     onClick={() => act('undo')}
                   />
                   <Button
-                    content="Enter Launch Mode"
+                    content="进入发射模式"
                     selected={data.giveLauncher}
-                    tooltip="THE CODEX ASTARTES CALLS THIS MANEUVER: STEEL RAIN"
+                    tooltip="星际战士战典称此机动为: 钢铁之雨"
                     onClick={() => act('giveLauncher')}
                   />
                   <Button
-                    content="Clear Selected Bay"
+                    content="清除选定的空投舱"
                     color="bad"
                     tooltip={`
                       This will delete all objs and mobs from the selected bay.

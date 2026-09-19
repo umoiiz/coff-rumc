@@ -1,6 +1,6 @@
 /obj/machinery/floor_warn_light
 	name = "alarm light"
-	desc = "If this is on you should probably be running!"
+	desc = "如果这个开着,你大概应该赶紧跑!"
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "rotating_alarm"
 	light_system = MOVABLE_LIGHT

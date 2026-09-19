@@ -15,7 +15,7 @@
 
 /datum/xeno_mutation/runner/upfront_evasion
 	name = "Upfront Evasion"
-	desc = "Evasion длится на 3 секунды больше, но не может быть автоматическим"
+	desc = "闪避持续时间延长3秒, 但不再能自动刷新."
 	cost = 7.5
 	icon_state = "runner_upfront_evasion"
 	tier = 1
@@ -26,7 +26,7 @@
 
 /atom/movable/screen/alert/status_effect/runner/upfront_evasion
 	name = "Upfront Evasion"
-	desc = "+ 3 seconds longer Evasion, but no longer auto-refresh."
+	desc = "+ 闪避持续时间延长3秒, 但不再自动刷新."
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/runner/upfront_evasion
@@ -63,7 +63,7 @@
 
 /datum/xeno_mutation/runner/passing_glance
 	name = "Passing Glance"
-	desc = "Пока активен Evasion, контакт дизориентирует врага на 4 секунды."
+	desc = "当闪避激活时, 接触会使敌人迷失方向4秒."
 	cost = 5
 	icon_state = "runner_passing_glance"
 	tier = 1
@@ -74,7 +74,7 @@
 
 /atom/movable/screen/alert/status_effect/runner/passing_glance
 	name = "Passing Glance"
-	desc = "While Evasion is on, moving onto the same location as a standing human will confuse them for 4 seconds"
+	desc = "当闪避激活时, 移动到站立人类所在的位置会使其迷惑4秒"
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/runner/passing_glance
@@ -111,7 +111,7 @@
 
 /datum/xeno_mutation/runner/ingrained_evasion
 	name = "Ingrained Evasion"
-	desc = "Удаляет способность Evasion, но даёт пассивный 50% шанс уворота. Особо точные выстрелы уменьшают данный шанс."
+	desc = "移除闪避技能, 但给予被动50%闪避几率. 特别精准的射击会降低此几率."
 	cost = 5
 	icon_state = "runner_ingrained_evasion"
 	tier = 1
@@ -122,7 +122,7 @@
 
 /atom/movable/screen/alert/status_effect/runner/ingrained_evasion
 	name = "Ingrained Evasion"
-	desc = "You have a 50% to dodge projectiles with similar conditions as Evasion"
+	desc = "你有50%几率以类似闪避的条件躲避投射物"
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/runner/ingrained_evasion
@@ -199,7 +199,7 @@
 
 /// Handles dodge effects and visuals.
 /datum/status_effect/runner/ingrained_evasion/proc/dodge_fx(atom/movable/proj)
-	xenomorph_owner.visible_message(span_warning("[xenomorph_owner] effortlessly dodges the [proj.name]!"), span_xenodanger("We effortlessly dodge the [proj.name]!"))
+	xenomorph_owner.visible_message(span_warning("[xenomorph_owner]轻松闪避了[proj.name]!"), span_xenodanger("我们轻松闪避了[proj.name]!"))
 	xenomorph_owner.add_filter("ingrained_evasion", 2, gauss_blur_filter(5))
 	addtimer(CALLBACK(xenomorph_owner, TYPE_PROC_REF(/datum, remove_filter), "ingrained_evasion"), 0.5 SECONDS)
 	xenomorph_owner.do_jitter_animation(4000)
@@ -220,7 +220,7 @@
 
 /datum/xeno_mutation/runner/headslam
 	name = "Head Slam"
-	desc = "Стан от Pounce уменьшен в 4 раза, но дизориентирует и слепит врага на 3 секунды."
+	desc = "扑击的眩晕时间减少至四分之一, 但会使敌人迷失方向并致盲3秒."
 	cost = 5
 	icon_state = "runner_headslam"
 	tier = 1
@@ -231,7 +231,7 @@
 
 /atom/movable/screen/alert/status_effect/runner/headslam
 	name = "Head Slam"
-	desc = "Pounce stuns only for 25% as long. It now confuses and blurs your target's vision for 1/2/3 seconds."
+	desc = "扑击的眩晕时间仅为原来的25%. 现在会使目标迷惑并模糊其视野1/2/3秒."
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/runner/headslam

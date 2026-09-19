@@ -1,6 +1,6 @@
 /obj/machinery/exportpad
 	name = "ASRS Bluespace Export Point"
-	desc = "A bluespace telepad for sending valuble assets, such as valuble minerals and alien corpses. It needs to be wrenched down in a powered area to function."
+	desc = "一个蓝空间传送垫,用于运送贵重资产,例如贵重矿物和异形尸体. 它需要在有电的区域用扳手固定才能运作."
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "broadcaster_off"
 	density = FALSE
@@ -15,16 +15,16 @@
 	. = ..()
 
 	if (!anchored)
-		to_chat(user, span_warning("Nothing happens. The [src] must be bolted to the ground first."))
+		to_chat(user, span_warning("什么也没发生. [src]必须先用地脚螺栓固定在地面上."))
 		return
 
 	if (!powered())
-		to_chat(user, span_warning("A red light flashes on the [src]. It seems it doesn't have enough power."))
+		to_chat(user, span_warning("[src]上闪烁着一盏红灯. 它似乎电力不足."))
 		playsound(loc,'sound/machines/buzz-two.ogg', 25, FALSE)
 		return
 
 	if(!COOLDOWN_FINISHED(src, selling_cooldown))
-		to_chat(user, span_warning("The [src] is still recharging! It will be ready in [round(COOLDOWN_TIMELEFT(src, selling_cooldown) * 0.1)] seconds."))
+		to_chat(user, span_warning("[src]仍在充电! 它将在[round(COOLDOWN_TIMELEFT(src, selling_cooldown) * 0.1)]秒后就绪."))
 		return
 	var/can_sell = FALSE
 	for(var/i in get_turf(src))
@@ -33,16 +33,16 @@
 		if(isxeno(onpad))
 			var/mob/living/carbon/xenomorph/sellxeno = onpad
 			if(sellxeno.stat != DEAD)
-				to_chat(user, span_warning("[src] buzzes: Live animals cannot be sold."))
+				to_chat(user, span_warning("[src]发出蜂鸣声: 活体动物无法出售."))
 				continue
 			can_sell = TRUE
 		if(ishuman(onpad))
 			var/mob/living/carbon/human/sellhuman = onpad
 			if(!can_sell_human_body(sellhuman, user.faction))
-				to_chat(user, span_warning("[src] buzzes: High command is not interested in that bounty."))
+				to_chat(user, span_warning("[src]发出蜂鸣声: 最高指挥部对此悬赏不感兴趣."))
 				continue
 			if(sellhuman.stat != DEAD)
-				to_chat(user, span_warning("[src] buzzes: This bounty is not dead and cannot be sold."))
+				to_chat(user, span_warning("[src]发出蜂鸣声: 此悬赏目标未死亡,无法出售."))
 				continue
 			can_sell = TRUE
 		if(!can_sell)
@@ -50,7 +50,7 @@
 		var/datum/export_report/export_report = onpad.supply_export(user.faction)
 		if(export_report)
 			SSpoints.export_history += export_report
-		visible_message(span_notice("[src] buzzes: The [onpad] has been sold for [export_report.points ? export_report.points : "no"] point[export_report.points == 1 ? "" : "s"]."))
+		visible_message(span_notice("[src]发出蜂鸣声: [onpad]已以[export_report.points ? export_report.points : "no"]点[export_report.points == 1 ? "" : "s"]售出."))
 		qdel(onpad)
 
 	do_sparks(5, TRUE, src)
@@ -63,12 +63,12 @@
 /obj/machinery/exportpad/wrench_act(mob/living/user, obj/item/I)
 	anchored = !anchored
 	if(anchored)
-		to_chat(user, "You bolt the [src] to the ground, activating it.")
+		to_chat(user, "你把[src]用螺栓固定在地上,将其激活.")
 		playsound(loc, 'sound/items/ratchet.ogg', 25, TRUE)
 		icon_state = "broadcaster"
 		SSminimaps.add_marker(src, MINIMAP_FLAG_MARINE, image('icons/UI_icons/map_blips.dmi', null, "asrs", MINIMAP_BLIPS_LAYER))
 	else
-		to_chat(user, "You unbolt the [src] from the ground, deactivating it.")
+		to_chat(user, "你松开[src]在地上的螺栓,将其停用.")
 		playsound(loc, 'sound/items/ratchet.ogg', 25, TRUE)
 		icon_state = "broadcaster_off"
 		SSminimaps.remove_marker(src)

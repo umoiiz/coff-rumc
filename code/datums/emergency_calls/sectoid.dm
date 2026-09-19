@@ -9,9 +9,9 @@
 	var/max_psionics = 2
 
 /datum/emergency_call/sectoid/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>You are a sectoid, a mass-cloned alien soldier and psionics expert.")
-	to_chat(H, "<B>You were sent to eliminate the local humans and to scout this sector of space for an abundance of resources. A distress signal from a primitive spacecraft has been picked up by our scanners.</B>")
-	to_chat(H, "<B>Your mission is simple: Destroy all humans, and any other race that poses a threat.</b>")
+	to_chat(H, "<B>你是一个sectoid,一名大规模克隆的外星士兵和灵能专家.")
+	to_chat(H, "<B>你被派来消灭当地人类,并侦察这个太空区域是否有丰富的资源. 我们的扫描仪捕捉到了一艘原始飞船发出的求救信号.</B>")
+	to_chat(H, "<B>你的任务很简单: 消灭所有人类,以及任何其他构成威胁的种族.</b>")
 
 /datum/emergency_call/sectoid/create_member(datum/mind/M)
 	. = ..()

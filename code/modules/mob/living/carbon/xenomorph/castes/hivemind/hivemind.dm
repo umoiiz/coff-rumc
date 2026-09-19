@@ -4,7 +4,7 @@
 	caste_base_type =/datum/xeno_caste/hivemind
 	name = "Hivemind"
 	real_name = "Hivemind"
-	desc = "A glorious singular entity."
+	desc = "一个荣耀的独特实体."
 
 	icon_state = "hivemind_marker"
 	bubble_icon = "alienroyal"
@@ -113,7 +113,7 @@
 
 /mob/living/carbon/xenomorph/hivemind/change_form()
 	if(status_flags & INCORPOREAL && health != maxHealth)
-		to_chat(src, span_xenowarning("You do not have the strength to manifest yet!"))
+		to_chat(src, span_xenowarning("你还没有足够的力量显现!"))
 		return
 	if(TIMER_COOLDOWN_RUNNING(src, COOLDOWN_HIVEMIND_MANIFESTATION))
 		return
@@ -162,13 +162,13 @@
 
 /mob/living/carbon/xenomorph/hivemind/fire_act(burn_level, flame_color)
 	return_to_core()
-	to_chat(src, span_xenonotice("We were on top of fire, we got moved to our core."))
+	to_chat(src, span_xenonotice("我们曾处于火焰之上,被移回了我们的核心."))
 
 /mob/living/carbon/xenomorph/hivemind/handle_weeds_adjacent_removed()
 	if(loc_weeds_type || check_weeds(get_turf(src)))
 		return
 	return_to_core()
-	to_chat(src, span_xenonotice("We had no weeds nearby, we got moved to our core."))
+	to_chat(src, span_xenonotice("我们附近没有杂草,被移回了我们的核心."))
 	return
 
 /mob/living/carbon/xenomorph/hivemind/proc/return_to_core()
@@ -182,7 +182,7 @@
 ///Start the teleportation process to send the hivemind manifestation to the selected turf
 /mob/living/carbon/xenomorph/hivemind/proc/start_teleport(turf/T)
 	if(!isopenturf(T))
-		balloon_alert(src, "Can't teleport into a wall")
+		balloon_alert(src, "无法传送到墙里")
 		return
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIVEMIND_MANIFESTATION, TIME_TO_TRANSFORM * 2)
 	flick("Hivemind_[initial(loc_weeds_type.color_variant)]_materialisation_reverse", src)
@@ -192,7 +192,7 @@
 ///Finish the teleportation process to send the hivemind manifestation to the selected turf
 /mob/living/carbon/xenomorph/hivemind/proc/end_teleport(turf/T)
 	if(!check_weeds(T, TRUE))
-		balloon_alert(src, "No weeds in destination")
+		balloon_alert(src, "目的地没有杂草")
 		return
 	forceMove(T)
 	flick("Hivemind_[initial(loc_weeds_type.color_variant)]_materialisation", src)
@@ -233,7 +233,7 @@
 /// Jump hivemind's camera to the passed xeno, if they are on/near weeds
 /mob/living/carbon/xenomorph/hivemind/proc/jump(mob/living/carbon/xenomorph/xeno)
 	if(!check_weeds(get_turf(xeno), TRUE))
-		balloon_alert(src, "No nearby weeds")
+		balloon_alert(src, "附近没有杂草")
 		return
 	if(!(status_flags & INCORPOREAL))
 		start_teleport(get_turf(xeno))
@@ -294,8 +294,8 @@
 // =================
 // hivemind core
 /obj/structure/xeno/hivemindcore
-	name = "hivemind core"
-	desc = "A very weird, pulsating node. This looks almost alive."
+	name = "巢穴意识核心"
+	desc = "一个非常怪异、搏动着的节点.这看起来几乎像是活的."
 	max_integrity = 600
 	icon = 'icons/Xeno/1x1building.dmi'
 	icon_state = "hivemind_core"
@@ -316,7 +316,7 @@
 	if(isnull(our_parent))
 		return ..()
 	our_parent.playsound_local(our_parent, SFX_ALIEN_HELP, 30, TRUE)
-	to_chat(our_parent, span_xenouserdanger("Your core has been destroyed!"))
+	to_chat(our_parent, span_xenouserdanger("你的核心已被摧毁!"))
 	xeno_message("A sudden tremor ripples through the hive... \the [our_parent] has been slain!", "xenoannounce", 5, our_parent.hivenumber)
 	GLOB.key_to_time_of_role_death[our_parent.key] = world.time
 	GLOB.key_to_time_of_death[our_parent.key] = world.time
@@ -329,13 +329,13 @@
 
 /obj/structure/xeno/hivemindcore/attack_alien(mob/living/carbon/xenomorph/xeno_attacker, damage_amount = xeno_attacker.xeno_caste.melee_damage, damage_type = BRUTE, damage_flag = MELEE, effects = TRUE, armor_penetration = xeno_attacker.xeno_caste.melee_ap, isrightclick = FALSE)
 	if(isxenoqueen(xeno_attacker))
-		var/choice = tgui_alert(xeno_attacker, "Are you sure you want to destroy the hivemind?", "Destroy hivemind", list("Yes", "Cancel"))
+		var/choice = tgui_alert(xeno_attacker, "你确定要摧毁巢穴意识吗?", "摧毁巢穴意识", list("Yes", "Cancel"))
 		if(choice == "Yes")
 			deconstruct(FALSE)
 			return
 
-	xeno_attacker.visible_message(span_danger("[xeno_attacker] nudges its head against [src]."), \
-	span_danger("You nudge your head against [src]."))
+	xeno_attacker.visible_message(span_danger("[xeno_attacker]用头蹭了蹭[src]."), \
+	span_danger("你用头蹭了蹭[src]."))
 
 /obj/structure/xeno/hivemindcore/take_damage(damage_amount, damage_type, damage_flag = null, effects = TRUE, attack_dir, armour_penetration, mob/living/blame_mob)
 	. = ..()
@@ -345,11 +345,11 @@
 	var/health_percent = round((max_integrity / obj_integrity) * 100)
 	switch(health_percent)
 		if(-INFINITY to 25)
-			to_chat(our_parent, span_xenouserdanger("Your core is under attack, and dangerous low on health!"))
+			to_chat(our_parent, span_xenouserdanger("你的核心正受到攻击,并且生命值危险地低!"))
 		if(26 to 75)
-			to_chat(our_parent, span_xenodanger("Your core is under attack, and low on health!"))
+			to_chat(our_parent, span_xenodanger("你的核心正受到攻击,并且生命值很低!"))
 		if(76 to INFINITY)
-			to_chat(our_parent, span_xenodanger("Your core is under attack!"))
+			to_chat(our_parent, span_xenodanger("你的核心正受到攻击!"))
 
 /obj/structure/xeno/hivemindcore/update_minimap_icon()
 	SSminimaps.remove_marker(src)

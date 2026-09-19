@@ -13,4 +13,4 @@
 
 /datum/action/skill/fail_activate()
 	if(owner)
-		owner << span_warning("You are not competent enough to do that.") // This message shouldn't show since incompetent people shouldn't have the button, but JIC.
+		owner << span_warning("你的能力不足以做到这一点.") // This message shouldn't show since incompetent people shouldn't have the button, but JIC.

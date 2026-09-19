@@ -1,6 +1,6 @@
 //items designed as weapon
 /obj/item/weapon
-	name = "weapon"
+	name = "武器"
 	icon = 'icons/obj/items/weapons.dmi'
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/weapons/melee_left.dmi',

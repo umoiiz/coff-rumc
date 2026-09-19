@@ -268,7 +268,7 @@
 				return
 			if(is_mainship_level(supply_shuttle.z))
 				if (!supply_shuttle.check_blacklist())
-					to_chat(usr, "For safety reasons, the Automated Storage and Retrieval System cannot store live, friendlies, classified nuclear weaponry or homing beacons.")
+					to_chat(usr, "出于安全原因,自动存储与检索系统无法存储活体,友军,机密核武器或归航信标.")
 					playsound(supply_shuttle.return_center_turf(), 'sound/machines/buzz-two.ogg', 50, 0)
 				else
 					playsound(supply_shuttle.return_center_turf(), 'sound/machines/elevator_move.ogg', 50, 0)

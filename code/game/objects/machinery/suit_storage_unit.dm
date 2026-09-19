@@ -1,6 +1,6 @@
 /obj/machinery/suit_storage_unit
 	name = "Suit Storage Unit"
-	desc = "An industrial U-Stor-It Storage unit designed to accomodate all kinds of space suits. Its on-board equipment also allows the user to decontaminate the contents through a UV-ray purging cycle. There's a warning label dangling from the control pad, reading \"STRICTLY NO BIOLOGICALS IN THE CONFINES OF THE UNIT\"."
+	desc = "一个工业级U-Stor-It储物单元,设计用于容纳各种太空服.其机载设备还允许用户通过紫外线净化循环对内容物进行消毒.控制面板上挂着一个警告标签,上面写着\"严禁在单元范围内放置生物体\"."
 	icon = 'icons/obj/machines/suitstorage.dmi'
 	icon_state = "closed" //order is: [has helmet][has suit][has human][is open][is locked][is UV cycling][is powered][is dirty/broken] [is superUVcycling]
 	anchored = TRUE
@@ -68,13 +68,13 @@
 /obj/machinery/suit_storage_unit/examine(mob/user)
 	. = ..()
 	if(isUV)
-		. += span_warning("It's currently running a UV cauterisation cycle. Please wait.")
+		. += span_warning("它目前正在运行紫外线烧灼循环.请稍候.")
 		return
-	. += span_notice("Helmet compartment: [inserted_helmet ? inserted_helmet.name : "empty"].")
-	. += span_notice("Suit compartment: [inserted_suit ? inserted_suit.name : "empty"].")
-	. += span_notice("Mask compartment: [inserted_mask ? inserted_mask.name : "empty"].")
-	. += span_notice("Tank compartment: [inserted_tank ? inserted_tank.name : "empty"].")
-	. += span_notice("The unit's doors are [isopen ? "open" : "closed"].")
+	. += span_notice("头盔隔间: [inserted_helmet ? inserted_helmet.name : "empty"].")
+	. += span_notice("服装隔间: [inserted_suit ? inserted_suit.name : "empty"].")
+	. += span_notice("面罩隔间: [inserted_mask ? inserted_mask.name : "empty"].")
+	. += span_notice("气罐隔间: [inserted_tank ? inserted_tank.name : "empty"].")
+	. += span_notice("单元的门是[isopen ? "open" : "closed"].")
 
 /// Radial menu, RU/TG-style: buttons for the actions/contents that are actually available right now.
 /obj/machinery/suit_storage_unit/interact(mob/user)
@@ -83,11 +83,11 @@
 		return
 
 	if(machine_stat & NOPOWER)
-		balloon_alert(user, "no power!")
+		balloon_alert(user, "没有电力!")
 		return
 
 	if(isUV) //The thing is running its cauterisation cycle. You have to wait.
-		balloon_alert(user, "unit is cauterising, please wait!")
+		balloon_alert(user, "单元正在烧灼,请稍候!")
 		return
 
 	var/list/choices = list()
@@ -107,7 +107,7 @@
 		choices["disinfect"] = image(icon = 'icons/mob/radial_actions.dmi', icon_state = "radial_disinfect")
 
 	if(!length(choices))
-		balloon_alert(user, "nothing to do!")
+		balloon_alert(user, "无事可做!")
 		return
 
 	var/choice = show_radial_menu(user, src, choices, custom_check = CALLBACK(src, PROC_REF(check_interactable), user), require_near = TRUE, tooltips = TRUE)
@@ -166,7 +166,7 @@
 
 /obj/machinery/suit_storage_unit/proc/toggle_open(mob/user as mob)
 	if(isUV)
-		to_chat(user, "<font color='red'>Unable to open unit.</font>")
+		to_chat(user, "<font color='red'>无法打开单位.</font>")
 		return
 	isopen = !isopen
 	update_icon()
@@ -175,16 +175,16 @@
 	set waitfor = 0
 
 	if(isopen)
-		to_chat(user, "<font color='red'>Unit storage is not closed -- Aborting.</font>")
+		to_chat(user, "<font color='red'>单位储物仓未关闭 -- 中止.</font>")
 		return
 
 	if(isUV)
 		return
 
 	if(!inserted_helmet && !inserted_mask && !inserted_suit) //shit's empty yo
-		to_chat(user, "<font color='red'>Unit storage bays empty. Nothing to disinfect -- Aborting.</font>")
+		to_chat(user, "<font color='red'>单位储物仓为空. 没有可消毒的物品 -- 中止.</font>")
 		return
-	to_chat(user, span_notice("You start the Unit's cauterisation cycle."))
+	to_chat(user, span_notice("你启动了单位的烧灼循环."))
 	isUV = 1
 	update_icon()
 	updateUsrDialog()
@@ -218,49 +218,49 @@
 	if(istype(I, /obj/item/clothing/suit/space))
 		var/obj/item/clothing/suit/space/S = I
 		if(inserted_suit)
-			to_chat(user, span_warning("The unit already contains a suit."))
+			to_chat(user, span_warning("单位内已有一套服装."))
 			return
 
 		if(!user.transferItemToLoc(S, src))
 			return
 
-		to_chat(user, span_notice("You load the [S.name] into the storage compartment."))
+		to_chat(user, span_notice("你将[S.name]装入储物仓."))
 		inserted_suit = S
 
 	else if(istype(I,/obj/item/clothing/head/helmet))
 		var/obj/item/clothing/head/helmet/H = I
 		if(inserted_helmet)
-			to_chat(user, span_warning("The unit already contains a helmet."))
+			to_chat(user, span_warning("单位内已有一顶头盔."))
 			return
 
 		if(!user.transferItemToLoc(H, src))
 			return
 
-		to_chat(user, span_notice("You load the [H.name] into the storage compartment."))
+		to_chat(user, span_notice("你将[H.name]装入储物仓."))
 		inserted_helmet = H
 
 	else if(istype(I, /obj/item/clothing/mask))
 		var/obj/item/clothing/mask/M = I
 		if(inserted_mask)
-			to_chat(user, span_warning("The unit already contains a mask."))
+			to_chat(user, span_warning("单位内已有一个面罩."))
 			return
 
 		if(!user.transferItemToLoc(M, src))
 			return
 
-		to_chat(user, span_notice("You load the [M.name] into the storage compartment."))
+		to_chat(user, span_notice("你将[M.name]装入储物仓."))
 		inserted_mask = M
 
 	else if(istype(I, /obj/item/tank))
 		var/obj/item/tank/T = I
 		if(inserted_tank)
-			to_chat(user, span_warning("The unit already contains a tank."))
+			to_chat(user, span_warning("单位内已有一个储气罐."))
 			return
 
 		if(!user.transferItemToLoc(T, src))
 			return
 
-		to_chat(user, span_notice("You load the [T.name] into the storage compartment."))
+		to_chat(user, span_notice("你将[T.name]装入储物仓."))
 		inserted_tank = T
 
 	update_icon()

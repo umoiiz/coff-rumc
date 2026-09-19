@@ -1,6 +1,6 @@
 /obj/item/radio
 	icon = 'icons/obj/items/radio.dmi'
-	name = "station bounced radio"
+	name = "空间站弹跳无线电"
 	icon_state = "walkietalkie"
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/equipment/tools_left.dmi',
@@ -413,11 +413,11 @@
 /obj/item/radio/examine(mob/user)
 	. = ..()
 	if(frequency && in_range(src, user))
-		. += span_notice("It is set to broadcast over the [frequency * 0.1] frequency.")
+		. += span_notice("它被设置为在[frequency * 0.1]频率上广播.")
 	if(unscrewed)
-		. += span_notice("It can be attached and modified.")
+		. += span_notice("它可以被附加和改装.")
 	else
-		. += span_notice("It cannot be modified or attached.")
+		. += span_notice("它无法被改装或附加.")
 
 /obj/item/radio/screwdriver_act(mob/living/user, obj/item/I)
 	. = ..()
@@ -425,9 +425,9 @@
 		return
 	unscrewed = !unscrewed
 	if(unscrewed)
-		to_chat(user, span_notice("The radio can now be attached and modified!"))
+		to_chat(user, span_notice("无线电现在可以被附加和改装了!"))
 	else
-		to_chat(user, span_notice("The radio can no longer be modified or attached!"))
+		to_chat(user, span_notice("无线电现在无法被改装或附加了!"))
 
 /obj/item/radio/proc/recalculateChannels()
 	channels = list()

@@ -3,7 +3,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/pounce/predalien
 	name = "Leap"
-	desc = "Leap at your targer stunning and slashing them. Stun duration and damage increases with each stack of hunted prey."
+	desc = "扑向你的目标,将其击晕并撕裂.击晕持续时间和伤害随每层猎杀猎物的叠加而增加."
 	action_icon_state = "powerful_pounce"
 	action_icon = 'icons/Xeno/actions/predalien.dmi'
 	pounce_range = 5
@@ -30,7 +30,7 @@
 
 /datum/action/ability/activable/xeno/predalien_roar
 	name = "Roar"
-	desc = "Buffs nearby xenomorphs with increased slash damage and movement speed, additionally removes invisibility from any prey nearby. Buff strength and duration increases with each stack of hunted prey."
+	desc = "为附近的异形提供增益,增加撕裂伤害和移动速度,同时移除附近任何猎物的隐身.增益强度和持续时间随每层猎杀猎物的叠加而增加."
 	action_icon_state = "rage_screech"
 	action_icon = 'icons/Xeno/actions/predalien.dmi'
 	keybinding_signals = list(
@@ -45,7 +45,7 @@
 
 /datum/action/ability/activable/xeno/predalien_roar/use_ability(atom/target)
 	playsound(xeno_owner.loc, pick(predalien_roar), 75, 0)
-	xeno_owner.visible_message(span_xenouserdanger("[xeno_owner] emits a guttural roar!"))
+	xeno_owner.visible_message(span_xenouserdanger("[xeno_owner]发出低沉的咆哮!"))
 	xeno_owner.create_shriekwave(color = "#FF0000")
 
 	for(var/mob/living/carbon/carbon in view(7, xeno_owner))
@@ -85,7 +85,7 @@
 
 /datum/action/ability/activable/xeno/smash
 	name = "Smash"
-	desc = "Stun a prey in front of you and paralyzes any prey around the target. Paralyze duration increases with each stack of hunted prey."
+	desc = "击晕你前方的一个猎物,并麻痹目标周围的任何猎物.麻痹持续时间随每层猎杀猎物的叠加而增加."
 	action_icon_state = "super_stomp"
 	action_icon = 'icons/Xeno/actions/predalien.dmi'
 	keybinding_signals = list(
@@ -103,23 +103,23 @@
 		return
 
 	if(!ishuman(target) && !isdroid(target))
-		to_chat(owner, span_xenowarning("You must target a hostile!"))
+		to_chat(owner, span_xenowarning("你必须以敌对目标为目标!"))
 		return FALSE
 
 	if(get_dist(target, owner) > 1)
-		to_chat(owner, span_xenowarning("[target] is too far away!"))
+		to_chat(owner, span_xenowarning("[target]太远了!"))
 		return FALSE
 
 	var/mob/living/carbon/carbon = target
 	if(carbon.stat == DEAD)
-		to_chat(owner, span_xenowarning("[carbon] is dead, why would you want to touch them?"))
+		to_chat(owner, span_xenowarning("[carbon]已经死了,你为什么还想碰他们?"))
 		return FALSE
 
 	return TRUE
 
 /datum/action/ability/activable/xeno/smash/use_ability(atom/target)
 	playsound(xeno_owner.loc, pick(smash_sounds), 50, 0)
-	xeno_owner.visible_message(span_xenouserdanger("[xeno_owner] smashes into the ground!"))
+	xeno_owner.visible_message(span_xenouserdanger("[xeno_owner]猛砸向地面!"))
 
 	xeno_owner.create_stomp()
 
@@ -144,7 +144,7 @@
 
 /datum/action/ability/activable/xeno/devastate
 	name = "Devastate"
-	desc = "Pull out the guts and viscera of your prey dealing brutal damage. Damage increases with each stack of hunted prey."
+	desc = "扯出你猎物的内脏和肠子,造成残酷的伤害.伤害随每层猎杀猎物的叠加而增加."
 	action_icon_state = "butchering"
 	action_icon = 'icons/Xeno/actions/predalien.dmi'
 	keybinding_signals = list(
@@ -164,16 +164,16 @@
 		return
 
 	if(!ishuman(target) && !isdroid(target))
-		to_chat(owner, span_xenowarning("You must target a hostile!"))
+		to_chat(owner, span_xenowarning("你必须以敌对目标为目标!"))
 		return FALSE
 
 	if(get_dist(target, owner) > 1)
-		to_chat(owner, span_xenowarning("[target] is too far away!"))
+		to_chat(owner, span_xenowarning("[target]太远了!"))
 		return FALSE
 
 	var/mob/living/carbon/carbon = target
 	if(carbon.stat == DEAD)
-		to_chat(owner, span_xenowarning("[carbon] is dead, why would you want to touch them?"))
+		to_chat(owner, span_xenowarning("[carbon]已经死了,你为什么还想碰他们?"))
 		return FALSE
 
 	return TRUE
@@ -186,7 +186,7 @@
 	xeno_owner.Immobilize(30 SECONDS)
 
 	if(do_after(xeno_owner, activation_delay, NONE, carbon, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE))
-		xeno_owner.visible_message(span_xenouserdanger("[xeno_owner] rips open the guts of [carbon]!"), span_xenouserdanger("You rip open the guts of [carbon]!"))
+		xeno_owner.visible_message(span_xenouserdanger("[xeno_owner]撕开了[carbon]的肠子!"), span_xenouserdanger("你撕开了[carbon]的肠子!"))
 		carbon.spawn_gibs()
 		playsound(get_turf(carbon), 'sound/effects/gibbed.ogg', 75, 1)
 		carbon.apply_effect(0.5, EFFECT_PARALYZE)
@@ -203,7 +203,7 @@
 
 	carbon.SetImmobilized(0)
 
-	xeno_owner.visible_message(span_xenodanger("[xeno_owner] rapidly slices into [carbon]!"))
+	xeno_owner.visible_message(span_xenodanger("[xeno_owner]迅速切割[carbon]!"))
 
 	add_cooldown()
 	succeed_activate()

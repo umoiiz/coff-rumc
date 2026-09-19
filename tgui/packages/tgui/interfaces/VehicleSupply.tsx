@@ -164,7 +164,7 @@ export const VehicleSupply = (props) => {
                   <Button
                     onClick={() => act('setvehicle', { type: veh.type })}
                     icon="check"
-                    content="Select"
+                    content="选择"
                     selected={veh.isselected}
                   />
                 }
@@ -185,7 +185,7 @@ export const VehicleSupply = (props) => {
                         act('set_driver_mod', { type: module.type })
                       }
                       icon="check"
-                      content="Select"
+                      content="选择"
                       selected={module.isselected}
                     />
                   }
@@ -205,7 +205,7 @@ export const VehicleSupply = (props) => {
                         act('set_gunner_mod', { type: module.type })
                       }
                       icon="check"
-                      content="Select"
+                      content="选择"
                       selected={module.isselected}
                     />
                   }

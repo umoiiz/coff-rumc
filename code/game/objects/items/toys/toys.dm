@@ -17,8 +17,8 @@
 * Balloons
 */
 /obj/item/toy/balloon
-	name = "water balloon"
-	desc = "A translucent balloon. There's nothing in it."
+	name = "水气球"
+	desc = "一个半透明气球. 里面什么都没有."
 	icon_state = "waterballoon-e"
 	worn_icon_state = "balloon-empty"
 
@@ -36,7 +36,7 @@
 		return
 	if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to(src, 10)
-		to_chat(user, span_notice("You fill the balloon with the contents of [A]."))
+		to_chat(user, span_notice("你把[A]里的东西灌进气球."))
 		desc = "A translucent balloon with some form of liquid sloshing around in it."
 		update_icon()
 
@@ -50,17 +50,17 @@
 			return
 
 		if(I.reagents.total_volume < 1)
-			to_chat(user, "The [I] is empty.")
+			to_chat(user, "[I]空了.")
 			return
 
 		if(I.reagents.has_reagent(/datum/reagent/toxin/acid/polyacid, 1))
-			to_chat(user, "The acid chews through the balloon!")
+			to_chat(user, "酸液腐蚀了气球!")
 			I.reagents.reaction(user, TOUCH)
 			qdel(src)
 			return
 
 		desc = "A translucent balloon with some form of liquid sloshing around in it."
-		to_chat(user, span_notice("You fill the balloon with the contents of [I]."))
+		to_chat(user, span_notice("你把[I]里的东西灌进气球."))
 		I.reagents.trans_to(src, 10)
 	update_icon()
 
@@ -69,7 +69,7 @@
 	if(!.)
 		return
 	if(src.reagents.total_volume >= 1)
-		src.visible_message(span_warning("The [src] bursts!"),"You hear a pop and a splash.")
+		src.visible_message(span_warning("[src]爆裂了!"),"你听到一声爆响和一阵水花.")
 		src.reagents.reaction(get_turf(hit_atom), TOUCH)
 		for(var/atom/A in get_turf(hit_atom))
 			src.reagents.reaction(A, TOUCH)
@@ -86,8 +86,8 @@
 		worn_icon_state = "balloon-empty"
 
 /obj/item/toy/syndicateballoon
-	name = "syndicate balloon"
-	desc = "There is a tag on the back that reads \"FUK NT!11!\"."
+	name = "辛迪加气球"
+	desc = "背面有个标签写着\"FUK NT!11!\"."
 	throw_speed = 4
 	throw_range = 20
 	force = 0
@@ -100,8 +100,8 @@
 * Fake telebeacon
 */
 /obj/item/toy/blink
-	name = "electronic blink toy game"
-	desc = "Blink.  Blink.  Blink. Ages 8 and up."
+	name = "电子眨眼玩具游戏"
+	desc = "眨眼. 眨眼. 眨眼. 8岁及以上."
 	icon = 'icons/obj/items/radio.dmi'
 	icon_state = "beacon"
 	worn_icon_list = list(
@@ -114,8 +114,8 @@
 * Fake singularity
 */
 /obj/item/toy/spinningtoy
-	name = "Gravitational Singularity"
-	desc = "\"Singulo\" brand spinning toy."
+	name = "引力奇点"
+	desc = "\"Singulo\"品牌旋转玩具."
 	icon = 'icons/obj/singularity.dmi'
 	icon_state = "singularity_s1"
 
@@ -123,8 +123,8 @@
 * Crayons
 */
 /obj/item/toy/crayon
-	name = "crayon"
-	desc = "A colourful crayon. Please refrain from eating it or putting it in your nose."
+	name = "蜡笔"
+	desc = "一支彩色蜡笔. 请勿食用或塞入鼻孔."
 	icon = 'icons/obj/items/crayons.dmi'
 	icon_state = "crayonred"
 	w_class = WEIGHT_CLASS_TINY
@@ -143,8 +143,8 @@
 * Snap pops
 */
 /obj/item/toy/snappop
-	name = "snap pop"
-	desc = "Wow!"
+	name = "摔炮"
+	desc = "哇!"
 	icon_state = "snappop"
 	w_class = WEIGHT_CLASS_TINY
 
@@ -163,7 +163,7 @@
 	s.set_up(3, 1, src)
 	s.start()
 	new /obj/effect/decal/cleanable/ash(src.loc)
-	src.visible_message(span_warning("The [src.name] explodes!"),span_warning("You hear a snap!"))
+	src.visible_message(span_warning("[src.name]爆炸了!"),span_warning("你听到一声脆响!"))
 	playsound(src, 'sound/effects/snap.ogg', 25, 1)
 	qdel(src)
 
@@ -174,13 +174,13 @@
 	var/mob/living/carbon/M = H
 	if(M.m_intent != MOVE_INTENT_RUN)
 		return
-	to_chat(M, span_warning("You step on the snap pop!"))
+	to_chat(M, span_warning("你踩到了摔炮!"))
 
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(2, 0, src)
 	s.start()
 	new /obj/effect/decal/cleanable/ash(src.loc)
-	visible_message(span_warning("The [src.name] explodes!"),span_warning("You hear a snap!"))
+	visible_message(span_warning("[src.name]爆炸了!"),span_warning("你听到一声脆响!"))
 	playsound(src, 'sound/effects/snap.ogg', 25, 1)
 	qdel(src)
 
@@ -188,8 +188,8 @@
 * Water flower
 */
 /obj/item/toy/waterflower
-	name = "Water Flower"
-	desc = "A seemingly innocent sunflower...with a twist."
+	name = "水花"
+	desc = "一朵看似无辜的向日葵...却暗藏玄机."
 	icon = 'icons/obj/items/harvest.dmi'
 	icon_state = "sunflower"
 	worn_icon_state = "sunflower"
@@ -216,12 +216,12 @@
 
 	else if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to(src, 10)
-		to_chat(user, span_notice("You refill your flower!"))
+		to_chat(user, span_notice("你给花重新装满了水!"))
 		return
 
 	else if (src.reagents.total_volume < 1)
 		empty = 1
-		to_chat(user, span_notice("Your flower has run dry!"))
+		to_chat(user, span_notice("你的花没水了!"))
 		return
 
 	else
@@ -245,7 +245,7 @@
 		for(var/atom/T in get_turf(our_decal))
 			our_decal.reagents.reaction(T)
 			if(ismob(T) && T:client)
-				to_chat(T:client, span_warning("[user] has sprayed you with water!"))
+				to_chat(T:client, span_warning("[user]朝你喷了水!"))
 		sleep(0.4 SECONDS)
 	qdel(our_decal)
 
@@ -263,7 +263,7 @@
 //all credit to skasi for toy mech fun ideas
 /obj/item/toy/prize/attack_self(mob/user as mob)
 	if(cooldown < world.time - 8)
-		to_chat(user, span_notice("You play with [src]."))
+		to_chat(user, span_notice("你摆弄着[src]."))
 		playsound(user, 'sound/mecha/mechstep.ogg', 15, 1)
 		cooldown = world.time
 
@@ -273,75 +273,75 @@
 		return
 	if(loc == user)
 		if(cooldown < world.time - 8)
-			to_chat(user, span_notice("You play with [src]."))
+			to_chat(user, span_notice("你摆弄着[src]."))
 			playsound(user, 'sound/mecha/mechturn.ogg', 15, 1)
 			cooldown = world.time
 			return
 
 /obj/item/toy/prize/ripley
-	name = "toy ripley"
-	desc = "Mini-Mecha action figure! Collect them all! 1/11."
+	name = "玩具里普利"
+	desc = "迷你机甲可动人偶! 集齐全部! 1/11."
 
 /obj/item/toy/prize/fireripley
-	name = "toy firefighting ripley"
-	desc = "Mini-Mecha action figure! Collect them all! 2/11."
+	name = "玩具消防里普利"
+	desc = "迷你机甲可动人偶! 集齐全部! 2/11."
 	icon_state = "fireripleytoy"
 
 /obj/item/toy/prize/deathripley
-	name = "toy deathsquad ripley"
-	desc = "Mini-Mecha action figure! Collect them all! 3/11."
+	name = "玩具死亡小队里普利"
+	desc = "迷你机甲可动人偶! 集齐全部! 3/11."
 	icon_state = "deathripleytoy"
 
 /obj/item/toy/prize/gygax
-	name = "toy gygax"
-	desc = "Mini-Mecha action figure! Collect them all! 4/11."
+	name = "玩具吉加克斯"
+	desc = "迷你机甲可动人偶! 集齐全部! 4/11."
 	icon_state = "gygaxtoy"
 
 /obj/item/toy/prize/durand
-	name = "toy durand"
-	desc = "Mini-Mecha action figure! Collect them all! 5/11."
+	name = "玩具杜兰德"
+	desc = "迷你机甲可动人偶! 集齐全部! 5/11."
 	icon_state = "durandprize"
 
 /obj/item/toy/prize/honk
-	name = "toy H.O.N.K."
-	desc = "Mini-Mecha action figure! Collect them all! 6/11."
+	name = "玩具H.O.N.K."
+	desc = "迷你机甲可动人偶! 集齐全部! 6/11."
 	icon_state = "honkprize"
 
 /obj/item/toy/prize/marauder
-	name = "toy marauder"
-	desc = "Mini-Mecha action figure! Collect them all! 7/11."
+	name = "玩具掠夺者"
+	desc = "迷你机甲手办! 把它们全部收集齐! 7/11."
 	icon_state = "marauderprize"
 
 /obj/item/toy/prize/seraph
-	name = "toy seraph"
-	desc = "Mini-Mecha action figure! Collect them all! 8/11."
+	name = "炽天使玩具"
+	desc = "迷你机甲手办! 把它们全部收集齐! 8/11."
 	icon_state = "seraphprize"
 
 /obj/item/toy/prize/mauler
-	name = "toy mauler"
-	desc = "Mini-Mecha action figure! Collect them all! 9/11."
+	name = "粉碎者玩具"
+	desc = "迷你机甲手办! 把它们全部收集齐! 9/11."
 	icon_state = "maulerprize"
 
 /obj/item/toy/prize/odysseus
-	name = "toy odysseus"
-	desc = "Mini-Mecha action figure! Collect them all! 10/11."
+	name = "奥德修斯玩具"
+	desc = "迷你机甲手办! 把它们全部收集齐! 10/11."
 	icon_state = "odysseusprize"
 
 /obj/item/toy/prize/phazon
-	name = "toy phazon"
-	desc = "Mini-Mecha action figure! Collect them all! 11/11."
+	name = "相位者玩具"
+	desc = "迷你机甲手办! 把它们全部收集齐! 11/11."
 	icon_state = "phazonprize"
 
 /obj/item/toy/inflatable_duck
-	name = "inflatable duck"
-	desc = "No bother to sink or swim when you can just float!"
+	name = "充气鸭子"
+	desc = "当你只需漂浮时, 沉浮都无所谓!"
 	icon_state = "inflatable"
 	worn_icon_state = "inflatable"
 	icon = 'icons/obj/clothing/belts.dmi'
 	equip_slot_flags = ITEM_SLOT_BELT
 
 /obj/item/toy/beach_ball
-	name = "beach ball"
+	name = "沙滩球"
 	icon_state = "beachball"
 	worn_icon_state = "beachball"
 	density = FALSE
@@ -356,7 +356,7 @@
 
 /obj/item/toy/dice
 	name = "d6"
-	desc = "A dice with six sides."
+	desc = "一个六面骰子."
 	icon = 'icons/obj/items/dice.dmi'
 	icon_state = "d66"
 	w_class = WEIGHT_CLASS_TINY
@@ -369,7 +369,7 @@
 
 /obj/item/toy/dice/d20
 	name = "d20"
-	desc = "A dice with twenty sides."
+	desc = "一个二十面骰子."
 	icon_state = "d2020"
 	sides = 20
 
@@ -381,13 +381,13 @@
 	else if(sides == 20 && result == 1)
 		comment = "Ouch, bad luck."
 	icon_state = "[name][result]"
-	user.visible_message(span_notice("[user] throws [src]. It lands on [result]. [comment]"), \
-						span_notice("You throw [src]. It lands on a [result]. [comment]"), \
-						span_notice("You hear [src] landing on a [result]. [comment]"))
+	user.visible_message(span_notice("[user]掷出了[src]. 结果是[result]. [comment]"), \
+						span_notice("你掷出了[src]. 结果是[result]. [comment]"), \
+						span_notice("你听到[src]落到了[result]上. [comment]"))
 
 /obj/item/toy/bikehorn
-	name = "bike horn"
-	desc = "A horn off of a bicycle."
+	name = "自行车喇叭"
+	desc = "自行车上的喇叭."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "bike_horn"
 	worn_icon_state = "bike_horn"
@@ -402,8 +402,8 @@
 	AddComponent(/datum/component/squeak, 'sound/items/bikehorn.ogg', 50)
 
 /obj/item/toy/plush
-	name = "generic doll"
-	desc = "An odd looking doll, it has a tag that reads: 'if found please return to coder.'"
+	name = "普通玩偶"
+	desc = "一个样子古怪的玩偶, 上面有个标签写着: '如果捡到请归还给编码员.'"
 	w_class = WEIGHT_CLASS_TINY
 	icon_state = "debug"
 	attack_verb = list("thumps", "whomps", "bumps")
@@ -416,8 +416,8 @@
 
 /obj/item/toy/plush/attack_self(mob/user)
 	if(world.time > last_hug_time)
-		user.visible_message(span_notice("[user] hugs [src]! How cute!"), \
-			span_notice("You hug [src]. Dawwww..."))
+		user.visible_message(span_notice("[user]拥抱了[src]! 真可爱!"), \
+			span_notice("你拥抱了[src]. 么么www..."))
 		last_hug_time = world.time + 5 SECONDS
 		playsound(src, squeak_sound, 50)
 
@@ -426,97 +426,97 @@
 	AddComponent(/datum/component/squeak, squeak_sound, squeak_volume)
 
 /obj/item/toy/plush/farwa
-	name = "Farwa plush doll"
-	desc = "A Farwa plush doll. It's soft and comforting!"
+	name = "法瓦毛绒玩偶"
+	desc = "一个法瓦毛绒玩偶. 它柔软又舒适!"
 	icon_state = "farwaplush"
 
 /obj/item/toy/plush/therapy_red
-	name = "red therapy doll"
-	desc = "A toy for therapeutic and recreational purposes. This one is red."
+	name = "红色治疗玩偶"
+	desc = "用于治疗和娱乐目的的玩具. 这个是红色的."
 	icon_state = "therapyred"
 
 /obj/item/toy/plush/therapy_purple
-	name = "purple therapy doll"
-	desc = "A toy for therapeutic and recreational purposes. This one is purple."
+	name = "紫色治疗玩偶"
+	desc = "用于治疗和娱乐目的的玩具. 这个是紫色的."
 	icon_state = "therapypurple"
 
 /obj/item/toy/plush/therapy_blue
-	name = "blue therapy doll"
-	desc = "A toy for therapeutic and recreational purposes. This one is blue."
+	name = "蓝色治疗玩偶"
+	desc = "用于治疗和娱乐目的的玩具. 这个是蓝色的."
 	icon_state = "therapyblue"
 
 /obj/item/toy/plush/therapy_yellow
-	name = "yellow therapy doll"
-	desc = "A toy for therapeutic and recreational purposes. This one is yellow."
+	name = "黄色治疗玩偶"
+	desc = "用于治疗和娱乐目的的玩具. 这个是黄色的."
 	icon_state = "therapyyellow"
 
 /obj/item/toy/plush/therapy_orange
-	name = "orange therapy doll"
-	desc = "A toy for therapeutic and recreational purposes. This one is orange."
+	name = "橙色治疗玩偶"
+	desc = "用于治疗和娱乐目的的玩具. 这个是橙色的."
 	icon_state = "therapyorange"
 
 /obj/item/toy/plush/therapy_green
-	name = "green therapy doll"
-	desc = "A toy for therapeutic and recreational purposes. This one is green."
+	name = "绿色治疗玩偶"
+	desc = "用于治疗和娱乐目的的玩具. 这个是绿色的."
 	icon_state = "therapygreen"
 
 /obj/item/toy/plush/carp
-	name = "carp plushie"
-	desc = "An adorable stuffed toy that resembles a carp."
+	name = "鲤鱼毛绒玩偶"
+	desc = "一个可爱的毛绒玩具, 外形像一条鲤鱼."
 	icon_state = "carpplush"
 	worn_icon_state = "carp_plushie"
 	attack_verb = list("bites", "eats", "fin slaps")
 
 /obj/item/toy/plush/lizard
-	name = "lizard plushie"
-	desc = "An adorable stuffed toy that resembles a lizard."
+	name = "蜥蜴毛绒玩偶"
+	desc = "一个可爱的毛绒玩具, 外形像一只蜥蜴."
 	icon_state = "lizplush"
 	worn_icon_state = "lizplush"
 	attack_verb = list("claws", "hisses", "tail slaps")
 
 /obj/item/toy/plush/snake
-	name = "snake plushie"
-	desc = "An adorable stuffed toy that resembles a snake. Not to be mistaken for the real thing."
+	name = "蛇毛绒玩偶"
+	desc = "一个可爱的毛绒玩具, 外形像一条蛇. 别把它和真蛇搞混了."
 	icon_state = "snakeplush"
 	worn_icon_state = "snakeplush"
 	attack_verb = list("bites", "hisses", "tail slaps")
 
 /obj/item/toy/plush/slime
-	name = "slime plushie"
-	desc = "An adorable stuffed toy that resembles a slime. It is practically just a hacky sack."
+	name = "史莱姆毛绒玩偶"
+	desc = "一个可爱的毛绒玩具, 外形像一只史莱姆. 它基本上就是个沙包."
 	icon_state = "slimeplush"
 	worn_icon_state = "slimeplush"
 	attack_verb = list("blorbles", "slimes", "absorbs")
 
 /obj/item/toy/plush/moth
-	name = "moth plushie"
-	desc = "A plushie depicting an adorable mothperson. It's a huggable bug!"
+	name = "飞蛾毛绒玩偶"
+	desc = "一个描绘可爱飞蛾人的毛绒玩偶. 是个可以抱抱的虫子!"
 	icon_state = "moffplush"
 	worn_icon_state = "moffplush"
 	attack_verb = list("flutters", "flaps")
 
 /obj/item/toy/plush/rouny
-	name = "rouny plushie"
-	desc = "A plushie depicting a rouny, made to commemorate the centenary of the battle of LV-426. Much cuddlier and soft than the real thing."
+	name = "鲁尼毛绒玩偶"
+	desc = "一个描绘鲁尼的毛绒玩偶, 为纪念LV-426战役一百周年而制作. 比真家伙可爱柔软多了."
 	icon_state = "rounyplush"
 	worn_icon_state = "rounyplush"
 	attack_verb = list("slashes", "bites", "pounces")
 
 /obj/item/toy/plush/witch
-	name = "witch plushie"
-	desc = "A plushie depicting an adorable witch. It likes to steal books."
+	name = "女巫毛绒玩偶"
+	desc = "一个描绘可爱女巫的毛绒玩偶. 它喜欢偷书."
 	icon_state = "marisa"
 	worn_icon_state = "marisa"
 
 /obj/item/toy/plush/fairy
-	name = "fairy plushie"
-	desc = "A plushie depicting an adorable fairy. It's cold to the touch."
+	name = "妖精毛绒玩偶"
+	desc = "一个描绘可爱妖精的毛绒玩偶. 摸起来冰凉凉的."
 	icon_state = "cirno"
 	worn_icon_state = "cirno"
 
 /obj/item/toy/plush/royalqueen
-	name = "royal queen plushie"
-	desc = "A plushie depicting a royal xenomorph queen. Smells faintly of stardust and baguettes, with a tag that has Wee! written on it."
+	name = "皇家异形女王毛绒玩偶"
+	desc = "一个描绘皇家异形女王的毛绒玩偶. 隐约散发着星尘和法棍的气味, 标签上写着Wee!"
 	icon_state = "queenplushie"
 	worn_icon_state = "queenplushie"
 	attack_verb = list("nuzzles", "bops", "pats")
@@ -524,23 +524,23 @@
 	squeak_volume = 20
 
 /obj/item/toy/plush/dragon
-	name = "dragon plushie"
-	desc = "A plush dragon figurine that is warm to the touch."
+	name = "龙毛绒玩偶"
+	desc = "一个摸起来温热的龙毛绒玩偶."
 	icon_state = "dragon"
 	worn_icon_state = "dragon"
 	attack_verb = list("bites", "tail slaps", "pats")
 
 /obj/item/toy/plush/gnome
-	name = "gnome"
-	desc = "A mythological creature that guarded Terra's garden. You wonder why it is here."
+	name = "地精"
+	desc = "一只守护泰拉花园的神话生物. 你很好奇它为什么会在这里."
 	icon_state = "gnome"
 	worn_icon_state = "gnome"
 	attack_verb = list("kickes", "punches", "pounces")
 	squeak_sound = 'sound/items/gnome.ogg'
 
 /obj/item/toy/plush/pig
-	name = "pig toy"
-	desc = "Captain Dementy! Bring the pigs! Marines demand pigs!."
+	name = "猪玩具"
+	desc = "杰门蒂上尉! 把猪带过来! 陆战队员们要求要猪!"
 	icon_state = "pig"
 	worn_icon_state = "pig"
 	attack_verb = list("oinks", "grunts")
@@ -548,21 +548,21 @@
 
 /obj/item/toy/plush/pig/attack_self(mob/user)
 	if(world.time > last_hug_time)
-		user.visible_message(span_notice("[user] presses [src]! Oink!"), \
-			span_notice("You press [src]. Oink!")) // should be a way to decrease copypaste, but no idea how
+		user.visible_message(span_notice("[user]按下了[src]! 哼哼!"), \
+			span_notice("你按下了[src]. 哼哼!")) // should be a way to decrease copypaste, but no idea how
 		last_hug_time = world.time + 5 SECONDS
 		playsound(src, squeak_sound, 50)
 
 /obj/item/toy/beach_ball/basketball
-	name = "basketball"
+	name = "篮球"
 	icon_state = "basketball"
 	worn_icon_state = "basketball"
-	desc = "Here's your chance, do your dance at the Space Jam."
+	desc = "机会来了, 在太空大灌篮里大展身手吧."
 	w_class = WEIGHT_CLASS_BULKY
 
 /obj/structure/hoop
-	name = "basketball hoop"
-	desc = "Boom, Shakalaka!"
+	name = "篮球框"
+	desc = "砰, 沙卡拉卡!"
 	icon = 'icons/obj/structures/misc.dmi'
 	icon_state = "hoop"
 	anchored = TRUE
@@ -581,14 +581,14 @@
 		return
 	var/mob/living/grabbed_mob = grab.grabbed_thing
 	if(user.grab_state <= GRAB_AGGRESSIVE)
-		to_chat(user, span_warning("You need a better grip to do that!"))
+		to_chat(user, span_warning("你需要更好的抓握力才能做到!"))
 		return
 	grabbed_mob.forceMove(loc)
 	grabbed_mob.Paralyze(4 SECONDS)
 	for(var/obj/machinery/scoreboard/X in GLOB.machines)
 		if(X.id == id)
 			X.score(side, 3)// 3 points for dunking a mob
-	visible_message(span_danger("[user] dunks [grabbed_mob] into the [src]!"))
+	visible_message(span_danger("[user]将[grabbed_mob]扣进了[src]!"))
 
 /obj/structure/hoop/attackby(obj/item/I, mob/user, params)
 	. = ..()
@@ -600,7 +600,7 @@
 		for(var/obj/machinery/scoreboard/X in GLOB.machines)
 			if(X.id == id)
 				X.score(side)
-		visible_message(span_notice("[user] dunks [I] into the [src]!"))
+		visible_message(span_notice("[user]将[I]扣进了[src]!"))
 
 /obj/structure/hoop/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover,/obj/item) && mover.throwing)
@@ -611,8 +611,8 @@
 				if(X.id == id)
 					X.score(side)
 					// no break, to update multiple scoreboards
-			visible_message(span_notice("Swish! \the [I] lands in \the [src]."), 3)
+			visible_message(span_notice("唰! \the [I]落入了\the [src]."), 3)
 			return TRUE
-		visible_message(span_warning("\the [I] bounces off of \the [src]'s rim!"), 3)
+		visible_message(span_warning("\the [I]从\the [src]的篮筐上弹开了!"), 3)
 		return FALSE
 	return ..()

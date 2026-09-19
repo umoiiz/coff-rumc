@@ -6,13 +6,13 @@
 
 
 /datum/emergency_call/upp/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>You grew up on [pick(50;"an asteriod", 25;"a famished colony", 25;"a classified station")] with [pick(75;"few", 25;"some")] belongings or luxuries.</B>")
-	to_chat(H, "<B>The family you grew up with were [pick(50;"getting by", 25;"impoverished", 25;"starving")] and you were one of [pick(10;"two", 20;"three", 30;"four", 20;"five", 20;"six")] children.</B>")
-	to_chat(H, "<B>You come from a long line of [pick(50;"pirates", 25;"renegades", 25;"rogue soldiers")] and quickly joined the local band to improve your living conditions.</B>")
+	to_chat(H, "<B>你在[pick(50;"an asteriod", 25;"a famished colony", 25;"a classified station")]长大, 拥有[pick(75;"few", 25;"some")]的财产或奢侈品.</B>")
+	to_chat(H, "<B>与你一起长大的家人是[pick(50;"getting by", 25;"impoverished", 25;"starving")], 你是[pick(10;"two", 20;"three", 30;"four", 20;"five", 20;"six")]个孩子之一.</B>")
+	to_chat(H, "<B>你出身于[pick(50;"pirates", 25;"renegades", 25;"rogue soldiers")]的悠久血脉, 并很快加入了当地团伙以改善生活条件.</B>")
 	to_chat(H, "")
-	to_chat(H, "<B>Today, a TGMC vessel, [SSmapping.configs[SHIP_MAP].map_name], has sent out a distress signal on the orbit of [SSmapping.configs[GROUND_MAP].map_name]. Your USL assault pirate warband heads out and your stealing begins!</b>")
-	to_chat(H, "<B>Eliminate the TGMC force if necessary. Do not harm the civilians unless they attack you first.</B>")
-	to_chat(H, span_notice("You speak in a language that humans cannot understand, only you and your fellow pirates can.<br>Type in <b>\",0 <text>\" in the say verb</b> to speak in Galactic Common.<br>Type in <b>\";,0 <text>\" in the say verb</b> to commincate the radio in Galactic Common."))
+	to_chat(H, "<B>今天, 一艘TGMC飞船, [SSmapping.configs[SHIP_MAP].map_name], 在[SSmapping.configs[GROUND_MAP].map_name]的轨道上发出了求救信号. 你的USL突击海盗团出发了, 你的掠夺开始了!</b>")
+	to_chat(H, "<B>必要时消灭TGMC部队. 不要伤害平民, 除非他们先攻击你.</B>")
+	to_chat(H, span_notice("你说一种人类无法理解的语言, 只有你和你的海盗同伴能懂.<br>在说话动词中输入<b>\",0 <text>\"</b>以用银河通用语说话.<br>在说话动词中输入<b>\";,0 <text>\"</b>以用银河通用语进行无线电通讯."))
 
 
 /datum/emergency_call/upp/create_member(datum/mind/M)
@@ -66,13 +66,13 @@
 
 
 /datum/emergency_call/upphvh/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>You grew up on [pick(50;"an asteriod", 25;"a famished colony", 25;"a classified station")] with [pick(75;"few", 25;"some")] belongings or luxuries.</B>")
-	to_chat(H, "<B>The family you grew up with were [pick(50;"getting by", 25;"impoverished", 25;"starving")] and you were one of [pick(10;"two", 20;"three", 30;"four", 20;"five", 20;"six")] children.</B>")
-	to_chat(H, "<B>You come from a long line of [pick(50;"pirates", 25;"renegades", 25;"rogue soldiers")] and quickly joined the local band to improve your living conditions.</B>")
+	to_chat(H, "<B>你在[pick(50;"an asteriod", 25;"a famished colony", 25;"a classified station")]长大, 拥有[pick(75;"few", 25;"some")]的财产或奢侈品.</B>")
+	to_chat(H, "<B>与你一起长大的家人是[pick(50;"getting by", 25;"impoverished", 25;"starving")], 你是[pick(10;"two", 20;"three", 30;"four", 20;"five", 20;"six")]个孩子之一.</B>")
+	to_chat(H, "<B>你出身于[pick(50;"pirates", 25;"renegades", 25;"rogue soldiers")]的悠久血脉, 并很快加入了当地团伙以改善生活条件.</B>")
 	to_chat(H, "")
-	to_chat(H, "<B>Today, a TGMC vessel, [SSmapping.configs[SHIP_MAP].map_name], has sent out a distress signal on the orbit of [SSmapping.configs[GROUND_MAP].map_name]. Your USL assault pirate warband heads out and your stealing begins!</b>")
-	to_chat(H, "<B>Eliminate the TGMC force if necessary. Do not harm the civilians unless they attack you first.</B>")
-	to_chat(H, span_notice("You speak in a language that humans cannot understand, only you and your fellow pirates can.<br>Type in <b>\",0 <text>\" in the say verb</b> to speak in Galactic Common.<br>Type in <b>\";,0 <text>\" in the say verb</b> to commincate the radio in Galactic Common."))
+	to_chat(H, "<B>今天, 一艘TGMC飞船, [SSmapping.configs[SHIP_MAP].map_name], 在[SSmapping.configs[GROUND_MAP].map_name]的轨道上发出了求救信号. 你的USL突击海盗团出发了, 你的掠夺开始了!</b>")
+	to_chat(H, "<B>必要时消灭TGMC部队. 不要伤害平民, 除非他们先攻击你.</B>")
+	to_chat(H, span_notice("你说一种人类无法理解的语言, 只有你和你的海盗同伴能懂.<br>在说话动词中输入<b>\",0 <text>\"</b>以用银河通用语说话.<br>在说话动词中输入<b>\";,0 <text>\"</b>以用银河通用语进行无线电通讯."))
 
 
 /datum/emergency_call/upphvh/create_member(datum/mind/M)

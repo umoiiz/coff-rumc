@@ -1,6 +1,6 @@
 /obj/item/orbital_bombardment_beacon
-	name = "orbital beacon"
-	desc = "A bulky device that fires a beam up to an orbiting vessel to send local coordinates."
+	name = "轨道信标"
+	desc = "一个笨重的装置,向轨道上的飞船发射光束以发送本地坐标."
 	icon = 'icons/obj/items/beacon.dmi'
 	icon_state = "motion4"
 	w_class = WEIGHT_CLASS_SMALL
@@ -35,18 +35,18 @@
 /// Set this beacon on the ground and activate it
 /obj/item/orbital_bombardment_beacon/proc/activate(mob/living/carbon/human/H)
 	if(!is_ground_level(H.z))
-		to_chat(H, span_warning("You have to be on the planet to use this or it won't transmit."))
+		to_chat(H, span_warning("你必须身处星球表面才能使用,否则无法传输."))
 		return FALSE
 	var/area/A = get_area(H)
 	if(A && istype(A) && A.ceiling >= CEILING_DEEP_UNDERGROUND)
-		to_chat(H, span_warning("This won't work if you're standing deep underground."))
+		to_chat(H, span_warning("如果你身处地下深处,此装置将无法工作."))
 		return FALSE
 	if(istype(A, /area/shuttle/dropship))
-		to_chat(H, span_warning("You have to be outside the dropship to use this or it won't transmit."))
+		to_chat(H, span_warning("你必须身处运输机外部才能使用,否则无法传输."))
 		return FALSE
 	var/delay = max(1.5 SECONDS, activation_time - 2 SECONDS * H.skills.getRating(SKILL_LEADERSHIP))
-	H.visible_message(span_notice("[H] starts setting up [src] on the ground."),
-	span_notice("You start setting up [src] on the ground and inputting all the data it needs."))
+	H.visible_message(span_notice("[H]开始在地面上部署[src]."),
+	span_notice("你开始在地面上部署[src]并输入所需的所有数据."))
 	if(!do_after(H, delay, NONE, src, BUSY_ICON_GENERIC))
 		return FALSE
 	beacon_cam = new(src, "[H.get_paygrade()] [H.name] [src]")
@@ -59,7 +59,7 @@
 	layer = ABOVE_OBJ_LAYER
 	set_light(2, 1)
 	playsound(src, 'sound/machines/twobeep.ogg', 15, 1)
-	H.visible_message(span_warning("[H] activates [src]."), span_warning("You activate [src]."))
+	H.visible_message(span_warning("[H]激活了[src]."), span_warning("你激活了[src]."))
 	message_admins("[ADMIN_TPMONTY(usr)] set up an orbital strike beacon.")
 
 	var/marker_flags = GLOB.faction_to_minimap_flag[H.faction]
@@ -78,7 +78,7 @@
 /// Deactivate this beacon and put it in the hand of the human
 /obj/item/orbital_bombardment_beacon/proc/deactivate(mob/living/carbon/human/H)
 	var/delay = max(1 SECONDS, activation_time * 0.5 - 2 SECONDS * H.skills.getRating(SKILL_LEADERSHIP)) //Half as long as setting it up.
-	H.visible_message(span_notice("[H] starts removing [src] from the ground."), span_notice("You start removing [src] from the ground, deactivating it."))
+	H.visible_message(span_notice("[H]开始从地面上移除[src]."), span_notice("你开始从地面上移除[src],将其停用."))
 	if(!do_after(H, delay, NONE, src, BUSY_ICON_GENERIC))
 		return FALSE
 	QDEL_NULL(beacon_cam)
@@ -89,7 +89,7 @@
 	name = initial(name)
 	set_light(0)
 	playsound(src, 'sound/machines/twobeep.ogg', 15, 1)
-	H.visible_message(span_warning("[H] deactivates [src]."), span_warning("You deactivate [src]."))
+	H.visible_message(span_warning("[H]停用了[src]."), span_warning("你停用了[src]."))
 	H.put_in_active_hand(src)
 	SSminimaps.remove_marker(src)
 	update_icon()

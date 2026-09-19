@@ -54,7 +54,7 @@ export const Smes = (props) => {
   return (
     <Window width={340} height={350}>
       <Window.Content>
-        <Section title="Stored Energy">
+        <Section title="储存能量">
           <ProgressBar
             value={capacityPercent * 0.01}
             ranges={{
@@ -64,10 +64,10 @@ export const Smes = (props) => {
             }}
           />
         </Section>
-        <Section title="Input">
+        <Section title="输入">
           <LabeledList>
             <LabeledList.Item
-              label="Charge Mode"
+              label="充电模式"
               buttons={
                 <Button
                   icon={inputAttempt ? 'sync-alt' : 'times'}
@@ -84,7 +84,7 @@ export const Smes = (props) => {
                   'Not Charging'}
               </Box>
             </LabeledList.Item>
-            <LabeledList.Item label="Target Input">
+            <LabeledList.Item label="目标输入">
               <Flex inline width="100%">
                 <Flex.Item>
                   <Button
@@ -144,15 +144,15 @@ export const Smes = (props) => {
                 </Flex.Item>
               </Flex>
             </LabeledList.Item>
-            <LabeledList.Item label="Available">
+            <LabeledList.Item label="可用">
               {formatPower(inputAvailable)}
             </LabeledList.Item>
           </LabeledList>
         </Section>
-        <Section title="Output">
+        <Section title="输出">
           <LabeledList>
             <LabeledList.Item
-              label="Output Mode"
+              label="输出模式"
               buttons={
                 <Button
                   icon={outputAttempt ? 'power-off' : 'times'}
@@ -171,7 +171,7 @@ export const Smes = (props) => {
                     : 'No Charge'}
               </Box>
             </LabeledList.Item>
-            <LabeledList.Item label="Target Output">
+            <LabeledList.Item label="目标输出">
               <Flex inline width="100%">
                 <Flex.Item>
                   <Button
@@ -230,7 +230,7 @@ export const Smes = (props) => {
                 </Flex.Item>
               </Flex>
             </LabeledList.Item>
-            <LabeledList.Item label="Outputting">
+            <LabeledList.Item label="输出中">
               {formatPower(outputUsed)}
             </LabeledList.Item>
           </LabeledList>

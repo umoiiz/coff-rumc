@@ -1,6 +1,6 @@
 /obj/structure/barricade/concrete
-	name = "concrete barricade"
-	desc = "A short wall made of reinforced concrete. It looks like it can take a lot of punishment."
+	name = "混凝土路障"
+	desc = "一堵由钢筋混凝土制成的矮墙.看起来能承受大量打击."
 	icon_state = "concrete_0"
 	icon = 'icons/obj/structures/barricades/concrete.dmi'
 	coverage = 100

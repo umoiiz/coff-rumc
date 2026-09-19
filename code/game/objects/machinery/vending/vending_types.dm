@@ -28,12 +28,12 @@
 */
 
 /obj/machinery/vending/boozeomat
-	name = "\improper Booze-O-Mat"
-	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one."
+	name = "\improper 酒水自动贩卖机"
+	desc = "一项科技奇迹,据说能在你点单的瞬间调配出你想要的混合饮品."
 	icon_state = "boozeomat"        //////////////18 drink entities below, plus the glasses, in case someone wants to edit the number of bottles
 	icon_deny = "boozeomat-deny"
 	icon_vend = "boozeomat-vend"
-	product_slogans = "I hope nobody asks me for a bloody cup o' tea...;Alcohol is humanity's friend. Would you abandon a friend?;Quite delighted to serve you!;Is nobody thirsty on this station?Drink up!;Booze is good for you!;Alcohol is humanity's best friend.;Quite delighted to serve you!;Care for a nice, cold beer?;Nothing cures you like booze!;Have a sip!;Have a drink!;Have a beer!;Beer is good for you!;Only the finest alcohol!;Best quality booze since 2053!;Award-winning wine!;Maximum alcohol!;Man loves beer.;A toast for progress!"
+	product_slogans = "希望没人跟我要一杯该死的茶...;酒精是人类的朋友.你会抛弃朋友吗?;非常乐意为您服务!;这个空间站上就没人渴吗?喝起来!;酒对你有好处!;酒精是人类最好的朋友.;非常乐意为您服务!;想来杯不错的冰啤酒吗?;没什么比酒更能治愈你了!;来一口!;来一杯!;来瓶啤酒!;啤酒对你有好处!;只有最好的酒!;自2053年以来最优质的酒!;获奖葡萄酒!;极致酒精!;男人爱啤酒.;为进步干杯!"
 	products = list(
 		/obj/item/reagent_containers/food/drinks/bottle/gin = -1,
 		/obj/item/reagent_containers/food/drinks/bottle/whiskey = -1,
@@ -68,15 +68,15 @@
 	idle_power_usage = 211
 
 /obj/machinery/vending/boozeomat/gold
-	name = "Golden Booze-O-Mat"
-	desc = "The beer machine with Bravo squad attributes won by the team 'SKIBIDI_LORDS_1337_BRAVO_GOYDA', it included Timur Livs, Max Bobinchik, Martin Barrett. Robust tournament took place on 11/15/2024 (2524?)"
+	name = "黄金酒水自动贩卖机"
+	desc = "这台啤酒机拥有Bravo小队属性,由队伍'SKIBIDI_LORDS_1337_BRAVO_GOYDA'赢得,成员包括Timur Livs, Max Bobinchik, Martin Barrett. 强悍锦标赛于2024年11月15日举行(2524?)"
 	icon_state = "gold-boozeomat"
 	icon_deny = "gold-boozeomat-deny"
 	icon_vend = "gold-boozeomat-vend"
 	product_slogans = "Браво вперде!!;Историю пишут победители!;Никто кроме нас!"
 
 /obj/machinery/vending/assist
-	product_ads = "Only the finest!;Have some tools.;The most robust equipment.;The finest gear in space!"
+	product_ads = "只有最好的!;来点工具.;最强悍的装备.;太空中最精良的装备!"
 	icon_vend = "generic-vend"
 	icon_deny = "generic-deny"
 	products = list(
@@ -89,8 +89,8 @@
 	)
 
 /obj/machinery/vending/coffee
-	name = "\improper Hot Drinks machine"
-	desc = "A vending machine which dispenses hot drinks."
+	name = "\improper 热饮机"
+	desc = "一台分发热饮的自动售货机."
 	//product_ads = "Have a drink!;Drink up!;It's good for you!;Would you like a hot joe?;I'd kill for some coffee!;The best beans in the galaxy.;Only the finest brew for you.;Mmmm. Nothing like a coffee.;I like coffee, don't you?;Coffee helps you work!;Try some tea.;We hope you like the best!;Try our new chocolate!;Admin conspiracies"
 	icon_state = "coffee"
 	icon_vend = "coffee-vend"
@@ -106,9 +106,9 @@
 	)
 
 /obj/machinery/vending/snack
-	name = "\improper Hot Foods machine"
-	desc = "A vending machine full of ready to cook meals, mhmmmm taste the nutritional goodness!"
-	product_slogans = "Kepler Crisps! Try a snack that's out of this world!;Eat an EAT!;Eat a Nanotrasen brand packaged hamburger.;Eat a Nanotrasen brand packaged hot dog.;Eat a Nanotrasen brand packaged burrito.;"
+	name = "\improper 热食机"
+	desc = "一台装满即食餐的自动售货机,嗯嗯嗯,尝尝这营养美味!"
+	product_slogans = "开普勒薯片! 尝尝来自外太空的零食!;吃个EAT!;吃个Nanotrasen牌包装汉堡.;吃个Nanotrasen牌包装热狗.;吃个Nanotrasen牌包装卷饼.;"
 	icon_state = "snack"
 	icon_vend = "snack-vend"
 	icon_deny = "snack-deny"
@@ -126,10 +126,10 @@
 	)
 
 /obj/machinery/vending/cola
-	name = "\improper Souto Softdrinks"
-	desc = "A softdrink vendor provided by Souto Soda Company, Havana."
+	name = "\improper Souto软饮料"
+	desc = "由哈瓦那Souto苏打公司提供的软饮料售货机."
 	icon_state = "Cola_Machine"
-	product_slogans = "Souto Soda: Have a Souto and be taken away to a tropical paradise!;Souto Classic. You can't beat that tangerine goodness!;Souto Cherry. The sweet flavor of a cool winter morning!;Souto Lime. For that sweet and sour flavor that you know and love!;Souto Grape. There's nothing better than a grape soda.;Nanotrasen Fruit Beer. Nothing came from that lawsuit!;Nanotrasen Spring Water. It came from a spring!"
+	product_slogans = "Souto苏打: 来瓶Souto,被带到热带天堂!;Souto经典款. 那橘子的美味无可匹敌!;Souto樱桃味. 清凉冬日早晨的甜美风味!;Souto青柠味. 为你熟知且热爱的酸甜风味!;Souto葡萄味. 没什么比葡萄苏打更棒了.;Nanotrasen果啤. 那场官司什么也没得到!;Nanotrasen泉水. 它来自山泉!"
 	icon_deny = "Cola_Machine-deny"
 	icon_vend = "Cola_Machine-vend"
 	products = list(
@@ -148,13 +148,13 @@
 
 /obj/machinery/vending/medical
 	name = "\improper NanotrasenMed Plus"
-	desc = "Medical Pharmaceutical dispenser.  Provided by Nanotrasen Pharmaceuticals Division(TM)."
+	desc = "医疗药品分发器. 由Nanotrasen制药部门(TM)提供."
 	icon_state = "med"
 	icon_deny = "med-deny"
 	icon_vend = "med-vend"
 	//product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?;Ping!"
 	products = list(
-		"Pill Bottle" = list(
+		"药瓶" = list(
 			/obj/item/storage/pill_bottle/inaprovaline = -1,
 			/obj/item/storage/pill_bottle/dexalin = -1,
 			/obj/item/storage/pill_bottle/spaceacillin = -1,
@@ -165,7 +165,7 @@
 			/obj/item/storage/pill_bottle/quickclot = 4,
 			/obj/item/storage/pill_bottle/russian_red = 4,
 		),
-		"Hypospray" = list (
+		"注射器" = list (
 			/obj/item/reagent_containers/hypospray/autoinjector/dexalinplus = 10,
 			/obj/item/reagent_containers/hypospray/advanced = 5,
 			/obj/item/reagent_containers/hypospray/advanced/bicaridine = 5,
@@ -174,7 +174,7 @@
 			/obj/item/reagent_containers/hypospray/advanced/tricordrazine = 5,
 			/obj/item/reagent_containers/hypospray/advanced/dylovene = 5,
 		),
-		"Reagent Bottle" = list(
+		"试剂瓶" = list(
 			/obj/item/reagent_containers/glass/bottle/bicaridine = -1,
 			/obj/item/reagent_containers/glass/bottle/kelotane = -1,
 			/obj/item/reagent_containers/glass/bottle/tramadol = -1,
@@ -189,7 +189,7 @@
 			/obj/item/reagent_containers/glass/bottle/sleeptoxin = 6,
 			/obj/item/reagent_containers/glass/bottle/polyhexanide = 6,
 		),
-		"Chemistry Equipment" = list(
+		"化学设备" = list(
 			/obj/item/reagent_containers/syringe = -1,
 			/obj/item/reagent_containers/glass/beaker = -1,
 			/obj/item/reagent_containers/glass/beaker/large = -1,
@@ -202,7 +202,7 @@
 			/obj/item/storage/reagent_tank/tricordrazine = 1,
 			/obj/item/storage/reagent_tank/bktt = 1,
 		),
-		"Surgical Equipment" = list(
+		"手术设备" = list(
 			/obj/item/storage/pouch/surgery = -1,
 			/obj/item/armor_module/storage/uniform/surgery_webbing = -1,
 			/obj/item/reagent_containers/spray/surgery = -1,
@@ -218,7 +218,7 @@
 			/obj/item/tool/surgery/FixOVein = -1,
 			/obj/item/tool/surgery/suture = -1,
 		),
-		"Misc" = list(
+		"杂项" = list(
 			/obj/item/tool/research/xeno_analyzer = -1,
 			/obj/item/tool/research/excavation_tool = -1,
 			/obj/item/clothing/glasses/hud/health = 15,
@@ -236,7 +236,7 @@
 	req_access = null
 	resistance_flags = INDESTRUCTIBLE
 	products = list(
-		"Hypospray" = list (
+		"注射器" = list (
 			/obj/item/reagent_containers/hypospray/autoinjector/dexalinplus = -1,
 			/obj/item/reagent_containers/hypospray/advanced = -1,
 			/obj/item/reagent_containers/hypospray/advanced/bicaridine = -1,
@@ -245,7 +245,7 @@
 			/obj/item/reagent_containers/hypospray/advanced/tricordrazine = -1,
 			/obj/item/reagent_containers/hypospray/advanced/dylovene = -1,
 		),
-		"Reagent Bottle" = list(
+		"试剂瓶" = list(
 			/obj/item/reagent_containers/glass/bottle/bicaridine = -1,
 			/obj/item/reagent_containers/glass/bottle/kelotane = -1,
 			/obj/item/reagent_containers/glass/bottle/tramadol = -1,
@@ -265,7 +265,7 @@
 			/obj/item/reagent_containers/glass/bottle/doctor_delight = -1,
 			/obj/item/reagent_containers/glass/bottle/medicalnanites = -1,
 		),
-		"Pill Bottle" = list(
+		"药瓶" = list(
 			/obj/item/storage/pill_bottle/inaprovaline = -1,
 			/obj/item/storage/pill_bottle/isotonic = -1,
 			/obj/item/storage/pill_bottle/spaceacillin = -1,
@@ -276,14 +276,14 @@
 			/obj/item/storage/pill_bottle/hypervene = -1,
 			/obj/item/storage/pill_bottle/russian_red = -1,
 		),
-		"Heal Pack" = list(
+		"治疗包" = list(
 			/obj/item/stack/medical/heal_pack/advanced/bruise_pack = -1,
 			/obj/item/stack/medical/heal_pack/advanced/burn_pack = -1,
 			/obj/item/stack/medical/heal_pack/ointment = -1,
 			/obj/item/stack/medical/heal_pack/gauze = -1,
 			/obj/item/stack/medical/splint = -1,
 		),
-		"Surgical Equipment" = list(
+		"手术设备" = list(
 			/obj/item/storage/pouch/surgery = -1,
 			/obj/item/armor_module/storage/uniform/surgery_webbing = -1,
 			/obj/item/reagent_containers/spray/surgery = -1,
@@ -299,13 +299,13 @@
 			/obj/item/tool/surgery/FixOVein = -1,
 			/obj/item/tool/surgery/suture = -1,
 		),
-		"Misc" = list(
+		"杂项" = list(
 			/obj/item/tool/research/xeno_analyzer = -1,
 			/obj/item/tool/research/excavation_tool = -1,
 			/obj/item/clothing/glasses/hud/health = -1,
 			/obj/item/roller = -1,
 		),
-		"Chemistry Equipment" = list(
+		"化学设备" = list(
 			/obj/item/reagent_containers/syringe = -1,
 			/obj/item/storage/syringe_case/empty = -1,
 			/obj/item/reagent_containers/glass/beaker/bluespace = -1,
@@ -320,7 +320,7 @@
 			/obj/item/storage/reagent_tank/tricordrazine = -1,
 			/obj/item/storage/reagent_tank/bktt = -1,
 		),
-		"Valhalla" = list(
+		"瓦尔哈拉" = list(
 			/obj/item/reagent_containers/glass/beaker/bluespace = -1,
 			/obj/item/reagent_containers/hypospray/autoinjector/rezadone = -1,
 			/obj/item/reagent_containers/hypospray/autoinjector/virilyth = -1,
@@ -334,7 +334,7 @@
 //This one's from bay12
 /obj/machinery/vending/phoronresearch
 	name = "\improper Toximate 3000"
-	desc = "All the fine parts you need in one vending machine!"
+	desc = "所有你需要的精良部件都在这一台自动售货机里!"
 	icon_vend = "generic-vend"
 	icon_deny = "generic-deny"
 	products = list(
@@ -350,8 +350,8 @@
 
 /obj/machinery/vending/nanomed
 	name = "\improper NanoMed"
-	desc = "Wall-mounted Medical Equipment dispenser."
-	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?"
+	desc = "壁挂式医疗设备分发器."
+	product_ads = "去拯救一些生命吧!;给你医疗舱最好的东西.;只有最精良的工具.;天然化学品!;这些东西能救命.;你不想要一些吗?"
 	icon_state = "wallmed"
 	icon_deny = "wallmed-deny"
 	icon_vend = "wallmed-vend"
@@ -386,11 +386,11 @@
 			pixel_x = 21
 
 /obj/machinery/vending/nanomed/tadpolemed
-	name = "\improper Flight surgeon medical equipment dispenser"
-	desc = "Dedicated for the surgeon with wings, this humble box contains a lot for its size."
+	name = "\improper 飞行外科医生医疗设备分发器"
+	desc = "专为有翅膀的外科医生设计,这个不起眼的小盒子虽小却装了很多东西."
 	layer = ABOVE_OBJ_LAYER
 	products = list(
-		"Autoinjectors" = list(
+		"自动注射器" = list(
 			/obj/item/reagent_containers/hypospray/autoinjector/bicaridine = 1,
 			/obj/item/reagent_containers/hypospray/autoinjector/kelotane = 1,
 			/obj/item/reagent_containers/hypospray/autoinjector/dylovene = 1,
@@ -401,7 +401,7 @@
 			/obj/item/reagent_containers/hypospray/autoinjector/inaprovaline = 1,
 			/obj/item/reagent_containers/hypospray/autoinjector/dexalinplus = 1,
 		),
-		"Reagent Bottles" = list(
+		"试剂瓶" = list(
 			/obj/item/reagent_containers/syringe = 10,
 			/obj/item/reagent_containers/glass/bottle/dylovene = 1,
 			/obj/item/reagent_containers/glass/bottle/bicaridine = 1,
@@ -412,7 +412,7 @@
 			/obj/item/reagent_containers/glass/bottle/tramadol = 1,
 			/obj/item/reagent_containers/glass/bottle/polyhexanide = 1,
 		),
-		"Heal Pack" = list(
+		"治疗包" = list(
 			/obj/item/stack/medical/heal_pack/gauze = 2,
 			/obj/item/stack/medical/heal_pack/ointment = 2,
 			/obj/item/stack/medical/heal_pack/advanced/bruise_pack = 5,
@@ -424,8 +424,8 @@
 
 /obj/machinery/vending/security
 	name = "\improper SecTech"
-	desc = "A security equipment vendor."
-	product_ads = "Crack capitalist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
+	desc = "一台安保设备售货机."
+	product_ads = "打爆资本主义的脑袋!;揍扁他们!;别忘了 - 伤害是好事!;你的武器就在这儿.;手铐!;不许动, 混蛋!;别电我兄弟!;电他们, 兄弟.;何不来个甜甜圈?"
 	icon_state = "sec"
 	icon_deny = "sec-deny"
 	icon_vend = "sec-vend"
@@ -443,8 +443,8 @@
 	)
 
 /obj/machinery/vending/hydronutrients
-	name = "\improper NutriMax"
-	desc = "A plant nutrients vendor."
+	name = "\improper 营养满"
+	desc = "植物营养售卖机."
 	//product_slogans = "Aren't you glad you don't have to fertilize the natural way?;Now with 50% less stink!;Plants are people too!"
 	//product_ads = "We like plants!;Don't you want some?;The greenest thumbs ever.;We like big plants.;Soft soil..."
 	icon_state = "nutri"
@@ -463,8 +463,8 @@
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
 /obj/machinery/vending/hydroseeds
-	name = "\improper MegaSeed Servitor"
-	desc = "When you need seeds fast!"
+	name = "\improper 超级种子伺服机"
+	desc = "当你急需种子时!"
 	//product_slogans = "THIS'S WHERE TH' SEEDS LIVE! GIT YOU SOME!;Hands down the best seed selection on the station!;Also certain mushroom varieties available, more for experts! Get certified today!"
 	//product_ads = "We like plants!;Grow some crops!;Grow, baby, growww!;Aw h'yeah son!"
 	icon_state = "seeds"
@@ -514,12 +514,12 @@
 	)
 
 /obj/machinery/vending/magivend
-	name = "\improper MagiVend"
-	desc = "A magic vending machine."
+	name = "\improper 魔法售货机"
+	desc = "一台魔法自动售货机."
 	icon_state = "MagiVend"
 	//product_slogans = "Sling spells the proper way with MagiVend!;Be your own Houdini! Use MagiVend!"
 	vend_reply = "Have an enchanted evening!"
-	product_ads = "FJKLFJSD;AJKFLBJAKL;1234 LOONIES LOL!;>MFW;Kill them fuckers!;GET DAT FUKKEN DISK;HONK!;EI NATH;Destroy the station!;Admin conspiracies since forever!;Space-time bending hardware!"
+	product_ads = "FJKLFJSD;AJKFLBJAKL;1234 疯子们 哈哈!;>我的表情;杀了那些混蛋!;拿到那该死的磁盘;嗡!;EI NATH;摧毁空间站!;管理员阴谋永无止境!;时空弯曲硬件!"
 	products = list(
 		/obj/item/clothing/head/wizard = 1,
 		/obj/item/clothing/suit/wizrobe = 1,
@@ -530,9 +530,9 @@
 	)
 
 /obj/machinery/vending/dinnerware
-	name = "\improper Dinnerware"
-	desc = "A kitchen and restaurant equipment vendor."
-	product_ads = "Mm, food stuffs!;Food and food accessories.;Get your plates!;You like forks?;I like forks.;Woo, utensils.;You don't really need these..."
+	name = "\improper 餐具"
+	desc = "厨房和餐厅设备售卖机."
+	product_ads = "嗯, 食物!;食物和食物配件.;拿你的盘子!;你喜欢叉子?;我喜欢叉子.;呜, 餐具.;你其实不需要这些..."
 	icon_state = "dinnerware"
 	icon_vend = "dinnerware-vend"
 	icon_deny = "dinnerware-deny"
@@ -550,14 +550,14 @@
 	)
 
 /obj/machinery/vending/dinnerware/yautja
-	name = "dinnerplate dispenser"
+	name = "餐盘分配器"
 	icon = 'icons/obj/machines/yautja_machines.dmi'
 
 /obj/machinery/vending/sovietsoda
 	name = "BODA"
-	desc = "An old sweet water vending machine,how did this end up here?"
+	desc = "一台老式甜水自动售货机, 它怎么会出现在这里?"
 	icon_state = "sovietsoda"
-	product_ads = "For Tsar and Country.;Have you fulfilled your nutrition quota today?;Very nice!;We are simple people, for this is all we eat.;If there is a person, there is a problem. If there is no person, then there is no problem."
+	product_ads = "为了沙皇和祖国.;你今天完成营养配额了吗?;非常好!;我们是简单的人, 这就是我们吃的全部.;如果有人, 就有问题. 如果没有人, 就没有问题."
 	products = list(
 		/obj/item/reagent_containers/cup/glass/drinking_glass/filled/soda = 30,
 		/obj/item/reagent_containers/cup/glass/drinking_glass/filled/cola = 20,
@@ -565,8 +565,8 @@
 	idle_power_usage = 211
 
 /obj/machinery/vending/engivend
-	name = "\improper Engi-Vend"
-	desc = "Spare engineer vending. What? Did you expect some witty description?"
+	name = "\improper 工程售卖机"
+	desc = "备用工程师售卖. 什么? 你期待什么机智的描述吗?"
 	icon_state = "engivend"
 	icon_vend = "engivend-vend"
 	icon_deny = "engivend-deny"
@@ -601,8 +601,8 @@
 	resistance_flags = INDESTRUCTIBLE
 
 /obj/machinery/vending/engivend/yautja
-	name = "yautja autolathe"
-	desc = "Weird alien industrial fabricator."
+	name = "yautja自动车床"
+	desc = "奇怪的外星工业制造机."
 	icon = 'icons/obj/machines/yautja_machines.dmi'
 	icon_state = "autolathe"
 	icon_vend = "autholate_n"
@@ -627,8 +627,8 @@
 
 //This one's from bay12
 /obj/machinery/vending/robotics
-	name = "\improper Robotech Deluxe"
-	desc = "All the tools you need to create your own robot army."
+	name = "\improper 机器人技术豪华版"
+	desc = "创建你自己的机器人军队所需的所有工具."
 	icon_state = "robotics"
 	icon_deny = "robotics-deny"
 	icon_vend = "robotics-vend"

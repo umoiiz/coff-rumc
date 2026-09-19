@@ -121,10 +121,10 @@ export const GameSettings = (props) => {
   };
 
   return (
-    <Section title="Game Settings">
+    <Section title="游戏设置">
       <Stack fill>
         <Stack.Item grow>
-          <Section title="Window settings">
+          <Section title="窗口设置">
             <LabeledList>
               <ToggleFieldPreference
                 label="Window flashing"
@@ -291,7 +291,7 @@ export const GameSettings = (props) => {
           </Section>
         </Stack.Item>
         <Stack.Item grow>
-          <Section title="Message settings">
+          <Section title="消息设置">
             <LabeledList>
               <ToggleFieldPreference
                 label="Runechat bubbles"
@@ -366,7 +366,7 @@ export const GameSettings = (props) => {
       </Stack>
       <Stack>
         <Stack.Item grow>
-          <Section title="UI settings">
+          <Section title="界面设置">
             <LabeledList>
               <SelectFieldPreference
                 label={'UI Style'}
@@ -443,7 +443,7 @@ export const GameSettings = (props) => {
           </Section>
         </Stack.Item>
         <Stack.Item grow>
-          <Section title="Sound settings">
+          <Section title="声音设置">
             <LabeledList>
               <SliderInputPreference
                 label="Admin Music Volume"
@@ -489,7 +489,7 @@ export const GameSettings = (props) => {
       {!!is_admin && (
         <Stack>
           <Stack.Item grow>
-            <Section title="Staff settings">
+            <Section title="管理员设置">
               <LabeledList>
                 <ToggleFieldPreference
                   label="Fast MC Refresh"

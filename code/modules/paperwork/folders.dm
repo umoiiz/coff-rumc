@@ -1,32 +1,32 @@
 /obj/item/folder
-	name = "folder"
-	desc = "A folder."
+	name = "文件夹"
+	desc = "一个文件夹."
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "folder"
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/folder/blue
-	desc = "A blue folder."
+	desc = "一个蓝色文件夹."
 	icon_state = "folder_blue"
 
 /obj/item/folder/grape
-	desc = "A violet folder."
+	desc = "一个紫色文件夹."
 	icon_state = "folder_grape"
 
 /obj/item/folder/red
-	desc = "A red folder."
+	desc = "一个红色文件夹."
 	icon_state = "folder_red"
 
 /obj/item/folder/yellow
-	desc = "A yellow folder."
+	desc = "一个黄色文件夹."
 	icon_state = "folder_yellow"
 
 /obj/item/folder/white
-	desc = "A white folder."
+	desc = "一个白色文件夹."
 	icon_state = "folder_white"
 
 /obj/item/folder/black
-	desc = "A black folder."
+	desc = "一个黑色文件夹."
 	icon_state = "folder_black"
 
 /obj/item/folder/update_overlays()
@@ -42,7 +42,7 @@
 		if(!user.transferItemToLoc(I, src))
 			return
 
-		to_chat(user, span_notice("You put the [I] into \the [src]."))
+		to_chat(user, span_notice("你将[I]放入\the [src]."))
 		update_icon()
 
 	else if(istype(I, /obj/item/tool/pen))

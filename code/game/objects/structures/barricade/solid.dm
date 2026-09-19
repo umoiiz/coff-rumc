@@ -7,8 +7,8 @@
 #define MARINE_QUICKBUILD_ALLOWED (CHECK_BITFIELD(SSticker.mode?.round_type_flags, MODE_ALLOW_MARINE_QUICKBUILD) && (!SSticker.round_start_time || (world.time - SSticker.round_start_time) < 10 MINUTES))
 
 /obj/structure/barricade/solid
-	name = "metal barricade"
-	desc = "A sturdy and easily assembled barricade made of metal plates, often used for quick fortifications. Use a blowtorch to repair."
+	name = "金属路障"
+	desc = "一种由金属板制成的坚固且易于组装的路障,常用于快速构筑防御工事.使用喷灯进行修复."
 	icon_state = "metal_0"
 	icon = 'icons/obj/structures/barricades/metal.dmi'
 	max_integrity = 200 //4 sheets
@@ -70,44 +70,44 @@
 		return
 
 	if(material_sheets.get_amount() < 2)
-		balloon_alert(user, "You need at least 2 [material_sheets.name] sheets")
+		balloon_alert(user, "你至少需要2个[material_sheets.name]板")
 		return FALSE
 
 	if(LAZYACCESS(user.do_actions, src))
 		return
 
-	balloon_alert_to_viewers("Repairing base...")
+	balloon_alert_to_viewers("修复底座中...")
 
 	if(!do_after(user, 2 SECONDS, NONE, src, BUSY_ICON_FRIENDLY))
 		return FALSE
 
 	if(get_self_acid())
-		balloon_alert(user, "It's melting!")
+		balloon_alert(user, "它正在融化!")
 		return TRUE
 
 	if(!material_sheets.use(2))
 		return FALSE
 
 	repair_damage(max_integrity * 0.3, user)
-	balloon_alert_to_viewers("Base repaired")
+	balloon_alert_to_viewers("底座已修复")
 	update_icon()
 
 /obj/structure/barricade/solid/examine(mob/user)
 	. = ..()
 	switch(build_state)
 		if(BARRICADE_METAL_FIRM)
-			. += span_info("The protection panel is still tighly screwed in place.")
+			. += span_info("防护板仍紧紧拧在原位.")
 		if(BARRICADE_METAL_ANCHORED)
-			. += span_info("The protection panel has been removed, you can see the anchor bolts.")
+			. += span_info("防护板已被移除,你可以看到锚栓.")
 		if(BARRICADE_METAL_LOOSE)
-			. += span_info("The protection panel has been removed and the anchor bolts loosened. It's ready to be taken apart.")
+			. += span_info("防护板已被移除,锚栓已松动.可以拆卸了.")
 
-	. += span_info("It is [barricade_upgrade_type ? "upgraded with [barricade_upgrade_type]" : "not upgraded"].")
+	. += span_info("它是[barricade_upgrade_type ? "upgraded with [barricade_upgrade_type]" : "not upgraded"].")
 
 /obj/structure/barricade/solid/welder_act(mob/living/user, obj/item/I)
 	. = welder_repair_act(user, I, 85, 2.5 SECONDS, 0.3, SKILL_ENGINEER_METAL, 1)
 	if(. == BELOW_INTEGRITY_THRESHOLD)
-		balloon_alert(user, "Too damaged. Use metal sheets.")
+		balloon_alert(user, "损坏太严重.请使用金属板.")
 
 /obj/structure/barricade/solid/screwdriver_act(mob/living/user, obj/item/I)
 	if(LAZYACCESS(user.do_actions, src))
@@ -123,7 +123,7 @@
 			if(!do_after(user, 1 SECONDS, NONE, src, BUSY_ICON_BUILD))
 				return TRUE
 
-			balloon_alert_to_viewers("bolt protection panel replaced")
+			balloon_alert_to_viewers("螺栓防护板已更换")
 			build_state = BARRICADE_METAL_FIRM
 			return TRUE
 
@@ -138,7 +138,7 @@
 			if(!do_after(user, 1 SECONDS, NONE, src, BUSY_ICON_BUILD))
 				return TRUE
 
-			balloon_alert_to_viewers("bolt protection panel removed")
+			balloon_alert_to_viewers("螺栓防护板已移除")
 			build_state = BARRICADE_METAL_ANCHORED
 			return TRUE
 
@@ -156,7 +156,7 @@
 			if(!do_after(user, 1 SECONDS, NONE, src, BUSY_ICON_BUILD))
 				return TRUE
 
-			balloon_alert_to_viewers("anchor bolts loosened")
+			balloon_alert_to_viewers("锚栓已松动")
 			build_state = BARRICADE_METAL_LOOSE
 			anchored = FALSE
 			modify_max_integrity(initial(max_integrity) * 0.5)
@@ -167,12 +167,12 @@
 
 			var/turf/mystery_turf = get_turf(src)
 			if(!isopenturf(mystery_turf))
-				balloon_alert(user, "can't anchor here")
+				balloon_alert(user, "无法在此固定")
 				return TRUE
 
 			var/turf/open/T = mystery_turf
 			if(!T.allow_construction) //We shouldn't be able to anchor in areas we're not supposed to build; loophole closed.
-				balloon_alert(user, "can't anchor here")
+				balloon_alert(user, "无法在此固定")
 				return TRUE
 
 			if(!MARINE_QUICKBUILD_ALLOWED && user.skills.getRating(SKILL_CONSTRUCTION) < SKILL_CONSTRUCTION_METAL)
@@ -182,14 +182,14 @@
 
 			for(var/obj/structure/barricade/B in loc)
 				if(B != src && B.dir == dir)
-					balloon_alert(user, "already barricade here")
+					balloon_alert(user, "此处已有路障")
 					return TRUE
 
 			playsound(loc, 'sound/items/ratchet.ogg', 25, TRUE)
 			if(!do_after(user, 1 SECONDS, NONE, src, BUSY_ICON_BUILD))
 				return TRUE
 
-			balloon_alert_to_viewers("anchor bolts secured")
+			balloon_alert_to_viewers("锚栓已固定")
 			build_state = BARRICADE_METAL_ANCHORED
 			anchored = TRUE
 			modify_max_integrity(initial(max_integrity))
@@ -206,21 +206,21 @@
 				if(!do_after(user, fumbling_time, NONE, src, BUSY_ICON_UNSKILLED))
 					return TRUE
 
-			balloon_alert_to_viewers("disassembling")
+			balloon_alert_to_viewers("拆卸中")
 
 			playsound(loc, 'sound/items/crowbar.ogg', 25, 1)
 			if(!do_after(user, 5 SECONDS, NONE, src, BUSY_ICON_BUILD))
 				return TRUE
 
-			user.visible_message(span_notice("[user] takes [src]'s panels apart."),
-			span_notice("You take [src]'s panels apart."))
+			user.visible_message(span_notice("[user]拆下了[src]的护板."),
+			span_notice("你拆下了[src]的护板."))
 			playsound(loc, 'sound/items/deconstruct.ogg', 25, 1)
 			deconstruct(!get_self_acid())
 			return TRUE
 		if(BARRICADE_METAL_FIRM)
 
 			if(!barricade_upgrade_type) //Check to see if we actually have upgrades to remove.
-				balloon_alert(user, "no upgrades to remove")
+				balloon_alert(user, "没有可移除的升级")
 				return TRUE
 
 			if(!MARINE_QUICKBUILD_ALLOWED && user.skills.getRating(SKILL_CONSTRUCTION) < SKILL_CONSTRUCTION_METAL)
@@ -228,13 +228,13 @@
 				if(!do_after(user, fumbling_time, NONE, src, BUSY_ICON_UNSKILLED))
 					return TRUE
 
-			balloon_alert_to_viewers("removing armor plates")
+			balloon_alert_to_viewers("正在移除装甲板")
 
 			playsound(loc, 'sound/items/crowbar.ogg', 25, 1)
 			if(!do_after(user, 5 SECONDS, NONE, src, BUSY_ICON_BUILD))
 				return TRUE
 
-			balloon_alert_to_viewers("removed armor plates")
+			balloon_alert_to_viewers("已移除装甲板")
 			playsound(loc, 'sound/items/deconstruct.ogg', 25, 1)
 
 			switch(barricade_upgrade_type)
@@ -255,14 +255,14 @@
 	if(!can_upgrade)
 		return FALSE
 	if(barricade_upgrade_type)
-		balloon_alert(user, "Already upgraded")
+		balloon_alert(user, "已升级")
 		return FALSE
 	if(obj_integrity < max_integrity)
-		balloon_alert(user, "It needs to be at full health")
+		balloon_alert(user, "它需要处于满耐久")
 		return FALSE
 
 	if(metal_sheets.get_amount() < CADE_UPGRADE_REQUIRED_SHEETS)
-		balloon_alert(user, "You need at least [CADE_UPGRADE_REQUIRED_SHEETS] metal to upgrade")
+		balloon_alert(user, "你至少需要[CADE_UPGRADE_REQUIRED_SHEETS]金属来升级")
 		return FALSE
 
 	var/static/list/cade_types = list(
@@ -276,17 +276,17 @@
 		return
 
 	if(!MARINE_QUICKBUILD_ALLOWED && user.skills.getRating(SKILL_CONSTRUCTION) < SKILL_CONSTRUCTION_METAL)
-		balloon_alert_to_viewers("fumbles")
+		balloon_alert_to_viewers("失手了")
 		var/fumbling_time = 2 SECONDS * ( SKILL_CONSTRUCTION_METAL - user.skills.getRating(SKILL_CONSTRUCTION) )
 		if(!do_after(user, fumbling_time, NONE, src, BUSY_ICON_UNSKILLED))
 			return FALSE
 
-	balloon_alert_to_viewers("attaching [choice]")
+	balloon_alert_to_viewers("正在安装[choice]")
 	if(!do_after(user, 2 SECONDS, NONE, src, BUSY_ICON_BUILD))
 		return FALSE
 
 	if(barricade_upgrade_type)
-		balloon_alert(user, "Already upgraded")
+		balloon_alert(user, "已升级")
 		return FALSE
 
 	if(!metal_sheets.use(CADE_UPGRADE_REQUIRED_SHEETS))
@@ -303,7 +303,7 @@
 
 	barricade_upgrade_type = choice
 
-	balloon_alert_to_viewers("[choice] attached")
+	balloon_alert_to_viewers("[choice]已安装")
 
 	playsound(loc, 'sound/items/screwdriver.ogg', 25, TRUE)
 	update_icon()
@@ -364,8 +364,8 @@
 	internal_shield.modify_max_integrity(max_integrity + 50)
 
 /obj/structure/barricade/solid/plasteel
-	name = "plasteel barricade"
-	desc = "A sturdy and heavily assembled barricade made of plasteel plates. Use a blowtorch to repair."
+	name = "塑钢路障"
+	desc = "一种由塑钢板制成的坚固且结构复杂的路障.使用喷灯进行修复."
 	icon_state = "new_plasteel_0"
 	icon = 'icons/obj/structures/barricades/new_plasteel.dmi'
 	max_integrity = 550 //4 sheets
@@ -382,7 +382,7 @@
 /obj/structure/barricade/solid/handrail
 	resistance_flags = INDESTRUCTIBLE
 	icon_state = "handrail_strata"
-	name = "handrail"
+	name = "扶手"
 	barricade_type = "handrail"
 	icon = 'icons/obj/structures/barricades/misc.dmi'
 

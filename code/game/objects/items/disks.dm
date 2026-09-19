@@ -1,5 +1,5 @@
 /obj/item/disk
-	name = "disk"
+	name = "磁盘"
 	icon = 'icons/obj/items/disk.dmi'
 	icon_state = "datadisk0"
 	worn_icon_list = list(
@@ -10,8 +10,8 @@
 
 
 /obj/item/disk/nuclear
-	name = "nuclear authentication disk"
-	desc = "Better keep this safe."
+	name = "核认证磁盘"
+	desc = "最好妥善保管."
 	icon_state = "nucleardisk"
 	w_class = WEIGHT_CLASS_TINY
 	resistance_flags = RESIST_ALL
@@ -26,15 +26,15 @@
 
 
 /obj/item/disk/nuclear/red
-	name = "red nuclear authentication disk"
+	name = "红色核认证磁盘"
 	icon_state = "datadisk7"
 
 
 /obj/item/disk/nuclear/green
-	name = "green nuclear authentication disk"
+	name = "绿色核认证磁盘"
 	icon_state = "botanydisk"
 
 
 /obj/item/disk/nuclear/blue
-	name = "blue nuclear authentication disk"
+	name = "蓝色核认证磁盘"
 	icon_state = "datadisk0"

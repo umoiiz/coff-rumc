@@ -1,6 +1,6 @@
 /obj/item/storage/backpack
-	name = "backpack"
-	desc = "You wear this on your back and put items into it."
+	name = "背包"
+	desc = "你把它背在背上,然后把物品放进去."
 	icon_state = "backpack"
 	icon = 'icons/obj/items/storage/backpack.dmi'
 	worn_icon_list = list(
@@ -45,79 +45,79 @@
 */
 
 /obj/item/storage/backpack/holding
-	name = "bag of holding"
-	desc = "A backpack that opens into a localized pocket of Blue Space."
+	name = "次元袋"
+	desc = "一个可以打开通往局部蓝空间口袋的背包."
 	icon_state = "holdingpack"
 	storage_type = /datum/storage/backpack/holding
 
 /obj/item/storage/backpack/holding/attackby(obj/item/I, mob/user, params)
 	if(!istype(I, /obj/item/storage/backpack/holding))
 		return ..()
-	to_chat(user, span_warning("The Bluespace interfaces of the two devices conflict and malfunction."))
+	to_chat(user, span_warning("两个设备的蓝空间接口冲突并发生故障."))
 	qdel(I)
 
 /obj/item/storage/backpack/santabag
-	name = "Santa's Gift Bag"
-	desc = "Space Santa uses this to deliver toys to all the nice children in space in Christmas! Wow, it's pretty big!"
+	name = "圣诞老人的礼物袋"
+	desc = "太空圣诞老人用这个在圣诞节给太空中所有乖孩子送玩具!哇,它可真大!"
 	icon_state = "giftbag0"
 	worn_icon_state = "giftbag"
 	w_class = WEIGHT_CLASS_BULKY
 	storage_type = /datum/storage/backpack/santabag
 
 /obj/item/storage/backpack/cultpack
-	name = "trophy rack"
-	desc = "It's useful for both carrying extra gear and proudly declaring your insanity."
+	name = "奖杯架"
+	desc = "它既可用于携带额外装备,也可用于自豪地宣告你的疯狂."
 	icon_state = "cultpack"
 
 /obj/item/storage/backpack/clown
-	name = "Giggles von Honkerton"
-	desc = "It's a backpack made by Honk! Co."
+	name = "咯咯·冯·洪克顿"
+	desc = "这是一个由Honk!公司制造的背包."
 	icon_state = "clownpack"
 
 /obj/item/storage/backpack/corpsman
-	name = "medical backpack"
-	desc = "It's a backpack especially designed for use in a sterile environment."
+	name = "医疗背包"
+	desc = "这是一个专为无菌环境使用而设计的背包."
 	icon_state = "medicalpack"
 
 /obj/item/storage/backpack/security
-	name = "security backpack"
-	desc = "It's a very robust backpack."
+	name = "安保背包"
+	desc = "这是一个非常坚固的背包."
 	icon_state = "securitypack"
 
 /obj/item/storage/backpack/captain
-	name = "captain's backpack"
-	desc = "It's a special backpack made exclusively for officers."
+	name = "船长背包"
+	desc = "这是一个专为军官制作的特别背包."
 	icon_state = "captainpack"
 
 /obj/item/storage/backpack/industrial
-	name = "industrial backpack"
-	desc = "It's a tough backpack for the daily grind of station life."
+	name = "工业背包"
+	desc = "这是一个耐用的背包,适合空间站日常繁重的生活."
 	icon_state = "engiepack"
 	worn_icon_state = "engiepack"
 
 /obj/item/storage/backpack/toxins
-	name = "laboratory backpack"
-	desc = "It's a light backpack modeled for use in laboratories and other scientific institutions."
+	name = "实验室背包"
+	desc = "这是一个轻便的背包,专为实验室和其他科研机构使用而设计."
 	icon_state = "toxpack"
 
 /obj/item/storage/backpack/hydroponics
-	name = "herbalist's backpack"
-	desc = "It's a green backpack with many pockets to store plants and tools in."
+	name = "草药师背包"
+	desc = "这是一个绿色的背包,有许多口袋用来存放植物和工具."
 	icon_state = "hydpack"
 
 /obj/item/storage/backpack/genetics
-	name = "geneticist backpack"
-	desc = "It's a backpack fitted with slots for diskettes and other workplace tools."
+	name = "基因学家背包"
+	desc = "这是一个背包,配有用于存放磁盘和其他工作工具的插槽."
 	icon_state = "genpack"
 
 /obj/item/storage/backpack/virology
-	name = "sterile backpack"
-	desc = "It's a sterile backpack able to withstand different pathogens from entering its fabric."
+	name = "无菌背包"
+	desc = "这是一个无菌背包,能够抵御不同病原体进入其织物."
 	icon_state = "viropack"
 
 /obj/item/storage/backpack/chemistry
-	name = "chemistry backpack"
-	desc = "It's an orange backpack which was designed to hold beakers, pill bottles and bottles."
+	name = "化学背包"
+	desc = "这是一个橙色的背包,设计用来装烧杯、药瓶和瓶子."
 	icon_state = "chempack"
 
 /*
@@ -125,8 +125,8 @@
 */
 
 /obj/item/storage/backpack/satchel
-	name = "leather satchel"
-	desc = "It's a very fancy satchel made with fine leather."
+	name = "皮革挎包"
+	desc = "这是一个非常精致的挎包,由优质皮革制成."
 	icon_state = "satchel"
 	storage_type = /datum/storage/backpack/satchel
 
@@ -134,111 +134,111 @@
 	new /obj/item/storage/wallet/random( src )
 
 /obj/item/storage/backpack/satchel/som
-	name = "mining satchel"
-	desc = "A satchel with origins dating back to the mining colonies."
+	name = "采矿挎包"
+	desc = "一个起源可追溯到采矿殖民地的挎包."
 	icon_state = "som_satchel"
 	worn_icon_state = "som_satchel"
 
 /obj/item/storage/backpack/satchel/norm
-	name = "satchel"
-	desc = "A trendy looking satchel."
+	name = "挎包"
+	desc = "一个看起来很时髦的挎包."
 	icon_state = "satchel-norm"
 
 /obj/item/storage/backpack/satchel/rugged
-	name = "satchel"
-	desc = "A rugged satchel for workers of all types."
+	name = "挎包"
+	desc = "一个适合各类工人的坚固挎包."
 	icon_state = "satchel-norm"
 
 /obj/item/storage/backpack/satchel/eng
-	name = "industrial satchel"
-	desc = "A tough satchel with extra pockets."
+	name = "工业挎包"
+	desc = "一个带有额外口袋的耐用挎包."
 	icon_state = "satchel-eng"
 
 /obj/item/storage/backpack/satchel/med
-	name = "medical satchel"
-	desc = "A sterile satchel used in medical departments."
+	name = "医疗挎包"
+	desc = "一个用于医疗部门的无菌挎包."
 	icon_state = "satchel-med"
 
 /obj/item/storage/backpack/satchel/vir
-	name = "virologist satchel"
-	desc = "A sterile satchel with virologist colours."
+	name = "病毒学家挎包"
+	desc = "一个带有病毒学家配色的无菌挎包."
 	icon_state = "satchel-vir"
 
 /obj/item/storage/backpack/satchel/chem
-	name = "chemist satchel"
-	desc = "A sterile satchel with chemist colours."
+	name = "化学家挎包"
+	desc = "一个带有化学家配色的无菌挎包."
 	icon_state = "satchel-chem"
 
 /obj/item/storage/backpack/satchel/gen
-	name = "geneticist satchel"
-	desc = "A sterile satchel with geneticist colours."
+	name = "基因学家挎包"
+	desc = "一个带有基因学家配色的无菌挎包."
 	icon_state = "satchel-gen"
 
 /obj/item/storage/backpack/satchel/tox
-	name = "scientist satchel"
-	desc = "Useful for holding research materials."
+	name = "科学家挎包"
+	desc = "适合存放研究材料."
 	icon_state = "satchel-tox"
 
 /obj/item/storage/backpack/satchel/sec
-	name = "security satchel"
-	desc = "A robust satchel for security related needs."
+	name = "安保挎包"
+	desc = "一个用于安保相关需求的坚固挎包."
 	icon_state = "satchel-sec"
 
 /obj/item/storage/backpack/satchel/hyd
-	name = "hydroponics satchel"
-	desc = "A green satchel for plant related work."
+	name = "水培挎包"
+	desc = "一个用于植物相关工作的绿色挎包."
 	icon_state = "satchel_hyd"
 
 /obj/item/storage/backpack/satchel/cap
-	name = "captain's satchel"
-	desc = "An exclusive satchel for officers."
+	name = "舰长挎包"
+	desc = "一个专为军官准备的专属挎包."
 	icon_state = "satchel-cap"
 
 //ERT backpacks.
 /obj/item/storage/backpack/ert
-	name = "emergency response team backpack"
-	desc = "A spacious backpack with lots of pockets, used by members of the Emergency Response Team."
+	name = "应急响应小组背包"
+	desc = "一个有很多口袋的宽敞背包,供应急响应小组成员使用."
 	icon_state = "ert_commander"
 
 //Commander
 /obj/item/storage/backpack/ert/commander
-	name = "emergency response team commander backpack"
-	desc = "A spacious backpack with lots of pockets, worn by the commander of a Emergency Response Team."
+	name = "应急响应小组指挥官背包"
+	desc = "一个有很多口袋的宽敞背包,由应急响应小组指挥官佩戴."
 
 //Security
 /obj/item/storage/backpack/ert/security
-	name = "emergency response team security backpack"
-	desc = "A spacious backpack with lots of pockets, worn by security members of a Emergency Response Team."
+	name = "应急响应小组安保背包"
+	desc = "一个有很多口袋的宽敞背包,由应急响应小组安保成员佩戴."
 	icon_state = "ert_security"
 
 //Engineering
 /obj/item/storage/backpack/ert/engineer
-	name = "emergency response team engineer backpack"
-	desc = "A spacious backpack with lots of pockets, worn by engineering members of a Emergency Response Team."
+	name = "应急响应小组工程师背包"
+	desc = "一个有很多口袋的宽敞背包,由应急响应小组工程成员佩戴."
 	icon_state = "ert_engineering"
 
 //Medical
 /obj/item/storage/backpack/ert/medical
-	name = "emergency response team medical backpack"
-	desc = "A spacious backpack with lots of pockets, worn by medical members of a Emergency Response Team."
+	name = "应急响应小组医疗背包"
+	desc = "一个有很多口袋的宽敞背包,由应急响应小组医疗成员佩戴."
 	icon_state = "ert_medical"
 
 /*========================== MARINE BACKPACKS ================================
 ==========================================================================*/
 
 /obj/item/storage/backpack/marine
-	name = "\improper lightweight IMP backpack"
-	desc = "The standard-issue pack of the TGMC forces. Designed to slug gear into the battlefield."
+	name = "\improper 轻型IMP背包"
+	desc = "TGMC部队的标准配发背包.设计用于将装备运送到战场上."
 	icon_state = "marinepack"
 	worn_icon_state = "marinepack"
 
 /obj/item/storage/backpack/marine/standard
-	name = "\improper lightweight IMP backpack"
-	desc = "The standard-issue pack of the TGMC forces. Designed to slug gear into the battlefield."
+	name = "\improper 轻型IMP背包"
+	desc = "TGMC部队的标准配发背包.设计用于将装备运送到战场上."
 
 /obj/item/storage/backpack/marine/standard/molle
-	name = "\improper T16 MOLLE Backpack"
-	desc = "The latest backpack developed by Crowford Armory Union on the military order of TGMC. Thanks to the introduction of new MOLLE fastening systems, it turned out to beltbags and backpacks that are not inferior to roominess and portable weight, while also reducing the size of backpacks that have gone to hang from the back on the belt."
+	name = "\improper T16 MOLLE背包"
+	desc = "克劳福德军械联盟根据TGMC的军事订单开发的最新背包.得益于新MOLLE固定系统的引入,它打造出了在容量和便携重量上毫不逊色的腰包和背包,同时还减小了那些挂在背后腰带上的背包的尺寸."
 	worn_icon_list = list(
 		slot_back_str = 'icons/mob/clothing/back.dmi',
 		slot_l_hand_str = 'icons/mob/inhands/equipment/backpacks_left.dmi',
@@ -248,8 +248,8 @@
 	worn_icon_state = "MOLLEbackpack"
 
 /obj/item/storage/backpack/marine/satchel/molle
-	name = "\improper T13 MOLLE Satchel"
-	desc = "The latest satchel developed by Crowford Armory Union on the military order of TGMC. Thanks to the introduction of new MOLLE fastening systems, it turned out to beltbags and backpacks that are not inferior to roominess and portable weight, while also reducing the size of backpacks that have gone to hang from the back on the belt."
+	name = "\improper T13 MOLLE挎包"
+	desc = "克劳福德军械联盟根据TGMC的军事订单开发的最新挎包.得益于新MOLLE固定系统的引入,它打造出了在容量和便携重量上毫不逊色的腰包和背包,同时还减小了那些挂在背后腰带上的背包的尺寸."
 	worn_icon_list = list(
 		slot_back_str = 'icons/mob/clothing/back.dmi',
 		slot_l_hand_str = 'icons/mob/inhands/equipment/backpacks_left.dmi',
@@ -259,16 +259,16 @@
 	worn_icon_state = "MOLLEbeltbag"
 
 /obj/item/storage/backpack/marine/standard/scav
-	name = "Scav Backpack"
-	desc = "Pretty swag backpack."
+	name = "拾荒者背包"
+	desc = "非常酷炫的背包."
 	worn_icon_list = list(
 		slot_back_str = 'icons/mob/clothing/back.dmi')
 	icon_state = "scavpack"
 	worn_icon_state = "scavpack"
 
 /obj/item/storage/backpack/marine/corpsman
-	name = "\improper TGMC corpsman backpack"
-	desc = "The standard-issue backpack worn by TGMC corpsmen. You can recharge defibrillators by plugging them in."
+	name = "\improper TGMC医护兵背包"
+	desc = "TGMC医护兵佩戴的标准配发背包.你可以通过插电为除颤器充电."
 	icon_state = "marinepackm"
 	worn_icon_state = "marinepackm"
 	//. Starts with a high capacity energy cell.
@@ -286,23 +286,23 @@
 	if(amount > cell.charge)
 		playsound(src, 'sound/machines/buzz-two.ogg', 25, 1)
 		if(cell.charge)
-			warning = span_warning("[src]'s defibrillator recharge unit buzzes a warning, its battery only having enough power to partially recharge the defibrillator for [cell.charge] amount. ")
+			warning = span_warning("[src]的除颤器充电装置发出警告蜂鸣声,其电池仅有足够电量将除颤器部分充电至[cell.charge]的量.")
 		else
-			warning = span_warning("[src]'s defibrillator recharge unit buzzes a warning, as its battery is completely depleted of charge. ")
+			warning = span_warning("[src]的除颤器充电单元发出警告蜂鸣,因为其电池电量已完全耗尽.")
 	else
 		playsound(src, 'sound/machines/ping.ogg', 25, 1)
-		warning = span_notice("[src]'s defibrillator recharge unit cheerfully pings as it successfully recharges the defibrillator. ")
+		warning = span_notice("[src]的除颤器充电单元愉快地发出提示音,成功为除颤器充能.")
 	cell.charge -= min(cell.charge, amount)
 	if(mention_charge)
-		to_chat(user, span_notice("[warning]<b>Charge Remaining: [cell.charge]/[cell.maxcharge]</b>"))
+		to_chat(user, span_notice("[warning]<b>剩余电量: [cell.charge]/[cell.maxcharge]</b>"))
 	update_icon()
 
 /obj/item/storage/backpack/marine/corpsman/examine(mob/user)
 	. = ..()
 	if(cell)
-		. += span_notice("Its defibrillator recharge unit has a loaded power cell and its readout counter is active. <b>Charge Remaining: [cell.charge]/[cell.maxcharge]</b>")
+		. += span_notice("其除颤器充电单元已装入电池,读数计数器处于活动状态. <b>剩余电量: [cell.charge]/[cell.maxcharge]</b>")
 	else
-		. += span_warning("Its defibrillator recharge unit does not have a power cell installed!")
+		. += span_warning("其除颤器充电单元未安装电池!")
 
 /obj/item/storage/backpack/marine/corpsman/update_icon_state()
 	. = ..()
@@ -335,9 +335,9 @@
 				defib.dcell.charge += min(charge_difference, cell.charge) //Recharge the defibrillator battery with the lower of the difference between its present and max cap, or the remaining charge
 				defib.update_icon()
 			else
-				to_chat(user, span_warning("This defibrillator is already at maximum charge!"))
+				to_chat(user, span_warning("该除颤器已处于最大电量!"))
 		else
-			to_chat(user, span_warning("[src]'s defibrillator recharge unit does not have a power cell installed!"))
+			to_chat(user, span_warning("[src]的除颤器充电单元未安装电池!"))
 	else if(istype(W, /obj/item/cell))
 		if(user.drop_held_item())
 			W.loc = null
@@ -348,54 +348,54 @@
 				cell.update_icon()
 				user.put_in_hands(cell)
 			cell = W
-			to_chat(user, span_notice("[replace_install] <b>Charge Remaining: [cell.charge]/[cell.maxcharge]</b>"))
+			to_chat(user, span_notice("[replace_install] <b>剩余电量: [cell.charge]/[cell.maxcharge]</b>"))
 			playsound(user, 'sound/weapons/guns/interact/rifle_reload.ogg', 25, 1, 5)
 			update_icon()
 	return ..()
 
 /obj/item/storage/backpack/marine/corpsman/satchel
-	name = "\improper TGMC corpsman satchel"
-	desc = "A heavy-duty satchel carried by some TGMC corpsmen. You can recharge defibrillators by plugging them in."
+	name = "\improper TGMC医疗兵挎包"
+	desc = "一些TGMC医疗兵携带的重型挎包. 你可以将除颤器插入其中来充电."
 	icon_state = "marinesatm"
 	worn_icon_state = "marinesatm"
 	cell = /obj/item/cell/apc
 	storage_type = /datum/storage/backpack/satchel
 
 /obj/item/storage/backpack/marine/tech
-	name = "\improper TGMC technician backpack"
-	desc = "The standard-issue backpack worn by TGMC technicians. Specially equipped to hold sentry gun and HSG-102 emplacement parts."
+	name = "\improper TGMC技术员背包"
+	desc = "TGMC技术员佩戴的标准配发背包. 经过特殊改装,可容纳哨戒炮和HSG-102炮台部件."
 	icon_state = "marinepackt"
 	worn_icon_state = "marinepackt"
 	storage_type = /datum/storage/backpack/tech
 
 /obj/item/storage/backpack/marine/satchel
-	name = "\improper TGMC satchel"
-	desc = "A heavy-duty satchel carried by some TGMC soldiers and support personnel."
+	name = "\improper TGMC挎包"
+	desc = "一些TGMC士兵和支援人员携带的重型挎包."
 	icon_state = "marinesat"
 	worn_icon_state = "marinesat"
 	storage_type = /datum/storage/backpack/satchel
 
 /obj/item/storage/backpack/marine/satchel/green
-	name = "\improper Green TGMC satchel"
+	name = "\improper 绿色TGMC挎包"
 	icon_state = "marinesat_green"
 
 /obj/item/storage/backpack/marine/satchel/tech
-	name = "\improper TGMC technician satchel"
-	desc = "A heavy-duty satchel carried by some TGMC technicians. Can hold the ST-580 point defense sentry and ammo."
+	name = "\improper TGMC技术员挎包"
+	desc = "一些TGMC技术员携带的重型挎包. 可容纳ST-580点防御哨戒炮和弹药."
 	icon_state = "marinesatt"
 	worn_icon_state = "marinesatt"
 	storage_type = /datum/storage/backpack/satchel/tech
 
 /obj/item/storage/backpack/marine/smock
-	name = "\improper M3 sniper's smock"
-	desc = "A specially designed smock with pockets for all your sniper needs."
+	name = "\improper M3狙击手罩衣"
+	desc = "一件经过特殊设计的罩衣,口袋可满足你所有的狙击需求."
 	icon_state = "smock"
 	storage_type = /datum/storage/backpack/no_delay
 
 /obj/item/storage/backpack/marine/duffelbag
-	name = "\improper TGMC Duffelbag"
-	desc = "A hard to reach backpack with no draw delay but is hard to access. \
-	Any squadmates can easily access the storage with right-click."
+	name = "\improper TGMC行李袋"
+	desc = "一个难以够到的背包,没有取出延迟但难以取用. \
+	任何小队成员都可以通过右键轻松访问其储物空间."
 	icon = 'icons/obj/items/storage/duffelbag.dmi'
 	icon_state = "duffel"
 	worn_icon_state = "duffel"
@@ -432,32 +432,32 @@
 //CLOAKS
 
 /obj/item/storage/backpack/marine/satchel/officer_cloak
-	name = "Officer Cloak - Blue"
-	desc = "A dashing cloak as befitting an officer."
+	name = "军官斗篷 - 蓝色"
+	desc = "一件与军官身份相称的潇洒斗篷."
 	icon_state = "officer_cloak" //with thanks to Baystation12
 	worn_icon_state = "officer_cloak" //with thanks to Baystation12
 
 /obj/item/storage/backpack/marine/satchel/captain_cloak
-	name = "Captain's Cloak - Blue"
-	desc = "An opulent cloak detailed with your many accomplishments."
+	name = "上尉斗篷 - 蓝色"
+	desc = "一件华丽的斗篷,上面详细记录着你的诸多成就."
 	icon_state = "commander_cloak" //with thanks to Baystation12
 	worn_icon_state = "commander_cloak" //with thanks to Baystation12
 
 /obj/item/storage/backpack/marine/satchel/officer_cloak_red
-	name = "Officer Cloak - Red"
-	desc = "A dashing cloak as befitting an officer, with fancy red trim."
+	name = "军官斗篷 - 红色"
+	desc = "一件与军官身份相称的潇洒斗篷,带有精致的红色镶边."
 	icon_state = "officer_cloak_red" //with thanks to Baystation12
 	worn_icon_state = "officer_cloak_red" //with thanks to Baystation12
 
 /obj/item/storage/backpack/marine/satchel/officer_cloak_red/alt
-	name = "Senior Officer Cloak"
+	name = "高级军官斗篷"
 	worn_icon_list = list(
 		slot_back_str = 'icons/mob/clothing/back.dmi')
 	icon_state = "officer_cloak_red_alt"
 
 /obj/item/storage/backpack/marine/satchel/captain_cloak_red
-	name = "Captain's Cloak - Red"
-	desc = "An opulent cloak detailed with your many accomplishments, with fancy red trim."
+	name = "上尉斗篷 - 红色"
+	desc = "一件华丽的斗篷,上面详细记录着你的诸多成就,带有精致的红色镶边."
 	icon_state = "commander_cloak_red" //with thanks to Baystation12
 	worn_icon_state = "commander_cloak_red" //with thanks to Baystation12
 
@@ -468,8 +468,8 @@
 
 // Scout Cloak
 /obj/item/storage/backpack/marine/satchel/scout_cloak
-	name = "\improper M68 Thermal Cloak"
-	desc = "The lightweight thermal dampeners and optical camouflage provided by this cloak are weaker than those found in standard TGMC ghillie suits. In exchange, the cloak can be worn over combat armor and offers the wearer high manueverability and adaptability to many environments. Serves as a satchel."
+	name = "\improper M68热光学斗篷"
+	desc = "这件斗篷提供的轻型热抑制器和光学迷彩比标准TGMC吉利服中的要弱. 作为交换,这件斗篷可以穿在战斗装甲外面,并为穿戴者提供高机动性和对多种环境的适应性. 可作为挎包使用."
 	icon_state = "scout_cloak"
 	actions_types = list(/datum/action/item_action/toggle)
 	var/camo_active = 0
@@ -542,7 +542,7 @@
 		return
 
 	if(M.back != src)
-		to_chat(M, span_warning("You must be wearing the cloak to activate it!"))
+		to_chat(M, span_warning("你必须穿着斗篷才能激活它!"))
 		return
 
 	if(camo_active)
@@ -551,18 +551,18 @@
 
 	//other sources of cloaking
 	if(HAS_TRAIT(M, TRAIT_STEALTH))
-		to_chat(M, span_warning("You are already cloaked!"))
+		to_chat(M, span_warning("你已经处于隐身状态!"))
 		return FALSE
 
 	if(camo_cooldown_timer)
-		to_chat(M, span_warning("Your thermal cloak is still recalibrating! It will be ready in [(camo_cooldown_timer - world.time) * 0.1] seconds."))
+		to_chat(M, span_warning("你的热光学斗篷仍在重新校准中! 它将在[(camo_cooldown_timer - world.time) * 0.1]秒后准备就绪."))
 		return
 
 	camo_active = TRUE
 	camo_last_stealth = world.time
 	wearer = M
 
-	M.visible_message("[M] fades into thin air!", span_notice("You activate your cloak's camouflage."))
+	M.visible_message("[M]消失在空气中!", span_notice("你激活了斗篷的迷彩."))
 	playsound(M.loc,'sound/effects/cloak_scout_on.ogg', 15, 1)
 
 	stealth_delay = world.time - SCOUT_CLOAK_STEALTH_DELAY
@@ -610,7 +610,7 @@
 		return FALSE
 
 	camo_active = FALSE
-	user.visible_message(span_warning("[user.name] shimmers into existence!"), span_danger("Your cloak's camouflage has deactivated!"))
+	user.visible_message(span_warning("[user.name]闪烁着现出身形!"), span_danger("你的斗篷迷彩已停用!"))
 	playsound(user.loc,'sound/effects/cloak_scout_off.ogg', 15, 1)
 	user.alpha = initial(user.alpha)
 
@@ -623,7 +623,7 @@
 	var/cooldown = round( (initial(camo_energy) - camo_energy) / SCOUT_CLOAK_INACTIVE_RECOVERY * 10) //Should be 20 seconds after a full depletion with inactive recovery at 5
 	if(cooldown)
 		camo_cooldown_timer = world.time + cooldown //recalibration and recharge time scales inversely with charge remaining
-		to_chat(user, span_warning("Your thermal cloak is recalibrating! It will be ready in [(camo_cooldown_timer - world.time) * 0.1] seconds."))
+		to_chat(user, span_warning("你的热光学斗篷正在重新校准! 它将在[(camo_cooldown_timer - world.time) * 0.1]秒后准备就绪."))
 		process_camo_cooldown(user, cooldown)
 
 	UnregisterSignal(user, list(
@@ -648,7 +648,7 @@
 	camo_energy = initial(camo_energy)
 	playsound(loc,'sound/effects/EMPulse.ogg', 25, 0, 1)
 	if(wearer)
-		to_chat(wearer, span_danger("Your thermal cloak has recalibrated and is ready to cloak again."))
+		to_chat(wearer, span_danger("你的热光学斗篷已重新校准,可以再次隐身了."))
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/examine(mob/user)
 	. = ..()
@@ -676,19 +676,19 @@
 	camo_energy = clamp(camo_energy - drain,0,initial(camo_energy))
 
 	if(!camo_energy) //Turn off the camo if we run out of energy.
-		to_chat(user, span_danger("Your thermal cloak lacks sufficient energy to remain active."))
+		to_chat(user, span_danger("你的热光学斗篷能量不足,无法保持激活."))
 		camo_off(user)
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/damage_taken(datum/source, damage)
 	SIGNAL_HANDLER
 	var/mob/living/carbon/human/wearer = source
 	if(damage >= 15)
-		to_chat(wearer, span_danger("Your cloak shimmers from the damage!"))
+		to_chat(wearer, span_danger("你的斗篷因受到伤害而闪烁不定!"))
 		apply_shimmer()
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/action_taken() //This is used by multiple signals passing different parameters.
 	SIGNAL_HANDLER
-	to_chat(wearer, span_danger("Your cloak shimmers from your actions!"))
+	to_chat(wearer, span_danger("你的斗篷因你的动作而闪烁不定!"))
 	apply_shimmer()
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/apply_shimmer()
@@ -696,9 +696,9 @@
 	wearer.alpha = max(wearer.alpha,shimmer_alpha)
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/sniper
-	name = "\improper M68-B Thermal Cloak"
+	name = "\improper M68-B热光学斗篷"
 	icon_state = "smock"
-	desc = "The M68-B thermal cloak is a variant custom-purposed for snipers, allowing for faster, superior, stationary concealment at the expense of mobile concealment. It is designed to be paired with the lightweight M3 recon battle armor. Serves as a satchel."
+	desc = "M68-B热光学斗篷是为狙击手定制用途的变体,以牺牲移动隐蔽性为代价,实现更快,更优越的静止隐蔽. 它被设计为与轻型M3侦察战斗装甲搭配使用. 可作为挎包使用."
 	shimmer_alpha = SCOUT_CLOAK_RUN_ALPHA * 0.5 //Half the normal shimmer transparency.
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/sniper/handle_movement(mob/living/carbon/human/source, atom/old_loc, movement_dir, forced, list/old_locs)
@@ -725,8 +725,8 @@
 // Welder Backpacks //
 
 /obj/item/storage/backpack/marine/engineerpack
-	name = "\improper TGMC technician welderpack"
-	desc = "A specialized backpack worn by TGMC technicians. It carries a fueltank for quick welder refueling and use,"
+	name = "\improper TGMC技术员焊接背包"
+	desc = "TGMC技术员佩戴的专用背包. 它携带一个燃料罐,用于快速补充焊接器燃料并使用,"
 	icon_state = "engineerpack"
 	worn_icon_state = "engineerpack"
 	storage_type = /datum/storage/backpack/satchel
@@ -743,13 +743,13 @@
 	if(iswelder(I))
 		var/obj/item/tool/weldingtool/T = I
 		if(T.welding)
-			to_chat(user, span_warning("That was close! However you realized you had the welder on and prevented disaster."))
+			to_chat(user, span_warning("好险! 不过你意识到焊接器还开着,避免了一场灾难."))
 			return
 		if(T.get_fuel() == T.max_fuel || !reagents.total_volume)
 			return ..()
 
 		reagents.trans_to(I, T.max_fuel)
-		to_chat(user, span_notice("Welder refilled!"))
+		to_chat(user, span_notice("焊接器已补充燃料!"))
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
 
 	else if(istype(I, /obj/item/ammo_magazine/flamer_tank))
@@ -765,7 +765,7 @@
 		FT.current_rounds += fuel_transfer_amount
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		FT.caliber = CALIBER_FUEL
-		to_chat(user, span_notice("You refill [FT] with [lowertext(FT.caliber)]."))
+		to_chat(user, span_notice("你用[lowertext(FT.caliber)]补充了[FT]."))
 		FT.update_icon()
 
 	else if(istype(I, /obj/item/weapon/twohanded/sledgehammer/rocketsledge))
@@ -777,7 +777,7 @@
 		reagents.remove_reagent(/datum/reagent/fuel, fuel_transfer_amount)
 		RS.reagents.add_reagent(/datum/reagent/fuel, fuel_transfer_amount)
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
-		to_chat(user, span_notice("You refill [RS] with fuel."))
+		to_chat(user, span_notice("你用燃料补充了[RS]."))
 		RS.update_icon()
 
 	else if(istype(I, /obj/item/weapon/twohanded/chainsaw))
@@ -789,7 +789,7 @@
 		reagents.remove_reagent(/datum/reagent/fuel, fuel_transfer_amount)
 		saw.reagents.add_reagent(/datum/reagent/fuel, fuel_transfer_amount)
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
-		to_chat(user, span_notice("You refill [saw] with fuel."))
+		to_chat(user, span_notice("你用燃料补充了[saw]."))
 		saw.update_icon()
 
 	else
@@ -800,61 +800,61 @@
 		return
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume < max_fuel)
 		O.reagents.trans_to(src, max_fuel)
-		to_chat(user, span_notice("You crack the cap off the top of the pack and fill it back up again from the tank."))
+		to_chat(user, span_notice("你撬开背包顶部的盖子,从燃料罐中重新将其加满."))
 		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		return
 	else if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
-		to_chat(user, span_notice("The pack is already full!"))
+		to_chat(user, span_notice("背包已经满了!"))
 		return
 	return ..()
 
 /obj/item/storage/backpack/marine/engineerpack/examine(mob/user)
 	. = ..()
-	. += span_notice("[reagents.total_volume] units of fuel left!")
+	. += span_notice("剩余[reagents.total_volume]单位燃料!")
 
 /obj/item/storage/backpack/marine/engineerpack/som
-	name = "\improper SOM technician welderpack"
-	desc = "A specialized backpack worn by SOM technicians. It carries a fueltank for quick welder refueling."
+	name = "\improper SOM技术员焊接背包"
+	desc = "SOM技术员佩戴的专用背包. 它携带一个燃料罐,用于快速补充焊接器燃料."
 	icon_state = "som_engineer_pack"
 	worn_icon_state = "som_engineer_pack"
 
 /obj/item/storage/backpack/lightpack
-	name = "\improper lightweight combat pack"
-	desc = "A small lightweight pack for expeditions and short-range operations."
+	name = "\improper 轻型战斗背包"
+	desc = "一个用于远征和短程行动的小型轻量背包."
 	icon_state = "ERT_satchel"
 	storage_type = /datum/storage/backpack/no_delay
 
 /obj/item/storage/backpack/commando
-	name = "commando bag"
-	desc = "A heavy-duty bag carried by Nanotrasen commandos."
+	name = "突击队背包"
+	desc = "纳米特雷森突击队携带的重型背包."
 	icon_state = "commandopack"
 	storage_type = /datum/storage/backpack/commando
 
 /obj/item/storage/backpack/captain
-	name = "marine captain backpack"
-	desc = "The contents of this backpack are top secret."
+	name = "陆战队长背包"
+	desc = "这个背包里的东西是绝密."
 	icon_state = "marinepack"
 	storage_type = /datum/storage/backpack/captain
 
 /obj/item/storage/backpack/lightpack/som
-	name = "mining rucksack"
-	desc = "A rucksack with origins dating back to the mining colonies."
+	name = "采矿帆布背包"
+	desc = "一款起源可追溯到采矿殖民地的帆布背包."
 	icon_state = "som_lightpack"
 	worn_icon_state = "som_lightpack"
 
 /obj/item/storage/backpack/lightpack/icc
-	name = "\improper Modello/190"
-	desc = "A small lightweight buttpack made for use in a wide variety of operations, made with a synthetic tan fibre."
+	name = "\improper 莫德罗/190"
+	desc = "一款小型轻便的臀包,专为多种行动设计,由合成棕褐色纤维制成."
 	icon_state = "icc_bag"
 
 /obj/item/storage/backpack/lightpack/icc/guard
-	name = "\improper Modello/190"
-	desc = "A small lightweight buttpack made for use in a wide variety of operations, made with a synthetic black fibre."
+	name = "\improper 莫德罗/190"
+	desc = "一款小型轻便的臀包,专为多种行动设计,由合成黑色纤维制成."
 	icon_state = "icc_bag_guard"
 
 /obj/item/storage/backpack/marine/radiopack
-	name = "\improper TGMC radio operator backpack"
-	desc = "A backpack that resembles the ones old-age radio operator marines would use. It has a supply ordering console installed on it, and a retractable antenna to receive supply drops."
+	name = "\improper TGMC无线电操作员背包"
+	desc = "一款类似旧时代无线电操作员陆战队员使用的背包.上面安装了补给订购终端,还有一根可伸缩天线用于接收补给空投."
 	icon_state = "radiopack"
 	worn_icon_state = "radiopack"
 	///Var for the window pop-up
@@ -872,7 +872,7 @@
 
 /obj/item/storage/backpack/marine/radiopack/examine(mob/user)
 	. = ..()
-	. += span_notice("Right-Click with empty hand to open requisitions interface.")
+	. += span_notice("空手右键点击打开军需界面.")
 
 /obj/item/storage/backpack/marine/radiopack/attack_hand_alternate(mob/living/user)
 	if(!allowed(user))
@@ -895,6 +895,6 @@
 	inplace_interference[1] = max(0, inplace_interference[1] - 1)
 
 /obj/item/storage/backpack/lightpack/vsd
-	name = "\improper Crasher branded combat backpack"
-	desc = "A backpack design from 21st century still proves to be a good design in the 25th century."
+	name = "\improper 克拉斯尔品牌战斗背包"
+	desc = "一款21世纪的背包设计,在25世纪依然被证明是优秀的设计."
 	icon_state = "vsd_bag0"

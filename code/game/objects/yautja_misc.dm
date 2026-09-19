@@ -1,6 +1,6 @@
 /obj/structure/prop/brazier
-	name = "brazier"
-	desc = "The fire inside the brazier emits a relatively dim glow to flashlights and flares, but nothing can replace the feeling of sitting next to a fireplace with your friends."
+	name = "火盆"
+	desc = "火盆内的火焰发出的光芒比手电筒和照明弹相对暗淡,但没有什么能取代与朋友坐在壁炉旁的感觉."
 	icon = 'icons/obj/structures/torch.dmi'
 	icon_state = "brazier"
 	density = TRUE
@@ -17,8 +17,8 @@
 		set_light_on(TRUE)
 
 /obj/structure/prop/brazier/frame
-	name = "empty brazier"
-	desc = "An empty brazier."
+	name = "空火盆"
+	desc = "一个空火盆."
 	icon_state = "brazier_frame"
 	light_range = 0
 	light_on = FALSE
@@ -28,16 +28,16 @@
 		return ..()
 	var/obj/item/stack/wooden_boards = hit_item
 	if(wooden_boards.amount < 5)
-		to_chat(user, span_warning("Not enough wood!"))
+		to_chat(user, span_warning("木头不够!"))
 		return
 	wooden_boards.use(5)
-	user.visible_message(span_notice("[user] fills the brazier with wood."))
+	user.visible_message(span_notice("[user]用木头填满了火盆."))
 	new /obj/structure/prop/brazier/frame_woodened(loc)
 	qdel(src)
 
 /obj/structure/prop/brazier/frame_woodened
-	name = "empty full brazier"
-	desc = "An empty brazier. Yet it's also full. What???  Use something hot to ignite it, like a welding tool."
+	name = "空满火盆"
+	desc = "一个空的火盆. 但它又是满的. 什么???  用热的东西点燃它, 比如焊接工具."
 	icon_state = "brazier_frame_filled"
 	light_range = 0
 	light_on = FALSE
@@ -45,13 +45,13 @@
 /obj/structure/prop/brazier/frame_woodened/attackby(obj/item/hit_item, mob/user)
 	if(hit_item.damtype != BURN)
 		return ..()
-	user.visible_message(span_notice("[user] ignites the brazier with [hit_item]."))
+	user.visible_message(span_notice("[user]用[hit_item]点燃了火盆."))
 	new /obj/structure/prop/brazier(loc)
 	qdel(src)
 
 /obj/structure/prop/brazier/torch
-	name = "torch"
-	desc = "It's a torch."
+	name = "火把"
+	desc = "这是一支火把."
 	icon = 'icons/obj/structures/torch.dmi'
 	icon_state = "torch"
 	density = FALSE
@@ -59,22 +59,22 @@
 	light_power = 1
 
 /obj/structure/prop/brazier/torch/frame
-	name = "unlit torch"
-	desc = "It's a torch, but it's not lit.  Use something hot to ignite it, like a welding tool."
+	name = "未点燃的火把"
+	desc = "这是一支火把, 但它没有点燃.  用热的东西点燃它, 比如焊接工具."
 	icon_state = "torch_frame"
 	light_range = 0
 
 /obj/structure/prop/brazier/torch/frame/attackby(obj/item/hit_item, mob/user)
 	if(hit_item.damtype != BURN)
 		return ..()
-	user.visible_message(span_notice("[user] ignites the torch with [hit_item]."))
+	user.visible_message(span_notice("[user]用[hit_item]点燃了火把."))
 	new /obj/structure/prop/brazier/torch(loc)
 	qdel(src)
 
 /obj/item/frame/torch_frame
-	name = "unlit torch"
+	name = "未点燃的火把"
 	icon = 'icons/obj/structures/torch.dmi'
-	desc = "It's a torch, but it's not lit or placed down. Click on a wall to place it."
+	desc = "这是一支火把, 但它没有点燃或放置下来. 点击墙壁来放置它."
 	icon_state = "torch_frame"
 
 /obj/item/frame/torch_frame/proc/try_build(turf/on_wall)
@@ -85,9 +85,9 @@
 		return
 	var/turf/loc = get_turf(usr)
 	if(!isfloorturf(loc))
-		to_chat(usr, span_warning("[src.name] cannot be placed on this spot."))
+		to_chat(usr, span_warning("[src.name]无法放置在这个位置."))
 		return
-	to_chat(usr, "Attaching [src] to the wall.")
+	to_chat(usr, "正在将[src]附着到墙上.")
 	playsound(src.loc, 'sound/machines/click.ogg', 15, 1)
 	var/constrdir = usr.dir
 	if(!do_after(usr, 30, TRUE, on_wall, BUSY_ICON_BUILD))
@@ -95,6 +95,6 @@
 	var/obj/structure/prop/brazier/torch/frame/newlight = new /obj/structure/prop/brazier/torch/frame(get_turf(on_wall))
 	newlight.setDir(constrdir)
 
-	usr.visible_message("[usr.name] attaches [src] to the wall.", \
+	usr.visible_message("[usr.name]将[src]附着到了墙上.", \
 		"You attach [src] to the wall.")
 	qdel(src)

@@ -24,7 +24,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 	icon = 'icons/obj/recycling.dmi'
 	icon_state = "conveyor_map"
 	name = "conveyor belt"
-	desc = "A conveyor belt. It can be rotated with a <b>wrench</b>. It can be reversed with a <b>screwdriver</b>."
+	desc = "一条传送带. 可以用<b>扳手</b>旋转. 可以用<b>螺丝刀</b>反转."
 	layer = OPEN_DOOR_LAYER
 	max_integrity = 50
 	resistance_flags = XENO_DAMAGEABLE
@@ -73,12 +73,12 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 	update_move_direction()
 
 /obj/machinery/conveyor/crowbar_act(mob/living/user, obj/item/I)
-	user.visible_message(span_notice("[user] struggles to pry up \the [src] with \the [I]."), \
-	span_notice("You struggle to pry up \the [src] with \the [I]."))
+	user.visible_message(span_notice("[user]正努力用\the [I]撬起\the [src]."), \
+	span_notice("你正努力用\the [I]撬起\the [src]."))
 	if(I.use_tool(src, user, 40, volume=40))
 		if(!(machine_stat & BROKEN))
 			new /obj/item/stack/conveyor(loc, 1, TRUE, id)
-		to_chat(user, span_notice("You remove [src]."))
+		to_chat(user, span_notice("你移除了[src]."))
 		qdel(src)
 	return TRUE
 
@@ -88,7 +88,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 	I.play_tool_sound(src)
 	setDir(turn(dir,-45))
 	update_move_direction()
-	to_chat(user, span_notice("You rotate [src]."))
+	to_chat(user, span_notice("你旋转了[src]."))
 	return TRUE
 
 /obj/machinery/conveyor/screwdriver_act(mob/living/user, obj/item/I)
@@ -240,7 +240,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 ///////// the conveyor control switch
 /obj/machinery/conveyor_switch
 	name = "conveyor switch"
-	desc = "A conveyor control switch."
+	desc = "一个传送带控制开关."
 	icon = 'icons/obj/recycling.dmi'
 	icon_state = "switch-off"
 	///switch position
@@ -334,12 +334,12 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 /obj/machinery/conveyor_switch/crowbar_act(mob/living/user, obj/item/I)
 	var/obj/item/conveyor_switch_construct/C = new/obj/item/conveyor_switch_construct(src.loc)
 	C.id = id
-	to_chat(user, span_notice("You detach the conveyor switch."))
+	to_chat(user, span_notice("你拆下了传送带开关."))
 	qdel(src)
 
 /obj/machinery/conveyor_switch/oneway
 	icon_state = "conveyor_switch_oneway"
-	desc = "A conveyor control switch. It appears to only go in one direction."
+	desc = "一个传送带控制开关. 它似乎只能单向运行."
 	oneway = TRUE
 
 /obj/machinery/conveyor_switch/oneway/Initialize(mapload)
@@ -348,8 +348,8 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 		invert_icon = TRUE
 
 /obj/item/conveyor_switch_construct
-	name = "conveyor switch assembly"
-	desc = "A conveyor control switch assembly."
+	name = "传送带开关组件"
+	desc = "一个传送带控制开关组件."
 	icon = 'icons/obj/recycling.dmi'
 	icon_state = "switch-off"
 	w_class = WEIGHT_CLASS_BULKY
@@ -363,7 +363,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 /obj/item/conveyor_switch_construct/attack_self(mob/user)
 	for(var/obj/item/stack/conveyor/C in view())
 		C.id = id
-	to_chat(user, span_notice("You have linked all nearby conveyor belt assemblies to this switch."))
+	to_chat(user, span_notice("你已将所有附近的传送带组件链接到此开关."))
 
 /obj/item/conveyor_switch_construct/afterattack(atom/A, mob/user, proximity)
 	. = ..()
@@ -375,14 +375,14 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 			found = 1
 			break
 	if(!found)
-		to_chat(user, "[icon2html(src, user)]<span class=notice>The conveyor switch did not detect any linked conveyor belts in range.</span>")
+		to_chat(user, "[icon2html(src, user)]<span class=notice>传送带开关未在范围内检测到任何已链接的传送带.</span>")
 		return
 	new/obj/machinery/conveyor_switch(A, id)
 	qdel(src)
 
 /obj/item/stack/conveyor
-	name = "conveyor belt assembly"
-	desc = "A conveyor belt assembly."
+	name = "传送带组件"
+	desc = "一个传送带组件."
 	icon = 'icons/obj/recycling.dmi'
 	icon_state = "conveyor_construct"
 	max_amount = 30
@@ -401,7 +401,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 		return
 	var/cdir = get_dir(A, user)
 	if(A == user.loc)
-		to_chat(user, span_warning("You cannot place a conveyor belt under yourself!"))
+		to_chat(user, span_warning("你不能在自己脚下放置传送带!"))
 		return
 	new/obj/machinery/conveyor(A, cdir, id)
 	use(1)
@@ -411,7 +411,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 	if(.)
 		return
 	if(istype(I, /obj/item/conveyor_switch_construct))
-		to_chat(user, span_notice("You link the switch to the conveyor belt assembly."))
+		to_chat(user, span_notice("你将开关链接到传送带组件."))
 		var/obj/item/conveyor_switch_construct/C = I
 		id = C.id
 

@@ -7,7 +7,7 @@ Passive gate is similar to the regular pump except:
 /obj/machinery/atmospherics/components/binary/passive_gate
 	icon_state = "passgate_map-2"
 	name = "passive gate"
-	desc = "A one-way air valve that does not require power."
+	desc = "一个不需要电力的单向空气阀."
 	can_unwrench = FALSE
 	shift_underlay_only = FALSE
 	construction_type = /obj/item/pipe/directional
@@ -22,7 +22,7 @@ Passive gate is similar to the regular pump except:
 /obj/machinery/atmospherics/components/binary/passive_gate/can_unwrench(mob/user)
 	. = ..()
 	if(. && on)
-		to_chat(user, span_warning("You cannot unwrench [src], turn it off first!"))
+		to_chat(user, span_warning("你无法松开[src], 先把它关掉!"))
 		return FALSE
 
 /obj/machinery/atmospherics/components/binary/passive_gate/layer1

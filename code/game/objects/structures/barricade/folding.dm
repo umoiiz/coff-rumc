@@ -4,8 +4,8 @@
 #define MARINE_QUICKBUILD_ALLOWED (CHECK_BITFIELD(SSticker.mode?.round_type_flags, MODE_ALLOW_MARINE_QUICKBUILD) && (!SSticker.round_start_time || (world.time - SSticker.round_start_time) < 10 MINUTES))
 
 /obj/structure/barricade/folding
-	name = "plasteel barricade"
-	desc = "A very sturdy barricade made out of plasteel panels, the pinnacle of strongpoints. Use a blowtorch to repair. Can be flipped down to create a path."
+	name = "塑钢路障"
+	desc = "由塑钢面板制成的非常坚固的路障,是据点的巅峰之作.使用喷灯修理.可以翻倒以开辟通路."
 	icon_state = "plasteel_closed_0"
 	icon = 'icons/obj/structures/barricades/plasteel.dmi'
 	max_integrity = 500
@@ -42,17 +42,17 @@
 
 	switch(build_state)
 		if(BARRICADE_PLASTEEL_FIRM)
-			. += span_info("The protection panel is still tighly screwed in place.")
+			. += span_info("防护板仍然紧紧拧在原位.")
 		if(BARRICADE_PLASTEEL_ANCHORED)
-			. += span_info("The protection panel has been removed, you can see the anchor bolts.")
+			. += span_info("防护板已被移除,你可以看到锚栓.")
 		if(BARRICADE_PLASTEEL_LOOSE)
-			. += span_info("The protection panel has been removed and the anchor bolts loosened. It's ready to be taken apart.")
+			. += span_info("防护板已被移除,锚栓已松动.可以拆解了.")
 
 /obj/structure/barricade/folding/welder_act(mob/living/user, obj/item/I)
 	. = welder_repair_act(user, I, 85, 2.5 SECONDS, 0.3, SKILL_ENGINEER_PLASTEEL, 1)
 	if(. == BELOW_INTEGRITY_THRESHOLD)
 		var/obj/item/stack/sheet/material_sheets = stack_type
-		balloon_alert(user, "Too damaged. Use [material_sheets.name] sheets.")
+		balloon_alert(user, "损坏太严重.使用[material_sheets.name]片.")
 
 /obj/structure/barricade/folding/screwdriver_act(mob/living/user, obj/item/I)
 	if(busy || !COOLDOWN_FINISHED(src, tool_cooldown))
@@ -72,13 +72,13 @@
 
 			for(var/obj/structure/barricade/B in loc)
 				if(B != src && B.dir == dir)
-					balloon_alert(user, "already a barricade here")
+					balloon_alert(user, "这里已经有路障了")
 					return
 
 			if(!do_after(user, 1, NONE, src, BUSY_ICON_BUILD))
 				return
 
-			balloon_alert_to_viewers("bolt protection panel removed")
+			balloon_alert_to_viewers("防护板螺栓已移除")
 			playsound(loc, 'sound/items/screwdriver.ogg', 25, 1)
 			build_state = BARRICADE_PLASTEEL_ANCHORED
 		if(BARRICADE_PLASTEEL_ANCHORED) //Protection panel removed step. Screwdriver to put the panel back, wrench to unsecure the anchor bolts
@@ -86,7 +86,7 @@
 				var/fumbling_time = 1 SECONDS * ( SKILL_ENGINEER_PLASTEEL - user.skills.getRating(SKILL_ENGINEER) )
 				if(!do_after(user, fumbling_time, NONE, src, BUSY_ICON_UNSKILLED))
 					return
-			balloon_alert_to_viewers("bolt protection panel replaced")
+			balloon_alert_to_viewers("防护板螺栓已更换")
 			playsound(loc, 'sound/items/screwdriver.ogg', 25, 1)
 			build_state = BARRICADE_PLASTEEL_FIRM
 
@@ -101,7 +101,7 @@
 
 	switch(build_state)
 		if(BARRICADE_PLASTEEL_FIRM)
-			balloon_alert_to_viewers("[linked ? "un" : "" ]linked")
+			balloon_alert_to_viewers("[linked ? "un" : "" ]已连接")
 			linked = !linked
 			for(var/direction in GLOB.cardinals)
 				for(var/obj/structure/barricade/folding/cade in get_step(src, direction))
@@ -112,7 +112,7 @@
 				var/fumbling_time = 5 SECONDS * ( SKILL_ENGINEER_PLASTEEL - user.skills.getRating(SKILL_ENGINEER) )
 				if(!do_after(user, fumbling_time, NONE, src, BUSY_ICON_UNSKILLED))
 					return
-			balloon_alert_to_viewers("disassembling")
+			balloon_alert_to_viewers("正在拆解")
 			playsound(loc, 'sound/items/crowbar.ogg', 25, 1)
 			busy = TRUE
 
@@ -121,8 +121,8 @@
 				return
 
 			busy = FALSE
-			user.visible_message(span_notice("[user] takes [src]'s panels apart."),
-			span_notice("You take [src]'s panels apart."))
+			user.visible_message(span_notice("[user]拆下了[src]的面板."),
+			span_notice("你拆下了[src]的面板."))
 			playsound(loc, 'sound/items/deconstruct.ogg', 25, 1)
 			deconstruct(!get_self_acid())
 
@@ -141,7 +141,7 @@
 				var/fumbling_time = 1 SECONDS * ( SKILL_ENGINEER_PLASTEEL - user.skills.getRating(SKILL_ENGINEER) )
 				if(!do_after(user, fumbling_time, NONE, src, BUSY_ICON_UNSKILLED))
 					return
-			balloon_alert_to_viewers("anchor bolts loosened")
+			balloon_alert_to_viewers("锚栓已松动")
 			playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
 			anchored = FALSE
 			modify_max_integrity(initial(max_integrity) * 0.5)
@@ -150,19 +150,19 @@
 		if(BARRICADE_PLASTEEL_LOOSE) //Anchor bolts loosened step. Apply crowbar to unseat the panel and take apart the whole thing. Apply wrench to rescure anchor bolts
 			var/turf/mystery_turf = get_turf(src)
 			if(!isopenturf(mystery_turf))
-				balloon_alert(user, "can't anchor here")
+				balloon_alert(user, "无法在此固定")
 				return
 
 			var/turf/open/T = mystery_turf
 			if(!T.allow_construction) //We shouldn't be able to anchor in areas we're not supposed to build; loophole closed.
-				balloon_alert(user, "can't anchor here")
+				balloon_alert(user, "无法在此固定")
 				return
 
 			if(!MARINE_QUICKBUILD_ALLOWED && user.skills.getRating(SKILL_ENGINEER) < SKILL_ENGINEER_PLASTEEL)
 				var/fumbling_time = 1 SECONDS * ( SKILL_ENGINEER_PLASTEEL - user.skills.getRating(SKILL_ENGINEER) )
 				if(!do_after(user, fumbling_time, NONE, src, BUSY_ICON_UNSKILLED))
 					return
-			balloon_alert_to_viewers("secured bolts")
+			balloon_alert_to_viewers("螺栓已固定")
 			playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
 			anchored = TRUE
 			modify_max_integrity(initial(max_integrity))
@@ -181,26 +181,26 @@
 		return
 
 	if(material_sheets.get_amount() < 2)
-		balloon_alert(user, "You need at least 2 [material_sheets.name] sheets")
+		balloon_alert(user, "你至少需要2片[material_sheets.name]")
 		return
 
 	if(LAZYACCESS(user.do_actions, src))
 		return
 
-	balloon_alert_to_viewers("Repairing base...")
+	balloon_alert_to_viewers("正在修理底座...")
 
 	if(!do_after(user, base_repairing_timer, NONE, src, BUSY_ICON_FRIENDLY) || obj_integrity >= max_integrity * 0.3)
 		return
 
 	if(get_self_acid())
-		balloon_alert(user, "It's melting!")
+		balloon_alert(user, "它正在融化!")
 		return TRUE
 
 	if(!material_sheets.use(2))
 		return
 
 	repair_damage(max_integrity * 0.3, user)
-	balloon_alert_to_viewers("Base repaired")
+	balloon_alert_to_viewers("底座已修复")
 	update_icon()
 
 /obj/structure/barricade/folding/attack_hand(mob/living/user)
@@ -228,8 +228,8 @@
 	closed = !closed
 	density = !density
 
-	user?.visible_message(span_notice("[user] flips [src] [closed ? "closed" :"open"]."),
-		span_notice("You flip [src] [closed ? "closed" :"open"]."))
+	user?.visible_message(span_notice("[user]将[src][closed ? "closed" :"open"]."),
+		span_notice("你将[src][closed ? "closed" :"open"]."))
 
 	if(!linked)
 		update_icon()
@@ -244,8 +244,8 @@
 	update_icon()
 
 /obj/structure/barricade/folding/metal
-	name = "folding metal barricade"
-	desc = "A folding barricade made out of metal, making it slightly weaker than a normal metal barricade. Use a blowtorch to repair. Can be flipped down to create a path."
+	name = "折叠金属路障"
+	desc = "由金属制成的折叠路障,比普通金属路障稍弱.使用喷灯修理.可以翻倒以开辟通路."
 	icon_state = "folding_metal_closed_0"
 	icon = 'icons/obj/structures/barricades/folding_metal.dmi'
 	max_integrity = 225 //6 sheets

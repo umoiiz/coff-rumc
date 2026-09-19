@@ -6,7 +6,7 @@
 	name = "Merge Conflict Marker - DO NOT USE"
 	icon = 'icons/effects/mapping_helpers.dmi'
 	icon_state = "merge_conflict_marker"
-	desc = "If you are seeing this in-game: someone REALLY, REALLY, REALLY fucked up. They physically mapped in a fucking Merge Conflict Marker. What the shit."
+	desc = "如果你在游戏中看到这个: 有人真的, 真的, 真的搞砸了. 他们居然把一个合并冲突标记给物理映射进去了. 搞什么鬼."
 	plane = SPLASHSCREEN_PLANE
 
 ///We REALLY do not want un-addressed merge conflicts in maps for an inexhaustible list of reasons. This should help ensure that this will not be missed in case linters fail to catch it for any reason what-so-ever.

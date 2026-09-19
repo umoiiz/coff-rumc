@@ -1,23 +1,23 @@
 /obj/structure/device/broken_piano
-	name = "broken vintage piano"
+	name = "损坏的复古钢琴"
 	icon = 'icons/obj/musician.dmi'
-	desc = "What a shame. This piano looks like it'll never play again. Ever. Don't even ask about it."
+	desc = "真可惜.这架钢琴看起来再也弹不了了.永远不能了.连问都别问."
 	icon_state = "pianobroken"
 	anchored = TRUE
 	density = TRUE
 	coverage = 20
 
 /obj/structure/device/broken_moog
-	name = "broken vintage synthesizer"
+	name = "损坏的复古合成器"
 	icon = 'icons/obj/musician.dmi'
-	desc = "This spacemoog synthesizer is vintage, but trashed. Seems someone didn't like its hot fresh tunes."
+	desc = "这台太空穆格合成器是复古款,但已经报废了.看来有人不喜欢它那火热的旋律."
 	icon_state = "minimoogbroken"
 	anchored = TRUE
 	density = TRUE
 	coverage = 15
 
 /obj/structure/device/piano
-	name = "space minimoog"
+	name = "太空迷你穆格"
 	icon = 'icons/obj/musician.dmi'
 	icon_state = "minimoog"
 	anchored = TRUE

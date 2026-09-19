@@ -162,7 +162,7 @@
 			continue
 		if(!tank_desant.l_hand || !tank_desant.r_hand)
 			continue
-		balloon_alert(tank_desant, "poor grip!")
+		balloon_alert(tank_desant, "抓握不稳!")
 		var/away_dir = REVERSE_DIR(get_dir(tank_desant, root) || pick(GLOB.alldirs))
 		var/turf/target = get_ranged_target_turf(tank_desant, away_dir, 3)
 		tank_desant.throw_at(target, 3, 3, root)

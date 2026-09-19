@@ -1,8 +1,8 @@
 //Energy weapons
 
 /obj/item/cell/lasgun
-	name = "\improper lasgun Battery"
-	desc = "A specialized high density battery used to power lasguns."
+	name = "\improper 激光枪电池"
+	desc = "一种用于为激光枪供电的专用高密度电池."
 	icon = 'icons/obj/items/ammo/energy.dmi'
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/weapons/ammo_left.dmi',
@@ -21,21 +21,21 @@
 	var/bonus_overlay = null
 
 /obj/item/cell/lasgun/M43
-	name = "\improper M43 lasgun battery"
-	desc = "A specialized high density battery used to power the M43 lasgun."
+	name = "\improper M43激光枪电池"
+	desc = "一种用于为M43激光枪供电的专用高密度电池."
 	charge_overlay = "m43"
 	icon_state = "m43"
 
 /obj/item/cell/lasgun/M43/highcap// Large battery
-	name = "\improper M43 highcap lasgun battery"
-	desc = "An advanced, ultrahigh capacity battery used to power the M43 lasgun; has sixty percent more charge capacity than standard laspacks."
+	name = "\improper M43高容量激光枪电池"
+	desc = "一种用于为M43激光枪供电的先进超高容量电池; 比标准激光电池多百分之六十的电量容量."
 	charge_overlay = "m43_e"
 	icon_state = "m43_e"
 	maxcharge = 1600
 
 /obj/item/cell/lasgun/pulse
-	name = "\improper M19C4 pulse battery"
-	desc = "An advanced, ultrahigh capacity battery used to power the M19C4 pulse rifle system; Uses pulse-based energy rather than laser energy, massively increasing its firepower. It can also recharge on its own."
+	name = "\improper M19C4脉冲电池"
+	desc = "一种用于为M19C4脉冲步枪系统供电的先进超高容量电池; 使用脉冲能量而非激光能量, 大幅提升其火力. 它还可以自行充电."
 	charge_overlay = "pulse"
 	icon_state = "pulse"
 	maxcharge = 2000 // 100 shots.
@@ -44,23 +44,23 @@
 	charge_delay = 2 SECONDS
 
 /obj/item/cell/lasgun/M43/practice
-	name = "\improper M43-P lasgun battery"
-	desc = "A specialized high density battery used to power the M43-P practice lasgun. It lacks any potential to harm someone, but it has the ability to recharge."
+	name = "\improper M43-P激光枪电池"
+	desc = "一种用于为M43-P训练激光枪供电的专用高密度电池. 它没有任何伤害他人的能力, 但可以自行充电."
 	self_recharge = TRUE
 	charge_amount = 25 // 10%, 2 shots
 	charge_delay = 2 SECONDS
 
 /obj/item/cell/lasgun/lasrifle
-	name = "\improper Terra Experimental standard battery"
-	desc = "A specialized high density battery used to power most standard marine laser guns. It is simply known as the TE power cell."
+	name = "\improper Terra Experimental标准电池"
+	desc = "一种用于为大多数标准陆战队激光枪供电的专用高密度电池. 它通常被称为TE能量电池."
 	charge_overlay = "te"
 	icon_state = "te"
 	icon_state_mini = "mag_cell_te"
 	maxcharge = 600
 
 /obj/item/cell/lasgun/lasrifle/recharger
-	name = "\improper Terra Experimental recharger battery"
-	desc = "A prototype high density battery reverse-engineered from captured Volkite equipment. Due to developmental constraints and less than stellar jury-rigging, as well as space taken up by the recharger component, it boasts sub-par capacity."
+	name = "\improper Terra Experimental充电电池"
+	desc = "一种从缴获的Volkite装备逆向工程而来的原型高密度电池. 由于开发限制和不太出色的临时改装, 以及充电组件占用的空间, 它的容量表现不佳."
 	icon_state = "ter"
 	maxcharge = 450
 	self_recharge = TRUE
@@ -71,8 +71,8 @@
 	maxcharge = INFINITY
 
 /obj/item/cell/lasgun/plasma
-	name = "\improper WML plasma energy cell"
-	desc = "A plasma containment cell used by the TerraGov Marine Corps for plasma guns. It doesn't seem to have an expiry date on it."
+	name = "\improper WML等离子能量电池"
+	desc = "TerraGov陆战队用于等离子枪的一种等离子收容电池. 它似乎没有标注有效期."
 	icon_state = "plasma"
 	maxcharge = 900
 	icon_state_mini = "mag_plasma"
@@ -82,8 +82,8 @@
 //volkite
 
 /obj/item/cell/lasgun/volkite
-	name = "volkite energy cell"
-	desc = "A specialized high density battery used to power volkite weaponry."
+	name = "volkite能量电池"
+	desc = "一种用于为volkite武器供电的专用高密度电池."
 	icon_state = "volkite"
 	maxcharge = 1440
 	icon_state_mini = "mag_cell"
@@ -91,16 +91,16 @@
 	reload_delay = 0
 
 /obj/item/cell/lasgun/volkite/small
-	name = "compact volkite energy cell"
-	desc = "A specialized compact battery used to power the smallest volkite weaponry."
+	name = "紧凑型volkite能量电池"
+	desc = "一种用于为最小的volkite武器供电的专用紧凑型电池."
 	icon_state = "volkite_small"
 	maxcharge = 540
 	w_class = WEIGHT_CLASS_SMALL
 	icon_state_mini = "mag_cell"
 
 /obj/item/cell/lasgun/volkite/turret
-	name = "volkite nuclear energy cell"
-	desc = "A nuclear powered battery designed for certain heavy SOM machinery like sentries. Slowly charges over time."
+	name = "volkite核能电池"
+	desc = "一种为某些SOM重型机械如哨戒炮设计的核动力电池. 会随时间缓慢充电."
 	icon_state = "volkite_turret"
 	maxcharge = 1800
 	icon_state_mini = "mag_cell"
@@ -110,8 +110,8 @@
 	charge_delay = 2 SECONDS
 
 /obj/item/cell/lasgun/volkite/powerpack
-	name = "\improper M-70 powerpack"
-	desc = "A heavy reinforced backpack with an array of ultradensity energy cells, linked to a miniature radioisotope thermoelectric generator for continuous power generation. Used to power the largest man portable volkite weaponry. Click drag cells to the powerpack to recharge."
+	name = "\improper M-70动力背包"
+	desc = "一个重型加固背包, 内装一组超高密度能量电池, 并连接到微型放射性同位素热电发生器以持续发电. 用于为最大的单兵便携式volkite武器供电. 点击拖拽电池到动力背包以充电."
 	icon = 'icons/obj/items/ammo/powerpack.dmi'
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/equipment/backpacks_left.dmi',
@@ -164,7 +164,7 @@
 	. = min(charge, amount)
 	charge -= .
 	if(mention_charge)
-		to_chat(user, span_notice("[warning]<b>Charge Remaining: [charge]/[maxcharge]</b>"))
+		to_chat(user, span_notice("[warning]<b>剩余电量: [charge]/[maxcharge]</b>"))
 	update_icon()
 
 /obj/item/cell/lasgun/volkite/powerpack/attackby(obj/item/I, mob/user, params)
@@ -181,11 +181,11 @@
 	if(!istype(I, cell_type))
 		return
 	if(I != user.r_hand && I != user.l_hand)
-		to_chat(user, span_warning("[I] must be in your hand to do that."))
+		to_chat(user, span_warning("[I]必须在你手中才能这样做."))
 		return
 	var/obj/item/cell/our_cell = I
 	if(!our_cell.rechargable)
-		balloon_alert(user, "Not rechargeable")
+		balloon_alert(user, "不可充电")
 		return
 	var/charge_difference = our_cell.maxcharge - our_cell.charge
 	if(charge_difference) //If the cell has less than max charge, recharge it.
@@ -193,11 +193,11 @@
 		our_cell.charge += charge_used //Recharge the cell battery with the lower of the difference between its present and max cap, or the remaining charge
 		our_cell.update_icon()
 	else
-		to_chat(user, span_warning("This cell is already at maximum charge!"))
+		to_chat(user, span_warning("该电池已经充满电了!"))
 
 /obj/item/cell/lasgun/volkite/powerpack/marine
-	name = "\improper TE powerpack"
-	desc = "A recently developed mass produced side pouch which charges any TE technological achievement."
+	name = "\improper TE动力背包"
+	desc = "一种最近开发的量产型侧袋, 可为任何TE技术成果充电."
 	icon_state = "lasgun_pouch"
 	charge_overlay = "lasgun_pouch"
 	atom_flags = CONDUCT
@@ -210,8 +210,8 @@
 	self_recharge = FALSE
 
 /obj/item/cell/lasgun/volkite/powerpack/marine_back
-	name = "\improper TE powerback"
-	desc = "A heavy reinforced backpack with an array of ultradensity energy cells. Click drag cells to the powerpack to recharge."
+	name = "\improper TE动力背包"
+	desc = "一个重型加固背包, 内装一组超高密度能量电池. 点击拖拽电池到动力背包以充电."
 	icon_state = "pp_100"
 	maxcharge = 2400
 	base_icon_state = "pp"

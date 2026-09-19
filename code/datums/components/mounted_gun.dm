@@ -40,7 +40,7 @@
 	if(!parent_vehicle.is_equipment_controller(buckling_mob))
 		return
 	if(!buckling_mob.put_in_active_hand(mounted_gun) && !buckling_mob.put_in_inactive_hand(mounted_gun))
-		to_chat(buckling_mob, span_warning("Could not equip weapon! Click [parent] with a free hand to equip."))
+		to_chat(buckling_mob, span_warning("无法装备武器!用空手点击[parent]来装备."))
 		return
 
 /datum/component/vehicle_mounted_weapon/Destroy()
@@ -80,16 +80,16 @@
 ///Adds stuff to the examine of the vehicle.
 /datum/component/vehicle_mounted_weapon/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	examine_list += span_warning("It has a [mounted_gun.name] attached.")
+	examine_list += span_warning("它附有一个[mounted_gun.name].")
 	if(mounted_gun.rounds)
-		examine_list += span_notice("Ammo: [span_bold("[mounted_gun.rounds]/[mounted_gun.max_rounds]")]")
-		examine_list += span_notice("Drag to yourself to unload the mounted weapon.")
+		examine_list += span_notice("弹药: [span_bold("[mounted_gun.rounds]/[mounted_gun.max_rounds]")]")
+		examine_list += span_notice("拖到自己身上以卸下安装的武器.")
 	else
-		examine_list += span_notice("Reload it by clicking it with the appropriate ammo type.")
+		examine_list += span_notice("用合适的弹药类型点击它来重新装填.")
 
 ///Handles the weapon being dropped. The only way this should happen is if they unbuckle, and this makes sure they can't just take the gun and run off with it.
 /datum/component/vehicle_mounted_weapon/proc/on_weapon_drop(obj/item/dropped, mob/user)
 	SIGNAL_HANDLER
 	var/obj/vehicle/vehicle_parent = parent
-	vehicle_parent.visible_message(span_warning("[dropped] violently snaps back into it's place in [parent]!"))
+	vehicle_parent.visible_message(span_warning("[dropped]猛烈地弹回它在[parent]中的位置!"))
 	dropped.forceMove(vehicle_parent)

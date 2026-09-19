@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(hologram_list)
 
 /mob/hologram
 	name = "Hologram"
-	desc = "It seems to be a visual projection of someone" //jinkies!
+	desc = "它似乎是某人的视觉投影" //jinkies!
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "hologram"
 	canmove = TRUE

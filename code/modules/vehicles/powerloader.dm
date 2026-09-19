@@ -1,7 +1,7 @@
 /obj/vehicle/ridden/powerloader
 	name = "\improper RPL-Y Cargo Loader"
 	icon = 'icons/obj/powerloader.dmi'
-	desc = "The RPL-Y Cargo Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects. An old but trusted design used in warehouses, constructions and military ships everywhere."
+	desc = "RPL-Y货物装载机是一种商用机械化外骨骼,用于搬运重型材料和物体。这是一种老旧但值得信赖的设计,被各地的仓库、建筑工地和军舰所使用。"
 	icon_state = "powerloader_open"
 	layer = VEHICLE_LAYER //so the top appears above windows and wall mounts
 	anchored = TRUE
@@ -49,8 +49,8 @@
 		set_light(0)
 		return ..()
 	buckled_mob.visible_message(
-		span_warning("[user] tries to move [buckled_mob] out of [src]."),
-		span_danger("[user] tries to move you out of [src]!")
+		span_warning("[user]试图将[buckled_mob]移出[src]。"),
+		span_danger("[user]试图将你移出[src]!")
 		)
 	var/olddir = dir
 	if(!do_after(user, 3 SECONDS, NONE, src, BUSY_ICON_HOSTILE) || dir != olddir)
@@ -103,7 +103,7 @@
 		return FALSE
 	var/mob/living/carbon/human/buckling_human = buckling_mob
 	if(buckling_human.r_hand || buckling_human.l_hand)
-		to_chat(buckling_human, span_warning("You need your two hands to use [src]."))
+		to_chat(buckling_human, span_warning("你需要用两只手才能使用[src]。"))
 		return FALSE
 	return ..()
 
@@ -129,7 +129,7 @@
 
 /obj/item/powerloader_clamp
 	icon = 'icons/obj/powerloader.dmi'
-	name = "\improper RPL-Y Cargo Loader Hydraulic Claw"
+	name = "\improper RPL-Y货物装载机液压爪"
 	icon_state = "loader_clamp"
 	force = 20
 	// ITEM_ABSTRACT to prevent placing the item on a table/closet.
@@ -156,8 +156,8 @@
 		loaded = victim
 		playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
 		update_icon()
-		user.visible_message(span_notice("[user] grabs [loaded] with [src]."),
-			span_notice("You grab [loaded] with [src]."))
+		user.visible_message(span_notice("[user]用[src]抓住了[loaded]。"),
+			span_notice("你用[src]抓住了[loaded]。"))
 	return ..()
 
 /obj/item/powerloader_clamp/afterattack(atom/target, mob/user, proximity)
@@ -178,8 +178,8 @@
 		linked_powerloader.unbuckle_mob(user)
 
 /obj/structure/powerloader_wreckage
-	name = "\improper RPL-Y Cargo Loader wreckage"
-	desc = "Remains of some unfortunate Cargo Loader. Completely unrepairable."
+	name = "\improper RPL-Y货物装载机残骸"
+	desc = "某台不幸的货运装载机的残骸. 完全无法修复."
 	icon = 'icons/obj/powerloader.dmi'
 	icon_state = "wreck"
 	density = TRUE

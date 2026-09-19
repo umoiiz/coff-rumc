@@ -2,8 +2,8 @@
 //Not to be confused with /obj/item/reagent_containers/food/drinks/bottle
 
 /obj/item/reagent_containers/glass/bottle
-	name = "bottle"
-	desc = "A small bottle."
+	name = "瓶子"
+	desc = "一个小瓶子."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = null
 	worn_icon_state = "bottle"
@@ -68,119 +68,119 @@
 	icon_state = "bottle-1" //Same one when you make a bottle in the chem master
 
 /obj/item/reagent_containers/glass/bottle/inaprovaline
-	name = "\improper Inaprovaline bottle"
-	desc = "A small bottle. Contains inaprovaline - used to stabilize patients."
+	name = "\improper 英诺普拉林瓶"
+	desc = "一个小瓶子. 含有英诺普拉林 - 用于稳定病患."
 	icon_state = "bottle19"
 	list_reagents = list(/datum/reagent/medicine/inaprovaline = 240)
 
 /obj/item/reagent_containers/glass/bottle/kelotane
-	name = "\improper Kelotane bottle"
-	desc = "A small bottle. Contains kelotane - used to treat burned areas."
+	name = "\improper 凯洛坦瓶"
+	desc = "一个小瓶子. 含有凯洛坦 - 用于治疗烧伤部位."
 	icon_state = "bottle15"
 	list_reagents = list(/datum/reagent/medicine/kelotane = 240)
 
 /obj/item/reagent_containers/glass/bottle/dexalin
-	name = "\improper Dexalin bottle"
-	desc = "A small bottle. Contains dexalin - used to supply blood with oxygen."
+	name = "\improper 地塞林瓶"
+	desc = "一个小瓶子. 含有地塞林 - 用于为血液供氧."
 	icon_state = "bottle10"
 	list_reagents = list(/datum/reagent/medicine/dexalin = 240)
 
 /obj/item/reagent_containers/glass/bottle/spaceacillin
-	name = "\improper Spaceacillin bottle"
-	desc = "A small bottle. Contains spaceacillin - used to treat infected wounds."
+	name = "\improper 太空青霉素瓶"
+	desc = "一个小瓶子. 含有太空青霉素 - 用于治疗感染伤口."
 	icon_state = "bottle8"
 	list_reagents = list(/datum/reagent/medicine/spaceacillin = 240)
 
 /obj/item/reagent_containers/glass/bottle/toxin
-	name = "toxin bottle"
-	desc = "A small bottle of toxins. Do not drink, it is poisonous."
+	name = "毒素瓶"
+	desc = "一小瓶毒素. 不要喝, 有毒."
 	icon_state = "bottle12"
 	list_reagents = list(/datum/reagent/toxin = 240)
 
 /obj/item/reagent_containers/glass/bottle/cyanide
-	name = "cyanide bottle"
-	desc = "A small bottle of cyanide. Bitter almonds?"
+	name = "氰化物瓶"
+	desc = "一小瓶氰化物. 苦杏仁味?"
 	icon_state = "bottle12"
 	list_reagents = list(/datum/reagent/toxin/cyanide = 240)
 
 /obj/item/reagent_containers/glass/bottle/sleeptoxin
-	name = "soporific bottle"
-	desc = "A small bottle of soporific. Just the fumes make you sleepy."
+	name = "安眠瓶"
+	desc = "一小瓶安眠药. 光是闻气味就让你昏昏欲睡."
 	icon_state = "bottle20"
 	list_reagents = list(/datum/reagent/toxin/sleeptoxin = 240)
 
 /obj/item/reagent_containers/glass/bottle/chloralhydrate
-	name = "chloral hydrate bottle"
-	desc = "A small bottle of Choral Hydrate. Mickey's Favorite!"
+	name = "水合氯醛瓶"
+	desc = "一小瓶水合氯醛. 米老鼠的最爱!"
 	icon_state = "bottle20"
 	list_reagents = list(/datum/reagent/toxin/chloralhydrate = 240)
 
 /obj/item/reagent_containers/glass/bottle/dylovene
-	name = "dylovene bottle"
-	desc = "A small bottle of dylovene. Used to counter poisons. Basically an anti-toxin."
+	name = "地洛芬瓶"
+	desc = "一小瓶地洛芬. 用于对抗毒素. 基本上就是解毒剂."
 	icon_state = "bottle16"
 	list_reagents = list(/datum/reagent/medicine/dylovene = 240)
 
 /obj/item/reagent_containers/glass/bottle/mutagen
-	name = "unstable mutagen bottle"
-	desc = "A small bottle of unstable mutagen. Randomly changes the DNA structure of whoever comes in contact."
+	name = "不稳定诱变剂瓶"
+	desc = "一小瓶不稳定诱变剂. 会随机改变接触者的DNA结构."
 	icon_state = "bottle7"
 	list_reagents = list(/datum/reagent/toxin/mutagen = 240)
 
 /obj/item/reagent_containers/glass/bottle/ammonia
-	name = "ammonia bottle"
-	desc = "A small bottle of ammonia. A colourless gas with a pungent smell."
+	name = "氨水瓶"
+	desc = "一小瓶氨水. 一种无色气体, 有刺鼻气味."
 	icon_state = "bottle20"
 	list_reagents = list(/datum/reagent/ammonia = 240)
 
 /obj/item/reagent_containers/glass/bottle/diethylamine
-	name = "diethylamine bottle"
-	desc = "A small bottle of diethylamine. An organic compound obtained from ammonia and ethanol."
+	name = "二乙胺瓶"
+	desc = "一小瓶二乙胺. 一种从氨和乙醇中提取的有机化合物."
 	icon_state = "bottle17"
 	list_reagents = list(/datum/reagent/diethylamine = 240)
 
 
 /obj/item/reagent_containers/glass/bottle/pacid
-	name = "polytrinic acid bottle"
-	desc = "A small bottle. Contains a small amount of Polytrinic Acid"
+	name = "多聚三酸瓶"
+	desc = "一个小瓶子. 含有少量多聚三酸"
 	icon_state = "bottle17"
 	list_reagents = list(/datum/reagent/toxin/acid/polyacid = 240)
 
 /obj/item/reagent_containers/glass/bottle/adminordrazine
-	name = "\improper Adminordrazine bottle"
-	desc = "A small bottle. Contains the liquid essence of the gods."
+	name = "\improper 神赐灵瓶"
+	desc = "一个小瓶子. 含有众神的液体精华."
 	icon = 'icons/obj/items/drinks.dmi'
 	icon_state = "holyflask"
 	list_reagents = list(/datum/reagent/medicine/adminordrazine = 240)
 
 /obj/item/reagent_containers/glass/bottle/capsaicin
-	name = "\improper Capsaicin bottle"
-	desc = "A small bottle. Contains hot sauce."
+	name = "\improper 辣椒素瓶"
+	desc = "一个小瓶子. 含有辣酱."
 	icon_state = "bottle3"
 	list_reagents = list(/datum/reagent/consumable/capsaicin = 240)
 
 /obj/item/reagent_containers/glass/bottle/frostoil
-	name = "\improper Frost Oil bottle"
-	desc = "A small bottle. Contains cold sauce."
+	name = "\improper 霜油瓶"
+	desc = "一个小瓶子. 含有冷酱."
 	icon_state = "bottle17"
 	list_reagents = list(/datum/reagent/consumable/frostoil = 240)
 
 /obj/item/reagent_containers/glass/bottle/bicaridine
-	name = "\improper Bicaridine bottle"
-	desc = "A small bottle. Contains Bicaridine - Used to treat brute damage by doctors."
+	name = "\improper 比卡瑞定瓶"
+	desc = "一个小瓶子. 含有比卡瑞定 - 医生用于治疗钝击伤."
 	icon_state = "bottle3"
 	list_reagents = list(/datum/reagent/medicine/bicaridine = 240)
 
 /obj/item/reagent_containers/glass/bottle/tramadol
-	name = "\improper Tramadol bottle"
-	desc = "A small bottle. Contains Tramadol - Used as a basic painkiller."
+	name = "\improper 曲马多瓶"
+	desc = "一个小瓶子. 含有曲马多 - 用作基础止痛药."
 	icon_state = "bottle18"
 	volume = 240
 	list_reagents = list(/datum/reagent/medicine/tramadol = 240)
 
 /obj/item/reagent_containers/glass/bottle/combatmix
-	name = "\improper Combat mix bottle"
-	desc = "A small bottle. There's a tag that reads BKTT 80:80:40:40."
+	name = "\improper 战斗混合瓶"
+	desc = "一个小瓶子. 上面有个标签写着 BKTT 80:80:40:40."
 	icon_state = "bottle14"
 	volume = 240
 	list_reagents = list(
@@ -191,89 +191,89 @@
 	)
 
 /obj/item/reagent_containers/glass/bottle/oxycodone
-	name = "\improper Oxycodone bottle"
-	desc = "A very small bottle. Contains Oxycodone - Used as an Extreme Painkiller."
+	name = "\improper 羟考酮瓶"
+	desc = "一个非常小的瓶子. 含有羟考酮 - 用作极端止痛药."
 	icon_state = "bottle2"
 	volume = 240
 	list_reagents = list(/datum/reagent/medicine/oxycodone = 240)
 
 /obj/item/reagent_containers/glass/bottle/hypervene
-	name = "\improper Hypervene bottle"
-	desc = "A very small bottle. Contains Hypervene - A purge chem for flushing toxins. Causes pain and vomiting."
+	name = "\improper 海伯文瓶"
+	desc = "一个非常小的瓶子. 含有海伯文 - 一种用于冲刷毒素的净化药剂. 会引起疼痛和呕吐."
 	icon_state = "bottle3"
 	volume = 120
 	list_reagents = list(/datum/reagent/hypervene = 120)
 
 /obj/item/reagent_containers/glass/bottle/tricordrazine
-	name = "\improper Tricordrazine bottle"
-	desc = "A small bottle. Contains tricordrazine - used as a generic treatment for injuries."
+	name = "\improper 三可定瓶"
+	desc = "一个小瓶子. 含有三可定 - 用作通用的伤势治疗."
 	icon_state = "bottle-5"
 	list_reagents = list(/datum/reagent/medicine/tricordrazine = 240)
 
 /obj/item/reagent_containers/glass/bottle/paracetamol
-	name = "\improper Paracetamol bottle"
-	desc = "A small bottle. Contains paracetamol - a mild, simple painkiller, good for enduring heavy labor."
+	name = "\improper 扑热息痛瓶"
+	desc = "一个小瓶子. 含有扑热息痛 - 一种温和简单的止痛药, 适合忍受繁重劳动."
 	icon_state = "bottle-1"
 	list_reagents = list(/datum/reagent/medicine/paracetamol = 240)
 
 /obj/item/reagent_containers/glass/bottle/isotonic
-	name = "\improper Saline-Glucose bottle"
-	desc = "A small bottle. Contains saline-glucose, also known as isotonic - used to aid the body in blood restoration."
+	name = "\improper 生理盐水葡萄糖瓶"
+	desc = "一个小瓶子. 内含生理盐水葡萄糖, 也称为等渗液 - 用于帮助身体恢复血液."
 	icon_state = "bottle-1"
 	list_reagents = list(/datum/reagent/medicine/saline_glucose = 240)
 
 /obj/item/reagent_containers/glass/bottle/meralyne
-	name = "\improper Meralyne bottle"
-	desc = "A small bottle. Contains meralyne - used as a potent treatment against brute damage."
+	name = "\improper 美拉林瓶"
+	desc = "一个小瓶子. 内含美拉林 - 用于有效治疗钝击伤害."
 	icon_state = "bottle14"
 	list_reagents = list(/datum/reagent/medicine/meralyne = 240)
 
 /obj/item/reagent_containers/glass/bottle/dermaline
-	name = "\improper Dermaline bottle"
-	desc = "A small bottle. Contains dermaline - used as a potent treatment against burns."
+	name = "\improper 德玛林瓶"
+	desc = "一个小瓶子. 内含德玛林 - 用于有效治疗烧伤."
 	icon_state = "bottle15"
 	list_reagents = list(/datum/reagent/medicine/dermaline = 240)
 
 /obj/item/reagent_containers/glass/bottle/meraderm
-	name = "\improper Meraderm bottle"
-	desc = "A small bottle. Contains meralylne and dermaline - used as a potent treatment against physical injuries."
+	name = "\improper 美拉德姆瓶"
+	desc = "一个小瓶子. 内含美拉林和德玛林 - 用于有效治疗物理损伤."
 	icon_state = "bottle19"
 	volume = 60
 	list_reagents = list(/datum/reagent/medicine/dermaline = 30, /datum/reagent/medicine/meralyne = 30)
 
 /obj/item/reagent_containers/glass/bottle/nanoblood
-	name = "\improper Nanoblood bottle"
-	desc = "A small bottle. Contains nanoblood - used as a treatment for large amounts of blood loss."
+	name = "\improper 纳米血瓶"
+	desc = "一个小瓶子. 内含纳米血 - 用于治疗大量失血."
 	icon_state = "bottle3"
 	volume = 60
 	list_reagents = list(/datum/reagent/medicine/nanoblood = 60)
 
 /obj/item/reagent_containers/glass/bottle/polyhexanide
-	name = "\improper Polyhexanide bottle"
-	desc = "A small bottle. Contains polyhexanide - Used as a powerful sterilizer for internal surgical use."
+	name = "\improper 聚六亚甲基双胍瓶"
+	desc = "一个小瓶子. 内含聚六亚甲基双胍 - 用作内部手术的强力消毒剂."
 	icon_state = "bottle2"
 	list_reagents = list(/datum/reagent/medicine/polyhexanide = 240)
 
 /obj/item/reagent_containers/glass/bottle/lemoline
-	name = "\improper Lemoline bottle"
-	desc = "A small bottle. Contains 10 units of lemoline, a reagent used in the creation of advanced medicine."
+	name = "\improper 来莫林瓶"
+	desc = "一个小瓶子. 内含10单位来莫林, 一种用于制造高级药物的试剂."
 	icon_state = "bottle-5"
 	list_reagents = list(/datum/reagent/medicine/lemoline = 10)
 
 /obj/item/reagent_containers/glass/bottle/lemoline/doctor
-	desc = "A small bottle. Contains 30 units of lemoline, a reagent used in the creation of advanced medicine."
+	desc = "一个小瓶子. 内含30单位来莫林, 一种用于制造高级药物的试剂."
 	list_reagents = list(/datum/reagent/medicine/lemoline = 30)
 
 /obj/item/reagent_containers/glass/bottle/doctor_delight
-	name = "\improper Doctor's Delight bottle"
-	desc = "A small bottle. Contains Doctor's Delight."
+	name = "\improper 医生的喜悦瓶"
+	desc = "一个小瓶子. 内含医生的喜悦."
 	icon_state = "bottle3"
 	volume = 120
 	list_reagents = list(/datum/reagent/consumable/doctor_delight = 120)
 
 /obj/item/reagent_containers/glass/bottle/medicalnanites
-	name = "\improper Nanomachines bottle"
-	desc = "A small bottle. Contains nanomachines modified for medical use, A potent new method of healing that that reproduces using a subject's blood and has a brief but potentially dangerous activation period!"
+	name = "\improper 纳米机器瓶"
+	desc = "一个小瓶子. 内含经医疗改造的纳米机器, 一种利用受试者血液进行复制的新型强效治疗方法, 具有短暂但可能危险的激活期!"
 	icon_state = "bottle7"
 	volume = 30
 	list_reagents = list(/datum/reagent/medicalnanites = 30)

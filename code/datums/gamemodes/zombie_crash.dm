@@ -116,5 +116,5 @@
 	return FALSE
 
 /datum/game_mode/infestation/crash/zombie/announce()
-	to_chat(world, span_round_header("The current map is - [SSmapping.configs[GROUND_MAP].map_name]!"))
-	priority_announce("Высадка запланирована через 10 минут. Приготовьтесь к посадке. Предварительное сканирование показывает наличие агрессивных форм биологической жизни. Ваша следующая миссия - заполучить коды доступа и активировать ядерную боеголовку. Альтернативная миссия - уничтожить все места появления агрессивных существ.", title = "Доброе утро, товарищи!", type = ANNOUNCEMENT_PRIORITY, sound = 'sound/AI/crash_start.ogg', color_override = "red")
+	to_chat(world, span_round_header("当前地图为 - [SSmapping.configs[GROUND_MAP].map_name]!"))
+	priority_announce("登陆计划于10分钟后进行.请做好降落准备.初步扫描显示存在具有攻击性的生物生命形式.你的下一个任务是获取访问代码并激活核弹头.备选任务是摧毁所有攻击性生物的生成点.", title = "早上好,同志们!", type = ANNOUNCEMENT_PRIORITY, sound = 'sound/AI/crash_start.ogg', color_override = "red")

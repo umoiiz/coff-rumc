@@ -1,7 +1,7 @@
 ///box for storage of ammo and gun
 /obj/item/storage/box/hsg102
-	name = "\improper HSG-102 crate"
-	desc = "A large and rusted metal case. It has not seen much use. Written in faded letters on its top, it says, \"This is a HSG-102 heavy smartgun\". There are many other warning labels atop that are too faded to read."
+	name = "\improper HSG-102箱"
+	desc = "一个巨大且生锈的金属箱.它没怎么被使用过.在其顶部用褪色的字母写着,\"这是一挺HSG-102重型智能枪\".顶部还有许多其他警告标签,但已经褪色到无法阅读."
 	icon = 'icons/obj/items/ammo/stationary.dmi'
 	icon_state = "hsg102_crate"
 	w_class = WEIGHT_CLASS_HUGE
@@ -21,8 +21,8 @@
 
 ///HSG-102, now with full auto. It is not a superclass of deployed guns, however there are a few varients.
 /obj/item/weapon/gun/hsg102
-	name = "\improper HSG-102 mounted heavy smartmachinegun"
-	desc = "The HSG-102 heavy machinegun, it's too heavy to be wielded or operated without the tripod. IFF capable. No extra work required, just deploy it with Ctrl-Click. Can be repaired with a blowtorch once deployed."
+	name = "\improper HSG-102安装式重型智能机枪"
+	desc = "HSG-102重型机枪,它太重了,没有三脚架就无法持握或操作.具备IFF能力.无需额外操作,只需Ctrl-点击部署即可.部署后可用喷灯修复."
 
 	w_class = WEIGHT_CLASS_HUGE
 	equip_slot_flags = ITEM_SLOT_BACK
@@ -65,8 +65,8 @@
 
 ///Unmovable ship mounted version.
 /obj/item/weapon/gun/hsg102/hsg_nest
-	name = "\improper HSG-102 heavy smartgun nest"
-	desc = "A HSG-102 heavy smartgun mounted upon a small reinforced post with sandbags to provide a small machinegun nest for all your defense purpose needs.</span>"
+	name = "\improper HSG-102重型智能枪巢"
+	desc = "一挺HSG-102重型智能枪安装在一个小型加固支柱上,并配有沙袋,为你所有的防御需求提供一个小型机枪巢.</span>"
 	icon = 'icons/obj/items/gun/hmg.dmi'
 	icon_state = "entrenched"
 
@@ -92,8 +92,8 @@
 //MG-2005 mounted minigun
 
 /obj/item/weapon/gun/standard_minigun
-	name = "\improper MG-2005 mounted minigun"
-	desc = "The MG-2005 mounted minigun is a gun simple in principle, it will shoot a lot of bullets really fast and will rip through xeno hordes."
+	name = "\improper MG-2005安装式迷你枪"
+	desc = "MG-2005安装式迷你枪原理简单,它会以极快的速度射出大量子弹,撕碎异形虫群."
 
 	w_class = WEIGHT_CLASS_HUGE
 	equip_slot_flags = ITEM_SLOT_BACK
@@ -134,8 +134,8 @@
 
 ///Unmovable ship mounted version.
 /obj/item/weapon/gun/standard_minigun/nest
-	name = "\improper MG-2005 mounted minigun nest"
-	desc = "A MG-2005 mounted minigun mounted upon a small reinforced post with sandbags."
+	name = "\improper MG-2005安装式迷你枪巢"
+	desc = "一挺MG-2005安装式迷你枪安装在一个小型加固支柱上,并配有沙袋."
 	icon_state = "minigun_nest"
 
 	item_flags = TWOHANDED
@@ -149,8 +149,8 @@
 //ATR-22 mounted heavy anti-air gun
 
 /obj/item/weapon/gun/atr22
-	name = "\improper ATR-22 mounted flak gun"
-	desc = "The ATR-22 is a recoiling barrel 20mm autocannon, created to be used against low flying targets, it is however able to engage ground targets at medium ranges with extreme efficency even if the recoil makes it near impossible to hit anything close by, its bullets will shred hard targets such as armored foes or walls. Both barrels can be fired at the same time rather than in sequence, but will incur large scatter penalties do so."
+	name = "\improper ATR-22安装式高射炮"
+	desc = "ATR-22是一门后坐式炮管的20毫米自动炮,专为对付低空飞行目标而制造,但它也能以极高的效率在中距离交战地面目标,尽管其后坐力使其几乎不可能命中附近的任何东西,其子弹会撕碎装甲敌人或墙壁等硬目标.两根炮管可以同时发射而非依次发射,但这样做会带来巨大的散布惩罚."
 	w_class = WEIGHT_CLASS_HUGE
 	equip_slot_flags = ITEM_SLOT_BACK
 	icon = 'icons/obj/artillery/atr22.dmi'
@@ -196,8 +196,8 @@
 //TE-9001 mounted heavy laser
 
 /obj/item/weapon/gun/energy/lasgun/lasrifle/heavy_laser
-	name = "\improper TE-9001 mounted heavy laser"
-	desc = "The TE-9001 mounted heavy laser is a non-IFF heavy laser that is powerful enough to start a sizeable fire on its impact, this weapon is exceptional at area denial and has direct fire capability on the side."
+	name = "\improper TE-9001安装式重型激光"
+	desc = "TE-9001安装式重型激光是一种非IFF重型激光,其威力足以在命中时引发一场相当大的火灾,这种武器在区域封锁方面表现出色,并具备侧向直射能力."
 
 	w_class = WEIGHT_CLASS_HUGE
 	equip_slot_flags = ITEM_SLOT_BACK
@@ -281,8 +281,8 @@
 //FK-88 mounted heavy infantry support gun
 
 /obj/item/weapon/gun/fk88
-	name = "\improper FK-88 mounted flak gun"
-	desc = "The FK-88 is a big gun, offically meant to be used against large hostile wildlife or unruly crowds, this cannon will most definitely give a very bad day to anything that gets caught in its line of fire. Takes quite a while to dial in your shots. Uses 15cm shells."
+	name = "\improper FK-88安装式高射炮"
+	desc = "FK-88是一门大炮,官方用途是对付大型敌对野生动物或失控的人群,这门炮绝对会让任何被其火力线波及的东西度过非常糟糕的一天.需要相当长的时间来校准射击.使用15厘米炮弹."
 
 	w_class = WEIGHT_CLASS_HUGE
 	equip_slot_flags = ITEM_SLOT_BACK
@@ -331,8 +331,8 @@
 
 ///This is my meme version, the first version of the HSG-102 to have auto-fire, revel in its presence.
 /obj/item/weapon/gun/hsg102/death
-	name = "\improper \"Death incarnate\" heavy smartmachinegun"
-	desc = "It looks like a regular HSG-102, however glowing archaeic writing glows faintly on its sides and top. It beckons for blood."
+	name = "\improper \"死亡化身\"重型智能机枪"
+	desc = "它看起来像一挺普通的HSG-102,但其侧面和顶部有微弱的古老文字在发光.它渴求鲜血."
 
 	aim_slowdown = 3
 	scatter = 30
@@ -350,8 +350,8 @@
 // This is a deployed IFF-less MACHINEGUN, has 500 rounds, drums do not fit anywhere but your belt slot and your back slot. But it has 500 rounds. That's nice.
 
 /obj/item/weapon/gun/hmg08
-	name = "\improper HMG-08 heavy machinegun"
-	desc = "An absolute monster of a weapon, this is a watercooled heavy machinegun modernized by some crazy armorer with a wheeling kit included. Considering the mish mash of parts for the wheeling kit, you think its from another model of the gun. The pinnacle at holding a chokepoint. Holds 500 rounds of 10x28mm caseless in a box case. IS NOT IFF CAPABLE. Aiming carefully recommended. Can be repaired with a blowtorch once deployed. Alt Right click to unanchor and reanchor it."
+	name = "\improper HMG-08重机枪"
+	desc = "一挺绝对的怪物级武器,这是一挺由某个疯狂军械师现代化改装的水冷式重机枪,还附带了一套轮式套件.考虑到轮式套件的零件混杂,你认为它来自另一种型号的枪.守住咽喉要道的巅峰之作.弹链箱可容纳500发10x28毫米无壳弹.不具备IFF能力.建议仔细瞄准.部署后可用喷灯修复.Alt右键点击可解除锚定并重新锚定."
 	w_class = WEIGHT_CLASS_HUGE
 	equip_slot_flags = ITEM_SLOT_BACK
 	icon = 'icons/obj/items/gun/hmg.dmi'
@@ -400,8 +400,8 @@
 //MG-27 Medium Machine Gun
 
 /obj/item/weapon/gun/mg27
-	name = "\improper MG-27 medium machinegun"
-	desc = "The MG-27 is the SG-29s aging IFF-less cousin, made for rapid accurate machinegun fire in a short amount of time, you could use it while standing, not a great idea. Use the tripod for actual combat. It uses 10x27mm boxes."
+	name = "\improper MG-27中型机枪"
+	desc = "MG-27是SG-29老旧的无IFF表亲,专为在短时间内进行快速精准的机枪射击而制造,你可以站着使用它,但这不是个好主意.实际战斗请使用三脚架.它使用10x27毫米弹链箱."
 	equip_slot_flags = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	icon = 'icons/obj/items/gun/machinegun64.dmi'
@@ -471,8 +471,8 @@
 	starting_attachment_types = list(/obj/item/attachable/scope/unremovable/mg27)
 
 /obj/item/weapon/gun/clf_heavyrifle
-	name = "\improper PTR-41/1785 anti-mech gun"
-	desc = "The PTR-41/1785 is a bottom shelf solution modernized for dealing with armor, while one could use it while standing it is obviously not a great idea. It is recommended to be used while the bipod is deployed. It uses 14.5mm high velocity rounds that will certainly leave a hole in whatever unfortunate soul is hit by it."
+	name = "\improper PTR-41/1785反机甲枪"
+	desc = "PTR-41/1785是一种为对付装甲而现代化的底层解决方案,虽然可以站着使用它,但这显然不是个好主意.建议在部署两脚架时使用.它使用14.5毫米高速弹,无论哪个不幸的灵魂被它击中,都必定会留下一个洞."
 	w_class = WEIGHT_CLASS_BULKY
 	icon = 'icons/obj/items/gun/marksman64.dmi'
 	icon_state = "ptrs"
@@ -531,7 +531,7 @@
 
 /obj/item/weapon/gun/clf_heavyrifle/imported
 	name = "\improper PTR-41/1785I1"
-	desc = "PTR-41/1785I1 is an imported version of the original PTR-41 with a replacement receiver, making it possible to install the more common T-47 sight on it. However, the replacement also introduced some inconvenience, which is why it takes longer to shoot while aiming. Otherwise, it is an almost complete copy. While one could use it while standing it is obviously not a great idea. It is recommended to be used while the bipod is deployed. It uses 14.5mm high velocity rounds that will certainly leave a hole in whatever unfortunate soul is hit by it."
+	desc = "PTR-41/1785I1是原版PTR-41的进口版本,更换了机匣,使得可以安装更常见的T-47瞄具.然而,更换也带来了一些不便,这就是为什么它在瞄准时射击需要更长时间.除此之外,它几乎是完全的复制品.虽然可以站着使用它,但这显然不是个好主意.建议在部署两脚架时使用.它使用14.5毫米高速弹,无论哪个不幸的灵魂被它击中,都必定会留下一个洞."
 	attachable_allowed = list(
 		/obj/item/attachable/motiondetector,
 		/obj/item/attachable/magnetic_harness,
@@ -545,8 +545,8 @@
 //AT-36 Anti Tank Gun
 
 /obj/item/weapon/gun/at36
-	name = "\improper AT-36 anti tank gun"
-	desc = "The AT-36 is a light dual purpose anti tank and anti personnel weapon used by the TGMC. Used for light vehicle or bunker busting on a short notice. Best used by two people. It can move around with wheels, and has an ammo rack intergral to the weapon. CANNOT BE UNDEPLOYED ONCE DEPLOYED! It uses several types of 37mm shells boxes. Alt-right click on it to anchor it so that it cannot be moved by anyone, then alt-right click again to move it."
+	name = "\improper AT-36反坦克炮"
+	desc = "AT-36是TGMC使用的一种轻型双用途反坦克和反人员武器.用于在短时间内摧毁轻型车辆或碉堡.最好由两人操作.它可以通过轮子移动,并有一个与武器一体的弹药架.一旦部署就无法撤收!它使用几种类型的37毫米炮弹箱.Alt右键点击可锚定它,使其无法被任何人移动,再次Alt右键点击可移动它."
 	w_class = WEIGHT_CLASS_BULKY
 	icon = 'icons/obj/artillery/at36.dmi'
 	icon_state = "tat36"
@@ -607,7 +607,7 @@
 /obj/machinery/deployable/mounted/moveable/at36/attackby(obj/item/I, mob/user, params)
 	var/obj/item/weapon/gun/at36/internal_gun = get_internal_item()
 	if(user.interactee == src && (I.type in internal_gun?.allowed_ammo_types))
-		balloon_alert(user, "Busy manning!")
+		balloon_alert(user, "正忙于操作!")
 		return
 
 	if(!sponson.attackby(I, user, params))
@@ -615,7 +615,7 @@
 
 /obj/machinery/deployable/mounted/moveable/at36/attack_hand_alternate(mob/living/user)
 	if(user.interactee == src)
-		balloon_alert(user, "Busy manning!")
+		balloon_alert(user, "忙碌中!")
 		return
 	return sponson.attack_hand_alternate(user)
 
@@ -624,7 +624,7 @@
 		return FALSE
 
 	if(usr.interactee == src)
-		balloon_alert(usr, "Busy manning!")
+		balloon_alert(usr, "忙碌中!")
 		return
 
 	if(over == usr && Adjacent(usr)) //This must come before the screen objects only block
@@ -634,8 +634,8 @@
 //AGLS-37, or Automatic Grenade Launching System 37, a fully automatic mounted grenade launcher that fires fragmentation and HE shells, can't be turned.
 
 /obj/item/weapon/gun/agls37
-	name = "\improper AGLS-37 Kauser automatic grenade launcher"
-	desc = "The AGLS-37 automatic grenade launching IFF capable system, it's too heavy to be wielded or operated without the tripod. On the back, it reads: \"The Explosions and Fragmentation from this weapon ARE NOT friendly fire capable. Kauser is not obligated to buy you new body parts for you or your friends if you lose them.\"\nCan be deployed with Crtl-Click. Can be repaired with a blowtorch once deployed."
+	name = "\improper AGLS-37 Kauser自动榴弹发射器"
+	desc = "AGLS-37自动榴弹发射系统具备敌我识别能力,过重而无法手持或脱离三脚架操作.背面刻着:\"该武器造成的爆炸与破片不具备友军伤害能力.若你或你的朋友因此失去身体部位,Kauser没有义务为你们购买新的.\"\nCan可通过Ctrl-点击部署.部署后可用喷灯修复."
 	w_class = WEIGHT_CLASS_HUGE
 	equip_slot_flags = ITEM_SLOT_BACK
 	caliber = CALIBER_40MM
@@ -688,8 +688,8 @@
 // Non-TGMC HMG
 
 /obj/item/weapon/gun/kord
-	name = "\improper KRD-61ES mounted heavy machinegun"
-	desc = "The KRD-61ES machinegun is the export variant of the ML-91 HMG. It's too heavy to be wielded or operated without the tripod. No extra work required, just deploy it with Ctrl-Click. Can be repaired with a blowtorch once deployed."
+	name = "\improper KRD-61ES固定式重机枪"
+	desc = "KRD-61ES机枪是ML-91重机枪的出口型号.过重而无法手持或脱离三脚架操作.无需额外操作,只需用Ctrl-点击部署.部署后可用喷灯修复."
 	icon = 'icons/obj/items/gun/machinegun64.dmi'
 	icon_state = "kord"
 	worn_icon_list = list(

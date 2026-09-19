@@ -1,6 +1,6 @@
 /obj/vehicle/sealed/armored/multitile/medium/apc
 	name = "TAV - Nike"
-	desc = "A heavily armoured vehicle with light armaments designed to ferry troops around the battlefield, or assist with search and rescue (SAR) operations."
+	desc = "一种装甲厚重, 武器轻型的载具, 专为在战场上运送部队, 或协助搜索与救援 (SAR) 行动而设计."
 	icon = 'icons/obj/armored/2x2/medium_vehicles.dmi'
 	turret_icon = 'icons/obj/armored/2x2/medium_vehicles.dmi'
 	turret_icon_state = "apc_turret"

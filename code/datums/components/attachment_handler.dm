@@ -135,7 +135,7 @@
 	if(!CHECK_BITFIELD(attachment_data[FLAGS_ATTACH_FEATURES], ATTACH_NO_HANDS))
 		var/obj/item/in_hand = user.get_inactive_held_item()
 		if(in_hand != parent)
-			to_chat(user, span_warning("You have to hold [parent] to do that!"))
+			to_chat(user, span_warning("你必须持有[parent]才能这样做!"))
 			return FALSE
 
 	var/do_after_icon_type = BUSY_ICON_GENERIC
@@ -146,20 +146,20 @@
 
 	if(skill_used) //This is so we can make many attachments with different skills used to attach.
 		if(user.skills.getRating(skill_used))
-			user.visible_message(span_notice("[user] begins attaching [attachment] to [parent]."),
-			span_notice("You begin attaching [attachment] to [parent]."), null, 4)
+			user.visible_message(span_notice("[user]开始将[attachment]安装到[parent]上."),
+			span_notice("你开始将[attachment]安装到[parent]上."), null, 4)
 			if(skill_upper_threshold && user.skills.getRating(skill_used) >= skill_upper_threshold) //See if the attacher is super skilled/panzerelite born to defeat never retreat etc
 				attach_delay *= 0.5
 		else //If the user has no training, attaching takes twice as long and they fumble about.
 			attach_delay *= 2
-			user.visible_message(span_notice("[user] begins fumbling about, trying to attach [attachment] to [parent]."),
-			span_notice("You begin fumbling about, trying to attach [attachment] to [parent]."), null, 4)
+			user.visible_message(span_notice("[user]开始笨手笨脚地摸索,试图将[attachment]安装到[parent]上."),
+			span_notice("你开始笨手笨脚地摸索,试图将[attachment]安装到[parent]上."), null, 4)
 			do_after_icon_type = BUSY_ICON_UNSKILLED
 
 	if(!do_after(user, attach_delay, NONE, parent, do_after_icon_type))
 		return FALSE
-	user.visible_message(span_notice("[user] attaches [attachment] to [parent]."),
-	span_notice("You attach [attachment] to [parent]."), null, 4)
+	user.visible_message(span_notice("[user]将[attachment]安装到[parent]上."),
+	span_notice("你将[attachment]安装到[parent]上."), null, 4)
 	playsound(user, attachment_data[ATTACH_SOUND], 15, 1, 4)
 	return TRUE
 
@@ -171,7 +171,7 @@
 	var/slot = attachment_data[SLOT]
 
 	if(!(slot in slots) || (!(attachment.type in attachables_allowed) && !CHECK_BITFIELD(attachment_data[FLAGS_ATTACH_FEATURES], ATTACH_BYPASS_ALLOWED_LIST))) //If theres no slot on parent, or if the attachment type isnt allowed, returns FALSE.
-		to_chat(user, span_warning("You cannot attach [attachment] to [parent]!"))
+		to_chat(user, span_warning("你无法将[attachment]安装到[parent]上!"))
 		return FALSE
 
 	if(!slots[slot]) //If the slot is empty theres room.
@@ -180,7 +180,7 @@
 	var/list/current_attachment_data = attachment_data_by_slot[slot]
 
 	if(!CHECK_BITFIELD(current_attachment_data[FLAGS_ATTACH_FEATURES], ATTACH_REMOVABLE)) //If the slots attachment is unremovable.
-		to_chat(user, span_warning("You cannot remove [slots[slot]] from [parent] to make room for [attachment]!"))
+		to_chat(user, span_warning("你无法从[parent]上移除[slots[slot]]来为[attachment]腾出空间!"))
 		return FALSE
 
 	return TRUE //Removal of a current attachment is done in finish_handle_attachment.
@@ -204,7 +204,7 @@
 		attachments_to_remove += current_attachment
 
 	if(!length(attachments_to_remove))
-		to_chat(living_user, span_warning("There are no attachments that can be removed from [parent]!"))
+		to_chat(living_user, span_warning("[parent]上没有可以移除的配件!"))
 		return
 
 	INVOKE_ASYNC(src, PROC_REF(do_detach), living_user, attachments_to_remove)
@@ -212,17 +212,17 @@
 ///Checks if you are actually able to detach an item or not
 /datum/component/attachment_handler/proc/detach_check(mob/user)
 	if(user.get_active_held_item() != parent && user.get_inactive_held_item() != parent)
-		to_chat(user, span_warning("You must be holding [parent] to field strip it!"))
+		to_chat(user, span_warning("你必须持有[parent]才能对其进行战地拆解!"))
 		return FALSE
 	if((user.get_active_held_item() == parent && user.get_inactive_held_item()) || (user.get_inactive_held_item() == parent && user.get_active_held_item()))
-		to_chat(user, span_warning("You need a free hand to field strip [parent]!"))
+		to_chat(user, span_warning("你需要一只空闲的手来战地拆解[parent]!"))
 		return FALSE
 	return TRUE
 
 ///Does the detach, shows the user the removable attachments and handles the do_after.
 /datum/component/attachment_handler/proc/do_detach(mob/living/user, list/attachments_to_remove)
 	//If there is only one attachment to remove, then that will be the attachment_to_remove. If there is more than one it gives the user a list to select from.
-	var/obj/item/attachment_to_remove = length(attachments_to_remove) == 1 ? attachments_to_remove[1] : tgui_input_list(user, "Choose an attachment", "Choose attachment", attachments_to_remove)
+	var/obj/item/attachment_to_remove = length(attachments_to_remove) == 1 ? attachments_to_remove[1] : tgui_input_list(user, "选择配件", "选择配件", attachments_to_remove)
 	if(!attachment_to_remove)
 		return
 
@@ -244,21 +244,21 @@
 
 	if(skill_used) //Same as up in do_attach
 		if(user.skills.getRating(skill_used))
-			user.visible_message(span_notice("[user] begins detaching [attachment_to_remove] from [parent]."),
-			span_notice("You begin detaching [attachment_to_remove] from [parent]."), null, 4)
+			user.visible_message(span_notice("[user]开始从[parent]上拆卸[attachment_to_remove]."),
+			span_notice("你开始从[parent]上拆卸[attachment_to_remove]."), null, 4)
 			if(skill_upper_threshold && user.skills.getRating(skill_used) >= skill_upper_threshold)
 				detach_delay *= 0.5
 		else
 			detach_delay *= 2
-			user.visible_message(span_notice("[user] begins fumbling about, trying to detach [attachment_to_remove] from [parent]."),
-			span_notice("You begin fumbling about, trying to detach [attachment_to_remove] from [parent]."), null, 4)
+			user.visible_message(span_notice("[user]开始笨手笨脚地摸索,试图从[parent]上拆卸[attachment_to_remove]."),
+			span_notice("你开始笨手笨脚地摸索,试图从[parent]上拆卸[attachment_to_remove]."), null, 4)
 			do_after_icon_type = BUSY_ICON_UNSKILLED
 
 	if(!do_after(user, detach_delay, NONE, parent, do_after_icon_type))
 		return
 
-	user.visible_message(span_notice("[user] detaches [attachment_to_remove] from [parent]."),
-	span_notice("You detach [attachment_to_remove] from [parent]."), null, 4)
+	user.visible_message(span_notice("[user]从[parent]上拆卸[attachment_to_remove]."),
+	span_notice("你从[parent]上拆卸[attachment_to_remove]."), null, 4)
 	playsound(user, attachment_data[ATTACH_SOUND], 15, 1, 4)
 
 	finish_detach(attachment_to_remove, attachment_data, user)

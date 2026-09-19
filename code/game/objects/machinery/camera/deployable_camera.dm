@@ -2,7 +2,7 @@ GLOBAL_VAR_INIT(deployed_cameras, 0)
 
 /obj/machinery/camera/deployable
 	name = "\"Huginn\" ROC-58 Observer"
-	desc = "The ROC-58 deployable camera, designed for use in the field to increase the tactical utility of overwatch."
+	desc = "ROC-58可部署摄像头,专为战场使用而设计,以增强监视的战术效用。"
 	network = list("marinesl", "marine")
 	icon_state = "deployable"
 	layer = ABOVE_ALL_MOB_LAYER//it flies after all
@@ -16,18 +16,18 @@ GLOBAL_VAR_INIT(deployed_cameras, 0)
 
 
 /obj/item/deployable_camera
-	name = "Undeployed \"Huginn\" ROC-58 Observer"
-	desc = "A deployable camera for use with overwatch systems."
+	name = "未部署的\"Huginn\" ROC-58观察者"
+	desc = "一种用于监视系统的可部署摄像头。"
 	icon = 'icons/obj/machines/monitors.dmi'
 	icon_state = "deployableitem"
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/deployable_camera/attack_self(mob/user)
-	user.visible_message(span_notice("[user] throws [src] into the air!"),
-		span_notice("You throw [src] into the air!"))
+	user.visible_message(span_notice("[user]将[src]抛向空中!"),
+		span_notice("你将[src]抛向空中!"))
 
 	for(var/mob/living/silicon/ai/AI AS in GLOB.ai_list)
-		to_chat(AI, span_notice("NOTICE - \"Huginn\" ROC-58 Observer has been deployed at [AREACOORD_NO_Z(user)]."))
+		to_chat(AI, span_notice("注意 - \"Huginn\" ROC-58观察者已部署在[AREACOORD_NO_Z(user)]。"))
 	var/obj/machinery/camera/deployable/newcam = new(get_turf(user))
 	var/dat
 	if(ishuman(user))

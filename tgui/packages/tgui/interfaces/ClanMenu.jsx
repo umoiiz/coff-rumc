@@ -63,7 +63,7 @@ export const ClanMenu = (props) => {
                   <td>
                     <div unselectable="on">
                       <Button
-                        content="Rename Clan"
+                        content="重命名战队"
                         onClick={() => act('rename', { clan_id: clan_id })}
                       />
                     </div>
@@ -73,7 +73,7 @@ export const ClanMenu = (props) => {
                   <td>
                     <div unselectable="on">
                       <Button
-                        content="Set Description"
+                        content="设置描述"
                         onClick={() => act('setdesc', { clan_id: clan_id })}
                       />
                     </div>
@@ -83,7 +83,7 @@ export const ClanMenu = (props) => {
                   <td>
                     <div unselectable="on">
                       <Button
-                        content="Set Honor"
+                        content="设置荣誉"
                         onClick={() => act('sethonor', { clan_id: clan_id })}
                       />
                     </div>
@@ -93,7 +93,7 @@ export const ClanMenu = (props) => {
                   <td>
                     <div unselectable="on">
                       <Button
-                        content="Set Color"
+                        content="设置颜色"
                         onClick={() => act('setcolor', { clan_id: clan_id })}
                       />
                     </div>
@@ -103,7 +103,7 @@ export const ClanMenu = (props) => {
                   <td>
                     <div unselectable="on">
                       <Button
-                        content="Delete Clan"
+                        content="删除战队"
                         onClick={() => act('delete', { clan_id: clan_id })}
                       />
                     </div>
@@ -169,7 +169,7 @@ const GetPredInfo = (props) => {
             <td>
               <div unselectable="on">
                 <Button
-                  content="Set Rank"
+                  content="设置军衔"
                   onClick={() => act('modifyrank', { ckey: name })}
                 />
               </div>
@@ -179,7 +179,7 @@ const GetPredInfo = (props) => {
             <td>
               <div unselectable="on">
                 <Button
-                  content="Move Clans"
+                  content="移动战队"
                   onClick={() => act('moveclan', { ckey: name })}
                 />
               </div>
@@ -189,7 +189,7 @@ const GetPredInfo = (props) => {
             <td>
               <div unselectable="on">
                 <Button
-                  content="Purge"
+                  content="清除"
                   onClick={() => act('purge', { ckey: name })}
                 />
               </div>

@@ -3,7 +3,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/blink
 	name = "Blink"
-	desc = "We teleport ourselves a short distance to a location within line of sight."
+	desc = "我们将自己短距离传送到视线范围内的一个位置."
 	action_icon_state = "blink"
 	action_icon = 'icons/Xeno/actions/chimera.dmi'
 	use_state_flags = ABILITY_TURF_TARGET
@@ -17,17 +17,17 @@
 /datum/action/ability/activable/xeno/blink/proc/check_blink_tile(turf/T, ignore_blocker = FALSE, silent = FALSE)
 	if(isclosedturf(T) || isspaceturf(T) || isspacearea(T))
 		if(!silent)
-			to_chat(owner, span_xenowarning("We cannot blink here!"))
+			to_chat(owner, span_xenowarning("我们无法在这里闪烁!"))
 		return FALSE
 
 	if(!line_of_sight(owner, T)) //Needs to be in line of sight.
 		if(!silent)
-			to_chat(owner, span_xenowarning("We can't blink without line of sight to our destination!"))
+			to_chat(owner, span_xenowarning("我们在没有到目的地视线的情况下无法闪烁!"))
 		return FALSE
 
 	if(IS_OPAQUE_TURF(T))
 		if(!silent)
-			to_chat(owner, span_xenowarning("We can't blink into this space without vision!"))
+			to_chat(owner, span_xenowarning("我们在没有视野的情况下无法闪烁进入这个空间!"))
 		return FALSE
 
 	if(ignore_blocker) //If we don't care about objects occupying the target square, return TRUE; used for checking pathing through transparents
@@ -35,13 +35,13 @@
 
 	if(turf_block_check(owner, T, FALSE, TRUE, TRUE, TRUE, TRUE)) //Check if there's anything that blocks us; we only care about Canpass here
 		if(!silent)
-			to_chat(owner, span_xenowarning("We can't blink here!"))
+			to_chat(owner, span_xenowarning("我们无法在这里闪烁!"))
 		return FALSE
 
 	var/area/A = get_area(src)
 	if(isspacearea(A))
 		if(!silent)
-			to_chat(owner, span_xenowarning("We cannot blink here!"))
+			to_chat(owner, span_xenowarning("我们无法在这里闪烁!"))
 		return FALSE
 
 	return TRUE
@@ -52,7 +52,7 @@
 		if(blocker.CanPass(owner, T))
 			continue
 		if(!silent)
-			to_chat(owner, span_xenowarning("We can't blink into a solid object!"))
+			to_chat(owner, span_xenowarning("我们无法闪烁进入固体物体!"))
 		return FALSE
 
 	return TRUE
@@ -64,7 +64,7 @@
 	if(owner.issamexenohive(owner.pulling)) //xenos should be able to fling xenos into xeno passable areas!
 		return
 	for(var/obj/effect/forcefield/fog/fog in owner.loc)
-		owner.pulling.balloon_alert(owner, "Cannot, fog")
+		owner.pulling.balloon_alert(owner, "不能,雾")
 		return fail_activate()
 
 /datum/action/ability/activable/xeno/blink/use_ability(atom/A)
@@ -110,7 +110,7 @@
 					if(!H.adjust_oxy_loss(critdamage))
 						H.adjust_brute_loss(critdamage)
 
-		to_chat(xeno_owner, span_xenodanger("We bring [pulled_target] with us. We won't be ready to blink again for [cooldown_duration * cooldown_mod * 0.1] seconds due to the strain of doing so."))
+		to_chat(xeno_owner, span_xenodanger("我们带上[pulled_target].由于这样做的负担,我们在[cooldown_duration * cooldown_mod * 0.1]秒内无法再次准备好闪烁."))
 
 	teleport_debuff_aoe(xeno_owner) //Debuff when we vanish
 
@@ -146,10 +146,10 @@
 
 		living_target.adjust_stagger(CHIMERA_TELEPORT_DEBUFF_STAGGER_STACKS)
 		living_target.add_slowdown(CHIMERA_TELEPORT_DEBUFF_SLOWDOWN_STACKS)
-		to_chat(living_target, span_warning("You feel nauseous as reality warps around you!"))
+		to_chat(living_target, span_warning("当现实在你周围扭曲时,你感到恶心!"))
 
 /datum/action/ability/activable/xeno/blink/on_cooldown_finish()
-	to_chat(owner, span_xenodanger("We are able to blink again."))
+	to_chat(owner, span_xenodanger("我们能够再次闪烁了."))
 	owner.playsound_local(owner, 'sound/effects/alien/newlarva.ogg', 25, 0, 1)
 	return ..()
 
@@ -184,7 +184,7 @@
 
 /datum/action/ability/xeno_action/phantom
 	name = "Phantom"
-	desc = "Create a physical clone and hide in shadows."
+	desc = "创建一个物理克隆并隐藏在阴影中."
 	action_icon_state = "phantom"
 	action_icon = 'icons/Xeno/actions/chimera.dmi'
 	cooldown_duration = 30 SECONDS
@@ -199,7 +199,7 @@
 	var/obj/effect/abstract/particle_holder/warpdust
 
 /datum/action/ability/xeno_action/phantom/on_cooldown_finish()
-	to_chat(owner, span_xenodanger("We gather enough strength to create a new phantom."))
+	to_chat(owner, span_xenodanger("我们聚集了足够的力量来创建一个新的幻影."))
 	owner.playsound_local(owner, 'sound/effects/alien/newlarva.ogg', 25, 0, 1)
 	return ..()
 
@@ -258,7 +258,7 @@
 
 /datum/action/ability/activable/xeno/pounce/abduction
 	name = "Abduction"
-	desc = "Abduct the prey."
+	desc = "绑架猎物."
 	action_icon_state = "abduction"
 	action_icon = 'icons/Xeno/actions/chimera.dmi'
 	cooldown_duration = 20 SECONDS
@@ -274,7 +274,7 @@
 	var/stagger_duration = 3 SECONDS
 
 /datum/action/ability/activable/xeno/pounce/abduction/on_cooldown_finish()
-	to_chat(owner, span_xenodanger("We gather enough strength to abduct another one."))
+	to_chat(owner, span_xenodanger("我们聚集了足够的力量来绑架另一个."))
 	owner.playsound_local(owner, 'sound/effects/alien/newlarva.ogg', 25, 0, 1)
 	return ..()
 
@@ -306,7 +306,7 @@
 
 /datum/action/ability/xeno_action/warp_blast
 	name = "Warp Blast"
-	desc = "Create a pure force explosion that damages and knockbacks targets around."
+	desc = "制造一次纯粹的力场爆炸,对周围目标造成伤害并将其击退."
 	action_icon_state = "warp_blast"
 	action_icon = 'icons/Xeno/actions/chimera.dmi'
 	cooldown_duration = 20 SECONDS
@@ -344,7 +344,7 @@
 	name = "Body swap"
 	action_icon_state = "bodyswap"
 	action_icon = 'icons/Xeno/actions/chimera.dmi'
-	desc = "Swap places with another alien."
+	desc = "与另一个异形交换位置."
 	use_state_flags = ABILITY_MOB_TARGET
 	cooldown_duration = 20 SECONDS
 	ability_cost = 100
@@ -353,7 +353,7 @@
 	)
 
 /datum/action/ability/activable/xeno/body_swap/on_cooldown_finish()
-	to_chat(xeno_owner, span_xenodanger("We gather enough strength to perform body swap again."))
+	to_chat(xeno_owner, span_xenodanger("我们聚集了足够的力量来再次进行身体交换."))
 	xeno_owner.playsound_local(xeno_owner, 'sound/effects/alien/newlarva.ogg', 25, 0, 1)
 	return ..()
 
@@ -363,10 +363,10 @@
 		S.force_break_stealth()
 	. = ..()
 	if(!isxeno(A))
-		xeno_owner.balloon_alert(xeno_owner, "We can only swap places with another alien.")
+		xeno_owner.balloon_alert(xeno_owner, "我们只能与另一个异形交换位置.")
 		return fail_activate()
 	if(get_dist(xeno_owner, A) > 9 || xeno_owner.z != A.z)
-		xeno_owner.balloon_alert(xeno_owner, "We are too far away!")
+		xeno_owner.balloon_alert(xeno_owner, "我们距离太远了!")
 		return fail_activate()
 
 	var/turf/target_turf = get_turf(A)
@@ -395,7 +395,7 @@
 
 /datum/action/ability/xeno_action/crippling_strike
 	name = "Toggle crippling strike"
-	desc = "Toggle on to enable crippling attacks"
+	desc = "开启以启用致残攻击"
 	action_icon_state = "neuroclaws_off"
 	action_icon = 'icons/Xeno/actions/sentinel.dmi'
 	ability_cost = 0
@@ -450,7 +450,7 @@
 		QDEL_NULL(particle_holder)
 		STOP_PROCESSING(SSprocessing, src)
 		UnregisterSignal(xeno_owner, COMSIG_XENOMORPH_POSTATTACK_LIVING)
-	to_chat(xeno_owner, span_xenonotice("You will now[xeno_owner.vampirism ? "" : " no longer"] debuff targets"))
+	to_chat(xeno_owner, span_xenonotice("你现在将对目标施加[xeno_owner.vampirism ? "" : " no longer"]减益"))
 
 /datum/action/ability/xeno_action/crippling_strike/process()
 	particle_holder.particles.count = stacks * stacks
@@ -484,7 +484,7 @@
 
 /datum/action/ability/xeno_action/chimera_stealth
 	name = "Stealth"
-	desc = "Enter stealth mode for 15 seconds. You can move freely while in this state, but attacking or using abilities will reveal you."
+	desc = "进入潜行模式15秒.在此状态下你可以自由移动,但攻击或使用能力会暴露你."
 	action_icon_state = "hunter_invisibility"
 	action_icon = 'icons/Xeno/actions/hunter.dmi'
 	ability_cost = 25
@@ -563,7 +563,7 @@
 	var/time_remaining = stealth_end_time - world.time
 
 	if(time_remaining <= 5 SECONDS && time_remaining > 0 && !warning_shown)
-		xeno_owner.balloon_alert(xeno_owner, "Camouflage fading! [round(time_remaining/10)]s")
+		xeno_owner.balloon_alert(xeno_owner, "伪装正在消退! [round(time_remaining/10)]秒")
 		warning_shown = TRUE
 
 	if(time_remaining <= 0)

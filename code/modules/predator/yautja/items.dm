@@ -20,8 +20,8 @@
 //=================\\//=================\\
 
 /obj/item/clothing/suit/armor/yautja
-	name = "ancient alien armor"
-	desc = "Ancient armor made from a strange alloy. It feels cold with an alien weight."
+	name = "远古异形护甲"
+	desc = "由一种奇异合金制成的远古护甲.它摸起来冰冷,带着异形的重量感."
 
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "halfarmor1_ebony"
@@ -116,8 +116,8 @@
 		LAZYSET(worn_worn_icon_state_slots, slot_wear_suit_str, "halfarmor[armor_number]_[armor_material]")
 
 /obj/item/clothing/suit/armor/yautja/hunter
-	name = "clan armor"
-	desc = "A suit of armor with light padding. It looks old, yet functional."
+	name = "氏族护甲"
+	desc = "一套带有轻型衬垫的护甲.它看起来很旧,但依然实用."
 
 	soft_armor = list(MELEE = 15, BULLET = 30, LASER = 25, ENERGY = 25, BOMB = 30, BIO = 25, FIRE = 25, ACID = 25)
 
@@ -127,8 +127,8 @@
 	icon_state = "halfarmor_elder_joshuu"
 
 /obj/item/clothing/suit/armor/yautja/hunter/full
-	name = "heavy clan armor"
-	desc = "A suit of armor with heavy padding. It looks old, yet functional."
+	name = "重型氏族护甲"
+	desc = "一套带有重型衬垫的护甲.它看起来很旧,但依然实用."
 	icon_state = "fullarmor_ebony"
 	armor_protection_flags = CHEST|GROIN|ARMS|HEAD|LEGS
 	item_flags = ITEM_PREDATOR
@@ -151,7 +151,7 @@
 
 /obj/item/clothing/yautja_cape
 	name = PRED_YAUTJA_CAPE
-	desc = "A battle-worn cape passed down by elder Yautja."
+	desc = "一件由年长Yautja传下来的战痕披风."
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "fullcape"
 	worn_icon_list = list(
@@ -206,8 +206,8 @@
 	clan_rank_required = CLAN_RANK_BLOODED_INT
 
 /obj/item/clothing/shoes/marine/yautja
-	name = "ancient alien greaves"
-	desc = "Greaves made from scraps of cloth and a strange alloy. They feel cold with an alien weight."
+	name = "远古异形护胫"
+	desc = "由碎布和一种奇异合金制成的护胫.它们摸起来冰冷,带着异形的重量感."
 
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	worn_icon_list = list(
@@ -243,8 +243,8 @@
 	return
 
 /obj/item/clothing/shoes/marine/yautja/hunter
-	name = "clan greaves"
-	desc = "A pair of armored, perfectly balanced boots. Perfect for running through the jungle."
+	name = "氏族护胫"
+	desc = "一双带有装甲、完美平衡的靴子.非常适合在丛林中奔跑."
 
 	soft_armor = list(MELEE = 20, BULLET = 30, LASER = 25, ENERGY = 25, BOMB = 30, BIO = 25, FIRE = 25, ACID = 25)
 
@@ -257,8 +257,8 @@
 	knife_to_add = /obj/item/weapon/yautja/knife
 
 /obj/item/clothing/under/chainshirt
-	name = "ancient alien mesh suit"
-	desc = "A strange alloy weave in the form of a vest. It feels cold with an alien weight."
+	name = "远古异形网衣"
+	desc = "一种奇异合金编织成的背心.它摸起来冰冷,带着异形的重量感."
 
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "mesh_shirt"
@@ -278,8 +278,8 @@
 	soft_armor = list(MELEE = 10, BULLET = 10, LASER = 20, ENERGY = 20, BOMB = 25, BIO = 20, FIRE = 20, ACID = 20)
 
 /obj/item/clothing/under/chainshirt/hunter
-	name = "body mesh"
-	desc = "A set of very fine chainlink in a meshwork for comfort and utility."
+	name = "身体网衣"
+	desc = "一套非常精细的链环网衣,兼顾舒适与实用."
 
 	soft_armor = list(MELEE = 10, BULLET = 10, LASER = 25, ENERGY = 25, BOMB = 30, BIO = 25, FIRE = 25, ACID = 25)
 	resistance_flags = UNACIDABLE
@@ -296,8 +296,8 @@
 
 //Yautja channel. Has to delete stock encryption key so we don't receive sulaco channel.
 /obj/item/radio/headset/yautja
-	name = "\improper Communicator"
-	desc = "A strange Yautja device used for projecting the Yautja's voice to the others in its pack. Similar in function to a standard human radio."
+	name = "\improper 通讯器"
+	desc = "一种奇特的Yautja装置,用于将Yautja的声音投射给其族群中的其他成员.功能类似于标准的人类无线电."
 	icon_state = "communicator"
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	worn_icon_state = "headset"
@@ -320,29 +320,29 @@
 
 /obj/item/radio/headset/yautja/talk_into(atom/movable/talking_movable, message, channel, list/spans, datum/language/language, list/message_mods)
 	if(!isyautja(talking_movable)) //Nope.
-		to_chat(talking_movable, span_warning("You try to talk into the headset, but just get a horrible shrieking in your ears!"))
+		to_chat(talking_movable, span_warning("你试着对着耳机说话,但只听到耳朵里传来可怕刺耳的尖啸声!"))
 		return
 
 	for(var/mob/living/carbon/xenomorph/hellhound/hellhound as anything in GLOB.hellhound_list)
 		if(!hellhound.stat)
-			to_chat(hellhound, "\[Radio\]: [talking_movable], '<B>[message]</b>'.")
+			to_chat(hellhound, "\[无线电\]: [talking_movable], '<B>[message]</b>'.")
 	return ..()
 
 /obj/item/radio/headset/yautja/attackby()
 	return
 
 /obj/item/radio/headset/yautja/elder //primarily for use in another MR
-	name = "\improper Elder Communicator"
+	name = "\improper 长老通讯器"
 
 /obj/item/encryptionkey/yautja
-	name = "\improper Yautja encryption key"
-	desc = "A complicated encryption device."
+	name = "\improper Yautja加密密钥"
+	desc = "一个复杂的加密装置."
 	icon_state = "cypherkey"
 	channels = list(RADIO_CHANNEL_YAUTJA = TRUE)
 
 /obj/item/storage/belt/yautja
-	name = "hunting pouch"
-	desc = "A Yautja hunting pouch worn around the waist, made from a thick tanned hide. Capable of holding various devices and tools and used for the transport of trophies."
+	name = "狩猎袋"
+	desc = "一个系在腰间的Yautja狩猎袋,由厚实的鞣制兽皮制成.能够容纳各种装置和工具,用于运输战利品."
 
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "beltbag"
@@ -359,8 +359,8 @@
 	storage_datum.max_storage_space = 30
 
 /obj/item/yautja_teleporter
-	name = "relay beacon"
-	desc = "A device covered in sacred text. It whirrs and beeps every couple of seconds."
+	name = "中继信标"
+	desc = "一个覆盖着神圣文字的装置.它每隔几秒就会发出嗡嗡声和哔哔声."
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "teleporter"
 	item_flags = ITEM_PREDATOR
@@ -374,7 +374,7 @@
 	. = ..()
 
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH) || is_centcom_level(user.z))
-		to_chat(user, span_warning("You fiddle with it, but nothing happens!"))
+		to_chat(user, span_warning("你摆弄着它,但什么也没发生!"))
 		return
 
 	var/mob/living/carbon/human/H = user
@@ -392,7 +392,7 @@
 		if(SSpredships.is_clanship_loaded(H.client.clan_info.item[4]))
 			ship_to_tele += list("Your clan" = "[H.client.clan_info.item[4]]")
 
-	var/clan = ship_to_tele[tgui_input_list(H, "Select a ship to teleport to", "[src]", ship_to_tele)]
+	var/clan = ship_to_tele[tgui_input_list(H, "选择要传送到的飞船", "[src]", ship_to_tele)]
 	if(clan != "Human" && !SSpredships.is_clanship_loaded(clan))
 		return // Checking ship is valid
 
@@ -408,18 +408,18 @@
 
 	// Let's go
 	playsound(src, 'sound/ambience/signal.ogg', 25, 1, sound_range = 6)
-	user.visible_message(span_info("[user] starts becoming shimmery and indistinct..."))
+	user.visible_message(span_info("[user]开始变得闪烁不定,模糊不清..."))
 
 	if(!do_after(user, 10 SECONDS, NONE, src, BUSY_ICON_GENERIC, BUSY_ICON_GENERIC))
 		return
 	// Display fancy animation for you and the person you might be pulling (Legacy)
-	user.visible_message(span_warning("[icon2html(user, viewers(src))][user] disappears!"))
+	user.visible_message(span_warning("[icon2html(user, viewers(src))][user]消失了!"))
 	animation_teleport_quick_out(user)
 	SEND_SIGNAL(H, COMSIG_ATOM_TELEPORT, src)
 	var/mob/living/pulled_mob = user.pulling
 	if(pulled_mob) // Pulled person
 		SEND_SIGNAL(pulled_mob, COMSIG_ATOM_TELEPORT, src)
-		pulled_mob.visible_message(span_warning("[icon2html(pulled_mob, viewers(src))][pulled_mob] disappears!"))
+		pulled_mob.visible_message(span_warning("[icon2html(pulled_mob, viewers(src))][pulled_mob]消失了!"))
 		animation_teleport_quick_out(pulled_mob)
 
 	addtimer(CALLBACK(src, PROC_REF(teleport), target_turf, user, pulled_mob), 1 SECONDS)
@@ -444,7 +444,7 @@
 		return FALSE
 
 	if(!HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
-		to_chat(usr, span_warning("You have no idea how this thing works!"))
+		to_chat(usr, span_warning("你完全不知道这东西怎么运作!"))
 		return FALSE
 
 	if(loc && istype(usr.loc, /turf))
@@ -454,7 +454,7 @@
 		if(!name)
 			return FALSE
 		GLOB.yautja_teleport_descs[name + " ([location.x], [location.y], [location.z])"] = location
-		to_chat(usr, span_warning("You can now teleport to this location!"))
+		to_chat(usr, span_warning("你现在可以传送到这个位置了!"))
 		log_game("[usr] ([usr.key]) has created a new teleport location at [get_area(usr)]")
 		message_all_yautja("[usr.real_name] has created a new teleport location, [name], at [usr.loc] in [get_area(usr)]")
 		return TRUE
@@ -470,7 +470,7 @@
 //=================\\//=================\\
 
 /obj/item/scalp
-	name = "scalp"
+	name = "头皮"
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "scalp_1"
 	worn_icon_state = "scalp"
@@ -581,28 +581,28 @@
 
 		switch(worth)
 			if(-1)
-				true_desc += span_blue("\n[user.real_name] had the unpleasant duty of running [them] to ground.")
+				true_desc += span_blue("\n[user.real_name]承担了追捕[them]的不愉快任务.")
 			if(0) //You hunted someone with no kills for no real reason.
-				true_desc += span_blue("\nAn honourable first trophy for a truly precocious child. [user.real_name]'s parents must be so proud.")
+				true_desc += span_blue("\nAn对于一个真正早熟的孩子来说,是光荣的第一个战利品. [user.real_name]的父母一定非常骄傲.")
 			if(1)
-				true_desc += span_blue("\nThis trophy was taken by [user.real_name] after a successful hunt.")
+				true_desc += span_blue("\nThis战利品是[user.real_name]在一次成功的狩猎后取得的.")
 			if(2)
-				true_desc += span_blue("\nThis fine trophy was taken by [user.real_name] after a successful hunt.")
+				true_desc += span_blue("\nThis精美的战利品是[user.real_name]在一次成功的狩猎后取得的.")
 
 /obj/item/scalp/examine(mob/user)
 	. = ..()
 	if(isyautja(user) || isobserver(user))
 		. += true_desc
 	else
-		. += span_warning("Scalp-collecting is supposed to be a <i>joke</i>. Has someone been going around doing this shit for real? What next, a necklace of severed ears? Jesus Christ.")
+		. += span_warning("收集头皮本应是个<i>玩笑</i>.难道真有人到处干这种破事?接下来是什么,一串割下来的耳朵项链?老天爷啊.")
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound
-	name = "hellhound caller"
+	name = "地狱犬召唤器"
 	spawner_type = /mob/living/carbon/xenomorph/hellhound
 	force = 20
 	throwforce = 40
 	deliveryamt = 1
-	desc = "A strange piece of alien technology. It seems to call forth a hellhound."
+	desc = "一件奇特的异星科技产物.它似乎能召唤出一只地狱犬."
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "hellnade"
 	w_class = WEIGHT_CLASS_TINY
@@ -618,9 +618,9 @@
 	. = ..()
 	if(!active)
 		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-			to_chat(user, span_warning("What's this thing?"))
+			to_chat(user, span_warning("这是什么东西?"))
 			return
-		to_chat(user, span_warning("You activate the hellhound beacon!"))
+		to_chat(user, span_warning("你激活了地狱犬信标!"))
 		activate(user)
 		add_fingerprint(user)
 		if(iscarbon(user))
@@ -663,19 +663,19 @@
 	user.reset_perspective(null)
 
 /obj/item/weapon/sword/ceremonial
-	name = "Ceremonial Sword"
-	desc = "A fancy ceremonial sword passed down from generation to generation. Despite this, it has been very well cared for, and is in top condition."
+	name = "仪式剑"
+	desc = "一把世代相传的精美仪式剑.尽管如此,它被保养得非常好,处于最佳状态."
 	icon_state = "officer_sword"
 	worn_icon_state = "officer_sword"
 
 // Hunting traps
 /obj/item/hunting_trap
-	name = "hunting trap"
+	name = "狩猎陷阱"
 	throw_speed = 6.67
 	throw_range = 2
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "yauttrap0"
-	desc = "A bizarre Yautja device used for trapping and killing prey."
+	desc = "一种奇特的Yautja装置,用于诱捕和杀死猎物."
 
 	layer = LOW_ITEM_LAYER
 
@@ -718,7 +718,7 @@
 		armed = TRUE
 		anchored = TRUE
 		icon_state = "yauttrap[armed]"
-		to_chat(user, span_notice("[src] is now armed."))
+		to_chat(user, span_notice("[src]现已激活."))
 		log_attack("[key_name(user)] has armed \a [src] at [ADMIN_JMP_USER(user)].")
 		user.drop_held_item()
 
@@ -727,7 +727,7 @@
 		disarm(user)
 	//Humans and synths don't know how to handle those traps!
 	if((issynth(user) || ishuman(user)) && armed)
-		to_chat(user, span_warning("You foolishly reach out for \the [src]..."))
+		to_chat(user, span_warning("你愚蠢地伸手去拿\the [src]..."))
 		trapMob(user)
 		return
 	return ..()
@@ -747,7 +747,7 @@
 
 	icon_state = "yauttrap0"
 	playsound(C,'sound/weapons/tablehit1.ogg', 25, 1)
-	to_chat(C, "[icon2html(src, C)] \red <B>You get caught in \the [src]!</B>")
+	to_chat(C, "[icon2html(src, C)] \red <B>你被\the [src]困住了!</B>")
 
 	log_attack("[key_name(C)] was caught in \a [src] at [ADMIN_JMP_USER(C)].")
 
@@ -772,13 +772,13 @@
 		if(isturf(src.loc))
 			var/mob/living/carbon/H = L
 			if(isyautja(H))
-				to_chat(H, span_notice("You carefully avoid stepping on the trap."))
+				to_chat(H, span_notice("你小心地避开了陷阱."))
 			else
 				trapMob(H)
 				for(var/mob/O in viewers(H, null))
 					if(O == H)
 						continue
-					O.show_message(span_warning("[icon2html(src, O)] <B>[H] gets caught in \the [src].</B>"), EMOTE_VISIBLE)
+					O.show_message(span_warning("[icon2html(src, O)] <B>[H]被\the [src]困住了.</B>"), EMOTE_VISIBLE)
 		else if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot))
 			armed = FALSE
 			var/mob/living/simple_animal/SA = AM
@@ -798,10 +798,10 @@
 	INVOKE_ASYNC(src, PROC_REF(resisted))
 
 /obj/item/hunting_trap/proc/resisted()
-	to_chat(trapped_mob, span_danger("You attempt to break out of your tether to [src]. (This will take around [resist_time * 0.1] seconds and you need to stand still)"))
+	to_chat(trapped_mob, span_danger("你试图挣脱与[src]的束缚. (这大约需要[resist_time * 0.1]秒,并且你需要保持静止)"))
 	if(!do_after(trapped_mob, resist_time, NONE, src, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE))
 		return
-	to_chat(trapped_mob, span_warning("You have broken out of your tether to [src]!"))
+	to_chat(trapped_mob, span_warning("你已经挣脱了与[src]的束缚!"))
 	cleanup_tether()
 
 /obj/item/hunting_trap/proc/cleanup_tether()
@@ -817,7 +817,7 @@
 	anchored = FALSE
 	icon_state = "yauttrap[armed]"
 	if(user)
-		to_chat(user, span_notice("[src] is now disarmed."))
+		to_chat(user, span_notice("[src]现已解除."))
 		log_attack("[key_name(user)] has disarmed \a [src] at [ADMIN_JMP_USER(user)].")
 	cleanup_tether()
 
@@ -827,18 +827,18 @@
 
 	var/mob/living/carbon/human/H = usr
 	if(!HAS_TRAIT(H, TRAIT_YAUTJA_TECH))
-		to_chat(H, span_warning("You do not know how to configure the trap."))
+		to_chat(H, span_warning("你不知道如何配置这个陷阱."))
 		return
-	var/range = tgui_input_list(H, "Which range would you like to set the hunting trap to?", "Hunting Trap Range", list(2, 3, 4, 5, 6, 7))
+	var/range = tgui_input_list(H, "你想把狩猎陷阱的范围设置为多少?", "狩猎陷阱范围", list(2, 3, 4, 5, 6, 7))
 	if(isnull(range))
 		return
 	tether_range = range
-	to_chat(H, span_notice("You set the hunting trap's tether range to [range]."))
+	to_chat(H, span_notice("你将狩猎陷阱的束缚范围设置为[range]."))
 
 //flavor armor & greaves, not a subtype
 /obj/item/clothing/suit/armor/yautja_flavor
-	name = "alien stone armor"
-	desc = "A suit of armor made entirely out of stone. Looks incredibly heavy."
+	name = "异星石甲"
+	desc = "一套完全由石头制成的盔甲.看起来极其沉重."
 
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	worn_icon_list = list(
@@ -861,8 +861,8 @@
 	worn_worn_icon_state_slots = list(slot_wear_suit_str = "fullarmor_ebony")
 
 /obj/item/clothing/shoes/yautja_flavor
-	name = "alien stone greaves"
-	desc = "A pair of armored, perfectly balanced boots. Perfect for running through cement because they're incredibly heavy."
+	name = "异星石护胫"
+	desc = "一双装甲靴,平衡性完美.非常适合在水泥地上奔跑,因为它们极其沉重."
 
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	worn_icon_list = list(
@@ -875,8 +875,8 @@
 	soft_armor = list(MELEE = 20, BULLET = 30, LASER = 25, ENERGY = 25, BOMB = 30, BIO = 25, FIRE = 25, ACID = 25)
 
 /obj/item/card/id/bracer_chip
-	name = "bracer ID chip"
-	desc = "A complex cypher chip embedded within a set of clan bracers."
+	name = "护腕身份芯片"
+	desc = "一枚嵌入氏族护腕中的复杂密码芯片."
 	icon = 'icons/obj/items/radio.dmi'
 	icon_state = "upp_key"
 	access = list(ACCESS_YAUTJA_SECURE)
@@ -906,8 +906,8 @@
 	access = new_access
 
 /obj/item/storage/medicomp
-	name = "medicomp"
-	desc = "A complex kit of alien tools and medicines."
+	name = "医疗包"
+	desc = "一套复杂的异星工具和药品."
 	icon_state = "medicomp"
 	w_class = WEIGHT_CLASS_SMALL
 	item_flags = ITEM_PREDATOR
@@ -948,15 +948,15 @@
 		icon_state = "medicomp"
 
 /obj/item/reagent_containers/glass/rag/polishing_rag
-	name = "polishing rag"
-	desc = "An astonishingly fine, hand-tailored piece of exotic cloth."
+	name = "抛光布"
+	desc = "一块令人惊叹的精细手工裁剪的异域布料."
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "polishing_rag"
 
 /obj/item/reagent_containers/glass/rag/polishing_rag/examine(mob/user)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		. += span_notice("You could use this to polish bones.")
+		. += span_notice("你可以用它来抛光骨头.")
 
 /obj/item/reagent_containers/glass/rag/polishing_rag/afterattack(obj/potential_limb, mob/user, proximity_flag, click_parameters)
 
@@ -968,22 +968,22 @@
 
 	var/obj/item/armor_module/limb/skeleton/current_limb = potential_limb
 	if(current_limb.polished)
-		to_chat(user, span_notice("This limb has already been polished."))
+		to_chat(user, span_notice("这条肢体已经抛光过了."))
 		return ..()
 
-	to_chat(user, span_warning("You start wiping [current_limb] with the [name]."))
+	to_chat(user, span_warning("你开始用[name]擦拭[current_limb]."))
 	if(!do_after(user, 5 SECONDS, NONE, current_limb, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE))
-		to_chat(user, span_notice("You stop polishing [current_limb]."))
+		to_chat(user, span_notice("你停止抛光[current_limb]."))
 		return
-	to_chat(user, span_notice("You polish [current_limb] to perfection."))
+	to_chat(user, span_notice("你将[current_limb]抛光至完美."))
 	current_limb.polished = TRUE
 	current_limb.name = "polished [current_limb.name]"
 
 //Skeleton limbs, meant to be for bones
 //Only an onmob for the skull
 /obj/item/armor_module/limb/skeleton
-	name = "How did you get this?"
-	desc = "A bone from a human."
+	name = "你是怎么得到这个的?"
+	desc = "一根人类的骨头."
 	attach_features_flags = ATTACH_REMOVABLE|ATTACH_APPLY_ON_MOB|ATTACH_SEPERATE_MOB_OVERLAY|ATTACH_NO_HANDS
 	icon = 'icons/obj/items/skeleton.dmi'
 	attach_icon = 'icons/obj/items/skeleton.dmi'
@@ -997,47 +997,47 @@
 	var/polished = FALSE
 
 /obj/item/armor_module/limb/skeleton/l_arm
-	name = "arm bone"
+	name = "臂骨"
 	icon_state = "l_arm"
 	slot = ACCESSORY_SLOT_ARMOR_Y_LH
 
 /obj/item/armor_module/limb/skeleton/l_foot
-	name = "foot bone"
+	name = "足骨"
 	icon_state = "l_foot"
 	slot = ACCESSORY_SLOT_ARMOR_Y_LL
 
 /obj/item/armor_module/limb/skeleton/l_hand
-	name = "hand bone"
+	name = "手骨"
 	icon_state = "l_hand"
 	slot = ACCESSORY_SLOT_ARMOR_Y_LH
 
 /obj/item/armor_module/limb/skeleton/l_leg
-	name = "leg bone"
+	name = "腿骨"
 	icon_state = "l_leg"
 	slot = ACCESSORY_SLOT_ARMOR_Y_LL
 
 /obj/item/armor_module/limb/skeleton/r_arm
-	name = "arm bone"
+	name = "臂骨"
 	icon_state = "r_arm"
 	slot = ACCESSORY_SLOT_ARMOR_Y_RH
 
 /obj/item/armor_module/limb/skeleton/r_foot
-	name = "foot bone"
+	name = "足骨"
 	icon_state = "r_foot"
 	slot = ACCESSORY_SLOT_ARMOR_Y_RL
 
 /obj/item/armor_module/limb/skeleton/r_hand
-	name = "hand bone"
+	name = "手骨"
 	icon_state = "r_hand"
 	slot = ACCESSORY_SLOT_ARMOR_Y_RH
 
 /obj/item/armor_module/limb/skeleton/r_leg
-	name = "leg bone"
+	name = "腿骨"
 	icon_state = "r_leg"
 	slot = ACCESSORY_SLOT_ARMOR_Y_RL
 
 /obj/item/armor_module/limb/skeleton/head
-	name = "skull"
+	name = "头骨"
 	icon_state = "skull"
 	slot = ACCESSORY_SLOT_ARMOR_Y_H
 
@@ -1046,7 +1046,7 @@
 	slot = ACCESSORY_SLOT_ARMOR_Y_S
 
 /obj/item/armor_module/limb/skeleton/torso
-	name = "ribcage"
+	name = "肋骨"
 	icon_state = "torso"
 	slot = ACCESSORY_SLOT_ARMOR_Y_C
 
@@ -1054,13 +1054,13 @@
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		if(polished)
-			. += span_notice("Polished to perfection.")
+			. += span_notice("打磨至完美.")
 		else
-			. += span_notice("[src] is still dirty.")
+			. += span_notice("[src]仍然很脏.")
 
 /obj/item/storage/belt/utility/pred
-	name = "\improper Yautja toolbelt"
-	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools."
+	name = "\improper Yautja工具腰带"
+	desc = "一条带有各种卡扣的模块化腰带. 这个版本没有任何狩猎功能, 通常被工程师用来运输重要工具."
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "utilitybelt_pred"
 	worn_icon_state = "utility"
@@ -1076,50 +1076,50 @@
 
 /// SKULLS
 /obj/item/skull
-	name = "skull"
+	name = "头骨"
 	icon = 'icons/obj/hunter/xeno_skulls.dmi'
 	resistance_flags = INDESTRUCTIBLE
 
 /obj/item/skull/queen
-	name = "Queen skull"
-	desc = "Skull of a prime hive ruler, mother to many."
+	name = "女王头骨"
+	desc = "一个主巢统治者的头骨, 众多异形之母."
 	icon_state = "queen_skull"
 
 /obj/item/skull/king
-	name = "King skull"
-	desc = "Skull of a militant hive ruler, lord of destruction."
+	name = "国王头骨"
+	desc = "一个军事巢穴统治者的头骨, 毁灭之主."
 	icon_state = "king_skull"
 
 /obj/item/skull/lurker
-	name = "Lurker skull"
-	desc = "Skull of a stealthy xenomorph, a nocturnal entity."
+	name = "潜伏者头骨"
+	desc = "一个潜行异形的头骨, 一种夜行实体."
 	icon_state = "lurker_skull"
 
 /obj/item/skull/hunter
-	name = "Hunter skull"
-	desc = "Skull of a stealthy xenomorph, an ambushing predator."
+	name = "猎手头骨"
+	desc = "一个潜行异形的头骨, 一种伏击掠食者."
 	icon_state = "hunter_skull"
 
 /obj/item/skull/deacon
-	name = "Deacon skull"
-	desc = "Skull of an unusual xenomorph, a mysterious specimen."
+	name = "执事头骨"
+	desc = "一个不寻常异形的头骨, 一个神秘标本."
 	icon_state = "deacon_skull"
 
 /obj/item/skull/spitter
-	name = "Spitter skull"
-	desc = "Skull of an acidic xenomorph, a boiling menace."
+	name = "吐酸者头骨"
+	desc = "一个酸性异形的头骨, 一个沸腾的威胁."
 	icon_state = "spitter_skull"
 
 /obj/item/skull/warrior
-	name = "Warrior skull"
-	desc = "Skull of a strong xenomorph, a swift fighter."
+	name = "战士头骨"
+	desc = "一个强壮异形的头骨, 一个迅捷的战士."
 	icon_state = "warrior_skull"
 
 /// TOOLS
 
 /obj/item/tool/crowbar/yautja
-	name = "yautja crowbar"
-	desc = "Used to remove floors and to pry open doors, made of an unusual alloy."
+	name = "yautja撬棍"
+	desc = "用于移除地板和撬开门, 由一种不寻常的合金制成."
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "bar"
 	worn_icon_state = "bar"
@@ -1129,8 +1129,8 @@
 	)
 
 /obj/item/tool/wrench/yautja
-	name = "yautja wrench"
-	desc = "A wrench with many common uses. Made of some bizarre alien bones."
+	name = "yautja扳手"
+	desc = "一个有许多常见用途的扳手. 由某种奇异的异形骨头制成."
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "wrench"
 	worn_icon_state = "wrench"
@@ -1140,8 +1140,8 @@
 	)
 
 /obj/item/tool/wirecutters/yautja
-	name = "yautja wirecutters"
-	desc = "This cuts wires, also flesh. Made of some razorsharp animal teeth."
+	name = "yautja剪线钳"
+	desc = "可以剪断电线, 也能剪断血肉. 由一些锋利如剃刀的动物牙齿制成."
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "wirescutter"
 	worn_icon_state = "wirescutter"
@@ -1151,8 +1151,8 @@
 	)
 
 /obj/item/tool/screwdriver/yautja
-	name = "yautja screwdriver"
-	desc = "Some hightech screwing abilities."
+	name = "yautja螺丝刀"
+	desc = "一些高科技的拧螺丝能力."
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "screwdriver"
 	worn_icon_state = "screwdriver"
@@ -1164,8 +1164,8 @@
 	random_color = FALSE
 
 /obj/item/tool/multitool/yautja
-	name = "yautja multitool"
-	desc = "Top notch alien tech for B&E through hacking."
+	name = "yautja多功能工具"
+	desc = "用于通过黑客手段进行破门入室的一流异形科技."
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "multitool"
 	worn_icon_state = "multitool"
@@ -1175,8 +1175,8 @@
 	)
 
 /obj/item/tool/weldingtool/yautja
-	name = "yautja chem welding tool"
-	desc = "A complex chemical welding device, keep away from youngblood."
+	name = "yautja化学焊接工具"
+	desc = "一个复杂的化学焊接装置, 让年轻血远离."
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "welder"
 	worn_icon_list = list(
@@ -1189,8 +1189,8 @@
 	max_fuel = 150	//The max amount of fuel the welder can hold
 
 /obj/item/weapon/sword/machete/arnold
-	name = "\improper Dutch's Machete"
-	desc = "Won by an Elder during their youthful hunting days. None are allowed to touch it."
+	name = "\improper 荷兰人的砍刀"
+	desc = "由一位长老在其年轻狩猎时期赢得. 任何人都不允许触碰它."
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "arnold-machete"
 	force = 130

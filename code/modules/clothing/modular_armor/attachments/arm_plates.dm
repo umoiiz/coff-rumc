@@ -9,107 +9,107 @@
 	colorable_colors = ARMOR_PALETTES_LIST
 
 /obj/item/armor_module/armor/arms/marine
-	name = "\improper Jaeger Pattern Infantry arm plates"
-	desc = "Designed for use with the Jaeger Combat Exoskeleton. It provides protection and encumbrance when attached and is fairly easy to attach and remove from armor. Click on the armor frame to attach it. All arm plates have the same armor and slowdown, meaning that only changing the chestplate makes significant armor difference. This armor appears to be marked as a Infantry armor piece."
+	name = "\improper 猎兵型步兵臂甲"
+	desc = "设计用于搭配猎兵战斗外骨骼。连接时提供保护和负重,并且相当容易从装甲上安装和移除。点击装甲框架来安装它。所有臂甲具有相同的装甲值和减速,这意味着只有更换胸甲才会产生显著的装甲差异。这件装甲似乎被标记为步兵装甲部件。"
 
 /obj/item/armor_module/armor/arms/marine/skirmisher
-	name = "\improper Jaeger Pattern Skirmisher arm plates"
-	desc = "Designed for use with the Jaeger Combat Exoskeleton. It provides protection and encumbrance  when attached and is fairly easy to attach and remove from armor. Click on the armor frame to attach it. All arm plates have the same armor and slowdown, meaning that only changing the chestplate makes significant armor difference. This armor appears to be marked as a Skirmisher armor piece."
+	name = "\improper 猎兵型游击兵臂甲"
+	desc = "设计用于搭配猎兵战斗外骨骼。连接时提供保护和负重,并且相当容易从装甲上安装和移除。点击装甲框架来安装它。所有臂甲具有相同的装甲值和减速,这意味着只有更换胸甲才会产生显著的装甲差异。这件装甲似乎被标记为游击兵装甲部件。"
 	greyscale_config = /datum/greyscale_config/armor_mk1/skirmisher
 
 /obj/item/armor_module/armor/arms/marine/scout
-	name = "\improper Jaeger Pattern Scout arm plates"
-	desc = "Designed for use with the Jaeger Combat Exoskeleton. It provides protection and encumbrance  when attached and is fairly easy to attach and remove from armor. Click on the armor frame to attach it. All arm plates have the same armor and slowdown, meaning that only changing the chestplate makes significant armor difference. This armor appears to be marked as a Scout armor piece."
+	name = "\improper 猎兵型侦察兵臂甲"
+	desc = "设计用于搭配猎兵战斗外骨骼。连接时提供保护和负重,并且相当容易从装甲上安装和移除。点击装甲框架来安装它。所有臂甲具有相同的装甲值和减速,这意味着只有更换胸甲才会产生显著的装甲差异。这件装甲似乎被标记为侦察兵装甲部件。"
 	greyscale_config = /datum/greyscale_config/armor_mk1/scout
 
 /obj/item/armor_module/armor/arms/marine/assault
-	name = "\improper Jaeger Pattern Assault arm plates"
-	desc = "Designed for use with the Jaeger Combat Exoskeleton. It provides protection and encumbrance when attached and is fairly easy to attach and remove from armor. Click on the armor frame to attach it. All arm plates have the same armor and slowdown, meaning that only changing the chestplate makes significant armor difference. This armor appears to be marked as a Assault armor piece."
+	name = "\improper 猎兵型突击兵臂甲"
+	desc = "设计用于搭配猎兵战斗外骨骼。连接时提供保护和负重,并且相当容易从装甲上安装和移除。点击装甲框架来安装它。所有臂甲具有相同的装甲值和减速,这意味着只有更换胸甲才会产生显著的装甲差异。这件装甲似乎被标记为突击兵装甲部件。"
 	greyscale_config = /datum/greyscale_config/armor_mk1
 
 /obj/item/armor_module/armor/arms/marine/eva
-	name = "\improper Jaeger Pattern EVA arm plates"
-	desc = "Designed for use with the Jaeger Combat Exoskeleton. It provides protection and encumbrance when attached and is fairly easy to attach and remove from armor. Click on the armor frame to attach it. All arm plates have the same armor and slowdown, meaning that only changing the chestplate makes significant armor difference. This armor appears to be marked as a EVA armor piece."
+	name = "\improper 猎兵型EVA臂甲"
+	desc = "设计用于搭配猎兵战斗外骨骼。连接时提供保护和负重,并且相当容易从装甲上安装和移除。点击装甲框架来安装它。所有臂甲具有相同的装甲值和减速,这意味着只有更换胸甲才会产生显著的装甲差异。这件装甲似乎被标记为EVA装甲部件。"
 	greyscale_config = /datum/greyscale_config/armor_mk1/eva
 
 /obj/item/armor_module/armor/arms/marine/eod
-	name = "\improper Jaeger Pattern EOD arm plates"
-	desc = "Designed for use with the Jaeger Combat Exoskeleton. It provides protection and encumbrance when attached and is fairly easy to attach and remove from armor. Click on the armor frame to attach it. All arm plates have the same armor and slowdown, meaning that only changing the chestplate makes significant armor difference. This armor appears to be marked as a EOD armor piece."
+	name = "\improper 猎兵型EOD臂甲"
+	desc = "设计用于搭配猎兵战斗外骨骼。连接时提供保护和负重,并且相当容易从装甲上安装和移除。点击装甲框架来安装它。所有臂甲具有相同的装甲值和减速,这意味着只有更换胸甲才会产生显著的装甲差异。这件装甲似乎被标记为EOD装甲部件。"
 	greyscale_config = /datum/greyscale_config/armor_mk1/eod
 
 /obj/item/armor_module/armor/arms/marine/helljumper
-	name = "\improper Jaeger Pattern Hell Jumper arm plates"
-	desc = "Designed for use with the Jaeger Combat Exoskeleton. It provides high protection and encumbrance when attached and is fairly easy to attach and remove from armor. Click on the armor frame to attach it. All arm plates have the same armor and slowdown, meaning that only changing the chestplate makes significant armor difference. This armor appears to be marked as a Hell Jumper armor piece."
+	name = "\improper 猎兵型地狱伞兵臂甲"
+	desc = "设计用于搭配猎兵战斗外骨骼。连接时提供高保护和负重,并且相当容易从装甲上安装和移除。点击装甲框架来安装它。所有臂甲具有相同的装甲值和减速,这意味着只有更换胸甲才会产生显著的装甲差异。这件装甲似乎被标记为地狱伞兵装甲部件。"
 	greyscale_config = /datum/greyscale_config/armor_mk1/helljumper
 
 /obj/item/armor_module/armor/arms/marine/ranger
-	name = "\improper Jaeger Pattern Ranger arm plates"
-	desc = "Designed for use with the Jaeger Combat Exoskeleton. It provides high protection and encumbrance when attached and is fairly easy to attach and remove from armor. Click on the armor frame to attach it. All arm plates have the same armor and slowdown, meaning that only changing the chestplate makes significant armor difference. This armor appears to be marked as a Ranger armor piece."
+	name = "\improper 猎兵型游骑兵臂甲"
+	desc = "设计用于搭配猎兵战斗外骨骼。连接时提供高保护和负重,并且相当容易从装甲上安装和移除。点击装甲框架来安装它。所有臂甲具有相同的装甲值和减速,这意味着只有更换胸甲才会产生显著的装甲差异。这件装甲似乎被标记为游骑兵装甲部件。"
 	greyscale_config = /datum/greyscale_config/armor_mk1/ranger
 
 /obj/item/armor_module/armor/arms/marine/trooper
-	name = "\improper Jaeger Pattern Trooper arm plates"
-	desc = "Designed for use with the Jaeger Combat Exoskeleton. It provides high protection and encumbrance when attached and is fairly easy to attach and remove from armor. Click on the armor frame to attach it. All arm plates have the same armor and slowdown, meaning that only changing the chestplate makes significant armor difference. This armor appears to be marked as a Trooper armor piece."
+	name = "\improper 猎兵型列兵臂甲"
+	desc = "设计用于搭配猎兵战斗外骨骼。连接时提供高保护和负重,并且相当容易从装甲上安装和移除。点击装甲框架来安装它。所有臂甲具有相同的装甲值和减速,这意味着只有更换胸甲才会产生显著的装甲差异。这件装甲似乎被标记为列兵装甲部件。"
 	greyscale_config = /datum/greyscale_config/armor_mk1/trooper
 
 /obj/item/armor_module/armor/arms/marine/mjolnir
-	name = "\improper Jaeger Pattern Mjolnir arm plates"
-	desc = "Designed for use with the Jaeger Combat Exoskeleton. It provides protection and encumbrance when attached and is fairly easy to attach and remove from armor. Click on the armor frame to attach it. All arm plates have the same armor and slowdown, meaning that only changing the chestplate makes significant armor difference. This armor appears to be marked as a Mjolnir armor piece."
+	name = "\improper 猎兵型雷神臂甲"
+	desc = "设计用于搭配猎兵战斗外骨骼。连接时提供保护和负重,并且相当容易从装甲上安装和移除。点击装甲框架来安装它。所有臂甲具有相同的装甲值和减速,这意味着只有更换胸甲才会产生显著的装甲差异。这件装甲似乎被标记为雷神装甲部件。"
 	greyscale_config = /datum/greyscale_config/armor_mk1/mjolnir
 
 /obj/item/armor_module/armor/arms/marine/kabuto
-	name = "\improper Style Pattern Kabuto arm plates"
-	desc = "Designed for use with the Jaeger Combat Exoskeleton. It provides high protection and encumbrance when attached and is fairly easy to attach and remove from armor. Click on the armor frame to attach it. All arm plates have the same armor and slowdown, meaning that only changing the chestplate makes significant armor difference. This armor appears to be marked as a Kabuto armor piece."
+	name = "\improper 样式型兜甲臂甲"
+	desc = "设计用于搭配猎兵战斗外骨骼。连接时提供高保护和负重,并且相当容易从装甲上安装和移除。点击装甲框架来安装它。所有臂甲具有相同的装甲值和减速,这意味着只有更换胸甲才会产生显著的装甲差异。这件装甲似乎被标记为兜甲装甲部件。"
 	greyscale_config = /datum/greyscale_config/armor_mk1/kabuto
 
 /obj/item/armor_module/armor/arms/marine/hotaru
-	name = "\improper Style Pattern Hotaru arm plates"
-	desc = "Designed for use with the Jaeger Combat Exoskeleton. It provides high protection and encumbrance when attached and is fairly easy to attach and remove from armor. Click on the armor frame to attach it. All arm plates have the same armor and slowdown, meaning that only changing the chestplate makes significant armor difference. This armor appears to be marked as a Hotaru armor piece."
+	name = "\improper 样式型萤火虫臂甲"
+	desc = "设计用于搭配猎兵战斗外骨骼。连接时提供高保护和负重,并且相当容易从装甲上安装和移除。点击装甲框架来安装它。所有臂甲具有相同的装甲值和减速,这意味着只有更换胸甲才会产生显著的装甲差异。这件装甲似乎被标记为萤火虫装甲部件。"
 	greyscale_config = /datum/greyscale_config/armor_mk1/hotaru
 
 /obj/item/armor_module/armor/arms/marine/dashe
-	name = "\improper Style Pattern Dashe arm plates"
-	desc = "Designed for use with the Jaeger Combat Exoskeleton. It provides high protection and encumbrance when attached and is fairly easy to attach and remove from armor. Click on the armor frame to attach it. All arm plates have the same armor and slowdown, meaning that only changing the chestplate makes significant armor difference. This armor appears to be marked as a Dashe armor piece."
+	name = "\improper 样式型冲角臂甲"
+	desc = "设计用于搭配猎兵战斗外骨骼。连接时提供高保护和负重,并且相当容易从装甲上安装和移除。点击装甲框架来安装它。所有臂甲具有相同的装甲值和减速,这意味着只有更换胸甲才会产生显著的装甲差异。这件装甲似乎被标记为冲角装甲部件。"
 	greyscale_config = /datum/greyscale_config/armor_mk1/dashe
 
 // Hardsuit Arm Plates
 /obj/item/armor_module/armor/arms/marine/hardsuit_arms
-	name = "\improper FleckTex Base arm plates"
-	desc = "Designed for use with the FleckTex WY-01 Exoskeleton. It provides high protection and encumbrance when attached and is fairly easy to attach and remove from armor. Click on the armor frame to attach it. All arm plates have the same armor and slowdown, meaning that only changing the chestplate makes significant armor difference. This armor appears to be marked as a Base armor piece."
+	name = "\improper 斑点迷彩基础臂甲"
+	desc = "设计用于搭配斑点迷彩WY-01外骨骼。连接时提供高保护和负重,并且相当容易从装甲上安装和移除。点击装甲框架来安装它。所有臂甲具有相同的装甲值和减速,这意味着只有更换胸甲才会产生显著的装甲差异。这件装甲似乎被标记为基础装甲部件。"
 	starting_attachments = list(/obj/item/armor_module/armor/secondary_color/arm)
 	attachments_allowed = list(/obj/item/armor_module/armor/secondary_color/arm)
 	attachments_by_slot = list(ATTACHMENT_SLOT_ARM_SECONDARY_COLOR)
 	greyscale_config = /datum/greyscale_config/hardsuit_variant
 
 /obj/item/armor_module/armor/arms/marine/hardsuit_arms/syndicate_markfive
-	name = "\improper FleckTex Mark V Breacher arm plates"
-	desc = "Designed for use with the FleckTex WY-01 Exoskeleton. It provides high protection and encumbrance when attached and is fairly easy to attach and remove from armor. Click on the armor frame to attach it. All arm plates have the same armor and slowdown, meaning that only changing the chestplate makes significant armor difference. This armor appears to be marked as a Mark V armor piece."
+	name = "\improper 斑点迷彩Mark V破门者臂甲"
+	desc = "设计用于搭配斑点迷彩WY-01外骨骼。连接时提供高保护和负重,并且相当容易从装甲上安装和移除。点击装甲框架来安装它。所有臂甲具有相同的装甲值和减速,这意味着只有更换胸甲才会产生显著的装甲差异。这件装甲似乎被标记为Mark V装甲部件。"
 	greyscale_config = /datum/greyscale_config/hardsuit_variant/syndicate_markfive
 
 /obj/item/armor_module/armor/arms/marine/hardsuit_arms/syndicate_markthree
-	name = "\improper FleckTex Mark III marauder arm plates"
-	desc = "Designed for use with the FleckTex WY-01 Exoskeleton. It provides high protection and encumbrance when attached and is fairly easy to attach and remove from armor. Click on the armor frame to attach it. All arm plates have the same armor and slowdown, meaning that only changing the chestplate makes significant armor difference. This armor appears to be marked as a Mark III armor piece."
+	name = "\improper 斑点迷彩Mark III掠夺者臂甲"
+	desc = "设计用于搭配斑点迷彩WY-01外骨骼。连接时提供高保护和负重,并且相当容易从装甲上安装和移除。点击装甲框架来安装它。所有臂甲具有相同的装甲值和减速,这意味着只有更换胸甲才会产生显著的装甲差异。这件装甲似乎被标记为Mark III装甲部件。"
 	greyscale_config = /datum/greyscale_config/hardsuit_variant/syndicate_markthree
 
 /obj/item/armor_module/armor/arms/marine/hardsuit_arms/syndicate_markone
-	name = "\improper FleckTex Mark I raider arm plates"
-	desc = "Designed for use with the FleckTex WY-01 Exoskeleton. It provides high protection and encumbrance when attached and is fairly easy to attach and remove from armor. Click on the armor frame to attach it. All arm plates have the same armor and slowdown, meaning that only changing the chestplate makes significant armor difference. This armor appears to be marked as a Mark I armor piece."
+	name = "\improper 斑点迷彩Mark I突袭者臂甲"
+	desc = "设计用于搭配斑点迷彩WY-01外骨骼。连接时提供高保护和负重,并且相当容易从装甲上安装和移除。点击装甲框架来安装它。所有臂甲具有相同的装甲值和减速,这意味着只有更换胸甲才会产生显著的装甲差异。这件装甲似乎被标记为Mark I装甲部件。"
 	greyscale_config = /datum/greyscale_config/hardsuit_variant
 
 //VSD Hardsuits
 /obj/item/armor_module/armor/arms/marine/vsd_hardsuit
-	name = "\improper Crasher Super-Heavy MT/41 'Phobos' arm plates"
-	desc = "Designed for use with the CrashCore MT/P Exoskeleton. It provides protection and encumbrance  when attached and is fairly easy to attach and remove from armor. Click on the armor frame to attach it. All arm plates have the same armor and slowdown, meaning that only changing the chestplate makes significant armor difference. This armor appears to be marked as a 'Phobos' armor piece."
+	name = "\improper 碎击者超重型MT/41'福波斯'臂甲"
+	desc = "设计用于搭配碎击核心MT/P外骨骼。连接时提供保护和负重,并且相当容易从装甲上安装和移除。点击装甲框架来安装它。所有臂甲具有相同的装甲值和减速,这意味着只有更换胸甲才会产生显著的装甲差异。这件装甲似乎被标记为'福波斯'装甲部件。"
 	greyscale_config = /datum/greyscale_config/vsd_hardsuit
 
 /obj/item/armor_module/armor/arms/marine/vsd_hardsuit/clementia
-	name = "\improper Crasher Super-Heavy MT/41 'Clementia' arm plates"
-	desc = "Designed for use with the CrashCore MT/P Exoskeleton. It provides protection and encumbrance  when attached and is fairly easy to attach and remove from armor. Click on the armor frame to attach it. All arm plates have the same armor and slowdown, meaning that only changing the chestplate makes significant armor difference. This armor appears to be marked as a 'Clementia' armor piece."
+	name = "\improper 碎击者超重型MT/41'克莱门提亚'臂甲"
+	desc = "设计用于搭配碎击核心MT/P外骨骼。连接时提供保护和负重,并且相当容易从装甲上安装和移除。点击装甲框架来安装它。所有臂甲具有相同的装甲值和减速,这意味着只有更换胸甲才会产生显著的装甲差异。这件装甲似乎被标记为'克莱门提亚'装甲部件。"
 	greyscale_config = /datum/greyscale_config/vsd_hardsuit/alt
 
 /obj/item/armor_module/armor/arms/marine/vsd_hardsuit/hephaestus
-	name = "\improper Crasher Super-Heavy MT/41 'Hephaestus' arm plates"
-	desc = "Designed for use with the CrashCore MT/P Exoskeleton. It provides protection and encumbrance when attached and is fairly easy to attach and remove from armor. Click on the armor frame to attach it. All arm plates have the same armor and slowdown, meaning that only changing the chestplate makes significant armor difference. This armor appears to be marked as a 'Hephaestus' armor piece."
+	name = "\improper 碎击者超重型MT/41'赫菲斯托斯'臂甲"
+	desc = "设计用于搭配碎击核心MT/P外骨骼。连接时提供保护和负重,并且相当容易从装甲上安装和移除。点击装甲框架来安装它。所有臂甲具有相同的装甲值和减速,这意味着只有更换胸甲才会产生显著的装甲差异。这件装甲似乎被标记为'赫菲斯托斯'装甲部件。"
 	greyscale_config = /datum/greyscale_config/vsd_hardsuit/alt_two
 
 

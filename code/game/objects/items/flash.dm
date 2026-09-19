@@ -1,6 +1,6 @@
 /obj/item/flash
-	name = "flash"
-	desc = "Used for blinding and being an asshole."
+	name = "闪光弹"
+	desc = "用于致盲以及当个混蛋."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "flash"
 	worn_icon_state = "flashbang"	//looks exactly like a flash (and nothing like a flashbang)
@@ -32,16 +32,16 @@
 	log_combat(user, M, "attempted to flash", src)
 
 	if(user.skills.getRating(SKILL_POLICE) < SKILL_POLICE_FLASH)
-		to_chat(user, span_warning("You don't seem to know how to use [src]..."))
+		to_chat(user, span_warning("你似乎不知道怎么使用[src]..."))
 		return
 
 	if(broken)
-		to_chat(user, span_warning("\The [src] is broken."))
+		to_chat(user, span_warning("\The [src]坏了."))
 		return
 
 	flash_recharge()
 	if(isxeno(M))
-		to_chat(user, "You can't find any eyes!")
+		to_chat(user, "你找不到任何眼睛!")
 		return
 
 	//spamming the flash before it's fully charged (60seconds) increases the chance of it  breaking
@@ -51,12 +51,12 @@
 			last_used = world.time
 			if(prob(times_used))	//if you use it 5 times in a minute it has a 10% chance to break!
 				broken = 1
-				to_chat(user, span_warning("The bulb has burnt out!"))
+				to_chat(user, span_warning("灯泡已经烧坏了!"))
 				icon_state = "flashburnt"
 				return
 			times_used++
 		else	//can only use it  5 times a minute
-			to_chat(user, span_warning("*click* *click*"))
+			to_chat(user, span_warning("*咔哒* *咔哒*"))
 			return
 	playsound(src.loc, 'sound/weapons/flash.ogg', 25, 1)
 	var/flashfail = 0
@@ -75,13 +75,13 @@
 	//	flick("flash2", src)
 		if(!issilicon(M))
 
-			user.visible_message(span_disarm("[user] blinds [M] with the flash!"))
+			user.visible_message(span_disarm("[user]用闪光灯闪瞎了[M]!"))
 		else
 
-			user.visible_message(span_notice("[user] overloads [M]'s sensors with the flash!"))
+			user.visible_message(span_notice("[user]用闪光灯过载了[M]的传感器!"))
 	else
 
-		user.visible_message(span_notice("[user] fails to blind [M] with the flash!"))
+		user.visible_message(span_notice("[user]未能用闪光灯闪瞎[M]!"))
 
 
 
@@ -91,11 +91,11 @@
 		return
 
 	if(user.skills.getRating(SKILL_POLICE) < SKILL_POLICE_FLASH)
-		to_chat(user, span_warning("You don't seem to know how to use [src]..."))
+		to_chat(user, span_warning("你似乎不知道怎么使用[src]..."))
 		return
 
 	if(broken)
-		user.show_message(span_warning("The [src.name] is broken"), 2)
+		user.show_message(span_warning("[src.name]坏了"), 2)
 		return
 
 	flash_recharge()
@@ -106,12 +106,12 @@
 		if(0 to 5)
 			if(prob(2*times_used))	//if you use it 5 times in a minute it has a 10% chance to break!
 				broken = 1
-				to_chat(user, span_warning("The bulb has burnt out!"))
+				to_chat(user, span_warning("灯泡烧坏了!"))
 				icon_state = "flashburnt"
 				return
 			times_used++
 		else	//can only use it  5 times a minute
-			user.show_message(span_warning("*click* *click*"), 2)
+			user.show_message(span_warning("*咔哒* *咔哒*"), 2)
 			return
 	playsound(src.loc, 'sound/weapons/flash.ogg', 25, 1)
 	user.log_message("flashed an area with [key_name(src)]", LOG_ATTACK)
@@ -137,23 +137,23 @@
 				var/mob/living/carbon/M = loc
 				if(M.flash_act())
 					M.Paralyze(20 SECONDS)
-					M.visible_message(span_disarm("[M] is blinded by the flash!"))
+					M.visible_message(span_disarm("[M]被闪光灯闪瞎了!"))
 
 /obj/item/flash/synthetic
-	name = "synthetic flash"
-	desc = "When a problem arises, SCIENCE is the solution."
+	name = "合成闪光灯"
+	desc = "当问题出现时,科学就是解决方案."
 	icon_state = "sflash"
 
 /obj/item/flash/synthetic/attack(mob/living/M as mob, mob/user as mob)
 	..()
 	if(!broken)
 		broken = 1
-		to_chat(user, span_warning("The bulb has burnt out!"))
+		to_chat(user, span_warning("灯泡烧坏了!"))
 		icon_state = "flashburnt"
 
 /obj/item/flash/synthetic/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
 	..()
 	if(!broken)
 		broken = 1
-		to_chat(user, span_warning("The bulb has burnt out!"))
+		to_chat(user, span_warning("灯泡烧坏了!"))
 		icon_state = "flashburnt"

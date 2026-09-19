@@ -1,6 +1,6 @@
 /obj/item/assembly/igniter
-	name = "igniter"
-	desc = "A small electronic device able to ignite combustible substances."
+	name = "点火器"
+	desc = "一个能够点燃可燃物质的小型电子装置."
 	icon_state = "igniter"
 	var/datum/effect_system/spark_spread/sparks
 	heat = 1000

@@ -1,6 +1,6 @@
 /obj/machinery/computer/shuttle
 	name = "shuttle console"
-	desc = "A shuttle control computer."
+	desc = "穿梭机控制计算机."
 	icon_state = "computer"
 	screen_overlay = "syndishuttle"
 	broken_icon = "computer_red_broken"
@@ -47,14 +47,14 @@
 		return
 
 	if(!allowed(usr))
-		to_chat(usr, span_danger("Access denied."))
+		to_chat(usr, span_danger("访问被拒绝."))
 		return TRUE
 
 	if(href_list["move"])
 		var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
 		#ifndef TESTING
 		if(!(M.shuttle_flags & GAMEMODE_IMMUNE) && world.time < SSticker.round_start_time + SSticker.mode.deploy_time_lock)
-			to_chat(usr, span_warning("The engines are still refueling."))
+			to_chat(usr, span_warning("引擎仍在加油."))
 			return TRUE
 		#endif
 		if(!M.can_move_topic(usr))
@@ -68,19 +68,19 @@
 		switch(SSshuttle.moveShuttle(shuttleId, href_list["move"], 1))
 			if(0)
 				if(previous_status != SHUTTLE_IDLE)
-					visible_message(span_notice("Destination updated, recalculating route."))
+					visible_message(span_notice("目的地已更新,正在重新计算路线."))
 				else
-					visible_message(span_notice("Shuttle departing. Please stand away from the doors."))
+					visible_message(span_notice("穿梭机即将出发. 请远离舱门."))
 
 					for(var/mob/living/silicon/ai/AI AS in GLOB.ai_list)
 						if(!AI.client)
 							continue
-						to_chat(AI, span_info("NOTICE - [M.name] taking off towards [href_list["move"]]"))
+						to_chat(AI, span_info("通知 - [M.name] 正在起飞前往 [href_list["move"]]"))
 			if(1)
-				to_chat(usr, span_warning("Invalid shuttle requested."))
+				to_chat(usr, span_warning("请求的穿梭机无效."))
 				return TRUE
 			else
-				to_chat(usr, span_notice("Unable to comply."))
+				to_chat(usr, span_notice("无法执行."))
 				return TRUE
 
 /obj/machinery/computer/shuttle/connect_to_shuttle(mapload, obj/docking_port/mobile/port, obj/docking_port/stationary/dock)

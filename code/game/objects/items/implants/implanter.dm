@@ -1,6 +1,6 @@
 /obj/item/implanter
-	name = "implanter"
-	desc = "A sterile implant injector."
+	name = "植入器"
+	desc = "一个无菌植入注射器."
 	icon = 'icons/obj/items/implants.dmi'
 	icon_state = "implanter0"
 	worn_icon_list = list(
@@ -37,17 +37,17 @@
 	if(!can_implant(target, user))
 		return
 
-	user.visible_message(span_warning("[user] is attemping to implant [target]."), span_notice("You're attemping to implant [target]."))
+	user.visible_message(span_warning("[user]正试图为[target]植入."), span_notice("你正试图为[target]植入."))
 
 	if(!do_after(user, 5 SECONDS, NONE, target, BUSY_ICON_GENERIC) || !internal_implant)
-		to_chat(user, span_notice("You failed to implant [target]."))
+		to_chat(user, span_notice("你未能为[target]植入."))
 		return FALSE
 
 	if(!internal_implant.implant(target, user))
-		to_chat(user, span_notice("You fail to implant [target]."))
+		to_chat(user, span_notice("你未能为[target]植入."))
 		return FALSE
 
-	target.visible_message(span_warning("[target] has been implanted by [user]."))
+	target.visible_message(span_warning("[target]已被[user]植入."))
 	log_combat(user, target, "implanted", src)
 	internal_implant = null
 	update_icon()
@@ -57,36 +57,36 @@
 	if(!ishuman(target))
 		return FALSE
 	if(!internal_implant)
-		to_chat(user, span_warning("There is no implant in the [src]!"))
+		to_chat(user, span_warning("[src]中没有植入体!"))
 		return FALSE
 	return TRUE
 
 /obj/item/implanter/neurostim
-	name = "neurostim implanter"
+	name = "神经刺激植入器"
 	internal_implant = /obj/item/implant/neurostim
 
 /obj/item/implanter/chem
-	name = "chem implant implanter"
+	name = "化学植入体植入器"
 	internal_implant = /obj/item/implant/chem
 
 /obj/item/implanter/chem/blood
-	name = "blood recovery implant implanter"
+	name = "血液回收植入体植入器"
 	internal_implant = /obj/item/implant/chem/blood
 
 /obj/item/implanter/cloak
-	name = "cloak implant implanter"
+	name = "隐形植入体植入器"
 	internal_implant = /obj/item/implant/cloak
 
 /obj/item/implanter/blade
-	name = "blade implant implanter"
+	name = "刀刃植入体植入器"
 	internal_implant = /obj/item/implant/deployitem/blade
 
 /obj/item/implanter/suicide_dust
-	name = "Self-Gibbing implant"
+	name = "自爆植入体"
 	internal_implant = /obj/item/implant/suicide_dust
 
 /obj/item/implanter/sandevistan
-	name = "sandevistan implanter"
+	name = "斯安威斯坦植入器"
 	icon_state = "internal_implant_spinal"
 	w_class = WEIGHT_CLASS_NORMAL
 	internal_implant = /obj/item/implant/sandevistan
@@ -102,5 +102,5 @@
 	qdel(src)
 
 /obj/item/implanter/jump_mod
-	name = "fortified ankles implant"
+	name = "强化脚踝植入体"
 	internal_implant = /obj/item/implant/jump_mod

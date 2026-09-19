@@ -52,9 +52,9 @@
 
 /obj/vehicle/ridden/wheelchair/wrench_act(mob/living/user, obj/item/I) //Attackby should stop it attacking the wheelchair after moving away during decon
 	..()
-	to_chat(user, span_notice("You begin to detach the wheels..."))
+	to_chat(user, span_notice("你开始拆卸轮子..."))
 	if(I.use_tool(src, user, 40, volume=50))
-		to_chat(user, span_notice("You detach the wheels and deconstruct the chair."))
+		to_chat(user, span_notice("你拆下了轮子并拆解了椅子."))
 		new /obj/item/stack/rods(drop_location(), 6)
 		qdel(src)
 	return TRUE
@@ -84,7 +84,7 @@
 // Battlechair - A wheelchair with a mounted minigun
 /obj/vehicle/ridden/wheelchair/weaponized
 	name = "\improper Battlechair"
-	desc = "A sturdy wheelchair fitted with a minigun. Your legs may have failed you, but your weapon won't."
+	desc = "一把装有转轮机枪的坚固轮椅. 你的双腿或许辜负了你, 但你的武器不会."
 	max_integrity = 400
 
 /obj/vehicle/ridden/wheelchair/weaponized/Initialize(mapload)

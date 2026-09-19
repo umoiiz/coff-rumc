@@ -319,7 +319,7 @@
 
 /atom/movable/screen/alert/status_effect/asleep
 	name = "Asleep"
-	desc = "You've fallen asleep. Wait a bit and you should wake up. Unless you don't, considering how helpless you are."
+	desc = "你已经睡着了. 稍等片刻你应该就会醒来. 除非你不会, 考虑到你有多无助."
 	icon_state = "asleep"
 
 //ADMIN SLEEP
@@ -340,7 +340,7 @@
 
 /atom/movable/screen/alert/status_effect/adminsleep
 	name = "Admin Slept"
-	desc = "You've been slept by an Admin."
+	desc = "你被管理员催眠了."
 	icon_state = "asleep"
 
 //CONFUSED
@@ -350,7 +350,7 @@
 
 /atom/movable/screen/alert/status_effect/confused
 	name = "Confused"
-	desc = "You're dazed and confused."
+	desc = "你头晕目眩, 神志不清."
 	icon_state = "asleep"
 
 /datum/status_effect/plasmadrain
@@ -392,7 +392,7 @@
 	return ..()
 
 /datum/status_effect/noplasmaregen/tick(delta_time)
-	to_chat(owner, span_warning("You feel too weak to summon new plasma..."))
+	to_chat(owner, span_warning("你感觉太虚弱了, 无法召唤新的等离子..."))
 
 /datum/status_effect/incapacitating/harvester_slowdown
 	id = "harvest_slow"
@@ -419,7 +419,7 @@
 
 /atom/movable/screen/alert/status_effect/mute
 	name = "Muted"
-	desc = "You can't speak!"
+	desc = "你无法说话!"
 	icon_state = "mute"
 
 /datum/status_effect/mute/on_creation(mob/living/new_owner, set_duration)
@@ -445,14 +445,14 @@
 
 /datum/status_effect/spacefreeze/on_creation(mob/living/new_owner)
 	. = ..()
-	to_chat(new_owner, span_danger("The cold vacuum instantly freezes you, maybe this was a bad idea?"))
+	to_chat(new_owner, span_danger("冰冷的真空瞬间将你冻结, 也许这是个坏主意?"))
 
 /datum/status_effect/spacefreeze/tick(delta_time)
 	owner.adjust_fire_loss(40)
 
 /atom/movable/screen/alert/status_effect/spacefreeze
 	name = "Spacefreeze"
-	desc = "The space is freezing you to death!"
+	desc = "太空正在把你冻死!"
 
 /datum/status_effect/spacefreeze/light
 	id = "spacefreeze_light"
@@ -490,7 +490,7 @@
 	//Roulette of bad things
 	if(prob(15))
 		living_owner.adjust_clone_loss(2)
-		to_chat(living_owner, span_warning("You feel like you're burning from the inside!"))
+		to_chat(living_owner, span_warning("你感觉像是从内部燃烧起来!"))
 	else
 		living_owner.adjust_tox_loss(3)
 	if(prob(15))
@@ -504,7 +504,7 @@
 
 /atom/movable/screen/alert/status_effect/irradiated
 	name = "Irradiated"
-	desc = "You've been irradiated! The effects of the radiation will continue to harm you until purged from your system."
+	desc = "你已被辐射! 辐射的影响会持续伤害你, 直到从你体内清除."
 	icon_state = "radiation"
 
 // ***************************************
@@ -539,7 +539,7 @@
 	xenomorph_to_heal = expected_xenomorph_to_heal
 	healing_per_stack = expected_healing_per_stack
 	RegisterSignal(debuff_owner, COMSIG_LIVING_DO_RESIST, PROC_REF(call_resist_debuff))
-	debuff_owner.balloon_alert(debuff_owner, "Intoxicated")
+	debuff_owner.balloon_alert(debuff_owner, "中毒")
 	playsound(debuff_owner.loc, 'sound/bullets/acid_impact1.ogg', 30)
 	particle_holder = new(debuff_owner, /particles/toxic_slash)
 	particle_holder.particles.spawning = 1 + round(stacks * 0.5)
@@ -584,10 +584,10 @@
 	if(length(debuff_owner.do_actions))
 		return
 	if(!do_after(debuff_owner, 5 SECONDS, NONE, debuff_owner, BUSY_ICON_GENERIC))
-		debuff_owner?.balloon_alert(debuff_owner, "Interrupted")
+		debuff_owner?.balloon_alert(debuff_owner, "被打断")
 		return
 	playsound(debuff_owner, 'sound/effects/slosh.ogg', 30)
-	debuff_owner?.balloon_alert(debuff_owner, "Succeeded")
+	debuff_owner?.balloon_alert(debuff_owner, "成功")
 	stacks -= SENTINEL_INTOXICATED_RESIST_REDUCTION
 	if(stacks > 0)
 		resist_debuff() // We repeat ourselves as long as the debuff persists.
@@ -625,7 +625,7 @@
 	visual_fire.icon_state = "melting_low_stacks"
 	debuff_owner = new_owner
 	debuff_owner.vis_contents += visual_fire
-	debuff_owner.balloon_alert(debuff_owner, "Melting fire")
+	debuff_owner.balloon_alert(debuff_owner, "熔火")
 	playsound(debuff_owner.loc, 'sound/bullets/acid_impact1.ogg', 30)
 	RegisterSignal(debuff_owner, COMSIG_LIVING_DO_RESIST, PROC_REF(call_resist_debuff))
 
@@ -672,11 +672,11 @@
 	add_stacks(-4)
 	debuff_owner.Paralyze(3 SECONDS)
 	if(stacks > 0)
-		debuff_owner.visible_message(span_danger("[debuff_owner] rolls on the floor, trying to put themselves out!"), \
-		span_notice("You stop, drop, and roll!"), null, 5)
+		debuff_owner.visible_message(span_danger("[debuff_owner]在地上打滚, 试图扑灭自己身上的火!"), \
+		span_notice("你停下, 卧倒, 打滚!"), null, 5)
 		return
-	debuff_owner.visible_message(span_danger("[debuff_owner] has successfully extinguished themselves!"), \
-	span_notice("You extinguish yourself."), null, 5)
+	debuff_owner.visible_message(span_danger("[debuff_owner]成功扑灭了自己身上的火!"), \
+	span_notice("你扑灭了自己身上的火."), null, 5)
 	qdel(src)
 
 // ***************************************
@@ -684,7 +684,7 @@
 // ***************************************
 /atom/movable/screen/alert/status_effect/dread
 	name = "Dread"
-	desc = "A dreadful presence. You are slowed down until this expires."
+	desc = "一股可怕的存在. 你被减速, 直到此效果结束."
 	icon_state = "dread"
 
 /datum/status_effect/dread
@@ -716,7 +716,7 @@
 
 /atom/movable/screen/alert/status_effect/draining_dread
 	name = "Draining Dread"
-	desc = "A dreadful presence. You take constant stamina damage until this expires."
+	desc = "一股可怕的存在. 你持续受到耐力伤害, 直到此效果结束."
 	icon_state = "dread"
 
 /datum/status_effect/draining_dread
@@ -770,7 +770,7 @@
 
 	. = ..()
 	debuff_owner = new_owner
-	debuff_owner.balloon_alert(debuff_owner, "Melting!")
+	debuff_owner.balloon_alert(debuff_owner, "正在融化!")
 	playsound(debuff_owner.loc, 'sound/bullets/acid_impact1.ogg', 30)
 	particle_holder = new(debuff_owner, /particles/melting_status)
 	particle_holder.particles.spawning = 1 + round(stacks * 0.5)
@@ -797,7 +797,7 @@
 
 /atom/movable/screen/alert/status_effect/melting
 	name = "Melting"
-	desc = "You are melting away!"
+	desc = "你正在融化!"
 	icon_state = "melting"
 
 /particles/melting_status
@@ -848,7 +848,7 @@
 		qdel(src)
 		return
 	debuff_owner = new_owner
-	debuff_owner.balloon_alert(debuff_owner, "microwaved!")
+	debuff_owner.balloon_alert(debuff_owner, "被微波加热了!")
 	playsound(debuff_owner.loc, 'sound/bullets/acid_impact1.ogg', 30)
 	particle_holder = new(debuff_owner, /particles/microwave_status)
 	COOLDOWN_START(src, cooldown_microwave_status, MICROWAVE_STATUS_DURATION)
@@ -879,7 +879,7 @@
 
 /atom/movable/screen/alert/status_effect/microwave
 	name = "Microwave"
-	desc = "You are burning from the inside!"
+	desc = "你正从内部燃烧!"
 	icon_state = "microwave"
 
 /particles/microwave_status
@@ -943,7 +943,7 @@
 
 /atom/movable/screen/alert/status_effect/shatter
 	name = "Shattered"
-	desc = "Your armor has been shattered!"
+	desc = "你的护甲被击碎了!"
 	icon_state = "shatter"
 
 /particles/shattered_status
@@ -965,7 +965,7 @@
 
 /atom/movable/screen/alert/status_effect/spacefreeze
 	name = "Freezing"
-	desc = "Space is very very cold, who would've thought?"
+	desc = "太空非常非常冷,谁能想到呢?"
 	icon_state = "cold3"
 
 /datum/status_effect/incapacitating/spider_venom
@@ -1033,7 +1033,7 @@
 
 /atom/movable/screen/alert/status_effect/melting_acid
 	name = "Melting (Acid)"
-	desc = "You are melting away!"
+	desc = "你正在融化!"
 	icon_state = "melting"
 
 /particles/melting_acid_status
@@ -1063,5 +1063,5 @@
 
 /atom/movable/screen/alert/status_effect/lifedrain
 	name = "Lifedrain"
-	desc = "Your life force transfers to xenos when they slash you!"
+	desc = "当异形砍你时,你的生命精华会转移给它们!"
 	icon_state = "skullemoji"

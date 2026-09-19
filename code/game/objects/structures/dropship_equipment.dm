@@ -1,6 +1,6 @@
 /obj/effect/attach_point
 	name = "equipment attach point"
-	desc = "A place where heavy equipment can be installed with a powerloader."
+	desc = "一个可以用动力装载机安装重型设备的地方."
 	anchored = TRUE
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "equip_base"
@@ -29,21 +29,21 @@
 
 	var/obj/structure/dropship_equipment/loaded_equipment = attached_clamp.loaded
 	if(loaded_equipment.equip_category != base_category)
-		to_chat(user, span_warning("[loaded_equipment] doesn't fit on [src]."))
+		to_chat(user, span_warning("[loaded_equipment]无法装入[src]."))
 		return
 	if(installed_equipment)
 		return
 	if(!density)
 		for(var/atom/thing_to_check AS in loc)
 			if(thing_to_check.density)
-				balloon_alert(user, "Blocked by [thing_to_check]")
+				balloon_alert(user, "被[thing_to_check]阻挡")
 				return
 	playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
 	if(!do_after(user, 7 SECONDS, IGNORE_HELD_ITEM, src))
 		return
 	if(installed_equipment || attached_clamp.loaded != loaded_equipment)
 		return
-	to_chat(user, span_notice("You install [loaded_equipment] on [src]."))
+	to_chat(user, span_notice("你将[loaded_equipment]安装到[src]上."))
 	loaded_equipment.forceMove(loc)
 	attached_clamp.loaded = null
 	playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
@@ -202,7 +202,7 @@
 			return
 		var/obj/structure/ship_ammo/clamp_ammo = attached_clamp.loaded
 		if(istype(type, clamp_ammo.equipment_type) || clamp_ammo.ammo_type != ammo_type_used) //Incompatible ammo
-			to_chat(user, span_warning("[clamp_ammo] doesn't fit in [src]."))
+			to_chat(user, span_warning("[clamp_ammo]无法放入[src]中."))
 			return
 		playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 		if(!do_after(user, 30, IGNORE_HELD_ITEM, src, BUSY_ICON_BUILD))
@@ -213,7 +213,7 @@
 		attached_clamp.loaded = null
 		playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
 		attached_clamp.update_icon()
-		to_chat(user, span_notice("You load [clamp_ammo] into [src]."))
+		to_chat(user, span_notice("你将[clamp_ammo]装入[src]中."))
 		ammo_equipped = clamp_ammo
 		update_equipment()
 		return //refilled dropship ammo
@@ -226,21 +226,21 @@
 		playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 		if(!ammo_equipped.ammo_count)
 			ammo_equipped.loc = null
-			to_chat(user, span_notice("You've discarded the empty [ammo_equipped.name] in [src]."))
+			to_chat(user, span_notice("你将空的[ammo_equipped.name]丢弃在[src]中."))
 			qdel(ammo_equipped)
 		else
 			ammo_equipped.forceMove(attached_clamp.linked_powerloader)
 			attached_clamp.loaded = ammo_equipped
 			attached_clamp.update_icon()
-			to_chat(user, span_notice("You've removed [ammo_equipped] from [src] and loaded it into [attached_clamp]."))
+			to_chat(user, span_notice("你将[ammo_equipped]从[src]中取出并装入[attached_clamp]中."))
 		ammo_equipped = null
 		update_icon()
 		return //emptied or removed dropship ammo
 	if(dropship_equipment_flags & IS_NOT_REMOVABLE)
-		to_chat(user, span_notice("You cannot remove [src]!"))
+		to_chat(user, span_notice("你无法移除[src]!"))
 		return
 	if(get_self_acid())
-		to_chat(user, span_notice("You cannot touch [src] with the [attached_clamp] due to the acid on [src]."))
+		to_chat(user, span_notice("由于[src]上的酸液,你无法用[attached_clamp]触碰[src]."))
 	playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
 	var/duration_time = ship_base ? 70 : 10 //uninstalling equipment takes more time
 	if(!do_after(user, duration_time, IGNORE_HELD_ITEM, src, BUSY_ICON_BUILD))
@@ -252,7 +252,7 @@
 	SEND_SIGNAL(src, COMSIG_DROPSHIP_EQUIPMENT_UNEQUIPPED)
 	playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 	attached_clamp.update_icon()
-	to_chat(user, span_notice("You've [ship_base ? "uninstalled" : "grabbed"] [attached_clamp.loaded] with [attached_clamp]."))
+	to_chat(user, span_notice("你用[attached_clamp][ship_base ? "uninstalled" : "grabbed"]了[attached_clamp.loaded]."))
 	if(ship_base)
 		ship_base.installed_equipment = null
 		ship_base = null
@@ -283,13 +283,13 @@
 		if(linked_console.selected_equipment)
 			return
 		linked_console.selected_equipment = src
-		to_chat(user, span_notice("You select [src]."))
+		to_chat(user, span_notice("你选择了[src]."))
 
 //////////////////////////////////// grenade launcher //////////////////////////////////////
 /obj/structure/dropship_equipment/shuttle/grenade_launcher
 	equip_category = DROPSHIP_WEAPON
-	name = "grenade launcher system"
-	desc = "A system that deploys any inputted grenades on console activation. Fits on the weapon attach points of dropships. You need a powerloader to lift it."
+	name = "榴弹发射器系统"
+	desc = "一种在控制台激活时投放所装填榴弹的系统.可安装在运输机的武器挂点上.你需要动力装载机来搬运它."
 	icon_state = "nade_system"
 	dropship_equipment_flags = IS_INTERACTABLE
 	point_cost = 85
@@ -315,10 +315,10 @@
 
 /obj/structure/dropship_equipment/shuttle/grenade_launcher/equipment_interact(mob/user)
 	if(!COOLDOWN_FINISHED(src, deploy_cooldown)) //prevents spamming deployment
-		user.balloon_alert(user, "Busy")
+		user.balloon_alert(user, "忙碌")
 		return
 	if(length(loaded_grenades) <= 0) //check for inserted flares
-		user.balloon_alert(user, "No grenades left")
+		user.balloon_alert(user, "没有剩余榴弹")
 		return
 	var/turf/target = get_ranged_target_turf(src, dir, 10)
 	var/obj/item/explosive/grenade/nade_to_launch = loaded_grenades[1]
@@ -327,7 +327,7 @@
 	nade_to_launch.throw_at(target, 10, 2)
 	LAZYREMOVE(loaded_grenades, nade_to_launch)
 	COOLDOWN_START(src, deploy_cooldown, fire_cooldown)
-	user.balloon_alert(user, "[LAZYLEN(loaded_grenades)]/[grenade_capacity] remaining")
+	user.balloon_alert(user, "剩余[LAZYLEN(loaded_grenades)]/[grenade_capacity]")
 	playsound(loc, 'sound/weapons/guns/fire/grenadelauncher.ogg', 40, 1)
 
 /obj/structure/dropship_equipment/shuttle/grenade_launcher/attackby(obj/item/I, mob/user, params)
@@ -340,7 +340,7 @@
 	user.transferItemToLoc(I, src)
 	LAZYADD(loaded_grenades, I)
 	playsound(loc, 'sound/weapons/guns/interact/v51_load.ogg', 40, 1)
-	balloon_alert(user, "[LAZYLEN(loaded_grenades)]/[grenade_capacity] grenades loaded")
+	balloon_alert(user, "已装填[LAZYLEN(loaded_grenades)]/[grenade_capacity]枚榴弹")
 
 /obj/structure/dropship_equipment/shuttle/grenade_launcher/attack_hand(mob/living/user)
 	. = ..()
@@ -351,7 +351,7 @@
 	user.put_in_hands(first_nade)
 	loaded_grenades -= first_nade
 	playsound(loc, 'sound/weapons/flipblade.ogg', 25, 1, 5)
-	balloon_alert(user, "[LAZYLEN(loaded_grenades)]/[grenade_capacity] grenades loaded")
+	balloon_alert(user, "已装填[LAZYLEN(loaded_grenades)]/[grenade_capacity]枚榴弹")
 
 /obj/structure/dropship_equipment/shuttle/grenade_launcher/update_equipment()
 	. = ..()
@@ -372,8 +372,8 @@
 
 /obj/structure/dropship_equipment/shuttle/tangle_emitter
 	equip_category = DROPSHIP_WEAPON
-	name = "disposable tanglefoot emitter"
-	desc = "A system that can emit tanglefoot while landing the aircraft to support aggressive landing positions. Can only be used once every ten minutes. Fits on the weapon attach points of dropships. You need a powerloader to lift it."
+	name = "一次性缠绕脚发射器"
+	desc = "一种可在飞行器着陆时释放缠绕脚以支援激进着陆位置的系统.每十分钟只能使用一次.可安装在运输机的武器挂点上.你需要动力装载机来搬运它."
 	icon_state = "tfoot_system"
 	point_cost = 150
 	dropship_equipment_flags = IS_INTERACTABLE
@@ -389,12 +389,12 @@
 	if(!enabled)
 		enabled = TRUE
 		update_appearance()
-		user.balloon_alert(user, "Enabled")
+		user.balloon_alert(user, "已启用")
 		RegisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE, PROC_REF(drop_pellet_to_location))
 		return
 	enabled = FALSE
 	update_appearance()
-	user.balloon_alert(user, "Disabled")
+	user.balloon_alert(user, "已禁用")
 	UnregisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE)
 
 /obj/structure/dropship_equipment/shuttle/tangle_emitter/update_equipment()
@@ -441,7 +441,7 @@
 	addtimer(CALLBACK(src, PROC_REF(on_cooldown_end)), cooldown_length + 1 SECONDS)
 	playsound(loc, 'sound/weapons/guns/fire/tank_smokelauncher.ogg', 40, 1)
 	console.say("Emitter system deployed successfully.")
-	landing_spot.balloon_alert_to_viewers("A small pellet falls out of the sky!")
+	landing_spot.balloon_alert_to_viewers("一颗小弹丸从天而降!")
 
 /// Special effects for when system cooldown finishes
 /obj/structure/dropship_equipment/shuttle/tangle_emitter/proc/on_cooldown_end()
@@ -452,8 +452,8 @@
 
 /obj/structure/dropship_equipment/shuttle/sentry_holder
 	equip_category = DROPSHIP_WEAPON
-	name = "sentry deployment system"
-	desc = "A box that deploys a sentry turret. Fits on the weapon attach points of dropships. You need a powerloader to lift it."
+	name = "哨戒炮部署系统"
+	desc = "一个部署哨戒炮塔的箱子.可安装在运输机的武器挂点上.你需要动力装载机来搬运它."
 	icon_state = "sentry_system"
 	dropship_equipment_flags = IS_INTERACTABLE
 	point_cost = 350
@@ -491,19 +491,19 @@
 
 /obj/structure/dropship_equipment/shuttle/sentry_holder/equipment_interact(mob/user)
 	if(!deployed_turret)
-		to_chat(user, span_warning("[src] is unresponsive."))
+		to_chat(user, span_warning("[src]无响应."))
 		return
 	if(deployment_cooldown > world.time)
-		to_chat(user, span_warning("[src] is busy."))
+		to_chat(user, span_warning("[src]正忙."))
 		return //prevents spamming deployment/undeployment
 	if(deployed_turret.loc == src) //not deployed
 		if(is_reserved_level(z))
-			to_chat(user, span_warning("[src] can't deploy mid-flight."))
+			to_chat(user, span_warning("[src]无法在飞行途中部署."))
 		else
-			to_chat(user, span_notice("You deploy [src]."))
+			to_chat(user, span_notice("你部署了[src]."))
 			deploy_sentry()
 	else
-		to_chat(user, span_notice("You retract [src]."))
+		to_chat(user, span_notice("你收回了[src]."))
 		undeploy_sentry()
 
 /obj/structure/dropship_equipment/shuttle/sentry_holder/update_equipment()
@@ -619,31 +619,31 @@
 		return TRUE
 
 /obj/structure/dropship_equipment/shuttle/weapon_holder/machinegun
-	name = "machinegun deployment system"
-	desc = "A box that deploys a modified HSG-102 crewserved machine gun. Fits on the crewserved weapon attach points of dropships. You need a powerloader to lift it."
+	name = "机枪部署系统"
+	desc = "一个部署改装型HSG-102班组机枪的箱子.可安装在运输机的班组武器挂点上.你需要动力装载机来搬运它."
 	icon_state = "mg_system"
 	point_cost = 250
 	deployable_type = /obj/item/weapon/gun/hsg102/hsg_nest
 
 /obj/structure/dropship_equipment/shuttle/weapon_holder/minigun
-	name = "minigun deployment system"
-	desc = "A box that deploys a modified MG-2005 crewserved minigun. Fits on the crewserved weapon attach points of dropships. You need a powerloader to lift it."
+	name = "迷你枪部署系统"
+	desc = "一个部署改装型MG-2005班组迷你枪的箱子.可安装在运输机的班组武器挂点上.你需要动力装载机来搬运它."
 	icon_state = "minigun_system"
 	point_cost = 0 //this removes it from the fabricator
 	deployable_type = /obj/item/weapon/gun/standard_minigun/nest
 	undeployed_icon_state = "minigun_system"
 
 /obj/structure/dropship_equipment/shuttle/weapon_holder/heavylaser
-	name = "heavy laser deployment system"
-	desc = "A box that deploys a modified TE-9001 crewserved heavylaser. Fits on the crewserved weapon attach points of dropships. You need a powerloader to lift it."
+	name = "重型激光部署系统"
+	desc = "一个部署改装型TE-9001班组重型激光的箱子.可安装在运输机的班组武器挂点上.你需要动力装载机来搬运它."
 	icon_state = "hl_system"
 	point_cost = 0 //this removes it from the fabricator
 	deployable_type = /obj/item/weapon/gun/energy/lasgun/lasrifle/heavy_laser
 	undeployed_icon_state = "hl_system"
 
 /obj/structure/dropship_equipment/shuttle/weapon_holder/mortar_holder
-	name = "mortar deployment system"
-	desc = "A box that deploys a TA-55DB mortar. Fits on the crewserved weapon attach points of dropships. You need a powerloader to lift it."
+	name = "迫击炮部署系统"
+	desc = "一个部署TA-55DB迫击炮的箱子.可安装在运输机的班组武器挂点上.你需要动力装载机来搬运它."
 	icon_state = "mortar_system"
 	point_cost = 250
 	deployable_type = /obj/item/mortar_kit/double
@@ -673,9 +673,9 @@
 	equip_category = DROPSHIP_ELECTRONICS
 
 /obj/structure/dropship_equipment/electronics/spotlights
-	name = "spotlight"
+	name = "探照灯"
 	icon_state = "spotlights"
-	desc = "A set of highpowered spotlights to illuminate large areas. Fits on electronics attach points of dropships. Moving this will require a powerloader."
+	desc = "一组用于照亮大片区域的高功率探照灯.可安装在运输机的电子设备挂点上.移动此物需要动力装载机."
 	dropship_equipment_flags = IS_INTERACTABLE
 	point_cost = 125
 	var/spotlights_cooldown
@@ -683,16 +683,16 @@
 
 /obj/structure/dropship_equipment/electronics/spotlights/equipment_interact(mob/user)
 	if(spotlights_cooldown > world.time)
-		to_chat(user, span_warning("[src] is busy."))
+		to_chat(user, span_warning("[src]正忙."))
 		return //prevents spamming deployment/undeployment
 	if(luminosity != brightness)
 		set_light(brightness, brightness)
 		icon_state = "spotlights_on"
-		to_chat(user, span_notice("You turn on [src]."))
+		to_chat(user, span_notice("你打开了[src]."))
 	else
 		set_light(0)
 		icon_state = "spotlights_off"
-		to_chat(user, span_notice("You turn off [src]."))
+		to_chat(user, span_notice("你关闭了[src]."))
 	spotlights_cooldown = world.time + 50
 
 /obj/structure/dropship_equipment/electronics/spotlights/update_equipment()
@@ -728,14 +728,14 @@
 
 
 /obj/structure/dropship_equipment/adv_comp/docking
-	name = "docking computer"
+	name = "对接计算机"
 	icon_state = "docking_comp"
 	point_cost = 0
 
 ////////////////////////////////////// WEAPONS ///////////////////////////////////////
 
 /obj/structure/dropship_equipment/cas/weapon
-	name = "abstract weapon"
+	name = "抽象武器"
 	icon = 'icons/obj/structures/mainship_props64.dmi'
 	equip_category = DROPSHIP_WEAPON_CAS
 	bound_width = 32
@@ -803,8 +803,8 @@
 	QDEL_LIST_IN(effects_to_delete, ammo_travelling_time)
 
 /obj/structure/dropship_equipment/cas/weapon/heavygun
-	name = "\improper GAU-21 30mm cannon"
-	desc = "A dismounted GAU-21 'Rattler' 30mm rotary cannon. It seems to be missing its feed links and has exposed connection wires. Capable of firing 5200 rounds a minute, feared by many for its power. Earned the nickname 'Rattler' from the vibrations it would cause on dropships in its inital production run. Moving this will require some sort of lifter."
+	name = "\improper GAU-21 30毫米机炮"
+	desc = "一挺拆卸下来的GAU-21\"响尾蛇\"30毫米旋转机炮.它似乎缺少供弹链,并且连接线裸露在外.能够每分钟发射5200发弹药,因其威力而令许多人畏惧.在最初的生产批次中,由于它在运输机上产生的振动而获得了\"响尾蛇\"的绰号.移动它需要某种起重设备."
 	icon_state = "30mm_cannon"
 	firing_sound = 'sound/weapons/gunship_chaingun.ogg'
 	point_cost = 150
@@ -822,7 +822,7 @@
 			icon_state = "30mm_cannon"
 
 /obj/structure/dropship_equipment/cas/weapon/heavygun/radial_cas
-	name = "Condor Jet Radial minigun"
+	name = "神鹰喷气式径向转轮机枪"
 	point_cost = 0
 	dropship_equipment_flags = USES_AMMO|IS_WEAPON|IS_INTERACTABLE|IS_NOT_REMOVABLE
 
@@ -831,9 +831,9 @@
 	ammo_equipped = new /obj/structure/ship_ammo/cas/heavygun(src)
 
 /obj/structure/dropship_equipment/cas/weapon/rocket_pod
-	name = "rocket pod"
+	name = "火箭吊舱"
 	icon_state = "rocket_pod"
-	desc = "A rocket pod weapon system capable of launching a single laser-guided rocket. Moving this will require some sort of lifter."
+	desc = "一种能够发射单枚激光制导火箭的火箭吊舱武器系统.移动它需要某种起重设备."
 	firing_sound = 'sound/weapons/gunship_rocket.ogg'
 	firing_delay = 5
 	point_cost = 450
@@ -854,9 +854,9 @@
 			icon_state = "rocket_pod"
 
 /obj/structure/dropship_equipment/cas/weapon/unguided_rocket_pod
-	name = "unguided rocket pod"
+	name = "无制导火箭吊舱"
 	icon_state = "unguided_rocket"
-	desc = "an unguided high-explosive rocket pod. Moving this will require some sort of lifter."
+	desc = "一种无制导高爆火箭吊舱.移动它需要某种起重设备."
 	icon = 'icons/obj/structures/mainship_props64.dmi'
 	firing_sound = 'sound/weapons/unguided_rocket.ogg'
 	firing_delay = 2
@@ -881,9 +881,9 @@
 	update_icon()
 
 /obj/structure/dropship_equipment/cas/weapon/minirocket_pod
-	name = "minirocket pod"
+	name = "微型火箭吊舱"
 	icon_state = "minirocket_pod"
-	desc = "A mini rocket pod capable of launching six laser-guided mini rockets. Moving this will require some sort of lifter."
+	desc = "一种能够发射六枚激光制导微型火箭的微型火箭吊舱.移动它需要某种起重设备."
 	icon = 'icons/obj/structures/mainship_props64.dmi'
 	firing_sound = 'sound/weapons/gunship_rocketpod.ogg'
 	firing_delay = 10 //1 seconds
@@ -906,9 +906,9 @@
 		ammo_equipped = null
 
 /obj/structure/dropship_equipment/cas/weapon/laser_beam_gun
-	name = "laser beam gun"
+	name = "激光束枪"
 	icon_state = "laser_beam"
-	desc = "State of the art technology recently acquired by the TGMC, it fires a battery-fed pulsed laser beam at near lightspeed setting on fire everything it touches. Moving this will require some sort of lifter."
+	desc = "TGMC最近获得的尖端技术,它发射由电池供能的脉冲激光束,速度接近光速,会点燃它所触及的一切.移动它需要某种起重设备."
 	icon = 'icons/obj/structures/mainship_props64.dmi'
 	firing_sound = 'sound/weapons/gunship_laser.ogg'
 	firing_delay = 50 //5 seconds
@@ -927,9 +927,9 @@
 			icon_state = "laser_beam"
 
 /obj/structure/dropship_equipment/cas/weapon/launch_bay //This isn't printable, so having it under CAS shouldn't cause issues
-	name = "launch bay"
+	name = "发射舱"
 	icon_state = "launch_bay"
-	desc = "A launch bay to drop special ordnance. Fits inside the dropship's crew weapon emplacement. Moving this will require some sort of lifter."
+	desc = "用于投放特殊弹药的发射舱.可安装在运输机的乘员武器挂点上.移动它需要某种起重设备."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	firing_sound = 'sound/weapons/guns/fire/gunshot.ogg'
 	firing_delay = 10 //1 seconds
@@ -948,8 +948,8 @@
 //////////////// OTHER EQUIPMENT /////////////////
 
 /obj/structure/dropship_equipment/shuttle/operatingtable
-	name = "\improper Dropship Operating Table Deployment System"
-	desc = "Used for advanced medical procedures. Fits on the crewserved weapon attach points of dropships. You need a powerloader to lift it."
+	name = "\improper 运输机手术台部署系统"
+	desc = "用于高级医疗程序.可安装在运输机的乘员武器挂点上.你需要动力装载机来抬起它."
 	equip_category = DROPSHIP_CREW_WEAPON
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "table1"
@@ -983,9 +983,9 @@
 
 // bomb pod
 /obj/structure/dropship_equipment/cas/weapon/bomb_pod
-	name = "bomb pod"
+	name = "炸弹吊舱"
 	icon_state = "bomb_pod"
-	desc = "A bomb pod capable of launching several large bombs. Moving this will require some sort of lifter."
+	desc = "一种能够发射数枚大型炸弹的炸弹吊舱.移动它需要某种起重设备."
 	icon = 'icons/obj/structures/mainship_props64.dmi'
 	firing_sound = 'sound/weapons/bombdrop_sound.ogg'
 	firing_delay = 2 SECONDS

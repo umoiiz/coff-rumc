@@ -79,7 +79,7 @@
 				. = TRUE
 		if("mass_apply")
 			if(!check_rights_for(usr.client, R_FUN))
-				to_chat(usr, span_userdanger("Stay in your lane, jannie."))
+				to_chat(usr, span_userdanger("待在你的车道里, 管理员."))
 				return
 			var/target_path = text2path(params["path"])
 			if(!target_path)

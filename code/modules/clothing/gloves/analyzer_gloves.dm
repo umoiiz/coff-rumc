@@ -1,6 +1,6 @@
 /obj/item/clothing/gloves/healthanalyzer
-	name = "\improper HF2 analyzer gloves"
-	desc = "Advanced medical gauntlets with a built-in health analyzer for quickly scanning patients via a simple touch or wave."
+	name = "\improper HF2分析仪手套"
+	desc = "先进医疗护手,内置健康分析仪,可通过简单触碰或挥手快速扫描患者."
 	icon_state = "medscan_gloves"
 	worn_icon_state = "medscan_gloves"
 	soft_armor = list(MELEE = 25, BULLET = 15, LASER = 10, ENERGY = 15, BOMB = 15, BIO = 5, FIRE = 15, ACID = 15)

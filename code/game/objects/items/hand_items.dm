@@ -7,8 +7,8 @@
 	item_flags = DELONDROP|ITEM_ABSTRACT|HAND_ITEM
 
 /obj/item/hand_item/circlegame
-	name = "circled hand"
-	desc = "If somebody looks at this while it's below your waist, you get to bop them."
+	name = "圈起的手"
+	desc = "如果有人在你腰部以下看这个,你就可以敲他们."
 	icon_state = "madeyoulook"
 	attack_verb = list("bops")
 
@@ -44,10 +44,10 @@
 		return
 
 	if(owner == sucker) // big mood
-		to_chat(owner, span_danger("Wait a second... you just looked at your own [src.name]!"))
+		to_chat(owner, span_danger("等一下...你刚刚看了你自己的[src.name]!"))
 		addtimer(CALLBACK(src, PROC_REF(self_gottem), owner), 1 SECONDS)
 	else
-		to_chat(sucker, span_danger("Wait a second... was that a-"))
+		to_chat(sucker, span_danger("等一下...那是-"))
 		addtimer(CALLBACK(src, PROC_REF(gottem), owner, sucker), 0.6 SECONDS)
 
 /// Stage 3A: We face our own failures
@@ -56,8 +56,8 @@
 		return
 
 	playsound(get_turf(owner), 'sound/effects/hit_punch.ogg', 50, TRUE)
-	owner.visible_message(span_danger("[owner] shamefully bops [owner.p_them()]self with [owner.p_their()] [name]."), span_userdanger("You shamefully bop yourself with your [name]."), \
-		span_hear("You hear a dull thud!"))
+	owner.visible_message(span_danger("[owner]羞愧地用[owner.p_their()][name]敲了[owner.p_them()]自己."), span_userdanger("你羞愧地用自己的[name]敲了自己."), \
+		span_hear("你听到一声闷响!"))
 	log_combat(owner, owner, "bopped", name, "(self)")
 	owner.do_attack_animation(owner, used_item = src)
 	owner.apply_damage(100, STAMINA)
@@ -70,24 +70,24 @@
 		return
 
 	if(QDELETED(src) || QDELETED(owner))
-		to_chat(sucker, span_warning("Nevermind... must've been your imagination..."))
+		to_chat(sucker, span_warning("算了...一定是你的错觉..."))
 		return
 
 	if(!in_range(owner, sucker))
-		to_chat(sucker, span_notice("Phew... you moved away before [owner] noticed you saw [owner.p_their()] [name]..."))
+		to_chat(sucker, span_notice("呼...你在[owner]注意到你看到了[owner.p_their()][name]之前移开了..."))
 		return
 
-	to_chat(owner, span_warning("[sucker] looks down at your [name] before trying to avert [sucker.p_their()] eyes, but it's too late!"))
-	to_chat(sucker, span_danger("<b>[owner] sees the fear in your eyes as you try to look away from [owner.p_their()] [name]!</b>"))
+	to_chat(owner, span_warning("[sucker]低头看着你的[name],然后试图移开[sucker.p_their()]的视线,但已经太晚了!"))
+	to_chat(sucker, span_danger("<b>[owner]看到了你眼中的恐惧,因为你试图把目光从[owner.p_their()][name]上移开!</b>"))
 
 	owner.face_atom(sucker)
 
 	playsound(get_turf(owner), 'sound/effects/hit_punch.ogg', 50, TRUE)
 	owner.do_attack_animation(sucker, used_item = src)
 
-	owner.visible_message(span_danger("[owner] bops [sucker] with [owner.p_their()] [name]!"), span_danger("You bop [sucker] with your [name]!"), \
-		span_hear("You hear a dull thud!"), ignored_mob = sucker)
+	owner.visible_message(span_danger("[owner]用[owner.p_their()][name]敲了[sucker]!"), span_danger("你用你的[name]敲了[sucker]!"), \
+		span_hear("你听到一声闷响!"), ignored_mob = sucker)
 	sucker.apply_damage(15, STAMINA)
 	log_combat(owner, sucker, "bopped", name, "(setup)")
-	to_chat(sucker, span_userdanger("[owner] bops you with [owner.p_their()] [name]!"))
+	to_chat(sucker, span_userdanger("[owner]用[owner.p_their()][name]敲了你!"))
 	qdel(src)

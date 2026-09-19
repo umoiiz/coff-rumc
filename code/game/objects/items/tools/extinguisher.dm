@@ -1,6 +1,6 @@
 /obj/item/tool/extinguisher
-	name = "fire extinguisher"
-	desc = "A traditional red fire extinguisher."
+	name = "灭火器"
+	desc = "一个传统的红色灭火器."
 	icon = 'icons/obj/items/tank.dmi'
 	icon_state = "fire_extinguisher0"
 	worn_icon_list = list(
@@ -26,8 +26,8 @@
 	create_reagents(max_water, AMOUNT_VISIBLE, list(/datum/reagent/water = max_water))
 
 /obj/item/tool/extinguisher/mini
-	name = "mini fire extinguisher"
-	desc = "A light and compact fibreglass-framed model fire extinguisher."
+	name = "迷你灭火器"
+	desc = "一个轻便紧凑的玻璃纤维框架灭火器."
 	icon_state = "miniFE0"
 	worn_icon_state = "miniFE"
 	hitsound = null	//it is much lighter, after all.
@@ -44,7 +44,7 @@
 /obj/item/tool/extinguisher/attack_self(mob/user as mob)
 	safety = !safety
 	icon_state = "[sprite_name][!safety]"
-	balloon_alert(user, "Safety [safety ? "on" : "off"]")
+	balloon_alert(user, "保险[safety ? "on" : "off"]")
 
 /obj/item/tool/extinguisher/attack(mob/M, mob/user)
 	if(user.a_intent == INTENT_HELP && !safety) //If we're on help intent and going to spray people, don't bash them.
@@ -58,7 +58,7 @@
 	if( istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(src,target) <= 1)
 		var/obj/o = target
 		o.reagents.trans_to(src, 50)
-		balloon_alert(user, "Refilled")
+		balloon_alert(user, "已重新填充")
 		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		return
 

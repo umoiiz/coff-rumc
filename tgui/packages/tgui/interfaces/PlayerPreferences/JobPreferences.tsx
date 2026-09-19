@@ -11,6 +11,38 @@ import {
 
 import { useBackend } from '../../backend';
 
+// Job titles are also used as server-side preference keys. The localization
+// pass translates those keys in DM, while the UI lists keep their stable
+// English labels for compatibility with older servers.
+const JOB_KEY_ALIASES: Record<string, string[]> = {
+  Captain: ['Captain', '舰长'],
+  'Field Commander': ['Field Commander', '战地指挥官'],
+  'Staff Officer': ['Staff Officer', '参谋官'],
+  'Pilot Officer': ['Pilot Officer', '飞行员'],
+  'Transport Officer': ['Transport Officer', '运输官'],
+  Synthetic: ['Synthetic', '合成人'],
+  AI: ['AI', '人工智能'],
+  'Mech Pilot': ['Mech Pilot', '机甲驾驶员'],
+  'Ship Technician': ['Ship Technician', '舰船技术员'],
+  'Requisitions Officer': ['Requisitions Officer', '征调官'],
+  'Chief Medical Officer': ['Chief Medical Officer', '首席医疗官'],
+  'Medical Doctor': ['Medical Doctor', '医生'],
+  'Field Researcher': ['Field Researcher', '战地研究员'],
+  'Assault Crewman': ['Assault Crewman', '突击队员'],
+  'Transport Crewman': ['Transport Crewman', '运输船员'],
+  'Squad Marine': ['Squad Marine', '小队陆战队员'],
+  'Squad Robot': ['Squad Robot', '小队机器人'],
+  'Squad Engineer': ['Squad Engineer', '小队工程师'],
+  'Squad Corpsman': ['Squad Corpsman', '小队医护兵'],
+  'Squad Smartgunner': ['Squad Smartgunner', '小队智能枪手'],
+  'Squad Leader': ['Squad Leader', '小队队长'],
+  'Corporate Liaison': ['Corporate Liaison', '企业联络员'],
+  Survivor: ['Survivor', '幸存者'],
+};
+
+const resolveJobKey = (jobs: PreferencesJobsList | undefined, label: string) =>
+  (JOB_KEY_ALIASES[label] || [label]).find((key) => jobs?.[key]) || label;
+
 export const JobPreferences = (props) => {
   const { act, data } = useBackend<JobPreferencesData>();
   const {
@@ -69,10 +101,10 @@ export const JobPreferences = (props) => {
 
   return (
     <Section
-      title="Job Preferences"
+      title="职业偏好"
       buttons={
         <Button color="bad" icon="power-off" onClick={() => act('jobreset')}>
-          Reset everything!
+          全部重置!
         </Button>
       }
     >
@@ -107,7 +139,7 @@ export const JobPreferences = (props) => {
           <JobList name="Marine Jobs" jobs={marineJobs} />
         </Stack.Item>
         <Stack.Item grow>
-          <Section title="Other settings">
+          <Section title="其他设置">
             <Flex direction="column" height="100%">
               <Flex.Item>
                 <h4>If failed to qualify for job</h4>
@@ -175,8 +207,15 @@ const JobPreference = (props) => {
   const { act, data } = useBackend<JobPreferenceData>();
   const { jobs, job_preferences } = data;
   const { job, setShownDescription } = props;
-  const jobData = jobs[job];
-  const preference = job_preferences[job];
+  const jobKey = resolveJobKey(jobs, job);
+  const jobData = jobs?.[jobKey];
+  const preference = job_preferences?.[jobKey] || 0;
+
+  // A job can disappear from joinable_occupations between static and dynamic
+  // data snapshots. Do not dereference an absent record in that short window.
+  if (!jobData) {
+    return null;
+  }
 
   if (jobData.banned) {
     return (
@@ -187,7 +226,7 @@ const JobPreference = (props) => {
             icon="ban"
             color="bad"
             content={'Banned from Role'}
-            onClick={() => act('bancheck', { role: job })}
+            onClick={() => act('bancheck', { role: jobKey })}
           />
         </Box>
       </LabeledList.Item>
@@ -216,25 +255,25 @@ const JobPreference = (props) => {
           inline
           content={'High'}
           checked={preference === 3}
-          onClick={() => act('jobselect', { job, level: 3 })}
+          onClick={() => act('jobselect', { job: jobKey, level: 3 })}
         />
         <Button.Checkbox
           inline
           content={'Medium'}
           checked={preference === 2}
-          onClick={() => act('jobselect', { job, level: 2 })}
+          onClick={() => act('jobselect', { job: jobKey, level: 2 })}
         />
         <Button.Checkbox
           inline
           content={'Low'}
           checked={preference === 1}
-          onClick={() => act('jobselect', { job, level: 1 })}
+          onClick={() => act('jobselect', { job: jobKey, level: 1 })}
         />
         <Button.Checkbox
           inline
           content={'Never'}
           checked={!preference}
-          onClick={() => act('jobselect', { job, level: 0 })}
+          onClick={() => act('jobselect', { job: jobKey, level: 0 })}
         />
         {jobData.description && (
           <Button

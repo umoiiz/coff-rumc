@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   Box,
   Button,
@@ -61,6 +62,15 @@ export const Vending = (props) => {
     tabs.length ? tabs[0] : null,
   );
 
+  // A vending interface can be reused with a different tab list while its
+  // local state is still alive. Drop the old category before rendering so
+  // child lists cannot keep records from the previous vendor/category set.
+  useEffect(() => {
+    if (!selectedTab || !tabs.includes(selectedTab)) {
+      setSelectedTab(tabs.length ? tabs[0] : null);
+    }
+  }, [selectedTab, setSelectedTab, tabs]);
+
   return (
     <Window
       title={vendor_name || 'Vending Machine'}
@@ -71,7 +81,7 @@ export const Vending = (props) => {
       {showDesc ? (
         <Modal width="400px">
           <Box>{showDesc}</Box>
-          <Button content="Dismiss" onClick={() => setShowDesc(null)} />
+          <Button content="解散" onClick={() => setShowDesc(null)} />
         </Modal>
       ) : (
         currently_vending && (
@@ -82,7 +92,7 @@ export const Vending = (props) => {
       )}
       <Window.Content scrollable>
         <Section
-          title="Select an item"
+          title="选择物品"
           buttons={
             <>
               <Button
@@ -90,12 +100,12 @@ export const Vending = (props) => {
                 selected={showEmpty}
                 onClick={() => setShowEmpty(!showEmpty)}
               >
-                Show sold-out items
+                显示售罄物品
               </Button>
               <Button
                 icon="truck-loading"
                 color="good"
-                tooltip="Stock all loose items in the outlet back into the vending machine"
+                tooltip="将售货点内所有散落物品存回自动售货机"
                 onClick={() => act('vacuum')}
               />
             </>
@@ -127,9 +137,11 @@ export const Vending = (props) => {
               <Divider />
             </Section>
           )}
-          {!!(coin_records.length > 0) && <Premium />}
-          {hidden_records.length > 0 && !!extended && <Hacked />}
-          <Products />
+          {!!(coin_records.length > 0) && <Premium selectedTab={selectedTab} />}
+          {hidden_records.length > 0 && !!extended && (
+            <Hacked selectedTab={selectedTab} />
+          )}
+          <Products selectedTab={selectedTab} />
         </Section>
       </Window.Content>
     </Window>
@@ -148,13 +160,13 @@ const Buying = (props: BuyingModalProps) => {
   return (
     <Section title={'You have selected ' + vending.product_name}>
       <Box>
-        Please swipe your ID to pay for the article.
+        请刷您的ID以支付该物品.
         <Divider />
         <Button onClick={() => act('swipe')} icon="id-card" ml="6px">
-          Swipe
+          刷卡
         </Button>
         <Button onClick={() => act('cancel_buying')} icon="times">
-          Cancel
+          取消
         </Button>
       </Box>
     </Section>
@@ -211,7 +223,7 @@ const ProductEntry = (props: VendingProductEntryProps) => {
             disabled={!stock}
           >
             <Box color={product_color} bold>
-              Vend
+              售出
             </Box>
           </Button>
         </>
@@ -226,12 +238,8 @@ const ProductEntry = (props: VendingProductEntryProps) => {
 const Products = (props) => {
   const { data } = useBackend<VendingData>();
 
-  const { displayed_records, stock, tabs } = data;
-
-  const [selectedTab, setSelectedTab] = useLocalState(
-    'selectedTab',
-    tabs.length ? tabs[0] : null,
-  );
+  const { displayed_records, stock } = data;
+  const { selectedTab } = props;
 
   const [showEmpty, setShowEmpty] = useLocalState('showEmpty', false);
 
@@ -239,7 +247,7 @@ const Products = (props) => {
     <Section>
       <LabeledList>
         {displayed_records.length === 0 ? (
-          <Box color="red">No product loaded!</Box>
+          <Box color="red">未装载产品!</Box>
         ) : (
           displayed_records
             .filter((record) => !record.tab || record.tab === selectedTab)
@@ -266,12 +274,8 @@ const Products = (props) => {
 const Hacked = (props) => {
   const { act, data } = useBackend<VendingData>();
 
-  const { hidden_records, stock, tabs } = data;
-
-  const [selectedTab, setSelectedTab] = useLocalState(
-    'selectedTab',
-    tabs.length ? tabs[0] : null,
-  );
+  const { hidden_records, stock } = data;
+  const { selectedTab } = props;
 
   return (
     <Section title="$*FD!!F">
@@ -298,12 +302,8 @@ const Hacked = (props) => {
 const Premium = (props) => {
   const { act, data } = useBackend<VendingData>();
 
-  const { coin_records, stock, coin, tabs } = data;
-
-  const [selectedTab, setSelectedTab] = useLocalState(
-    'selectedTab',
-    tabs.length ? tabs[0] : null,
-  );
+  const { coin_records, stock, coin } = data;
+  const { selectedTab } = props;
 
   return (
     <Section
@@ -311,7 +311,7 @@ const Premium = (props) => {
       buttons={
         coin && (
           <Button icon="donate" onClick={() => act('remove_coin')}>
-            Remove
+            移除
           </Button>
         )
       }

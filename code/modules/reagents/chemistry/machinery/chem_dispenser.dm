@@ -1,6 +1,6 @@
 /obj/machinery/chem_dispenser
 	name = "chem dispenser"
-	desc = "Creates and dispenses chemicals."
+	desc = "制造并分配化学物质."
 	density = TRUE
 	anchored = TRUE
 	icon = 'icons/obj/machines/chemical_machines.dmi'
@@ -176,7 +176,7 @@
 		if(user.skills.getRating("medical") < SKILL_MEDICAL_NOVICE)
 			if(user.do_actions)
 				return
-			to_chat(user, span_notice("You start fiddling with \the [src]..."))
+			to_chat(user, span_notice("你开始摆弄\the [src]..."))
 			if(!do_after(user, SKILL_TASK_EASY, IGNORE_HELD_ITEM, src, BUSY_ICON_UNSKILLED))
 				return
 
@@ -228,7 +228,7 @@
 			if(!is_operational() || QDELETED(cell))
 				return
 			if(clearing_recipe)
-				if(tgui_alert(usr, "Clear recipe [params["recipe"]]?", null, list("Yes","No")) == "Yes")
+				if(tgui_alert(usr, "清除配方[params["recipe"]]?", null, list("Yes","No")) == "Yes")
 					usr.client.prefs.chem_macros.Remove(params["recipe"])
 					usr.client.prefs.save_preferences()
 				return TRUE
@@ -239,7 +239,7 @@
 				var/reagent = GLOB.name2reagent[key]
 				var/dispense_amount = chemicals_to_dispense[key]
 				if(!dispensable_reagents.Find(reagent))
-					to_chat(usr, span_danger("[src] cannot find <b>[key]</b>!"))
+					to_chat(usr, span_danger("[src]找不到<b>[key]</b>!"))
 					return
 				if(!recording_recipe)
 					if(!beaker)
@@ -262,7 +262,7 @@
 			if(clearing_recipe)
 				clearing_recipe = FALSE
 				return TRUE
-			switch(tgui_alert(usr, "Clear all recipes?", null, list("Yes","No", "Only one")))
+			switch(tgui_alert(usr, "清除所有配方?", null, list("Yes","No", "Only one")))
 				if("Only one")
 					clearing_recipe = TRUE
 				if("Yes")
@@ -279,16 +279,16 @@
 			if(!is_operational())
 				return
 			var/name = stripped_input(usr, "Name", "What do you want to name this recipe?", "Recipe", MAX_NAME_LEN)
-			if(usr.client.prefs.chem_macros[name] && tgui_alert(usr, "\"[name]\" already exists, do you want to overwrite it?", null, list("Yes", "No")) == "No")
+			if(usr.client.prefs.chem_macros[name] && tgui_alert(usr, "\"[name]\"已存在,是否要覆盖它?", null, list("Yes", "No")) == "No")
 				return
 			else if(length(usr.client.prefs.chem_macros) >= 10)
-				to_chat(usr, span_danger("You can remember <b>up to 10</b> recipes!"))
+				to_chat(usr, span_danger("你能记住<b>最多10</b>个配方!"))
 				return
 			if(name && recording_recipe)
 				for(var/reagent in recording_recipe)
 					var/reagent_id = GLOB.name2reagent[reagent]
 					if(!dispensable_reagents.Find(reagent_id))
-						balloon_alert_to_viewers("[src] buzzes")
+						balloon_alert_to_viewers("[src]嗡嗡作响")
 						playsound(src, 'sound/machines/buzz-two.ogg', 50, TRUE)
 						return
 				usr.client.prefs.chem_macros[name] = recording_recipe
@@ -320,12 +320,12 @@
 
 	if(isreagentcontainer(I))
 		if(beaker)
-			balloon_alert(user, "Something already loaded")
+			balloon_alert(user, "已经装入了东西")
 			return
 
 		for(var/datum/reagent/X in I.reagents.reagent_list)
 			if(X.medbayblacklist)
-				balloon_alert(user, "Harmful substance in beaker")
+				balloon_alert(user, "烧杯中有有害物质")
 				return
 
 		if(I.is_open_container())
@@ -333,29 +333,29 @@
 				return
 
 			beaker = I
-			balloon_alert(user, "Sets [I] on the machine")
+			balloon_alert(user, "将[I]放置在机器上")
 			update_icon()
 			ui_interact(user)
 			return
 
 		if(istype(I, /obj/item/reagent_containers/glass))
-			balloon_alert(user, "Take the lid off")
+			balloon_alert(user, "取下盖子")
 			return
 
-		balloon_alert(user, "Can't use this")
+		balloon_alert(user, "无法使用")
 		return
 
 	if(istype(I, /obj/item/cell))
 		if(!CHECK_BITFIELD(machine_stat, PANEL_OPEN))
-			balloon_alert(user, "Battery panel is closed")
+			balloon_alert(user, "电池面板已关闭")
 			return
 		if(cell)
-			balloon_alert(user, "Already has a power cell")
+			balloon_alert(user, "已有电池")
 			return
 		if(!user.transferItemToLoc(I, src))
 			return
 		cell = I
-		balloon_alert(user, "Inserts")
+		balloon_alert(user, "插入")
 		overlays.Cut()
 		start_processing()
 		update_icon()
@@ -364,7 +364,7 @@
 /obj/machinery/chem_dispenser/screwdriver_act(mob/living/user, obj/item/I)
 	TOGGLE_BITFIELD(machine_stat, PANEL_OPEN)
 	overlays.Cut()
-	balloon_alert_to_viewers("[CHECK_BITFIELD(machine_stat, PANEL_OPEN) ? "opens" : "closes"] the battery compartment")
+	balloon_alert_to_viewers("[CHECK_BITFIELD(machine_stat, PANEL_OPEN) ? "opens" : "closes"]电池仓")
 	update_icon()
 	return TRUE
 
@@ -373,7 +373,7 @@
 		return FALSE
 	cell.forceMove(loc)
 	cell = null
-	balloon_alert_to_viewers("pries out battery.")
+	balloon_alert_to_viewers("撬出电池.")
 	stop_processing()
 	overlays.Cut()
 	update_icon()
@@ -403,7 +403,7 @@
 /obj/machinery/chem_dispenser/soda
 	icon_state = "soda_dispenser"
 	name = "soda fountain"
-	desc = "A drink fabricating machine, capable of producing many sugary drinks with just one touch."
+	desc = "一台饮料制造机,只需轻轻一触即可生产多种含糖饮料."
 	req_one_access = list()
 	dispensable_reagents = list(
 		/datum/reagent/consumable/coffee,
@@ -465,7 +465,7 @@
 	icon_state = "booze_dispenser"
 	name = "booze dispenser"
 	req_one_access = list()
-	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one."
+	desc = "一项技术奇迹,据说能在你点单的瞬间混合出你想要的饮品."
 	dispensable_reagents = list(
 		/datum/reagent/consumable/ethanol/absinthe,
 		/datum/reagent/consumable/ethanol/ale,

@@ -150,7 +150,7 @@ export const IntelComputercontent = (props) => {
       <Section minHeight="525px">
         <Box width="100%" textAlign="center">
           <Button
-            content="EXECUTE F:/DATA_RETRIEVAL.exe"
+            content="执行 F:/DATA_RETRIEVAL.exe"
             color="transparent"
             onClick={() => act('start_progressing')}
           />
@@ -161,7 +161,7 @@ export const IntelComputercontent = (props) => {
 
   if (data.printing && data.progress <= 50) {
     return (
-      <Section title="EXECUTING F:/DATA_RETRIEVAL.exe">
+      <Section title="正在执行 F:/DATA_RETRIEVAL.exe">
         <DownloadProgress current={data.progress * 2} />
         <Uploadprogress current={0} />
       </Section>
@@ -170,7 +170,7 @@ export const IntelComputercontent = (props) => {
 
   if (data.printing && data.progress >= 50) {
     return (
-      <Section title="EXECUTING F:/DATA_RETRIEVAL.exe">
+      <Section title="正在执行 F:/DATA_RETRIEVAL.exe">
         <DownloadProgress current={100} />
         <Uploadprogress current={(data.progress - 50) * 2} />
       </Section>
@@ -179,7 +179,7 @@ export const IntelComputercontent = (props) => {
 
   if (data.printed) {
     return (
-      <Section title="F:/DATA_RETRIEVAL.exe returns SUCCESS">
+      <Section title="F:/DATA_RETRIEVAL.exe 返回成功">
         <DownloadProgress current={100} />
         <Uploadprogress current={100} />
       </Section>

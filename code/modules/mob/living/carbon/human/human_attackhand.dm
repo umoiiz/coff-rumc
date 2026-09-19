@@ -9,7 +9,7 @@
 	var/mob/living/carbon/human/human_user = user
 
 	if(user != src && !check_shields(COMBAT_TOUCH_ATTACK, human_user.melee_damage, MELEE))
-		visible_message(span_danger("[user] attempted to touch [src]!"), null, null, 5)
+		visible_message(span_danger("[user]试图触碰[src]!"), null, null, 5)
 		return FALSE
 
 	human_user.changeNext_move(7)
@@ -18,11 +18,11 @@
 			if(on_fire && human_user != src)
 				fire_stacks = max(fire_stacks - 1, 0)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-				human_user.visible_message(span_danger("[human_user] tries to put out the fire on [src]!"), \
-					span_warning("You try to put out the fire on [src]!"), null, 5)
+				human_user.visible_message(span_danger("[human_user]试图扑灭[src]身上的火!"), \
+					span_warning("你试图扑灭[src]身上的火!"), null, 5)
 				if(fire_stacks <= 0)
-					human_user.visible_message(span_danger("[human_user] has successfully extinguished the fire on [src]!"), \
-						span_notice("You extinguished the fire on [src]."), null, 5)
+					human_user.visible_message(span_danger("[human_user]成功扑灭了[src]身上的火!"), \
+						span_notice("你扑灭了[src]身上的火."), null, 5)
 					ExtinguishMob()
 				return TRUE
 
@@ -33,12 +33,12 @@
 			var/datum/status_effect/stacking/melting_fire/burning = has_status_effect(STATUS_EFFECT_MELTING_FIRE)
 			if(burning)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-				human_user.visible_message(span_danger("[human_user] tries to put out the fire on [src]!"), \
-				span_warning("You try to put out the fire on [src]!"), null, 5)
+				human_user.visible_message(span_danger("[human_user]试图扑灭[src]身上的火!"), \
+				span_warning("你试图扑灭[src]身上的火!"), null, 5)
 				burning.add_stacks(-2)
 				if(QDELETED(burning))
-					human_user.visible_message(span_danger("[human_user] has successfully extinguished the fire on [src]!"), \
-					span_notice("You extinguished the fire on [src]."), null, 5)
+					human_user.visible_message(span_danger("[human_user]成功扑灭了[src]身上的火!"), \
+					span_notice("你扑灭了[src]身上的火."), null, 5)
 				return TRUE
 
 			if(health >= get_crit_threshold())
@@ -46,26 +46,26 @@
 				return TRUE
 
 			if(HAS_TRAIT(src, TRAIT_UNDEFIBBABLE))
-				to_chat(human_user, span_boldnotice("Can't help this one. Body has gone cold."))
+				to_chat(human_user, span_boldnotice("这个救不了了. 身体已经凉了."))
 				return FALSE
 
 			if(species?.species_flags & ROBOTIC_LIMBS)
-				to_chat(human_user, span_boldnotice("You can't help this one, [p_they()] [p_have()] no lungs!"))
+				to_chat(human_user, span_boldnotice("你救不了这个, [p_they()] [p_have()]没有肺!"))
 				return FALSE
 
 			if((head && (head.inventory_flags & COVERMOUTH)) || (wear_mask && (wear_mask.inventory_flags & COVERMOUTH)))
-				to_chat(human_user, span_boldnotice("Remove [p_their()] mask!"))
+				to_chat(human_user, span_boldnotice("摘下[p_their()]的面具!"))
 				return FALSE
 
 			if((human_user.head && (human_user.head.inventory_flags & COVERMOUTH)) || (human_user.wear_mask && (human_user.wear_mask.inventory_flags & COVERMOUTH)))
-				to_chat(human_user, span_boldnotice("Remove your mask!"))
+				to_chat(human_user, span_boldnotice("摘下你的面具!"))
 				return FALSE
 
 			//CPR
 			if(human_user.do_actions)
 				return TRUE
 
-			human_user.visible_message(span_danger("[human_user] is trying perform CPR on [src]!"), null, null, 4)
+			human_user.visible_message(span_danger("[human_user]正在尝试对[src]进行心肺复苏!"), null, null, 4)
 
 			if(!do_after(human_user, 4 SECONDS, NONE, src, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL))
 				return TRUE
@@ -74,17 +74,17 @@
 				var/suff = min(get_oxy_loss(), 5) //Pre-merge level, less healing, more prevention of dieing.
 				adjust_oxy_loss(-suff)
 				update_health()
-				visible_message(span_warning("[human_user] performs CPR on [src]!"),
-					span_boldnotice("You feel a breath of fresh air enter your lungs. It feels good."),
+				visible_message(span_warning("[human_user]对[src]进行了心肺复苏!"),
+					span_boldnotice("你感到一股新鲜空气进入肺部. 感觉很好."),
 					vision_distance = 3)
-				to_chat(human_user, span_warning("Repeat at least every 7 seconds."))
+				to_chat(human_user, span_warning("至少每7秒重复一次."))
 			else if(!HAS_TRAIT(src, TRAIT_UNDEFIBBABLE) && TIMER_COOLDOWN_FINISHED(src, COOLDOWN_CPR))
 				TIMER_COOLDOWN_START(src, COOLDOWN_CPR, 7 SECONDS)
 				dead_ticks -= 5
-				visible_message(span_warning("[human_user] performs CPR on [src]!"), vision_distance = 3)
-				to_chat(human_user, span_warning("The patient gains a little more time. Repeat every 7 seconds."))
+				visible_message(span_warning("[human_user]对[src]进行了心肺复苏!"), vision_distance = 3)
+				to_chat(human_user, span_warning("病人多争取了一点时间. 每7秒重复一次."))
 			else
-				to_chat(human_user, span_warning("You fail to aid [src]."))
+				to_chat(human_user, span_warning("你未能救助[src]."))
 
 			return TRUE
 
@@ -113,7 +113,7 @@
 			if(!human_user.melee_damage || !target_zone)
 				human_user.do_attack_animation(src)
 				playsound(loc, attack.miss_sound, 25, TRUE)
-				visible_message(span_danger("[human_user] [attack_verb] at [src], but misses!"), null, null, 5)
+				visible_message(span_danger("[human_user] [attack_verb]在[src], 但未命中!"), null, null, 5)
 				log_combat(human_user, src, "[attack_verb]", "(missed)")
 				if(!human_user.mind?.bypass_ff && !mind?.bypass_ff && human_user.faction == faction)
 					var/turf/T = get_turf(src)
@@ -132,7 +132,7 @@
 			visible_message(span_danger("[human_user] [attack_verb] [src]!"), null, null, 5)
 			var/list/hit_report = list()
 			if(damage >= 4 && prob(25))
-				visible_message(span_danger("[human_user] has weakened [src]!"), null, null, 5)
+				visible_message(span_danger("[human_user]削弱了[src]!"), null, null, 5)
 				apply_effect(modify_by_armor(6 SECONDS, MELEE, def_zone = target_zone), EFFECT_PARALYZE)
 				hit_report += "(KO)"
 			damage += attack.damage
@@ -168,7 +168,7 @@
 						chance = !hand ? 40 : 20
 
 					if(prob(chance))
-						visible_message(span_danger("[src]'s [W.name] goes off during struggle!"), null, null, 5)
+						visible_message(span_danger("[src]的[W.name]在挣扎中走火!"), null, null, 5)
 						log_combat(human_user, src, "disarmed", "making their [W.name] go off")
 						var/list/turfs = list()
 						for(var/turf/T in view())
@@ -181,25 +181,25 @@
 			if(randn <= 25)
 				apply_effect(modify_by_armor(6 SECONDS, MELEE, def_zone = target_zone), EFFECT_PARALYZE)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-				visible_message(span_danger("[human_user] pushes [src] over!"), null, null, 5)
+				visible_message(span_danger("[human_user]将[src]推倒!"), null, null, 5)
 				log_combat(human_user, src, "pushed")
 				return
 
 			if(randn <= 60)
 				//BubbleWrap: Disarming breaks a pull
 				if(pulling)
-					visible_message(span_danger("[human_user] breaks [src]'s grip on [pulling]!"), null, null, 5)
+					visible_message(span_danger("[human_user]打破了[src]对[pulling]的抓握!"), null, null, 5)
 					stop_pulling()
 				else
 					drop_held_item()
-					visible_message(span_danger("[human_user] disarms [src]!"), null, null, 5)
+					visible_message(span_danger("[human_user]缴了[src]的械!"), null, null, 5)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 				log_combat(user, src, "disarmed")
 				return
 
 
 			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, 7)
-			visible_message(span_danger("[human_user] attempts to disarm [src]!"), null, null, 5)
+			visible_message(span_danger("[human_user]试图缴[src]的械!"), null, null, 5)
 			log_combat(human_user, src, "missed a disarm")
 
 /mob/living/carbon/human/proc/afterattack(atom/target, mob/living/user, inrange, params)
@@ -210,8 +210,8 @@
 	if(src == M)
 		if(holo_card_color) //if we have a triage holocard printed on us, we remove it.
 			holo_card_color = null
-			visible_message(span_notice("[src] removes the holo card on [p_them()]self."),
-				span_notice("You remove the holo card on yourself."), null, 3)
+			visible_message(span_notice("[src]取下了[p_them()]自己的全息卡."),
+				span_notice("你取下了自己的全息卡."), null, 3)
 			return
 
 
@@ -223,8 +223,8 @@
 
 /mob/living/carbon/human/proc/check_self_for_injuries()
 	var/list/final_msg = list()
-	balloon_alert_to_viewers("Examines [p_them()]self.", "You examine yourself")
-	final_msg += span_notice("<b>You check yourself for injuries.</b>")
+	balloon_alert_to_viewers("检查[p_them()]自己.", "你检查自己")
+	final_msg += span_notice("<b>你检查自己是否受伤.</b>")
 
 	for(var/datum/limb/org in limbs)
 		var/status = ""
@@ -296,37 +296,37 @@
 
 	switch(staminaloss)
 		if(1 to 30)
-			final_msg += span_info("You feel fatigued.")
+			final_msg += span_info("你感到疲惫.")
 		if(30 to 60)
-			final_msg += span_info("You feel pretty tired.")
+			final_msg += span_info("你感到相当疲倦.")
 		if(60 to 90)
-			final_msg += span_info("You're quite worn out.")
+			final_msg += span_info("你相当疲惫.")
 		if(90 to INFINITY)
-			final_msg += span_info("You're completely exhausted.")
+			final_msg += span_info("你完全精疲力竭.")
 
 	switch(oxyloss)
 		if(1 to 15)
-			final_msg += span_info("You feel slightly out of breath.")
+			final_msg += span_info("你感到有点喘不过气.")
 		if(15 to 30)
-			final_msg += span_info("You are having trouble breathing.")
+			final_msg += span_info("你呼吸困难.")
 		if(30 to 49)
-			final_msg += span_info("You are getting faint from lack of breath.")
+			final_msg += span_info("你因缺氧而开始头晕.")
 
 	switch(toxloss)
 		if(1 to 5)
-			final_msg += span_info("Your body stings slightly.")
+			final_msg += span_info("你的身体微微刺痛.")
 		if(6 to 10)
-			final_msg += span_info("Your whole body hurts a little.")
+			final_msg += span_info("你全身有点疼.")
 		if(11 to 15)
-			final_msg += span_info("Your whole body hurts.")
+			final_msg += span_info("你全身都疼.")
 		if(15 to 25.99)
-			final_msg += span_info("Your whole body hurts badly.")
+			final_msg += span_info("你全身疼得厉害.")
 		if(26 to INFINITY)
-			final_msg += span_info("Your body aches all over, it's driving you mad!")
+			final_msg += span_info("你全身疼痛, 快把你逼疯了!")
 
 	switch(germ_level)
 		if(0 to 19)
-			final_msg += span_info("You're [pick("free of grime", "pristine", "freshly laundered")].")
+			final_msg += span_info("你[pick("free of grime", "pristine", "freshly laundered")].")
 		if(20 to 79)
 			final_msg += span_info(pick("You've got some grime on you.", "You're a bit dirty."))
 		if(80 to 150)

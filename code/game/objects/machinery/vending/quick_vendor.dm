@@ -83,8 +83,8 @@ GLOBAL_LIST_INIT(quick_loadouts, init_quick_loadouts())
 
 /obj/machinery/quick_vendor
 	name = "\improper Kwik-E-Quip vendor"
-	desc = "An advanced vendor to instantly arm soldiers with specific sets of equipment, allowing for immediate combat deployment. \
-	Mutually exclusive with the GHMME."
+	desc = "一台高级售货机,可立即为士兵配备特定装备套装,以便立即投入战斗.\
+	与GHMME互斥."
 	icon = 'icons/obj/machines/vending.dmi'
 	icon_state = "specialist"
 	density = TRUE
@@ -205,28 +205,28 @@ GLOBAL_LIST_INIT(quick_loadouts, init_quick_loadouts())
 		if("selectLoadout")
 			var/datum/outfit/quick/selected_loadout = global_list_to_use[text2path(params["loadout_outfit"])]
 			if(!selected_loadout)
-				to_chat(ui.user, span_warning("Error when loading this loadout"))
+				to_chat(ui.user, span_warning("加载此装备配置时出错"))
 				CRASH("Fail to load loadouts")
 			if(selected_loadout.quantity == 0)
-				to_chat(usr, span_warning("This loadout has been depleted, you'll need to pick another."))
+				to_chat(usr, span_warning("此装备配置已耗尽,你需要选择另一个."))
 				return
 			var/obj/item/card/id/user_id = usr.get_idcard() //ui.user better?
 			var/user_job = user_id.rank
 			user_job = replacetext(user_job, "Fallen ", "") //So that jobs in valhalla can vend a loadout too
 			if(selected_loadout.jobtype != user_job)
-				to_chat(usr, span_warning("You are not in the right job for this loadout!"))
+				to_chat(usr, span_warning("你的职业不适合此装备配置!"))
 				return
 			if(user_id.id_flags & USED_GHMME) //Same check here, in case they opened the UI before vending a loadout somehow
-				to_chat(ui.user, span_warning("Access denied, continue using the GHHME."))
+				to_chat(ui.user, span_warning("访问被拒绝,请继续使用GHHME."))
 				return FALSE
 			if(user_id.id_flags & CAN_BUY_LOADOUT)
 				for(var/points in user_id.marine_points)
 					if(user_id.marine_points[points] != GLOB.default_marine_points[points])
-						to_chat(ui.user, span_warning("Access denied, continue using the GHHME."))
+						to_chat(ui.user, span_warning("访问被拒绝,请继续使用GHHME."))
 						return FALSE
 				for(var/option in user_id.marine_buy_choices)
 					if(user_id.marine_buy_choices[option] != GLOB.marine_selector_cats[option])
-						to_chat(ui.user, span_warning("Access denied, continue using the GHHME."))
+						to_chat(ui.user, span_warning("访问被拒绝,请继续使用GHHME."))
 						return FALSE
 				user_id.id_flags &= ~CAN_BUY_LOADOUT
 				selected_loadout.quantity --
@@ -242,7 +242,7 @@ GLOBAL_LIST_INIT(quick_loadouts, init_quick_loadouts())
 				for(var/option in user_id.marine_buy_choices)
 					user_id.marine_buy_choices[option] = 0
 			else
-				to_chat(usr, span_warning("You can't buy things from this category anymore."))
+				to_chat(usr, span_warning("你不能再从这个类别购买物品了."))
 
 /obj/machinery/quick_vendor/som
 	faction = FACTION_SOM

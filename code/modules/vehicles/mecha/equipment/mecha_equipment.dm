@@ -3,7 +3,7 @@
  * All mech equippables are currently childs of this
  */
 /obj/item/mecha_parts/mecha_equipment
-	name = "mecha equipment"
+	name = "机甲装备"
 	icon = 'icons/mecha/mecha_equipment.dmi'
 	icon_state = "mecha_equip"
 	force = 5
@@ -41,9 +41,9 @@
 		if(!user.temporarilyRemoveItemFromInventory(src))
 			return FALSE
 		attach(M, attach_right)
-		user.visible_message(span_notice("[user] attaches [src] to [M]."), span_notice("You attach [src] to [M]."))
+		user.visible_message(span_notice("[user]将[src]安装到[M]上."), span_notice("你将[src]安装到[M]上."))
 		return TRUE
-	to_chat(user, span_warning("You are unable to attach [src] to [M]!"))
+	to_chat(user, span_warning("你无法将[src]安装到[M]上!"))
 	return FALSE
 
 /obj/item/mecha_parts/mecha_equipment/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -57,11 +57,11 @@
 			return TRUE
 		if("repair")
 			ui.close() // allow watching for baddies and the ingame effects
-			chassis.balloon_alert(usr, "starting repair")
+			chassis.balloon_alert(usr, "开始维修")
 			while(do_after(usr, 1 SECONDS, NONE, chassis) && obj_integrity < max_integrity)
 				repair_damage(30)
 			if(obj_integrity == max_integrity)
-				balloon_alert(usr, "repair complete")
+				balloon_alert(usr, "维修完成")
 			return FALSE
 
 /**
@@ -82,10 +82,10 @@
 	if(chassis.is_currently_ejecting)
 		return FALSE
 	if(chassis.equipment_disabled)
-		to_chat(chassis.occupants, span_warning("Error -- Equipment control unit is unresponsive."))
+		to_chat(chassis.occupants, span_warning("错误 -- 设备控制单元无响应."))
 		return FALSE
 	if(obj_integrity <= 1)
-		to_chat(chassis.occupants, span_warning("Error -- Equipment critically damaged."))
+		to_chat(chassis.occupants, span_warning("错误 -- 设备严重损坏."))
 		return FALSE
 	if(!ignore_cooldown && TIMER_COOLDOWN_RUNNING(chassis, COOLDOWN_MECHA_EQUIPMENT(type)))
 		return FALSE

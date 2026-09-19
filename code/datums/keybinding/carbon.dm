@@ -6,7 +6,7 @@
 /datum/keybinding/carbon/hold_run_move_intent
 	hotkey_keys = list("Alt")
 	name = "hold_run_move_intent"
-	full_name = "Hold to Sprint/Stalk"
+	full_name = "按住冲刺/潜行"
 	description = "Hold down to sprint if human or stalk if xeno, release to return to previous mode."
 	keybind_signal = COMSIG_KB_CARBON_HOLDRUNMOVEINTENT_DOWN
 
@@ -27,7 +27,7 @@
 /datum/keybinding/carbon/toggle_throw_mode
 	hotkey_keys = list("R")
 	name = "toggle_throw_mode"
-	full_name = "Toggle throw mode"
+	full_name = "切换投掷模式"
 	description = "Toggle throwing the current item or not."
 	keybind_signal = COMSIG_KB_CARBON_TOGGLETHROWMODE_DOWN
 
@@ -44,7 +44,7 @@
 /datum/keybinding/carbon/toggle_rest
 	hotkey_keys = list("K")
 	name = "toggle_rest"
-	full_name = "Toggle resting"
+	full_name = "切换休息"
 	description = "Toggle whether you are resting or not."
 	keybind_signal = COMSIG_KB_CARBON_TOGGLEREST_DOWN
 
@@ -61,7 +61,7 @@
 /datum/keybinding/carbon/select_help_intent
 	hotkey_keys = list("1")
 	name = "select_help_intent"
-	full_name = "Select help intent"
+	full_name = "选择帮助意图"
 	description = ""
 	keybind_signal = COMSIG_KB_CARBON_SELECTHELPINTENT_DOWN
 
@@ -76,7 +76,7 @@
 /datum/keybinding/carbon/select_disarm_intent
 	hotkey_keys = list("2")
 	name = "select_disarm_intent"
-	full_name = "Select disarm intent"
+	full_name = "选择缴械意图"
 	description = ""
 	keybind_signal = COMSIG_KB_CARBON_SELECTDISARMINTENT_DOWN
 
@@ -91,7 +91,7 @@
 /datum/keybinding/carbon/select_grab_intent
 	hotkey_keys = list("3")
 	name = "select_grab_intent"
-	full_name = "Select grab intent"
+	full_name = "选择抓取意图"
 	description = ""
 	keybind_signal = COMSIG_KB_CARBON_SELECTGRABINTENT_DOWN
 
@@ -106,7 +106,7 @@
 /datum/keybinding/carbon/select_harm_intent
 	hotkey_keys = list("4")
 	name = "select_harm_intent"
-	full_name = "Select harm intent"
+	full_name = "选择伤害意图"
 	description = ""
 	keybind_signal = COMSIG_KB_CARBON_SELECTHARMINTENT_DOWN
 

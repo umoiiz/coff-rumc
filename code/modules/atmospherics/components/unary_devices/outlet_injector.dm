@@ -2,7 +2,7 @@
 	icon_state = "inje_map-2"
 
 	name = "air injector"
-	desc = "Has a valve and pump attached to it."
+	desc = "附有阀门和泵."
 
 	use_power = IDLE_POWER_USE
 	can_unwrench = FALSE
@@ -43,7 +43,7 @@
 /obj/machinery/atmospherics/components/unary/outlet_injector/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational())
-		to_chat(user, span_warning("You cannot unwrench [src], turn it off first!"))
+		to_chat(user, span_warning("你无法松开[src],先将其关闭!"))
 		return FALSE
 
 // mapping

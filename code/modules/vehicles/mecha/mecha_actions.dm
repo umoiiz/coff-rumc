@@ -40,7 +40,7 @@
 	else
 		action_icon_state = "mech_lights_off"
 	chassis.set_light_on(chassis.lights_on)
-	chassis.balloon_alert(owner, "toggled lights [chassis.lights_on ? "on" : "off"]")
+	chassis.balloon_alert(owner, "切换灯光 [chassis.lights_on ? "on" : "off"]")
 	playsound(chassis,'sound/mecha/brass_skewer.ogg', 40, TRUE)
 	chassis.log_message("Toggled lights [chassis.lights_on ? "on" : "off"].", LOG_MECHA)
 	update_button_icon()
@@ -74,7 +74,7 @@
 	if(!(user in occupants))
 		return
 	if(!(user in return_controllers_with_flag(VEHICLE_CONTROL_DRIVE)))
-		to_chat(user, span_warning("You're in the wrong seat to control movement."))
+		to_chat(user, span_warning("你坐错了座位,无法控制移动."))
 		return
 
 	toggle_strafe()
@@ -82,7 +82,7 @@
 /obj/vehicle/sealed/mecha/proc/toggle_strafe()
 	strafe = !strafe
 	for(var/occupant in occupants)
-		balloon_alert(occupant, "Strafing mode [strafe?"on":"off"].")
+		balloon_alert(occupant, "平移模式 [strafe?"on":"off"].")
 		var/datum/action/action = LAZYACCESSASSOC(occupant_actions, occupant, /datum/action/vehicle/sealed/mecha/strafe)
 		action?.update_button_icon()
 
@@ -96,22 +96,22 @@
 		return
 
 	if(length(chassis.occupants) == chassis.max_occupants)
-		chassis.balloon_alert(owner, "other seat occupied!")
+		chassis.balloon_alert(owner, "另一个座位被占用!")
 		return
 	var/list/drivers = chassis.return_drivers()
-	chassis.balloon_alert(owner, "moving to other seat...")
+	chassis.balloon_alert(owner, "正在移动到另一个座位...")
 	chassis.is_currently_ejecting = TRUE
 	if(!do_after(owner, chassis.exit_delay, target = chassis))
-		chassis.balloon_alert(owner, "interrupted!")
+		chassis.balloon_alert(owner, "被打断!")
 		chassis.is_currently_ejecting = FALSE
 		return
 	chassis.is_currently_ejecting = FALSE
 	if(owner in drivers)
-		chassis.balloon_alert(owner, "controlling gunner seat")
+		chassis.balloon_alert(owner, "正在控制炮手座位")
 		chassis.remove_control_flags(owner, VEHICLE_CONTROL_DRIVE|VEHICLE_CONTROL_SETTINGS)
 		chassis.add_control_flags(owner, VEHICLE_CONTROL_MELEE|VEHICLE_CONTROL_EQUIPMENT)
 	else
-		chassis.balloon_alert(owner, "controlling pilot seat")
+		chassis.balloon_alert(owner, "正在控制驾驶员座位")
 		chassis.remove_control_flags(owner, VEHICLE_CONTROL_MELEE|VEHICLE_CONTROL_EQUIPMENT)
 		chassis.add_control_flags(owner, VEHICLE_CONTROL_DRIVE|VEHICLE_CONTROL_SETTINGS)
 	chassis.update_appearance()
@@ -148,11 +148,11 @@
 		chassis.speed_mod = min(chassis.move_delay-1, round(chassis.move_delay * 0.5))
 		chassis.move_delay -= chassis.speed_mod
 		chassis.step_energy_drain = max(chassis.overload_step_energy_drain_min,chassis.step_energy_drain*chassis.leg_overload_coeff)
-		chassis.balloon_alert(owner,"leg actuators overloaded")
+		chassis.balloon_alert(owner,"腿部执行器过载")
 	else
 		chassis.move_delay += chassis.speed_mod
 		chassis.step_energy_drain = chassis.normal_step_energy_drain
-		chassis.balloon_alert(owner, "you disable the overload")
+		chassis.balloon_alert(owner, "你禁用了过载")
 	update_button_icon()
 
 /datum/action/vehicle/sealed/mecha/mech_smoke
@@ -181,7 +181,7 @@
 	chassis.zoom_mode = !chassis.zoom_mode
 	action_icon_state = "mech_zoom_[chassis.zoom_mode ? "on" : "off"]"
 	chassis.log_message("Toggled zoom mode.", LOG_MECHA)
-	to_chat(owner, "[icon2html(chassis, owner)]<font color='[chassis.zoom_mode?"blue":"red"]'>Zoom mode [chassis.zoom_mode?"en":"dis"]abled.</font>")
+	to_chat(owner, "[icon2html(chassis, owner)]<font color='[chassis.zoom_mode?"blue":"red"]'>缩放模式[chassis.zoom_mode?"en":"dis"]用.</font>")
 	if(chassis.zoom_mode)
 		owner.client.view_size.set_view_radius_to(4.5)
 		SEND_SOUND(owner, sound('sound/mecha/imag_enh.ogg', volume=50))

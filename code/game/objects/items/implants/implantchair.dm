@@ -1,6 +1,6 @@
 /obj/machinery/implantchair
 	name = "loyalty implanter"
-	desc = "Used to implant occupants with loyalty implants."
+	desc = "用于为对象植入忠诚植入体."
 	icon = 'icons/obj/machines/implantchair.dmi'
 	icon_state = "implantchair"
 	density = TRUE

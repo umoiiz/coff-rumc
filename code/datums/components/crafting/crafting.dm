@@ -224,7 +224,7 @@
 	if(recipe.crafting_flags & CRAFT_CHECK_DENSITY)
 		for(var/obj/object in dest_turf)
 			if(object.density && !(object.obj_flags & IGNORE_DENSITY) || object.obj_flags & BLOCKS_CONSTRUCTION)
-				crafter.balloon_alert(crafter, "something is in the way!")
+				crafter.balloon_alert(crafter, "有东西挡路!")
 				return FALSE
 
 	if(recipe.placement_checks & STACK_CHECK_CARDINALS)
@@ -245,7 +245,7 @@
 			building_time += recipe.time * ( recipe.skill_req - crafter_mob.skills.getRating(SKILL_CONSTRUCTION) ) * 0.5 // +50% time each skill point lacking.
 		if(recipe.skill_req && crafter_mob.skills.getRating(SKILL_CONSTRUCTION) > recipe.skill_req)
 			building_time -= clamp(recipe.time * ( crafter_mob.skills.getRating(SKILL_CONSTRUCTION) - recipe.skill_req ) * 0.40, 0 , 0.85 * building_time) // -40% time each extra skill point
-		crafter_mob.balloon_alert_to_viewers("building [recipe.name]")
+		crafter_mob.balloon_alert_to_viewers("正在建造 [recipe.name]")
 		if(!do_after(crafter_mob, building_time, NONE, crafter_mob, (building_time > recipe.time ? BUSY_ICON_UNSKILLED : BUSY_ICON_BUILD)))
 			return "."
 	else
@@ -516,10 +516,10 @@
 				else
 					if(!istype(result, /obj/effect/spawner))
 						result.forceMove(user.drop_location())
-				to_chat(user, span_notice("[crafting_recipe.name] crafted."))
+				to_chat(user, span_notice("[crafting_recipe.name]已制作."))
 				crafting_recipe.on_craft_completion(user, result)
 			else
-				to_chat(user, span_warning("Construction failed[result]"))
+				to_chat(user, span_warning("建造失败[result]"))
 			busy = FALSE
 		if("toggle_recipes")
 			display_craftable_only = !display_craftable_only

@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/armor/yautja/thrall
-	name = "alien armor"
-	desc = "Armor made from scraps of cloth and a strange alloy. It feels cold with an alien weight. It has been adapted to carry both human and alien melee weaponry."
+	name = "异形护甲"
+	desc = "由碎布和一种奇异合金制成的护甲.它带着外星般的重量,触感冰冷.它已被改造为可同时携带人类和异形近战武器."
 
 	icon = 'icons/obj/hunter/thrall_gear.dmi'
 	icon_state = "chest1_cloth"
@@ -24,8 +24,8 @@
 	return ..()
 
 /obj/item/clothing/shoes/marine/yautja/thrall
-	name = "alien greaves"
-	desc = "Greaves made from scraps of cloth and a strange alloy. They feel cold with an alien weight. They have been adapted for compatibility with human equipment."
+	name = "异形护胫"
+	desc = "由碎布和一种奇异合金制成的护胫.它们带着外星般的重量,触感冰冷.它们已被改造为与人类装备兼容."
 
 	icon = 'icons/obj/hunter/thrall_gear.dmi'
 	icon_state = "greaves1_cloth"
@@ -43,13 +43,13 @@
 	return ..()
 
 /obj/item/clothing/under/chainshirt/thrall
-	name = "alien mesh suit"
+	name = "异形网衣"
 	color = "#b85440"
-	desc = "A strange alloy weave in the form of a vest. It feels cold with an alien weight. It has been adapted for human physiology."
+	desc = "一种以背心形式存在的奇异合金织物.它带着外星般的重量,触感冰冷.它已被改造为适合人类生理结构."
 
 /obj/item/storage/box/bracer
-	name = "alien box"
-	desc = "A strange, runed box."
+	name = "异形盒子"
+	desc = "一个奇怪的、刻有符文的盒子."
 	color = "#68423b"
 	icon = 'icons/obj/structures/closet.dmi'
 	icon_state = "pred_coffin"

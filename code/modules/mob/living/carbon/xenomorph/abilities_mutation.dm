@@ -4,7 +4,7 @@
 // Mutation-based pheromones ability
 /datum/action/ability/xeno_action/mutation/pheromones
 	name = "Emit Pheromones (Mutation)"
-	desc = "Opens your pheromone options. Power depends on mutation tier."
+	desc = "打开你的信息素选项. 强度取决于突变等级."
 	action_icon_state = "emit_pheromones"
 	action_icon = 'icons/Xeno/actions/general.dmi'
 	ability_cost = 0
@@ -30,14 +30,14 @@
 
 /datum/action/ability/xeno_action/mutation/pheromones/proc/apply_pheromones(phero_choice)
 	if(mutation_aura && mutation_aura.aura_types[1] == phero_choice)
-		xeno_owner.balloon_alert(xeno_owner, "Stop emitting mutation pheromones")
+		xeno_owner.balloon_alert(xeno_owner, "停止释放突变信息素")
 		QDEL_NULL(mutation_aura)
 		return fail_activate()
 
 	QDEL_NULL(mutation_aura)
 
 	mutation_aura = SSaura.add_emitter(xeno_owner, phero_choice, 6 + phero_power * 2, phero_power_base + phero_power, -1, xeno_owner.faction, xeno_owner.hivenumber)
-	xeno_owner.balloon_alert(xeno_owner, "[phero_choice] (Mutation)")
+	xeno_owner.balloon_alert(xeno_owner, "[phero_choice] (突变)")
 	playsound(xeno_owner.loc, SFX_ALIEN_DROOL, 25)
 
 	xeno_owner.hud_set_pheromone()
@@ -58,7 +58,7 @@
 // Mutation-based toxin ability
 /datum/action/ability/xeno_action/mutation/toxin
 	name = "Select Toxin (Mutation)"
-	desc = "Selects which toxin to inject with your attacks. Power depends on mutation tier."
+	desc = "选择你的攻击注入哪种毒素. 强度取决于突变等级."
 	action_icon_state = "select_reagent0"
 	action_icon = 'icons/Xeno/actions/general.dmi'
 	use_state_flags = ABILITY_USE_BUSY|ABILITY_USE_LYING
@@ -128,14 +128,14 @@
 			xeno_owner.mutation_toxin_reagent = R.type
 			break
 
-	xeno_owner.balloon_alert(xeno_owner, "[toxin_choice] (Mutation)")
+	xeno_owner.balloon_alert(xeno_owner, "[toxin_choice] (突变)")
 	update_button_icon()
 	return succeed_activate()
 
 // Mutation-based trail ability
 /datum/action/ability/xeno_action/mutation/trail
 	name = "Select Trail (Mutation)"
-	desc = "Selects which trail to leave behind when moving. Power depends on mutation tier."
+	desc = "选择移动时留下的轨迹. 强度取决于变异等级."
 	action_icon_state = "trail"
 	action_icon = 'icons/Xeno/actions/general.dmi'
 	use_state_flags = ABILITY_USE_BUSY|ABILITY_USE_LYING
@@ -176,7 +176,7 @@
 		selected_trail = selectable_trails[i+1]
 
 	xeno_owner.mutation_trail_type = selected_trail
-	xeno_owner.balloon_alert(xeno_owner, "[selected_trail.name] (Mutation)")
+	xeno_owner.balloon_alert(xeno_owner, "[selected_trail.name] (变异)")
 	return succeed_activate()
 
 /datum/action/ability/xeno_action/mutation/trail/proc/do_trail()
@@ -220,9 +220,9 @@
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
 		carbon_target.reagents.add_reagent(mutation_toxin_reagent, toxin_amount)
-		to_chat(src, span_xenonotice("We inject [toxin_amount] units of [initial(selected_toxin.name)] into [target]."))
+		to_chat(src, span_xenonotice("我们将[toxin_amount]单位的[initial(selected_toxin.name)]注入[target]."))
 	else
-		to_chat(src, span_xenonotice("We attempt to inject [initial(selected_toxin.name)] into [target]."))
+		to_chat(src, span_xenonotice("我们试图将[initial(selected_toxin.name)]注入[target]."))
 
 /mob/living/carbon/xenomorph/Initialize(mapload, do_not_set_as_ruler)
 	. = ..()

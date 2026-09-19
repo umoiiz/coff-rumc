@@ -32,7 +32,7 @@
 		else if(offhand == user.l_hand)
 			user.drop_l_hand()
 		if(user.get_inactive_held_item()) //Failsafe; if there's somehow still something in the off-hand (undroppable), bail.
-			to_chat(user, span_warning("You need your other hand to be empty!"))
+			to_chat(user, span_warning("你需要空出另一只手!"))
 			return FALSE
 
 	if(ishuman(user))
@@ -40,11 +40,11 @@
 		var/mob/living/carbon/human/wielder = user
 		var/datum/limb/hand = wielder.get_limb(check_hand)
 		if(!istype(hand) || !hand.is_usable())
-			to_chat(user, span_warning("Your other hand can't hold [src]!"))
+			to_chat(user, span_warning("你的另一只手无法握住[src]!"))
 			return FALSE
 
 	if(!place_offhand(user))
-		to_chat(user, span_warning("You cannot wield [src] right now."))
+		to_chat(user, span_warning("你现在无法使用[src]."))
 		return FALSE
 
 	toggle_wielded(user, TRUE)
@@ -75,13 +75,13 @@
 	if(!user.put_in_inactive_hand(offhand))
 		qdel(offhand)
 		return FALSE
-	to_chat(user, span_notice("You grab [src] with both hands."))
+	to_chat(user, span_notice("你用双手握住了[src]."))
 	offhand.name = "[name] - offhand"
 	offhand.desc = "Your second grip on [src]."
 	return TRUE
 
 /obj/item/proc/remove_offhand(mob/user)
-	to_chat(user, span_notice("You are now carrying [src] with one hand."))
+	to_chat(user, span_notice("你现在单手拿着[src]."))
 	var/obj/item/weapon/twohanded/offhand/offhand = user.get_inactive_held_item()
 	if(istype(offhand) && !QDELETED(offhand))
 		qdel(offhand)
@@ -127,7 +127,7 @@
 
 ///////////OFFHAND///////////////
 /obj/item/weapon/twohanded/offhand
-	name = "offhand"
+	name = "副手"
 	icon_state = "offhand"
 	w_class = WEIGHT_CLASS_HUGE
 	item_flags = DELONDROP|TWOHANDED|WIELDED
@@ -156,8 +156,8 @@
 * Fireaxe
 */
 /obj/item/weapon/twohanded/fireaxe
-	name = "fire axe"
-	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
+	name = "消防斧"
+	desc = "确实,这是疯子的武器.谁会想到用斧头来救火呢?"
 	icon_state = "fireaxe"
 	worn_icon_state = "fireaxe"
 	force = 20
@@ -183,8 +183,8 @@
 	pry_capable = 0
 
 /obj/item/weapon/twohanded/fireaxe/som
-	name = "boarding axe"
-	desc = "A SOM boarding axe, effective at breaching doors as well as skulls. When wielded it can be used to block as well as attack."
+	name = "登舰斧"
+	desc = "一把SOM登舰斧,能有效劈开门和头骨.持握时可以用来格挡和攻击."
 	icon = 'icons/obj/items/weapons64.dmi'
 	icon_state = "som_axe"
 	worn_icon_list = list(
@@ -232,7 +232,7 @@
 /datum/action/ability/activable/weapon_skill/axe_sweep
 	name = "Sweeping blow"
 	action_icon_state = "axe_sweep"
-	desc = "A powerful sweeping blow that hits foes in the direction you are facing. Cannot stun."
+	desc = "一次强力的横扫打击,会击中你面向方向的敌人.无法击晕."
 	ability_cost = 10
 	cooldown_duration = 6 SECONDS
 	keybinding_signals = list(
@@ -254,7 +254,7 @@
 	carbon_owner.face_atom(A)
 	activate_particles(owner.dir)
 	playsound(owner, 'sound/effects/alien/tail_swipe3.ogg', 50, 0, 5)
-	owner.visible_message(span_danger("[owner] Swing their weapon in a deadly arc!"))
+	owner.visible_message(span_danger("[owner]以致命的弧线挥舞武器!"))
 
 	var/list/atom/movable/atoms_to_ravage = get_step(owner, owner.dir).contents.Copy()
 	atoms_to_ravage += get_step(owner, turn(owner.dir, -45)).contents
@@ -299,8 +299,8 @@
 * Double-Bladed Energy Swords - Cheridan
 */
 /obj/item/weapon/twohanded/dualsaber
-	name = "double-bladed energy sword"
-	desc = "Handle with care."
+	name = "双刃能量剑"
+	desc = "小心轻放."
 	icon_state = "dualsaber"
 	worn_icon_state = "dualsaber"
 	force = 3
@@ -321,8 +321,8 @@
 	AddComponent(/datum/component/shield, SHIELD_TOGGLE|SHIELD_PURE_BLOCKING)
 
 /obj/item/weapon/twohanded/spear
-	name = "spear"
-	desc = "A haphazardly-constructed yet still deadly weapon of ancient design."
+	name = "长矛"
+	desc = "一种胡乱拼凑但依然致命的古代设计武器."
 	icon_state = "spearglass"
 	worn_icon_state = "spearglass"
 	force = 40
@@ -362,8 +362,8 @@
 	current_angle = initial(current_angle)	//Reset the angle
 
 /obj/item/weapon/twohanded/spear/tactical
-	name = "M-23 spear"
-	desc = "A tactical spear. Used for 'tactical' combat."
+	name = "M-23长矛"
+	desc = "一把战术长矛.用于'战术'战斗."
 	icon_state = "spear"
 	worn_icon_state = "spear"
 
@@ -372,8 +372,8 @@
 	AddElement(/datum/element/strappable)
 
 /obj/item/weapon/twohanded/spear/tactical/tacticool
-	name = "M-23 TACTICOOL spear"
-	desc = "A TACTICOOL spear. Used for TACTICOOLNESS in combat."
+	name = "M-23战术酷炫长矛"
+	desc = "一把战术酷炫长矛.用于战斗中的战术酷炫."
 	icon = 'icons/obj/items/weapons64.dmi'
 
 /obj/item/weapon/twohanded/spear/tactical/tacticool/Initialize(mapload)
@@ -410,10 +410,10 @@
 	attachment_offsets = list("muzzle_x" = 59, "muzzle_y" = 16, "rail_x" = 26, "rail_y" = 18, "under_x" = 40, "under_y" = 12))
 
 /obj/item/weapon/twohanded/glaive
-	name = "war glaive"
+	name = "战争长刃"
 	icon_state = "glaive"
 	worn_icon_state = "glaive"
-	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon."
+	desc = "金属长杆上的一把巨大而强力的刀刃.武器上刻有神秘的文字."
 	force = 28
 	w_class = WEIGHT_CLASS_BULKY
 	equip_slot_flags = ITEM_SLOT_BACK
@@ -429,14 +429,14 @@
 	attack_speed = 12 //Default is 7.
 
 /obj/item/weapon/twohanded/glaive/damaged
-	name = "war glaive"
-	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon. This one is ancient and has suffered serious acid damage, making it near-useless."
+	name = "战争长刃"
+	desc = "金属长杆上的一把巨大而强力的刀刃.武器上刻有神秘的文字.这一把年代久远,并遭受了严重的酸蚀,几乎无法使用."
 	force = 18
 	force_activated = 28
 
 /obj/item/weapon/twohanded/sledgehammer/rocketsledge
-	name = "rocket sledge"
-	desc = "Fitted with a rocket booster at the head, the rocket sledge would deliver a tremendously powerful impact, easily crushing your enemies. Uses fuel to power itself."
+	name = "火箭大锤"
+	desc = "头部装有火箭助推器,火箭大锤能造成极其强大的冲击,轻松碾碎你的敌人.使用燃料驱动自身."
 	icon_state = "rocketsledge"
 	worn_icon_state = "rocketsledge"
 	force = 30
@@ -490,8 +490,8 @@
 
 /obj/item/weapon/twohanded/sledgehammer/rocketsledge/examine(mob/user)
 	. = ..()
-	. += span_notice("Press <b>Unique Action</b> to change modes.")
-	. += span_notice("It contains <b>[reagents.get_reagent_amount(/datum/reagent/fuel)]/[max_fuel]</b> units of fuel!")
+	. += span_notice("按<b>独特动作</b>来切换模式.")
+	. += span_notice("它含有<b>[reagents.get_reagent_amount(/datum/reagent/fuel)]/[max_fuel]</b>单位燃料!")
 
 /obj/item/weapon/twohanded/sledgehammer/rocketsledge/wield(mob/user)
 	. = ..()
@@ -515,14 +515,14 @@
 	if(istype(target, /obj/structure/reagent_dispensers/fueltank) && get_dist(user,target) <= 1)
 		var/obj/structure/reagent_dispensers/fueltank/RS = target
 		if(RS.reagents.total_volume == 0)
-			to_chat(user, span_warning("Out of fuel!"))
+			to_chat(user, span_warning("燃料耗尽!"))
 			return ..()
 
 		var/fuel_transfer_amount = min(RS.reagents.total_volume, (max_fuel - reagents.get_reagent_amount(/datum/reagent/fuel)))
 		RS.reagents.remove_reagent(/datum/reagent/fuel, fuel_transfer_amount)
 		reagents.add_reagent(/datum/reagent/fuel, fuel_transfer_amount)
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
-		to_chat(user, span_notice("You refill [src] with fuel."))
+		to_chat(user, span_notice("你为[src]补充了燃料."))
 		update_icon()
 
 	return ..()
@@ -533,34 +533,34 @@
 		stun = crush_stun_amount
 		paralyze = crush_paralyze_amount
 		knockback = 0
-		balloon_alert(user, "Selected mode: CRUSH.")
+		balloon_alert(user, "已选择模式:碾碎.")
 		playsound(loc, 'sound/machines/switch.ogg', 25)
 		return
 
 	stun = knockback_stun_amount
 	paralyze = knockback_paralyze_amount
 	knockback = 1
-	balloon_alert(user, "Selected mode: KNOCKBACK.")
+	balloon_alert(user, "已选择模式:击退.")
 	playsound(loc, 'sound/machines/switch.ogg', 25)
 
 /obj/item/weapon/twohanded/sledgehammer/rocketsledge/attack(mob/living/carbon/M, mob/living/carbon/user as mob)
 	if(!CHECK_BITFIELD(item_flags, WIELDED))
-		to_chat(user, span_warning("You need a more secure grip to use [src]!"))
+		to_chat(user, span_warning("你需要更牢固地握住[src]才能使用!"))
 		return
 
 	if(M.status_flags & INCORPOREAL || user.status_flags & INCORPOREAL)
 		return
 
 	if(reagents.get_reagent_amount(/datum/reagent/fuel) < fuel_used)
-		to_chat(user, span_warning("\The [src] doesn't have enough fuel!"))
+		to_chat(user, span_warning("\The [src]没有足够的燃料!"))
 		return ..()
 
 	M.apply_damage(additional_damage, BRUTE, user.zone_selected, updating_health = TRUE)
-	M.visible_message(span_danger("[user]'s rocket sledge hits [M.name], smashing them!"), span_userdanger("You [user]'s rocket sledge smashes you!"))
+	M.visible_message(span_danger("[user]的火箭大锤击中了[M.name],将他们砸碎!"), span_userdanger("你[user]的火箭大锤把你砸碎了!"))
 
 	if(reagents.get_reagent_amount(/datum/reagent/fuel) < fuel_used * 2)
 		playsound(loc, 'sound/items/weldingtool_off.ogg', 50)
-		to_chat(user, span_warning("\The [src] shuts off, using last bits of fuel!"))
+		to_chat(user, span_warning("\The [src]用尽最后一点燃料后关闭了!"))
 		update_icon()
 	else
 		playsound(loc, 'sound/weapons/rocket_sledge.ogg', 50, TRUE)
@@ -588,8 +588,8 @@
 	return ..()
 
 /obj/item/weapon/twohanded/sledgehammer
-	name = "sledge hammer"
-	desc = "A heavy hammer that's good at smashing rocks, but would probably make a good weapon considering the circumstances."
+	name = "大锤"
+	desc = "一把重锤,擅长砸碎岩石,但在这种情况下大概也能当把好武器."
 	icon_state = "sledgehammer"
 	worn_icon_state = "sledgehammer"
 	force = 20
@@ -615,8 +615,8 @@
 
 /// Chainsword & Chainsaw
 /obj/item/weapon/twohanded/chainsaw
-	name = "chainsaw"
-	desc = "A chainsaw. Good for turning big things into little things."
+	name = "链锯"
+	desc = "一把链锯.适合把大东西变成小东西."
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/weapons/melee_left.dmi',
 		slot_r_hand_str = 'icons/mob/inhands/weapons/melee_right.dmi',
@@ -671,17 +671,17 @@
 	if(!active)
 		force = initial(force)
 		hitsound = initial(hitsound)
-		balloon_alert(user, "The motor died down!")
+		balloon_alert(user, "引擎熄灭了!")
 		update_icon()
 		update_worn_icon_state()
 		return
 	if(reagents.get_reagent_amount(/datum/reagent/fuel) < fuel_used)
-		balloon_alert(user, "Not enough fuel!")
+		balloon_alert(user, "燃料不足!")
 		return
 	force += additional_damage
 	playsound(loc, 'sound/weapons/chainsawhit.ogg', 100, 1)
 	hitsound = 'sound/weapons/chainsawhit.ogg'
-	balloon_alert(user, "The motor whirr to lifel!")
+	balloon_alert(user, "引擎嗡嗡地启动了!")
 	update_icon()
 	update_worn_icon_state()
 
@@ -693,7 +693,7 @@
 	user.changeNext_move(attack_speed) //this is here because attacking object for some reason doesn't respect weapon attack speed
 	if(reagents.get_reagent_amount(/datum/reagent/fuel) < fuel_used && active) //turn off the chainsaw after one last attack when fuel ran out
 		playsound(loc, 'sound/items/weldingtool_off.ogg', 50)
-		to_chat(user, span_warning("\The [src] shuts off, using last bits of fuel!"))
+		to_chat(user, span_warning("\The [src]用尽最后一点燃料后关闭了!"))
 		active = FALSE
 		toggle_motor(user)
 		return
@@ -745,13 +745,13 @@
 		return
 	var/obj/structure/reagent_dispensers/fueltank/saw = target
 	if(saw.reagents.total_volume == 0)
-		balloon_alert(user, "Out of fuel!")
+		balloon_alert(user, "燃料耗尽!")
 		return ..()
 	var/fuel_transfer_amount = min(saw.reagents.total_volume, (max_fuel - reagents.get_reagent_amount(/datum/reagent/fuel)))
 	saw.reagents.remove_reagent(/datum/reagent/fuel, fuel_transfer_amount)
 	reagents.add_reagent(/datum/reagent/fuel, fuel_transfer_amount)
 	playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
-	balloon_alert(user, "You refill it with fuel.")
+	balloon_alert(user, "你为它补充了燃料.")
 	update_icon()
 
 	return ..()
@@ -767,7 +767,7 @@
 		return
 
 	if(user.do_actions)
-		target_object.balloon_alert(user, "already busy")
+		target_object.balloon_alert(user, "已经忙碌")
 		return TRUE
 
 	if(user.incapacitated() || get_dist(user, target_object) > 1 || user.resting)  // loop attacking an adjacent object while user is not incapacitated nor resting, mostly here for the one handed chainsword
@@ -781,8 +781,8 @@
 	attack_obj(target_object, user)
 
 /obj/item/weapon/twohanded/chainsaw/sword
-	name = "chainsword"
-	desc = "Cutting heretic and xenos never been easier"
+	name = "链锯剑"
+	desc = "切割异端和异形从未如此简单"
 	icon_state = "chainsword_off"
 	icon_state_on = "chainsword_on"
 	worn_icon_state = "chainsword"

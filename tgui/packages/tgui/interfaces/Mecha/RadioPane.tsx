@@ -10,7 +10,7 @@ export const RadioPane = (props) => {
     data.mech_electronics;
   return (
     <LabeledList>
-      <LabeledList.Item label="Microphone">
+      <LabeledList.Item label="麦克风">
         <Button
           onClick={() => act('toggle_microphone')}
           selected={microphone}
@@ -19,7 +19,7 @@ export const RadioPane = (props) => {
           {(microphone ? 'En' : 'Dis') + 'abled'}
         </Button>
       </LabeledList.Item>
-      <LabeledList.Item label="Speaker">
+      <LabeledList.Item label="扬声器">
         <Button
           onClick={() => act('toggle_speaker')}
           selected={speaker}
@@ -28,7 +28,7 @@ export const RadioPane = (props) => {
           {(speaker ? 'En' : 'Dis') + 'abled'}
         </Button>
       </LabeledList.Item>
-      <LabeledList.Item label="Frequency">
+      <LabeledList.Item label="频率">
         <NumberInput
           unit="kHz"
           step={0.2}

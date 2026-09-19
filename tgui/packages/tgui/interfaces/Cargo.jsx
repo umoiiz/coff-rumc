@@ -18,20 +18,20 @@ import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 const category_icon = {
-  Operations: 'parachute-box',
-  Weapons: 'fighter-jet',
-  Smartguns: 'star',
-  Stationary: 'bolt',
-  Launchers: 'rocket',
-  Explosives: 'bomb',
-  Armor: 'hard-hat',
-  Clothing: 'tshirt',
-  Medical: 'medkit',
-  Engineering: 'tools',
-  Supplies: 'hamburger',
-  Imports: 'boxes',
-  Vehicles: 'road',
-  Factory: 'industry',
+  "作战": 'parachute-box',
+  "武器": 'fighter-jet',
+  "智能枪": 'star',
+  "固定式": 'bolt',
+  "发射器": 'rocket',
+  "爆炸物": 'bomb',
+  "护甲": 'hard-hat',
+  "服装": 'tshirt',
+  "医疗": 'medkit',
+  "工程": 'tools',
+  "补给": 'hamburger',
+  "进口": 'boxes',
+  "载具": 'road',
+  "工厂": 'industry',
   'Pending Order': 'shopping-cart',
 };
 
@@ -60,7 +60,7 @@ export const Cargo = () => {
         </Flex.Item>
         <Flex.Item position="relative" grow={1} height="100%">
           <Window.Content scrollable>
-            {selectedMenu === 'Previous Purchases' && (
+            {selectedMenu === '先前购买' && (
               <OrderList
                 type={shopping_history}
                 readOnly={1}
@@ -68,8 +68,8 @@ export const Cargo = () => {
                 setSelectedMenu={setSelectedMenu}
               />
             )}
-            {selectedMenu === 'Export History' && <Exports />}
-            {selectedMenu === 'Awaiting Delivery' && (
+            {selectedMenu === '导出历史' && <Exports />}
+            {selectedMenu === '等待交付' && (
               <OrderList
                 type={awaiting_delivery}
                 readOnly={1}
@@ -77,21 +77,21 @@ export const Cargo = () => {
                 setSelectedMenu={setSelectedMenu}
               />
             )}
-            {selectedMenu === 'Pending Order' && (
+            {selectedMenu === '待处理订单' && (
               <ShoppingCart
                 selectedMenu={selectedMenu}
                 setSelectedMenu={setSelectedMenu}
               />
             )}
-            {selectedMenu === 'Requests' && <Requests />}
-            {selectedMenu === 'Approved Requests' && (
+            {selectedMenu === '请求' && <Requests />}
+            {selectedMenu === '已批准请求' && (
               <OrderList
                 type={approvedrequests}
                 selectedMenu={selectedMenu}
                 setSelectedMenu={setSelectedMenu}
               />
             )}
-            {selectedMenu === 'Denied Requests' && (
+            {selectedMenu === '已拒绝请求' && (
               <OrderList
                 type={deniedrequests}
                 selectedMenu={selectedMenu}
@@ -119,7 +119,7 @@ const Exports = () => {
   const { export_history } = data;
 
   return (
-    <Section title="Exports">
+    <Section title="导出">
       <Table>
         {export_history.map((exp) => (
           <Table.Row key={exp.id}>
@@ -175,15 +175,15 @@ const Menu = (props) => {
   return (
     <Section height="100%" p="5px">
       <Section>
-        Personal Points: <AnimatedNumber value={personalpoints} />
+        个人点数: <AnimatedNumber value={personalpoints} />
       </Section>
-      Points: <AnimatedNumber value={currentpoints} />
+      点数: <AnimatedNumber value={currentpoints} />
       <Divider />
       <Flex>
         <Flex.Item grow={1}>
           <MenuButton
             icon="luggage-cart"
-            menuname="Awaiting Delivery"
+            menuname="等待交付"
             condition={!awaiting_delivery_orders}
             selectedMenu={selectedMenu}
             setSelectedMenu={setSelectedMenu}
@@ -213,7 +213,7 @@ const Menu = (props) => {
         <Flex.Item grow={1}>
           <MenuButton
             icon="shopping-cart"
-            menuname="Pending Order"
+            menuname="待处理订单"
             condition={!shopping_list_items}
             selectedMenu={selectedMenu}
             setSelectedMenu={setSelectedMenu}
@@ -233,14 +233,14 @@ const Menu = (props) => {
         <>
           <MenuButton
             icon="history"
-            menuname="Previous Purchases"
+            menuname="先前购买"
             condition={!shopping_history.length}
             selectedMenu={selectedMenu}
             setSelectedMenu={setSelectedMenu}
           />
           <MenuButton
             icon="shipping-fast"
-            menuname="Export History"
+            menuname="导出历史"
             condition={!export_history.length}
             selectedMenu={selectedMenu}
             setSelectedMenu={setSelectedMenu}
@@ -252,7 +252,7 @@ const Menu = (props) => {
         <Flex.Item grow={1}>
           <MenuButton
             icon="clipboard-list"
-            menuname="Requests"
+            menuname="请求"
             condition={!requests.length}
             selectedMenu={selectedMenu}
             setSelectedMenu={setSelectedMenu}
@@ -262,14 +262,14 @@ const Menu = (props) => {
       </Flex>
       <MenuButton
         icon="clipboard-check"
-        menuname="Approved Requests"
+        menuname="已批准请求"
         condition={!approvedrequests.length}
         selectedMenu={selectedMenu}
         setSelectedMenu={setSelectedMenu}
       />
       <MenuButton
         icon="trash"
-        menuname="Denied Requests"
+        menuname="已拒绝请求"
         condition={!deniedrequests.length}
         selectedMenu={selectedMenu}
         setSelectedMenu={setSelectedMenu}
@@ -313,26 +313,26 @@ const OrderList = (props) => {
             buttons={
               <>
                 {!readOnly &&
-                  (!authed_by || selectedMenu === 'Denied Requests') && (
+                  (!authed_by || selectedMenu === '已拒绝请求') && (
                     <Button
                       onClick={() => act('approve', { id: id })}
                       icon="check"
-                      content="Approve"
+                      content="批准"
                     />
                   )}
                 {!readOnly && !authed_by && (
                   <Button
                     onClick={() => act('deny', { id: id })}
                     icon="times"
-                    content="Deny"
+                    content="拒绝"
                   />
                 )}
-                {selectedMenu === 'Awaiting Delivery' && (
+                {selectedMenu === '等待交付' && (
                   <Button
                     onClick={() => act('delivery', { id: id })}
                     icon="luggage-cart"
-                    content="Delivery"
-                    tooltip="It will cost 150 points to use!"
+                    content="交付"
+                    tooltip="使用它将花费150点数!"
                     disabled={!data.beacon}
                   />
                 )}
@@ -340,14 +340,14 @@ const OrderList = (props) => {
             }
           >
             <LabeledList>
-              <LabeledList.Item label="Requested by">
+              <LabeledList.Item label="请求者">
                 {rank + ' ' + orderer}
               </LabeledList.Item>
-              <LabeledList.Item label="Reason">{reason}</LabeledList.Item>
-              <LabeledList.Item label="Total Cost">
+              <LabeledList.Item label="原因">{reason}</LabeledList.Item>
+              <LabeledList.Item label="总费用">
                 {cost} points
               </LabeledList.Item>
-              <LabeledList.Item label="Contents">
+              <LabeledList.Item label="内容">
                 <Packs packs={packs} />
               </LabeledList.Item>
             </LabeledList>
@@ -419,12 +419,12 @@ const Requests = (props) => {
             <Button
               icon="check-double"
               onClick={() => act('approveall')}
-              content="Approve All"
+              content="全部批准"
             />
             <Button
               icon="times-circle"
               onClick={() => act('denyall')}
-              content="Deny All"
+              content="全部拒绝"
             />
           </>
         )
@@ -447,7 +447,7 @@ const ShoppingCart = (props) => {
         <Button
           p="5px"
           icon="dollar-sign"
-          content={readOnly ? 'Submit Request' : 'Purchase Cart'}
+          content={readOnly ? '提交请求' : '购买购物车'}
           disabled={(readOnly && !reason) || !shopping_list_items}
           onClick={() =>
             act(readOnly ? 'submitrequest' : 'buycart', {
@@ -457,13 +457,13 @@ const ShoppingCart = (props) => {
         />
         <Button
           p="5px"
-          content="Personal Buy"
+          content="个人购买"
           icon="dollar-sign"
           onClick={() => act('buypersonal')}
         />
         <Button
           p="5px"
-          content="Clear Cart"
+          content="清空购物车"
           disabled={!shopping_list_items}
           icon="snowplow"
           onClick={() => act('clearcart')}
@@ -652,7 +652,7 @@ export const CargoRequest = (props) => {
         </Flex.Item>
         <Flex.Item position="relative" grow={1} height="100%">
           <Window.Content scrollable>
-            {selectedMenu === 'Awaiting Delivery' && (
+            {selectedMenu === '等待交付' && (
               <OrderList
                 type={awaiting_delivery}
                 readOnly={1}
@@ -660,28 +660,28 @@ export const CargoRequest = (props) => {
                 setSelectedMenu={setSelectedMenu}
               />
             )}
-            {selectedMenu === 'Pending Order' && (
+            {selectedMenu === '待处理订单' && (
               <ShoppingCart
                 readOnly={1}
                 selectedMenu={selectedMenu}
                 setSelectedMenu={setSelectedMenu}
               />
             )}
-            {selectedMenu === 'Requests' && (
+            {selectedMenu === '请求' && (
               <Requests
                 readOnly={1}
                 selectedMenu={selectedMenu}
                 setSelectedMenu={setSelectedMenu}
               />
             )}
-            {selectedMenu === 'Approved Requests' && (
+            {selectedMenu === '已批准请求' && (
               <OrderList
                 type={approvedrequests}
                 selectedMenu={selectedMenu}
                 setSelectedMenu={setSelectedMenu}
               />
             )}
-            {selectedMenu === 'Denied Requests' && (
+            {selectedMenu === '已拒绝请求' && (
               <OrderList
                 type={deniedrequests}
                 readOnly={1}

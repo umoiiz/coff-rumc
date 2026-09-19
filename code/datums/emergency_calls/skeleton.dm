@@ -5,10 +5,10 @@
 
 
 /datum/emergency_call/skeleton/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>You are a skeleton, risen from beyond the grave.\n\
-	Long have you rested, ejected into the void of space through battle or unfortunate circumstances, but now you have awoken.\n\
-	The distress call has awoken you from your spacebound slumber.\n\
-	Wipe out whatever has disturbed your eternal rest, so you may sleep once again.</b>")
+	to_chat(H, "<B>你是一具骷髅,从坟墓之外苏醒.\n\
+	你已长眠许久,因战斗或不幸遭遇而被抛入太空虚空,但现在你已苏醒.\n\
+	求救呼叫将你从太空中的沉睡中唤醒.\n\
+	消灭任何打扰你永恒安息的东西,好让你能再次入睡.</b>")
 
 /datum/emergency_call/skeleton/create_member(datum/mind/M)
 	. = ..()

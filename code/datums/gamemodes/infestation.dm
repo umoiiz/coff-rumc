@@ -61,10 +61,10 @@
 		#ifndef TESTING
 		var/mob/living/silicon/ai/bioscanning_ai = usr
 		if((bioscanning_ai.last_ai_bioscan + COOLDOWN_AI_BIOSCAN) > world.time)
-			to_chat(bioscanning_ai, "Приборы биосканирования все еще проходят повторную калибровку с момента их последнего использования.")
+			to_chat(bioscanning_ai, "生物扫描仪器自上次使用以来仍在重新校准中.")
 			return
 		bioscanning_ai.last_ai_bioscan = world.time
-		to_chat(bioscanning_ai, span_warning("Сканирование на предмет наличия враждебных форм жизни..."))
+		to_chat(bioscanning_ai, span_warning("正在扫描敌对生命形式..."))
 		if(!do_after(usr, AI_SCAN_DELAY, NONE, usr, BUSY_ICON_GENERIC)) //initial windup time until firing begins
 			bioscanning_ai.last_ai_bioscan = 0
 			return
@@ -114,12 +114,12 @@
 			var/mob/M = i
 			SEND_SOUND(M, S)
 			to_chat(M, assemble_alert(
-				title = "Сообщение от Главной Королевы",
-				subtitle = "Главная Королева проникает в ваш разум...",
+				title = "来自主女王的讯息",
+				subtitle = "主女王正在侵入你的思想...",
 
-				message = "Мои дети и их Королева, я [hosts_shipside ? "":"не"] чувствую [hosts_shipside ? "примерно [hosts_shipside]":""] \
-				потенциальных носителей в их металлическом улье [BIOSCAN_LOCATION(show_locations, host_location_shipside)], за его пределами их ["всего [numHostsPlanet]" || "нет"] \
-				[BIOSCAN_LOCATION(show_locations, host_location_planetside)] и [hosts_transit ? "примерно [hosts_transit]":"вообще нету"] на металлической птице.",
+				message = "我的孩子们和他们的女王,我[hosts_shipside ? "":"не"]感觉到[hosts_shipside ? "примерно [hosts_shipside]":""]\
+				个潜在宿主在他们的金属巢穴中[BIOSCAN_LOCATION(show_locations, host_location_shipside)],在其之外有他们的["всего [numHostsPlanet]" || "нет"]\
+				[BIOSCAN_LOCATION(show_locations, host_location_planetside)]以及金属鸟上的[hosts_transit ? "примерно [hosts_transit]":"вообще нету"].",
 
 				color_override = "purple"
 			))
@@ -141,13 +141,13 @@
 
 		switch(GLOB.current_orbit)
 			if(1)
-				to_chat(usr, span_warning("Анализ сигналов позволяет получить подробную информацию о передвижениях противника и его численности."))
+				to_chat(usr, span_warning("信号分析可以获取有关敌方动向及其数量的详细信息."))
 				return
 			if(3)
-				to_chat(usr, span_warning("В наших приборах биосканирования обнаружены незначительные ошибки из-за подъема судна, некоторая информация о враждебной активности может быть неверной."))
+				to_chat(usr, span_warning("我们的生物扫描仪器因飞船升空而检测到轻微错误,部分有关敌对活动的信息可能不准确."))
 				return
 			if(5)
-				to_chat(usr, span_warning("В наших показаниях биосканирования обнаружены серьезные ошибки из-за уровня орбиты корабля, информация может сильно отличаться от правды."))
+				to_chat(usr, span_warning("我们的生物扫描读数因飞船轨道高度而检测到严重错误,信息可能与真实情况有很大出入."))
 		return
 
 	if(announce_humans)
@@ -161,14 +161,14 @@
 
 	for(var/mob/M as anything in GLOB.observer_list)
 		to_chat(M, assemble_alert(
-			title = "Биосканирование Завершено",
-			message = {"[numXenosPlanet] ксеносов на земле.
-			[numXenosShip] ксеносов на корабле.
-			[numXenosTransit] ксеносов на шаттлах.
+			title = "生物扫描完成",
+			message = {"[numXenosPlanet]个异形在地面.
+			[numXenosShip]个异形在飞船上.
+			[numXenosTransit]个异形在穿梭机上.
 
-			[numHostsPlanet] людей на земле.
-			[numHostsShip] людей на корабле.
-			[numHostsTransit] людей на шаттлах. "},
+			[numHostsPlanet]个人类在地面.
+			[numHostsShip]个人类在飞船上.
+			[numHostsTransit]个人类在穿梭机上."},
 			color_override = "purple"
 		))
 
@@ -302,7 +302,7 @@
 				xeno_candidate = TRUE
 				break
 	if(!xeno_candidate && !bypass_checks)
-		to_chat(world, "<b>Невозможно начать [name].</b> Кандидат в ксеносы не найден.")
+		to_chat(world, "<b>无法开始[name].</b>未找到异形候选人.")
 		return FALSE
 
 /datum/game_mode/infestation/pre_setup()
@@ -315,14 +315,14 @@
 		return
 
 	priority_announce(
-		title = "Сообщение от Высшего Командования",
-		subtitle = "Доброе утро, товарищи!",
-		message = "Криосон отключен генштабом.<br><br>ВНИМАНИЕ: [SSmapping.configs[SHIP_MAP].map_name].<br>[SSmapping.configs[GROUND_MAP].announce_text]",
+		title = "来自最高指挥部的讯息",
+		subtitle = "早上好,同志们!",
+		message = "冷冻睡眠已被总参谋部关闭.<br><br>注意:[SSmapping.configs[SHIP_MAP].map_name].<br>[SSmapping.configs[GROUND_MAP].announce_text]",
 		color_override = "red"
 	)
 
 /datum/game_mode/infestation/announce()
-	to_chat(world, span_round_header("The current map is - [SSmapping.configs[GROUND_MAP].map_name]!"))
+	to_chat(world, span_round_header("当前地图是 - [SSmapping.configs[GROUND_MAP].map_name]!"))
 
 /datum/game_mode/infestation/attempt_to_join_as_larva(client/waiter)
 	var/datum/hive_status/normal/HS = GLOB.hive_datums[XENO_HIVE_NORMAL]
@@ -334,7 +334,7 @@
 
 /datum/game_mode/infestation/proc/on_nuclear_diffuse(obj/machinery/nuclearbomb/bomb, mob/living/carbon/xenomorph/X)
 	SIGNAL_HANDLER
-	priority_announce("ВНИМАНИЕ. ВНИМАНИЕ. Планетарная ядерная бомба деактивирована. ВНИМАНИЕ. ВНИМАНИЕ. Самоуничтожение не удалось. ВНИМАНИЕ. ВНИМАНИЕ.", "Планетарная Боеголовка Отключена", type = ANNOUNCEMENT_PRIORITY)
+	priority_announce("注意.注意.行星核弹已停用.注意.注意.自毁失败.注意.注意.", "行星弹头已停用", type = ANNOUNCEMENT_PRIORITY)
 
 /datum/game_mode/infestation/proc/on_nuclear_explosion(datum/source, z_level)
 	SIGNAL_HANDLER
@@ -350,7 +350,7 @@
 
 /datum/game_mode/infestation/proc/play_cinematic(z_level)
 	GLOB.enter_allowed = FALSE
-	priority_announce("ТРЕВОГА. ТРЕВОГА. Активирована планетарная ядерная бомба. ТРЕВОГА. ТРЕВОГА. Идет самоуничтожение. ТРЕВОГА. ТРЕВОГА.", "Планетарная Боеголовка Успешно Запущена", type = ANNOUNCEMENT_PRIORITY)
+	priority_announce("警报.警报.行星核弹已激活.警报.警报.自毁程序进行中.警报.警报.", "行星弹头成功发射", type = ANNOUNCEMENT_PRIORITY)
 	var/sound/S = sound(pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg'), channel = CHANNEL_CINEMATIC)
 	SEND_SOUND(world, S)
 

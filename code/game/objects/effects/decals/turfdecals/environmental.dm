@@ -52,7 +52,7 @@
 
 /obj/effect/turf_decal/sandedge
 	name = "dirt"
-	desc = "A dirty pile, it looks thinner in certain areas."
+	desc = "一堆脏东西,某些地方看起来更薄."
 	icon = 'icons/turf/bigred.dmi'
 	icon_state = "sandedge"
 

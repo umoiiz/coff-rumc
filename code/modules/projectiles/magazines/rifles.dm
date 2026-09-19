@@ -2,8 +2,8 @@
 //M41A PULSE RIFLE AMMUNITION
 
 /obj/item/ammo_magazine/rifle
-	name = "\improper PR-412 magazine (10x24mm)"
-	desc = "A 10mm assault rifle magazine."
+	name = "\improper PR-412弹匣(10x24mm)"
+	desc = "一个10毫米突击步枪弹匣."
 	caliber = CALIBER_10X24_CASELESS
 	icon_state = "m412"
 	icon_state_mini = "mag_rifle"
@@ -13,24 +13,24 @@
 	ammo_band_icon = "m412_band"
 
 /obj/item/ammo_magazine/rifle/extended
-	name = "\improper PR-412 extended magazine (10x24mm)"
-	desc = "A 10mm assault extended rifle magazine."
+	name = "\improper PR-412加长弹匣(10x24mm)"
+	desc = "一个10毫米突击步枪加长弹匣."
 	icon_state_mini = "mag_rifle_big_yellow"
 	max_rounds = 60
 	bonus_overlay = "m412_ex"
 	ammo_band_color = AMMO_BAND_COLOR_EXTENDED
 
 /obj/item/ammo_magazine/rifle/incendiary
-	name = "\improper PR-412 incendiary magazine (10x24mm)"
-	desc = "A 10mm assault rifle magazine."
+	name = "\improper PR-412燃烧弹匣(10x24mm)"
+	desc = "一个10毫米突击步枪弹匣."
 	icon_state_mini = "mag_rifle_big_red"
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 	bonus_overlay = "m412_incend"
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/rifle/ap
-	name = "\improper PR-412 AP magazine (10x24mm)"
-	desc = "A 10mm armor piercing magazine."
+	name = "\improper PR-412穿甲弹匣(10x24mm)"
+	desc = "一个10毫米穿甲弹匣."
 	icon_state_mini = "mag_rifle_big_green"
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	bonus_overlay = "m412_ap"
@@ -40,8 +40,8 @@
 //ar18 Carbine
 
 /obj/item/ammo_magazine/rifle/ar18
-	name = "\improper AR-18 magazine (10x24mm)"
-	desc = "A 10mm carbine magazine."
+	name = "\improper AR-18弹匣(10x24mm)"
+	desc = "一个10毫米卡宾枪弹匣."
 	caliber = CALIBER_10X24_CASELESS
 	icon_state = "t18"
 	icon_state_mini = "mag_rifle_big"
@@ -51,8 +51,8 @@
 	max_rounds = 36
 
 /obj/item/ammo_magazine/rifle/ar18/ap
-	name = "\improper AR-18 AP magazine (10x24mm)"
-	desc = "A 10mm armor piercing carbine magazine."
+	name = "\improper AR-18穿甲弹匣(10x24mm)"
+	desc = "一个10毫米穿甲卡宾枪弹匣."
 	ammo_band_color = AMMO_BAND_COLOR_AP
 	default_ammo = /datum/ammo/bullet/rifle/ap
 
@@ -60,8 +60,8 @@
 //AR12 Assault Rifle
 
 /obj/item/ammo_magazine/rifle/ar12
-	name = "\improper AR-12 magazine (10x24mm)"
-	desc = "A 10mm assault rifle magazine."
+	name = "\improper AR-12弹匣(10x24mm)"
+	desc = "一个10毫米突击步枪弹匣."
 	caliber = CALIBER_10X24_CASELESS
 	icon_state = "t12"
 	icon_state_mini = "mag_rifle_big"
@@ -71,8 +71,8 @@
 	max_rounds = 50
 
 /obj/item/ammo_magazine/rifle/ar12/incendiary
-	name = "\improper AR-12 incendiary magazine (10x24mm)"
-	desc = "A 10mm incendiary assault rifle magazine."
+	name = "\improper AR-12燃烧弹匣(10x24mm)"
+	desc = "一个10毫米燃烧突击步枪弹匣."
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 
@@ -80,8 +80,8 @@
 //DMR37
 
 /obj/item/ammo_magazine/rifle/dmr37
-	name = "\improper DMR-37 magazine (10x27mm)"
-	desc = "A 10mm DMR magazine."
+	name = "\improper DMR-37弹匣(10x27mm)"
+	desc = "一个10毫米精确射手步枪弹匣."
 	caliber = CALIBER_10X27_CASELESS
 	icon_state = "t37"
 	icon_state_mini = "mag_rifle_big"
@@ -93,8 +93,8 @@
 //BR64
 
 /obj/item/ammo_magazine/rifle/br64
-	name = "\improper BR-64 magazine (10x26.5mm)"
-	desc = "A 10mm battle rifle magazine."
+	name = "\improper BR-64弹匣(10x26.5mm)"
+	desc = "一个10毫米战斗步枪弹匣."
 	caliber = CALIBER_10X265_CASELESS
 	icon_state = "t64"
 	icon_state_mini = "mag_rifle_big"
@@ -107,8 +107,8 @@
 //M41A TRUE AND ORIGINAL
 
 /obj/item/ammo_magazine/rifle/m41a
-	name = "\improper PR-11 magazine (10x24mm)"
-	desc = "A semi-rectangular box of rounds for the PR-11 Pulse Rifle."
+	name = "\improper PR-11弹匣(10x24mm)"
+	desc = "一个半矩形弹药盒,用于PR-11脉冲步枪."
 	icon_state = "m41a"
 	icon_state_mini = "mag_rifle_big_light"
 	max_rounds = 95
@@ -118,8 +118,8 @@
 //Kalashnikov rifles
 
 /obj/item/ammo_magazine/rifle/mpi_km
-	name = "\improper MPi-KM magazine (7.62x39mm)"
-	desc = "A 40 round 7.62x39mm magazine for the Kalashnikov series of firearms."
+	name = "\improper MPi-KM弹匣(7.62x39mm)"
+	desc = "一个40发7.62x39mm弹匣,用于卡拉什尼科夫系列枪械."
 	caliber = CALIBER_762X39
 	icon_state = "ak_40"
 	icon_state_mini = "mag_rifle_brown"
@@ -131,20 +131,20 @@
 	wield_delay_mod = 0.1 SECONDS
 
 /obj/item/ammo_magazine/rifle/mpi_km/plum
-	desc = "A 7.62x39mm magazine for the Kalashnikov series of firearms. This one had an old plum finish."
+	desc = "一个7.62x39mm弹匣,用于卡拉什尼科夫系列枪械.这个采用了旧式李子色表面处理."
 	icon_state = "ak_40_plum"
 	icon_state_mini = "mag_rifle_darkpurple"
 	bonus_overlay = "ak_40_plum"
 
 /obj/item/ammo_magazine/rifle/mpi_km/black
-	desc = "A 7.62x39mm magazine for the Kalashnikov series of firearms. This one had an modern black polymer finish."
+	desc = "一个7.62x39mm弹匣,用于卡拉什尼科夫系列枪械.这个采用了现代黑色聚合物表面处理."
 	icon_state = "ak_40_black"
 	icon_state_mini = "mag_rifle"
 	bonus_overlay = "ak_40_black"
 
 /obj/item/ammo_magazine/rifle/mpi_km/carbine
-	name = "\improper V-34 magazine (7.62x39mm)"
-	desc = "A 30 round 7.62x39mm magazine for the Kalashnikov series of firearms."
+	name = "\improper V-34弹匣(7.62x39mm)"
+	desc = "卡拉什尼科夫系列枪械的30发7.62x39mm弹匣."
 	icon_state = "ak_30"
 	icon_state_mini = "mag_rifle_brown"
 	bonus_overlay = "ak_30"
@@ -154,20 +154,20 @@
 	wield_delay_mod = 0
 
 /obj/item/ammo_magazine/rifle/mpi_km/carbine/plum
-	desc = "A 30 round 7.62x39mm magazine for the Kalashnikov series of firearms. This one had an old plum finish."
+	desc = "卡拉什尼科夫系列枪械的30发7.62x39mm弹匣. 这个是旧款李子色涂装."
 	icon_state = "ak_30_plum"
 	icon_state_mini = "mag_rifle_darkpurple"
 	bonus_overlay = "ak_30_plum"
 
 /obj/item/ammo_magazine/rifle/mpi_km/carbine/black
-	desc = "A 30 round 7.62x39mm magazine for the Kalashnikov series of firearms. This one had an modern black polymer finish."
+	desc = "卡拉什尼科夫系列枪械的30发7.62x39mm弹匣. 这个是现代黑色聚合物涂装."
 	icon_state = "ak_30_black"
 	icon_state_mini = "mag_rifle"
 	bonus_overlay = "ak_30_black"
 
 /obj/item/ammo_magazine/rifle/mpi_km/extended
-	name = "\improper MPi-KM extended magazine (7.62x39mm)"
-	desc = "A 60 round 7.62x39mm Kalashnikov magazine. this one is notably heavy."
+	name = "\improper MPi-KM加长弹匣(7.62x39mm)"
+	desc = "60发7.62x39mm卡拉什尼科夫弹匣. 这个明显很重."
 	icon_state = "ak47_ext"
 	icon_state_mini = "mag_rifle"
 	bonus_overlay = "ak47_ex"
@@ -177,8 +177,8 @@
 
 // Marine mags for AK
 /obj/item/ammo_magazine/rifle/type16
-	name = "\improper Type-16 rifle magazine (6.02x41)"
-	desc = "A 40 round 6.02x41mm magazine."
+	name = "\improper 16式步枪弹匣(6.02x41)"
+	desc = "40发6.02x41mm弹匣."
 	caliber = CALIBER_602X41
 	icon_state = "ak_40"
 	icon_state_mini = "mag_rifle_brown"
@@ -189,8 +189,8 @@
 	wield_delay_mod = 0.5 SECONDS
 
 /obj/item/ammo_magazine/rifle/type16/m2
-	name = "\improper Type-16 сarbine magazine (6.02x41)"
-	desc = "A 30 round 6.02x41mm cal magazine."
+	name = "\improper 16式卡宾枪弹匣(6.02x41)"
+	desc = "30发6.02x41mm口径弹匣."
 	icon_state = "ak_30_black"
 	icon_state_mini = "mag_rifle"
 	bonus_overlay = "ak_30_black"
@@ -199,8 +199,8 @@
 	wield_delay_mod = 0
 
 /obj/item/ammo_magazine/rifle/type16/extended
-	name = "\improper Type-16 extended magazine (6.02x41)"
-	desc = "A 50 round 6.02x41mm cal magazine."
+	name = "\improper 16式加长弹匣(6.02x41)"
+	desc = "50发6.02x41mm口径弹匣."
 	icon_state = "ak47_ext"
 	icon_state_mini = "mag_rifle"
 	bonus_overlay = "ak47_ex"
@@ -210,8 +210,8 @@
 // RPD
 
 /obj/item/ammo_magazine/rifle/lmg_d
-	name = "\improper lMG-D drum magazine (7.62x39mm)"
-	desc = "A 100 round 7.62x39mm Kalashnikov drum, won't fit on most kalasnikov rifles, as it is made for the beltfed variant."
+	name = "\improper lMG-D弹鼓(7.62x39mm)"
+	desc = "100发7.62x39mm卡拉什尼科夫弹鼓, 无法装在大多数卡拉什尼科夫步枪上, 因为它是为弹链供弹型号制造的."
 	caliber = CALIBER_762X39
 	default_ammo = /datum/ammo/bullet/rifle/mpi_km
 	icon_state = "rpd"
@@ -223,8 +223,8 @@
 //DP-27
 
 /obj/item/ammo_magazine/rifle/dpm
-	name = "\improper Degtyaryov drum AP magazine (7.62x39mm)"
-	desc = "A drum magazine for the Degtyaryov machine gun."
+	name = "\improper 捷格加廖夫穿甲弹鼓(7.62x39mm)"
+	desc = "捷格加廖夫机枪的弹鼓."
 	caliber = CALIBER_762X39
 	icon_state = "dp27"
 	default_ammo = /datum/ammo/bullet/rifle/ap
@@ -235,8 +235,8 @@
 //M16 RIFLE
 
 /obj/item/ammo_magazine/rifle/m16
-	name = "\improper M16 magazine (5.56x45mm)"
-	desc = "A 5.56x45mm magazine for the M16 assault rifle platform."
+	name = "\improper M16弹匣(5.56x45mm)"
+	desc = "M16突击步枪平台的5.56x45mm弹匣."
 	caliber = CALIBER_556X45
 	icon_state = "m16" //PLACEHOLDER
 	icon_state_mini = "mag_rifle_big"
@@ -247,8 +247,8 @@
 //FAMAS RIFLE
 
 /obj/item/ammo_magazine/rifle/famas
-	name = "\improper FAMAS magazine (5.56x45mm)"
-	desc = "A 5.56x45mm magazine for the FAMAS assault rifle."
+	name = "\improper FAMAS弹匣(5.56x45mm)"
+	desc = "FAMAS突击步枪的5.56x45mm弹匣."
 	caliber = CALIBER_556X45
 	icon_state = "famas"
 	icon_state_mini = "mag_rifle_greyblue"
@@ -259,8 +259,8 @@
 //MG-42 Light Machine Gun
 
 /obj/item/ammo_magazine/mg42
-	name = "\improper MG-42 drum magazine (10x24mm)"
-	desc = "A drum magazine for the MG-42 light machine gun."
+	name = "\improper MG-42弹鼓(10x24mm)"
+	desc = "MG-42轻机枪的弹鼓."
 	icon_state = "t42"
 	icon_state_mini = "mag_drum"
 	caliber = CALIBER_10X24_CASELESS
@@ -272,8 +272,8 @@
 //MG-60 General Purpose Machine Gun
 
 /obj/item/ammo_magazine/mg60
-	name = "\improper MG-60 GPMG box magazine (10x26mm)"
-	desc = "A belt box for the MG-60 general purpose machinegun."
+	name = "\improper MG-60通用机枪弹箱(10x26mm)"
+	desc = "MG-60通用机枪的弹链箱."
 	icon_state = "t60"
 	icon_state_mini = "mag_gpmg"
 	caliber = CALIBER_10X26_CASELESS
@@ -286,8 +286,8 @@
 //PR-412L1 HEAVY PULSE RIFLE
 
 /obj/item/ammo_magazine/m412l1_hpr
-	name = "\improper PR-412L1 box magazine (10x24mm)"
-	desc = "A semi-rectangular box of rounds for the PR-412L1 heavy pulse rifle."
+	name = "\improper PR-412L1弹匣(10x24mm)"
+	desc = "PR-412L1重型脉冲步枪的半矩形弹药盒."
 	icon_state = "m412l1"
 	icon_state_mini = "mag_box"
 	caliber = CALIBER_10X24_CASELESS
@@ -299,8 +299,8 @@
 //UPP TYPE 71 RIFLE
 
 /obj/item/ammo_magazine/rifle/type71
-	name = "\improper Type 71 magazine (7.62x39mm)"
-	desc = "A 7.62x39mm magazine that fits in the Type 71 rifle."
+	name = "\improper 71式弹匣(7.62x39mm)"
+	desc = "适用于71式步枪的7.62x39mm弹匣."
 	caliber = CALIBER_762X39
 	icon_state = "type_71"
 	icon_state_mini = "mag_rifle_big"
@@ -311,8 +311,8 @@
 //sh-15 AUTOMATIC SHOTGUN
 
 /obj/item/ammo_magazine/rifle/sh15_flechette
-	name = "\improper SH-15 flechette magazine (16 gauge)"
-	desc = "A magazine of 16 gauge flechette rounds, for the SH-15."
+	name = "\improper SH-15箭形弹弹匣(16号)"
+	desc = "SH-15的16号箭形弹弹匣."
 	caliber = CALIBER_16G
 	icon_state = "tx15_flechette"
 	icon_state_mini = "mag_tx15_flechette"
@@ -321,8 +321,8 @@
 	bonus_overlay = "tx15_flech"
 
 /obj/item/ammo_magazine/rifle/sh15_slug
-	name = "\improper SH-15 slug magazine (16 gauge)"
-	desc = "A magazine of 16 gauge slugs, for the SH-15."
+	name = "\improper SH-15独头弹弹匣(16号)"
+	desc = "SH-15的16号独头弹弹匣."
 	caliber = CALIBER_16G
 	icon_state = "tx15_slug"
 	icon_state_mini = "mag_tx15_slug"
@@ -334,8 +334,8 @@
 //SMARTMACHINEGUN AMMUNITION
 
 /obj/item/ammo_magazine/sg29
-	name = "\improper SG-29 drum magazine"
-	desc = "A wide drum magazine carefully filled to capacity with 10x26mm specialized smart rounds."
+	name = "\improper SG-29弹鼓"
+	desc = "一个宽大的弹鼓, 精心装满了10x26mm特种智能弹药."
 	caliber = CALIBER_10X26_CASELESS
 	icon_state = "sg29"
 	icon_state_mini = "mag_sg29"
@@ -351,8 +351,8 @@
 //SMART TARGET RIFLE AMMUNITION
 
 /obj/item/ammo_magazine/rifle/sg62
-	name = "\improper SG-62 magazine (10x27mm HV)"
-	desc = "A magazine filled with 10x27mm specialized smart rounds."
+	name = "\improper SG-62弹匣(10x27mm HV)"
+	desc = "一个装满10x27mm特种智能弹药的弹匣."
 	caliber = CALIBER_10X27_CASELESS
 	icon_state = "sg62"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -364,8 +364,8 @@
 //SPOTTING RIFLE AMMUNITION
 
 /obj/item/ammo_magazine/rifle/sg153
-	name = "\improper SG-153 magazine (12x7mm Smart Magnum)"
-	desc = "A magazine filled with 12x7mm lethal smart rounds, these will do nothing other than pack a big punch."
+	name = "\improper SG-153弹匣(12x7mm智能马格南)"
+	desc = "一个装满12x7mm致命智能弹药的弹匣, 这些弹药除了威力巨大之外别无他用."
 	caliber = CALIBER_12X7
 	icon_state = "sg153"
 	w_class = WEIGHT_CLASS_SMALL
@@ -374,38 +374,38 @@
 	icon_state_mini = "mag_sg29"
 
 /obj/item/ammo_magazine/rifle/sg153/highimpact
-	name = "\improper SG-153 high impact magazine (12x7mm Smart Magnum)"
-	desc = "A magazine filled with 12x7mm high impact smart rounds, these will likely stagger and slow anything they hit."
+	name = "\improper SG-153高冲击弹匣(12x7mm智能马格南)"
+	desc = "一个装满12x7mm高冲击智能弹药的弹匣, 这些弹药很可能会使其命中的任何目标踉跄并减速."
 	icon_state = "sg153_hi"
 	default_ammo = /datum/ammo/bullet/sg153/highimpact
 
 /obj/item/ammo_magazine/rifle/sg153/heavyrubber
-	name = "\improper SG-153 heavy rubber magazine (12x7mm Smart Magnum)"
-	desc = "A magazine filled with 12x7mm heavy rubber smart rounds, these will likely stun and displace anything they hit."
+	name = "\improper SG-153重型橡胶弹匣(12x7mm智能马格南)"
+	desc = "一个装满12x7mm重型橡胶智能弹药的弹匣, 这些弹药很可能会使其命中的任何目标眩晕并击退."
 	icon_state = "sg153_hr"
 	default_ammo = /datum/ammo/bullet/sg153/heavyrubber
 
 /obj/item/ammo_magazine/rifle/sg153/plasmaloss
-	name = "\improper SG-153 tanglefoot magazine (12x7mm Smart Magnum)"
-	desc = "A magazine filled with 12x7mm smart rounds tipped with 'Tanglefoot' poison, these rounds will drain the energy out of targets they hit."
+	name = "\improper SG-153缠足毒弹匣(12x7mm智能马格南)"
+	desc = "一个装满12x7mm尖端涂有'缠足'毒药的智能弹药的弹匣, 这些弹药会抽干其命中目标的能量."
 	icon_state = "sg153_hr"
 	default_ammo = /datum/ammo/bullet/sg153/plasmaloss
 
 /obj/item/ammo_magazine/rifle/sg153/tungsten
-	name = "\improper SG-153 tungsten magazine (12x7mm Smart Magnum)"
-	desc = "A magazine filled with 12x7mm tungsten smart rounds, these rounds will massively knock back any target it hits."
+	name = "\improper SG-153钨芯弹匣(12x7mm智能马格南)"
+	desc = "一个装满12x7mm钨芯智能弹药的弹匣, 这些弹药会将其命中的任何目标大幅击退."
 	icon_state = "sg153_tg"
 	default_ammo = /datum/ammo/bullet/sg153/tungsten
 
 /obj/item/ammo_magazine/rifle/sg153/incendiary
-	name = "\improper SG-153 incendiary magazine (12x7mm Smart Magnum)"
-	desc = "A magazine filled with 12x7mm incendiary smart rounds, these rounds will set alight anything they hit."
+	name = "\improper SG-153燃烧弹匣(12x7mm智能马格南)"
+	desc = "一个装满12x7mm燃烧智能弹药的弹匣, 这些弹药会点燃其命中的任何目标."
 	icon_state = "sg153_ic"
 	default_ammo = /datum/ammo/bullet/sg153/incendiary
 
 /obj/item/ammo_magazine/rifle/sg153/flak
-	name = "\improper SG-153 flak magazine (12x7mm Smart Magnum)"
-	desc = "A magazine filled with 12x7mm flak smart rounds, these rounds will airburst on contact with an organic target, causing damage in a small area near the target."
+	name = "\improper SG-153破片弹匣(12x7mm智能马格南)"
+	desc = "一个装满12x7mm破片智能弹药的弹匣, 这些弹药会在接触有机目标时空爆, 对目标附近的小范围区域造成伤害."
 	icon_state = "sg153_fl"
 	default_ammo = /datum/ammo/bullet/sg153/flak
 
@@ -414,8 +414,8 @@
 //Sectoid Rifle
 
 /obj/item/ammo_magazine/rifle/sectoid_rifle
-	name = "alien rifle plasma magazine"
-	desc = "A magazine filled with powerful plasma rounds. The ammo inside doesn't look like anything you've seen before."
+	name = "异形步枪等离子弹匣"
+	desc = "一个装满强大等离子弹药的弹匣. 里面的弹药看起来和你以前见过的任何东西都不一样."
 	caliber = CALIBER_ALIEN
 	icon_state = "alien_rifle"
 	icon_state_mini = "mag_rifle_purple"
@@ -425,8 +425,8 @@
 //-------------------------------------------------------
 //Marine magazine sniper, or the SR-127.
 /obj/item/ammo_magazine/rifle/sr127
-	name = "SR-127 bolt action rifle magazine"
-	desc = "A box magazine filled with 8.6x70mm rifle rounds for the SR-127."
+	name = "SR-127栓动步枪弹匣"
+	desc = "一个装满8.6x70mm步枪弹的弹匣, 用于SR-127."
 	caliber = CALIBER_86X70
 	icon_state = "tl127"
 	icon_state_mini = "mag_rifle_big"
@@ -436,8 +436,8 @@
 	ammo_band_icon = "tl127_band"
 
 /obj/item/ammo_magazine/rifle/sr127/flak
-	name = "SR-127 bolt action rifle flak magazine"
-	desc = "A box magazine filled with 8.6x70mm rifle flak rounds for the SR-127."
+	name = "SR-127栓动步枪破片弹匣"
+	desc = "一个装满8.6x70mm步枪破片弹的弹匣, 用于SR-127."
 	icon_state_mini = "mag_sniper_blue"
 	default_ammo = /datum/ammo/bullet/sniper/pfc/flak
 	bonus_overlay = "tl127_flak"
@@ -446,8 +446,8 @@
 //-------------------------------------------------------
 //Marine magazine automatic sniper, or the SR-81.
 /obj/item/ammo_magazine/rifle/sr81
-	name = "\improper SR-81 automatic sniper rifle magazine"
-	desc = "A box magazine filled with low pressure 8.6x70mm rifle rounds for the SR-81."
+	name = "\improper SR-81自动狙击步枪弹匣"
+	desc = "一个装满低压8.6x70mm步枪弹的弹匣, 用于SR-81."
 	caliber = CALIBER_86X70
 	icon_state = "t81"
 	icon_state_mini = "mag_rifle_greyblue"
@@ -457,8 +457,8 @@
 //-------------------------------------------------------
 //AR-11
 /obj/item/ammo_magazine/rifle/ar11
-	name = "\improper AR-11 combat rifle magazine"
-	desc = "A magazine filled with 4.92x34mm rifle rounds for the AR-11."
+	name = "\improper AR-11战斗步枪弹匣"
+	desc = "一个装满4.92x34mm步枪弹的弹匣, 用于AR-11."
 	caliber = CALIBER_492X34_CASELESS
 	icon_state = "tx11"
 	icon_state_mini = "mag_tx11"
@@ -471,8 +471,8 @@
 //-------------------------------------------------------
 //AR-21
 /obj/item/ammo_magazine/rifle/ar21
-	name = "\improper AR-21 skirmish rifle magazine"
-	desc = "A magazine filled with 10x25mm rifle rounds for the AR-21."
+	name = "\improper AR-21 游骑兵步枪弹匣"
+	desc = "装有10x25mm步枪弹的AR-21弹匣."
 	caliber = CALIBER_10X25_CASELESS
 	icon_state = "t21"
 	icon_state_mini = "mag_rifle"
@@ -481,8 +481,8 @@
 	max_rounds = 30
 
 /obj/item/ammo_magazine/rifle/ar21/extended
-	name = "\improper AR-21 extended skirmish rifle magazine"
-	desc = "A extended magazine filled with 10x25mm rifle rounds for the AR-21."
+	name = "\improper AR-21 扩容游骑兵步枪弹匣"
+	desc = "装有10x25mm步枪弹的AR-21扩容弹匣."
 	icon_state = "t21_ext"
 	max_rounds = 50
 	icon_state_mini = "mag_rifle_big_yellow"
@@ -492,8 +492,8 @@
 //ALF-51B
 
 /obj/item/ammo_magazine/rifle/alf_machinecarbine
-	name = "\improper ALF-51B box magazine (10x25mm)"
-	desc = "A box magazine for the ALF-51B machinecarbine."
+	name = "\improper ALF-51B 盒式弹匣 (10x25mm)"
+	desc = "ALF-51B 机关卡宾枪的盒式弹匣."
 	icon_state = "t60"
 	icon_state_mini = "mag_gpmg"
 	caliber = CALIBER_10X25_CASELESS
@@ -506,8 +506,8 @@
 //MKH98
 
 /obj/item/ammo_magazine/rifle/mkh
-	name = "\improper MKH-98 storm rifle magazine"
-	desc = "A magazine filled with 7.62X39 rifle rounds for the MKH."
+	name = "\improper MKH-98 风暴步枪弹匣"
+	desc = "装有7.62X39步枪弹的MKH弹匣."
 	caliber = CALIBER_762X39
 	icon_state = "mkh98"
 	icon_state_mini = "mag_rifle_greyblue"
@@ -517,8 +517,8 @@
 //-------------------------------------------------------
 //GL-54
 /obj/item/ammo_magazine/rifle/tx54
-	name = "\improper 20mm airburst grenade magazine"
-	desc = "A 20mm magazine loaded with airburst grenades. For use with the GL-54 or AR-55."
+	name = "\improper 20mm 空爆榴弹弹匣"
+	desc = "装有空爆榴弹的20mm弹匣. 用于GL-54或AR-55."
 	caliber = CALIBER_20MM
 	icon = 'icons/obj/items/ammo/misc.dmi'
 	icon_state = "tx54_airburst"
@@ -530,36 +530,36 @@
 	greyscale_colors = COLOR_AMMO_AIRBURST
 
 /obj/item/ammo_magazine/rifle/tx54/incendiary
-	name = "\improper 20mm incendiary grenade magazine"
-	desc = "A 20mm magazine loaded with incendiary grenades. For use with the GL-54 or AR-55."
+	name = "\improper 20mm 燃烧榴弹弹匣"
+	desc = "装有燃烧榴弹的20mm弹匣. 用于GL-54或AR-55."
 	default_ammo = /datum/ammo/tx54/incendiary
 	icon_state_mini = "mag_sniper_orange"
 	greyscale_colors = COLOR_AMMO_INCENDIARY
 
 /obj/item/ammo_magazine/rifle/tx54/smoke
-	name = "\improper 20mm tactical smoke grenade magazine"
-	desc = "A 20mm magazine loaded with tactical smoke grenades. For use with the GL-54 or AR-55."
+	name = "\improper 20mm 战术烟雾榴弹弹匣"
+	desc = "装有战术烟雾榴弹的20mm弹匣. 用于GL-54或AR-55."
 	default_ammo = /datum/ammo/tx54/smoke
 	icon_state_mini = "mag_sniper_green"
 	greyscale_colors = COLOR_AMMO_TACTICAL_SMOKE
 
 /obj/item/ammo_magazine/rifle/tx54/smoke/dense
-	name = "\improper 20mm smoke grenade magazine"
-	desc = "A 20mm magazine loaded with smoke grenades. For use with the GL-54 or AR-55."
+	name = "\improper 20mm 烟雾榴弹弹匣"
+	desc = "装有烟雾榴弹的20mm弹匣. 用于GL-54或AR-55."
 	default_ammo = /datum/ammo/tx54/smoke/dense
 	icon_state_mini = "mag_sniper_cyan"
 	greyscale_colors = COLOR_AMMO_SMOKE
 
 /obj/item/ammo_magazine/rifle/tx54/smoke/tangle
-	name = "\improper 20mm tanglefoot grenade magazine"
-	desc = "A 20mm magazine loaded with tanglefoot grenades. For use with the GL-54 or AR-55."
+	name = "\improper 20mm 绊足榴弹弹匣"
+	desc = "装有绊足榴弹的20mm弹匣. 用于GL-54或AR-55."
 	default_ammo = /datum/ammo/tx54/smoke/tangle
 	icon_state_mini = "mag_sniper_purple"
 	greyscale_colors = COLOR_AMMO_TANGLEFOOT
 
 /obj/item/ammo_magazine/rifle/tx54/razor
-	name = "\improper 20mm razorburn grenade magazine"
-	desc = "A 20mm magazine loaded with razorburn grenades. For use with the GL-54 or AR-55."
+	name = "\improper 20mm 剃刀灼伤榴弹弹匣"
+	desc = "装有剃刀灼伤榴弹的20mm弹匣. 用于GL-54或AR-55."
 	default_ammo = /datum/ammo/tx54/razor
 	icon_state_mini = "mag_sniper_yellow"
 	greyscale_colors = COLOR_AMMO_RAZORBURN
@@ -567,8 +567,8 @@
 //-------------------------------------------------------
 //Garand
 /obj/item/ammo_magazine/rifle/garand
-	name = "C1 Garand enbloc clip"
-	desc = "A enbloc clip filled with .30 caliber rifle rounds for the C1 Garand."
+	name = "C1 加兰德漏夹"
+	desc = "装有.30口径步枪弹的C1加兰德漏夹."
 	caliber = CALIBER_3006
 	w_class = WEIGHT_CLASS_SMALL
 	icon_state = "garand"
@@ -580,8 +580,8 @@
 //V-31 SOM rifle
 
 /obj/item/ammo_magazine/rifle/som
-	name = "\improper V-31 magazine (10x24mm)"
-	desc = "A 10mm rifle magazine designed for the V-31."
+	name = "\improper V-31 弹匣 (10x24mm)"
+	desc = "为V-31设计的10mm步枪弹匣."
 	caliber = CALIBER_10X24_CASELESS
 	icon_state = "v31"
 	icon_state_mini = "mag_thin_cyan"
@@ -591,22 +591,22 @@
 	ammo_band_icon = "v31_band"
 
 /obj/item/ammo_magazine/rifle/som/ap
-	name = "\improper V-31 AP magazine (10x24mm)"
-	desc = "A 10mm rifle magazine designed for the V-31, loaded with armor piercing rounds."
+	name = "\improper V-31 穿甲弹匣 (10x24mm)"
+	desc = "为V-31设计的10mm步枪弹匣, 装有穿甲弹."
 	icon_state_mini = "mag_thin_green"
 	default_ammo = /datum/ammo/bullet/rifle/hv
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/rifle/som/incendiary
-	name = "\improper V-31 incendiary magazine (10x24mm)"
-	desc = "A 10mm rifle magazine designed for the V-31, loaded with incendiary rounds."
+	name = "\improper V-31 燃烧弹匣 (10x24mm)"
+	desc = "为V-31设计的10mm步枪弹匣, 装有燃烧弹."
 	icon_state_mini = "mag_thin_red"
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/rifle/som_big
-	name = "\improper V-35 magazine (10x27mm)"
-	desc = "A 10mm rifle magazine designed for the V-35."
+	name = "\improper V-35 弹匣 (10x27mm)"
+	desc = "为V-35设计的10mm步枪弹匣."
 	caliber = CALIBER_10X27_CASELESS
 	icon_state = "v35"
 	base_ammo_icon = "v35"
@@ -618,15 +618,15 @@
 	magazine_flags = MAGAZINE_REFILLABLE|MAGAZINE_SHOW_AMMO
 
 /obj/item/ammo_magazine/rifle/som_big/incendiary
-	name = "\improper V-35 incendiary magazine (10x27mm)"
-	desc = "A 10mm rifle magazine designed for the V-35, loaded with incendiary ammunition."
+	name = "\improper V-35 燃烧弹匣 (10x27mm)"
+	desc = "为V-35设计的10mm步枪弹匣, 装有燃烧弹药."
 	icon_state = "v35_incend"
 	default_ammo = /datum/ammo/bullet/rifle/som_big/incendiary
 	bonus_overlay = "v35_incend"
 
 /obj/item/ammo_magazine/rifle/som_big/anti_armour
-	name = "\improper V-35 AT magazine (10x27mm)"
-	desc = "A 10mm rifle magazine designed for the V-35, loaded with powerful anti armor ammunition. Deals significant damage to vehicles, and can punch through some cover."
+	name = "\improper V-35 反坦克弹匣 (10x27mm)"
+	desc = "为V-35设计的10mm步枪弹匣, 装有强力的反装甲弹药. 对载具造成显著伤害, 并能穿透部分掩体."
 	icon_state = "v35_at"
 	default_ammo = /datum/ammo/bullet/rifle/som_big/anti_armour
 	bonus_overlay = "v35_at"
@@ -635,8 +635,8 @@
 //V-41 Machine Gun
 
 /obj/item/ammo_magazine/som_mg
-	name = "\improper V-41 box magazine (10x26mm)"
-	desc = "A drum magazine for the V-41 machinegun."
+	name = "\improper V-41 盒式弹匣 (10x26mm)"
+	desc = "V-41机枪的弹鼓."
 	icon_state = "v41"
 	icon_state_mini = "mag_drum_big_long"
 	caliber = CALIBER_10X26_CASELESS
@@ -649,8 +649,8 @@
 //L-11 Sharpshooter Rifle
 
 /obj/item/ammo_magazine/rifle/icc_sharpshooter
-	name = "\improper L-11 sharpshooter rifle magazine (10x27mm)"
-	desc = "A 10mm DMR magazine."
+	name = "\improper L-11 精确射手步枪弹匣 (10x27mm)"
+	desc = "10mm精确射手步枪弹匣."
 	caliber = CALIBER_10X27_CASELESS
 	icon_state = "l11"
 	icon_state_mini = "mag_rifle"
@@ -661,8 +661,8 @@
 //-------------------------------------------------------
 //L-15 Battlecarbine
 /obj/item/ammo_magazine/rifle/icc_battlecarbine
-	name = "\improper L-15 battlecarbine rifle magazine (10x25mm)"
-	desc = "A magazine filled with 10x25mm rifle rounds for the L-15."
+	name = "\improper L-15 战斗卡宾枪弹匣 (10x25mm)"
+	desc = "装有10x25mm步枪弹的L-15弹匣."
 	caliber = CALIBER_10X25_CASELESS
 	icon_state = "l15"
 	icon_state_mini = "mag_rifle"
@@ -672,8 +672,8 @@
 //-------------------------------------------------------
 //ML-12 Confrontation Rifle
 /obj/item/ammo_magazine/rifle/icc_confrontationrifle
-	name = "\improper ML-12 battlecarbine rifle magazine (10x28mm)"
-	desc = "A magazine filled with 10x28mm armor-piercing rifle rounds for the ML-12."
+	name = "\improper ML-12 战斗卡宾枪弹匣 (10x28mm)"
+	desc = "装有10x28mm穿甲步枪弹的ML-12弹匣."
 	caliber = CALIBER_10X28_CASELESS
 	icon_state = "ml12"
 	icon_state_mini = "mag_rifle_big"
@@ -683,8 +683,8 @@
 //-------------------------------------------------------
 //ML-41 Autoshotgun
 /obj/item/ammo_magazine/rifle/icc_autoshotgun
-	name = "\improper ML-41 Autoshotgun flechette drum magazine (12G)"
-	desc = "A magazine filled with 12G flechette shells for the ML-41."
+	name = "\improper ML-41 自动霰弹枪飞镖弹鼓 (12G)"
+	desc = "装有12G飞镖弹的ML-41弹鼓."
 	caliber = CALIBER_12G
 	icon_state = "ml41"
 	default_ammo = /datum/ammo/bullet/shotgun/flechette
@@ -692,8 +692,8 @@
 	icon_state_mini = "mag_rifle"
 
 /obj/item/ammo_magazine/rifle/icc_autoshotgun/frag
-	name = "\improper ML-41 Autoshotgun frag drum magazine (12G)"
-	desc = "A magazine filled with 12G fragmentation shells for the ML-41."
+	name = "\improper ML-41 自动霰弹枪破片弹鼓 (12G)"
+	desc = "装有12G破片弹的ML-41弹鼓."
 	caliber = CALIBER_12G
 	icon_state = "ml41_frag"
 	default_ammo = /datum/ammo/bullet/shotgun/frag
@@ -702,8 +702,8 @@
 //-------------------------------------------------------
 //L-88 Assault Carbine
 /obj/item/ammo_magazine/rifle/icc_assaultcarbine
-	name = "\improper L-88 assault carbine magazine (5.56x45mm)"
-	desc = "A magazine filled with 5.56x45mm rifle rounds for the L-88 series of firearms."
+	name = "\improper L-88 突击卡宾枪弹匣 (5.56x45mm)"
+	desc = "装有5.56x45mm步枪弹的L-88系列枪械弹匣."
 	caliber = CALIBER_556X45
 	icon_state = "aug"
 	icon_state_mini = "mag_rifle"
@@ -711,15 +711,15 @@
 	max_rounds = 30
 
 /obj/item/ammo_magazine/rifle/icc_assaultcarbine/export
-	name = "\improper EM-88 assault carbine magazine (5.56x45mm)"
-	desc = "A magazine filled with 5.56x45mm rifle rounds for the EM-88 series of firearms."
+	name = "\improper EM-88 突击卡宾枪弹匣 (5.56x45mm)"
+	desc = "装有5.56x45mm步枪弹的EM-88系列枪械弹匣."
 
 //-------------------------------------------------------
 //
 
 /obj/item/ammo_magazine/rifle/t25
-	name = "\improper T-25 magazine (10x26mm)"
-	desc = "A 10mm assault rifle magazine."
+	name = "\improper T-25 弹匣 (10x26mm)"
+	desc = "10mm突击步枪弹匣."
 	caliber = CALIBER_10X26_CASELESS
 	icon_state = "t25"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -728,8 +728,8 @@
 	icon_state_mini = "mag_rifle_big"
 
 /obj/item/ammo_magazine/rifle/t25/extended
-	name = "\improper T-25 extended magazine (10x26mm)"
-	desc = "A 10mm extended assault rifle magazine."
+	name = "\improper T-25 扩容弹匣 (10x26mm)"
+	desc = "10mm突击步枪扩容弹匣."
 	icon_state = "t25_ext"
 	max_rounds = 120
 	icon_state_mini = "mag_rifle_big_yellow"
@@ -737,8 +737,8 @@
 
 //ML-41 Assault Machinegun
 /obj/item/ammo_magazine/icc_mg
-	name = "\improper ML-41 GPMG box magazine (10x26mm)"
-	desc = "A belt box for the ML-41 assault machinegun."
+	name = "\improper ML-41 通用机枪盒式弹匣 (10x26mm)"
+	desc = "ML-41突击机枪的弹链盒."
 	icon_state = "minimi"
 	icon_state_mini = "mag_gpmg"
 	caliber = CALIBER_10X26_CASELESS
@@ -749,8 +749,8 @@
 
 // This is a 'belt'.
 /obj/item/ammo_magazine/icc_mg/belt
-	name = "\improper ML-41 GPMG buttpack magazine (10x26mm)"
-	desc = "A buttpack for the ML-41 which carries the ammo inside."
+	name = "\improper ML-41 通用机枪背包弹匣 (10x26mm)"
+	desc = "ML-41的背包, 弹药装在其中."
 	icon_state = "minimi_belt"
 	equip_slot_flags = ITEM_SLOT_BELT
 	magazine_flags = MAGAZINE_WORN
@@ -758,8 +758,8 @@
 	max_rounds = 750
 
 /obj/item/ammo_magazine/icc_mg/packet
-	name = "box of 10x26mm"
-	desc = "A box containing 500 rounds of 10x26mm caseless."
+	name = "10x26mm弹药箱"
+	desc = "装有500发10x26mm无壳弹的弹药箱."
 	icon = 'icons/obj/items/ammo/packet.dmi'
 	icon_state = "box_minimi"
 	current_rounds = 500
@@ -768,8 +768,8 @@
 // L26
 
 /obj/item/ammo_magazine/rifle/vsd_mg
-	name = "\improper L26 box mag (5.56x45mm)"
-	desc = "A 200 round box mag for the L26."
+	name = "\improper L26弹匣 (5.56x45mm)"
+	desc = "L26的200发弹匣."
 	caliber = CALIBER_556X45
 	default_ammo = /datum/ammo/bullet/rifle/machinegun
 	icon_state = "l26"
@@ -778,8 +778,8 @@
 	max_rounds = 200
 
 /obj/item/ammo_magazine/rifle/vsd_rifle
-	name = "\improper C550 magazine (10x27mm)"
-	desc = "A 10x27mm rifle magazine."
+	name = "\improper C550弹匣 (10x27mm)"
+	desc = "10x27mm步枪弹匣."
 	caliber = CALIBER_10X27_CASELESS
 	icon_state = "c550"
 	icon_state_mini = "mag_rifle_big"

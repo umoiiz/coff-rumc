@@ -137,24 +137,24 @@
 
 		if(sound || get_sound(user))
 			if(HAS_TRAIT(user, TRAIT_MUTED))
-				user.balloon_alert(user, "You are muted!")
+				user.balloon_alert(user, "你已被禁言!")
 				return FALSE
 			if(TIMER_COOLDOWN_RUNNING(user, COOLDOWN_EMOTE))
-				user.balloon_alert(user, "You just did an audible emote")
+				user.balloon_alert(user, "你刚刚做了一个可听见的表情")
 				return FALSE
 			else
 				TIMER_COOLDOWN_START(user, COOLDOWN_EMOTE, 8 SECONDS)
 
 		if(user.client)
 			if(user.client.prefs.muted & MUTE_IC)
-				to_chat(user, span_warning("You cannot send emotes (muted)."))
+				to_chat(user, span_warning("你无法发送表情 (已禁言)."))
 				return FALSE
 
 			if(user.client.handle_spam_prevention(message, MUTE_IC))
 				return FALSE
 
 			if(is_banned_from(user.ckey, "Emote"))
-				to_chat(user, span_warning("You cannot send emotes (banned)."))
+				to_chat(user, span_warning("你无法发送表情 (已封禁)."))
 				return FALSE
 
 	if(status_check && !is_type_in_typecache(user, mob_type_ignore_stat_typecache))
@@ -164,9 +164,9 @@
 
 			switch(user.stat)
 				if(UNCONSCIOUS)
-					to_chat(user, span_notice("You cannot [key] while unconscious."))
+					to_chat(user, span_notice("你无法在昏迷时[key]."))
 				if(DEAD)
-					to_chat(user, span_notice("You cannot [key] while dead."))
+					to_chat(user, span_notice("你无法在死亡时[key]."))
 
 			return FALSE
 
@@ -176,7 +176,7 @@
 				if(L.incapacitated())
 					if(!intentional)
 						return FALSE
-					user.balloon_alert(user, "You cannot [key] while stunned")
+					user.balloon_alert(user, "你无法在眩晕时[key].")
 					return FALSE
 
 		if(emote_flags & EMOTE_ARMS_CHECK)
@@ -185,17 +185,17 @@
 			var/datum/limb/left_hand = snapper.get_limb("l_hand")
 			var/datum/limb/right_hand = snapper.get_limb("r_hand")
 			if((!left_hand.is_usable()) && (!right_hand.is_usable()))
-				to_chat(user, span_notice("You cannot [key] without a working hand."))
+				to_chat(user, span_notice("你无法在没有可用的手时[key]."))
 				return FALSE
 
 		if((emote_flags & EMOTE_RESTRAINT_CHECK) && user.restrained())
 			if(!intentional)
 				return FALSE
-			user.balloon_alert(user, "You cannot [key] while restrained")
+			user.balloon_alert(user, "你无法在被束缚时[key].")
 			return FALSE
 
 		if(emote_flags & EMOTE_ACTIVE_ITEM)
 			if(!isnull(user.get_active_held_item()))
 				return TRUE
-			user.balloon_alert(user, "You need to hold an item to [key] it.")
+			user.balloon_alert(user, "你需要手持一件物品才能[key]它.")
 			return FALSE

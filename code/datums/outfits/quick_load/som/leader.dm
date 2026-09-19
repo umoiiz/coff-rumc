@@ -30,7 +30,7 @@
 
 /datum/outfit/quick/som/squad_leader/standard_assaultrifle
 	name = "V-31 Squad Leader"
-	desc = "Tactical utility. Equipped with a V-31 assault rifle with integrated 'micro grenade' rail launcher, Gorgon heavy armor with 'Valkyrie' autodoctor module, a large variety of grenades as well as AP ammunition. Excellent performance against heavily armored targets, while the plentiful grenade provide greater tactical flexibility."
+	desc = "战术实用型. 配备了V-31突击步枪, 带有集成\"微型榴弹\"轨道发射器, 带有\"瓦尔基里\"自动医疗模块的戈耳工重型装甲, 种类繁多的榴弹以及穿甲弹药. 对重装甲目标表现优异, 同时充足的榴弹提供了更大的战术灵活性."
 
 	back = /obj/item/storage/backpack/lightpack/som
 	suit_store = /obj/item/weapon/gun/rifle/som/veteran
@@ -55,7 +55,7 @@
 
 /datum/outfit/quick/som/squad_leader/standard_smg
 	name = "V-21 Squad Leader"
-	desc = "Close range high damage, high speed. Equipped with a V-21 submachine gun with variable firerate allowing for extreme rates of fire when properly wielded, Gorgon heavy armor with 'Valkyrie' autodoctor module, a good variety of grenades and AP ammunition. Allows for excellent close to medium range firepower, especially against heavily armored targets, and is surprisingly mobile."
+	desc = "近距离高伤害, 高速度. 配备了V-21冲锋枪, 其可变射速在正确使用时可实现极高的射速, 带有\"瓦尔基里\"自动医疗模块的戈耳工重型装甲, 种类丰富的榴弹和穿甲弹药. 可实现出色的近到中距离火力, 尤其是对重装甲目标, 并且机动性出奇地好."
 
 	suit_store = /obj/item/weapon/gun/smg/som/veteran
 	belt = /obj/item/storage/belt/marine/som/som_smg_ap
@@ -77,7 +77,7 @@
 
 /datum/outfit/quick/som/squad_leader/charger
 	name = "Charger Squad Leader"
-	desc = "For the leader that prefers to be up close and personal. Equipped with a volkite charger with motion sensor and gyrostabiliser for better one handed use, Gorgon heavy armor with 'Valkyrie' autodoctor module and a good variety of grenades. Allows for excellent close to medium range firepower, with first rate survivability. Very dangerous."
+	desc = "献给喜欢近距离面对面作战的领导者. 配备了带有运动传感器和陀螺稳定器以便更好地单手使用的沃尔凯特充能枪, 带有\"瓦尔基里\"自动医疗模块的戈耳工重型装甲以及种类丰富的榴弹. 可实现出色的近到中距离火力, 并具有一流的生存能力. 非常危险."
 
 	suit_store = /obj/item/weapon/gun/energy/lasgun/lasrifle/volkite/charger/scout
 	belt = /obj/item/storage/belt/marine/som/volkite
@@ -99,7 +99,7 @@
 
 /datum/outfit/quick/som/squad_leader/caliver
 	name = "Caliver Squad Leader"
-	desc = "Victory through superior firepower. Equipped with a volkite caliver and motion sensor, Gorgon heavy armor with 'Valkyrie' autodoctor module and a good variety of grenades. Allows for excellent damage at all ranges, with first rate survivability. Very dangerous."
+	desc = "以优势火力取胜. 配备了沃尔凯特步枪和运动传感器, 带有\"瓦尔基里\"自动医疗模块的戈耳工重型装甲以及种类丰富的榴弹. 可在所有距离上造成出色伤害, 并具有一流的生存能力. 非常危险."
 
 	suit_store = /obj/item/weapon/gun/energy/lasgun/lasrifle/volkite/caliver/tacsensor
 	belt = /obj/item/storage/belt/marine/som/volkite
@@ -120,7 +120,7 @@
 
 /datum/outfit/quick/som/squad_leader/mpi
 	name = "MPI_KM Squad Leader"
-	desc = "For the leader with a taste for nostalgia. Equipped with an MPI_KM assault rifle, with under barrel grenade launcher, Gorgon heavy armor with 'Valkyrie' autodoctor module and a large supply of grenades. An old weapon that was a common sight during the original Martian rebellion, the MPI's good stopping power, reliability and a healthy dose of nostalgia means it is still seen in use by some among the SOM despite its age."
+	desc = "献给有怀旧情结的领导者. 配备了MPI_KM突击步枪, 带有下挂式榴弹发射器, 带有\"瓦尔基里\"自动医疗模块的戈耳工重型装甲以及大量榴弹. 这是一种旧式武器, 在最初的 Martian 叛乱期间很常见, MPI良好的停止力, 可靠性以及恰到好处的怀旧感意味着尽管它已经老旧, 在SOM中仍有一些人在使用."
 
 	suit_store = /obj/item/weapon/gun/rifle/mpi_km/grenadier
 	belt = /obj/item/storage/belt/marine/som/mpi_plum

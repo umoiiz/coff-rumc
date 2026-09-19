@@ -45,30 +45,30 @@
 
 	switch(SSmapping.configs[GROUND_MAP].map_name)
 		if(MAP_PRISON_STATION)
-			to_chat(M, span_notice("You are a survivor of the attack on Fiorina Orbital Penitentiary. You worked or lived on the prison station, and managed to avoid the alien attacks... until now."))
+			to_chat(M, span_notice("你是Fiorina轨道监狱袭击事件的幸存者. 你在监狱站工作或生活, 并设法避开了异形袭击...直到现在."))
 		if(MAP_ICE_COLONY)
-			to_chat(M, span_notice("You are a survivor of the attack on the ice habitat. You worked or lived on the colony, and managed to avoid the alien attacks... until now."))
+			to_chat(M, span_notice("你是冰封栖息地袭击事件的幸存者. 你在殖民地工作或生活, 并设法避开了异形袭击...直到现在."))
 		if(MAP_BIG_RED)
-			to_chat(M, span_notice("You are a survivor of the attack on the colony. You worked or lived in the archaeology colony, and managed to avoid the alien attacks... until now."))
+			to_chat(M, span_notice("你是殖民地袭击事件的幸存者. 你在考古殖民地工作或生活, 并设法避开了异形袭击...直到现在."))
 		if(MAP_LV_624)
-			to_chat(M, span_notice("You are a survivor of the attack on the colony. You suspected something was wrong and tried to warn others, but it was too late..."))
+			to_chat(M, span_notice("你是殖民地袭击事件的幸存者. 你怀疑出了什么问题并试图警告他人, 但为时已晚..."))
 		if(MAP_ICY_CAVES)
-			to_chat(M, span_notice("You are a survivor of the attack on the icy cave system. You worked or lived on the site, and managed to avoid the alien attacks... until now."))
+			to_chat(M, span_notice("你是冰洞系统袭击事件的幸存者. 你在该地点工作或生活, 并设法避开了异形袭击...直到现在."))
 		if(MAP_RESEARCH_OUTPOST)
-			to_chat(M, span_notice("You are a survivor of the attack on the outpost. But you question yourself: are you truely safe now?"))
+			to_chat(M, span_notice("你是前哨站袭击事件的幸存者. 但你问自己: 你现在真的安全吗?"))
 		if(MAP_MAGMOOR_DIGSITE)
-			to_chat(M, span_notice("You are a survivor of the attack on the Magmoor Digsite IV. You worked or lived on the digsite, and managed to avoid the alien attacks... until now."))
+			to_chat(M, span_notice("你是Magmoor挖掘场IV袭击事件的幸存者. 你在挖掘场工作或生活, 并设法避开了异形袭击...直到现在."))
 		else
-			to_chat(M, span_notice("Through a miracle you managed to survive the attack. But are you truly safe now?"))
+			to_chat(M, span_notice("凭借奇迹, 你设法在袭击中幸存下来. 但你现在真的安全吗?"))
 
 /datum/job/survivor/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"In whatever case you have been through, you are here to survive and get yourself rescued.
-You appreciate the support of TerraGov and Nanotrasen should you be rescued.
-You are not hostile to TGMC, nor you should oppose or disrupt their objective, unless an admin says otherwise.
-If you find any other survivors in the area, cooperate with them to increase your chances of survival.
-Depending on the job you've undertook, you may have additional skills to help others when needed.
-Good luck, but do not expect to survive."})
+	to_chat(M, {"无论你经历了什么, 你来到这里是为了生存并让自己获救.
+如果你获救, 你会感激TerraGov和Nanotrasen的支援.
+你对TGMC没有敌意, 也不应反对或破坏他们的目标, 除非管理员另有说明.
+如果你在该地区发现任何其他幸存者, 与他们合作以提高你的生存机会.
+根据你所从事的工作, 你可能拥有额外技能, 在需要时帮助他人.
+祝你好运, 但不要指望能活下来."})
 
 /datum/job/survivor/scientist
 	title = "Scientist Survivor"

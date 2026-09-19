@@ -1,6 +1,6 @@
 /turf/closed/wall
 	name = "wall"
-	desc = "A huge chunk of metal used to seperate rooms."
+	desc = "一大块用于分隔房间的金属."
 	icon = 'icons/turf/walls/regular_wall.dmi'
 	icon_state = "metal-0"
 	base_icon_state = "metal"
@@ -55,7 +55,7 @@
 
 	for(var/obj/item/explosive/mine/M in src)
 		if(M)
-			visible_message(span_warning("\The [M] is sealed inside the wall as it is built"))
+			visible_message(span_warning("\The [M]在墙壁建成时被封在了里面"))
 			qdel(M)
 
 /turf/closed/wall/Destroy(force)
@@ -115,37 +115,37 @@
 
 	if(wall_integrity == max_integrity)
 		if (acided_hole)
-			. += span_warning("It looks fully intact, except there's a large hole that could've been caused by some sort of acid.")
+			. += span_warning("它看起来完好无损,只是有一个大洞,可能是由某种酸造成的.")
 		else
-			. += span_notice("It looks fully intact.")
+			. += span_notice("看起来完好无损.")
 	else
 		var/integ = wall_integrity / max_integrity
 		if(integ >= 0.6)
-			. += span_warning("It looks slightly damaged.")
+			. += span_warning("看起来有轻微损伤.")
 		else if(integ >= 0.3)
-			. += span_warning("It looks moderately damaged.")
+			. += span_warning("看起来有中度损伤.")
 		else
-			. += span_danger("It looks heavily damaged.")
+			. += span_danger("看起来有严重损伤.")
 
 		if(acided_hole)
-			. += span_warning("There's a large hole in the wall that could've been caused by some sort of acid.")
+			. += span_warning("墙上有一个大洞,可能是某种酸液造成的.")
 
 	// todo why does this not use defines?
 	switch(d_state)
 		if(1)
-			. += span_info("The outer plating has been sliced open. A screwdriver should remove the support lines.")
+			. += span_info("外层装甲板被切开了. 螺丝刀应该可以拆下支撑线.")
 		if(2)
-			. += span_info("The support lines have been removed. A blowtorch should slice through the metal cover.")
+			. += span_info("支撑线已被拆除. 喷灯应该可以切开金属盖.")
 		if(3)
-			. += span_info("The metal cover has been sliced through. A crowbar should pry it off.")
+			. += span_info("金属盖已被切开. 撬棍应该可以把它撬开.")
 		if(4)
-			. += span_info("The metal cover has been removed. A wrench will remove the anchor bolts.")
+			. += span_info("金属盖已被拆除. 扳手可以拆下锚栓.")
 		if(5)
-			. += span_info("The anchor bolts have been removed. Wirecutters will take care of the hydraulic lines.")
+			. += span_info("锚栓已被拆除. 剪线钳可以处理液压管线.")
 		if(6)
-			. += span_info("Hydraulic lines are gone. A crowbar will pry off the inner sheath.")
+			. += span_info("液压管线已拆除. 撬棍可以撬开内护套.")
 		if(7)
-			. += span_info("The inner sheath is gone. A blowtorch should finish off this wall.")
+			. += span_info("内护套已拆除. 喷灯应该可以彻底摧毁这面墙.")
 
 /turf/closed/wall/update_overlays()
 	. = ..()
@@ -260,17 +260,17 @@
 /turf/closed/wall/attack_animal(mob/living/M as mob)
 	if(M.wall_smash)
 		if((isrwallturf(src)) || (resistance_flags & INDESTRUCTIBLE))
-			to_chat(M, span_warning("This [name] is far too strong for you to destroy."))
+			to_chat(M, span_warning("这个[name]对你来说太坚固了,无法摧毁."))
 			return
 		else
 			if((prob(40)))
-				M.visible_message(span_danger("[M] smashes through [src]."),
-				span_danger("You smash through the wall."))
+				M.visible_message(span_danger("[M]砸穿了[src]."),
+				span_danger("你砸穿了墙壁."))
 				dismantle_wall(1)
 				return
 			else
-				M.visible_message(span_warning("[M] smashes against [src]."),
-				span_warning("You smash against the wall."))
+				M.visible_message(span_warning("[M]砸在[src]上."),
+				span_warning("你砸在墙壁上."))
 				take_damage(rand(25, 75))
 				return
 
@@ -280,7 +280,7 @@
 		return
 
 	if(!ishuman(user))
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("你没有足够的灵巧度来做这个!"))
 		return
 
 	else if(istype(I, /obj/item/frame/torch_frame))
@@ -322,74 +322,74 @@
 /turf/closed/wall/welder_act(mob/living/user, obj/item/tool/weldingtool/WT)
 	. = ..()
 	if(resistance_flags & INDESTRUCTIBLE)
-		to_chat(user, span_warning("This wall seems too tough for you to do something with it!"))
+		to_chat(user, span_warning("这面墙似乎太坚固了,你无法对它做什么!"))
 		return
 	if(!ishuman(user))
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("你没有足够的灵巧度来做这个!"))
 		return
 
 	if(wall_integrity < max_integrity)
 		if(!WT.remove_fuel(0, user))
-			to_chat(user, span_warning("You need more welding fuel to complete this task."))
+			to_chat(user, span_warning("你需要更多焊接燃料来完成这个任务."))
 			return
 
-		user.visible_message(span_notice("[user] starts repairing the damage to [src]."),
-		span_notice("You start repairing the damage to [src]."))
+		user.visible_message(span_notice("[user]开始修复[src]的损伤."),
+		span_notice("你开始修复[src]的损伤."))
 		if(!WT.use_tool(src, user, 5 SECONDS, 1, 25, null, BUSY_ICON_FRIENDLY) || !iswallturf(src))
 			return
 
-		user.visible_message(span_notice("[user] finishes repairing the damage to [src]."),
-		span_notice("You finish repairing the damage to [src]."))
+		user.visible_message(span_notice("[user]完成了对[src]的损伤修复."),
+		span_notice("你完成了对[src]的损伤修复."))
 		repair_damage(250, user)
 		return
 
 	//DECONSTRUCTION
 	switch(d_state)
 		if(0)
-			user.visible_message(span_notice("[user] begins slicing through the outer plating."),
-			span_notice("You begin slicing through the outer plating."))
+			user.visible_message(span_notice("[user]开始切开外层装甲板."),
+			span_notice("你开始切开外层装甲板."))
 			if(!WT.use_tool(src, user, 6 SECONDS, 1, 25, null, BUSY_ICON_BUILD))
 				return
 			if(!iswallturf(src) || !WT?.isOn())
 				return
 			d_state = 1
-			user.visible_message(span_notice("[user] slices through the outer plating."),
-			span_notice("You slice through the outer plating."))
+			user.visible_message(span_notice("[user]切开了外层装甲板."),
+			span_notice("你切开了外层装甲板."))
 
 		if(2)
-			user.visible_message(span_notice("[user] begins slicing through the metal cover."),
-			span_notice("You begin slicing through the metal cover."))
+			user.visible_message(span_notice("[user]开始切开金属盖."),
+			span_notice("你开始切开金属盖."))
 			if(!WT.use_tool(src, user, 6 SECONDS, 1, 25, null, BUSY_ICON_BUILD))
 				return
 			if(!iswallturf(src) || !WT?.isOn())
 				return
 			d_state = 3
-			user.visible_message(span_notice("[user] presses firmly on the cover, dislodging it."),
-			span_notice("You press firmly on the cover, dislodging it."))
+			user.visible_message(span_notice("[user]用力按压盖子,将其移开."),
+			span_notice("你用力按压盖子,将其移开."))
 		if(7)
-			user.visible_message(span_notice("[user] begins slicing through the final layer."),
-			span_notice("You begin slicing through the final layer."))
+			user.visible_message(span_notice("[user]开始切开最后一层."),
+			span_notice("你开始切开最后一层."))
 			if(!WT.use_tool(src, user, 6 SECONDS, 1, 25, null, BUSY_ICON_BUILD))
 				return
 			if(!iswallturf(src) || !WT?.isOn())
 				return
 			new /obj/item/stack/rods(src)
-			user.visible_message(span_notice("The support rods drop out as [user] slices through the final layer."),
-			span_notice("The support rods drop out as you slice through the final layer."))
+			user.visible_message(span_notice("当[user]切开最后一层时,支撑杆掉落了出来."),
+			span_notice("当你切开最后一层时,支撑杆掉落了出来."))
 			dismantle_wall()
 
 /turf/closed/wall/screwdriver_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(resistance_flags & INDESTRUCTIBLE)
-		to_chat(user, span_warning("This wall seems too tough for you to do something with it!"))
+		to_chat(user, span_warning("这面墙似乎太坚固了,你无法对它做什么!"))
 		return
 	if(!ishuman(user))
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("你没有足够的灵巧度来做这个!"))
 		return
 	if(d_state != 1)
 		return
-	user.visible_message(span_notice("[user] begins removing the support lines."),
-	span_notice("You begin removing the support lines."))
+	user.visible_message(span_notice("[user]开始拆除支撑线."),
+	span_notice("你开始拆除支撑线."))
 	playsound(src, 'sound/items/screwdriver.ogg', 25, 1)
 
 	if(!do_after(user, 6 SECONDS, NONE, src, BUSY_ICON_BUILD))
@@ -399,21 +399,21 @@
 		return
 
 	d_state = 2
-	user.visible_message(span_notice("[user] removes the support lines."),
-	span_notice("You remove the support lines."))
+	user.visible_message(span_notice("[user]拆除了支撑线."),
+	span_notice("你拆除了支撑线."))
 
 /turf/closed/wall/crowbar_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(resistance_flags & INDESTRUCTIBLE)
-		to_chat(user, span_warning("This wall seems too tough for you to do something with it!"))
+		to_chat(user, span_warning("这面墙似乎太坚固了,你无法对它做什么!"))
 		return
 	if(!ishuman(user))
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("你没有足够的灵巧度来做这个!"))
 		return
 	switch(d_state)
 		if(3)
-			user.visible_message(span_notice("[user] struggles to pry off the cover."),
-			span_notice("You struggle to pry off the cover."))
+			user.visible_message(span_notice("[user]费力地撬开盖子."),
+			span_notice("你费力地撬开盖子."))
 			playsound(src, 'sound/items/crowbar.ogg', 25, 1)
 
 			if(!do_after(user, 6 SECONDS, NONE, src, BUSY_ICON_BUILD))
@@ -423,11 +423,11 @@
 				return
 
 			d_state = 4
-			user.visible_message(span_notice("[user] pries off the cover."),
-			span_notice("You pry off the cover."))
+			user.visible_message(span_notice("[user]撬开了盖子."),
+			span_notice("你撬开了盖子."))
 		if(6)
-			user.visible_message(span_notice("[user] struggles to pry off the inner sheath."),
-			span_notice("You struggle to pry off the inner sheath."))
+			user.visible_message(span_notice("[user]费力地撬开内护套."),
+			span_notice("你费力地撬开内护套."))
 			playsound(src, 'sound/items/crowbar.ogg', 25, 1)
 
 			if(!do_after(user, 6 SECONDS, NONE, src, BUSY_ICON_BUILD))
@@ -437,21 +437,21 @@
 				return
 
 			d_state = 7
-			user.visible_message(span_notice("[user] pries off the inner sheath."),
-			span_notice("You pry off the inner sheath."))
+			user.visible_message(span_notice("[user]撬开了内护套."),
+			span_notice("你撬开了内护套."))
 
 /turf/closed/wall/wrench_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(resistance_flags & INDESTRUCTIBLE)
-		to_chat(user, span_warning("This wall seems too tough for you to do something with it!"))
+		to_chat(user, span_warning("这面墙似乎太坚固了,你无法对它做什么!"))
 		return
 	if(!ishuman(user))
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("你没有足够的灵巧度来做这个!"))
 		return
 	if(d_state != 4)
 		return
-	user.visible_message(span_notice("[user] starts loosening the anchoring bolts securing the support rods."),
-	span_notice("You start loosening the anchoring bolts securing the support rods."))
+	user.visible_message(span_notice("[user]开始拧松固定支撑杆的锚栓."),
+	span_notice("你开始拧松固定支撑杆的锚栓."))
 	playsound(src, 'sound/items/ratchet.ogg', 25, 1)
 
 	if(!do_after(user, 6 SECONDS, NONE, src, BUSY_ICON_BUILD))
@@ -461,21 +461,21 @@
 		return
 
 	d_state = 5
-	user.visible_message(span_notice("[user] removes the bolts anchoring the support rods."),
-	span_notice("You remove the bolts anchoring the support rods."))
+	user.visible_message(span_notice("[user]拆下了固定支撑杆的螺栓."),
+	span_notice("你拆下了固定支撑杆的螺栓."))
 
 /turf/closed/wall/wirecutter_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(resistance_flags & INDESTRUCTIBLE)
-		to_chat(user, span_warning("This wall seems too tough for you to do something with it!"))
+		to_chat(user, span_warning("这面墙似乎太坚固了,你无法对它做什么!"))
 		return
 	if(!ishuman(user))
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("你没有足够的灵巧来完成这个!"))
 		return
 	if(d_state != 5)
 		return
-	user.visible_message(span_notice("[user] begins uncrimping the hydraulic lines."),
-	span_notice("You begin uncrimping the hydraulic lines."))
+	user.visible_message(span_notice("[user]开始松开液压管线."),
+	span_notice("你开始松开液压管线."))
 	playsound(src, 'sound/items/wirecutter.ogg', 25, 1)
 
 	if(!do_after(user, 6 SECONDS, NONE, src, BUSY_ICON_BUILD))
@@ -485,8 +485,8 @@
 		return
 
 	d_state = 6
-	user.visible_message(span_notice("[user] finishes uncrimping the hydraulic lines."),
-	span_notice("You finish uncrimping the hydraulic lines."))
+	user.visible_message(span_notice("[user]完成了松开液压管线."),
+	span_notice("你完成了松开液压管线."))
 
 /turf/closed/wall/get_acid_delay()
 	return 5 SECONDS
@@ -512,18 +512,18 @@
 	switch(state)
 		if(GRAB_PASSIVE)
 			damage += base_damage
-			grabbed_mob.visible_message(span_warning("[user] slams [grabbed_mob] against [src]!"))
+			grabbed_mob.visible_message(span_warning("[user]将[grabbed_mob]猛撞向[src]!"))
 			log_combat(user, grabbed_mob, "slammed", "", "against [src]")
 		if(GRAB_AGGRESSIVE)
 			damage += base_damage * 1.5
-			grabbed_mob.visible_message(span_danger("[user] bashes [grabbed_mob] against [src]!"))
+			grabbed_mob.visible_message(span_danger("[user]将[grabbed_mob]猛击向[src]!"))
 			log_combat(user, grabbed_mob, "bashed", "", "against [src]")
 			if(prob(50))
 				grabbed_mob.Paralyze(2 SECONDS)
 				user.drop_held_item()
 		if(GRAB_NECK)
 			damage += base_damage * 2
-			grabbed_mob.visible_message(span_danger("<big>[user] crushes [grabbed_mob] against [src]!</big>"))
+			grabbed_mob.visible_message(span_danger("<big>[user]将[grabbed_mob]挤压向[src]!</big>"))
 			log_combat(user, grabbed_mob, "crushed", "", "against [src]")
 			grabbed_mob.Paralyze(2 SECONDS)
 			user.drop_held_item()

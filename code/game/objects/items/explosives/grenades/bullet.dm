@@ -1,7 +1,7 @@
 ///bullet grenade: shoots bullets out from itself in a ring
 /obj/item/explosive/grenade/bullet
-	name = "\improper M90 leadburster grenade"
-	desc = "Leadburster grenades release a short burst of projectiles after detonation. Keep far away from friendlies. Or don't. I'm just a label."
+	name = "\improper M90铅爆手榴弹"
+	desc = "铅爆手榴弹在引爆后会释放一小阵弹丸.远离友军.或者不远离.我只是个标签."
 	icon_state = "grenade_rad"
 	worn_icon_state = "grenade_rad"
 	icon_state_mini = "grenade_red"
@@ -37,8 +37,8 @@
 	qdel(src)
 
 /obj/item/explosive/grenade/bullet/laser
-	name = "\improper M80 lasburster grenade"
-	desc = "Lasburster grenades are supercharged to scatter a beam around them when detonating. Keep far away from friendlies. Or don't. I'm just a label."
+	name = "\improper M80激光爆裂手榴弹"
+	desc = "激光爆裂手榴弹经过超载充能,引爆时会向四周散射一道光束.远离友军.或者不远离.我只是个标签."
 	icon_state = "grenade_lasburster"
 	worn_icon_state = "grenade_lasburster"
 	icon_state_mini = "grenade_lasburster"
@@ -51,8 +51,8 @@
 	ammo_type = /datum/ammo/energy/lasburster
 
 /obj/item/explosive/grenade/bullet/hefa
-	name = "\improper M25 HEFA grenade"
-	desc = "High explosive fragmentation grenades cause a powerful yet very small explosion combined with a scattering ring of buckshot shrapnel, please throw very, very, VERY far away."
+	name = "\improper M25高爆碎片手榴弹"
+	desc = "高爆碎片手榴弹会产生一次威力强大但范围极小的爆炸,并伴随一圈散射的鹿弹破片,请扔得非常、非常、非常远."
 	icon_state = "grenade_hefa"
 	worn_icon_state = "grenade_hefa"
 	icon_state_mini = "grenade_hefa"

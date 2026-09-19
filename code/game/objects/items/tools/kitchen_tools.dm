@@ -47,10 +47,10 @@
 		reagents.reaction(M, INGEST)
 		reagents.trans_to(M, reagents.total_volume, transfer_to_stomach = TRUE)
 		if(M == user)
-			visible_message(span_notice("[user] eats some [loaded] from \the [src]."))
+			visible_message(span_notice("[user]从\the [src]中吃了一些[loaded]。"))
 			M.reagents.add_reagent(/datum/reagent/consumable/nutriment, 1)
 		else
-			visible_message(span_notice("[user] feeds [M] some [loaded] from \the [src]"))
+			visible_message(span_notice("[user]从\the [src]中喂了[M]一些[loaded]"))
 			M.reagents.add_reagent(/datum/reagent/consumable/nutriment, 1)
 		playsound(M.loc,'sound/items/eatfood.ogg', 15, 1)
 		QDEL_NULL(loaded)
@@ -64,24 +64,24 @@
 	attack_hand(xeno_attacker)
 
 /obj/item/tool/kitchen/utensil/fork
-	name = "fork"
-	desc = "It's a fork. Sure is pointy."
+	name = "叉子"
+	desc = "这是一把叉子。确实很尖。"
 	icon_state = "fork"
 
 /obj/item/tool/kitchen/utensil/pfork
-	name = "plastic fork"
-	desc = "Yay, no washing up to do."
+	name = "塑料叉子"
+	desc = "耶,不用洗碗了。"
 	icon_state = "pfork"
 
 /obj/item/tool/kitchen/utensil/spoon
-	name = "spoon"
-	desc = "It's a spoon. You can see your own upside-down face in the reflection."
+	name = "勺子"
+	desc = "这是一把勺子。你能在反光里看到自己倒过来的脸。"
 	icon_state = "spoon"
 	attack_verb = list("attacks", "pokes")
 
 /obj/item/tool/kitchen/utensil/pspoon
-	name = "plastic spoon"
-	desc = "It's a plastic spoon. How dull."
+	name = "塑料勺子"
+	desc = "这是一把塑料勺子。真钝。"
 	icon_state = "pspoon"
 	attack_verb = list("attacks", "pokes")
 
@@ -89,8 +89,8 @@
 * Knives
 */
 /obj/item/tool/kitchen/utensil/knife
-	name = "knife"
-	desc = "Can cut through any food."
+	name = "刀"
+	desc = "能切开任何食物。"
 	icon_state = "knife"
 	force = 10
 	throwforce = 10
@@ -102,8 +102,8 @@
 	return ..()
 
 /obj/item/tool/kitchen/utensil/pknife
-	name = "plastic knife"
-	desc = "The bluntest of blades."
+	name = "塑料刀"
+	desc = "最钝的刀刃。"
 	icon_state = "pknife"
 	force = 10
 	throwforce = 10
@@ -112,9 +112,9 @@
 * Kitchen knives
 */
 /obj/item/tool/kitchen/knife
-	name = "kitchen knife"
+	name = "厨刀"
 	icon_state = "knife"
-	desc = "A general purpose Chef's Knife made by SpaceCook Incorporated. Guaranteed to stay sharp for years to come."
+	desc = "由SpaceCook公司制造的通用厨师刀. 保证多年保持锋利."
 	atom_flags = CONDUCT
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = 1
@@ -126,8 +126,8 @@
 	attack_verb = list("slashes", "stabs", "slices", "tears", "rips", "dices", "cuts")
 
 /obj/item/tool/kitchen/knife/ritual
-	name = "ritual knife"
-	desc = "The unearthly energies that once powered this blade are now dormant."
+	name = "仪式刀"
+	desc = "曾经驱动这把刀刃的超凡能量如今已沉寂."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "render"
 
@@ -135,9 +135,9 @@
 * Bucher's cleaver
 */
 /obj/item/tool/kitchen/knife/butcher
-	name = "butcher's cleaver"
+	name = "屠夫砍刀"
 	icon_state = "butch"
-	desc = "A huge thing used for chopping and chopping up meat. This includes clowns and clown-by-products."
+	desc = "用来剁肉和切肉的大东西. 这也包括小丑和小丑副产品."
 	atom_flags = CONDUCT
 	force = 35
 	w_class = WEIGHT_CLASS_SMALL
@@ -154,8 +154,8 @@
 */
 
 /obj/item/tool/kitchen/rollingpin
-	name = "rolling pin"
-	desc = "Used to knock out the Bartender."
+	name = "擀面杖"
+	desc = "用来敲晕酒保."
 	icon_state = "rolling_pin"
 	force = 8
 	throwforce = 10
@@ -168,10 +168,10 @@
 * Trays - Agouri
 */
 /obj/item/tool/kitchen/tray
-	name = "tray"
+	name = "托盘"
 	icon = 'icons/obj/items/kitchen_tools.dmi'
 	icon_state = "tray"
-	desc = "A metal tray to lay food on."
+	desc = "用来放食物的金属托盘."
 	throwforce = 12
 	throwforce = 10
 	throw_speed = 1
@@ -210,13 +210,13 @@
 			M.take_limb_damage(5)
 		if(prob(50))
 			playsound(M, 'sound/items/trayhit1.ogg', 25, 1)
-			visible_message(span_danger("[user] slams [M] with the tray!"))
+			visible_message(span_danger("[user]用托盘猛击[M]!"))
 			return
 		playsound(M, 'sound/items/trayhit2.ogg', 25, 1)  //we applied the damage, we played the sound, we showed the appropriate messages. Time to return and stop the proc
-		visible_message(span_danger("[user] slams [M] with the tray!"))
+		visible_message(span_danger("[user]用托盘猛击[M]!"))
 
 	if(ishuman(M) && ((H.head && (H.head.inventory_flags & COVEREYES) ) || (H.wear_mask && (H.wear_mask.inventory_flags & COVEREYES) ) || (H.glasses && (H.glasses.inventory_flags & COVEREYES) )))
-		to_chat(M, span_warning("You get slammed in the face with the tray, against your mask!"))
+		to_chat(M, span_warning("你的脸被托盘猛击,隔着你的面具!"))
 		if(prob(33))
 			add_mob_blood(H)
 			if(H.wear_mask)
@@ -231,10 +231,10 @@
 
 		if(prob(50))
 			playsound(M, 'sound/items/trayhit1.ogg', 25, 1)
-			visible_message(span_danger("[user] slams [M] with the tray!"))
+			visible_message(span_danger("[user]用托盘猛击[M]!"))
 		else
 			playsound(M, 'sound/items/trayhit2.ogg', 25, 1)  //sound playin'
-			visible_message(span_danger("[user] slams [M] with the tray!"))
+			visible_message(span_danger("[user]用托盘猛击[M]!"))
 		if(prob(10))
 			M.Stun(rand(2 SECONDS, 6 SECONDS))
 			M.take_limb_damage(3)
@@ -244,7 +244,7 @@
 			return
 
 	else //No eye or head protection, tough luck!
-		to_chat(M, span_warning("You get slammed in the face with the tray!"))
+		to_chat(M, span_warning("你的脸被托盘猛击!"))
 		if(prob(33))
 			add_mob_blood(M)
 			var/turf/location = H.loc
@@ -253,10 +253,10 @@
 
 		if(prob(50))
 			playsound(M, 'sound/items/trayhit1.ogg', 25, 1)
-			visible_message(span_danger("[user] slams [M] in the face with the tray!"))
+			visible_message(span_danger("[user]用托盘猛击[M]的脸!"))
 		else
 			playsound(M, 'sound/items/trayhit2.ogg', 25, 1)  //sound playin' again
-			visible_message(span_danger("[user] slams [M] in the face with the tray!"))
+			visible_message(span_danger("[user]用托盘猛击[M]的脸!"))
 		if(prob(30))
 			M.Stun(rand(4 SECONDS, 8 SECONDS))
 			M.take_limb_damage(4)
@@ -275,7 +275,7 @@
 
 	if(istype(I, /obj/item/tool/kitchen/rollingpin))
 		if(cooldown < world.time - 25)
-			user.visible_message(span_warning("[user] bashes [src] with [I]!"))
+			user.visible_message(span_warning("[user]用[I]猛击[src]!"))
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
 			cooldown = world.time
 

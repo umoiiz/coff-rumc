@@ -8,7 +8,7 @@
 	unset_interaction()
 	cameraFollow = null
 
-	var/new_network = tgui_input_list(src, "Which network would you like to view?", "Jump To Network", available_networks)
+	var/new_network = tgui_input_list(src, "你想查看哪个网络?", "跳转至网络", available_networks)
 	if(!new_network)
 		return
 
@@ -26,7 +26,7 @@
 			eyeobj.setLoc(get_turf(C))
 			break
 
-	to_chat(src, span_notice("Switched to the \"[uppertext(new_network)]\" camera network."))
+	to_chat(src, span_notice("已切换到\"[uppertext(new_network)]\"摄像头网络."))
 
 
 
@@ -38,7 +38,7 @@
 		return
 
 	var/list/ai_emotions = list("Very Happy", "Happy", "Neutral", "Unsure", "Confused", "Sad", "BSOD", "Blank", "Problems?", "Awesome", "Facepalm", "Thinking", "Friend Computer", "Blue Glow", "Red Glow")
-	var/emote = tgui_input_list(usr, "Please, select a status!", "AI Status", ai_emotions)
+	var/emote = tgui_input_list(usr, "请选择一个状态!", "人工智能状态", ai_emotions)
 	if(!emote)
 		return
 
@@ -55,7 +55,7 @@
 		var/datum/signal/status_signal = new(list("command" = "friendcomputer"))
 		frequency.post_signal(src, status_signal)
 
-	to_chat(src, span_notice("Changed display status to: [emote]"))
+	to_chat(src, span_notice("已将显示状态更改为: [emote]"))
 
 
 /mob/living/silicon/ai/verb/change_hologram()
@@ -65,7 +65,7 @@
 	if(incapacitated())
 		return
 
-	var/hologram = tgui_alert(src, "Would you like to select a hologram based on a crew member, an animal, or switch to a unique avatar?", "Hologram", list("Crew Member", "Unique", "Animal"))
+	var/hologram = tgui_alert(src, "你想选择一个基于船员的 hologram, 一个动物, 还是切换到一个独特的头像?", "全息影像", list("Crew Member", "Unique", "Animal"))
 	switch(hologram)
 		if("Crew Member")
 			var/list/personnel_list = list()
@@ -74,10 +74,10 @@
 				personnel_list["[t.fields["name"]]: [t.fields["rank"]]"] = t.fields["photo_front"]
 
 			if(!length(personnel_list))
-				to_chat(src, span_warning("No suitable records found. Aborting."))
+				to_chat(src, span_warning("未找到合适的记录. 正在中止."))
 				return
 
-			hologram = tgui_input_list(src, "Select a crew member:", null,personnel_list)
+			hologram = tgui_input_list(src, "选择一名船员:", null,personnel_list)
 			var/icon/character_icon = personnel_list[hologram]
 			if(!character_icon)
 				return
@@ -100,7 +100,7 @@
 			"pug" = 'icons/mob/pets.dmi'
 			)
 
-			hologram = tgui_input_list(src, "Please select a hologram:", null, icon_list)
+			hologram = tgui_input_list(src, "请选择一个全息影像:", null, icon_list)
 			if(!hologram)
 				return
 
@@ -115,7 +115,7 @@
 				"carp" = 'icons/mob/ai.dmi'
 				)
 
-			hologram = tgui_input_list(src, "Please select a hologram:", null, icon_list)
+			hologram = tgui_input_list(src, "请选择一个全息影像:", null, icon_list)
 			if(!hologram)
 				return
 
@@ -124,7 +124,7 @@
 		else
 			return
 
-	to_chat(src, span_notice("Changed hologram to: [hologram]"))
+	to_chat(src, span_notice("已将全息影像更改为: [hologram]"))
 
 
 /mob/living/silicon/ai/verb/toggle_sensors()
@@ -145,7 +145,7 @@
 		return
 
 	if(last_announcement + 60 SECONDS > world.time)
-		to_chat(src, span_warning("You must wait before announcing again."))
+		to_chat(src, span_warning("你必须等待才能再次进行公告."))
 		return
 
 	var/input = stripped_input(usr, "Please write a message to announce to the station crew.", "Announcement")
@@ -153,7 +153,7 @@
 		return
 
 	last_announcement = world.time
-	priority_announce(input, "Оповещение от [src]", sound = 'sound/AI/aireport.ogg')
+	priority_announce(input, "来自[src]的警报", sound = 'sound/AI/aireport.ogg')
 
 
 /mob/living/silicon/ai/verb/ai_core_display()
@@ -172,7 +172,7 @@
 
 	view_core()
 
-	var/ai_core_icon = tgui_input_list(src, "Choose your AI core display icon.", "AI Core Display", iconstates)
+	var/ai_core_icon = tgui_input_list(src, "选择你的人工智能核心显示图标.", "人工智能核心显示", iconstates)
 	if(!ai_core_icon || incapacitated())
 		return
 
@@ -195,7 +195,7 @@
 
 	acceleration = !acceleration
 
-	to_chat(src, span_notice("Camera acceleration has been [acceleration ? "enabled" : "disabled"]."))
+	to_chat(src, span_notice("摄像头加速已[acceleration ? "enabled" : "disabled"]."))
 
 
 /mob/living/silicon/ai/verb/radio_settings()
@@ -206,10 +206,10 @@
 		return
 
 	if(!radio)
-		to_chat(src, span_warning("No internal radio detected."))
+		to_chat(src, span_warning("未检测到内部无线电."))
 		return
 
-	to_chat(src, span_notice("Accessing internal radio settings."))
+	to_chat(src, span_notice("正在访问内部无线电设置."))
 	radio.interact(src)
 
 
@@ -238,7 +238,7 @@
 		move_resist = initial(move_resist)
 	playsound(loc,'sound/mecha/mechanical_toggle.ogg', 20)
 
-	to_chat(src, span_notice("<b>You are now [anchored ? "" : "un"]anchored.</b>"))
+	to_chat(src, span_notice("<b>你现在[anchored ? "" : "un"]已锚定.</b>"))
 
 /mob/living/silicon/ai/verb/show_laws()
 	set category = "Silicon"
@@ -247,7 +247,7 @@
 	if(incapacitated())
 		return
 
-	to_chat(src, span_notice("<b>Obey these laws:</b>"))
+	to_chat(src, span_notice("<b>遵守这些法则:</b>"))
 	for(var/i in laws)
 		to_chat(src, span_notice("[i]"))
 
@@ -259,7 +259,7 @@
 	if(incapacitated())
 		return
 
-	if(tgui_alert(src, "Are you sure you want to announce your laws[radiomod ? " over the [radiomod] channel" : ""]?", "State Laws", list("Yes", "No")) != "Yes")
+	if(tgui_alert(src, "你确定要公告你的法则[radiomod ? " over the [radiomod] channel" : ""]吗?", "陈述法则", list("Yes", "No")) != "Yes")
 		return
 
 	say("[radiomod] Current Active Lawset:")
@@ -278,10 +278,10 @@
 		return
 
 	if(!radio)
-		to_chat(src, "Radio not detected.")
+		to_chat(src, "未检测到无线电.")
 		return
 
-	var/chan = tgui_input_list(usr, "Select a channel:", "", list("Default", "None") + radio.channels )
+	var/chan = tgui_input_list(usr, "选择一个频道:", "", list("Default", "None") + radio.channels )
 	if(!chan)
 		return
 
@@ -296,7 +296,7 @@
 				radiomod = ":" + key
 				break
 
-	to_chat(src, span_notice("Automatic announcements [chan == "None" ? "will not use the radio." : "set to [chan]."]"))
+	to_chat(src, span_notice("自动公告[chan == "None" ? "will not use the radio." : "set to [chan]."]"))
 
 
 /mob/living/silicon/ai/verb/shutdown_systems()
@@ -304,18 +304,18 @@
 	set name = "Shutdown Systems"
 
 
-	if(tgui_alert(src, "Do you want to shutdown your systems? WARNING: This will permanently put you out of your mob.", "Shutdown Systems", list("Yes", "No")) != "Yes")
+	if(tgui_alert(src, "你想关闭你的系统吗? 警告: 这将永久性地使你脱离你的躯体.", "关闭系统", list("Yes", "No")) != "Yes")
 		return
 
-	if(tgui_alert(src, "Are you sure you want to shutdown your systems? You won't be able to return to your body. You can't change your mind so choose wisely!", "Shutdown systems confirm", list("Yes", "No")) != "Yes")
+	if(tgui_alert(src, "你确定要关闭你的系统吗? 你将无法返回你的身体. 你无法改变主意, 所以请慎重选择!", "确认关闭系统", list("Yes", "No")) != "Yes")
 		return
 
-	to_chat(src, span_notice("Systems shutting down..."))
+	to_chat(src, span_notice("系统正在关闭..."))
 	icon_state = "ai"
 
 	log_game("[key_name(src)] has ghosted at [AREACOORD(src)].")
 	message_admins("[ADMIN_TPMONTY(src)] has ghosted.")
 
-	priority_announce("[src] был отключен. Ожидание загрузки новой личности...", "Сбой ИИ", sound = 'sound/AI/aileft.ogg')
+	priority_announce("[src]已被断开. 正在等待加载新的人格...", "人工智能故障", sound = 'sound/AI/aileft.ogg')
 	ghostize(FALSE)
 	offer_mob()

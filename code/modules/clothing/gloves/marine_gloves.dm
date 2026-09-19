@@ -1,6 +1,6 @@
 /obj/item/clothing/gloves/marine
-	name = "marine combat gloves"
-	desc = "Standard issue marine tactical gloves. It reads: 'knit by Marine Widows Association'."
+	name = "陆战队战斗手套"
+	desc = "标准配发的陆战队战术手套. 上面写着: \"由陆战队寡妇协会编织\"."
 	icon_state = "gloves_marine"
 	siemens_coefficient = 0.6
 	permeability_coefficient = 0.05
@@ -12,14 +12,14 @@
 	soft_armor = list(MELEE = 25, BULLET = 15, LASER = 10, ENERGY = 15, BOMB = 15, BIO = 5, FIRE = 15, ACID = 15)
 
 /obj/item/clothing/gloves/marine/fingerless
-	name = "fingerless marine combat gloves"
-	desc = "Standard issue marine tactical gloves but fingerless! It reads: 'knit by Marine Widows Association'."
+	name = "露指陆战队战斗手套"
+	desc = "标准配发的陆战队战术手套, 但是露指的! 上面写着: \"由陆战队寡妇协会编织\"."
 	icon_state = "gloves_marine_fingerless"
 	worn_icon_state = "fingerless"
 
 /obj/item/clothing/gloves/marine/hyperscale
-	name = "8E Chameleon TGMC combat gloves"
-	desc = "Standard issue marine tactical gloves BUT colorable with a facepaint! It reads: 'knit by Marine Widows Association'."
+	name = "8E 变色龙TGMC战斗手套"
+	desc = "标准配发的陆战队战术手套, 但可以用面部涂装染色! 上面写着: \"由陆战队寡妇协会编织\"."
 	icon_state = "hyperscale_glove_inhand"
 	worn_icon_state = "hyperscale_glove_mob"
 	greyscale_colors = ARMOR_PALETTE_BLACK
@@ -36,135 +36,135 @@
 	human.regenerate_icons()
 
 /obj/item/clothing/gloves/marine/black
-	name = "black marine combat gloves"
-	desc = "Standard issue marine tactical gloves but black! It reads: 'knit by Marine Widows Association'."
+	name = "黑色陆战队战斗手套"
+	desc = "标准配发的陆战队战术手套, 但是黑色的! 上面写着: \"由陆战队寡妇协会编织\"."
 	icon_state = "gloves_marine_black"
 	worn_icon_state = "black"
 
 /obj/item/clothing/gloves/marine/insulated
-	name = "insulated marine combat gloves"
-	desc = "Insulated marine tactical gloves that protect against electrical shocks."
+	name = "绝缘陆战队战斗手套"
+	desc = "绝缘的陆战队战术手套, 可抵御电击."
 	icon_state = "gloves_marine_insulated"
 	siemens_coefficient = 0
 
 /obj/item/clothing/gloves/marine/officer
-	name = "officer gloves"
-	desc = "Shiny and impressive. They look expensive."
+	name = "军官手套"
+	desc = "闪亮而气派. 看起来就很昂贵."
 	icon_state = "black"
 
 /obj/item/clothing/gloves/marine/officer/chief
-	name = "chief officer gloves"
-	desc = "Blood crusts are attached to its metal studs, which are slightly dented."
+	name = "指挥官手套"
+	desc = "金属铆钉上附着着血痂, 铆钉略有凹陷."
 
 /obj/item/clothing/gloves/marine/officer/chief/sa
-	name = "spatial agent's gloves"
-	desc = "Gloves worn by a Spatial Agent."
+	name = "空间特工手套"
+	desc = "空间特工佩戴的手套."
 	siemens_coefficient = 0
 	permeability_coefficient = 0
 	item_flags = DELONDROP
 
 /obj/item/clothing/gloves/marine/techofficer
-	name = "tech officer gloves"
-	desc = "Sterile AND insulated! Why is not everyone issued with these?"
+	name = "技术军官手套"
+	desc = "无菌且绝缘! 为什么不是每个人都配发这些呢?"
 	icon_state = "yellow"
 	siemens_coefficient = 0
 	permeability_coefficient = 0.01
 
 /obj/item/clothing/gloves/marine/techofficer/captain
-	name = "captain's gloves"
-	desc = "You may like these gloves, but THEY think you are unworthy of them."
+	name = "上尉手套"
+	desc = "你可能喜欢这些手套, 但\"它们\"认为你配不上."
 	icon_state = "captain"
 
 /obj/item/clothing/gloves/marine/specialist
-	name = "\improper B18 defensive gauntlets"
-	desc = "A pair of heavily armored gloves."
+	name = "\improper B18防御护手"
+	desc = "一副重装甲手套."
 	icon_state = "armored"
 	item_flags = SYNTH_RESTRICTED
 	soft_armor = list(MELEE = 35, BULLET = 15, LASER = 15, ENERGY = 15, BOMB = 25, BIO = 15, FIRE = 15, ACID = 20)
 	resistance_flags = UNACIDABLE
 
 /obj/item/clothing/gloves/marine/veteran/pmc
-	name = "armored gloves"
-	desc = "Armored gloves used in special operations. They are also insulated against electrical shock."
+	name = "装甲手套"
+	desc = "用于特种作战的装甲手套. 它们同样可以绝缘防电击."
 	icon_state = "black"
 	siemens_coefficient = 0
 	item_flags = SYNTH_RESTRICTED
 	soft_armor = list(MELEE = 30, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 30, BIO = 20, FIRE = 20, ACID = 15)
 
 /obj/item/clothing/gloves/marine/veteran/pmc/commando
-	name = "\improper PMC commando gloves"
-	desc = "A pair of heavily armored, insulated, acid-resistant gloves."
+	name = "\improper PMC突击队手套"
+	desc = "一副重装甲, 绝缘, 耐酸的手套."
 	icon_state = "death_squad"
 	soft_armor = list(MELEE = 40, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 30, BIO = 20, FIRE = 20, ACID = 25)
 	resistance_flags = UNACIDABLE
 
 /obj/item/clothing/gloves/marine/som
-	name = "\improper SOM gloves"
-	desc = "Gloves with origins dating back to the old mining colonies, they look pretty tough."
+	name = "\improper SOM手套"
+	desc = "起源可追溯到旧采矿殖民地的手套, 看起来相当结实."
 	icon_state = "som"
 
 /obj/item/clothing/gloves/marine/som/insulated
-	name = "\improper Insulated SOM gloves"
-	desc = "Gloves with origins dating back to the old mining colonies. These ones appear to have an electrically insulating layer built into them."
+	name = "\improper 绝缘SOM手套"
+	desc = "起源可追溯到旧采矿殖民地的手套. 这些似乎内置了电绝缘层."
 	siemens_coefficient = 0
 
 /obj/item/clothing/gloves/marine/som/veteran
-	name = "\improper SOM veteran gloves"
-	desc = "Gloves with origins dating back to the old mining colonies. These ones seem tougher than normal."
+	name = "\improper SOM老兵手套"
+	desc = "起源可追溯到旧采矿殖民地的手套. 这些似乎比普通的更结实."
 	icon_state = "som_veteran"
 	soft_armor = list(MELEE = 30, BULLET = 20, LASER = 15, ENERGY = 20, BOMB = 15, BIO = 5, FIRE = 15, ACID = 15)
 
 /obj/item/clothing/gloves/marine/som/officer
-	name = "\improper SOM gloves"
-	desc = "Black gloves commonly worn by SOM officers."
+	name = "\improper SOM手套"
+	desc = "SOM军官常戴的黑色手套."
 	icon_state = "som_officer_gloves"
 
 /obj/item/clothing/gloves/marine/icc
-	name = "\improper ICC gloves"
-	desc = "Tough looking working gloves."
+	name = "\improper ICC手套"
+	desc = "看起来结实的工作手套."
 	icon_state = "icc"
 
 /obj/item/clothing/gloves/marine/icc/insulated
-	name = "\improper ICC insulated gloves"
-	desc = "Tough looking working gloves. These ones appear to have insulation to protect from electric shock."
+	name = "\improper ICC绝缘手套"
+	desc = "看起来结实的工作手套. 这双似乎带有绝缘层, 可以防止电击."
 	siemens_coefficient = 0
 
 /obj/item/clothing/gloves/marine/icc/guard
-	name = "\improper ICCGF gloves"
-	desc = "Tough looking tactical gloves."
+	name = "\improper ICCGF手套"
+	desc = "看起来结实的战术手套."
 	icon_state = "icc_guard"
 	soft_armor = list(MELEE = 30, BULLET = 20, LASER = 15, ENERGY = 20, BOMB = 15, BIO = 5, FIRE = 15, ACID = 15)
 
 /obj/item/clothing/gloves/marine/commissar
-	name = "\improper commissar gloves"
-	desc = "Gloves worn by commissars of the Imperial Army so that they do not soil their hands with the blood of their men."
+	name = "\improper 政委手套"
+	desc = "帝国陆军政委戴的手套, 这样他们的双手就不会沾上自己人的鲜血."
 	icon_state = "red"
 	soft_armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 15, BIO = 10, FIRE = 20, ACID = 20)
 
 /obj/item/clothing/gloves/marine/separatist
-	name = "kevlar gloves TG-94"
-	desc = "Once before, the original of these gloves had protected the hands of the civilian militia of the colony of Terra during the heroic liberation of their territories from the hands of the enemy. 'Wear it with honor,' reads the inscription at the bottom"
+	name = "凯夫拉手套 TG-94"
+	desc = "曾几何时, 这双手套的原型在泰拉殖民地平民民兵英勇解放领土的战斗中保护了他们的双手. 底部刻着: '荣耀地佩戴它'"
 	icon_state = "separatist"
 	worn_icon_state = "separatist"
 
 /obj/item/clothing/gloves/marine/veteran/marine
-	name = "veteran gloves"
-	desc = "Ordinary Marine gloves, artfully reinforced for personal gain. An extra steel plate and a pair of cool white laces will definitely make this item look better. You're sure. The Marine Widows Association is outraged."
+	name = "老兵手套"
+	desc = "普通的陆战队手套, 为了个人利益而巧妙地加固过. 一块额外的钢板和一对酷炫的白色鞋带肯定能让这件物品更好看. 你确信如此. 陆战队遗孀协会对此感到愤怒."
 	icon_state = "veteran_1"
 	worn_icon_state = "veteran"
 	var/gloves_inside_out = FALSE
 
 /obj/item/clothing/gloves/marine/veteran/marine/examine(mob/user)
 	. = ..()
-	. += span_info("You could <b>use it in-hand</b> to turn it inside out and change it's appearance.")
+	. += span_info("你可以在手中<b>使用它</b>来将其翻面并改变外观.")
 
 /obj/item/clothing/gloves/marine/veteran/marine/attack_self(mob/user)
 	. = ..()
 	if(!gloves_inside_out)
-		to_chat(user, span_notice("You turn the gloves inside out and change their appearance."))
+		to_chat(user, span_notice("你把手套翻了过来, 改变了它们的外观."))
 		gloves_inside_out = TRUE
 	else
-		to_chat(user, span_notice("You roll the gloves back inside and they look just right."))
+		to_chat(user, span_notice("你把手套翻了回去, 它们看起来刚刚好."))
 		gloves_inside_out = initial(gloves_inside_out)
 	update_icon_state()
 
@@ -175,6 +175,6 @@
 		icon_state = "veteran_1"
 
 /obj/item/clothing/gloves/marine/mp
-	name = "security combat gloves"
-	desc = "Standard issue military police tactical gloves. It reads: 'knit by Marine Widows Association'."
+	name = "安保战斗手套"
+	desc = "标准配发的宪兵战术手套. 上面写着: '由陆战队遗孀协会编织'."
 	soft_armor = list(MELEE = 15, BULLET = 80, LASER = 80, ENERGY = 0, BOMB = 0, BIO = 90, FIRE = 0, ACID = 0)

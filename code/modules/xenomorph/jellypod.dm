@@ -1,6 +1,6 @@
 /obj/structure/xeno/resin_jelly_pod
-	name = "Resin jelly pod"
-	desc = "A large resin pod. Inside is a thick, viscous fluid that looks like it doesnt burn easily."
+	name = "树脂凝胶荚"
+	desc = "一个巨大的树脂荚.里面是浓稠的黏性液体,看起来不容易燃烧."
 	icon = 'icons/Xeno/resin_pod.dmi'
 	icon_state = "resinpod"
 	density = FALSE
@@ -51,16 +51,16 @@
 		return FALSE
 
 	if((xeno_attacker.a_intent == INTENT_HARM && isxenohivelord(xeno_attacker)) || xeno_attacker.hivenumber != hivenumber)
-		balloon_alert(xeno_attacker, "Destroying...")
+		balloon_alert(xeno_attacker, "正在摧毁...")
 		if(do_after(xeno_attacker, HIVELORD_TUNNEL_DISMANTLE_TIME, IGNORE_HELD_ITEM, src, BUSY_ICON_BUILD))
 			deconstruct(FALSE)
 		return
 
 	if(!chargesleft)
-		balloon_alert(xeno_attacker, "No jelly remaining")
-		to_chat(xeno_attacker, span_xenonotice("We reach into \the [src], but only find dregs of resin. We should wait some more.") )
+		balloon_alert(xeno_attacker, "没有剩余的凝胶")
+		to_chat(xeno_attacker, span_xenonotice("我们将手伸进\the [src],但只找到树脂残渣.我们应该再等一会儿.") )
 		return
-	balloon_alert(xeno_attacker, "Retrieved jelly")
+	balloon_alert(xeno_attacker, "已取出凝胶")
 	new /obj/item/resin_jelly(loc)
 	chargesleft--
 	if(!(datum_flags & DF_ISPROCESSING) && (chargesleft < maxcharges))

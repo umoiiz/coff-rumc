@@ -1,6 +1,6 @@
 /obj/item/clothing/mask/muzzle
-	name = "muzzle"
-	desc = "To stop that awful noise."
+	name = "口套"
+	desc = "为了阻止那可怕的噪音."
 	icon_state = "muzzle"
 	worn_icon_state = "muzzle"
 	inventory_flags = COVERMOUTH
@@ -9,8 +9,8 @@
 	gas_transfer_coefficient = 0.90
 
 /obj/item/clothing/mask/surgical
-	name = "sterile mask"
-	desc = "A sterile mask designed to help prevent the spread of diseases."
+	name = "无菌口罩"
+	desc = "一种无菌口罩,旨在帮助防止疾病传播."
 	icon_state = "sterile"
 	worn_icon_state = "sterile"
 	w_class = WEIGHT_CLASS_SMALL
@@ -21,22 +21,22 @@
 	soft_armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 25, FIRE = 0, ACID = 0)
 
 /obj/item/clothing/mask/fakemoustache
-	name = "fake moustache"
-	desc = "Warning: moustache is fake."
+	name = "假胡子"
+	desc = "警告:胡子是假的."
 	icon_state = "fake-moustache"
 	inv_hide_flags = HIDEFACE
 	armor_protection_flags = NONE
 
 /obj/item/clothing/mask/snorkel
-	name = "Snorkel"
-	desc = "For the Swimming Savant."
+	name = "呼吸管"
+	desc = "为游泳高手准备."
 	icon_state = "snorkel"
 	inv_hide_flags = HIDEFACE
 	armor_protection_flags = NONE
 
 /obj/item/clothing/mask/balaclava
-	name = "balaclava"
-	desc = "LOADSAMONEY"
+	name = "巴拉克拉瓦头套"
+	desc = "钱多多"
 	icon_state = "balaclava"
 	worn_icon_state = "balaclava"
 	inv_hide_flags = HIDEFACE|HIDEALLHAIR
@@ -46,8 +46,8 @@
 		slot_wear_mask_str = 'icons/mob/clothing/mask.dmi')
 
 /obj/item/clothing/mask/luchador
-	name = "Luchador Mask"
-	desc = "Worn by robust fighters, flying high to defeat their foes!"
+	name = "摔角手面具"
+	desc = "由强壮的格斗者佩戴,飞身跃起击败敌人!"
 	icon_state = "luchag"
 	worn_icon_state = "luchag"
 	inv_hide_flags = HIDEFACE|HIDEALLHAIR
@@ -59,13 +59,13 @@
 	siemens_coefficient = 3
 
 /obj/item/clothing/mask/luchador/tecnicos
-	name = "Tecnicos Mask"
-	desc = "Worn by robust fighters who uphold justice and fight honorably."
+	name = "技术流面具"
+	desc = "由维护正义、光荣战斗的强壮格斗者佩戴."
 	icon_state = "luchador"
 	worn_icon_state = "luchador"
 
 /obj/item/clothing/mask/luchador/rudos
-	name = "Rudos Mask"
-	desc = "Worn by robust fighters who are willing to do anything to win."
+	name = "反派面具"
+	desc = "由为获胜不择手段的强壮格斗者佩戴."
 	icon_state = "luchar"
 	worn_icon_state = "luchar"
