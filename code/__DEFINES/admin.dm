@@ -83,7 +83,9 @@
 #define ROUNDEND_EORG_DELAY 10 SECONDS //Amount of time (in deciseconds) after the rounds ends that the end round report is given to the players.
 
 #define SPAM_TRIGGER_TIME_PERIOD 10 SECONDS //The time period for checking spammy messages
-#define SPAM_TRIGGER_WEIGHT_FORMULA(message) length(message) / 200
+// Weight visible characters, not UTF-8 bytes, so a CJK message is not counted
+// as several equally sized messages by the shared chat spam filter.
+#define SPAM_TRIGGER_WEIGHT_FORMULA(message) length_char(message) / 200
 #define SPAM_TRIGGER_WARNING 7	//Number of messages required per the time period before the spam-prevention will warn you
 #define SPAM_TRIGGER_AUTOMUTE 10	//Number of messages required per the time period before the spam-prevention will automute you
 #define SPAM_TRIGGER_WEIGHT_WARNING 2.5 //The weight required per the time period before the spam-prevention will warn you

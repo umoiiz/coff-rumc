@@ -8,7 +8,13 @@ import { BooleanLike, classes } from 'tgui-core/react';
 import { Channel, ChannelIterator } from './ChannelIterator';
 import { ChatHistory } from './ChatHistory';
 import { LineLength, RADIO_PREFIXES, WindowSize } from './constants';
-import { getPrefix, windowClose, windowOpen, windowSet } from './helpers';
+import {
+  getPrefix,
+  limitText,
+  windowClose,
+  windowOpen,
+  windowSet,
+} from './helpers';
 import { byondMessages } from './timers';
 
 type ByondOpen = {
@@ -27,6 +33,7 @@ export function TguiSay() {
   const chatHistory = useRef(new ChatHistory());
   const messages = useRef(byondMessages);
   const scale = useRef(true);
+  const isComposing = useRef(false);
 
   // I initially wanted to make these an object or a reducer, but it's not really worth it.
   // You lose the granulatity and add a lot of boilerplate.
@@ -123,13 +130,14 @@ export function TguiSay() {
 
   function handleEnter(): void {
     const iterator = channelIterator.current;
-    const prefix = currentPrefix ?? '';
+    const prefix = iterator.isSay() ? (currentPrefix ?? '') : '';
+    const message = limitText(value, maxLength - prefix.length);
 
-    if (value?.length && value.length < maxLength) {
-      chatHistory.current.add(value);
+    if (message) {
+      chatHistory.current.add(message);
       Byond.sendMessage('entry', {
         channel: iterator.current(),
-        entry: iterator.isSay() ? prefix + value : value,
+        entry: prefix + message,
       });
     }
 
@@ -142,8 +150,8 @@ export function TguiSay() {
     // Only force say if we're on a visible channel and have typed something
     if (!value || iterator.isVisible()) return;
 
-    const prefix = currentPrefix ?? '';
-    const grunt = iterator.isSay() ? prefix + value : value;
+    const prefix = iterator.isSay() ? (currentPrefix ?? '') : '';
+    const grunt = prefix + limitText(value, maxLength - prefix.length);
 
     messages.current.forceSayMsg(grunt, iterator.current());
     unloadChat();
@@ -161,6 +169,15 @@ export function TguiSay() {
   function handleInput(event: React.FormEvent<HTMLTextAreaElement>): void {
     const iterator = channelIterator.current;
     let newValue = event.currentTarget.value;
+
+    // Trimming an uncommitted candidate can cancel the input method's text.
+    if (isComposing.current || (event.nativeEvent as InputEvent).isComposing) {
+      if (iterator.isVisible() && currentPrefix !== ':b ') {
+        messages.current.typingMsg();
+      }
+      setValue(newValue);
+      return;
+    }
 
     let newPrefix = getPrefix(newValue) || currentPrefix;
     // Handles switching prefixes
@@ -180,13 +197,18 @@ export function TguiSay() {
       messages.current.typingMsg();
     }
 
-    setValue(newValue);
+    const prefixLength = iterator.isSay() ? (newPrefix?.length ?? 0) : 0;
+    setValue(limitText(newValue, maxLength - prefixLength));
   }
 
   function handleKeyDown(
     event: React.KeyboardEvent<HTMLTextAreaElement>,
   ): void {
     if (event.getModifierState('AltGraph')) return;
+
+    // Enter is used to submit, but must remain available to the IME while a
+    // candidate is being composed (some browsers only expose keyCode 229).
+    if (event.nativeEvent.isComposing || event.keyCode === 229) return;
 
     switch (event.key) {
       case KEY.Up:
@@ -249,7 +271,9 @@ export function TguiSay() {
 
   /** Value has changed, we need to check if the size of the window is ok */
   useEffect(() => {
-    const len = value?.length || 0;
+    // JS string length counts UTF-16 code units; use Unicode code points so
+    // client-side sizing follows the server's character-based limit.
+    const len = Array.from(value || '').length;
 
     let newSize: WindowSize;
     if (len > LineLength.Medium) {
@@ -295,12 +319,17 @@ export function TguiSay() {
         </button>
         <textarea
           autoCorrect="off"
-          className={classes([
-            'textarea',
-            `textarea-${theme}`,
-            value.length > LineLength.Large && 'textarea-large',
-          ])}
-          maxLength={maxLength}
+          className={`textarea textarea-${theme}`}
+          onCompositionStart={() => {
+            isComposing.current = true;
+          }}
+          onCompositionEnd={(event) => {
+            isComposing.current = false;
+            handleInput(event);
+          }}
+          onBlur={() => {
+            isComposing.current = false;
+          }}
           onInput={handleInput}
           onKeyDown={handleKeyDown}
           ref={innerRef}

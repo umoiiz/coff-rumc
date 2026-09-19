@@ -98,15 +98,14 @@
   margin: 0.1rem 0 0 0.4rem;
   outline: none;
   resize: none;
-  overflow: hidden;
+  // CJK glyphs can wrap before the character-count window expansion thresholds.
+  // Keep every line reachable regardless of the active font or input length.
+  overflow-x: hidden;
+  overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: color.scale(
       colors.$button,
       $lightness: 20% * colors.$scrollbar-color-multiplier
     )
     transparent;
-}
-
-.textarea-large {
-  overflow-y: scroll;
 }

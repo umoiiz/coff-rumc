@@ -53,8 +53,11 @@
 	if(!msg)
 		return
 
-	var/end = copytext(msg, length(message))
-	if(!(end in list("!", ".", "?", ":", "\"", "-")))
+	// Use character-aware indexing: translated emotes may contain multibyte
+	// characters, and the old byte/length(message) expression could inspect the
+	// wrong byte (or the wrong string after parameter substitution).
+	var/end = copytext_char(msg, -1)
+	if(!(end in SPEECH_END_PUNCTUATION))
 		msg += "."
 
 	if(intentional)

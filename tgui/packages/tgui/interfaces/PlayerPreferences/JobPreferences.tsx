@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import {
   Box,
   Button,
@@ -14,6 +14,7 @@ import { useBackend } from '../../backend';
 export const JobPreferences = (props) => {
   const { act, data } = useBackend<JobPreferencesData>();
   const {
+    job_groups,
     alternate_option,
     squads,
     preferred_squad,
@@ -23,35 +24,8 @@ export const JobPreferences = (props) => {
   } = data;
   const [shownDescription, setShownDescription] = useState(null);
 
-  const xenoJobs = ['Xeno Queen', 'Xenomorph'];
-  const commandRoles = [
-    'Captain',
-    'Field Commander',
-    'Staff Officer',
-    'Pilot Officer',
-    'Transport Officer',
-    'Synthetic',
-    'AI',
-    'Mech Pilot',
-  ];
-  const supportRoles = [
-    'Ship Technician',
-    'Requisitions Officer',
-    'Chief Medical Officer',
-    'Medical Doctor',
-    'Field Researcher',
-    'Assault Crewman',
-    'Transport Crewman',
-  ];
-  const marineJobs = [
-    'Squad Marine',
-    'Squad Robot',
-    'Squad Engineer',
-    'Squad Corpsman',
-    'Squad Smartgunner',
-    'Squad Leader',
-  ];
-  const flavourJobs = ['Corporate Liaison', 'Survivor'];
+  // Titles and categories come from DM; never maintain a translated-name map here.
+  const groups = Object.entries(job_groups ?? {});
 
   const JobList = ({ name, jobs }) => (
     <Section title={name}>
@@ -86,26 +60,24 @@ export const JobPreferences = (props) => {
           </Box>
         </Modal>
       )}
+      {groups.map(([name, jobs], index) =>
+        index % 2 === 0 ? (
+          <Stack key={name}>
+            <Stack.Item grow basis={0}>
+              <JobList name={name} jobs={jobs} />
+            </Stack.Item>
+            <Stack.Item grow basis={0}>
+              {groups[index + 1] && (
+                <JobList
+                  name={groups[index + 1][0]}
+                  jobs={groups[index + 1][1]}
+                />
+              )}
+            </Stack.Item>
+          </Stack>
+        ) : null,
+      )}
       <Stack>
-        <Stack.Item grow>
-          <JobList name="Command Jobs" jobs={commandRoles} />
-        </Stack.Item>
-        <Stack.Item grow>
-          <JobList name="Support Jobs" jobs={supportRoles} />
-        </Stack.Item>
-      </Stack>
-      <Stack>
-        <Stack.Item grow>
-          <JobList name="Xenomorph Jobs" jobs={xenoJobs} />
-        </Stack.Item>
-        <Stack.Item grow>
-          <JobList name="Flavour Jobs" jobs={flavourJobs} />
-        </Stack.Item>
-      </Stack>
-      <Stack>
-        <Stack.Item grow>
-          <JobList name="Marine Jobs" jobs={marineJobs} />
-        </Stack.Item>
         <Stack.Item grow>
           <Section title="Other settings">
             <Flex direction="column" height="100%">
@@ -132,7 +104,7 @@ export const JobPreferences = (props) => {
               </Flex.Item>
               <Flex.Item>
                 <h4>Preferred Squad</h4>
-                {Object.values(squads).map((squad) => (
+                {Object.values(squads ?? {}).map((squad) => (
                   <Button.Checkbox
                     key={squad}
                     inline
@@ -144,8 +116,8 @@ export const JobPreferences = (props) => {
               </Flex.Item>
               <Flex.Item>
                 <h4>Occupational choices</h4>
-                {Object.keys(special_occupations).map((special, idx) => (
-                  <>
+                {Object.keys(special_occupations ?? {}).map((special, idx) => (
+                  <Fragment key={special}>
                     <Button.Checkbox
                       key={special_occupations[special]}
                       inline
@@ -160,7 +132,7 @@ export const JobPreferences = (props) => {
                       }
                     />
                     {idx === 1 && <br />}
-                  </>
+                  </Fragment>
                 ))}
               </Flex.Item>
             </Flex>
@@ -175,8 +147,12 @@ const JobPreference = (props) => {
   const { act, data } = useBackend<JobPreferenceData>();
   const { jobs, job_preferences } = data;
   const { job, setShownDescription } = props;
-  const jobData = jobs[job];
-  const preference = job_preferences[job];
+  const jobData = jobs?.[job];
+  const preference = job_preferences?.[job];
+
+  if (!jobData) {
+    return null;
+  }
 
   if (jobData.banned) {
     return (

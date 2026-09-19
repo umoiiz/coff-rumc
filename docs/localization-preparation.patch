@@ -1,0 +1,1868 @@
+diff --git a/code/__DEFINES/admin.dm b/code/__DEFINES/admin.dm
+index 35a2f80dcae..16f61cdeb19 100644
+--- a/code/__DEFINES/admin.dm
++++ b/code/__DEFINES/admin.dm
+@@ -83,7 +83,9 @@
+ #define ROUNDEND_EORG_DELAY 10 SECONDS //Amount of time (in deciseconds) after the rounds ends that the end round report is given to the players.
+ 
+ #define SPAM_TRIGGER_TIME_PERIOD 10 SECONDS //The time period for checking spammy messages
+-#define SPAM_TRIGGER_WEIGHT_FORMULA(message) length(message) / 200
++// Weight visible characters, not UTF-8 bytes, so a CJK message is not counted
++// as several equally sized messages by the shared chat spam filter.
++#define SPAM_TRIGGER_WEIGHT_FORMULA(message) length_char(message) / 200
+ #define SPAM_TRIGGER_WARNING 7	//Number of messages required per the time period before the spam-prevention will warn you
+ #define SPAM_TRIGGER_AUTOMUTE 10	//Number of messages required per the time period before the spam-prevention will automute you
+ #define SPAM_TRIGGER_WEIGHT_WARNING 2.5 //The weight required per the time period before the spam-prevention will warn you
+diff --git a/code/__DEFINES/say.dm b/code/__DEFINES/say.dm
+index 74c3cd9f808..5b96fca49da 100644
+--- a/code/__DEFINES/say.dm
++++ b/code/__DEFINES/say.dm
+@@ -34,6 +34,15 @@
+ #define SPAN_ROBOT "robot"
+ #define SPAN_SINGING "singing"
+ 
++// Speech punctuation is checked in several rendering paths (chat, runechat,
++// bubbles and language scrambling).  Keep ASCII and common CJK forms together
++// so translated messages do not gain an extra period or lose their bubble/verb
++// style when punctuation is localized.
++#define SPEECH_END_PUNCTUATION list("!", "！", ".", "。", "?", "？", ":", "：", "\"", "”", "-", "—", "…")
++#define SPEECH_EXCLAIM_PUNCTUATION list("!", "！")
++#define SPEECH_QUESTION_PUNCTUATION list("?", "？")
++#define SPEECH_YELL_PUNCTUATION list("!!", "！！")
++
+ //Eavesdropping
+ #define EAVESDROP_EXTRA_RANGE 1 //how much past the specified message_range does the message get starred, whispering only
+ 
+diff --git a/code/__DEFINES/text.dm b/code/__DEFINES/text.dm
+index 95cbe879ab8..1a828067a3e 100644
+--- a/code/__DEFINES/text.dm
++++ b/code/__DEFINES/text.dm
+@@ -13,23 +13,23 @@
+  * For example: MAPTEXT_PIXELLARI("<span style='font-size: 24pt'>Some large maptext here</span>")
+  */
+ /// Large size (ie: context tooltips) - Size options: 12pt 24pt.
+-#define MAPTEXT_PIXELLARI(text) {"<span style='font-family: \"Pixellari\"; font-size: 12pt; -dm-text-outline: 1px black'>[##text]</span>"}
++#define MAPTEXT_PIXELLARI(text) {"<span style='font-family: \"Pixellari\", \"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Noto Sans CJK SC\", sans-serif; font-size: 12pt; -dm-text-outline: 1px black'>[##text]</span>"}
+ 
+ /// Standard size (ie: normal runechat) - Size options: 6pt 12pt 18pt.
+-#define MAPTEXT_GRAND9K(text) {"<span style='font-family: \"Grand9K Pixel\"; font-size: 6pt; -dm-text-outline: 1px black'>[##text]</span>"}
++#define MAPTEXT_GRAND9K(text) {"<span style='font-family: \"Grand9K Pixel\", \"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Noto Sans CJK SC\", sans-serif; font-size: 6pt; -dm-text-outline: 1px black'>[##text]</span>"}
+ 
+ /// Small size. (ie: context subtooltips, spell delays) - Size options: 12pt 24pt.
+-#define MAPTEXT_TINY_UNICODE(text) {"<span style='font-family: \"TinyUnicode\"; font-size: 12pt; line-height: 0.75; -dm-text-outline: 1px black'>[##text]</span>"}
++#define MAPTEXT_TINY_UNICODE(text) {"<span style='font-family: \"TinyUnicode\", \"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Noto Sans CJK SC\", sans-serif; font-size: 12pt; line-height: 0.75; -dm-text-outline: 1px black'>[##text]</span>"}
+ 
+ /// Smallest size. (ie: whisper runechat) - Size options: 6pt 12pt 18pt.
+-#define MAPTEXT_SPESSFONT(text) {"<span style='font-family: \"Spess Font\"; font-size: 6pt; line-height: 1.4; -dm-text-outline: 1px black'>[##text]</span>"}
++#define MAPTEXT_SPESSFONT(text) {"<span style='font-family: \"Spess Font\", \"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Noto Sans CJK SC\", sans-serif; font-size: 6pt; line-height: 1.4; -dm-text-outline: 1px black'>[##text]</span>"}
+ 
+ #define CENTER_ALIGN_TEXT "center"
+ #define LEFT_ALIGN_TEXT "left"
+ 
+-#define MAPTEXT_HUDMESSAGE_TITLE(text, alignment) {"<span style='font-family: \"MS Serif\"; font-size: 12pt; line-height: 1.25; text-align: [##alignment]'><u>[##text]</u></span>"}
++#define MAPTEXT_HUDMESSAGE_TITLE(text, alignment) {"<span style='font-family: \"MS Serif\", \"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Noto Sans CJK SC\", sans-serif; font-size: 12pt; line-height: 1.25; text-align: [##alignment]'><u>[##text]</u></span>"}
+ 
+-#define MAPTEXT_HUDMESSAGE(text, alignment) {"<span style='font-family: \"MS Serif\"; font-size: 10pt; line-height: 1; text-align: [##alignment]; -dm-text-outline: 1px black'>[##text]</span>"}
++#define MAPTEXT_HUDMESSAGE(text, alignment) {"<span style='font-family: \"MS Serif\", \"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Noto Sans CJK SC\", sans-serif; font-size: 10pt; line-height: 1; text-align: [##alignment]; -dm-text-outline: 1px black'>[##text]</span>"}
+ 
+ #define HUD_ANNOUNCEMENT_FORMATTING(title, text, alignment) (MAPTEXT_HUDMESSAGE_TITLE(##title, ##alignment) + "<br>" + MAPTEXT_HUDMESSAGE(##text, ##alignment))
+ 
+@@ -44,7 +44,7 @@
+  */
+ /// Prepares a text to be used for maptext, using a variable size font.
+ /// Variable size font. More flexible but doesn't scale pixel perfect to BYOND icon resolutions. (May be blurry.) Can use any size in pt or px.
+-#define MAPTEXT_VCR_OSD_MONO(text) {"<span style='font-family: \"VCR OSD Mono\"'>[##text]</span>"}
++#define MAPTEXT_VCR_OSD_MONO(text) {"<span style='font-family: \"VCR OSD Mono\", \"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Noto Sans CJK SC\", sans-serif'>[##text]</span>"}
+ 
+ /// Macro from Lummox used to get height from a MeasureText proc
+ /// resolves the MeasureText() return value once, then resolves the height, then sets return_var to that.
+@@ -57,8 +57,8 @@
+ /// Removes characters incompatible with file names.
+ #define SANITIZE_FILENAME(text) (GLOB.filename_forbidden_chars.Replace(text, ""))
+ 
+-/// Simply removes the < and > characters, and limits the length of the message.
+-#define STRIP_HTML_SIMPLE(text, limit) (GLOB.angular_brackets.Replace(copytext(text, 1, limit), ""))
++/// Simply removes the < and > characters, and limits the character length of the message.
++#define STRIP_HTML_SIMPLE(text, limit) (GLOB.angular_brackets.Replace(copytext_char(text, 1, limit), ""))
+ 
+ /**
+  * stuff like `copytext(input, length(input))` will trim the last character of the input,
+diff --git a/code/__HELPERS/text.dm b/code/__HELPERS/text.dm
+index 1da389f1a79..878bdabfd61 100644
+--- a/code/__HELPERS/text.dm
++++ b/code/__HELPERS/text.dm
+@@ -334,16 +334,13 @@ GLOBAL_LIST_INIT(en_key_to_ru_key, list(
+ //Used in preferences' SetFlavorText and human's set_flavor verb
+ //Previews a string of len or less length
+ /proc/TextPreview(string, length = 40)
+-	if(length_char(string) > length(string))
+-		if(length_char(string) > length)
+-			return "[copytext_char(string, 1, 37)]..."
+-		if(!length(string))
+-			return "\[...\]"
+-		return string
+ 	if(!length(string))
+ 		return "\[...\]"
+-	if(length(string) > length)
+-		return "[copytext(string, 1, 37)]..."
++	// The limit includes the ellipsis. Never cut a UTF-8 character in half.
++	if(length_char(string) > length)
++		if(length <= 3)
++			return copytext("...", 1, max(0, length) + 1)
++		return "[copytext_char(string, 1, length - 2)]..."
+ 	return string
+ 
+ 
+diff --git a/code/datums/browser.dm b/code/datums/browser.dm
+index 6121aecf8ba..0201ae6d5f6 100644
+--- a/code/datums/browser.dm
++++ b/code/datums/browser.dm
+@@ -79,7 +79,7 @@
+ 
+ 	return {"<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+ <html><meta charset='UTF-8'>
+-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
++	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 	<head>
+ 		[head_content]
+diff --git a/code/datums/chatmessage.dm b/code/datums/chatmessage.dm
+index ac431c48775..4b7ea140ea4 100644
+--- a/code/datums/chatmessage.dm
++++ b/code/datums/chatmessage.dm
+@@ -133,7 +133,7 @@
+ 		extra_classes |= "small"
+ 
+ 	// Why are you yelling?
+-	if(copytext_char(text, -2) == "!!")
++	if(copytext_char(text, -2) in SPEECH_YELL_PUNCTUATION)
+ 		extra_classes |= SPAN_YELL
+ 
+ 	// Append radio icon if from a virtual speaker
+@@ -148,7 +148,8 @@
+ 	var/tgt_color = extra_classes.Find("italics") ? target.chat_color_darkened : target.chat_color
+ 
+ 
+-	var/complete_text = "<span style='color: [tgt_color]'><span class='center [extra_classes.Join(" ")]'>[owner.say_emphasis(text)]</span></span>"
++	// Measure exactly the markup we render, including the maptext font class.
++	var/complete_text = MAPTEXT("<span style='color: [tgt_color]'><span class='center [extra_classes.Join(" ")]'>[owner.say_emphasis(text)]</span></span>")
+ 
+ 	var/mheight
+ 	WXH_TO_HEIGHT(owned_by.MeasureText(complete_text, null, CHAT_MESSAGE_WIDTH), mheight)
+@@ -248,7 +249,7 @@
+ 	message.maptext_width = CHAT_MESSAGE_WIDTH
+ 	message.maptext_height = mheight * 1.25 // We add extra because some characters are superscript, like actions
+ 	message.maptext_x = (CHAT_MESSAGE_WIDTH - owner.bound_width) * -0.5
+-	message.maptext = MAPTEXT(complete_text)
++	message.maptext = complete_text
+ 
+ 	animate_start = rough_time
+ 	animate_lifespan = lifespan
+diff --git a/code/datums/emotes.dm b/code/datums/emotes.dm
+index 35ab8858fed..504f9a267a4 100644
+--- a/code/datums/emotes.dm
++++ b/code/datums/emotes.dm
+@@ -53,8 +53,11 @@
+ 	if(!msg)
+ 		return
+ 
+-	var/end = copytext(msg, length(message))
+-	if(!(end in list("!", ".", "?", ":", "\"", "-")))
++	// Use character-aware indexing: translated emotes may contain multibyte
++	// characters, and the old byte/length(message) expression could inspect the
++	// wrong byte (or the wrong string after parameter substitution).
++	var/end = copytext_char(msg, -1)
++	if(!(end in SPEECH_END_PUNCTUATION))
+ 		msg += "."
+ 
+ 	if(intentional)
+diff --git a/code/datums/health_scan/health_scan.dm b/code/datums/health_scan/health_scan.dm
+index 55f3a59c36b..8ba52fe509f 100644
+--- a/code/datums/health_scan/health_scan.dm
++++ b/code/datums/health_scan/health_scan.dm
+@@ -122,7 +122,11 @@
+  */
+ /datum/health_scan/proc/analyze_vitals(mob/living/carbon/human/patient_candidate, mob/user, show_patient)
+ 	if(user.skills.getRating(SKILL_MEDICAL) < skill_threshold)
+-		user.balloon_alert("fumbling...")
++		// balloon_alert() takes the viewer as its first argument.  Passing only
++		// the message silently drops this feedback (the string is assigned to the
++		// typed mob argument), which is especially easy to miss once messages are
++		// routed through a translation layer.
++		user.balloon_alert(user, "fumbling...")
+ 		if(!do_after(user, max(SKILL_TASK_AVERAGE - (1 SECONDS * user.skills.getRating(SKILL_MEDICAL)), 0), NONE, patient_candidate, BUSY_ICON_UNSKILLED))
+ 			return
+ 	if(!ishuman(patient_candidate))
+diff --git a/code/game/objects/items/books/manuals.dm b/code/game/objects/items/books/manuals.dm
+index 95bb8838de0..28661d5a424 100644
+--- a/code/game/objects/items/books/manuals.dm
++++ b/code/game/objects/items/books/manuals.dm
+@@ -42,7 +42,7 @@
+ 				li {margin: 2px 0px 2px 15px;}
+ 				ul {margin: 5px; padding: 0px;}
+ 				ol {margin: 5px; padding: 0px 15px;}
+-				body {font-size: 13px; font-family: Verdana;}
++				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
+ 				</style>
+ 				</head>
+ 				<body>
+@@ -86,7 +86,7 @@
+ 				li {margin: 2px 0px 2px 15px;}
+ 				ul {margin: 5px; padding: 0px;}
+ 				ol {margin: 5px; padding: 0px 15px;}
+-				body {font-size: 13px; font-family: Verdana;}
++				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
+ 				</style>
+ 				</head>
+ 				<body>
+@@ -216,7 +216,7 @@
+ 				li {margin: 2px 0px 2px 15px;}
+ 				ul {margin: 5px; padding: 0px;}
+ 				ol {margin: 5px; padding: 0px 15px;}
+-				body {font-size: 13px; font-family: Verdana;}
++				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
+ 				</style>
+ 				</head>
+ 				<body>
+@@ -268,7 +268,7 @@
+ 				li {margin: 2px 0px 2px 15px;}
+ 				ul {margin: 5px; padding: 0px;}
+ 				ol {margin: 5px; padding: 0px 15px;}
+-				body {font-size: 13px; font-family: Verdana;}
++				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
+ 				</style>
+ 				</head>
+ 				<body>
+@@ -361,7 +361,7 @@
+ 				ul {margin: 5px; padding: 0px;}
+ 				ul.a {list-style-type: none; margin: 5px; padding: 0px;}
+ 				ol {margin: 5px; padding: 0px 15px;}
+-				body {font-size: 13px; font-family: Verdana;}
++				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
+ 				</style>
+ 				</head>
+ 				<body>
+@@ -438,7 +438,7 @@
+ 				li {margin: 2px 0px 2px 15px;}
+ 				ul {margin: 5px; padding: 0px;}
+ 				ol {margin: 5px; padding: 0px 15px;}
+-				body {font-size: 13px; font-family: Verdana;}
++				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
+ 				</style>
+ 				</head>
+ 				<body>
+@@ -507,7 +507,7 @@
+ 				li {margin: 2px 0px 2px 15px;}
+ 				ul {margin: 5px; padding: 0px;}
+ 				ol {margin: 5px; padding: 0px 15px;}
+-				body {font-size: 13px; font-family: Verdana;}
++				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
+ 				</style>
+ 				</head>
+ 				<body>
+@@ -754,7 +754,7 @@
+ 				li {margin: 2px 0px 2px 15px;}
+ 				ul {margin: 5px; padding: 0px;}
+ 				ol {margin: 5px; padding: 0px 15px;}
+-				body {font-size: 13px; font-family: Verdana;}
++				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
+ 				</style>
+ 				</head>
+ 				<body>
+@@ -819,7 +819,7 @@
+ 				li {margin: 2px 0px 2px 15px;}
+ 				ul {margin: 5px; padding: 0px;}
+ 				ol {margin: 5px; padding: 0px 15px;}
+-				body {font-size: 13px; font-family: Verdana;}
++				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
+ 				</style>
+ 				</head>
+ 				<body>
+@@ -878,7 +878,7 @@
+ 				li {margin: 2px 0px 2px 15px;}
+ 				ul {margin: 5px; padding: 0px;}
+ 				ol {margin: 5px; padding: 0px 15px;}
+-				body {font-size: 13px; font-family: Verdana;}
++				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
+ 				</style>
+ 				</head>
+ 				<body>
+@@ -932,7 +932,7 @@
+ 				li {margin: 2px 0px 2px 15px;}
+ 				ul {margin: 5px; padding: 0px;}
+ 				ol {margin: 5px; padding: 0px 15px;}
+-				body {font-size: 13px; font-family: Verdana;}
++				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
+ 				</style>
+ 				</head>
+ 				<body>
+@@ -975,7 +975,7 @@
+ 				li {margin: 2px 0px 2px 15px;}
+ 				ul {margin: 5px; padding: 0px;}
+ 				ol {margin: 5px; padding: 0px 15px;}
+-				body {font-size: 13px; font-family: Verdana;}
++				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
+ 				</style>
+ 				</head>
+ 				<body>
+@@ -1025,7 +1025,7 @@
+ 				li {margin: 2px 0px 2px 15px;}
+ 				ul {margin: 5px; padding: 0px;}
+ 				ol {margin: 5px; padding: 0px 15px;}
+-				body {font-size: 13px; font-family: Verdana;}
++				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
+ 				</style>
+ 				</head>
+ 				<body>
+@@ -1132,7 +1132,7 @@
+ 				li {margin: 2px 0px 2px 15px;}
+ 				ul {margin: 5px; padding: 0px;}
+ 				ol {margin: 5px; padding: 0px 15px;}
+-				body {font-size: 13px; font-family: Verdana;}
++				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
+ 				</style>
+ 				</head>
+ 				<body>
+@@ -1204,7 +1204,7 @@
+ 				li {margin: 2px 0px 2px 15px;}
+ 				ul {margin: 5px; padding: 0px;}
+ 				ol {margin: 5px; padding: 0px 15px;}
+-				body {font-size: 13px; font-family: Verdana;}
++				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
+ 				</style>
+ 				</head>
+ 				<body>
+@@ -1241,7 +1241,7 @@
+ 				li {margin: 2px 0px 2px 15px;}
+ 				ul {margin: 5px; padding: 0px;}
+ 				ol {margin: 5px; padding: 0px 15px;}
+-				body {font-size: 13px; font-family: Verdana;}
++				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
+ 				</style>
+ 				</head>
+ 				<body>
+diff --git a/code/game/objects/machinery/computer/marines_consoles.dm b/code/game/objects/machinery/computer/marines_consoles.dm
+index 612eb02b749..a0424fba84c 100644
+--- a/code/game/objects/machinery/computer/marines_consoles.dm
++++ b/code/game/objects/machinery/computer/marines_consoles.dm
+@@ -214,7 +214,8 @@
+ 					var/datum/job/jobdatum
+ 					for(var/jobtype in typesof(/datum/job))
+ 						var/datum/job/J = new jobtype
+-						if(ckey(J.title) == ckey(t1))
++						// ckey() erases CJK titles, making unrelated jobs compare equal.
++						if(lowertext(J.title) == lowertext(t1))
+ 							jobdatum = J
+ 							break
+ 
+diff --git a/code/game/say.dm b/code/game/say.dm
+index cfd607f6376..87c6d9d5578 100644
+--- a/code/game/say.dm
++++ b/code/game/say.dm
+@@ -128,14 +128,14 @@ GLOBAL_LIST_INIT(freqtospan, list(
+ 
+ /atom/movable/proc/say_mod(input, message_mode, datum/language/language)
+ 	var/ending = copytext_char(input, -1)
+-	if(copytext_char(input, -2) == "!!")
++	if(copytext_char(input, -2) in SPEECH_YELL_PUNCTUATION)
+ 		return verb_yell
+ 	else if(language)
+ 		var/datum/language/L = GLOB.language_datum_instances[language]
+ 		return L.get_spoken_verb(ending)
+-	else if(ending == "?")
++	else if(ending in SPEECH_QUESTION_PUNCTUATION)
+ 		return verb_ask
+-	else if(ending == "!")
++	else if(ending in SPEECH_EXCLAIM_PUNCTUATION)
+ 		return verb_exclaim
+ 	else
+ 		return verb_say
+@@ -145,7 +145,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
+ 	if(!input)
+ 		input = "..."
+ 
+-	if(copytext_char(input, -2) == "!!")
++	if(copytext_char(input, -2) in SPEECH_YELL_PUNCTUATION)
+ 		spans |= SPAN_YELL
+ 
+ 	var/spanned = attach_spans(input, spans)
+@@ -219,9 +219,9 @@ GLOBAL_LIST_INIT(freqtospan, list(
+ 
+ /proc/say_test(text)
+ 	var/ending = copytext_char(text, -1)
+-	if (ending == "?")
++	if (ending in SPEECH_QUESTION_PUNCTUATION)
+ 		return "1"
+-	else if (ending == "!")
++	else if (ending in SPEECH_EXCLAIM_PUNCTUATION)
+ 		return "2"
+ 	return "4"
+ 
+diff --git a/code/modules/balloon_alert/balloon_alert.dm b/code/modules/balloon_alert/balloon_alert.dm
+index 87dcf16fc6d..0314760aa28 100644
+--- a/code/modules/balloon_alert/balloon_alert.dm
++++ b/code/modules/balloon_alert/balloon_alert.dm
+@@ -48,13 +48,16 @@
+ 	balloon_alert.appearance_flags = RESET_ALPHA|RESET_COLOR|RESET_TRANSFORM
+ 	balloon_alert.maptext = MAPTEXT("<span style='text-align: center; -dm-text-outline: 1px #0005'>[text]</span>")
+ 	balloon_alert.maptext_x = (BALLOON_TEXT_WIDTH - bound_width) * -0.5
+-	WXH_TO_HEIGHT(viewer_client?.MeasureText(text, null, BALLOON_TEXT_WIDTH), balloon_alert.maptext_height)
++	// Include the same font, alignment and outline when measuring and rendering.
++	WXH_TO_HEIGHT(viewer_client?.MeasureText(balloon_alert.maptext, null, BALLOON_TEXT_WIDTH), balloon_alert.maptext_height)
+ 	balloon_alert.maptext_width = BALLOON_TEXT_WIDTH
+ 
+ 	viewer_client?.images += balloon_alert
+ 
+ 	var/duration_mult = 1
+-	var/duration_length = length(text) - BALLOON_TEXT_CHAR_LIFETIME_INCREASE_MIN
++	// Use character count rather than byte length so CJK translations do not
++	// make alerts linger several times longer than their visible text.
++	var/duration_length = length_char(text) - BALLOON_TEXT_CHAR_LIFETIME_INCREASE_MIN
+ 
+ 	if(duration_length > 0)
+ 		duration_mult += duration_length*BALLOON_TEXT_CHAR_LIFETIME_INCREASE_MULT
+diff --git a/code/modules/language/language.dm b/code/modules/language/language.dm
+index ba773ecef81..38266ca0c42 100644
+--- a/code/modules/language/language.dm
++++ b/code/modules/language/language.dm
+@@ -102,7 +102,7 @@
+ 	if(ending == ".")
+ 		scrambled_text = copytext_char(scrambled_text, 1, -2)
+ 	var/input_ending = copytext_char(input, -1)
+-	if(input_ending in list("!","?","."))
++	if(input_ending in list("!", "！", "?", "？", ".", "。"))
+ 		scrambled_text += input_ending
+ 
+ 	add_to_cache(input, scrambled_text)
+@@ -112,9 +112,9 @@
+ 
+ /datum/language/proc/get_spoken_verb(msg_end)
+ 	switch(msg_end)
+-		if("!")
++		if("!", "！")
+ 			return exclaim_verb
+-		if("?")
++		if("?", "？")
+ 			return ask_verb
+ 	return speech_verb
+ 
+diff --git a/code/modules/mob/living/carbon/xenomorph/castes/behemoth/abilities_behemoth.dm b/code/modules/mob/living/carbon/xenomorph/castes/behemoth/abilities_behemoth.dm
+index 980962c2744..3122a898dd2 100644
+--- a/code/modules/mob/living/carbon/xenomorph/castes/behemoth/abilities_behemoth.dm
++++ b/code/modules/mob/living/carbon/xenomorph/castes/behemoth/abilities_behemoth.dm
+@@ -975,7 +975,9 @@
+ 			target = new_target
+ 		// If we don't have directional attacks enabled, then we just stop.
+ 		else
+-			xeno_owner.balloon_alert("Not in range")
++			// balloon_alert() takes the viewer as its first argument; omitting it
++			// means this message is never shown.
++			xeno_owner.balloon_alert(xeno_owner, "Not in range")
+ 			return
+ 
+ ///////////////////// TARGET CHECKS /////////////////////
+diff --git a/code/modules/mob/living/say.dm b/code/modules/mob/living/say.dm
+index 51a80b66024..1daf9637002 100644
+--- a/code/modules/mob/living/say.dm
++++ b/code/modules/mob/living/say.dm
+@@ -292,8 +292,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
+ /mob/living/proc/treat_message(message, capitalize_message = TRUE)
+ 	RETURN_TYPE(/list)
+ 	// check for and apply punctuation
+-	var/end = copytext(message, length(message))
+-	if(!(end in list("!", ".", "?", ":", "\"", "-")))
++	var/end = copytext_char(message, -1)
++	if(!(end in SPEECH_END_PUNCTUATION))
+ 		message += "."
+ 
+ 	SEND_SIGNAL(src, COMSIG_LIVING_TREAT_MESSAGE, args)
+diff --git a/code/modules/mob/living/silicon/say.dm b/code/modules/mob/living/silicon/say.dm
+index b581beea6b3..d100514cfa8 100644
+--- a/code/modules/mob/living/silicon/say.dm
++++ b/code/modules/mob/living/silicon/say.dm
+@@ -3,8 +3,8 @@
+ 	//Capitalization
+ 	message = capitalize(message)
+ 	//checks for and apply punctuation
+-	var/end = copytext(message, length(message))
+-	if(!(end in list("!", ".", "?", ":", "\"", "-")))
++	var/end = copytext_char(message, -1)
++	if(!(end in SPEECH_END_PUNCTUATION))
+ 		message += "."
+ 
+ 	var/desig = "Silicon"
+diff --git a/code/modules/reagents/chemistry/machinery/chem_dispenser.dm b/code/modules/reagents/chemistry/machinery/chem_dispenser.dm
+index 0855de1873f..3df0bcbea9d 100644
+--- a/code/modules/reagents/chemistry/machinery/chem_dispenser.dm
++++ b/code/modules/reagents/chemistry/machinery/chem_dispenser.dm
+@@ -159,13 +159,33 @@
+ 		var/datum/reagent/temp = GLOB.chemical_reagents_list[re]
+ 		if(temp)
+ 			var/chemname = temp.name
+-			chemicals.Add(list(list("title" = chemname, "id" = ckey(temp.name))))
++			chemicals.Add(list(list("title" = chemname, "id" = "[re]")))
+ 	.["chemicals"] = chemicals
+ 	.["recipes"] = user.client.prefs.chem_macros
+ 
+ 	.["recordingRecipe"] = recording_recipe
++	var/list/recording_contents = list()
++	for(var/reagent_id in recording_recipe)
++		var/datum/reagent/reagent = GLOB.chemical_reagents_list[GLOB.name2reagent[reagent_id]]
++		if(reagent)
++			recording_contents += list(list("id" = reagent_id, "name" = reagent.name, "volume" = recording_recipe[reagent_id]))
++	.["recordingContents"] = recording_contents
+ 	.["clearingRecipe"] = clearing_recipe
+ 
++/// Resolve legacy saved macros and current IDs before dispensing or saving.
++/// Keep type IDs separate from translated names and validate the whole recipe
++/// before any chemical is dispensed, including recipes copied while recording.
++/obj/machinery/chem_dispenser/proc/normalize_recipe(list/recipe)
++	if(!islist(recipe))
++		return
++	. = list()
++	for(var/reagent_id in recipe)
++		var/reagent_type = GLOB.name2reagent[reagent_id]
++		var/quantity = recipe[reagent_id]
++		if(!(reagent_type in dispensable_reagents) || !isnum(quantity) || quantity <= 0)
++			return null
++		.["[reagent_type]"] += quantity
++
+ /obj/machinery/chem_dispenser/ui_act(action, list/params)
+ 	. = ..()
+ 	if(.)
+@@ -192,10 +212,11 @@
+ 		if("dispense")
+ 			if(!is_operational() || QDELETED(cell))
+ 				return
+-			var/reagent_name = params["reagent"]
++			var/reagent = GLOB.name2reagent[params["reagent"]]
++			if(!(reagent in dispensable_reagents))
++				return
+ 			if(!recording_recipe)
+-				var/reagent = GLOB.name2reagent[reagent_name]
+-				if(beaker && dispensable_reagents.Find(reagent))
++				if(beaker)
+ 					var/datum/reagents/R = beaker.reagents
+ 					var/free = R.maximum_volume - R.total_volume
+ 					var/actual = min(amount, (cell.charge * powerefficiency)*10, free)
+@@ -211,7 +232,7 @@
+ 					playsound(src.loc, 'sound/machines/reagent_dispense.ogg', 25, 1)
+ 					work_animation()
+ 			else
+-				recording_recipe[reagent_name] += amount
++				recording_recipe["[reagent]"] += amount
+ 			. = TRUE
+ 		if("remove")
+ 			if(!is_operational() || recording_recipe)
+@@ -232,15 +253,13 @@
+ 					usr.client.prefs.chem_macros.Remove(params["recipe"])
+ 					usr.client.prefs.save_preferences()
+ 				return TRUE
+-			var/list/chemicals_to_dispense = usr.client.prefs.chem_macros[params["recipe"]]
++			var/list/chemicals_to_dispense = normalize_recipe(usr.client.prefs.chem_macros[params["recipe"]])
+ 			if(!LAZYLEN(chemicals_to_dispense))
++				to_chat(usr, span_danger("This recipe contains unavailable or invalid chemicals."))
+ 				return
+ 			for(var/key in chemicals_to_dispense)
+ 				var/reagent = GLOB.name2reagent[key]
+ 				var/dispense_amount = chemicals_to_dispense[key]
+-				if(!dispensable_reagents.Find(reagent))
+-					to_chat(usr, span_danger("[src] cannot find <b>[key]</b>!"))
+-					return
+ 				if(!recording_recipe)
+ 					if(!beaker)
+ 						return
+@@ -285,13 +304,12 @@
+ 				to_chat(usr, span_danger("You can remember <b>up to 10</b> recipes!"))
+ 				return
+ 			if(name && recording_recipe)
+-				for(var/reagent in recording_recipe)
+-					var/reagent_id = GLOB.name2reagent[reagent]
+-					if(!dispensable_reagents.Find(reagent_id))
+-						balloon_alert_to_viewers("[src] buzzes")
+-						playsound(src, 'sound/machines/buzz-two.ogg', 50, TRUE)
+-						return
+-				usr.client.prefs.chem_macros[name] = recording_recipe
++				var/list/normalized_recipe = normalize_recipe(recording_recipe)
++				if(isnull(normalized_recipe))
++					balloon_alert_to_viewers("[src] buzzes")
++					playsound(src, 'sound/machines/buzz-two.ogg', 50, TRUE)
++					return
++				usr.client.prefs.chem_macros[name] = normalized_recipe
+ 				usr.client.prefs.save_preferences()
+ 				recording_recipe = null
+ 				. = TRUE
+diff --git a/code/modules/reagents/chemistry/reagents.dm b/code/modules/reagents/chemistry/reagents.dm
+index 8cfafc13e91..c5787e3c4c2 100644
+--- a/code/modules/reagents/chemistry/reagents.dm
++++ b/code/modules/reagents/chemistry/reagents.dm
+@@ -1,11 +1,90 @@
+ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
+ 
++/// Maps stable type IDs and pre-localization dispenser macro IDs to reagents.
++/// The legacy keys below are saved-data identifiers, not display text. Do not
++/// translate or regenerate them from reagent.name: ckey() discards CJK text.
+ /proc/build_name2reagent()
+-	. = list()
+-	for (var/t in subtypesof(/datum/reagent))
+-		var/datum/reagent/R = t
+-		if (length(initial(R.name)))
+-			.[ckey(initial(R.name))] = t
++	. = list(
++		"aluminum" = /datum/reagent/aluminum,
++		"carbon" = /datum/reagent/carbon,
++		"chlorine" = /datum/reagent/chlorine,
++		"capsaicinoil" = /datum/reagent/consumable/capsaicin,
++		"coffee" = /datum/reagent/consumable/coffee,
++		"cream" = /datum/reagent/consumable/cream,
++		"drgibb" = /datum/reagent/consumable/dr_gibb,
++		"universalenzyme" = /datum/reagent/consumable/enzyme,
++		"ethanol" = /datum/reagent/consumable/ethanol,
++		"absinthe" = /datum/reagent/consumable/ethanol/absinthe,
++		"ale" = /datum/reagent/consumable/ethanol/ale,
++		"applejack" = /datum/reagent/consumable/ethanol/applejack,
++		"atomicbomb" = /datum/reagent/consumable/ethanol/atomicbomb,
++		"beer" = /datum/reagent/consumable/ethanol/beer,
++		"maltliquor" = /datum/reagent/consumable/ethanol/beer/maltliquor,
++		"coconutrum" = /datum/reagent/consumable/ethanol/coconut_rum,
++		"cognac" = /datum/reagent/consumable/ethanol/cognac,
++		"cremedecacao" = /datum/reagent/consumable/ethanol/creme_de_cacao,
++		"cremedecoconut" = /datum/reagent/consumable/ethanol/creme_de_coconut,
++		"cremedementhe" = /datum/reagent/consumable/ethanol/creme_de_menthe,
++		"curaao" = /datum/reagent/consumable/ethanol/curacao,
++		"fernet" = /datum/reagent/consumable/ethanol/fernet,
++		"gin" = /datum/reagent/consumable/ethanol/gin,
++		"hardcider" = /datum/reagent/consumable/ethanol/hcider,
++		"kahlua" = /datum/reagent/consumable/ethanol/kahlua,
++		"navyrum" = /datum/reagent/consumable/ethanol/navy_rum,
++		"ricebeer" = /datum/reagent/consumable/ethanol/rice_beer,
++		"rum" = /datum/reagent/consumable/ethanol/rum,
++		"sake" = /datum/reagent/consumable/ethanol/sake,
++		"tequila" = /datum/reagent/consumable/ethanol/tequila,
++		"thirteenloko" = /datum/reagent/consumable/ethanol/thirteenloko,
++		"triplesec" = /datum/reagent/consumable/ethanol/triple_sec,
++		"vermouth" = /datum/reagent/consumable/ethanol/vermouth,
++		"vodka" = /datum/reagent/consumable/ethanol/vodka,
++		"whiskey" = /datum/reagent/consumable/ethanol/whiskey,
++		"whiskeycola" = /datum/reagent/consumable/ethanol/whiskey_cola,
++		"wine" = /datum/reagent/consumable/ethanol/wine,
++		"yyake" = /datum/reagent/consumable/ethanol/yuyake,
++		"grenadine" = /datum/reagent/consumable/grenadine,
++		"ice" = /datum/reagent/consumable/ice,
++		"lemonlime" = /datum/reagent/consumable/lemon_lime,
++		"lemonjuice" = /datum/reagent/consumable/lemonjuice,
++		"limejuice" = /datum/reagent/consumable/limejuice,
++		"melonsoda" = /datum/reagent/consumable/melon_soda,
++		"menthol" = /datum/reagent/consumable/menthol,
++		"orangejuice" = /datum/reagent/consumable/orangejuice,
++		"pineapplejuice" = /datum/reagent/consumable/pineapplejuice,
++		"pwrgame" = /datum/reagent/consumable/pwr_game,
++		"shamblersjuice" = /datum/reagent/consumable/shamblers,
++		"sodawater" = /datum/reagent/consumable/sodawater,
++		"soldry" = /datum/reagent/consumable/sol_dry,
++		"cola" = /datum/reagent/consumable/space_cola,
++		"spaceup" = /datum/reagent/consumable/space_up,
++		"smwind" = /datum/reagent/consumable/spacemountainwind,
++		"sugar" = /datum/reagent/consumable/sugar,
++		"tea" = /datum/reagent/consumable/tea,
++		"icedtea" = /datum/reagent/consumable/tea/icetea,
++		"tomatojuice" = /datum/reagent/consumable/tomatojuice,
++		"tonicwater" = /datum/reagent/consumable/tonic,
++		"copper" = /datum/reagent/copper,
++		"fluorine" = /datum/reagent/fluorine,
++		"hydrogen" = /datum/reagent/hydrogen,
++		"iron" = /datum/reagent/iron,
++		"lithium" = /datum/reagent/lithium,
++		"mercury" = /datum/reagent/mercury,
++		"nitrogen" = /datum/reagent/nitrogen,
++		"oxygen" = /datum/reagent/oxygen,
++		"phosphorus" = /datum/reagent/phosphorus,
++		"potassium" = /datum/reagent/potassium,
++		"radium" = /datum/reagent/radium,
++		"silicon" = /datum/reagent/silicon,
++		"sodium" = /datum/reagent/sodium,
++		"sulfur" = /datum/reagent/sulfur,
++		"sulphuricacid" = /datum/reagent/toxin/acid,
++		"mindbreakertoxin" = /datum/reagent/toxin/mindbreaker,
++		"uranium" = /datum/reagent/uranium,
++		"water" = /datum/reagent/water,
++	)
++	for(var/reagent_type in subtypesof(/datum/reagent))
++		.["[reagent_type]"] = reagent_type
+ 
+ /// A single reagent
+ /datum/reagent
+diff --git a/code/modules/screen_alert/_screen_alert.dm b/code/modules/screen_alert/_screen_alert.dm
+index d7a90cec8ef..7f531bdbd26 100644
+--- a/code/modules/screen_alert/_screen_alert.dm
++++ b/code/modules/screen_alert/_screen_alert.dm
+@@ -56,20 +56,21 @@
+ 		animate(src, alpha = 255)
+ 	var/list/lines_to_skip = list()
+ 	var/static/html_locate_regex = regex("<.*>")
+-	var/tag_position = findtext(text_to_play, html_locate_regex)
++	// Positions must use the same character units as copytext_char below.
++	var/tag_position = findtext_char(text_to_play, html_locate_regex)
+ 	var/reading_tag = TRUE
+ 	while(tag_position)
+ 		if(reading_tag)
+-			if(text_to_play[tag_position] == ">")
++			if(copytext_char(text_to_play, tag_position, tag_position + 1) == ">")
+ 				reading_tag = FALSE
+ 				lines_to_skip += tag_position
+ 			else
+ 				lines_to_skip += tag_position
+ 			tag_position++
+ 		else
+-			tag_position = findtext(text_to_play, html_locate_regex, tag_position)
++			tag_position = findtext_char(text_to_play, html_locate_regex, tag_position)
+ 			reading_tag = TRUE
+-	for(var/letter = 2 to length(text_to_play) + letters_per_update step letters_per_update)
++	for(var/letter = 2 to length_char(text_to_play) + letters_per_update step letters_per_update)
+ 		if(letter in lines_to_skip)
+ 			continue
+ 		maptext = "[style_open][copytext_char(text_to_play, 1, letter)][style_close]"
+diff --git a/code/modules/screen_alert/misc_alert.dm b/code/modules/screen_alert/misc_alert.dm
+index 98426e530c3..2f91a3e5be3 100644
+--- a/code/modules/screen_alert/misc_alert.dm
++++ b/code/modules/screen_alert/misc_alert.dm
+@@ -159,15 +159,15 @@
+ 	var/firstname = copytext(cleaned_realname, 1, findtext(cleaned_realname, " "))
+ 	var/lastname = trim(copytext(cleaned_realname, findtext(cleaned_realname, " ")))
+ 	var/nametouse
+-	if(length(lastname) >= 1 && length(lastname) <= MAX_NON_COMMTITLE_LEN)
++	if(length_char(lastname) >= 1 && length_char(lastname) <= MAX_NON_COMMTITLE_LEN)
+ 		nametouse = lastname
+-	else if(length(firstname) >= 1 && length(firstname) <= MAX_NON_COMMTITLE_LEN)
++	else if(length_char(firstname) >= 1 && length_char(firstname) <= MAX_NON_COMMTITLE_LEN)
+ 		nametouse = firstname
+-	else if(length(cleaned_realname) >= 1)
+-		if(length(cleaned_realname) > MAX_NON_COMMTITLE_LEN)
++	else if(length_char(cleaned_realname) >= 1)
++		if(length_char(cleaned_realname) > MAX_NON_COMMTITLE_LEN)
+ 			//cleans too long clone names down to a better fitting length
+ 			cleaned_realname = replacetext(cleaned_realname, regex(@"CS-.-"), "")
+-		nametouse = copytext(cleaned_realname, 1, MAX_NON_COMMTITLE_LEN+1)
++		nametouse = copytext_char(cleaned_realname, 1, MAX_NON_COMMTITLE_LEN+1)
+ 	else
+ 		nametouse = "UNKNOWN"
+ 	var/user_name = trim(mugshottee.comm_title + " " + nametouse)
+diff --git a/code/modules/tgui_input/say_modal/speech.dm b/code/modules/tgui_input/say_modal/speech.dm
+index 9cee0efc2ed..0e986c5ceb2 100644
+--- a/code/modules/tgui_input/say_modal/speech.dm
++++ b/code/modules/tgui_input/say_modal/speech.dm
+@@ -13,12 +13,12 @@
+ 	if(!entry || payload["channel"] == OOC_CHANNEL || payload["channel"] == ME_CHANNEL)
+ 		return pick(hurt_phrases)
+ 	/// Random trimming for larger sentences
+-	if(length(entry) > 50)
++	if(length_char(entry) > 50)
+ 		entry = trim(entry, rand(40, 50))
+ 	else
+ 		/// Otherwise limit trim to just last letter
+-		if(length(entry) > 1)
+-			entry = trim(entry, length(entry))
++		if(length_char(entry) > 1)
++			entry = trim(entry, length_char(entry))
+ 	return entry + "-" + pick(hurt_phrases)
+ 
+ /**
+@@ -94,7 +94,7 @@
+ /datum/tgui_say/proc/handle_entry(type, payload)
+ 	if(!payload?["channel"] || !payload["entry"])
+ 		CRASH("[usr] entered in a null payload to the chat window.")
+-	if(length(payload["entry"]) > max_length)
++	if(length_char(payload["entry"]) > max_length)
+ 		CRASH("[usr] has entered more characters than allowed into a TGUI-Say")
+ 	if(type == "entry")
+ 		delegate_speech(payload["entry"], payload["channel"])
+diff --git a/code/modules/tgui_input/text.dm b/code/modules/tgui_input/text.dm
+index d06d82d0b4a..cd74d4a5d1d 100644
+--- a/code/modules/tgui_input/text.dm
++++ b/code/modules/tgui_input/text.dm
+@@ -132,9 +132,9 @@
+ 	switch(action)
+ 		if("submit")
+ 			if(isnum(max_length) && max_length > 0 && max_length < INFINITY)
+-				if(length(params["entry"]) > max_length)
++				if(length_char(params["entry"]) > max_length)
+ 					CRASH("[usr] typed a text string longer than the max length")
+-				if(encode && (length(html_encode(params["entry"])) > max_length))
++				if(encode && (length_char(html_encode(params["entry"])) > max_length))
+ 					to_chat(usr, span_notice("Your message was clipped due to special character usage."))
+ 			set_entry(params["entry"])
+ 			closed = TRUE
+diff --git a/code/modules/unit_tests/_unit_tests.dm b/code/modules/unit_tests/_unit_tests.dm
+index dce7a56f294..69b02be4624 100644
+--- a/code/modules/unit_tests/_unit_tests.dm
++++ b/code/modules/unit_tests/_unit_tests.dm
+@@ -70,6 +70,8 @@
+ #include "implanting.dm"
+ #include "item_variant_test.dm"
+ #include "keybinding_init.dm"
++#include "localization.dm"
++#include "localization_identifiers.dm"
+ #include "map_templates.dm"
+ #include "mapping.dm"
+ #include "plane_double_transform.dm"
+diff --git a/html/admin/view_variables.css b/html/admin/view_variables.css
+index b646e4ced16..9a55be155e3 100644
+--- a/html/admin/view_variables.css
++++ b/html/admin/view_variables.css
+@@ -1,9 +1,9 @@
+ body {
+-	font-family: Verdana, sans-serif;
++	font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+ 	font-size: 9pt;
+ }
+ .value {
+-	font-family: "Courier New", monospace;
++	font-family: "Courier New", "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", monospace;
+ 	font-size: 8pt;
+ 	display: inline-block;
+ }
+diff --git a/html/browser/common.css b/html/browser/common.css
+index 1de45bd9536..d8e58fce8c1 100644
+--- a/html/browser/common.css
++++ b/html/browser/common.css
+@@ -3,6 +3,7 @@ body
+ 	padding: 0;
+ 	margin: 0;
+ 	background-color: #272727;
++	font-family: Verdana, Geneva, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+ 	font-size: 12px;
+ 	color: #ffffff;
+ 	line-height: 170%;
+@@ -169,7 +170,7 @@ h4
+ {	
+ 	clear: both;
+ 	padding: 8px;
+-	font-family: Verdana, Geneva, sans-serif;
++	font-family: Verdana, Geneva, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+ }
+ 
+ .good
+@@ -310,4 +311,4 @@ div.notice
+ {
+ 	width: 100%;
+ 	clear: both;
+-}
+\ No newline at end of file
++}
+diff --git a/html/browser/create_object.html b/html/browser/create_object.html
+index 0ef1f4fa3a3..17cecb28053 100644
+--- a/html/browser/create_object.html
++++ b/html/browser/create_object.html
+@@ -6,13 +6,13 @@
+     body
+     {
+       font-size: 9pt;
+-      font-family: Verdana, sans-serif;
++      font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+     }
+ 
+     h1, h2, h3, h4, h5, h6
+     {
+       color: #00f;
+-      font-family: Georgia, Arial, sans-serif;
++      font-family: Georgia, Arial, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+     }
+     img { 
+       border: 0px; 
+diff --git a/html/statbrowser.css b/html/statbrowser.css
+index f7a746bf6dd..74197b31772 100644
+--- a/html/statbrowser.css
++++ b/html/statbrowser.css
+@@ -9,7 +9,7 @@ body {
+ }
+ 
+ body {
+-	font-family: Verdana, Geneva, Tahoma, sans-serif;
++	font-family: Verdana, Geneva, Tahoma, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+ 	font-size: 12px;
+ 	margin: 0 !important;
+ 	padding: 0 !important;
+diff --git a/interface/skin.dmf b/interface/skin.dmf
+index 89c56ceb4d3..5f1525f294b 100644
+--- a/interface/skin.dmf
++++ b/interface/skin.dmf
+@@ -134,7 +134,7 @@ window "mapwindow"
+ 		right-click = true
+ 		saved-params = "icon-size;zoom-mode"
+ 		zoom-mode = distort
+-		style = ".center { text-align: center; } .maptext { font-family: 'MS Serif'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.0; } .command_headset { font-weight: bold; } .context { font-family: 'MS Serif'; font-size: 12pt; -dm-text-outline: 1px black; }  .subcontext { font-family: 'MS Serif'; font-size: 12pt; line-height: 0.75; } .small { font-family: 'MS Serif'; font-size: 6pt; line-height: 1.4; } .big { font-family: 'MS Serif'; font-size: 12pt; } .reallybig { font-size: 12pt; } .extremelybig { font-size: 12pt; } .greentext { color: #00FF00; font-size: 6pt; } .redtext { color: #FF0000; font-size: 6pt; } .clown { color: #FF69BF; font-weight: bold; } .his_grace { color: #15D512; } .hypnophrase { color: #0d0d0d; font-weight: bold; } .yell { font-weight: bold; } .italics { font-size: 6pt; line-height: 1.4; } .lobbytext { font-family: 'MS Serif'; font-size: 13pt; -dm-text-outline: 0.5px black; color: white; }"
++		style = ".center { text-align: center; } .maptext { font-family: 'MS Serif', 'Microsoft YaHei UI', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.0; } .command_headset { font-weight: bold; } .context { font-family: 'MS Serif', 'Microsoft YaHei UI', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif; font-size: 12pt; -dm-text-outline: 1px black; }  .subcontext { font-family: 'MS Serif', 'Microsoft YaHei UI', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif; font-size: 12pt; line-height: 0.75; } .small { font-family: 'MS Serif', 'Microsoft YaHei UI', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif; font-size: 6pt; line-height: 1.4; } .big { font-family: 'MS Serif', 'Microsoft YaHei UI', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif; font-size: 12pt; } .reallybig { font-size: 12pt; } .extremelybig { font-size: 12pt; } .greentext { color: #00FF00; font-size: 6pt; } .redtext { color: #FF0000; font-size: 6pt; } .clown { color: #FF69BF; font-weight: bold; } .his_grace { color: #15D512; } .hypnophrase { color: #0d0d0d; font-weight: bold; } .yell { font-weight: bold; } .italics { font-size: 6pt; line-height: 1.4; } .lobbytext { font-family: 'MS Serif', 'Microsoft YaHei UI', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif; font-size: 13pt; -dm-text-outline: 0.5px black; color: white; }"
+ 		on-show = ".winset \"menu.statusbar.is-checked=true?mapwindow.status_bar.is-visible=true:mapwindow.status_bar.is-visible=false\""
+ 	elem "status_bar"
+ 		type = LABEL
+diff --git a/interface/stylesheet.dm b/interface/stylesheet.dm
+index 6818a89afc0..8b46bfaa6f9 100644
+--- a/interface/stylesheet.dm
++++ b/interface/stylesheet.dm
+@@ -16,7 +16,7 @@ html, body {
+ }
+ body {
+ 	background: #fff;
+-    font-family: Verdana, sans-serif;
++    font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+     font-size: 9pt;
+     line-height: 1.2;
+ 	overflow-x: hidden;
+@@ -73,7 +73,7 @@ a.popt {text-decoration: none;}
+ 
+ .highlight {background: yellow;}
+ 
+-.motd					{color: #638500;	font-family: Verdana, sans-serif;}
++.motd					{color: #638500;	font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
+ .motd h1, .motd h2, .motd h3, .motd h4, .motd h5, .motd h6
+ 	{color: #638500;	text-decoration: underline;}
+ .motd a, .motd a:link, .motd a:visited, .motd a:active, .motd a:hover
+@@ -147,7 +147,7 @@ h1.alert, h2.alert		{color: #000000;}
+ .emote					{					font-style: italic;}
+ .selecteddna			{color: #FFFFFF; 	background-color: #001B1B}
+ 
+-.singing				{font-family: "Trebuchet MS", cursive, sans-serif; font-style: italic;}
++.singing				{font-family: "Trebuchet MS", "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", cursive, sans-serif; font-style: italic;}
+ 
+ .attack					{color: #ff0000;}
+ .moderate				{color: #CC0000;}
+@@ -171,25 +171,25 @@ h1.alert, h2.alert		{color: #000000;}
+ .xenodanger				{color: #2a623d;	font-weight: bold;}
+ .avoidharm				{color:	#72a0e5;	font-weight: bold;}
+ .xenouserdanger			{color: #2a623d; 	font-weight: bold; font-size: 1.5em;}
+-.xenoannounce           {color: #1a472a;    font-family: book-antiqua; font-weight: bold; font-style: italic; font-size: 1.5em;}
++.xenoannounce           {color: #1a472a;    font-family: book-antiqua, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; font-weight: bold; font-style: italic; font-size: 1.5em;}
+ 
+ .alien					{color: #543354;}
+ .newscaster				{color: #800000;}
+ 
+-.role_header			{color: #db0000;	display: block; text-align: center; font-weight: bold; font-family: trebuchet-ms; font-size: 1.5em;}
++.role_header			{color: #db0000;	display: block; text-align: center; font-weight: bold; font-family: trebuchet-ms, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; font-size: 1.5em;}
+ .role_body				{color: #000099;	display: block; text-align: center;}
+ 
+-.round_setup			{color: #db0000;		font-family: impact; font-size: 1.25em;}
+-.round_header			{color: #db0000; 	display: block; text-align: center; font-family: courier; font-weight: bold; font-size: 2em;}
+-.round_body				{color: #001427; 	display: block; text-align: center; font-family: trebuchet-ms; font-weight: bold; font-size: 1.5em;}
+-.event_announcement		{color: #600d48; 	font-family: arial-narrow; font-weight: bold; font-size: 1.5em;}
++.round_setup			{color: #db0000;		font-family: impact, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; font-size: 1.25em;}
++.round_header			{color: #db0000; 	display: block; text-align: center; font-family: courier, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; font-weight: bold; font-size: 2em;}
++.round_body				{color: #001427; 	display: block; text-align: center; font-family: trebuchet-ms, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; font-weight: bold; font-size: 1.5em;}
++.event_announcement		{color: #600d48; 	font-family: arial-narrow, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; font-weight: bold; font-size: 1.5em;}
+ 
+ .centerbold				{				 	text-align: center; font-weight: bold;}
+ 
+-.rough					{font-family: trebuchet-ms, cursive, sans-serif;}
+-.say_quote				{font-family: Georgia, Verdana, sans-serif;}
++.rough					{font-family: trebuchet-ms, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", cursive, sans-serif;}
++.say_quote				{font-family: Georgia, Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
+ .command_headset		{font-weight: bold; font-size: 18px;}
+-.robot					{font-family: "Courier New", cursive, sans-serif;}
++.robot					{font-family: "Courier New", "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", cursive, sans-serif;}
+ 
+ 
+ .green					{color: #29b245;}
+diff --git a/tgui/packages/tgui-escape-menu/styles/main.scss b/tgui/packages/tgui-escape-menu/styles/main.scss
+index e9ff7378025..4e546c16655 100644
+--- a/tgui/packages/tgui-escape-menu/styles/main.scss
++++ b/tgui/packages/tgui-escape-menu/styles/main.scss
+@@ -25,7 +25,7 @@ body,
+ }
+ 
+ .Tooltip {
+-  font-family: 'Pixellari', monospace;
++  font-family: 'Pixellari', var(--font-family-cjk), monospace;
+   transform: translateY(-1.5rem);
+ }
+ 
+@@ -37,7 +37,7 @@ body,
+   position: relative;
+   width: 100%;
+   height: 100%;
+-  font-family: 'Pixellari', 'Grand9K Pixel', monospace;
++  font-family: 'Pixellari', 'Grand9K Pixel', var(--font-family-cjk), monospace;
+   color: white;
+   -webkit-text-stroke: 0.2rem black;
+   paint-order: stroke fill;
+@@ -123,7 +123,7 @@ body,
+     background: none;
+     border: none;
+     color: white;
+-    font-family: 'Pixellari', monospace;
++    font-family: 'Pixellari', var(--font-family-cjk), monospace;
+     font-size: 4.5rem;
+     font-weight: bold;
+     text-align: left;
+@@ -157,7 +157,7 @@ body,
+     background: none;
+     border: none;
+     color: white;
+-    font-family: 'Grand9K Pixel', monospace;
++    font-family: 'Grand9K Pixel', var(--font-family-cjk), monospace;
+     font-size: 1.4rem;
+     cursor: pointer;
+     padding: 0.8rem 1.5rem;
+@@ -188,7 +188,7 @@ body,
+     background: none;
+     border: none;
+     color: white;
+-    font-family: 'Pixellari', monospace;
++    font-family: 'Pixellari', var(--font-family-cjk), monospace;
+     padding: 0;
+     cursor: pointer;
+     text-align: center;
+@@ -262,7 +262,7 @@ body,
+ 
+   &__resource-label,
+   &__resource-button-label {
+-    font-family: 'Grand9K Pixel', monospace;
++    font-family: 'Grand9K Pixel', var(--font-family-cjk), monospace;
+     font-size: 1.2rem;
+     text-align: center;
+   }
+@@ -339,7 +339,7 @@ body,
+ 
+   &__player-entry {
+     color: white;
+-    font-family: 'Pixellari', monospace;
++    font-family: 'Pixellari', var(--font-family-cjk), monospace;
+     padding: 0.4rem 0.8rem;
+     display: flex;
+     flex-direction: column;
+@@ -362,13 +362,13 @@ body,
+   &__player-ping {
+     font-size: 1.4rem;
+     color: #777;
+-    font-family: 'Grand9K Pixel', monospace;
++    font-family: 'Grand9K Pixel', var(--font-family-cjk), monospace;
+   }
+ 
+   &__player-rank {
+     font-size: 1.4rem;
+     color: #aaa;
+-    font-family: 'Grand9K Pixel', monospace;
++    font-family: 'Grand9K Pixel', var(--font-family-cjk), monospace;
+ 
+     &--link {
+       color: #5599ff;
+diff --git a/tgui/packages/tgui-panel/index.tsx b/tgui/packages/tgui-panel/index.tsx
+index 5a49c8558ba..f020554bc07 100644
+--- a/tgui/packages/tgui-panel/index.tsx
++++ b/tgui/packages/tgui-panel/index.tsx
+@@ -11,6 +11,7 @@ import './styles/themes/light.scss';
+ import { perf } from 'common/perf';
+ import { combineReducers } from 'common/redux';
+ import { setGlobalStore } from 'tgui/backend';
++import { setupInputComposition } from 'tgui/inputComposition';
+ import { captureExternalLinks } from 'tgui/links';
+ import { render } from 'tgui/renderer';
+ import { configureStore } from 'tgui/store';
+@@ -58,6 +59,7 @@ function setupApp() {
+ 
+   setGlobalStore(store);
+ 
++  setupInputComposition();
+   setupGlobalEvents({
+     ignoreWindowFocus: true,
+   });
+diff --git a/tgui/packages/tgui-panel/settings/middleware.ts b/tgui/packages/tgui-panel/settings/middleware.ts
+index e4eb3360306..6bd88fc71d6 100644
+--- a/tgui/packages/tgui-panel/settings/middleware.ts
++++ b/tgui/packages/tgui-panel/settings/middleware.ts
+@@ -29,7 +29,7 @@ function updateGlobalOverrideRule() {
+   let fontFamily = '';
+ 
+   if (overrideFontFamily !== undefined) {
+-    fontFamily = `font-family: ${overrideFontFamily} !important;`;
++    fontFamily = `font-family: ${overrideFontFamily}, var(--font-family-cjk), sans-serif !important;`;
+   }
+ 
+   const constructedRule = `body * :not(.Icon) {
+diff --git a/tgui/packages/tgui-panel/styles/tgchat/chat-dark.scss b/tgui/packages/tgui-panel/styles/tgchat/chat-dark.scss
+index 1ad58e17fa2..527f263057a 100644
+--- a/tgui/packages/tgui-panel/styles/tgchat/chat-dark.scss
++++ b/tgui/packages/tgui-panel/styles/tgchat/chat-dark.scss
+@@ -210,7 +210,7 @@ a:visited {
+ 
+ .motd {
+   color: hsl(213.6, 37.9%, 74.1%);
+-  font-family: Verdana;
++  font-family: Verdana, var(--font-family-cjk), sans-serif;
+   white-space: normal;
+ }
+ 
+@@ -222,7 +222,7 @@ a:visited {
+ .motd h6 {
+   color: hsl(213.6, 37.9%, 74.1%);
+   text-decoration: underline;
+-  font-family: Verdana;
++  font-family: Verdana, var(--font-family-cjk), sans-serif;
+   text-decoration: none;
+ }
+ 
+@@ -273,7 +273,7 @@ h4,
+ h5,
+ h6 {
+   color: hsl(213.6, 37.9%, 74.1%);
+-  font-family: Georgia, Verdana, sans-serif;
++  font-family: Georgia, Verdana, var(--font-family-cjk), sans-serif;
+ }
+ 
+ h1.alert,
+@@ -419,7 +419,7 @@ em {
+   font-style: italic;
+ }
+ .singing {
+-  font-family: 'Trebuchet MS', cursive, sans-serif;
++  font-family: 'Trebuchet MS', var(--font-family-cjk), cursive, sans-serif;
+   font-style: italic;
+ }
+ 
+@@ -674,21 +674,21 @@ h2.alert {
+ }
+ .xenoannounce {
+   color: hsl(154.7, 30.4%, 49%);
+-  font-family: book-antiqua;
++  font-family: book-antiqua, var(--font-family-cjk), sans-serif;
+   font-weight: bold;
+   font-style: italic;
+   font-size: 1.5em;
+ }
+ .xenobanishtitleannonce {
+   color: hsl(240, 84%, 70.59%);
+-  font-family: book-antiqua;
++  font-family: book-antiqua, var(--font-family-cjk), sans-serif;
+   font-weight: bold;
+   font-style: italic;
+   font-size: 24px;
+ }
+ .xenobanishannonce {
+   color: hsl(0, 100%, 50%);
+-  font-family: book-antiqua;
++  font-family: book-antiqua, var(--font-family-cjk), sans-serif;
+   font-weight: bold;
+   font-style: italic;
+   font-size: 19.2px;
+@@ -732,7 +732,7 @@ h2.alert {
+ }
+ .round_setup {
+   color: hsl(0, 100%, 42.9%);
+-  font-family: impact;
++  font-family: impact, var(--font-family-cjk), sans-serif;
+   font-size: 1.25em;
+ }
+ .round_header {
+@@ -751,7 +751,7 @@ h2.alert {
+ }
+ .event_announcement {
+   color: hsl(262.7, 55.7%, 63.7%);
+-  font-family: arial-narrow;
++  font-family: arial-narrow, var(--font-family-cjk), sans-serif;
+   font-size: 1.5em;
+ }
+ .seasons_announce {
+@@ -779,17 +779,17 @@ h2.alert {
+ }
+ 
+ .rough {
+-  font-family: trebuchet-ms, cursive, sans-serif;
++  font-family: trebuchet-ms, var(--font-family-cjk), cursive, sans-serif;
+ }
+ .say_quote {
+-  font-family: Georgia, Verdana, sans-serif;
++  font-family: Georgia, Verdana, var(--font-family-cjk), sans-serif;
+ }
+ .command_headset {
+   font-weight: bold;
+   font-size: 160%;
+ }
+ .robot {
+-  font-family: 'Courier New', cursive, sans-serif;
++  font-family: 'Courier New', var(--font-family-cjk), cursive, sans-serif;
+ }
+ 
+ .green {
+@@ -903,15 +903,15 @@ h2.alert {
+ }
+ 
+ .sans {
+-  font-family: 'Comic Sans MS', cursive, sans-serif;
++  font-family: 'Comic Sans MS', var(--font-family-cjk), cursive, sans-serif;
+ }
+ 
+ .papyrus {
+-  font-family: 'Papyrus', cursive, sans-serif;
++  font-family: 'Papyrus', var(--font-family-cjk), cursive, sans-serif;
+ }
+ 
+ .robot {
+-  font-family: 'Courier New', cursive, sans-serif;
++  font-family: 'Courier New', var(--font-family-cjk), cursive, sans-serif;
+ }
+ 
+ .command_headset {
+@@ -948,7 +948,7 @@ h2.alert {
+ .clown {
+   color: hsl(326, 100%, 72%);
+   font-size: 160%;
+-  font-family: 'Comic Sans MS', cursive, sans-serif;
++  font-family: 'Comic Sans MS', var(--font-family-cjk), cursive, sans-serif;
+   font-weight: bold;
+ }
+ 
+diff --git a/tgui/packages/tgui-panel/styles/tgchat/chat-light.scss b/tgui/packages/tgui-panel/styles/tgchat/chat-light.scss
+index 89b02226004..2b54ce44da6 100644
+--- a/tgui/packages/tgui-panel/styles/tgchat/chat-light.scss
++++ b/tgui/packages/tgui-panel/styles/tgchat/chat-light.scss
+@@ -16,7 +16,7 @@ body {
+ 
+ body {
+   background: hsl(0, 0%, 100%);
+-  font-family: Verdana, sans-serif;
++  font-family: Verdana, var(--font-family-cjk), sans-serif;
+   font-size: 13px;
+   line-height: 1.2;
+   overflow-x: hidden;
+@@ -218,7 +218,7 @@ a.popt {
+ 
+ .motd {
+   color: hsl(75.3, 100%, 26.1%);
+-  font-family: Verdana;
++  font-family: Verdana, var(--font-family-cjk), sans-serif;
+   white-space: normal;
+ }
+ 
+@@ -229,7 +229,7 @@ a.popt {
+ .motd h5,
+ .motd h6 {
+   color: hsl(75.3, 100%, 26.1%);
+-  font-family: Verdana;
++  font-family: Verdana, var(--font-family-cjk), sans-serif;
+   text-decoration: none;
+ }
+ 
+@@ -280,7 +280,7 @@ h4,
+ h5,
+ h6 {
+   color: hsl(240, 100%, 50%);
+-  font-family: Georgia, Verdana, sans-serif;
++  font-family: Georgia, Verdana, var(--font-family-cjk), sans-serif;
+ }
+ 
+ h1.alert,
+@@ -680,21 +680,21 @@ h2.alert {
+ }
+ .xenoannounce {
+   color: hsl(141.3, 46.4%, 19%);
+-  font-family: book-antiqua;
++  font-family: book-antiqua, var(--font-family-cjk), sans-serif;
+   font-weight: bold;
+   font-style: italic;
+   font-size: 1.5em;
+ }
+ .xenobanishtitleannonce {
+   color: hsl(240, 84%, 70.59%);
+-  font-family: book-antiqua;
++  font-family: book-antiqua, var(--font-family-cjk), sans-serif;
+   font-weight: bold;
+   font-style: italic;
+   font-size: 1.5em;
+ }
+ .xenobanishannonce {
+   color: hsl(0, 100%, 50%);
+-  font-family: book-antiqua;
++  font-family: book-antiqua, var(--font-family-cjk), sans-serif;
+   font-weight: bold;
+   font-style: italic;
+   font-size: 1.2em;
+@@ -741,7 +741,7 @@ h2.alert {
+ }
+ .round_setup {
+   color: hsl(0, 100%, 42.9%);
+-  font-family: impact;
++  font-family: impact, var(--font-family-cjk), sans-serif;
+   font-size: 1.25em;
+ }
+ .round_header {
+@@ -760,7 +760,7 @@ h2.alert {
+ }
+ .event_announcement {
+   color: hsl(317.3, 76.1%, 21.4%);
+-  font-family: arial-narrow;
++  font-family: arial-narrow, var(--font-family-cjk), sans-serif;
+   font-weight: bold;
+   font-size: 1.5em;
+ }
+@@ -789,17 +789,17 @@ h2.alert {
+ }
+ 
+ .rough {
+-  font-family: trebuchet-ms, cursive, sans-serif;
++  font-family: trebuchet-ms, var(--font-family-cjk), cursive, sans-serif;
+ }
+ .say_quote {
+-  font-family: Georgia, Verdana, sans-serif;
++  font-family: Georgia, Verdana, var(--font-family-cjk), sans-serif;
+ }
+ .command_headset {
+   font-weight: bold;
+   font-size: 18px;
+ }
+ .robot {
+-  font-family: 'Courier New', cursive, sans-serif;
++  font-family: 'Courier New', var(--font-family-cjk), cursive, sans-serif;
+ }
+ 
+ .green {
+@@ -918,15 +918,15 @@ h2.alert {
+ }
+ 
+ .sans {
+-  font-family: 'Comic Sans MS', cursive, sans-serif;
++  font-family: 'Comic Sans MS', var(--font-family-cjk), cursive, sans-serif;
+ }
+ 
+ .papyrus {
+-  font-family: 'Papyrus', cursive, sans-serif;
++  font-family: 'Papyrus', var(--font-family-cjk), cursive, sans-serif;
+ }
+ 
+ .robot {
+-  font-family: 'Courier New', cursive, sans-serif;
++  font-family: 'Courier New', var(--font-family-cjk), cursive, sans-serif;
+ }
+ 
+ .command_headset {
+@@ -963,18 +963,18 @@ h2.alert {
+ .clown {
+   color: hsl(325.6, 100%, 70.6%);
+   font-size: 160%;
+-  font-family: 'Comic Sans MS', cursive, sans-serif;
++  font-family: 'Comic Sans MS', var(--font-family-cjk), cursive, sans-serif;
+   font-weight: bold;
+ }
+ 
+ .singing {
+-  font-family: 'Trebuchet MS', cursive, sans-serif;
++  font-family: 'Trebuchet MS', var(--font-family-cjk), cursive, sans-serif;
+   font-style: italic;
+ }
+ 
+ .his_grace {
+   color: hsl(119.1, 84.4%, 45.3%);
+-  font-family: 'Courier New', cursive, sans-serif;
++  font-family: 'Courier New', var(--font-family-cjk), cursive, sans-serif;
+   font-style: italic;
+ }
+ 
+diff --git a/tgui/packages/tgui-say/TguiSay.tsx b/tgui/packages/tgui-say/TguiSay.tsx
+index b4a2724d78f..6cc179a9103 100644
+--- a/tgui/packages/tgui-say/TguiSay.tsx
++++ b/tgui/packages/tgui-say/TguiSay.tsx
+@@ -8,7 +8,13 @@ import { BooleanLike, classes } from 'tgui-core/react';
+ import { Channel, ChannelIterator } from './ChannelIterator';
+ import { ChatHistory } from './ChatHistory';
+ import { LineLength, RADIO_PREFIXES, WindowSize } from './constants';
+-import { getPrefix, windowClose, windowOpen, windowSet } from './helpers';
++import {
++  getPrefix,
++  limitText,
++  windowClose,
++  windowOpen,
++  windowSet,
++} from './helpers';
+ import { byondMessages } from './timers';
+ 
+ type ByondOpen = {
+@@ -27,6 +33,7 @@ export function TguiSay() {
+   const chatHistory = useRef(new ChatHistory());
+   const messages = useRef(byondMessages);
+   const scale = useRef(true);
++  const isComposing = useRef(false);
+ 
+   // I initially wanted to make these an object or a reducer, but it's not really worth it.
+   // You lose the granulatity and add a lot of boilerplate.
+@@ -123,13 +130,14 @@ export function TguiSay() {
+ 
+   function handleEnter(): void {
+     const iterator = channelIterator.current;
+-    const prefix = currentPrefix ?? '';
++    const prefix = iterator.isSay() ? (currentPrefix ?? '') : '';
++    const message = limitText(value, maxLength - prefix.length);
+ 
+-    if (value?.length && value.length < maxLength) {
+-      chatHistory.current.add(value);
++    if (message) {
++      chatHistory.current.add(message);
+       Byond.sendMessage('entry', {
+         channel: iterator.current(),
+-        entry: iterator.isSay() ? prefix + value : value,
++        entry: prefix + message,
+       });
+     }
+ 
+@@ -142,8 +150,8 @@ export function TguiSay() {
+     // Only force say if we're on a visible channel and have typed something
+     if (!value || iterator.isVisible()) return;
+ 
+-    const prefix = currentPrefix ?? '';
+-    const grunt = iterator.isSay() ? prefix + value : value;
++    const prefix = iterator.isSay() ? (currentPrefix ?? '') : '';
++    const grunt = prefix + limitText(value, maxLength - prefix.length);
+ 
+     messages.current.forceSayMsg(grunt, iterator.current());
+     unloadChat();
+@@ -162,6 +170,15 @@ export function TguiSay() {
+     const iterator = channelIterator.current;
+     let newValue = event.currentTarget.value;
+ 
++    // Trimming an uncommitted candidate can cancel the input method's text.
++    if (isComposing.current || (event.nativeEvent as InputEvent).isComposing) {
++      if (iterator.isVisible() && currentPrefix !== ':b ') {
++        messages.current.typingMsg();
++      }
++      setValue(newValue);
++      return;
++    }
++
+     let newPrefix = getPrefix(newValue) || currentPrefix;
+     // Handles switching prefixes
+     if (newPrefix && newPrefix !== currentPrefix) {
+@@ -180,7 +197,8 @@ export function TguiSay() {
+       messages.current.typingMsg();
+     }
+ 
+-    setValue(newValue);
++    const prefixLength = iterator.isSay() ? (newPrefix?.length ?? 0) : 0;
++    setValue(limitText(newValue, maxLength - prefixLength));
+   }
+ 
+   function handleKeyDown(
+@@ -188,6 +206,10 @@ export function TguiSay() {
+   ): void {
+     if (event.getModifierState('AltGraph')) return;
+ 
++    // Enter is used to submit, but must remain available to the IME while a
++    // candidate is being composed (some browsers only expose keyCode 229).
++    if (event.nativeEvent.isComposing || event.keyCode === 229) return;
++
+     switch (event.key) {
+       case KEY.Up:
+       case KEY.Down:
+@@ -249,7 +271,9 @@ export function TguiSay() {
+ 
+   /** Value has changed, we need to check if the size of the window is ok */
+   useEffect(() => {
+-    const len = value?.length || 0;
++    // JS string length counts UTF-16 code units; use Unicode code points so
++    // client-side sizing follows the server's character-based limit.
++    const len = Array.from(value || '').length;
+ 
+     let newSize: WindowSize;
+     if (len > LineLength.Medium) {
+@@ -295,12 +319,17 @@ export function TguiSay() {
+         </button>
+         <textarea
+           autoCorrect="off"
+-          className={classes([
+-            'textarea',
+-            `textarea-${theme}`,
+-            value.length > LineLength.Large && 'textarea-large',
+-          ])}
+-          maxLength={maxLength}
++          className={`textarea textarea-${theme}`}
++          onCompositionStart={() => {
++            isComposing.current = true;
++          }}
++          onCompositionEnd={(event) => {
++            isComposing.current = false;
++            handleInput(event);
++          }}
++          onBlur={() => {
++            isComposing.current = false;
++          }}
+           onInput={handleInput}
+           onKeyDown={handleKeyDown}
+           ref={innerRef}
+diff --git a/tgui/packages/tgui-say/helpers.ts b/tgui/packages/tgui-say/helpers.ts
+index 2cbb0d12b9d..fa96bf6a4cf 100644
+--- a/tgui/packages/tgui-say/helpers.ts
++++ b/tgui/packages/tgui-say/helpers.ts
+@@ -1,6 +1,11 @@
+ import { Channel } from './ChannelIterator';
+ import { RADIO_PREFIXES, WindowSize } from './constants';
+ 
++/** Match DM's character limit without splitting UTF-16 surrogate pairs. */
++export function limitText(value: string, maxLength: number): string {
++  return Array.from(value).slice(0, Math.max(0, maxLength)).join('');
++}
++
+ /**
+  * Once byond signals this via keystroke, it
+  * ensures window size, visibility, and focus.
+diff --git a/tgui/packages/tgui-say/index.tsx b/tgui/packages/tgui-say/index.tsx
+index e306e8147e2..e34ed97ba7a 100644
+--- a/tgui/packages/tgui-say/index.tsx
++++ b/tgui/packages/tgui-say/index.tsx
+@@ -1,9 +1,12 @@
+ import { createRoot, Root } from 'react-dom/client';
++import { setupInputComposition } from 'tgui/inputComposition';
+ 
+ import { TguiSay } from './TguiSay';
+ 
+ let reactRoot: Root | null = null;
+ 
++setupInputComposition();
++
+ document.onreadystatechange = function () {
+   if (document.readyState !== 'complete') return;
+ 
+diff --git a/tgui/packages/tgui-say/styles/styles.scss b/tgui/packages/tgui-say/styles/styles.scss
+index e3c35ce9ff3..67e0f05e4f2 100644
+--- a/tgui/packages/tgui-say/styles/styles.scss
++++ b/tgui/packages/tgui-say/styles/styles.scss
+@@ -98,7 +98,10 @@
+   margin: 0.1rem 0 0 0.4rem;
+   outline: none;
+   resize: none;
+-  overflow: hidden;
++  // CJK glyphs can wrap before the character-count window expansion thresholds.
++  // Keep every line reachable regardless of the active font or input length.
++  overflow-x: hidden;
++  overflow-y: auto;
+   scrollbar-width: thin;
+   scrollbar-color: color.scale(
+       colors.$button,
+@@ -106,7 +109,3 @@
+     )
+     transparent;
+ }
+-
+-.textarea-large {
+-  overflow-y: scroll;
+-}
+diff --git a/tgui/packages/tgui/index.tsx b/tgui/packages/tgui/index.tsx
+index f2d47ec89b4..95e50a9b5a3 100644
+--- a/tgui/packages/tgui/index.tsx
++++ b/tgui/packages/tgui/index.tsx
+@@ -22,6 +22,7 @@ import { setupHotReloading } from 'tgui-dev-server/link/client.mjs';
+ 
+ import { App } from './App';
+ import { setGlobalStore } from './backend';
++import { setupInputComposition } from './inputComposition';
+ import { captureExternalLinks } from './links';
+ import { render } from './renderer';
+ import { configureStore } from './store';
+@@ -40,6 +41,7 @@ function setupApp() {
+ 
+   setGlobalStore(store);
+ 
++  setupInputComposition();
+   setupGlobalEvents();
+   setupHotKeys();
+   captureExternalLinks();
+diff --git a/tgui/packages/tgui/interfaces/ChemDispenser.jsx b/tgui/packages/tgui/interfaces/ChemDispenser.jsx
+index 6b8b062b9de..dbebab7ded4 100644
+--- a/tgui/packages/tgui/interfaces/ChemDispenser.jsx
++++ b/tgui/packages/tgui/interfaces/ChemDispenser.jsx
+@@ -8,7 +8,6 @@ import {
+   Section,
+ } from 'tgui-core/components';
+ import { toFixed } from 'tgui-core/math';
+-import { toTitleCase } from 'tgui-core/string';
+ 
+ import { useBackend } from '../backend';
+ import { Window } from '../layouts';
+@@ -24,14 +23,7 @@ export const ChemDispenser = (props) => {
+   }));
+   const beakerTransferAmounts = data.beakerTransferAmounts || [];
+   const beakerContents =
+-    (recording &&
+-      Object.keys(data.recordingRecipe).map((id) => ({
+-        id,
+-        name: toTitleCase(id.replace(/_/, ' ')),
+-        volume: data.recordingRecipe[id],
+-      }))) ||
+-    data.beakerContents ||
+-    [];
++    (recording && data.recordingContents) || data.beakerContents || [];
+   return (
+     <Window width={565} height={620}>
+       <Window.Content scrollable>
+diff --git a/tgui/packages/tgui/styles/reset.scss b/tgui/packages/tgui/styles/reset.scss
+index 69757f25887..b3e33550a31 100644
+--- a/tgui/packages/tgui/styles/reset.scss
++++ b/tgui/packages/tgui/styles/reset.scss
+@@ -5,6 +5,13 @@
+ 
+ @use 'base';
+ 
++:root {
++  --font-family-cjk:
++    'Microsoft YaHei UI', 'Microsoft YaHei', 'Noto Sans CJK SC';
++  --font-family: Verdana, Geneva, var(--font-family-cjk), sans-serif;
++  --font-family-mono: Consolas, var(--font-family-cjk), monospace;
++}
++
+ html,
+ body {
+   box-sizing: border-box;
+diff --git a/code/modules/unit_tests/localization.dm b/code/modules/unit_tests/localization.dm
+new file mode 100644
+index 00000000000..5fbf9d8aad3
+--- /dev/null
++++ b/code/modules/unit_tests/localization.dm
+@@ -0,0 +1,29 @@
++/// Regression coverage for text paths used by translated chat and UI strings.
++/datum/unit_test/localization_text_safety
++
++/datum/unit_test/localization_text_safety/Run()
++	// Full-width punctuation must preserve speech bubble selection.
++	TEST_ASSERT_EQUAL(say_test("你好？"), "1", "Full-width question mark should produce a question bubble")
++	TEST_ASSERT_EQUAL(say_test("你好！"), "2", "Full-width exclamation mark should produce an exclamation bubble")
++	TEST_ASSERT_EQUAL(say_test("你好。"), "4", "Full-width ideographic full stop should remain a normal bubble")
++	TEST_ASSERT_EQUAL(say_test("Hello?"), "1", "ASCII question marks should keep their existing bubble")
++	TEST_ASSERT_EQUAL(say_test("Hello!"), "2", "ASCII exclamation marks should keep their existing bubble")
++	TEST_ASSERT_EQUAL(say_test("你好"), "4", "An unpunctuated CJK message should produce a normal bubble")
++
++	// Character-aware previewing must retain complete CJK characters and honor the limit.
++	TEST_ASSERT_EQUAL(TextPreview("甲乙丙丁戊己", 5), "甲乙...", "An over-limit preview should reserve room for the ellipsis")
++	TEST_ASSERT_EQUAL(TextPreview("甲乙丙丁戊", 4), "甲...", "Truncation should not split a multibyte character")
++	TEST_ASSERT_EQUAL(TextPreview("甲乙丙丁", 5), "甲乙丙丁", "A preview below the character limit should remain intact")
++	TEST_ASSERT_EQUAL(TextPreview("甲乙丙丁", 4), "甲乙丙丁", "A preview exactly at the character limit should remain intact")
++	TEST_ASSERT_EQUAL(TextPreview("甲乙ABC", 4), "甲...", "Mixed CJK and ASCII text should share a character limit")
++	TEST_ASSERT_EQUAL(TextPreview("abcdef", 5), "ab...", "ASCII previews should obey the requested limit")
++	TEST_ASSERT_EQUAL(TextPreview("甲乙丙丁", 3), "...", "A three-character limit should fit only the ellipsis")
++	TEST_ASSERT_EQUAL(TextPreview("甲乙丙丁", 2), "..", "Short limits should also bound the ellipsis")
++	TEST_ASSERT_EQUAL(TextPreview("甲", 0), "", "A zero-character limit should produce an empty preview")
++	TEST_ASSERT_EQUAL(TextPreview(""), "\[...\]", "An empty input should retain the existing placeholder")
++
++	// HTML stripping must apply the limit by character, before removing markup delimiters.
++	TEST_ASSERT_EQUAL(strip_html("甲乙丙丁", 3), "甲乙", "strip_html should preserve complete CJK characters")
++	TEST_ASSERT_EQUAL(strip_html("甲乙丙丁", 5), "甲乙丙丁", "A sufficiently large stripping limit should preserve the text")
++	TEST_ASSERT_EQUAL(strip_html("甲", 1), "", "The stripping limit should retain its exclusive end-index convention")
++	TEST_ASSERT_EQUAL(strip_html("<甲>乙"), "甲乙", "Removing HTML delimiters should preserve adjacent CJK characters")
+diff --git a/code/modules/unit_tests/localization_identifiers.dm b/code/modules/unit_tests/localization_identifiers.dm
+new file mode 100644
+index 00000000000..7500709f9c1
+--- /dev/null
++++ b/code/modules/unit_tests/localization_identifiers.dm
+@@ -0,0 +1,46 @@
++/// Test-only reagents model distinct translated labels that ckey() would erase.
++/datum/reagent/localization_test_water
++	name = "测试清水"
++
++/datum/reagent/localization_test_acid
++	name = "测试酸液"
++
++/datum/unit_test/localization_reagent_identifiers/Run()
++	// Every type must retain an unambiguous ID, independent of its display name.
++	for(var/reagent_type in subtypesof(/datum/reagent))
++		TEST_ASSERT_EQUAL(GLOB.name2reagent["[reagent_type]"], reagent_type, "Stable reagent IDs must resolve to their exact type")
++	TEST_ASSERT_EQUAL(GLOB.name2reagent[""], null, "An empty localized ckey must never resolve to a reagent")
++	TEST_ASSERT_EQUAL(GLOB.name2reagent["/obj/item"], null, "Non-reagent paths must not resolve")
++	TEST_ASSERT_EQUAL(GLOB.name2reagent["water"], /datum/reagent/water, "Saved English water macros must still resolve")
++	TEST_ASSERT_EQUAL(GLOB.name2reagent["sulphuricacid"], /datum/reagent/toxin/acid, "Legacy IDs that differ from type names must still resolve")
++	TEST_ASSERT_EQUAL(GLOB.name2reagent["universalenzyme"], /datum/reagent/consumable/enzyme, "Legacy drink macros must still resolve")
++
++	var/obj/machinery/chem_dispenser/dispenser = allocate(/obj/machinery/chem_dispenser)
++	dispenser.dispensable_reagents = list(/datum/reagent/water, /datum/reagent/oxygen, /datum/reagent/localization_test_water, /datum/reagent/localization_test_acid)
++	var/list/legacy_recipe = list("water" = 10, "oxygen" = 5)
++	var/list/normalized = dispenser.normalize_recipe(legacy_recipe)
++	TEST_ASSERT_EQUAL(normalized["/datum/reagent/water"], 10, "Legacy recipes should normalize to stable IDs")
++	TEST_ASSERT_EQUAL(normalized["/datum/reagent/oxygen"], 5, "Normalization must preserve quantities")
++	TEST_ASSERT_EQUAL(legacy_recipe["water"], 10, "Reading a saved legacy recipe must not mutate it")
++
++	var/list/translated_recipe = list("/datum/reagent/localization_test_water" = 10, "/datum/reagent/localization_test_acid" = 5)
++	var/list/translated_normalized = dispenser.normalize_recipe(translated_recipe)
++	TEST_ASSERT_EQUAL(length(translated_normalized), 2, "Distinct CJK reagent labels must not merge into one macro entry")
++	TEST_ASSERT_EQUAL(translated_normalized["/datum/reagent/localization_test_water"], 10, "The first translated reagent must retain its quantity")
++	TEST_ASSERT_EQUAL(translated_normalized["/datum/reagent/localization_test_acid"], 5, "The second translated reagent must retain its quantity")
++
++	// Exercise the same savefile representation used by chem_macros preferences.
++	var/savefile/saved = new
++	saved["chem_macros"] << list("中文配方" = translated_normalized)
++	var/list/loaded
++	saved["chem_macros"] >> loaded
++	var/list/reloaded_recipe = dispenser.normalize_recipe(loaded["中文配方"])
++	TEST_ASSERT_EQUAL(reloaded_recipe["/datum/reagent/localization_test_water"], 10, "Stable IDs and CJK macro names must survive savefile round trips")
++	TEST_ASSERT_EQUAL(reloaded_recipe["/datum/reagent/localization_test_acid"], 5, "Savefiles must preserve distinct translated reagent entries")
++
++	var/list/mixed = dispenser.normalize_recipe(list("water" = 10, "/datum/reagent/water" = 5))
++	TEST_ASSERT_EQUAL(mixed["/datum/reagent/water"], 15, "Recording legacy and new entries should combine the same reagent")
++	TEST_ASSERT_EQUAL(dispenser.normalize_recipe(list("water" = 10, "sulphuricacid" = 5)), null, "Unavailable reagents must reject the whole recipe")
++	TEST_ASSERT_EQUAL(dispenser.normalize_recipe(list("" = 5)), null, "Empty IDs must be rejected")
++	TEST_ASSERT_EQUAL(dispenser.normalize_recipe(list("water" = -5)), null, "Negative quantities must be rejected")
++	TEST_ASSERT_EQUAL(dispenser.normalize_recipe(list("water" = "five")), null, "Non-numeric quantities must be rejected")
+diff --git a/tgui/packages/tgui-say/helpers.test.ts b/tgui/packages/tgui-say/helpers.test.ts
+new file mode 100644
+index 00000000000..5691713ab10
+--- /dev/null
++++ b/tgui/packages/tgui-say/helpers.test.ts
+@@ -0,0 +1,24 @@
++import { describe, expect, it } from 'vitest';
++
++import { limitText } from './helpers';
++
++describe('speech character limits', () => {
++  it('accepts text exactly at the character limit', () => {
++    expect(limitText('中文', 2)).toBe('中文');
++  });
++
++  it('gives supplementary CJK characters the same allowance as BMP characters', () => {
++    expect(limitText('𠀀𠀁中', 2)).toBe('𠀀𠀁');
++  });
++
++  it('does not split a surrogate pair at the boundary', () => {
++    expect(limitText('A𠀀B', 2)).toBe('A𠀀');
++  });
++
++  it('reserves characters for the radio prefix sent to DM', () => {
++    const prefix = ':a ';
++    const entry = prefix + limitText('𠀀中文', 5 - prefix.length);
++    expect(entry).toBe(':a 𠀀中');
++    expect(Array.from(entry)).toHaveLength(5);
++  });
++});
+diff --git a/tgui/packages/tgui/inputComposition.test.ts b/tgui/packages/tgui/inputComposition.test.ts
+new file mode 100644
+index 00000000000..e2b1323e7de
+--- /dev/null
++++ b/tgui/packages/tgui/inputComposition.test.ts
+@@ -0,0 +1,87 @@
++import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
++
++import { setupInputComposition } from './inputComposition';
++
++describe('IME keyboard handling', () => {
++  let input: HTMLTextAreaElement;
++  let shortcut: ReturnType<typeof vi.fn>;
++  let cleanup: () => void;
++
++  beforeEach(() => {
++    input = document.createElement('textarea');
++    document.body.append(input);
++    shortcut = vi.fn();
++    input.addEventListener('keydown', shortcut);
++    cleanup = setupInputComposition();
++  });
++
++  afterEach(() => {
++    cleanup();
++    input.remove();
++  });
++
++  function dispatchKey(
++    key: string,
++    marker?: { isComposing?: boolean; keyCode?: number },
++  ) {
++    const event = new KeyboardEvent('keydown', {
++      key,
++      bubbles: true,
++      cancelable: true,
++    });
++    if (marker?.isComposing !== undefined) {
++      Object.defineProperty(event, 'isComposing', {
++        value: marker.isComposing,
++      });
++    }
++    if (marker?.keyCode !== undefined) {
++      Object.defineProperty(event, 'keyCode', { value: marker.keyCode });
++    }
++    input.dispatchEvent(event);
++    return event;
++  }
++
++  it.each(['Enter', 'Escape', 'Tab', 'ArrowUp', 'ArrowDown'])(
++    'leaves %s to the input method while selecting a candidate',
++    (key) => {
++      input.dispatchEvent(
++        new CompositionEvent('compositionstart', { bubbles: true }),
++      );
++      const event = dispatchKey(key);
++
++      expect(shortcut).not.toHaveBeenCalled();
++      expect(event.defaultPrevented).toBe(false);
++    },
++  );
++
++  it('allows Enter to submit after the candidate has been committed', () => {
++    input.dispatchEvent(
++      new CompositionEvent('compositionstart', { bubbles: true }),
++    );
++    input.dispatchEvent(
++      new CompositionEvent('compositionend', { bubbles: true, data: '中文' }),
++    );
++    dispatchKey('Enter');
++
++    expect(shortcut).toHaveBeenCalledOnce();
++  });
++
++  it.each([{ isComposing: true }, { keyCode: 229 }])(
++    'honors native IME markers without a compositionstart event: %j',
++    (marker) => {
++      dispatchKey('Enter', marker);
++
++      expect(shortcut).not.toHaveBeenCalled();
++    },
++  );
++
++  it('does not leave shortcuts disabled when composition is cancelled by blur', () => {
++    input.dispatchEvent(
++      new CompositionEvent('compositionstart', { bubbles: true }),
++    );
++    input.dispatchEvent(new FocusEvent('blur'));
++    dispatchKey('Enter');
++
++    expect(shortcut).toHaveBeenCalledOnce();
++  });
++});
+diff --git a/tgui/packages/tgui/inputComposition.ts b/tgui/packages/tgui/inputComposition.ts
+new file mode 100644
+index 00000000000..e4ce588519b
+--- /dev/null
++++ b/tgui/packages/tgui/inputComposition.ts
+@@ -0,0 +1,44 @@
++/**
++ * Let the input method handle candidate-selection keys before application
++ * shortcuts (Enter, Escape, Tab and arrow keys) can submit or blur an input.
++ * Capture is required because tgui-core inputs also handle these keys.
++ */
++export function setupInputComposition(): () => void {
++  let composingTarget: EventTarget | null = null;
++
++  const handleCompositionStart = (event: CompositionEvent) => {
++    composingTarget = event.target;
++  };
++  const handleCompositionEnd = () => {
++    composingTarget = null;
++  };
++  const handleKey = (event: KeyboardEvent) => {
++    if (
++      event.isComposing ||
++      // Some browser/IME combinations end composition before the final key.
++      event.keyCode === 229 ||
++      (composingTarget !== null && event.target === composingTarget)
++    ) {
++      // Do not preventDefault: the browser must still commit the candidate.
++      event.stopPropagation();
++    }
++  };
++
++  document.addEventListener('compositionstart', handleCompositionStart, true);
++  document.addEventListener('compositionend', handleCompositionEnd, true);
++  document.addEventListener('blur', handleCompositionEnd, true);
++  document.addEventListener('keydown', handleKey, true);
++  document.addEventListener('keyup', handleKey, true);
++
++  return () => {
++    document.removeEventListener(
++      'compositionstart',
++      handleCompositionStart,
++      true,
++    );
++    document.removeEventListener('compositionend', handleCompositionEnd, true);
++    document.removeEventListener('blur', handleCompositionEnd, true);
++    document.removeEventListener('keydown', handleKey, true);
++    document.removeEventListener('keyup', handleKey, true);
++  };
++}

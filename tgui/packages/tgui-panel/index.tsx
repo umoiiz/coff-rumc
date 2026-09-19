@@ -11,6 +11,7 @@ import './styles/themes/light.scss';
 import { perf } from 'common/perf';
 import { combineReducers } from 'common/redux';
 import { setGlobalStore } from 'tgui/backend';
+import { setupInputComposition } from 'tgui/inputComposition';
 import { captureExternalLinks } from 'tgui/links';
 import { render } from 'tgui/renderer';
 import { configureStore } from 'tgui/store';
@@ -58,6 +59,7 @@ function setupApp() {
 
   setGlobalStore(store);
 
+  setupInputComposition();
   setupGlobalEvents({
     ignoreWindowFocus: true,
   });

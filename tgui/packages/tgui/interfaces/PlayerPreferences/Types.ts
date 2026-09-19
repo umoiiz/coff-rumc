@@ -110,10 +110,11 @@ type TextInputModalData = {
 };
 
 type JobPreferencesData = {
+  job_groups: AssocStringStringArray;
   alternate_option: number;
   squads: string[];
   preferred_squad: string;
-  overflow_job: string[];
+  overflow_job: string | null;
   special_occupation: number;
   special_occupations: PreferencesSpecialOccupations;
 };

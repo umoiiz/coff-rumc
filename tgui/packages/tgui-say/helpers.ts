@@ -1,6 +1,11 @@
 import { Channel } from './ChannelIterator';
 import { RADIO_PREFIXES, WindowSize } from './constants';
 
+/** Match DM's character limit without splitting UTF-16 surrogate pairs. */
+export function limitText(value: string, maxLength: number): string {
+  return Array.from(value).slice(0, Math.max(0, maxLength)).join('');
+}
+
 /**
  * Once byond signals this via keystroke, it
  * ensures window size, visibility, and focus.

@@ -292,8 +292,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 /mob/living/proc/treat_message(message, capitalize_message = TRUE)
 	RETURN_TYPE(/list)
 	// check for and apply punctuation
-	var/end = copytext(message, length(message))
-	if(!(end in list("!", ".", "?", ":", "\"", "-")))
+	var/end = copytext_char(message, -1)
+	if(!(end in SPEECH_END_PUNCTUATION))
 		message += "."
 
 	SEND_SIGNAL(src, COMSIG_LIVING_TREAT_MESSAGE, args)

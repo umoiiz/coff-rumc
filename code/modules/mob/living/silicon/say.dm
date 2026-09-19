@@ -3,8 +3,8 @@
 	//Capitalization
 	message = capitalize(message)
 	//checks for and apply punctuation
-	var/end = copytext(message, length(message))
-	if(!(end in list("!", ".", "?", ":", "\"", "-")))
+	var/end = copytext_char(message, -1)
+	if(!(end in SPEECH_END_PUNCTUATION))
 		message += "."
 
 	var/desig = "Silicon"

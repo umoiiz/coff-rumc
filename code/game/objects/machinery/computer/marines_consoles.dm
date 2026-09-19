@@ -214,7 +214,8 @@
 					var/datum/job/jobdatum
 					for(var/jobtype in typesof(/datum/job))
 						var/datum/job/J = new jobtype
-						if(ckey(J.title) == ckey(t1))
+						// ckey() erases CJK titles, making unrelated jobs compare equal.
+						if(lowertext(J.title) == lowertext(t1))
 							jobdatum = J
 							break
 

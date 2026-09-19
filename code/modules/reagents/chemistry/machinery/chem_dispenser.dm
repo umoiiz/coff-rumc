@@ -159,12 +159,32 @@
 		var/datum/reagent/temp = GLOB.chemical_reagents_list[re]
 		if(temp)
 			var/chemname = temp.name
-			chemicals.Add(list(list("title" = chemname, "id" = ckey(temp.name))))
+			chemicals.Add(list(list("title" = chemname, "id" = "[re]")))
 	.["chemicals"] = chemicals
 	.["recipes"] = user.client.prefs.chem_macros
 
 	.["recordingRecipe"] = recording_recipe
+	var/list/recording_contents = list()
+	for(var/reagent_id in recording_recipe)
+		var/datum/reagent/reagent = GLOB.chemical_reagents_list[GLOB.name2reagent[reagent_id]]
+		if(reagent)
+			recording_contents += list(list("id" = reagent_id, "name" = reagent.name, "volume" = recording_recipe[reagent_id]))
+	.["recordingContents"] = recording_contents
 	.["clearingRecipe"] = clearing_recipe
+
+/// Resolve legacy saved macros and current IDs before dispensing or saving.
+/// Keep type IDs separate from translated names and validate the whole recipe
+/// before any chemical is dispensed, including recipes copied while recording.
+/obj/machinery/chem_dispenser/proc/normalize_recipe(list/recipe)
+	if(!islist(recipe))
+		return
+	. = list()
+	for(var/reagent_id in recipe)
+		var/reagent_type = GLOB.name2reagent[reagent_id]
+		var/quantity = recipe[reagent_id]
+		if(!(reagent_type in dispensable_reagents) || !isnum(quantity) || quantity <= 0)
+			return null
+		.["[reagent_type]"] += quantity
 
 /obj/machinery/chem_dispenser/ui_act(action, list/params)
 	. = ..()
@@ -192,10 +212,11 @@
 		if("dispense")
 			if(!is_operational() || QDELETED(cell))
 				return
-			var/reagent_name = params["reagent"]
+			var/reagent = GLOB.name2reagent[params["reagent"]]
+			if(!(reagent in dispensable_reagents))
+				return
 			if(!recording_recipe)
-				var/reagent = GLOB.name2reagent[reagent_name]
-				if(beaker && dispensable_reagents.Find(reagent))
+				if(beaker)
 					var/datum/reagents/R = beaker.reagents
 					var/free = R.maximum_volume - R.total_volume
 					var/actual = min(amount, (cell.charge * powerefficiency)*10, free)
@@ -211,7 +232,7 @@
 					playsound(src.loc, 'sound/machines/reagent_dispense.ogg', 25, 1)
 					work_animation()
 			else
-				recording_recipe[reagent_name] += amount
+				recording_recipe["[reagent]"] += amount
 			. = TRUE
 		if("remove")
 			if(!is_operational() || recording_recipe)
@@ -232,15 +253,13 @@
 					usr.client.prefs.chem_macros.Remove(params["recipe"])
 					usr.client.prefs.save_preferences()
 				return TRUE
-			var/list/chemicals_to_dispense = usr.client.prefs.chem_macros[params["recipe"]]
+			var/list/chemicals_to_dispense = normalize_recipe(usr.client.prefs.chem_macros[params["recipe"]])
 			if(!LAZYLEN(chemicals_to_dispense))
+				to_chat(usr, span_danger("This recipe contains unavailable or invalid chemicals."))
 				return
 			for(var/key in chemicals_to_dispense)
 				var/reagent = GLOB.name2reagent[key]
 				var/dispense_amount = chemicals_to_dispense[key]
-				if(!dispensable_reagents.Find(reagent))
-					to_chat(usr, span_danger("[src] cannot find <b>[key]</b>!"))
-					return
 				if(!recording_recipe)
 					if(!beaker)
 						return
@@ -285,13 +304,12 @@
 				to_chat(usr, span_danger("You can remember <b>up to 10</b> recipes!"))
 				return
 			if(name && recording_recipe)
-				for(var/reagent in recording_recipe)
-					var/reagent_id = GLOB.name2reagent[reagent]
-					if(!dispensable_reagents.Find(reagent_id))
-						balloon_alert_to_viewers("[src] buzzes")
-						playsound(src, 'sound/machines/buzz-two.ogg', 50, TRUE)
-						return
-				usr.client.prefs.chem_macros[name] = recording_recipe
+				var/list/normalized_recipe = normalize_recipe(recording_recipe)
+				if(isnull(normalized_recipe))
+					balloon_alert_to_viewers("[src] buzzes")
+					playsound(src, 'sound/machines/buzz-two.ogg', 50, TRUE)
+					return
+				usr.client.prefs.chem_macros[name] = normalized_recipe
 				usr.client.prefs.save_preferences()
 				recording_recipe = null
 				. = TRUE

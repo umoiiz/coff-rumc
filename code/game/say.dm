@@ -128,14 +128,14 @@ GLOBAL_LIST_INIT(freqtospan, list(
 
 /atom/movable/proc/say_mod(input, message_mode, datum/language/language)
 	var/ending = copytext_char(input, -1)
-	if(copytext_char(input, -2) == "!!")
+	if(copytext_char(input, -2) in SPEECH_YELL_PUNCTUATION)
 		return verb_yell
 	else if(language)
 		var/datum/language/L = GLOB.language_datum_instances[language]
 		return L.get_spoken_verb(ending)
-	else if(ending == "?")
+	else if(ending in SPEECH_QUESTION_PUNCTUATION)
 		return verb_ask
-	else if(ending == "!")
+	else if(ending in SPEECH_EXCLAIM_PUNCTUATION)
 		return verb_exclaim
 	else
 		return verb_say
@@ -145,7 +145,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	if(!input)
 		input = "..."
 
-	if(copytext_char(input, -2) == "!!")
+	if(copytext_char(input, -2) in SPEECH_YELL_PUNCTUATION)
 		spans |= SPAN_YELL
 
 	var/spanned = attach_spans(input, spans)
@@ -219,9 +219,9 @@ GLOBAL_LIST_INIT(freqtospan, list(
 
 /proc/say_test(text)
 	var/ending = copytext_char(text, -1)
-	if (ending == "?")
+	if (ending in SPEECH_QUESTION_PUNCTUATION)
 		return "1"
-	else if (ending == "!")
+	else if (ending in SPEECH_EXCLAIM_PUNCTUATION)
 		return "2"
 	return "4"
 
