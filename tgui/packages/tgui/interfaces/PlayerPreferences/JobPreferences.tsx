@@ -10,13 +10,10 @@ import {
 } from 'tgui-core/components';
 
 import { useBackend } from '../../backend';
-import { getJobGroups } from './jobGroups';
 
 export const JobPreferences = (props) => {
   const { act, data } = useBackend<JobPreferencesData>();
   const {
-    jobs,
-    job_groups,
     alternate_option,
     squads,
     preferred_squad,
@@ -26,7 +23,35 @@ export const JobPreferences = (props) => {
   } = data;
   const [shownDescription, setShownDescription] = useState(null);
 
-  const groups = getJobGroups(jobs, job_groups);
+  const xenoJobs = ['Xeno Queen', 'Xenomorph'];
+  const commandRoles = [
+    'Captain',
+    'Field Commander',
+    'Staff Officer',
+    'Pilot Officer',
+    'Transport Officer',
+    'Synthetic',
+    'AI',
+    'Mech Pilot',
+  ];
+  const supportRoles = [
+    'Ship Technician',
+    'Requisitions Officer',
+    'Chief Medical Officer',
+    'Medical Doctor',
+    'Field Researcher',
+    'Assault Crewman',
+    'Transport Crewman',
+  ];
+  const marineJobs = [
+    'Squad Marine',
+    'Squad Robot',
+    'Squad Engineer',
+    'Squad Corpsman',
+    'Squad Smartgunner',
+    'Squad Leader',
+  ];
+  const flavourJobs = ['Corporate Liaison', 'Survivor'];
 
   const JobList = ({ name, jobs }) => (
     <Section title={name}>
@@ -61,28 +86,25 @@ export const JobPreferences = (props) => {
           </Box>
         </Modal>
       )}
-      {groups.other.length > 0 && (
-        <JobList name="Other Jobs" jobs={groups.other} />
-      )}
       <Stack>
         <Stack.Item grow>
-          <JobList name="Command Jobs" jobs={groups.command} />
+          <JobList name="Command Jobs" jobs={commandRoles} />
         </Stack.Item>
         <Stack.Item grow>
-          <JobList name="Support Jobs" jobs={groups.support} />
+          <JobList name="Support Jobs" jobs={supportRoles} />
         </Stack.Item>
       </Stack>
       <Stack>
         <Stack.Item grow>
-          <JobList name="Xenomorph Jobs" jobs={groups.xeno} />
+          <JobList name="Xenomorph Jobs" jobs={xenoJobs} />
         </Stack.Item>
         <Stack.Item grow>
-          <JobList name="Flavour Jobs" jobs={groups.flavour} />
+          <JobList name="Flavour Jobs" jobs={flavourJobs} />
         </Stack.Item>
       </Stack>
       <Stack>
         <Stack.Item grow>
-          <JobList name="Marine Jobs" jobs={groups.marine} />
+          <JobList name="Marine Jobs" jobs={marineJobs} />
         </Stack.Item>
         <Stack.Item grow>
           <Section title="Other settings">
@@ -153,11 +175,8 @@ const JobPreference = (props) => {
   const { act, data } = useBackend<JobPreferenceData>();
   const { jobs, job_preferences } = data;
   const { job, setShownDescription } = props;
-  const jobData = jobs?.[job];
-  const preference = job_preferences?.[job];
-
-  // A mode may omit a job, or static data may have changed during an update.
-  if (!jobData) return null;
+  const jobData = jobs[job];
+  const preference = job_preferences[job];
 
   if (jobData.banned) {
     return (

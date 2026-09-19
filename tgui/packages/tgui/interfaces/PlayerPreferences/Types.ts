@@ -110,10 +110,6 @@ type TextInputModalData = {
 };
 
 type JobPreferencesData = {
-  jobs: PreferencesJobsList;
-  job_groups?: Partial<
-    Record<'command' | 'support' | 'xeno' | 'marine' | 'flavour', string[]>
-  >;
   alternate_option: number;
   squads: string[];
   preferred_squad: string;

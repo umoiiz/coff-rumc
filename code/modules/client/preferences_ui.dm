@@ -246,15 +246,6 @@
 				)
 		if(JOB_PREFERENCES)
 			.["squads"] = SELECTABLE_SQUADS
-			// Group keys are UI protocol identifiers; titles come from the same
-			// constants as job.title so translations cannot desynchronize the UI.
-			.["job_groups"] = list(
-				"command" = list(CAPTAIN, FIELD_COMMANDER, STAFF_OFFICER, PILOT_OFFICER, TRANSPORT_OFFICER, SYNTHETIC, SILICON_AI, MECH_PILOT),
-				"support" = list(SHIP_TECH, REQUISITIONS_OFFICER, CHIEF_MEDICAL_OFFICER, MEDICAL_DOCTOR, FIELD_RESEARCHER, ASSAULT_CREWMAN, TRANSPORT_CREWMAN),
-				"xeno" = list(ROLE_XENO_QUEEN, ROLE_XENOMORPH),
-				"marine" = list(SQUAD_MARINE, SQUAD_ROBOT, SQUAD_ENGINEER, SQUAD_CORPSMAN, SQUAD_SMARTGUNNER, SQUAD_LEADER),
-				"flavour" = list(CORPORATE_LIAISON, SURVIVOR),
-			)
 			.["jobs"] = list()
 			for(var/datum/job/job AS in SSjob.joinable_occupations)
 				var/rank = job.title
