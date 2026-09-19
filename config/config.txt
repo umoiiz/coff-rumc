@@ -5,16 +5,16 @@ $include dbconfig.txt
 $include resources.txt
 
 ## Server name: This appears at the top of the screen in-game.
-SERVER_NAME Something
+SERVER_NAME coff-rutgmc
 
 ## The address shown for the game server in the TGS check command
 # PUBLIC_ADDRESS ss13.example.com:2506
 
 ## Hosted by name for unix platforms.
-HOSTEDBY yournamehere
+HOSTEDBY coff&meme
 
 ## The title of the main window.
-TITLE Change Me
+TITLE coff-rutgmc
 
 ## Put on byond hub: Uncomment this to put your server on the byond hub.
 #HUB
@@ -35,16 +35,16 @@ ALLOW_SHUTDOWN
 #TTS_NO_WHISPER
 
 ## Link to a HTTP server that's been set up on a server. Docker-compose file can be found in tools/tts
-TTS_HTTP_URL http://127.0.0.1:5002
+#TTS_HTTP_URL http://127.0.0.1:5002
 
 ## Token that can be used to prevent misuse of your TTS server that you've set up.
-TTS_HTTP_TOKEN coolio
+#TTS_HTTP_TOKEN coolio
 
 ## The maximum number of concurrent tts http requests that can be made by the server at once.
-TTS_MAX_CONCURRENT_REQUESTS 4
+#TTS_MAX_CONCURRENT_REQUESTS 4
 
 ## The number of seconds before tts https requests timeout (0 for infinite not recommended)
-TTS_HTTP_TIMEOUT_SECONDS 30
+#TTS_HTTP_TIMEOUT_SECONDS 30
 
 ## Add voices to the TTS voice blacklist.
 #TTS_VOICE_BLACKLIST Sans Undertale
@@ -195,13 +195,13 @@ USE_EXP_RESTRICTIONS_ADMIN_BYPASS
 ALLOW_ADMIN_OOCCOLOR
 
 ## Use XP restrictions for command roles
-USE_EXP_RESTRICTIONS_COMMAND
+#USE_EXP_RESTRICTIONS_COMMAND
 
 ## Use playtime in hours restrictions for command
 #USE_EXP_RESTRICTIONS_COMMAND_HOURS
 
 ## Comment this out if players don't need locks for non-command roles
-USE_EXP_RESTRICTIONS_OTHER
+#USE_EXP_RESTRICTIONS_OTHER
 
 ##Note: all population caps can be used with each other if desired.
 

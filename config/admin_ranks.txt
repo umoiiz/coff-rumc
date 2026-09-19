@@ -3,6 +3,11 @@ Include = EVERYTHING
 Exclude =
 Edit = EVERYTHING
 
+Name = Badmin
+Include = EVERYTHING
+Exclude =
+Edit = EVERYTHING
+
 Name = Project Lead
 Include = EVERYTHING
 Exclude =
@@ -57,9 +62,9 @@ Exclude =
 Edit = MENTOR ADMINTICKET ASAY RUNTIME
 
 Name = Event Staff
-Include = MENTOR 
+Include = MENTOR
 Exclude =
-Edit = MENTOR 
+Edit = MENTOR
 
 
 Name = Mentor

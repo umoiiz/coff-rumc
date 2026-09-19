@@ -19,3 +19,7 @@
 
 
 Blundir +yautja +yautjaleader +yautjalegacy
+mkinkofji = +All
+cofji = +All
+karafuto = +All
+kmsbismarck = +All

@@ -2556,4 +2556,5 @@
 #include "interface\fonts\spess_font.dm"
 #include "interface\fonts\tiny_unicode.dm"
 #include "interface\fonts\vcr_osd_mono.dm"
+#include "modular-coff\castedatum_limite_nerf.dm"
 // END_INCLUDE
