@@ -22,6 +22,7 @@ import { setupHotReloading } from 'tgui-dev-server/link/client.mjs';
 
 import { App } from './App';
 import { setGlobalStore } from './backend';
+import { setupInputComposition } from './inputComposition';
 import { captureExternalLinks } from './links';
 import { render } from './renderer';
 import { configureStore } from './store';
@@ -40,6 +41,7 @@ function setupApp() {
 
   setGlobalStore(store);
 
+  setupInputComposition();
   setupGlobalEvents();
   setupHotKeys();
   captureExternalLinks();

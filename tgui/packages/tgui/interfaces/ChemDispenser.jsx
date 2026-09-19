@@ -8,7 +8,6 @@ import {
   Section,
 } from 'tgui-core/components';
 import { toFixed } from 'tgui-core/math';
-import { toTitleCase } from 'tgui-core/string';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -24,14 +23,7 @@ export const ChemDispenser = (props) => {
   }));
   const beakerTransferAmounts = data.beakerTransferAmounts || [];
   const beakerContents =
-    (recording &&
-      Object.keys(data.recordingRecipe).map((id) => ({
-        id,
-        name: toTitleCase(id.replace(/_/, ' ')),
-        volume: data.recordingRecipe[id],
-      }))) ||
-    data.beakerContents ||
-    [];
+    (recording && data.recordingContents) || data.beakerContents || [];
   return (
     <Window width={565} height={620}>
       <Window.Content scrollable>

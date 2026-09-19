@@ -42,7 +42,7 @@
 				li {margin: 2px 0px 2px 15px;}
 				ul {margin: 5px; padding: 0px;}
 				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
+				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
 				</style>
 				</head>
 				<body>
@@ -86,7 +86,7 @@
 				li {margin: 2px 0px 2px 15px;}
 				ul {margin: 5px; padding: 0px;}
 				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
+				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
 				</style>
 				</head>
 				<body>
@@ -216,7 +216,7 @@
 				li {margin: 2px 0px 2px 15px;}
 				ul {margin: 5px; padding: 0px;}
 				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
+				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
 				</style>
 				</head>
 				<body>
@@ -268,7 +268,7 @@
 				li {margin: 2px 0px 2px 15px;}
 				ul {margin: 5px; padding: 0px;}
 				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
+				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
 				</style>
 				</head>
 				<body>
@@ -361,7 +361,7 @@
 				ul {margin: 5px; padding: 0px;}
 				ul.a {list-style-type: none; margin: 5px; padding: 0px;}
 				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
+				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
 				</style>
 				</head>
 				<body>
@@ -438,7 +438,7 @@
 				li {margin: 2px 0px 2px 15px;}
 				ul {margin: 5px; padding: 0px;}
 				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
+				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
 				</style>
 				</head>
 				<body>
@@ -507,7 +507,7 @@
 				li {margin: 2px 0px 2px 15px;}
 				ul {margin: 5px; padding: 0px;}
 				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
+				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
 				</style>
 				</head>
 				<body>
@@ -754,7 +754,7 @@
 				li {margin: 2px 0px 2px 15px;}
 				ul {margin: 5px; padding: 0px;}
 				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
+				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
 				</style>
 				</head>
 				<body>
@@ -819,7 +819,7 @@
 				li {margin: 2px 0px 2px 15px;}
 				ul {margin: 5px; padding: 0px;}
 				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
+				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
 				</style>
 				</head>
 				<body>
@@ -878,7 +878,7 @@
 				li {margin: 2px 0px 2px 15px;}
 				ul {margin: 5px; padding: 0px;}
 				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
+				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
 				</style>
 				</head>
 				<body>
@@ -932,7 +932,7 @@
 				li {margin: 2px 0px 2px 15px;}
 				ul {margin: 5px; padding: 0px;}
 				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
+				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
 				</style>
 				</head>
 				<body>
@@ -975,7 +975,7 @@
 				li {margin: 2px 0px 2px 15px;}
 				ul {margin: 5px; padding: 0px;}
 				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
+				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
 				</style>
 				</head>
 				<body>
@@ -1025,7 +1025,7 @@
 				li {margin: 2px 0px 2px 15px;}
 				ul {margin: 5px; padding: 0px;}
 				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
+				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
 				</style>
 				</head>
 				<body>
@@ -1132,7 +1132,7 @@
 				li {margin: 2px 0px 2px 15px;}
 				ul {margin: 5px; padding: 0px;}
 				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
+				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
 				</style>
 				</head>
 				<body>
@@ -1204,7 +1204,7 @@
 				li {margin: 2px 0px 2px 15px;}
 				ul {margin: 5px; padding: 0px;}
 				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
+				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
 				</style>
 				</head>
 				<body>
@@ -1241,7 +1241,7 @@
 				li {margin: 2px 0px 2px 15px;}
 				ul {margin: 5px; padding: 0px;}
 				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
+				body {font-size: 13px; font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
 				</style>
 				</head>
 				<body>

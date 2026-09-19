@@ -29,7 +29,7 @@ function updateGlobalOverrideRule() {
   let fontFamily = '';
 
   if (overrideFontFamily !== undefined) {
-    fontFamily = `font-family: ${overrideFontFamily} !important;`;
+    fontFamily = `font-family: ${overrideFontFamily}, var(--font-family-cjk), sans-serif !important;`;
   }
 
   const constructedRule = `body * :not(.Icon) {

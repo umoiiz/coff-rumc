@@ -70,6 +70,8 @@
 #include "implanting.dm"
 #include "item_variant_test.dm"
 #include "keybinding_init.dm"
+#include "localization.dm"
+#include "localization_identifiers.dm"
 #include "map_templates.dm"
 #include "mapping.dm"
 #include "plane_double_transform.dm"

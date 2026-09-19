@@ -210,7 +210,7 @@ a:visited {
 
 .motd {
   color: hsl(213.6, 37.9%, 74.1%);
-  font-family: Verdana;
+  font-family: Verdana, var(--font-family-cjk), sans-serif;
   white-space: normal;
 }
 
@@ -222,7 +222,7 @@ a:visited {
 .motd h6 {
   color: hsl(213.6, 37.9%, 74.1%);
   text-decoration: underline;
-  font-family: Verdana;
+  font-family: Verdana, var(--font-family-cjk), sans-serif;
   text-decoration: none;
 }
 
@@ -273,7 +273,7 @@ h4,
 h5,
 h6 {
   color: hsl(213.6, 37.9%, 74.1%);
-  font-family: Georgia, Verdana, sans-serif;
+  font-family: Georgia, Verdana, var(--font-family-cjk), sans-serif;
 }
 
 h1.alert,
@@ -419,7 +419,7 @@ em {
   font-style: italic;
 }
 .singing {
-  font-family: 'Trebuchet MS', cursive, sans-serif;
+  font-family: 'Trebuchet MS', var(--font-family-cjk), cursive, sans-serif;
   font-style: italic;
 }
 
@@ -674,21 +674,21 @@ h2.alert {
 }
 .xenoannounce {
   color: hsl(154.7, 30.4%, 49%);
-  font-family: book-antiqua;
+  font-family: book-antiqua, var(--font-family-cjk), sans-serif;
   font-weight: bold;
   font-style: italic;
   font-size: 1.5em;
 }
 .xenobanishtitleannonce {
   color: hsl(240, 84%, 70.59%);
-  font-family: book-antiqua;
+  font-family: book-antiqua, var(--font-family-cjk), sans-serif;
   font-weight: bold;
   font-style: italic;
   font-size: 24px;
 }
 .xenobanishannonce {
   color: hsl(0, 100%, 50%);
-  font-family: book-antiqua;
+  font-family: book-antiqua, var(--font-family-cjk), sans-serif;
   font-weight: bold;
   font-style: italic;
   font-size: 19.2px;
@@ -732,7 +732,7 @@ h2.alert {
 }
 .round_setup {
   color: hsl(0, 100%, 42.9%);
-  font-family: impact;
+  font-family: impact, var(--font-family-cjk), sans-serif;
   font-size: 1.25em;
 }
 .round_header {
@@ -751,7 +751,7 @@ h2.alert {
 }
 .event_announcement {
   color: hsl(262.7, 55.7%, 63.7%);
-  font-family: arial-narrow;
+  font-family: arial-narrow, var(--font-family-cjk), sans-serif;
   font-size: 1.5em;
 }
 .seasons_announce {
@@ -779,17 +779,17 @@ h2.alert {
 }
 
 .rough {
-  font-family: trebuchet-ms, cursive, sans-serif;
+  font-family: trebuchet-ms, var(--font-family-cjk), cursive, sans-serif;
 }
 .say_quote {
-  font-family: Georgia, Verdana, sans-serif;
+  font-family: Georgia, Verdana, var(--font-family-cjk), sans-serif;
 }
 .command_headset {
   font-weight: bold;
   font-size: 160%;
 }
 .robot {
-  font-family: 'Courier New', cursive, sans-serif;
+  font-family: 'Courier New', var(--font-family-cjk), cursive, sans-serif;
 }
 
 .green {
@@ -903,15 +903,15 @@ h2.alert {
 }
 
 .sans {
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-family: 'Comic Sans MS', var(--font-family-cjk), cursive, sans-serif;
 }
 
 .papyrus {
-  font-family: 'Papyrus', cursive, sans-serif;
+  font-family: 'Papyrus', var(--font-family-cjk), cursive, sans-serif;
 }
 
 .robot {
-  font-family: 'Courier New', cursive, sans-serif;
+  font-family: 'Courier New', var(--font-family-cjk), cursive, sans-serif;
 }
 
 .command_headset {
@@ -948,7 +948,7 @@ h2.alert {
 .clown {
   color: hsl(326, 100%, 72%);
   font-size: 160%;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-family: 'Comic Sans MS', var(--font-family-cjk), cursive, sans-serif;
   font-weight: bold;
 }
 

@@ -13,23 +13,23 @@
  * For example: MAPTEXT_PIXELLARI("<span style='font-size: 24pt'>Some large maptext here</span>")
  */
 /// Large size (ie: context tooltips) - Size options: 12pt 24pt.
-#define MAPTEXT_PIXELLARI(text) {"<span style='font-family: \"Pixellari\"; font-size: 12pt; -dm-text-outline: 1px black'>[##text]</span>"}
+#define MAPTEXT_PIXELLARI(text) {"<span style='font-family: \"Pixellari\", \"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Noto Sans CJK SC\", sans-serif; font-size: 12pt; -dm-text-outline: 1px black'>[##text]</span>"}
 
 /// Standard size (ie: normal runechat) - Size options: 6pt 12pt 18pt.
-#define MAPTEXT_GRAND9K(text) {"<span style='font-family: \"Grand9K Pixel\"; font-size: 6pt; -dm-text-outline: 1px black'>[##text]</span>"}
+#define MAPTEXT_GRAND9K(text) {"<span style='font-family: \"Grand9K Pixel\", \"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Noto Sans CJK SC\", sans-serif; font-size: 6pt; -dm-text-outline: 1px black'>[##text]</span>"}
 
 /// Small size. (ie: context subtooltips, spell delays) - Size options: 12pt 24pt.
-#define MAPTEXT_TINY_UNICODE(text) {"<span style='font-family: \"TinyUnicode\"; font-size: 12pt; line-height: 0.75; -dm-text-outline: 1px black'>[##text]</span>"}
+#define MAPTEXT_TINY_UNICODE(text) {"<span style='font-family: \"TinyUnicode\", \"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Noto Sans CJK SC\", sans-serif; font-size: 12pt; line-height: 0.75; -dm-text-outline: 1px black'>[##text]</span>"}
 
 /// Smallest size. (ie: whisper runechat) - Size options: 6pt 12pt 18pt.
-#define MAPTEXT_SPESSFONT(text) {"<span style='font-family: \"Spess Font\"; font-size: 6pt; line-height: 1.4; -dm-text-outline: 1px black'>[##text]</span>"}
+#define MAPTEXT_SPESSFONT(text) {"<span style='font-family: \"Spess Font\", \"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Noto Sans CJK SC\", sans-serif; font-size: 6pt; line-height: 1.4; -dm-text-outline: 1px black'>[##text]</span>"}
 
 #define CENTER_ALIGN_TEXT "center"
 #define LEFT_ALIGN_TEXT "left"
 
-#define MAPTEXT_HUDMESSAGE_TITLE(text, alignment) {"<span style='font-family: \"MS Serif\"; font-size: 12pt; line-height: 1.25; text-align: [##alignment]'><u>[##text]</u></span>"}
+#define MAPTEXT_HUDMESSAGE_TITLE(text, alignment) {"<span style='font-family: \"MS Serif\", \"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Noto Sans CJK SC\", sans-serif; font-size: 12pt; line-height: 1.25; text-align: [##alignment]'><u>[##text]</u></span>"}
 
-#define MAPTEXT_HUDMESSAGE(text, alignment) {"<span style='font-family: \"MS Serif\"; font-size: 10pt; line-height: 1; text-align: [##alignment]; -dm-text-outline: 1px black'>[##text]</span>"}
+#define MAPTEXT_HUDMESSAGE(text, alignment) {"<span style='font-family: \"MS Serif\", \"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Noto Sans CJK SC\", sans-serif; font-size: 10pt; line-height: 1; text-align: [##alignment]; -dm-text-outline: 1px black'>[##text]</span>"}
 
 #define HUD_ANNOUNCEMENT_FORMATTING(title, text, alignment) (MAPTEXT_HUDMESSAGE_TITLE(##title, ##alignment) + "<br>" + MAPTEXT_HUDMESSAGE(##text, ##alignment))
 
@@ -44,7 +44,7 @@
  */
 /// Prepares a text to be used for maptext, using a variable size font.
 /// Variable size font. More flexible but doesn't scale pixel perfect to BYOND icon resolutions. (May be blurry.) Can use any size in pt or px.
-#define MAPTEXT_VCR_OSD_MONO(text) {"<span style='font-family: \"VCR OSD Mono\"'>[##text]</span>"}
+#define MAPTEXT_VCR_OSD_MONO(text) {"<span style='font-family: \"VCR OSD Mono\", \"Microsoft YaHei UI\", \"Microsoft YaHei\", \"Noto Sans CJK SC\", sans-serif'>[##text]</span>"}
 
 /// Macro from Lummox used to get height from a MeasureText proc
 /// resolves the MeasureText() return value once, then resolves the height, then sets return_var to that.
@@ -57,8 +57,8 @@
 /// Removes characters incompatible with file names.
 #define SANITIZE_FILENAME(text) (GLOB.filename_forbidden_chars.Replace(text, ""))
 
-/// Simply removes the < and > characters, and limits the length of the message.
-#define STRIP_HTML_SIMPLE(text, limit) (GLOB.angular_brackets.Replace(copytext(text, 1, limit), ""))
+/// Simply removes the < and > characters, and limits the character length of the message.
+#define STRIP_HTML_SIMPLE(text, limit) (GLOB.angular_brackets.Replace(copytext_char(text, 1, limit), ""))
 
 /**
  * stuff like `copytext(input, length(input))` will trim the last character of the input,

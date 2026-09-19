@@ -16,7 +16,7 @@ html, body {
 }
 body {
 	background: #fff;
-    font-family: Verdana, sans-serif;
+    font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
     font-size: 9pt;
     line-height: 1.2;
 	overflow-x: hidden;
@@ -73,7 +73,7 @@ a.popt {text-decoration: none;}
 
 .highlight {background: yellow;}
 
-.motd					{color: #638500;	font-family: Verdana, sans-serif;}
+.motd					{color: #638500;	font-family: Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
 .motd h1, .motd h2, .motd h3, .motd h4, .motd h5, .motd h6
 	{color: #638500;	text-decoration: underline;}
 .motd a, .motd a:link, .motd a:visited, .motd a:active, .motd a:hover
@@ -147,7 +147,7 @@ h1.alert, h2.alert		{color: #000000;}
 .emote					{					font-style: italic;}
 .selecteddna			{color: #FFFFFF; 	background-color: #001B1B}
 
-.singing				{font-family: "Trebuchet MS", cursive, sans-serif; font-style: italic;}
+.singing				{font-family: "Trebuchet MS", "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", cursive, sans-serif; font-style: italic;}
 
 .attack					{color: #ff0000;}
 .moderate				{color: #CC0000;}
@@ -171,25 +171,25 @@ h1.alert, h2.alert		{color: #000000;}
 .xenodanger				{color: #2a623d;	font-weight: bold;}
 .avoidharm				{color:	#72a0e5;	font-weight: bold;}
 .xenouserdanger			{color: #2a623d; 	font-weight: bold; font-size: 1.5em;}
-.xenoannounce           {color: #1a472a;    font-family: book-antiqua; font-weight: bold; font-style: italic; font-size: 1.5em;}
+.xenoannounce           {color: #1a472a;    font-family: book-antiqua, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; font-weight: bold; font-style: italic; font-size: 1.5em;}
 
 .alien					{color: #543354;}
 .newscaster				{color: #800000;}
 
-.role_header			{color: #db0000;	display: block; text-align: center; font-weight: bold; font-family: trebuchet-ms; font-size: 1.5em;}
+.role_header			{color: #db0000;	display: block; text-align: center; font-weight: bold; font-family: trebuchet-ms, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; font-size: 1.5em;}
 .role_body				{color: #000099;	display: block; text-align: center;}
 
-.round_setup			{color: #db0000;		font-family: impact; font-size: 1.25em;}
-.round_header			{color: #db0000; 	display: block; text-align: center; font-family: courier; font-weight: bold; font-size: 2em;}
-.round_body				{color: #001427; 	display: block; text-align: center; font-family: trebuchet-ms; font-weight: bold; font-size: 1.5em;}
-.event_announcement		{color: #600d48; 	font-family: arial-narrow; font-weight: bold; font-size: 1.5em;}
+.round_setup			{color: #db0000;		font-family: impact, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; font-size: 1.25em;}
+.round_header			{color: #db0000; 	display: block; text-align: center; font-family: courier, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; font-weight: bold; font-size: 2em;}
+.round_body				{color: #001427; 	display: block; text-align: center; font-family: trebuchet-ms, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; font-weight: bold; font-size: 1.5em;}
+.event_announcement		{color: #600d48; 	font-family: arial-narrow, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; font-weight: bold; font-size: 1.5em;}
 
 .centerbold				{				 	text-align: center; font-weight: bold;}
 
-.rough					{font-family: trebuchet-ms, cursive, sans-serif;}
-.say_quote				{font-family: Georgia, Verdana, sans-serif;}
+.rough					{font-family: trebuchet-ms, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", cursive, sans-serif;}
+.say_quote				{font-family: Georgia, Verdana, "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;}
 .command_headset		{font-weight: bold; font-size: 18px;}
-.robot					{font-family: "Courier New", cursive, sans-serif;}
+.robot					{font-family: "Courier New", "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", cursive, sans-serif;}
 
 
 .green					{color: #29b245;}

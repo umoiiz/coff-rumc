@@ -34,6 +34,15 @@
 #define SPAN_ROBOT "robot"
 #define SPAN_SINGING "singing"
 
+// Speech punctuation is checked in several rendering paths (chat, runechat,
+// bubbles and language scrambling).  Keep ASCII and common CJK forms together
+// so translated messages do not gain an extra period or lose their bubble/verb
+// style when punctuation is localized.
+#define SPEECH_END_PUNCTUATION list("!", "！", ".", "。", "?", "？", ":", "：", "\"", "”", "-", "—", "…")
+#define SPEECH_EXCLAIM_PUNCTUATION list("!", "！")
+#define SPEECH_QUESTION_PUNCTUATION list("?", "？")
+#define SPEECH_YELL_PUNCTUATION list("!!", "！！")
+
 //Eavesdropping
 #define EAVESDROP_EXTRA_RANGE 1 //how much past the specified message_range does the message get starred, whispering only
 

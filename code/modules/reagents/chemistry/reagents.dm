@@ -1,11 +1,90 @@
 GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
+/// Maps stable type IDs and pre-localization dispenser macro IDs to reagents.
+/// The legacy keys below are saved-data identifiers, not display text. Do not
+/// translate or regenerate them from reagent.name: ckey() discards CJK text.
 /proc/build_name2reagent()
-	. = list()
-	for (var/t in subtypesof(/datum/reagent))
-		var/datum/reagent/R = t
-		if (length(initial(R.name)))
-			.[ckey(initial(R.name))] = t
+	. = list(
+		"aluminum" = /datum/reagent/aluminum,
+		"carbon" = /datum/reagent/carbon,
+		"chlorine" = /datum/reagent/chlorine,
+		"capsaicinoil" = /datum/reagent/consumable/capsaicin,
+		"coffee" = /datum/reagent/consumable/coffee,
+		"cream" = /datum/reagent/consumable/cream,
+		"drgibb" = /datum/reagent/consumable/dr_gibb,
+		"universalenzyme" = /datum/reagent/consumable/enzyme,
+		"ethanol" = /datum/reagent/consumable/ethanol,
+		"absinthe" = /datum/reagent/consumable/ethanol/absinthe,
+		"ale" = /datum/reagent/consumable/ethanol/ale,
+		"applejack" = /datum/reagent/consumable/ethanol/applejack,
+		"atomicbomb" = /datum/reagent/consumable/ethanol/atomicbomb,
+		"beer" = /datum/reagent/consumable/ethanol/beer,
+		"maltliquor" = /datum/reagent/consumable/ethanol/beer/maltliquor,
+		"coconutrum" = /datum/reagent/consumable/ethanol/coconut_rum,
+		"cognac" = /datum/reagent/consumable/ethanol/cognac,
+		"cremedecacao" = /datum/reagent/consumable/ethanol/creme_de_cacao,
+		"cremedecoconut" = /datum/reagent/consumable/ethanol/creme_de_coconut,
+		"cremedementhe" = /datum/reagent/consumable/ethanol/creme_de_menthe,
+		"curaao" = /datum/reagent/consumable/ethanol/curacao,
+		"fernet" = /datum/reagent/consumable/ethanol/fernet,
+		"gin" = /datum/reagent/consumable/ethanol/gin,
+		"hardcider" = /datum/reagent/consumable/ethanol/hcider,
+		"kahlua" = /datum/reagent/consumable/ethanol/kahlua,
+		"navyrum" = /datum/reagent/consumable/ethanol/navy_rum,
+		"ricebeer" = /datum/reagent/consumable/ethanol/rice_beer,
+		"rum" = /datum/reagent/consumable/ethanol/rum,
+		"sake" = /datum/reagent/consumable/ethanol/sake,
+		"tequila" = /datum/reagent/consumable/ethanol/tequila,
+		"thirteenloko" = /datum/reagent/consumable/ethanol/thirteenloko,
+		"triplesec" = /datum/reagent/consumable/ethanol/triple_sec,
+		"vermouth" = /datum/reagent/consumable/ethanol/vermouth,
+		"vodka" = /datum/reagent/consumable/ethanol/vodka,
+		"whiskey" = /datum/reagent/consumable/ethanol/whiskey,
+		"whiskeycola" = /datum/reagent/consumable/ethanol/whiskey_cola,
+		"wine" = /datum/reagent/consumable/ethanol/wine,
+		"yyake" = /datum/reagent/consumable/ethanol/yuyake,
+		"grenadine" = /datum/reagent/consumable/grenadine,
+		"ice" = /datum/reagent/consumable/ice,
+		"lemonlime" = /datum/reagent/consumable/lemon_lime,
+		"lemonjuice" = /datum/reagent/consumable/lemonjuice,
+		"limejuice" = /datum/reagent/consumable/limejuice,
+		"melonsoda" = /datum/reagent/consumable/melon_soda,
+		"menthol" = /datum/reagent/consumable/menthol,
+		"orangejuice" = /datum/reagent/consumable/orangejuice,
+		"pineapplejuice" = /datum/reagent/consumable/pineapplejuice,
+		"pwrgame" = /datum/reagent/consumable/pwr_game,
+		"shamblersjuice" = /datum/reagent/consumable/shamblers,
+		"sodawater" = /datum/reagent/consumable/sodawater,
+		"soldry" = /datum/reagent/consumable/sol_dry,
+		"cola" = /datum/reagent/consumable/space_cola,
+		"spaceup" = /datum/reagent/consumable/space_up,
+		"smwind" = /datum/reagent/consumable/spacemountainwind,
+		"sugar" = /datum/reagent/consumable/sugar,
+		"tea" = /datum/reagent/consumable/tea,
+		"icedtea" = /datum/reagent/consumable/tea/icetea,
+		"tomatojuice" = /datum/reagent/consumable/tomatojuice,
+		"tonicwater" = /datum/reagent/consumable/tonic,
+		"copper" = /datum/reagent/copper,
+		"fluorine" = /datum/reagent/fluorine,
+		"hydrogen" = /datum/reagent/hydrogen,
+		"iron" = /datum/reagent/iron,
+		"lithium" = /datum/reagent/lithium,
+		"mercury" = /datum/reagent/mercury,
+		"nitrogen" = /datum/reagent/nitrogen,
+		"oxygen" = /datum/reagent/oxygen,
+		"phosphorus" = /datum/reagent/phosphorus,
+		"potassium" = /datum/reagent/potassium,
+		"radium" = /datum/reagent/radium,
+		"silicon" = /datum/reagent/silicon,
+		"sodium" = /datum/reagent/sodium,
+		"sulfur" = /datum/reagent/sulfur,
+		"sulphuricacid" = /datum/reagent/toxin/acid,
+		"mindbreakertoxin" = /datum/reagent/toxin/mindbreaker,
+		"uranium" = /datum/reagent/uranium,
+		"water" = /datum/reagent/water,
+	)
+	for(var/reagent_type in subtypesof(/datum/reagent))
+		.["[reagent_type]"] = reagent_type
 
 /// A single reagent
 /datum/reagent

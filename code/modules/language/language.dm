@@ -102,7 +102,7 @@
 	if(ending == ".")
 		scrambled_text = copytext_char(scrambled_text, 1, -2)
 	var/input_ending = copytext_char(input, -1)
-	if(input_ending in list("!","?","."))
+	if(input_ending in list("!", "！", "?", "？", ".", "。"))
 		scrambled_text += input_ending
 
 	add_to_cache(input, scrambled_text)
@@ -112,9 +112,9 @@
 
 /datum/language/proc/get_spoken_verb(msg_end)
 	switch(msg_end)
-		if("!")
+		if("!", "！")
 			return exclaim_verb
-		if("?")
+		if("?", "？")
 			return ask_verb
 	return speech_verb
 

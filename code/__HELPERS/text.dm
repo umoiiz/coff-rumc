@@ -334,16 +334,13 @@ GLOBAL_LIST_INIT(en_key_to_ru_key, list(
 //Used in preferences' SetFlavorText and human's set_flavor verb
 //Previews a string of len or less length
 /proc/TextPreview(string, length = 40)
-	if(length_char(string) > length(string))
-		if(length_char(string) > length)
-			return "[copytext_char(string, 1, 37)]..."
-		if(!length(string))
-			return "\[...\]"
-		return string
 	if(!length(string))
 		return "\[...\]"
-	if(length(string) > length)
-		return "[copytext(string, 1, 37)]..."
+	// The limit includes the ellipsis. Never cut a UTF-8 character in half.
+	if(length_char(string) > length)
+		if(length <= 3)
+			return copytext("...", 1, max(0, length) + 1)
+		return "[copytext_char(string, 1, length - 2)]..."
 	return string
 
 

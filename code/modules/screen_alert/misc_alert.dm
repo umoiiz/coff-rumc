@@ -159,15 +159,15 @@
 	var/firstname = copytext(cleaned_realname, 1, findtext(cleaned_realname, " "))
 	var/lastname = trim(copytext(cleaned_realname, findtext(cleaned_realname, " ")))
 	var/nametouse
-	if(length(lastname) >= 1 && length(lastname) <= MAX_NON_COMMTITLE_LEN)
+	if(length_char(lastname) >= 1 && length_char(lastname) <= MAX_NON_COMMTITLE_LEN)
 		nametouse = lastname
-	else if(length(firstname) >= 1 && length(firstname) <= MAX_NON_COMMTITLE_LEN)
+	else if(length_char(firstname) >= 1 && length_char(firstname) <= MAX_NON_COMMTITLE_LEN)
 		nametouse = firstname
-	else if(length(cleaned_realname) >= 1)
-		if(length(cleaned_realname) > MAX_NON_COMMTITLE_LEN)
+	else if(length_char(cleaned_realname) >= 1)
+		if(length_char(cleaned_realname) > MAX_NON_COMMTITLE_LEN)
 			//cleans too long clone names down to a better fitting length
 			cleaned_realname = replacetext(cleaned_realname, regex(@"CS-.-"), "")
-		nametouse = copytext(cleaned_realname, 1, MAX_NON_COMMTITLE_LEN+1)
+		nametouse = copytext_char(cleaned_realname, 1, MAX_NON_COMMTITLE_LEN+1)
 	else
 		nametouse = "UNKNOWN"
 	var/user_name = trim(mugshottee.comm_title + " " + nametouse)

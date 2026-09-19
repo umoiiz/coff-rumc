@@ -247,8 +247,11 @@
 		if(JOB_PREFERENCES)
 			.["squads"] = SELECTABLE_SQUADS
 			.["jobs"] = list()
+			.["job_groups"] = list()
 			for(var/datum/job/job AS in SSjob.joinable_occupations)
 				var/rank = job.title
+				// Use the same runtime title for grouping, lookup and preference actions.
+				.["job_groups"][job.job_category] += list(rank)
 				.["jobs"][rank] = list(
 					"color" = job.selection_color,
 					"description" = job.html_description,

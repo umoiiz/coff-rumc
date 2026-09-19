@@ -5,6 +5,13 @@
 
 @use 'base';
 
+:root {
+  --font-family-cjk:
+    'Microsoft YaHei UI', 'Microsoft YaHei', 'Noto Sans CJK SC';
+  --font-family: Verdana, Geneva, var(--font-family-cjk), sans-serif;
+  --font-family-mono: Consolas, var(--font-family-cjk), monospace;
+}
+
 html,
 body {
   box-sizing: border-box;
