@@ -1,0 +1,4 @@
+author: "tgstation contributors (tgstation/tgstation#54681)"
+delete-after: true
+changes:
+  - qol: "Ported the TGUI tracked playtime report from tgstation, with sorted progress bars for jobs, special roles, and xenomorph castes."

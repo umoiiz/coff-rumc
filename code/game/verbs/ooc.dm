@@ -483,12 +483,7 @@
 		to_chat(usr, span_notice("Sorry, tracking is currently disabled."))
 		return
 
-	var/list/body = list()
-	body += get_exp_report()
-
-	var/datum/browser/popup = new(src, "playerplaytime[ckey]", "<div align='center'>Playtime for [key]</div>", 550, 615)
-	popup.set_content(body.Join())
-	popup.open(FALSE)
+	new /datum/job_report_menu(src, usr)
 
 
 /client/verb/view_admin_remarks()
