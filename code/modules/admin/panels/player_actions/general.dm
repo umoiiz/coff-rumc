@@ -217,12 +217,7 @@
 		to_chat(user, span_warning("Target is no longer valid."))
 		return
 
-	var/list/body = list()
-	body += target_client.get_exp_report()
-
-	var/datum/browser/popup = new(user.mob, "playtime_[target_client.key]", "<div align='center'>Playtime for [target_client.key]</div>", 550, 615)
-	popup.set_content(body.Join())
-	popup.open(FALSE)
+	new /datum/job_report_menu(target_client, user.mob)
 	return TRUE
 
 

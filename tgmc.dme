@@ -644,6 +644,7 @@
 #include "code\datums\jobs\job\imperium.dm"
 #include "code\datums\jobs\job\job.dm"
 #include "code\datums\jobs\job\job_exp.dm"
+#include "code\datums\jobs\job\job_report.dm"
 #include "code\datums\jobs\job\marines.dm"
 #include "code\datums\jobs\job\mercenaries.dm"
 #include "code\datums\jobs\job\necoarc.dm"
