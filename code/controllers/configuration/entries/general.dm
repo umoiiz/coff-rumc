@@ -203,11 +203,11 @@ Administrative related.
 	config_entry_value = "C:\\Program Files (x86)\\TG Station Server\\TGCommandLine.exe"
 
 /datum/config_entry/number/minute_topic_limit
-	config_entry_value = 250
+	config_entry_value = 700
 	min_val = 0
 
 /datum/config_entry/number/second_topic_limit
-	config_entry_value = 15
+	config_entry_value = 30
 	min_val = 0
 
 /datum/config_entry/number/minute_click_limit
@@ -215,12 +215,12 @@ Administrative related.
 	min_val = 0
 
 /datum/config_entry/number/second_click_limit
-	config_entry_value = 15
+	config_entry_value = 30
 	min_val = 0
 
 /// Max lines retained per STUI log tab (System Tabbed User Interface).
 /datum/config_entry/number/STUI_length
-	config_entry_value = 150
+	config_entry_value = 300
 	min_val = 10
 
 /datum/config_entry/number/afk_period	//time in ds until a player is considered inactive
