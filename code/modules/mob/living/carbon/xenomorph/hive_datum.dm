@@ -613,7 +613,7 @@
 	xenos_by_upgrade[newlevel] += X
 
 /datum/hive_status/proc/attempt_punishment(mob/living/carbon/xenomorph/devolver, mob/living/carbon/xenomorph/target)
-	var/confirm = tgui_input_list(devolver, "Choose a punishment for the [target] ", null, list("Deevolve", "Banish/De-Banish", "Abort",))
+	var/confirm = tgui_input_list(devolver, "为[target]选择一个惩罚", null, list("Deevolve", "Banish/De-Banish", "Abort",))
 
 	switch(confirm)
 		if("Deevolve")
@@ -632,35 +632,35 @@
 	var/datum/xeno_caste/new_caste = get_deevolve_caste(devolver, target)
 
 	if(!new_caste)
-		to_chat(devolver, span_xenonotice("no new caste was chosen."))
+		to_chat(devolver, span_xenonotice("没有选择新的种姓。"))
 		return
 
 	var/reason = stripped_input(devolver, "Provide a reason for deevolving this xenomorph, [target]")
 	if(isnull(reason))
-		to_chat(devolver, span_xenonotice("De-evolution reason required."))
+		to_chat(devolver, span_xenonotice("需要降级原因。"))
 		return
 
 	if(!devolver.check_concious_state())
 		return
 
 	if(HAS_TRAIT(target, TRAIT_MOVE_VENTCRAWLING))
-		to_chat(devolver, span_xenonotice("Cannot deevolve, [target] is ventcrawling."))
+		to_chat(devolver, span_xenonotice("无法降级,[target]正在爬管道。"))
 		return
 
 	if(target.xeno_flags & XENO_AGILITY || target.fortify || target.crest_defense || target.status_flags & INCORPOREAL)
-		to_chat(devolver, span_xenonotice("Cannot deevolve, while [target] is in this stance."))
+		to_chat(devolver, span_xenonotice("无法降级,[target]处于此姿态。"))
 		return FALSE
 
 	if(!isturf(target.loc))
-		to_chat(devolver, span_xenonotice("Cannot deevolve [target] here."))
+		to_chat(devolver, span_xenonotice("无法在此处降级[target]。"))
 		return
 
 	if((target.health < target.maxHealth) || (target.plasma_stored < (target.xeno_caste.plasma_max * target.xeno_caste.plasma_regen_limit)))
-		to_chat(devolver, span_xenonotice("Cannot deevolve, [target] is too weak."))
+		to_chat(devolver, span_xenonotice("无法降级,[target]太弱了。"))
 		return
 
-	target.balloon_alert(target, "Forced deevolution")
-	to_chat(target, span_xenowarning("[devolver] deevolved us for the following reason: [reason]."))
+	target.balloon_alert(target, "强制降级")
+	to_chat(target, span_xenowarning("[devolver]因以下原因将我们降级:[reason]。"))
 
 	target.do_evolve(new_caste.type, TRUE)
 
@@ -675,13 +675,13 @@
 	if(!target_status_check(user, target))
 		return
 
-	var/confirm = tgui_alert(user, "Are you sure you want to abort [target]?", null, list("Yes", "No"))
+	var/confirm = tgui_alert(user, "你确定要中止[target]吗?", null, list("Yes", "No"))
 	if(confirm != "Yes")
 		return
 
 	var/reason = stripped_input(user, "Provide a reason for abort this xenomorph, [target]")
 	if(isnull(reason))
-		to_chat(user, span_xenonotice("Abort reason required."))
+		to_chat(user, span_xenonotice("需要中止原因。"))
 		return
 
 	if(!user.check_concious_state())
@@ -699,13 +699,13 @@
 	if(!target_status_check(user, target))
 		return
 
-	var/confirm = tgui_alert(user, "Are you sure you want to banish/de-banish [target]?", null, list("Yes", "No"))
+	var/confirm = tgui_alert(user, "你确定要放逐/解除放逐[target]吗?", null, list("Yes", "No"))
 	if(confirm != "Yes")
 		return
 
 	var/reason = stripped_input(user, "Provide a reason for banish this xenomorph, [target]")
 	if(!reason)
-		to_chat(user, span_xenonotice("Banish reason required."))
+		to_chat(user, span_xenonotice("需要放逐原因。"))
 		return
 
 	if(!user.check_concious_state())
@@ -721,7 +721,7 @@
 
 		xeno_message("BANISHMENT", "xenobanishtitleannonce", 5, target.hivenumber, sound= sound(SFX_QUEEN, channel = CHANNEL_ANNOUNCEMENTS))
 		xeno_message("By [user]'s will, [target] has been banished from the hive!\n[reason]", "xenobanishannonce", 5, target.hivenumber)
-		to_chat(target, span_xenouserdanger("The [user] has banished you from the hive! Other xenomorphs may now attack you freely, but your link to the hivemind remains, preventing you from harming other sisters."))
+		to_chat(target, span_xenouserdanger("[user]已将你从巢穴中放逐!其他异形现在可以自由攻击你,但你与蜂巢意识的连接仍然存在,阻止你伤害其他姐妹。"))
 		log_game("[key_name(user)] has banish [key_name(target)]. Reason: [reason]")
 		message_admins("[ADMIN_TPMONTY(user)] has banish/(<a href='byond://?_src_=holder;[HrefToken(TRUE)];adminunbanish=1;target=[REF(target)]'>unbanish</a>) [ADMIN_TPMONTY(target)]. Reason: [reason].")
 		return
@@ -742,7 +742,7 @@
 			if(isxenoshrike(target))
 				tiers_to_pick_from = GLOB.xeno_types_tier_one
 			else
-				to_chat(devolver, span_warning("Xeno tier does not allow you to regress."))
+				to_chat(devolver, span_warning("异形等级不允许你退化。"))
 				return
 		if(XENO_TIER_ONE)
 			tiers_to_pick_from = list(/datum/xeno_caste/larva)
@@ -757,7 +757,7 @@
 	for(var/type in tiers_to_pick_from)
 		var/datum/xeno_caste/available_caste = GLOB.xeno_caste_datums[type][XENO_UPGRADE_BASETYPE]
 		castes_to_pick += available_caste.caste_name
-	var/castepick = tgui_input_list(devolver, "Choose the caste you want to deevolve into.", null, castes_to_pick)
+	var/castepick = tgui_input_list(devolver, "选择你想要降级成的种姓。", null, castes_to_pick)
 	if(!castepick) //Changed my mind
 		return
 
@@ -773,15 +773,15 @@
 
 /datum/hive_status/proc/target_status_check(mob/living/carbon/xenomorph/user, mob/living/carbon/xenomorph/target)
 	if(HAS_TRAIT(target, TRAIT_MOVE_VENTCRAWLING))
-		to_chat(user, span_xenonotice("Cannot punish, [target] is ventcrawling."))
+		to_chat(user, span_xenonotice("无法惩罚,[target]正在爬管道。"))
 		return FALSE
 
 	if(!isturf(target.loc))
-		to_chat(user, span_xenonotice("Cannot punish [target] here."))
+		to_chat(user, span_xenonotice("无法在此处惩罚[target]。"))
 		return FALSE
 
 	if(target.tier == XENO_TIER_FOUR || isxenohivemind(target))
-		to_chat(user, span_xenonotice("Tier does not allow to punish."))
+		to_chat(user, span_xenonotice("等级不允许惩罚。"))
 		return FALSE
 
 	return TRUE
@@ -1016,7 +1016,7 @@ to_chat will check for valid clients itself already so no need to double check f
 /datum/hive_status/proc/set_all_xeno_trackers(atom/target)
 	for(var/mob/living/carbon/xenomorph/X AS in get_all_xenos())
 		X.set_tracked(target)
-		to_chat(X, span_notice("Now tracking [target.name]"))
+		to_chat(X, span_notice("现在追踪[target.name]"))
 
 // ***************************************
 // *********** Normal Xenos
@@ -1060,7 +1060,7 @@ to_chat will check for valid clients itself already so no need to double check f
 /datum/hive_status/normal/burrow_larva(mob/living/carbon/xenomorph/larva/L)
 	if(!is_ground_level(L.z))
 		return
-	L.visible_message(span_xenodanger("[L] quickly burrows into the ground."))
+	L.visible_message(span_xenodanger("[L]迅速钻入地下。"))
 	var/datum/job/xeno_job = SSjob.GetJobType(/datum/job/xenomorph)
 	xeno_job.add_job_positions(1)
 	update_tier_limits()
@@ -1079,16 +1079,16 @@ to_chat will check for valid clients itself already so no need to double check f
 		return FALSE
 
 	if(GLOB.key_to_time_of_death[user.key] + TIME_BEFORE_TAKING_BODY > world.time && !user.started_as_observer)
-		to_chat(user, span_warning("You died too recently to be able to take a new facehugger."))
+		to_chat(user, span_warning("你死亡时间太短,无法使用新的抱脸虫。"))
 		return FALSE
 
 	TIMER_COOLDOWN_START(src, COOLDOWN_SENTIENT_HUGGER, 5 SECONDS)
-	if(tgui_alert(user, "Are you sure you want to be a Facehugger?", "Become part of the Horde!", list("Yes", "No"), 5 SECONDS) != "Yes")
+	if(tgui_alert(user, "你确定要成为抱脸虫吗?", "成为部落的一员!", list("Yes", "No"), 5 SECONDS) != "Yes")
 		TIMER_COOLDOWN_END(src, COOLDOWN_SENTIENT_HUGGER)
 		return FALSE
 
 	if(length(facehuggers) >= MAX_FACEHUGGERS)
-		to_chat(user, span_warning("The Hive cannot support more facehuggers! Limit: <b>[length_char(facehuggers)]/[MAX_FACEHUGGERS]</b>."))
+		to_chat(user, span_warning("蜂巢无法支持更多抱脸虫!上限:<b>[length_char(facehuggers)]/[MAX_FACEHUGGERS]</b>。"))
 		return FALSE
 
 	return TRUE
@@ -1110,12 +1110,12 @@ to_chat will check for valid clients itself already so no need to double check f
 			return attempt_to_spawn_larva_in_silo(xeno_candidate, possible_silos, larva_already_reserved)
 		if(SSticker.mode?.round_type_flags & MODE_SILO_RESPAWN && !SSsilo.can_fire) // Distress mode & prior to shutters opening, so let the queue bypass silos if needed
 			return do_spawn_larva(xeno_candidate, pick(GLOB.spawns_by_job[/datum/job/xenomorph]), larva_already_reserved)
-		to_chat(xeno_candidate, span_warning("There are no places currently available to receive new larvas."))
+		to_chat(xeno_candidate, span_warning("目前没有可接收新幼虫的位置。"))
 		return FALSE
 
 	var/mob/living/carbon/xenomorph/chosen_mother
 	if(length(possible_mothers) > 1)
-		chosen_mother = tgui_input_list(xeno_candidate.mob, "Available Mothers", null, possible_mothers)
+		chosen_mother = tgui_input_list(xeno_candidate.mob, "可用的母体", null, possible_mothers)
 	else
 		chosen_mother = possible_mothers[1]
 
@@ -1129,11 +1129,11 @@ to_chat will check for valid clients itself already so no need to double check f
 	window_flash(xeno_candidate)
 	var/obj/structure/xeno/silo/chosen_silo
 	if(length(possible_silos) > 1)
-		chosen_silo = tgui_input_list(xeno_candidate.mob, "Available Egg Silos", "Spawn location", possible_silos, timeout = 20 SECONDS)
+		chosen_silo = tgui_input_list(xeno_candidate.mob, "可用的卵仓", "生成位置", possible_silos, timeout = 20 SECONDS)
 		if(!chosen_silo || isnull(xeno_candidate))
 			return FALSE
 		xeno_candidate.mob.reset_perspective(chosen_silo)
-		var/double_check = tgui_alert(xeno_candidate.mob, "Spawn here?", "Spawn location", list("Yes","Pick another silo","Abort"), timeout = 20 SECONDS)
+		var/double_check = tgui_alert(xeno_candidate.mob, "在此生成?", "生成位置", list("Yes","Pick another silo","Abort"), timeout = 20 SECONDS)
 		if(double_check == "Pick another silo")
 			return attempt_to_spawn_larva_in_silo(xeno_candidate, possible_silos, larva_already_reserved)
 		else if(double_check != "Yes")
@@ -1143,7 +1143,7 @@ to_chat will check for valid clients itself already so no need to double check f
 	else
 		chosen_silo = possible_silos[1]
 		xeno_candidate.mob.reset_perspective(chosen_silo)
-		var/check = tgui_alert(xeno_candidate, "Spawn as a xeno?", "Spawn location", list("Yes", "Abort"), timeout = 20 SECONDS)
+		var/check = tgui_alert(xeno_candidate, "作为异形生成?", "生成位置", list("Yes", "Abort"), timeout = 20 SECONDS)
 		if(check != "Yes")
 			xeno_candidate.mob.reset_perspective(null)
 			remove_from_larva_candidate_queue(xeno_candidate)
@@ -1160,33 +1160,33 @@ to_chat will check for valid clients itself already so no need to double check f
 		return FALSE
 
 	if(QDELETED(mother) || !istype(mother))
-		to_chat(xeno_candidate.mob, span_warning("Something went awry with mom. Can't spawn at the moment."))
+		to_chat(xeno_candidate.mob, span_warning("母体出了问题。目前无法生成。"))
 		return FALSE
 
 	if(!larva_already_reserved)
 		var/datum/job/xeno_job = SSjob.GetJobType(/datum/job/xenomorph)
 		var/stored_larva = xeno_job.total_positions - xeno_job.current_positions
 		if(!stored_larva)
-			to_chat(xeno_candidate.mob, span_warning("There are no longer burrowed larvas available."))
+			to_chat(xeno_candidate.mob, span_warning("不再有可用的潜伏幼虫。"))
 			return FALSE
 
 	var/list/possible_mothers = list()
 	SEND_SIGNAL(src, COMSIG_HIVE_XENO_MOTHER_CHECK, possible_mothers) //List variable passed by reference, and hopefully populated.
 
 	if(!(mother in possible_mothers))
-		to_chat(xeno_candidate.mob, span_warning("This mother is not in a state to receive us."))
+		to_chat(xeno_candidate.mob, span_warning("这位母体无法接收我们。"))
 		return FALSE
 	return do_spawn_larva(xeno_candidate, get_turf(mother), larva_already_reserved)
 
 /datum/hive_status/proc/do_spawn_larva(client/xeno_candidate, turf/spawn_point, larva_already_reserved = FALSE)
 	if(is_banned_from(xeno_candidate.ckey, ROLE_XENOMORPH))
-		to_chat(xeno_candidate.mob, span_warning("You are jobbaned from the [ROLE_XENOMORPH] role."))
+		to_chat(xeno_candidate.mob, span_warning("你被禁止担任[ROLE_XENOMORPH]角色。"))
 		return FALSE
 	if(isxenolarva(xeno_candidate.mob)) // avoid spawning larvas from the void via input spam
 		return FALSE
 	var/mob/living/carbon/xenomorph/larva/new_xeno = new /mob/living/carbon/xenomorph/larva(spawn_point)
-	new_xeno.visible_message(span_xenodanger("A larva suddenly burrows out of the ground!"),
-	span_xenodanger("We burrow out of the ground and awaken from our slumber. For the Hive!"))
+	new_xeno.visible_message(span_xenodanger("一只幼虫突然从地下钻出!"),
+	span_xenodanger("我们从地下钻出,从沉睡中醒来。为了蜂巢!"))
 
 	log_game("[key_name(xeno_candidate)] has joined as [new_xeno] at [AREACOORD(new_xeno.loc)].")
 	var/datum/job/xeno_job = SSjob.GetJobType(/datum/job/xenomorph)
@@ -1194,7 +1194,7 @@ to_chat will check for valid clients itself already so no need to double check f
 
 	xeno_candidate.mob.mind.transfer_to(new_xeno, TRUE)
 	new_xeno.playsound_local(new_xeno, 'sound/effects/alien/newlarva.ogg')
-	to_chat(new_xeno, span_xenoannounce("We are a xenomorph larva awakened from slumber!"))
+	to_chat(new_xeno, span_xenoannounce("我们是一只从沉睡中醒来的异形幼虫!"))
 	if(!larva_already_reserved)
 		xeno_job.occupy_job_positions(1)
 	return new_xeno
@@ -1274,7 +1274,7 @@ to_chat will check for valid clients itself already so no need to double check f
 	RegisterSignal(waiter, COMSIG_QDELETING, PROC_REF(cleanup_waiter))
 	var/new_position = LAZYLEN(candidates)
 	SEND_SIGNAL(waiter, COMSIG_CLIENT_SET_LARVA_QUEUE_POSITION, new_position)
-	to_chat(waiter, span_warning("There are either no burrowed larva, you are on your xeno respawn timer, or there are no silos. You are in position [new_position] to become a Xenomorph."))
+	to_chat(waiter, span_warning("要么没有潜伏幼虫,要么你处于异形重生计时中,要么没有卵仓。你处于[new_position]位置,可以成为异形。"))
 	give_larva_to_next_in_queue() //Updates the queue for xeno respawn timer
 	return TRUE
 
@@ -1286,7 +1286,7 @@ to_chat will check for valid clients itself already so no need to double check f
 	LAZYREMOVE(candidates, waiter)
 	UnregisterSignal(waiter, COMSIG_QDELETING)
 	SEND_SIGNAL(waiter, COMSIG_CLIENT_SET_LARVA_QUEUE_POSITION, 0)
-	to_chat(waiter, span_warning("You left the Larva queue."))
+	to_chat(waiter, span_warning("你离开了幼虫队列。"))
 	var/client/client_in_queue
 	for(var/i in 1 to LAZYLEN(candidates))
 		client_in_queue = LAZYACCESS(candidates, i)
@@ -1346,7 +1346,7 @@ to_chat will check for valid clients itself already so no need to double check f
 /datum/hive_status/proc/try_to_give_larva(client/next_in_line)
 	SEND_SIGNAL(next_in_line, COMSIG_CLIENT_SET_LARVA_QUEUE_POSITION, 0)
 	if(!attempt_to_spawn_larva(next_in_line, TRUE))
-		to_chat(next_in_line, span_warning("You failed to qualify to become a larva, you must join the queue again."))
+		to_chat(next_in_line, span_warning("你未能获得成为幼虫的资格,你必须重新加入队列。"))
 		return FALSE
 	return TRUE
 

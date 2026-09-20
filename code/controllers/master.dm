@@ -191,7 +191,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 		current_runlevel = Master.current_runlevel
 		StartProcessing(10)
 	else
-		to_chat(world, span_boldannounce("The Master Controller is having some issues, we will need to re-initialize EVERYTHING"))
+		to_chat(world, span_boldannounce("主控制器出现了一些问题, 我们需要重新初始化所有内容"))
 		Initialize(20, TRUE)
 
 
@@ -212,7 +212,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 	init_stage_completed = 0
 	var/mc_started = FALSE
 
-	to_chat(world, span_boldnotice("Initializing subsystems..."))
+	to_chat(world, span_boldnotice("正在初始化子系统..."))
 
 
 

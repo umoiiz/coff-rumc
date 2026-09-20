@@ -59,7 +59,7 @@
 			SSblackbox.record_feedback(FEEDBACK_TALLY, "event_admin_cancelled", 1, typepath)
 			return EVENT_CANCELLED
 		if(!triggering)
-			to_chat(usr, span_admin("You are too late to cancel that event"))
+			to_chat(usr, span_admin("您取消该事件已经太迟了"))
 			return
 		var/gamemode = SSticker.mode.config_tag
 		var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE)

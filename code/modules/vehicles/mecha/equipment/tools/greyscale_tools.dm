@@ -1,6 +1,6 @@
 /obj/item/mecha_parts/mecha_equipment/armor/melee
-	name = "melee armor booster"
-	desc = "Increases armor against melee attacks by 15%."
+	name = "近战装甲强化器"
+	desc = "将对抗近战攻击的装甲提高15%."
 	icon_state = "armor_melee"
 	iconstate_name = "armor_melee"
 	protect_name = "Melee Armor"
@@ -9,8 +9,8 @@
 	armor_mod = list(MELEE = 15)
 
 /obj/item/mecha_parts/mecha_equipment/armor/acid
-	name = "caustic armor booster"
-	desc = "Increases armor against acid attacks by 15%."
+	name = "腐蚀装甲强化器"
+	desc = "将对抗酸液攻击的装甲提高15%."
 	icon_state = "armor_acid"
 	iconstate_name = "armor_acid"
 	protect_name = "Caustic Armor"
@@ -19,8 +19,8 @@
 	armor_mod = list(ACID = 15)
 
 /obj/item/mecha_parts/mecha_equipment/armor/explosive
-	name = "explosive armor booster"
-	desc = "Increases armor against explosions by 50%."
+	name = "爆炸装甲强化器"
+	desc = "将对抗爆炸的装甲提高50%."
 	icon_state = "armor_explosive"
 	iconstate_name = "armor_explosive"
 	protect_name = "Explosive Armor"
@@ -30,8 +30,8 @@
 
 
 /obj/item/mecha_parts/mecha_equipment/generator/greyscale
-	name = "phoron engine"
-	desc = "An advanced Nanotrasen phoron engine core prototype designed for TGMC advanced mech exosuits. Uses solid phoron as fuel, click engine to refuel. The lightest engine mechs can use at a cost of recharge rate and max fuel capacity."
+	name = "phoron引擎"
+	desc = "一种为TGMC高级机甲外骨骼设计的先进Nanotrasen phoron引擎核心原型.使用固体phoron作为燃料,点击引擎进行加注.最轻的引擎,机甲可以使用,代价是充能速率和最大燃料容量."
 	icon_state = "phoron_engine"
 	can_equip = TRUE
 	rechargerate = 5
@@ -39,16 +39,16 @@
 	max_fuel = 30000
 
 /obj/item/mecha_parts/mecha_equipment/generator/greyscale/upgraded
-	name = "fusion engine"
-	desc = "A highly experimental phoron fusion core. Generates more power at the same consumption rate, but slows you down even more than the standard phoron engine. Uses solid phoron as fuel, click engine to refuel. The heaviest engine mechs can use at a cost of speed due to weight."
+	name = "聚变引擎"
+	desc = "一种高度实验性的phoron聚变核心.在相同消耗速率下产生更多动力,但比标准phoron引擎更拖慢你的速度.使用固体phoron作为燃料,点击引擎进行加注.最重的引擎,机甲可以使用,代价是因重量而降低速度."
 	icon_state = "phoron_engine_adv"
 	rechargerate = 10
 	slowdown = 0.6
 	max_fuel = 60000
 
 /obj/item/mecha_parts/mecha_equipment/energy_optimizer
-	name = "energy optimizer"
-	desc = "A Nanotrasen-brand computer that uses predictive algorithms to reduce the power consumption of all steps by 50%."
+	name = "能量优化器"
+	desc = "一种Nanotrasen品牌的计算机,使用预测算法将所有移动步骤的能耗降低50%."
 	icon_state = "optimizer"
 	can_equip = TRUE
 	equipment_slot = MECHA_POWER
@@ -67,8 +67,8 @@
 	return ..()
 
 /obj/item/mecha_parts/mecha_equipment/melee_core
-	name = "melee core"
-	desc = "A bluespace orion-sperkov converter. Through science you can't be bothered to understand, makes mechs faster and their weapons able to draw more power, making them more dangerous. However this comes at the cost of not being able to use projectile and laser weaponry."
+	name = "近战核心"
+	desc = "一种蓝空间orion-sperkov转换器.通过你懒得去理解的科学原理,使机甲更快,其武器能汲取更多动力,使其更加危险.然而代价是无法使用弹射物和激光武器."
 	icon_state = "melee_core"
 	can_equip = TRUE
 	equipment_slot = MECHA_UTILITY
@@ -88,8 +88,8 @@
 
 
 /obj/item/mecha_parts/mecha_equipment/ability
-	name = "generic mech ability"
-	desc = "You shouldnt be seeing this"
+	name = "通用机甲能力"
+	desc = "你不应该看到这个"
 	equipment_slot = MECHA_UTILITY
 	///if given, a single flag of who we want this ability to be granted to
 	var/flag_controller = NONE
@@ -120,8 +120,8 @@
 	return ..()
 
 /obj/item/mecha_parts/mecha_equipment/ability/dash
-	name = "actuator safety override"
-	desc = "A haphazard collection of electronics that allows the user to override standard safety inputs to increase speed, at the cost of extremely high power usage."
+	name = "执行器安全超控"
+	desc = "一堆杂乱的电子元件,允许使用者覆盖标准安全输入以提高速度,代价是极高的功耗."
 	icon_state = "booster"
 	can_equip = TRUE
 	ability_to_grant = /datum/action/vehicle/sealed/mecha/mech_overload_mode
@@ -133,14 +133,14 @@
 	sound_loop = new
 
 /obj/item/mecha_parts/mecha_equipment/ability/zoom
-	name = "enhanced zoom"
-	desc = "A magnifying module that allows the pilot to see much further than with the standard optics. Night vision not included."
+	name = "增强变焦"
+	desc = "一个放大模块,允许驾驶员比使用标准光学设备看得更远.不包含夜视功能."
 	icon_state = "zoom"
 	can_equip = TRUE
 	ability_to_grant = /datum/action/vehicle/sealed/mecha/mech_zoom
 
 /obj/item/mecha_parts/mecha_equipment/ability/smoke
-	name = "generic smoke module"
+	name = "通用烟雾模块"
 	ability_to_grant = /datum/action/vehicle/sealed/mecha/mech_smoke
 	///smoke type to spawn when this ability is activated
 	var/smoke_type
@@ -165,16 +165,16 @@
 	return ..()
 
 /obj/item/mecha_parts/mecha_equipment/ability/smoke/tanglefoot
-	name = "tanglefoot generator"
-	desc = "A tanglefoot smoke generator capable of dispensing large amounts of non-lethal gas that saps the energy from any xenoform creatures it touches."
+	name = "缠绕烟雾发生器"
+	desc = "一个缠绕烟雾发生器,能够释放大量非致命气体,吸取任何接触到的异形生物的能量."
 	icon_state = "tfoot_gas"
 	can_equip = TRUE
 	ability_to_grant = /datum/action/vehicle/sealed/mecha/mech_smoke
 	smoke_type = /datum/effect_system/smoke_spread/plasmaloss
 
 /obj/item/mecha_parts/mecha_equipment/ability/smoke/cloak_smoke
-	name = "smoke generator"
-	desc = "A multiple launch module that generates a large amount of cloaking smoke to disguise nearby friendlies. Sadly, huge robots are too difficult to hide with it."
+	name = "烟雾发生器"
+	desc = "一个多联发射模块,能够产生大量遮蔽烟雾来伪装附近的友军.遗憾的是,巨大的机器人太难用它隐藏了."
 	icon_state = "smoke_gas"
 	can_equip = TRUE
 	ability_to_grant = /datum/action/vehicle/sealed/mecha/mech_smoke

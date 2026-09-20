@@ -6,9 +6,9 @@
 
 
 /datum/emergency_call/xenomorphs_alpha/print_backstory(mob/living/carbon/xenomorph/X)
-	to_chat(X, "<B>We are a Xenomorph from the Alpha hive.</b>")
-	to_chat(X, "<B>We've been cruising in space for years until a new Queen reached out to us and took over the control of our shuttle.</b>") // Admin-only ERT, so queens only.
-	to_chat(X, "<B>Expand our hive and destroy any who dare to oppose our influence especially other hives. For the Alpha Hive!</b>")
+	to_chat(X, "<B>我们是来自阿尔法巢穴的异形.</b>")
+	to_chat(X, "<B>我们在太空中游荡了多年,直到一位新女王联系上我们并接管了我们穿梭机的控制权.</b>") // Admin-only ERT, so queens only.
+	to_chat(X, "<B>扩张我们的巢穴,摧毁任何胆敢对抗我们势力的人,尤其是其他巢穴. 为了阿尔法巢穴!</b>")
 
 
 /datum/emergency_call/xenomorphs_alpha/spawn_items()

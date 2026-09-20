@@ -44,7 +44,7 @@
 		. += "[p_they(TRUE)] [p_are()] [tag_string]."
 	if(user.can_use_codex() && SScodex.get_codex_entry(get_codex_value()))
 		. += EXAMINE_SECTION_BREAK
-		. += span_notice("The codex has <a href='?_src_=codex;show_examined_info=[REF(src)];show_to=[REF(user)]'>relevant information</a> available.")
+		. += span_notice("图鉴中有<a href='?_src_=codex;show_examined_info=[REF(src)];show_to=[REF(user)]'>相关信息</a>可供查阅.")
 
 	if((get_dist(user,src) <= 2) && reagents)
 		. += EXAMINE_SECTION_BREAK
@@ -54,14 +54,14 @@
 				var/total_volume = 0
 				for(var/datum/reagent/R in reagents.reagent_list)
 					total_volume += R.volume
-				. +=  span_notice("[total_volume] units of various reagents.")
+				. +=  span_notice("[total_volume]单位的各种试剂.")
 			else
 				. += "Nothing."
 		else if(CHECK_BITFIELD(reagents.reagent_flags, AMOUNT_VISIBLE))
 			if(reagents.total_volume)
-				. += span_notice("It has [reagents.total_volume] unit\s left.")
+				. += span_notice("还剩[reagents.total_volume]单位\s .")
 			else
-				. += span_warning("It's empty.")
+				. += span_warning("它是空的.")
 		else if(CHECK_BITFIELD(reagents.reagent_flags, AMOUNT_SKILLCHECK))
 			if(isxeno(user))
 				return
@@ -77,15 +77,15 @@
 		else if(reagents.reagent_flags & AMOUNT_ESTIMEE)
 			var/obj/item/reagent_containers/C = src
 			if(!reagents.total_volume)
-				. += span_notice("\The [src] is empty!")
+				. += span_notice("\The [src]是空的!")
 			else if (reagents.total_volume<= C.volume*0.3)
-				. += span_notice("\The [src] is almost empty!")
+				. += span_notice("\The [src]几乎是空的!")
 			else if (reagents.total_volume<= C.volume*0.6)
-				. += span_notice("\The [src] is half full!")
+				. += span_notice("\The [src]是半满的!")
 			else if (reagents.total_volume<= C.volume*0.9)
-				. += span_notice("\The [src] is almost full!")
+				. += span_notice("\The [src]几乎是满的!")
 			else
-				. += span_notice("\The [src] is full!")
+				. += span_notice("\The [src]是满的!")
 
 	SEND_SIGNAL(src, COMSIG_ATOM_EXAMINE, user, .)
 

@@ -11,14 +11,14 @@ export const DroppodControl = (props) => {
   return (
     <Window width={450} height={250}>
       <Window.Content scrollable>
-        <Section title="Launch Control">
+        <Section title="发射控制">
           <Button
-            content="Relink current pods"
+            content="重新连接当前舱体"
             color="blue"
             onClick={() => act('relink')}
           />
           <Button
-            content="LAUNCH ALL PODS"
+            content="发射所有舱体"
             color="red"
             onClick={() => act('launchall')}
           />

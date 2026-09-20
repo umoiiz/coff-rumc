@@ -1,6 +1,6 @@
 /obj/item/stack/sandbags_empty
-	name = "empty sandbags"
-	desc = "Some empty sandbags, best to fill them up with an entrenching tool if you want to use them."
+	name = "空沙袋"
+	desc = "一些空沙袋,如果你想使用它们,最好用挖壕工具把它们装满。"
 	singular_name = "sandbag"
 	icon_state = "sandbag_stack"
 	worn_icon_state = "sandbag_stack"
@@ -59,8 +59,8 @@
 
 //Full sandbags
 /obj/item/stack/sandbags
-	name = "sandbags"
-	desc = "Some bags filled with sand. For now, just cumbersome, but soon to be used for fortifications."
+	name = "沙袋"
+	desc = "一些装满沙子的袋子。目前只是累赘,但很快会用于防御工事。"
 	singular_name = "sandbag"
 	icon_state = "sandbag_pile"
 	worn_icon_state = "sandbag_pile"
@@ -79,7 +79,7 @@
 
 /obj/item/stack/sandbags/examine(mob/user)
 	. = ..()
-	. += span_notice("Right click while selected to empty [src].")
+	. += span_notice("选中时右键点击以清空[src]。")
 
 /obj/item/stack/sandbags/large_stack
 	amount = 25
@@ -94,19 +94,19 @@
 	if(get_amount() < 1)
 		return
 	if(LAZYLEN(user.do_actions))
-		user.balloon_alert(user, "You are already busy.")
+		user.balloon_alert(user, "你已经忙着了。")
 		return
 
-	user.balloon_alert(user, "You start emptying [src].")
+	user.balloon_alert(user, "你开始清空[src]。")
 	while(get_amount() > 0)
 		if(!do_after(user, 0.5 SECONDS, IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE, user))
-			user.balloon_alert(user, "You stop emptying [src].")
+			user.balloon_alert(user, "你停止清空[src]。")
 			break
 		// check if we can stuff it into the user's hands
 		if(!use(1))
 			break
 		if(amount < 1)
-			user.balloon_alert(user, "You finish emptying [src].")
+			user.balloon_alert(user, "你完成了清空[src]。")
 		var/obj/item/stack/sandbag = user.get_inactive_held_item()
 		if(istype(sandbag, /obj/item/stack/sandbags_empty) && sandbag.add(1))
 			continue

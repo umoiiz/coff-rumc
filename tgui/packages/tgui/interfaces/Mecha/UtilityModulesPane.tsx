@@ -95,7 +95,7 @@ const SnowflakeEjector = (props: { module: MechaUtility }) => {
   const { cargo } = props.module.snowflake;
   return (
     <>
-      {cargo && cargo.length > 0 && <Box>Cargo</Box>}
+      {cargo && cargo.length > 0 && <Box>货物</Box>}
       <Box style={{ marginLeft: '1rem' }}>
         {cargo.map((item) => (
           <div
@@ -133,7 +133,7 @@ const SnowflakeExtinguisher = (props: { module: MechaUtility }) => {
         {props.module.snowflake.reagents}
       </ProgressBar>
       <Button
-        tooltip={'ACTIVATE'}
+        tooltip={'激活'}
         color={'red'}
         disabled={
           props.module.snowflake.reagents < props.module.snowflake.minimum_requ
@@ -149,7 +149,7 @@ const SnowflakeExtinguisher = (props: { module: MechaUtility }) => {
         }
       />
       <Button
-        tooltip={'REFILL'}
+        tooltip={'补充'}
         icon={'fill'}
         onClick={() =>
           act('equip_act', {
@@ -159,7 +159,7 @@ const SnowflakeExtinguisher = (props: { module: MechaUtility }) => {
         }
       />
       <Button
-        tooltip={'REPAIR'}
+        tooltip={'修理'}
         icon={'wrench'}
         onClick={() =>
           act('equip_act', {
@@ -169,7 +169,7 @@ const SnowflakeExtinguisher = (props: { module: MechaUtility }) => {
         }
       />
       <Button
-        tooltip={'DETACH'}
+        tooltip={'分离'}
         icon={'arrow-down'}
         onClick={() =>
           act('equip_act', {

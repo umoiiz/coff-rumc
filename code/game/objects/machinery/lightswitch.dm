@@ -3,7 +3,7 @@
 // can also operate on non-loc area through "otherarea" var
 /obj/machinery/light_switch
 	name = "light switch"
-	desc = "It turns lights on and off. What are you, simple?"
+	desc = "它用来开关灯。你是有多蠢?"
 	icon = 'icons/obj/power.dmi'
 	icon_state = "light1"
 	anchored = TRUE

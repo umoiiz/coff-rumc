@@ -1,6 +1,6 @@
 /obj/vehicle/sealed/armored/multitile
 	name = "\improper MT - Banteng"
-	desc = "A gigantic wall of metal designed for maximum Xeno destruction. Drag yourself onto it at an entrance to get inside."
+	desc = "为最大化消灭异形而设计的巨型金属壁垒。在入口处拖拽自己上去以进入内部。"
 	icon = 'icons/obj/armored/3x3/tank.dmi'
 	turret_icon = 'icons/obj/armored/3x3/tank_gun.dmi'
 	damage_icon_path = 'icons/obj/armored/3x3/tank_damage.dmi'
@@ -182,34 +182,34 @@
 
 	var/obj/item/stack/sheet/plasteel/plasteel_stack = I
 	if(plasteel_stack.get_amount() < 50)
-		balloon_alert(user, "You need at least 50 plasteel sheets to repair this vehicle!")
+		balloon_alert(user, "你需要至少50块塑钢来修理这辆载具!")
 		return FALSE
 	if(user.skills.getRating(SKILL_ENGINEER) < SKILL_ENGINEER_PLASTEEL)
-		user.visible_message(span_notice("[user] fumbles around figuring out how to use plasteel for [src]."),
-		span_notice("You fumble around figuring out how to use plasteel for [src]."))
+		user.visible_message(span_notice("[user]摸索着如何将塑钢用于[src]。"),
+		span_notice("你摸索着如何将塑钢用于[src]。"))
 		var/fumbling_time = 30 SECONDS - 2 SECONDS * user.skills.getRating(SKILL_ENGINEER)
 		if(!do_after(user, fumbling_time, NONE, src, BUSY_ICON_UNSKILLED))
 			return FALSE
-	balloon_alert_to_viewers("Applying plasteel reinforcement...")
+	balloon_alert_to_viewers("正在施加塑钢加固...")
 	playsound(loc, 'sound/items/screwdriver.ogg', 25, TRUE)
 	if(!do_after(user, 30 SECONDS - 2 SECONDS * user.skills.getRating(SKILL_ENGINEER), NONE, src, BUSY_ICON_BUILD))
 		return FALSE
 	if(!plasteel_stack.use(50))
 		return FALSE
 	unwreck_vehicle()
-	user.visible_message(span_notice("[user] successfully reinforces and repairs [src] with plasteel!"),
-	span_notice("You successfully reinforce and repair [src] with plasteel!"))
+	user.visible_message(span_notice("[user]成功用塑钢加固并修理了[src]!"),
+	span_notice("你成功用塑钢加固并修理了[src]!"))
 	return TRUE
 
 /obj/vehicle/sealed/armored/multitile/examine(mob/user)
 	. = ..()
 	if(armored_flags & ARMORED_IS_WRECK)
-		. += span_warning("This vehicle is heavily damaged and needs repair.")
-		. += span_info("You can repair it using <b>50 plasteel sheets</b>.")
+		. += span_warning("这辆载具严重受损,需要修理。")
+		. += span_info("你可以使用<b>50块塑钢</b>来修理它。")
 
 //THe HvX tank is not balanced at all for HvH
 /obj/vehicle/sealed/armored/multitile/campaign
-	desc = "A gigantic wall of metal designed for maximum SOM destruction. Drag yourself onto it at an entrance to get inside."
+	desc = "为最大化消灭SOM而设计的巨型金属壁垒。在入口处拖拽自己上去以进入内部。"
 	required_entry_skill = SKILL_LARGE_VEHICLE_DEFAULT
 	max_integrity = 1400
 	soft_armor = list(MELEE = 90, BULLET = 95 , LASER = 95, ENERGY = 95, BOMB = 85, BIO = 100, FIRE = 100, ACID = 75)

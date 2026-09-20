@@ -40,7 +40,7 @@ ADMIN_VERB(map_template_upload, R_FUN, "Map template - Upload", "Upload and plac
 		return
 
 	if(copytext("[map]", -4) != ".dmm")//4 == length(".dmm")
-		to_chat(user, span_warning("Filename must end in '.dmm': [map]"))
+		to_chat(user, span_warning("文件名必须以 '.dmm' 结尾: [map]"))
 		return
 
 	var/datum/map_template/M
@@ -52,7 +52,7 @@ ADMIN_VERB(map_template_upload, R_FUN, "Map template - Upload", "Upload and plac
 		else
 			return
 	if(!M.cached_map)
-		to_chat(user, span_warning("Map template '[map]' failed to parse properly."))
+		to_chat(user, span_warning("地图模板 '[map]' 解析失败."))
 		return
 
 	var/datum/map_report/report = M.cached_map.check_for_errors()
@@ -60,13 +60,13 @@ ADMIN_VERB(map_template_upload, R_FUN, "Map template - Upload", "Upload and plac
 	if(report)
 		report.show_to(user.mob)
 		report_link = " - <a href='byond://?src=[REF(report)];[HrefToken(TRUE)];show=1'>validation report</a>"
-		to_chat(user, span_warning("Map template '[map]' <a href='byond://?src=[REF(report)];[HrefToken()];show=1'>failed validation</a>."))
+		to_chat(user, span_warning("地图模板 '[map]' <a href='byond://?src=[REF(report)];[HrefToken()];show=1'>验证失败</a>."))
 		if(report.loadable)
 			var/response = alert(user, "The map failed validation, would you like to load it anyways?", "Map Errors", "Cancel", "Upload Anyways")
 			if(response != "Upload Anyways")
 				return
 		else
-			to_chat(user, span_warning("The map failed validation and cannot be loaded."))
+			to_chat(user, span_warning("地图验证失败,无法加载."))
 			return
 
 	SSmapping.map_templates[M.name] = M

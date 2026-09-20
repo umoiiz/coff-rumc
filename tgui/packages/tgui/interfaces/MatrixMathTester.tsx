@@ -114,7 +114,7 @@ export const MatrixMathTester = (props) => {
                   fluid
                   onClick={() => act('scale', { x: scaleX, y: scaleY })}
                 >
-                  Scale
+                  缩放
                 </Button>
               </Table.Cell>
               <Table.Cell>
@@ -149,7 +149,7 @@ export const MatrixMathTester = (props) => {
                     act('translate', { x: translateX, y: translateY })
                   }
                 >
-                  Translate
+                  平移
                 </Button>
               </Table.Cell>
               <Table.Cell>
@@ -182,7 +182,7 @@ export const MatrixMathTester = (props) => {
                   fluid
                   onClick={() => act('shear', { x: shearX, y: shearY })}
                 >
-                  Shear
+                  剪切
                 </Button>
               </Table.Cell>
               <Table.Cell>
@@ -215,7 +215,7 @@ export const MatrixMathTester = (props) => {
                   fluid
                   onClick={() => act('turn', { angle: angle })}
                 >
-                  Rotate
+                  旋转
                 </Button>
               </Table.Cell>
               <Table.Cell>
@@ -234,7 +234,7 @@ export const MatrixMathTester = (props) => {
                   icon="dog"
                   color="bad"
                   selected={pixelated}
-                  tooltip="Pixel Enhanced Transforming"
+                  tooltip="像素增强变形"
                   tooltipPosition="bottom"
                   fluid
                   onClick={() => act('toggle_pixel')}

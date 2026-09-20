@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/jerrycan
-	name = "\improper jerry can"
-	desc = "A can filled with fuel to light things on fire. It has Absolut Jerry stamped in the side."
+	name = "\improper 汽油桶"
+	desc = "一个装满燃料的桶,用来点火。侧面印有 Absolut Jerry。"
 	icon = 'icons/obj/items/tank.dmi'
 	icon_state = "canister"
 	w_class = WEIGHT_CLASS_BULKY
@@ -14,7 +14,7 @@
 	if(!reagents)
 		return
 	if(get_dist(user,src) > 2)
-		. += span_warning("You're too far away to see [src]'s reagent amount!")
+		. += span_warning("你离得太远,看不到[src]的试剂含量!")
 		return
 	. += "There is [reagents.reagent_list ? reagents.total_volume : 0] units of fuel remaining."
 
@@ -23,23 +23,23 @@
 	if(A.density)
 		return
 	if(!reagents.total_volume)
-		to_chat(user, span_warning("Theres no fuel left in [src]!"))
+		to_chat(user, span_warning("[src]里没有燃料了!"))
 		return
 	new /obj/effect/decal/cleanable/liquid_fuel(A, fuel_usage * 0.5)
 	reagents.remove_reagent(/datum/reagent/fuel, fuel_usage)
-	user.visible_message(span_notice("[user] splashes some fuel on \the [A]"), span_notice("You splash some fuel on [A]"))
+	user.visible_message(span_notice("[user]把一些燃料泼到了\the [A]上"), span_notice("你把一些燃料泼到了[A]上"))
 	log_attack("[key_name(user)] has splashed fuel on  [A] in [AREACOORD(user)]")
 	A.add_fingerprint(user, "attack_turf", "doused with fuel from [src]")
 
 /obj/item/reagent_containers/jerrycan/attack(mob/living/M, mob/living/user)
 	. = ..()
 	if(!reagents.total_volume)
-		to_chat(user, span_warning("Theres no fuel left in [src]!"))
+		to_chat(user, span_warning("[src]里没有燃料了!"))
 		return
 	M.adjust_fire_stacks(10)
 	reagents.remove_reagent(/datum/reagent/fuel, fuel_usage)
-	user.visible_message(span_notice("[user] splashes some fuel on [M]"), span_notice("You splash some fuel on [M]"), ignored_mob = M)
-	to_chat(M, span_warning("[user] drenches you in fuel from [src]!"))
+	user.visible_message(span_notice("[user]把一些燃料泼到了[M]上"), span_notice("你把一些燃料泼到了[M]上"), ignored_mob = M)
+	to_chat(M, span_warning("[user]用[src]里的燃料把你浇透了!"))
 	log_attack("[key_name(user)] has doused [M] in fuel in [AREACOORD(user)]")
 
 /obj/item/reagent_containers/jerrycan/afterattack(obj/O as obj, mob/user as mob, proximity)
@@ -49,13 +49,13 @@
 		return ..()
 	var/obj/structure/reagent_dispensers/fueltank/FT = O
 	if(FT.reagents.total_volume == 0)
-		to_chat(user, span_warning("Out of fuel!"))
+		to_chat(user, span_warning("燃料用完了!"))
 		return
 
 	var/fuel_transfer_amount = min(FT.reagents.total_volume, (reagents.total_volume - volume)*-1)
 	FT.reagents.trans_to(src, fuel_transfer_amount)
 	playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
-	to_chat(user, span_notice("You refill [src] with [fuel_transfer_amount] units of fuel."))
+	to_chat(user, span_notice("你用[fuel_transfer_amount]单位的燃料重新装满了[src]。"))
 	return ..()
 
 /obj/item/reagent_containers/jerrycan/attack_obj(obj/target_object, mob/living/user)

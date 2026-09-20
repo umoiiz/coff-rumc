@@ -46,13 +46,13 @@
 	if(!can_use_action())
 		return
 	var/mob/living/carbon/human/human_owner = owner
-	var/text = tgui_input_text(human_owner, "Максимальная длина сообщения [MAX_COMMAND_MESSAGE_LEN]", "Отправить сообщение отряду",  max_length = MAX_COMMAND_MESSAGE_LEN, multiline = TRUE)
+	var/text = tgui_input_text(human_owner, "最大消息长度[MAX_COMMAND_MESSAGE_LEN]", "发送消息至小队",  max_length = MAX_COMMAND_MESSAGE_LEN, multiline = TRUE)
 	if(!text)
 		return
 	text = capitalize(text)
 	var/filter_result = CAN_BYPASS_FILTER(human_owner) ? null : is_ic_filtered(text)
 	if(filter_result)
-		to_chat(human_owner, span_warning("That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[text]\"</span>"))
+		to_chat(human_owner, span_warning("该消息包含了一个在IC聊天中被禁止的词语! 请考虑查阅服务器规则.\n<span replaceRegex='show_filtered_ic_chat'>\"[text]\"</span>"))
 		SSblackbox.record_feedback(FEEDBACK_TALLY, "ic_blocked_words", 1, lowertext(config.ic_filter_regex.match))
 		REPORT_CHAT_FILTER_TO_USER(src, filter_result)
 		log_filter("IC", text, filter_result)
@@ -72,7 +72,7 @@
 	if(human_owner.assigned_squad)
 		alert_receivers = human_owner.assigned_squad.marines_list + GLOB.observer_list
 		sound_alert = 'sound/effects/sos-morse-code.ogg'
-		announcement_title = "Squad [human_owner.assigned_squad.name] Announcement"
+		announcement_title = "小队[human_owner.assigned_squad.name]公告"
 		switch(human_owner.assigned_squad.id)
 			if(ALPHA_SQUAD)
 				override_color = "red"
@@ -87,14 +87,14 @@
 	else
 		alert_receivers = GLOB.alive_human_list_faction[human_owner.faction] + GLOB.ai_list + GLOB.observer_list
 		sound_alert = 'sound/misc/notice2.ogg'
-		announcement_title = "Сообщение от [human_owner.job.title]"
+		announcement_title = "来自[human_owner.job.title]的消息"
 
 	for(var/mob/mob_receiver in alert_receivers)
 		mob_receiver.playsound_local(mob_receiver, sound_alert, 35, channel = CHANNEL_ANNOUNCEMENTS)
 		mob_receiver.play_screen_text(HUD_ANNOUNCEMENT_FORMATTING(announcement_title, text, LEFT_ALIGN_TEXT), new /atom/movable/screen/text/screen_text/picture/potrait/custom_mugshot(null, null, owner), override_color)
 		to_chat(mob_receiver, assemble_alert(
 			title = announcement_title,
-			subtitle = "Отправлено [human_owner.get_paygrade(0) ? human_owner.get_paygrade(0) : human_owner.job.title] [human_owner.real_name]",
+			subtitle = "由[human_owner.get_paygrade(0) ? human_owner.get_paygrade(0) : human_owner.job.title]发送[human_owner.real_name]",
 			message = text,
 			color_override = override_color
 		))

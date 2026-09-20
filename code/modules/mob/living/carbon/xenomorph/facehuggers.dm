@@ -12,8 +12,8 @@
  *For the love of god do not use process() and rng for this kind of shit it makes it unreliable and buggy as fuck
  */
 /obj/item/clothing/mask/facehugger
-	name = "facehugger"
-	desc = "It has some sort of a tube at the end of its tail."
+	name = "抱脸虫"
+	desc = "它的尾巴末端有一种管状物。"
 	icon = 'icons/Xeno/Effects.dmi'
 	icon_state = "facehugger"
 	worn_icon_state = "facehugger"
@@ -123,8 +123,8 @@
 
 	if(!issamexenohive(xeno_attacker) && stat != DEAD)
 		xeno_attacker.do_attack_animation(src, ATTACK_EFFECT_SMASH)
-		xeno_attacker.visible_message(span_xenowarning("[xeno_attacker] crushes [src]!"),
-			span_xenowarning("We crush [src]."))
+		xeno_attacker.visible_message(span_xenowarning("[xeno_attacker]碾碎[src]!"),
+			span_xenowarning("我们碾碎[src]。"))
 		kill_hugger()
 		return
 	else
@@ -147,8 +147,8 @@
 	if(stat == DEAD || (sterile && !combat_hugger))
 		return ..() // Dead or sterile (lamarr) can be picked.
 	else if(stat == CONSCIOUS && user.can_be_facehugged(src, provoked = TRUE)) // If you try to take a healthy one it will try to hug or attack you.
-		user.visible_message(span_warning("[src] skitters up [user]'s arm as [user.p_they()] try to grab it!"), \
-		span_warning("[src] skitters up your arm as you try to grab it!"))
+		user.visible_message(span_warning("[src]爬上[user]的手臂,[user.p_they()]试图抓住它!"), \
+		span_warning("[src]爬上你的手臂,你试图抓住它!"))
 		if(!try_attach(user))
 			go_idle()
 	return FALSE // Else you can't pick.
@@ -157,10 +157,10 @@
 	if(stat != CONSCIOUS)
 		return ..()
 	if(!M.can_be_facehugged(src, provoked = TRUE))
-		to_chat(user, span_warning("The facehugger refuses to attach."))
+		to_chat(user, span_warning("抱脸虫拒绝附着。"))
 		return ..()
-	user.visible_message(span_warning("\ [user] attempts to plant [src] on [M]'s face!"), \
-	span_warning("We attempt to plant [src] on [M]'s face!"))
+	user.visible_message(span_warning("\ [user]试图将[src]放到[M]的脸上!"), \
+	span_warning("我们试图将[src]放到[M]的脸上!"))
 	if(!do_after(user, 1 SECONDS, NONE, M, BUSY_ICON_DANGER))
 		return
 	if(!try_attach(M))
@@ -173,21 +173,21 @@
 	if(ishuman(user))
 		if(stat == DEAD)
 			return
-		user.visible_message(span_warning("[user] crushes [src] in [user.p_their()] hand!"), \
-		span_warning("You crush [src] in your hand!"))
+		user.visible_message(span_warning("[user]在[user.p_their()]手中碾碎[src]!"), \
+		span_warning("你在手中碾碎[src]!"))
 		kill_hugger()
 
 /obj/item/clothing/mask/facehugger/examine(mob/user)
 	. = ..()
 	switch(stat)
 		if(CONSCIOUS)
-			. += span_warning("[src] seems to be active.")
+			. += span_warning("[src]似乎很活跃。")
 		if(UNCONSCIOUS)
-			. += span_warning("[src] seems to be asleep.")
+			. += span_warning("[src]似乎睡着了。")
 		if(DEAD)
-			. += span_danger("[src] is not moving.")
+			. += span_danger("[src]没有动静。")
 	if(initial(sterile))
-		. += span_warning("It looks like the proboscis has been removed.")
+		. += span_warning("看起来喙管已被移除。")
 
 /obj/item/clothing/mask/facehugger/proc/go_idle(hybernate = FALSE, no_activate = FALSE)
 	if(stat == DEAD)
@@ -252,7 +252,7 @@
 
 	if(ishuman(loc)) //Having an angry xeno in your hand is a bad idea.
 		var/mob/living/carbon/human/holder = loc
-		holder.visible_message(span_warning("The facehugger [holder] is carrying leaps at [holder.p_them()]!") , "<span class ='danger'>The facehugger you're carrying leaps at you!</span>")
+		holder.visible_message(span_warning("[holder]携带的抱脸虫扑向[holder.p_them()]!") , "<span class ='danger'>你携带的抱脸虫扑向你!</span>")
 		if(!try_attach(holder))
 			go_idle()
 		return
@@ -270,7 +270,7 @@
 		chosen_target = M
 
 	if(chosen_target)
-		visible_message(span_warning("\The scuttling [src] leaps at [chosen_target]!"), null, null, 4)
+		visible_message(span_warning("\The 爬行的[src]扑向[chosen_target]!"), null, null, 4)
 		leaping = TRUE
 		throw_at(chosen_target, 4, 1)
 		return
@@ -312,7 +312,7 @@
 			return FALSE
 		var/obj/structure/xeno/trap/T = locate() in loc
 		if(T && !T.hugger)
-			visible_message(span_xenowarning("[src] crawls into [T]!"))
+			visible_message(span_xenowarning("[src]爬进[T]!"))
 			forceMove(T)
 			T.hugger = src
 			T.set_trap_type(trap_type)
@@ -343,7 +343,7 @@
 
 /obj/item/clothing/mask/facehugger/on_found(mob/finder)
 	if(isliving(finder) && stat == CONSCIOUS)
-		finder.visible_message(span_danger("\A [src] leaps out of \the [loc]!") )
+		finder.visible_message(span_danger("\A [src]从\the [loc]中跃出!") )
 		forceMove(get_turf(src))
 		reset_life_timer()
 		HasProximity(finder)
@@ -495,7 +495,7 @@
 			catch_chance  -= 25
 
 		if(prob(catch_chance))
-			hugged.visible_message("<span class='notice'>[hugged] snatches [src] out of the air and [pickweight(list("clobbers" = 30, "kills" = 30, "squashes" = 25, "dunks" = 10, "dribbles" = 5))] it!")
+			hugged.visible_message("<span class='notice'>[hugged]从空中夺过[src]并[pickweight(list("clobbers" = 30, "kills" = 30, "squashes" = 25, "dunks" = 10, "dribbles" = 5))]它!")
 			kill_hugger()
 			return TRUE
 
@@ -504,7 +504,7 @@
 		var/mob/living/carbon/human/hugged_human = hugged
 
 		if(!hugged_human.has_limb(HEAD))
-			visible_message(span_warning("[src] looks for a face to hug on [hugged_human], but finds none!"))
+			visible_message(span_warning("[src]在[hugged_human]上寻找可抱的脸,但没找到!"))
 			return FALSE
 
 		if(hugged_human.head)
@@ -513,7 +513,7 @@
 				if(headwear.anti_hug > 0 || HAS_TRAIT(headwear, TRAIT_NODROP))
 					blocked = headwear
 					headwear.anti_hug = max(0, --headwear.anti_hug)
-					hugged_human.visible_message(span_danger("[src] smashes against [hugged_human]'s [headwear.name], damaging it!"))
+					hugged_human.visible_message(span_danger("[src]撞上[hugged_human]的[headwear.name],并造成伤害!"))
 					if(headwear.anti_hug == 0)
 						headwear.on_hugger_damage()
 					return FALSE
@@ -532,17 +532,17 @@
 				if(!blocked)
 					blocked = worn_mask
 				worn_mask.anti_hug = max(0, --worn_mask.anti_hug)
-				hugged.visible_message(span_danger("[src] smashes against [hugged]'s [blocked]!"))
+				hugged.visible_message(span_danger("[src]撞上[hugged]的[blocked]!"))
 				if(worn_mask.anti_hug == 0)
 					worn_mask.on_hugger_damage()
 				return FALSE
 
 			if(!blocked)
-				hugged.visible_message(span_danger("[src] smashes against [hugged]'s [worn_mask.name] and rips it off!"))
+				hugged.visible_message(span_danger("[src]撞上[hugged]的[worn_mask.name]并将其扯下!"))
 				hugged.dropItemToGround(worn_mask)
 
 	if(blocked)
-		hugged.visible_message(span_danger("[src] smashes against [hugged]'s [blocked]!"))
+		hugged.visible_message(span_danger("[src]撞上[hugged]的[blocked]!"))
 		return FALSE
 
 	hugged.equip_to_slot(src, SLOT_WEAR_MASK)
@@ -599,9 +599,9 @@
 
 	if(as_planned)
 		if(sterile || target.status_flags & XENO_HOST)
-			target.visible_message(span_danger("[src] falls limp after violating [target]'s face!"))
+			target.visible_message(span_danger("[src]在侵犯[target]的脸后瘫软掉落!"))
 		else //Huggered but not impregnated, deal damage.
-			target.visible_message(span_danger("[src] frantically claws at [target]'s face before falling down!"),span_danger("[src] frantically claws at your face before falling down! Auugh!"))
+			target.visible_message(span_danger("[src]疯狂抓挠[target]的脸,然后掉落!"),span_danger("[src]疯狂抓挠你的脸,然后掉落!啊!"))
 			target.apply_damage(15, BRUTE, BODY_ZONE_HEAD, updating_health = TRUE)
 	//If hugger sentient, then we drop player's hugger
 	if(isxenofacehugger(source) && as_planned)
@@ -712,7 +712,7 @@
 	update_icon()
 
 /obj/item/clothing/mask/facehugger/dead
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?"
+	desc = "它的尾巴末端有一种管状物。这到底是什么鬼东西?"
 	name = "????"
 	stat = DEAD
 	sterile = TRUE
@@ -722,7 +722,7 @@
 	update_icon()
 
 /obj/item/clothing/mask/facehugger/larval
-	name = "larval hugger"
+	name = "幼体抱脸虫"
 
 ///Parent type for all non-larval huggers: can't be worn, is sterile
 /obj/item/clothing/mask/facehugger/combat
@@ -731,7 +731,7 @@
 	equip_slot_flags = NONE
 
 /obj/item/clothing/mask/facehugger/combat/chem_injector
-	desc = "This strange creature has a single prominent sharp proboscis."
+	desc = "这种奇怪生物有一根突出而尖锐的喙管。"
 	impact_time = 0.1 SECONDS
 	activate_time = 1 SECONDS
 	jump_cooldown = 1 SECONDS
@@ -749,13 +749,13 @@
 	M.apply_damage(1, BRUTE, sharp = TRUE, updating_health = TRUE) //Token brute for the injection
 	M.reagents.add_reagent(injected_chemical_type, amount_injected, no_overdose = TRUE)
 	playsound(M, 'sound/effects/spray3.ogg', 25, 1)
-	M.visible_message(span_danger("[src] penetrates [M] with its sharp probscius!"), span_danger("[src] penetrates you with a sharp probscius before falling down!"))
+	M.visible_message(span_danger("[src]用尖锐的喙管刺入[M]!"), span_danger("[src]用尖锐的喙管刺入你,然后掉落!"))
 	leaping = FALSE
 	go_idle() //We're a bit slow on the recovery
 	return TRUE
 
 /obj/item/clothing/mask/facehugger/combat/chem_injector/neuro
-	name = "neurotoxin hugger"
+	name = "神经毒素抱脸虫"
 	color = COLOR_DARK_ORANGE
 	injected_chemical_type = /datum/reagent/toxin/xeno_neurotoxin
 	trap_type = TRAP_HUGGER_NEURO
@@ -766,14 +766,14 @@
 	M.apply_damage(100, STAMINA, BODY_ZONE_HEAD, BIO) //This should prevent sprinting
 
 /obj/item/clothing/mask/facehugger/combat/chem_injector/ozelomelyn
-	name = "ozelomelyn hugger"
+	name = "ozelomelyn 抱脸虫"
 	injected_chemical_type = /datum/reagent/toxin/xeno_ozelomelyn
 	color = COLOR_MAGENTA
 	trap_type = TRAP_HUGGER_OZELOMELYN
 
 /obj/item/clothing/mask/facehugger/combat/acid
-	name = "acid hugger"
-	desc = "This repulsive looking thing is bloated with throbbing, putrescent green sacks of flesh."
+	name = "酸液抱脸虫"
+	desc = "这个令人厌恶的东西肿胀着,满是搏动、腐烂的绿色肉囊。"
 	color = COLOR_GREEN
 	impact_time = 0.1 SECONDS
 	activate_time = 1 SECONDS
@@ -785,7 +785,7 @@
 	if(!combat_hugger_check_target(M))
 		return FALSE
 
-	visible_message(span_danger("[src] explodes into a smoking splatter of acid!"))
+	visible_message(span_danger("[src]爆裂成一团冒烟的酸液!"))
 	playsound(loc, 'sound/bullets/acid_impact1.ogg', 50, 1)
 
 	for(var/turf/acid_tile AS in RANGE_TURFS(1, loc))
@@ -801,8 +801,8 @@
 	return TRUE
 
 /obj/item/clothing/mask/facehugger/combat/resin
-	name = "resin hugger"
-	desc = "This truly bizzare, bloated creature drips with purple, viscous resin."
+	name = "树脂抱脸虫"
+	desc = "这个真正怪异、肿胀的生物滴落着紫色黏稠树脂。"
 	color = COLOR_STRONG_VIOLET
 	impact_time = 0.5 SECONDS
 	activate_time = 1 SECONDS
@@ -818,7 +818,7 @@
 	do_attack_animation(M)
 
 	if(have_resin)
-		visible_message(span_danger("[src] explodes into a mess of viscous resin!"))
+		visible_message(span_danger("[src]爆裂成一团黏稠树脂!"))
 		playsound(loc, SFX_ALIEN_RESIN_BUILD, 50, 1)
 		for(var/turf/sticky_tile AS in RANGE_TURFS(1, loc))
 			if(isclosedturf(sticky_tile))
@@ -837,7 +837,7 @@
 		var/mob/living/victim = M
 		playsound(victim, 'sound/effects/vegetation_hit.ogg', 25, 1)
 		victim.apply_damage(60, STAMINA, BODY_ZONE_HEAD, BIO, updating_health = TRUE) //This should prevent sprinting
-		victim.visible_message(span_danger("[src] hastily claws at [victim]!"), span_danger("[src] hastily claws at you, making you feel weaker!"))
+		victim.visible_message(span_danger("[src]匆忙抓挠[victim]!"), span_danger("[src]匆忙抓挠你,让你感到更虚弱!"))
 
 	leaping = FALSE
 	go_idle() //We're a bit slow on the recovery
@@ -845,8 +845,8 @@
 	return TRUE
 
 /obj/item/clothing/mask/facehugger/combat/slash
-	name = "clawed hugger"
-	desc = "This nasty little creature is a nightmarish scrabble of muscle and sharp, long claws."
+	name = "利爪抱脸虫"
+	desc = "这个恶心的小生物是一团噩梦般的肌肉和锋利的长爪。"
 	color = COLOR_RED
 	impact_time = 0.1 SECONDS
 	activate_time = 1 SECONDS
@@ -865,7 +865,7 @@
 	if(!affecting) //Still nothing??
 		affecting = BODY_ZONE_CHEST //Gotta have a torso?!
 	victim.apply_damage(CARRIER_SLASH_HUGGER_DAMAGE, BRUTE, affecting, MELEE) //Crap base damage after armour...
-	victim.visible_message(span_danger("[src] frantically claws at [victim]!"),span_danger("[src] frantically claws at you!"))
+	victim.visible_message(span_danger("[src]疯狂地抓挠[victim]!"),span_danger("[src]疯狂地抓挠你!"))
 	leaping = FALSE
 	go_active() //Slashy boys recover *very* fast.
 	return TRUE

@@ -29,7 +29,7 @@
 	X.soft_armor = X.soft_armor.modifyRating(fire = -100)
 	X.hard_armor = X.hard_armor.modifyRating(fire = -100)
 	X.remove_filter("resin_jelly_outline")
-	owner.balloon_alert(owner, "We are vulnerable again")
+	owner.balloon_alert(owner, "我们再次变得脆弱")
 	return ..()
 
 /datum/status_effect/resin_jelly_coating/tick(delta_time)
@@ -85,20 +85,20 @@
 	toggle_link(TRUE)
 	set_lifesteal(expected_lifesteal_percentage)
 	revenge_modifier = expected_revenge_modifier
-	to_chat(link_owner, span_xenonotice("We have established an Essence Link with [link_target]. Stay within [DRONE_ESSENCE_LINK_RANGE] tiles to maintain it."))
-	to_chat(link_target, span_xenonotice("[link_owner] has established an Essence Link with us. Stay within [DRONE_ESSENCE_LINK_RANGE] tiles to maintain it."))
+	to_chat(link_owner, span_xenonotice("我们已与[link_target]建立了精华链接. 保持在[DRONE_ESSENCE_LINK_RANGE]格范围内以维持它."))
+	to_chat(link_target, span_xenonotice("[link_owner]已与我们建立了精华链接. 保持在[DRONE_ESSENCE_LINK_RANGE]格范围内以维持它."))
 	return ..()
 
 /datum/status_effect/stacking/essence_link/add_stacks(stacks_added)
 	. = ..()
 	essence_link_action.update_button_icon()
-	link_owner.balloon_alert(link_owner, "Attunement: [stacks]/[max_stacks]")
+	link_owner.balloon_alert(link_owner, "调谐: [stacks]/[max_stacks]")
 	COOLDOWN_START(src, attunement_increase, essence_link_action.attunement_cooldown)
 	update_beam()
 
 /datum/status_effect/stacking/essence_link/on_remove()
-	to_chat(link_owner, span_xenonotice("The Essence Link between us and [link_target] has been cancelled."))
-	to_chat(link_target, span_xenonotice("The Essence Link between us and [link_owner] has been cancelled."))
+	to_chat(link_owner, span_xenonotice("我们与[link_target]之间的精华链接已取消."))
+	to_chat(link_target, span_xenonotice("我们与[link_owner]之间的精华链接已取消."))
 	toggle_link(FALSE)
 	essence_link_action.end_ability()
 	UnregisterSignal(link_owner, list(COMSIG_MOB_DEATH, COMSIG_XENOMORPH_EVOLVED, COMSIG_XENOMORPH_DEEVOLVED))
@@ -127,8 +127,8 @@
 	if(link_owner.plasma_stored < ability_cost)
 		if(!COOLDOWN_FINISHED(src, plasma_warning))
 			return
-		link_owner.balloon_alert(link_owner, "No plasma for link")
-		link_target.balloon_alert(link_target, "No plasma for link")
+		link_owner.balloon_alert(link_owner, "没有等离子用于链接")
+		link_target.balloon_alert(link_target, "没有等离子用于链接")
 		COOLDOWN_START(src, plasma_warning, plasma_warning_cooldown)
 		return
 	link_target.adjust_fire_loss(-max(0, heal_amount - link_target.get_brute_loss()), passive = TRUE)
@@ -151,10 +151,10 @@
 		buff_owner = link_owner
 		buff_target = link_target
 
-	buff_owner.balloon_alert(buff_owner, "Buff shared")
-	buff_target.balloon_alert(buff_target, "Buff shared")
-	buff_target.visible_message(span_notice("[buff_target]'s chitin begins to gleam with an unseemly glow..."), \
-		span_xenonotice("Through the Essence Link, [buff_owner] has shared their resin jelly with us."))
+	buff_owner.balloon_alert(buff_owner, "增益已共享")
+	buff_target.balloon_alert(buff_target, "增益已共享")
+	buff_target.visible_message(span_notice("[buff_target]的甲壳开始闪烁出不祥的光芒..."), \
+		span_xenonotice("通过精华链接, [buff_owner]与我们分享了他们的树脂凝胶."))
 	INVOKE_ASYNC(buff_target, TYPE_PROC_REF(/mob/living/carbon/xenomorph, emote), "roar")
 	buff_target.apply_status_effect(STATUS_EFFECT_RESIN_JELLY_COATING)
 
@@ -177,7 +177,7 @@
 	heal_target.adjust_fire_loss(-max(0, heal_amount - heal_target.get_brute_loss()), passive = TRUE)
 	heal_target.adjust_brute_loss(-heal_amount, passive = TRUE)
 	heal_target.adjust_sunder(-heal_amount * 0.1)
-	heal_target.balloon_alert(heal_target, "Shared heal: +[heal_amount]")
+	heal_target.balloon_alert(heal_target, "共享治疗: +[heal_amount]")
 
 /// Toggles the link signals on or off.
 /datum/status_effect/stacking/essence_link/proc/toggle_link(toggle)
@@ -256,11 +256,11 @@
 	buff_owner = owner
 	if(!isxeno(buff_owner))
 		return FALSE
-	buff_owner.balloon_alert(buff_owner, "Salve regeneration")
+	buff_owner.balloon_alert(buff_owner, "药膏再生")
 	return TRUE
 
 /datum/status_effect/salve_regen/on_remove()
-	buff_owner.balloon_alert(buff_owner, "Salve regeneration ended")
+	buff_owner.balloon_alert(buff_owner, "药膏再生结束")
 	return ..()
 
 /datum/status_effect/salve_regen/tick(delta_time)
@@ -326,8 +326,8 @@
 	return ..()
 
 /datum/status_effect/drone_enhancement/on_remove()
-	buffed_xeno.balloon_alert(buffed_xeno, "Enhancement inactive")
-	buffing_xeno.balloon_alert(buffing_xeno, "Enhancement inactive")
+	buffed_xeno.balloon_alert(buffed_xeno, "强化未激活")
+	buffing_xeno.balloon_alert(buffing_xeno, "强化未激活")
 	UnregisterSignal(buffed_xeno, COMSIG_MOB_DEATH)
 	UnregisterSignal(buffing_xeno, COMSIG_MOB_DEATH)
 	toggle_buff(FALSE)
@@ -375,7 +375,7 @@
 // ***************************************
 /atom/movable/screen/alert/status_effect/xeno_rejuvenate
 	name = "Rejuvenation"
-	desc = "Your health is being restored."
+	desc = "你的生命值正在恢复."
 	icon_state = "xeno_rejuvenate"
 
 /datum/status_effect/xeno_rejuvenate
@@ -405,13 +405,13 @@
 /datum/status_effect/xeno_rejuvenate/tick(delta_time)
 	var/mob/living/carbon/xenomorph/owner_xeno = owner
 	if(owner_xeno.plasma_stored < GORGER_REJUVENATE_COST)
-		to_chat(owner_xeno, span_notice("Not enough substance to sustain ourselves..."))
+		to_chat(owner_xeno, span_notice("没有足够的物质来维持我们自己..."))
 		owner_xeno.remove_status_effect(STATUS_EFFECT_XENO_REJUVENATE)
 		return
 
 	owner_xeno.plasma_stored -= GORGER_REJUVENATE_COST
 	new /obj/effect/temp_visual/telekinesis(get_turf(owner_xeno))
-	to_chat(owner_xeno, span_notice("We feel our wounds close up."))
+	to_chat(owner_xeno, span_notice("我们感觉伤口愈合了."))
 
 	var/amount = (owner_xeno.maxHealth * GORGER_REJUVENATE_HEAL) * 1.5
 	owner_xeno.heal_xeno_damage(amount, FALSE)
@@ -487,7 +487,7 @@
 	REMOVE_TRAIT(target_mob, TRAIT_PSY_LINKED, TRAIT_STATUS_EFFECT(id))
 	REMOVE_TRAIT(owner, TRAIT_PSY_LINKED, TRAIT_STATUS_EFFECT(id))
 	link_toggle(FALSE)
-	to_chat(target_mob, span_xenonotice("[owner] has unlinked from you."))
+	to_chat(target_mob, span_xenonotice("[owner]已与你解除链接."))
 	SEND_SIGNAL(src, COMSIG_XENO_PSYCHIC_LINK_REMOVED)
 
 ///Handles the link breaking due to dying
@@ -503,7 +503,7 @@
 		return
 	was_within_range = within_range
 	link_toggle(was_within_range)
-	to_chat(owner, was_within_range ? span_xenowarning("[target_mob] is within range again.") : span_xenowarning("[target_mob] is too far away."))
+	to_chat(owner, was_within_range ? span_xenowarning("[target_mob]再次进入范围.") : span_xenowarning("[target_mob]距离太远."))
 
 ///Handles the link toggling on and off
 /datum/status_effect/xeno_psychic_link/proc/link_toggle(toggle_on)
@@ -560,7 +560,7 @@
 // ***************************************
 /atom/movable/screen/alert/status_effect/xeno_carnage
 	name = "Carnage"
-	desc = "Your attacks restore health."
+	desc = "你的攻击恢复生命值."
 	icon_state = "xeno_carnage"
 
 /datum/status_effect/xeno_carnage
@@ -584,7 +584,7 @@
 	healing_on_hit = healing * plasma_mod
 	owner_xeno.add_movespeed_modifier(MOVESPEED_ID_GORGER_CARNAGE, TRUE, 0, NONE, TRUE, movement_speed_max * plasma_mod)
 
-	to_chat(owner, span_notice("We give into our thirst!"))
+	to_chat(owner, span_notice("我们屈服于我们的渴望!"))
 	owner_xeno.emote("roar")
 	RegisterSignal(owner, COMSIG_XENOMORPH_ATTACK_LIVING, PROC_REF(carnage_slash))
 
@@ -597,7 +597,7 @@
 /datum/status_effect/xeno_carnage/on_remove()
 	. = ..()
 	owner.remove_movespeed_modifier(MOVESPEED_ID_GORGER_CARNAGE)
-	to_chat(owner, span_notice("Our bloodlust subsides..."))
+	to_chat(owner, span_notice("我们的嗜血平息了..."))
 	UnregisterSignal(owner, COMSIG_XENOMORPH_ATTACK_LIVING, PROC_REF(carnage_slash))
 	owner.remove_filter(list(id, "[id]m"))
 	REMOVE_TRAIT(owner, TRAIT_HANDS_BLOCKED, src)
@@ -634,7 +634,7 @@
 			var/heal_amount = healing_on_hit
 			target_xeno.heal_xeno_damage(heal_amount, FALSE)
 			new /obj/effect/temp_visual/telekinesis(get_turf(target_xeno))
-			to_chat(target_xeno, span_notice("You feel your wounds being restored by [owner_xeno]'s pheromones."))
+			to_chat(target_xeno, span_notice("你感觉伤口正被[owner_xeno]的信息素恢复."))
 
 	owner_xeno.remove_status_effect(STATUS_EFFECT_XENO_CARNAGE)
 
@@ -648,7 +648,7 @@
 // ***************************************
 /atom/movable/screen/alert/status_effect/xeno_feast
 	name = "Feast"
-	desc = "Your health is being restored at the cost of plasma."
+	desc = "你的生命值正在恢复, 但以等离子为代价."
 	icon_state = "xeno_feast"
 
 /datum/status_effect/xeno_feast
@@ -676,7 +676,7 @@
 	var/mob/living/carbon/xenomorph/xeno_owner = owner
 
 	if(xeno_owner.plasma_stored < plasma_drain)
-		to_chat(xeno_owner, span_notice("Our feast has come to an end..."))
+		to_chat(xeno_owner, span_notice("我们的盛宴结束了..."))
 		xeno_owner.remove_status_effect(STATUS_EFFECT_XENO_FEAST)
 		return
 
@@ -769,7 +769,7 @@
 
 /atom/movable/screen/alert/status_effect/plasma_surge
 	name = "Plasma Surge"
-	desc = "You have accelerated plasma regeneration."
+	desc = "你的等离子再生已加速."
 	icon_state = "drunk" //Close enough
 
 // ***************************************
@@ -812,7 +812,7 @@
 	new /obj/effect/temp_visual/telekinesis(get_turf(owner)) //Wearing off VFX
 	new /obj/effect/temp_visual/healing(get_turf(owner))
 
-	owner.balloon_alert(owner, "Regeneration is no longer accelerated")
+	owner.balloon_alert(owner, "再生不再加速")
 	owner.playsound_local(owner, 'sound/voice/alien/hiss8.ogg', 25)
 
 	return ..()
@@ -866,7 +866,7 @@
 
 /atom/movable/screen/alert/status_effect/healing_infusion
 	name = "Healing Infusion"
-	desc = "You have accelerated natural healing."
+	desc = "你的自然愈合已加速."
 	icon_state = "healing_infusion"
 
 // ***************************************
@@ -886,8 +886,8 @@
 		return FALSE
 	var/mob/living/carbon/xenomorph/X = owner
 	X.soft_armor = X.soft_armor.modifyAllRatings(SENTINEL_DRAIN_SURGE_ARMOR_MOD)
-	X.visible_message(span_danger("[X]'s chitin glows with a vicious green!"), \
-	span_notice("You imbue your chitinous armor with the toxins of your victim!"), null, 5)
+	X.visible_message(span_danger("[X]的甲壳闪烁着恶毒的绿光!"), \
+	span_notice("你将受害者的毒素注入你的甲壳护甲!"), null, 5)
 	X.color = "#7FFF00"
 	particle_holder = new(X, /particles/drain_surge)
 	particle_holder.pixel_x = 11
@@ -897,8 +897,8 @@
 /datum/status_effect/drain_surge/on_remove()
 	var/mob/living/carbon/xenomorph/X = owner
 	X.soft_armor = X.soft_armor.modifyAllRatings(-SENTINEL_DRAIN_SURGE_ARMOR_MOD)
-	X.visible_message(span_danger("[X]'s chitin loses its green glow..."), \
-	span_notice("Your chitinous armor loses its glow."), null, 5)
+	X.visible_message(span_danger("[X]的甲壳失去了绿色光芒..."), \
+	span_notice("你的甲壳护甲失去了光芒."), null, 5)
 	X.color = "#FFFFFF"
 	QDEL_NULL(particle_holder)
 	return ..()
@@ -1002,7 +1002,7 @@
 // ***************************************
 /atom/movable/screen/alert/status_effect/xeno_buff
 	name = "Empowered"
-	desc = "Your damage ands speed boosted for short time period."
+	desc = "你的伤害和速度在短时间内得到提升."
 
 /datum/status_effect/xeno_buff
 	id = "buff"
@@ -1020,7 +1020,7 @@
 
 	. = ..()
 
-	to_chat(A, span_xenonotice("You feel empowered"))
+	to_chat(A, span_xenonotice("你感觉充满力量"))
 
 	var/mob/living/carbon/xenomorph/X = A
 	X.melee_damage += bonus_damage
@@ -1037,7 +1037,7 @@
 
 /datum/status_effect/xeno_buff/proc/end_bonuses()
 	if(owner)
-		to_chat(owner, span_xenonotice("You no longer feel empowered"))
+		to_chat(owner, span_xenonotice("你不再感觉充满力量"))
 		var/mob/living/carbon/xenomorph/X = owner
 		X.melee_damage -= bonus_damage
 
@@ -1088,7 +1088,7 @@
 
 /atom/movable/screen/alert/status_effect/carapace
 	name = "Carapace"
-	desc = "+2.5 soft armor"
+	desc = "+2.5 软护甲"
 	icon_state = "xenobuff_carapace"
 
 /datum/status_effect/carapace
@@ -1101,7 +1101,7 @@
 
 /atom/movable/screen/alert/status_effect/carapace/tier2
 	name = "Carapace II"
-	desc = "+5 soft armor"
+	desc = "+5 软护甲"
 	icon_state = "xenobuff_carapace"
 
 /datum/status_effect/carapace/tier2
@@ -1111,7 +1111,7 @@
 
 /atom/movable/screen/alert/status_effect/carapace/tier3
 	name = "Carapace III"
-	desc = "+10 soft armor"
+	desc = "+10 软护甲"
 	icon_state = "xenobuff_carapace"
 
 /datum/status_effect/carapace/tier3
@@ -1136,7 +1136,7 @@
 
 /atom/movable/screen/alert/status_effect/regeneration
 	name = "Regeneration I"
-	desc = "+ 0.8% health and sunder regen"
+	desc = "+ 0.8% 生命值和破损恢复"
 	icon_state = "xenobuff_regeneration"
 
 /datum/status_effect/regeneration
@@ -1151,7 +1151,7 @@
 
 /atom/movable/screen/alert/status_effect/regeneration/tier2
 	name = "Regeneration II"
-	desc = "+ 1.6% health and sunder regen"
+	desc = "+ 1.6% 生命值和破损恢复"
 	icon_state = "xenobuff_regeneration"
 
 /datum/status_effect/regeneration/tier2
@@ -1180,7 +1180,7 @@
 
 /atom/movable/screen/alert/status_effect/vampirism
 	name = "Vampirism"
-	desc = "1% HP per slash"
+	desc = "每次斩击 1% 生命值"
 	icon_state = "xenobuff_vampirism"
 
 /datum/status_effect/vampirism
@@ -1193,7 +1193,7 @@
 
 /atom/movable/screen/alert/status_effect/vampirism/tier2
 	name = "Leech"
-	desc = "3% HP per slash"
+	desc = "每次斩击 3% 生命值"
 	icon_state = "xenobuff_vampirism"
 
 /datum/status_effect/vampirism/tier2
@@ -1228,7 +1228,7 @@
 
 /atom/movable/screen/alert/status_effect/celerity
 	name = "Celerity"
-	desc = "+10% к скорости"
+	desc = "+10% 移动速度"
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/celerity
@@ -1256,7 +1256,7 @@
 
 /atom/movable/screen/alert/status_effect/ionize
 	name = "Ionize I"
-	desc = "+5% max plasma"
+	desc = "+5% 最大等离子体"
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/ionize
@@ -1271,7 +1271,7 @@
 
 /atom/movable/screen/alert/status_effect/ionize/tier2
 	name = "Ionize II"
-	desc = "+10% max plasma, +10% plasma regen"
+	desc = "+10% 最大等离子体, +10% 等离子体恢复"
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/ionize/tier2
@@ -1302,7 +1302,7 @@
 
 /atom/movable/screen/alert/status_effect/crush
 	name = "Crush"
-	desc = "+5 penetration"
+	desc = "+5 穿透"
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/crush
@@ -1333,7 +1333,7 @@
 // ***************************************
 /atom/movable/screen/alert/status_effect/baton_pass
 	name = "Baton Pass"
-	desc = "Adrenaline is pushing your muscles to the limit!"
+	desc = "肾上腺素正在将你的肌肉推向极限!"
 	icon_state = "xeno_carnage"
 
 /datum/status_effect/baton_pass
@@ -1358,7 +1358,7 @@
 	var/movespeed_mod = ((owner_xeno.xeno_caste.speed <= -1) ? -0.1 : (owner_xeno.xeno_caste.speed <= -0.8) ? -0.2 : -0.4)
 	owner_xeno.add_movespeed_modifier(MOVESPEED_ID_PRAETORIAN_DANCER_BATON_PASS, TRUE, 1, NONE, TRUE, movespeed_mod)
 
-	to_chat(owner, span_notice("We feel on top of the world! Go, go, go!"))
+	to_chat(owner, span_notice("我们感觉站在世界之巅! 冲, 冲, 冲!"))
 	owner_xeno.Shake(duration = 6 SECONDS, shake_interval = 0.08 SECONDS)
 	owner_xeno.emote("roar")
 
@@ -1368,7 +1368,7 @@
 	. = ..()
 	var/mob/living/carbon/xenomorph/owner_xeno = owner
 	owner_xeno.remove_movespeed_modifier(MOVESPEED_ID_PRAETORIAN_DANCER_BATON_PASS)
-	to_chat(owner, span_notice("We come down from our adrenaline high."))
+	to_chat(owner, span_notice("我们的肾上腺素高潮退去了."))
 	QDEL_NULL(particle_holder)
 
 /particles/baton_pass

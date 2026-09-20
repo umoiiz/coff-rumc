@@ -31,18 +31,18 @@
 	if(!istype(light_tile))
 		return
 	if(status != LIGHT_OK)
-		to_chat(user, span_notice("The replacement bulb is broken."))
+		to_chat(user, span_notice("替换灯泡已损坏."))
 		return
 	var/obj/item/stack/tile/light/existing_bulb = light_tile.floor_tile
 	if(existing_bulb.state == LIGHT_TILE_OK)
-		to_chat(user, span_notice("The lightbulb seems fine, no need to replace it."))
+		to_chat(user, span_notice("灯泡看起来没问题,不需要更换."))
 		return
 
 	user.drop_held_item(src)
 	qdel(src)
 	existing_bulb.state = 0
 	light_tile.update_icon()
-	to_chat(user, span_notice("You replace the light bulb."))
+	to_chat(user, span_notice("你更换了灯泡."))
 
 /obj/item/light_bulb/attackby(obj/item/I, mob/user, params)
 	. = ..()
@@ -52,7 +52,7 @@
 	if(istype(I, /obj/item/reagent_containers/syringe))
 		var/obj/item/reagent_containers/syringe/S = I
 
-		to_chat(user, "You inject the solution into the [src].")
+		to_chat(user, "你将溶液注入[src].")
 
 		if(S.reagents.has_reagent(/datum/reagent/toxin/phoron, 5))
 			rigged = TRUE
@@ -84,7 +84,7 @@
 /obj/item/light_bulb/proc/shatter()
 	if(status == LIGHT_EMPTY || status == LIGHT_BROKEN)
 		return
-	visible_message(span_warning("[name] shatters."), span_warning("You hear a small glass object shatter."))
+	visible_message(span_warning("[name]碎裂了."), span_warning("你听到一个小玻璃物体碎裂的声音."))
 	status = LIGHT_BROKEN
 	force = 5
 	sharp = IS_SHARP_ITEM_SIMPLE
@@ -92,8 +92,8 @@
 	update()
 
 /obj/item/light_bulb/tube
-	name = "light tube"
-	desc = "A replacement light tube."
+	name = "灯管"
+	desc = "一根替换灯管."
 	icon_state = "ltube"
 	base_icon_state = "ltube"
 	worn_icon_state = "c_tube"
@@ -101,12 +101,12 @@
 
 /obj/item/light_bulb/tube/large
 	w_class = WEIGHT_CLASS_SMALL
-	name = "large light tube"
+	name = "大型灯管"
 	brightness = 15
 
 /obj/item/light_bulb/bulb
-	name = "light bulb"
-	desc = "A replacement light bulb."
+	name = "灯泡"
+	desc = "一个替换灯泡."
 	icon_state = "lbulb"
 	base_icon_state = "lbulb"
 	brightness = 5

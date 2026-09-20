@@ -14,9 +14,9 @@
 
 /datum/outfit/quick/beginner/smartgunner/sg29
 	name = "Standard Smartmachinegun"
-	desc = "Tactical support fire. \
-	Uses the SG-29, a specialist light machine gun that will shoot through your allies, \
-	equipped with a tactical sensor to detect enemies through smoke, walls, and darkness."
+	desc = "战术支援火力. \
+	使用SG-29, 一把专家级轻机枪, 可以穿透你的队友射击, \
+	配备了战术传感器, 可透过烟雾, 墙壁和黑暗探测敌人."
 
 	suit_store = /obj/item/weapon/gun/rifle/sg29/pmc
 	l_hand = /obj/item/paper/tutorial/smartmachinegunner
@@ -39,8 +39,8 @@
 
 /datum/outfit/quick/beginner/smartgunner/sg85
 	name = "Standard Smartminigun"
-	desc = "Lead wall! Wields the SG-85, a specialist minigun that holds one thousand rounds and can shoot through your allies, \
-	equipped with a tactical sensor to detect enemies through smoke, walls, and darkness."
+	desc = "弹幕之墙! 手持SG-85, 一把专家级转轮机枪, 可容纳一千发子弹并能穿透你的队友射击, \
+	配备了战术传感器, 可透过烟雾, 墙壁和黑暗探测敌人."
 
 	suit_store = /obj/item/weapon/gun/minigun/smart_minigun/motion_detector
 	back = /obj/item/ammo_magazine/minigun_powerpack/smartgun

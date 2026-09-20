@@ -121,7 +121,7 @@
 //transit shutters used by marine dropships
 /obj/machinery/door/poddoor/shutters/transit
 	name = "Transit shutters"
-	desc = "Safety shutters to prevent dangerous depressurization during flight"
+	desc = "飞行途中用于防止危险失压的安全闸门"
 	icon = 'icons/obj/doors/mainship/blastdoors_shutters.dmi'
 	resistance_flags = RESIST_ALL|DROPSHIP_IMMUNE
 	id = "ghhjmugggggtgggbg" // do not have any button or thing have an ID assigned to this, it is a very bad idea.

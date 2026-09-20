@@ -1,6 +1,6 @@
 /obj/item/mortar_kit/knee
-	name = "\improper TA-10 knee mortar"
-	desc = "A manual, crew-operated mortar system intended to rain down 50mm shells on anything it's aimed at, typically best known as a 'Knee' mortar. Cannot be actually fired from your kneecaps, so it needs to be set down first to fire. Has a light payload, but an extremely high rate of fire."
+	name = "\improper TA-10膝迫击炮"
+	desc = "一种手动、需要乘员操作的迫击炮系统,旨在向瞄准的任何目标倾泻50毫米炮弹,通常最广为人知的名字是\"膝\"迫击炮.实际上无法从你的膝盖上发射,所以需要先架设好才能开火.载荷较轻,但射速极高."
 	icon = 'icons/obj/artillery/knee_mortar.dmi'
 	icon_state = "knee_mortar"
 	max_integrity = 250

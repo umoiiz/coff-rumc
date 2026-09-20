@@ -143,12 +143,12 @@ const EnginesOff = (props) => {
           fluid
           textAlign="center"
           fontSize="30px"
-          content="Spool Engines"
+          content="启动引擎"
           onClick={() => act('toggle_engines')}
           disabled={fuel_left <= 0}
         />
         <NoticeBox textAlign="center" fontSize="20px">
-          Fuel level
+          燃料量
         </NoticeBox>
         <ProgressBar
           value={fuel_left / fuel_max}
@@ -164,7 +164,7 @@ const EnginesOff = (props) => {
           textAlign="center"
           fontSize="20px"
           height="100%"
-          content="Eject"
+          content="弹出"
           color="red"
           onClick={() => act('eject')}
           disabled={fuel_left <= 0}
@@ -211,7 +211,7 @@ const NormalOperation = (props) => {
               <Stack.Item>
                 <Stack>
                   <Stack.Item>
-                    <NoticeBox mt={0.2}>Fuel:</NoticeBox>
+                    <NoticeBox mt={0.2}>燃料:</NoticeBox>
                   </Stack.Item>
                   <Stack.Item grow>
                     <ProgressBar
@@ -233,7 +233,7 @@ const NormalOperation = (props) => {
             <Button
               fontSize="43px"
               icon={getDirectionArrow(props)}
-              tooltip="Direction of strafe"
+              tooltip="扫射方向"
               onClick={() => act('cycle_attackdir')}
               disabled={
                 plane_state !== PLANE_STATE_FLYING ||
@@ -287,14 +287,14 @@ const LaunchLandButton = (props) => {
   const { plane_state, plane_mode } = data;
   return plane_state === PLANE_STATE_FLYING ? (
     <Button
-      content="Land plane"
+      content="降落飞机"
       fontSize="20px"
       onClick={() => act('land')}
       disabled={plane_mode !== 'idle'}
     />
   ) : (
     <Button
-      content="Launch plane"
+      content="起飞飞机"
       fontSize="20px"
       onClick={() => act('launch')}
       disabled={plane_mode !== 'idle'}
@@ -308,14 +308,14 @@ const EngineFiremissionButton = (props) => {
   return plane_state === PLANE_STATE_PREPARED ? (
     <Button
       fontSize="20px"
-      content="Disable Engines"
+      content="关闭引擎"
       onClick={() => act('toggle_engines')}
       disabled={plane_state !== PLANE_STATE_PREPARED}
     />
   ) : (
     <Button
       fontSize="20px"
-      content="Begin Firemission"
+      content="开始火力任务"
       onClick={() => act('deploy')}
       disabled={
         plane_state !== PLANE_STATE_FLYING || location_state !== PLANE_IN_SPACE

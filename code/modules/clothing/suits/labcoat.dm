@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/storage/labcoat
-	name = "labcoat"
-	desc = "A suit that protects against minor chemical spills."
+	name = "实验服"
+	desc = "一件能防护轻微化学溅射的服装."
 	icon_state = "labcoat"
 	blood_overlay_type = "coat"
 	armor_protection_flags = CHEST|ARMS
@@ -44,9 +44,9 @@
 	toggle_open()
 
 	if(open)
-		to_chat(usr, "You unbutton the labcoat.")
+		to_chat(usr, "你解开了实验服.")
 	else
-		to_chat(usr, "You button up the labcoat.")
+		to_chat(usr, "你扣上了实验服.")
 
 ///Actually toggles the coat open or closed
 /obj/item/clothing/suit/storage/labcoat/proc/toggle_open()
@@ -60,42 +60,42 @@
 	update_clothing_icon()
 
 /obj/item/clothing/suit/storage/labcoat/cmo
-	name = "chief medical officer's labcoat"
-	desc = "Bluer than the standard model."
+	name = "首席医疗官实验服"
+	desc = "比标准型号更蓝."
 	icon_state = "labcoat_cmo"
 /obj/item/clothing/suit/storage/labcoat/mad
-	name = "The Mad's labcoat"
-	desc = "It makes you look capable of konking someone on the noggin and shooting them into space."
+	name = "疯狂科学家的实验服"
+	desc = "它让你看起来有能力敲晕某人并把他们射入太空."
 	icon_state = "labgreen"
 
 /obj/item/clothing/suit/storage/labcoat/paramedic
-	name = "paramedic's labcoat"
-	desc = "A suit that holds small medical items for responding and tending to emergencies."
+	name = "护理人员实验服"
+	desc = "一件装有小型医疗物品的服装,用于应对和处理紧急情况."
 	icon_state = "labcoat_paramedic"
 
 /obj/item/clothing/suit/storage/labcoat/chemist
-	name = "chemist labcoat"
-	desc = "A suit that protects against minor chemical spills. Has an orange stripe on the shoulder."
+	name = "化学家实验服"
+	desc = "一件能防护轻微化学溅射的服装.肩部有橙色条纹."
 	icon_state = "labcoat_chem"
 
 /obj/item/clothing/suit/storage/labcoat/virologist
-	name = "virologist labcoat"
-	desc = "A suit that protects against minor chemical spills. Offers slightly more protection against biohazards than the standard model. Has a green stripe on the shoulder."
+	name = "病毒学家实验服"
+	desc = "一件能防护轻微化学溅射的服装.比标准型号提供稍多的生物危害防护.肩部有绿色条纹."
 	icon_state = "labcoat_viro"
 
 /obj/item/clothing/suit/storage/labcoat/genetics
-	name = "geneticist labcoat"
-	desc = "A suit that protects against minor chemical spills. Has a blue stripe on the shoulder."
+	name = "遗传学家实验服"
+	desc = "一件能防护轻微化学溅射的服装.肩部有蓝色条纹."
 	icon_state = "labcoat_gen"
 
 /obj/item/clothing/suit/storage/labcoat/science
-	name = "scientist labcoat"
-	desc = "A suit that protects against minor chemical spills. Has a purple stripe on the shoulder."
+	name = "科学家实验服"
+	desc = "一件能防护轻微化学溅射的服装.肩部有紫色条纹."
 	icon_state = "labcoat_sci"
 
 /obj/item/clothing/suit/storage/labcoat/researcher
-	name = "researcher's labcoat"
-	desc = "A high quality labcoat, seemingly worn by scholars and researchers alike. It has a distinct rough feel to it, and goads you towards adventure."
+	name = "研究员的实验服"
+	desc = "一件高质量实验服,似乎被学者和研究员们穿着.它有一种独特的粗糙感,并激励你走向冒险."
 	icon_state = "labcoat_researcher"
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	soft_armor = MARINE_ARMOR_MEDIUM

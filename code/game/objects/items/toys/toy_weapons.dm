@@ -10,8 +10,8 @@
 * Toy gun: Why isnt this an /obj/item/weapon/gun?
 */
 /obj/item/toy/gun
-	name = "cap gun"
-	desc = "Looks almost like the real thing! Ages 8 and up. Please recycle in an autolathe when you're out of caps!"
+	name = "玩具枪"
+	desc = "看起来几乎和真的一样!适合8岁及以上。用完后请回收进自动车床!"
 	icon_state = "capgun"
 	worn_icon_state = "gun"
 	equip_slot_flags = ITEM_SLOT_BELT
@@ -22,23 +22,23 @@
 
 /obj/item/toy/gun/examine(mob/user)
 	. = ..()
-	to_chat(user, "There are [bullets] caps\s left in the [src].")
+	to_chat(user, "[src]里还剩[bullets]发\s 。")
 
 /obj/item/toy/gun/attackby(obj/item/toy/gun_ammo/A as obj, mob/user as mob)
 
 	if (istype(A, /obj/item/toy/gun_ammo))
 		if (src.bullets >= 7)
-			to_chat(user, span_notice("It's already fully loaded!"))
+			to_chat(user, span_notice("它已经装满弹药了!"))
 			return 1
 		if (A.amount_left <= 0)
-			to_chat(user, span_warning("There is no more caps!"))
+			to_chat(user, span_warning("没有更多弹药了!"))
 			return 1
 		if (A.amount_left < (7 - bullets))
 			src.bullets += A.amount_left
-			to_chat(user, span_warning("You reload [A.amount_left] caps\s!"))
+			to_chat(user, span_warning("你装填了[A.amount_left]发\s !"))
 			A.amount_left = 0
 		else
-			to_chat(user, span_warning("You reload [7 - bullets] caps\s!"))
+			to_chat(user, span_warning("你装填了[7 - bullets]发\s !"))
 			A.amount_left -= 7 - bullets
 			bullets = 7
 		A.update_icon()
@@ -50,16 +50,16 @@
 	if (flag)
 		return
 	if (src.bullets < 1)
-		user.show_message(span_warning("*click* *click*"), 2)
+		user.show_message(span_warning("*咔哒* *咔哒*"), 2)
 		playsound(user, 'sound/weapons/guns/fire/empty.ogg', 15, 1)
 		return
 	playsound(user, 'sound/weapons/guns/fire/gunshot.ogg', 15, 1)
 	src.bullets--
-	visible_message(span_danger("[user] fires a cap gun at [target]!"), null, span_warning("You hear a gunshot"))
+	visible_message(span_danger("[user]朝[target]开了一枪玩具枪!"), null, span_warning("你听到一声枪响"))
 
 /obj/item/toy/gun_ammo
-	name = "ammo-caps"
-	desc = "There are 7 caps left! Make sure to recyle the box in an autolathe when it gets empty."
+	name = "弹药帽"
+	desc = "还剩7发弹药帽!用完后请务必把盒子回收进自动车床。"
 	icon_state = "cap_ammo"
 	w_class = WEIGHT_CLASS_TINY
 
@@ -78,8 +78,8 @@
 */
 
 /obj/item/toy/crossbow
-	name = "foam dart crossbow"
-	desc = "A weapon favored by many overactive children. Ages 8 and up."
+	name = "泡沫飞镖弩"
+	desc = "许多好动孩子青睐的武器。适合8岁及以上。"
 	icon_state = "foamcrossbow"
 	worn_icon_state = "crossbow"
 	w_class = WEIGHT_CLASS_SMALL
@@ -89,7 +89,7 @@
 /obj/item/toy/crossbow/examine(mob/user)
 	. = ..()
 	if (bullets)
-		. += span_notice("It is loaded with [bullets] foam darts!")
+		. += span_notice("它装填了[bullets]支泡沫飞镖!")
 
 /obj/item/toy/crossbow/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/toy/crossbow_ammo))
@@ -97,9 +97,9 @@
 			if(user.drop_held_item())
 				qdel(I)
 				bullets++
-				to_chat(user, span_notice("You load the foam dart into the crossbow."))
+				to_chat(user, span_notice("你将泡沫飞镖装入了弩中。"))
 		else
-			to_chat(usr, span_warning("It's already fully loaded."))
+			to_chat(usr, span_warning("它已经装满弹药了。"))
 
 /obj/item/toy/crossbow/afterattack(atom/target, mob/user, flag)
 	if(!isturf(target.loc) || target == user) return
@@ -126,7 +126,7 @@
 						continue
 					if(M == user)
 						continue
-					visible_message(span_warning("[M] was hit by the foam dart!"), visible_message_flags = COMBAT_MESSAGE)
+					visible_message(span_warning("[M]被泡沫飞镖击中了!"), visible_message_flags = COMBAT_MESSAGE)
 					new /obj/item/toy/crossbow_ammo(M.loc)
 					qdel(D)
 					return
@@ -145,7 +145,7 @@
 	else if(!bullets && isliving(user))
 		var/mob/living/L = user
 		L.Paralyze(10 SECONDS)
-		visible_message(span_warning("[user] realized they were out of ammo and starting scrounging for some!"))
+		visible_message(span_warning("[user]意识到自己没弹药了,开始四处搜寻!"))
 
 /obj/item/toy/crossbow/proc/convert_proj_to_item(obj/effect/foam_dart_dummy/dart)
 	if(!dart)
@@ -159,21 +159,21 @@
 // ******* Check
 
 	if (bullets > 0 && M.lying_angle)
-		visible_message(span_danger("[user] casually lines up a shot with [M]'s head and pulls the trigger!"), null, span_warning("You hear the sound of foam against skull"))
-		visible_message(span_warning("[M] was hit in the head by the foam dart!"))
+		visible_message(span_danger("[user]随意地瞄准了[M]的头部并扣下了扳机!"), null, span_warning("你听到泡沫撞击头骨的声音"))
+		visible_message(span_warning("[M]的头部被泡沫飞镖击中了!"))
 
 		playsound(user.loc, 'sound/items/syringeproj.ogg', 15, 1)
 		new /obj/item/toy/crossbow_ammo(M.loc)
 		src.bullets--
 	else if(M.lying_angle && !bullets && isliving(M))
 		var/mob/living/L = M
-		L.visible_message(span_danger("[user] casually lines up a shot with [L]'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!"))
+		L.visible_message(span_danger("[user]随意地瞄准了[L]的头部,扣下扳机,然后意识到自己没弹药了,便趴到地上搜寻起来!"))
 		L.Paralyze(10 SECONDS)
 	return
 
 /obj/item/toy/crossbow_ammo
-	name = "foam dart"
-	desc = "It's nerf or nothing! Ages 8 and up."
+	name = "泡沫飞镖"
+	desc = "要么玩Nerf要么别玩!适合8岁及以上。"
 	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "foamdart"
 	w_class = WEIGHT_CLASS_TINY
@@ -191,8 +191,8 @@
 * Toy swords
 */
 /obj/item/toy/sword
-	name = "toy sword"
-	desc = "A cheap, plastic replica of an energy sword. Realistic sounds! Ages 8 and up."
+	name = "玩具剑"
+	desc = "一把廉价的能量剑塑料复制品。逼真的音效!适合8岁及以上。"
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "sword0"
 	worn_icon_state = "sword0"
@@ -202,13 +202,13 @@
 /obj/item/toy/sword/attack_self(mob/user as mob)
 	src.active = !( src.active )
 	if (src.active)
-		to_chat(user, span_notice("You extend the plastic blade with a quick flick of your wrist."))
+		to_chat(user, span_notice("你手腕一抖,迅速弹出了塑料剑刃。"))
 		playsound(user, 'sound/weapons/saberon.ogg', 15, 1)
 		src.icon_state = "swordblue"
 		src.worn_icon_state = "swordblue"
 		src.w_class = WEIGHT_CLASS_BULKY
 	else
-		to_chat(user, span_notice("You push the plastic blade back down into the handle."))
+		to_chat(user, span_notice("你将塑料剑刃按回了剑柄中。"))
 		playsound(user, 'sound/weapons/saberoff.ogg', 15, 1)
 		src.icon_state = "sword0"
 		src.worn_icon_state = "sword0"
@@ -222,8 +222,8 @@
 	return
 
 /obj/item/toy/katana
-	name = "replica katana"
-	desc = "Woefully underpowered in D20."
+	name = "武士刀复制品"
+	desc = "在D20里弱得可怜。"
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "katana"
 	atom_flags = CONDUCT

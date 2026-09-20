@@ -1,6 +1,6 @@
 /obj/machinery/computer/area_atmos
 	name = "Area Air Control"
-	desc = "A computer used to control the stationary scrubbers and pumps in the area."
+	desc = "一台用于控制区域内固定式洗涤器和泵的计算机."
 	icon_state = "computer"
 	screen_overlay = "area_atmos"
 	broken_icon = "computer_blue_broken"

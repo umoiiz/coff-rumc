@@ -43,10 +43,10 @@ export const JobPreferences = (props) => {
 
   return (
     <Section
-      title="Job Preferences"
+      title="职位偏好"
       buttons={
         <Button color="bad" icon="power-off" onClick={() => act('jobreset')}>
-          Reset everything!
+          重置全部!
         </Button>
       }
     >
@@ -79,7 +79,7 @@ export const JobPreferences = (props) => {
       )}
       <Stack>
         <Stack.Item grow>
-          <Section title="Other settings">
+          <Section title="其他设置">
             <Flex direction="column" height="100%">
               <Flex.Item>
                 <h4>If failed to qualify for job</h4>

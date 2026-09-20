@@ -1,14 +1,14 @@
 /obj/machinery/vending/uniform_supply
-	name = "\improper Surplus Clothing Vendor"
-	desc = "An automated equipment rack hooked up to a colossal storage of clothing and accessories. Nanotrasen designed a new vendor that utilizes bluespace technology to send surplus equipment from outer colonies' sweatshops to your hands! Be grateful."
+	name = "\improper 剩余衣物贩卖机"
+	desc = "一个自动化设备架,连接着海量衣物和配饰储备.纳米传思设计了一款新贩卖机,利用蓝空间技术将外殖民地血汗工厂的剩余装备送到你手中!感恩吧."
 	icon_state = "surplus_clothes"
 	icon_vend = "surplus_clothes_vend"
 	icon_deny = "surplus_clothes_deny"
 	wrenchable = FALSE
 	isshared = TRUE
-	product_ads = "Be the musician that you parents never approve you of.;You gotta look good when you're in the battlefield.;We have all types of hats here!;What did one hat say to the other on the hiking trip? I'll wait here, you go on ahead;Sometimes, a beret is better than a helmet.;Drip is the priority, marine."
+	product_ads = "成为你父母从不认可的那种音乐家吧.;上战场的时候你得看起来帅气.;我们这里有各种类型的帽子!;徒步旅行时一顶帽子对另一顶帽子说了什么?我在这等着,你先走;有时候,贝雷帽比头盔更好.;行头才是优先,陆战队员."
 	products = list(
-		"Uniforms" = list(
+		"制服" = list(
 			/obj/item/clothing/under/marine/robotic = -1,
 			/obj/item/clothing/under/marine = -1,
 			/obj/item/clothing/under/marine/hyperscale = -1,
@@ -37,7 +37,7 @@
 			/obj/item/armor_module/armor/cape/kama = -1,
 			/obj/item/armor_module/module/pt_belt = -1,
 		),
-		"Gloves" = list(
+		"手套" = list(
 			/obj/item/clothing/gloves/marine = -1,
 			/obj/item/clothing/gloves/marine/fingerless = -1,
 			/obj/item/clothing/gloves/marine/hyperscale = -1,
@@ -45,7 +45,7 @@
 			/obj/item/clothing/gloves/marine/separatist = -1,
 			/obj/item/clothing/gloves/white = -1,
 		),
-		"Shoes" = list(
+		"鞋子" = list(
 			/obj/item/clothing/shoes/marine/full = -1,
 			/obj/item/clothing/shoes/marine/brown/full = -1,
 			/obj/item/clothing/shoes/marine/headskin = -1,
@@ -53,14 +53,14 @@
 			/obj/item/clothing/shoes/cowboy = -1,
 			/obj/item/clothing/shoes/white = -1,
 		),
-		"Webbings" = list(
+		"挂具" = list(
 			/obj/item/armor_module/storage/uniform/black_vest = -1,
 			/obj/item/armor_module/storage/uniform/brown_vest = -1,
 			/obj/item/armor_module/storage/uniform/white_vest = -1,
 			/obj/item/armor_module/storage/uniform/webbing = -1,
 			/obj/item/armor_module/storage/uniform/holster = -1,
 		),
-		"Belts" = list(
+		"腰带" = list(
 			/obj/item/storage/belt/marine = -1,
 			/obj/item/storage/belt/marine/auto_catch = -1,
 			/obj/item/storage/belt/shotgun = -1,
@@ -80,7 +80,7 @@
 			/obj/item/storage/belt/protein_pack = -1,
 			/obj/item/storage/belt/mortar_belt = 4,
 		),
-		"Pouches" = list(
+		"小包" = list(
 			/obj/item/storage/pouch/pistol = -1,
 			/obj/item/storage/pouch/magazine/large = -1,
 			/obj/item/storage/pouch/magazine/pistol/large = -1,
@@ -103,7 +103,7 @@
 			/obj/item/storage/pouch/general/medium = -1,
 			/obj/item/storage/pouch/protein_pack = -1,
 		),
-		"Surplus Headwear" = list(
+		"剩余头饰" = list(
 			/obj/item/clothing/head/slouch = -1,
 			/obj/item/clothing/head/headband/red = -1,
 			/obj/item/clothing/head/headband/rambo = -1,
@@ -144,7 +144,7 @@
 			/obj/item/clothing/head/servicecap = -1,
 			/obj/item/clothing/head/strawhat = -1,
 		),
-		"Headwear" = list(
+		"头饰" = list(
 			/obj/item/clothing/head/modular/style/beret = -1,
 			/obj/item/clothing/head/modular/style/classic_beret = -1,
 			/obj/item/clothing/head/modular/style/boonie = -1,
@@ -156,7 +156,7 @@
 			/obj/item/clothing/head/modular/style/headband = -1,
 			/obj/item/clothing/head/modular/style/bandana = -1,
 		),
-		"Masks" = list(
+		"面罩" = list(
 			/obj/item/clothing/mask/rebreather/scarf = -1,
 			/obj/item/clothing/mask/bandanna/skull = -1,
 			/obj/item/clothing/mask/bandanna/green = -1,
@@ -181,7 +181,7 @@
 			/obj/item/clothing/mask/gas/sgmask = -1,
 			/obj/item/clothing/mask/gas/redmask = -1,
 		),
-		"Backpacks" = list(
+		"背包" = list(
 			/obj/item/storage/backpack/marine/standard = -1,
 			/obj/item/storage/backpack/marine/standard/molle = -1,
 			/obj/item/storage/backpack/marine/standard/scav = -1,
@@ -192,7 +192,7 @@
 			/obj/item/tool/weldpack/marinestandard = -1,
 			/obj/item/storage/backpack/marine/satchel/tech = 2,
 		),
-		"Instruments" = list(
+		"乐器" = list(
 			/obj/item/instrument/violin = -1,
 			/obj/item/instrument/piano_synth = -1,
 			/obj/item/instrument/banjo = -1,
@@ -205,7 +205,7 @@
 			/obj/item/instrument/recorder = -1,
 			/obj/item/instrument/harmonica = -1,
 		),
-		"Medical Clothing" = list(
+		"医疗服装" = list(
 			/obj/item/clothing/under/rank/medical/blue = -1,
 			/obj/item/clothing/under/rank/medical/green = -1,
 			/obj/item/clothing/under/rank/medical/purple = -1,
@@ -216,7 +216,7 @@
 			/obj/item/clothing/shoes/white = -1,
 			/obj/item/clothing/suit/storage/labcoat/paramedic = -1,
 		),
-		"Eyewear" = list(
+		"眼镜" = list(
 			/obj/item/clothing/glasses/regular = -1,
 			/obj/item/clothing/glasses/eyepatch = -1,
 			/obj/item/clothing/glasses/sunglasses/fake/big = -1,
@@ -227,13 +227,13 @@
 			/obj/item/clothing/glasses/mgoggles/prescription = -1,
 			/obj/item/clothing/glasses/orange = -1,
 		),
-		"Clothes bundles" = list(
+		"衣物包" = list(
 			/obj/effect/vendor_bundle/white_dress = -1,
 			/obj/effect/vendor_bundle/service_uniform = -1,
 			/obj/effect/vendor_bundle/separatist_uniform = -1,
 			/obj/effect/vendor_bundle/veteran_uniform = -1,
 		),
-		"Dress Uniform" = list(
+		"礼服" = list(
 			/obj/item/clothing/under/marine/whites = -1,
 			/obj/item/clothing/suit/white_dress_jacket = -1,
 			/obj/item/clothing/head/white_dress = -1,
@@ -254,17 +254,17 @@
 	use_power = NO_POWER_USE
 
 /obj/machinery/vending/medical_uniform_supply
-	name = "\improper Medical Clothing Vendor"
-	desc = "A special medical vendor designed to supply you with various blood absorbing clothing!"
+	name = "\improper 医疗服装贩卖机"
+	desc = "一台专用医疗贩卖机,旨在为你提供各种吸血服装!"
 	icon = 'icons/obj/machines/vending.dmi'
 	icon_state = "medidrobe"
 	icon_vend = "medidrobe-vend"
 	icon_deny = "medidrobe-deny"
 	req_access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY) //only doctors and researchers can access these
 	isshared = TRUE
-	product_ads = "If they aren't bleeding, check again."
+	product_ads = "如果他们没在流血,再检查一遍."
 	products = list(
-		"Medical Clothing" = list(
+		"医疗服装" = list(
 			/obj/item/clothing/under/rank/medical/blue = 3,
 			/obj/item/clothing/under/rank/medical/green = 3,
 			/obj/item/clothing/under/rank/medical/purple = 3,

@@ -1,6 +1,6 @@
 /turf/closed/wall/r_wall
 	name = "reinforced wall"
-	desc = "A huge chunk of reinforced metal used to seperate rooms."
+	desc = "一大块用于分隔房间的强化金属."
 	icon = 'icons/turf/walls/rwall.dmi'
 	icon_state = "wall-reinforced"
 	base_icon_state = "rwall"
@@ -33,7 +33,7 @@
 
 /turf/closed/wall/r_wall/unmeltable
 	name = "heavy reinforced wall"
-	desc = "A huge chunk of ultra-reinforced metal used to seperate rooms. Looks virtually indestructible."
+	desc = "一大块用于分隔房间的超强化金属.看起来几乎坚不可摧."
 	icon_state = "wall-invincible"
 	walltype = "rwall"
 	resistance_flags = RESIST_ALL
@@ -81,7 +81,7 @@
 
 /turf/closed/wall/r_wall/prison_unmeltable
 	name = "heavy reinforced wall"
-	desc = "A huge chunk of ultra-reinforced metal used to seperate rooms. Looks virtually indestructible."
+	desc = "一大块用于分隔房间的超强化金属.看起来几乎坚不可摧."
 	icon = 'icons/turf/walls/gorg_prison_rwall_two.dmi'
 	icon_state = "wall-invincible"
 	walltype = "rwall"

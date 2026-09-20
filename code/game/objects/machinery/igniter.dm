@@ -1,6 +1,6 @@
 /obj/machinery/igniter
 	name = "igniter"
-	desc = "It's useful for igniting flammable items."
+	desc = "它可用于点燃易燃物品。"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "igniter1"
 	plane = FLOOR_PLANE
@@ -38,7 +38,7 @@
 // Wall mounted remote-control igniter.
 /obj/machinery/sparker
 	name = "Mounted igniter"
-	desc = "A wall-mounted ignition device."
+	desc = "一种壁挂式点火装置。"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "migniter"
 	use_power = IDLE_POWER_USE
@@ -69,10 +69,10 @@
 	. = ..()
 	disable = !disable
 	if(disable)
-		user.visible_message(span_warning("[user] has disabled the [src]!"), span_warning("You disable the connection to the [src]."))
+		user.visible_message(span_warning("[user]已禁用[src]!"), span_warning("你断开了与[src]的连接。"))
 		icon_state = "[base_state]-d"
 	else
-		user.visible_message(span_warning("[user] has reconnected the [src]!"), span_warning("You fix the connection to the [src]."))
+		user.visible_message(span_warning("[user]已重新连接[src]!"), span_warning("你修复了与[src]的连接。"))
 		if(powered())
 			icon_state = "[base_state]"
 		else

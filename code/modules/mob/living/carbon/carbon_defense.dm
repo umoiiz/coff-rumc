@@ -32,14 +32,14 @@
 		adjust_oxy_loss(4 + S.strength * 2)
 	if(CHECK_BITFIELD(S.smoke_traits, SMOKE_XENO_NEURO))
 		if(!CHECK_BITFIELD(S.smoke_traits, SMOKE_NEURO_LIGHT) && !is_blind(src) && has_eyes()) //Only full neurogas blinds
-			to_chat(src, span_danger("Your eyes sting. You can't see!"))
+			to_chat(src, span_danger("你的眼睛刺痛.你看不见了!"))
 			blind_eyes(2)
 			blur_eyes(4)
 			reagents.add_reagent(/datum/reagent/toxin/xeno_neurotoxin, GAS_INHALE_REAGENT_TRANSFER_AMOUNT * S.strength)
 		else
 			reagents.add_reagent(/datum/reagent/toxin/xeno_neurotoxin, GAS_INHALE_REAGENT_TRANSFER_AMOUNT * S.strength)
 		if(prob(10 * S.strength)) //Likely to momentarily freeze up/fall due to arms/hands seizing up
-			to_chat(src, span_danger("You feel your body going numb and lifeless!"))
+			to_chat(src, span_danger("你感觉你的身体变得麻木且毫无生气!"))
 	if(CHECK_BITFIELD(S.smoke_traits, SMOKE_XENO_TOXIC))
 		if(!HAS_TRAIT(src, TRAIT_INTOXICATION_IMMUNE))
 			if(has_status_effect(STATUS_EFFECT_INTOXICATED))
@@ -56,7 +56,7 @@
 	if(CHECK_BITFIELD(S.smoke_traits, SMOKE_XENO_OZELOMELYN))
 		reagents.add_reagent(/datum/reagent/toxin/xeno_ozelomelyn, GAS_INHALE_REAGENT_TRANSFER_AMOUNT * S.strength)
 	if(CHECK_BITFIELD(S.smoke_traits, SMOKE_SATRAPINE))
-		to_chat(src, span_danger("Your eyes are burning!"))
+		to_chat(src, span_danger("你的眼睛在燃烧!"))
 		blur_eyes(4)
 		reagents.add_reagent(/datum/reagent/toxin/satrapine, GAS_INHALE_REAGENT_TRANSFER_AMOUNT * S.strength)
 	if(CHECK_BITFIELD(S.smoke_traits, SMOKE_CHEM))
@@ -71,23 +71,23 @@
 		else
 			reagents.add_reagent(/datum/reagent/toxin/xeno_neurotoxin, round(GAS_INHALE_REAGENT_TRANSFER_AMOUNT * 0.6 * S.strength * bio_protection, 0.1))
 		if(prob(10 * S.strength * bio_protection))
-			to_chat(src, span_danger("Your body goes numb where the gas touches it!"))
+			to_chat(src, span_danger("你的身体在毒气接触的地方变得麻木!"))
 	if(CHECK_BITFIELD(S.smoke_traits, SMOKE_XENO_HEMODILE) && has_smoke_protection()) //either inhaled or this.
 		reagents.add_reagent(/datum/reagent/toxin/xeno_hemodile, round(GAS_INHALE_REAGENT_TRANSFER_AMOUNT * 0.6 * S.strength * bio_protection, 0.1))
 		if(prob(10 * S.strength * bio_protection))
-			to_chat(src, span_danger("Your muscles' strength drains away where the gas makes contact!"))
+			to_chat(src, span_danger("你的肌肉力量在毒气接触的地方流失殆尽!"))
 	if(CHECK_BITFIELD(S.smoke_traits, SMOKE_XENO_TRANSVITOX) && has_smoke_protection()) //either inhaled or this.
 		reagents.add_reagent(/datum/reagent/toxin/xeno_transvitox, round(GAS_INHALE_REAGENT_TRANSFER_AMOUNT * 0.6 * S.strength * bio_protection, 0.1))
 		if(prob(10 * S.strength * bio_protection))
-			to_chat(src, span_danger("Your exposed wounds coagulate with a dark green tint!"))
+			to_chat(src, span_danger("你暴露的伤口凝结成暗绿色!"))
 	if(CHECK_BITFIELD(S.smoke_traits, SMOKE_SATRAPINE) && has_smoke_protection()) //either inhaled or this.
 		reagents.add_reagent(/datum/reagent/toxin/satrapine, round(GAS_INHALE_REAGENT_TRANSFER_AMOUNT * 0.6 * S.strength * bio_protection, 0.1))
 		if(prob(10 * S.strength * bio_protection))
-			to_chat(src, span_danger("Your whole body feels like it's burning!"))
+			to_chat(src, span_danger("你全身感觉像在燃烧!"))
 	if(CHECK_BITFIELD(S.smoke_traits, SMOKE_XENO_OZELOMELYN) && has_smoke_protection()) //either inhaled or this.
 		reagents.add_reagent(/datum/reagent/toxin/xeno_ozelomelyn, round(GAS_INHALE_REAGENT_TRANSFER_AMOUNT * 0.6 * S.strength * bio_protection, 0.1))
 		if(prob(10 * S.strength * bio_protection))
-			to_chat(src, span_danger("Your veins and skin itch where the gas touches them!"))
+			to_chat(src, span_danger("你的血管和皮肤在毒气接触的地方发痒!"))
 	if(CHECK_BITFIELD(S.smoke_traits, SMOKE_XENO_PYROGEN))
 		var/datum/status_effect/stacking/melting_fire/debuff = has_status_effect(STATUS_EFFECT_MELTING_FIRE)
 		if(debuff)
@@ -95,4 +95,4 @@
 		else
 			apply_status_effect(STATUS_EFFECT_MELTING_FIRE, 2 * S.strength)
 		if(prob(10 * S.strength))
-			to_chat(src, span_danger("Your skin burns with blue fire!"))
+			to_chat(src, span_danger("你的皮肤燃烧着蓝色火焰!"))

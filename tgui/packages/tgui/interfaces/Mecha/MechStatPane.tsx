@@ -18,13 +18,13 @@ export const MechStatPane = () => {
       <Stack.Item>
         <Section
           title={name}
-          buttons={<Button onClick={() => act('changename')}>Rename</Button>}
+          buttons={<Button onClick={() => act('changename')}>重命名</Button>}
         />
       </Stack.Item>
       <Stack.Item>
-        <Section title="Status">
+        <Section title="状态">
           <LabeledList>
-            <LabeledList.Item label="Integrity">
+            <LabeledList.Item label="完整度">
               <ProgressBar
                 ranges={{
                   good: [0.5, Infinity],
@@ -34,10 +34,10 @@ export const MechStatPane = () => {
                 value={integrity}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Power">
+            <LabeledList.Item label="电量">
               <PowerBar />
             </LabeledList.Item>
-            <LabeledList.Item label="Safety">
+            <LabeledList.Item label="保险">
               <Button
                 color={weapons_safety ? 'red' : ''}
                 onClick={() => act('toggle_safety')}
@@ -56,7 +56,7 @@ const PowerBar = () => {
   const { data } = useBackend<OperatorData>();
   const { power_level, power_max } = data;
   if (power_max === null) {
-    return <Box> No Power cell installed!</Box>;
+    return <Box> 未安装电池!</Box>;
   } else {
     return (
       <ProgressBar

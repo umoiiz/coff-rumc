@@ -23,12 +23,12 @@ export const OperatorMode = (props) => {
             </Section>
           </Stack.Item>
           <Stack.Item>
-            <Section title="Power Modules">
+            <Section title="电源模块">
               <PowerModulesPane />
             </Section>
           </Stack.Item>
           <Stack.Item>
-            <Section title="Alerts">
+            <Section title="警报">
               <AlertPane />
             </Section>
           </Stack.Item>
@@ -47,7 +47,7 @@ export const OperatorMode = (props) => {
             />
           </Stack.Item>
           <Stack.Item>
-            <Section title="Armor modules">
+            <Section title="护甲模块">
               <ArmorPane />
             </Section>
           </Stack.Item>
@@ -61,12 +61,12 @@ export const OperatorMode = (props) => {
             </Section>
           </Stack.Item>
           <Stack.Item>
-            <Section title="Utility Modules">
+            <Section title="实用模块">
               <UtilityModulesPane />
             </Section>
           </Stack.Item>
           <Stack.Item>
-            <Section title="Radio Control">
+            <Section title="无线电控制">
               <RadioPane />
             </Section>
           </Stack.Item>

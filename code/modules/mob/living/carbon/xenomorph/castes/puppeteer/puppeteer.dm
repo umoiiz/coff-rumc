@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/puppeteer
 	caste_base_type = /datum/xeno_caste/puppeteer
 	name = "Puppeteer"
-	desc = "A xenomorph of terrifying display, it has a tail adorned with needles that drips a strange chemical and elongated claws."
+	desc = "一种外表恐怖的异形, 它的尾部装饰着滴落着一种奇怪化学物质的针, 并长有细长的爪子."
 	icon = 'icons/Xeno/castes/puppeteer.dmi'
 	icon_state = "Puppeteer Running"
 	health = 250

@@ -35,11 +35,11 @@
 	var/udder_filled_percentage = PERCENT(udder.reagents.total_volume / udder.reagents.maximum_volume)
 	switch(udder_filled_percentage)
 		if(0 to 10)
-			examine_list += span_notice("[parent]'s [udder] is dry.")
+			examine_list += span_notice("[parent]的[udder]是干的。")
 		if(11 to 99)
-			examine_list += span_notice("[parent]'s [udder] can be milked if you have something to contain it.")
+			examine_list += span_notice("如果你有容器,可以挤[parent]的[udder]。")
 		if(100)
-			examine_list += span_notice("[parent]'s [udder] is round and full, and can be milked if you have something to contain it.")
+			examine_list += span_notice("[parent]的[udder]圆润饱满,如果你有容器,可以挤奶。")
 
 
 ///signal called on parent being attacked with an item
@@ -60,7 +60,7 @@
  * While perhaps reagents created by udder component COULD be managed in the mob, it would be somewhat finnicky and I actually like the abstract udders.
  */
 /obj/item/udder
-	name = "udder"
+	name = "乳房"
 	///how much the udder holds
 	var/size = 50
 	///mob that has the udder component
@@ -113,10 +113,10 @@
  */
 /obj/item/udder/proc/milk(obj/item/reagent_containers/glass/milk_holder, mob/user)
 	if(milk_holder.reagents.total_volume >= milk_holder.volume)
-		milk_holder.balloon_alert(user, "[milk_holder] is full.")
+		milk_holder.balloon_alert(user, "[milk_holder]是满的。")
 		return
 	var/transfered = reagents.trans_to(milk_holder, rand(5,10))
 	if(transfered)
-		user.visible_message(span_notice("[user] milks [src] using \the [milk_holder]."), span_notice("You milk [src] using \the [milk_holder]."))
+		user.visible_message(span_notice("[user]使用\the [milk_holder]挤[src]的奶。"), span_notice("你使用\the [milk_holder]挤[src]的奶。"))
 	else
-		milk_holder.balloon_alert(user, "The udder is dry. Wait a bit longer...")
+		milk_holder.balloon_alert(user, "乳房是干的。再等一会儿...")

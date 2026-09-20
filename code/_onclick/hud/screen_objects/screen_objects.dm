@@ -519,9 +519,9 @@
 		return
 	var/mob/living/living_user = usr
 	if(living_user.get_stamina_loss() < 0 && living_user.max_stamina)
-		living_user.balloon_alert(living_user, "Stamina buffer:[(-living_user.get_stamina_loss() * 100 / living_user.max_stamina)]%")
+		living_user.balloon_alert(living_user, "耐力缓冲:[(-living_user.get_stamina_loss() * 100 / living_user.max_stamina)]%")
 		return
-	living_user.balloon_alert(living_user, "You have [living_user.get_stamina_loss()] stamina loss")
+	living_user.balloon_alert(living_user, "你有 [living_user.get_stamina_loss()] 点耐力损失")
 
 
 /atom/movable/screen/component_button

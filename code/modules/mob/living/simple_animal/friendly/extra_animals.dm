@@ -1,6 +1,6 @@
 /mob/living/simple_animal/pig
 	name = "pig"
-	desc = "A stocky mammal with a flat snout. Oink. Drag yourself onto it to ride."
+	desc = "一种矮壮的哺乳动物, 口鼻扁平. 哼. 拖拽自己到它身上来骑乘."
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "pig"
 	icon_living = "pig"
@@ -50,7 +50,7 @@
 
 /mob/living/simple_animal/pig/mini
 	name = "mini pig"
-	desc = "An adorably tiny pig. Still oinks with authority."
+	desc = "一只可爱的小猪. 仍然带着威严地哼哼."
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "pig_mini"
 	icon_living = "pig_mini"
@@ -63,7 +63,7 @@
 
 /mob/living/simple_animal/horse
 	name = "horse"
-	desc = "A friendly horse. Seems to be tamed. Drag yourself onto it to ride."
+	desc = "一匹友好的马. 似乎被驯服了. 拖拽自己到它身上来骑乘."
 	icon = 'icons/mob/animal_96.dmi'
 	icon_state = "horse"
 	icon_living = "horse"

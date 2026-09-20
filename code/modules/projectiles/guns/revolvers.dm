@@ -38,7 +38,7 @@
 	. = ..()
 	if(!(reciever_flags & AMMO_RECIEVER_ROTATES_CHAMBER))
 		return
-	. += span_notice("It's champer can be spun with <b>alt-right-click</b>.")
+	. += span_notice("它的弹巢可以用<b>alt-右键点击</b>来旋转.")
 
 /obj/item/weapon/gun/revolver/AltRightClick(mob/living/user)
 	. = ..()
@@ -65,8 +65,8 @@
 	recent_spin = world.time + 1 SECONDS
 
 	playsound(src, SFX_REVOLVER_SPIN, 30, FALSE)
-	visible_message(span_notice("[user] spins [src]'s chamber."), span_notice("You spin [src]'s chamber."))
-	balloon_alert(user, "chamber spun")
+	visible_message(span_notice("[user]旋转了[src]的弹巢."), span_notice("你旋转了[src]的弹巢."))
+	balloon_alert(user, "弹巢已旋转")
 
 	var/previous_chamber_position = chamber_items[current_chamber_position]
 	chamber_items[current_chamber_position] = in_chamber
@@ -83,16 +83,16 @@
 		if(active_attachable)
 			active_attachable.tactical_reload(new_magazine, user)
 			return
-		to_chat(user, span_warning("[new_magazine] cannot fit into [src]!"))
+		to_chat(user, span_warning("[new_magazine]无法装入[src]!"))
 		return
 	if(src != user.r_hand && src != user.l_hand && (!master_gun || (master_gun != user.r_hand && master_gun != user.l_hand)))
-		to_chat(user, span_warning("[src] must be in your hand to do that."))
+		to_chat(user, span_warning("[src]必须在你手中才能这样做."))
 		return
 	//no tactical reload for the untrained.
 	if(user.skills.getRating(SKILL_FIREARMS) < SKILL_FIREARMS_DEFAULT)
-		to_chat(user, span_warning("You don't know how to do tactical reloads."))
+		to_chat(user, span_warning("你不知道如何进行战术换弹."))
 		return
-	to_chat(user, span_notice("You start a tactical reload."))
+	to_chat(user, span_notice("你开始进行战术换弹."))
 	var/tac_reload_time = max(0.25 SECONDS, 0.85 SECONDS - user.skills.getRating(SKILL_FIREARMS) * 5)
 	if(CHECK_BITFIELD(reciever_flags, AMMO_RECIEVER_CLOSED)) // if we are really closed
 		if(!do_after(user, tac_reload_time * 0.2, IGNORE_USER_LOC_CHANGE, new_magazine) && loc == user)
@@ -118,8 +118,8 @@
 //R-44 COMBAT REVOLVER
 
 /obj/item/weapon/gun/revolver/r44
-	name = "\improper R-44 combat revolver"
-	desc = "The R-44 standard combat revolver, produced by Terran Armories. A sturdy and hard hitting firearm that loads .44 Magnum rounds. Holds 7 rounds in the cylinder. Due to an error in the cylinder rotation system the fire rate of the gun is much faster than intended, it ended up being billed as a feature of the system."
+	name = "\improper R-44战斗左轮手枪"
+	desc = "R-44标准战斗左轮手枪,由泰伦军械公司生产.一把坚固且威力强大的火器,装填.44马格南弹.弹巢可容纳7发子弹.由于弹巢旋转系统的错误,该枪的射速远超预期,最终被宣传为该系统的一项特色."
 	icon_state = "tp44"
 	worn_icon_state = "tp44"
 	fire_sound = 'sound/weapons/guns/fire/tgmc/kinetic/gun_r44.ogg'
@@ -164,8 +164,8 @@
 //RUSSIAN REVOLVER //Based on the 7.62mm Russian revolvers.
 
 /obj/item/weapon/gun/revolver/upp
-	name = "\improper N-Y 7.62mm revolver"
-	desc = "The Nagant-Yamasaki 7.62 is an effective killing machine designed by a consortion of shady Not-Americans. It is frequently found in the hands of criminals or mercenaries."
+	name = "\improper N-Y 7.62mm左轮手枪"
+	desc = "纳甘-山崎7.62是一台由一群可疑的非美国人财团设计的有效杀戮机器.经常出现在罪犯或雇佣兵手中."
 	icon_state = "ny762"
 	worn_icon_state = "ny762"
 	caliber = CALIBER_762X38 //codex
@@ -191,8 +191,8 @@
 //A generic 357 revolver. With a twist.
 
 /obj/item/weapon/gun/revolver/small
-	name = "\improper FFA 'Rebota' revolver"
-	desc = "A lean .357 made by Falffearmeria. A timeless design, from antiquity to the future. This one is well known for it's strange ammo, which ricochets off walls constantly. Which went from being a defect to a feature."
+	name = "\improper FFA\"弹跳者\"左轮手枪"
+	desc = "一把由Falffearmeria制造的轻巧.357左轮手枪.一个从古代到未来都经久不衰的设计.这一把以其奇怪的弹药而闻名,子弹会不断从墙壁上弹射.这从缺陷变成了一项特色."
 	icon_state = "rebota"
 	worn_icon_state = "rebota"
 	caliber = CALIBER_357 //codex
@@ -220,8 +220,8 @@
 //Mateba is pretty well known. The cylinder folds up instead of to the side. This has a non-marine version and a marine version.
 
 /obj/item/weapon/gun/revolver/mateba
-	name = "\improper R-24 'Mateba' autorevolver"
-	desc = "The R-24 is the rather rare autorevolver used by the TGMC issued in rather small numbers to backline personnel and officers it uses recoil to spin the cylinder. Uses heavy .454 rounds."
+	name = "\improper R-24\"Mateba\"自动左轮手枪"
+	desc = "R-24是TGMC使用的相当罕见的自动左轮手枪,以相当少的数量配发给后方人员和军官,它利用后坐力来旋转弹巢.使用重型.454弹药."
 	icon_state = "mateba"
 	worn_icon_state = "mateba"
 	fire_animation = "mateba_fire"
@@ -255,13 +255,13 @@
 	scatter_unwielded = 7
 
 /obj/item/weapon/gun/revolver/mateba/notmarine
-	name = "\improper Mateba autorevolver"
-	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. Uses .454 rounds."
+	name = "\improper Mateba自动左轮手枪"
+	desc = "Mateba是一把强大,快速射击的左轮手枪,利用自身后坐力来旋转弹巢.使用.454弹药."
 
 
 /obj/item/weapon/gun/revolver/mateba/custom
-	name = "\improper R-24 autorevolver special"
-	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. This one appears to have had more love and care put into it. Uses .454 rounds."
+	name = "\improper R-24自动左轮手枪特别版"
+	desc = "Mateba是一把强大,快速射击的左轮手枪,利用自身后坐力来旋转弹巢.这一把似乎得到了更多的关爱和呵护.使用.454弹药."
 	icon_state = "mateba"
 	worn_icon_state = "mateba"
 
@@ -269,8 +269,8 @@
 //MARSHALS REVOLVER
 
 /obj/item/weapon/gun/revolver/cmb
-	name = "\improper CMB autorevolver"
-	desc = "An automatic revolver chambered in .357 magnum. Commonly issued to Nanotrasen security. It has a burst mode. Currently in trial with other revolvers across Terra and other colonies."
+	name = "\improper CMB自动左轮手枪"
+	desc = "一把装填.357马格南的自动左轮手枪.通常配发给Nanotrasen安保人员.它拥有爆发模式.目前正在与泰拉及其他殖民地各地的其他左轮手枪一起进行测试."
 	icon_state = "cmb"
 	worn_icon_state = "cmb"
 	caliber = CALIBER_357 //codex
@@ -300,8 +300,8 @@
 //The Judge, a shotgun and revolver in one
 
 /obj/item/weapon/gun/revolver/judge
-	name = "\improper 'Judge' revolver"
-	desc = "An incredibly uncommon revolver utilizing a oversized chamber to be able to both fire 45 Long at the cost of firing speed. Normal rounds have no falloff, and next to no scatter. Due to the short barrel, buckshot out of it has high spread."
+	name = "\improper \"法官\"左轮手枪"
+	desc = "一把极其罕见的左轮手枪,采用超大弹巢,能够发射45长弹,但代价是射速.普通弹药没有伤害衰减,几乎没有散布.由于枪管较短,发射鹿弹时散布很大."
 	icon_state = "judge"
 	worn_icon_state = "judge"
 	fire_animation = "judge_fire"
@@ -336,8 +336,8 @@
 // The R-76 Magnum. Fires a big round, equal to a slug. Has a windup.
 
 /obj/item/weapon/gun/revolver/standard_magnum
-	name = "\improper R-76 KC magnum"
-	desc = "The R-76 magnum is an absolute beast of a handgun used by the TGMC, rumors say it was created as a money laundering scheme by some general due to the sheer inpracticality of this firearm. Hits hard, recommended to be used with its stock attachment. Chambered in 12.7mm."
+	name = "\improper R-76 KC马格南"
+	desc = "R-76马格南是TGMC使用的一把绝对野兽般的手枪,有传言说它是某位将军因这把火器完全不实用而搞出的洗钱计划.威力强大,建议配合其枪托附件使用.装填12.7mm弹药."
 	icon = 'icons/obj/items/gun/pistol64.dmi'
 	icon_state = "t76"
 	worn_icon_state = "t76"
@@ -393,19 +393,19 @@
 	)
 
 /obj/item/weapon/gun/revolver/standard_magnum/fancy/gold
-	desc = "A gold plated R-76 magnum, to ensure it's incredibly expensive as well as incredibly impractical. The R-76 magnum is an absolute beast of a handgun used by the TGMC, rumors say it was created as a money laundering scheme by some general due to the sheer inpracticality of this firearm. Hits hard, recommended to be used with its stock attachment. Chambered in 12.7mm."
+	desc = "一把镀金的R-76马格南,确保它既极其昂贵又极其不实用.R-76马格南是TGMC使用的一把绝对野兽般的手枪,有传言说它是某位将军因这把火器完全不实用而搞出的洗钱计划.威力强大,建议配合其枪托附件使用.装填12.7mm弹药."
 	icon_state = "g_t76"
 	worn_icon_state = "g_t76"
 	fire_animation = "g_t76_fire"
 
 /obj/item/weapon/gun/revolver/standard_magnum/fancy/silver
-	desc = "A silver plated R-76 magnum, to ensure it's incredibly expensive as well as incredibly impractical. The R-76 magnum is an absolute beast of a handgun used by the TGMC, rumors say it was created as a money laundering scheme by some general due to the sheer inpracticality of this firearm. Hits hard, recommended to be used with its stock attachment. Chambered in 12.7mm."
+	desc = "一把镀银的R-76马格南,确保它既极其昂贵又极其不实用.R-76马格南是TGMC使用的一把绝对野兽般的手枪,有传言说它是某位将军因这把火器完全不实用而搞出的洗钱计划.威力强大,建议配合其枪托附件使用.装填12.7mm弹药."
 	icon_state = "s_t76"
 	worn_icon_state = "s_t76"
 	fire_animation = "s_t76_fire"
 
 /obj/item/weapon/gun/revolver/standard_magnum/fancy/nickle
-	desc = "A nickle plated R-76 magnum, for a more tasteful finish. The R-76 magnum is an absolute beast of a handgun used by the TGMC, rumors say it was created as a money laundering scheme by some general due to the sheer inpracticality of this firearm. Hits hard, recommended to be used with its stock attachment. Chambered in 12.7mm."
+	desc = "一把镀镍的R-76马格南,外观更为雅致.R-76马格南是TGMC使用的一把绝对野兽般的手枪,有传言说它是某位将军因这把火器完全不实用而搞出的洗钱计划.威力强大,建议配合其枪托附件使用.装填12.7mm弹药."
 	icon_state = "n_t76"
 	worn_icon_state = "n_t76"
 	fire_animation = "n_t76_fire"
@@ -414,8 +414,8 @@
 //---------------------------------------------------
 
 /obj/item/weapon/gun/revolver/single_action //This town aint big enuf fer the two of us
-	name = "single action revolver"
-	desc = "you should not be seeing this."
+	name = "单动式左轮手枪"
+	desc = "你不应该看到这个."
 	reload_sound = 'sound/weapons/guns/interact/revolver_cocked.ogg'
 	cocked_sound = 'sound/weapons/guns/interact/revolver_cocked.ogg'
 	default_ammo_type = /obj/item/ammo_magazine/revolver/r44
@@ -428,8 +428,8 @@
 //R-44, based off the SAA.
 
 /obj/item/weapon/gun/revolver/single_action/m44
-	name = "\improper R-44 SAA revolver"
-	desc = "A uncommon revolver occasionally carried by civilian law enforcement that's very clearly based off a modernized Single Action Army. Has to be manully primed with each shot. Uses .44 Magnum rounds."
+	name = "\improper R-44 SAA左轮手枪"
+	desc = "一把不常见的左轮手枪,偶尔由民用执法部门携带,明显基于现代化单动式陆军左轮手枪.每次射击都必须手动扳动击锤.使用.44马格南弹药."
 	icon_state = "m44"
 	worn_icon_state = "m44"
 	caliber = CALIBER_44 //codex
@@ -460,8 +460,8 @@
 ///////////////////////////////////////////////////////////////////////
 
 /obj/item/weapon/gun/revolver/coltrifle
-	name = "\improper M1855 Revolving Rifle"
-	desc = "A revolver and carbine hybrid, designed and manufactured a long time ago by Crowford Armory Union. Popular back then, but completely obsolete today. Still used by some antiquity lovers."
+	name = "\improper M1855转轮步枪"
+	desc = "一种左轮手枪与卡宾枪的混合体,由克劳福德军械联盟在很久以前设计并制造.当时很受欢迎,但如今已完全过时.仍被一些古董爱好者使用."
 	icon = 'icons/obj/items/gun/marksman64.dmi'
 	icon_state = "coltrifle"
 	worn_icon_state = "coltrifle"
@@ -509,8 +509,8 @@
 //////////////////////////////////////////////////////////////////////////
 
 /obj/item/weapon/gun/revolver/t500
-	name = "\improper R-500 'Nigredo' revolver"
-	desc = "The R-500 'Nigredo' revolver, chambered in .500 Nigro Express. Hard to use, but hits as hard as it’s kicks your hand. This handgun made by BMSS, designed to be deadly, unholy force to stop everything what moves, so in exchange for it, revolver lacking recoil control and have tight cocking system. Because of its specific, handcanon niche, was produced in small numbers. Black & Metzer special attachments system can turn extremely powerful handgun to fullscale rifle, making it a weapon to surpass Metal Gear."
+	name = "\improper R-500\"Nigredo\"左轮手枪"
+	desc = "R-500\"Nigredo\"左轮手枪,装填.500 Nigro Express弹药.难以使用,但威力如同它震痛你手掌的后坐力一样猛烈.这把由BMSS制造的手枪,被设计成一种致命,邪恶的力量,能阻止一切移动的东西,作为交换,这把左轮手枪缺乏后坐力控制,且上膛系统很紧.由于其特定的手炮定位,仅小批量生产.黑与梅策尔特殊附件系统能将这把极其强大的手枪变成全尺寸步枪,使其成为超越合金装备的武器."
 	icon = 'icons/obj/items/gun/pistol64.dmi'
 	icon_state = "t500"
 	worn_icon_list = list(
@@ -567,8 +567,8 @@
 //////////////////////////////////////////////////////////////////////////
 
 /obj/item/weapon/gun/revolver/t312
-	name = "R-312 'Albedo' Revolver"
-	desc = "Futuristic style revolver with railgun system, using to fire EMB (experimental medical bullets). Just first make sure that you chambered EMB, but not .500 White Express."
+	name = "R-312\"Albedo\"左轮手枪"
+	desc = "未来风格的轨道炮系统左轮手枪,用于发射EMB(实验性医疗子弹).只要先确保你装填的是EMB,而不是.500 White Express."
 	icon = 'icons/obj/items/gun/pistol64.dmi'
 	icon_state = "t312"
 	worn_icon_state = "t312"
@@ -613,5 +613,5 @@
 	if(!.)
 		return
 	if(user.skills.getRating(SKILL_MEDICAL) < SKILL_MEDICAL_PRACTICED)
-		to_chat(user, span_warning("You don't seem to know how to use [src]..."))
+		to_chat(user, span_warning("你似乎不知道如何使用[src]..."))
 		return FALSE

@@ -244,7 +244,7 @@
 			behavior_datum.equip_tool(crowbar)
 			crowbar_act(interactor, crowbar)
 		if(cell)
-			balloon_alert_to_viewers("removes [cell]")
+			balloon_alert_to_viewers("移除[cell]")
 			interactor.put_in_hands(cell)
 			cell.update_appearance()
 			set_cell(null)

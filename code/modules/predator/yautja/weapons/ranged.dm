@@ -119,8 +119,8 @@
 
 //Spike launcher
 /obj/item/weapon/gun/energy/yautja/spike
-	name = "spike launcher"
-	desc = "A compact Yautja device in the shape of a crescent. It can rapidly fire damaging spikes and automatically recharges."
+	name = "尖刺发射器"
+	desc = "一种新月形的紧凑亚乌查装置.它可以快速发射具有破坏性的尖刺并自动充能."
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "spikelauncher"
 	worn_icon_state = "spikelauncher"
@@ -159,10 +159,10 @@
 /obj/item/weapon/gun/energy/yautja/spike/examine(mob/user)
 	if(isyautja(user))
 		. = ..()
-		. += span_notice("It currently has <b>[rounds]/[max_rounds]</b> spikes.")
+		. += span_notice("它目前有<b>[rounds]/[max_rounds]</b>根尖刺.")
 	else
 		. = list()
-		. += span_notice("Looks like some kind of...mechanical donut.")
+		. += span_notice("看起来像是某种...机械甜甜圈.")
 
 /obj/item/weapon/gun/energy/yautja/spike/update_icon()
 	..()
@@ -171,7 +171,7 @@
 
 /obj/item/weapon/gun/energy/yautja/spike/able_to_fire(mob/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, span_warning("You have no idea how this thing works!"))
+		to_chat(user, span_warning("你完全不知道这东西是怎么运作的!"))
 		return
 
 	return ..()
@@ -183,8 +183,8 @@
 		return in_chamber
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle
-	name = "plasma rifle"
-	desc = "A long-barreled heavy plasma weapon. Intended for combat, not hunting. Has an integrated battery that allows for a functionally unlimited amount of shots to be discharged. Equipped with an internal gyroscopic stabilizer allowing its operator to fire the weapon one-handed if desired"
+	name = "等离子步枪"
+	desc = "一种长管重型等离子武器.用于战斗,而非狩猎.内置电池,可以发射几乎无限量的射击.配备了内部陀螺稳定器,允许操作者在需要时单手射击"
 	icon_state = "plasmarifle"
 	worn_icon_state = "plasmarifle"
 	resistance_flags = UNACIDABLE
@@ -217,16 +217,16 @@
 	if(rounds < max_rounds)
 		rounds++
 		if(rounds == max_rounds)
-			if(ismob(loc)) to_chat(loc, span_notice("[src] hums as it achieves maximum charge."))
+			if(ismob(loc)) to_chat(loc, span_notice("[src]在达到最大充能时发出嗡嗡声."))
 		update_icon()
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/examine(mob/user)
 	if(isyautja(user))
 		. = ..()
-		. += span_notice("It currently has <b>[rounds]/[max_rounds]</b> charge.")
+		. += span_notice("它目前有<b>[rounds]/[max_rounds]</b>充能.")
 	else
 		. = list()
-		. += span_notice("This thing looks like an alien rifle of some kind. Strange.")
+		. += span_notice("这东西看起来像是某种外星步枪.奇怪.")
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/update_icon()
 	. = ..()
@@ -237,7 +237,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/able_to_fire(mob/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, span_warning("You have no idea how this thing works!"))
+		to_chat(user, span_warning("你完全不知道这东西是怎么运作的!"))
 		return
 
 	return ..()
@@ -253,8 +253,8 @@
 	return in_chamber
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol
-	name = "plasma pistol"
-	desc = "A plasma pistol capable of rapid fire. It has an integrated battery. Can be used to set fires, either to braziers or on people."
+	name = "等离子手枪"
+	desc = "一种能够快速射击的等离子手枪.它有一个内置电池.可以用来点火,无论是火盆还是人."
 	icon_state = "plasmapistol"
 	worn_icon_state = "plasmapistol"
 
@@ -290,21 +290,21 @@
 	if(rounds < max_rounds)
 		rounds += 0.25
 		if(rounds == max_rounds)
-			if(ismob(loc)) to_chat(loc, span_notice("[src] hums as it achieves maximum charge."))
+			if(ismob(loc)) to_chat(loc, span_notice("[src]在达到最大充能时发出嗡嗡声."))
 
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/examine(mob/user)
 	if(isyautja(user))
 		. = ..()
-		. += span_notice("It currently has <b>[rounds]/[max_rounds]</b> charge.")
+		. += span_notice("它目前有<b>[rounds]/[max_rounds]</b>充能.")
 	else
 		. = list()
-		. += span_notice("This thing looks like an alien rifle of some kind. Strange.")
+		. += span_notice("这东西看起来像是某种外星步枪.奇怪.")
 
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/able_to_fire(mob/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, span_warning("You have no idea how this thing works!"))
+		to_chat(user, span_warning("你完全不知道这东西是怎么运作的!"))
 		return
 	else
 		return ..()
@@ -321,8 +321,8 @@
 #define PRED_MODE_LETHAL "lethal"
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster
-	name = "plasma caster"
-	desc = "A powerful, shoulder-mounted energy weapon."
+	name = "等离子肩炮"
+	desc = "一种强大的肩挂式能量武器."
 	icon_state = "plasma_ebony"
 	var/initial_icon_state = "plasma"
 	var/base_worn_icon_state = "plasma_wear"
@@ -425,7 +425,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/dropped(mob/living/carbon/human/M)
 	playsound(M, 'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)
-	to_chat(M, span_notice("You deactivate your plasma caster."))
+	to_chat(M, span_notice("你关闭了你的等离子肩炮."))
 	if(laser_target)
 		laser_off(M)
 	. = ..()
@@ -439,7 +439,7 @@
 	if(!source)
 		return
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, span_warning("You have no idea how this thing works!"))
+		to_chat(user, span_warning("你完全不知道这东西是怎么运作的!"))
 		return
 	return ..()
 
@@ -485,7 +485,7 @@
 		laser_off()
 	else if(!line_of_sight(user, laser_target, 24))
 		laser_off(user)
-		to_chat(user, span_danger("You lose sight of your target!"))
+		to_chat(user, span_danger("你失去了目标的踪迹!"))
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/do_fire(obj/object_to_fire)
 	if(!QDELETED(laser_target))
@@ -497,7 +497,7 @@
 		laser_off(gun_user)
 	else if(!laser_target && istype(A, /mob/living/carbon))
 		if(last_time_targeted + 3 SECONDS > world.time)
-			to_chat(gun_user, span_danger("You did it too recently!"))
+			to_chat(gun_user, span_danger("你最近已经做过了!"))
 			return
 		if(!A.can_apply_pred_laser())
 			return
@@ -509,7 +509,7 @@
 	target.apply_pred_laser()
 	laser_target = target
 	if(user)
-		to_chat(user, span_danger("You focus your target marker on [target]!"))
+		to_chat(user, span_danger("你将目标标记聚焦在[target]上!"))
 	START_PROCESSING(SSobj, src)
 	accuracy_mult += 0.50 //We get a big accuracy bonus vs the lasered target
 
@@ -524,7 +524,7 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster/proc/laser_on(atom/target, mob/user)
 	if(user?.client)
 		user.client.click_intercept = src
-		to_chat(user, span_notice("<b>You activate your target marker and take careful aim.</b>"))
+		to_chat(user, span_notice("<b>你激活了目标标记并仔细瞄准.</b>"))
 		playsound(user,'sound/effects/nightvision.ogg', 25, 1)
 	activate_laser_target(target, user)
 	last_time_targeted = world.time
@@ -536,7 +536,7 @@
 	deactivate_laser_target()
 	if(user?.client)
 		user.client.click_intercept = null
-		to_chat(user, span_notice("<b>You deactivate your target marker.</b>"))
+		to_chat(user, span_notice("<b>你关闭了目标标记.</b>"))
 		playsound(user,'sound/machines/click.ogg', 25, 1)
 	return TRUE
 

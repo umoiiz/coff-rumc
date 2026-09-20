@@ -1,6 +1,6 @@
 /obj/structure/bed
-	name = "bed"
-	desc = "A mattress seated on a rectangular metallic frame. This is used to support a lying person in a comfortable manner, notably for regular sleep. Ancient technology, but still useful."
+	name = "床"
+	desc = "一个坐落在矩形金属框架上的床垫. 用于以舒适的方式支撑躺卧的人, 尤其是用于日常睡眠. 古老的技术, 但仍然有用."
 	icon_state = "bed"
 	icon = 'icons/obj/objects.dmi'
 	buckle_flags = CAN_BUCKLE|BUCKLE_PREVENTS_PULL
@@ -30,7 +30,7 @@
 	dropmetal = FALSE
 
 /obj/structure/bed/bunkbed
-	name = "bunk bed"
+	name = "双层床"
 	icon_state = "bunkbed"
 
 /obj/structure/bed/update_icon_state()
@@ -81,7 +81,7 @@
 /obj/structure/bed/proc/buckle_bodybag(obj/structure/closet/bodybag/B, mob/user)
 	if(buckled_bodybag || buckled)
 		return
-	B.visible_message(span_notice("[user] buckles [B] to [src]!"))
+	B.visible_message(span_notice("[user]将[B]扣到[src]上!"))
 	B.roller_buckled = src
 	B.glide_modifier_flags |= GLIDE_MOD_BUCKLED
 	B.loc = loc
@@ -174,7 +174,7 @@
 	if(!ismob(grab.grabbed_thing))
 		return
 	var/mob/grabbed_mob = grab.grabbed_thing
-	to_chat(user, span_notice("You place [grabbed_mob] on [src]."))
+	to_chat(user, span_notice("你把[grabbed_mob]放在[src]上."))
 	grabbed_mob.forceMove(loc)
 	return TRUE
 
@@ -189,8 +189,8 @@
 	icon_state = "abed"
 
 /obj/structure/bed/fancy
-	name = "fancy bed"
-	desc = "For prime comfort."
+	name = "豪华床"
+	desc = "为了极致的舒适."
 
 /obj/structure/bed/pred
 	icon = 'icons/obj/machines/yautja_machines.dmi'
@@ -203,8 +203,8 @@
 * Roller beds
 */
 /obj/structure/bed/roller
-	name = "roller bed"
-	desc = "A basic cushioned leather board resting on a small frame. Not very comfortable at all, but allows the patient to rest lying down while moved to another location rapidly."
+	name = "担架床"
+	desc = "一块基本的软垫皮革板搁在一个小框架上. 一点也不太舒服, 但可以让病人在被快速转移到另一个地点时躺下休息."
 	icon = 'icons/obj/rollerbed.dmi'
 	icon_state = "roller_down"
 	anchored = FALSE
@@ -216,8 +216,8 @@
 	base_bed_icon = "roller"
 
 /obj/item/roller
-	name = "roller bed"
-	desc = "A collapsed roller bed that can be carried around."
+	name = "担架床"
+	desc = "一张可以随身携带的折叠担架床."
 	icon = 'icons/obj/rollerbed.dmi'
 	icon_state = "folded"
 	w_class = WEIGHT_CLASS_SMALL
@@ -247,7 +247,7 @@
 		if(RH.held)
 			return
 
-		to_chat(user, span_notice("You pick up [src]."))
+		to_chat(user, span_notice("你捡起了[src]."))
 		forceMove(RH)
 		RH.held = src
 
@@ -265,8 +265,8 @@
 	qdel(src)
 
 /obj/item/roller_holder
-	name = "roller bed rack"
-	desc = "A rack for carrying a collapsed roller bed."
+	name = "担架床架"
+	desc = "用于携带折叠担架床的架子."
 	icon = 'icons/obj/rollerbed.dmi'
 	icon_state = "folded"
 	var/obj/item/roller/held
@@ -278,11 +278,11 @@
 /obj/item/roller_holder/attack_self(mob/user as mob)
 
 	if(!held)
-		to_chat(user, span_warning("The rack is empty."))
+		to_chat(user, span_warning("架子是空的."))
 		return
 
 	var/obj/structure/bed/roller/R = new(user.loc)
-	to_chat(user, span_notice("You deploy [R]."))
+	to_chat(user, span_notice("你展开了[R]."))
 	qdel(held)
 	held = null
 
@@ -294,8 +294,8 @@
 GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 
 /obj/structure/bed/medevac_stretcher
-	name = "medevac stretcher"
-	desc = "A medevac stretcher with integrated beacon for rapid evacuation of an injured patient via dropship lift and an emergency bluespace teleporter for tele-evacuation to a linked beacon. Accepts patients and body bags."
+	name = "医疗后送担架"
+	desc = "一种带有集成信标的医疗后送担架, 可通过运输机吊运快速后送受伤病人, 并配有紧急蓝空间传送器, 可将病人远程后送至链接的信标. 可接收病人和尸袋."
 	icon = 'icons/obj/rollerbed.dmi'
 	icon_state = "stretcher_down"
 	buckling_y = 0
@@ -318,7 +318,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 
 /obj/structure/bed/medevac_stretcher/examine(mob/user)
 	. = ..()
-	. += span_warning("Right-click to activate. Unique action to activate on yourself.")
+	. += span_warning("右键点击以激活. 独特动作可对自己激活.")
 
 /obj/structure/bed/medevac_stretcher/attack_alien(mob/living/carbon/xenomorph/xeno_attacker, damage_amount = xeno_attacker.xeno_caste.melee_damage, damage_type = BRUTE, damage_flag = MELEE, effects = TRUE, armor_penetration = xeno_attacker.xeno_caste.melee_ap, isrightclick = FALSE)
 	if(xeno_attacker.status_flags & INCORPOREAL)
@@ -361,40 +361,40 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 
 	if(!linked_beacon)
 		playsound(loc,'sound/machines/buzz-two.ogg', 25, FALSE)
-		to_chat(user, span_warning("[src]'s bluespace engine isn't linked to any medvac beacon."))
+		to_chat(user, span_warning("[src]的蓝空间引擎未链接到任何医疗后送信标."))
 		return
 
 	if(user.faction != linked_beacon.faction)
 		playsound(loc,'sound/machines/buzz-two.ogg', 25, FALSE)
-		visible_message(span_warning("[src]'s safeties kick in before displacement as it fails to detect correct identification codes."))
+		visible_message(span_warning("[src]的安全机制在位移前启动, 因为它未能检测到正确的识别码."))
 		return
 
 	if(world.time < last_teleport )
 		playsound(loc,'sound/machines/buzz-two.ogg', 25, FALSE)
-		to_chat(user, span_warning("[src]'s bluespace engine is still recharging; it will be ready in [round(last_teleport - world.time) * 0.1] seconds."))
+		to_chat(user, span_warning("[src]的蓝空间引擎仍在充能; 它将在[round(last_teleport - world.time) * 0.1]秒后准备就绪."))
 		return
 
 	if(user in buckled_mobs)
-		to_chat(user, span_warning("You can't reach the teleportation activation button while buckled to [src]."))
+		to_chat(user, span_warning("当你被扣在[src]上时, 你无法够到传送激活按钮."))
 		return
 
 	if(!linked_beacon.planted)
 		playsound(loc,'sound/machines/buzz-two.ogg', 25, FALSE)
-		to_chat(user, span_warning("[src]'s bluespace engine linked medvac beacon isn't planted and active!"))
+		to_chat(user, span_warning("[src]的蓝空间引擎链接的医疗后送信标未部署且未激活!"))
 		return
 
 	if(!linked_beacon.check_power())
 		playsound(loc,'sound/machines/buzz-two.ogg', 25, FALSE)
-		to_chat(user, span_warning("[src]'s bluespace engine linked medvac beacon is unpowered."))
+		to_chat(user, span_warning("[src]的蓝空间引擎链接的医疗后送信标未通电."))
 		return
 
 	if(is_centcom_level(linked_beacon.z)) // No. No using teleportation to teleport to the adminzone.
 		playsound(loc,'sound/machines/buzz-two.ogg', 25, FALSE)
-		to_chat(user, span_warning("[src]'s beacon is out of range!"))
+		to_chat(user, span_warning("[src]的信标超出范围!"))
 		return
 
-	user.visible_message(span_warning("[user] activates [src]'s bluespace engine, causing it to rev to life."),
-	span_warning("You activate [src]'s bluespace engine, causing it to rev to life."))
+	user.visible_message(span_warning("[user]激活了[src]的蓝空间引擎, 使其轰鸣着启动."),
+	span_warning("你激活了[src]的蓝空间引擎, 使其轰鸣着启动."))
 	playsound(loc,'sound/mecha/powerup.ogg', 25, FALSE)
 	teleport_timer = addtimer(CALLBACK(src, PROC_REF(medevac_teleport), user), MEDEVAC_TELE_DELAY, TIMER_STOPPABLE|TIMER_UNIQUE) //Activate after 5 second delay.
 	RegisterSignal(src, COMSIG_MOVABLE_UNBUCKLE, PROC_REF(on_mob_unbuckle))
@@ -406,14 +406,14 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	UnregisterSignal(src, COMSIG_MOVABLE_UNBUCKLE)
 	deltimer(teleport_timer)
 	playsound(loc,'sound/machines/buzz-two.ogg', 25, FALSE)
-	visible_message(span_warning("[src]'s safeties kick in, no longer detecting a buckled user."))
+	visible_message(span_warning("[src]的安全机制启动, 不再检测到被扣住的用户."))
 
 /obj/structure/bed/medevac_stretcher/proc/medevac_teleport(mob/user)
 	UnregisterSignal(src, COMSIG_MOVABLE_UNBUCKLE)
 	busy = FALSE
 	if(!linked_beacon || !linked_beacon.check_power() || !linked_beacon.planted) //Beacon has to be planted in a powered area.
 		playsound(loc,'sound/machines/buzz-two.ogg', 25, FALSE)
-		visible_message(span_warning("[src]'s safeties kick in before displacement as it fails to detect a powered, linked, and planted medvac beacon."))
+		visible_message(span_warning("[src]的安全机制在位移前启动, 因为它未能检测到已通电, 已链接且已部署的医疗后送信标."))
 		return
 	var/mob/living/M
 	if(LAZYLEN(buckled_mobs))
@@ -422,19 +422,19 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 		M = locate(/mob/living) in buckled_bodybag.contents
 	else
 		playsound(loc,'sound/machines/buzz-two.ogg', 25, FALSE)
-		visible_message(span_warning("[src]'s bluespace engine aborts displacement, being unable to detect an appropriate evacuee."))
+		visible_message(span_warning("[src]的蓝空间引擎中止了位移, 无法检测到合适的被后送者."))
 		return
 	if(!M) //We need a mob to teleport or no deal
 		playsound(loc,'sound/machines/buzz-two.ogg', 25, FALSE)
-		visible_message(span_warning("[src]'s bluespace engine aborts displacement, being unable to detect an appropriate evacuee."))
+		visible_message(span_warning("[src]的蓝空间引擎中止了位移, 无法检测到合适的被后送者."))
 		return
 
 	if(M.faction != linked_beacon.faction)
 		playsound(loc,'sound/machines/buzz-two.ogg', 25, FALSE)
-		visible_message(span_warning("[src]'s safeties kick in before displacement as it fails to detect correct identification codes."))
+		visible_message(span_warning("[src]的安全机制在位移前启动, 因为它未能检测到正确的识别码."))
 		return
 
-	visible_message(span_notice("<b>[M] vanishes in a flash of sparks as [src]'s bluespace engine generates its displacement field.</b>"))
+	visible_message(span_notice("<b>[M]在一阵火花中消失, 因为[src]的蓝空间引擎生成了它的位移场.</b>"))
 	if(buckled_bodybag)
 		var/obj/structure/closet/bodybag/teleported_bodybag = buckled_bodybag
 		unbuckle_bodybag()
@@ -500,8 +500,8 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	. += span_notice("[details.Join(" ")]")
 
 /obj/item/roller/medevac
-	name = "medevac stretcher"
-	desc = "A collapsed medevac stretcher that can be carried around. Can be used to instantly transport a marine to a linked beacon. Don't forget the beacon!"
+	name = "医疗后送担架"
+	desc = "一张可以随身携带的折叠医疗后送担架. 可用于将一名陆战队员立即传送到链接的信标. 别忘了信标!"
 	icon_state = "stretcher_folded"
 	var/last_teleport = null
 	var/obj/item/medevac_beacon/linked_beacon = null
@@ -530,7 +530,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	timer_cooldown = max(last_teleport - world.time, 0)
 	if(!timer_cooldown)
 		if(holder)
-			balloon_alert(holder, "Medevac charged!")
+			balloon_alert(holder, "医疗后送已充能!")
 		playsound(loc,'sound/machines/ping.ogg', 10, FALSE)
 		STOP_PROCESSING(SSprocessing, src)
 	update_icon()
@@ -583,8 +583,8 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 		B.add_stretcher(src, user)
 
 /obj/item/medevac_beacon
-	name = "medevac beacon"
-	desc = "A specialized teleportation beacon that links with a medvac stretcher; provides the target destination for the stretcher's displacement field. WARNING: Must be in a powered area to function."
+	name = "医疗后送信标"
+	desc = "一种专用传送信标,可与医疗后送担架连接;为担架的位移场提供目标目的地.警告:必须位于通电区域才能运作."
 	icon = 'icons/obj/items/beacon.dmi'
 	icon_state = "med_beacon0"
 	w_class = WEIGHT_CLASS_SMALL
@@ -640,12 +640,12 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 
 /obj/item/medevac_beacon/attack_self(mob/user)
 	if(locked)
-		to_chat(user, span_warning("[src]'s interface is locked! Only a Squad Leader, Corpsman, or Medical Officer can unlock it now."))
+		to_chat(user, span_warning("[src]的界面已锁定!现在只有队长、医护兵或医疗官可以解锁它."))
 		return
 	user.drop_held_item()
 	anchored = TRUE
 	planted = TRUE
-	to_chat(user, span_warning("You plant and activate [src]."))
+	to_chat(user, span_warning("你安置并激活了[src]."))
 	icon_state = "med_beacon1"
 	playsound(loc,'sound/machines/ping.ogg', 25, FALSE)
 	faction = user.faction
@@ -655,12 +655,12 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	if(.)
 		return
 	if(locked)
-		to_chat(user, span_warning("[src]'s interface is locked! Only a Squad Leader, Corpsman, or Medical Officer can unlock it now."))
+		to_chat(user, span_warning("[src]的界面已锁定!现在只有队长、医护兵或医疗官可以解锁它."))
 		return
 	if(planted)
 		anchored = FALSE
 		planted = FALSE
-		to_chat(user, span_warning("You retrieve and deactivate [src]."))
+		to_chat(user, span_warning("你取回并停用了[src]."))
 		icon_state = "med_beacon0"
 		playsound(loc,'sound/machines/click.ogg', 25, FALSE)
 
@@ -678,7 +678,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 		destinations = list()
 		for(var/destination in medevac_assoc)
 			destinations += destination
-		var/input = tgui_input_list(user, "Choose a medevac to teleport to:", "Ghost Medevac teleport", destinations, null, 0)
+		var/input = tgui_input_list(user, "选择要传送至的医疗后送点:", "幽灵医疗后送传送", destinations, null, 0)
 		if(!input)
 			return
 		target = medevac_assoc[input]
@@ -697,15 +697,15 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 
 	if(istype(I, /obj/item/card/id))
 		if(!allowed(user))
-			to_chat(user, span_warning("Access denied."))
+			to_chat(user, span_warning("访问被拒绝."))
 			playsound(loc,'sound/machines/buzz-two.ogg', 25, FALSE)
 			return
 		locked = !locked
-		user.visible_message(span_notice("[user] [locked ? "locks" : "unlocks"] [src]'s interface."),
-		span_notice("You [locked ? "lock" : "unlock"] [src]'s interface."))
+		user.visible_message(span_notice("[user] [locked ? "locks" : "unlocks"] [src]的界面."),
+		span_notice("你[locked ? "lock" : "unlock"][src]的界面."))
 	else if(istype(I, /obj/item/roller/medevac))
 		if(locked)
-			to_chat(user, span_warning("Access denied."))
+			to_chat(user, span_warning("访问被拒绝."))
 			playsound(loc,'sound/machines/buzz-two.ogg', 25, FALSE)
 			return
 
@@ -724,7 +724,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 		if(rollerbed in linked_beds)
 			if(!silent)
 				if(user)
-					balloon_alert(user, "Already linked!")
+					balloon_alert(user, "已连接!")
 				playsound(loc,'sound/machines/buzz-sigh.ogg', 25, FALSE)
 			return TRUE
 		if(rollerbed.linked_beacon)
@@ -733,7 +733,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 		rollerbed.linked_beacon = src
 		if(!silent)
 			if(user)
-				balloon_alert(user, "Linked!")
+				balloon_alert(user, "已连接!")
 			playsound(loc,'sound/machines/ping.ogg', 25, FALSE)
 		return TRUE
 
@@ -742,7 +742,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 		if(stretcherbed in linked_beds_deployed)
 			if(!silent)
 				if(user)
-					balloon_alert(user, "Already linked!")
+					balloon_alert(user, "已连接!")
 				playsound(loc,'sound/machines/buzz-sigh.ogg', 25, FALSE)
 			return TRUE
 		if(stretcherbed.linked_beacon)
@@ -751,7 +751,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 		stretcherbed.linked_beacon = src
 		if(!silent)
 			if(user)
-				balloon_alert(user, "Linked!")
+				balloon_alert(user, "已连接!")
 			playsound(loc,'sound/machines/ping.ogg', 25, FALSE)
 		return TRUE
 

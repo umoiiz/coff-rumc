@@ -1,7 +1,7 @@
 /obj/item/clothing/shoes/black
-	name = "black shoes"
+	name = "黑色鞋子"
 	icon_state = "black"
-	desc = "A pair of black shoes."
+	desc = "一双黑色鞋子."
 
 	cold_protection_flags = FEET
 	min_cold_protection_temperature = SHOE_MIN_COLD_PROTECTION_TEMPERATURE
@@ -9,48 +9,48 @@
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/shoes/brown
-	name = "brown shoes"
-	desc = "A pair of brown shoes."
+	name = "棕色鞋子"
+	desc = "一双棕色鞋子."
 	icon_state = "brown"
 
 /obj/item/clothing/shoes/blue
-	name = "blue shoes"
+	name = "蓝色鞋子"
 	icon_state = "blue"
 
 /obj/item/clothing/shoes/green
-	name = "green shoes"
+	name = "绿色鞋子"
 	icon_state = "green"
 
 /obj/item/clothing/shoes/yellow
-	name = "yellow shoes"
+	name = "黄色鞋子"
 	icon_state = "yellow"
 
 /obj/item/clothing/shoes/purple
-	name = "purple shoes"
+	name = "紫色鞋子"
 	icon_state = "purple"
 
 /obj/item/clothing/shoes/red
-	name = "red shoes"
-	desc = "Stylish red shoes."
+	name = "红色鞋子"
+	desc = "时尚的红色鞋子."
 	icon_state = "red"
 
 /obj/item/clothing/shoes/white
-	name = "white shoes"
+	name = "白色鞋子"
 	icon_state = "white"
 	permeability_coefficient = 0.01
 
 /obj/item/clothing/shoes/leather
-	name = "leather shoes"
-	desc = "A sturdy pair of leather shoes."
+	name = "皮鞋"
+	desc = "一双结实的皮鞋."
 	icon_state = "leather"
 
 /obj/item/clothing/shoes/rainbow
-	name = "rainbow shoes"
-	desc = "Very gay shoes."
+	name = "彩虹鞋"
+	desc = "非常gay的鞋子."
 	icon_state = "rain_bow"
 
 /obj/item/clothing/shoes/orange
-	name = "orange shoes"
+	name = "橙色鞋子"
 	icon_state = "orange"
 	var/obj/item/restraints/handcuffs/chained = null
 

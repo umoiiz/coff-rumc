@@ -266,7 +266,7 @@ GLOBAL_LIST_INIT(strain_list, init_glob_strain_list())
 
 /mob/living/carbon/xenomorph
 	name = "Drone"
-	desc = "What the hell is THAT?"
+	desc = "那到底是什么鬼东西?"
 	icon = 'icons/Xeno/castes/larva/larva.dmi'
 	icon_state = "Drone Walking"
 	speak_emote = list("hisses")

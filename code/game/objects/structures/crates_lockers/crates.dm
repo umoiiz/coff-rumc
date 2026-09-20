@@ -1,6 +1,6 @@
 /obj/structure/closet/crate
-	name = "crate"
-	desc = "A rectangular steel crate."
+	name = "板条箱"
+	desc = "一个长方形钢制板条箱。"
 	icon = 'icons/obj/structures/crates.dmi'
 	icon_state = "closed_basic"
 	icon_opened = "open_basic"
@@ -47,50 +47,50 @@
 	climbable = TRUE
 
 /obj/structure/closet/crate/alpha
-	name = "alpha squad crate"
-	desc = "A crate with alpha squad's symbol on it. "
+	name = "阿尔法小队板条箱"
+	desc = "一个印有阿尔法小队标志的板条箱。"
 	icon_state = "closed_alpha"
 	icon_opened = "open_alpha"
 	icon_closed = "closed_alpha"
 
 /obj/structure/closet/crate/ammo
-	name = "ammunitions crate"
-	desc = "A ammunitions crate"
+	name = "弹药箱"
+	desc = "一个弹药箱"
 	icon_state = "closed_ammo"
 	icon_opened = "open_ammo"
 	icon_closed = "closed_ammo"
 
 /obj/structure/closet/crate/bravo
-	name = "bravo squad crate"
-	desc = "A crate with bravo squad's symbol on it. "
+	name = "布拉沃小队板条箱"
+	desc = "一个印有布拉沃小队标志的板条箱。"
 	icon_state = "closed_bravo"
 	icon_opened = "open_bravo"
 	icon_closed = "closed_bravo"
 
 /obj/structure/closet/crate/charlie
-	name = "charlie squad crate"
-	desc = "A crate with charlie squad's symbol on it. "
+	name = "查理小队板条箱"
+	desc = "一个印有查理小队标志的板条箱。"
 	icon_state = "closed_charlie"
 	icon_opened = "open_charlie"
 	icon_closed = "closed_charlie"
 
 /obj/structure/closet/crate/construction
-	name = "construction crate"
-	desc = "A construction crate"
+	name = "建筑板条箱"
+	desc = "一个建筑板条箱"
 	icon_state = "closed_construction"
 	icon_opened = "open_construction"
 	icon_closed = "closed_construction"
 
 /obj/structure/closet/crate/delta
-	name = "delta squad crate"
-	desc = "A crate with delta squad's symbol on it. "
+	name = "德尔塔小队板条箱"
+	desc = "一个印有德尔塔小队标志的板条箱。"
 	icon_state = "closed_delta"
 	icon_opened = "open_delta"
 	icon_closed = "closed_delta"
 
 /obj/structure/closet/crate/explosives
-	name = "explosives crate"
-	desc = "A explosives crate"
+	name = "炸药箱"
+	desc = "一个炸药箱"
 	icon_state = "closed_explosives"
 	icon_opened = "open_explosives"
 	icon_closed = "closed_explosives"
@@ -116,8 +116,8 @@
 	new /obj/item/explosive/grenade/incendiary/molotov(src)
 
 /obj/structure/closet/crate/freezer
-	name = "freezer crate"
-	desc = "A freezer crate."
+	name = "冷冻箱"
+	desc = "一个冷冻箱。"
 	icon_state = "closed_freezer"
 	icon_opened = "open_freezer"
 	icon_closed = "closed_freezer"
@@ -125,8 +125,8 @@
 	var/cooling_power = 40
 
 /obj/structure/closet/crate/hydroponics
-	name = "hydroponics crate"
-	desc = "All you need to destroy those pesky weeds and pests."
+	name = "水培箱"
+	desc = "你需要的一切来消灭那些讨厌的杂草和害虫。"
 	icon_state = "closed_hydro"
 	icon_opened = "open_hydro"
 	icon_closed = "closed_hydro"
@@ -137,51 +137,51 @@
 	new /obj/item/tool/minihoe(src)
 
 /obj/structure/closet/crate/internals
-	name = "internals crate"
-	desc = "A internals crate."
+	name = "内部装备箱"
+	desc = "一个内部装备箱。"
 	icon_state = "closed_oxygen"
 	icon_opened = "open_oxygen"
 	icon_closed = "closed_oxygen"
 
 /obj/structure/closet/crate/medical
-	name = "medical crate"
-	desc = "A medical crate."
+	name = "医疗箱"
+	desc = "一个医疗箱。"
 	icon_state = "closed_medical"
 	icon_opened = "open_medical"
 	icon_closed = "closed_medical"
 
 /obj/structure/closet/crate/mounted
-	name = "mounted weapon crate"
-	desc = "A robust crate containing stationary weapons."
+	name = "固定武器箱"
+	desc = "一个结实的箱子,内含固定式武器。"
 	icon_state = "closed_mounted_weapon"
 	icon_opened = "open_mounted_weapon"
 	icon_closed = "closed_mounted_weapon"
 
 /obj/structure/closet/crate/smart
-	name = "smart weapon crate"
-	desc = "A robust crate containing high-tech smartgun weapons and ammunitions."
+	name = "智能武器箱"
+	desc = "一个结实的箱子,内含高科技智能枪武器和弹药。"
 	icon_state = "closed_smart"
 	overlay_welded = "welded_smart"
 	icon_opened = "open_smart"
 	icon_closed = "closed_smart"
 
 /obj/structure/closet/crate/operations
-	name = "operations crate"
-	desc = "A robust crate containing support stuff."
+	name = "作战物资箱"
+	desc = "一个结实的箱子,内含支援物资。"
 	icon_state = "close_operate"
 	icon_opened = "open_operate"
 	icon_closed = "close_operate"
 
 /obj/structure/closet/crate/plastic
-	name = "plastic crate"
-	desc = "A rectangular plastic crate."
+	name = "塑料板条箱"
+	desc = "一个长方形塑料板条箱。"
 	icon_state = "closed_plastic"
 	icon_opened = "open_plastic"
 	icon_closed = "closed_plastic"
 
 /obj/structure/closet/crate/rcd
-	name = "RCD crate"
-	desc = "A crate for the storage of the RCD."
+	name = "RCD箱"
+	desc = "一个用于存放RCD的箱子。"
 
 /obj/structure/closet/crate/rcd/PopulateContents()
 	new /obj/item/ammo_rcd(src)
@@ -190,19 +190,19 @@
 	new /obj/item/tool/rcd(src)
 
 /obj/structure/closet/crate/solar
-	name = "Solar Pack crate"
+	name = "太阳能包箱"
 
 /obj/structure/closet/crate/freezer/rations //Fpr use in the escape shuttle
-	desc = "A crate of emergency rations."
-	name = "Emergency Rations"
+	desc = "一箱应急口粮。"
+	name = "应急口粮"
 
 /obj/structure/closet/crate/freezer/rations/PopulateContents()
 	new /obj/item/storage/box/donkpockets(src)
 	new /obj/item/storage/box/donkpockets(src)
 
 /obj/structure/closet/crate/radiation
-	name = "radioactive gear crate"
-	desc = "A crate with a radiation sign on it."
+	name = "放射性装备箱"
+	desc = "一个带有辐射标志的箱子。"
 	icon_state = "closed_radioactive"
 	icon_opened = "open_radioactive"
 	icon_closed = "closed_radioactive"
@@ -218,44 +218,44 @@
 	new /obj/item/clothing/head/radiation(src)
 
 /obj/structure/closet/crate/science
-	name = "science crate"
-	desc = "A science crate."
+	name = "科学箱"
+	desc = "一个科学箱。"
 	icon_state = "closed_science"
 	icon_opened = "open_science"
 	icon_closed = "closed_science"
 
 /obj/structure/closet/crate/supply
-	name = "supply crate"
-	desc = "A supply crate."
+	name = "补给箱"
+	desc = "一个补给箱。"
 	icon_state = "closed_supply"
 	icon_opened = "open_supply"
 	icon_closed = "closed_supply"
 
 /obj/structure/closet/crate/trashcart
-	name = "Trash Cart"
-	desc = "A heavy, metal trashcart with wheels."
+	name = "垃圾车"
+	desc = "一辆带轮子的重型金属垃圾车。"
 	icon_state = "closed_trashcart"
 	icon_opened = "open_trashcart"
 	icon_closed = "closed_trashcart"
 	overlay_welded = "welded_trashcart"
 
 /obj/structure/closet/crate/wayland
-	name = "Wayland crate"
-	desc = "A crate with a Wayland insignia on it."
+	name = "韦兰德板条箱"
+	desc = "一个印有韦兰德标志的板条箱。"
 	icon_state = "closed_wayland"
 	icon_opened = "open_wayland"
 	icon_closed = "closed_wayland"
 
 /obj/structure/closet/crate/weapon
-	name = "weapons crate"
-	desc = "A weapons crate."
+	name = "武器箱"
+	desc = "一个武器箱。"
 	icon_state = "closed_weapons"
 	icon_opened = "open_weapons"
 	icon_closed = "closed_weapons"
 
 /obj/structure/closet/crate/miningcar
-	desc = "A mining car. This one doesn't work on rails, but has to be dragged."
-	name = "Mining car (not for rails)"
+	desc = "一辆矿车。这辆不在轨道上运行,但必须被拖拽。"
+	name = "矿车(非轨道用)"
 	icon_state = "closed_mcart"
 	density = TRUE
 	icon_opened = "open_mcart"
@@ -267,8 +267,8 @@
 	icon_closed = "closed_mcart_y"
 
 /obj/structure/closet/crate/mass_produced_crate
-	name = "Mass Produced Crate"
-	desc = "A rectangular steel crate. Cannot be welded for metal."
+	name = "量产板条箱"
+	desc = "一个长方形钢制板条箱。无法焊接为金属。"
 	icon_state = "closed_basic"
 	icon_opened = "open_basic"
 	icon_closed = "closed_basic"
@@ -276,71 +276,71 @@
 	drop_material = null
 
 /obj/structure/closet/crate/mass_produced_crate/alpha
-	name = "Mass Produced Alpha Squad Crate"
-	desc = "A crate with alpha squad's symbol on it. Cannot be welded for metal. "
+	name = "量产阿尔法小队板条箱"
+	desc = "一个印有阿尔法小队标志的板条箱。无法焊接为金属。"
 	icon_state = "closed_alpha"
 	icon_opened = "open_alpha"
 	icon_closed = "closed_alpha"
 
 /obj/structure/closet/crate/mass_produced_crate/ammo
-	name = "Mass Produced Ammunitions Crate"
-	desc = "A ammunitions crate. Cannot be welded for metal."
+	name = "量产弹药箱"
+	desc = "一个弹药箱。无法焊接为金属。"
 	icon_state = "closed_ammo"
 	icon_opened = "open_ammo"
 	icon_closed = "closed_ammo"
 
 /obj/structure/closet/crate/mass_produced_crate/bravo
-	name = "Mass Produced Bravo Squad Crate"
-	desc = "A crate with bravo squad's symbol on it. Cannot be welded for metal."
+	name = "量产布拉沃小队板条箱"
+	desc = "一个印有布拉沃小队标志的板条箱。无法焊接为金属。"
 	icon_state = "closed_bravo"
 	icon_opened = "open_bravo"
 	icon_closed = "closed_bravo"
 
 /obj/structure/closet/crate/mass_produced_crate/charlie
-	name = "Mass Produced Charlie Squad Crate"
-	desc = "A crate with charlie squad's symbol on it. Cannot be welded for metal."
+	name = "量产查理小队板条箱"
+	desc = "一个印有查理小队标志的箱子. 无法焊接为金属."
 	icon_state = "closed_charlie"
 	icon_opened = "open_charlie"
 	icon_closed = "closed_charlie"
 
 /obj/structure/closet/crate/mass_produced_crate/construction
-	name = "Mass Produced Construction Crate"
-	desc = "A construction crate. Cannot be welded for metal."
+	name = "批量生产建筑箱"
+	desc = "一个建筑箱. 无法焊接为金属."
 	icon_state = "closed_construction"
 	icon_opened = "open_construction"
 	icon_closed = "closed_construction"
 
 /obj/structure/closet/crate/mass_produced_crate/delta
-	name = "Mass Produced Delta Squad Crate"
-	desc = "A crate with delta squad's symbol on it. Cannot be welded for metal. "
+	name = "批量生产德尔塔小队箱"
+	desc = "一个印有德尔塔小队标志的箱子. 无法焊接为金属."
 	icon_state = "closed_delta"
 	icon_opened = "open_delta"
 	icon_closed = "closed_delta"
 
 /obj/structure/closet/crate/mass_produced_crate/explosives
-	name = "Mass Produced Explosives Crate"
-	desc = "A explosives crate. Cannot be welded for metal."
+	name = "批量生产爆炸物箱"
+	desc = "一个爆炸物箱. 无法焊接为金属."
 	icon_state = "closed_explosives"
 	icon_opened = "open_explosives"
 	icon_closed = "closed_explosives"
 
 /obj/structure/closet/crate/mass_produced_crate/medical
-	name = "Mass Produced Medical Crate"
-	desc = "A medical crate. Cannot be welded for metal."
+	name = "批量生产医疗箱"
+	desc = "一个医疗箱. 无法焊接为金属."
 	icon_state = "closed_medical"
 	icon_opened = "open_medical"
 	icon_closed = "closed_medical"
 
 /obj/structure/closet/crate/mass_produced_crate/supply
-	name = "Mass Produced Supply Crate"
-	desc = "A supply crate. Cannot be welded for metal."
+	name = "批量生产补给箱"
+	desc = "一个补给箱. 无法焊接为金属."
 	icon_state = "closed_supply"
 	icon_opened = "open_supply"
 	icon_closed = "closed_supply"
 
 /obj/structure/closet/crate/mass_produced_crate/weapon
-	name = "Mass Produced Weapons Crate"
-	desc = "A weapons crate. Cannot be welded for metal."
+	name = "批量生产武器箱"
+	desc = "一个武器箱. 无法焊接为金属."
 	icon_state = "closed_weapons"
 	icon_opened = "open_weapons"
 	icon_closed = "closed_weapons"

@@ -1,6 +1,6 @@
 /obj/item/attachable/verticalgrip
-	name = "vertical grip"
-	desc = "A custom-built improved foregrip for better accuracy, moderately faster aimed movement speed, less recoil, and less scatter when wielded especially during burst fire. \nHowever, it also increases weapon size, slightly increases wield delay and makes unwielded fire more cumbersome."
+	name = "垂直握把"
+	desc = "定制改进型前握把, 可提高精准度, 适度加快瞄准时的移动速度, 减少后坐力, 并减少持握时的散布, 尤其是在点射时. \nHowever, 它还会增大武器体积, 略微增加持握延迟, 并使未持握射击更加笨拙."
 	icon_state = "verticalgrip"
 	wield_delay_mod = 0.2 SECONDS
 	size_mod = 1
@@ -16,8 +16,8 @@
 	aim_mode_movement_mult = -0.2
 
 /obj/item/attachable/angledgrip
-	name = "angled grip"
-	desc = "A custom-built improved foregrip for less recoil, and faster wielding time. \nHowever, it also increases weapon size, and slightly hinders unwielded firing."
+	name = "斜角握把"
+	desc = "定制改进型前握把, 可减少后坐力并加快持握速度. \nHowever, 它还会增大武器体积, 并略微妨碍未持握射击."
 	icon_state = "angledgrip"
 	wield_delay_mod = -0.3 SECONDS
 	size_mod = 1
@@ -29,8 +29,8 @@
 	scatter_unwielded_mod = 1
 
 /obj/item/attachable/gyro
-	name = "gyroscopic stabilizer"
-	desc = "A set of weights and balances to stabilize the weapon when burst firing or moving, especially while shooting one-handed. Greatly reduces movement penalties to accuracy. Significantly reduces burst scatter, recoil and general scatter. By increasing accuracy while moving, it let you move faster when taking aim."
+	name = "陀螺稳定器"
+	desc = "一套配重与平衡装置, 用于在点射或移动时稳定武器, 尤其是在单手持枪射击时. 大幅减少移动对精准度的影响. 显著减少点射散布, 后坐力和一般散布. 通过提高移动时的精准度, 它让你在瞄准时能移动得更快."
 	icon_state = "gyro"
 	slot = ATTACHMENT_SLOT_UNDER
 	scatter_mod = -1
@@ -42,8 +42,8 @@
 	aim_mode_movement_mult = -0.5
 
 /obj/item/attachable/lasersight
-	name = "laser sight"
-	desc = "A laser sight placed under the barrel. Significantly increases one-handed accuracy and significantly reduces unwielded penalties to accuracy."
+	name = "激光瞄准器"
+	desc = "安装在枪管下方的激光瞄准器. 显著提高单手精准度, 并显著减少未持握对精准度的影响."
 	icon_state = "lasersight"
 	slot = ATTACHMENT_SLOT_UNDER
 	pixel_shift_x = 17
@@ -52,8 +52,8 @@
 	accuracy_unwielded_mod = 0.15
 
 /obj/item/attachable/lace
-	name = "pistol lace"
-	desc = "A simple lace to wrap around your wrist."
+	name = "手枪挂绳"
+	desc = "一条简单的挂绳, 可缠绕在手腕上."
 	icon_state = "lace"
 	slot = ATTACHMENT_SLOT_MUZZLE //so you cannot have this and RC at once aka balance
 	attach_features_flags = ATTACH_REMOVABLE|ATTACH_ACTIVATION
@@ -62,7 +62,7 @@
 /obj/item/attachable/lace/activate(mob/living/user, turn_off)
 	if(lace_deployed)
 		REMOVE_TRAIT(master_gun, TRAIT_NODROP, PISTOL_LACE_TRAIT)
-		to_chat(user, span_notice("You feel the [src] loosen around your wrist!"))
+		to_chat(user, span_notice("你感觉[src]在手腕上松开了!"))
 		playsound(user, 'sound/weapons/fistunclamp.ogg', 25, 1, 7)
 		icon_state = "lace"
 	else if(turn_off)
@@ -70,9 +70,9 @@
 	else
 		if(user.do_actions)
 			return
-		to_chat(user, span_notice("You deploy the [src]."))
+		to_chat(user, span_notice("你展开[src]."))
 		ADD_TRAIT(master_gun, TRAIT_NODROP, PISTOL_LACE_TRAIT)
-		to_chat(user, span_warning("You feel the [src] shut around your wrist!"))
+		to_chat(user, span_warning("你感觉[src]在手腕上收紧了!"))
 		playsound(user, 'sound/weapons/fistclamp.ogg', 25, 1, 7)
 		icon_state = "lace-on"
 
@@ -82,15 +82,15 @@
 	return TRUE
 
 /obj/item/attachable/lace/t500
-	name = "R-500 lace"
+	name = "R-500挂绳"
 	icon = 'icons/obj/items/attachments/attachments_64.dmi'
 	slot = ATTACHMENT_SLOT_STOCK
 	pixel_shift_x = 0
 	pixel_shift_y = 0
 
 /obj/item/attachable/burstfire_assembly
-	name = "burst fire assembly"
-	desc = "A mechanism re-assembly kit that allows for automatic fire, or more shots per burst if the weapon already has the ability."
+	name = "点射组件"
+	desc = "一套机械重组套件, 可实现自动射击, 或者如果武器已具备该能力, 则可增加每次点射的射击次数."
 	icon_state = "rapidfire"
 	slot = ATTACHMENT_SLOT_UNDER
 	burst_mod = 2

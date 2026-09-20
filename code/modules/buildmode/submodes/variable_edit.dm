@@ -27,7 +27,7 @@
 	if(isnull(temp_value["class"]))
 		var_name = null
 		var_value = null
-		to_chat(user, span_notice("Variable unset."))
+		to_chat(user, span_notice("变量未设置."))
 		return
 	var_value = temp_value["value"]
 
@@ -35,24 +35,24 @@
 	var/list/modifiers = params2list(params)
 
 	if(isnull(var_name))
-		to_chat(user, span_warning("Choose a variable to modify first."))
+		to_chat(user, span_warning("请先选择要修改的变量."))
 		return
 
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
 		if(!object.vars.Find(var_name))
-			to_chat(user, span_warning("[initial(object.name)] does not have a var called '[var_name]'"))
+			to_chat(user, span_warning("[initial(object.name)]没有名为'[var_name]'的变量"))
 			return
 		if(object.vv_edit_var(var_name, var_value) == FALSE)
-			to_chat(user, span_warning("Your edit was rejected by the object."))
+			to_chat(user, span_warning("你的编辑被对象拒绝."))
 			return
 		log_admin("Build Mode: [key_name(user)] modified [object.name]'s [var_name] to [var_value]")
 
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(!object.vars.Find(var_name))
-			to_chat(user, span_warning("[initial(object.name)] does not have a var called '[var_name]'"))
+			to_chat(user, span_warning("[initial(object.name)]没有名为'[var_name]'的变量"))
 			return
 		var/reset_value = initial(object.vars[var_name])
 		if(object.vv_edit_var(var_name, reset_value) == FALSE)
-			to_chat(user, span_warning("Your edit was rejected by the object."))
+			to_chat(user, span_warning("你的编辑被对象拒绝."))
 			return
 		log_admin("Build Mode: [key_name(user)] modified [object.name]'s [var_name] to [reset_value]")

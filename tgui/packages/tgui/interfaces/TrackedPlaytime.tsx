@@ -76,18 +76,18 @@ export const TrackedPlaytime = () => {
           </Box>
         ) : (
           <Box>
-            <Section title="Total">
+            <Section title="总计">
               <PlaytimeSection
                 playtimes={{ Ghost: ghostTime, Living: livingTime }}
               />
             </Section>
-            <Section title="Jobs">
+            <Section title="职业">
               <PlaytimeSection playtimes={jobPlaytimes} />
             </Section>
-            <Section title="Special">
+            <Section title="特殊">
               <PlaytimeSection playtimes={specialPlaytimes} />
             </Section>
-            <Section title="Xenomorph Castes">
+            <Section title="异形种姓">
               <PlaytimeSection playtimes={castePlaytimes} />
             </Section>
           </Box>

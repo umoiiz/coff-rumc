@@ -1,8 +1,8 @@
 /obj/effect/abstract/ripple
 	name = "ship shadow"
-	desc = "Something is arriving\
-		It's probably best not to be on top of these \
-		when whatever is arriving comes through."
+	desc = "有东西正在抵达\
+		当正在抵达的东西穿过时,最好别待在这些\
+		上面."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "shadow"
 	anchored = TRUE

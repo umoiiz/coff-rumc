@@ -6,7 +6,7 @@ GLOBAL_PROTECT(AdminProcCallHandler)
 /// So usr is set to this for any proccalls that don't have any usr mob/client to refer to.
 /mob/proccall_handler
 	name = "ProcCall Handler"
-	desc = "If you are seeing this, tell a coder."
+	desc = "如果你看到这个,请告诉程序员."
 
 	var/list/callers = list()
 
@@ -97,7 +97,7 @@ ADMIN_VERB(advanced_proc_call, R_DEBUG, "Advanced ProcCall", "Call a proc on any
 	var/targetselected = FALSE
 	var/returnval
 
-	switch(tgui_alert(usr, "Proc owned by something?", "Owner?", list("Yes","No")))
+	switch(tgui_alert(usr, "进程被某物拥有?", "拥有者?", list("Yes","No")))
 		if("Yes")
 			targetselected = TRUE
 			var/list/value = vv_get_value(default_class = VV_ATOM_REFERENCE, classes = list(VV_ATOM_REFERENCE, VV_DATUM_REFERENCE, VV_MOB_REFERENCE, VV_CLIENT, VV_MARKED_DATUM, VV_TEXT_LOCATE, VV_PROCCALL_RETVAL))
@@ -105,7 +105,7 @@ ADMIN_VERB(advanced_proc_call, R_DEBUG, "Advanced ProcCall", "Call a proc on any
 				return
 			target = value["value"]
 			if(!istype(target))
-				to_chat(usr, span_danger("Invalid target."), confidential = TRUE)
+				to_chat(usr, span_danger("无效目标."), confidential = TRUE)
 				return
 		if("No")
 			target = null
@@ -125,12 +125,12 @@ ADMIN_VERB(advanced_proc_call, R_DEBUG, "Advanced ProcCall", "Call a proc on any
 
 	if(targetselected)
 		if(!hascall(target, procname))
-			to_chat(usr, span_warning("Error: callproc(): type [target.type] has no [proctype] named [procpath]."), confidential = TRUE)
+			to_chat(usr, span_warning("错误: callproc(): 类型[target.type]没有名为[procpath]的[proctype]."), confidential = TRUE)
 			return
 	else
 		procpath = "/[proctype]/[procname]"
 		if(!text2path(procpath))
-			to_chat(usr, span_warning("Error: callproc(): [procpath] does not exist."), confidential = TRUE)
+			to_chat(usr, span_warning("错误: callproc(): [procpath]不存在."), confidential = TRUE)
 			return
 
 	var/list/lst = get_callproc_args()
@@ -139,7 +139,7 @@ ADMIN_VERB(advanced_proc_call, R_DEBUG, "Advanced ProcCall", "Call a proc on any
 
 	if(targetselected)
 		if(!target)
-			to_chat(usr, "<font color='red'>Error: callproc(): owner of proc no longer exists.</font>", confidential = TRUE)
+			to_chat(usr, "<font color='red'>错误: callproc(): 进程的拥有者已不存在.</font>", confidential = TRUE)
 			return
 		var/msg = "[key_name(src)] called [target]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"]."
 		log_admin(msg)
@@ -171,11 +171,11 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 
 /proc/WrapAdminProcCall(datum/target, procname, list/arguments)
 	if(target && procname == "Del")
-		to_chat(usr, "Calling Del() is not allowed", confidential = TRUE)
+		to_chat(usr, "不允许调用Del()", confidential = TRUE)
 		return
 
 	if(target != GLOBAL_PROC && !target.CanProcCall(procname))
-		to_chat(usr, "Proccall on [target.type]/proc/[procname] is disallowed!", confidential = TRUE)
+		to_chat(usr, "不允许对[target.type]/proc/[procname]进行进程调用!", confidential = TRUE)
 		return
 	var/current_caller = GLOB.AdminProcCaller
 	var/user_identifier = usr ? usr.client?.ckey : GLOB.AdminProcCaller
@@ -187,7 +187,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 		CRASH("WrapAdminProcCall with no ckey: [target] [procname] [english_list(arguments)]")
 
 	if(!is_remote_handler && current_caller && current_caller != user_identifier)
-		to_chat(usr, span_adminnotice("Another set of admin called procs are still running. Try again later."), confidential = TRUE)
+		to_chat(usr, span_adminnotice("另一组管理员调用的进程仍在运行.请稍后再试."), confidential = TRUE)
 		return
 
 	GLOB.LastAdminCalledProc = procname
@@ -225,14 +225,14 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(call_proc_datum, R_DEBUG, "Atom ProcCall", datum/th
 	if(!procname)
 		return
 	if(!hascall(thing, procname))
-		to_chat(user, "<font color='red'>Error: callproc_datum(): type [thing.type] has no proc named [procname].</font>", confidential = TRUE)
+		to_chat(user, "<font color='red'>错误: callproc_datum(): 类型[thing.type]没有名为[procname]的进程.</font>", confidential = TRUE)
 		return
 	var/list/lst = user.get_callproc_args()
 	if(!lst)
 		return
 
 	if(!thing || !is_valid_src(thing))
-		to_chat(user, span_warning("Error: callproc_datum(): owner of proc no longer exists."), confidential = TRUE)
+		to_chat(user, span_warning("错误: callproc_datum(): 进程的拥有者已不存在."), confidential = TRUE)
 		return
 	log_admin("[key_name(user)] called [thing]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"].")
 	var/msg = "[key_name(user)] called [thing]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"]."

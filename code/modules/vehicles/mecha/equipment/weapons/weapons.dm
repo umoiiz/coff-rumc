@@ -1,5 +1,5 @@
 /obj/item/mecha_parts/mecha_equipment/weapon
-	name = "mecha weapon"
+	name = "机甲武器"
 	range = MECHA_RANGED
 	equipment_slot = MECHA_WEAPON
 	destroy_sound = 'sound/mecha/weapdestr.ogg'
@@ -56,7 +56,7 @@
 	if(!.)
 		return
 	if(HAS_TRAIT(chassis, TRAIT_MELEE_CORE) && !CHECK_BITFIELD(range, MECHA_MELEE))
-		to_chat(chassis.occupants, span_warning("Error -- Melee Core active."))
+		to_chat(chassis.occupants, span_warning("错误 -- 近战核心已激活."))
 		return FALSE
 
 /obj/item/mecha_parts/mecha_equipment/weapon/action(mob/source, atom/target, list/modifiers)
@@ -237,13 +237,13 @@
 
 //Base energy weapon type
 /obj/item/mecha_parts/mecha_equipment/weapon/energy
-	name = "general energy weapon"
+	name = "通用能量武器"
 	muzzle_flash_color = COLOR_LASER_RED
 	muzzle_iconstate = "muzzle_flash_laser"
 
 //Base ballistic weapon type
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic
-	name = "general ballistic weapon"
+	name = "通用实弹武器"
 	fire_sound = 'sound/weapons/guns/fire/gunshot.ogg'
 	smoke_effect = TRUE
 	///ammo left in the mag
@@ -323,8 +323,8 @@
 	attempt_rearm(current_firer)
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/carbine
-	name = "\improper FNX-99 \"Hades\" Carbine"
-	desc = "A weapon for combat exosuits. Shoots incendiary bullets."
+	name = "\improper FNX-99 \"冥王\"卡宾枪"
+	desc = "一种战斗外骨骼用武器.发射燃烧弹."
 	icon_state = "mecha_carbine"
 	equip_cooldown = 10
 	ammotype = /datum/ammo/bullet/machinegun
@@ -334,8 +334,8 @@
 	ammo_type = MECHA_AMMO_INCENDIARY
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot
-	name = "\improper LBX AC 10 \"Scattershot\""
-	desc = "A weapon for combat exosuits. Shoots a spread of pellets."
+	name = "\improper LBX AC 10 \"散射弹\""
+	desc = "一种战斗外骨骼用武器.发射散射弹丸."
 	icon_state = "mecha_scatter"
 	equip_cooldown = 20
 	ammotype = /datum/ammo/bullet/shotgun/buckshot
@@ -347,7 +347,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg
 	name = "\improper Ultra AC 2"
-	desc = "A weapon for combat exosuits. Shoots a rapid, three shot burst."
+	desc = "一种战斗外骨骼用武器.进行快速的三发点射."
 	icon_state = "mecha_uac2"
 	equip_cooldown = 10
 	ammotype = /datum/ammo/bullet/minigun
@@ -359,8 +359,8 @@
 	ammo_type = MECHA_AMMO_LMG
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack
-	name = "\improper SRM-8 missile rack"
-	desc = "A weapon for combat exosuits. Launches light explosive missiles."
+	name = "\improper SRM-8导弹架"
+	desc = "一种战斗外骨骼用武器.发射轻型高爆导弹."
 	icon_state = "mecha_missilerack"
 	ammotype = /datum/ammo/rocket/atgun_shell/he
 	fire_sound = 'sound/weapons/guns/fire/tank_cannon1.ogg'
@@ -372,8 +372,8 @@
 	ammo_type = MECHA_AMMO_MISSILE_HE
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/breaching
-	name = "\improper BRM-6 missile rack"
-	desc = "A weapon for combat exosuits. Launches low-explosive breaching missiles designed to explode only when striking a sturdy target."
+	name = "\improper BRM-6导弹架"
+	desc = "一种战斗外骨骼用武器.发射低爆破障导弹,仅会在击中坚固目标时爆炸."
 	icon_state = "mecha_missilerack_six"
 	ammotype = /datum/ammo/rocket/atgun_shell
 	fire_sound = 'sound/weapons/guns/fire/tank_cannon1.ogg'
@@ -426,8 +426,8 @@
 
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/launcher/flashbang
-	name = "\improper SGL-6 grenade launcher"
-	desc = "A weapon for combat exosuits. Launches primed flashbangs."
+	name = "\improper SGL-6榴弹发射器"
+	desc = "一种战斗外骨骼用武器.发射已拔销的闪光弹."
 	icon_state = "mecha_grenadelnchr"
 	ammotype = /obj/item/explosive/grenade/flashbang
 	fire_sound = 'sound/weapons/guns/fire/grenadelauncher.ogg'

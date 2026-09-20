@@ -1,5 +1,5 @@
 /obj/item/paper/safe_key
-	name = "Secure Safe Combination"
+	name = "安全保险箱密码锁"
 	var/obj/structure/safe/safe = null
 
 /obj/item/paper/safe_key/Initialize(mapload)
@@ -12,8 +12,8 @@
 			break
 
 /obj/structure/safe
-	name = "safe"
-	desc = "A huge chunk of metal with a dial embedded in it. Fine print on the dial reads \"Scarborough Arms - 2 tumbler safe, guaranteed thermite resistant, explosion resistant, and assistant resistant.\""
+	name = "保险箱"
+	desc = "一块巨大的金属, 上面嵌有一个转盘. 转盘上的小字写着\"斯卡伯勒军械 - 2转轮保险箱, 保证防铝热剂, 防爆炸, 防助理.\""
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "safe"
 	anchored = TRUE
@@ -61,9 +61,9 @@
 /obj/structure/safe/proc/check_unlocked(mob/user as mob, canhear)
 	if(user && canhear)
 		if(tumbler_1_pos == tumbler_1_open)
-			to_chat(user, span_notice("You hear a [pick("tonk", "krunk", "plunk")] from [src]."))
+			to_chat(user, span_notice("你听到来自[src]的[pick("tonk", "krunk", "plunk")]."))
 		if(tumbler_2_pos == tumbler_2_open)
-			to_chat(user, span_notice("You hear a [pick("tink", "krink", "plink")] from [src]."))
+			to_chat(user, span_notice("你听到来自[src]的[pick("tink", "krink", "plink")]."))
 	if(tumbler_1_pos == tumbler_1_open && tumbler_2_pos == tumbler_2_open)
 		if(user) visible_message("<b>[pick("Spring", "Sprang", "Sproing", "Clunk", "Click")]!</b>")
 		return TRUE
@@ -129,13 +129,13 @@
 
 	if(href_list["open"])
 		if(check_unlocked())
-			to_chat(user, span_notice("You [open ? "close" : "open"] [src]."))
+			to_chat(user, span_notice("你[open ? "close" : "open"][src]."))
 			open = !open
 			update_icon()
 			updateUsrDialog()
 			return
 		else
-			to_chat(user, span_notice("You can't [open ? "close" : "open"] [src], the lock is engaged!"))
+			to_chat(user, span_notice("你无法[open ? "close" : "open"][src], 锁已锁定!"))
 			return
 
 	if(href_list["decrement"])
@@ -176,20 +176,20 @@
 		return
 
 	else if(istype(I, /obj/item/clothing/tie/stethoscope))
-		to_chat(user, "Hold [I] in one of your hands while you manipulate the dial.")
+		to_chat(user, "在操作转盘时, 用一只手握住[I].")
 
 	else if(I.w_class + space <= maxspace)
 		space += I.w_class
 		if(user.transferItemToLoc(I, src))
-			to_chat(user, span_notice("You put [I] in [src]."))
+			to_chat(user, span_notice("你把[I]放入[src]."))
 		updateUsrDialog()
 
 	else
-		to_chat(user, span_notice("[I] won't fit in [src]."))
+		to_chat(user, span_notice("[I]放不进[src]."))
 
 //FLOOR SAFES
 /obj/structure/safe/floor
-	name = "floor safe"
+	name = "地板保险箱"
 	icon_state = "floorsafe"
 	density = FALSE
 	level = 1	//underfloor
@@ -204,6 +204,6 @@
 	invisibility = intact ? INVISIBILITY_MAXIMUM : 0
 
 /obj/structure/safe/floor/lvcolony
-	name = "safe"
+	name = "保险箱"
 	spawnkey = FALSE
 	pixel_x = 30

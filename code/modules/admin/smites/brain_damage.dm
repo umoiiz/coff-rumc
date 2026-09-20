@@ -6,8 +6,8 @@
 	. = ..()
 
 	if (!ishuman(target))
-		to_chat(user, span_warning("This must be used on a human."), confidential = TRUE)
+		to_chat(user, span_warning("这必须对人类使用."), confidential = TRUE)
 		return
 
-	to_chat(target, span_userdanger("Your mind snaps under the strain of existence, you just can't take it anymore."), confidential = TRUE)
+	to_chat(target, span_userdanger("你的心智在存在的重压下崩溃了, 你再也承受不住了."), confidential = TRUE)
 	target.adjust_brain_loss(BRAIN_DAMAGE_DEATH - 1)

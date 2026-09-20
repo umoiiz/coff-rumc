@@ -1,6 +1,6 @@
 /obj/structure/barricade/wood
-	name = "wooden barricade"
-	desc = "A wall made out of wooden planks nailed together. Not very sturdy, but can provide some concealment."
+	name = "木制路障"
+	desc = "由钉在一起的木板制成的墙.不太坚固,但能提供一些遮蔽."
 	icon_state = "wooden"
 	max_integrity = 100
 	layer = OBJ_LAYER
@@ -27,24 +27,24 @@
 		return
 
 	if(D.get_amount() < 1)
-		balloon_alert(user, "You need more wood")
+		balloon_alert(user, "你需要更多木材")
 		return
 
 	if(LAZYACCESS(user.do_actions, src))
 		return
 
-	balloon_alert_to_viewers("Repairing...")
+	balloon_alert_to_viewers("正在修复...")
 
 	if(!do_after(user, 2 SECONDS, NONE, src, BUSY_ICON_FRIENDLY) || obj_integrity >= max_integrity)
 		return
 
 	if(get_self_acid())
-		balloon_alert(user, "It's melting!")
+		balloon_alert(user, "它正在融化!")
 		return TRUE
 
 	if(!D.use(1))
 		return
 
 	repair_damage(max_integrity, user)
-	balloon_alert_to_viewers("Repaired")
+	balloon_alert_to_viewers("已修复")
 	update_icon()

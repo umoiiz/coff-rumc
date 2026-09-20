@@ -83,7 +83,7 @@
 	. = prefs.squad_robot_name
 	if(!. || . == "Undefined") //In case they don't have a name set.
 		. = GLOB.namepool[namepool].get_random_name()
-		to_chat(prefs.parent, span_warning("You forgot to set your robot in your preferences. Please do so next time."))
+		to_chat(prefs.parent, span_warning("你忘了在偏好设置中设置你的机器人。请下次设置好。"))
 
 /datum/species/robot/alpharii
 	name = "Hammerhead Combat Robot"

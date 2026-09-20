@@ -90,7 +90,7 @@
 
 /obj/effect/decal/cleanable/liquid_fuel/proc/ignite_fuel(igniter)
 	if(igniter)
-		visible_message(span_warning("[igniter] ignites the spilled fuel!"))
+		visible_message(span_warning("[igniter]点燃了洒出的燃料!"))
 	var/turf/S = get_turf(src)
 	S.ignite(fire_lvl, burn_lvl, f_color)
 	for(var/D in CARDINAL_DIRS)

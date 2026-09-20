@@ -1,6 +1,6 @@
 /obj/item/flashlight
-	name = "flashlight"
-	desc = "A hand-held emergency light."
+	name = "手电筒"
+	desc = "一种手持应急灯."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "flashlight"
 	worn_icon_list = list(
@@ -45,7 +45,7 @@
 		return
 	playsound(loc, SFX_ALIEN_CLAW_METAL, 25, 1)
 	xeno_attacker.do_attack_animation(src, ATTACK_EFFECT_CLAW)
-	to_chat(xeno_attacker, span_warning("We disable the metal thing's lights.") )
+	to_chat(xeno_attacker, span_warning("我们弄瞎那个金属玩意儿的灯.") )
 
 /obj/item/flashlight/update_icon_state()
 	. = ..()
@@ -59,7 +59,7 @@
 
 /obj/item/flashlight/attack_self(mob/user)
 	if(!isturf(user.loc))
-		to_chat(user, "You cannot turn the light on while in [user.loc].")
+		to_chat(user, "在[user.loc]中时你无法打开灯.")
 		return FALSE
 	if(activation_sound && (turn_light(user, !light_on) != STILL_ON_COOLDOWN))
 		playsound(get_turf(src), activation_sound, 15, 1)
@@ -70,14 +70,14 @@
 	if(!raillight_compatible) //No fancy messages, just no
 		return
 	if(light_on)
-		to_chat(user, span_warning("Turn off [src] first."))
+		to_chat(user, span_warning("先关闭[src]."))
 		return
 	if(loc == user)
 		user.dropItemToGround(src) //This part is important to make sure our light sources update, as it calls dropped()
 	var/obj/item/attachable/flashlight/F = new(loc)
 	user.put_in_hands(F) //This proc tries right, left, then drops it all-in-one.
-	to_chat(user, span_notice("You modify [src]. It can now be mounted on a weapon."))
-	to_chat(user, span_notice("Use a screwdriver on [F] to change it back."))
+	to_chat(user, span_notice("你改装了[src].它现在可以安装在武器上."))
+	to_chat(user, span_notice("用螺丝刀拧[F]可以改回来."))
 	qdel(src) //Delete da old flashlight
 
 /obj/item/flashlight/attack(mob/living/M, mob/living/user)
@@ -88,31 +88,31 @@
 
 		var/mob/living/carbon/human/H = M	//mob has protective eyewear
 		if(ishuman(M) && ((H.head && H.head.inventory_flags & COVEREYES) || (H.wear_mask && H.wear_mask.inventory_flags & COVEREYES) || (H.glasses && H.glasses.inventory_flags & COVEREYES)))
-			to_chat(user, span_notice("You're going to need to remove that [(H.head && H.head.inventory_flags & COVEREYES) ? "helmet" : (H.wear_mask && H.wear_mask.inventory_flags & COVEREYES) ? "mask": "glasses"] first."))
+			to_chat(user, span_notice("你需要先取下那个[(H.head && H.head.inventory_flags & COVEREYES) ? "helmet" : (H.wear_mask && H.wear_mask.inventory_flags & COVEREYES) ? "mask": "glasses"]."))
 			return
 
 		if(M == user)	//they're using it on themselves
 			M.flash_act()
-			M.visible_message(span_notice("[M] directs [src] to [M.p_their()] eyes."), \
-								span_notice("You wave the light in front of your eyes! Trippy!"))
+			M.visible_message(span_notice("[M]将[src]照向[M.p_their()]的眼睛."), \
+								span_notice("你在眼前晃动手电!真迷幻!"))
 			return
 
-		user.visible_message(span_notice("[user] directs [src] to [M]'s eyes."), \
-							span_notice("You direct [src] to [M]'s eyes."))
+		user.visible_message(span_notice("[user]将[src]照向[M]的眼睛."), \
+							span_notice("你将[src]照向[M]的眼睛."))
 
 		if(ishuman(M))	//robots and aliens are unaffected
 			var/mob/living/carbon/C = M
 			if(C.stat == DEAD || C.disabilities & BLIND)	//mob is dead or fully blind
-				to_chat(user, span_notice("[C] pupils does not react to the light!"))
+				to_chat(user, span_notice("[C]的瞳孔对光没有反应!"))
 			else	//they're okay!
 				C.flash_act()
-				to_chat(user, span_notice("[C]'s pupils narrow."))
+				to_chat(user, span_notice("[C]的瞳孔收缩了."))
 	else
 		return ..()
 
 /obj/item/flashlight/pen
-	name = "penlight"
-	desc = "A pen-sized light, used by medical staff."
+	name = "笔灯"
+	desc = "一种笔大小的灯,供医疗人员使用."
 	icon_state = "penlight"
 	worn_icon_state = ""
 	atom_flags = CONDUCT
@@ -121,8 +121,8 @@
 	raillight_compatible = FALSE
 
 /obj/item/flashlight/drone
-	name = "low-power flashlight"
-	desc = "A miniature lamp, that might be used by small robots."
+	name = "低功率手电筒"
+	desc = "一种微型灯,可能供小型机器人使用."
 	icon_state = "penlight"
 	worn_icon_state = ""
 	light_range = 2
@@ -131,8 +131,8 @@
 
 //The desk lamps are a bit special
 /obj/item/flashlight/lamp
-	name = "desk lamp"
-	desc = "A desk lamp with an adjustable mount."
+	name = "台灯"
+	desc = "一种带有可调节支架的台灯."
 	icon_state = "lamp"
 	worn_icon_state = "lamp"
 	light_range = 5
@@ -142,8 +142,8 @@
 
 //Menorah!
 /obj/item/flashlight/lamp/menorah
-	name = "Menorah"
-	desc = "For celebrating Chanukah."
+	name = "烛台"
+	desc = "用于庆祝光明节."
 	icon_state = "menorah"
 	worn_icon_state = "menorah"
 	light_range = 2
@@ -151,7 +151,7 @@
 
 //Green-shaded desk lamp
 /obj/item/flashlight/lamp/green
-	desc = "A classic green-shaded desk lamp."
+	desc = "一种经典的绿色灯罩台灯."
 	icon_state = "lampgreen"
 	worn_icon_state = "lampgreen"
 	light_range = 5
@@ -173,14 +173,14 @@
 		return FALSE
 	xeno_attacker.do_attack_animation(src, ATTACK_EFFECT_SMASH)
 	playsound(loc, 'sound/effects/metalhit.ogg', 20, TRUE)
-	xeno_attacker.visible_message(span_danger("\The [xeno_attacker] smashes [src]!"), \
-	span_danger("We smash [src]!"), null, 5)
+	xeno_attacker.visible_message(span_danger("\The [xeno_attacker]砸碎了[src]!"), \
+	span_danger("我们砸碎了[src]!"), null, 5)
 	deconstruct(FALSE)
 
 /obj/item/flashlight/slime
 	gender = PLURAL
-	name = "glowing slime"
-	desc = "A glowing ball of what appears to be amber."
+	name = "发光黏液"
+	desc = "一个发光的球体,看起来像是琥珀."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "floor1" //not a slime extract sprite but... something close enough!
 	worn_icon_state = "slime"
@@ -195,10 +195,10 @@
 /******************************Lantern*******************************/
 
 /obj/item/flashlight/lantern
-	name = "lantern"
+	name = "提灯"
 	icon_state = "lantern"
 	worn_icon_state = "lantern"
-	desc = "A mining lantern."
+	desc = "一种采矿提灯."
 	light_range = 6			// luminosity when on
 	raillight_compatible = FALSE
 

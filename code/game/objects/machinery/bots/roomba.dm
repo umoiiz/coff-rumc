@@ -1,7 +1,7 @@
 /// A cheap little roomba that runs around and keeps prep clean to decrease maptick and prep always being a fucking mess
 /obj/machinery/bot/roomba
 	name = "Nanotrasen roomba"
-	desc = "A robot vacuum cleaner designed by Nanotrasen. The roomba is designed to keep areas clean from dirty marines."
+	desc = "由Nanotrasen设计的机器人吸尘器. 扫地机器人旨在保持区域清洁, 远离肮脏的陆战队员."
 	icon = 'icons/obj/aibots.dmi'
 	icon_state = "roomba"
 	///The mine we have attached to this roomba
@@ -81,17 +81,17 @@
 
 /obj/machinery/bot/roomba/attack_hand(mob/living/user)
 	if(!CONFIG_GET(flag/fun_allowed))
-		visible_message(span_notice("[user] lovingly pats the [src]."), span_notice("You lovingly pat the [src]."))
+		visible_message(span_notice("[user]深情地拍了拍[src]."), span_notice("你深情地拍了拍[src]."))
 		return
 	if(user.a_intent != INTENT_HARM)
 		return
-	tgui_alert(user, "Are you really sure to want to try your luck with the devilish roomba?", "The roomba roulette", list("Yes", "Yes!", "Yes?"))
+	tgui_alert(user, "你真的确定要试试这个恶魔般的扫地机器人的运气吗?", "扫地机器人轮盘赌", list("Yes", "Yes!", "Yes?"))
 	if(prob(50))
 		cell_explosion(user, 250, 250)
-		visible_message("[user] lost at the roomba roulette!")
+		visible_message("[user]在扫地机器人轮盘赌中输了!")
 		return
 	cell_explosion(src, 50, 50)
-	visible_message("[user] won at the roomba roulette!")
+	visible_message("[user]在扫地机器人轮盘赌中赢了!")
 	qdel(src)
 
 /obj/machinery/bot/roomba/attackby(obj/item/I, mob/living/user, def_zone)
@@ -99,13 +99,13 @@
 		return
 	if(!istype(I, /obj/item/explosive/mine) || claymore)
 		return
-	visible_message(span_warning("[user] begins to try to attach [I] to [src]..."))
+	visible_message(span_warning("[user]开始尝试将[I]连接到[src]..."))
 	stop_processing()
 	if(!do_after(user, 1 SECONDS, NONE, src, BUSY_ICON_HOSTILE))
 		start_processing()
 		return
 	start_processing()
-	visible_message(span_warning("[user] slams [I]'s prongs through [src]!"))
+	visible_message(span_warning("[user]将[I]的插脚猛力穿过[src]!"))
 	log_game("[user] has armed [src] with a claymore at [AREACOORD(src)]")
 	user.temporarilyRemoveItemFromInventory(I)
 	I.forceMove(src)
@@ -133,7 +133,7 @@
 
 /obj/machinery/bot/roomba/valhalla/eord
 	name = "final boss roomba"
-	desc = "You weep in terror at the sight of this perfect feat of engineering. It sucks up both items and dead creatures alike."
+	desc = "你惊恐地看着这完美的工程壮举而哭泣. 它既能吸走物品, 也能吸走死去的生物."
 	resistance_flags = RESIST_ALL
 	allow_claymore = TRUE
 

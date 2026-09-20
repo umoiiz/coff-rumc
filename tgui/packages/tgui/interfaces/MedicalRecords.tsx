@@ -232,7 +232,7 @@ export const MedicalRecords = () => {
 
         {commentModal && (
           <Modal width="400px">
-            <Section title="Add Comment">
+            <Section title="添加评论">
               <TextArea
                 fluid
                 height="100px"
@@ -247,7 +247,7 @@ export const MedicalRecords = () => {
                     setCommentText('');
                   }}
                 >
-                  Cancel
+                  取消
                 </Button>
                 <Button
                   color="good"
@@ -258,7 +258,7 @@ export const MedicalRecords = () => {
                     setCommentText('');
                   }}
                 >
-                  Add Comment
+                  添加评论
                 </Button>
               </Stack>
             </Section>
@@ -267,8 +267,8 @@ export const MedicalRecords = () => {
 
         {searchModal && (
           <Modal width="400px">
-            <Section title="Search Records">
-              <Box mb={1}>Search by name, DNA, or ID:</Box>
+            <Section title="搜索记录">
+              <Box mb={1}>按姓名、DNA或ID搜索:</Box>
               <Input
                 fluid
                 autoFocus
@@ -283,7 +283,7 @@ export const MedicalRecords = () => {
                     setSearchValue('');
                   }}
                 >
-                  Cancel
+                  取消
                 </Button>
                 <Button
                   color="good"
@@ -294,7 +294,7 @@ export const MedicalRecords = () => {
                     setSearchValue('');
                   }}
                 >
-                  Search
+                  搜索
                 </Button>
               </Stack>
             </Section>
@@ -316,12 +316,12 @@ const LoginPanel = (props: {
       <Stack vertical fill align="center" justify="center">
         <Stack.Item>
           <Box bold fontSize={2} textAlign="center">
-            MEDICAL RECORDS DATABASE
+            医疗记录数据库
           </Box>
         </Stack.Item>
         <Stack.Item>
           <Box textAlign="center" color="label">
-            Identity verification required
+            需要身份验证
           </Box>
         </Stack.Item>
         <Stack.Item width="70%">
@@ -334,12 +334,12 @@ const LoginPanel = (props: {
         </Stack.Item>
         <Stack.Item width="60%">
           <Button fluid icon="sign-in-alt" color="good" onClick={onLogin}>
-            Log In
+            登录
           </Button>
         </Stack.Item>
         <Stack.Item>
           <Box color="bad" textAlign="center">
-            Unauthorized use strictly prohibited
+            严禁未经授权使用
           </Box>
         </Stack.Item>
       </Stack>
@@ -382,7 +382,7 @@ const RecordsList = (props: {
     <Stack vertical fill>
       <Stack.Item>
         <Section
-          title="Medical Records"
+          title="医疗记录"
           buttons={
             <Stack>
               <Stack.Item>
@@ -393,7 +393,7 @@ const RecordsList = (props: {
               </Stack.Item>
               <Stack.Item>
                 <Button icon="sign-out-alt" onClick={onLogout}>
-                  Log Out
+                  登出
                 </Button>
               </Stack.Item>
             </Stack>
@@ -410,7 +410,7 @@ const RecordsList = (props: {
             </Stack.Item>
             <Stack.Item>
               <Button icon="search" onClick={onSearch}>
-                Search DNA/ID
+                搜索DNA/ID
               </Button>
             </Stack.Item>
           </Stack>
@@ -476,7 +476,7 @@ const RecordsList = (props: {
             ))}
           </Table>
           {!records.length && (
-            <NoticeBox mt={2}>No records match the current filter.</NoticeBox>
+            <NoticeBox mt={2}>没有记录匹配当前筛选条件.</NoticeBox>
           )}
         </Section>
       </Stack.Item>
@@ -546,7 +546,7 @@ const RecordView = (props: {
               </Stack.Item>
               <Stack.Item>
                 <Button icon="sign-out-alt" onClick={onLogout}>
-                  Log Out
+                  登出
                 </Button>
               </Stack.Item>
             </Stack>
@@ -555,15 +555,15 @@ const RecordView = (props: {
           <Stack>
             <Stack.Item grow>
               {!record.has_general ? (
-                <NoticeBox danger>General Record Lost!</NoticeBox>
+                <NoticeBox danger>通用记录丢失!</NoticeBox>
               ) : (
                 <LabeledList>
-                  <LabeledList.Item label="Name">{record.name}</LabeledList.Item>
+                  <LabeledList.Item label="姓名">{record.name}</LabeledList.Item>
                   <LabeledList.Item label="ID">{record.id}</LabeledList.Item>
-                  <LabeledList.Item label="Position">
+                  <LabeledList.Item label="职位">
                     {record.rank}
                   </LabeledList.Item>
-                  <LabeledList.Item label="Sex">
+                  <LabeledList.Item label="性别">
                     <EditableValue
                       value={record.sex}
                       onEdit={() =>
@@ -577,7 +577,7 @@ const RecordView = (props: {
                       }
                     />
                   </LabeledList.Item>
-                  <LabeledList.Item label="Age">
+                  <LabeledList.Item label="年龄">
                     <EditableValue
                       value={record.age}
                       onEdit={() =>
@@ -590,7 +590,7 @@ const RecordView = (props: {
                       }
                     />
                   </LabeledList.Item>
-                  <LabeledList.Item label="Fingerprint">
+                  <LabeledList.Item label="指纹">
                     <EditableValue
                       value={record.fingerprint}
                       onEdit={() =>
@@ -603,7 +603,7 @@ const RecordView = (props: {
                       }
                     />
                   </LabeledList.Item>
-                  <LabeledList.Item label="Physical Status">
+                  <LabeledList.Item label="身体状况">
                     <EditableValue
                       value={record.p_stat}
                       onEdit={() =>
@@ -617,7 +617,7 @@ const RecordView = (props: {
                       }
                     />
                   </LabeledList.Item>
-                  <LabeledList.Item label="Mental Status">
+                  <LabeledList.Item label="精神状态">
                     <EditableValue
                       value={record.m_stat}
                       onEdit={() =>
@@ -657,7 +657,7 @@ const RecordView = (props: {
                         textAlign: 'center',
                       }}
                     >
-                      No Photo
+                      无照片
                     </Box>
                   )}
                 </Box>
@@ -671,19 +671,19 @@ const RecordView = (props: {
       </Stack.Item>
 
       <Stack.Item>
-        <Section title="Medical Data">
+        <Section title="医疗数据">
           {!record.has_medical ? (
             <>
-              <NoticeBox>Medical Record Lost!</NoticeBox>
+              <NoticeBox>医疗记录丢失!</NoticeBox>
               {!!record.has_general && (
                 <Button icon="plus" color="good" onClick={onNewRecord}>
-                  New Medical Record
+                  新建医疗记录
                 </Button>
               )}
             </>
           ) : (
             <LabeledList>
-              <LabeledList.Item label="Blood Type">
+              <LabeledList.Item label="血型">
                 <EditableValue
                   value={record.b_type}
                   onEdit={() =>
@@ -710,7 +710,7 @@ const RecordView = (props: {
                   }
                 />
               </LabeledList.Item>
-              <LabeledList.Item label="Minor Disabilities">
+              <LabeledList.Item label="轻微残疾">
                 <EditableValue
                   value={record.mi_dis}
                   onEdit={() =>
@@ -723,7 +723,7 @@ const RecordView = (props: {
                   }
                 />
               </LabeledList.Item>
-              <LabeledList.Item label="Minor Details">
+              <LabeledList.Item label="轻微详情">
                 <EditableValue
                   value={record.mi_dis_d}
                   onEdit={() =>
@@ -736,7 +736,7 @@ const RecordView = (props: {
                   }
                 />
               </LabeledList.Item>
-              <LabeledList.Item label="Major Disabilities">
+              <LabeledList.Item label="严重残疾">
                 <EditableValue
                   value={record.ma_dis}
                   onEdit={() =>
@@ -749,7 +749,7 @@ const RecordView = (props: {
                   }
                 />
               </LabeledList.Item>
-              <LabeledList.Item label="Major Details">
+              <LabeledList.Item label="严重详情">
                 <EditableValue
                   value={record.ma_dis_d}
                   onEdit={() =>
@@ -762,7 +762,7 @@ const RecordView = (props: {
                   }
                 />
               </LabeledList.Item>
-              <LabeledList.Item label="Allergies">
+              <LabeledList.Item label="过敏">
                 <EditableValue
                   value={record.alg}
                   onEdit={() =>
@@ -775,7 +775,7 @@ const RecordView = (props: {
                   }
                 />
               </LabeledList.Item>
-              <LabeledList.Item label="Allergy Details">
+              <LabeledList.Item label="过敏详情">
                 <EditableValue
                   value={record.alg_d}
                   onEdit={() =>
@@ -788,7 +788,7 @@ const RecordView = (props: {
                   }
                 />
               </LabeledList.Item>
-              <LabeledList.Item label="Current Diseases">
+              <LabeledList.Item label="当前疾病">
                 <EditableValue
                   value={record.cdi}
                   onEdit={() =>
@@ -801,7 +801,7 @@ const RecordView = (props: {
                   }
                 />
               </LabeledList.Item>
-              <LabeledList.Item label="Disease Details">
+              <LabeledList.Item label="疾病详情">
                 <EditableValue
                   value={record.cdi_d}
                   onEdit={() =>
@@ -814,7 +814,7 @@ const RecordView = (props: {
                   }
                 />
               </LabeledList.Item>
-              <LabeledList.Item label="Important Notes">
+              <LabeledList.Item label="重要备注">
                 <EditableValue
                   value={record.notes}
                   onEdit={() =>
@@ -835,15 +835,15 @@ const RecordView = (props: {
       {!!record.has_medical && (
         <Stack.Item>
           <Section
-            title="Comments / Log"
+            title="评论 / 日志"
             buttons={
               <Button icon="plus" onClick={onAddComment}>
-                Add Entry
+                添加条目
               </Button>
             }
           >
             {(record.comments ?? []).length === 0 && (
-              <Box color="label">No comments available.</Box>
+              <Box color="label">没有可用的评论.</Box>
             )}
             {(record.comments ?? []).map((comment) => (
               <Box key={comment.index} mb={1}>
@@ -856,7 +856,7 @@ const RecordView = (props: {
                   color="bad"
                   onClick={() => onDeleteComment(comment.index)}
                 >
-                  Delete Entry
+                  删除条目
                 </Button>
                 <Divider />
               </Box>
@@ -893,7 +893,7 @@ const RecordView = (props: {
             )}
           </Stack>
           <Button fluid mt={1} icon="arrow-left" onClick={onBack}>
-            Back
+            返回
           </Button>
         </Section>
       </Stack.Item>
@@ -941,9 +941,9 @@ const EditModal = (props: {
         )}
         {field.type !== 'select' && (
           <Stack justify="space-between" mt={2}>
-            <Button onClick={onCancel}>Cancel</Button>
+            <Button onClick={onCancel}>取消</Button>
             <Button color="good" onClick={() => onSave()}>
-              Save
+              保存
             </Button>
           </Stack>
         )}

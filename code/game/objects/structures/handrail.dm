@@ -1,6 +1,6 @@
 /obj/structure/barricade/handrail
-	name = "handrail"
-	desc = "A railing, for your hands. Woooow."
+	name = "扶手"
+	desc = "一个扶手,给你的手用的。哇哦。"
 	icon = 'icons/obj/structures/handrail.dmi'
 	icon_state = "handrail_a_0"
 	barricade_type = "handrail"
@@ -27,7 +27,7 @@
 /obj/structure/barricade/handrail/attackby(obj/item/item, mob/user)
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
-			to_chat(user, "You can't get near that, it's melting!")
+			to_chat(user, "你无法靠近那个,它正在融化!")
 			return
 
 /obj/structure/barricade/handrail/type_b
@@ -51,7 +51,7 @@
 	barricade_type = "wire_rail"
 
 /obj/structure/barricade/handrail/sandstone
-	name = "sandstone handrail"
+	name = "砂岩扶手"
 	icon_state = "hr_sandstone"
 	barricade_type = "hr_sandstone"
 	stack_type = /obj/item/stack/sheet/mineral/sandstone

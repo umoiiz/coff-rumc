@@ -75,7 +75,7 @@
 	SIGNAL_HANDLER
 	if(ismob(source))
 		return
-	examine_list += span_notice("\The [source] can be configured to use a more accessible theme in your game preferences.")
+	examine_list += span_notice("\The [source] 可以在你的游戏偏好设置中配置为使用更易访问的主题.")
 
 /**
  * Signal handler to clear the patient and close the UI in the very specific
@@ -126,26 +126,26 @@
 		// the message silently drops this feedback (the string is assigned to the
 		// typed mob argument), which is especially easy to miss once messages are
 		// routed through a translation layer.
-		user.balloon_alert(user, "fumbling...")
+		user.balloon_alert(user, "摸索中...")
 		if(!do_after(user, max(SKILL_TASK_AVERAGE - (1 SECONDS * user.skills.getRating(SKILL_MEDICAL)), 0), NONE, patient_candidate, BUSY_ICON_UNSKILLED))
 			return
 	if(!ishuman(patient_candidate))
-		user.balloon_alert(user, "cannot scan")
+		user.balloon_alert(user, "无法扫描")
 		return
 	if(isxeno(patient_candidate) || patient_candidate.species.species_flags & NO_SCAN)
-		user.balloon_alert(user, "unknown error")
+		user.balloon_alert(user, "未知错误")
 		return
 	if(patient)
 		UnregisterSignal(patient, COMSIG_QDELETING)
 	patient = patient_candidate
 	if(show_patient)
 		if(!COOLDOWN_FINISHED(src, show_scan_cooldown))
-			user.balloon_alert(user, "wait [DisplayTimeText(COOLDOWN_TIMELEFT(src, show_scan_cooldown))]")
+			user.balloon_alert(user, "等待 [DisplayTimeText(COOLDOWN_TIMELEFT(src, show_scan_cooldown))]")
 			return
 		if(patient_candidate.faction != user.faction)
-			user.balloon_alert(user, "incompatible factions")
+			user.balloon_alert(user, "阵营不兼容")
 			return
-		user.balloon_alert_to_viewers("showed healthscan", vision_distance = 4)
+		user.balloon_alert_to_viewers("已显示健康扫描", vision_distance = 4)
 		ui_interact(patient_candidate)
 		COOLDOWN_START(src, show_scan_cooldown, 3 SECONDS)
 	else

@@ -11,8 +11,8 @@
 
 /datum/outfit/quick/beginner/corpsman/lifesaver
 	name = "Standard Lifesaver"
-	desc = "Miracle in progress. \
-	Wields the bolt action Leicaster Repeater, and is equipped with a large variety of medicine for keeping the entire corps topped up and in the fight."
+	desc = "奇迹正在发生. \
+	手持栓动式莱卡斯特连发枪, 并配备了种类繁多的药品, 以维持整个部队的补给和战斗力."
 
 	suit_store = /obj/item/weapon/gun/shotgun/pump/lever/repeater/beginner
 	wear_suit = /obj/item/clothing/suit/modular/xenonauten/mimirinjector
@@ -50,8 +50,8 @@
 
 /datum/outfit/quick/beginner/corpsman/hypobelt
 	name = "Standard Hypobelt"
-	desc = "Putting the combat in combat medic. \
-	Wields the pump action SH-35 shotgun, and is equipped with a belt full of hyposprays for rapidly treating patients in bad condition."
+	desc = "将战斗融入战斗医疗兵. \
+	手持泵动式SH-35霰弹枪, 并配备了一条装满注射器的腰带, 用于快速治疗状况不佳的患者."
 
 	suit_store = /obj/item/weapon/gun/shotgun/pump/t35/beginner
 	wear_suit = /obj/item/clothing/suit/modular/xenonauten/light/lightmedical

@@ -35,11 +35,11 @@
 
 		if(INTENT_HELP)
 			if(stat == DEAD)
-				H.visible_message(span_warning("\The [H] pokes \the [src], but nothing happens."), \
-				span_warning("You poke \the [src], but nothing happens."), null, 5)
+				H.visible_message(span_warning("\The [H]戳了戳\the [src],但什么也没发生."), \
+				span_warning("你戳了戳\the [src],但什么也没发生."), null, 5)
 			else
-				H.visible_message(span_notice("\The [H] pets \the [src]."), \
-					span_notice("You pet \the [src]."), null, 5)
+				H.visible_message(span_notice("\The [H]抚摸了\the [src]."), \
+					span_notice("你抚摸了\the [src]."), null, 5)
 
 		if(INTENT_GRAB)
 			if(H == src || anchored)
@@ -57,7 +57,7 @@
 			if(!H.melee_damage)
 				H.do_attack_animation(src)
 				playsound(loc, attack.miss_sound, 25, TRUE)
-				visible_message(span_danger("[H] tried to [pick(attack.attack_verb)] [src]!"), null, null, 5)
+				visible_message(span_danger("[H]试图[pick(attack.attack_verb)][src]!"), null, null, 5)
 				return FALSE
 
 			H.do_attack_animation(src, ATTACK_EFFECT_YELLOWPUNCH)
@@ -79,15 +79,15 @@
 			if(on_fire)
 				fire_stacks = max(fire_stacks - 1, 0)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-				xeno_attacker.visible_message(span_danger("[xeno_attacker] tries to put out the fire on [src]!"), \
-					span_warning("We try to put out the fire on [src]!"), null, 5)
+				xeno_attacker.visible_message(span_danger("[xeno_attacker]试图扑灭[src]身上的火!"), \
+					span_warning("我们试图扑灭[src]身上的火!"), null, 5)
 				if(fire_stacks <= 0)
-					xeno_attacker.visible_message(span_danger("[xeno_attacker] has successfully extinguished the fire on [src]!"), \
-						span_notice("We extinguished the fire on [src]."), null, 5)
+					xeno_attacker.visible_message(span_danger("[xeno_attacker]成功扑灭了[src]身上的火!"), \
+						span_notice("我们扑灭了[src]身上的火."), null, 5)
 					ExtinguishMob()
 				return TRUE
-			xeno_attacker.visible_message(span_notice("\The [xeno_attacker] caresses \the [src] with its scythe-like arm."), \
-			span_notice("We caress \the [src] with our scythe-like arm."), null, 5)
+			xeno_attacker.visible_message(span_notice("\The [xeno_attacker]用其镰刀状的手臂抚摸着\the [src]."), \
+			span_notice("我们用镰刀状的手臂抚摸着\the [src]."), null, 5)
 			return TRUE
 
 		if(INTENT_DISARM)
@@ -102,8 +102,8 @@
 			if((isxenoqueen(src) || xeno_flags & XENO_LEADER) && !isxenoqueen(xeno_attacker))
 				return FALSE
 
-			xeno_attacker.visible_message("\The [xeno_attacker] shoves \the [src] out of her way!", \
-				span_warning("You shove \the [src] out of your way!"), null, 5)
+			xeno_attacker.visible_message("\The [xeno_attacker]将\the [src]推开!", \
+				span_warning("你将\the [src]推开!"), null, 5)
 			apply_effect(1 SECONDS, EFFECT_PARALYZE)
 			return TRUE
 
@@ -118,7 +118,7 @@
 
 /obj/fire/melting_fire
 	name = "melting fire"
-	desc = "It feels cold to the touch, yet it burns."
+	desc = "摸起来很冷,但它却在灼烧."
 	icon_state = "xeno_fire"
 	flame_color = "purple"
 	light_on = FALSE
@@ -148,7 +148,7 @@
 	if(human_affected.pass_flags & PASS_FIRE)
 		return
 	if(human_affected.soft_armor.getRating(FIRE) >= 100)
-		to_chat(human_affected, span_warning("You are untouched by the flames."))
+		to_chat(human_affected, span_warning("你未被火焰触及."))
 		return
 	handle_human(human_affected)
 
@@ -168,7 +168,7 @@
 
 /obj/fire/melting_fire/shattering
 	name = "shattering fire"
-	desc = "Cold to the touch, it rapidly spreads cracks through anything it contacts."
+	desc = "摸起来很冷,它会迅速在接触到的任何东西上蔓延裂纹."
 	icon_state = "violet_1"
 	flame_color = "violet"
 
@@ -180,7 +180,7 @@
 
 /obj/fire/melting_fire/melting_acid
 	name = "melting acid fire"
-	desc = "Cold to the touch, it burns in more ways than one."
+	desc = "摸起来很冷,它以不止一种方式灼烧."
 	icon_state = "green_1"
 	flame_color = "green"
 

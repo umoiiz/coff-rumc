@@ -40,7 +40,7 @@
 /datum/limb/l_arm/release_restraints()
 	if(!owner.handcuffed)
 		return
-	owner.visible_message("\The [owner.handcuffed.name] falls off of [owner.name].", "\The [owner.handcuffed.name] falls off you.")
+	owner.visible_message("\The [owner.handcuffed.name]从[owner.name]上脱落.", "\The [owner.handcuffed.name]从你身上脱落.")
 	owner.dropItemToGround(owner.handcuffed)
 
 /datum/limb/r_arm
@@ -64,7 +64,7 @@
 /datum/limb/r_arm/release_restraints()
 	if(!owner.handcuffed)
 		return
-	owner.visible_message("\The [owner.handcuffed.name] falls off of [owner.name].", "\The [owner.handcuffed.name] falls off you.")
+	owner.visible_message("\The [owner.handcuffed.name]从[owner.name]上脱落.", "\The [owner.handcuffed.name]从你身上脱落.")
 	owner.dropItemToGround(owner.handcuffed)
 
 /datum/limb/l_leg
@@ -169,7 +169,7 @@
 /datum/limb/hand/r_hand/release_restraints()
 	if(!owner.handcuffed)
 		return
-	owner.visible_message("\The [owner.handcuffed.name] falls off of [owner.name].", "\The [owner.handcuffed.name] falls off you.")
+	owner.visible_message("\The [owner.handcuffed.name]从[owner.name]上脱落.", "\The [owner.handcuffed.name]从你身上脱落.")
 	owner.dropItemToGround(owner.handcuffed)
 
 /datum/limb/hand/l_hand
@@ -192,7 +192,7 @@
 /datum/limb/hand/l_hand/release_restraints()
 	if(!owner.handcuffed)
 		return
-	owner.visible_message("\The [owner.handcuffed.name] falls off of [owner.name].", "\The [owner.handcuffed.name] falls off you.")
+	owner.visible_message("\The [owner.handcuffed.name]从[owner.name]上脱落.", "\The [owner.handcuffed.name]从你身上脱落.")
 	owner.dropItemToGround(owner.handcuffed)
 
 /datum/limb/head
@@ -221,13 +221,13 @@
 	if(disfigured)
 		return
 	if(type == BRUTE)
-		owner.visible_message(span_warning("You hear a sickening cracking sound coming from \the [owner]'s face."),	\
-		span_danger("Your face becomes an unrecognizible mangled mess!"),	\
-		span_warning("You hear a sickening crack."))
+		owner.visible_message(span_warning("你听到从\the [owner]的脸上传来令人作呕的碎裂声."),	\
+		span_danger("你的脸变成了一团无法辨认的烂肉!"),	\
+		span_warning("你听到一声令人作呕的碎裂声."))
 	else
-		owner.visible_message(span_warning("[owner]'s face melts away, turning into a mangled mess!"),	\
-		span_danger("Your face melts off!"),	\
-		span_warning("You hear a sickening sizzle."))
+		owner.visible_message(span_warning("[owner]的脸融化脱落, 变成一团烂肉!"),	\
+		span_danger("你的脸融化脱落了!"),	\
+		span_warning("你听到令人作呕的嘶嘶声."))
 	disfigured = 1
 	owner.name = owner.get_visible_name()
 

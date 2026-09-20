@@ -98,7 +98,7 @@ GLOBAL_VAR(common_report) //Contains common part of roundend report
 		addtimer(CALLBACK(SSvote, TYPE_PROC_REF(/datum/controller/subsystem/vote, initiate_vote), "gamemode", "SERVER"), 10 SECONDS)
 		return FALSE
 	if(length(GLOB.ready_players) < required_players && !bypass_checks)
-		to_chat(world, "<b>Unable to start [name].</b> Not enough players, [required_players] players needed.")
+		to_chat(world, "<b>无法开始[name].</b> 玩家人数不足,需要[required_players]名玩家.")
 		return FALSE
 	if(!set_valid_job_types() && !bypass_checks)
 		return FALSE
@@ -228,7 +228,7 @@ GLOBAL_VAR(common_report) //Contains common part of roundend report
 
 ///End of round messaging
 /datum/game_mode/proc/end_round_fluff()
-	to_chat(world, span_round_body("Thus ends the story of the brave men and women of the [SSmapping.configs[SHIP_MAP].map_name] and their struggle on [SSmapping.configs[GROUND_MAP].map_name]."))
+	to_chat(world, span_round_body("[SSmapping.configs[SHIP_MAP].map_name]的勇敢男女们以及他们在[SSmapping.configs[GROUND_MAP].map_name]上的斗争的故事就此结束."))
 
 /datum/game_mode/proc/display_roundstart_logout_report()
 	var/msg = "<hr>[span_notice("<b>Roundstart logout report</b>")]<br>"
@@ -612,23 +612,23 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 	if(!isnewplayer(NP))
 		return FALSE
 	if(!NP.IsJobAvailable(job, TRUE))
-		to_chat(usr, span_warning("Selected job is not available."))
+		to_chat(usr, span_warning("所选职业不可用."))
 		return FALSE
 	if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)
-		to_chat(usr, span_warning("The round is either not ready, or has already finished!"))
+		to_chat(usr, span_warning("本回合要么尚未准备好,要么已经结束!"))
 		return FALSE
 	if(!GLOB.enter_allowed || (!GLOB.xeno_enter_allowed && istype(job, /datum/job/xenomorph)))
-		to_chat(usr, span_warning("Spawning currently disabled, please observe."))
+		to_chat(usr, span_warning("当前禁止生成,请观战."))
 		return FALSE
 	if(!NP.client.prefs.random_name)
 		var/name_to_check = NP.client.prefs.real_name
 		if(job.job_flags & JOB_FLAG_SPECIALNAME)
 			name_to_check = job.get_special_name(NP.client)
 		if(CONFIG_GET(flag/prevent_dupe_names) && GLOB.real_names_joined.Find(name_to_check))
-			to_chat(usr, span_warning("Someone has already joined the round with this character name. Please pick another."))
+			to_chat(usr, span_warning("已有玩家使用此角色名加入本回合. 请另选一个."))
 			return FALSE
 	if(!SSjob.AssignRole(NP, job, TRUE))
-		to_chat(usr, span_warning("Failed to assign selected role."))
+		to_chat(usr, span_warning("分配所选职业失败."))
 		return FALSE
 	return TRUE
 
@@ -643,20 +643,20 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 	job.on_late_spawn(player.new_character)
 	player.new_character.client?.init_verbs()
 	var/area/A = get_area(player.new_character)
-	deadchat_broadcast(span_game("has woken at [span_name("[A?.name]")]."), span_game("[span_name("[player.new_character.real_name]")] ([job.title])"), follow_target = player.new_character, message_type = DEADCHAT_ARRIVALRATTLE)
+	deadchat_broadcast(span_game("已在[span_name("[A?.name]")]醒来."), span_game("[span_name("[player.new_character.real_name]")] ([job.title])"), follow_target = player.new_character, message_type = DEADCHAT_ARRIVALRATTLE)
 	qdel(player)
 
 /datum/game_mode/proc/attempt_to_join_as_larva(mob/xeno_candidate)
-	to_chat(xeno_candidate, span_warning("This is unavailable in this gamemode."))
+	to_chat(xeno_candidate, span_warning("此内容在此游戏模式中不可用."))
 	return FALSE
 
 /datum/game_mode/proc/spawn_larva(mob/xeno_candidate)
-	to_chat(xeno_candidate, span_warning("This is unavailable in this gamemode."))
+	to_chat(xeno_candidate, span_warning("此内容在此游戏模式中不可用."))
 	return FALSE
 
 /datum/game_mode/proc/set_valid_job_types()
 	if(!SSjob?.initialized)
-		to_chat(world, span_boldnotice("Error setting up valid jobs, no job subsystem found initialized."))
+		to_chat(world, span_boldnotice("设置有效职业时出错,未找到已初始化的职业子系统."))
 		CRASH("Error setting up valid jobs, no job subsystem found initialized.")
 	if(SSjob.ssjob_flags & SSJOB_OVERRIDE_JOBS_START) //This allows an admin to pause the roundstart and set custom jobs for the round.
 		SSjob.active_occupations = SSjob.joinable_occupations.Copy()
@@ -682,7 +682,7 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 		job.total_positions = valid_job_types[job.type] //Same for this one, direct value assignment.
 		SSjob.active_occupations += job
 	if(!length(SSjob.active_occupations))
-		to_chat(world, span_boldnotice("Error, game mode has only invalid jobs assigned."))
+		to_chat(world, span_boldnotice("错误,游戏模式仅分配了无效职业."))
 		return FALSE
 	SSjob.active_joinable_occupations = SSjob.active_occupations.Copy()
 	SSjob.set_active_joinable_occupations_by_category()
@@ -703,7 +703,7 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 		if(squad.faction == FACTION_TERRAGOV)
 			preferred_squads[squad.name] = 0
 	if(!length(preferred_squads))
-		to_chat(world, span_boldnotice("Error, no squads found."))
+		to_chat(world, span_boldnotice("错误,未找到小队."))
 		return FALSE
 	for(var/mob/new_player/player AS in GLOB.new_player_list)
 		if(!player.ready || !player.client?.prefs?.preferred_squad)
@@ -792,7 +792,7 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 	var/list/parts = list()
 	var/mob/M = C.mob
 	//Always display that the round ended
-	parts += span_round_header("<span class='body' style=font-size:20px;text-align:center valign='top'>Round Complete:[round_finished]</span>")
+	parts += span_round_header("<span class='body' style=font-size:20px;text-align:center valign='top'>回合结束:[round_finished]</span>")
 	if(M.mind && !isnewplayer(M))
 		if(M.stat != DEAD && !isbrain(M))
 			if(ishuman(M))
@@ -805,14 +805,14 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 					parts += "<span class='marooned'>You managed to survive, but were marooned on [SSmapping.configs[GROUND_MAP].map_name]...</span>"
 				else
 					parts += "<div class='panel greenborder'>"
-					parts += span_greentext("You managed to survive the events on [SSmapping.configs[GROUND_MAP].map_name] as [M.real_name].")
+					parts += span_greentext("你成功以[M.real_name]的身份在[SSmapping.configs[GROUND_MAP].map_name]的事件中幸存下来.")
 			else
 				parts += "<div class='panel greenborder'>"
-				parts += span_greentext("You managed to survive the events on [SSmapping.configs[GROUND_MAP].map_name] as [M.real_name].")
+				parts += span_greentext("你成功以[M.real_name]的身份在[SSmapping.configs[GROUND_MAP].map_name]的事件中幸存下来.")
 
 		else
 			parts += "<div class='panel redborder'>"
-			parts += span_redtext("You did not survive the events on [SSmapping.configs[GROUND_MAP].map_name]...")
+			parts += span_redtext("你未能在[SSmapping.configs[GROUND_MAP].map_name]的事件中幸存下来...")
 		if(GLOB.personal_statistics_list[C.ckey])
 			var/datum/personal_statistics/personal_statistics = GLOB.personal_statistics_list[C.ckey]
 			parts += personal_statistics.compose_report()
@@ -843,7 +843,7 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 	var/datum/action/report/R = new
 	C.player_details.player_actions += R
 	R.give_action(C.mob)
-	to_chat(C,"<span class='infoplain'><a href='byond://?src=[REF(R)];report=1'>Show roundend report again</a></span>")
+	to_chat(C,"<span class='infoplain'><a href='byond://?src=[REF(R)];report=1'>再次显示回合结束报告</a></span>")
 
 /datum/action/report
 	name = "Show roundend report"
@@ -863,7 +863,7 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 	if(!HN.living_xeno_ruler)
 		return
 
-	parts += span_round_body("The surviving xenomorph ruler was:<br>[HN.living_xeno_ruler.key] as [span_boldnotice("[HN.living_xeno_ruler]")]")
+	parts += span_round_body("幸存的异形统治者是:<br>[HN.living_xeno_ruler.key] 作为 [span_boldnotice("[HN.living_xeno_ruler]")]")
 
 	if(length(parts))
 		return "<div class='panel stationborder'>[parts.Join("<br>")]</div>"
@@ -1101,7 +1101,7 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 
 	if(!job)
 		if(show_warning)
-			to_chat(pred_candidate, span_warning("Something went wrong!"))
+			to_chat(pred_candidate, span_warning("出了点问题!"))
 		return
 
 	if(show_warning && alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(job.get_whitelist_status(GLOB.roles_whitelist, pred_candidate.client))] predator", "Confirm", "Yes", "No") != "Yes")
@@ -1109,29 +1109,29 @@ GLOBAL_LIST_INIT(bioscan_locations, list(
 	#ifndef TESTING
 	if(!(GLOB.roles_whitelist[pred_candidate.ckey] & WHITELIST_PREDATOR))
 		if(show_warning)
-			to_chat(pred_candidate, span_warning("You are not whitelisted! You may apply on the forums to be whitelisted as a predator."))
+			to_chat(pred_candidate, span_warning("你不在白名单中! 你可以在论坛上申请成为白名单掠食者."))
 		return
 
 	if(is_banned_from(ckey(pred_candidate.key), JOB_PREDATOR))
 		if(show_warning)
-			to_chat(pred_candidate, span_warning("You are banned."))
+			to_chat(pred_candidate, span_warning("你已被封禁."))
 		return
 
 	if(!(round_type_flags & MODE_PREDATOR))
 		if(show_warning)
-			to_chat(pred_candidate, span_warning("There is no Hunt this round! Maybe the next one."))
+			to_chat(pred_candidate, span_warning("本回合没有狩猎! 也许下一次吧."))
 		return
 
 	if(pred_candidate.ckey in predators)
 		if(show_warning)
-			to_chat(pred_candidate, span_warning("You already were a Yautja! Give someone else a chance."))
+			to_chat(pred_candidate, span_warning("你已经是亚乌查了! 给别人一个机会吧."))
 		return
 
 	if(get_desired_status(pred_candidate.client.prefs.yautja_status, WHITELIST_COUNCIL) == WHITELIST_NORMAL)
 		var/pred_max = calculate_pred_max
 		if(pred_current_num >= pred_max)
 			if(show_warning)
-				to_chat(pred_candidate, span_warning("Only [pred_max] predators may spawn this round, but Councillors and Ancients do not count."))
+				to_chat(pred_candidate, span_warning("本回合只能生成[pred_max]名掠食者,但议员和远古不计入其中."))
 			return
 	#endif
 	return TRUE

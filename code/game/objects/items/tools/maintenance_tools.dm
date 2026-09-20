@@ -1,6 +1,6 @@
 /obj/item/tool/wrench
-	name = "wrench"
-	desc = "A wrench with many common uses. Can be usually found in your hand."
+	name = "扳手"
+	desc = "一把有许多常见用途的扳手. 通常能在你手中找到."
 	icon_state = "wrench"
 	atom_flags = CONDUCT
 	equip_slot_flags = ITEM_SLOT_BELT
@@ -12,8 +12,8 @@
 	tool_behaviour = TOOL_WRENCH
 
 /obj/item/tool/screwdriver
-	name = "screwdriver"
-	desc = "You can be totally screwwy with this."
+	name = "螺丝刀"
+	desc = "你可以用这个彻底拧巴."
 	icon_state = "screwdriver_map"
 	atom_flags = CONDUCT
 	equip_slot_flags = ITEM_SLOT_BELT
@@ -55,8 +55,8 @@
 		pixel_y = rand(0, 16)
 
 /obj/item/tool/wirecutters
-	name = "wirecutters"
-	desc = "This cuts wires."
+	name = "剪线钳"
+	desc = "用来剪断电线."
 	icon_state = "cutters"
 	atom_flags = CONDUCT
 	equip_slot_flags = ITEM_SLOT_BELT
@@ -77,7 +77,7 @@
 
 /obj/item/tool/wirecutters/attack(mob/living/carbon/C, mob/user)
 	if((C.handcuffed) && (istype(C.handcuffed, /obj/item/restraints/handcuffs/cable)))
-		user.visible_message("\The [usr] cuts \the [C]'s restraints with \the [src]!",\
+		user.visible_message("\The [usr]用\the [src]切断了\the [C]的束缚!",\
 		"You cut \the [C]'s restraints with \the [src]!",\
 		"You hear cable being cut.")
 		C.update_handcuffed(null)
@@ -85,8 +85,8 @@
 	return ..()
 
 /obj/item/tool/weldingtool
-	name = "blowtorch"
-	desc = "Used for welding and repairing various things."
+	name = "喷灯"
+	desc = "用于焊接和修理各种东西."
 	icon_state = "welder"
 	atom_flags = CONDUCT
 	equip_slot_flags = ITEM_SLOT_BELT
@@ -145,11 +145,11 @@
 // If welding tool ran out of fuel during a construction task, construction fails.
 /obj/item/tool/weldingtool/tool_use_check(mob/living/user, amount)
 	if(!isOn() || !check_fuel())
-		balloon_alert(user, "not on")
+		balloon_alert(user, "未开启")
 		return FALSE
 
 	if(get_fuel() < amount)
-		balloon_alert(user, "low fuel")
+		balloon_alert(user, "燃料不足")
 		return FALSE
 	return TRUE
 
@@ -167,14 +167,14 @@
 /obj/item/tool/weldingtool/screwdriver_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(welding)
-		balloon_alert(user, "Turn it off first")
+		balloon_alert(user, "先把它关掉")
 		return
 	status = !status
 	if(status)
-		balloon_alert(user, "Resecures and closes")
+		balloon_alert(user, "重新固定并关闭")
 		DISABLE_BITFIELD(reagents.reagent_flags, OPENCONTAINER)
 	else
-		balloon_alert(user, "Ready to be refueled")
+		balloon_alert(user, "可以补充燃料了")
 		ENABLE_BITFIELD(reagents.reagent_flags, OPENCONTAINER)
 
 /obj/item/tool/weldingtool/afterattack(obj/O, mob/user, proximity)
@@ -204,7 +204,7 @@
 
 /obj/item/tool/weldingtool/attack_self(mob/user as mob)
 	if(!status)
-		balloon_alert(user, "Can't, unsecured!")
+		balloon_alert(user, "不行,未固定!")
 		return
 	toggle()
 
@@ -224,7 +224,7 @@
 		return TRUE
 	else
 		if(M)
-			balloon_alert(M, "Out of welding fuel")
+			balloon_alert(M, "焊接燃料耗尽")
 		return FALSE
 
 //Returns whether or not the blowtorch is currently on.
@@ -247,7 +247,7 @@
 			soundloop.start()
 			welding = 1
 			if(M)
-				balloon_alert(M, "Turns on")
+				balloon_alert(M, "开启")
 			set_light(1, LIGHTER_LUMINOSITY)
 			weld_tick += 8 //turning the tool on does not consume fuel directly, but it advances the process that regularly consumes fuel.
 			force = 15
@@ -258,7 +258,7 @@
 			START_PROCESSING(SSobj, src)
 		else
 			if(M)
-				balloon_alert(M, "Out of fuel")
+				balloon_alert(M, "燃料耗尽")
 			return
 	else
 		soundloop.stop()
@@ -270,9 +270,9 @@
 		heat = 0
 		if(M)
 			if(!message)
-				balloon_alert(M, "Switches off")
+				balloon_alert(M, "关闭")
 			else
-				balloon_alert(M, "Out of fuel")
+				balloon_alert(M, "燃料耗尽")
 			if(M.r_hand == src)
 				M.update_inv_r_hand()
 			if(M.l_hand == src)
@@ -281,16 +281,16 @@
 		STOP_PROCESSING(SSobj, src)
 
 /obj/item/tool/weldingtool/largetank
-	name = "industrial blowtorch"
+	name = "工业喷灯"
 	max_fuel = 40
 
 /obj/item/tool/weldingtool/hugetank
-	name = "high-capacity industrial blowtorch"
+	name = "大容量工业喷灯"
 	max_fuel = 80
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/tool/weldingtool/experimental
-	name = "experimental blowtorch"
+	name = "实验性喷灯"
 	max_fuel = 40 //?
 	w_class = WEIGHT_CLASS_NORMAL
 	var/last_gen = 0
@@ -302,8 +302,8 @@
 		reagents = max_fuel
 
 /obj/item/tool/crowbar
-	name = "crowbar"
-	desc = "Used to remove floors and to pry open doors."
+	name = "撬棍"
+	desc = "用于拆除地板和撬开门."
 	icon_state = "crowbar"
 	atom_flags = CONDUCT
 	equip_slot_flags = ITEM_SLOT_BELT
@@ -321,8 +321,8 @@
 	worn_icon_state = "crowbar_red"
 
 /obj/item/tool/weldpack
-	name = "Welding kit"
-	desc = "A heavy-duty, portable fuel carrier. Welder and flamer compatible."
+	name = "焊接套件"
+	desc = "一个重型便携式燃料罐.兼容焊接器和喷火器."
 	equip_slot_flags = ITEM_SLOT_BACK
 	icon = 'icons/obj/items/tank.dmi'
 	icon_state = "welderpack"
@@ -341,13 +341,13 @@
 	if(.)
 		return
 	if(reagents.total_volume == 0)
-		balloon_alert(user, "Out of fuel")
+		balloon_alert(user, "燃料耗尽")
 		return
 
 	else if(iswelder(I))
 		var/obj/item/tool/weldingtool/T = I
 		if(T.welding)
-			balloon_alert(user, "That was stupid")
+			balloon_alert(user, "那太蠢了")
 			log_bomber(user, "triggered a weldpack explosion", src)
 			cell_explosion(src, 45, 15)
 			flame_radius(3, src)
@@ -356,7 +356,7 @@
 			return ..()
 
 		reagents.trans_to(I, T.max_fuel)
-		balloon_alert(user, "Welder refilled")
+		balloon_alert(user, "焊接器已补充")
 		playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 
 	else if(istype(I, /obj/item/ammo_magazine/flamer_tank))
@@ -364,7 +364,7 @@
 		if(FT.current_rounds == FT.max_rounds || !reagents.total_volume)
 			return ..()
 		if(FT.default_ammo != /datum/ammo/flamethrower)
-			balloon_alert(user, "Wrong fuel")
+			balloon_alert(user, "燃料错误")
 			return ..()
 
 		//Reworked and much simpler equation; fuel capacity minus the current amount, with a check for insufficient fuel
@@ -373,7 +373,7 @@
 		FT.current_rounds += fuel_transfer_amount
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		FT.caliber = CALIBER_FUEL
-		balloon_alert(user, "Refills with [lowertext(FT.caliber)]")
+		balloon_alert(user, "用[lowertext(FT.caliber)]补充")
 		FT.update_icon()
 
 	else if(istype(I, /obj/item/storage/holster/backholster/flamer))
@@ -385,7 +385,7 @@
 		reagents.remove_reagent(/datum/reagent/fuel, fuel_to_transfer)
 		internal_tank.current_rounds += fuel_to_transfer
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
-		balloon_alert(user, "Refills")
+		balloon_alert(user, "补充")
 
 	else if(istype(I, /obj/item/weapon/twohanded/sledgehammer/rocketsledge))
 		var/obj/item/weapon/twohanded/sledgehammer/rocketsledge/RS = I
@@ -396,7 +396,7 @@
 		reagents.remove_reagent(/datum/reagent/fuel, fuel_transfer_amount)
 		RS.reagents.add_reagent(/datum/reagent/fuel, fuel_transfer_amount)
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
-		balloon_alert(user, "Refills")
+		balloon_alert(user, "补充")
 		RS.update_icon()
 
 	else if(istype(I, /obj/item/weapon/twohanded/chainsaw))
@@ -408,22 +408,22 @@
 		reagents.remove_reagent(/datum/reagent/fuel, fuel_transfer_amount)
 		saw.reagents.add_reagent(/datum/reagent/fuel, fuel_transfer_amount)
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
-		to_chat(user, span_notice("You refill [saw] with fuel."))
+		to_chat(user, span_notice("你用燃料补充了[saw]."))
 		saw.update_icon()
 
 	else
-		balloon_alert(user, "Only works with welders and flamethrowers")
+		balloon_alert(user, "只能用于焊接器和喷火器")
 
 /obj/item/tool/weldpack/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(!proximity) // this replaces and improves the get_dist(src,O) <= 1 checks used previously
 		return
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume < max_fuel)
 		O.reagents.trans_to(src, max_fuel)
-		balloon_alert(user, "Refills pack from the tank")
+		balloon_alert(user, "从燃料罐补充燃料包")
 		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		return
 	else if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
-		balloon_alert(user, "Already full")
+		balloon_alert(user, "已满")
 		return
 
 /obj/item/tool/weldpack/examine(mob/user)
@@ -431,16 +431,16 @@
 	. += "[reagents.total_volume] units of welding fuel left!"
 
 /obj/item/tool/weldpack/marinestandard
-	name = "M-22 welding kit"
-	desc = "A heavy-duty, portable fuel carrier. Mainly used in flamethrowers. Welder and flamer compatible."
+	name = "M-22焊接套件"
+	desc = "一个重型便携式燃料罐.主要用于喷火器.兼容焊接器和喷火器."
 	equip_slot_flags = ITEM_SLOT_BACK
 	icon_state = "marine_flamerpack"
 	w_class = WEIGHT_CLASS_BULKY
 	max_fuel = 500 //Because the marine backpack can carry 260, and still allows you to take items, there should be a reason to still use this one.
 
 /obj/item/tool/handheld_charger
-	name = "handheld charger"
-	desc = "A hand-held, lightweight cell charger. It isn't going to give you tons of power, but it can help in a pinch."
+	name = "手持充电器"
+	desc = "一个手持式轻型电池充电器.它不会给你提供大量电力,但可以在紧急情况下帮上忙."
 	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "handheldcharger_black"
 	worn_icon_state = "handheldcharger_black"
@@ -468,26 +468,26 @@
 
 /obj/item/tool/handheld_charger/attack_self(mob/user)
 	if(!cell)
-		balloon_alert(user, "Needs a cell")
+		balloon_alert(user, "需要电池")
 		return
 
 	if(cell.charge >= cell.maxcharge)
-		balloon_alert(user, "Fully charged")
+		balloon_alert(user, "已充满")
 		return
 
 	if(user.do_actions)
-		balloon_alert(user, "Too busy")
+		balloon_alert(user, "太忙了")
 		return
 
 	while(do_after(user, 1 SECONDS, NONE, src, BUSY_ICON_GENERIC))
 		cell.charge = min(cell.charge + 200, cell.maxcharge)
-		balloon_alert(user, "Charges the cell")
+		balloon_alert(user, "为电池充电")
 		playsound(user, 'sound/weapons/guns/interact/rifle_reload.ogg', 15, 1, 5)
 		flick("handheldcharger_black_pumping", src)
 		if(cell.charge >= cell.maxcharge)
-			balloon_alert(user, "Fully charged")
+			balloon_alert(user, "已充满")
 			return
-	balloon_alert(user, "Stops charging")
+	balloon_alert(user, "停止充电")
 
 /obj/item/tool/handheld_charger/attackby(obj/item/I, mob/user, params)
 	. = ..()
@@ -498,10 +498,10 @@
 		return
 	var/obj/item/cell/our_cell = I
 	if(!our_cell.rechargable)
-		balloon_alert(user, "Not rechargeable")
+		balloon_alert(user, "不可充电")
 		return
 	if(our_cell.w_class > WEIGHT_CLASS_NORMAL)
-		balloon_alert(user, "Too large")
+		balloon_alert(user, "太大")
 		return
 	if(!user.drop_held_item())
 		return
@@ -514,7 +514,7 @@
 	our_cell.forceMove(src)
 	cell = our_cell
 	cell.update_icon()
-	balloon_alert(user, "Charge Remaining: [cell.charge]/[cell.maxcharge]")
+	balloon_alert(user, "剩余电量: [cell.charge]/[cell.maxcharge]")
 	playsound(user, 'sound/weapons/guns/interact/rifle_reload.ogg', 20, 1, 5)
 	icon_state = "handheldcharger_black"
 
@@ -525,7 +525,7 @@
 	user.put_in_active_hand(cell)
 	cell = null
 	playsound(user, 'sound/machines/click.ogg', 20, 1, 5)
-	balloon_alert(user, "Removes the cell")
+	balloon_alert(user, "取出电池")
 	update_icon_state()
 
 /obj/item/tool/handheld_charger/attack_hand(mob/living/user)
@@ -537,7 +537,7 @@
 	user.put_in_active_hand(cell)
 	cell = null
 	playsound(user, 'sound/machines/click.ogg', 20, 1, 5)
-	balloon_alert(user, "Removes the cell")
+	balloon_alert(user, "取出电池")
 	update_icon_state()
 
 /obj/item/tool/handheld_charger/Destroy()

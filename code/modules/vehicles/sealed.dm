@@ -94,7 +94,7 @@
 	if(!istype(M))
 		return FALSE
 	if(!silent)
-		M.visible_message(span_notice("[M] climbs into \the [src]!"))
+		M.visible_message(span_notice("[M]爬进了\the [src]!"))
 	M.forceMove(src)
 	add_occupant(M)
 	return TRUE
@@ -116,7 +116,7 @@
 		M.throw_at(target_turf, 5, 10)
 
 	if(!silent)
-		M.visible_message(span_notice("[M] drops out of \the [src]!"))
+		M.visible_message(span_notice("[M]从\the [src]中掉出!"))
 	return TRUE
 
 /obj/vehicle/sealed/proc/exit_location(mob/M)
@@ -125,23 +125,23 @@
 /obj/vehicle/sealed/attackby(obj/item/I, mob/user, params)
 	if(key_type && !is_key(inserted_key) && is_key(I))
 		if(user.transferItemToLoc(I, src))
-			to_chat(user, span_notice("You insert [I] into [src]."))
+			to_chat(user, span_notice("你将[I]插入[src]。"))
 			if(inserted_key) //just in case there's an invalid key
 				inserted_key.forceMove(drop_location())
 			inserted_key = I
 		else
-			to_chat(user, span_warning("[I] seems to be stuck to your hand!"))
+			to_chat(user, span_warning("[I]似乎粘在了你的手上!"))
 		return
 	return ..()
 
 /obj/vehicle/sealed/proc/remove_key(mob/user)
 	if(!inserted_key)
-		to_chat(user, span_warning("There is no key in [src]!"))
+		to_chat(user, span_warning("[src]里没有钥匙!"))
 		return
 	if(!is_occupant(user) || !(occupants[user] & VEHICLE_CONTROL_DRIVE))
-		to_chat(user, span_warning("You must be driving [src] to remove [src]'s key!"))
+		to_chat(user, span_warning("你必须驾驶[src]才能取下[src]的钥匙!"))
 		return
-	to_chat(user, span_notice("You remove [inserted_key] from [src]."))
+	to_chat(user, span_notice("你从[src]中取出[inserted_key]。"))
 	inserted_key.forceMove(drop_location())
 	if(!HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
 		user.put_in_hands(inserted_key)

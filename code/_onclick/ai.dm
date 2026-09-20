@@ -148,10 +148,10 @@
 /* Airlocks */
 /obj/machinery/door/airlock/AICtrlClick(mob/living/silicon/ai/user) // Bolts doors
 	if(aiControlDisabled)
-		to_chat(user, span_notice("[src] AI remote control has been disabled."))
+		to_chat(user, span_notice("[src] AI远程控制已被禁用."))
 		return
 	if(emergency)
-		to_chat(user, span_notice("You can't lock a door that's on emergency access."))
+		to_chat(user, span_notice("你无法锁住处于紧急通道状态的门."))
 		return
 	if(locked)
 		bolt_raise(user)
@@ -160,22 +160,22 @@
 
 /obj/machinery/door/airlock/AIShiftClick(mob/living/silicon/ai/user)  // Opens and closes doors!
 	if(aiControlDisabled)
-		to_chat(user, span_notice("[src] AI remote control has been disabled."))
+		to_chat(user, span_notice("[src] AI远程控制已被禁用."))
 		return
 	user_toggle_open(user)
 
 /obj/machinery/door/airlock/AICtrlShiftClick(mob/living/silicon/ai/user)
 	if(aiControlDisabled)
-		to_chat(user, span_notice("[src] AI remote control has been disabled."))
+		to_chat(user, span_notice("[src] AI远程控制已被禁用."))
 		return
 	if(locked || !hasPower())
-		to_chat(user, span_notice("Emergency access mechanism inaccessible."))
+		to_chat(user, span_notice("紧急通道机制无法访问."))
 		return
 	if(emergency)
-		to_chat(user, span_notice("[src] emergency access has been disabled."))
+		to_chat(user, span_notice("[src] 紧急通道已被禁用."))
 		emergency_off(user)
 	else
-		to_chat(user, span_notice("[src] emergency access has been enabled."))
+		to_chat(user, span_notice("[src] 紧急通道已被启用."))
 		emergency_on(user)
 
 /obj/machinery/door/airlock/dropship_hatch/AICtrlClick(mob/living/silicon/ai/user)
@@ -262,7 +262,7 @@
 	var/turf/TU = get_turf(up)
 	var/turf/TD = get_turf(down)
 	if(up && down)
-		switch(tgui_alert(AI, "Go up or down the ladder?", "Ladder", list("Up", "Down", "Cancel")))
+		switch(tgui_alert(AI, "向上还是向下爬梯子?", "梯子", list("Up", "Down", "Cancel")))
 			if("Up")
 				TU.move_camera_by_click()
 			if("Down")
@@ -277,14 +277,14 @@
 
 /turf/AIShiftClick(mob/living/silicon/ai/user)
 	if(!user.linked_artillery)
-		to_chat(user, span_notice("No linked mortar found."))
+		to_chat(user, span_notice("未找到已连接的迫击炮."))
 		return
 
 	var/area/A = get_area(src)
 	if(istype(A) && A.ceiling >= CEILING_UNDERGROUND)
-		to_chat(user, span_warning("You cannot hit the target. It is probably underground."))
+		to_chat(user, span_warning("你无法击中目标. 它可能在地下."))
 		return
-	to_chat(user, span_notice("Sending targeting information to [user.linked_artillery]. COORDINATES: X:[x] Y:[y]"))
+	to_chat(user, span_notice("正在向 [user.linked_artillery] 发送瞄准信息. 坐标: X:[x] Y:[y]"))
 	user.linked_artillery.recieve_target(src,user)
 
 
@@ -300,16 +300,16 @@
 	var/obj/effect/overlay/temp/laser_target/laser
 	var/area/A = get_area(loc)
 	if(HAS_TRAIT(user, TRAIT_IS_FIRING_RAILGUN))
-		to_chat(user, span_warning("The rail guns are already targeting a location, wait for them to finish."))
+		to_chat(user, span_warning("轨道炮已在瞄准一个位置, 请等待其完成."))
 		return
 	if(!is_ground_level(user.eyeobj.z) || isdropshiparea(A)) //can't fire the railgun off the ground level, or at the DS
-		to_chat(user, span_warning("Incompatible target location."))
+		to_chat(user, span_warning("目标位置不兼容."))
 		return
 	if(SSmonitor.gamestate == SHUTTERS_CLOSED)
-		to_chat(user, span_warning("The operation hasn't started yet."))
+		to_chat(user, span_warning("行动尚未开始."))
 		return
 	if(A.ceiling > CEILING_OBSTRUCTED)
-		to_chat(user, span_warning("DEPTH WARNING: Target too deep for ordnance."))
+		to_chat(user, span_warning("深度警告: 目标太深, 超出火炮射程."))
 		return
 	if((GLOB.rail_gun?.last_firing_ai + COOLDOWN_RAILGUN_FIRE) > world.time)
 		to_chat(user, "[icon2html(src, user)] [span_warning("The rail gun hasn't cooled down yet!")]")
@@ -317,7 +317,7 @@
 	else if(!A)
 		to_chat(user, "[icon2html(src, user)] [span_warning("No target detected!")]")
 		return
-	to_chat(user, span_notice("Firing orbital railguns at [src], COORDINATES: X:[x] Y:[y]"))
+	to_chat(user, span_notice("正在向 [src] 发射轨道炮, 坐标: X:[x] Y:[y]"))
 	ADD_TRAIT(user, TRAIT_IS_FIRING_RAILGUN, TRAIT_IS_FIRING_RAILGUN)
 	///how many times we've fired the railgun this cycle
 	var/timesfired = 0

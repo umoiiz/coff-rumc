@@ -23,7 +23,7 @@ export const SupplyDropConsole = (_props) => {
   return (
     <Window width={350} height={350}>
       <Window.Content>
-        <Section title="Supply drop">
+        <Section title="补给空投">
           <LabeledList>
             <LabeledList.Item label={'Current beacon'}>
               <Button onClick={() => act('select_beacon')}>
@@ -33,7 +33,7 @@ export const SupplyDropConsole = (_props) => {
               </Button>
             </LabeledList.Item>
             <Divider />
-            <LabeledList.Item label="X Offset">
+            <LabeledList.Item label="X偏移">
               <NumberInput
                 expensive
                 minValue={-255}
@@ -42,7 +42,7 @@ export const SupplyDropConsole = (_props) => {
                 onChange={(value) => act('set_x', { set_x: `${value}` })}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Y Offset">
+            <LabeledList.Item label="Y偏移">
               <NumberInput
                 expensive
                 minValue={-255}
@@ -54,11 +54,11 @@ export const SupplyDropConsole = (_props) => {
           </LabeledList>
           <Divider />
           <Section
-            title="Supply pad status"
+            title="补给平台状态"
             buttons={
               <Button
                 icon="refresh"
-                content="Update"
+                content="更新"
                 onClick={() => act('refresh_pad')}
               />
             }
@@ -85,7 +85,7 @@ export const SupplyDropConsole = (_props) => {
           <Button
             disabled={!canFire}
             color="good"
-            content="Launch Supply drop"
+            content="发射补给空投"
             onClick={() => act('send_beacon')}
           />
         </Section>

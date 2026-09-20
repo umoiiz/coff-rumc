@@ -162,7 +162,7 @@ const OutfitDisplay = (props) => {
           fluid
           onClick={() => act('customoutfit')}
         >
-          Create a custom outfit...
+          创建自定义装备...
         </Button>
       )}
     </Section>
@@ -191,7 +191,7 @@ const CurrentlySelectedDisplay = (props) => {
         </Stack.Item>
       )}
       <Stack.Item grow={1} basis={0}>
-        <Box color="label">Currently selected:</Box>
+        <Box color="label">当前选择:</Box>
         <Box
           title={entry?.path}
           style={{
@@ -214,7 +214,7 @@ const CurrentlySelectedDisplay = (props) => {
             })
           }
         >
-          Confirm
+          确认
         </Button>
       </Stack.Item>
     </Stack>

@@ -167,7 +167,7 @@
 					. = FALSE
 	if(!. && error_msg && user)
 		// Might need re-wording.
-		to_chat(user, span_alert("There is no exposed flesh or thin material [target_zone == "head" ? "on their head" : "on their body"] to inject into."))
+		to_chat(user, span_alert("没有暴露的血肉或薄弱的材料可供[target_zone == "head" ? "on their head" : "on their body"]注射."))
 
 /mob/living/carbon/human/has_brain()
 	var/datum/internal_organ/brain = get_organ_slot(ORGAN_SLOT_BRAIN)

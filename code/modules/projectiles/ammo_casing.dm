@@ -10,8 +10,8 @@ items, so they do not intersect. This is far more efficient than using Blend() o
 Turn() or Shift() as there is virtually no overhead. ~N
 */
 /obj/item/ammo_casing
-	name = "spent casing"
-	desc = "Empty and useless now."
+	name = "空弹壳"
+	desc = "现在空无一用."
 	icon = 'icons/obj/items/casings.dmi'
 	icon_state = "casing_"
 	throwforce = 1
@@ -77,10 +77,10 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/ammo_casing/bullet
 
 /obj/item/ammo_casing/cartridge
-	name = "spent cartridge"
+	name = "空弹夹"
 	icon_state = "cartridge"
 
 /obj/item/ammo_casing/shell
-	name = "spent shell"
+	name = "空弹壳"
 	initial_icon_state = "shell_"
 	icon_state = "shell"

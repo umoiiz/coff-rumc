@@ -144,7 +144,7 @@ SUBSYSTEM_DEF(automatedfire)
 #undef BUCKET_POS
 
 /obj/structure/turret_debug
-	name = "debug turret"
+	name = "调试炮塔"
 	///What kind of ammo it uses
 	var/datum/ammo/ammo
 	///Its target
@@ -153,15 +153,15 @@ SUBSYSTEM_DEF(automatedfire)
 	var/firerate = 5.5
 
 /obj/structure/turret_debug/fast
-	name = "debug turret fast"
+	name = "调试炮塔 快速"
 	firerate = 1
 
 /obj/structure/turret_debug/super_fast
-	name = "debug turret super fast"
+	name = "调试炮塔 超快速"
 	firerate = 0.5
 
 /obj/structure/turret_debug/slow
-	name = "debug turret slow"
+	name = "调试炮塔 慢速"
 	firerate = 25
 
 /obj/structure/turret_debug/Initialize(mapload)

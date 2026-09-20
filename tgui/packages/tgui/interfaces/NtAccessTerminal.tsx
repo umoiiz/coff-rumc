@@ -35,14 +35,14 @@ export const NtAccessTerminal = (props) => {
   return (
     <Window title="NanoTrasen security override" width={450} height={250}>
       <Window.Content>
-        <Section title="Run Program">
+        <Section title="运行程序">
           <Stack fill vertical>
             <Stack.Item>
               <NoticeBox>{flavor_text}</NoticeBox>
             </Stack.Item>
             <Stack.Item>
               <Box width="100%" textAlign="center">
-                Overall Progress:
+                总体进度:
                 <ProgressBar value={progress} color={color} />
               </Box>
             </Stack.Item>
@@ -64,7 +64,7 @@ export const NtAccessTerminal = (props) => {
                   <NoticeBox>{message}</NoticeBox>
                 )}
                 <Button disabled={running} onClick={() => act('run_program')}>
-                  Run Program
+                  运行程序
                 </Button>
               </Box>
             </Stack.Item>

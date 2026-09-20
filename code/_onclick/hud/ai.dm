@@ -52,7 +52,7 @@
 	if(.)
 		return
 	var/mob/living/silicon/ai/AI = usr
-	var/target_name = tgui_input_list(AI, "Choose who you want to track", "Tracking", AI.trackable_mobs())
+	var/target_name = tgui_input_list(AI, "选择你想要追踪的人", "追踪中", AI.trackable_mobs())
 	AI.ai_camera_track(target_name)
 
 
@@ -151,7 +151,7 @@
 
 /atom/movable/screen/alert/ai_notify
 	name = "Notification"
-	desc = "A new notification. You can enter it."
+	desc = "一条新通知. 你可以进入查看."
 	icon_state = "template"
 	timeout = 15 SECONDS
 	var/atom/target = null

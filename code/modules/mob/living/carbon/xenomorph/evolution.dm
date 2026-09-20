@@ -17,7 +17,7 @@
 	set category = "Alien"
 
 	if(world.time - (GLOB.key_to_time_of_caste_swap[key] ? GLOB.key_to_time_of_caste_swap[key] : -INFINITY) < (10 MINUTES))
-		to_chat(src, span_warning("Your caste swap timer is not done yet."))
+		to_chat(src, span_warning("你的 caste 转换计时器还没结束."))
 		return
 
 	SStgui.close_user_uis(src, GLOB.evo_panel)
@@ -30,7 +30,7 @@
 	set category = "Alien"
 
 	if(world.time - (GLOB.key_to_time_of_caste_swap[key] ? GLOB.key_to_time_of_caste_swap[key] : -INFINITY) < (5 MINUTES)) // yes this is shared
-		to_chat(src, span_warning("Your caste swap timer is not done yet."))
+		to_chat(src, span_warning("你的 caste 转换计时器还没结束."))
 		return
 
 	SStgui.close_user_uis(src, GLOB.evo_panel)
@@ -91,7 +91,7 @@
 	if(!generic_evolution_checks())
 		return
 
-	if(caste_type == /datum/xeno_caste/hivemind && tgui_alert(src, "You are about to evolve into a hivemind, which places its core on the tile you're on when evolving. This core cannot be moved and you cannot regress. Are you sure you would like to place your core here?", "Evolving to hivemind", list("Yes", "No"), FALSE) != "Yes")
+	if(caste_type == /datum/xeno_caste/hivemind && tgui_alert(src, "你即将进化为 hivemind,进化时会将核心放置在你所在的格子上. 这个核心无法移动,你也无法退化. 你确定要在这里放置核心吗?", "进化为 hivemind", list("Yes", "No"), FALSE) != "Yes")
 		return
 
 	var/new_mob_type = initial(caste_type.caste_type_path)
@@ -100,7 +100,7 @@
 		for(var/type in get_evolution_options())
 			var/datum/xeno_caste/new_caste = GLOB.xeno_caste_datums[type][XENO_UPGRADE_BASETYPE]
 			castes_to_pick += new_caste.caste_name
-		var/castepick = tgui_input_list(src, "We are growing into a beautiful alien! It is time to choose a caste.", null, castes_to_pick)
+		var/castepick = tgui_input_list(src, "我们正在成长为一只美丽的异形! 是时候选择 caste 了.", null, castes_to_pick)
 		if(!castepick) //Changed my mind
 			return
 
@@ -116,12 +116,12 @@
 	if(!caste_evolution_checks(caste_type, regression))
 		return
 
-	visible_message(span_xenonotice("\The [src] begins to twist and contort."), \
-	span_xenonotice("We begin to twist and contort."))
+	visible_message(span_xenonotice("\The [src] 开始扭曲变形."), \
+	span_xenonotice("我们开始扭曲变形。"))
 	do_jitter_animation(1000)
 
 	if(!regression && !do_after(src, 25, IGNORE_HELD_ITEM, null, BUSY_ICON_CLOCK))
-		balloon_alert(src, span_warning("We must hold still while evolving."))
+		balloon_alert(src, span_warning("进化时必须保持静止。"))
 		return
 
 	if(!generic_evolution_checks() || !caste_evolution_checks(caste_type, regression))
@@ -212,7 +212,7 @@
 
 	if(total_refund > 0)
 		new_xeno.biomass += total_refund
-		to_chat(new_xeno, span_xenonotice("[total_refund] biomass returned."))
+		to_chat(new_xeno, span_xenonotice("[total_refund] 生物质已返还。"))
 	new_xeno.generate_name() // This is specifically for numbered xenos who want to keep their previous number instead of a random new one.
 	new_xeno.hive?.update_ruler() // Since ruler wasn't set during initialization, update ruler now. // Is this needed?
 	transfer_observers_to(new_xeno)
@@ -235,8 +235,8 @@
 
 	new_xeno.update_spits() //Update spits to new/better ones
 
-	new_xeno.visible_message(span_xenodanger("A [new_xeno.xeno_caste.caste_name] emerges from the husk of \the [src]."), \
-	span_xenodanger("We emerge in a greater form from the husk of our old body. For the hive!"))
+	new_xeno.visible_message(span_xenodanger("一个[new_xeno.xeno_caste.caste_name]从\the [src]的躯壳中钻出。"), \
+	span_xenodanger("我们从旧躯壳中以更高等形态破体而出。为了巢穴!"))
 
 	SEND_SIGNAL(hive, COMSIG_XENOMORPH_POSTEVOLVING, new_xeno)
 	// Update the turf just in case they moved, somehow.
@@ -307,57 +307,57 @@
 ///Check if the xeno is currently able to evolve
 /mob/living/carbon/xenomorph/proc/generic_evolution_checks()
 	if(HAS_TRAIT(src, TRAIT_BANISHED))
-		balloon_alert(src, span_warning("You are banished and cannot reach the hivemind."))
+		balloon_alert(src, span_warning("你已被放逐,无法连接蜂巢意识。"))
 		return FALSE
 
 	if(do_actions)
-		balloon_alert(src, "We're busy!")
+		balloon_alert(src, "我们正忙!")
 		return FALSE
 
 	if(HAS_TRAIT(src, TRAIT_MOVE_VENTCRAWLING))
-		balloon_alert(src, "This place is too constraining to evolve")
+		balloon_alert(src, "这个地方太狭窄,无法进化")
 		return FALSE
 
 	if(!isturf(loc))
-		balloon_alert(src, "We can't evolve here")
+		balloon_alert(src, "我们无法在这里进化")
 		return FALSE
 
 	if(is_banned_from(ckey, ROLE_XENOMORPH))
 		log_admin_private("[key_name(src)] has tried to evolve as a xenomorph while being banned from the role.")
 		message_admins("[ADMIN_TPMONTY(src)] has tried to evolve as a xenomorph while being banned. They shouldn't be playing the role.")
-		balloon_alert(src, "You are jobbanned from aliens and cannot evolve. How did you even become an alien?")
+		balloon_alert(src, "你已被禁止扮演异形,无法进化。你到底怎么变成异形的?")
 		return FALSE
 
 	if(incapacitated(TRUE))
-		balloon_alert(src, "We can't evolve in our current state")
+		balloon_alert(src, "我们当前状态无法进化")
 		return FALSE
 
 	if(handcuffed)
-		balloon_alert(src, "The restraints are too restricting to allow us to evolve")
+		balloon_alert(src, "束缚太紧,使我们无法进化")
 		return FALSE
 
 	if(length(get_evolution_options()) < 1 || (!HAS_TRAIT(src, TRAIT_STRAIN_SWAP) && !(xeno_caste.caste_flags & CASTE_EVOLUTION_ALLOWED)) || HAS_TRAIT(src, TRAIT_VALHALLA_XENO)) // todo: why does this flag still exist?
-		balloon_alert(src, "We are already the apex of form and function. Let's go forth and spread the hive!")
+		balloon_alert(src, "我们已是形态与功能的顶点。让我们前进并扩张巢穴!")
 		return FALSE
 
 	if(health < maxHealth)
-		balloon_alert(src, "We must be at full health to evolve")
+		balloon_alert(src, "必须满生命值才能进化")
 		return FALSE
 
 	if(plasma_stored < (xeno_caste.plasma_max * xeno_caste.plasma_regen_limit))
-		balloon_alert(src, "We must be at full plasma to evolve")
+		balloon_alert(src, "必须满等离子体才能进化")
 		return FALSE
 
 	if(xeno_flags & XENO_AGILITY || fortify || crest_defense || status_flags & INCORPOREAL)
-		balloon_alert(src, "We cannot evolve while in this stance")
+		balloon_alert(src, "这个姿态下无法进化")
 		return FALSE
 
 	if(eaten_mob)
-		balloon_alert(src, "We cannot evolve with a belly full")
+		balloon_alert(src, "饱腹时无法进化")
 		return FALSE
 
 	if(HAS_TRAIT_FROM(src, TRAIT_IMMOBILE, BOILER_ROOTED_TRAIT))
-		balloon_alert(src, "We cannot evolve while rooted to the ground")
+		balloon_alert(src, "扎根地面时无法进化")
 		return FALSE
 
 	return TRUE
@@ -365,11 +365,11 @@
 ///Check if the xeno can currently evolve into a specific caste
 /mob/living/carbon/xenomorph/proc/caste_evolution_checks(new_mob_type, regression = FALSE)
 	if(!regression && !(new_mob_type in get_evolution_options()))
-		balloon_alert(src, "We can't evolve to that caste from our current one")
+		balloon_alert(src, "我们无法从当前种姓进化到那个种姓")
 		return FALSE
 
 	if(new_mob_type in SSticker.mode.restricted_castes)
-		balloon_alert(src, "Our weak hive can't support that caste!")
+		balloon_alert(src, "我们弱小的巢穴无法支持那个种姓!")
 		return FALSE
 
 	var/no_room_tier_two = length(hive.xenos_by_tier[XENO_TIER_TWO]) >= hive.tier2_xeno_limit
@@ -379,47 +379,47 @@
 	var/new_caste_flags = new_caste.caste_flags
 	if(CHECK_BITFIELD(new_caste_flags, CASTE_LEADER_TYPE))
 		if(is_banned_from(ckey, ROLE_XENO_QUEEN))
-			balloon_alert(src, "You are jobbanned from xenomorph leader roles")
+			balloon_alert(src, "你已被禁止担任异形领袖角色")
 			return FALSE
 		var/datum/job/xenojob = SSjob.GetJobType(/datum/job/xenomorph/queen)
 		if(xenojob.required_playtime_remaining(client))
-			to_chat(src, span_warning("[get_exp_format(xenojob.required_playtime_remaining(client))] as [xenojob.get_exp_req_type()] required to play queen like roles."))
+			to_chat(src, span_warning("需要[get_exp_format(xenojob.required_playtime_remaining(client))]作为[xenojob.get_exp_req_type()]才能扮演女王类角色。"))
 			return FALSE
 
 	var/min_xenos = new_caste.evolve_min_xenos
 	if(min_xenos && (hive.total_xenos_for_evolving() < min_xenos))
-		balloon_alert(src, "[min_xenos] xenos needed to become a [initial(new_caste.display_name)]")
+		balloon_alert(src, "需要[min_xenos]个异形才能成为[initial(new_caste.display_name)]")
 		return FALSE
 	if(CHECK_BITFIELD(new_caste_flags, CASTE_CANNOT_EVOLVE_IN_CAPTIVITY) && isxenoresearcharea(get_area(src)))
-		to_chat(src, "Something in this place is isolating us from Queen Mother's psychic presence. We should leave before it's too late!")
+		to_chat(src, "此地的某种东西正在将我们与女王母亲的心灵存在隔绝。我们该在太迟之前离开!")
 		return FALSE
 	// Check if there is a death timer for this caste
 	if(new_caste.death_evolution_delay)
 		var/death_timer = hive.caste_death_timers[new_caste]
 		if(death_timer)
-			to_chat(src, span_warning("The hivemind is still recovering from the last [initial(new_caste.display_name)]'s death. We must wait [DisplayTimeText(timeleft(death_timer))] before we can evolve."))
+			to_chat(src, span_warning("蜂巢意识仍在从上一位[initial(new_caste.display_name)]的死亡中恢复。我们必须等待[DisplayTimeText(timeleft(death_timer))]才能进化。"))
 			return FALSE
 
 	var/maximum_active_caste = new_caste.maximum_active_caste
 	var/list/xenos = hive.get_all_caste_members(new_caste.type) - src // ignores outselves
 	var/active_caste = length(xenos)
 	if(maximum_active_caste != INFINITY && maximum_active_caste <= active_caste)
-		to_chat(src, span_warning("There is already a [initial(new_caste.display_name)] in the hive. We must wait for it to die."))
+		to_chat(src, span_warning("巢穴中已经有一个[initial(new_caste.display_name)]。我们必须等它死亡。"))
 		return FALSE
 	var/turf/T = get_turf(src)
 	if(CHECK_BITFIELD(new_caste_flags, CASTE_REQUIRES_FREE_TILE) && T.check_alien_construction(src))
-		balloon_alert(src, "We need a empty tile to evolve")
+		balloon_alert(src, "我们需要一个空格才能进化")
 		return FALSE
 
 	if(!regression)
 		if(new_caste.tier == XENO_TIER_TWO && no_room_tier_two)
-			balloon_alert(src, "The hive cannot support another Tier 2, wait for either more aliens to be born or someone to die")
+			balloon_alert(src, "巢穴无法支持另一个二级,等待更多异形诞生或有人死亡")
 			return FALSE
 		if(new_caste.tier == XENO_TIER_THREE && no_room_tier_three)
-			balloon_alert(src, "The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die")
+			balloon_alert(src, "巢穴无法支持另一个三级,等待更多异形诞生或有人死亡")
 			return FALSE
 		if(!CHECK_BITFIELD(new_caste_flags, CASTE_INSTANT_EVOLUTION) && xeno_caste.evolution_threshold && evolution_stored < xeno_caste.evolution_threshold)
-			to_chat(src, span_warning("We must wait before evolving. Currently at: [evolution_stored] / [xeno_caste.evolution_threshold]."))
+			to_chat(src, span_warning("进化前必须等待。当前:[evolution_stored] / [xeno_caste.evolution_threshold]。"))
 			return FALSE
 	return TRUE
 

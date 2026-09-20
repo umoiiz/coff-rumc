@@ -1,5 +1,5 @@
 /obj/structure/shuttle
-	name = "shuttle"
+	name = "穿梭机"
 	icon = 'icons/turf/shuttle.dmi'
 	allow_pass_flags = PASS_PROJECTILE|PASS_AIR
 
@@ -7,7 +7,7 @@
 	AddElement(/datum/element/debris, DEBRIS_SPARKS, -40, 8, 1)
 
 /obj/structure/shuttle/window
-	name = "shuttle window"
+	name = "穿梭机窗户"
 	icon = 'icons/obj/podwindows.dmi'
 	icon_state = "1"
 	density = TRUE
@@ -17,35 +17,35 @@
 	layer = ABOVE_WINDOW_LAYER
 
 /obj/structure/shuttle/engine
-	name = "engine"
+	name = "引擎"
 	density = TRUE
 	anchored = TRUE
 	resistance_flags = RESIST_ALL
 
 /obj/structure/shuttle/engine/heater
-	name = "heater engine"
+	name = "加热引擎"
 	icon_state = "heater"
 
 /obj/structure/shuttle/engine/platform
-	name = "platform"
+	name = "平台"
 	icon_state = "platform"
 
 /obj/structure/shuttle/engine/propulsion
-	name = "propulsion engine"
+	name = "推进引擎"
 	icon_state = "propulsion"
 	opacity = TRUE
 
 /obj/structure/shuttle/engine/propulsion/burst
-	name = "burst propulsion engine"
+	name = "爆发推进引擎"
 
 /obj/structure/shuttle/engine/propulsion/burst/left
-	name = "left propulsion engine"
+	name = "左推进引擎"
 	icon_state = "burst_l"
 
 /obj/structure/shuttle/engine/propulsion/burst/right
-	name = "right propulsion engine"
+	name = "右推进引擎"
 	icon_state = "burst_r"
 
 /obj/structure/shuttle/engine/router
-	name = "router engine"
+	name = "路由引擎"
 	icon_state = "router"

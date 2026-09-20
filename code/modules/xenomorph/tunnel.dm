@@ -1,6 +1,6 @@
 /obj/structure/xeno/tunnel
-	name = "tunnel"
-	desc = "A tunnel entrance. Looks like it was dug by some kind of clawed beast."
+	name = "隧道"
+	desc = "一个隧道入口。看起来是被某种有爪的野兽挖出来的。"
 	icon = 'icons/Xeno/Effects.dmi'
 	icon_state = "hole"
 
@@ -29,7 +29,7 @@
 		thing.forceMove(drop_loc)
 
 	if(!QDELETED(creator))
-		to_chat(creator, span_xenoannounce("You sense your [name] at [tunnel_desc] has been destroyed!") ) //Alert creator
+		to_chat(creator, span_xenoannounce("你感应到你在[tunnel_desc]的[name]已被摧毁!") ) //Alert creator
 
 	xeno_message("Hive tunnel [name] at [tunnel_desc] has been destroyed!", "xenoannounce", 5, hivenumber) //Also alert hive because tunnels matter.
 
@@ -52,12 +52,12 @@
 	if(!isxeno(user) && !isobserver(user))
 		return
 	if(isxeno(user))
-		. += span_info("Use right click to enter or exit the xenoden.")
+		. += span_info("使用右键进入或离开异形巢穴。")
 	if(tunnel_desc)
-		. += span_info("The Hivelord scent reads: \'[tunnel_desc]\'")
+		. += span_info("巢穴领主的嗅觉显示:\'[tunnel_desc]\'")
 
 /obj/structure/xeno/tunnel/deconstruct(disassembled = TRUE, mob/living/blame_mob)
-	visible_message(span_danger("[src] suddenly collapses!") )
+	visible_message(span_danger("[src]突然坍塌!") )
 	return ..()
 
 /obj/structure/xeno/tunnel/attackby(obj/item/I, mob/user, params)
@@ -70,17 +70,17 @@
 		return
 
 	if(xeno_attacker.a_intent == INTENT_HARM && xeno_attacker == creator)
-		balloon_alert(xeno_attacker, "Filling in tunnel...")
+		balloon_alert(xeno_attacker, "正在填埋隧道...")
 		if(do_after(xeno_attacker, HIVELORD_TUNNEL_DISMANTLE_TIME, IGNORE_HELD_ITEM, src, BUSY_ICON_BUILD))
 			deconstruct(FALSE)
 		return
 
 	if(xeno_attacker.anchored)
-		balloon_alert(xeno_attacker, "Cannot enter while immobile")
+		balloon_alert(xeno_attacker, "无法在无法移动时进入")
 		return FALSE
 
 	if(length(GLOB.xeno_tunnels_by_hive[hivenumber]) < 2)
-		balloon_alert(xeno_attacker, "No exit tunnel")
+		balloon_alert(xeno_attacker, "没有出口隧道")
 		return FALSE
 
 	if(isrightclick && SSticker.mode?.round_type_flags & MODE_XENO_DEN && (z == 6 || z == 2))
@@ -104,7 +104,7 @@
 		destinations = list()
 		for(var/d in tunnel_assoc)
 			destinations += d
-		var/input = tgui_input_list(user ,"Choose a tunnel to teleport to:" ,"Ghost Tunnel teleport" ,destinations ,null, 0)
+		var/input = tgui_input_list(user ,"选择要传送到的隧道:" ,"幽灵隧道传送" ,destinations ,null, 0)
 		if(!input)
 			return
 		targettunnel = tunnel_assoc[input]
@@ -121,7 +121,7 @@
 
 ///Here we pick a tunnel to go to, then travel to that tunnel and peep out, confirming whether or not we want to emerge or go to another tunnel.
 /obj/structure/xeno/tunnel/proc/pick_a_tunnel(mob/living/carbon/xenomorph/M, z_level = z)
-	to_chat(M, span_notice("Select a tunnel to go to."))
+	to_chat(M, span_notice("选择要前往的隧道。"))
 
 	var/atom/movable/screen/minimap/map = SSminimaps.fetch_minimap_object(z_level, MINIMAP_FLAG_XENO)
 	M.client.screen += map
@@ -142,7 +142,7 @@
 			M.forceMove(loc)
 		return
 	if(targettunnel == src)
-		balloon_alert(M, "We're already here")
+		balloon_alert(M, "我们已经在这里了")
 		if(M.loc == src) //If we're in the tunnel and cancelling out, spit us out.
 			M.forceMove(loc)
 		return
@@ -151,30 +151,30 @@
 
 	if(M.mob_size == MOB_SIZE_BIG) //Big xenos take longer
 		tunnel_time = clamp(distance * 1.5, HIVELORD_TUNNEL_MIN_TRAVEL_TIME, HIVELORD_TUNNEL_LARGE_MAX_TRAVEL_TIME)
-		M.visible_message(span_xenonotice("[M] begins heaving their huge bulk down into \the [src].") , \
-		span_xenonotice("We begin heaving our monstrous bulk into \the [src] to <b>[targettunnel.tunnel_desc]</b>.") )
+		M.visible_message(span_xenonotice("[M]开始将他们庞大的身躯挤入\the [src]。") , \
+		span_xenonotice("我们开始将我们庞大的身躯挤入\the [src]前往<b>[targettunnel.tunnel_desc]</b>。") )
 	else
-		M.visible_message(span_xenonotice("\The [M] begins crawling down into \the [src].") , \
-		span_xenonotice("We begin crawling down into \the [src] to <b>[targettunnel.tunnel_desc]</b>.") )
+		M.visible_message(span_xenonotice("\The [M]开始爬入\the [src]。") , \
+		span_xenonotice("我们开始爬入\the [src]前往<b>[targettunnel.tunnel_desc]</b>。") )
 
 	if(isxenolarva(M)) //Larva can zip through near-instantly, they are wormlike after all
 		tunnel_time = 5
 
 	if(!do_after(M, tunnel_time, IGNORE_HELD_ITEM, src, BUSY_ICON_GENERIC))
-		balloon_alert(M, "Crawling interrupted")
+		balloon_alert(M, "爬行被打断")
 		return
 	if(!targettunnel || !isturf(targettunnel.loc)) //Make sure the end tunnel is still there
-		balloon_alert(M, "Tunnel ended unexpectedly")
+		balloon_alert(M, "隧道意外终止")
 		return
 	M.forceMove(targettunnel)
-	var/double_check = tgui_alert(M, "Emerge here?", "Tunnel: [targettunnel]", list("Yes","Pick another tunnel"), 0)
+	var/double_check = tgui_alert(M, "在此处钻出?", "隧道:[targettunnel]", list("Yes","Pick another tunnel"), 0)
 	if(M.loc != targettunnel) //double check that we're still in the tunnel in the event it gets destroyed while we still have the interface open
 		return
 	if(double_check == "Pick another tunnel")
 		return targettunnel.pick_a_tunnel(M)
 	M.forceMove(targettunnel.loc)
-	M.visible_message(span_xenonotice("\The [M] pops out of \the [src].") , \
-	span_xenonotice("We pop out through the other side!") )
+	M.visible_message(span_xenonotice("\The [M]从\the [src]中钻出。") , \
+	span_xenonotice("我们从另一侧钻出!") )
 
 /obj/structure/xeno/tunnel/attack_facehugger(mob/living/carbon/xenomorph/facehugger/F, isrightclick = FALSE)
 	attack_alien(F)

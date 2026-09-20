@@ -36,7 +36,7 @@ export const AlertPane = (props) => {
                 color={'red'}
                 disabled={!(internal_damage & internal_damage_keys[t])}
               >
-                Repair
+                修理
               </Button>
             </Stack.Item>
           </Stack>

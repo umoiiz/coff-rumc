@@ -1,6 +1,6 @@
 
 /obj/structure/closet/malf/suits
-	desc = "It's a storage unit for operational gear."
+	desc = "这是一个存放作战装备的储物柜."
 	icon_state = "syndicate"
 	icon_closed = "syndicate"
 	icon_opened = "syndicateopen"

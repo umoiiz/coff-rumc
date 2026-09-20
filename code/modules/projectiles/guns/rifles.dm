@@ -30,8 +30,8 @@
 //AR-18 Carbine
 
 /obj/item/weapon/gun/rifle/ar18
-	name = "\improper AR-18 Kauser carbine"
-	desc = "The Keckler and Hoch AR-18 carbine is one of the standard rifles used by the TerraGov Marine Corps. It's commonly used by people who prefer greater mobility in combat, like scouts and other light infantry. Uses 10x24mm caseless ammunition."
+	name = "\improper AR-18 Kauser卡宾枪"
+	desc = "凯克勒与霍赫AR-18卡宾枪是地球政府陆战队使用的标准步枪之一.通常被喜欢在战斗中拥有更高机动性的人使用,比如侦察兵和其他轻步兵.使用10x24mm无壳弹药."
 	icon_state = "t18"
 	worn_icon_state = "t18"
 	fire_sound = 'sound/weapons/guns/fire/tgmc/kinetic/gun_ar18.ogg'
@@ -124,8 +124,8 @@
 //AR-12 Assault Rifle
 
 /obj/item/weapon/gun/rifle/ar12
-	name = "\improper AR-12 K&H assault rifle"
-	desc = "The Keckler and Hoch AR-12 assault rifle used to be the TerraGov Marine Corps standard issue rifle before the AR-18 carbine replaced it. It is, however, still used widely despite that. The gun itself is very good at being used in most situations however it suffers in engagements at close quarters and is relatively hard to shoulder than some others. It uses 10x24mm caseless ammunition."
+	name = "\improper AR-12 K&H突击步枪"
+	desc = "凯克勒与霍赫AR-12突击步枪曾是地球政府陆战队的标准配发步枪,直到AR-18卡宾枪将其取代.然而,尽管如此,它仍被广泛使用.这把枪本身在大多数情况下都非常好用,但在近距离交战中表现不佳,且相比其他一些枪械较难抵肩.它使用10x24mm无壳弹药."
 	icon_state = "t12"
 	worn_icon_state = "t12"
 	fire_sound = SFX_GUN_AR12
@@ -215,8 +215,8 @@
 #define DMR_BUMP_ACCURACY_MULT 0.9
 
 /obj/item/weapon/gun/rifle/dmr37
-	name = "\improper DMR-37 SCA designated marksman rifle"
-	desc = "The San Cristo Arms DMR-37 is the TerraGov Marine Corps designated marksman rifle. It is rather well-known for it's very consistent target placement at longer than usual range, it however lacks a burst fire mode or an automatic mode. It is mostly used by people who prefer to do more careful shooting than most. Uses 10x27mm caseless caliber."
+	name = "\improper DMR-37 SCA指定射手步枪"
+	desc = "圣克里斯托军械DMR-37是地球政府陆战队的指定射手步枪.它以在超常距离上非常稳定的命中精度而闻名,但它缺乏爆发射击模式或全自动模式.它主要被喜欢比大多数人更谨慎射击的人使用.使用10x27mm无壳口径."
 	icon = 'icons/obj/items/gun/marksman64.dmi'
 	icon_state = "t37"
 	worn_icon_state = "t37"
@@ -293,7 +293,7 @@
 
 /obj/item/weapon/gun/rifle/dmr37/toggle_aim_mode(mob/living/carbon/human/user)
 	if(bump_fire)
-		balloon_alert(user, "You can't aim while bump fire")
+		balloon_alert(user, "你无法在撞火时瞄准")
 		return
 	return ..()
 
@@ -307,7 +307,7 @@
 		accuracy_mult = initial(accuracy_mult)
 		bump_fire = FALSE
 
-		balloon_alert(user, "You started shooting normally")
+		balloon_alert(user, "你开始正常射击")
 	else
 		if(HAS_TRAIT(src, TRAIT_GUN_IS_AIMING))
 			toggle_aim_mode(user)
@@ -316,7 +316,7 @@
 		accuracy_mult = DMR_BUMP_ACCURACY_MULT
 		bump_fire = TRUE
 
-		balloon_alert(user, "You started to bump fire")
+		balloon_alert(user, "你开始撞火射击")
 
 	SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, fire_delay)
 
@@ -334,8 +334,8 @@
 //BR-64 BR
 
 /obj/item/weapon/gun/rifle/br64
-	name = "\improper BR-64 SCA battle rifle"
-	desc = "The San Cristo Arms BR-64 is the TerraGov Marine Corps main battle rifle. It is known for its consistent ability to perform well at most ranges, and medium range stopping power with bursts. It is mostly used by people who prefer a bigger round than the average. Uses 10x26.5smm caseless caliber."
+	name = "\improper BR-64 SCA战斗步枪"
+	desc = "圣克里斯托军械BR-64是地球政府陆战队的主力战斗步枪.它以在大多数距离上表现稳定,以及中距离爆发停止力而闻名.它主要被喜欢比平均水平更大口径弹药的人使用.使用10x26.5smm无壳口径."
 	icon_state = "t64"
 	worn_icon_state = "t64"
 	icon = 'icons/obj/items/gun/marksman64.dmi'
@@ -419,8 +419,8 @@
 //PR-412 Pulse Rifle
 
 /obj/item/weapon/gun/rifle/m412
-	name = "\improper PR-412 pulse rifle"
-	desc = "The PR-412 rifle is a Pulse Industries rifle, billed as a pulse rifle due to its use of electronic firing for faster velocity. A rather common sight in most systems. Uses 10x24mm caseless ammunition."
+	name = "\improper PR-412脉冲步枪"
+	desc = "PR-412步枪是脉冲工业公司的一款步枪,因其使用电子击发以实现更高初速而被宣传为脉冲步枪.在大多数星系中相当常见.使用10x24mm无壳弹药."
 	icon = 'icons/obj/items/gun/rifle64.dmi'
 	icon_state = "m412"
 	worn_icon_state = "m412"
@@ -491,8 +491,8 @@
 //PR-412 PMC VARIANT
 
 /obj/item/weapon/gun/rifle/m412/elite
-	name = "\improper PR-412E battle rifle"
-	desc = "An \"Elite\" modification of the PR-412 pulse rifle series, given to special operation units. It has been given a stock and a longer barrel with an integrated barrel charger, with a red skull stenciled on the body for some reason."
+	name = "\improper PR-412E战斗步枪"
+	desc = "PR-412脉冲步枪系列的\"精英\"改装版,配发给特种作战单位.它被加装了枪托和一根带有集成枪管充电器的更长枪管,枪身上不知为何还印有一个红色骷髅图案."
 	icon_state = "m412e"
 	worn_icon_state = "m412e"
 	default_ammo_type = /obj/item/ammo_magazine/rifle/ap
@@ -542,8 +542,8 @@
 //PR-11
 
 /obj/item/weapon/gun/rifle/m41a
-	name = "\improper PR-11 pulse rifle"
-	desc = "A strange failed electronically fired rifle, a rather unknown weapon of its time. It caused a surge in the use of electronic firing in the modern era though. Uses 10x24mm caseless ammunition. Has a irremoveable grenade launcher."
+	name = "\improper PR-11脉冲步枪"
+	desc = "一把奇怪的失败电子击发步枪,当时相当不为人知.不过它引发了现代电子击发的使用热潮.使用10x24mm无壳弹药.拥有不可拆卸的榴弹发射器."
 	icon = 'icons/obj/items/gun/machinegun64.dmi'
 	icon_state = "m41a"
 	worn_icon_state = "m41a"
@@ -601,8 +601,8 @@
 //-------------------------------------------------------
 
 /obj/item/weapon/gun/rifle/mpi_km
-	name = "\improper MPi-KM assault rifle"
-	desc = "A cheap and robust rifle, sometimes better known as an 'AK'. Chambers 7.62x39mm. Despite lacking attachment points beyond its underbarrel, remains a popular product on the black market with its cheap cost and higher than usual caliber rounds."
+	name = "\improper MPi-KM突击步枪"
+	desc = "一把廉价而坚固的步枪,有时更常被称为\"AK\".装填7.62x39mm弹药.尽管除了下挂之外缺乏附件挂点,但凭借其低廉的成本和高于寻常的口径弹药,在黑市上仍是热门产品."
 	icon = 'icons/obj/items/gun/rifle64.dmi'
 	icon_state = "ak47"
 	worn_icon_state = "ak47"
@@ -665,7 +665,7 @@
 	)
 
 /obj/item/weapon/gun/rifle/mpi_km/grenadier
-	desc = "A cheap and robust rifle, sometimes better known as an 'AK'. Chambers 7.62x39mm. This one has a built in underbarrel grenade launcher and looks very old, but well looked after."
+	desc = "一把廉价而坚固的步枪,有时更常被称为\"AK\".装填7.62x39mm弹药.这一把内置了下挂榴弹发射器,看起来非常老旧,但保养得很好."
 	starting_attachment_types = list(
 		/obj/item/attachable/stock/mpi_km,
 		/obj/item/weapon/gun/grenade_launcher/underslung/mpi,
@@ -673,8 +673,8 @@
 	)
 
 /obj/item/weapon/gun/rifle/mpi_km/black
-	name = "\improper MPi-KM assault rifle"
-	desc = "A cheap and robust rifle manufactured by the SOM, famed for its reliability and stopping power. Sometimes better known as an 'AK', it chambers 7.62x39mm."
+	name = "\improper MPi-KM突击步枪"
+	desc = "一把由SOM制造的廉价而坚固的步枪,以其可靠性和停止力而闻名.有时更常被称为\"AK\",装填7.62x39mm弹药."
 	icon_state = "ak47_black"
 	worn_icon_state = "ak47_black"
 	default_ammo_type = /obj/item/ammo_magazine/rifle/mpi_km/black
@@ -710,7 +710,7 @@
 	)
 
 /obj/item/weapon/gun/rifle/mpi_km/black/grenadier
-	desc = "A cheap and robust rifle manufactured by the SOM, famed for its reliability and stopping power. Sometimes better known as an 'AK', it chambers 7.62x39mm. This one has a built in underbarrel grenade launcher."
+	desc = "一把由SOM制造的廉价而坚固的步枪,以其可靠性和停止力而闻名.有时更常被称为\"AK\",装填7.62x39mm弹药.这一把内置了下挂榴弹发射器."
 	starting_attachment_types = list(
 		/obj/item/attachable/stock/mpi_km/black,
 		/obj/item/weapon/gun/grenade_launcher/underslung/mpi,
@@ -721,8 +721,8 @@
 // MPI-KM but for marines
 
 /obj/item/weapon/gun/rifle/type16
-	name = "\improper Type-16 Felon rifle"
-	desc = "Chinese replica of the MPi-KM rifle, made in bakelite with picatinny tactical rail. Uses 6.02x41mm ammo."
+	name = "\improper 16式\"重犯\"步枪"
+	desc = "MPi-KM步枪的中国仿制品,采用胶木制造并配有皮卡汀尼战术导轨.使用6.02x41mm弹药."
 	icon = 'icons/obj/items/gun/rifle64.dmi'
 	unique_reskin = list(
 		"Polymer" = "ak47_black",
@@ -791,8 +791,8 @@
 	placed_overlay_iconstate = "ak47"
 
 /obj/item/weapon/gun/rifle/type16/m2
-	name = "\improper Type-16M2 Zarya carbine"
-	desc = "Chinese replica of MPi-KM rifle, made in fashionable polymer with tactical picatinny rail and folding stock. Uses 6.02x41mm ammo."
+	name = "\improper 16M2式\"曙光\"卡宾枪"
+	desc = "MPi-KM步枪的中国仿制品,采用时尚的聚合物制造,配有战术皮卡汀尼导轨和折叠枪托.使用6.02x41mm弹药."
 	icon = 'icons/obj/items/gun/rifle64.dmi'
 	icon_state = "v34_black"
 	worn_icon_state = "v34_black"
@@ -864,8 +864,8 @@
 // RPD
 
 /obj/item/weapon/gun/rifle/lmg_d
-	name = "\improper lMG-D light machinegun"
-	desc = "A cheap and robust machinegun, sometimes better known as an 'RPD'. Chambers 7.62x39mm. Despite lacking attachment points beyond its underbarrel, remains a popular product on the black market with its cheap cost, high capacity and higher than usual caliber rounds."
+	name = "\improper lMG-D轻机枪"
+	desc = "一款廉价而坚固的机枪,有时更常被称为\"RPD\".发射7.62x39mm弹药.尽管除了下挂导轨外缺乏其他配件安装点,但凭借其低廉的成本,高容量和高于常规的口径,它仍然是黑市上的热门产品."
 	icon = 'icons/obj/items/gun/machinegun64.dmi'
 	icon_state = "rpd"
 	worn_icon_state = "rpd"
@@ -931,8 +931,8 @@
 //DP-27
 
 /obj/item/weapon/gun/rifle/dpm
-	name = "\improper Degtyaryov 'RP' machine gun"
-	desc = "A cheap and robust machine gun seen commonly in the fringes of the bubble. Fires high caliber rounds to accommodate for its sluggish rate of fire, it is generally found being called 'The Record Player' due to the resemblance. Fires 7.62x39mm AP rounds."
+	name = "\improper 捷格加廖夫\"RP\"机枪"
+	desc = "一款廉价而坚固的机枪,常见于气泡边缘地带.发射高口径弹药以弥补其缓慢的射速,因其外形相似而通常被称为\"唱片机\".发射7.62x39mm穿甲弹."
 	icon = 'icons/obj/items/gun/machinegun64.dmi'
 	icon_state = "dp27"
 	worn_icon_state = "dp27"
@@ -979,8 +979,8 @@
 //M16 RIFLE
 
 /obj/item/weapon/gun/rifle/m16
-	name = "\improper FN M16A4 assault rifle"
-	desc = "A light, versatile assault rifle with a 30 round magazine, chambered to fire the 5.56x45mm NATO cartridge. The 4th generation in the M16 platform, this FN variant has added automatic fire selection and retains relevance among mercenaries and militias thanks to its high customizability. It is incredibly good at rapid burst fire, but must be paced correctly."
+	name = "\improper FN M16A4突击步枪"
+	desc = "一款轻便,多用途的突击步枪,配有30发弹匣,发射5.56x45mm北约弹药.M16平台的第四代产品,这款FN变体增加了全自动射击模式,凭借其高度可定制性在雇佣兵和民兵中仍占有一席之地.它在快速点射方面表现出色,但必须控制好射击节奏."
 	icon = 'icons/obj/items/gun/rifle64.dmi'
 	icon_state = "m16a4"
 	worn_icon_state = "m16a4"
@@ -1053,8 +1053,8 @@
 //FAMAS rifle, based on the F1
 
 /obj/item/weapon/gun/rifle/famas
-	name = "\improper FAMAS assault rifle"
-	desc = "A light, versatile fast firing assault rifle with a 24 round magazine and short range scope, chambered to fire the 5.56x45mm NATO cartridge within a short amount of time."
+	name = "\improper FAMAS突击步枪"
+	desc = "一款轻便,多用途的高射速突击步枪,配有24发弹匣和短距离瞄准镜,能在短时间内发射5.56x45mm北约弹药."
 	icon = 'icons/obj/items/gun/rifle64.dmi'
 	icon_state = "famas"
 	worn_icon_state = "famas"
@@ -1113,8 +1113,8 @@
 //MG-42 Light Machine Gun
 
 /obj/item/weapon/gun/rifle/mg42
-	name = "\improper MG-42 Kauser light machine gun"
-	desc = "The Kauser MG-42 is the TGMC's current standard non-IFF-capable LMG. It's known for its ability to lay down heavy fire support very well. It is generally used when someone wants to hold a position or provide fire support. It uses 10x24mm ammunition."
+	name = "\improper MG-42考泽轻机枪"
+	desc = "考泽MG-42是TGMC目前标准的非IFF能力轻机枪.以其出色的重型火力支援能力而闻名.通常在有人想要守住阵地或提供火力支援时使用.使用10x24mm弹药."
 
 	icon_state = "t42"
 	worn_icon_state = "t42"
@@ -1201,8 +1201,8 @@
 //MG-60 General Purpose Machine Gun
 
 /obj/item/weapon/gun/rifle/mg60
-	name = "\improper MG-60 Raummetall general purpose machine gun"
-	desc = "The Raummetall MG-60 general purpose machinegun is the TGMC's current standard GPMG. Though usually seen mounted on vehicles, it is sometimes used by infantry to hold chokepoints or suppress enemies, or in rare cases for marching fire. It uses 10x26mm boxes."
+	name = "\improper MG-60劳姆金属通用机枪"
+	desc = "劳姆金属MG-60通用机枪是TGMC目前标准的通用机枪.虽然通常安装在载具上,但有时也被步兵用于守住要道或压制敌人,或在少数情况下用于行进间射击.使用10x26mm弹箱."
 	icon = 'icons/obj/items/gun/machinegun64.dmi'
 	icon_state = "t60"
 	worn_icon_state = "t60"
@@ -1279,8 +1279,8 @@
 //M41AE2 Heavy Pulse Rifle
 
 /obj/item/weapon/gun/rifle/m412l1_hpr
-	name = "\improper PR-412L1 heavy pulse rifle"
-	desc = "A large weapon capable of laying down supressing fire, based on the PR-412 pulse rifle platform. Effective in burst fire. Uses 10x24mm caseless ammunition."
+	name = "\improper PR-412L1重型脉冲步枪"
+	desc = "一款能够进行压制射击的大型武器,基于PR-412脉冲步枪平台.在点射中效果显著.使用10x24mm无壳弹药."
 	icon = 'icons/obj/items/gun/machinegun64.dmi'
 	icon_state = "m412l1"
 	worn_icon_state = "m412l1"
@@ -1352,8 +1352,8 @@
 //USL TYPE 71 RIFLE
 
 /obj/item/weapon/gun/rifle/type71
-	name = "\improper Type 71 'GROZA' pulse rifle"
-	desc = "The primary rifle of the USL pirates, the Type 71 is a reliable rifle chambered in 7.62x39mm, firing in three round bursts to conserve ammunition. A newer model for surpression roles to comply with overmatch doctrines is in progress and only issued to a limited number of privates in the USL."
+	name = "\improper 71式\"雷霆\"脉冲步枪"
+	desc = "USL海盗的主要步枪,71式是一款可靠的步枪,发射7.62x39mm弹药,采用三发点射以节省弹药.一款符合压倒性火力理论的新型压制型号正在研发中,目前仅配发给USL中有限数量的列兵."
 	icon = 'icons/obj/items/gun/rifle64.dmi'
 	icon_state = "type71"
 	worn_icon_state = "type71"
@@ -1424,8 +1424,8 @@
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/bayonet, /obj/item/attachable/gyro)
 
 /obj/item/weapon/gun/rifle/type71/flamer
-	name = "\improper Type 71 pulse rifle"
-	desc = " This appears to be a less common variant of the usual Type 71, with an undermounted flamethrower and improved iron sights."
+	name = "\improper 71式脉冲步枪"
+	desc = "这似乎是常见71式的一种较罕见变体,配有下挂式火焰喷射器和改进的机械瞄具."
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 20, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
@@ -1455,8 +1455,8 @@
 	)
 
 /obj/item/weapon/gun/rifle/type71/commando
-	name = "\improper Type 73 'Commando' pulse carbine"
-	desc = "An much rarer variant of the standard Type 71, this version contains an integrated supressor, a scope, and lots of fine-tuning. Many parts have been replaced, filed down, and improved upon. As a result, this variant is rarely seen outside of elite units."
+	name = "\improper 73式\"突击队\"脉冲卡宾枪"
+	desc = "标准71式的一种更为罕见的变体,此版本包含一体式消音器,瞄准镜以及大量精细调校.许多部件已被更换,打磨和改进.因此,这种变体在精锐部队之外极为罕见."
 	icon_state = "type71"
 	worn_icon_state = "type71"
 	wield_delay = 0.2 SECONDS
@@ -1473,8 +1473,8 @@
 //SH-15 AUTOMATIC SHOTGUN
 
 /obj/item/weapon/gun/rifle/sh15
-	name = "\improper Zauer SH-15 automatic shotgun"
-	desc = "The Zauer SH-15 Automatic Assault Shotgun, this is a Terran Armories variant. Another iteration of the ZX series of firearms though it has been since regulated as part of the TGMC arsenal, hence the SH designation. It took over the various shotgun models as the semi-automatic shotgun provided to the TGMC. It is rifled, and loads primarily longer ranged munitions, being incompatible with buckshot shells. Takes 12-round 16 gauge magazines."
+	name = "\improper 绍尔SH-15自动霰弹枪"
+	desc = "绍尔SH-15自动突击霰弹枪,这是泰拉军械库的变体.ZX系列枪械的又一迭代产品,不过此后已被规范为TGMC武库的一部分,因此有了SH的编号.它取代了各种霰弹枪型号,成为提供给TGMC的半自动霰弹枪.它带有膛线,主要装填较远射程的弹药,与鹿弹不兼容.使用12发16号弹匣."
 	icon_state = "tx15"
 	worn_icon_state = "tx15"
 	icon = 'icons/obj/items/gun/shotgun.dmi'
@@ -1544,8 +1544,8 @@
 //SG-29 Smart Machine Gun (It's more of a rifle than the SG.)
 
 /obj/item/weapon/gun/rifle/sg29
-	name = "\improper SG-29 Raummetall-KT smart machine gun"
-	desc = "The Raummetall-KT SG-29 is the TGMC's current standard IFF-capable medium machine gun. It's known for its ability to lay down heavy fire support very well. It is generally used when someone wants to hold a position or provide fire support. Requires special training and it cannot turn off IFF. It uses 10x26mm ammunition."
+	name = "\improper SG-29劳姆金属-KT智能机枪"
+	desc = "劳姆金属-KT SG-29是TGMC目前标准的具备IFF能力的中型机枪.以其出色的重型火力支援能力而闻名.通常在有人想要守住阵地或提供火力支援时使用.需要特殊训练,且无法关闭IFF.使用10x26mm弹药."
 	icon_state = "sg29"
 	worn_icon_state = "sg29"
 	icon = 'icons/obj/items/gun/machinegun.dmi'
@@ -1624,8 +1624,8 @@
 //SG Target Rifle, has underbarreled spotting rifle that applies effects.
 
 /obj/item/weapon/gun/rifle/sg62
-	name = "\improper SG-62 Kauser-KT smart target rifle"
-	desc = "The Kauser-KT SG-62 is a IFF-capable rifle used by the TerraGov Marine Corps, coupled with a spotting rifle that is also IFF capable of applying various bullets with specialized ordnance, this is a gun with many answers to many situations... if you have the right ammo loaded. Requires special training and it cannot turn off IFF. It uses high velocity 10x27mm for the rifle and 12x66mm ammunition for the underslung rifle."
+	name = "\improper SG-62考泽-KT智能目标步枪"
+	desc = "考泽-KT SG-62是泰拉政府陆战队使用的具备IFF能力的步枪,配合一具同样具备IFF能力的观测步枪,可发射配备特种弹药的各种弹种,这是一款能应对多种情况的枪械...前提是你装填了正确的弹药.需要特殊训练,且无法关闭IFF.步枪使用高速10x27mm弹药,下挂步枪使用12x66mm弹药."
 	icon = 'icons/obj/items/gun/marksman64.dmi'
 	icon_state = "sg62"
 	worn_icon_state = "sg62"
@@ -1676,8 +1676,8 @@
 	starting_attachment_types = list(/obj/item/weapon/gun/rifle/sg153, /obj/item/attachable/stock/strstock, /obj/item/attachable/motiondetector)
 
 /obj/item/weapon/gun/rifle/sg153
-	name = "SG-153 spotting rifle"
-	desc = "An underslung spotting rifle, generally found ontop of another gun."
+	name = "SG-153观测步枪"
+	desc = "一具下挂式观测步枪,通常安装在另一把枪的上方."
 	icon_state = "sg153"
 	icon = 'icons/obj/items/gun/marksman64.dmi'
 	fire_sound =  'sound/weapons/guns/fire/spottingrifle.ogg'
@@ -1710,8 +1710,8 @@
 //Sectoid Rifle
 
 /obj/item/weapon/gun/rifle/sectoid_rifle
-	name = "alien rifle"
-	desc = "An unusual gun of alien origin. It is lacking a trigger or any obvious way to fire it."
+	name = "异形步枪"
+	desc = "一款来源不寻常的异形武器.它没有扳机,也没有任何明显的开火方式."
 	icon_state = "alien_rifle"
 	worn_icon_state = "alien_rifle"
 	icon = 'icons/obj/items/gun/energy.dmi'
@@ -1755,7 +1755,7 @@
 		return FALSE
 	var/mob/living/carbon/human/H = user
 	if(!(H.species.species_flags & USES_ALIEN_WEAPONS))
-		to_chat(user, span_warning("There's no trigger on this gun, you have no idea how to fire it!"))
+		to_chat(user, span_warning("这把枪上没有扳机,你完全不知道该如何开火!"))
 		return FALSE
 	return TRUE
 
@@ -1763,8 +1763,8 @@
 //SR-127 bolt action sniper rifle
 
 /obj/item/weapon/gun/rifle/sr127
-	name = "\improper SR-127 Bauer bolt action rifle"
-	desc = "The Bauer SR-127 is the standard issue bolt action rifle used by the TGMC. Known for its long range accuracy and use by marksmen despite its age and lack of IFF, though careful aim allows fire support from behind. It has an irremoveable scope. Uses 8.6×70mm box magazines."
+	name = "\improper SR-127鲍尔栓动步枪"
+	desc = "鲍尔SR-127是TGMC使用的标准配发栓动步枪.以其远距离精度和射手的使用而闻名,尽管它年代久远且缺乏IFF,但仔细瞄准后仍可从后方提供火力支援.它配有不可拆卸的瞄准镜.使用8.6×70mm弹匣."
 	icon = 'icons/obj/items/gun/marksman64.dmi'
 	icon_state = "tl127"
 	worn_icon_state = "tl127"
@@ -1840,8 +1840,8 @@
 //SR-81 Auto-Sniper
 
 /obj/item/weapon/gun/rifle/sr81
-	name = "\improper SR-81 Kauser-KT automatic sniper rifle"
-	desc = "The Kauser-KT SR-81 is the TerraGov Marine Corps's automatic sniper rifle usually married to it's iconic NVG/KTLD scope combo. It is notable for its high rate of fire for its class, and has decent performance in any range. Uses 8.6x70mm caseless with specialized pressures for IFF fire."
+	name = "\improper SR-81考泽-KT自动狙击步枪"
+	desc = "考泽-KT SR-81是泰拉政府陆战队的自动狙击步枪,通常与其标志性的夜视仪/KTLD瞄准镜组合搭配使用.它以其同类中较高的射速而著称,在任何距离都有不错的表现.使用8.6x70mm无壳弹药,采用特殊压力以实现IFF射击."
 	icon_state = "t81"
 	worn_icon_state = "t81"
 	icon = 'icons/obj/items/gun/marksman.dmi'
@@ -1892,8 +1892,8 @@
 //AR-11 Rifle, based on the gamer-11
 
 /obj/item/weapon/gun/rifle/ar11
-	name = "\improper AR-11 K&H combat rifle"
-	desc = "The Keckler and Hoch AR-11 is the former standard issue rifle of the TGMC. Most of them have been mothballed into storage long ago, but some still pop up in marine or mercenary hands. It is known for its large magazine size and great burst fire, but rather awkward to use, especially during combat. It uses 4.92×34mm caseless HV ammunition."
+	name = "\improper AR-11 K&H战斗步枪"
+	desc = "凯克勒与霍赫AR-11是TGMC的前标准配发步枪.其中大部分早已被封存入库,但仍有一些出现在陆战队员或雇佣兵手中.它以其大容量弹匣和出色的点射而闻名,但使用起来相当笨拙,尤其是在战斗中.使用4.92×34mm无壳高速弹药."
 	icon_state = "tx11"
 	worn_icon_state = "tx11"
 	caliber = CALIBER_492X34_CASELESS //codex
@@ -1971,8 +1971,8 @@
 //AR-21 Assault Rifle
 
 /obj/item/weapon/gun/rifle/ar21
-	name = "\improper AR-21 Kauser skirmish rifle"
-	desc = "The Kauser AR-21 is a versatile rifle is developed to bridge a gap between higher caliber weaponry and a normal rifle. It fires a strong 10x25mm round, which has decent stopping power. It however suffers in magazine size and movement capablity compared to smaller peers."
+	name = "\improper AR-21考泽散兵步枪"
+	desc = "考泽AR-21是一款多用途步枪,旨在弥合高口径武器与普通步枪之间的差距.它发射强劲的10x25mm弹药,具有不错的停止作用.然而,与更小的同类相比,它在弹匣容量和机动性方面有所不足."
 	icon = 'icons/obj/items/gun/rifle64.dmi'
 	icon_state = "t21"
 	worn_icon_state = "t21"
@@ -2054,8 +2054,8 @@
 //AF-51B MACHINEcarbine
 
 /obj/item/weapon/gun/rifle/alf_machinecarbine
-	name = "\improper ALF-51B Kauser machinecarbine"
-	desc = "The Kauser ALF-51B is an unoffical modification of a ALF-51, or better known as the AR-18 carbine, modified to SMG length of barrel, rechambered for a stronger round, and belt based. Truly the peak of CQC. Useless past that. Aiming is impossible. Uses 10x25mm caseless ammunition."
+	name = "\improper ALF-51B考泽机枪卡宾枪"
+	desc = "考泽ALF-51B是ALF-51的非官方改装版,后者更常被称为AR-18卡宾枪,改装为冲锋枪长度的枪管,重新适配了更强的弹药,并采用弹链供弹.真正是近战格斗的巅峰.除此之外毫无用处.无法瞄准.使用10x25mm无壳弹药."
 	icon_state = "alf51b"
 	worn_icon_state = "alf51b"
 	icon = 'icons/obj/items/gun/machinegun.dmi'
@@ -2119,8 +2119,8 @@
 // MKH-98
 
 /obj/item/weapon/gun/rifle/mkh
-	name = "\improper MKH-98 storm rifle"
-	desc = "A certified classic, this reproduction design was hailed as the first successful assault rifle concept, generally termed a 'storm rifle'. Has a higher than usual firerate for its class, but suffers in capacity. This version of it chambers 7.62x39mm."
+	name = "\improper MKH-98风暴步枪"
+	desc = "一款公认的经典之作,这款复刻设计被誉为第一款成功的突击步枪概念,通常被称为\"风暴步枪\".其射速高于同类,但容量不足.此版本发射7.62x39mm弹药."
 	icon = 'icons/obj/items/gun/rifle64.dmi'
 	icon_state = "mkh98"
 	worn_icon_state = "mkh98"
@@ -2163,8 +2163,8 @@
 //-------------------------------------------------------
 // GL-54 grenade launcher
 /obj/item/weapon/gun/rifle/tx54
-	name = "\improper GL-54 grenade launcher"
-	desc = "A magazine fed, semi-automatic grenade launcher designed to shoot airbursting smart grenades. Requires a T49 scope for precision aiming."
+	name = "\improper GL-54榴弹发射器"
+	desc = "一款弹匣供弹的半自动榴弹发射器,设计用于发射空爆智能榴弹.需要T49瞄准镜进行精确瞄准."
 	icon = 'icons/obj/items/gun/special64.dmi'
 	icon_state = "tx54"
 	worn_icon_state = "tx54"
@@ -2220,8 +2220,8 @@
 // AR-55 built in grenade launcher
 
 /obj/item/weapon/gun/rifle/tx54/mini
-	name = "\improper GL-55 20mm grenade launcher"
-	desc = "A weapon-mounted, reloadable, five-shot grenade launcher."
+	name = "\improper GL-55 20mm榴弹发射器"
+	desc = "一款安装在武器上,可重新装填的五发榴弹发射器."
 	icon = 'icons/obj/items/attachments/attachments.dmi'
 	icon_state = "tx55gl"
 	placed_overlay_iconstate = "tx55gl"
@@ -2238,8 +2238,8 @@
 // AR-55 rifle
 
 /obj/item/weapon/gun/rifle/tx55
-	name = "\improper AR-55 assault rifle"
-	desc = "Officially designated an Objective Individual Combat Weapon, the AR-55 features an upper bullpup 20mm grenade launcher designed to fire a variety of specialised rounds, and an underslung assault rifle using 10x24mm caseless ammunition. Somewhat cumbersome to use due to its size and weight. Requires a T49 scope for precision aiming."
+	name = "\improper AR-55突击步枪"
+	desc = "官方编号为\"目标单兵战斗武器\",AR-55具有一个上部无托式20mm榴弹发射器,设计用于发射多种特种弹药,以及一个下挂式突击步枪,使用10x24mm无壳弹药.由于其尺寸和重量,使用起来有些笨重.需要T49瞄准镜进行精确瞄准."
 	icon_state = "tx55"
 	worn_icon_state = "tx55"
 	fire_sound = SFX_GUN_AR12
@@ -2322,8 +2322,8 @@
 //A true classic, the Garand. Ping.
 
 /obj/item/weapon/gun/rifle/garand
-	name = "\improper CAU C1 Garand self loading rifle"
-	desc = "The Carlford-1 is a remastered classic made by Carlford Armories, made to fit in the modern day. Most of the noticeable differences are minor rail modifications. Other than that, it is a faithful recreation with the trademark ping sound and all. Uses .30-06 enbloc clips."
+	name = "\improper CAU C1加兰德自动装填步枪"
+	desc = "卡尔福德-1是卡尔福德军械库制造的经典复刻版,为适应现代而打造.最明显的区别大多是一些小的导轨改装.除此之外,它是一款忠实的复刻品,连标志性的\"叮\"声都一应俱全.使用.30-06弹夹."
 	icon = 'icons/obj/items/gun/marksman64.dmi'
 	icon_state = "garand"
 	worn_icon_state = "garand"
@@ -2386,8 +2386,8 @@
 // V-31 SOM rifle
 
 /obj/item/weapon/gun/rifle/som
-	name = "\improper V-31 assault rifle"
-	desc = "The V-31 was the primary rifle of the Sons of Mars until the introduction of more advanced energy weapons. Nevertheless, the V-31 continues to see common use due to its comparative ease of production and maintenance, and due to the inbuilt low velocity railgun designed for so called 'micro' grenades. Has good handling due to its compact bullpup design, and is generally effective at all ranges. Uses 10x25mm caseless ammunition."
+	name = "\improper V-31突击步枪"
+	desc = "在引入更先进的能量武器之前,V-31是火星之子的主要步枪.尽管如此,V-31因其相对易于生产和维护,以及内置的用于所谓\"微型\"榴弹的低速轨道炮而继续被广泛使用.由于其紧凑的无托设计,操控性良好,并且在各种距离上都普遍有效.使用10x25mm无壳弹药."
 	icon_state = "v31"
 	icon = 'icons/obj/items/gun/rifle64.dmi'
 	worn_icon_state = "v31"
@@ -2487,8 +2487,8 @@
 //-------------------------------------------------------
 // V-34 SOM carbine
 /obj/item/weapon/gun/rifle/som_carbine
-	name = "\improper V-34 carbine"
-	desc = "An old but robust weapon that saw extensive use in the Martian uprising. A comparatively light and compact weapon, it still packs a considerable punch thanks to a good rate of fire and high calibre, although at range its effective drops off considerably. It is chambered in 7.62x39mm."
+	name = "\improper V-34卡宾枪"
+	desc = "一款古老但坚固的武器,在火星起义中被广泛使用.一款相对轻便紧凑的武器,凭借良好的射速和高口径,它仍然具有相当的威力,尽管在远距离其效能会大幅下降.它发射7.62x39mm弹药."
 	icon = 'icons/obj/items/gun/rifle64.dmi'
 	icon_state = "v34"
 	worn_icon_state = "v34"
@@ -2539,7 +2539,7 @@
 	starting_attachment_types = list(/obj/item/attachable/foldable/som_carbine, /obj/item/attachable/magnetic_harness)
 
 /obj/item/weapon/gun/rifle/som_carbine/black
-	desc = "A modern redesign by the SOM of an ancient weapon that saw extensive use in the Martian uprising. A comparatively light and compact weapon, it still packs a considerable punch thanks to a good rate of fire and high calibre, although at range its effective drops off considerably. It is chambered in 7.62x39mm."
+	desc = "SOM对一款古老武器的现代重新设计,该武器在火星起义中被广泛使用.一款相对轻便紧凑的武器,凭借良好的射速和高口径,它仍然具有相当的威力,尽管在远距离其效能会大幅下降.它发射7.62x39mm弹药."
 	icon_state = "v34_black"
 	worn_icon_state = "v34_black"
 	default_ammo_type = /obj/item/ammo_magazine/rifle/mpi_km/carbine/black
@@ -2563,10 +2563,10 @@
 // V-35 battle rifle
 
 /obj/item/weapon/gun/rifle/som_big
-	name = "\improper V-35 battle rifle"
-	desc = "The V-35 is a more recent addition to the SOM armory, \
-	where its superior per shot firepower serves as a cheaper alternative to vastly more expensive and maintenance intensive volkite weaponry. \
-	A variety of ammunition types further more gives the V-35 significant tactical flexibility that volkite weaponry typically lacks, in addition to the ability to use aim mode."
+	name = "\improper V-35战斗步枪"
+	desc = "V-35是SOM武库中较新的成员,\
+	其卓越的单发火力可作为极其昂贵且维护密集的沃尔凯特武器的廉价替代品.\
+	多种弹药类型进一步赋予了V-35沃尔凯特武器通常缺乏的显著战术灵活性,此外还能使用瞄准模式."
 
 	icon_state = "v35"
 	icon = 'icons/obj/items/gun/rifle64.dmi'
@@ -2637,8 +2637,8 @@
 // V-41 SOM LMG
 
 /obj/item/weapon/gun/rifle/som_mg
-	name = "\improper V-41 machine gun"
-	desc = "The V-41 is a large man portable machine used by the SOM, allowing for sustained, accurate suppressive firepower at the cost of mobility and handling. Commonly seen where their preferred tactics of fast, mobile aggression is ill suited. Takes 10x26mm Caseless."
+	name = "\improper V-41机枪"
+	desc = "V-41是SOM使用的一款大型单兵便携机枪,能够以牺牲机动性和操控性为代价提供持续,准确的压制火力.常见于他们偏好的快速,机动进攻战术不适用的情况.使用10x26mm无壳弹药."
 	icon = 'icons/obj/items/gun/machinegun64.dmi'
 	icon_state = "v41"
 	worn_icon_state = "v41"
@@ -2707,8 +2707,8 @@
 //L-11 ICC Sharpshooter Rifle
 
 /obj/item/weapon/gun/rifle/icc_sharpshooter
-	name = "\improper L-11 sharpshooter rifle"
-	desc = "The L-11 is a venerable and battle-tested rifle used by the ICCAF. Although rather heavy, long and unwieldy compared to most ICCAF rifles, which focus on getting up close and personal, it easily makes up with excellent long-range potential when compared to most of its peers, mostly seen in use by reserve troops who expect to fight at distance, rather than up close. Uses 10x27mm magazines."
+	name = "\improper L-11精确射手步枪"
+	desc = "L-11是ICCAF使用的一款久经沙场的老式步枪.尽管与大多数专注于近距离作战的ICCAF步枪相比,它相当沉重,冗长且笨拙,但与大多数同类相比,它凭借出色的远距离潜力轻松弥补了不足,主要见于预期进行远距离而非近距离作战的预备部队.使用10x27mm弹匣."
 	icon = 'icons/obj/items/gun/marksman64.dmi'
 	icon_state = "l11"
 	worn_icon_state = "l11"
@@ -2782,8 +2782,8 @@
 // L-15 ICC Battlecarbine
 
 /obj/item/weapon/gun/rifle/icc_battlecarbine
-	name = "\improper L-15 battlecarbine"
-	desc = "The L-15 battlecarbine is the standard rifle of the ICCAF, boasting a high caliber round and a menacing profile, it presents an excellent CQC firearm. However it struggles at range due to high dropoff from the short barrel, units that use it say that you need to close the gap at any cost to see the true efficacy of this weapon. Uses 10x25mm caseless ammunition."
+	name = "\improper L-15战斗卡宾枪"
+	desc = "L-15战斗卡宾枪是ICCAF的标准步枪,拥有高口径弹药和威猛的外形,是一款出色的近战枪械.然而,由于短枪管导致的严重威力衰减,它在远距离表现不佳,使用它的部队说,你必须不惜一切代价拉近距离,才能看到这把武器的真正效力.使用10x25mm无壳弹药."
 	icon = 'icons/obj/items/gun/rifle64.dmi'
 	icon_state = "l15"
 	worn_icon_state = "l15"
@@ -2856,8 +2856,8 @@
 // ML-12 ICC Confrontation Rifle
 
 /obj/item/weapon/gun/rifle/icc_confrontationrifle
-	name = "\improper ML-12 confrontation rifle"
-	desc = "The ML-12 confrontation rifle is an absolute beast of a weapon used by the ICCAF. Featuring a high caliber round in a short package, it will absolutely shred enemy targets at close quarters, a operator must mind the incredible recoil while making followup shots, however. Uses 10x28mm caseless ammunition."
+	name = "\improper ML-12对抗步枪"
+	desc = "ML-12对抗步枪是ICCAF使用的一款绝对的猛兽级武器.在短小的枪身内搭载高口径弹药,它绝对能在近距离撕碎敌方目标,不过操作者在进行后续射击时必须注意其惊人的后坐力.使用10x28mm无壳弹药."
 	icon = 'icons/obj/items/gun/rifle64.dmi'
 	icon_state = "ml12"
 	worn_icon_state = "ml12"
@@ -2925,8 +2925,8 @@
 //ML-41 Autoshotgun
 
 /obj/item/weapon/gun/rifle/icc_autoshotgun
-	name = "\improper ML-41 autoshotgun"
-	desc = "The ML-41 Automatic Shotgun is used by the ICCAF in fast paced boarding assaults, fielding a wide variety of ammo for all situations. Takes 16-round 12 gauge drums."
+	name = "\improper ML-41自动霰弹枪"
+	desc = "ML-41自动霰弹枪被ICCAF用于快节奏的登舰突击,配备了适用于各种情况的多种弹药.使用16发12号弹鼓."
 	icon = 'icons/obj/items/gun/shotgun64.dmi'
 	icon_state = "ml41"
 	worn_icon_state = "ml41"
@@ -2982,8 +2982,8 @@
 //L-88 Assaultcarbine and EM-88 'Export' Varient
 
 /obj/item/weapon/gun/rifle/icc_assaultcarbine
-	name = "\improper L-88 assault carbine"
-	desc = "An aged, reliable but outdated bullpup rifle used by ICCAF reserve personnel it is best used in close quarters when you need to quickly clear corners at rapid pace, has an integral foregrip and unmagnified scope to increase accuracy and reduce drag. Chambered in 5.56x45mm NATO."
+	name = "\improper L-88突击卡宾枪"
+	desc = "一款老旧,可靠但过时的无托步枪,由ICCAF预备人员使用,最适合在需要快速清理角落的近战中使用,配有一体式前握把和无倍率瞄准镜以提高精度并减少拖拽.发射5.56x45mm北约弹药."
 	icon = 'icons/obj/items/gun/rifle64.dmi'
 	icon_state = "l88"
 	worn_icon_state = "l88"
@@ -3026,8 +3026,8 @@
 	scatter = 0
 
 /obj/item/weapon/gun/rifle/icc_assaultcarbine/export
-	name = "\improper L&S EM-88 assault carbine"
-	desc = "An aged, reliable, but outdated bullpup rifle usually seen within ICC space due to being surplused long ago, some of these surplus models sometimes find themselves within TGMC space via underhanded means. It's best used in close quarters when you need to quickly clear corners at rapid pace, has an integral foregrip and unmagnified scope to increase accuracy and reduce drag. Chambered in 5.56x45mm NATO."
+	name = "\improper L&S EM-88突击卡宾枪"
+	desc = "一把老旧、可靠但过时的无托步枪,由于早已退役封存,通常只在ICC星域内见到,其中一些剩余型号有时会通过不正当手段流入TGMC星域.它最适合在近距离作战中使用,当你需要快速清理角落时,它配备了一体式前握把和无倍率瞄准镜,以提高精度并减少拖拽感.使用5.56x45mm NATO弹药."
 	icon_state = "l88_export"
 	worn_icon_state = "l88_export"
 	default_ammo_type = /obj/item/ammo_magazine/rifle/icc_assaultcarbine/export
@@ -3037,8 +3037,8 @@
 ///////////////////////////////////////////////////////////////////////
 
 /obj/item/weapon/gun/rifle/t25
-	name = "\improper T-25 smartrifle"
-	desc = "The T-25 is the TGMC's current standard IFF-capable rifle. It's known for its ability to lay down quick fire support very well. Requires special training and it cannot turn off IFF. It uses 10x26mm ammunition."
+	name = "\improper T-25智能步枪"
+	desc = "T-25是TGMC目前的标准IFF能力步枪.它以能够出色地提供快速火力支援而闻名.需要特殊训练,并且无法关闭IFF.使用10x26mm弹药."
 	icon = 'icons/obj/items/gun/rifle64.dmi'
 	icon_state = "t25"
 	worn_icon_state = "t25"
@@ -3099,8 +3099,8 @@
 //MG-60 General Purpose Machine Gun
 
 /obj/item/weapon/gun/rifle/icc_mg
-	name = "\improper ML-41 assault machine gun"
-	desc = "The ML-41 is an incredibly lightweight machinegun used by ICCAF forces, being incredibly light for its class allows it to be used in rapid manuevers, at the cost of damage at range and generally high scatter. It uses 10x26mm boxes."
+	name = "\improper ML-41突击机枪"
+	desc = "ML-41是ICCAF部队使用的一种极其轻便的机枪,对于其类别来说轻得不可思议,使其能够用于快速机动,代价是远距离伤害和普遍较高的散布.使用10x26mm弹箱."
 	icon = 'icons/obj/items/gun/machinegun64.dmi'
 	icon_state = "minimi"
 	worn_icon_state = "minimi"
@@ -3166,8 +3166,8 @@
 // L26
 
 /obj/item/weapon/gun/rifle/vsd_lmg
-	name = "\improper L26 support machine gun"
-	desc = "The Syndicate's main all purpose machine gun, chambered in 5.56. It's design seems... outdated yet still reliable. Fires rapidly with devasting kicks, at a cost of movement speed."
+	name = "\improper L26支援机枪"
+	desc = "辛迪加的主要通用机枪,使用5.56口径.它的设计似乎...过时但仍然可靠.射速快,后坐力惊人,代价是移动速度."
 	icon = 'icons/obj/items/gun/machinegun64.dmi'
 	icon_state = "l26"
 	worn_icon_state = "l26"
@@ -3236,8 +3236,8 @@
 // C550
 
 /obj/item/weapon/gun/rifle/vsd_rifle
-	name = "\improper C550 combat rifle"
-	desc = "Crash Core's first ever rifle. With designs reminiscent of the Sauer series, this gun is the perfect choice for CQC. Chambered in 10x27mm. Packs a kick to anyone standing infront of you. "
+	name = "\improper C550战斗步枪"
+	desc = "Crash Core的第一款步枪.设计上让人联想到Sauer系列,这把枪是近距离作战的完美选择.使用10x27mm口径.能给任何站在你面前的人一记重击."
 	icon = 'icons/obj/items/gun/rifle64.dmi'
 	icon_state = "c550"
 	worn_icon_state = "c550"

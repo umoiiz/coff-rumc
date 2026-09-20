@@ -54,16 +54,16 @@
 /obj/structure/barricade/examine(mob/user)
 	. = ..()
 	if(is_wired)
-		. += span_info("There is a length of wire strewn across the top of this barricade.")
+		. += span_info("一段铁丝横跨在这个路障的顶部.")
 	switch((obj_integrity / max_integrity) * 100)
 		if(75 to INFINITY)
-			. += span_info("It appears to be in good shape.")
+			. += span_info("它看起来状况良好.")
 		if(50 to 75)
-			. += span_warning("It's slightly damaged, but still very functional.")
+			. += span_warning("它略有损坏,但仍然非常实用.")
 		if(25 to 50)
-			. += span_warning("It's quite beat up, but it's holding together.")
+			. += span_warning("它破损严重,但还连在一起.")
 		if(-INFINITY to 25)
-			. += span_warning("It's crumbling apart, just a few more blows will tear it apart.")
+			. += span_warning("它正在碎裂,再打几下就会散架.")
 
 /obj/structure/barricade/on_try_exit(datum/source, atom/movable/mover, direction, list/knownblockers)
 	. = ..()
@@ -89,7 +89,7 @@
 		return FALSE
 
 	if(is_wired)
-		balloon_alert(xeno_attacker, "Wire slices into us")
+		balloon_alert(xeno_attacker, "铁丝割入我们")
 		var/damage_to_deal = 10
 		if(istype(xeno_attacker.xeno_caste, /datum/xeno_caste/warrior/bulwark))
 			damage_to_deal = 5
@@ -102,7 +102,7 @@
 		return
 
 	if(get_self_acid())
-		balloon_alert(user, "It's melting!")
+		balloon_alert(user, "它正在融化!")
 		return TRUE
 
 	if(!istype(I, /obj/item/stack/barbed_wire) || !can_wire)
@@ -110,12 +110,12 @@
 
 	var/obj/item/stack/barbed_wire/B = I
 
-	balloon_alert_to_viewers("Setting up wire...")
+	balloon_alert_to_viewers("正在设置铁丝...")
 	if(!do_after(user, 2 SECONDS, NONE, src, BUSY_ICON_BUILD) || !can_wire)
 		return
 
 	if(get_self_acid())
-		balloon_alert(user, "It's melting!")
+		balloon_alert(user, "它正在融化!")
 		return TRUE
 
 	playsound(loc, 'sound/effects/barbed_wire_movement.ogg', 25, 1)
@@ -125,7 +125,7 @@
 
 /obj/structure/barricade/attack_hand_alternate(mob/living/user)
 	if(anchored)
-		balloon_alert(usr, "It's fastened to the floor")
+		balloon_alert(usr, "它固定在地板上")
 		return FALSE
 
 	setDir(turn(dir, 270))
@@ -134,13 +134,13 @@
 	if(!is_wired || LAZYACCESS(user.do_actions, src))
 		return FALSE
 
-	balloon_alert_to_viewers("Removing wire...")
+	balloon_alert_to_viewers("正在移除铁丝...")
 
 	if(!do_after(user, 2 SECONDS, NONE, src, BUSY_ICON_BUILD))
 		return TRUE
 
 	playsound(loc, 'sound/items/wirecutter.ogg', 25, TRUE)
-	balloon_alert_to_viewers("Removes the barbed wire")
+	balloon_alert_to_viewers("移除铁丝网")
 	modify_max_integrity(max_integrity - 50)
 	can_wire = TRUE
 	is_wired = FALSE
@@ -166,7 +166,7 @@
 	create_shrapnel(get_turf(src), rand(2, 5), direction, shrapnel_type = /datum/ammo/bullet/shrapnel/light)
 	if(prob(50)) // no message spam pls
 		return
-	visible_message(span_warning("[src] blows apart in the explosion, sending shards flying!"))
+	visible_message(span_warning("[src]在爆炸中炸开,碎片四飞!"))
 
 /obj/structure/barricade/get_explosion_resistance(direction)
 	if(!density || direction == turn(dir, 90) || direction == turn(dir, -90))
@@ -233,7 +233,7 @@
 	if(!isliving(atom_movable))
 		return FALSE
 	var/mob/living/living = atom_movable
-	balloon_alert(living, "Wire slices into us")
+	balloon_alert(living, "铁丝割入我们")
 	living.apply_damage(10, BRUTE, blocked = MELEE , sharp = TRUE, updating_health = TRUE)
 	if(living.mob_size < MOB_SIZE_BIG)
 		living.Knockdown(2 SECONDS) //Leaping into barbed wire is VERY bad
@@ -241,7 +241,7 @@
 
 	atom_movable.stop_throw()
 	take_damage(50, BRUTE, MELEE, 1, get_dir(src, atom_movable))
-	visible_message(span_warning("[src] was hit by [atom_movable]."), visible_message_flags = COMBAT_MESSAGE)
+	visible_message(span_warning("[src]被[atom_movable]击中."), visible_message_flags = COMBAT_MESSAGE)
 	return TRUE
 
 /obj/structure/barricade/verb/rotate()
@@ -250,7 +250,7 @@
 	set src in oview(1)
 
 	if(anchored)
-		balloon_alert(usr, "It's fastened to the floor")
+		balloon_alert(usr, "它固定在地板上")
 		return FALSE
 
 	setDir(turn(dir, 90))
@@ -261,7 +261,7 @@
 	set src in oview(1)
 
 	if(anchored)
-		balloon_alert(usr, "It's fastened to the floor")
+		balloon_alert(usr, "它固定在地板上")
 		return FALSE
 
 	setDir(turn(dir, 270))

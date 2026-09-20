@@ -23,24 +23,24 @@
 	dmg_max = BONECHIPS_MAX_DAMAGE //need to use the FixOVein past this point
 
 /datum/surgery_step/brain/bone_chips/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] starts taking bone chips out of [target]'s brain with \the [tool]."), \
-	span_notice("You start taking bone chips out of [target]'s brain with \the [tool]."))
-	target.balloon_alert_to_viewers("Clearing bone...")
+	user.visible_message(span_notice("[user] 开始用 \the [tool] 从 [target] 的大脑中取出骨碎片。"), \
+	span_notice("你开始用 \the [tool] 从 [target] 的大脑中取出骨碎片。"))
+	target.balloon_alert_to_viewers("清理骨头...")
 	return ..()
 
 /datum/surgery_step/brain/bone_chips/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] takes out all the bone chips in [target]'s brain with \the [tool]."),	\
-	span_notice("You take out all the bone chips in [target]'s brain with \the [tool]."))
-	target.balloon_alert_to_viewers("Success")
+	user.visible_message(span_notice("[user] 用 \the [tool] 取出 [target] 大脑中的所有骨碎片。"),	\
+	span_notice("你用 \the [tool] 取出 [target] 大脑中的所有骨碎片。"))
+	target.balloon_alert_to_viewers("成功")
 	var/datum/internal_organ/brain/sponge = target.get_organ_slot(ORGAN_SLOT_BRAIN)
 	if(sponge)
 		sponge.heal_organ_damage(BRAIN_DAMAGE_DEATH) // we heal the maximun amount, so this define should do it
 	return ..()
 
 /datum/surgery_step/brain/bone_chips/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_warning("[user]'s hand slips, jabbing \the [tool] in [target]'s brain!"), \
-	span_warning("Your hand slips, jabbing \the [tool] in [target]'s brain!"))
-	target.balloon_alert_to_viewers("Slipped!")
+	user.visible_message(span_warning("[user] 的手滑了, 将 \the [tool] 刺入 [target] 的大脑!"), \
+	span_warning("你的手滑了, 将 \the [tool] 刺入 [target] 的大脑!"))
+	target.balloon_alert_to_viewers("失手了!")
 	target.apply_damage(30, BRUTE, "head", 0, TRUE, updating_health = TRUE)
 
 /datum/surgery_step/brain/hematoma
@@ -55,22 +55,22 @@
 	dmg_min = BONECHIPS_MAX_DAMAGE //below that, you use the hemostat
 
 /datum/surgery_step/brain/hematoma/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] starts mending hematoma in [target]'s brain with \the [tool]."), \
-	span_notice("You start mending hematoma in [target]'s brain with \the [tool]."))
-	target.balloon_alert_to_viewers("Mending...")
+	user.visible_message(span_notice("[user] 开始用 \the [tool] 修复 [target] 大脑中的血肿。"), \
+	span_notice("你开始用 \the [tool] 修复 [target] 大脑中的血肿。"))
+	target.balloon_alert_to_viewers("修复中...")
 	return ..()
 
 /datum/surgery_step/brain/hematoma/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_notice("[user] mends hematoma in [target]'s brain with \the [tool]."),	\
-	span_notice("You mend hematoma in [target]'s brain with \the [tool]."))
-	target.balloon_alert_to_viewers("Success")
+	user.visible_message(span_notice("[user] 用 \the [tool] 修复了 [target] 大脑中的血肿。"),	\
+	span_notice("你用 \the [tool] 修复了 [target] 大脑中的血肿。"))
+	target.balloon_alert_to_viewers("成功")
 	var/datum/internal_organ/brain/sponge = target.get_organ_slot(ORGAN_SLOT_BRAIN)
 	if(sponge)
 		sponge.heal_organ_damage(BONECHIPS_MAX_DAMAGE)
 	return ..()
 
 /datum/surgery_step/brain/hematoma/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message(span_warning("[user]'s hand slips, bruising [target]'s brain with \the [tool]!"), \
-	span_warning("Your hand slips, bruising [target]'s brain with \the [tool]!"))
-	target.balloon_alert_to_viewers("Slipped!")
+	user.visible_message(span_warning("[user] 的手滑了, 用 \the [tool] 挫伤 [target] 的大脑!"), \
+	span_warning("你的手滑了, 用 \the [tool] 挫伤 [target] 的大脑!"))
+	target.balloon_alert_to_viewers("失手了!")
 	target.apply_damage(20, BRUTE, "head", 0, TRUE, updating_health = TRUE)

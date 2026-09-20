@@ -4,81 +4,81 @@
 /datum/emote/living/carbon/robot/dwoop
 	key = "dwoop"
 	key_third_person = "dwoops"
-	message = "pips happily!"
+	message = "开心地哔哔叫!"
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/voice/robotic/dwoop.ogg'
 
 /datum/emote/living/carbon/robot/yes
 	key = "yes"
-	message = "emits an affirmative blip."
+	message = "发出肯定的哔声。"
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/voice/robotic/synth_yes.ogg'
 
 /datum/emote/living/carbon/robot/no
 	key = "no"
-	message = "emits a negative blip."
+	message = "发出否定的哔声。"
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/voice/robotic/synth_no.ogg'
 
 /datum/emote/living/carbon/robot/buzz
 	key = "buzz"
 	key_third_person = "buzzes"
-	message = "buzzes."
-	message_param = "buzzes at %t."
+	message = "嗡嗡响。"
+	message_param = "对%t嗡嗡响。"
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/machines/buzz-sigh.ogg'
 
 /datum/emote/living/carbon/robot/buzz2
 	key = "buzz2"
-	message = "buzzes twice."
-	message_param = "buzzes twice at %t."
+	message = "嗡嗡响两声。"
+	message_param = "对%t嗡嗡响两声。"
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/machines/buzz-two.ogg'
 
 /datum/emote/living/carbon/robot/beep
 	key = "beep"
-	message = "beeps sharply."
-	message_param = "beeps sharply at %t."
+	message = "尖锐地哔哔叫。"
+	message_param = "对%t尖锐地哔哔叫。"
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/machines/twobeep.ogg'
 
 /datum/emote/living/carbon/robot/chime
 	key = "chime"
 	key_third_person = "chimes"
-	message = "chimes."
+	message = "鸣响。"
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/machines/chime.ogg'
 
 /datum/emote/living/carbon/robot/honk
 	key = "honk"
 	key_third_person = "honks"
-	message = "honks."
+	message = "鸣笛。"
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/items/bikehorn.ogg'
 
 /datum/emote/living/carbon/robot/ping
 	key = "ping"
 	key_third_person = "pings"
-	message = "pings."
+	message = "发出叮声。"
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/machines/ping.ogg'
 
 /datum/emote/living/carbon/robot/sad
 	key = "sad"
-	message = "plays a sad trombone..."
+	message = "吹奏悲伤的长号..."
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/misc/sadtrombone.ogg'
 
 /datum/emote/living/carbon/robot/warn
 	key = "warn"
 	key_third_person = "warns"
-	message = "blares an alarm!"
+	message = "发出刺耳的警报!"
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/machines/warning-buzzer.ogg'
 
 /datum/emote/living/carbon/robot/laughtrack
 	key = "laughtrack"
-	message = "plays a laughtrack."
+	message = "播放笑声。"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/robot/laughtrack/get_sound(mob/living/user)

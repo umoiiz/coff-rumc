@@ -29,7 +29,7 @@ export function PatientStomachChemicals() {
   }
 
   return (
-    <Section title="Stomach Contents">
+    <Section title="胃内容物">
       <Stack vertical>
         {Object.values(stomach_chemicals_lists)
           .sort((a, b) => {

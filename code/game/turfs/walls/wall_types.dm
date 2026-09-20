@@ -1,7 +1,7 @@
 //----- Marine ship walls ---//
 /turf/closed/wall/mainship
 	name = "hull"
-	desc = "A huge chunk of metal used to seperate rooms and make up the ship."
+	desc = "一大块用于分隔房间并构成船体的金属."
 	icon = 'icons/turf/walls/testwall.dmi'
 	icon_state = "testwall-0"
 	walltype = "testwall"
@@ -40,7 +40,7 @@
 
 /turf/closed/wall/mainship/outer
 	name = "outer hull"
-	desc = "A huge chunk of metal used to seperate space from the ship"
+	desc = "一大块用于将太空与飞船隔开的金属."
 	//icon_state = "testwall0_debug" //Uncomment to check hull in the map editor.
 	walltype = "testwall"
 	resistance_flags = RESIST_ALL //Impossible to destroy or even damage. Used for outer walls that would breach into space, potentially some special walls
@@ -79,7 +79,7 @@
 
 /turf/closed/wall/mainship/gray/outer
 	name = "outer hull"
-	desc = "A huge chunk of metal used to seperate space from the ship"
+	desc = "一大块用于将太空与飞船隔开的金属."
 	walltype = "gwall"
 	resistance_flags = RESIST_ALL
 	icon_state = "wall-invincible"
@@ -101,7 +101,7 @@
 
 /turf/closed/wall/mainship/white/outer
 	name = "outer hull"
-	desc = "A huge chunk of metal used to seperate space from the ship"
+	desc = "一大块用于将太空与飞船隔开的金属."
 	icon_state = "wall-invincible"
 	resistance_flags = RESIST_ALL
 
@@ -197,7 +197,7 @@
 //Sulaco walls.
 /turf/closed/wall/sulaco
 	name = "hull"
-	desc = "A huge chunk of metal used to separate rooms on spaceships from the cold void of space."
+	desc = "一大块用于将飞船上的房间与寒冷的虚空隔开的金属."
 	icon = 'icons/turf/walls/sulaco.dmi'
 	icon_state = "sulaco-0"
 	base_icon_state = "sulaco"
@@ -209,7 +209,7 @@
 
 /turf/closed/wall/sulaco/hull
 	name = "outer hull"
-	desc = "A reinforced outer hull, probably to prevent breaches"
+	desc = "加固的外层船壳, 大概是为了防止破洞."
 	walltype = "sulaco"
 	resistance_flags = RESIST_ALL
 	icon_state = "wall-invincible"
@@ -232,7 +232,7 @@
 /turf/closed/wall/indestructible/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/tool/pickaxe/plasmacutter)) //needed for user feedback, if not included the user will not receive a message when trying plasma cutter wall/indestructible turfs
 		var/obj/item/tool/pickaxe/plasmacutter/P = I
-		to_chat(user, span_warning("[P] can't cut through this!"))
+		to_chat(user, span_warning("[P]无法切开这个!"))
 	return
 
 /turf/closed/wall/indestructible/mineral
@@ -241,7 +241,7 @@
 
 /turf/closed/wall/indestructible/bulkhead
 	name = "bulkhead"
-	desc = "It is a large metal bulkhead."
+	desc = "这是一块大型金属舱壁."
 	icon_state = "hull"
 
 /turf/closed/wall/indestructible/fakeglass
@@ -272,7 +272,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 /turf/closed/wall/mineral
 	name = "mineral wall"
-	desc = "This shouldn't exist"
+	desc = "这不应该存在."
 	icon_state = ""
 	resistance_flags = UNACIDABLE
 	var/mineral
@@ -281,7 +281,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 /turf/closed/wall/mineral/gold
 	name = "gold wall"
-	desc = "A wall with gold plating. Swag!"
+	desc = "一堵镀金的墙. 太潮了!"
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "gold-0"
 	base_icon_state = "gold"
@@ -290,7 +290,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 /turf/closed/wall/mineral/silver
 	name = "silver wall"
-	desc = "A wall with silver plating. Shiny!"
+	desc = "一堵镀银的墙. 闪闪发光!"
 	icon_state = "silver0"
 	walltype = "silver"
 	mineral = "silver"
@@ -299,7 +299,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 /turf/closed/wall/mineral/diamond
 	name = "diamond wall"
-	desc = "A wall with diamond plating. You monster."
+	desc = "一堵镀钻石的墙. 你这个怪物."
 	icon_state = "diamond0"
 	walltype = "diamond"
 	mineral = "diamond"
@@ -307,21 +307,21 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 /turf/closed/wall/mineral/sandstone
 	name = "sandstone wall"
-	desc = "A wall with sandstone plating."
+	desc = "一堵镀砂岩的墙."
 	icon_state = "sandstone0"
 	walltype = "sandstone"
 	mineral = "sandstone"
 
 /turf/closed/wall/mineral/uranium
 	name = "uranium wall"
-	desc = "A wall with uranium plating. This is probably a bad idea."
+	desc = "一堵镀铀的墙. 这大概是个坏主意."
 	icon_state = "uranium0"
 	walltype = "uranium"
 	mineral = "uranium"
 
 /turf/closed/wall/mineral/phoron
 	name = "phoron wall"
-	desc = "A wall with phoron plating. This is definately a bad idea."
+	desc = "一堵镀phoron的墙. 这绝对是个坏主意."
 	icon_state = "phoron0"
 	walltype = "phoron"
 	mineral = "phoron"
@@ -334,7 +334,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 /turf/closed/wall/cult
 	name = "wall"
-	desc = "The patterns engraved on the wall seem to shift as you try to focus on them. You feel sick"
+	desc = "当你试图聚焦于墙上雕刻的图案时, 它们似乎在移动. 你感到恶心."
 	icon = 'icons/turf/walls/cult.dmi'
 	icon_state = "cult-0"
 	walltype = "cult"
@@ -343,7 +343,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 /turf/closed/wall/clock
 	name = "brass wall"
-	desc = "An intricate pattern of brass masterfully crafted into a sturdy wall. Looking at it instills a strange sense of pride in you."
+	desc = "精心制作成坚固墙壁的复杂黄铜图案. 看着它会在你心中灌输一种奇怪的骄傲感."
 	icon_state = "clockwork_wall"
 
 /turf/closed/wall/vault
@@ -390,7 +390,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 /turf/closed/wall/wood/reinforced
 	name = "reinforced wood wall"
-	desc = "A reinforced wooden wall"
+	desc = "一堵加固的木墙."
 	icon = 'icons/turf/walls/woodrwall.dmi'
 	icon_state = "wall-reinforced"
 	base_icon_state = "woodrwall"
@@ -400,7 +400,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 /turf/closed/wall/brick
 	name = "brick wall"
-	desc = "A wall made out of weathered brick."
+	desc = "一堵由风化砖块砌成的墙."
 	icon = 'icons/turf/walls/brick.dmi'
 	icon_state = "wall-0"
 	walltype = "wall"
@@ -417,7 +417,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 /turf/closed/wall/variable/adobe
 	name = "adobe wall"
-	desc = "A wall made out of adobe brick."
+	desc = "一堵由土坯砖砌成的墙."
 	icon_state = "wall-0"
 	icon = 'icons/turf/walls/adobe.dmi'
 	walltype = "wall"
@@ -431,7 +431,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 /turf/closed/wall/variable/siding
 	name = "siding wall"
-	desc = "A worn wooden wall."
+	desc = "一堵破旧的木墙."
 	icon = 'icons/turf/walls/siding.dmi'
 	icon_state = "wall-0"
 	walltype = "wall"
@@ -454,7 +454,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 /turf/closed/wall/mineral/sandstone/runed
 	name = "sandstone temple wall"
-	desc = "A heavy wall of sandstone."
+	desc = "一堵厚重的砂岩墙."
 	icon = 'icons/turf/walls/cult.dmi'
 	icon_state = "cult-0"
 	base_icon_state = "cult"
@@ -466,12 +466,12 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	max_integrity = 9000//Strong, but only available to Hunters, can can still be blown up or melted by boilers.
 
 /turf/closed/wall/mineral/sandstone/runed/attack_alien(mob/living/carbon/xenomorph/user, damage_amount = user.xeno_caste.melee_damage, damage_type = BRUTE, damage_flag = MELEE, effects = TRUE, armor_penetration = 0, isrightclick = FALSE)
-	visible_message("[user] scrapes uselessly against [src] with their claws.")
+	visible_message("[user]用爪子徒劳地刮擦着[src].")
 	return
 
 /turf/closed/wall/huntership
 	name = "hunter wall"
-	desc = "Nigh indestructible walls that make up the hull of a hunter ship."
+	desc = "近乎坚不可摧的墙壁, 构成了猎手飞船的船体."
 	icon = 'icons/turf/walls/hunter.dmi'
 	icon_state = "hunter-0"//DMI specific name
 	walltype = "hunter"
@@ -481,5 +481,5 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 /turf/closed/wall/huntership/destructible
 	name = "degraded hunter wall"
 	color = "#c5beb4"
-	desc = "Ancient beyond measure, these walls make up the hull of a vessel of non human origin. Despite this, they can be felled with plastic explosives like any other opaque blocker."
+	desc = "古老得无法估量, 这些墙壁构成了一艘非人类来源飞船的船体. 尽管如此, 它们可以像任何其他不透明阻挡物一样被塑胶炸药摧毁."
 	resistance_flags = NONE

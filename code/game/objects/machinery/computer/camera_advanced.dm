@@ -1,6 +1,6 @@
 /obj/machinery/computer/camera_advanced
 	name = "advanced camera console"
-	desc = "Used to access the various cameras on the ship."
+	desc = "用于访问飞船上的各种摄像头."
 	icon_state = "computer_small"
 	screen_overlay = "cameras"
 	broken_icon = "computer_small_red_broken"
@@ -129,7 +129,7 @@
 
 /obj/machinery/computer/camera_advanced/proc/open_prompt(mob/user, turf/premade_camera_location)
 	if(current_user)
-		to_chat(user, "The console is already in use!")
+		to_chat(user, "控制台已在使用中!")
 		return
 
 	var/mob/living/L = user
@@ -191,12 +191,12 @@
 		return
 
 	if(!target.can_track(current_user))
-		to_chat(current_user, span_warning("Target is not near any active cameras."))
+		to_chat(current_user, span_warning("目标不在任何活动摄像头附近."))
 		tracking_target = null
 		return
 
 	tracking_target = target
-	to_chat(current_user, span_notice("Now tracking [target.get_visible_name()] on camera."))
+	to_chat(current_user, span_notice("正在摄像头中追踪[target.get_visible_name()]."))
 	start_processing()
 
 
@@ -208,11 +208,11 @@
 
 	if(!tracking_target.can_track(current_user))
 		if(!cameraticks)
-			to_chat(current_user, span_warning("Target is not near any active cameras. Attempting to reacquire..."))
+			to_chat(current_user, span_warning("目标不在任何活动摄像头附近. 正在尝试重新获取..."))
 		cameraticks++
 		if(cameraticks > 9)
 			tracking_target = null
-			to_chat(current_user, span_warning("Unable to reacquire, cancelling track..."))
+			to_chat(current_user, span_warning("无法重新获取,正在取消追踪..."))
 			return PROCESS_KILL
 	else
 		cameraticks = 0
@@ -415,7 +415,7 @@
 			T["[C.c_tag][C.can_use() ? "" : " (Deactivated)"]"] = C
 
 	playsound(origin, 'sound/machines/terminal_prompt.ogg', 25, 0)
-	var/camera = tgui_input_list(owner, "Choose which camera you want to view?", "Cameras", T)
+	var/camera = tgui_input_list(owner, "选择你想查看的摄像头?", "摄像头", T)
 	var/obj/machinery/camera/C = T[camera]
 	playsound(src, SFX_TERMINAL_TYPE, 25, 0)
 

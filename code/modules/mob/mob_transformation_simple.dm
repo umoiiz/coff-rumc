@@ -3,7 +3,7 @@
 		return
 
 	if(new_type == /mob/new_player)
-		to_chat(usr, span_warning("Cannot convert into a new_player."))
+		to_chat(usr, span_warning("无法转换为new_player."))
 		return
 
 	var/mob/M
@@ -13,7 +13,7 @@
 		M = new new_type(loc)
 
 	if(!istype(M))
-		to_chat(usr, span_warning("Invalid typepath."))
+		to_chat(usr, span_warning("无效的类型路径."))
 		qdel(M)
 		return
 

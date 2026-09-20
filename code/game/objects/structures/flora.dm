@@ -17,8 +17,8 @@
 //TREES
 
 /obj/structure/flora/tree
-	name = "tree"
-	desc = "A large tree."
+	name = "树"
+	desc = "一棵大树."
 	density = TRUE
 	pixel_x = -16
 	max_integrity = 500
@@ -59,13 +59,13 @@
 	if(I.hitsound)
 		playsound(get_turf(src), I.hitsound, 50, 0, 0)
 
-	user.visible_message(span_notice("[user] begins to cut down [src] with [I]."),span_notice("You begin to cut down [src] with [I]."), "You hear the sound of sawing.")
+	user.visible_message(span_notice("[user]开始用[I]砍倒[src]."),span_notice("你开始用[I]砍倒[src]."), "你听到了锯木的声音.")
 	var/cut_force = min(1, I.force)
 	var/cutting_time = clamp(10, 20, 100 / cut_force) SECONDS
 	if(!do_after(user, cutting_time , NONE, src, BUSY_ICON_BUILD))
 		return
 
-	user.visible_message(span_notice("[user] fells [src] with the [I]."),span_notice("You fell [src] with the [I]."), "You hear the sound of a tree falling.")
+	user.visible_message(span_notice("[user]用[I]砍倒了[src]."),span_notice("你用[I]砍倒了[src]."), "你听到了树木倒下的声音.")
 	playsound(get_turf(src), 'sound/effects/meteorimpact.ogg', 10 , 0, 0)
 	for(var/i in 1 to log_amount)
 		new /obj/item/grown/log(get_turf(src))
@@ -84,29 +84,29 @@
 		. += image(icon, "fire")
 
 /obj/structure/flora/stump
-	name = "stump"
-	desc = "This represents our promise to cut down as many trees as possible."
+	name = "树桩"
+	desc = "这代表着我们尽可能多砍树的承诺."
 	icon = 'icons/obj/flora/deadtrees.dmi'
 	icon_state = "tree_stump"
 	density = FALSE
 	pixel_x = -16
 
 /obj/structure/flora/tree/pine
-	name = "pine tree"
+	name = "松树"
 	icon = 'icons/obj/flora/pinetrees.dmi'
 	icon_state = "pine"
 	icon_variants = 3
 
 /obj/structure/flora/tree/xmas
 	icon = 'icons/obj/flora/pinetrees.dmi'
-	name = "xmas tree"
+	name = "圣诞树"
 	icon_state = "pine_c"
 	icon_variants = NONE
 	resistance_flags = null
 
 /obj/structure/flora/tree/xmas/presents
 	icon_state = "pinepresents"
-	desc = "A wondrous decorated Christmas tree. It has presents!"
+	desc = "一棵装饰精美的奇妙圣诞树. 它还有礼物!"
 	var/gift_type = /obj/item/gift/marine
 	var/list/ckeys_that_took = list()
 
@@ -118,9 +118,9 @@
 		return
 
 	if(ckeys_that_took[user.ckey])
-		to_chat(user, span_warning("There are no presents with your name on."))
+		to_chat(user, span_warning("没有写着你的名字的礼物."))
 		return
-	to_chat(user, span_warning("After a bit of rummaging, you locate a gift with your name on it!"))
+	to_chat(user, span_warning("翻找了一会儿, 你找到了一个写着你的名字的礼物!"))
 	ckeys_that_took[user.ckey] = TRUE
 	var/obj/item/G = new gift_type(src)
 	user.put_in_hands(G)
@@ -134,24 +134,24 @@
 	AddComponent(/datum/component/largetransparency, 0, 1, 0, 0)
 
 /obj/structure/flora/tree/dead/drought
-	name = "dead tree"
-	desc = "A dead tree. Its probably seen better days."
+	name = "枯树"
+	desc = "一棵枯树. 它大概有过好日子."
 	icon = 'icons/obj/flora/tall_trees.dmi'
 	icon_state = "dead_tree"
 	icon_variants = 3
 
 /obj/structure/flora/tree/joshua
-	name = "joshua tree"
-	desc = "A tall tree covered in spiky-like needles, covering it's trunk."
+	name = "约书亚树"
+	desc = "一棵高大的树, 树干上覆盖着尖刺般的针叶."
 	icon = 'icons/obj/flora/joshuatree.dmi'
 	icon_state = "joshua"
 	pixel_x = 0
 	icon_variants = 4
 
 /obj/structure/flora/tree/jungle
-	name = "jungle tree"
+	name = "丛林树"
 	icon_state = "tree"
-	desc = "It's seriously hampering your view of the jungle."
+	desc = "它严重妨碍了你观察丛林的视线."
 	icon = 'icons/obj/flora/jungletrees.dmi'
 	pixel_x = -48
 	pixel_y = -20
@@ -171,7 +171,7 @@
 //GRASS
 
 /obj/structure/flora/grass
-	name = "grass"
+	name = "草"
 	icon = 'icons/obj/flora/snowflora.dmi'
 	anchored = TRUE
 
@@ -189,7 +189,7 @@
 
 //grayscale tall grass
 /obj/structure/flora/grass/tallgrass
-	name = "tall grass"
+	name = "高草"
 	icon = 'icons/obj/flora/tallgrass.dmi'
 	icon_state = "tallgrass"
 	plane = GAME_PLANE
@@ -208,7 +208,7 @@
 	footstep_overrides[FOOTSTEP_GRASS] = layer
 
 /obj/structure/flora/grass/tallgrass/tallgrasscorner
-	name = "tall grass"
+	name = "高草"
 	icon_state = "tallgrass_corner"
 
 /obj/structure/flora/grass/tallgrass/hideable
@@ -218,7 +218,7 @@
 	icon_state = "tallgrass_corner"
 
 /obj/structure/flora/grass/tallgrass/autosmooth
-	name = "tall grass"
+	name = "高草"
 	icon = 'icons/obj/flora/smooth/tall_grass.dmi'
 	icon_state = "tallgrass-icon"
 	base_icon_state = "tallgrass"
@@ -243,14 +243,14 @@
 
 //bushes
 /obj/structure/flora/bush
-	name = "bush"
+	name = "灌木"
 	icon = 'icons/obj/flora/snowflora.dmi'
 	icon_state = "snowbush"
 	anchored = TRUE
 	icon_variants = 6
 
 /obj/structure/flora/pottedplant
-	name = "potted plant"
+	name = "盆栽植物"
 	icon = 'icons/obj/flora/plants.dmi'
 	icon_state = "plant-05"
 
@@ -335,7 +335,7 @@
 //newbushes
 
 /obj/structure/flora/ausbushes
-	name = "bush"
+	name = "灌木"
 	icon = 'icons/obj/flora/ausflora.dmi'
 	icon_state = "firstbush"
 	anchored = TRUE
@@ -410,7 +410,7 @@
 
 //GRASS
 /obj/structure/flora/desert/grass
-	name = "grass"
+	name = "草"
 	icon_state = "lightgrass"
 	icon_variants = 12
 
@@ -420,20 +420,20 @@
 
 //BUSHES
 /obj/structure/flora/desert/bush
-	name = "bush"
-	desc = "A small, leafy bush."
+	name = "灌木"
+	desc = "一丛矮小茂密的灌木."
 	icon_state = "tree"
 	icon_variants = 4
 
 //CACTUS
 /obj/structure/flora/desert/cactus
-	name = "cactus"
-	desc = "It's a small, spiky cactus."
+	name = "仙人掌"
+	desc = "这是一株矮小多刺的仙人掌."
 	icon_state = "cactus"
 	icon_variants = 12
 
 /obj/structure/flora/desert/cactus/multiple
-	name = "cacti"
+	name = "仙人掌"
 	icon_state = "cacti"
 
 
@@ -444,39 +444,39 @@
 //*********************//
 
 /obj/structure/flora/jungle
-	name = "jungle foliage"
+	name = "丛林植被"
 	icon = 'icons/turf/ground_map.dmi'
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/flora/jungle/shrub
-	name = "jungle foliage"
-	desc = "Pretty thick scrub, it'll take something sharp and a lot of determination to clear away."
+	name = "丛林植被"
+	desc = "相当浓密的灌木丛, 需要锋利的东西和极大的决心才能清除."
 	icon_state = "grass4"
 
 /obj/structure/flora/jungle/plantbot1
-	name = "strange tree"
-	desc = "Some kind of bizarre alien tree. It oozes with a sickly yellow sap."
+	name = "奇怪的树"
+	desc = "某种奇异的异星树木. 它渗出病态的黄色汁液."
 	icon_state = "plantbot1"
 
 /obj/structure/flora/jungle/plantbot1/alien
 	icon_state = "alienplant1"
 
 /obj/structure/flora/jungle/planttop1
-	name = "strange tree"
-	desc = "Some kind of bizarre alien tree. It oozes with a sickly yellow sap."
+	name = "奇怪的树"
+	desc = "某种奇异的异星树木. 它渗出病态的黄色汁液."
 	icon_state = "planttop1"
 
 /obj/structure/flora/jungle/bush
-	name = "jungle bush"
-	desc = "A small leafy plant."
+	name = "丛林灌木"
+	desc = "一株矮小茂密的植物."
 	icon_state = "bush"
 	icon = 'icons/obj/flora/jungleflora.dmi'
 	icon_variants = 9
 	layer = OBJ_LAYER
 
 /obj/structure/flora/jungle/grass
-	name = "jungle grass"
-	desc = "some type of grass species."
+	name = "丛林草"
+	desc = "某种草类植物."
 	icon_state = "grass"
 	icon = 'icons/obj/flora/jungleflora.dmi'
 	icon_variants = 5
@@ -486,8 +486,8 @@
 	icon_state = "grass_thin"
 
 /obj/structure/flora/jungle/large_bush
-	name = "large plant"
-	desc = "A large leafy plant."
+	name = "大型植物"
+	desc = "一株大型茂密的植物."
 	icon_state = "bush"
 	icon = 'icons/obj/flora/largejungleflora.dmi'
 	layer = ABOVE_MOB_LAYER
@@ -500,8 +500,8 @@
 	AddComponent(/datum/component/largetransparency, 0, 0, 0, 1)
 
 /obj/structure/flora/jungle/vines
-	name = "vines"
-	desc = "A mass of twisted vines."
+	name = "藤蔓"
+	desc = "一团缠绕的藤蔓."
 	icon = 'icons/effects/spacevines.dmi'
 	icon_state = "Light2"
 
@@ -515,7 +515,7 @@
 
 	var/mob/living/L = user
 
-	to_chat(L, span_warning("You cut \the [src] away with \the [I]."))
+	to_chat(L, span_warning("你用\the [I]切开了\the [src]."))
 	L.do_attack_animation(src, used_item = I)
 	playsound(src, 'sound/effects/vegetation_hit.ogg', 25, 1)
 	qdel(src)
@@ -525,7 +525,7 @@
 	icon_state = pick("Light1","Light2","Light3")
 
 /obj/structure/flora/jungle/vines/heavy
-	desc = "A thick, coiled mass of twisted vines."
+	desc = "一团粗厚盘绕的缠绕藤蔓."
 	opacity = TRUE
 
 /obj/structure/flora/jungle/vines/heavy/Initialize(mapload)
@@ -539,114 +539,114 @@
 
 //GRASS
 /obj/structure/flora/drought/grass
-	name = "grass"
-	desc = "Some dried up grass."
+	name = "草"
+	desc = "一些干枯的草."
 	icon_state = "drygrass"
 	icon_variants = 15
 
 /obj/structure/flora/drought/tall_cactus
-	name = "cactus"
-	desc = "Some tall, spikey looking cactus."
+	name = "仙人掌"
+	desc = "一些高大尖刺状的仙人掌."
 	icon_state = "tall_cactus"
 	icon_variants = 3
 	density = TRUE
 	resistance_flags = XENO_DAMAGEABLE
 /obj/structure/flora/drought/short_cactus
-	name = "cactus"
-	desc = "Some short, spikey looking cactus."
+	name = "仙人掌"
+	desc = "一些矮小尖刺状的仙人掌."
 	icon_state = "short_cactus"
 	icon_variants = 3
 
 /obj/structure/flora/drought/barrel_cactus
-	name = "cactus"
-	desc = "Some plump, spikey looking cactus."
+	name = "仙人掌"
+	desc = "一些饱满尖刺状的仙人掌."
 	icon_state = "barrel"
 	icon_variants = 6
 
 /obj/structure/flora/drought/leafy_plant
-	name = "plant"
-	desc = "A tough looking little plant."
+	name = "植物"
+	desc = "一株坚韧的小植物."
 	icon_state = "leafy_plant"
 	icon_variants = 3
 
 /obj/structure/flora/drought/yucca
-	name = "yucca bush"
-	desc = "A hardy little bush. Its flowers are said to have medicinal properties."
+	name = "丝兰灌木"
+	desc = "一株耐寒的小灌木. 据说它的花有药用价值."
 	icon_state = "yucca"
 	icon_variants = 2
 
 /obj/structure/flora/drought/xander
-	name = "xander bush"
-	desc = "A tough little shrub. Supposedly has medicinal properties when dried."
+	name = "赞德灌木"
+	desc = "一株坚韧的小灌木. 据说干燥后有药用价值."
 	icon_state = "xander"
 	icon_variants = 2
 
 /obj/structure/flora/drought/broc
-	name = "broc flower tree"
-	desc = "A small desert shrub. It doesn't look terribly happy."
+	name = "西兰花树"
+	desc = "一株矮小的沙漠灌木. 它看起来不太高兴."
 	icon_state = "broc_flower"
 	icon_variants = 2
 
 /obj/structure/flora/drought/aster
-	name = "aster bush"
-	desc = "A tough little shrub. It produces pretty blue flowers."
+	name = "紫菀灌木"
+	desc = "一株坚韧的小灌木。它会开出漂亮的蓝色花朵。"
 	icon_state = "aster"
 	icon_variants = 2
 
 /obj/structure/flora/drought/ash
-	name = "ash rose"
-	desc = "A tough little shrub with wickly sharp thorns. The flowers are prized for their strong aroma."
+	name = "灰烬玫瑰"
+	desc = "一株坚韧的小灌木,长着邪恶锋利的尖刺。其花朵因浓郁的香气而备受珍视。"
 	icon_state = "ash_rose"
 	icon_variants = 2
 
 //cave flora
 /obj/structure/flora/drought/shroom
-	name = "fungus"
-	desc = "A small patch of brown fungus. Eating them is probably a terrible idea."
+	name = "真菌"
+	desc = "一小片棕色真菌。吃它们大概是个糟糕的主意。"
 	icon_state = "shroom"
 	icon_variants = 3
 
 /obj/structure/flora/drought/shroom/glow
-	name = "glowing fungus"
-	desc = "A small patch of luminescent fungus. Eating them is definitely a terrible idea."
+	name = "发光真菌"
+	desc = "一小片发光的真菌。吃它们绝对是个糟糕的主意。"
 	icon_state = "glowshroom"
 
 /obj/structure/flora/drought/shroom/blight
-	name = "blight mushroom"
-	desc = "A small patch of blight mushrooms. Extremely toxic."
+	name = "枯萎蘑菇"
+	desc = "一小片枯萎蘑菇。剧毒。"
 	icon_state = "blightshroom"
 
 /obj/structure/flora/drought/shroom/brain
-	name = "ash rose"
-	desc = "A small patch of brain fungus. Apparently delicious when correctly prepared."
+	name = "灰烬玫瑰"
+	desc = "一小片脑真菌。据说正确烹饪后非常美味。"
 	icon_state = "brainshroom"
 
 /obj/structure/flora/drought/shroom/fire
-	name = "ash rose"
-	desc = "A small patch of fire mushrooms. Doesn't actually cause fire."
+	name = "灰烬玫瑰"
+	desc = "一小片火焰蘑菇。实际上并不会引起火焰。"
 	icon_state = "fireshroom"
 
 /obj/structure/flora/drought/shroom/gut
-	name = "ash rose"
-	desc = "A small patch of gut mushrooms. Is supposed to cause a prolonged, agonising death."
+	name = "灰烬玫瑰"
+	desc = "一小片内脏蘑菇。据说会导致漫长而痛苦的死亡。"
 	icon_state = "gutshroom"
 
 /obj/structure/flora/drought/shroom/nara_root
-	name = "ash rose"
-	desc = "A small patch of nara root fungus. Supposedly has healing properties."
+	name = "灰烬玫瑰"
+	desc = "一小片娜拉根真菌。据说具有治疗功效。"
 	icon_state = "narashroom"
 
 /obj/structure/flora/drought/shroom/lure_weed
-	name = "lure weed"
-	desc = "A long, tough little fungus."
+	name = "诱饵草"
+	desc = "一种长而坚韧的小真菌。"
 	icon_state = "lureweed"
 
 /obj/structure/flora/drought/broc/cave
-	desc = "A small desert shrub. It looks surprisingly happy in the gloom."
+	desc = "一株小型沙漠灌木。它在阴暗环境中看起来出奇地开心。"
 	icon_state = "broc_flower_cave"
 	icon_variants = 2
 
 /obj/structure/flora/drought/xander/cave
-	desc = "A tough little plant. Supposedly has medicinal properties when dried."
+	desc = "一株坚韧的小植物。据说干燥后具有药用价值。"
 	icon_state = "xander_cave"
 	icon_variants = 2

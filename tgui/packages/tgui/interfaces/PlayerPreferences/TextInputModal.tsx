@@ -42,7 +42,7 @@ export const TextInputModal = (props: TextInputModalData) => {
               onBack(input);
             }}
           >
-            Cancel
+            取消
           </Button>
         </Flex.Item>
       </Flex>

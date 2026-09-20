@@ -98,7 +98,7 @@ export const CardMod = () => {
     <Window width={520} height={640} title="Identification Card Modifier">
       <Window.Content scrollable>
         <Section
-          title="ID Cards"
+          title="身份卡"
           buttons={
             <>
               <Button
@@ -119,7 +119,7 @@ export const CardMod = () => {
                   })
                 }
               >
-                Manifest
+                名单
               </Button>
             </>
           }
@@ -152,7 +152,7 @@ export const CardMod = () => {
 
         {mode === MODE_MANIFEST && (
           <Section
-            title="Crew Manifest"
+            title="船员名单"
             buttons={
               <Button
                 icon="print"
@@ -164,7 +164,7 @@ export const CardMod = () => {
             }
           >
             <Box mb={1} color="label">
-              Entries cannot be modified from this terminal.
+              无法从此终端修改条目.
             </Box>
             <Box
               dangerouslySetInnerHTML={{
@@ -176,9 +176,9 @@ export const CardMod = () => {
 
         {mode === MODE_CARD && !!authenticated && !!has_id && (
           <>
-            <Section title="Registered Identity">
+            <Section title="注册身份">
               <LabeledList>
-                <LabeledList.Item label="Name">
+                <LabeledList.Item label="名称">
                   <Input
                     value={id_owner}
                     width="250px"
@@ -190,7 +190,7 @@ export const CardMod = () => {
                     }
                   />
                 </LabeledList.Item>
-                <LabeledList.Item label="Account">
+                <LabeledList.Item label="账户">
                   <NumberInput
                     step={1}
                     value={id_account || 0}
@@ -204,10 +204,10 @@ export const CardMod = () => {
                     }
                   />
                 </LabeledList.Item>
-                <LabeledList.Item label="Assignment">
+                <LabeledList.Item label="职务">
                   {id_rank}
                 </LabeledList.Item>
-                <LabeledList.Item label="Paygrade">
+                <LabeledList.Item label="薪资等级">
                   {can_modify_paygrade ? (
                     <Dropdown
                       width="220px"
@@ -235,16 +235,16 @@ export const CardMod = () => {
 
             <Tabs>
               <Tabs.Tab selected={tab === 1} onClick={() => setTab(1)}>
-                Access
+                权限
               </Tabs.Tab>
               <Tabs.Tab selected={tab === 2} onClick={() => setTab(2)}>
-                Assignment
+                职务
               </Tabs.Tab>
             </Tabs>
 
             {tab === 1 && (
               <Section
-                title="Access"
+                title="权限"
                 buttons={
                   <>
                     <Button
@@ -252,14 +252,14 @@ export const CardMod = () => {
                       color="good"
                       onClick={() => act('PRG_grantall')}
                     >
-                      Grant All
+                      全部授予
                     </Button>
                     <Button
                       icon="times"
                       color="bad"
                       onClick={() => act('PRG_denyall')}
                     >
-                      Deny All
+                      全部拒绝
                     </Button>
                   </>
                 }
@@ -280,7 +280,7 @@ export const CardMod = () => {
                             })
                           }
                         >
-                          Grant
+                          授予
                         </Button>
                         <Button
                           icon="times"
@@ -291,7 +291,7 @@ export const CardMod = () => {
                             })
                           }
                         >
-                          Deny
+                          拒绝
                         </Button>
                       </>
                     }
@@ -352,7 +352,7 @@ export const CardMod = () => {
 
         {mode === MODE_CARD && !!authenticated && !has_id && (
           <NoticeBox>
-            Insert a target ID card to modify assignments and access.
+            插入目标身份卡以修改职务和权限.
           </NoticeBox>
         )}
       </Window.Content>

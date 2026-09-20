@@ -77,7 +77,7 @@
 
 /datum/xeno_mutation/carapace_one
 	name = "Carapace I"
-	desc = "Слабо увеличивает броню всех типов."
+	desc = "略微增加所有类型的护甲。"
 	category = "Survival"
 	cost = 5
 	cost_change = list("crusher" = 5, "queen" = 5, "king" = 5, "behemoth" = 5)
@@ -90,7 +90,7 @@
 
 /datum/xeno_mutation/carapace/two
 	name = "Carapace II"
-	desc = "Больше брони?.."
+	desc = "更多护甲?.."
 	cost = 10
 	icon_state = "carapace_two"
 	tier = 2
@@ -101,7 +101,7 @@
 
 /datum/xeno_mutation/carapace/three
 	name = "Carapace III"
-	desc = "Nanomachines, son."
+	desc = "纳米机器,小子。"
 	cost = 15
 	icon_state = "carapace_three"
 	tier = 3
@@ -118,7 +118,7 @@
 
 /datum/xeno_mutation/regeneration
 	name = "Regeneration I"
-	desc = "Незначительно увеличивает регенерацию."
+	desc = "略微增加再生能力。"
 	category = "Survival"
 	cost = 10
 	cost_change = list("queen" = 5, "king" = 5, "behemoth" = 5, "gorger" = 5)
@@ -131,7 +131,7 @@
 
 /datum/xeno_mutation/regeneration/two
 	name = "Regeneration II"
-	desc = "Еще больше регенерации."
+	desc = "更多再生能力。"
 	cost = 10
 	icon_state = "regeneration_two"
 	tier = 2
@@ -147,7 +147,7 @@
 
 /datum/xeno_mutation/vampirism
 	name = "Vampirism"
-	desc = "Регенерирует часть здоровья при базовых атаках."
+	desc = "在基础攻击时再生部分生命值。"
 	category = "Survival"
 	cost = 15
 	cost_change = list("queen" = 5, "king" = 5, "behemoth" = 5, "gorger" = 5)
@@ -160,7 +160,7 @@
 
 /datum/xeno_mutation/vampirism/two
 	name = "Leech"
-	desc = "Регенерирует СКОЛЬКО?..."
+	desc = "再生多少?..."
 	cost = 25
 	icon_state = "leech"
 	tier = 2
@@ -176,7 +176,7 @@
 
 /datum/xeno_mutation/celerity
 	name = "Celerity"
-	desc = "Увеличивает твою скорость."
+	desc = "增加你的速度。"
 	category = "Offensive"
 	cost = 10
 	cost_change = list("runner" = 5, "hunter" = 5, "ravager" = 5, "defiler" = 5)
@@ -194,7 +194,7 @@
 
 /datum/xeno_mutation/ionize
 	name = "Ionize I"
-	desc = "Незначительно увеличивает максимальную ёмкость плазмы"
+	desc = "略微增加最大等离子体容量"
 	category = "Specialized"
 	cost = 10
 	cost_change = list("drone" = 5, "hivelord" = 5, "warlock" = 5, "queen" = 5, "king" = 5)
@@ -207,7 +207,7 @@
 
 /datum/xeno_mutation/ionize/two
 	name = "Ionize II"
-	desc = "Увеличивает эффект прошлой мутации и добавляет регенерацию."
+	desc = "增强上一个突变的效果并添加再生能力。"
 	cost = 20
 	icon_state = "ionize_two"
 	tier = 2
@@ -222,7 +222,7 @@
 
 /datum/xeno_mutation/crush
 	name = "Crush"
-	desc = "Незначительно увеличивает пробитие базовой атаки по объектам."
+	desc = "略微增加基础攻击对物体的穿透力。"
 	category = "Offensive"
 	cost = 5
 	cost_change = list("behemoth" = 5)
@@ -239,7 +239,7 @@
 
 /datum/xeno_mutation/toxin
 	name = "Toxin I"
-	desc = "Позволяет вводить выбранный реагент при атаке."
+	desc = "允许在攻击时注入选定的试剂。"
 	category = "Offensive"
 	cost = 10
 	cost_change = list("runner" = 5, "defiler" = 5)
@@ -252,7 +252,7 @@
 
 /datum/xeno_mutation/toxin/two
 	name = "Toxin II"
-	desc = "Увеличивает ввод реагента и открывает sanguinal."
+	desc = "增加试剂注入量并解锁sanguinal。"
 	cost = 15
 	icon_state = "toxin_two"
 	tier = 2
@@ -267,7 +267,7 @@
 
 /datum/xeno_mutation/pheromones
 	name = "Pheromones I"
-	desc = "Позволяет выделять слабые феромоны."
+	desc = "允许释放弱信息素."
 	category = "Specialized"
 	cost = 5
 	cost_change = list("hivemind" = 5, "queen" = 5, "king" = 5)
@@ -280,7 +280,7 @@
 
 /datum/xeno_mutation/pheromones/two
 	name = "Pheromones II"
-	desc = "Позволяет выделять средние феромоны."
+	desc = "允许释放中等信息素."
 	cost = 10
 	icon_state = "pheromones_two"
 	tier = 2
@@ -291,7 +291,7 @@
 
 /datum/xeno_mutation/pheromones/three
 	name = "Pheromones III"
-	desc = "Позволяет выделять сильные феромоны."
+	desc = "允许释放强信息素."
 	cost = 15
 	icon_state = "pheromones_three"
 	tier = 3
@@ -306,7 +306,7 @@
 
 /datum/xeno_mutation/trail
 	name = "Trail"
-	desc = "Оставляет кислотный/липкий след с некоторым шансом."
+	desc = "有几率留下酸性/黏性痕迹."
 	category = "Specialized"
 	cost = 10
 	icon_state = "trail"

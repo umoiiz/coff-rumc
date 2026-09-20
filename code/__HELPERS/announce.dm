@@ -153,7 +153,7 @@
 
 	priority_announce(
 		type = ANNOUNCEMENT_REGULAR,
-		title = "Attention!",
+		title = "注意!",
 		subtitle = active_subtitle,
 		message = active_message,
 		sound = active_sound,

@@ -7,7 +7,7 @@
 #define SODA_FIZZINESS_SHAKE 5
 
 /obj/item/reagent_containers/cup/soda_cans
-	name = "soda can"
+	name = "汽水罐"
 	icon = 'icons/obj/drinks/soda.dmi'
 	icon_state = "cola"
 	icon_state_preview = "cola"
@@ -28,9 +28,9 @@
 /obj/item/reagent_containers/cup/soda_cans/attack(mob/target_mob, mob/living/user)
 	if(iscarbon(target_mob) && !reagents.total_volume && (user.a_intent == INTENT_HARM) && user.zone_selected == BODY_ZONE_HEAD)
 		if(target_mob == user)
-			user.visible_message(span_warning("[user] crushes the can of [src] on [user.p_their()] forehead!"), span_notice("You crush the can of [src] on your forehead."))
+			user.visible_message(span_warning("[user]把[src]的罐子砸在[user.p_their()]的额头上!"), span_notice("你把[src]的罐子砸在自己的额头上。"))
 		else
-			user.visible_message(span_warning("[user] crushes the can of [src] on [target_mob]'s forehead!"), span_notice("You crush the can of [src] on [target_mob]'s forehead."))
+			user.visible_message(span_warning("[user]把[src]的罐子砸在[target_mob]的额头上!"), span_notice("你把[src]的罐子砸在[target_mob]的额头上。"))
 		playsound(target_mob,'sound/weapons/pierce.ogg', rand(10,50), TRUE)
 		var/obj/item/trash/can/crushed_can = new /obj/item/trash/can(target_mob.loc)
 		crushed_can.icon_state = icon_state
@@ -40,11 +40,11 @@
 
 /obj/item/reagent_containers/cup/soda_cans/proc/open_soda(mob/user)
 	if(prob(fizziness))
-		user.visible_message(span_danger("[user] opens [src], and is suddenly sprayed by the fizzing contents!"), span_danger("You pull back the tab of [src], and are suddenly sprayed with a torrent of liquid! Ahhh!!"))
+		user.visible_message(span_danger("[user]打开了[src],突然被嘶嘶作响的内容物喷了一身!"), span_danger("你拉开了[src]的拉环,突然被一股液体喷了一身!啊啊!!"))
 		burst_soda(user)
 		return
 
-	to_chat(user, "You pull back the tab of [src] with a satisfying pop.") //Ahhhhhhhh
+	to_chat(user, "你拉开了[src]的拉环,伴随着令人满足的噗嗤声。") //Ahhhhhhhh
 	reagents.reagent_flags |= OPENCONTAINER
 	playsound(src, "can_open", 50, TRUE)
 	throwforce = 0
@@ -62,7 +62,7 @@
 
 	playsound(src, 'sound/effects/can_pop.ogg', 80, TRUE)
 	if(!hide_message)
-		visible_message(span_danger("[src] spills over, fizzing its contents all over [target]!"))
+		visible_message(span_danger("[src]洒了出来,嘶嘶作响的内容物溅了[target]一身!"))
 	reagents.reagent_flags |= OPENCONTAINER
 	reagents.clear_reagents()
 	throwforce = 0
@@ -77,7 +77,7 @@
 		return
 
 	burst_soda(hit_atom, hide_message = TRUE)
-	visible_message(span_danger("[src]'s impact with [hit_atom] causes it to rupture, spilling everywhere!"))
+	visible_message(span_danger("[src]与[hit_atom]的撞击导致其破裂,洒得到处都是!"))
 	var/obj/item/trash/can/crushed_can = new /obj/item/trash/can(src.loc)
 	crushed_can.icon_state = icon_state
 	moveToNullspace()
@@ -92,7 +92,7 @@
 /obj/item/reagent_containers/cup/soda_cans/attack_self_alternate(mob/living/user)
 	if(!is_drainable())
 		playsound(src, 'sound/effects/can_shake.ogg', 50, TRUE)
-		user.visible_message(span_danger("[user] shakes [src]!"), span_danger("You shake up [src]!"), vision_distance=2)
+		user.visible_message(span_danger("[user]摇晃[src]!"), span_danger("你摇晃[src]!"), vision_distance=2)
 		fizziness += SODA_FIZZINESS_SHAKE
 		return
 	return ..()
@@ -102,37 +102,37 @@
 	if(!in_range(user, src))
 		return
 	if(fizziness > 30 && prob(fizziness * 2))
-		. += span_notice("<i>You examine [src] closer, and note the following...</i>")
+		. += span_notice("<i>你更仔细地检查[src],并注意到以下内容...</i>")
 		. += "\t[span_warning("You get a menacing aura of fizziness from it...")]"
 
 #undef SODA_FIZZINESS_THROWN
 #undef SODA_FIZZINESS_SHAKE
 
 /obj/item/reagent_containers/cup/soda_cans/cola
-	name = "Space Cola"
-	desc = "Cola. in space."
+	name = "太空可乐"
+	desc = "可乐。在太空中。"
 	icon_state = "cola"
 	list_reagents = list(/datum/reagent/consumable/space_cola = 30)
 	drink_type = SUGAR
 
 /obj/item/reagent_containers/cup/soda_cans/tonic
-	name = "T-Borg's tonic water"
-	desc = "Quinine tastes funny, but at least it'll keep that Space Malaria away."
+	name = "T-博格的汤力水"
+	desc = "奎宁味道怪怪的,但至少能帮你远离太空疟疾。"
 	icon_state = "tonic"
 	volume = 50
 	list_reagents = list(/datum/reagent/consumable/tonic = 50)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/soda_cans/sodawater
-	name = "soda water"
-	desc = "A can of soda water. Why not make a scotch and soda?"
+	name = "苏打水"
+	desc = "一罐苏打水。何不调一杯苏格兰威士忌加苏打水呢?"
 	icon_state = "sodawater"
 	volume = 50
 	list_reagents = list(/datum/reagent/consumable/sodawater = 50)
 
 /obj/item/reagent_containers/cup/soda_cans/lemon_lime
-	name = "orange soda"
-	desc = "You wanted ORANGE. It gave you Lemon Lime."
+	name = "橙味汽水"
+	desc = "你想要橙子味。它却给了你柠檬青柠味。"
 	icon_state = "lemon-lime"
 	list_reagents = list(/datum/reagent/consumable/lemon_lime = 30)
 	drink_type = FRUIT
@@ -142,113 +142,113 @@
 	name = "lemon-lime soda"
 
 /obj/item/reagent_containers/cup/soda_cans/sol_dry
-	name = "Sol Dry"
-	desc = "Maybe this will help your tummy feel better. Maybe not."
+	name = "索尔干姜水"
+	desc = "也许这能让你的肚子舒服些。也许不能。"
 	icon_state = "sol_dry"
 	list_reagents = list(/datum/reagent/consumable/sol_dry = 30)
 	drink_type = SUGAR
 
 /obj/item/reagent_containers/cup/soda_cans/space_up
-	name = "Space-Up!"
-	desc = "Tastes like a hull breach in your mouth."
+	name = "太空嗨!"
+	desc = "尝起来就像你嘴里发生了船体破裂。"
 	icon_state = "space-up"
 	list_reagents = list(/datum/reagent/consumable/space_up = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/starkist
-	name = "Star-kist"
-	desc = "The taste of a star in liquid form. And, a bit of tuna...?"
+	name = "星之鲣"
+	desc = "液体形式的星星的味道。还有,一点金枪鱼...?"
 	icon_state = "starkist"
 	list_reagents = list(/datum/reagent/consumable/space_cola = 15, /datum/reagent/consumable/orangejuice = 15)
 	drink_type = SUGAR | FRUIT | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/space_mountain_wind
-	name = "Space Mountain Wind"
-	desc = "Blows right through you like a space wind."
+	name = "太空山风"
+	desc = "像太空风一样直接穿过你。"
 	icon_state = "space_mountain_wind"
 	list_reagents = list(/datum/reagent/consumable/spacemountainwind = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/thirteenloko
-	name = "Thirteen Loko"
-	desc = "The CMO has advised crew members that consumption of Thirteen Loko may result in seizures, blindness, drunkenness, or even death. Please Drink Responsibly."
+	name = "十三洛可"
+	desc = "首席医疗官已告知船员,饮用十三洛可可能导致癫痫发作、失明、醉酒,甚至死亡。请理性饮酒。"
 	icon_state = "thirteen_loko"
 	list_reagents = list(/datum/reagent/consumable/ethanol/thirteenloko = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/dr_gibb
-	name = "Dr. Gibb"
-	desc = "A delicious mixture of 42 different flavors."
+	name = "吉布博士"
+	desc = "42种不同口味的绝妙混合。"
 	icon_state = "dr_gibb"
 	list_reagents = list(/datum/reagent/consumable/dr_gibb = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/pwr_game
-	name = "Pwr Game"
-	desc = "The only drink with the PWR that true gamers crave. When a gamer talks about gamerfuel, this is what they're literally referring to."
+	name = "能量游戏"
+	desc = "唯一含有真正玩家渴望的PWR的饮料。当玩家谈论玩家燃料时,他们指的就是这个。"
 	icon_state = "purple_can"
 	list_reagents = list(/datum/reagent/consumable/pwr_game = 30)
 
 /obj/item/reagent_containers/cup/soda_cans/shamblers
-	name = "Shambler's juice"
-	desc = "~Shake me up some of that Shambler's Juice!~"
+	name = "蹒跚者果汁"
+	desc = "~给我摇一杯蹒跚者果汁!~"
 	icon_state = "shamblers"
 	list_reagents = list(/datum/reagent/consumable/shamblers = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/wellcheers
-	name = "Wellcheers Juice"
-	desc = "A strange purple drink, smelling of saltwater. Somewhere in the distance, you hear seagulls."
+	name = "威尔奇斯果汁"
+	desc = "一种奇怪的紫色饮料,闻起来有海水味。远处隐约传来海鸥的叫声。"
 	icon_state = "wellcheers"
 	list_reagents = list(/datum/reagent/consumable/wellcheers = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/grey_bull
-	name = "Grey Bull"
-	desc = "Grey Bull, it gives you gloves!"
+	name = "灰牛"
+	desc = "灰牛,给你手套!"
 	icon_state = "energy_drink"
 	list_reagents = list(/datum/reagent/consumable/grey_bull = 20)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/monkey_energy
-	name = "Monkey Energy"
-	desc = "Unleash the ape!"
+	name = "猴子能量"
+	desc = "释放猿猴之力!"
 	icon_state = "monkey_energy"
 	volume = 50
 	list_reagents = list(/datum/reagent/consumable/monkey_energy = 50)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/volt_energy
-	name = "24-Volt Energy"
-	desc = "Recharge, with 24-Volt Energy!"
+	name = "24伏特能量"
+	desc = "充电,用24伏特能量!"
 	icon_state = "volt_energy"
 	list_reagents = list(/datum/reagent/consumable/volt_energy = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/melon_soda
-	name = "Kansumi Melon Soda"
-	desc = "Japan's favourite melon soda, now available in can form!"
+	name = "寒澄蜜瓜汽水"
+	desc = "日本最受欢迎的蜜瓜汽水,现在有罐装版了!"
 	icon_state = "melon_soda"
 	list_reagents = list(/datum/reagent/consumable/melon_soda = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/air
-	name = "canned air"
-	desc = "There is no air shortage. Do not drink."
+	name = "罐装空气"
+	desc = "空气并不短缺。请勿饮用。"
 	icon_state = "air"
 	list_reagents = list(/datum/reagent/nitrogen = 24, /datum/reagent/oxygen = 6)
 
 /obj/item/reagent_containers/cup/soda_cans/beer
-	name = "space beer"
-	desc = "Canned beer. In space."
+	name = "太空啤酒"
+	desc = "罐装啤酒。在太空里。"
 	icon_state = "space_beer"
 	volume = 40
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer = 40)
 	drink_type = GRAIN
 
 /obj/item/reagent_containers/cup/soda_cans/beer/rice
-	name = "rice beer"
-	desc = "A light, rice-based lagered beer popular on Mars. Considered a hate crime against Bavarians under the Reinheitsgebot Act of 1516."
+	name = "米啤酒"
+	desc = "一种清淡的米基拉格啤酒,在火星很受欢迎。根据1516年《纯净法法案》,这被视为对巴伐利亚人的仇恨犯罪。"
 	icon_state = "ebisu"
 	list_reagents = list(/datum/reagent/consumable/ethanol/rice_beer = 40)
 

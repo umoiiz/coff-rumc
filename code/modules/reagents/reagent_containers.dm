@@ -1,5 +1,5 @@
 /obj/item/reagent_containers
-	name = "Container"
+	name = "容器"
 	desc = ""
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = null
@@ -64,7 +64,7 @@
 /obj/item/reagent_containers/proc/change_transfer_amount(mob/living/user)
 	if(!possible_transfer_amounts)
 		return FALSE
-	var/result = tgui_input_list(user, "Amount per transfer from this:","[src]", possible_transfer_amounts)
+	var/result = tgui_input_list(user, "每次从中转移的量:","[src]", possible_transfer_amounts)
 	if(result)
 		amount_per_transfer_from_this = result
 	return TRUE
@@ -135,11 +135,11 @@
 ///Splashes atom/target with whatever reagents are contained
 /obj/item/reagent_containers/proc/try_splash(mob/living/user, atom/target)
 	if(!is_open_container()) //Can't splash stuff from a sealed container. I dare you to try.
-		to_chat(user, span_warning("An airtight seal prevents you from splashing the solution!"))
+		to_chat(user, span_warning("气密密封防止你溅出溶液!"))
 		return
 
 	if(ismob(target) && target.reagents && reagents.total_volume)
-		to_chat(user, span_notice("You splash the solution onto [target]."))
+		to_chat(user, span_notice("你将溶液溅到了[target]身上."))
 		playsound(target, 'sound/effects/slosh.ogg', 25, 1)
 
 		var/mob/living/M = target
@@ -150,14 +150,14 @@
 		log_combat(user, M, "splashed", src, "Reagents: [contained]")
 		record_reagent_consumption(reagents.total_volume, injected, user, M)
 
-		visible_message(span_warning("[target] has been splashed with something by [user]!"))
+		visible_message(span_warning("[target]被[user]溅上了某种东西!"))
 		reagents.reaction(target, TOUCH)
 		addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, clear_reagents)), 5)
 		return
 
 
 	else if(reagents.total_volume)
-		to_chat(user, span_notice("You splash the solution onto [target]."))
+		to_chat(user, span_notice("你将溶液溅到了[target]身上."))
 		playsound(target, 'sound/effects/slosh.ogg', 25, 1)
 		reagents.reaction(target, TOUCH)
 		addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, clear_reagents)), 5)

@@ -28,7 +28,7 @@
 
 /datum/outfit/quick/tgmc/engineer/rrengineer
 	name = "Rocket Specialist"
-	desc = "Bringing the big guns. Equipped with a AR-18 carbine and RL-160 along with the standard engineer kit. Excellent against groups of enemy infantry or light armor, but only has limited ammunition."
+	desc = "带来重火力.配备一支AR-18卡宾枪和RL-160以及标准工程师装备.对成群敌方步兵或轻型护甲表现出色,但只有有限的弹药."
 	quantity = 2
 
 	suit_store = /obj/item/weapon/gun/rifle/ar18/engineer
@@ -45,7 +45,7 @@
 
 /datum/outfit/quick/tgmc/engineer/sentry
 	name = "Sentry Technician"
-	desc = "Firing more guns than you have hands. Equipped with a AR-12 assault rifle with miniflamer, and two minisentries along with the standard engineer kit. Allows the user to quickly setup strong points and lock areas down, with some sensible placement."
+	desc = "开的枪比手还多.配备一支AR-12突击步枪,带有微型火焰器,以及两个微型哨戒炮和标准工程师装备.允许使用者快速建立据点并封锁区域,只要放置得当."
 
 	suit_store = /obj/item/weapon/gun/rifle/ar12/engineer
 	belt = /obj/item/storage/belt/marine/ar12
@@ -66,7 +66,7 @@
 
 /datum/outfit/quick/tgmc/engineer/demolition
 	name = "Demolition Specialist"
-	desc = "Boom boom, shake the room. Equipped with a SH-15 auto shotgun and UGL and an impressive array of mines, detpacks and grenades, along with the standard engineer kit. Excellent for blasting through any obstacle, and mining areas to restrict enemy movement."
+	desc = "轰轰轰,震天响.配备一支SH-15自动霰弹枪和下挂式榴弹发射器,以及大量地雷,炸药包和手榴弹,还有标准工程师装备.非常适合炸穿任何障碍,并布雷限制敌人移动."
 
 	suit_store = /obj/item/weapon/gun/rifle/sh15/engineer
 	back = /obj/item/storage/backpack/marine/tech

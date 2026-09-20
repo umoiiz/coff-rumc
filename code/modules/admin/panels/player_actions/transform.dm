@@ -90,7 +90,7 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	var/mob/old_mob = user.mob
 
 	var/delmob
-	switch(tgui_alert(user, "Delete old mob?", "Message", list("Yes", "No")))
+	switch(tgui_alert(user, "删除旧生物?", "消息", list("Yes", "No")))
 		if("Yes")
 			delmob = TRUE
 		if("No")
@@ -99,7 +99,7 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 			return
 
 	var/turf/location
-	switch(tgui_alert(user, "Teleport to your location?", "Message", list("Yes", "No")))
+	switch(tgui_alert(user, "传送到你的位置?", "消息", list("Yes", "No")))
 		if("Yes")
 			location = get_turf(old_mob)
 		if("No")

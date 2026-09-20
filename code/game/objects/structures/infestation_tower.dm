@@ -1,6 +1,6 @@
 /obj/structure/sensor_tower_infestation
-	name = "sensor tower"
-	desc = "A tall tower with a sensor array at the top and a control box at the bottom. Has a lengthy activation process."
+	name = "传感器塔"
+	desc = "一座高塔,顶部有传感器阵列,底部有控制箱。激活过程相当漫长。"
 	icon = 'icons/obj/structures/sensor.dmi'
 	icon_state = "sensor"
 	obj_flags = NONE
@@ -49,7 +49,7 @@
 	if(!ishuman(user))
 		return
 	if(user.do_actions)
-		user.balloon_alert(user, "You are already doing something!")
+		user.balloon_alert(user, "你已经在做别的事了!")
 		return
 	interaction(user)
 
@@ -66,13 +66,13 @@
 	if(attack_alien_state_check(X))
 		return
 
-	balloon_alert(X, "You begin to deativate sensor tower!")
+	balloon_alert(X, "你开始停用传感器塔!")
 	if(!do_after(X, deactivate_time, NONE, src, BUSY_ICON_DANGER, BUSY_ICON_HOSTILE))
 		return
 
 	if(attack_alien_state_check(X))
 		return
-	balloon_alert(X, "You deactivate sensor tower!")
+	balloon_alert(X, "你停用了传感器塔!")
 	deactivate()
 
 /obj/structure/sensor_tower_infestation/proc/attack_alien_state_check(mob/living/user)
@@ -80,33 +80,33 @@
 		return FALSE
 	if(current_timer)
 		return FALSE
-	balloon_alert(user, "This sensor tower is not activated yet, don't let it be activated!")
+	balloon_alert(user, "这座传感器塔尚未激活,别让它被激活!")
 	return TRUE
 
 ///Handles attacker interactions with the tower
 /obj/structure/sensor_tower_infestation/proc/interaction(mob/living/user)
 	if(!attacker_state_check(user))
 		return
-	balloon_alert_to_viewers("Activating sensor tower...")
+	balloon_alert_to_viewers("正在激活传感器塔...")
 	if(user.skills.getRating(SKILL_LEADERSHIP) < SKILL_LEAD_TRAINED)
-		user.visible_message(span_notice("[user] fumbles around figuring out how to activate [src]."),
-		span_notice("You fumble around figuring out how to activate [src]."))
+		user.visible_message(span_notice("[user]摸索着弄明白如何激活[src]。"),
+		span_notice("你摸索着弄明白如何激活[src]。"))
 		if(!do_after(user, 25 SECONDS, NONE, src, BUSY_ICON_UNSKILLED))
 			return FALSE
 	if(!do_after(user, activate_time, NONE, src))
 		return
 	if(!attacker_state_check(user))
 		return
-	balloon_alert_to_viewers("Sensor tower activated!")
+	balloon_alert_to_viewers("传感器塔已激活!")
 	begin_activation()
 
 ///Checks whether an attack can currently activate this tower
 /obj/structure/sensor_tower_infestation/proc/attacker_state_check(mob/living/user)
 	if(activated)
-		balloon_alert(user, "This sensor tower is already fully activated!")
+		balloon_alert(user, "这座传感器塔已经完全激活了!")
 		return FALSE
 	if(current_timer)
-		balloon_alert(user, "This sensor tower is currently activating!")
+		balloon_alert(user, "这座传感器塔当前正在激活中!")
 		return FALSE
 	return TRUE
 
@@ -142,7 +142,7 @@
 	mode.sensors_activated += 1
 
 	playsound(src, 'sound/machines/ping.ogg', 25, 1)
-	balloon_alert_to_viewers("[src] has finished activation!")
+	balloon_alert_to_viewers("[src] 已完成激活!")
 
 	//marines
 	for(var/mob/living/carbon/human/human AS in GLOB.alive_human_list)

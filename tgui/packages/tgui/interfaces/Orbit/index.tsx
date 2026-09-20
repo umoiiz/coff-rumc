@@ -102,7 +102,7 @@ const ObservableSearch = (props) => {
             color="transparent"
             icon="sync-alt"
             onClick={() => act('refresh')}
-            tooltip="Refresh"
+            tooltip="刷新"
             tooltipPosition="bottom-start"
           />
         </Stack.Item>
@@ -241,16 +241,16 @@ const ObservableTooltip = (props: { item: Observable }) => {
   return (
     <>
       <NoticeBox textAlign="center" nowrap>
-        Last Known Data
+        最后已知数据
       </NoticeBox>
       <LabeledList>
         {!!full_name && (
-          <LabeledList.Item label="Full Name">{full_name}</LabeledList.Item>
+          <LabeledList.Item label="全名">{full_name}</LabeledList.Item>
         )}
-        {!!caste && <LabeledList.Item label="Caste">{caste}</LabeledList.Item>}
-        {!!job && <LabeledList.Item label="Job">{job}</LabeledList.Item>}
+        {!!caste && <LabeledList.Item label="种姓">{caste}</LabeledList.Item>}
+        {!!job && <LabeledList.Item label="职业">{job}</LabeledList.Item>}
         {!!health && (
-          <LabeledList.Item label="Health">{displayHealth}</LabeledList.Item>
+          <LabeledList.Item label="健康">{displayHealth}</LabeledList.Item>
         )}
       </LabeledList>
     </>

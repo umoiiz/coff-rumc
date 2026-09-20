@@ -49,7 +49,7 @@ export const DropshipFabricator = (props) => {
         <Stack vertical fill>
           <Stack.Item>
             <Section
-              title="Fabricator Status"
+              title="制造机状态"
               buttons={
                 <Box bold fontSize="16px" color={nopower ? 'bad' : 'good'}>
                   {points} Points Available
@@ -57,7 +57,7 @@ export const DropshipFabricator = (props) => {
               }
             >
               {!!nopower && (
-                <NoticeBox danger>Fabricator has no power!</NoticeBox>
+                <NoticeBox danger>制造机没有电力!</NoticeBox>
               )}
               <Input
                 fluid
@@ -86,14 +86,14 @@ const FabricatingStatus = (props) => {
   const { data } = useBackend<DropshipFabricatorData>();
   const { busy, printing } = data;
   return (
-    <Section title="Fabricating">
+    <Section title="制造中">
       {busy ? (
         <Box color="average">
           <Box className="fa fa-cog fa-spin" mr={1} inline />
           {printing || 'Unknown part'}
         </Box>
       ) : (
-        <Box color="label">Idle</Box>
+        <Box color="label">空闲</Box>
       )}
     </Section>
   );
@@ -104,14 +104,14 @@ const FabricatorQueue = (props) => {
   const { queue } = data;
   return (
     <Section
-      title="Production Queue"
+      title="生产队列"
       buttons={
         <Button
           icon="trash"
           disabled={!queue.length}
           onClick={() => act('clear')}
         >
-          Clear Queue
+          清空队列
         </Button>
       }
     >
@@ -120,7 +120,7 @@ const FabricatorQueue = (props) => {
           <Box key={`${item.name}-${index}`}>- {item.name}</Box>
         ))
       ) : (
-        <Box color="label">Queue is empty.</Box>
+        <Box color="label">队列为空.</Box>
       )}
     </Section>
   );
@@ -146,7 +146,7 @@ const FabricatorCatalog = (props: { searchText: string }) => {
     return (
       <Section fill>
         <Box color="label" textAlign="center">
-          No matching parts found.
+          未找到匹配的部件.
         </Box>
       </Section>
     );

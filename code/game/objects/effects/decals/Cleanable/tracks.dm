@@ -143,17 +143,17 @@
 
 /obj/effect/decal/cleanable/blood/tracks/footprints
 	name = "wet footprints"
-	desc = "Whoops..."
+	desc = "哎呀..."
 	coming_state = "human1"
 	going_state = "human2"
 	amount = 0
 
 /obj/effect/decal/cleanable/blood/tracks/wheels
 	name = "wet tracks"
-	desc = "Whoops..."
+	desc = "哎呀..."
 	coming_state = "wheels"
 	going_state = ""
-	desc = "They look like tracks left by wheels."
+	desc = "它们看起来像轮子留下的痕迹."
 	gender = PLURAL
 	random_icon_states = null
 	amount = 0

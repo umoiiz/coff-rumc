@@ -1,6 +1,6 @@
 /obj/vehicle
 	name = "generic vehicle"
-	desc = "Yell at coderbus."
+	desc = "对代码巴士大喊."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "fuckyou"
 	max_integrity = 300
@@ -57,7 +57,7 @@
 /obj/vehicle/examine(mob/user)
 	. = ..()
 	if(resistance_flags & ON_FIRE)
-		. += span_warning("It's on fire!")
+		. += span_warning("它着火了!")
 	var/healthpercent = obj_integrity/max_integrity * 100
 	switch(healthpercent)
 		if(50 to 99)
@@ -65,7 +65,7 @@
 		if(25 to 50)
 			. += "It appears heavily damaged."
 		if(0 to 25)
-			. += span_warning("It's falling apart!")
+			. += span_warning("它正在散架!")
 
 /obj/vehicle/proc/is_key(obj/item/I)
 	return istype(I, key_type)
@@ -190,8 +190,8 @@
 /obj/vehicle/post_crush_act(mob/living/carbon/xenomorph/charger, datum/action/ability/xeno_action/ready_charge/charge_datum)
 	take_damage(charger.xeno_caste.melee_damage * charger.xeno_melee_damage_modifier, BRUTE, MELEE)
 	if(density && charger.move_force <= move_resist)
-		charger.visible_message(span_danger("[charger] rams into [src] and skids to a halt!"),
-		span_xenowarning("We ram into [src] and skid to a halt!"))
+		charger.visible_message(span_danger("[charger]撞上[src]并滑行着停了下来!"),
+		span_xenowarning("我们撞上[src]并滑行着停了下来!"))
 		charge_datum.do_stop_momentum(FALSE)
 		return PRECRUSH_STOPPED
 	charge_datum.speed_down(2) //Lose two turfs worth of speed.

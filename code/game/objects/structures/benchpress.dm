@@ -1,6 +1,6 @@
 /obj/structure/benchpress
-	name = "weight training bench"
-	desc = "Just looking at this thing makes you feel tired.<br>Left click to bench, right click to change weights."
+	name = "举重训练凳"
+	desc = "光是看着这东西就让你觉得累了.<br>左键点击卧推, 右键点击更改重量."
 	icon = 'icons/obj/structures/benchpress.dmi'
 	icon_state = "benchpress_0"
 	base_icon_state = "benchpress"
@@ -20,19 +20,19 @@
 /obj/structure/benchpress/wrench_act(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src)
 	if(anchored)
-		balloon_alert(user, "unsecured")
+		balloon_alert(user, "未固定")
 		anchored = FALSE
 	else
-		balloon_alert(user, "secured")
+		balloon_alert(user, "已固定")
 		anchored = TRUE
 	return TRUE
 
 /obj/structure/benchpress/crowbar_act(mob/living/user, obj/item/tool)
 	if(anchored)
-		balloon_alert(user, "unsecure first!")
+		balloon_alert(user, "请先解除固定!")
 		return FALSE
 	tool.play_tool_sound(src)
-	balloon_alert(user, "deconstructing...")
+	balloon_alert(user, "拆解中...")
 	if(!do_after(user, 10 SECONDS, target = src))
 		return FALSE
 	new /obj/item/stack/sheet/metal(get_turf(src))
@@ -92,7 +92,7 @@
 ///checks if possible and if yes performs a workout set for this mob
 /obj/structure/benchpress/proc/do_workout_set(mob/living/user)
 	if(HAS_TRAIT(src, BENCH_BEING_USED))
-		balloon_alert(user, "wait your turn!")
+		balloon_alert(user, "排队等着!")
 		return
 	ADD_TRAIT(src, BENCH_BEING_USED, WEIGHTBENCH_TRAIT) // yea this is meh but IN_USE and interact code are a mess rn and too buggy so less sidestep it
 	update_icon()
@@ -101,7 +101,7 @@
 	ADD_TRAIT(user, TRAIT_IMMOBILE, WEIGHTBENCH_TRAIT)
 	user.forceMove(loc)
 	var/bragmessage = pick("pushing it to the limit","going into overdrive","burning with determination","rising up to the challenge", "getting strong now","getting ripped")
-	user.visible_message("<B>[user] is [bragmessage]!</B>")
+	user.visible_message("<B>[user]是[bragmessage]!</B>")
 	addtimer(CALLBACK(src, PROC_REF(finish_press), user), 50)
 	creak_loop.start(src)
 
@@ -142,5 +142,5 @@
 		return
 	REMOVE_TRAIT(user, TRAIT_WORKED_OUT, WEIGHTBENCH_TRAIT)
 	user.set_skills(user.skills.modifyRating(cqc=-1))
-	to_chat(user, span_boldnotice("You no longer feel as fit as you used to!"))
+	to_chat(user, span_boldnotice("你不再像以前那样健壮了!"))
 

@@ -5,7 +5,7 @@
 
 /atom/movable/lighting_mask // why the fuck is this an atom
 	name = "lighting mask"
-	desc = "Yell at coders for you seeing this."
+	desc = "冲着代码员吼叫,因为你看到了这个."
 	icon = LIGHTING_ICON_BIG
 	icon_state = "light_big"
 

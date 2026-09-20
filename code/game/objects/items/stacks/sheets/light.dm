@@ -1,7 +1,7 @@
 /obj/item/stack/light_w
-	name = "wired glass tile"
+	name = "带线玻璃地砖"
 	singular_name = "wired glass floor tile"
-	desc = "A glass tile, which is wired, somehow."
+	desc = "一块玻璃地砖,不知怎么的,上面带有线."
 	icon_state = "glass_wire"
 	w_class = WEIGHT_CLASS_NORMAL
 	force = 3

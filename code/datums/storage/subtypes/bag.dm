@@ -61,14 +61,14 @@
 	var/obj/item/storage/bag/sheetsnatcher/sheetsnatcher = parent
 	if(!istype(item_to_insert, /obj/item/stack/sheet) || istype(item_to_insert, /obj/item/stack/sheet/mineral/sandstone) || istype(item_to_insert, /obj/item/stack/sheet/wood))
 		if(!warning)
-			to_chat(user, "The snatcher does not accept [item_to_insert].")
+			to_chat(user, "抢夺器不接受[item_to_insert].")
 		return FALSE //I don't care, but the existing code rejects them for not being "sheets" *shrug* -Sayu
 	var/current = 0
 	for(var/obj/item/stack/sheet/S in parent.contents)
 		current += S.amount
 	if(sheetsnatcher.capacity == current)//If it's full, you're done
 		if(!warning)
-			to_chat(user, span_warning("The snatcher is full."))
+			to_chat(user, span_warning("抢夺器已满."))
 		return FALSE
 	return TRUE
 

@@ -33,7 +33,7 @@
 /area/misc/cordon/Entered(atom/movable/arrived, area/old_area)
 	. = ..()
 	for(var/mob/living/enterer as anything in arrived.get_all_contents_type(/mob/living))
-		to_chat(enterer, span_userdanger("This was a bad idea..."))
+		to_chat(enterer, span_userdanger("这是个坏主意..."))
 		enterer.dust(TRUE, FALSE, TRUE)
 
 /// This type of cordon will block ghosts from passing through it. Useful for stuff like Away Missions, where you feasibly want to block ghosts from entering to keep a certain map section a secret.

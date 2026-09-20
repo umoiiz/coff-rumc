@@ -40,7 +40,7 @@ SUBSYSTEM_DEF(job)
 	var/list/all_jobs = subtypesof(/datum/job)
 	var/list/all_squads = subtypesof(/datum/squad)
 	if(!length(all_jobs))
-		to_chat(world, span_boldnotice("Error setting up jobs, no job datums found"))
+		to_chat(world, span_boldnotice("设置职业时出错, 未找到职业数据"))
 		return FALSE
 
 	for(var/J in all_jobs)
@@ -302,7 +302,7 @@ SUBSYSTEM_DEF(job)
 		GLOB.ready_players -= player
 		return
 	JobDebug("Player rejected :[player]")
-	to_chat(player, "<b>You have failed to qualify for any job you desired.</b>")
+	to_chat(player, "<b>你未能符合任何你想要的职业资格.</b>")
 	unassigned -= player
 	player.ready = FALSE
 	GLOB.ready_players -= player

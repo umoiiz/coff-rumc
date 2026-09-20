@@ -1,6 +1,6 @@
 /obj/effect/decal/cleanable/rune
 	name = "rune"
-	desc = "A rune drawn in blood."
+	desc = "一个用血画出的符文."
 	icon = 'icons/obj/rune.dmi'
 	icon_state = "rune1"
 	anchored = TRUE

@@ -1,6 +1,6 @@
 /obj/structure/closet/cabinet
-	name = "cabinet"
-	desc = "Old will forever be in fashion."
+	name = "橱柜"
+	desc = "旧款永远时尚."
 	icon_state = "cabinet_closed"
 	icon_closed = "cabinet_closed"
 	icon_opened = "cabinet_open"
@@ -16,24 +16,24 @@
 		icon_state = icon_opened
 
 /obj/structure/closet/acloset
-	name = "strange closet"
-	desc = "It looks alien!"
+	name = "奇怪的壁橱"
+	desc = "它看起来像外星科技!"
 	icon_state = "acloset"
 	icon_closed = "acloset"
 	icon_opened = "aclosetopen"
 
 
 /obj/structure/closet/gimmick
-	name = "administrative supply closet"
-	desc = "It's a storage unit for things that have no right being here."
+	name = "行政补给柜"
+	desc = "这是一个存放不该出现在这里的物品的储物柜."
 	icon_state = "syndicate1"
 	icon_closed = "syndicate1"
 	icon_opened = "syndicate1open"
 	anchored = FALSE
 
 /obj/structure/closet/gimmick/russian
-	name = "russian surplus closet"
-	desc = "It's a storage unit for Russian standard-issue surplus."
+	name = "俄式剩余物资柜"
+	desc = "这是一个存放俄式标准剩余物资的储物柜."
 	icon_state = "syndicate1"
 	icon_closed = "syndicate1"
 	icon_opened = "syndicate1open"
@@ -52,8 +52,8 @@
 
 
 /obj/structure/closet/gimmick/tacticool
-	name = "tacticool gear closet"
-	desc = "It's a storage unit for Tacticool gear."
+	name = "战术装备柜"
+	desc = "这是一个存放战术装备的储物柜."
 	icon_state = "syndicate1"
 	icon_closed = "syndicate1"
 	icon_opened = "syndicate1open"
@@ -76,8 +76,8 @@
 
 
 /obj/structure/closet/thunderdome
-	name = "\improper Thunderdome closet"
-	desc = "Everything you need!"
+	name = "\improper 雷霆穹顶柜"
+	desc = "你需要的一切!"
 	icon_state = "syndicate"
 	icon_closed = "syndicate"
 	icon_opened = "syndicateopen"
@@ -85,7 +85,7 @@
 
 
 /obj/structure/closet/thunderdome/tdred
-	name = "red-team Thunderdome closet"
+	name = "红队雷霆穹顶柜"
 
 /obj/structure/closet/thunderdome/tdred/PopulateContents()
 	new /obj/item/clothing/suit/armor/tdome/red(src)
@@ -105,7 +105,7 @@
 	new /obj/item/clothing/head/helmet/thunderdome(src)
 
 /obj/structure/closet/thunderdome/tdgreen
-	name = "green-team Thunderdome closet"
+	name = "绿队雷霆穹顶柜"
 	icon_state = "syndicate1"
 	icon_closed = "syndicate1"
 	icon_opened = "syndicate1open"

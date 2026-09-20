@@ -1,6 +1,6 @@
 /datum/action/ability/xeno_action/baneling_explode
 	name = "Baneling Explode"
-	desc = "Explode and spread dangerous toxins to hinder or kill your foes. You die."
+	desc = "爆炸并散布危险毒素来阻碍或杀死你的敌人.你会死亡."
 	action_icon_state = "baneling_explode"
 	action_icon = 'icons/Xeno/actions/general.dmi'
 	keybinding_signals = list(

@@ -12,7 +12,7 @@
 
 /datum/action/ability/activable/xeno/pounce_hugger
 	name = "Pounce"
-	desc = "Leap at your target and knock them down, if you jump close you will hug the target."
+	desc = "跃向你的目标并将其击倒,若你跳得够近,你会抱住目标。"
 	action_icon_state = "pounce"
 	action_icon = 'icons/Xeno/actions/runner.dmi'
 	ability_cost = 25
@@ -44,7 +44,7 @@
 	if(living_target.stat || isxeno(living_target))
 		return
 
-	xeno_owner.visible_message(span_danger("[xeno_owner] leaps on [living_target]!"), span_xenodanger("We leap on [living_target]!"), null, 5)
+	xeno_owner.visible_message(span_danger("[xeno_owner]扑向[living_target]!"), span_xenodanger("我们扑向[living_target]!"), null, 5)
 	playsound(xeno_owner.loc, 'sound/voice/alien/larva/roar3.ogg', 25, TRUE) //TODO: I NEED ACTUAL HUGGERS SOUND DAMMED
 
 	if(ishuman(living_target) && (angle_to_dir(Get_Angle(xeno_owner.throw_source, living_target)) in reverse_nearby_direction(living_target.dir)))
@@ -87,8 +87,8 @@
 
 	xeno_owner.icon_state = "[xeno_owner.xeno_caste.caste_name] Thrown"
 
-	xeno_owner.visible_message(span_xenowarning("\The [xeno_owner] leaps at [target]!"), \
-	span_xenowarning("We leap at [target]!"))
+	xeno_owner.visible_message(span_xenowarning("\The [xeno_owner]扑向[target]!"), \
+	span_xenowarning("我们扑向[target]!"))
 
 	RegisterSignal(xeno_owner, COMSIG_XENO_OBJ_THROW_HIT, PROC_REF(obj_hit))
 	RegisterSignal(xeno_owner, COMSIG_XENOMORPH_LEAP_BUMP, PROC_REF(mob_hit))

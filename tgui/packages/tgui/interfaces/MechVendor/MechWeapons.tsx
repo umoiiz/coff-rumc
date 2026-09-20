@@ -390,7 +390,7 @@ const WeaponModuleList = (props) => {
                         <Button
                           mr={1.5}
                           ml={1.5}
-                          content="Vend"
+                          content="售出"
                           onClick={() =>
                             act('vend_ammo', { type: ammoobject.type })
                           }

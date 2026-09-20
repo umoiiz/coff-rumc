@@ -51,6 +51,6 @@
 	if(leg_tally > 0 && prob(2.5 * leg_tally))
 		if(!(species.species_flags & NO_PAIN))
 			emote("pain")
-		visible_message(span_warning("[src] collapses to the ground!"),	\
-			span_danger("Your legs give out from under you!"))
+		visible_message(span_warning("[src]瘫倒在地!"),	\
+			span_danger("你的双腿支撑不住倒下了!"))
 		Knockdown(1 SECONDS)

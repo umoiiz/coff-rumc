@@ -101,7 +101,7 @@
 					return FALSE
 
 	if(stat == UNCONSCIOUS && type == EMOTE_AUDIBLE)
-		to_chat(src, "<i>... You can almost hear something ...</i>")
+		to_chat(src, "<i>... 你几乎能听到什么 ...</i>")
 		return FALSE
 	to_chat(src, msg, avoid_highlighting = avoid_highlight)
 	return TRUE
@@ -260,13 +260,13 @@
 			qdel(item_to_equip)
 			return FALSE
 		if(warning)
-			to_chat(src, span_warning("You are unable to equip that."))
+			to_chat(src, span_warning("你无法装备那个."))
 		return FALSE
 	if(item_to_equip.equip_delay_self && !ignore_delay)
 		ADD_TRAIT(src, TRAIT_IS_EQUIPPING_ITEM, REF(src))
 		if(!do_after(src, item_to_equip.equip_delay_self, NONE, item_to_equip, BUSY_ICON_FRIENDLY))
 			REMOVE_TRAIT(src, TRAIT_IS_EQUIPPING_ITEM, REF(src))
-			to_chat(src, "You stop putting on \the [item_to_equip].")
+			to_chat(src, "你停止穿戴\the [item_to_equip].")
 			return FALSE
 		REMOVE_TRAIT(src, TRAIT_IS_EQUIPPING_ITEM, REF(src))
 		//calling the proc again with ignore_delay saves a boatload of copypaste
@@ -475,7 +475,7 @@
 			return FALSE
 	else if(l_hand && r_hand)
 		if(!suppress_message)
-			to_chat(src, span_warning("Cannot grab, lacking free hands to do so!"))
+			to_chat(src, span_warning("无法抓取,没有空闲的手来做这件事!"))
 		return FALSE
 
 	if(SEND_SIGNAL(AM, COMSIG_ATTEMPT_MOB_PULL) & COMPONENT_CANCEL_MOB_PULL)
@@ -487,9 +487,9 @@
 
 	if(AM.pulledby)
 		if(!suppress_message)
-			AM.visible_message(span_danger("[src] has pulled [AM] from [AM.pulledby]'s grip."),
-				span_danger("[src] has pulled you from [AM.pulledby]'s grip."), null, null, src)
-			to_chat(src, span_notice("You pull [AM] from [AM.pulledby]'s grip!"))
+			AM.visible_message(span_danger("[src]把[AM]从[AM.pulledby]的抓握中拉了出来."),
+				span_danger("[src]把你从[AM.pulledby]的抓握中拉了出来."), null, null, src)
+			to_chat(src, span_notice("你把[AM]从[AM.pulledby]的抓握中拉了出来!"))
 		log_combat(AM, AM.pulledby, "pulled from", src)
 		AM.pulledby.stop_pulling() //an object can't be pulled by two mobs at once.
 
@@ -521,7 +521,7 @@
 		do_attack_animation(pulled_mob, ATTACK_EFFECT_GRAB)
 
 		if(!suppress_message)
-			visible_message(span_warning("[src] has grabbed [pulled_mob] passively!"), null, null, 5)
+			visible_message(span_warning("[src]被动抓住了[pulled_mob]!"), null, null, 5)
 
 		if(pulled_mob.mob_size > MOB_SIZE_HUMAN || !(pulled_mob.status_flags & CANPUSH))
 			grab_item.icon_state = "!reinforce"

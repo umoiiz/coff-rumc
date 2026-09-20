@@ -349,7 +349,7 @@
 						if(114 to 152)
 							need_mob_update += R.addiction_act_stage4(L, quirks)
 						if(152 to INFINITY)
-							to_chat(L, span_notice("You feel like you've gotten over your need for [R.name]."))
+							to_chat(L, span_notice("你感觉你已经克服了对[R.name]的需求."))
 							cached_addictions.Remove(R)
 		addiction_tick++
 	if(!QDELETED(L) && need_mob_update)

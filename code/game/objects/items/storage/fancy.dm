@@ -16,7 +16,7 @@
 /obj/item/storage/fancy
 	icon = 'icons/obj/items/food/food.dmi'
 	icon_state = "donutbox6"
-	name = "donut box"
+	name = "甜甜圈盒"
 	var/icon_type = "donut"
 	var/spawn_type
 	var/spawn_number
@@ -50,7 +50,7 @@
 	icon = 'icons/obj/items/food/packaged.dmi'
 	icon_state = "eggbox"
 	icon_type = "egg"
-	name = "egg box"
+	name = "鸡蛋盒"
 	spawn_type = /obj/item/reagent_containers/food/snacks/egg
 	spawn_number = 12
 
@@ -64,8 +64,8 @@
 */
 
 /obj/item/storage/fancy/candle_box
-	name = "candle pack"
-	desc = "A pack of red candles."
+	name = "蜡烛包"
+	desc = "一包红色蜡烛."
 	icon = 'icons/obj/items/candle.dmi'
 	icon_state = "candlebox5"
 	icon_type = "candle"
@@ -84,8 +84,8 @@
 */
 
 /obj/item/storage/fancy/crayons
-	name = "box of crayons"
-	desc = "A box of crayons for all your rune drawing needs."
+	name = "蜡笔盒"
+	desc = "一盒蜡笔, 满足你所有绘制符文的需求."
 	icon = 'icons/obj/items/crayons.dmi'
 	icon_state = "crayonbox"
 	w_class = WEIGHT_CLASS_SMALL
@@ -120,16 +120,16 @@
 	var/obj/item/toy/crayon/C = I
 	switch(C.colourName)
 		if("mime")
-			to_chat(user, "This crayon is too sad to be contained in this box.")
+			to_chat(user, "这支蜡笔太悲伤了, 无法被装进这个盒子里.")
 		if("rainbow")
-			to_chat(user, "This crayon is too powerful to be contained in this box.")
+			to_chat(user, "这支蜡笔太强大了, 无法被装进这个盒子里.")
 
 ////////////
 //CIG PACK//
 ////////////
 /obj/item/storage/fancy/cigarettes
-	name = "cigarette packet"
-	desc = "The most popular brand of Space Cigarettes, sponsors of the Space Olympics."
+	name = "香烟包"
+	desc = "最受欢迎的太空香烟品牌, 太空奥运会的赞助商."
 	icon = 'icons/obj/items/cigarettes.dmi'
 	icon_state = "cigpacket"
 	worn_icon_state = "cigpacket"
@@ -162,14 +162,14 @@
 		if(C)
 			storage_datum.remove_from_storage(C, get_turf(user), user)
 			user.equip_to_slot_if_possible(C, SLOT_WEAR_MASK)
-			to_chat(user, span_notice("You take a cigarette out of the pack."))
+			to_chat(user, span_notice("你从烟盒中取出一支香烟."))
 			update_icon()
 		return
 	return ..()
 
 /obj/item/storage/fancy/chemrettes
-	name = "Chemrette packet"
-	desc = "Terragov, chem filled, cigarettes. Now with extra Flavors!"
+	name = "Chemrette烟包"
+	desc = "Terragov出品, 化学填充香烟. 现在带有额外口味!"
 	icon = 'icons/obj/items/cigarettes.dmi'
 	icon_state = "chempacketbox"
 	worn_icon_state = "chempacketbox"
@@ -205,32 +205,32 @@
 	icon_state = "[initial(icon_state)][length(contents)]"
 
 /obj/item/storage/fancy/cigarettes/dromedaryco
-	name = "\improper Nanotrasen Gold packet"
-	desc = "Building better worlds, and rolling better cigarettes. These fancy cigarettes are Nanotrasen's entry into the market. Comes backed by a fierce legal team."
+	name = "\improper Nanotrasen Gold烟包"
+	desc = "建设更美好的世界, 卷制更好的香烟. 这些高档香烟是Nanotrasen进军市场的产品. 背后有一支强大的法律团队支持."
 	icon_state = "ntpacket"
 	worn_icon_state = "ntpacket"
 
 /obj/item/storage/fancy/cigarettes/luckystars
-	name = "\improper Lucky Stars packet"
-	desc = "A mellow blend made from synthetic, pod-grown tobacco. The commercial jingle is guaranteed to get stuck in your head."
+	name = "\improper Lucky Stars烟包"
+	desc = "由合成舱培烟草制成的醇和混合烟. 其商业广告曲保证让你挥之不去."
 	icon_state = "lspacket"
 	worn_icon_state = "lspacket"
 
 /obj/item/storage/fancy/cigarettes/kpack
-	name = "\improper Koorlander Gold packet"
-	desc = "Koorlander, Gold: 3% tobacco. 97% other. For when you want to look cool and the risk of a slow horrible death isn't really a factor."
+	name = "\improper Koorlander Gold烟包"
+	desc = "Koorlander, Gold: 3%烟草. 97%其他. 适合你想看起来酷, 而缓慢可怕死亡的风险并不真正构成因素的时候."
 	icon_state = "kpacket"
 	worn_icon_state = "kpacket"
 
 /obj/item/storage/fancy/cigarettes/lady_finger
-	name = "\improper ArctiCool Menthols packet"
-	desc = "An entry level brand of cigarettes with a bright blue packaging. For when you want to smell like lozenges and smoke"
+	name = "\improper ArctiCool薄荷烟包"
+	desc = "一款入门级香烟品牌, 包装为亮蓝色. 适合你想闻起来像润喉糖和烟味的时候."
 	icon_state = "acpacket"
 	worn_icon_state = "acpacket"
 
 /obj/item/storage/fancy/cigar
-	name = "cigar case"
-	desc = "A case for holding your cigars when you are not smoking them."
+	name = "雪茄盒"
+	desc = "一个用于在不抽时存放雪茄的盒子."
 	icon_state = "cigarcase"
 	worn_icon_state = "cigarcase"
 	icon = 'icons/obj/items/cigarettes.dmi'
@@ -258,7 +258,7 @@
 		if(C)
 			storage_datum.remove_from_storage(C, get_turf(user), user)
 			user.equip_to_slot_if_possible(C, SLOT_WEAR_MASK)
-			to_chat(user, span_notice("You take a cigar out of the case."))
+			to_chat(user, span_notice("你从盒中取出一支雪茄."))
 			update_icon()
 		return
 	return ..()
@@ -271,7 +271,7 @@
 	icon = 'icons/obj/items/storage/vialbox.dmi'
 	icon_state = "vialbox6"
 	icon_type = "vial"
-	name = "vial storage box"
+	name = "药瓶储存盒"
 	spawn_type = /obj/item/reagent_containers/glass/beaker/vial
 	spawn_number = 6
 

@@ -1,6 +1,6 @@
 /obj/item/mecha_ammo
-	name = "generic ammo box"
-	desc = "A box of ammo for an unknown weapon."
+	name = "通用弹药箱"
+	desc = "一箱未知武器的弹药."
 	w_class = WEIGHT_CLASS_BULKY
 	icon = 'icons/mecha/mecha_ammo.dmi'
 	icon_state = "empty"
@@ -22,10 +22,10 @@
 /obj/item/mecha_ammo/attack_self(mob/user)
 	..()
 	if(rounds)
-		to_chat(user, span_warning("You cannot flatten the ammo box until it's empty!"))
+		to_chat(user, span_warning("弹药箱清空之前无法压扁!"))
 		return
 
-	to_chat(user, span_notice("You fold [src] flat."))
+	to_chat(user, span_notice("你将[src]折叠平整."))
 	var/trash = new /obj/item/stack/sheet/metal(user.loc)
 	qdel(src)
 	user.put_in_hands(trash)
@@ -35,32 +35,32 @@
 	if(rounds)
 		. += "There [rounds > 1?"are":"is"] [rounds] [ammo_type][rounds > 1?"s":""] left."
 	else
-		. += span_notice("Use in-hand to fold it into a sheet of metal.")
+		. += span_notice("在手中使用可将其折叠成一张金属板.")
 
 /obj/item/mecha_ammo/incendiary
-	name = "incendiary ammo box"
-	desc = "A box of incendiary ammunition for use with exosuit weapons."
+	name = "燃烧弹药箱"
+	desc = "一箱用于外骨骼武器的燃烧弹药."
 	icon_state = "incendiary"
 	rounds = 24
 	ammo_type = MECHA_AMMO_INCENDIARY
 
 /obj/item/mecha_ammo/scattershot
-	name = "scattershot ammo box"
-	desc = "A box of scaled-up buckshot, for use in exosuit shotguns."
+	name = "散射弹药箱"
+	desc = "一盒放大版鹿弹,用于外骨骼霰弹枪."
 	icon_state = "scattershot"
 	rounds = 40
 	ammo_type = MECHA_AMMO_BUCKSHOT
 
 /obj/item/mecha_ammo/lmg
-	name = "machine gun ammo box"
-	desc = "A box of linked ammunition, designed for the Ultra AC 2 exosuit weapon."
+	name = "机枪弹药盒"
+	desc = "一盒弹链弹药,专为Ultra AC 2外骨骼武器设计."
 	icon_state = "lmg"
 	rounds = 300
 	ammo_type = MECHA_AMMO_LMG
 
 /obj/item/mecha_ammo/missiles_br
-	name = "breaching missiles"
-	desc = "A box of large missiles, ready for loading into a BRM-6 exosuit missile rack."
+	name = "破障导弹"
+	desc = "一盒大型导弹,可装入BRM-6外骨骼导弹架."
 	icon_state = "missile_br"
 	rounds = 6
 	direct_load = TRUE
@@ -68,8 +68,8 @@
 	ammo_type = MECHA_AMMO_MISSILE_HE
 
 /obj/item/mecha_ammo/missiles_he
-	name = "anti-armor missiles"
-	desc = "A box of large missiles, ready for loading into an SRM-8 exosuit missile rack."
+	name = "反装甲导弹"
+	desc = "一盒大型导弹,可装入SRM-8外骨骼导弹架."
 	icon_state = "missile_he"
 	rounds = 8
 	direct_load = TRUE
@@ -78,15 +78,15 @@
 
 
 /obj/item/mecha_ammo/flashbang
-	name = "launchable flashbangs"
-	desc = "A box of smooth flashbangs, for use with a large exosuit launcher. Cannot be primed by hand."
+	name = "可发射闪光弹"
+	desc = "一盒光滑闪光弹,用于大型外骨骼发射器.无法手动拔销."
 	icon_state = "flashbang"
 	rounds = 6
 	ammo_type = MECHA_AMMO_FLASHBANG
 
 /obj/item/mecha_ammo/clusterbang
-	name = "launchable flashbang clusters"
-	desc = "A box of clustered flashbangs, for use with a specialized exosuit cluster launcher. Cannot be primed by hand."
+	name = "可发射集束闪光弹"
+	desc = "一盒集束闪光弹,用于专用外骨骼集束发射器.无法手动拔销."
 	icon_state = "clusterbang"
 	rounds = 3
 	direct_load = TRUE
@@ -100,43 +100,43 @@
 	equip_slot_flags = ITEM_SLOT_BACK
 
 /obj/item/mecha_ammo/vendable/lmg
-	name = "box of LMG bullets"
-	desc = "A box of rather large LMG bullets."
+	name = "轻机枪子弹盒"
+	desc = "一盒相当大的轻机枪子弹."
 	icon_state = "lmg_ammo"
 	rounds = 300
 	ammo_type = MECHA_AMMO_GREY_LMG
 
 /obj/item/mecha_ammo/vendable/rifle
-	name = "box of rifle bullets"
-	desc = "A box of large rocket-assisted rifle bullets. it has \"DO NOT USE AS FIRECRACKERS\" written on the side."
+	name = "步枪子弹盒"
+	desc = "一盒大型火箭助推步枪子弹.侧面写着\"请勿当作鞭炮使用\"."
 	icon_state = "assaultrifle_ammo"
 	rounds = 250
 	ammo_type = MECHA_AMMO_RIFLE
 
 /obj/item/mecha_ammo/vendable/burstrifle
-	name = "box of burstrifle bullets"
-	desc = "A box of large rocket-assisted burstrifle bullets. it has \"DO NOT USE AS FIRECRACKERS\" written on the side."
+	name = "战斗步枪子弹盒"
+	desc = "一盒大型火箭助推战斗步枪子弹.侧面写着\"请勿当作鞭炮使用\"."
 	icon_state = "burstrifle_ammo"
 	rounds = 250
 	ammo_type = MECHA_AMMO_BURSTRIFLE
 
 /obj/item/mecha_ammo/vendable/shotgun
-	name = "box of shotgun shells"
-	desc = "A box of large shotgun shells. Sadly they only fit into mech-sized weapons."
+	name = "霰弹枪弹药盒"
+	desc = "一盒大型霰弹枪弹药.遗憾的是它们只能装进机甲尺寸的武器."
 	icon_state = "shotgun_ammo"
 	rounds = 20
 	ammo_type = MECHA_AMMO_SHOTGUN
 
 /obj/item/mecha_ammo/vendable/lightcannon
-	name = "box of light cannon bullets"
-	desc = "A box of light cannon shells. For being light the box is rather heavy."
+	name = "轻型机炮炮弹盒"
+	desc = "一盒轻型机炮炮弹.虽说叫轻型,这盒子还挺重."
 	icon_state = "lightcannon_ammo"
 	rounds = 100
 	ammo_type = MECHA_AMMO_LIGHTCANNON
 
 /obj/item/mecha_ammo/vendable/heavycannon
-	name = "heavy cannon shell"
-	desc = "A massive tank shell for loading into mech cannons."
+	name = "重型机炮炮弹"
+	desc = "一枚巨大的坦克炮弹,用于装填机甲机炮."
 	icon_state = "heavycannon_ammo"
 	rounds = 5
 	ammo_type = MECHA_AMMO_HEAVYCANNON
@@ -144,29 +144,29 @@
 	qdel_on_empty = TRUE
 
 /obj/item/mecha_ammo/vendable/smg
-	name = "box of SMG bullets"
-	desc = "A box of normal SMG bullets, but bigger!"
+	name = "冲锋枪子弹盒"
+	desc = "一盒普通冲锋枪子弹,但更大!"
 	icon_state = "smg_ammo"
 	rounds = 320
 	ammo_type = MECHA_AMMO_SMG
 
 /obj/item/mecha_ammo/vendable/burstpistol
-	name = "box of burstpistol bullets"
-	desc = "A box of burstpistol bullets."
+	name = "连发手枪子弹盒"
+	desc = "一盒连发手枪子弹."
 	icon_state = "burstpistol_ammo"
 	rounds = 200
 	ammo_type = MECHA_AMMO_BURSTPISTOL
 
 /obj/item/mecha_ammo/vendable/pistol
-	name = "box of pistol bullets"
-	desc = "Bigger version of the small pistol bullets most marines use."
+	name = "手枪子弹盒"
+	desc = "大多数陆战队员所用小型手枪子弹的放大版."
 	icon_state = "pistol_ammo"
 	rounds = 200
 	ammo_type = MECHA_AMMO_PISTOL
 
 /obj/item/mecha_ammo/vendable/rpg
-	name = "high explosive missile"
-	desc = "A TGMC mech missile. You probably shouldnt hit the pointy end with anything."
+	name = "高爆导弹"
+	desc = "一枚TGMC机甲导弹.你最好别用任何东西去撞尖的那头."
 	icon_state = "rpg_ammo"
 	rounds = 1
 	ammo_type = MECHA_AMMO_RPG
@@ -174,30 +174,30 @@
 	qdel_on_empty = TRUE
 
 /obj/item/mecha_ammo/vendable/minigun
-	name = "box of vulcan cannon bullets"
-	desc = "Unfortunately for you, every bullet that comes out of the vulcan cannon must also be loaded into it."
+	name = "火神炮炮弹盒"
+	desc = "对你来说不幸的是,火神炮射出的每一发炮弹也都必须装填进去."
 	icon_state = "minigun_ammo"
 	rounds = 200
 	ammo_type = MECHA_AMMO_MINIGUN
 
 /obj/item/mecha_ammo/vendable/sniper
-	name = "box of sniper bullets"
-	desc = "A box of anti-tank bullets for shooting at small armored vehicles, and small armored creatures."
+	name = "狙击枪子弹盒"
+	desc = "一盒反坦克子弹,用于射击小型装甲车辆和小型装甲生物."
 	icon_state = "sniper_ammo"
 	rounds = 30
 	ammo_type = MECHA_AMMO_SNIPER
 
 /obj/item/mecha_ammo/vendable/grenade
-	name = "grenade rack"
-	desc = "A rack filled with rows of grenades secured with plastic."
+	name = "手榴弹架"
+	desc = "一个装满成排手榴弹的架子,用塑料固定."
 	icon_state = "grenadelauncher_ammo"
 	rounds = 20
 	direct_load = TRUE
 	ammo_type = MECHA_AMMO_GRENADE
 
 /obj/item/mecha_ammo/vendable/flamer
-	name = "flamer napalm tank"
-	desc = "A specialized fuel tank designed for refilling TGMC standard issue mech flamers."
+	name = "火焰喷射器凝固汽油罐"
+	desc = "一种专用燃料罐,用于补充TGMC标准配发机甲火焰喷射器."
 	icon_state = "flamer_ammo"
 	rounds = 10
 	ammo_type = MECHA_AMMO_FLAMER

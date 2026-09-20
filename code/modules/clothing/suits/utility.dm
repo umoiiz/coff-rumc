@@ -10,8 +10,8 @@
 */
 
 /obj/item/clothing/suit/fire
-	name = "firesuit"
-	desc = "A suit that protects against fire and heat."
+	name = "防火服"
+	desc = "一套防火隔热的服装。"
 	icon_state = "firesuit"
 	worn_icon_state = "firesuit"
 	soft_armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 90, ACID = 0)
@@ -31,8 +31,8 @@
 * Bomb protection
 */
 /obj/item/clothing/head/bomb_hood
-	name = "bomb hood"
-	desc = "Use in case of bomb."
+	name = "防爆头罩"
+	desc = "在遇到炸弹时使用。"
 	icon_state = "bombsuit"
 	soft_armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 100, BIO = 0, FIRE = 0, ACID = 0)
 	inventory_flags = COVEREYES|COVERMOUTH
@@ -41,8 +41,8 @@
 	siemens_coefficient = 0
 
 /obj/item/clothing/suit/bomb_suit
-	name = "bomb suit"
-	desc = "A suit designed for safety when handling explosives."
+	name = "防爆服"
+	desc = "一套在处理爆炸物时提供安全防护的服装。"
 	icon_state = "bombsuit"
 	worn_icon_state = "bombsuit"
 	w_class = WEIGHT_CLASS_BULKY//bulky item
@@ -70,17 +70,17 @@
 * Radiation protection
 */
 /obj/item/clothing/head/radiation
-	name = "Radiation Hood"
+	name = "辐射头罩"
 	icon_state = "rad"
-	desc = "A hood with radiation protective properties. Label: Made with lead, do not eat insulation"
+	desc = "具有辐射防护性能的头罩。标签:含铅制造,请勿食用隔热层"
 	inventory_flags = COVEREYES|COVERMOUTH
 	inv_hide_flags = HIDEFACE|HIDEMASK|HIDEEARS|HIDEALLHAIR
 	armor_protection_flags = HEAD|FACE|EYES
 	soft_armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 60, FIRE = 0, ACID = 0)
 
 /obj/item/clothing/suit/radiation
-	name = "Radiation suit"
-	desc = "A suit that protects against radiation. Label: Made with lead, do not eat insulation."
+	name = "辐射防护服"
+	desc = "一套防辐射的服装。标签:含铅制造,请勿食用隔热层。"
 	icon_state = "rad"
 	worn_icon_state = "rad_suit"
 	w_class = WEIGHT_CLASS_BULKY//bulky item

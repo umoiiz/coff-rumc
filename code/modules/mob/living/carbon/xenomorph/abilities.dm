@@ -4,7 +4,7 @@
 // Resting
 /datum/action/ability/xeno_action/xeno_resting
 	name = "Rest"
-	desc = "Rest on weeds to regenerate health and plasma."
+	desc = "在杂草上休息以恢复生命值和等离子体."
 	action_icon_state = "resting"
 	action_icon = 'icons/Xeno/actions/general.dmi'
 	use_state_flags = ABILITY_USE_LYING|ABILITY_USE_CRESTED|ABILITY_USE_CLOSEDTURF|ABILITY_USE_STAGGERED|ABILITY_USE_INCAP
@@ -23,7 +23,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/plant_weeds
 	name = "Plant Weeds"
-	desc = "Plant a weed node on your tile."
+	desc = "在你的格子上放置一个杂草节点."
 	action_icon_state = "plant_weeds"
 	action_icon = 'icons/Xeno/actions/construction.dmi'
 	ability_cost = 75
@@ -82,23 +82,23 @@
 		return fail_activate()
 
 	if(!T.check_disallow_alien_fortification(null, TRUE))
-		to_chat(owner, span_warning("The queen mother prohibits us from weeding here."))
+		to_chat(owner, span_warning("女王母亲禁止我们在这里种植杂草."))
 		return fail_activate()
 
 	if(locate(/obj/structure/xeno/trap) in T)
-		to_chat(owner, span_warning("There is a resin trap in the way!"))
+		to_chat(owner, span_warning("路上有一个树脂陷阱!"))
 		return fail_activate()
 
 	if(!T.is_weedable())
-		to_chat(owner, span_warning("Bad place for a garden!"))
+		to_chat(owner, span_warning("这可不是个建花园的好地方!"))
 		return fail_activate()
 
 	if(locate(weed_type) in T)
-		to_chat(owner, span_warning("There's a pod here already!"))
+		to_chat(owner, span_warning("这里已经有一个荚囊了!"))
 		return fail_activate()
 
-	owner.visible_message(span_xenonotice("\The [owner] regurgitates a pulsating node and plants it on the ground!"), \
-		span_xenonotice("We regurgitate a pulsating node and plant it on the ground!"), null, 5)
+	owner.visible_message(span_xenonotice("\The [owner] 反刍出一个脉动的节点并将其种植在地上!"), \
+		span_xenonotice("我们反刍出一个脉动的节点并将其种植在地上!"), null, 5)
 	new weed_type(T)
 	last_weeded_turf = T
 	playsound(T, SFX_ALIEN_RESIN_BUILD, 25)
@@ -127,7 +127,7 @@
 				weed_type = weed_type_possible
 				update_ability_cost()
 				break
-		to_chat(owner, span_xenonotice("We will now spawn <b>[weed_choice]\s</b> when using the plant weeds ability."))
+		to_chat(owner, span_xenonotice("我们现在使用种植杂草能力时将生成 <b>[weed_choice]\s </b>."))
 	update_button_icon()
 
 ///Toggles automatic weeding
@@ -137,12 +137,12 @@
 		UnregisterSignal(owner, COMSIG_MOVABLE_MOVED)
 		UnregisterSignal(owner, COMSIG_MOB_DEATH)
 		auto_weeding = FALSE
-		to_chat(owner, span_xenonotice("We will no longer automatically plant weeds."))
+		to_chat(owner, span_xenonotice("我们将不再自动种植杂草."))
 		return
 	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, PROC_REF(weed_on_move))
 	RegisterSignal(owner, COMSIG_MOB_DEATH, PROC_REF(toggle_auto_weeding))
 	auto_weeding = TRUE
-	to_chat(owner, span_xenonotice("We will now automatically plant weeds."))
+	to_chat(owner, span_xenonotice("我们现在将自动种植杂草."))
 
 ///Used for performing automatic weeding
 /datum/action/ability/activable/xeno/plant_weeds/proc/weed_on_move(datum/source)
@@ -185,10 +185,10 @@
 	var/area/area = get_area(A)
 	if(area.area_flags & MARINE_BASE)
 		if(!silent)
-			to_chat(owner, span_xenowarning("You cannot weed here!"))
+			to_chat(owner, span_xenowarning("你不能在这里种植杂草!"))
 		return FALSE
 	if(!line_of_sight(owner, get_turf(A)))
-		to_chat(owner, span_warning("You cannot plant weeds without line of sight!"))
+		to_chat(owner, span_warning("没有视线你不能种植杂草!"))
 		return FALSE
 	return ..()
 
@@ -200,7 +200,7 @@
 // Secrete Resin
 /datum/action/ability/activable/xeno/secrete_resin
 	name = "Secrete Resin"
-	desc = "Builds whatever resin you selected"
+	desc = "建造你选择的任何树脂"
 	action_icon_state = RESIN_WALL
 	action_icon = 'icons/Xeno/actions/construction.dmi'
 	target_flags = ABILITY_TURF_TARGET
@@ -344,27 +344,27 @@
 		return
 
 	if(!SSresinshaping.get_building_points(owner))
-		owner.balloon_alert(owner, "You have used all your quick-build points! Wait until the marines have landed!")
+		owner.balloon_alert(owner, "你已经用完了所有的快速建造点数! 等到陆战队员登陆!")
 		return
 
 	switch(is_valid_for_resin_structure(T, xeno_owner.selected_resin == /obj/structure/mineral_door/resin, xeno_owner.selected_resin))
 		if(ERROR_CANT_WEED)
-			owner.balloon_alert(owner, span_notice("This spot cannot support a garden!"))
+			owner.balloon_alert(owner, span_notice("这个位置无法支撑一个花园!"))
 			return
 		if(ERROR_NO_WEED)
-			owner.balloon_alert(owner, span_notice("This spot has no weeds to serve as support!"))
+			owner.balloon_alert(owner, span_notice("这个位置没有杂草作为支撑!"))
 			return
 		if(ERROR_NO_SUPPORT)
-			owner.balloon_alert(owner, span_notice("This spot has no adjaecent support for the structure!"))
+			owner.balloon_alert(owner, span_notice("这个位置没有相邻的支撑来建造该结构!"))
 			return
 		if(ERROR_NOT_ALLOWED)
-			owner.balloon_alert(owner, span_notice("The queen mother prohibits us from building here."))
+			owner.balloon_alert(owner, span_notice("女王母亲禁止我们在这里建造."))
 			return
 		if(ERROR_BLOCKER)
-			owner.balloon_alert(owner, span_notice("There's another xenomorph blocking the spot!"))
+			owner.balloon_alert(owner, span_notice("有另一个异形挡住了这个位置!"))
 			return
 		if(ERROR_FOG)
-			owner.balloon_alert(owner, span_notice("The fog will prevent the resin from ever taking shape!"))
+			owner.balloon_alert(owner, span_notice("雾气将阻止树脂成形!"))
 			return
 		// it fails a lot here when dragging , so its to prevent spam
 		if(ERROR_CONSTRUCT)
@@ -374,17 +374,17 @@
 
 	for(var/mob/living/carbon/human AS in cheap_get_humans_near(T, 7))
 		if(human.client && human.stat != DEAD)
-			owner.balloon_alert(owner, "Somebody humanlike is alive nearby!")
+			owner.balloon_alert(owner, "附近有类人生物还活着!")
 			return
 
 	if(xeno_owner.selected_resin == /obj/structure/bed/nest)
 		for(var/obj/structure/bed/nest/xeno_nest in range(2, T))
-			owner.balloon_alert(owner, span_notice("Another nest is too close!"))
+			owner.balloon_alert(owner, span_notice("另一个巢穴太近了!"))
 			return
 
 	if(xeno_owner.selected_resin == /obj/structure/mineral_door/resin)
 		for(var/obj/structure/mineral_door/resin/door in range(2, T))
-			owner.balloon_alert(owner, span_notice("Another door is too close!"))
+			owner.balloon_alert(owner, span_notice("另一个门太近了!"))
 			return
 
 	var/atom/new_resin
@@ -406,30 +406,30 @@
 /datum/action/ability/activable/xeno/secrete_resin/proc/build_resin(turf/T)
 	if(xeno_owner.selected_resin == /obj/structure/bed/nest)
 		for(var/obj/structure/bed/nest/xeno_nest in range (2, T))
-			owner.balloon_alert(owner, span_notice("Another nest is too close!"))
+			owner.balloon_alert(owner, span_notice("另一个巢穴太近了!"))
 			return
 	if(xeno_owner.selected_resin == /obj/structure/mineral_door/resin)
 		for(var/obj/structure/mineral_door/resin/door in range(2, T))
-			owner.balloon_alert(owner, span_notice("Another door is too close!"))
+			owner.balloon_alert(owner, span_notice("另一个门太近了!"))
 			return
 	switch(is_valid_for_resin_structure(T, xeno_owner.selected_resin == /obj/structure/mineral_door/resin, xeno_owner.selected_resin))
 		if(ERROR_CANT_WEED)
-			owner.balloon_alert(owner, span_notice("This spot cannot support a garden!"))
+			owner.balloon_alert(owner, span_notice("这个位置无法支撑一个花园!"))
 			return
 		if(ERROR_NO_WEED)
-			owner.balloon_alert(owner, span_notice("This spot has no weeds to serve as support!"))
+			owner.balloon_alert(owner, span_notice("这个位置没有杂草作为支撑!"))
 			return
 		if(ERROR_NO_SUPPORT)
-			owner.balloon_alert(owner, span_notice("This spot has no adjaecent support for the structure!"))
+			owner.balloon_alert(owner, span_notice("这个位置没有相邻的支撑来建造该结构!"))
 			return
 		if(ERROR_NOT_ALLOWED)
-			owner.balloon_alert(owner, span_notice("The queen mother prohibits us from building here."))
+			owner.balloon_alert(owner, span_notice("女王母亲禁止我们在这里建造."))
 			return
 		if(ERROR_BLOCKER)
-			owner.balloon_alert(owner, span_notice("There's another xenomorph blocking the spot!"))
+			owner.balloon_alert(owner, span_notice("有另一个异形挡住了这个位置!"))
 			return
 		if(ERROR_FOG)
-			owner.balloon_alert(owner, span_notice("The fog will prevent the resin from ever taking shape!"))
+			owner.balloon_alert(owner, span_notice("雾气将阻止树脂成形!"))
 			return
 		// it fails a lot here when dragging , so its to prevent spam
 		if(ERROR_CONSTRUCT)
@@ -437,28 +437,28 @@
 		if(TRUE)
 			return
 	if(!line_of_sight(owner, T))
-		to_chat(owner, span_warning("You cannot secrete resin without line of sight!"))
+		to_chat(owner, span_warning("没有视线你不能分泌树脂!"))
 		return fail_activate()
 	if(!do_after(xeno_owner, get_wait(), NONE, T, BUSY_ICON_BUILD))
 		return fail_activate()
 	switch(is_valid_for_resin_structure(T, xeno_owner.selected_resin == /obj/structure/mineral_door/resin, xeno_owner.selected_resin))
 		if(ERROR_CANT_WEED)
-			owner.balloon_alert(owner, span_notice("This spot cannot support a garden!"))
+			owner.balloon_alert(owner, span_notice("这个位置无法支撑一个花园!"))
 			return
 		if(ERROR_NO_WEED)
-			owner.balloon_alert(owner, span_notice("This spot has no weeds to serve as support!"))
+			owner.balloon_alert(owner, span_notice("这个位置没有杂草作为支撑!"))
 			return
 		if(ERROR_NO_SUPPORT)
-			owner.balloon_alert(owner, span_notice("This spot has no adjaecent support for the structure!"))
+			owner.balloon_alert(owner, span_notice("这个位置没有相邻的支撑来建造该结构!"))
 			return
 		if(ERROR_NOT_ALLOWED)
-			owner.balloon_alert(owner, span_notice("The queen mother prohibits us from building here."))
+			owner.balloon_alert(owner, span_notice("女王母亲禁止我们在这里建造."))
 			return
 		if(ERROR_BLOCKER)
-			owner.balloon_alert(owner, span_notice("There's another xenomorph blocking the spot!"))
+			owner.balloon_alert(owner, span_notice("有另一个异形挡住了这个位置!"))
 			return
 		if(ERROR_FOG)
-			owner.balloon_alert(owner, span_notice("The fog will prevent the resin from ever taking shape!"))
+			owner.balloon_alert(owner, span_notice("雾气将阻止树脂成形!"))
 			return
 		// it fails a lot here when dragging , so its to prevent spam
 		if(ERROR_CONSTRUCT)
@@ -466,8 +466,8 @@
 		if(TRUE)
 			return
 	var/atom/AM = xeno_owner.selected_resin
-	xeno_owner.visible_message(span_xenowarning("\The [xeno_owner] regurgitates a thick substance and shapes it into \a [initial(AM.name)]!"), \
-	span_xenonotice("We regurgitate some resin and shape it into \a [initial(AM.name)]."), null, 5)
+	xeno_owner.visible_message(span_xenowarning("\The [xeno_owner] 反刍出一种浓稠物质并将其塑造成 \a [initial(AM.name)]!"), \
+	span_xenonotice("我们反刍出一些树脂并将其塑造成 \a [initial(AM.name)]."), null, 5)
 	playsound(owner.loc, SFX_ALIEN_RESIN_BUILD, 25)
 	var/atom/new_resin
 	if(ispath(xeno_owner.selected_resin, /turf)) // We should change turfs, not spawn them in directly
@@ -488,7 +488,7 @@
 
 /datum/action/ability/xeno_action/pheromones
 	name = "Emit Pheromones"
-	desc = "Opens your pheromone options."
+	desc = "打开你的信息素选项."
 	action_icon_state = "emit_pheromones"
 	action_icon = 'icons/Xeno/actions/general.dmi'
 	ability_cost = 30
@@ -496,7 +496,7 @@
 
 /datum/action/ability/xeno_action/pheromones/proc/apply_pheros(phero_choice)
 	if(xeno_owner.current_aura && xeno_owner.current_aura.aura_types[1] == phero_choice)
-		xeno_owner.balloon_alert(xeno_owner, "Stop emitting")
+		xeno_owner.balloon_alert(xeno_owner, "停止释放")
 		QDEL_NULL(xeno_owner.current_aura)
 		if(xeno_owner.hive?.living_xeno_ruler == xeno_owner)
 			xeno_owner.hive?.update_leader_pheromones()
@@ -520,7 +520,7 @@
 
 /datum/action/ability/xeno_action/pheromones/emit_recovery
 	name = "Toggle Recovery Pheromones"
-	desc = "Increases healing for yourself and nearby teammates."
+	desc = "增加你自己和附近队友的治疗效果."
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_EMIT_RECOVERY,
 	)
@@ -531,7 +531,7 @@
 
 /datum/action/ability/xeno_action/pheromones/emit_warding
 	name = "Toggle Warding Pheromones"
-	desc = "Increases armor for yourself and nearby teammates."
+	desc = "增加你自己和附近队友的护甲."
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_EMIT_WARDING,
 	)
@@ -542,7 +542,7 @@
 
 /datum/action/ability/xeno_action/pheromones/emit_frenzy
 	name = "Toggle Frenzy Pheromones"
-	desc = "Increases damage for yourself and nearby teammates."
+	desc = "增加你自己和附近队友的伤害."
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_EMIT_FRENZY,
 	)
@@ -553,7 +553,7 @@
 
 /datum/action/ability/activable/xeno/transfer_plasma
 	name = "Transfer Plasma"
-	desc = "Give some of your plasma to a teammate."
+	desc = "将你的一些等离子体给予一名队友."
 	action_icon_state = "transfer_plasma"
 	action_icon = 'icons/Xeno/actions/drone.dmi'
 	keybinding_signals = list(
@@ -576,22 +576,22 @@
 
 	if(!(target.xeno_caste.can_flags & CASTE_CAN_BE_GIVEN_PLASMA))
 		if(!silent)
-			to_chat(owner, span_warning("We can't give that caste plasma."))
+			to_chat(owner, span_warning("我们不能给那个 caste 等离子体."))
 			return FALSE
 
 	if(get_dist(owner, target) > max_range)
 		if(!silent)
-			to_chat(owner, span_warning("We need to be closer to [target]."))
+			to_chat(owner, span_warning("我们需要更靠近 [target]."))
 		return FALSE
 
 	if(target.plasma_stored >= target.xeno_caste.plasma_max) //We can't select targets that won't benefit
-		to_chat(owner, span_xenowarning("[target] already has full plasma."))
+		to_chat(owner, span_xenowarning("[target] 的等离子体已经满了."))
 		return FALSE
 
 /datum/action/ability/activable/xeno/transfer_plasma/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/target = A
 
-	to_chat(xeno_owner, span_notice("We start focusing our plasma towards [target]."))
+	to_chat(xeno_owner, span_notice("我们开始将我们的等离子体集中输送给 [target]."))
 	new /obj/effect/temp_visual/transfer_plasma(get_turf(xeno_owner)) //Cool SFX that confirms our source and our target
 	new /obj/effect/temp_visual/transfer_plasma(get_turf(target)) //Cool SFX that confirms our source and our target
 	playsound(xeno_owner, SFX_ALIEN_DROOL, 25)
@@ -617,8 +617,8 @@
 
 	xeno_owner.use_plasma(amount)
 	target.gain_plasma(amount)
-	to_chat(target, span_xenodanger("[xeno_owner] has transfered [amount] units of plasma to us. We now have [target.plasma_stored]/[target.xeno_caste.plasma_max]."))
-	to_chat(xeno_owner, span_xenodanger("We have transferred [amount] units of plasma to [target]. We now have [xeno_owner.plasma_stored]/[xeno_owner.xeno_caste.plasma_max]."))
+	to_chat(target, span_xenodanger("[xeno_owner] 将 [amount] 单位等离子体转移给了我们. 我们现在有 [target.plasma_stored]/[target.xeno_caste.plasma_max]."))
+	to_chat(xeno_owner, span_xenodanger("我们将 [amount] 单位等离子体转移给了 [target]. 我们现在有 [xeno_owner.plasma_stored]/[xeno_owner.xeno_caste.plasma_max]."))
 	playsound(xeno_owner, SFX_ALIEN_DROOL, 25)
 
 
@@ -628,7 +628,7 @@
 
 /datum/action/ability/activable/xeno/corrosive_acid
 	name = "Corrosive Acid"
-	desc = "Cover an object with acid to slowly melt it. Takes a few seconds."
+	desc = "用酸液覆盖一个物体以缓慢融化它. 需要几秒钟."
 	action_icon_state = "corrosive_acid"
 	action_icon = 'icons/Xeno/actions/general.dmi'
 	ability_cost = 100
@@ -653,20 +653,20 @@
 		return FALSE
 	if(!owner.Adjacent(A))
 		if(!silent)
-			owner.balloon_alert(owner, "[A] is too far away")
+			owner.balloon_alert(owner, "[A] 太远了")
 		return FALSE
 	if(ismob(A))
 		if(!silent)
-			owner.balloon_alert(owner, "We can't melt [A]")
+			owner.balloon_alert(owner, "我们不能融化 [A]")
 		return FALSE
 	switch(A.should_apply_acid(current_acid_type::acid_strength))
 		if(ATOM_CANNOT_ACID)
 			if(!silent)
-				owner.balloon_alert(owner, "We cannot dissolve [A]")
+				owner.balloon_alert(owner, "我们不能溶解 [A]")
 			return FALSE
 		if(ATOM_STRONGER_ACID)
 			if(!silent)
-				owner.balloon_alert(owner, "[A] is already subject to a more or equally powerful acid")
+				owner.balloon_alert(owner, "[A] 已经受到更强或同等强度的酸液作用")
 			return FALSE
 
 /datum/action/ability/activable/xeno/corrosive_acid/use_ability(atom/A)
@@ -686,7 +686,7 @@
 		return fail_activate()
 
 	xeno_owner.face_atom(A)
-	to_chat(xeno_owner, span_xenowarning("We begin generating enough acid to melt through the [A]"))
+	to_chat(xeno_owner, span_xenowarning("我们开始生成足够的酸液来融化 [A]"))
 
 	if(!do_after(xeno_owner, aciddelay, NONE, A, BUSY_ICON_HOSTILE))
 		return fail_activate()
@@ -699,8 +699,8 @@
 
 	if(!isturf(A))
 		log_combat(xeno_owner, A, "spat on", addition="with corrosive acid")
-	xeno_owner.visible_message(span_xenowarning("\The [xeno_owner] vomits globs of vile stuff all over \the [A]. It begins to sizzle and melt under the bubbling mess of acid!"), \
-	span_xenowarning("We vomit globs of vile stuff all over \the [A]. It begins to sizzle and melt under the bubbling mess of acid!"), null, 5)
+	xeno_owner.visible_message(span_xenowarning("\The [xeno_owner] 将恶心的黏液团吐满了 \the [A]. 它开始在冒泡的酸液烂泥下嘶嘶作响并融化!"), \
+	span_xenowarning("我们将恶心的黏液团吐满了 \the [A]. 它开始在冒泡的酸液烂泥下嘶嘶作响并融化!"), null, 5)
 	playsound(xeno_owner.loc, 'sound/bullets/acid_impact1.ogg', 25)
 
 // ***************************************
@@ -731,12 +731,12 @@
 	var/turf/T2 = get_turf(A)
 	if(T == T2)
 		if(!silent)
-			to_chat(owner, span_warning("That's far too close!"))
+			to_chat(owner, span_warning("那太近了!"))
 		return FALSE
 
 /datum/action/ability/activable/xeno/spray_acid/on_cooldown_finish()
 	playsound(owner.loc, 'sound/voice/alien/drool1.ogg', 50, 1)
-	to_chat(owner, span_xenodanger("We feel our acid glands refill. We can spray acid again."))
+	to_chat(owner, span_xenodanger("我们感觉我们的酸腺重新充满了. 我们可以再次喷射酸液了."))
 	return ..()
 
 /datum/action/ability/activable/xeno/spray_acid/proc/acid_splat_turf(turf/T)
@@ -752,7 +752,7 @@
 
 /datum/action/ability/activable/xeno/xeno_spit
 	name = "Xeno Spit"
-	desc = "Spit neurotoxin or acid at your target up to 7 tiles away."
+	desc = "向你的目标吐出神经毒素或酸液, 最远 7 格."
 	action_icon_state = "neurotoxin"
 	action_icon = 'icons/Xeno/actions/spit.dmi'
 	keybinding_signals = list(
@@ -790,7 +790,7 @@
 				break
 			xeno_owner.ammo = GLOB.ammo_list[xeno_owner.xeno_caste.spit_types[i+1]]
 			break
-	to_chat(xeno_owner, span_notice("We will now spit [xeno_owner.ammo.name] ([xeno_owner.ammo.spit_cost] plasma)."))
+	to_chat(xeno_owner, span_notice("我们现在将吐出 [xeno_owner.ammo.name] ([xeno_owner.ammo.spit_cost] 等离子体)."))
 	xeno_owner.update_spits(TRUE)
 	update_button_icon()
 
@@ -806,14 +806,14 @@
 		return FALSE
 	if(xeno_owner.ammo?.spit_cost > xeno_owner.plasma_stored)
 		if(!silent)
-			to_chat(xeno_owner, span_warning("We need [xeno_owner.ammo?.spit_cost - xeno_owner.plasma_stored] more plasma!"))
+			to_chat(xeno_owner, span_warning("我们还需要 [xeno_owner.ammo?.spit_cost - xeno_owner.plasma_stored] 等离子体!"))
 		return FALSE
 
 /datum/action/ability/activable/xeno/xeno_spit/get_cooldown()
 	return (xeno_owner.xeno_caste.spit_delay + xeno_owner.ammo?.added_spit_delay)
 
 /datum/action/ability/activable/xeno/xeno_spit/on_cooldown_finish()
-	to_chat(xeno_owner, span_notice("We feel our neurotoxin glands swell with ichor. We can spit again."))
+	to_chat(xeno_owner, span_notice("我们感觉我们的神经毒素腺体充满了灵液. 我们可以再次吐出了."))
 	return ..()
 
 /datum/action/ability/activable/xeno/xeno_spit/use_ability(atom/A)
@@ -908,7 +908,7 @@
 
 /datum/action/ability/xeno_action/xenohide
 	name = "Hide"
-	desc = "Causes your sprite to hide behind certain objects and under tables. Not the same as stealth. Does not use plasma."
+	desc = "使你的精灵隐藏在特定物体后面和桌子下面. 与潜行不同. 不消耗等离子体."
 	action_icon_state = "xenohide"
 	action_icon = 'icons/Xeno/actions/general.dmi'
 	keybinding_signals = list(
@@ -922,7 +922,7 @@
 /datum/action/ability/xeno_action/xenohide/can_use_action(silent, override_flags)
 	if(HAS_TRAIT(xeno_owner, TRAIT_TANK_DESANT))
 		if(!silent)
-			xeno_owner.balloon_alert(xeno_owner, "cannot while on vehicle")
+			xeno_owner.balloon_alert(xeno_owner, "在载具上时不能")
 		return FALSE
 	return ..()
 
@@ -930,25 +930,25 @@
 	if(xeno_owner.layer != BELOW_TABLE_LAYER)
 		RegisterSignals(xeno_owner, list(COMSIG_XENOMORPH_POUNCE, COMSIG_MOB_CRIT, COMSIG_MOB_DEATH), PROC_REF(unhide))
 		xeno_owner.layer = BELOW_TABLE_LAYER
-		to_chat(xeno_owner, span_notice("We are now hiding."))
+		to_chat(xeno_owner, span_notice("我们现在正在隐藏."))
 		button.add_overlay(mutable_appearance('icons/Xeno/actions/_actions.dmi', "selected_purple_frame", ACTION_LAYER_ACTION_ICON_STATE, null, FLOAT_PLANE))
 	else
 		UnregisterSignal(xeno_owner, list(COMSIG_XENOMORPH_POUNCE, COMSIG_MOB_CRIT, COMSIG_MOB_DEATH))
 		xeno_owner.layer = MOB_LAYER
-		to_chat(xeno_owner, span_notice("We have stopped hiding."))
+		to_chat(xeno_owner, span_notice("我们已经停止隐藏."))
 		button.cut_overlay(mutable_appearance('icons/Xeno/actions/_actions.dmi', "selected_purple_frame", ACTION_LAYER_ACTION_ICON_STATE, null, FLOAT_PLANE))
 
 /datum/action/ability/xeno_action/xenohide/proc/unhide()
 	SIGNAL_HANDLER
 	UnregisterSignal(xeno_owner, list(COMSIG_XENOMORPH_POUNCE, COMSIG_MOB_CRIT, COMSIG_MOB_DEATH))
 	xeno_owner.layer = MOB_LAYER
-	to_chat(xeno_owner, span_notice("We have stopped hiding."))
+	to_chat(xeno_owner, span_notice("我们已经停止隐藏."))
 	button.cut_overlay(mutable_appearance('icons/Xeno/actions/_actions.dmi', "selected_purple_frame", ACTION_LAYER_ACTION_ICON_STATE, FLOAT_PLANE))
 
 //Neurotox Sting
 /datum/action/ability/activable/xeno/neurotox_sting
 	name = "Neurotoxin Sting"
-	desc = "A channeled melee attack that injects the target with neurotoxin over a few seconds, temporarily stunning them."
+	desc = "一种引导近战攻击, 在几秒钟内向目标注入神经毒素, 暂时将其击晕."
 	action_icon_state = "neuro_sting"
 	action_icon = 'icons/Xeno/actions/sentinel.dmi'
 	cooldown_duration = 12 SECONDS
@@ -968,22 +968,22 @@
 
 	if(!A?.can_sting())
 		if(!silent)
-			to_chat(owner, span_warning("Our sting won't affect this target!"))
+			to_chat(owner, span_warning("我们的刺击不会影响这个目标!"))
 		return FALSE
 	if(!owner.Adjacent(A))
 		if(!silent && world.time > (xeno_owner.recent_notice + xeno_owner.notice_delay)) //anti-notice spam
-			to_chat(xeno_owner, span_warning("We can't reach this target!"))
+			to_chat(xeno_owner, span_warning("我们无法触及这个目标!"))
 			xeno_owner.recent_notice = world.time //anti-notice spam
 		return FALSE
 	var/mob/living/carbon/C = A
 	if(isnestedhost(C))
 		if(!silent)
-			to_chat(owner, span_warning("Ashamed, we reconsider bullying the poor, nested host with our stinger."))
+			to_chat(owner, span_warning("惭愧,我们重新考虑用尾刺欺负这个可怜的、嵌套的宿主。"))
 		return FALSE
 
 /datum/action/ability/activable/xeno/neurotox_sting/on_cooldown_finish()
 	playsound(owner.loc, 'sound/voice/alien/drool1.ogg', 50, 1)
-	to_chat(owner, span_xenodanger("We feel our toxic glands refill. We can use our [initial(name)] again."))
+	to_chat(owner, span_xenodanger("我们感到毒腺重新充盈。我们可以再次使用[initial(name)]了。"))
 	return ..()
 
 /datum/action/ability/activable/xeno/neurotox_sting/use_ability(atom/A)
@@ -1002,7 +1002,7 @@
 //Ozelomelyn Sting
 /datum/action/ability/activable/xeno/neurotox_sting/ozelomelyn
 	name = "Ozelomelyn Sting"
-	desc = "A channeled melee attack that injects the target with Ozelomelyn over a few seconds, purging chemicals and dealing minor toxin damage to a moderate cap while inside them."
+	desc = "一种引导近战攻击,在数秒内向目标注入Ozelomelyn,净化化学物质并在其体内造成少量毒素伤害,有中等上限。"
 	action_icon_state = "drone_sting"
 	action_icon = 'icons/Xeno/actions/shrike.dmi'
 	cooldown_duration = 25 SECONDS
@@ -1020,7 +1020,7 @@
 //Transvitox Sting
 /datum/action/ability/activable/xeno/neurotox_sting/transvitox
 	name = "Transvitox Sting"
-	desc = "A channeled melee attack that injects the target with Transvitox over a few seconds, dealing minor toxin damage to a moderate cap while inside them."
+	desc = "一种引导近战攻击,在数秒内向目标注入Transvitox,在其体内造成少量毒素伤害,有中等上限。"
 	cooldown_duration = 12 SECONDS
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_OZELOMELYN_STING,
@@ -1054,10 +1054,10 @@
 		target_list += possible_target
 
 	if(!length(target_list))
-		to_chat(xeno_owner, span_warning("There's nobody nearby to whisper to."))
+		to_chat(xeno_owner, span_warning("附近没有人可以低语。"))
 		return
 
-	var/mob/living/L = tgui_input_list(xeno_owner, "Target", "Send a Psychic Whisper to whom?", target_list)
+	var/mob/living/L = tgui_input_list(xeno_owner, "目标", "向谁发送心灵低语?", target_list)
 	if(!L)
 		return
 
@@ -1069,8 +1069,8 @@
 		return
 
 	log_directed_talk(xeno_owner, L, msg, LOG_SAY, "psychic whisper")
-	to_chat(L, span_alien("You hear a strange, alien voice in your head. <i>\"[msg]\"</i>"))
-	to_chat(xeno_owner, span_xenonotice("We said: \"[msg]\" to [L]"))
+	to_chat(L, span_alien("你听到脑海中传来一个奇怪的、异形的声音。<i>\"[msg]\"</i>"))
+	to_chat(xeno_owner, span_xenonotice("我们说了: \"[msg]\" 对 [L]"))
 	message_admins("[xeno_owner] has sent [L] this psychic message: \"[msg]\" at [ADMIN_VERBOSEJMP(xeno_owner)].")
 
 // ***************************************
@@ -1078,7 +1078,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/lay_egg
 	name = "Lay Egg"
-	desc = "Create an egg that will grow a larval hugger after a short delay. Empty eggs can have huggers inserted into them."
+	desc = "产下一枚卵,会在短暂延迟后孵化出一只幼虫抱脸虫。空卵可以插入抱脸虫。"
 	action_icon_state = "lay_egg"
 	action_icon = 'icons/Xeno/actions/construction.dmi'
 	ability_cost = 200
@@ -1094,11 +1094,11 @@
 		return fail_activate()
 
 	if(!xeno_owner.loc_weeds_type)
-		to_chat(user, span_xenowarning("Our eggs wouldn't grow well enough here. Lay them on resin."))
+		to_chat(user, span_xenowarning("我们的卵在这里无法良好生长。把它们产在树脂上。"))
 		return fail_activate()
 
-	xeno_owner.visible_message(span_xenonotice("[xeno_owner] starts planting an egg."), \
-		span_xenonotice("We start planting an egg."), null, 5)
+	xeno_owner.visible_message(span_xenonotice("[xeno_owner]开始产卵。"), \
+		span_xenonotice("我们开始产卵。"), null, 5)
 
 	if(!do_after(xeno_owner, 2.5 SECONDS, NONE, current_turf, BUSY_ICON_BUILD, extra_checks = CALLBACK(current_turf, TYPE_PROC_REF(/turf, check_alien_construction), xeno_owner)))
 		return fail_activate()
@@ -1118,7 +1118,7 @@
 ///////////////////
 /datum/action/ability/xeno_action/rally_hive
 	name = "Rally Hive"
-	desc = "Rallies the hive to a congregate at a target location, along with an arrow pointer. Gives the Hive your current health status. 60 second cooldown."
+	desc = "召集虫巢在目标位置集结,并附带一个箭头指示器。将你当前的生命状态告知虫巢。60秒冷却。"
 	action_icon_state = "rally_hive"
 	action_icon = 'icons/Xeno/actions/general.dmi'
 	ability_cost = 0
@@ -1141,7 +1141,7 @@
 
 /datum/action/ability/xeno_action/rally_minion
 	name = "Rally Minions"
-	desc = "Rallies the minions around you, asking them to follow you if they don't have a leader already. Rightclick to change minion behaviour."
+	desc = "召集你周围的仆从,如果它们还没有首领,就要求它们跟随你。右键点击可更改仆从行为。"
 	action_icon_state = "minion_agressive"
 	action_icon = 'icons/Xeno/actions/general.dmi'
 	ability_cost = 0
@@ -1189,7 +1189,7 @@
 //*********
 /datum/action/ability/activable/xeno/psydrain
 	name = "Psy drain"
-	desc = "Drain the victim of its life force to gain larva and psych points"
+	desc = "吸取受害者的生命能量以获得幼虫和灵能点"
 	action_icon_state = "headbite"
 	action_icon = 'icons/Xeno/actions/general.dmi'
 	use_state_flags = ABILITY_USE_STAGGERED|ABILITY_USE_FORTIFIED|ABILITY_USE_CRESTED //can't use while staggered, defender fortified or crest down
@@ -1214,32 +1214,32 @@
 		return FALSE
 	if(xeno_owner.on_fire)
 		if(!silent)
-			to_chat(xeno_owner, span_warning("We're too busy being on fire to do this!"))
+			to_chat(xeno_owner, span_warning("我们正忙着着火,做不了这个!"))
 		return FALSE
 	if(victim.stat != DEAD)
 		if(!silent)
-			to_chat(xeno_owner, span_warning("This creature is struggling too much for us to drain its life force."))
+			to_chat(xeno_owner, span_warning("这个生物挣扎得太厉害,我们无法吸取它的生命能量。"))
 		return FALSE
 	if(HAS_TRAIT(victim, TRAIT_PSY_DRAINED))
 		if(!silent)
-			to_chat(xeno_owner, span_warning("There is no longer any life force in this creature!"))
+			to_chat(xeno_owner, span_warning("这个生物体内已经没有生命能量了!"))
 		return FALSE
 	if(!ishuman(victim))
 		if(!silent)
-			to_chat(xeno_owner, span_warning("We can't drain something that is not human."))
+			to_chat(xeno_owner, span_warning("我们无法吸取非人类的东西。"))
 		return FALSE
 	if(issynth(victim)) //checks if target is a synth
 		if(!silent)
-			to_chat(xeno_owner, span_warning("This artificial construct has no life force to drain"))
+			to_chat(xeno_owner, span_warning("这个人造构造体没有生命能量可吸取"))
 		return FALSE
 	xeno_owner.face_atom(victim) //Face towards the target so we don't look silly
-	xeno_owner.visible_message(span_xenowarning("\The [xeno_owner] begins opening its mouth and extending a second jaw towards \the [victim]."), \
-	span_danger("We slowly drain \the [victim]'s life force!"), null, 20)
+	xeno_owner.visible_message(span_xenowarning("\The [xeno_owner]开始张开嘴,向\the [victim]伸出第二颚。"), \
+	span_danger("我们正在缓慢吸取\the [victim]的生命能量!"), null, 20)
 	var/channel = SSsounds.random_available_channel()
 	playsound(xeno_owner, 'sound/magic/nightfall.ogg', 40, channel = channel)
 	if(!do_after(xeno_owner, 5 SECONDS, IGNORE_HELD_ITEM, victim, BUSY_ICON_DANGER, extra_checks = CALLBACK(xeno_owner, TYPE_PROC_REF(/mob, break_do_after_checks), list("health" = xeno_owner.health))))
-		xeno_owner.visible_message(span_xenowarning("\The [xeno_owner] retracts its inner jaw."), \
-		span_danger("We retract our inner jaw."), null, 20)
+		xeno_owner.visible_message(span_xenowarning("\The [xeno_owner]收回了内颚。"), \
+		span_danger("我们收回了内颚。"), null, 20)
 		xeno_owner.stop_sound_channel(channel)
 		return FALSE
 	xeno_owner.stop_sound_channel(channel)
@@ -1249,13 +1249,13 @@
 	var/mob/living/carbon/victim = M
 
 	if(HAS_TRAIT(victim, TRAIT_PSY_DRAINED))
-		to_chat(xeno_owner, span_warning("Someone drained the life force of our victim before we could do it!"))
+		to_chat(xeno_owner, span_warning("有人在我们之前吸取了我们受害者的生命能量!"))
 		return fail_activate()
 
 	playsound(xeno_owner, 'sound/magic/end_of_psy_drain.ogg', 40)
 
-	xeno_owner.visible_message(span_xenodanger("\The [victim]'s life force is drained by \the [xeno_owner]!"), \
-	span_xenodanger("We feel \the [victim]'s life force streaming into us!"))
+	xeno_owner.visible_message(span_xenodanger("\The [victim]的生命能量被\the [xeno_owner]吸取了!"), \
+	span_xenodanger("我们感到\the [victim]的生命能量涌入我们体内!"))
 
 	victim.do_jitter_animation(2)
 	victim.adjust_clone_loss(20)
@@ -1302,7 +1302,7 @@
 /////////////////////////////////
 /datum/action/ability/activable/xeno/cocoon
 	name = "Cocoon"
-	desc = "Devour your victim to cocoon it in your belly. This cocoon will automatically be ejected later, and while the marine inside it still has life force it will give psychic points."
+	desc = "吞噬你的受害者,将其茧化在你的腹中。这个茧稍后会自动排出,当里面的陆战队员仍有生命能量时,它会提供灵能点。"
 	action_icon_state = "regurgitate"
 	action_icon = 'icons/Xeno/actions/general.dmi'
 	use_state_flags = ABILITY_USE_STAGGERED|ABILITY_USE_FORTIFIED|ABILITY_USE_CRESTED //can't use while staggered, defender fortified or crest down
@@ -1319,7 +1319,7 @@
 	if(!.)
 		return
 	if(!ishuman(A) || issynth(A))
-		to_chat(xeno_owner, span_warning("That wouldn't taste very good."))
+		to_chat(xeno_owner, span_warning("那尝起来不会很好吃。"))
 		return FALSE
 	var/mob/living/carbon/human/victim = A
 	if(xeno_owner.do_actions) //can't use if busy
@@ -1328,31 +1328,31 @@
 		return FALSE
 	if(victim.stat != DEAD)
 		if(!silent)
-			to_chat(xeno_owner, span_warning("This creature is struggling too much for us to devour it."))
+			to_chat(xeno_owner, span_warning("这个生物挣扎得太厉害,我们无法吞噬它。"))
 		return FALSE
 	if(HAS_TRAIT(victim, TRAIT_PSY_DRAINED))
 		if(!silent)
-			to_chat(xeno_owner, span_warning("There is no longer any life force in this creature!"))
+			to_chat(xeno_owner, span_warning("这个生物体内已经没有生命能量了!"))
 		return FALSE
 	if(victim.buckled)
 		if(!silent)
-			to_chat(xeno_owner, span_warning("[victim] is buckled to something."))
+			to_chat(xeno_owner, span_warning("[victim]被扣在了什么东西上。"))
 		return FALSE
 	if(xeno_owner.on_fire)
 		if(!silent)
-			to_chat(xeno_owner, span_warning("We're too busy being on fire to do this!"))
+			to_chat(xeno_owner, span_warning("我们正忙着着火,做不了这个!"))
 		return FALSE
 	if(xeno_owner.eaten_mob) //Only one thing in the stomach at a time, please
 		if(!silent)
-			to_chat(xeno_owner, span_warning("We already have something in our stomach, there's no way that will fit."))
+			to_chat(xeno_owner, span_warning("我们胃里已经有东西了,那绝对塞不下。"))
 		return FALSE
 	for(var/obj/effect/forcefield/fog in range(1, xeno_owner))
 		if(!silent)
-			to_chat(xeno_owner, span_warning("We are too close to the fog."))
+			to_chat(xeno_owner, span_warning("我们离迷雾太近了。"))
 		return FALSE
 	xeno_owner.face_atom(victim)
-	xeno_owner.visible_message(span_danger("[xeno_owner] starts to devour [victim]!"), \
-	span_danger("We start to devour [victim]!"), null, 5)
+	xeno_owner.visible_message(span_danger("[xeno_owner]开始吞噬[victim]!"), \
+	span_danger("我们开始吞噬[victim]!"), null, 5)
 
 	succeed_activate()
 
@@ -1361,15 +1361,15 @@
 	var/channel = SSsounds.random_available_channel()
 	playsound(xeno_owner, 'sound/vore/struggle.ogg', 40, channel = channel)
 	if(!do_after(xeno_owner, 7 SECONDS, IGNORE_HELD_ITEM, victim, BUSY_ICON_DANGER, extra_checks = CALLBACK(owner, TYPE_PROC_REF(/mob, break_do_after_checks), list("health" = xeno_owner.health))))
-		to_chat(owner, span_warning("We stop devouring \the [victim]. They probably tasted gross anyways."))
+		to_chat(owner, span_warning("我们停止吞噬\the [victim]。反正它们大概也很难吃。"))
 		xeno_owner.stop_sound_channel(channel)
 		return fail_activate()
 	if(HAS_TRAIT(victim, TRAIT_PSY_DRAINED))
-		to_chat(owner, span_warning("Someone drained the life force of our victim before we could devour it!"))
+		to_chat(owner, span_warning("有人在我们吞噬之前吸取了我们受害者的生命能量!"))
 		return fail_activate()
-	owner.visible_message(span_warning("[xeno_owner] devours [victim]!"), \
-	span_warning("We devour [victim]!"), null, 5)
-	to_chat(owner, span_warning("We will eject the cocoon in [cocoon_production_time * 0.1] seconds! Do not move until it is done."))
+	owner.visible_message(span_warning("[xeno_owner]吞噬了[victim]!"), \
+	span_warning("我们吞噬了[victim]!"), null, 5)
+	to_chat(owner, span_warning("我们将在[cocoon_production_time * 0.1]秒后排出茧!在完成之前不要移动。"))
 	xeno_owner.eaten_mob = victim
 	var/turf/starting_turf = get_turf(victim)
 	victim.forceMove(xeno_owner)
@@ -1378,7 +1378,7 @@
 	channel = SSsounds.random_available_channel()
 	playsound(xeno_owner, 'sound/vore/escape.ogg', 40, channel = channel)
 	if(!do_after(xeno_owner, cocoon_production_time, IGNORE_HELD_ITEM, null, BUSY_ICON_DANGER))
-		to_chat(owner, span_warning("We moved too soon and we will have to devour our victim again!"))
+		to_chat(owner, span_warning("我们移动得太早了,我们将不得不再次吞噬我们的受害者!"))
 		xeno_owner.eject_victim(FALSE, starting_turf)
 		xeno_owner.stop_sound_channel(channel)
 		return fail_activate()
@@ -1398,7 +1398,7 @@
 /////////////////////////////////
 /datum/action/ability/xeno_action/blessing_menu
 	name = "Mothers Blessings"
-	desc = "Ask the Queen Mother for blessings for your hive in exchange for psychic energy."
+	desc = "向女王母亲祈求祝福你的虫巢,以灵能能量作为交换。"
 	action_icon_state = "hivestore" // missing icon?
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_BLESSINGSMENU,

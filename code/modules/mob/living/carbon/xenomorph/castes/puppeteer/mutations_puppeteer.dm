@@ -14,7 +14,7 @@
 
 /datum/xeno_mutation/puppeteer/flesh_for_life
 	name = "Flesh For Life"
-	desc = "If damage taken would put you into critical, lose plasma instead."
+	desc = "如果受到的伤害会使你进入濒死状态, 则改为失去等离子体."
 	cost = 10
 	icon_state = "xenobuff_generic"
 	tier = 1
@@ -25,7 +25,7 @@
 
 /atom/movable/screen/alert/status_effect/puppeteer/flesh_for_life
 	name = "Flesh For Life"
-	desc = "Critical damage is paid in plasma instead."
+	desc = "濒死伤害改为以等离子体支付."
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/puppeteer/flesh_for_life
@@ -57,7 +57,7 @@
 
 /datum/xeno_mutation/puppeteer/suffocating_presence
 	name = "Suffocating Presence"
-	desc = "Dreadful Presence also applies a stamina drain over time."
+	desc = "恐怖存在还会随时间施加耐力消耗."
 	cost = 10
 	icon_state = "xenobuff_generic"
 	tier = 1
@@ -68,7 +68,7 @@
 
 /atom/movable/screen/alert/status_effect/puppeteer/suffocating_presence
 	name = "Suffocating Presence"
-	desc = "Dreadful Presence drains stamina over time."
+	desc = "恐怖存在随时间消耗耐力."
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/puppeteer/suffocating_presence
@@ -93,7 +93,7 @@
 
 /datum/xeno_mutation/puppeteer/shifting_costs
 	name = "Shifting Costs"
-	desc = "Stitch Puppet is much cheaper, but Bestow Blessings costs more."
+	desc = "缝合傀儡便宜得多, 但赐福消耗更多."
 	cost = 10
 	icon_state = "xenobuff_generic"
 	tier = 1
@@ -104,7 +104,7 @@
 
 /atom/movable/screen/alert/status_effect/puppeteer/shifting_costs
 	name = "Shifting Costs"
-	desc = "Puppet is cheaper; Blessings cost more."
+	desc = "傀儡更便宜; 赐福消耗更多."
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/puppeteer/shifting_costs

@@ -6,8 +6,8 @@
 
 //Food items that aren't eaten normally and leave an empty container behind.
 /obj/item/reagent_containers/food/condiment
-	name = "Condiment Container"
-	desc = "Just your average condiment container."
+	name = "调味品容器"
+	desc = "就是普通的调味品容器."
 	icon = 'icons/obj/items/food/condiment.dmi'
 	icon_state = "emptycondiment"
 	reagent_flags = OPENCONTAINER
@@ -22,16 +22,16 @@
 	var/datum/reagents/R = reagents
 
 	if(!R || !R.total_volume)
-		to_chat(user, span_warning("The [src.name] is empty!"))
+		to_chat(user, span_warning("[src.name]是空的!"))
 		return 0
 
 	if(iscarbon(M))
 		var/mob/living/carbon/H = M
 		if(M == user)
 			if(ishuman(H) && (H.species.species_flags & ROBOTIC_LIMBS))
-				to_chat(H, span_warning("You have a monitor for a head, where do you think you're going to put that?"))
+				to_chat(H, span_warning("你的脑袋是个显示器,你觉得你能把那东西放哪儿?"))
 				return
-			to_chat(H, span_notice("You swallow some of contents of the [src]."))
+			to_chat(H, span_notice("你吞下了一些[src]里的东西."))
 			if(reagents.total_volume)
 				record_reagent_consumption(min(10, reagents.total_volume), reagents.reagent_list, user)
 				reagents.trans_to(H, 10)
@@ -39,12 +39,12 @@
 			return 1
 		else
 			if(ishuman(H) && (H.species.species_flags & ROBOTIC_LIMBS))
-				to_chat(user, span_warning("They have a monitor for a head, where do you think you're going to put that?"))
+				to_chat(user, span_warning("他们的脑袋是个显示器,你觉得你能把那东西放哪儿?"))
 				return
-			M.visible_message(span_warning("[user] attempts to feed [M] [src]."))
+			M.visible_message(span_warning("[user]试图喂[M][src]."))
 			if(!do_after(user, 3 SECONDS, NONE, M, BUSY_ICON_FRIENDLY))
 				return
-			M.visible_message(span_warning("[user] feeds [M] [src]."))
+			M.visible_message(span_warning("[user]喂了[M][src]."))
 			var/rgt_list_text = get_reagent_list_text()
 			log_combat(user, M, "fed", src, "Reagents: [rgt_list_text]")
 			if(reagents.total_volume)
@@ -62,26 +62,26 @@
 	if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
 
 		if(!target.reagents.total_volume)
-			to_chat(user, span_warning("[target] is empty."))
+			to_chat(user, span_warning("[target]是空的."))
 			return
 
 		if(reagents.holder_full())
-			to_chat(user, span_warning("[src] is full."))
+			to_chat(user, span_warning("[src]是满的."))
 			return
 
 		var/trans = target.reagents.trans_to(src, target:amount_per_transfer_from_this)
-		to_chat(user, span_notice("You fill [src] with [trans] units of the contents of [target]."))
+		to_chat(user, span_notice("你用[target]里的东西装了[trans]单位的量到[src]里."))
 
 	//Something like a glass or a food item. Player probably wants to transfer TO it.
 	else if(target.is_injectable() && !isliving(target))
 		if(!reagents.total_volume)
-			to_chat(user, span_warning("[src] is empty."))
+			to_chat(user, span_warning("[src]是空的."))
 			return
 		if(target.reagents.total_volume >= target.reagents.maximum_volume)
-			to_chat(user, span_warning("you can't add anymore to [target]."))
+			to_chat(user, span_warning("你不能再往[target]里加了."))
 			return
 		var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
-		to_chat(user, span_notice("You transfer [trans] units of the condiment to [target]."))
+		to_chat(user, span_notice("你将[trans]单位的调味品转移到[target]里."))
 
 /obj/item/reagent_containers/food/condiment/on_reagent_change()
 	if(icon_state == "saltshakersmall" || icon_state == "peppermillsmall")
@@ -148,8 +148,8 @@
 		return
 
 /obj/item/reagent_containers/food/condiment/enzyme
-	name = "Universal Enzyme"
-	desc = "Used in cooking various dishes."
+	name = "通用酶"
+	desc = "用于烹饪各种菜肴."
 	icon_state = "enzyme"
 	list_reagents = list(/datum/reagent/consumable/enzyme = 50)
 
@@ -157,8 +157,8 @@
 	list_reagents = list(/datum/reagent/consumable/sugar = 50)
 
 /obj/item/reagent_containers/food/condiment/saltshaker		//Seperate from above since it's a small shaker rather then
-	name = "Salt Shaker"											//	a large one.
-	desc = "Salt. From space oceans, presumably."
+	name = "盐罐"											//	a large one.
+	desc = "盐.大概是来自太空海洋的."
 	icon_state = "saltshakersmall"
 	possible_transfer_amounts = list(1,20) //for clown turning the lid off
 	amount_per_transfer_from_this = 1
@@ -166,8 +166,8 @@
 	list_reagents = list(/datum/reagent/consumable/sodiumchloride = 20)
 
 /obj/item/reagent_containers/food/condiment/peppermill
-	name = "Pepper Mill"
-	desc = "Often used to flavor food or make people sneeze."
+	name = "胡椒研磨器"
+	desc = "常用于给食物调味或让人打喷嚏."
 	icon_state = "peppermillsmall"
 	possible_transfer_amounts = list(1,20) //for clown turning the lid off
 	amount_per_transfer_from_this = 1

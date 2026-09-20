@@ -1,6 +1,6 @@
 /obj/machinery/camera
 	name = "security camera"
-	desc = "It's used to monitor rooms."
+	desc = "它用于监控房间."
 	icon = 'icons/obj/machines/camera.dmi'
 	icon_state = "camera_icon"
 	base_icon_state = "camera"
@@ -77,13 +77,13 @@
 /obj/machinery/camera/examine(mob/user)
 	. = ..()
 	if(!status)
-		. += span_info("It's currently deactivated.")
+		. += span_info("它目前处于停用状态.")
 		if(!CHECK_BITFIELD(machine_stat, PANEL_OPEN) && powered())
-			. += span_notice("You'll need to open its maintenance panel with a <b>screwdriver</b> to turn it back on.")
+			. += span_notice("你需要用<b>螺丝刀</b>打开它的维护面板才能重新开启.")
 	if(CHECK_BITFIELD(machine_stat, PANEL_OPEN))
-		. += span_info("Its maintenance panel is currently open.")
+		. += span_info("它的维护面板目前是打开的.")
 		if(!status && powered())
-			. += span_info("It can reactivated with a <b>screwdriver</b>.")
+			. += span_info("它可以用<b>螺丝刀</b>重新激活.")
 
 /obj/machinery/camera/proc/setViewRange(num = 7)
 	view_range = num
@@ -100,7 +100,7 @@
 		var/itemname = X.name
 		var/info = X.info
 
-		to_chat(U, span_notice("You hold \the [itemname] up to the camera..."))
+		to_chat(U, span_notice("你把\the [itemname]举到摄像头前..."))
 		U.changeNext_move(CLICK_CD_MELEE)
 		for(var/mob/O in GLOB.player_list)
 			if(isAI(O))
@@ -108,12 +108,12 @@
 				if(AI.control_disabled || (AI.stat == DEAD))
 					return
 				if(U.name == "Unknown")
-					to_chat(AI, "<b>[U]</b> holds <a href='byond://?_src_=usr;show_paper=1;'>\a [itemname]</a> up to one of your cameras ...")
+					to_chat(AI, "<b>[U]</b>把<a href='byond://?_src_=usr;show_paper=1;'>\a [itemname]</a>举到你的一个摄像头前...")
 				else
-					to_chat(AI, "<b><a href='byond://?src=[REF(AI)];track=[html_encode(U.name)]'>[U]</a></b> holds <a href='byond://?_src_=usr;show_paper=1;'>\a [itemname]</a> up to one of your cameras ...")
+					to_chat(AI, "<b><a href='byond://?src=[REF(AI)];track=[html_encode(U.name)]'>[U]</a></b>把<a href='byond://?_src_=usr;show_paper=1;'>\a [itemname]</a>举到你的一个摄像头前...")
 				AI.last_paper_seen = "<html><meta charset='UTF-8'><HEAD><TITLE>[itemname]</TITLE></HEAD><BODY><TT>[info]</TT></BODY></HTML>"
 			else if(O.client && O.client.eye == src)
-				to_chat(O, "[U] holds \a [itemname] up to one of the cameras ...")
+				to_chat(O, "[U]把\a [itemname]举到其中一个摄像头前...")
 				O << browse(HTML_SKELETON_TITLE(itemname, info), "window=[itemname]")
 
 /obj/machinery/camera/screwdriver_act(mob/living/user, obj/item/I)
@@ -121,7 +121,7 @@
 	if(.)
 		return TRUE
 	TOGGLE_BITFIELD(machine_stat, PANEL_OPEN)
-	to_chat(user, span_notice("You screw the camera's panel [CHECK_BITFIELD(machine_stat, PANEL_OPEN) ? "open" : "closed"]."))
+	to_chat(user, span_notice("你[CHECK_BITFIELD(machine_stat, PANEL_OPEN) ? "open" : "closed"]了摄像头的面板."))
 	I.play_tool_sound(src)
 	update_icon()
 	return TRUE
@@ -140,7 +140,7 @@
 		return FALSE
 
 	setViewRange((view_range == initial(view_range)) ? short_range : initial(view_range))
-	to_chat(user, span_notice("You [(view_range == initial(view_range)) ? "restore" : "mess up"] the camera's focus."))
+	to_chat(user, span_notice("你[(view_range == initial(view_range)) ? "restore" : "mess up"]了摄像头的焦距."))
 	return TRUE
 
 /obj/machinery/camera/welder_act(mob/living/user, obj/item/I)
@@ -150,11 +150,11 @@
 	if(!I.tool_start_check(user, amount = 0))
 		return TRUE
 
-	to_chat(user, span_notice("You start to weld [src]..."))
+	to_chat(user, span_notice("你开始焊接[src]..."))
 
 	if(I.use_tool(src, user, 100, volume = 50))
-		user.visible_message(span_warning("[user] unwelds [src], leaving it as just a frame bolted to the wall."),
-			span_warning("You unweld [src], leaving it as just a frame bolted to the wall"))
+		user.visible_message(span_warning("[user]拆焊了[src], 只留下一个用螺栓固定在墙上的框架."),
+			span_warning("你拆焊了[src], 只留下一个用螺栓固定在墙上的框架"))
 		deconstruct(TRUE)
 	return TRUE
 
@@ -163,18 +163,18 @@
 		return FALSE
 
 	if(obj_integrity <= 0)
-		to_chat(xeno_attacker, span_warning("The camera is already disabled."))
+		to_chat(xeno_attacker, span_warning("摄像头已经处于禁用状态."))
 		return
 
 	xeno_attacker.do_attack_animation(src, ATTACK_EFFECT_CLAW)
-	xeno_attacker.visible_message(span_danger("[xeno_attacker] slashes \the [src]!"), \
-	span_danger("We slash \the [src]!"))
+	xeno_attacker.visible_message(span_danger("[xeno_attacker]劈砍了\the [src]!"), \
+	span_danger("我们劈砍了\the [src]!"))
 	playsound(loc, SFX_ALIEN_CLAW_METAL, 25, 1)
 
 	if(!CHECK_BITFIELD(machine_stat, PANEL_OPEN))
 		ENABLE_BITFIELD(machine_stat, PANEL_OPEN)
 		update_icon()
-		visible_message(span_danger("\The [src]'s cover swings open, exposing the wires!"))
+		visible_message(span_danger("\The [src]的盖板弹开, 露出了电线!"))
 		return
 
 	var/datum/effect_system/spark_spread/sparks = new
@@ -183,7 +183,7 @@
 	sparks.start()
 
 	deactivate()
-	visible_message(span_danger("\The [src]'s wires snap apart in a rain of sparks!"))
+	visible_message(span_danger("\The [src]的电线在火花四溅中崩断!"))
 
 /obj/machinery/camera/proc/deactivate(mob/user)
 	status = FALSE
@@ -200,7 +200,7 @@
 		if(M.client?.eye && M.client.eye == src)
 			M.unset_interaction()
 			M.reset_perspective(null)
-			to_chat(M, "The screen bursts into static.")
+			to_chat(M, "屏幕爆发出静电.")
 
 	if(!powered())
 		return
@@ -208,7 +208,7 @@
 	for(var/mob/living/silicon/ai/AI AS in GLOB.ai_list)
 		if(!AI.client)
 			continue
-		to_chat(AI, span_notice("[src] has been deactivated at [myarea]"))
+		to_chat(AI, span_notice("[src]已在[myarea]处被停用"))
 
 /obj/machinery/camera/update_icon_state()
 	. = ..()
@@ -253,7 +253,7 @@
 		if(O.client && O.client.eye == src)
 			O.unset_interaction()
 			O.reset_perspective(null)
-			to_chat(O, "The screen bursts into static.")
+			to_chat(O, "屏幕爆发出静电.")
 
 /obj/machinery/camera/proc/can_use()
 	if(!status)
@@ -394,7 +394,7 @@
 
 /obj/machinery/camera/miner
 	name = "miner camera"
-	desc = "It's used to monitor miners."
+	desc = "它用于监控矿工."
 	base_icon_state = ""
 	network = list("miner")
 	status = FALSE // by default miners are inactive

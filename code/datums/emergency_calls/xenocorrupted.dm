@@ -6,10 +6,10 @@
 
 
 /datum/emergency_call/xenomorphs_corrupted/print_backstory(mob/living/carbon/xenomorph/X)
-	to_chat(X, "<B>We are a Xenomorph from an artifical corrupted hive created by the tallhosts.</b>")
-	to_chat(X, "<B>We've been stuck on this shuttle for years until someone reached out to us and took over the control of our shuttle remotely.</b>")
-	to_chat(X, "<B>From what we understand, it appears that someone launched this shuttle in order to help our fellow humans who are in trouble.</b>") // Human friendly ERT
-	to_chat(X, "<B>Expand our hive and destroy any other hives that we may encounter. For the corrupted Hive!</b>")
+	to_chat(X, "<B>我们是来自高个子宿主创造的人工腐化巢穴的异形.</b>")
+	to_chat(X, "<B>我们被困在这艘穿梭机上多年,直到有人联系上我们并远程接管了我们穿梭机的控制权.</b>")
+	to_chat(X, "<B>据我们所知,似乎是有人发射了这艘穿梭机,以帮助陷入困境的人类同胞.</b>") // Human friendly ERT
+	to_chat(X, "<B>扩张我们的巢穴,摧毁我们可能遇到的任何其他巢穴. 为了腐化巢穴!</b>")
 
 
 /datum/emergency_call/xenomorphs_corrupted/spawn_items()

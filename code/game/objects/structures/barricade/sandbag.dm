@@ -1,6 +1,6 @@
 /obj/structure/barricade/sandbags
-	name = "sandbag barricade"
-	desc = "A bunch of bags filled with sand, stacked into a small wall. Surprisingly sturdy, albeit labour intensive to set up. Trusted to do the job since 1914."
+	name = "沙袋路障"
+	desc = "一堆装满沙子的袋子,堆成一道矮墙.出奇地坚固,尽管搭建起来很费人力.自1914年以来一直值得信赖."
 	icon_state = "sandbag_0"
 	icon = 'icons/obj/structures/barricades/sandbag.dmi'
 	max_integrity = 300
@@ -29,23 +29,23 @@
 		var/obj/item/tool/shovel/ET = I
 		if(ET.folded)
 			return TRUE
-		balloon_alert_to_viewers("disassembling...")
+		balloon_alert_to_viewers("正在拆卸...")
 		if(!do_after(user, ET.shovelspeed, NONE, src, BUSY_ICON_BUILD))
 			return TRUE
-		user.visible_message(span_notice("[user] disassembles [src]."),
-		span_notice("You disassemble [src]."))
+		user.visible_message(span_notice("[user]拆卸了[src]."),
+		span_notice("你拆卸了[src]."))
 		deconstruct(!get_self_acid())
 		return TRUE
 
 	if(istype(I, /obj/item/stack/sandbags))
 		if(obj_integrity == max_integrity)
-			balloon_alert(user, "Already repaired")
+			balloon_alert(user, "已修复")
 			return
 		var/obj/item/stack/sandbags/D = I
 		if(D.get_amount() < 1)
-			balloon_alert(user, "Not enough sandbags")
+			balloon_alert(user, "沙袋不足")
 			return
-		balloon_alert_to_viewers("Replacing sandbags...")
+		balloon_alert_to_viewers("正在更换沙袋...")
 
 		if(LAZYACCESS(user.do_actions, src))
 			return
@@ -54,12 +54,12 @@
 			return
 
 		if(get_self_acid())
-			balloon_alert(user, "It's melting!")
+			balloon_alert(user, "它正在融化!")
 			return
 
 		if(!D.use(1))
 			return
 
 		repair_damage(max_integrity * 0.2, user) //Each sandbag restores 20% of max health as 5 sandbags = 1 sandbag barricade.
-		balloon_alert_to_viewers("Repaired")
+		balloon_alert_to_viewers("已修复")
 		update_icon()

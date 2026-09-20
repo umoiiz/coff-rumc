@@ -1,6 +1,6 @@
 /obj/structure/xeno/evotower
-	name = "evolution tower"
-	desc = "A sickly outcrop from the ground. It seems to ooze a strange chemical that shimmers and warps the ground around it."
+	name = "进化之塔"
+	desc = "一个从地面长出的病态凸起物。它似乎在渗出一种奇怪的化学物质,使周围的地面闪烁并扭曲。"
 	icon = 'icons/Xeno/2x2building.dmi'
 	icon_state = "evotower"
 	pixel_x = -16
@@ -25,8 +25,8 @@
 	take_damage(severity * 2.5, BRUTE, BOMB)
 
 /obj/structure/xeno/psychictower
-	name = "Psychic Relay"
-	desc = "A sickly outcrop from the ground. It seems to allow for more advanced growth of the Xenomorphs."
+	name = "灵能中继"
+	desc = "一个从地面长出的病态凸起物。它似乎能让异形进行更高级的生长。"
 	icon = 'icons/Xeno/2x2building.dmi'
 	icon_state = "maturitytower"
 	pixel_x = -16
@@ -49,8 +49,8 @@
 	take_damage(severity * 2.5, BRUTE, BOMB)
 
 /obj/structure/xeno/pherotower
-	name = "Pheromone tower"
-	desc = "A resin formation that looks like a small pillar. A faint, weird smell can be perceived from it."
+	name = "信息素之塔"
+	desc = "一个看起来像小柱子的树脂构造。可以从中察觉到一股微弱、怪异的气味。"
 	icon = 'icons/Xeno/1x1building.dmi'
 	icon_state = "recoverytower"
 	obj_integrity = 400

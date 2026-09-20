@@ -1,6 +1,6 @@
 /obj/item/supplytablet
-	name = "ASRS tablet"
-	desc = "A tablet for an Automated Storage and Retrieval System"
+	name = "自动化存取系统平板"
+	desc = "自动化存取系统平板"
 	icon_state = "req_tablet_off"
 	req_access = list(ACCESS_MARINE_CARGO)
 	equip_slot_flags = ITEM_SLOT_POCKET

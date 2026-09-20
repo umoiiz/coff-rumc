@@ -1,6 +1,6 @@
 /obj/item/storage/briefcase
-	name = "briefcase"
-	desc = "It's made of AUTHENTIC faux-leather and has a price-tag still attached. Its owner must be a real professional."
+	name = "公文包"
+	desc = "它由正宗的仿皮制成, 还挂着价格标签. 它的主人一定是个真正的专业人士."
 	icon_state = "briefcase"
 	worn_icon_state = "briefcase"
 	icon = 'icons/obj/items/storage/briefcase.dmi'
@@ -12,8 +12,8 @@
 	storage_type = /datum/storage/briefcase
 
 /obj/item/storage/briefcase/standard_magnum
-	name = "R-76 Magnum case"
-	desc = "A well made, expensive looking case, made to fit an R-76 Magnum and its accessories. For the discerning gun owner."
+	name = "R-76马格南枪盒"
+	desc = "一个做工精良, 外观昂贵的枪盒, 专为容纳一把R-76马格南及其配件而设计. 为有品位的枪主打造."
 	icon_state = "magnum_case"
 	worn_icon_state = "briefcase"
 	atom_flags = CONDUCT
@@ -48,8 +48,8 @@
 		new /obj/item/ammo_magazine/revolver/standard_magnum(src)
 
 /obj/item/storage/briefcase/t500
-	name = "\improper R-500 'Nigredo' special case"
-	desc = "High-tech case made by BMSS for delivery their special weapons. Label on this case says: 'This is the greatest handgun ever made. Five bullets. More than enough to kill anything that moves'."
+	name = "\improper R-500 'Nigredo'特制枪盒"
+	desc = "由BMSS制造的高科技枪盒, 用于运送他们的特种武器. 盒上的标签写着: '这是有史以来最伟大的手枪. 五发子弹. 足以杀死任何会动的东西'."
 	icon_state = "t500case"
 	w_class = WEIGHT_CLASS_NORMAL
 	storage_type = /datum/storage/briefcase/t500
@@ -62,8 +62,8 @@
 	new /obj/item/weapon/gun/revolver/t500(src)
 
 /obj/item/storage/briefcase/t312
-	name = "R-312 'Albedo' Revolver special case"
-	desc = "High-tech case made by BMSS for delivery their special weapons. Label on this case says: 'Since we have already called Nigredo death, within the same metaphor we can call Albedo life. It is time to shoot at people legally.'"
+	name = "R-312 'Albedo'左轮手枪特制枪盒"
+	desc = "由BMSS制造的高科技枪盒, 用于运送他们的特种武器. 盒上的标签写着: '既然我们已将Nigredo称为死亡, 那么在同样的隐喻中, 我们可以将Albedo称为生命. 是时候合法地向人们开枪了.'"
 	icon_state = "med_case"
 	w_class = WEIGHT_CLASS_NORMAL
 	storage_type = /datum/storage/briefcase/t312
@@ -82,8 +82,8 @@
 	new /obj/item/weapon/gun/revolver/t312(src)
 
 /obj/item/storage/briefcase/inflatable
-	name = "inflatable barrier box"
-	desc = "Contains inflatable walls and doors."
+	name = "充气屏障盒"
+	desc = "包含充气墙和充气门."
 	icon_state = "inf_box"
 	worn_icon_state = "syringe_kit"
 

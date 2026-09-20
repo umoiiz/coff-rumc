@@ -1,6 +1,6 @@
 /obj/item/attachable/reddot
-	name = "red-dot sight"
-	desc = "A red-dot sight for short to medium range. Does not have a zoom feature, but does increase weapon accuracy and fire rate while aiming by a good amount. \nNo drawbacks."
+	name = "红点瞄准镜"
+	desc = "用于短到中距离的红点瞄准镜。没有放大功能,但在瞄准时能大幅提高武器精准度和射速。\nNo缺点。"
 	icon_state = "reddot"
 	slot = ATTACHMENT_SLOT_RAIL
 	accuracy_mod = 0.15
@@ -9,31 +9,31 @@
 	variants_by_parent_type = list(/obj/item/weapon/gun/rifle/som = "", /obj/item/weapon/gun/shotgun/som = "")
 
 /obj/item/attachable/b7_scope
-	name = "B7 smart scope"
-	desc = "A B7 smart scope. Does not have a zoom feature, but allows you to take aim and fire through allies. \nNo drawbacks."
+	name = "B7智能瞄准镜"
+	desc = "一个B7智能瞄准镜。没有放大功能,但允许你瞄准并穿过队友射击。\nNo缺点。"
 	icon_state = "b7"
 	slot = ATTACHMENT_SLOT_RAIL
 	add_aim_mode = TRUE
 
 /obj/item/attachable/b11_scope
-	name = "B11 smart scope"
-	desc = "Similar to the B7 sight, but barely slows you down when aiming."
+	name = "B11智能瞄准镜"
+	desc = "类似于B7瞄准镜,但瞄准时几乎不会减慢你的速度。"
 	icon_state = "smoll"
 	slot = ATTACHMENT_SLOT_RAIL
 	add_aim_mode = TRUE
 	aim_mode_movement_mult = -0.8
 
 /obj/item/attachable/b15_scope
-	name = "B15 smart scope"
-	desc = "Similar to the B7 sight, but causes virtually no reduction in fire rate when aiming."
+	name = "B15智能瞄准镜"
+	desc = "类似于B7瞄准镜,但瞄准时几乎不会降低射速。"
 	icon_state = "big"
 	slot = ATTACHMENT_SLOT_RAIL
 	add_aim_mode = TRUE
 	aim_mode_delay_mod = -0.7
 
 /obj/item/attachable/m16sight
-	name = "M16 iron sights"
-	desc = "The iconic carry-handle iron sights for the m16. Usually removed once the user finds something worthwhile to attach to the rail."
+	name = "M16机械瞄具"
+	desc = "m16标志性的提把式机械瞄具。通常在用户找到值得安装到导轨上的东西后就会被移除。"
 	icon_state = "m16sight"
 	slot = ATTACHMENT_SLOT_RAIL
 	accuracy_mod = 0.1
@@ -41,8 +41,8 @@
 	movement_acc_penalty_mod = -0.1
 
 /obj/item/attachable/flashlight
-	name = "rail flashlight"
-	desc = "A simple flashlight used for mounting on a firearm. \nHas no drawbacks, but isn't particuraly useful outside of providing a light source."
+	name = "导轨手电筒"
+	desc = "一个用于安装在枪械上的简单手电筒。\nHas没有缺点,但除了提供光源外并不是特别有用。"
 	icon_state = "flashlight"
 	light_mod = 6
 	light_system = MOVABLE_LIGHT
@@ -87,7 +87,7 @@
 
 /obj/item/attachable/flashlight/screwdriver_act(mob/living/user, obj/item/I)
 	. = ..()
-	to_chat(user, span_notice("You modify the rail flashlight back into a normal flashlight."))
+	to_chat(user, span_notice("你将导轨手电筒改回普通手电筒。"))
 	if(loc == user)
 		user.temporarilyRemoveItemFromInventory(src)
 	var/obj/item/flashlight/F = new(user)
@@ -95,15 +95,15 @@
 	qdel(src) //Delete da old flashlight
 
 /obj/item/attachable/flashlight/under
-	name = "underbarreled flashlight"
-	desc = "A simple flashlight used for mounting on a firearm. \nHas no drawbacks, but isn't particuraly useful outside of providing a light source."
+	name = "下挂式手电筒"
+	desc = "一个用于安装在枪械上的简易手电筒。\nHas没有缺点,但除了提供光源外并不是特别有用。"
 	icon_state = "uflashlight"
 	slot = ATTACHMENT_SLOT_UNDER
 	attach_features_flags = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 
 /obj/item/attachable/quickfire
-	name = "quickfire adapter"
-	desc = "An enhanced and upgraded autoloading mechanism to fire rounds more quickly. \nHowever, it also reduces accuracy and the number of bullets fired on burst."
+	name = "速射适配器"
+	desc = "一种经过增强和升级的自动装填机制,可以更快地发射子弹。\nHowever,它还会降低精准度和点射时发射的子弹数量。"
 	slot = ATTACHMENT_SLOT_RAIL
 	icon_state = "autoloader"
 	accuracy_mod = -0.10
@@ -112,8 +112,8 @@
 	accuracy_unwielded_mod = -0.15
 
 /obj/item/attachable/magnetic_harness
-	name = "magnetic harness"
-	desc = "A magnetically attached harness kit that attaches to the rail mount of a weapon. When dropped, the weapon will sling to a TGMC armor."
+	name = "磁性挂具"
+	desc = "一个磁性连接的挂具套件,可安装在武器的导轨支架上。当掉落时,武器会悬挂到TGMC装甲上。"
 	icon_state = "magnetic"
 	slot = ATTACHMENT_SLOT_RAIL
 	pixel_shift_x = 13
@@ -133,10 +133,10 @@
 	QDEL_NULL(reequip_component)
 
 /obj/item/attachable/buildasentry
-	name = "\improper Build-A-Sentry attachment system"
+	name = "\improper 建造哨戒炮附件系统"
 	icon = 'icons/obj/sentry.dmi'
 	icon_state = "build_a_sentry_attachment"
-	desc = "The Build-A-Sentry is the latest design in cheap, automated, defense. Simply attach it to the rail of a gun and deploy. Its that easy!"
+	desc = "建造哨戒炮是廉价自动化防御的最新设计。只需将其安装到枪械导轨上并部署。就这么简单!"
 	slot = ATTACHMENT_SLOT_RAIL
 	size_mod = 1
 	pixel_shift_x = 10
@@ -151,7 +151,7 @@
 		return FALSE
 	var/obj/item/weapon/gun/attaching_gun = attaching_to
 	if(ispath(attaching_gun.deployable_item, /obj/machinery/deployable/mounted/sentry))
-		to_chat(attacher, span_warning("[attaching_gun] is already a sentry!"))
+		to_chat(attacher, span_warning("[attaching_gun]已经是一个哨戒炮了!"))
 		return FALSE
 	return ..()
 
@@ -174,8 +174,8 @@
 	detaching_gun.turret_flags &= ~(TURRET_HAS_CAMERA|TURRET_SAFETY|TURRET_ALERTS)
 
 /obj/item/attachable/shoulder_mount
-	name = "experimental shoulder attachment point"
-	desc = "A brand new advance in combat technology. This device, once attached to a firearm, will allow the firearm to be mounted onto any piece of modular armor. Once attached to the armor and activated, the gun will fire when the user chooses.\nOnce attached to the armor, <b>right clicking</b> the armor with an empty hand will select what click will fire the armor (middle, right, left). <b>Right clicking</b> with ammunition will reload the gun. Using the <b>Unique Action</b> keybind will perform the weapon's unique action only when the gun is active."
+	name = "实验性肩部挂载点"
+	desc = "战斗技术的一项全新进步。这个装置一旦安装到枪械上,就能让枪械挂载到任何模块化装甲上。一旦安装到装甲上并激活,枪械将在使用者选择时开火。\nOnce已安装到装甲上,<b>右键点击</b>空手点击装甲将选择哪种点击会触发装甲开火(中键、右键、左键)。<b>右键点击</b>弹药将重新装填枪械。使用<b>独特动作</b>键位绑定将仅在枪械激活时执行武器的独特动作。"
 	icon = 'icons/mob/modular/shoulder_gun.dmi'
 	icon_state = "shoulder_gun"
 	slot = ATTACHMENT_SLOT_RAIL
@@ -289,7 +289,7 @@
 	for(var/item_blacklisted in in_hand_items_blacklist)
 		if(!istype(active_hand, item_blacklisted) && !istype(inactive_hand, item_blacklisted))
 			continue
-		to_chat(user, span_warning("[src] beeps. Guns or shields in your hands are interfering with its targetting. Aborting."))
+		to_chat(user, span_warning("[src]发出哔哔声。你手中的枪械或盾牌正在干扰其瞄准。中止。"))
 		return
 	master_gun.start_fire(source, object, location, control, null, TRUE)
 
@@ -299,13 +299,13 @@
 	switch(fire_mode)
 		if("right")
 			fire_mode = "middle"
-			to_chat(user, span_notice("[master_gun] will now fire on a 'middle click'."))
+			to_chat(user, span_notice("[master_gun]现在将在'中键点击'时开火。"))
 		if("middle")
 			fire_mode = "left"
-			to_chat(user, span_notice("[master_gun] will now fire on a 'left click'."))
+			to_chat(user, span_notice("[master_gun]现在将在'左键点击'时开火。"))
 		if("left")
 			fire_mode = "right"
-			to_chat(user, span_notice("[master_gun] will now fire on a 'right click'."))
+			to_chat(user, span_notice("[master_gun]现在将在'右键点击'时开火。"))
 
 ///Reloads the gun
 /obj/item/attachable/shoulder_mount/proc/reload_gun(datum/source, obj/item/attacking_item, mob/living/user)
@@ -323,7 +323,7 @@
 	for(var/item_blacklisted in in_hand_items_blacklist)
 		if(!istype(active_hand, item_blacklisted) && !istype(inactive_hand, item_blacklisted))
 			continue
-		to_chat(user, span_warning("[src] beeps. Guns or shields in your hands are interfering with its targetting. Stopping fire."))
+		to_chat(user, span_warning("[src]发出哔哔声。你手中的枪械或盾牌正在干扰其瞄准。停止开火。"))
 		master_gun.stop_fire()
 		return
 	if(!user.incapacitated() && !user.lying_angle && !LAZYACCESS(user.do_actions, src) && user.dextrous && (CHECK_BITFIELD(master_gun.gun_features_flags, GUN_ALLOW_SYNTHETIC) || CONFIG_GET(flag/allow_synthetic_gun_use) || !issynth(user)))

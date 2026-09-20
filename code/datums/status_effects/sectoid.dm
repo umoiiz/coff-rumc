@@ -45,7 +45,7 @@
 	return ..()
 
 /datum/status_effect/mindmeld/on_remove()
-	link_target.balloon_alert(link_target, "mindmeld inactive")
+	link_target.balloon_alert(link_target, "心灵融合未激活")
 	REMOVE_TRAIT(link_target, TRAIT_MINDMELDED, TRAIT_STATUS_EFFECT(id))
 	link_target.UnregisterSignal(link_target, list(
 		COMSIG_LIVING_STATUS_STUN,
@@ -133,5 +133,5 @@
 
 /atom/movable/screen/alert/status_effect/reknit_form
 	name = "Reknit form"
-	desc = "Your health is being restored."
+	desc = "你的生命值正在恢复."
 	icon_state = "xeno_rejuvenate"

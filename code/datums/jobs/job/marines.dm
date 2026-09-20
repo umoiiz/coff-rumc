@@ -18,8 +18,8 @@
 		human_spawn.set_nutrition(250)
 	if(!human_spawn.assigned_squad)
 		CRASH("after_spawn called for a marine without an assigned_squad")
-	to_chat(M, {"\nYou have been assigned to: <b><font size=3 color=[human_spawn.assigned_squad.color]>[lowertext(human_spawn.assigned_squad.name)] squad</font></b>.
-Make your way to the cafeteria for some post-cryosleep chow, and then get equipped in your squad's prep room."})
+	to_chat(M, {"\nYou 已被分配到: <b><font size=3 color=[human_spawn.assigned_squad.color]>[lowertext(human_spawn.assigned_squad.name)] 小队</font></b>.
+前往食堂吃些低温休眠后的食物, 然后在你小队的准备室中装备自己."})
 
 
 //Squad Marine
@@ -77,8 +77,8 @@ Make your way to the cafeteria for some post-cryosleep chow, and then get equipp
 
 /datum/job/terragov/squad/standard/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"\nYou are a rank-and-file marine of the TGMC, and that is your strength.
-What you lack alone, you gain standing shoulder to shoulder with the men and women of the TerraGov Marine Corps. Ooh-rah!"})
+	to_chat(M, {"\nYou 是TGMC的一名普通陆战队员, 这就是你的力量.
+你独自一人所缺乏的, 在与地球政府陆战队男男女女并肩作战时你将获得. 呜啦!"})
 
 /datum/job/terragov/squad/standard/npc
 	title = "Squad Marine (NPC)"
@@ -159,8 +159,8 @@ What you lack alone, you gain standing shoulder to shoulder with the men and wom
 
 /datum/job/terragov/squad/robot/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"\nYou are a rank-and-file marine of the TGMC, and that is your strength.
-What you lack alone, you gain standing shoulder to shoulder with the men and women of the TerraGov Marine Corps. Ooh-rah!"})
+	to_chat(M, {"\nYou 是TGMC的一名普通陆战队员, 这就是你的力量.
+你独自一人所缺乏的, 在与地球政府陆战队男男女女并肩作战时你将获得. 呜啦!"})
 
 //Squad Engineer
 /datum/job/terragov/squad/engineer
@@ -201,8 +201,8 @@ What you lack alone, you gain standing shoulder to shoulder with the men and wom
 
 /datum/job/terragov/squad/engineer/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"\nYou have the equipment and skill to build fortifications, reroute power lines, and bunker down.
-Your squaddies will look to you when it comes to construction in the field of battle."})
+	to_chat(M, {"\nYou 拥有建造防御工事, 改接电力线路和构筑掩体的装备和技能.
+在战场建设方面, 你的队友会指望你."})
 
 /datum/job/terragov/squad/engineer/npc
 	title = "Squad Engineer (NPC)"
@@ -268,8 +268,8 @@ Your squaddies will look to you when it comes to construction in the field of ba
 
 /datum/job/terragov/squad/corpsman/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"\nYou must tend the wounds of your squad mates and make sure they are healthy and active.
-You may not be a fully-fledged doctor, but you stand between life and death when it matters."})
+	to_chat(M, {"\nYou 必须照料你队友的伤口, 确保他们健康且活跃.
+你可能不是一名正式医生, 但在关键时刻你站在生与死之间."})
 
 /datum/job/terragov/squad/corpsman/npc
 	title = "Squad Corpsman (NPC)"
@@ -332,7 +332,7 @@ You may not be a fully-fledged doctor, but you stand between life and death when
 
 /datum/job/terragov/squad/smartgunner/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"\nYou are the smartgunner. Your job is to provide IFF weapons support."})
+	to_chat(M, {"\nYou 是智能枪手. 你的工作是提供IFF武器支援."})
 
 /datum/job/terragov/squad/smartgunner/npc
 	title = "Squad Smartgunner (NPC)"
@@ -382,8 +382,8 @@ You may not be a fully-fledged doctor, but you stand between life and death when
 
 /datum/job/terragov/squad/specialist/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"\nYou are the very rare and valuable weapon expert, trained to use special equipment.
-You can serve a variety of roles, so choose carefully."})
+	to_chat(M, {"\nYou 是极其稀有且宝贵的武器专家, 受过使用特殊装备的训练.
+你可以担任多种角色, 所以请谨慎选择."})
 
 //Squad Leader
 /datum/job/terragov/squad/leader
@@ -426,8 +426,8 @@ You can serve a variety of roles, so choose carefully."})
 
 /datum/job/terragov/squad/leader/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"\nYou are responsible for the men and women of your squad. Make sure they are on task, working together, and communicating.
-You are also in charge of communicating with command and letting them know about the situation first hand. Keep out of harm's way."})
+	to_chat(M, {"\nYou 对你小队的男男女女负责. 确保他们各司其职, 协同工作, 保持沟通.
+你还负责与指挥部沟通, 让他们第一时间了解情况. 远离危险."})
 
 /datum/job/terragov/squad/leader/npc
 	title = "Squad Leader (NPC)"

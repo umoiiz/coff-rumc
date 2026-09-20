@@ -29,7 +29,7 @@
 
 /datum/outfit/quick/som/marine/standard_assaultrifle
 	name = "V-31 Infantryman"
-	desc = "The typical SOM infantryman. Equipped with a V-31 assault rifle with integrated 'micro grenade' rail launcher, medium armor and a good selection of grenades. The rail launcher fires grenades that must arm mid flight, so are ineffective at close ranges, but add significant tactical options at medium range."
+	desc = "典型的SOM步兵.配备一支V-31突击步枪,集成'微型榴弹'轨道发射器,中型护甲以及多种手榴弹.轨道发射器发射的榴弹必须在飞行途中解除保险,因此在近距离无效,但在中距离可提供重要的战术选择."
 
 	suit_store = /obj/item/weapon/gun/rifle/som/standard
 	belt = /obj/item/storage/belt/marine/som/som_rifle
@@ -50,7 +50,7 @@
 
 /datum/outfit/quick/som/marine/mpi
 	name = "MPI_KM Infantryman"
-	desc = "A call back to an earlier time. Equipped with an MPI_KM assault rifle, with under barrel grenade launcher and a large supply of grenades. An old weapon that was a common sight during the original Martian rebellion, the MPI's good stopping power, reliability and a healthy dose of nostalgia means it is still seen in use by some among the SOM despite its age."
+	desc = "对旧日时光的致敬.配备一支MPI_KM突击步枪,带有下挂式榴弹发射器以及大量手榴弹.一种在最初的火星叛乱期间常见的旧式武器,MPI良好的停止作用,可靠性以及恰到好处的怀旧感意味着尽管它已经老旧,在SOM中仍有人使用."
 
 	suit_store = /obj/item/weapon/gun/rifle/mpi_km/black/grenadier
 	belt = /obj/item/storage/belt/marine/som/mpi_black
@@ -68,7 +68,7 @@
 
 /datum/outfit/quick/som/marine/light_carbine
 	name = "V-34 Light Infantryman"
-	desc = "Mobile and dangerous. Equipped with a V-34 carbine, light armor with an 'Aegis' shield module and a large supply of grenades. The V-34 is a modern update of an old weapon that was a common sight during the original Martian rebellion. Very reliable and excellent stopping power in a small, lightweight package. Brought into service as a much cheaper alternative to the VX-32."
+	desc = "机动且危险.配备一支V-34卡宾枪,带有'埃癸斯'护盾模块的轻型护甲以及大量手榴弹.V-34是一种在最初的火星叛乱期间常见的旧式武器的现代化改进型.非常可靠,在小型轻量化的包装中拥有出色的停止作用.作为VX-32的廉价得多的替代品而投入使用."
 
 	wear_suit = /obj/item/clothing/suit/modular/som/light/shield
 	suit_store = /obj/item/weapon/gun/rifle/som_carbine/black/standard
@@ -87,7 +87,7 @@
 
 /datum/outfit/quick/som/marine/scout
 	name = "V-21 Light Infantryman"
-	desc = "Highly mobile scouting configuration. Equipped with a V-21 submachine gun with variable firerate allowing for extreme rates of fire when properly wielded, light armor with an 'Aegis' shield module and a good selection of grenades. Allows for exceptional mobility and blistering firepower, it will falter in extended engagements where low armor and the V-21's high rate of fire can become liabilities."
+	desc = "高机动侦察配置.配备一支V-21冲锋枪,可变射速,在正确使用时能实现极高的射速,带有'埃癸斯'护盾模块的轻型护甲以及多种手榴弹.可提供卓越的机动性和猛烈火力,但在长时间交战中会因轻型护甲和V-21的高射速而陷入劣势."
 
 	wear_suit = /obj/item/clothing/suit/modular/som/light/shield
 	suit_store = /obj/item/weapon/gun/smg/som/scout
@@ -107,7 +107,7 @@
 
 /datum/outfit/quick/som/marine/shotgunner
 	name = "V-51 Pointman"
-	desc = "For close encounters. Equipped with a V-51 semi-automatic shotgun, light armor with an 'Aegis' shield module and a large selection of grenades. Allows for good mobility and dangerous CQC firepower."
+	desc = "用于近距离遭遇.配备一支V-51半自动霰弹枪,带有'埃癸斯'护盾模块的轻型护甲以及大量手榴弹.可提供良好的机动性和危险的近战火力."
 
 	belt = /obj/item/storage/belt/shotgun/som/mixed
 	wear_suit = /obj/item/clothing/suit/modular/som/light/shield
@@ -127,7 +127,7 @@
 
 /datum/outfit/quick/som/marine/pyro
 	name = "V-62 Flamethrower Operator"
-	desc = "Smells like victory. Equipped with an V-62 incinerator and wide nozzle, V-11 equipped for rapid burst fire, heavy armor upgraded with a 'Hades' fireproof module, and a backtank of fuel. Has better than average range and can quickly burn down large areas. It suffers from significant slowdown, lacks an integrated extinguisher, and undisciplined use can result in rapidly consuming all available fuel."
+	desc = "闻起来像胜利.配备一支V-62燃烧器,带有宽喷嘴,一支可快速点射的V-11,升级有'哈迪斯'防火模块的重型护甲,以及一个燃料背罐.拥有高于平均水平的射程,可迅速烧毁大片区域.但会显著减速,缺少集成灭火器,且不加节制地使用会迅速耗尽所有可用燃料."
 
 	head = /obj/item/clothing/head/modular/som/hades
 	wear_suit = /obj/item/clothing/suit/modular/som/heavy/pyro
@@ -149,7 +149,7 @@
 
 /datum/outfit/quick/som/marine/breacher
 	name = "V-21 Breacher"
-	desc = "Heavy armored breaching configuration. Equipped with a V-21 submachine gun with variable firerate allowing for extreme rates of fire when properly wielded, heavy armor, a boarding shield and a good selection of grenades. Offers outstanding protection although damage may be lacking, particular at longer range."
+	desc = "重甲破门配置.配备一支V-21冲锋枪,可变射速,在正确使用时能实现极高的射速,重型护甲,一面登舰盾以及多种手榴弹.提供出色的防护,尽管伤害可能不足,尤其是在较远距离."
 
 	glasses = /obj/item/clothing/glasses/welding/flipped
 	wear_suit = /obj/item/clothing/suit/modular/som/heavy/shield
@@ -173,7 +173,7 @@
 
 /datum/outfit/quick/som/marine/breacher_melee
 	name = "CQC Breacher"
-	desc = "For when a complete lack of subtlety is required. Equipped with 'Lorica' enhanced heavy armor and armed with a monsterous two handed breaching axe, designed to cut through heavy armor. When properly wielded, it also provides a degree of protection."
+	desc = "当完全不需要任何隐蔽时使用.配备'洛里卡'增强型重型护甲,手持一把巨大的双手破门斧,专为劈开重型护甲而设计.正确使用时,它也能提供一定程度的防护."
 
 	head = /obj/item/clothing/head/modular/som/lorica
 	wear_suit = /obj/item/clothing/suit/modular/som/heavy/lorica
@@ -201,7 +201,7 @@
 
 /datum/outfit/quick/som/marine/machine_gunner
 	name = "V-41 Machinegunner"
-	desc = "Heavy static firesupport. Equipped with a V-41 machine gun, burst fire V-11 sidearm and some basic building supplies. While often ill suited to the SOM's standard doctrine of mobility and aggression, the V-41 is typically seen in defensive positions or second line units where its poor mobility is a minor drawback compared to its sustained firepower."
+	desc = "重型固定火力支援.配备一支V-41机枪,点射型V-11副武器以及一些基础建筑补给.虽然常常不适合SOM标准的机动与进攻条令,但V-41通常出现在防御阵地或二线部队中,在这些地方其糟糕的机动性相对于持续火力而言只是小缺点."
 
 	suit_store = /obj/item/weapon/gun/rifle/som_mg/standard
 	belt = /obj/item/storage/holster/belt/pistol/m4a3/som
@@ -231,7 +231,7 @@
 
 /datum/outfit/quick/som/marine/charger
 	name = "Charger Infantryman"
-	desc = "The future infantryman of the SOM. Equipped with a volkite charger, medium armor and a good variety of grenades. Volkite weapons are exceptionally dangerous, especially against poorly armored or tightly grouped opponents. The charger is the SOM's premier close/medium range weapon, with good mobility, and can be used (with some difficulty) one handed when required."
+	desc = "SOM的未来步兵.配备一支沃尔基特充能枪,中型护甲以及多种手榴弹.沃尔基特武器异常危险,尤其是对抗护甲薄弱或密集聚集的敌人.充能枪是SOM首屈一指的近/中距离武器,机动性良好,必要时可(有些困难地)单手使用."
 	quantity = 4
 
 	suit_store = /obj/item/weapon/gun/energy/lasgun/lasrifle/volkite/charger/magharness

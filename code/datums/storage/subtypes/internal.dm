@@ -211,7 +211,7 @@
 /datum/storage/internal/pocket/insertion_message(obj/item/item, mob/user)
 	var/vision_distance = item.w_class >= WEIGHT_CLASS_NORMAL ? 3 : 1
 	//Grab the name of the object this pocket belongs to
-	user.visible_message(span_notice("[user] puts \a [item] into \the [parent.name]."), span_notice("You put \the [item] into \the [parent.name]."), null, vision_distance)
+	user.visible_message(span_notice("[user]将\a [item]放入\the [parent.name]."), span_notice("你将\the [item]放入\the [parent.name]."), null, vision_distance)
 
 /datum/storage/internal/pocket/medical
 	max_storage_space = 30

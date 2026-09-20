@@ -2,11 +2,11 @@
 //Note: Everything in modules/clothing/spacesuits should have the entire suit grouped together.
 //      Meaning the the suit is defined directly after the corrisponding helmet. Just like below!
 /obj/item/clothing/head/helmet/space
-	name = "Space helmet"
+	name = "太空头盔"
 	icon = 'icons/obj/clothing/headwear/space_suit_helmets.dmi'
 	worn_icon_list = list(slot_head_str = 'icons/mob/clothing/headwear/space_suit_helmets.dmi')
 	icon_state = "space_helm"
-	desc = "A special helmet designed for work in a hazardous, low-pressure environment."
+	desc = "一顶为危险低压环境工作设计的特殊头盔."
 	permeability_coefficient = 0.01
 	soft_armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 100, FIRE = 0, ACID = 0)
 	inventory_flags = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
@@ -18,8 +18,8 @@
 	eye_protection = 2
 
 /obj/item/clothing/suit/space
-	name = "Space suit"
-	desc = "A suit that protects against low pressure environments."
+	name = "太空服"
+	desc = "一套能在低压环境中保护穿戴者的防护服."
 	icon = 'icons/obj/clothing/suits/space_suits.dmi'
 	worn_icon_list = list(slot_wear_suit_str = 'icons/mob/clothing/suits/space_suits.dmi')
 	icon_state = "space"

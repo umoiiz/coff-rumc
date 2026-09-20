@@ -1,5 +1,5 @@
 /obj/item/paper/carbon
-	name = "paper"
+	name = "纸张"
 	icon_state = "paper_stack"
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/items/civilian_left.dmi',
@@ -46,10 +46,10 @@
 		copy.name = "Copy - " + c.name
 		copy.fields = c.fields
 		copy.updateinfolinks()
-		to_chat(usr, span_notice("You tear off the carbon-copy!"))
+		to_chat(usr, span_notice("你撕下了复写副本!"))
 		c.copied = 1
 		copy.iscopy = 1
 		copy.update_icon()
 		c.update_icon()
 	else
-		to_chat(usr, "There are no more carbon copies attached to this paper!")
+		to_chat(usr, "这张纸上没有更多复写副本了!")

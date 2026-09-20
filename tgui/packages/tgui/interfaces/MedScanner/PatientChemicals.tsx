@@ -26,10 +26,10 @@ export function PatientChemicals() {
   const { data } = useBackend<MedScannerData>();
   const { has_unknown_chemicals, chemicals_lists = {} } = data;
   return (
-    <Section title="Chemical Contents">
+    <Section title="化学物质含量">
       {!!has_unknown_chemicals && (
         <NoticeBox color="orange">
-          Unknown reagents detected. Proceed with caution.
+          检测到未知试剂.请谨慎处理.
         </NoticeBox>
       )}
       <Stack vertical>

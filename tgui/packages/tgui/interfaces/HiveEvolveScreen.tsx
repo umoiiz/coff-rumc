@@ -61,11 +61,11 @@ export const HiveEvolveScreen = (props) => {
   return (
     <Window theme="xeno" title="Xenomorph Evolution" width={400} height={750}>
       <Window.Content scrollable>
-        <Section title="Current Evolution">
+        <Section title="当前进化">
           <CasteView act={act} current name={name} abilities={abilities} />
           <EvolveProgress current={evolution.current} max={evolution.max} />
         </Section>
-        <Section title="Available Evolutions">
+        <Section title="可用进化">
           {evolvesInto.map((evolve, idx) => (
             <Collapsible
               key={evolve.type_path}

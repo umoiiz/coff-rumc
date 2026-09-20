@@ -209,7 +209,7 @@
 			else
 				msg += "[span_deadsay("...")]\n"
 		if(ishuman(user) && !user.stat && Adjacent(user))
-			user.visible_message("<b>[user]</b> checks [src]'s pulse.", "You check [src]'s pulse.", null, 4)
+			user.visible_message("<b>[user]</b>检查[src]的脉搏.", "你检查[src]的脉搏.", null, 4)
 		addtimer(CALLBACK(src, PROC_REF(take_pulse), user), 15)
 	msg += "<span class='alert'>"
 
@@ -368,7 +368,7 @@
 
 			var/overall_desc = ""
 			if(healthy)
-				overall_desc = span_tinynotice("[t_He] [t_has] a healthy [temp_limb.display_name].")
+				overall_desc = span_tinynotice("[t_He][t_has]一个健康的[temp_limb.display_name].")
 			else
 				overall_desc = "[t_He] [t_has] a [germ_desc][temp_limb.display_name]"
 				if(brute_desc || burn_desc)
@@ -544,24 +544,24 @@
 	if(isyautja(user))
 		var/obj/item/clothing/gloves/yautja/hunter/bracers = gloves
 		if(istype(bracers) && bracers.name_active)
-			msg += span_blue("Their bracers identifies them as <b>[real_name]</b>.")
-		msg += span_blue("[src] has the scent of [life_kills_total] defeated prey.")
+			msg += span_blue("他们的护腕显示他们是<b>[real_name]</b>.")
+		msg += span_blue("[src]身上有[life_kills_total]击败猎物的气味.")
 		if(hunter_data.hunted)
-			msg += span_orange("[src] is being hunted by [hunter_data.hunter.real_name].")
+			msg += span_orange("[src]正被[hunter_data.hunter.real_name]猎杀.")
 
 		if(hunter_data.dishonored)
-			msg += span_red("[src] was marked as dishonorable for '[hunter_data.dishonored_reason]'.")
+			msg += span_red("[src]因'[hunter_data.dishonored_reason]'被标记为不荣誉.")
 		else if(hunter_data.honored)
-			msg += span_green("[src] was honored for '[hunter_data.honored_reason]'.")
+			msg += span_green("[src]因'[hunter_data.honored_reason]'获得荣誉.")
 
 		if(hunter_data.thralled)
-			msg += span_green("[src] was thralled by [hunter_data.thralled_set.real_name] for '[hunter_data.thralled_reason]'.")
+			msg += span_green("[src]因'[hunter_data.thralled_reason]'被[hunter_data.thralled_set.real_name]奴役.")
 		else if(hunter_data.gear)
-			msg += span_red("[src] was marked as carrying gear by [hunter_data.gear_set].")
+			msg += span_red("[src]被[hunter_data.gear_set]标记为携带装备.")
 
 	if(has_status_effect(STATUS_EFFECT_ADMINSLEEP))
 		msg += separator_hr("[span_boldwarning("Admin Slept")]")
-		msg += span_userdanger("This player has been slept by staff. Best to leave them be.\n")
+		msg += span_userdanger("该玩家已被工作人员催眠.最好别打扰他们.\n")
 
 	SEND_SIGNAL(src, COMSIG_ATOM_EXAMINE, user, .)
 
@@ -573,9 +573,9 @@
 		return
 	var/pulse_taken = get_pulse(GETPULSE_HAND)
 	if(pulse_taken == PULSE_NONE)
-		to_chat(user, span_deadsay("[p_they(TRUE)] [p_have()] no pulse..."))
+		to_chat(user, span_deadsay("[p_they(TRUE)][p_have()]没有脉搏..."))
 	else
-		to_chat(user, span_deadsay("[p_their(TRUE)] pulse is [pulse_taken]."))
+		to_chat(user, span_deadsay("[p_their(TRUE)]的脉搏是[pulse_taken]."))
 
 //Helper procedure. Called by /mob/living/carbon/human/examine() and /mob/living/carbon/human/Topic() to determine HUD access to security and medical records.
 /proc/hasHUD(mob/M, hudtype)

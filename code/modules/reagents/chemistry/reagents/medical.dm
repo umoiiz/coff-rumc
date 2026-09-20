@@ -20,7 +20,7 @@
 	if(TIMER_COOLDOWN_RUNNING(L, name) || L.stat == DEAD)
 		return
 	if(L.health < H.health_threshold_crit && volume > 14) //If you are in crit, and someone injects at least 15u into you at once, you will heal 30% of your physical damage instantly.
-		to_chat(L, span_userdanger("You feel a rush of energy as stimulants course through your veins!"))
+		to_chat(L, span_userdanger("你感到一股能量涌动, 兴奋剂在你的血管中奔流!"))
 		L.adjust_brute_loss(-L.get_brute_loss(TRUE) * 0.30)
 		L.adjust_fire_loss(-L.get_fire_loss(TRUE) * 0.30)
 		L.jitter(5)
@@ -157,7 +157,7 @@
 	if(TIMER_COOLDOWN_RUNNING(L, name))
 		return
 	L.adjust_stamina_loss(-20*effect_str)
-	to_chat(L, span_userdanger("You feel a burst of energy revitalize you all of a sudden! You can do anything!"))
+	to_chat(L, span_userdanger("你突然感到一股能量让你焕然一新! 你无所不能!"))
 
 /datum/reagent/medicine/oxycodone/on_mob_life(mob/living/L, metabolism)
 	L.reagent_pain_modifier += PAIN_REDUCTION_SUPER_HEAVY
@@ -183,7 +183,7 @@
 			E.take_damage(3*effect_str, TRUE)
 
 /datum/reagent/medicine/oxycodone/on_mob_delete(mob/living/L, metabolism)
-	to_chat(L, span_userdanger("The room spins slightly as you start to come down off your painkillers!"))
+	to_chat(L, span_userdanger("当你开始从止痛药中清醒过来时, 房间微微旋转!"))
 	TIMER_COOLDOWN_START(L, name, 60 SECONDS)
 
 /datum/reagent/medicine/hydrocodone
@@ -352,7 +352,7 @@
 	if(TIMER_COOLDOWN_RUNNING(L, name))
 		return
 	L.adjust_stamina_loss(-100*effect_str)
-	to_chat(L, span_userdanger("You feel a complete lack of fatigue, so relaxing!"))
+	to_chat(L, span_userdanger("你感到完全没有疲劳, 如此放松!"))
 
 /datum/reagent/medicine/dexalinplus/on_mob_delete(mob/living/L, metabolism)
 	TIMER_COOLDOWN_START(L, name, 180 SECONDS)
@@ -480,7 +480,7 @@
 	if(TIMER_COOLDOWN_RUNNING(L, name))
 		return
 	L.adjust_stamina_loss(-30*effect_str)
-	to_chat(L, span_userdanger("You feel a burst of energy as the stimulants course through you! Time to go!"))
+	to_chat(L, span_userdanger("你感到一股能量涌动, 兴奋剂在你体内奔流! 该出发了!"))
 
 /datum/reagent/medicine/synaptizine/on_mob_life(mob/living/L, metabolism)
 	L.reagent_shock_modifier += PAIN_REDUCTION_MEDIUM
@@ -506,7 +506,7 @@
 	L.apply_damages(2 * effect_str, 2 * effect_str, 3 * effect_str)
 
 /datum/reagent/medicine/synaptizine/on_mob_delete(mob/living/L, metabolism)
-	to_chat(L, span_userdanger("The room spins as you start to come down off your stimulants!"))
+	to_chat(L, span_userdanger("当你开始从兴奋剂中清醒过来时, 房间在旋转!"))
 	TIMER_COOLDOWN_START(L, name, 60 SECONDS)
 
 ///ADRENALINE, basically old synaptizine with buffs?
@@ -524,12 +524,12 @@
 	if(TIMER_COOLDOWN_RUNNING(L, COOLDOWN_STAMINA))
 		return
 	L.adjust_stamina_loss(-30 * effect_str)
-	to_chat(L, span_userdanger("You feel a burst of energy as the adrenaline courses through you! Time to go fast!"))
+	to_chat(L, span_userdanger("你感到一股能量涌动, 肾上腺素在你体内奔流! 该加速了!"))
 
 	if(TIMER_COOLDOWN_RUNNING(L, COOLDOWN_CRIT) || L.stat == DEAD)
 		return
 	if(L.health < H.health_threshold_crit && volume >= 2)
-		to_chat(L, span_userdanger("Heart explosion! Power running in your veins!"))
+		to_chat(L, span_userdanger("心脏爆炸! 力量在你的血管中奔涌!"))
 		L.adjust_brute_loss(-L.get_brute_loss(TRUE) * 0.40)
 		L.adjust_fire_loss(-L.get_fire_loss(TRUE) * 0.20)
 		L.adjust_tox_loss(5)
@@ -560,7 +560,7 @@
 	L.apply_damages(effect_str, effect_str, effect_str)
 
 /datum/reagent/medicine/adrenaline/on_mob_delete(mob/living/L, metabolism)
-	to_chat(L, span_userdanger("The room spins as your adrenaline starts to wear off!"))
+	to_chat(L, span_userdanger("当你开始从肾上腺素中清醒过来时, 房间在旋转!"))
 	TIMER_COOLDOWN_START(L, COOLDOWN_STAMINA, 60 SECONDS)
 
 /datum/reagent/medicine/neuraline //injected by neurostimulator implant and medic-only injector
@@ -577,7 +577,7 @@
 	if(TIMER_COOLDOWN_RUNNING(L, name) || L.stat == DEAD)
 		return
 	if(L.health < H.health_threshold_crit && volume > 3) //If you are in crit, and someone injects at least 3u into you, you will heal 20% of your physical damage instantly.
-		to_chat(L, span_userdanger("You feel a rush of energy as stimulants course through your veins!"))
+		to_chat(L, span_userdanger("你感到一股能量涌动, 兴奋剂在你的血管中奔流!"))
 		L.adjust_brute_loss(-L.get_brute_loss(TRUE) * 0.20)
 		L.adjust_fire_loss(-L.get_fire_loss(TRUE) * 0.20)
 		L.jitter(10)
@@ -663,7 +663,7 @@
 	if(TIMER_COOLDOWN_RUNNING(L, name) || L.stat == DEAD)
 		return
 	if(L.health < H.health_threshold_crit && volume > 9) //If you are in crit, and someone injects at least 9u into you, you will heal 20% of your physical damage instantly.
-		to_chat(L, span_userdanger("You feel a rush of energy as stimulants course through your veins!"))
+		to_chat(L, span_userdanger("你感到一股能量涌动, 兴奋剂在你的血管中奔流!"))
 		L.adjust_brute_loss(-L.get_brute_loss(TRUE) * 0.20)
 		L.adjust_fire_loss(-L.get_fire_loss(TRUE) * 0.20)
 		L.jitter(10)
@@ -909,7 +909,7 @@
 
 /datum/reagent/medicine/quickclotplus/on_mob_delete(mob/living/L, metabolism)
 	if(target_IB)
-		to_chat(L, span_warning("The searing pain in your [target_IB.parent_limb.display_name] returns to a dull ache..."))
+		to_chat(L, span_warning("你[target_IB.parent_limb.display_name]的灼痛感又变回了隐隐作痛..."))
 		UnregisterSignal(target_IB, COMSIG_QDELETING)
 		target_IB = null
 
@@ -923,7 +923,7 @@
 		return ..()
 	ticks_left--
 	if(!ticks_left)
-		to_chat(L, span_alert("The searing pain in your [target_IB.parent_limb.display_name] peaks, then slowly fades away entirely."))
+		to_chat(L, span_alert("你[target_IB.parent_limb.display_name]的灼痛感达到顶峰, 然后慢慢完全消退."))
 		target_IB.parent_limb.createwound(CUT, target_IB.damage * 0.5)
 		UnregisterSignal(target_IB, COMSIG_QDELETING)
 		QDEL_NULL(target_IB)
@@ -945,7 +945,7 @@
 		if(target_IB)
 			break
 	if(target_IB)
-		to_chat(body, span_userdanger("The deep ache in your [target_IB.parent_limb.display_name] erupts into searing pain!"))
+		to_chat(body, span_userdanger("你[target_IB.parent_limb.display_name]深处的疼痛爆发成灼痛!"))
 		ticks_left = ticks_to_cure_IB
 
 ///If something else removes the wound before the drug finishes with it, we need to clean references.
@@ -1358,26 +1358,26 @@
 	taste_description = "Victory"
 
 /datum/reagent/medicine/research/quietus/on_mob_add(mob/living/L, metabolism)
-	to_chat(L, span_userdanger("You feel like this shot will negatively affect your revival prospects."))
+	to_chat(L, span_userdanger("你感觉这一针会对你的复活前景产生负面影响."))
 
 /datum/reagent/medicine/research/quietus/on_mob_life(mob/living/L, metabolism)
 	switch(current_cycle)
 		if(1 to 59)
 			L.adjust_stamina_loss(1*effect_str)
 			if(prob(5))
-				to_chat(L, span_notice("You feel weakened by a poison."))
+				to_chat(L, span_notice("你感觉被毒药削弱了."))
 		if(60)
-			to_chat(L, span_warning("You feel the poison settle into your body."))
+			to_chat(L, span_warning("你感觉毒药在你的体内沉淀下来."))
 		if(61 to INFINITY)
 			if(L.stat == UNCONSCIOUS)
 				L.adjust_oxy_loss(25*effect_str)
-				to_chat(L, span_userdanger("You fade into blackness as your lungs seize up!"))
+				to_chat(L, span_userdanger("当你的肺部痉挛时, 你陷入黑暗!"))
 			if(prob(5))
 				L.adjust_stamina_loss(1*effect_str)
 	return ..()
 
 /datum/reagent/medicine/research/quietus/on_mob_delete(mob/living/L, metabolism)
-	to_chat(L, span_danger("You convulse as your body violently rejects the suicide drug!"))
+	to_chat(L, span_danger("当你的身体剧烈排斥自杀药物时, 你抽搐起来."))
 	L.adjust_tox_loss(30*effect_str)
 
 
@@ -1395,9 +1395,9 @@
 			if(L.stat == UNCONSCIOUS)
 				L.heal_overall_damage(0.4*current_cycle*effect_str, 0.4*current_cycle*effect_str)
 			if(prob(20) && L.stat != UNCONSCIOUS)
-				to_chat(L, span_notice("You feel as though you should be sleeping for the medicine to work."))
+				to_chat(L, span_notice("你感觉你应该睡着才能让药物生效."))
 		if(25)
-			to_chat(L, span_notice("You feel very sleepy all of a sudden."))
+			to_chat(L, span_notice("你突然感到非常困倦."))
 		if(26 to INFINITY)
 			if(L.stat == UNCONSCIOUS)
 				L.heal_overall_damage(10*effect_str, 10*effect_str)
@@ -1431,7 +1431,7 @@
 	)
 
 /datum/reagent/medicalnanites/on_mob_add(mob/living/L, metabolism)
-	to_chat(L, span_userdanger("You feel like you should stay near medical help until this shot settles in."))
+	to_chat(L, span_userdanger("你感觉你应该待在医疗帮助附近, 直到这一针稳定下来."))
 	L.add_movespeed_modifier(MOVESPEED_ID_MOB_NANITES_SPEED, TRUE, 0, NONE, TRUE, 0.1)
 
 /datum/reagent/medicalnanites/on_mob_life(mob/living/L, metabolism)
@@ -1441,9 +1441,9 @@
 			L.adjust_stamina_loss((1.5)*effect_str)
 			L.reagents.add_reagent(/datum/reagent/medicalnanites, 0.4)
 			if(prob(5))
-				to_chat(L, span_notice("You feel intense itching!"))
+				to_chat(L, span_notice("你感到剧烈的瘙痒!"))
 		if(76)
-			to_chat(L, span_warning("The pain rapidly subsides. Looks like they've adapted to you."))
+			to_chat(L, span_warning("疼痛迅速消退. 看起来它们已经适应了你."))
 		if(77 to INFINITY)
 			if(volume < 30) //smol injection will self-replicate up to 30u using 240u of blood.
 				L.reagents.add_reagent(/datum/reagent/medicalnanites, 0.15)
@@ -1461,14 +1461,14 @@
 				L.adjust_tox_loss(0.1*effect_str)
 				holder.remove_reagent(/datum/reagent/medicalnanites, 0.5)
 				if(prob(40))
-					to_chat(L, span_notice("Your cuts and bruises begin to scab over rapidly!"))
+					to_chat(L, span_notice("你的伤口和瘀伤开始迅速结痂!"))
 
 			if (volume > 5 && L.get_fire_loss(organic_only = TRUE))
 				L.heal_overall_damage(0, 3 * effect_str)
 				L.adjust_tox_loss(0.1*effect_str)
 				holder.remove_reagent(/datum/reagent/medicalnanites, 0.5)
 				if(prob(40))
-					to_chat(L, span_notice("Your burns begin to slough off, revealing healthy tissue!"))
+					to_chat(L, span_notice("你的烧伤开始脱落, 露出健康的组织!"))
 
 			if(volume < 10)
 				return ..()
@@ -1510,7 +1510,7 @@
 		stom.take_damage(0.7 * effect_str)
 
 /datum/reagent/medicalnanites/on_mob_delete(mob/living/L, metabolism)
-	to_chat(L, span_userdanger("Your nanites have been fully purged! They no longer affect you."))
+	to_chat(L, span_userdanger("你的纳米机器已被完全清除! 它们不再影响你."))
 	L.remove_movespeed_modifier(MOVESPEED_ID_MOB_NANITES_SPEED)
 
 /datum/reagent/medicine/research/stimulon
@@ -1520,7 +1520,7 @@
 	custom_metabolism = 0
 
 /datum/reagent/medicine/research/stimulon/on_mob_add(mob/living/L, metabolism)
-	to_chat(L, span_userdanger("You feel jittery and fast! Time to MOVE!"))
+	to_chat(L, span_userdanger("你感到颤抖而迅速! 该行动了!"))
 	. = ..()
 	L.add_movespeed_modifier(type, TRUE, 0, NONE, TRUE, -1)
 	L.adjust_clone_loss(10*effect_str)
@@ -1528,7 +1528,7 @@
 /datum/reagent/medicine/research/stimulon/on_mob_delete(mob/living/L, metabolism)
 	L.remove_movespeed_modifier(type)
 	L.Paralyze(2 SECONDS)
-	to_chat(L, span_warning("You reel as the stimulant departs your bloodstream!"))
+	to_chat(L, span_warning("当兴奋剂离开你的血液时, 你感到眩晕!"))
 
 /datum/reagent/medicine/research/stimulon/on_mob_life(mob/living/L, metabolism)
 	L.adjust_stamina_loss(1*effect_str)
@@ -1540,7 +1540,7 @@
 		L.reagents.add_reagent(/datum/reagent/medicine/research/stimulon, 0.5)
 	switch(current_cycle)
 		if(20)//avg cloneloss of 1/tick and 10 additional units made
-			to_chat(L, span_userdanger("You start to ache and cramp as your muscles wear out. You should probably remove this drug soon."))
+			to_chat(L, span_userdanger("当你的肌肉磨损时, 你开始感到疼痛和痉挛. 你可能应该尽快移除这种药物."))
 		if (21 to INFINITY)
 			L.jitter(5)
 	return ..()
@@ -1629,7 +1629,7 @@
 	return ..()
 
 /datum/reagent/medicine/sulfasalazine/on_mob_delete(mob/living/L, metabolism)
-	to_chat(L, span_userdanger("You feel the Sulfasalazine stirring deep within your tissues..."))
+	to_chat(L, span_userdanger("你感到柳氮磺吡啶在你的组织深处搅动..."))
 	var/datum/weakref/sulfa_issue = WEAKREF(L)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(restore_sulfasalazine), sulfa_issue), 7.5 SECONDS)
 
@@ -1638,7 +1638,7 @@
 	if(!L)
 		return
 
-	to_chat(L, span_userdanger("The Sulfasalazine erupts back into your bloodstream!"))
+	to_chat(L, span_userdanger("柳氮磺吡啶涌回你的血液中!"))
 	L.reagents.add_reagent(/datum/reagent/medicine/sulfasalazine, 5)
 
 /datum/reagent/histamine
@@ -1667,10 +1667,10 @@
 	return TRUE
 
 /datum/reagent/histamine/on_mob_add(mob/living/L, metabolism)
-	to_chat(L, span_userdanger("You feel your throat tightening!"))
+	to_chat(L, span_userdanger("你感到你的喉咙在收紧!"))
 
 /datum/reagent/histamine/on_mob_delete(mob/living/L, metabolism)
-	to_chat(L, span_userdanger("You feel how it becomes easier for you to breathe."))
+	to_chat(L, span_userdanger("你感到呼吸变得更容易了."))
 
 /datum/reagent/histamine/overdose_process(mob/living/L, metabolism)
 	L.apply_damages(1 * effect_str, 1 * effect_str, 1 * effect_str)
@@ -1727,7 +1727,7 @@
 			continue
 		limb_regrown = TRUE
 		limb.biotize()
-		to_chat(human, span_userdanger("You feel unbelievable pain as your [limb.display_name] regrows before your eyes!"))
+		to_chat(human, span_userdanger("当你亲眼看着你的[limb.display_name]重新长出时, 你感到难以置信的疼痛!"))
 		human.jitter(10)
 		human.Paralyze(1 SECONDS)
 		human.adjust_stamina_loss(20)

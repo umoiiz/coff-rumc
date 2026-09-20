@@ -63,7 +63,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/defile
 	name = "Defile"
-	desc = "Channel to inject an adjacent target with an accelerant that violently reacts with xeno toxins, releasing gas and dealing heavy tox damage in proportion to the amount in their system."
+	desc = "引导向一个相邻目标注入一种催速剂, 它会与异形毒素剧烈反应, 释放气体并根据其体内毒素量造成大量毒素伤害."
 	action_icon_state = "defiler_sting"
 	action_icon = 'icons/Xeno/actions/defiler.dmi'
 	ability_cost = 100
@@ -75,7 +75,7 @@
 
 /datum/action/ability/activable/xeno/defile/on_cooldown_finish()
 	playsound(owner.loc, 'sound/voice/alien/drool1.ogg', 50, 1)
-	to_chat(owner, span_xenodanger("You feel your toxin accelerant glands refill. You can use Defile again."))
+	to_chat(owner, span_xenodanger("你感觉到你的毒素加速腺体重新充盈。你可以再次使用玷污。"))
 	return ..()
 
 /datum/action/ability/activable/xeno/defile/can_use_ability(atom/A, silent = FALSE, override_flags)
@@ -85,18 +85,18 @@
 
 	if(!A.can_sting())
 		if(!silent)
-			A.balloon_alert(owner, "Cannot effect")
+			A.balloon_alert(owner, "无法影响")
 		return FALSE
 
 	if(!owner.Adjacent(A))
 		if(!silent)
-			A.balloon_alert(owner, "Cannot reach")
+			A.balloon_alert(owner, "无法触及")
 		return FALSE
 
 /datum/action/ability/activable/xeno/defile/use_ability(atom/A)
 	var/mob/living/carbon/living_target = A
 	if(living_target.status_flags & GODMODE)
-		owner.balloon_alert(owner, "Cannot defile")
+		owner.balloon_alert(owner, "无法玷污")
 		return fail_activate()
 	xeno_owner.face_atom(living_target)
 	if(!do_after(xeno_owner, DEFILER_DEFILE_CHANNEL_TIME, IGNORE_TARGET_LOC_CHANGE, living_target, BUSY_ICON_HOSTILE))
@@ -107,8 +107,8 @@
 	xeno_owner.do_attack_animation(living_target)
 	playsound(living_target, 'sound/effects/spray3.ogg', 15, TRUE)
 	playsound(living_target, pick('sound/voice/alien/drool1.ogg', 'sound/voice/alien/drool2.ogg'), 15, 1)
-	to_chat(xeno_owner, span_xenodanger("Our stinger successfully discharges accelerant into our victim."))
-	to_chat(living_target, span_danger("You feel horrible pain as something sharp forcibly pierces your thorax."))
+	to_chat(xeno_owner, span_xenodanger("我们的毒刺成功将加速剂注入受害者体内。"))
+	to_chat(living_target, span_danger("你感到剧痛,某样尖锐的东西强行刺穿了你的胸腔。"))
 	living_target.apply_damage(50, STAMINA)
 	living_target.apply_damage(5, BRUTE, "chest", updating_health = TRUE)
 	living_target.emote("scream")
@@ -144,11 +144,11 @@
 
 	switch(defile_power) //Description varies in severity and probability with the multiplier
 		if(1 to 49)
-			to_chat(living_target, span_warning("Your body aches."))
+			to_chat(living_target, span_warning("你的身体疼痛不已。"))
 		if(50 to 99)
-			to_chat(living_target, span_danger("Your insides are in agony!"))
+			to_chat(living_target, span_danger("你的内脏痛苦不堪!"))
 		if(100 to INFINITY)
-			to_chat(living_target, span_userdanger("YOUR INSIDES FEEL LIKE THEY'RE ON FIRE!!"))
+			to_chat(living_target, span_userdanger("你的内脏感觉像着了火一样!!"))
 
 	GLOB.round_statistics.defiler_defiler_stings++
 	SSblackbox.record_feedback(FEEDBACK_TALLY, "round_statistics", 1, "defiler_defiler_stings")
@@ -161,7 +161,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/emit_neurogas
 	name = "Emit Noxious Gas"
-	desc = "Channel for 3 seconds to emit a cloud of noxious smoke, based on selected reagent, that follows the Defiler. You must remain stationary while channeling; moving will cancel the ability but will still cost plasma."
+	desc = "引导3秒以释放一团基于所选试剂的有毒烟雾,烟雾会跟随玷污者。引导期间你必须保持静止;移动将取消该技能但仍会消耗等离子体。"
 	action_icon_state = "emit_neurogas"
 	action_icon = 'icons/Xeno/actions/defiler.dmi'
 	ability_cost = 200
@@ -175,22 +175,22 @@
 
 /datum/action/ability/xeno_action/emit_neurogas/on_cooldown_finish()
 	playsound(owner.loc, 'sound/effects/alien/newlarva.ogg', 50, 0)
-	to_chat(owner, span_xenodanger("We feel our dorsal vents bristle with heated gas. We can emit Noxious Gas again."))
+	to_chat(owner, span_xenodanger("我们感觉到我们的背侧排气孔因加热气体而竖立。我们可以再次释放有毒气体。"))
 	return ..()
 
 /datum/action/ability/xeno_action/emit_neurogas/action_activate()
 	toggle_particles(TRUE)
 
 	//give them fair warning
-	xeno_owner.visible_message(span_danger("Tufts of smoke begin to billow from [xeno_owner]!"), \
-	span_xenodanger("Our dorsal vents widen, preparing to emit toxic smoke. We must keep still!"))
-	xeno_owner.balloon_alert(xeno_owner, "Keep still...")
+	xeno_owner.visible_message(span_danger("缕缕烟雾开始从[xeno_owner]滚滚而出!"), \
+	span_xenodanger("我们的背侧排气孔张开,准备释放有毒烟雾。我们必须保持静止!"))
+	xeno_owner.balloon_alert(xeno_owner, "保持静止...")
 
 	xeno_owner.icon_state = "[xeno_owner.xeno_caste.caste_name] Power Up"
 
 	if(!do_after(xeno_owner, DEFILER_GAS_CHANNEL_TIME, NONE, null, BUSY_ICON_HOSTILE))
 		if(!QDELETED(src))
-			to_chat(xeno_owner, span_xenodanger("We abort emitting fumes, our expended plasma resulting in nothing."))
+			to_chat(xeno_owner, span_xenodanger("我们中止了释放烟雾,消耗的等离子体毫无结果。"))
 			xeno_owner.icon_state = "[xeno_owner.xeno_caste.caste_name] Running"
 			return fail_activate()
 	xeno_owner.icon_state = "[xeno_owner.xeno_caste.caste_name] Running"
@@ -199,15 +199,15 @@
 	succeed_activate()
 
 	if(xeno_owner.IsStaggered()) //If we got staggered, return
-		to_chat(xeno_owner, span_xenowarning("We try to emit toxins but are staggered!"))
+		to_chat(xeno_owner, span_xenowarning("我们试图释放毒素但被震退了!"))
 		return fail_activate()
 
 	owner.record_war_crime()
 	GLOB.round_statistics.defiler_neurogas_uses++
 	SSblackbox.record_feedback(FEEDBACK_TALLY, "round_statistics", 1, "defiler_neurogas_uses")
 
-	xeno_owner.visible_message(span_xenodanger("[xeno_owner] emits a noxious gas!"), \
-	span_xenodanger("We emit noxious gas!"))
+	xeno_owner.visible_message(span_xenodanger("[xeno_owner]释放出一团有毒气体!"), \
+	span_xenodanger("我们释放出有毒气体!"))
 	dispense_gas()
 
 /datum/action/ability/xeno_action/emit_neurogas/fail_activate()
@@ -231,11 +231,11 @@
 				emitted_gas = new /datum/effect_system/smoke_spread/xeno/acid/light(xeno_owner)
 
 	if(xeno_owner.IsStaggered()) //If we got staggered, return
-		to_chat(xeno_owner, span_xenowarning("We try to emit toxins but are staggered!"))
+		to_chat(xeno_owner, span_xenowarning("我们试图释放毒素但被震退了!"))
 		toggle_particles(FALSE)
 		return
 	if(xeno_owner.has_status_effect(STATUS_EFFECT_STUN) || xeno_owner.has_status_effect(STATUS_EFFECT_PARALYZED))
-		to_chat(xeno_owner, span_xenowarning("We try to emit toxins but are disabled!"))
+		to_chat(xeno_owner, span_xenowarning("我们试图释放毒素但被瘫痪了!"))
 		toggle_particles(FALSE)
 		return
 	var/turf/T = get_turf(xeno_owner)
@@ -245,7 +245,7 @@
 	else //last emission is larger
 		emitted_gas.set_up(CEILING(smoke_range*1.3,1), T)
 	emitted_gas.start()
-	T.visible_message(span_danger("Noxious smoke billows from the hulking xenomorph!"))
+	T.visible_message(span_danger("有毒烟雾从庞大的异形身上滚滚而出!"))
 	toggle_particles(FALSE)
 	addtimer(CALLBACK(src, PROC_REF(dispense_gas), time_left - 1, emitted_gas), DEFILER_GAS_DELAY)
 
@@ -272,7 +272,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/inject_egg_neurogas
 	name = "Inject Gas"
-	desc = "Inject an egg with toxins, killing the larva, but filling it full with gas ready to explode."
+	desc = "向一颗卵中注入毒素,杀死里面的幼虫,但将其充满随时会爆炸的气体。"
 	action_icon_state = "inject_egg"
 	action_icon = 'icons/Xeno/actions/defiler.dmi'
 	ability_cost = 80
@@ -285,16 +285,16 @@
 
 /datum/action/ability/activable/xeno/inject_egg_neurogas/on_cooldown_finish()
 	playsound(owner.loc, 'sound/effects/alien/newlarva.ogg', 50, 0)
-	to_chat(owner, span_xenodanger("We feel our stinger fill with toxins. We can inject an egg with gas again."))
+	to_chat(owner, span_xenodanger("我们感觉到我们的毒刺充满了毒素。我们可以再次向卵中注入气体。"))
 	return ..()
 
 /datum/action/ability/activable/xeno/inject_egg_neurogas/use_ability(atom/A)
 	if(!owner.Adjacent(A))
-		A.balloon_alert(owner, "Out of reach")
+		A.balloon_alert(owner, "超出范围")
 		return fail_activate()
 
 	if(istype(A, /obj/alien/egg/gas))
-		A.balloon_alert(xeno_owner, "Egg already injected")
+		A.balloon_alert(xeno_owner, "卵已被注入")
 		return fail_activate()
 
 	if(!istype(A, /obj/alien/egg/facehugger))
@@ -302,19 +302,19 @@
 
 	var/obj/alien/egg/alien_egg = A
 	if(alien_egg.maturity_stage != alien_egg.stage_ready_to_burst)
-		alien_egg.balloon_alert(xeno_owner, "Egg not mature")
+		alien_egg.balloon_alert(xeno_owner, "卵未成熟")
 		return fail_activate()
 
-	alien_egg.balloon_alert_to_viewers("Injecting...")
-	xeno_owner.visible_message(span_danger("[xeno_owner] starts injecting the egg with neurogas, killing the little one inside!"), \
-		span_xenodanger("We extend our stinger into the egg, filling it with gas, killing the little one inside!"))
+	alien_egg.balloon_alert_to_viewers("注入中...")
+	xeno_owner.visible_message(span_danger("[xeno_owner]开始向卵中注入神经毒气,杀死里面的小家伙!"), \
+		span_xenodanger("我们将毒刺伸入卵中,将其充满气体,杀死里面的小家伙!"))
 	if(!do_after(xeno_owner, 2 SECONDS, NONE, alien_egg, BUSY_ICON_HOSTILE))
-		alien_egg.balloon_alert_to_viewers("Canceled injection")
-		xeno_owner.visible_message(span_danger("The stinger retracts from [xeno_owner], leaving the egg and little one alive."), \
-			span_xenodanger("Our stinger retracts, leaving the egg and little one alive."))
+		alien_egg.balloon_alert_to_viewers("注入已取消")
+		xeno_owner.visible_message(span_danger("毒刺从[xeno_owner]缩回,留下卵和小家伙存活。"), \
+			span_xenodanger("我们的毒刺缩回,留下卵和小家伙存活。"))
 		return fail_activate()
 
-	alien_egg.balloon_alert_to_viewers("Injected")
+	alien_egg.balloon_alert_to_viewers("已注入")
 	succeed_activate()
 	add_cooldown()
 
@@ -340,7 +340,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/select_reagent
 	name = "Select Reagent"
-	desc = "Selects which reagent to use for reagent slash and noxious gas. Hemodile slows targets down, multiplied by each other xeno-based toxin. Transvitox converts burns to toxin, and causes additional toxin damage when they take brute damage, both effects multiplied by other xeno-based toxins. Ozelomelyn purges all medicines from their system rapidly and causes minor toxin damage. Acid is transparent but causes major burn damage."
+	desc = "选择用于试剂斩击和有毒气体的试剂。血液毒会减缓目标速度,效果乘以每种其他异形毒素。转毒素会将灼伤转化为毒素,并在目标受到物理伤害时造成额外毒素伤害,两种效果均乘以其他异形毒素。奥泽洛梅林会迅速清除其系统中的所有药物并造成轻微毒素伤害。酸液是透明的但会造成大量灼伤伤害。"
 	action_icon_state = "select_reagent0"
 	action_icon = 'icons/Xeno/actions/general.dmi'
 	use_state_flags = ABILITY_USE_BUSY|ABILITY_USE_LYING
@@ -402,7 +402,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/reagent_slash
 	name = "Reagent Slash"
-	desc = "For a short duration the next 3 slashes made will inject a small amount of selected toxin."
+	desc = "在短时间内,接下来的3次斩击将注入少量所选毒素。"
 	action_icon_state = "reagent_slash"
 	action_icon = 'icons/Xeno/actions/defiler.dmi'
 	cooldown_duration = 6 SECONDS
@@ -428,7 +428,7 @@
 	reagent_slash_duration_timer_id = addtimer(CALLBACK(src, PROC_REF(reagent_slash_deactivate), xeno_owner), DEFILER_REAGENT_SLASH_DURATION, TIMER_STOPPABLE) //Initiate the timer and set the timer ID for reference
 	reagent_slash_reagent = xeno_owner.selected_reagent
 
-	xeno_owner.balloon_alert(xeno_owner, "Reagent slash active") //Let the user know
+	xeno_owner.balloon_alert(xeno_owner, "试剂斩击激活") //Let the user know
 	xeno_owner.playsound_local(xeno_owner, 'sound/voice/alien/drool2.ogg', 25)
 
 	toggle_particles(TRUE)
@@ -445,7 +445,7 @@
 	reagent_slash_reagent = null
 	toggle_particles(FALSE)
 
-	xeno_owner.balloon_alert(xeno_owner, "Reagent slash over") //Let the user know
+	xeno_owner.balloon_alert(xeno_owner, "试剂斩击结束") //Let the user know
 	xeno_owner.playsound_local(xeno_owner, 'sound/voice/alien/hiss8.ogg', 25)
 
 ///Called when we slash while reagent slash is active
@@ -459,7 +459,7 @@
 
 	if(xeno_owner.selected_reagent == /datum/reagent/toxin/acid)
 		if(HAS_TRAIT(carbon_target, TRAIT_INTOXICATION_IMMUNE))
-			carbon_target.balloon_alert(xeno_owner, "Immune to Intoxication")
+			carbon_target.balloon_alert(xeno_owner, "免疫中毒")
 			return
 
 		if(carbon_target.has_status_effect(STATUS_EFFECT_INTOXICATED))
@@ -469,7 +469,7 @@
 			carbon_target.apply_status_effect(STATUS_EFFECT_INTOXICATED, SENTINEL_TOXIC_SLASH_STACKS_PER + xeno_owner.xeno_caste.additional_stacks)
 	else
 		carbon_target.reagents.add_reagent(reagent_slash_reagent, DEFILER_REAGENT_SLASH_INJECT_AMOUNT)
-		xeno_owner.visible_message(carbon_target, span_danger("[carbon_target] is pricked by [xeno_owner]'s spines!"))
+		xeno_owner.visible_message(carbon_target, span_danger("[carbon_target]被[xeno_owner]的尖刺刺中!"))
 	playsound(carbon_target, 'sound/effects/spray3.ogg', 15, TRUE)
 
 	GLOB.round_statistics.defiler_reagent_slashes++ //Statistics
@@ -481,7 +481,7 @@
 		reagent_slash_deactivate(xeno_owner)
 
 /datum/action/ability/xeno_action/reagent_slash/on_cooldown_finish()
-	to_chat(owner, span_xenodanger("We are able to infuse our spines with toxins again."))
+	to_chat(owner, span_xenodanger("我们能够再次将毒素注入我们的尖刺。"))
 	owner.playsound_local(owner, 'sound/effects/alien/newlarva.ogg', 25, 0, 1)
 	return ..()
 
@@ -508,7 +508,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/tentacle
 	name = "Tentacle"
-	desc = "Throw one of your tentacles forward to grab a tallhost or item."
+	desc = "向前投掷一根触手以抓取高个子宿主或物品。"
 	action_icon_state = "tail_attack"
 	action_icon = 'icons/Xeno/actions/defiler.dmi'
 	cooldown_duration = 20 SECONDS
@@ -525,18 +525,18 @@
 		return
 	if(!isitem(A) && !ishuman(A))
 		if(!silent)
-			A.balloon_alert(owner, "Cannot grab")
+			A.balloon_alert(owner, "无法抓取")
 		return FALSE
 	if(isliving(A))
 		var/mob/living/livingtarget = A
 		if(livingtarget.stat == DEAD)
 			if(!silent)
-				livingtarget.balloon_alert(owner, "Cannot grab, dead")
+				livingtarget.balloon_alert(owner, "无法抓取,已死亡")
 			return FALSE
 	var/atom/movable/target = A
 	if(target.anchored)
 		if(!silent)
-			target.balloon_alert(owner, "Cannot grab, anchored")
+			target.balloon_alert(owner, "无法抓取,已锚定")
 		return FALSE
 
 	var/turf/current = get_turf(owner)
@@ -549,7 +549,7 @@
 	while((current != target_turf))
 		if(current.density)
 			if(!silent)
-				target.balloon_alert(owner, "Cannot reach")
+				target.balloon_alert(owner, "无法触及")
 			return FALSE
 		current = get_step_towards(current, target_turf)
 
@@ -571,13 +571,13 @@
 	QDEL_NULL(tentacle)
 	qdel(source)
 	if(!can_use_ability(target, TRUE, ABILITY_IGNORE_COOLDOWN|ABILITY_IGNORE_PLASMA))
-		owner.balloon_alert(owner, "Grab failed")
+		owner.balloon_alert(owner, "抓取失败")
 		add_cooldown(5 SECONDS)
 		return fail_activate()
 	tentacle = owner.beam(target, "curse0",'icons/effects/beam.dmi')
 	playsound(target, 'sound/effects/blobattack.ogg', 40, 1)
-	to_chat(owner, span_warning("We grab [target] with a tentacle!"))
-	target.balloon_alert_to_viewers("Grabbed!")
+	to_chat(owner, span_warning("我们用触手抓住了[target]!"))
+	target.balloon_alert_to_viewers("已抓住!")
 	RegisterSignal(target, COMSIG_MOVABLE_POST_THROW, PROC_REF(delete_beam))
 	target.throw_at(get_step(owner, owner.dir), TENTACLE_ABILITY_RANGE, 1, owner, FALSE)
 	if(isliving(target))

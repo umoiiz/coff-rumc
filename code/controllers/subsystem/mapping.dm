@@ -97,7 +97,7 @@ SUBSYSTEM_DEF(mapping)
 		var/old_config = configs[i]
 		configs[i] = global.config.defaultmaps[i]
 		if(!configs || configs[i].defaulted)
-			to_chat(world, span_boldannounce("Unable to load next or default map config, defaulting."))
+			to_chat(world, span_boldannounce("无法加载下一张或默认地图配置, 正在使用默认配置."))
 			configs[i] = old_config
 
 	if(configs[GROUND_MAP])

@@ -1,6 +1,6 @@
 //Define all tape types in policetape.dm
 /obj/item/tool/taperoll
-	name = "tape roll"
+	name = "胶带卷"
 	icon = 'icons/obj/policetape.dmi'
 	icon_state = "rollstart"
 	item_flags = NOBLUDGEON
@@ -11,7 +11,7 @@
 	var/icon_base
 
 /obj/item/tape
-	name = "tape"
+	name = "胶带"
 	icon = 'icons/obj/policetape.dmi'
 	anchored = TRUE
 	var/lifted = 0
@@ -26,41 +26,41 @@
 	AddElement(/datum/element/connect_loc, connections)
 
 /obj/item/tool/taperoll/police
-	name = "police tape"
-	desc = "A roll of police tape used to block off crime scenes from the public."
+	name = "警戒线"
+	desc = "一卷用于封锁犯罪现场、阻止公众进入的警戒线."
 	icon_state = "police_start"
 	tape_type = /obj/item/tape/police
 	icon_base = "police"
 
 /obj/item/tape/police
-	name = "police tape"
-	desc = "A length of police tape.  Do not cross."
+	name = "警戒线"
+	desc = "一段警戒线. 请勿跨越."
 	req_access = list(ACCESS_MARINE_BRIG)
 	icon_base = "police"
 
 /obj/item/tool/taperoll/engineering
-	name = "engineering tape"
-	desc = "A roll of engineering tape used to block off working areas from the public."
+	name = "工程胶带"
+	desc = "一卷用于封锁工作区域、阻止公众进入的工程胶带."
 	icon_state = "engineering_start"
 	tape_type = /obj/item/tape/engineering
 	icon_base = "engineering"
 
 /obj/item/tape/engineering
-	name = "engineering tape"
-	desc = "A length of engineering tape. Better not cross it."
+	name = "工程胶带"
+	desc = "一段工程胶带. 最好别跨过去."
 	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_ENGPREP)
 	icon_base = "engineering"
 
 /obj/item/tool/taperoll/attack_self(mob/user as mob)
 	if(icon_state == "[icon_base]_start")
 		start = get_turf(src)
-		to_chat(usr, span_notice("You place the first end of the [src]."))
+		to_chat(usr, span_notice("你放置了[src]的第一端."))
 		icon_state = "[icon_base]_stop"
 	else
 		icon_state = "[icon_base]_start"
 		end = get_turf(src)
 		if(start.y != end.y && start.x != end.x || start.z != end.z)
-			to_chat(usr, span_notice("[src] can only be laid horizontally or vertically."))
+			to_chat(usr, span_notice("[src]只能水平或垂直铺设."))
 			return
 
 		var/turf/cur = start
@@ -89,7 +89,7 @@
 						break
 			cur = get_step_towards(cur,end)
 		if (!can_place)
-			to_chat(usr, span_notice("You can't run \the [src] through that!"))
+			to_chat(usr, span_notice("你不能把\the [src]穿过那里!"))
 			return
 
 		cur = start
@@ -103,7 +103,7 @@
 				P.icon_state = "[P.icon_base]_[dir]"
 			cur = get_step_towards(cur,end)
 	//is_blocked_turf(var/turf/T)
-		to_chat(usr, span_notice("You finish placing the [src]."))
+		to_chat(usr, span_notice("你完成了[src]的放置."))
 
 /obj/item/tool/taperoll/afterattack(atom/A, mob/user as mob, proximity)
 	if (proximity && istype(A, /obj/machinery/door/airlock))
@@ -112,7 +112,7 @@
 		P.loc = locate(T.x,T.y,T.z)
 		P.icon_state = "[src.icon_base]_door"
 		P.layer = ABOVE_WINDOW_LAYER
-		to_chat(user, span_notice("You finish placing the [src]."))
+		to_chat(user, span_notice("你完成了[src]的放置."))
 
 /obj/item/tape/proc/crumple()
 	if(!crumpled)
@@ -126,7 +126,7 @@
 		var/mob/M = AM
 		if(!allowed(M))	//only select few learn art of not crumpling the tape
 			if(ishuman(M))
-				to_chat(M, span_warning("You are not supposed to go past [src]..."))
+				to_chat(M, span_warning("你不应该越过[src]..."))
 			crumple()
 
 /obj/item/tape/attackby(obj/item/I, mob/user, params)
@@ -138,7 +138,7 @@
 	if(.)
 		return
 	if (user.a_intent == INTENT_HELP && allowed(user))
-		user.visible_message(span_notice("[user] lifts [src], allowing passage."))
+		user.visible_message(span_notice("[user]抬起了[src], 允许通行."))
 		crumple()
 		lifted = TRUE
 		addtimer(VARSET_CALLBACK(src, lifted, FALSE), 20 SECONDS)
@@ -148,9 +148,9 @@
 
 /obj/item/tape/proc/breaktape(obj/item/W as obj, mob/user as mob)
 	if(user.a_intent == INTENT_HELP && ((!can_puncture(W) && src.allowed(user))))
-		to_chat(user, "You can't break the [src] with that!")
+		to_chat(user, "你不能用那个破坏[src]!")
 		return
-	user.visible_message(span_notice("[user] breaks the [src]!"))
+	user.visible_message(span_notice("[user]破坏了[src]!"))
 
 	var/dir[2]
 	var/icon_dir = src.icon_state

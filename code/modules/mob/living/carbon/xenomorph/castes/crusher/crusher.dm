@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/crusher
 	caste_base_type = /datum/xeno_caste/crusher
 	name = "Crusher"
-	desc = "A huge alien with an enormous armored head crest."
+	desc = "一种巨大的异形, 长着庞大的装甲头冠."
 	icon = 'icons/Xeno/castes/crusher/basic.dmi'
 	icon_state = "Crusher Walking"
 	effects_icon = 'icons/Xeno/castes/crusher/effects.dmi'

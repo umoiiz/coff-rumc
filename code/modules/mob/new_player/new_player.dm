@@ -302,14 +302,14 @@
 	if(!SSticker)
 		return FALSE
 	if(!GLOB.enter_allowed)
-		to_chat(src, span_warning("Spawning currently disabled, please observe."))
+		to_chat(src, span_warning("当前已禁用生成, 请观察."))
 		return FALSE
 	if(!job_datum)
 		return FALSE
 	if(!isxenosjob(job_datum) && (SSmonitor.gamestate == SHUTTERS_CLOSED || (SSmonitor.gamestate == GROUNDSIDE && SSmonitor.current_state <= XENOS_LOSING)))
 		var/datum/job/xeno_job = SSjob.GetJobType(/datum/job/xenomorph)
 		if((xeno_job.total_positions - xeno_job.current_positions) > length(GLOB.alive_xeno_list_hive[XENO_HIVE_NORMAL]) * TOO_MUCH_BURROWED_PROPORTION)
-			if(tgui_alert(src, "There is a lack of xeno players on this round, unbalanced rounds are unfun for everyone. Are you sure you want to play as a marine? ", "Warning : the game is unbalanced", list("Yes", "No")) != "Yes")
+			if(tgui_alert(src, "本回合缺少异形玩家, 不平衡的回合对每个人来说都毫无乐趣. 你确定要扮演陆战队员吗?", "警告 : 游戏不平衡", list("Yes", "No")) != "Yes")
 				return FALSE
 	if(ispredatorjob(job_datum))
 		if(SSticker.mode.check_predator_late_join(src))
@@ -364,9 +364,9 @@
 
 /mob/new_player/proc/try_to_observe()
 	if(!SSticker || SSticker.current_state == GAME_STATE_STARTUP)
-		to_chat(src, span_warning("The game is still setting up, please try again later."))
+		to_chat(src, span_warning("游戏仍在设置中, 请稍后再试."))
 		return
-	if(tgui_alert(src, "Are you sure you wish to observe?[SSticker.mode?.observe_respawn_message()]", "Observe", list("Yes", "No")) != "Yes")
+	if(tgui_alert(src, "你确定要观察吗?[SSticker.mode?.observe_respawn_message()]", "观察", list("Yes", "No")) != "Yes")
 		return
 	if(!client)
 		return TRUE
@@ -385,13 +385,13 @@
 		if(!T)
 			CRASH("Invalid latejoin spawn location type")
 
-		to_chat(src, span_notice("Now teleporting."))
+		to_chat(src, span_notice("正在传送."))
 		observer.abstract_move(T)
 	else
 		failed = TRUE
 
 	if(failed)
-		to_chat(src, span_danger("Could not locate an observer spawn point. Use the Teleport verb to jump."))
+		to_chat(src, span_danger("无法定位观察者生成点. 使用传送动词进行跳跃."))
 
 	GLOB.key_to_time_of_role_death[key] = world.time
 
@@ -417,7 +417,7 @@
 ///Toggles the new players ready state
 /mob/new_player/proc/toggle_ready()
 	if(SSticker?.current_state > GAME_STATE_PREGAME)
-		to_chat(src, span_warning("The round has already started."))
+		to_chat(src, span_warning("回合已经开始."))
 		return
 	ready = !ready
 	if(ready)
@@ -426,16 +426,16 @@
 	else
 		GLOB.ready_players -= src
 		cached_highest_job = null
-	to_chat(src, span_warning("You are now [ready? "" : "not "]ready."))
+	to_chat(src, span_warning("你现在[ready? "" : "not "]就绪."))
 
 ///Attempts to latejoin the player
 /mob/new_player/proc/attempt_late_join(queue_override = FALSE)
 	if(!SSticker?.mode || SSticker.current_state != GAME_STATE_PLAYING)
-		to_chat(src, span_warning("The round is either not ready, or has already finished."))
+		to_chat(src, span_warning("回合要么尚未就绪, 要么已经结束."))
 		return
 
 	if(SSticker.mode.round_type_flags & MODE_NO_LATEJOIN)
-		to_chat(src, span_warning("Sorry, you cannot late join during [SSticker.mode.name]. You have to start at the beginning of the round. You may observe or try to join as an alien, if possible."))
+		to_chat(src, span_warning("抱歉, 你无法在[SSticker.mode.name]期间中途加入. 你必须在回合开始时加入. 你可以观察或尝试作为异形加入, 如果可能的话."))
 		return
 
 	if(queue_override)
@@ -454,12 +454,12 @@
 
 		var/queue_position = SSticker.queued_players.Find(usr)
 		if(queue_position == 1)
-			to_chat(usr, span_notice("You are next in line to join the game. You will be notified when a slot opens up."))
+			to_chat(usr, span_notice("你是下一个加入游戏的排队者. 当有空位时你会收到通知."))
 		else if(queue_position)
-			to_chat(usr, span_notice("There are [queue_position - 1] players in front of you in the queue to join the game."))
+			to_chat(usr, span_notice("在你前面还有[queue_position - 1]名玩家在排队加入游戏."))
 		else
 			SSticker.queued_players += usr
-			to_chat(usr, span_notice("You have been added to the queue to join the game. Your position in queue is [length(SSticker.queued_players)]."))
+			to_chat(usr, span_notice("你已被加入游戏排队. 你在队列中的位置是[length(SSticker.queued_players)]."))
 		return
 	late_choices()
 

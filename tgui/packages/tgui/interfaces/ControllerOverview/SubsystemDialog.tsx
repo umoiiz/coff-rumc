@@ -41,19 +41,19 @@ export function SubsystemDialog(props: Props) {
       <Divider />
       <Box p={1}>
         <LabeledList>
-          <LabeledList.Item label="Init Order">{init_order}</LabeledList.Item>
-          <LabeledList.Item label="Last Fire">{last_fire}</LabeledList.Item>
-          <LabeledList.Item label="Next Fire">{next_fire}</LabeledList.Item>
-          <LabeledList.Item label="Cost">
+          <LabeledList.Item label="初始化顺序">{init_order}</LabeledList.Item>
+          <LabeledList.Item label="上次开火">{last_fire}</LabeledList.Item>
+          <LabeledList.Item label="下次开火">{next_fire}</LabeledList.Item>
+          <LabeledList.Item label="消耗">
             {cost_ms.toFixed(2)}ms
           </LabeledList.Item>
-          <LabeledList.Item label="Tick Usage">
+          <LabeledList.Item label="每刻占用">
             {tick_usage.toFixed(2)}%
           </LabeledList.Item>
-          <LabeledList.Item label="Avg Usage Per Tick">
+          <LabeledList.Item label="每刻平均占用">
             {usage_per_tick.toFixed(2)}%
           </LabeledList.Item>
-          <LabeledList.Item label="Tick Overrun">
+          <LabeledList.Item label="每刻超时">
             {tick_overrun.toFixed(2)}%
           </LabeledList.Item>
           {initialization_failure_message && (
@@ -67,7 +67,7 @@ export function SubsystemDialog(props: Props) {
         <Stack.Item />
         <Stack.Item>
           <Button color="good" onClick={onClose} px={3} py={1}>
-            Close
+            关闭
           </Button>
         </Stack.Item>
       </Stack>

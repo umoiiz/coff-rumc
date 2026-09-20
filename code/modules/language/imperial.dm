@@ -1,6 +1,6 @@
 /datum/language/imperial
-	name = "Imperial"
-	desc = "For the Emperor!"
+	name = "帝国语"
+	desc = "为了帝皇!"
 	key = "5"
 	space_chance = 100
 

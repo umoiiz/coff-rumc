@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/defender
 	caste_base_type = /datum/xeno_caste/defender
 	name = "Defender"
-	desc = "An alien with an armored head crest."
+	desc = "一种长着装甲头冠的异形."
 	icon = 'icons/Xeno/castes/defender/basic.dmi'
 	icon_state = "Defender Walking"
 	effects_icon = 'icons/Xeno/castes/defender/effects.dmi'

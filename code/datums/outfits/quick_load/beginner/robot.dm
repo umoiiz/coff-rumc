@@ -22,8 +22,8 @@
 
 /datum/outfit/quick/beginner/robot/laser_rifle
 	name = "Laser Rifleman"
-	desc = "A typycal robotic rifleman. Uses the Laser Rifle, often called as the TE-M by marines. Has multiple firemodes for tactical flexibility. Uses standard Terra Experimental (abbreviated as TE) power cells. \
-	As with all TE Laser weapons, they use a lightweight alloy combined without the need for bullets any longer decreases their weight and aiming speed quite some vs their ballistic counterparts."
+	desc = "典型的机器步枪兵. 使用激光步枪, 常被海军陆战队员称为TE-M. 具有多种射击模式以实现战术灵活性. 使用标准泰拉实验 (缩写为TE) 电池. \
+	与所有TE激光武器一样, 它们使用轻质合金, 不再需要子弹, 相比弹道武器大幅减轻了重量并提高了瞄准速度."
 
 	suit_store = /obj/item/weapon/gun/energy/lasgun/lasrifle/standard_marine_rifle/medic
 	belt = /obj/item/storage/belt/marine
@@ -46,8 +46,8 @@
 
 /datum/outfit/quick/beginner/robot/laser_machinegunner
 	name = "Laser Machinegunner"
-	desc = "The king of suppressive fire. Uses the Laser Machinegun, often called as the TE-M by marines. High efficiency modulators ensure the TE-M has an extremely high fire count, and multiple firemodes makes it a flexible infantry support gun. Uses standard Terra Experimental (abbreviated as TE) power cells. \
-	As with all TE Laser weapons, they use a lightweight alloy combined without the need for bullets any longer decreases their weight and aiming speed quite some vs their ballistic counterparts."
+	desc = "压制火力之王. 使用激光机枪, 常被海军陆战队员称为TE-M. 高效调制器确保TE-M具有极高的射击次数, 多种射击模式使其成为灵活的步兵支援枪. 使用标准泰拉实验 (缩写为TE) 电池. \
+	与所有TE激光武器一样, 它们使用轻质合金, 不再需要子弹, 相比弹道武器大幅减轻了重量并提高了瞄准速度."
 
 	suit_store = /obj/item/weapon/gun/energy/lasgun/lasrifle/standard_marine_mlaser/beginner
 	back = /obj/item/cell/lasgun/volkite/powerpack/marine_back
@@ -63,8 +63,8 @@
 
 /datum/outfit/quick/beginner/robot/laser_sniper
 	name = "Laser Sniper"
-	desc = "The king of suppressive fire. Uses the Laser Sniper Rifle, it has an integrated charge selector for normal, heat, and overcharge settings. Uses standard Terra Experimental (abbreviated as TE) power cells. \
-	As with all TE Laser weapons, they use a lightweight alloy combined without the need for bullets any longer decreases their weight and aiming speed quite some vs their ballistic counterparts."
+	desc = "压制火力之王. 使用激光狙击步枪, 它具有集成的充能选择器, 可设置为普通, 高温和过载. 使用标准泰拉实验 (缩写为TE) 电池. \
+	与所有TE激光武器一样, 它们使用轻质合金, 不再需要子弹, 相比弹道武器大幅减轻了重量并提高了瞄准速度."
 
 	suit_store = /obj/item/weapon/gun/energy/lasgun/lasrifle/standard_marine_sniper/beginner
 	back = /obj/item/cell/lasgun/volkite/powerpack/marine_back

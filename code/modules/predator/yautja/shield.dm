@@ -1,6 +1,6 @@
 /obj/item/weapon/shield/riot/yautja
-	name = "clan shield"
-	desc = "A large tribal shield made of a strange metal alloy. The face of the shield bears three skulls, two human, one alien."
+	name = "氏族盾牌"
+	desc = "一面由奇怪金属合金制成的大型部落盾牌.盾面上有三个头骨,两个人类,一个异形."
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "shield"
 	worn_icon_list = list(
@@ -40,17 +40,17 @@
 		return ..()
 	if(!HAS_TRAIT(src, TRAIT_NODROP))
 		ADD_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)
-		to_chat(user, span_warning("You tighten the strap of [src] around your hand!"))
+		to_chat(user, span_warning("你收紧缠在手上的[src]的绑带!"))
 	else
 		REMOVE_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)
-		to_chat(user, span_notice("You loosen the strap of [src] around your hand!"))
+		to_chat(user, span_notice("你松开缠在手上的[src]的绑带!"))
 
 /obj/item/weapon/shield/riot/yautja/proc/raise_shield(mob/user as mob) // Prepare for an attack. Slows you down slightly, but increases chance to block.
 	if(world.time < last_lowered + cooldown_time)
-		to_chat(user, span_warning("You need wait a little bit more before raise shield again!"))
+		to_chat(user, span_warning("你需要再等一会儿才能再次举起盾牌!"))
 		return
 
-	user.visible_message(span_blue("\The [user] raises \the [src]."))
+	user.visible_message(span_blue("\The [user]举起了\the [src]."))
 	shield_readied = TRUE
 	icon_state = "[base_icon_state]_ready"
 	worn_icon_state = "[base_icon_state]_ready"
@@ -62,7 +62,7 @@
 		user.update_inv_l_hand()
 
 /obj/item/weapon/shield/riot/yautja/proc/lower_shield(mob/living/carbon/human/H)
-	H.visible_message(span_blue("\The [H] lowers \the [src]."))
+	H.visible_message(span_blue("\The [H]放下了\the [src]."))
 	shield_readied = FALSE
 	icon_state = base_icon_state
 	worn_icon_state = base_icon_state
@@ -118,7 +118,7 @@
 /obj/item/weapon/shield/riot/yautja/attackby(obj/item/I, mob/user)
 	if(cooldown < world.time - 25)
 		if(istype(I, /obj/item/weapon) && (I.item_flags & ITEM_PREDATOR))
-			user.visible_message(span_warning("[user] bashes \the [src] with \the [I]!"))
+			user.visible_message(span_warning("[user]用\the [I]猛击\the [src]!"))
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
 			cooldown = world.time
 		return

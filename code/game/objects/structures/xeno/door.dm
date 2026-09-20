@@ -59,10 +59,10 @@
 		qdel(src)
 		return TRUE
 
-	src.balloon_alert(xeno_attacker, "Destroying...")
+	src.balloon_alert(xeno_attacker, "正在摧毁...")
 	playsound(src, SFX_ALIEN_RESIN_BREAK, 25)
 	if(do_after(xeno_attacker, 1 SECONDS, IGNORE_HELD_ITEM, src, BUSY_ICON_HOSTILE))
-		src.balloon_alert(xeno_attacker, "Destroyed")
+		src.balloon_alert(xeno_attacker, "已摧毁")
 		qdel(src)
 
 /obj/structure/mineral_door/resin/fire_act(burn_level, flame_color)
@@ -113,7 +113,7 @@
 			. = TRUE
 			break
 	if(!.)
-		src.balloon_alert_to_viewers("Collapsed")
+		src.balloon_alert_to_viewers("已倒塌")
 		qdel(src)
 
 /obj/structure/mineral_door/resin/thick

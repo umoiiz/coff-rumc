@@ -224,12 +224,12 @@ export function JobSelection(props) {
               {shuttle_status && <NoticeBox danger>{shuttle_status}</NoticeBox>}
               {!!selfDestructActive && (
                 <NoticeBox danger>
-                  Ship self-destruct sequence has been activated!
+                  舰船自毁程序已激活!
                 </NoticeBox>
               )}
               {!!evacuationInProgress && (
                 <NoticeBox danger>
-                  Ship evacuation is currently underway!
+                  舰船撤离正在进行中!
                 </NoticeBox>
               )}
               {!!security_level_text && (

@@ -1,6 +1,6 @@
 /obj/item/implant/chem
-	name = "chemical implant"
-	desc = "A chemical implant containing a single use chemical cocktail which is added via syringe."
+	name = "化学植入体"
+	desc = "一种化学植入体,内含一次性化学混合剂,可通过注射器注入."
 	allow_reagents = TRUE
 	implant_flags = ACTIVATE_ON_HEAR|GRANT_ACTIVATION_ACTION|BENEFICIAL_IMPLANT
 	var/used = FALSE
@@ -32,7 +32,7 @@
 	if(malfunction == MALFUNCTION_PERMANENT)
 		return FALSE
 	if(used)
-		to_chat(implant_owner, span_warning("WARNING. Implant activation failed; Error code 345: Implant exhausted."))
+		to_chat(implant_owner, span_warning("警告. 植入体激活失败; 错误代码345: 植入体已耗尽."))
 		return FALSE
 	playsound(implant_owner, 'sound/machines/buzz-two.ogg', 60, 1)
 	reagents.trans_to(implant_owner, reagents.total_volume)
@@ -43,12 +43,12 @@
 	if(!activation_phrase)
 		return FALSE
 	user.mind.store_memory("[src] in [target] will now activate by saying something containing the phrase ''[activation_phrase]'', <B>say [activation_phrase]</B> to attempt to activate.", 0, 0)
-	to_chat(user, span_notice("[src] in [target] will now activate by saying something containing the phrase ''[activation_phrase]'', <B>say [activation_phrase]</B> to attempt to activate."))
+	to_chat(user, span_notice("[target]中的[src]现在可以通过说出包含短语''[activation_phrase]''的内容来激活,<B>说[activation_phrase]</B>以尝试激活."))
 	return ..()
 
 /obj/item/implant/chem/blood
-	name = "blood recovery implant"
-	desc = "A chemical implant able to accelerate blood recovery, recovering lost blood."
+	name = "血液恢复植入体"
+	desc = "一种能够加速血液恢复的化学植入体,可恢复失去的血液."
 	///Amount of blood added
 	var/blood_amount = 200
 

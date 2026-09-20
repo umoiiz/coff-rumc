@@ -38,7 +38,7 @@ export const GearCustomization = (props) => {
 
   return (
     <Section
-      title="Custom Gear"
+      title="自定义装备"
       buttons={
         <>
           <Box as="span" style={{ marginRight: '10px' }}>
@@ -47,7 +47,7 @@ export const GearCustomization = (props) => {
           <Button
             inline
             color="red"
-            content="Clear all"
+            content="全部清除"
             onClick={() => act('loadoutclear')}
           />
         </>

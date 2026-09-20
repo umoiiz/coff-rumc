@@ -12,8 +12,8 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 // Definitions
 ////////////////////////////////
 /obj/structure/cable
-	name = "power cable"
-	desc = "A flexible, superconducting insulated cable for heavy-duty power transfer."
+	name = "电源线"
+	desc = "一根用于重型电力传输的柔性超导绝缘电缆."
 	icon = 'icons/obj/power_cond/layer_cable.dmi'
 	icon_state = "l2-1-2-4-8-node"
 	color = COLOR_YELLOW
@@ -168,16 +168,16 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 	if(W.tool_behaviour == TOOL_WIRECUTTER)
 		if (shock(user, 50))
 			return
-		user.visible_message(span_notice("[user] cuts the cable."), span_notice("You cut the cable."))
+		user.visible_message(span_notice("[user]切断了电缆."), span_notice("你切断了电缆."))
 		log_game("[src] was cut by [key_name(usr)] in [AREACOORD(src)]")
 		deconstruct()
 		add_fingerprint(user, "handlecable")
 		return
 	if(W.tool_behaviour == TOOL_MULTITOOL)
 		if(powernet && (powernet.avail > 0))		// is it powered?
-			to_chat(user, span_danger("Total power: [DisplayPower(powernet.avail)]\nLoad: [DisplayPower(powernet.load)]\nExcess power: [DisplayPower(surplus())]"))
+			to_chat(user, span_danger("总功率: [DisplayPower(powernet.avail)]\nLoad: [DisplayPower(powernet.load)]\nExcess功率: [DisplayPower(surplus())]"))
 		else
-			to_chat(user, span_danger("The cable is not powered."))
+			to_chat(user, span_danger("电缆没有通电."))
 		shock(user, 5, 0.2)
 		add_fingerprint(user, "handlecable")
 
@@ -398,8 +398,8 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 GLOBAL_LIST_INIT(cable_coil_recipes, list(new/datum/stack_recipe("cable restraints", /obj/item/restraints/handcuffs/cable, 15), new/datum/stack_recipe("multilayer cable", /obj/structure/cable/multilayer, 1), new/datum/stack_recipe("multiZ cable", /obj/structure/cable/multilayer/multiz, 1)))
 
 /obj/item/stack/cable_coil
-	name = "cable coil"
-	desc = "A coil of insulated power cable."
+	name = "电缆卷"
+	desc = "一卷绝缘电源线."
 	gender = NEUTER //That's a cable coil sounds better than that's some cable coils
 	icon = 'icons/obj/power.dmi'
 	icon_state = "coil"
@@ -513,27 +513,27 @@ GLOBAL_LIST(cable_radial_layer_list)
 		return TRUE
 
 	if(!(affecting.limb_status & LIMB_ROBOT))
-		balloon_alert(user, "Limb not robotic")
+		balloon_alert(user, "肢体不是机械的")
 		return TRUE
 
 	if(!affecting.burn_dam)
-		balloon_alert(user, "Nothing to fix!")
+		balloon_alert(user, "没什么可修的!")
 		return TRUE
 
 	if(user.do_actions)
-		balloon_alert(user, "Already busy!")
+		balloon_alert(user, "已经在忙了!")
 		return TRUE
 
 	var/repair_time = 1 SECONDS
 	if(H == user)
 		repair_time *= 3
 
-	user.visible_message(span_notice("[user] starts to fix some of the wires in [H]'s [affecting.display_name]."),\
-		span_notice("You start fixing some of the wires in [H == user ? "your" : "[H]'s"] [affecting.display_name]."))
+	user.visible_message(span_notice("[user]开始修复[H]的[affecting.display_name]中的一些电线."),\
+		span_notice("你开始修复[H == user ? "your" : "[H]'s"][affecting.display_name]中的一些电线."))
 
 	while(do_after(user, repair_time, NONE, H, BUSY_ICON_BUILD) && use(1))
-		user.visible_message(span_warning("\The [user] fixes some wires in \the [H]'s [affecting.display_name] with [src]."), \
-			span_warning("You patch some wires in \the [H]'s [affecting.display_name]."))
+		user.visible_message(span_warning("\The [user]用[src]修复了\the [H]的[affecting.display_name]中的一些电线."), \
+			span_warning("你修补了\the [H]的[affecting.display_name]中的一些电线."))
 		if(affecting.heal_limb_damage(0, 15, robo_repair = TRUE, updating_health = TRUE))
 			H.UpdateDamageIcon()
 		if(amount < 1)
@@ -547,7 +547,7 @@ GLOBAL_LIST(cable_radial_layer_list)
 					continue
 				affecting = checked_limb
 			if(previous_limb == affecting)
-				H.balloon_alert(user, "Burns fully repaired.")
+				H.balloon_alert(user, "烧伤已完全修复.")
 				break
 	return TRUE
 
@@ -561,21 +561,21 @@ GLOBAL_LIST(cable_radial_layer_list)
 		return
 
 	if(!isturf(T) || T.intact_tile || !T.can_have_cabling())
-		to_chat(user, span_warning("You can only lay cables on catwalks and plating!"))
+		to_chat(user, span_warning("你只能在走道和地板上铺设电缆!"))
 		return
 
 	if(get_amount() < 1) // Out of cable
-		to_chat(user, span_warning("There is no cable left!"))
+		to_chat(user, span_warning("没有剩余的电缆了!"))
 		return
 
 	if(get_dist(T,user) > 1) // Too far
-		to_chat(user, span_warning("You can't lay cable at a place that far away!"))
+		to_chat(user, span_warning("你不能在那么远的地方铺设电缆!"))
 		return
 
 	for(var/obj/structure/cable/C in T)
 		if(!(C.cable_layer & target_layer))
 			continue
-		to_chat(user, span_warning("There's already a cable at that position!"))
+		to_chat(user, span_warning("那个位置已经有电缆了!"))
 		return
 
 	var/obj/structure/cable/C = new target_type(T)
@@ -619,8 +619,8 @@ GLOBAL_LIST(cable_radial_layer_list)
 
 ///multilayer cable to connect different layers
 /obj/structure/cable/multilayer
-	name = "multilayer cable hub"
-	desc = "A flexible, superconducting insulated multilayer hub for heavy-duty multilayer power transfer."
+	name = "多层电缆集线器"
+	desc = "一个用于重型多层电力传输的柔性超导绝缘多层集线器."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "cable_bridge"
 	cable_layer = CABLE_LAYER_2
@@ -723,16 +723,16 @@ GLOBAL_LIST(hub_radial_layer_list)
 	switch(layer_result)
 		if("Layer 1")
 			CL = CABLE_LAYER_1
-			to_chat(user, span_warning("You toggle the L1 connection."))
+			to_chat(user, span_warning("你切换了L1连接."))
 		if("Layer 2")
 			CL = CABLE_LAYER_2
-			to_chat(user, span_warning("You toggle the L2 connection."))
+			to_chat(user, span_warning("你切换了L2连接."))
 		if("Layer 3")
 			CL = CABLE_LAYER_3
-			to_chat(user, span_warning("You toggle the L3 connection."))
+			to_chat(user, span_warning("你切换了L3连接."))
 		if("Machinery")
 			machinery_layer ^= MACHINERY_LAYER_1
-			to_chat(user, span_warning("You toggle the machinery connection."))
+			to_chat(user, span_warning("你切换了机械连接."))
 
 	cut_cable_from_powernet(FALSE)
 
@@ -761,7 +761,7 @@ GLOBAL_LIST(hub_radial_layer_list)
 	auto_propagate_cut_cable(src)				// update the powernets
 
 /obj/structure/cable/multilayer/CtrlClick(mob/living/user)
-	to_chat(user, span_warning("You push the reset button."))
+	to_chat(user, span_warning("你按下了重置按钮."))
 	addtimer(CALLBACK(src, PROC_REF(Reload)), 10, TIMER_UNIQUE) //spam protect
 
 //Multilayer combinations so avoid linter issues in the future

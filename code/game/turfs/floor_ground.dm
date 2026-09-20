@@ -438,7 +438,7 @@
 ///These are entirely for decoration purposes, do not make them functional, it will cause salt.
 /turf/open/floor/chasm
 	name = "chasm"
-	desc = "Watch your step."
+	desc = "小心脚下."
 	icon = 'icons/turf/floors/chasms.dmi'
 	icon_state = "chasms-0"
 	base_icon_state = "chasms"

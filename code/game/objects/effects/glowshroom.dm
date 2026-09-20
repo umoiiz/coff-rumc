@@ -1,8 +1,8 @@
 //separate dm since hydro is getting bloated already
 
 /obj/structure/glowshroom
-	name = "glowshroom"
-	desc = "Mycena Bregprox, a species of mushroom that glows in the dark."
+	name = "发光蘑菇"
+	desc = "Mycena Bregprox,一种在黑暗中发光的蘑菇。"
 	anchored = TRUE
 	opacity = FALSE
 	density = FALSE

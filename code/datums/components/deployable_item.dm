@@ -82,7 +82,7 @@
 			return
 
 		if(LinkBlocked(get_turf(user), location))
-			location.balloon_alert(user, "Нет места для установки.")
+			location.balloon_alert(user, "没有空间放置.")
 			return
 		var/newdir = get_dir(user, location)
 		if(deploy_type.atom_flags & ON_BORDER)
@@ -93,26 +93,26 @@
 					continue
 				if(object.dir != newdir)
 					continue
-				location.balloon_alert(user, "Нет места для установки.")
+				location.balloon_alert(user, "没有空间放置.")
 				return
 		if(user.do_actions)
-			user.balloon_alert(user, "Вы уже чем-то заняты!")
+			user.balloon_alert(user, "你已经在忙别的事了!")
 			return
 
 		if(CHECK_BITFIELD(item_to_deploy.item_flags, IS_SENTRY))
 			for(var/obj/machinery/deployable/mounted/sentry/sentry in urange(1, location))
-				user.balloon_alert(user, "Слишком близко к [sentry]!")
+				user.balloon_alert(user, "离[sentry]太近了!")
 				return
-		user.balloon_alert(user, "Вы начали установку...")
+		user.balloon_alert(user, "你开始放置...")
 		user.setDir(newdir) //Face towards deploy location for ease of deploy.
 		if(!do_after(user, deploy_time, NONE, item_to_deploy, BUSY_ICON_BUILD))
 			return
 		if(LinkBlocked(get_turf(user), location))
-			location.balloon_alert(user, "No room to deploy")
+			location.balloon_alert(user, "没有空间部署")
 			return
 		if(CHECK_BITFIELD(item_to_deploy.item_flags, IS_SENTRY))
 			for(var/obj/machinery/deployable/mounted/sentry/sentry in urange(1, location))
-				user.balloon_alert(user, "Слишком близко к [sentry]!")
+				user.balloon_alert(user, "离[sentry]太近了!")
 				return
 		user.temporarilyRemoveItemFromInventory(item_to_deploy)
 
@@ -147,7 +147,7 @@
 	deployed_machine.update_appearance()
 
 	if(user && item_to_deploy.loc == user)
-		item_to_deploy.balloon_alert(user, "Установлено!")
+		item_to_deploy.balloon_alert(user, "已放置!")
 		user.transferItemToLoc(item_to_deploy, deployed_machine, TRUE)
 		if(user.client.prefs.toggles_gameplay & AUTO_INTERACT_DEPLOYABLES)
 			deployed_machine.interact(user)
@@ -188,7 +188,7 @@
 	if(issentry(deployed_machine))
 		sentry = deployed_machine
 	sentry?.set_on(FALSE)
-	user.balloon_alert(user, "You start disassembling [undeployed_item]")
+	user.balloon_alert(user, "你开始拆卸[undeployed_item]")
 	if(!do_after(user, undeploy_time, NONE, deployed_machine, BUSY_ICON_BUILD))
 		sentry?.set_on(TRUE)
 		return

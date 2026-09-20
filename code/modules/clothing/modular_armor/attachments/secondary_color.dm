@@ -27,7 +27,7 @@
 		update_greyscale()
 
 /obj/item/armor_module/armor/secondary_color/chest
-	name = "chest secondary_color"
+	name = "胸部 secondary_color"
 	icon_state = "chest_secondary_color"
 	slot = ATTACHMENT_SLOT_CHEST_SECONDARY_COLOR
 
@@ -40,21 +40,21 @@
 	)
 
 /obj/item/armor_module/armor/secondary_color/leg
-	name = "leg secondary_color"
+	name = "腿部 secondary_color"
 	icon_state = "leg_secondary_color"
 	slot = ATTACHMENT_SLOT_KNEE_SECONDARY_COLOR
 
 /obj/item/armor_module/armor/secondary_color/arm
-	name = "arm secondary_color"
+	name = "手臂 secondary_color"
 	icon_state = "arm_secondary_color"
 	slot = ATTACHMENT_SLOT_ARM_SECONDARY_COLOR
 
 /obj/item/armor_module/armor/secondary_color/helm
-	name = "helm secondary_color"
+	name = "头盔 secondary_color"
 	icon_state = "helm_secondary_color"
 	slot = ATTACHMENT_SLOT_HELM_SECONDARY_COLOR
 
 /obj/item/armor_module/armor/secondary_color/chest/visor_color
-	name = "chest secondary color"
+	name = "胸部 secondary color"
 	icon_state = "chest_secondary_color"
 	colorable_colors = VISOR_PALETTES_LIST

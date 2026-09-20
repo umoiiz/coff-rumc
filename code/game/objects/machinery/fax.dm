@@ -87,18 +87,18 @@
 	if(href_list["send"])
 		if(message)
 			send_fax(usr, src, selected, message.name, message.info, FALSE)
-			to_chat(usr, "Message transmitted successfully.")
+			to_chat(usr, "信息发送成功.")
 			sendcooldown = TRUE
 			addtimer(VARSET_CALLBACK(src, sendcooldown, FALSE), 2 MINUTES)
 			updateUsrDialog()
 	if(href_list["remove"])
 		if(message)
 			if(!ishuman(usr))
-				to_chat(usr, span_warning("You can't do it."))
+				to_chat(usr, span_warning("你无法这么做."))
 			else
 				message.loc = usr.loc
 				usr.put_in_hands(message)
-				to_chat(usr, span_notice("You take the paper out of \the [src]."))
+				to_chat(usr, span_notice("你把纸从\the [src]中取出."))
 				message = null
 	if(href_list["scan"])
 		if(idscan)
@@ -118,7 +118,7 @@
 		authenticated = FALSE
 
 	if(href_list["dept"])
-		var/choice = tgui_input_list(usr, "Who do you want to message?", "Fax", list("Nanotrasen", "TGMC High Command", "TGMC Provost Marshall"))
+		var/choice = tgui_input_list(usr, "你想给谁发送信息?", "传真", list("Nanotrasen", "TGMC High Command", "TGMC Provost Marshall"))
 		if(!choice)
 			return
 		selected = choice
@@ -141,11 +141,11 @@
 		if(!message)
 			user.transferItemToLoc(I, src)
 			message = I
-			to_chat(user, span_notice("You insert the paper into \the [src]."))
+			to_chat(user, span_notice("你把纸插入\the [src]."))
 			flick("faxsend", src)
 			updateUsrDialog()
 		else
-			to_chat(user, span_notice("There is already something in \the [src]."))
+			to_chat(user, span_notice("\the [src]里已经有东西了."))
 
 	else if(istype(I, /obj/item/card/id))
 		var/obj/item/card/id/idcard = I
@@ -157,7 +157,7 @@
 	. = ..()
 	playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
 	anchored = !anchored
-	to_chat(user, span_notice("You [anchored ? "wrench" : "unwrench"] \the [src]."))
+	to_chat(user, span_notice("你[anchored ? "wrench" : "unwrench"]\the [src]."))
 
 /obj/machinery/faxmachine/cic
 	department = "Combat Information Center"

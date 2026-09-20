@@ -59,7 +59,7 @@ const ShuttleSelection = (props) => {
   const { act, data } = useBackend<DropshipPickerData>();
 
   return (
-    <Section title="Available Models" fill>
+    <Section title="可用型号" fill>
       {data.shuttles.map((shuttle) => (
         <Button
           key={shuttle.ref}

@@ -258,7 +258,7 @@ export function MCDependencyDebug(props) {
           initialTop={0}
         >
           <Box position={'absolute'} left={'-30px'} top={0}>
-            First
+            首个
           </Box>
           {subsystems.map((subsystem, y) => (
             <GraphNode
@@ -285,7 +285,7 @@ export function MCDependencyDebug(props) {
             left={'-30px'}
             top={`${(subsystems.length - 1) * 50}px`}
           >
-            Last
+            末个
           </Box>
           <Connections connections={connections} />
         </InfinitePlane>

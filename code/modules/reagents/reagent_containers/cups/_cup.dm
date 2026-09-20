@@ -1,5 +1,5 @@
 /obj/item/reagent_containers/cup
-	name = "open container"
+	name = "打开容器"
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5, 10, 15, 20, 25, 30, 50)
 	volume = 50
@@ -24,27 +24,27 @@
 	. = ..()
 	if(drink_type)
 		var/list/types = bitfield_to_list(drink_type, FOOD_FLAGS)
-		. += span_notice("It is [LOWER_TEXT(english_list(types))].")
+		. += span_notice("它是[LOWER_TEXT(english_list(types))].")
 
 /obj/item/reagent_containers/cup/attack(mob/living/target_mob, mob/living/user, obj/target)
 	if(!reagents || !reagents.total_volume)
-		to_chat(user, span_warning("[src] is empty!"))
+		to_chat(user, span_warning("[src]是空的!"))
 		return
 
 	if(!istype(target_mob))
 		return
 
 	if(target_mob != user)
-		target_mob.visible_message(span_danger("[user] attempts to feed [target_mob] something from [src]."), \
-					span_userdanger("[user] attempts to feed you something from [src]."))
+		target_mob.visible_message(span_danger("[user]试图从[src]中喂[target_mob]一些东西."), \
+					span_userdanger("[user]试图从[src]中喂你一些东西."))
 		if(!do_after(user, 3 SECONDS, target = target_mob))
 			return
 		if(!reagents || !reagents.total_volume)
 			return // The drink might be empty after the delay, such as by spam-feeding
-		target_mob.visible_message(span_danger("[user] feeds [target_mob] something from [src]."), \
-					span_userdanger("[user] feeds you something from [src]."))
+		target_mob.visible_message(span_danger("[user]从[src]中喂了[target_mob]一些东西."), \
+					span_userdanger("[user]从[src]中喂了你一些东西."))
 	else
-		to_chat(user, span_notice("You swallow a gulp of [src]."))
+		to_chat(user, span_notice("你吞下了一口[src]."))
 
 	SEND_SIGNAL(src, COMSIG_GLASS_DRANK, target_mob, user)
 	reagents.trans_to(target_mob, gulp_size)
@@ -60,29 +60,29 @@
 
 	if(target.is_refillable()) //Something like a glass. Player probably wants to transfer TO it.
 		if(!reagents.total_volume)
-			to_chat(user, span_warning("[src] is empty!"))
+			to_chat(user, span_warning("[src]是空的!"))
 			return
 
 		if(target.reagents.holder_full())
-			to_chat(user, span_warning("[target] is full."))
+			to_chat(user, span_warning("[target]已满."))
 			return
 
 		var/trans = reagents.trans_to(target, amount_per_transfer_from_this)
-		to_chat(user, span_notice("You transfer [trans] unit\s of the solution to [target]."))
+		to_chat(user, span_notice("你将[trans]单位\s 的溶液转移到[target]."))
 		SEND_SIGNAL(src, COMSIG_REAGENTS_CUP_TRANSFER_TO, target)
 		target.update_appearance()
 
 	else if(target.is_drainable()) //A dispenser. Transfer FROM it TO us.
 		if(!target.reagents.total_volume)
-			to_chat(user, span_warning("[target] is empty and can't be refilled!"))
+			to_chat(user, span_warning("[target]是空的, 无法重新填充!"))
 			return
 
 		if(reagents.holder_full())
-			to_chat(user, span_warning("[src] is full."))
+			to_chat(user, span_warning("[src]已满."))
 			return
 
 		var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this)
-		to_chat(user, span_notice("You fill [src] with [trans] unit\s of the contents of [target]."))
+		to_chat(user, span_notice("你将[src]装满[trans]单位\s 的[target]内容物."))
 		SEND_SIGNAL(src, COMSIG_REAGENTS_CUP_TRANSFER_FROM, target)
 		target.update_appearance()
 
@@ -94,15 +94,15 @@
 		return FALSE
 
 	if(!target.reagents.total_volume)
-		to_chat(user, span_warning("[target] is empty!"))
+		to_chat(user, span_warning("[target]是空的!"))
 		return FALSE
 
 	if(reagents.holder_full())
-		to_chat(user, span_warning("[src] is full."))
+		to_chat(user, span_warning("[src]已满."))
 		return FALSE
 
 	var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this)
-	to_chat(user, span_notice("You fill [src] with [trans] unit\s of the contents of [target]."))
+	to_chat(user, span_notice("你将[src]装满[trans]单位\s 的[target]内容物."))
 
 	target.update_appearance()
 
@@ -112,9 +112,9 @@
 		if(!reagents)
 			return TRUE
 		if(reagents.holder_full())
-			to_chat(user, span_notice("[src] is full."))
+			to_chat(user, span_notice("[src]已满."))
 		else
-			to_chat(user, span_notice("You break [attacking_egg] in [src]."))
+			to_chat(user, span_notice("你在[src]中打碎了[attacking_egg]."))
 			attacking_egg.reagents.trans_to(src, attacking_egg.reagents.total_volume)
 			qdel(attacking_egg)
 		return TRUE
@@ -133,16 +133,16 @@
 
 //Coffeepots: for reference, a standard cup is 30u, to allow 20u for sugar/sweetener/milk/creamer
 /obj/item/reagent_containers/cup/coffeepot
-	name = "coffeepot"
-	desc = "A large pot for dispensing that ambrosia of corporate life known to mortals only as coffee. Contains 4 standard cups."
+	name = "咖啡壶"
+	desc = "一个用于分发企业生活中那凡人只知其为咖啡的神之甘露的大壶. 含有4标准杯."
 	volume = 120
 	icon_state = "coffeepot"
 	fill_icon_state = "coffeepot"
 	fill_icon_thresholds = list(0, 1, 30, 60, 100)
 
 /obj/item/reagent_containers/cup/coffeepot/bluespace
-	name = "bluespace coffeepot"
-	desc = "The most advanced coffeepot the eggheads could cook up: sleek design; graduated lines; connection to a pocket dimension for coffee containment; yep, it's got it all. Contains 8 standard cups."
+	name = "蓝空间咖啡壶"
+	desc = "书呆子们能搞出的最先进的咖啡壶: 时尚设计; 刻度线; 连接到一个用于容纳咖啡的口袋维度; 没错, 它应有尽有. 含有8标准杯."
 	volume = 240
 	icon_state = "coffeepot_bluespace"
 	fill_icon_thresholds = list(0)

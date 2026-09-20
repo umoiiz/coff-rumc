@@ -1,5 +1,5 @@
 /obj/item/clothing/glasses
-	name = "glasses"
+	name = "眼镜"
 	icon = 'icons/obj/clothing/glasses.dmi'
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/clothing/glasses_left.dmi',
@@ -90,14 +90,14 @@
 	return active	//For the UI button update
 
 /obj/item/clothing/glasses/science
-	name = "science goggles"
-	desc = "The goggles do nothing! Can be used as safety googles."
+	name = "科学护目镜"
+	desc = "护目镜什么也做不了! 可作为安全护目镜使用."
 	icon_state = "purple"
 	worn_icon_state = "glasses"
 
 /obj/item/clothing/glasses/eyepatch
-	name = "eyepatch"
-	desc = "Yarr."
+	name = "眼罩"
+	desc = "呀!"
 	icon_state = "eyepatch"
 	worn_icon_state = "eyepatch"
 	armor_protection_flags = NONE
@@ -109,10 +109,10 @@
 	var/obj/item/clothing/glasses/eyepatch
 	if(istype(I, /obj/item/clothing/glasses/hud/health))
 		eyepatch = new /obj/item/clothing/glasses/hud/medpatch
-		to_chat(user, span_notice("You fasten the medical hud projector to the inside of the eyepatch."))
+		to_chat(user, span_notice("你把医疗HUD投影仪固定在眼罩内侧。"))
 	else if(istype(I, /obj/item/clothing/glasses/meson))
 		eyepatch = new /obj/item/clothing/glasses/meson/eyepatch
-		to_chat(user, span_notice("You fasten the meson projector to the inside of the eyepatch."))
+		to_chat(user, span_notice("你把介子投影仪固定在眼罩内侧。"))
 	if(!eyepatch)
 		return
 	qdel(I)
@@ -121,14 +121,14 @@
 	update_icon()
 
 /obj/item/clothing/glasses/monocle
-	name = "monocle"
-	desc = "Such a dapper eyepiece!"
+	name = "单片眼镜"
+	desc = "多么时髦的镜片啊!"
 	icon_state = "monocle"
 	armor_protection_flags = NONE
 
 /obj/item/clothing/glasses/regular
-	name = "\improper regulation prescription glasses"
-	desc = "The Corps may call them Regulation Prescription Glasses but you know them as Rut Prevention Glasses."
+	name = "\improper 制式处方眼镜"
+	desc = "陆战队可能称它们为制式处方眼镜,但你知道它们是防暴动眼镜。"
 	icon_state = "glasses"
 	worn_icon_state = "glasses"
 	prescription = TRUE
@@ -140,7 +140,7 @@
 
 	if(istype(I, /obj/item/clothing/glasses/hud/health))
 		var/obj/item/clothing/glasses/hud/medglasses/our_glasses = new
-		to_chat(user, span_notice("You fasten the medical hud projector to the inside of the glasses."))
+		to_chat(user, span_notice("你把医疗HUD投影仪固定在眼镜内侧。"))
 		qdel(I)
 		qdel(src)
 		user.put_in_hands(our_glasses)
@@ -148,20 +148,20 @@
 		update_icon()
 
 /obj/item/clothing/glasses/regular/hipster
-	name = "prescription glasses"
-	desc = "Made by Uncool. Co."
+	name = "处方眼镜"
+	desc = "由Uncool. Co.制造。"
 	icon_state = "hipster_glasses"
 	worn_icon_state = "hipster_glasses"
 
 /obj/item/clothing/glasses/green
-	name = "green glasses"
-	desc = "Forest green glasses, like the kind you'd wear when hatching a nasty scheme."
+	name = "绿色眼镜"
+	desc = "森林绿眼镜,就像你在策划阴谋时戴的那种。"
 	icon_state = "green"
 	worn_icon_state = "green"
 
 /obj/item/clothing/glasses/mgoggles
-	name = "marine ballistic goggles"
-	desc = "Standard issue TGMC goggles. Mostly used to decorate one's helmet."
+	name = "陆战队防弹护目镜"
+	desc = "标准配发的TGMC护目镜。主要用于装饰头盔。"
 	icon_state = "mgoggles"
 	worn_icon_state = "mgoggles"
 	soft_armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 15, BOMB = 35, BIO = 10, FIRE = 30, ACID = 30)
@@ -180,14 +180,14 @@
 			our_glasses = new /obj/item/clothing/glasses/hud/medgoggles/prescription
 		else
 			our_glasses = new /obj/item/clothing/glasses/hud/medgoggles
-		to_chat(user, span_notice("You fasten the medical hud projector to the inside of the goggles."))
+		to_chat(user, span_notice("你把医疗HUD投影仪固定在护目镜内侧。"))
 
 	else if(istype(our_item, /obj/item/clothing/glasses/meson))
 		if(prescription)
 			our_glasses = new /obj/item/clothing/glasses/meson/enggoggles/prescription
 		else
 			our_glasses = new /obj/item/clothing/glasses/meson/enggoggles
-		to_chat(user, span_notice("You fasten the optical meson scanner to the inside of the goggles."))
+		to_chat(user, span_notice("你把光学介子扫描仪固定在护目镜内侧。"))
 
 	if(!our_glasses)
 		return
@@ -198,13 +198,13 @@
 	update_icon()
 
 /obj/item/clothing/glasses/mgoggles/prescription
-	name = "prescription marine ballistic goggles"
-	desc = "Standard issue TGMC goggles. Mostly used to decorate one's helmet. Contains prescription lenses in case you weren't sure if they were lame or not."
+	name = "处方陆战队防弹护目镜"
+	desc = "标准配发的TGMC护目镜。主要用于装饰头盔。内含处方镜片,以防你不确定它们是否够逊。"
 	prescription = TRUE
 
 /obj/item/clothing/glasses/m42_goggles
-	name = "\improper M42 scout sight"
-	desc = "A headset and goggles system for the M42 Scout Rifle. Allows highlighted imaging of surroundings. Click it to toggle."
+	name = "\improper M42侦察瞄具"
+	desc = "用于M42侦察步枪的头戴和护目镜系统。可高亮显示周围环境。点击切换。"
 	icon_state = "m56_goggles"
 	deactive_state = "m56_goggles_0"
 	vision_flags = SEE_TURFS
@@ -213,8 +213,8 @@
 //welding goggles
 
 /obj/item/clothing/glasses/welding
-	name = "welding goggles"
-	desc = "Protects the eyes from welders, approved by the mad scientist association."
+	name = "焊接护目镜"
+	desc = "保护眼睛免受焊接伤害,经疯狂科学家协会认证。"
 	icon_state = "welding-g"
 	worn_icon_state = "welding-g"
 	toggleable = TRUE
@@ -252,7 +252,7 @@
 	eye_protection = 0
 	update_icon()
 	if(user)
-		to_chat(user, "You push [src] up out of your face.")
+		to_chat(user, "你把[src]推到脸上方。")
 
 ///Toggle the welding goggles off
 /obj/item/clothing/glasses/welding/proc/flip_down(mob/user)
@@ -261,7 +261,7 @@
 	eye_protection = initial(eye_protection)
 	update_icon()
 	if(user)
-		to_chat(user, "You flip [src] down to protect your eyes.")
+		to_chat(user, "你把[src]拉下来保护眼睛。")
 
 /obj/item/clothing/glasses/welding/update_icon_state()
 	icon_state = "[initial(icon_state)][!active ? "up" : ""]"
@@ -272,8 +272,8 @@
 	AddComponent(/datum/component/clothing_tint, TINT_5, FALSE)
 
 /obj/item/clothing/glasses/welding/superior
-	name = "superior welding goggles"
-	desc = "Welding goggles made from more expensive materials, strangely smells like potatoes."
+	name = "高级焊接护目镜"
+	desc = "用更昂贵材料制成的焊接护目镜,奇怪的是闻起来像土豆。"
 	icon_state = "rwelding-g"
 	worn_icon_state = "rwelding-g"
 
@@ -284,8 +284,8 @@
 //sunglasses
 
 /obj/item/clothing/glasses/sunglasses
-	name = "sunglasses"
-	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes."
+	name = "太阳镜"
+	desc = "奇怪的是,这是用于提供基本眼部防护的古老技术。增强防护可阻挡许多闪光。"
 	icon_state = "sun"
 	worn_icon_state = "sunglasses"
 	eye_protection = 1
@@ -296,8 +296,8 @@
 		AddComponent(/datum/component/clothing_tint, TINT_3)
 
 /obj/item/clothing/glasses/sunglasses/blindfold
-	name = "blindfold"
-	desc = "Covers the eyes, preventing sight."
+	name = "蒙眼布"
+	desc = "遮住眼睛,阻止视线。"
 	icon_state = "blindfold"
 	worn_icon_state = "blindfold"
 	eye_protection = 2
@@ -307,16 +307,16 @@
 	AddComponent(/datum/component/clothing_tint, TINT_BLIND)
 
 /obj/item/clothing/glasses/sunglasses/big
-	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Larger than average enhanced shielding blocks many flashes."
+	desc = "奇怪的是,这是用于提供基本眼部防护的古老技术。比普通款更大的增强防护可阻挡许多闪光。"
 	icon_state = "bigsunglasses"
 	worn_icon_state = "bigsunglasses"
 
 /obj/item/clothing/glasses/sunglasses/big/prescription
-	name = "prescription sunglasses"
+	name = "处方太阳镜"
 	prescription = TRUE
 
 /obj/item/clothing/glasses/sunglasses/fake
-	desc = "A pair of designer sunglasses. Doesn't seem like it'll block flashes."
+	desc = "一副设计师太阳镜。似乎不能阻挡闪光。"
 	eye_protection = 0
 
 /obj/item/clothing/glasses/sunglasses/fake/attackby(obj/item/I, mob/user, params)
@@ -327,13 +327,13 @@
 	var/obj/item/clothing/glasses/our_glasses
 	if(istype(I, /obj/item/clothing/glasses/hud/health))
 		our_glasses = new /obj/item/clothing/glasses/hud/medsunglasses
-		to_chat(user, span_notice("You fasten the medical hud projector to the inside of the glasses."))
+		to_chat(user, span_notice("你把医疗HUD投影仪固定在眼镜内侧。"))
 	else if(istype(I, /obj/item/clothing/glasses/meson))
 		our_glasses = new /obj/item/clothing/glasses/meson/sunglasses
-		to_chat(user, span_notice("You fasten the optical meson scaner to the inside of the glasses."))
+		to_chat(user, span_notice("你把光学介子扫描仪固定在眼镜内侧。"))
 	else if(istype(I, /obj/item/clothing/glasses/night/m56_goggles))
 		our_glasses = new /obj/item/clothing/glasses/night/sunglasses
-		to_chat(user, span_notice("You fasten the KTLD sight to the inside of the glasses."))
+		to_chat(user, span_notice("你把KTLD瞄具固定在眼镜内侧。"))
 	if(!our_glasses)
 		return
 	qdel(I)
@@ -342,22 +342,22 @@
 	update_icon()
 
 /obj/item/clothing/glasses/sunglasses/fake/prescription
-	name = "prescription sunglasses"
+	name = "处方太阳镜"
 	prescription = TRUE
 
 /obj/item/clothing/glasses/sunglasses/fake/big
-	name = "designer sunglasses"
-	desc = "A pair of larger than average designer sunglasses. Doesn't seem like it'll block flashes."
+	name = "设计师太阳镜"
+	desc = "一副比普通款更大的设计师太阳镜。似乎不能阻挡闪光。"
 	icon_state = "bigsunglasses"
 	worn_icon_state = "bigsunglasses"
 
 /obj/item/clothing/glasses/sunglasses/fake/big/prescription
-	name = "prescription designer sunglasses"
+	name = "处方设计师太阳镜"
 	prescription = TRUE
 
 /obj/item/clothing/glasses/sunglasses/sa
-	name = "spatial agent's sunglasses"
-	desc = "Glasses worn by a spatial agent."
+	name = "空间特工的太阳镜"
+	desc = "空间特工佩戴的眼镜。"
 	eye_protection = 2
 	vision_flags = SEE_TURFS|SEE_MOBS|SEE_OBJS
 	lighting_cutoff = LIGHTING_CUTOFF_MEDIUM
@@ -367,12 +367,12 @@
 	AddComponent(/datum/component/clothing_tint, TINT_NONE)
 
 /obj/item/clothing/glasses/sunglasses/sa/nodrop
-	desc = "Glasses worn by a spatial agent. cannot be dropped"
+	desc = "空间特工佩戴的眼镜。无法丢弃"
 	item_flags = DELONDROP
 
 /obj/item/clothing/glasses/sunglasses/sechud
-	name = "HUDSunglasses"
-	desc = "Sunglasses with a HUD."
+	name = "HUD太阳镜"
+	desc = "带有HUD的太阳镜。"
 	icon_state = "sunhud"
 
 /obj/item/clothing/glasses/sunglasses/sechud/mp/Initialize(mapload)
@@ -380,20 +380,20 @@
 	AddComponent(/datum/component/clothing_tint, TINT_NONE)
 
 /obj/item/clothing/glasses/sunglasses/aviator
-	name = "aviator sunglasses"
-	desc = "A pair of aviator sunglasses."
+	name = "飞行员太阳镜"
+	desc = "一副飞行员太阳镜。"
 	icon_state = "aviator"
 	worn_icon_state = "aviator"
 
 /obj/item/clothing/glasses/sunglasses/aviator/yellow
-	name = "aviator sunglasses"
-	desc = "A pair of aviator sunglasses. Comes with yellow lens."
+	name = "飞行员太阳镜"
+	desc = "一副飞行员太阳镜。配有黄色镜片。"
 	icon_state = "aviator_yellow"
 	worn_icon_state = "aviator_yellow"
 
 /obj/item/clothing/glasses/orange
-	name = "orange glasses"
-	desc = "A pair of orange glasses."
+	name = "橙色眼镜"
+	desc = "一副橙色眼镜。"
 	icon_state = "orange"
 	worn_icon_state = "orange"
 	species_exception = list(/datum/species/robot)
@@ -405,10 +405,10 @@
 	var/obj/item/clothing/glasses/our_glasses
 	if(istype(our_item, /obj/item/clothing/glasses/hud/health))
 		our_glasses = new /obj/item/clothing/glasses/hud/orange_glasses
-		to_chat(user, span_notice("You fasten the medical hud projector to the inside of the glasses."))
+		to_chat(user, span_notice("你把医疗HUD投影仪固定在眼镜内侧。"))
 	else if(istype(our_item, /obj/item/clothing/glasses/meson))
 		our_glasses = new /obj/item/clothing/glasses/meson/orange_glasses
-		to_chat(user, span_notice("You fasten the optical meson scaner to the inside of the glasses."))
+		to_chat(user, span_notice("你把光学介子扫描仪固定在眼镜内侧。"))
 	if(!our_glasses)
 		return
 	qdel(our_item)
@@ -417,8 +417,8 @@
 	update_icon()
 
 /obj/item/clothing/glasses/meson/orange_glasses
-	name = "Orange glasses"
-	desc = "A pair of orange glasses. This pair has been fitted with an optical meson scanner."
+	name = "橙色眼镜"
+	desc = "一副橙色眼镜。这副已装配光学介子扫描仪。"
 	worn_icon_list = list(
 		slot_glasses_str = 'icons/mob/clothing/eyes.dmi')
 	icon_state = "meson_orange"
@@ -426,8 +426,8 @@
 	deactive_state = "deactivated_orange"
 
 /obj/item/clothing/glasses/hud/orange_glasses
-	name = "Orange glasses"
-	desc = "A pair of orange glasses. This pair has been fitted with an internal HealthMate HUD projector."
+	name = "橙色眼镜"
+	desc = "一副橙色眼镜。这副已装配内置HealthMate HUD投影仪。"
 	worn_icon_list = list(
 		slot_glasses_str = 'icons/mob/clothing/eyes.dmi')
 	icon_state = "med_orange"

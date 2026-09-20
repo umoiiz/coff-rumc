@@ -1,6 +1,6 @@
 /obj/machinery/meter
 	name = "gas flow meter"
-	desc = "It measures something."
+	desc = "它测量某种东西."
 	icon = 'icons/obj/meter.dmi'
 	icon_state = "meterX"
 	layer = GAS_PUMP_LAYER
@@ -54,12 +54,12 @@
 	. += status()
 
 /obj/machinery/meter/wrench_act(mob/user, obj/item/I)
-	to_chat(user, span_notice("You begin to unfasten \the [src]..."))
+	to_chat(user, span_notice("你开始解开\the [src]..."))
 	if(do_after(user, 4 SECONDS, NONE, src, BUSY_ICON_BUILD))
 		user.visible_message(
-			"[user] unfastens \the [src].",
-			span_notice("You unfasten \the [src]."),
-			span_italics("You hear ratchet."))
+			"[user]解开了\the [src].",
+			span_notice("你解开了\the [src]."),
+			span_italics("你听到棘轮声."))
 		deconstruct()
 	return TRUE
 

@@ -122,31 +122,31 @@
 	set hidden = TRUE
 
 	if(skills.getRating(SKILL_LEADERSHIP) < SKILL_LEAD_TRAINED)
-		to_chat(src, span_warning("You are not competent enough in leadership to issue an order."))
+		to_chat(src, span_warning("你的领导能力不足,无法下达命令."))
 		return
 
 	if(stat)
-		to_chat(src, span_warning("You cannot give an order in your current state."))
+		to_chat(src, span_warning("你当前的状态无法下达命令."))
 		return
 
 	if(has_status_effect(STATUS_EFFECT_MUTED))
-		to_chat(src, span_warning("You cannot give an order while muted."))
+		to_chat(src, span_warning("你被禁言时无法下达命令."))
 		return
 
 	if(TIMER_COOLDOWN_RUNNING(src, COOLDOWN_SKILL_ORDERS))
-		to_chat(src, span_warning("You have recently given an order. Calm down."))
+		to_chat(src, span_warning("你最近刚下达过命令.冷静一下."))
 		return
 
 	if(!command_aura)
-		command_aura = tgui_input_list(src, "Choose an order", items = command_aura_allowed + "help")
+		command_aura = tgui_input_list(src, "选择一个命令", items = command_aura_allowed + "help")
 		if(command_aura == "help")
-			to_chat(src, span_notice("<br>Orders give a buff to nearby marines for a short period of time, followed by a cooldown, as follows:<br><B>Move</B> - Increased mobility and chance to dodge projectiles.<br><B>Hold</B> - Increased resistance to pain and combat wounds.<br><B>Focus</B> - Increased gun accuracy and effective range.<br>"))
+			to_chat(src, span_notice("<br>命令会在短时间内为附近的陆战队员提供增益,随后进入冷却,具体如下:<br><B>移动</B> - 提高机动性和闪避投射物的几率.<br><B>坚守</B> - 提高对疼痛和战斗创伤的抗性.<br><B>专注</B> - 提高枪械精准度和有效射程.<br>"))
 			return
 		if(!command_aura)
 			return
 
 	if(TIMER_COOLDOWN_RUNNING(src, COOLDOWN_SKILL_ORDERS))
-		to_chat(src, span_warning("You have recently given an order. Calm down."))
+		to_chat(src, span_warning("你最近刚下达过命令.冷静一下."))
 		return
 
 	if(!(command_aura in command_aura_allowed))
@@ -159,17 +159,17 @@
 	switch(command_aura)
 		if("move")
 			var/image/move = image('icons/mob/talk.dmi', src, icon_state = "order_move")
-			message = pick("ДВИГАЕМ БУЛКАМИ!", "ШЕВЕЛИМСЯ!", "ДВИГАЕМСЯ, ДВИГАЕМСЯ!", "ПОШЁЛ, ПОШЁЛ, ПОШЁЛ!", "ВПЕРЁД! БЫСТРЕЕ!", "ДВИГАЙ, ДВИГАЙ, ДВИГАЙ!", "БЕГОМ, МАРШ!", "ШИРЕ ШАГ!", "ШЕВЕЛИМ ЛАСТАМИ!", "ШЕВЕЛИМ НОЖКАМИ, ДАМЫ!")
+			message = pick("动起来!", "快动!", "动起来,动起来!", "走,走,走!", "前进! 快点!", "动起来, 动起来, 动起来!", "跑步, 前进!", "大步走!", "动动爪子!", "动动小腿, 女士们!")
 			say(message)
 			add_emote_overlay(move)
 		if("hold")
 			var/image/hold = image('icons/mob/talk.dmi', src, icon_state = "order_hold")
-			message = pick("НИ ШАГУ НАЗАД!", "СТОЯТЬ НАСМЕРТЬ!", "ДЕРЖАТЬ СТРОЙ!", "ДЕРЖАТЬ ПОЗИЦИЮ!", "ДЕРЖИМ УДАР!", "ВСТАТЬ И СРАЖАТЬСЯ!", "ВЗЯТЬ ПОД КОНТРОЛЬ ТЕРРИТОРИЮ!", "ПРИГОТОВИТЬСЯ К СТОЛКНОВЕНИЮ!", "ДЕРЖАТЬСЯ!", ";БЕРЕЧЬ ГОЛОВУ!")
+			message = pick("一步不退!", "死守阵地!", "保持队形!", "守住位置!", "顶住攻击!", "站起来战斗!", "控制该区域!", "准备迎接冲击!", "坚持住!", ";保护好脑袋!")
 			say(message)
 			add_emote_overlay(hold)
 		if("focus")
 			var/image/focus = image('icons/mob/talk.dmi', src, icon_state = "order_focus")
-			message = pick("НЕ ПАЛИТЕ ПО СВОИМ!", "СОСРЕДОТОЧИТЬ ОГОНЬ!", "СТРЕЛЬБА НА ПОРАЖЕНИЕ!", "ПРИМКНУТЬ ШТЫКИ!", "ОГОНЬ ПО ГОТОВНОСТИ!", "ОРУЖИЕ НА ИЗГОТОВКУ!", "ЦЕЛЬСЯ!", "ВНИМАНИЕ!", "ОГОНЬ!", "ГОТОВЬТЕСЬ К БОЮ!", "НАКОРМИТЕ ИХ СВИНЦОМ!", "УНИЧТОЖИТЬ ЦЕЛЬ!")
+			message = pick("别打自己人!", "集中火力!", "致命射击!", "上刺刀!", "准备开火!", "举枪准备!", "瞄准!", "注意!", "开火!", "准备战斗!", "给他们喂子弹!", "消灭目标!")
 			say(message)
 			add_emote_overlay(focus)
 

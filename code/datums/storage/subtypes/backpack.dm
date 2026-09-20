@@ -79,7 +79,7 @@
 		return ..()
 
 /datum/storage/backpack/dispenser/attempt_draw_object(mob/living/user)
-	to_chat(user, span_notice("You can't grab anything out of [parent] while it's not deployed."))
+	to_chat(user, span_notice("当[parent]未展开时, 你无法从中取出任何东西."))
 
 /datum/storage/backpack/duffelbag
 	access_delay = 0
@@ -105,7 +105,7 @@
 
 /datum/storage/backpack/duffelbag/attempt_draw_object(mob/living/carbon/user, start_from_left)
 	if(user.back == parent && user.active_storage != src)
-		to_chat(user, span_notice("You can't grab anything out of [parent] while it's on your back."))
+		to_chat(user, span_notice("当[parent]在你背上时, 你无法从中取出任何东西."))
 		return
 	return ..()
 

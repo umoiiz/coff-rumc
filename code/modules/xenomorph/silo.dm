@@ -1,8 +1,8 @@
 /obj/structure/xeno/silo
-	name = "Resin silo"
+	name = "树脂储存库"
 	icon = 'icons/Xeno/resin_silo.dmi'
 	icon_state = "weed_silo"
-	desc = "A slimy, oozy resin bed filled with foul-looking egg-like ...things."
+	desc = "一个黏滑、渗液的树脂床, 充满了看起来恶心的蛋状...东西."
 	bound_width = 96
 	bound_height = 96
 	bound_x = -32
@@ -85,15 +85,15 @@
 	var/current_integrity = (obj_integrity / max_integrity) * 100
 	switch(current_integrity)
 		if(0 to 20)
-			. += span_warning("It's barely holding, there's leaking oozes all around, and most eggs are broken. Yet it is not inert.")
+			. += span_warning("它勉强支撑着, 周围到处都在渗漏黏液, 大多数蛋都破碎了. 但它并非毫无生机.")
 		if(20 to 40)
-			. += span_warning("It looks severely damaged, its movements slow.")
+			. += span_warning("它看起来严重受损, 动作缓慢.")
 		if(40 to 60)
-			. += span_warning("It's quite beat up, but it seems alive.")
+			. += span_warning("它受损相当严重, 但似乎还活着.")
 		if(60 to 80)
-			. += span_warning("It's slightly damaged, but still seems healthy.")
+			. += span_warning("它轻微受损, 但看起来仍然健康.")
 		if(80 to 100)
-			. += span_info("It appears in good shape, pulsating healthily.")
+			. += span_info("它看起来状态良好, 健康地搏动着.")
 
 /obj/structure/xeno/silo/take_damage(damage_amount, damage_type, damage_flag = null, effects = TRUE, attack_dir, armour_penetration, mob/living/blame_mob)
 	. = ..()

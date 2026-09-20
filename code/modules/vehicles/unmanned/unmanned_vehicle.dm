@@ -1,6 +1,6 @@
 /obj/vehicle/unmanned
 	name = "UV-L Iguana"
-	desc = "A small remote-controllable vehicle, usually owned by the TGMC and other major armies."
+	desc = "一种小型遥控载具,通常由TGMC和其他主要军队拥有."
 	icon = 'icons/obj/unmanned_vehicles.dmi'
 	icon_state = "light_uv"
 	anchored = FALSE
@@ -132,21 +132,21 @@
 		. += "It has [current_rounds] shots left."
 	switch(turret_type)
 		if(TURRET_TYPE_LIGHT)
-			. += span_notice("It is equipped with a light weapon system. It uses 11x35mm ammo.")
+			. += span_notice("它装备有轻型武器系统.使用11x35mm弹药.")
 		if(TURRET_TYPE_HEAVY)
-			. += span_notice("It is equipped with a heavy weapon system. It uses 12x40mm ammo.")
+			. += span_notice("它装备有重型武器系统.使用12x40mm弹药.")
 		if(TURRET_TYPE_EXPLOSIVE)
-			. += span_notice("It is equipped with an explosive weapon system.")
+			. += span_notice("它装备有爆炸性武器系统.")
 		if(TURRET_TYPE_DROIDLASER)
-			. += span_notice("It is equipped with a droid weapon system. It uses 11x35mm ammo.")
+			. += span_notice("它装备有机器人武器系统.使用11x35mm弹药.")
 		if(TURRET_TYPE_CLAW)
-			. += span_notice("It is equipped with a mechanical claw system for grabbing and pulling objects and bodies.")
+			. += span_notice("它装备有机械爪系统,用于抓取和拖拽物体与尸体.")
 	if(unmanned_flags & NEED_BATTERY)
 		if(battery)
-			. += span_notice("Battery: [round(battery.percent())]% charge remaining.")
+			. += span_notice("电池:[round(battery.percent())]%电量剩余.")
 		else
-			. += span_warning("No battery installed!")
-		. += span_notice("Use a screwdriver to replace the battery.")
+			. += span_warning("未安装电池!")
+		. += span_notice("使用螺丝刀更换电池.")
 
 /obj/vehicle/unmanned/attackby(obj/item/I, mob/user, params)
 	. = ..()
@@ -168,7 +168,7 @@
 
 	if(unmanned_flags & NEED_BATTERY)
 		if(!battery || !battery.use(power_per_move))
-			to_chat(user, span_warning("[src] is out of power!"))
+			to_chat(user, span_warning("[src]没电了!"))
 			return FALSE
 
 	var/total_delay = next_move_delay + weed_slowdown
@@ -189,14 +189,14 @@
 /obj/vehicle/unmanned/wrench_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(!turret_path)
-		to_chat(user,span_warning("There is nothing to remove from [src]!"))
+		to_chat(user,span_warning("无法从[src]上移除任何东西!"))
 		return
-	user.visible_message(span_notice("[user] starts to remove [initial(turret_path.name)] from [src]"),	span_notice("You start to remove [initial(turret_path.name)] from [src]"))
+	user.visible_message(span_notice("[user]开始从[src]上移除[initial(turret_path.name)]"),	span_notice("你开始从[src]上移除[initial(turret_path.name)]"))
 	if(!do_after(user, 3 SECONDS, NONE, src, BUSY_ICON_BUILD))
 		return
 	var/obj/item/equipment = new turret_path
-	user.visible_message(span_notice("[user] removes [equipment] from [src]."),
-	span_notice("You remove [equipment] from [src]."))
+	user.visible_message(span_notice("[user]从[src]上移除了[equipment]."),
+	span_notice("你从[src]上移除了[equipment]."))
 	user.put_in_hands(equipment)
 	if(istype(equipment, /obj/item/uav_turret))
 		var/obj/item/uav_turret/turret = equipment
@@ -212,14 +212,14 @@
 ///Insert a new battery into the vehicle
 /obj/vehicle/unmanned/proc/insert_battery(obj/item/cell/unmanned_vehicle/new_battery, mob/user)
 	if(battery)
-		to_chat(user, span_warning("[src] already has a battery installed!"))
+		to_chat(user, span_warning("[src]已经安装了电池!"))
 		return
-	user.visible_message(span_notice("[user] starts to install [new_battery] into [src]."), span_notice("You start to install [new_battery] into [src]."))
+	user.visible_message(span_notice("[user]开始将[new_battery]安装到[src]中."), span_notice("你开始将[new_battery]安装到[src]中."))
 	if(!do_after(user, 3 SECONDS, NONE, src, BUSY_ICON_BUILD))
 		return
 	battery = new_battery
 	user.transferItemToLoc(new_battery, src)
-	user.visible_message(span_notice("[user] installs [new_battery] into [src]."), span_notice("You install [new_battery] into [src]."))
+	user.visible_message(span_notice("[user]将[new_battery]安装到[src]中."), span_notice("你将[new_battery]安装到[src]中."))
 	playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
 
 ///Try to remove/replace the battery with a screwdriver
@@ -228,26 +228,26 @@
 	if(!(unmanned_flags & NEED_BATTERY))
 		return
 	if(!battery)
-		to_chat(user, span_warning("There is no battery to remove from [src]!"))
+		to_chat(user, span_warning("无法从[src]上移除电池!"))
 		return
-	user.visible_message(span_notice("[user] starts to remove the battery from [src]."), span_notice("You start to remove the battery from [src]."))
+	user.visible_message(span_notice("[user]开始从[src]上移除电池."), span_notice("你开始从[src]上移除电池."))
 	if(!do_after(user, 3 SECONDS, NONE, src, BUSY_ICON_BUILD))
 		return
 	var/obj/item/cell/removed_battery = battery
 	battery = null
 	user.put_in_hands(removed_battery)
-	user.visible_message(span_notice("[user] removes [removed_battery] from [src]."), span_notice("You remove [removed_battery] from [src]."))
+	user.visible_message(span_notice("[user]从[src]上移除了[removed_battery]."), span_notice("你从[src]上移除了[removed_battery]."))
 	playsound(loc, 'sound/items/screwdriver.ogg', 25, 1)
 
 ///Try to reload the turret of our vehicule
 /obj/vehicle/unmanned/proc/reload_turret(obj/item/ammo_magazine/reload_ammo, mob/user)
 	if(!ispath(reload_ammo.type, initial(turret_path.magazine_type)))
-		to_chat(user, span_warning("This is not the right ammo!"))
+		to_chat(user, span_warning("这不是正确的弹药!"))
 		return
 	if(max_rounds == current_rounds)
-		to_chat(user, span_warning("The [src] ammo storage is already full!"))
+		to_chat(user, span_warning("[src]的弹药储存已满!"))
 		return
-	user.visible_message(span_notice("[user] starts to reload [src] with [reload_ammo]."), span_notice("You start to reload [src] with [reload_ammo]."))
+	user.visible_message(span_notice("[user]开始用[reload_ammo]为[src]装填."), span_notice("你开始用[reload_ammo]为[src]装填."))
 	if(!do_after(user, 3 SECONDS, NONE, src, BUSY_ICON_GENERIC))
 		return
 	current_rounds = current_rounds + reload_ammo.current_rounds
@@ -257,7 +257,7 @@
 		current_rounds = max_rounds
 	else
 		qdel(reload_ammo)
-	user.visible_message(span_notice("[user] reloads [src] with [reload_ammo]."), span_notice("You reload [src] with [reload_ammo]. It now has [current_rounds] shots left out of a maximum of [max_rounds]."))
+	user.visible_message(span_notice("[user]用[reload_ammo]为[src]装填."), span_notice("你用[reload_ammo]为[src]装填.它现在剩余[current_rounds]发,最大为[max_rounds]发."))
 	playsound(loc, 'sound/weapons/guns/interact/smartgun_unload.ogg', 25, 1)
 	update_icon()
 	hud_set_uav_ammo()
@@ -265,15 +265,15 @@
 /// Try to equip a turret on the vehicle
 /obj/vehicle/unmanned/proc/equip_turret(obj/item/I, mob/user)
 	if(turret_path)
-		to_chat(user, span_notice("There's already something attached!"))
+		to_chat(user, span_notice("已经安装了某些东西!"))
 		return
 	if(istype(I, /obj/item/uav_turret))
 		var/obj/item/uav_turret/turret = I
 		if(turret_pattern != turret.turret_pattern)
-			to_chat(user, span_notice("You can't attach that type of turret!"))
+			to_chat(user, span_notice("你无法安装该类型的炮塔!"))
 			return
-	user.visible_message(span_notice("[user] starts to attach [I] to [src]."),
-	span_notice("You start to attach [I] to [src]."))
+	user.visible_message(span_notice("[user]开始将[I]安装到[src]上."),
+	span_notice("你开始将[I]安装到[src]上."))
 	if(!do_after(user, 3 SECONDS, NONE, src, BUSY_ICON_BUILD))
 		return
 	turret_path = I.type
@@ -287,8 +287,8 @@
 		hud_set_uav_ammo()
 	else
 		turret_type = TURRET_TYPE_EXPLOSIVE
-	user.visible_message(span_notice("[user] attaches [I] to [src]."),
-	span_notice("You attach [I] to [src]."))
+	user.visible_message(span_notice("[user]将[I]安装到[src]上."),
+	span_notice("你将[I]安装到[src]上."))
 	update_icon()
 	SEND_SIGNAL(src, COMSIG_UNMANNED_TURRET_UPDATED, turret_type)
 	qdel(I)
@@ -336,7 +336,7 @@
 		return FALSE
 	if(unmanned_flags & NEED_BATTERY)
 		if(!battery || !battery.use(power_per_shot))
-			to_chat(user, span_warning("[src] is out of power!"))
+			to_chat(user, span_warning("[src]没电了!"))
 			return FALSE
 	if(load_into_chamber() && istype(in_chamber, /atom/movable/projectile))
 		//Setup projectile
@@ -366,7 +366,7 @@
 		return FALSE
 	if(unmanned_flags & NEED_BATTERY)
 		if(!battery || !battery.use(power_per_shot))
-			to_chat(user, span_warning("[src] is out of power!"))
+			to_chat(user, span_warning("[src]没电了!"))
 			return FALSE
 
 	if(target == pulling)
@@ -382,20 +382,20 @@
 		if(M.pulledby)
 			M.pulledby.stop_pulling()
 		start_pulling(M)
-		to_chat(user, span_notice("Claw grabs [M] and starts pulling \him."))
+		to_chat(user, span_notice("爪抓住[M]并开始拖拽\him ."))
 		log_attack("[key_name(user)] used claw to pull [key_name(M)] at [AREACOORD(src)]")
 	else if(isobj(target))
 		var/obj/O = target
 		if(O.anchored)
-			to_chat(user, span_warning("[O] is anchored and cannot be moved!"))
+			to_chat(user, span_warning("[O]已锚定,无法移动!"))
 			return FALSE
 		if(O.pulledby)
 			O.pulledby.stop_pulling()
 		start_pulling(O)
-		to_chat(user, span_notice("Claw grabs [O] and starts pulling it."))
+		to_chat(user, span_notice("爪抓住[O]并开始拖拽它."))
 		log_attack("[key_name(user)] used claw to pull [O] at [AREACOORD(src)]")
 	else
-		to_chat(user, span_warning("Claw cannot grab that target!"))
+		to_chat(user, span_warning("爪无法抓住该目标!"))
 		return FALSE
 
 	COOLDOWN_START(src, fire_cooldown, fire_delay)
@@ -432,8 +432,8 @@
 	power_per_move = 0.3
 
 /obj/structure/closet/crate/uav_crate
-	name = "\improper UV-L Iguana Crate"
-	desc = "A crate containing an unmanned vehicle with a controller."
+	name = "\improper UV-L鬣蜥箱"
+	desc = "一个装有无人载具及其控制器的箱子."
 	icon = 'icons/obj/structures/crates.dmi'
 	icon_state = "closed_weapons"
 	icon_opened = "open_weapons"
@@ -445,11 +445,11 @@
 	new /obj/item/unmanned_vehicle_remote(src)
 
 /obj/structure/closet/crate/uav_crate/medium
-	name = "\improper UV-M Gecko Crate"
+	name = "\improper UV-M壁虎箱"
 	vehicle_type = /obj/vehicle/unmanned/medium
 
 /obj/structure/closet/crate/uav_crate/heavy
-	name = "\improper UV-H Komodo Crate"
+	name = "\improper UV-H科莫多龙箱"
 	vehicle_type = /obj/vehicle/unmanned/heavy
 
 /obj/structure/closet/crate/uav_weapons_crate

@@ -12,24 +12,24 @@ export const OutfitManager = (props) => {
         <Section
           fill
           scrollable
-          title="Custom Outfit Manager"
+          title="自定义套装管理器"
           buttons={
             <>
               <Button
                 icon="file-upload"
-                tooltip="Load an outfit from a file"
+                tooltip="从文件加载套装"
                 tooltipPosition="left"
                 onClick={() => act('load')}
               />
               <Button
                 icon="copy"
-                tooltip="Copy an already existing outfit"
+                tooltip="复制已有的套装"
                 tooltipPosition="left"
                 onClick={() => act('copy')}
               />
               <Button
                 icon="plus"
-                tooltip="Create a new outfit"
+                tooltip="创建新套装"
                 tooltipPosition="left"
                 onClick={() => act('new')}
               />
@@ -63,7 +63,7 @@ export const OutfitManager = (props) => {
                   <Stack.Item ml={0.5}>
                     <Button
                       icon="save"
-                      tooltip="Save this outfit to a file"
+                      tooltip="将此套装保存到文件"
                       tooltipPosition="left"
                       onClick={() => act('save', { outfit: outfit.ref })}
                     />
@@ -72,7 +72,7 @@ export const OutfitManager = (props) => {
                     <Button
                       color="bad"
                       icon="trash-alt"
-                      tooltip="Delete this outfit"
+                      tooltip="删除此套装"
                       tooltipPosition="left"
                       onClick={() => act('delete', { outfit: outfit.ref })}
                     />

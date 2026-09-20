@@ -72,15 +72,15 @@
 	return P
 
 /obj/item/camera_film
-	name = "film cartridge"
+	name = "胶卷盒"
 	icon = 'icons/obj/device.dmi'
-	desc = "A camera film cartridge. Insert it into a camera to reload it."
+	desc = "一个相机胶卷盒. 将其插入相机以重新装填."
 	icon_state = "film"
 	worn_icon_state = "electropack"
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/photo
-	name = "photo"
+	name = "照片"
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "photo"
 	worn_icon_list = list(
@@ -113,7 +113,7 @@
 	if(in_range(src, user) || isobserver(user))
 		show(user)
 	else
-		. += span_warning("You need to get closer to get a good look at this photo!")
+		. += span_warning("你需要靠近一点才能看清这张照片!")
 
 /obj/item/photo/proc/set_picture(datum/picture/P, setname, setdesc, name_override = FALSE)
 	if(!istype(P))
@@ -132,7 +132,7 @@
 
 /obj/item/photo/proc/show(mob/user)
 	if(!istype(picture) || !picture.picture_image)
-		to_chat(user, span_warning("[src] seems to be blank..."))
+		to_chat(user, span_warning("[src]似乎是空白的..."))
 		return
 	user << browse_rsc(picture.picture_image, "tmp_photo.png")
 	user << browse(HTML_SKELETON_TITLE(name, \
@@ -152,8 +152,8 @@
 		name = "photo[(n_name ? "- '[n_name]'" : null)]"
 
 /obj/item/camera
-	name = "camera"
-	desc = "A polaroid camera."
+	name = "相机"
+	desc = "一台拍立得相机."
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/items/civilian_left.dmi',
 		slot_r_hand_str = 'icons/mob/inhands/items/civilian_right.dmi',
@@ -209,11 +209,11 @@
 
 	if(istype(I, /obj/item/camera_film))
 		if(pictures_left)
-			to_chat(user, span_notice("[src] still has some film in it!"))
+			to_chat(user, span_notice("[src]里还有一些胶卷!"))
 			return
 		if(!user.temporarilyRemoveItemFromInventory(I))
 			return
-		to_chat(user, span_notice("You insert [I] into [src]."))
+		to_chat(user, span_notice("你将[I]插入[src]."))
 		qdel(I)
 		pictures_left = pictures_max
 
@@ -315,10 +315,10 @@
 	if(in_range(src, user)) //needed because of TK
 		user.put_in_hands(p)
 		pictures_left--
-		to_chat(user, span_notice("[pictures_left] photos left."))
+		to_chat(user, span_notice("剩余[pictures_left]张照片."))
 		var/customise = "No"
 		if(can_customise)
-			customise = tgui_alert(user, "Do you want to customize the photo?", "Customization", list("Yes", "No"))
+			customise = tgui_alert(user, "你想自定义这张照片吗?", "自定义", list("Yes", "No"))
 		if(customise == "Yes")
 			var/name1 = stripped_input(user, "Set a name for this photo, or leave blank. 32 characters max.", "Name", max_length = 32)
 			var/desc1 = stripped_input(user, "Set a description to add to photo, or leave blank. 128 characters max.", "Caption", max_length = 128)
@@ -425,8 +425,8 @@
 	return res
 
 /obj/item/camera/oldcamera
-	name = "Old Camera"
-	desc = "An old, slightly beat-up digital camera, with a cheap photo printer taped on. It's a nice shade of blue."
+	name = "旧相机"
+	desc = "一台旧的, 略微破损的数码相机, 上面用胶带粘着一个廉价的照片打印机. 颜色是好看的蓝色."
 	icon_state = "oldcamera"
 	pictures_left = 30
 

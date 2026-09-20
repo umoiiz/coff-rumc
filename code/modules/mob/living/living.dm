@@ -259,7 +259,7 @@
 		return FALSE
 	TIMER_COOLDOWN_START(src, COOLDOWN_RESIST, CLICK_CD_RESIST)
 	if(pulledby.grab_state >= GRAB_AGGRESSIVE)
-		visible_message(span_danger("[src] resists against [pulledby]'s grip!"))
+		visible_message(span_danger("[src] 抵抗 [pulledby] 的抓握!"))
 	return resist_grab()
 
 
@@ -270,7 +270,7 @@
 		return FALSE
 	TIMER_COOLDOWN_START(src, COOLDOWN_RESIST, CLICK_CD_RESIST)
 	if(pulledby.grab_state >= GRAB_AGGRESSIVE)
-		visible_message(span_danger("[src] struggles to break free of [pulledby]'s grip!"), null, null, 5)
+		visible_message(span_danger("[src] 挣扎着想要挣脱 [pulledby] 的抓握!"), null, null, 5)
 	return resist_grab()
 
 
@@ -283,7 +283,7 @@
 		return FALSE
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, TRUE, 7)
 	if(pulledby.grab_state >= GRAB_AGGRESSIVE)
-		visible_message(span_danger("[src] has broken free of [pulledby]'s grip!"), null, null, 5)
+		visible_message(span_danger("[src] 已挣脱 [pulledby] 的抓握!"), null, null, 5)
 	pulledby.stop_pulling()
 	grab_resist_level = 0 //zero it out.
 	return TRUE
@@ -335,7 +335,7 @@
 
 		if(L.pulledby && L.pulledby != src && L.restrained())
 			if(!(world.time % 5))
-				to_chat(src, span_warning("[L] is restrained, you cannot push past."))
+				to_chat(src, span_warning("[L] 被束缚住了, 你无法挤过去."))
 			return
 
 		if(L.pulling)
@@ -343,7 +343,7 @@
 				var/mob/P = L.pulling
 				if(P.restrained())
 					if(!(world.time % 5))
-						to_chat(src, span_warning("[L] is restraining [P], you cannot push past."))
+						to_chat(src, span_warning("[L] 正在束缚 [P], 你无法挤过去."))
 					return
 
 		if(!L.buckled && !L.anchored)
@@ -478,7 +478,7 @@
 
 /mob/living/proc/offer_mob()
 	GLOB.offered_mob_list += src
-	notify_ghosts(span_boldnotice("A mob is being offered! Name: [name][job ? " Job: [job.title]" : ""] "), enter_link = "claim=[REF(src)]", source = src, action = NOTIFY_ORBIT, flashwindow = TRUE)
+	notify_ghosts(span_boldnotice("有生物正在被提供! 名称: [name][job ? " Job: [job.title]" : ""] "), enter_link = "claim=[REF(src)]", source = src, action = NOTIFY_ORBIT, flashwindow = TRUE)
 
 //used in datum/reagents/reaction() proc
 /mob/living/proc/get_permeability_protection()
@@ -582,17 +582,17 @@
 
 /mob/living/proc/take_over(mob/M, bypass)
 	if(!M.mind)
-		to_chat(M, span_warning("You don't have a mind."))
+		to_chat(M, span_warning("你没有意识."))
 		return FALSE
 
 	if(!bypass)
 		if(client)
-			to_chat(M, span_warning("That mob has already been taken."))
+			to_chat(M, span_warning("那个生物已被接管."))
 			GLOB.offered_mob_list -= src
 			return FALSE
 
 		if(job && is_banned_from(M.ckey, job.title))
-			to_chat(M, span_warning("You are jobbanned from that role."))
+			to_chat(M, span_warning("你被禁止担任该职业."))
 			return FALSE
 
 		log_game("[key_name(M)] has taken over [key_name_admin(src)].")
@@ -969,14 +969,14 @@
 	if(href_list[VV_HK_ADD_LANGUAGE])
 		if(!check_rights(NONE))
 			return
-		var/choice = tgui_input_list(usr, "Grant which language?", "Languages", GLOB.all_languages)
+		var/choice = tgui_input_list(usr, "授予哪种语言?", "语言", GLOB.all_languages)
 		if(!choice)
 			return
 		grant_language(choice)
 	if(href_list[VV_HK_REMOVE_LANGUAGE])
 		if(!check_rights(NONE))
 			return
-		var/choice = tgui_input_list(usr, "Remove which language?", "Known Languages", src.language_holder.languages)
+		var/choice = tgui_input_list(usr, "移除哪种语言?", "已知语言", src.language_holder.languages)
 		if(!choice)
 			return
 		remove_language(choice)
@@ -997,11 +997,11 @@
 
 		impediments[initial(possible.id)] = possible
 
-	var/chosen = tgui_input_list(admin, "What speech impediment?", "Impede Speech", impediments)
+	var/chosen = tgui_input_list(admin, "什么言语障碍?", "言语障碍", impediments)
 	if(!chosen || !ispath(impediments[chosen], /datum/status_effect/speech) || QDELETED(src) || !check_rights(NONE))
 		return
 
-	var/duration = tgui_input_number(admin, "How long should it last (in seconds)? Max is infinite duration.", "Duration", 0, INFINITY, 0 SECONDS)
+	var/duration = tgui_input_number(admin, "应该持续多久 (以秒为单位)? 最长为无限持续时间.", "持续时间", 0, INFINITY, 0 SECONDS)
 	if(!isnum(duration) || duration <= 0 || QDELETED(src) || !check_rights(NONE))
 		return
 

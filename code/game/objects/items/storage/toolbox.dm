@@ -1,6 +1,6 @@
 /obj/item/storage/toolbox
-	name = "toolbox"
-	desc = "Danger. Very robust."
+	name = "工具箱"
+	desc = "危险. 非常坚固."
 	icon_state = "red"
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/equipment/toolboxes_left.dmi',
@@ -16,7 +16,7 @@
 	attack_verb = list("robusts")
 
 /obj/item/storage/toolbox/emergency
-	name = "emergency toolbox"
+	name = "应急工具箱"
 	icon_state = "red"
 	worn_icon_state = "toolbox_red"
 
@@ -29,7 +29,7 @@
 		new /obj/item/explosive/grenade/flare/civilian(src)
 
 /obj/item/storage/toolbox/mechanical
-	name = "mechanical toolbox"
+	name = "机械工具箱"
 	icon_state = "blue"
 	worn_icon_state = "toolbox_blue"
 
@@ -42,7 +42,7 @@
 	new /obj/item/tool/wirecutters(src)
 
 /obj/item/storage/toolbox/electrical
-	name = "electrical toolbox"
+	name = "电气工具箱"
 	icon_state = "yellow"
 	worn_icon_state = "toolbox_yellow"
 
@@ -60,7 +60,7 @@
 		new /obj/item/stack/cable_coil(src, 30, color)
 
 /obj/item/storage/toolbox/syndicate
-	name = "suspicious looking toolbox"
+	name = "可疑的工具箱"
 	icon_state = "syndicate"
 	worn_icon_state = "toolbox_syndi"
 	force = 7

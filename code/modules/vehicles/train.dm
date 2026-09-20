@@ -82,17 +82,17 @@
 		silent = TRUE
 	if (get_dist(src, T) > 1)
 		if(!silent)
-			to_chat(user, span_warning("[src] is too far away from [T] to hitch them together."))
+			to_chat(user, span_warning("[src]离[T]太远,无法连接在一起。"))
 		return
 
 	if (lead)
 		if(!silent)
-			to_chat(user, span_warning("[src] is already hitched to something."))
+			to_chat(user, span_warning("[src]已经连接到某物上了。"))
 		return
 
 	if (T.tow)
 		if(!silent)
-			to_chat(user, span_warning("[T] is already towing something."))
+			to_chat(user, span_warning("[T]已经在拖拽某物了。"))
 		return
 
 	//check for cycles.
@@ -100,7 +100,7 @@
 	while (next_car)
 		if (next_car == src)
 			if(!silent)
-				to_chat(user, span_warning("That seems very silly."))
+				to_chat(user, span_warning("那看起来非常愚蠢。"))
 			return
 		next_car = next_car.lead
 
@@ -110,7 +110,7 @@
 	setDir(lead.dir)
 
 	if(user && !silent)
-		to_chat(user, span_notice("You hitch [src] to [T]."))
+		to_chat(user, span_notice("你将[src]连接到[T]上。"))
 
 
 
@@ -120,13 +120,13 @@
 		silent = TRUE
 	if (!lead)
 		if(!silent)
-			to_chat(user, span_warning("[src] is not hitched to anything."))
+			to_chat(user, span_warning("[src]没有连接到任何东西。"))
 		return
 
 	lead.tow = null
 
 	if(!silent)
-		to_chat(user, span_notice("You unhitch [src] from [lead]."))
+		to_chat(user, span_notice("你将[src]从[lead]上解开。"))
 	lead = null
 
 /obj/vehicle/train/proc/latch(obj/vehicle/train/T, mob/user, silent=FALSE)

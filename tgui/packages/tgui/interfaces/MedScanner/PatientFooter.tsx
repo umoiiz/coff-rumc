@@ -38,8 +38,8 @@ export function PatientFooter() {
     <Section>
       <LabeledList>
         <LabeledList.Item
-          label="Blood Volume"
-          tooltip="Bloodloss causes symptoms that start as suffocation and pain, but get significantly worse as more blood is lost. Blood can be restored by eating and taking Isotonic solution."
+          label="血量"
+          tooltip="失血会导致症状,起初表现为窒息和疼痛,但随着失血增多会显著恶化.可以通过进食和服用等渗溶液来恢复血液."
         >
           <Stack align="center">
             <Stack.Item>
@@ -77,7 +77,7 @@ export function PatientFooter() {
             </Stack.Item>
           </Stack>
         </LabeledList.Item>
-        <LabeledList.Item label="Body Temperature" color={tempData.background}>
+        <LabeledList.Item label="体温" color={tempData.background}>
           <Box inline bold={body_temperature.level !== TempLevels.OK}>
             {body_temperature.current}
           </Box>
@@ -91,11 +91,11 @@ export function PatientFooter() {
             </MedBoxedTag>
           )}
         </LabeledList.Item>
-        <LabeledList.Item label="Pulse">{pulse}</LabeledList.Item>
+        <LabeledList.Item label="脉搏">{pulse}</LabeledList.Item>
       </LabeledList>
       {!!internal_bleeding && (
         <NoticeBox color={'red'} mt={'8px'} mb={'0px'}>
-          Internal Bleeding Detected!
+          检测到内出血!
         </NoticeBox>
       )}
       {!!infection && (

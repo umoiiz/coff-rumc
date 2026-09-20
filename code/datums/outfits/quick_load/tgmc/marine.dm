@@ -1,6 +1,6 @@
 /datum/outfit/quick/tgmc/marine/ar12
 	name = "AR-12 rifleman"
-	desc = "The classic line rifleman. Equipped with an AR-12 assault rifle with UGL, heavy armor, and plenty of grenades and ammunition. A solid all-rounder."
+	desc = "经典一线步枪兵.配备一支AR-12突击步枪,带有下挂式榴弹发射器,重型护甲,以及大量手榴弹和弹药.可靠的全能型."
 
 	suit_store = /obj/item/weapon/gun/rifle/ar12/rifleman
 	belt = /obj/item/storage/belt/marine/ar12
@@ -20,7 +20,7 @@
 
 /datum/outfit/quick/tgmc/marine/standard_laserrifle
 	name = "Laser Rifleman"
-	desc = "For when bullets don't cut the mustard. Laser rifle with miniflamer and heavy armor. Lasers are more effective against SOM armor, but cannot break bones and damage organs."
+	desc = "当子弹不够用时.激光步枪带微型火焰器和重型护甲.激光对SOM护甲更有效,但无法打断骨头和损伤器官."
 
 	suit_store = /obj/item/weapon/gun/energy/lasgun/lasrifle/standard_marine_rifle/rifleman
 	belt = /obj/item/storage/belt/marine/te_cells
@@ -38,7 +38,7 @@
 
 /datum/outfit/quick/tgmc/marine/ar18
 	name = "AR-18 Rifleman"
-	desc = "The modern line rifleman. Equipped with an AR-18 carbine with UGL, heavy armor, and plenty of grenades and ammunition. Boasts better mobility and damage output than the AR-12, but suffers with a smaller magazine and worse performance at longer ranges."
+	desc = "现代一线步枪兵.配备一支AR-18卡宾枪,带有下挂式榴弹发射器,重型护甲,以及大量手榴弹和弹药.相比AR-12拥有更好的机动性和伤害输出,但弹匣较小且在较远距离表现较差."
 
 	suit_store = /obj/item/weapon/gun/rifle/ar18/standard
 	belt = /obj/item/storage/belt/marine/ar18
@@ -58,7 +58,7 @@
 
 /datum/outfit/quick/tgmc/marine/combat_rifle
 	name = "AR-11 Rifleman"
-	desc = "The old rifleman. Equipped with an AR-11 combat rifle with heavy armor, and plenty of grenades and ammunition. Has a large capacity with deadly damage output at all ranges, but lacks many attachment options of more modern weapons and somewhat more cumbersome to handle."
+	desc = "老派步枪兵.配备一支AR-11战斗步枪,重型护甲,以及大量手榴弹和弹药.拥有大容量,在所有距离都有致命的伤害输出,但缺少许多更现代武器的附件选项,且操作起来稍显笨重."
 
 	suit_store = /obj/item/weapon/gun/rifle/ar11/standard
 	belt = /obj/item/storage/belt/marine/combat_rifle
@@ -77,7 +77,7 @@
 
 /datum/outfit/quick/tgmc/marine/br64
 	name = "BR-64 Rifleman"
-	desc = "Heavier firepower for the discerning rifleman. Equipped with an BR-64 battle rifle with UGL, heavy armor, and plenty of grenades and ammunition. Higher damage and penetration, at the cost of a more bulky weapon."
+	desc = "为有眼光的步枪兵提供更重的火力.配备一支BR-64战斗步枪,带有下挂式榴弹发射器,重型护甲,以及大量手榴弹和弹药.更高的伤害和穿透力,代价是更笨重的武器."
 
 	suit_store = /obj/item/weapon/gun/rifle/br64/standard
 	belt = /obj/item/storage/belt/marine/br64
@@ -97,7 +97,7 @@
 
 /datum/outfit/quick/tgmc/marine/ar21
 	name = "AR-21 Rifleman"
-	desc = "Better stopping power at the cost of lower rate of fire. Equipped with an AR-21 skirmish rifle with UGL, heavy armor, and plenty of grenades and ammunition. Rewards good aim with its heavy rounds."
+	desc = "以更低射速换取更好的停止作用.配备一支AR-21散兵步枪,带有下挂式榴弹发射器,重型护甲,以及大量手榴弹和弹药.以其重型弹药奖励精准的瞄准."
 
 	suit_store = /obj/item/weapon/gun/rifle/ar21/standard
 	belt = /obj/item/storage/belt/marine/ar21
@@ -117,7 +117,7 @@
 
 /datum/outfit/quick/tgmc/marine/alf_shocktrooper
 	name = "ALF-51B Shocktrooper"
-	desc = "Shock assault loadout. Equipped with an ALF-51B machinecarbine, heavy armor reinforced with a Mk.II 'Tyr' module, and plenty of grenades and ammunition. Offers excellent damage output and superior protection, however the ALF-51B's cutdown size means it suffers from severe damage falloff. Best used up close."
+	desc = "冲击突击装备.配备一支ALF-51B机关卡宾枪,用Mk.II'提尔'模块增强的重型护甲,以及大量手榴弹和弹药.提供出色的伤害输出和卓越的防护,然而ALF-51B的缩短尺寸意味着它遭受严重的伤害衰减.最好在近距离使用."
 
 	head = /obj/item/clothing/head/modular/m10x/tyr
 	wear_suit = /obj/item/clothing/suit/modular/xenonauten/heavy/tyr_two
@@ -140,7 +140,7 @@
 
 /datum/outfit/quick/tgmc/marine/mg60
 	name = "MG-60 Machinegunner"
-	desc = "The old reliable workhorse of the TGMC. Equipped with an MG-60 machinegun with bipod, heavy armor and some basic construction supplies. Good for holding ground and providing firesupport, and the cost of some mobility."
+	desc = "TGMC的老牌可靠主力.配备一支MG-60机枪,带有两脚架,重型护甲以及一些基础建筑补给.适合守住阵地和提供火力支援,代价是一些机动性."
 
 	belt = /obj/item/storage/belt/sparepouch
 	suit_store = /obj/item/weapon/gun/rifle/mg60/machinegunner
@@ -170,7 +170,7 @@
 
 /datum/outfit/quick/tgmc/marine/mg27
 	name = "MG-27 Machinegunner"
-	desc = "For when you need the biggest gun you can carry. Equipped with an MG-27 machinegun and miniscope and a MR-25 SMG as a side arm, as well as medium armor and a small amount of construction supplies. Allows for devestating, albeit static firepower."
+	desc = "当你需要你能携带的最大枪械时.配备一支MG-27机枪和迷你瞄准镜,以及一支MR-25冲锋枪作为副武器,还有中型护甲和少量建筑补给.可提供毁灭性的,尽管是固定的火力."
 
 	belt = /obj/item/storage/holster/m25
 	wear_suit = /obj/item/clothing/suit/modular/xenonauten/shield
@@ -199,7 +199,7 @@
 
 /datum/outfit/quick/tgmc/marine/standard_lasermg
 	name = "Laser Machinegunner"
-	desc = "Mess free fire superiority. Laser machinegun with underbarrel grenade launcher and heavy armor. Comparatively light for a machinegun, with variable firemodes makes this weapon a flexible and dangerous weapon. Lasers are more effective against SOM armor, but cannot break bones and damage organs."
+	desc = "干净利落的火力压制.激光机枪带下挂式榴弹发射器和重型护甲.相对机枪而言较轻,具有可变射击模式,使这把武器成为灵活而危险的武器.激光对SOM护甲更有效,但无法打断骨头和损伤器官."
 
 	suit_store = /obj/item/weapon/gun/energy/lasgun/lasrifle/standard_marine_mlaser/patrol
 	belt = /obj/item/storage/belt/marine/te_cells
@@ -217,7 +217,7 @@
 
 /datum/outfit/quick/tgmc/marine/pyro
 	name = "FL-84 Flamethrower Operator"
-	desc = "For burning enemies, and sometimes friends. Equipped with an FL-84 flamethrower and wide nozzle, SMG-25 secondary weapon, heavy armor upgraded with a 'Surt' fireproof module, and a backtank of fuel. Can burn down large areas extremely quickly both to flush out the enemy and to cover flanks. Is very slow however, ineffective at long range, and can expend all available fuel quickly if used excessively."
+	desc = "用于烧敌人,有时也烧朋友.配备一支FL-84火焰喷射器,带有宽喷嘴,SMG-25副武器,升级有'苏尔特'防火模块的重型护甲,以及一个燃料背罐.可以极快地烧毁大片区域,既能逼出敌人也能掩护侧翼.然而非常缓慢,在远距离无效,且过度使用会迅速耗尽所有可用燃料."
 
 	wear_suit = /obj/item/clothing/suit/modular/xenonauten/heavy/surt
 	mask = /obj/item/clothing/mask/gas/tactical
@@ -237,7 +237,7 @@
 
 /datum/outfit/quick/tgmc/marine/standard_shotgun
 	name = "SH-35 Scout"
-	desc = "For getting too close for comfort. Equipped with a SH-35 shotgun with buckshot and flechette rounds, a MP-19 sidearm, a good amount of grenades and light armor with a cutting edge 'svallin' shield module. Provides for excellent mobility and devestating close range firepower, but will falter against sustained firepower."
+	desc = "用于近得令人不适的距离.配备一支SH-35霰弹枪,带有鹿弹和飞镖弹,一支MP-19副武器,大量手榴弹以及带有尖端'斯瓦林'护盾模块的轻型护甲.提供出色的机动性和毁灭性的近距离火力,但在持续火力下会陷入劣势."
 
 	belt = /obj/item/storage/belt/shotgun
 	wear_suit = /obj/item/clothing/suit/modular/xenonauten/light/shield
@@ -262,7 +262,7 @@
 
 /datum/outfit/quick/tgmc/marine/standard_lasercarbine
 	name = "Laser Carbine Scout"
-	desc = "Highly mobile light infantry. Equipped with a laser carbine with UGL and a laser pistol sidearm, plenty of grenades and light armor with a cutting edge 'svallin' shield module. Excellent mobility, but not suited for sustained combat."
+	desc = "高机动轻步兵.配备一支激光卡宾枪,带有下挂式榴弹发射器,一支激光手枪副武器,大量手榴弹以及带有尖端'斯瓦林'护盾模块的轻型护甲.出色的机动性,但不适合持续战斗."
 
 	wear_suit = /obj/item/clothing/suit/modular/xenonauten/light/shield
 	suit_store = /obj/item/weapon/gun/energy/lasgun/lasrifle/standard_marine_carbine/scout
@@ -283,7 +283,7 @@
 
 /datum/outfit/quick/tgmc/marine/light_carbine
 	name = "AR-18 Scout"
-	desc = "High damage and high speed. Equipped with an AR-18 carbine with UGL, light armor with a cutting edge 'svallin' shield module, and plenty of grenades and ammunition. Great mobility and damage output, but low magazine capacity and weak armor without the shield active means this loadout is best suited to hit and run tactics."
+	desc = "高伤害和高速度.配备一支AR-18卡宾枪,带有下挂式榴弹发射器,带有尖端'斯瓦林'护盾模块的轻型护甲,以及大量手榴弹和弹药.出色的机动性和伤害输出,但低弹匣容量和护盾未激活时薄弱的护甲意味着这套装备最适合打了就跑的战术."
 
 	wear_suit = /obj/item/clothing/suit/modular/xenonauten/light/shield
 	suit_store = /obj/item/weapon/gun/rifle/ar18/scout
@@ -303,7 +303,7 @@
 
 /datum/outfit/quick/tgmc/marine/shield_tank
 	name = "SMG-25 Guardian"
-	desc = "Professional bullet catcher. Equipped with an SMG-25 submachine gun, a TL-172 defensive shield and heavy armor reinforced with a 'Tyr' module. Designed to absorb as much incoming damage as possible to protect your squishier comrades, however your mobility and damage output are notably diminished. Also of note: the excellent thermal mass of the TL-172 means it is unusually effective against the SOM's volkite weaponry."
+	desc = "专业挡子弹.配备一支SMG-25冲锋枪,一面TL-172防御盾以及用'提尔'模块增强的重型护甲.旨在吸收尽可能多的来袭伤害以保护你更脆弱的战友,然而你的机动性和伤害输出明显降低.另需注意:TL-172出色的热质量意味着它对SOM的沃尔基特武器异常有效."
 
 	head = /obj/item/clothing/head/modular/m10x/tyr
 	glasses = /obj/item/clothing/glasses/welding/flipped
@@ -328,7 +328,7 @@
 
 /datum/outfit/quick/tgmc/marine/machete
 	name = "Assault Marine"
-	desc = "This doesn't look standard issue... Equipped with a SMG-25 submachine gun, machete and heavy lift jetpack, along with light armor upgraded with a 'svallin' shield module. It's not clear why this is here, nevertheless it has excellent mobility, and would likely be devastating against anyone you manage to actually reach."
+	desc = "这看起来不像是标准配发...配备一支SMG-25冲锋枪,一把砍刀和重型起重喷气背包,以及升级有'斯瓦林'护盾模块的轻型护甲.不清楚为什么会有这个,尽管如此它拥有出色的机动性,并且对你实际能够触及的任何人来说都可能是毁灭性的."
 
 	wear_suit = /obj/item/clothing/suit/modular/xenonauten/light/shield
 	back = /obj/item/jetpack_marine/heavy
@@ -342,7 +342,7 @@
 
 /datum/outfit/quick/tgmc/marine/scout
 	name = "BR-8 Scout"
-	desc = "IFF scout. Equipped with a BR-8 with a good amount of grenades and light armor with a cutting edge 'svallin' shield module. Provides for good mobility and powerful IFF damage, but the BR-8 is difficult to bring to bear at close range, and light armor wilts under sustained fire."
+	desc = "敌我识别侦察兵.配备一支BR-8,带有大量手榴弹以及带有尖端'斯瓦林'护盾模块的轻型护甲.提供良好的机动性和强大的敌我识别伤害,但BR-8难以在近距离使用,且轻型护甲在持续火力下会崩溃."
 	quantity = 2
 
 	wear_suit = /obj/item/clothing/suit/modular/xenonauten/light/shield

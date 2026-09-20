@@ -10,7 +10,7 @@ ADMIN_VERB(hide_verbs, R_NONE, "Adminverbs - Hide All", "Hide most of your admin
 	user.remove_admin_verbs()
 	add_verb(user, /client/proc/show_verbs)
 
-	to_chat(user, span_interface("Almost all of your adminverbs have been hidden."))
+	to_chat(user, span_interface("你的几乎所有管理员指令都已被隐藏。"))
 
 ADMIN_VERB(aghost, R_ADMIN|R_MENTOR, "Aghost", "Allows you to ghost and re-enter body at will.", ADMIN_CATEGORY_MAIN)
 
@@ -77,7 +77,7 @@ ADMIN_VERB_AND_CONTEXT_MENU(give_mob, R_ADMIN, "Give Mob", ADMIN_VERB_NO_DESCRIP
 			mob_received.ghostize()
 
 	if(!istype(given_living))
-		to_chat(user, span_warning("Target is no longer valid."))
+		to_chat(user, span_warning("目标不再有效。"))
 		return
 
 	log_admin("[key_name(user)] gave [key_name(given_living)] to [key_name(mob_received)].")
@@ -86,11 +86,11 @@ ADMIN_VERB_AND_CONTEXT_MENU(give_mob, R_ADMIN, "Give Mob", ADMIN_VERB_NO_DESCRIP
 	given_living.take_over(mob_received, TRUE)
 
 ADMIN_VERB_AND_CONTEXT_MENU(rejuvenate, R_ADMIN, "Rejuvenate", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_MAIN, mob/living/L in world)
-	if(tgui_alert(user, "Are you sure you want to rejuvenate [key_name(L)]?", "Confirm", list("Yes", "No")) != "Yes")
+	if(tgui_alert(user, "你确定要让[key_name(L)]恢复活力吗?", "确认", list("Yes", "No")) != "Yes")
 		return
 
 	if(!istype(L))
-		to_chat(user, span_warning("Target is no longer valid."))
+		to_chat(user, span_warning("目标不再有效。"))
 		return
 
 	L.revive(TRUE)
@@ -102,7 +102,7 @@ ADMIN_VERB_AND_CONTEXT_MENU(toggle_sleep, R_ADMIN, "Toggle Sleeping", ADMIN_VERB
 	if(L.IsAdminSleeping())
 		L.ToggleAdminSleep()
 	else if(!istype(L))
-		to_chat(user, span_warning("Target is no longer valid."))
+		to_chat(user, span_warning("目标不再有效。"))
 		return
 	else
 		L.ToggleAdminSleep()
@@ -147,7 +147,7 @@ ADMIN_VERB(logs_folder, R_LOG, "Get Server Logs Folder", "Please use responsibly
 	if(!path)
 		return
 
-	switch(tgui_alert(usr, "View (in game), Open (in your system's text editor), Download", path, list("View", "Open", "Download"), 0))
+	switch(tgui_alert(usr, "查看(游戏内),打开(在你的系统文本编辑器中),下载", path, list("View", "Open", "Download"), 0))
 		if("View")
 			usr << browse(HTML_SKELETON("<pre style='word-wrap: break-word;'>[html_encode(file2text(file(path)))]</pre>"), list2params(list("window" = "viewfile.[path]")))
 		if("Open")
@@ -167,11 +167,11 @@ ADMIN_VERB(logs_folder, R_LOG, "Get Server Logs Folder", "Please use responsibly
 	var/files = flist(folder)
 	for(var/next in files)
 		if(copytext(next, -1, 0) == "/")
-			to_chat(usr, "Going deeper: [folder][next]")
+			to_chat(usr, "深入查看:[folder][next]")
 			usr.client.holder.recursive_download(folder + next)
 		else
 			log_admin("[key_name(usr)] accessed file: [folder][next].")
-			to_chat(usr, "Downloading: [folder][next]")
+			to_chat(usr, "正在下载:[folder][next]")
 			var/fil = replacetext("[folder][next]", "/", "_")
 			DIRECT_OUTPUT(usr, ftp(file(folder + next), fil))
 
@@ -184,7 +184,7 @@ ADMIN_VERB(logs_folder, R_LOG, "Get Server Logs Folder", "Please use responsibly
 		var/list/choices = flist(path)
 		if(path != root)
 			choices.Insert(1, "/")
-		var/choice = tgui_input_list(usr, "Choose a folder to access:", "Server Logs", sortList(choices), timeout = 0)
+		var/choice = tgui_input_list(usr, "选择要访问的文件夹:", "服务器日志", sortList(choices), timeout = 0)
 		switch(choice)
 			if(null)
 				return FALSE
@@ -196,7 +196,7 @@ ADMIN_VERB(logs_folder, R_LOG, "Get Server Logs Folder", "Please use responsibly
 		if(copytext(path, -1, 0) != "/")		//didn't choose a directory, no need to iterate again
 			return FALSE
 
-		switch(tgui_alert("Is this the folder you want to download?:", "Server Logs", "Yes", "No", "Cancel"))
+		switch(tgui_alert("Is this the folder you want to download?:", "服务器日志", "是", "No", "Cancel"))
 			if("Yes")
 				break
 			if("No")
@@ -214,7 +214,7 @@ ADMIN_VERB(logs_folder, R_LOG, "Get Server Logs Folder", "Please use responsibly
 		var/list/choices = flist(path)
 		if(path != root)
 			choices.Insert(1, "/")
-		var/choice = tgui_input_list(usr, "Choose a file to access:", "Download", sortList(choices), timeout = 0)
+		var/choice = tgui_input_list(usr, "选择要访问的文件:", "下载", sortList(choices), timeout = 0)
 		switch(choice)
 			if(null)
 				return
@@ -407,7 +407,7 @@ ADMIN_VERB(dsay, R_ADMIN, "dsay", "Speak as an admin in deadchat.", ADMIN_CATEGO
 		return
 
 	if(!(user.prefs.toggles_chat & CHAT_DEAD))
-		to_chat(src, span_warning("You have deadchat muted."))
+		to_chat(src, span_warning("你已静音死亡聊天。"))
 		return
 
 	if(user.handle_spam_prevention(msg, MUTE_DEADCHAT))
@@ -434,15 +434,15 @@ ADMIN_VERB(dsay, R_ADMIN, "dsay", "Speak as an admin in deadchat.", ADMIN_CATEGO
 
 		to_chat(C,
 			type = MESSAGE_TYPE_DEADCHAT,
-			html = span_game("<span class='deadsay'>[span_prefix("DEAD: [rank_name]")] says, [span_message(msg)]</span>"))
+			html = span_game("<span class='deadsay'>[span_prefix("DEAD: [rank_name]")]说,[span_message(msg)]</span>"))
 
 ADMIN_VERB_ONLY_CONTEXT_MENU(object_say, R_ADMIN, "Osay", atom/movable/target in world)
-	var/message = tgui_input_text(user, "What do you want the message to be?", "Make Sound", encode = FALSE)
+	var/message = tgui_input_text(user, "你希望消息内容是什么?", "发出声音", encode = FALSE)
 	if(!message)
 		return
 	target.say(message, sanitize = FALSE)
 	log_admin("[key_name(user)] made [target] at [AREACOORD(target)] say \"[message]\"")
-	message_admins(span_adminnotice("[key_name_admin(user)] made [target] at [AREACOORD(target)]. say \"[message]\""))
+	message_admins(span_adminnotice("[key_name_admin(user)]在[AREACOORD(target)]处对[target]发出了\"[message]\""))
 
 ADMIN_VERB(jump, R_ADMIN, "Jump To", "Teleports you to a location", ADMIN_CATEGORY_MAIN)
 	if(isnewplayer(user.mob))
@@ -499,7 +499,7 @@ ADMIN_VERB_AND_CONTEXT_MENU(send_mob, R_ADMIN, "Send Mob", ADMIN_VERB_NO_DESCRIP
 		return
 
 	var/mob/M = usr
-	var/chosen = tgui_input_list(usr, "Please, select an area.", "Select an area.", sortNames(get_sorted_areas()), timeout = 0)
+	var/chosen = tgui_input_list(usr, "请选择一个区域。", "选择一个区域。", sortNames(get_sorted_areas()), timeout = 0)
 	if(!chosen)
 		return // no tp's to the void
 	var/turf/T = pick(get_area_turfs(chosen))
@@ -532,15 +532,15 @@ ADMIN_VERB_AND_CONTEXT_MENU(send_mob, R_ADMIN, "Send Mob", ADMIN_VERB_NO_DESCRIP
 
 	var/mob/M = usr
 
-	var/tx = tgui_input_number(usr, "Choose X coordinate.", "X coordinate", max_value = 255, min_value = 1, timeout = 0)
+	var/tx = tgui_input_number(usr, "选择X坐标。", "X坐标", max_value = 255, min_value = 1, timeout = 0)
 	if(!tx)
 		return
 
-	var/ty = tgui_input_number(usr, "Choose Y coordinate.", "Y coordinate", max_value = 255, min_value = 1, timeout = 0)
+	var/ty = tgui_input_number(usr, "选择Y坐标。", "Y坐标", max_value = 255, min_value = 1, timeout = 0)
 	if(!ty)
 		return
 
-	var/tz = tgui_input_number(usr, "Choose Z coordinate.", "Z coordinate", max_value = 10, min_value = 1, timeout = 0)
+	var/tz = tgui_input_number(usr, "选择Z坐标。", "Z坐标", max_value = 10, min_value = 1, timeout = 0)
 	if(!tz)
 		return
 
@@ -560,7 +560,7 @@ ADMIN_VERB_AND_CONTEXT_MENU(send_mob, R_ADMIN, "Send Mob", ADMIN_VERB_NO_DESCRIP
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/mob/M = tgui_input_list(usr, "Please, select a mob.", "Jump to Mob", sortNames(GLOB.mob_list), timeout = 0)
+	var/mob/M = tgui_input_list(usr, "请选择一个生物。", "跳转到生物", sortNames(GLOB.mob_list), timeout = 0)
 	if(!istype(M))
 		return
 
@@ -581,7 +581,7 @@ ADMIN_VERB_AND_CONTEXT_MENU(send_mob, R_ADMIN, "Send Mob", ADMIN_VERB_NO_DESCRIP
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/client/C = tgui_input_list(usr, "Please, select a key.", "Jump to Key", sortKey(GLOB.clients), timeout = 0)
+	var/client/C = tgui_input_list(usr, "请选择一个按键。", "跳转到按键", sortKey(GLOB.clients), timeout = 0)
 	if(!C?.mob)
 		return
 
@@ -609,7 +609,7 @@ ADMIN_VERB(private_message_panel, R_ADMIN|R_MENTOR, "Private Message", "Private 
 	if(prefs.muted & MUTE_ADMINHELP || is_banned_from(ckey, "Adminhelp"))
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
-			html = span_warning("Error: You are unable to use admin PMs (muted)."))
+			html = span_warning("错误:你无法使用管理员私信(已被静音)。"))
 		return
 
 	var/client/C
@@ -622,7 +622,7 @@ ADMIN_VERB(private_message_panel, R_ADMIN|R_MENTOR, "Private Message", "Private 
 
 	if(!C)
 		if(holder)
-			to_chat(src, span_warning("Error: Client not found."))
+			to_chat(src, span_warning("错误:未找到客户端。"))
 		return
 
 	var/datum/admin_help/AH = C.current_ticket
@@ -639,9 +639,9 @@ ADMIN_VERB(private_message_panel, R_ADMIN|R_MENTOR, "Private Message", "Private 
 			message_admins("[key_name_admin(src)] has marked and started replying to [key_name_admin(C, FALSE, FALSE)]'s ticket.")
 
 	else if(AH && AH.marked != usr.client.key)
-		to_chat(usr, span_warning("This ticket has already been marked by [AH.marked], click the mark button to replace them."))
+		to_chat(usr, span_warning("该工单已被[AH.marked]标记,点击标记按钮以替换他们。"))
 		return
-	var/msg = tgui_input_text(usr, "Message:", "Private message to [key_name(C, FALSE, FALSE)]", timeout = 0)
+	var/msg = tgui_input_text(usr, "消息:", "私信发送给[key_name(C, FALSE, FALSE)]", timeout = 0)
 	if(!msg)
 		if(AH)
 			if(AH.tier == TICKET_MENTOR)
@@ -658,17 +658,17 @@ ADMIN_VERB(private_message_panel, R_ADMIN|R_MENTOR, "Private Message", "Private 
 	if(prefs.muted & MUTE_ADMINHELP || is_banned_from(ckey, "Adminhelp"))
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
-			html = span_warning("You are unable to use admin PMs (muted)."))
+			html = span_warning("你无法使用管理员私信(已被静音)。"))
 		return
 
 	if(!holder && !current_ticket)
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
-			html = span_warning("You can no longer reply to this ticket, please open another one by using the Adminhelp verb if need be."))
+			html = span_warning("你无法再回复该工单,如有需要请使用管理员帮助指令打开另一个工单。"))
 		if(msg)
 			to_chat(src,
 				type = MESSAGE_TYPE_ADMINPM,
-				html = span_notice("Message: [msg]"))
+				html = span_notice("消息:[msg]"))
 		return
 
 	var/client/recipient
@@ -689,7 +689,7 @@ ADMIN_VERB(private_message_panel, R_ADMIN|R_MENTOR, "Private Message", "Private 
 			return
 
 		if(!msg)
-			msg = tgui_input_text(src, "Message:", "Private message to Administrator", timeout = 0)
+			msg = tgui_input_text(src, "消息:", "私信发送给管理员", timeout = 0)
 
 		if(!msg)
 			return
@@ -697,7 +697,7 @@ ADMIN_VERB(private_message_panel, R_ADMIN|R_MENTOR, "Private Message", "Private 
 		if(holder)
 			to_chat(src,
 				type = MESSAGE_TYPE_ADMINPM,
-				html = span_danger("Error: Use the admin IRC/Discord channel."))
+				html = span_danger("错误:请使用管理员IRC/Discord频道。"))
 			return
 
 	else
@@ -705,7 +705,7 @@ ADMIN_VERB(private_message_panel, R_ADMIN|R_MENTOR, "Private Message", "Private 
 			if(holder)
 				to_chat(src,
 					type = MESSAGE_TYPE_ADMINPM,
-					html = span_warning("Error: Client not found."))
+					html = span_warning("错误:未找到客户端。"))
 				if(msg)
 					to_chat(src,
 						type = MESSAGE_TYPE_ADMINPM,
@@ -717,7 +717,7 @@ ADMIN_VERB(private_message_panel, R_ADMIN|R_MENTOR, "Private Message", "Private 
 
 		//get message text, limit it's length.and clean/escape html
 		if(!msg)
-			msg = tgui_input_text(usr, "Message:", "Private message to [key_name(recipient, FALSE, FALSE)]", timeout = 0)
+			msg = tgui_input_text(usr, "消息:", "私信发送给[key_name(recipient, FALSE, FALSE)]", timeout = 0)
 			msg = trim(msg)
 			if(!msg)
 				return
@@ -725,7 +725,7 @@ ADMIN_VERB(private_message_panel, R_ADMIN|R_MENTOR, "Private Message", "Private 
 			if(prefs.muted & MUTE_ADMINHELP || is_banned_from(ckey, "Adminhelp"))
 				to_chat(src,
 					type = MESSAGE_TYPE_ADMINPM,
-					html = span_warning("You are unable to use admin PMs (muted)."))
+					html = span_warning("你无法使用管理员私信(已被静音)。"))
 				return
 
 			if(!recipient && !external)
@@ -771,10 +771,10 @@ ADMIN_VERB(private_message_panel, R_ADMIN|R_MENTOR, "Private Message", "Private 
 
 				to_chat(recipient,
 					type = MESSAGE_TYPE_ADMINPM,
-					html = "<font size='4' color='red'><b>-- Staff private message --</b></font>\n[span_adminsay("PM from- [key_name(src, recipient, TRUE)]: [span_linkify("[keywordparsedmsg]")]")]")
+					html = "<font size='4' color='red'><b>-- 工作人员私信 --</b></font>\n[span_adminsay("PM from- [key_name(src, recipient, TRUE)]: [span_linkify("[keywordparsedmsg]")]")]")
 				to_chat(src,
 					type = MESSAGE_TYPE_ADMINPM,
-					html = "<font size='4' color='red'><b>-- Staff private message --</b></font>\n[span_adminsay("PM to- [key_name(recipient, src, TRUE)]: [span_linkify("[keywordparsedmsg]")]")]")
+					html = "<font size='4' color='red'><b>-- 工作人员私信 --</b></font>\n[span_adminsay("PM to- [key_name(recipient, src, TRUE)]: [span_linkify("[keywordparsedmsg]")]")]")
 
 				window_flash(recipient, TRUE)
 				window_flash(src, TRUE)
@@ -789,10 +789,10 @@ ADMIN_VERB(private_message_panel, R_ADMIN|R_MENTOR, "Private Message", "Private 
 				admin_ticket_log(src, "<font color='#ff8c8c'>Reply PM from-<b>[key_name(src, recipient, TRUE)]</b>: [span_linkify("[keywordparsedmsg]")]</font>")
 				to_chat(recipient,
 					type = MESSAGE_TYPE_ADMINPM,
-					html = "<font size='4' color='red'><b>-- Private message --</b></font>\n[span_adminsay("Reply from- <b>[key_name(src, recipient, TRUE)]</b>: [span_linkify("[keywordparsedmsg]")]")]")
+					html = "<font size='4' color='red'><b>-- 私信 --</b></font>\n[span_adminsay("Reply from- <b>[key_name(src, recipient, TRUE)]</b>: [span_linkify("[keywordparsedmsg]")]")]")
 				to_chat(src,
 					type = MESSAGE_TYPE_ADMINPM,
-					html = span_notice("PM to-<b>Staff</b>: [span_linkify("[msg]")]"))
+					html = span_notice("私信发送给-<b>工作人员</b>:[span_linkify("[msg]")]"))
 				window_flash(recipient, TRUE)
 
 			//Play the bwoink if enabled.
@@ -810,31 +810,31 @@ ADMIN_VERB(private_message_panel, R_ADMIN|R_MENTOR, "Private Message", "Private 
 				if(check_rights(R_ADMINTICKET, FALSE))
 					to_chat(recipient,
 						type = MESSAGE_TYPE_ADMINPM,
-						html = "<font color='red' size='4'><b>-- Administrator private message --</b></font>")
+						html = "<font color='red' size='4'><b>-- 管理员私信 --</b></font>")
 					to_chat(recipient,
 						type = MESSAGE_TYPE_ADMINPM,
-						html = span_adminsay("[holder.fakekey ? "Administrator" : holder.rank.name] PM from- <b>[key_name(src, recipient, FALSE)]</b>: [span_linkify("[msg]")]"))
+						html = span_adminsay("[holder.fakekey ? "Administrator" : holder.rank.name] 私信来自- <b>[key_name(src, recipient, FALSE)]</b>:[span_linkify("[msg]")]"))
 					to_chat(recipient,
 						type = MESSAGE_TYPE_ADMINPM,
-						html = "<font color='red'><b><i>Click on the staff member's name to reply.</i></b></font>")
+						html = "<font color='red'><b><i>点击工作人员的名字以回复。</i></b></font>")
 					to_chat(src,
 						type = MESSAGE_TYPE_ADMINPM,
-						html = span_notice("<b>[holder.fakekey ? "Administrator" : holder.rank.name] PM</b> to-<b>[key_name(recipient, src, TRUE)]</b>: [span_linkify("[msg]")]"))
+						html = span_notice("<b>[holder.fakekey ? "Administrator" : holder.rank.name] 私信</b> 发送给-<b>[key_name(recipient, src, TRUE)]</b>:[span_linkify("[msg]")]"))
 					SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg', channel = CHANNEL_ADMIN))
 					window_flash(recipient, TRUE)
 				else if(is_mentor(src))
 					to_chat(recipient,
 						type = MESSAGE_TYPE_ADMINPM,
-						html = span_mentorsay("<size='4'></b>-- Mentor private message --</b></font>"))
+						html = span_mentorsay("<size='4'></b>-- 导师私信 --</b></font>"))
 					to_chat(recipient,
 						type = MESSAGE_TYPE_ADMINPM,
-						html = span_mentorsay("[holder.rank.name] PM from- <b>[key_name(src, recipient, FALSE)]</b>: [span_linkify("[msg]")]"))
+						html = span_mentorsay("[holder.rank.name] 私信来自- <b>[key_name(src, recipient, FALSE)]</b>:[span_linkify("[msg]")]"))
 					to_chat(recipient,
 						type = MESSAGE_TYPE_ADMINPM,
-						html = span_notice("<i>Click on the mentor's name to reply.</i>"))
+						html = span_notice("<i>点击导师的名字以回复。</i>"))
 					to_chat(src,
 						type = MESSAGE_TYPE_ADMINPM,
-						html = span_notice("<b>[holder.rank.name] PM</b> to-<b>[key_name(recipient, src, TRUE)]</b>: [span_linkify("[msg]")]"))
+						html = span_notice("<b>[holder.rank.name] 私信</b> 发送给-<b>[key_name(recipient, src, TRUE)]</b>:[span_linkify("[msg]")]"))
 					SEND_SOUND(recipient, sound('sound/effects/mentorhelp.ogg', channel = CHANNEL_ADMIN))
 					window_flash(recipient)
 
@@ -844,7 +844,7 @@ ADMIN_VERB(private_message_panel, R_ADMIN|R_MENTOR, "Private Message", "Private 
 			else		//neither are admins
 				to_chat(src,
 					type = MESSAGE_TYPE_ADMINPM,
-					html = span_warning("Error: Non-staff to non-staff communication is disabled."))
+					html = span_warning("错误:非工作人员之间的通信已被禁用。"))
 				return
 
 	if(external)
@@ -853,7 +853,7 @@ ADMIN_VERB(private_message_panel, R_ADMIN|R_MENTOR, "Private Message", "Private 
 			if(check_other_rights(X, R_ADMINTICKET, FALSE))
 				to_chat(X,
 					type = MESSAGE_TYPE_ADMINPM,
-					html = span_notice("<B>PM: [key_name(src, X, FALSE)]-&gt;External:</B> [keywordparsedmsg]"))
+					html = span_notice("<B>私信:[key_name(src, X, FALSE)]-&gt;外部:</B> [keywordparsedmsg]"))
 	else
 		log_admin_private("PM: [key_name(src)]->[key_name(recipient)]: [rawmsg]")
 		//Admins PMs go to admins, mentor PMs go to mentors and admins
@@ -864,7 +864,7 @@ ADMIN_VERB(private_message_panel, R_ADMIN|R_MENTOR, "Private Message", "Private 
 				if(check_other_rights(X, R_ADMINTICKET, FALSE))
 					to_chat(X,
 						type = MESSAGE_TYPE_ADMINPM,
-						html = span_notice("<B>Admin PM: [key_name(src, X, FALSE)]-&gt;[key_name(recipient, X, FALSE)]:</B> [keywordparsedmsg]"))
+						html = span_notice("<B>管理员私信:[key_name(src, X, FALSE)]-&gt;[key_name(recipient, X, FALSE)]:</B> [keywordparsedmsg]"))
 		else if(is_mentor(src))
 			for(var/client/X in GLOB.admins)
 				if(X.key == key || X.key == recipient.key)
@@ -872,7 +872,7 @@ ADMIN_VERB(private_message_panel, R_ADMIN|R_MENTOR, "Private Message", "Private 
 				if(check_other_rights(X, R_ADMINTICKET, FALSE) || is_mentor(X))
 					to_chat(X,
 					type = MESSAGE_TYPE_ADMINPM,
-					html = span_notice("<B>Mentor PM: [key_name(src, X, FALSE)]-&gt;[key_name(recipient, X, FALSE)]:</B> [keywordparsedmsg]"))
+					html = span_notice("<B>导师私信:[key_name(src, X, FALSE)]-&gt;[key_name(recipient, X, FALSE)]:</B> [keywordparsedmsg]"))
 		else //Admins get all messages, mentors only mentor responses
 			var/datum/admin_help/AH = src.current_ticket
 			for(var/client/X in GLOB.admins)
@@ -881,7 +881,7 @@ ADMIN_VERB(private_message_panel, R_ADMIN|R_MENTOR, "Private Message", "Private 
 				if(check_other_rights(X, R_ADMINTICKET, FALSE))
 					to_chat(X,
 						type = MESSAGE_TYPE_ADMINPM,
-						html = span_notice("<B>PM: [key_name(src, X, FALSE)]-&gt;[key_name(recipient, X, FALSE)]:</B> [keywordparsedmsg]"))
+						html = span_notice("<B>私信: [key_name(src, X, FALSE)]-&gt;[key_name(recipient, X, FALSE)]:</B> [keywordparsedmsg]"))
 			if(AH?.tier == TICKET_MENTOR)
 				for(var/client/X in GLOB.admins)
 					if(X.key == key || X.key == recipient.key)
@@ -889,7 +889,7 @@ ADMIN_VERB(private_message_panel, R_ADMIN|R_MENTOR, "Private Message", "Private 
 					if(is_mentor(X))
 						to_chat(X,
 						type = MESSAGE_TYPE_ADMINPM,
-						html = span_notice("<B>PM: [key_name(src, X, FALSE)]-&gt;[key_name(recipient, X, FALSE)]:</B> [keywordparsedmsg]"))
+						html = span_notice("<B>私信: [key_name(src, X, FALSE)]-&gt;[key_name(recipient, X, FALSE)]:</B> [keywordparsedmsg]"))
 
 
 /proc/TgsPm(target, msg, sender)
@@ -987,13 +987,13 @@ ADMIN_VERB(private_message_panel, R_ADMIN|R_MENTOR, "Private Message", "Private 
 
 	to_chat(C,
 		type = MESSAGE_TYPE_ADMINPM,
-		html = "<font color='red' size='4'><b>-- Administrator private message --</b></font>")
+		html = "<font color='red' size='4'><b>-- 管理员私信 --</b></font>")
 	to_chat(C,
 		type = MESSAGE_TYPE_ADMINPM,
-		html = "<font color='red'>Admin PM from-<b><a href='byond://?priv_msg=[stealthkey]'>[adminname]</A></b>: [msg]</font>")
+		html = "<font color='red'>管理员私信来自-<b><a href='byond://?priv_msg=[stealthkey]'>[adminname]</A></b>: [msg]</font>")
 	to_chat(C,
 		type = MESSAGE_TYPE_ADMINPM,
-		html = "<font color='red'><i>Click on the administrator's name to reply.</i></font>")
+		html = "<font color='red'><i>点击管理员的名字以回复.</i></font>")
 
 	admin_ticket_log(C, "<font color='#a7f2ef'>PM From [tgs_tagged]: [msg]</font>")
 
@@ -1005,7 +1005,7 @@ ADMIN_VERB(private_message_panel, R_ADMIN|R_MENTOR, "Private Message", "Private 
 	return "Message Successful"
 
 ADMIN_VERB(remove_from_tank, R_ADMIN, "Remove From Tank", "Force all mobs to leave all tanks", ADMIN_CATEGORY_MAIN)
-	if(tgui_alert(user, "Are you sure you want to remove all tank occupants from their tanks?", "Confirm", list("Yes", "No")) != "Yes")
+	if(tgui_alert(user, "你确定要将所有坦克乘员从他们的坦克中移除吗?", "确认", list("Yes", "No")) != "Yes")
 		return
 	for(var/obj/vehicle/sealed/armored/armor AS in GLOB.tank_list)
 		armor.dump_mobs(TRUE)
@@ -1056,7 +1056,7 @@ ADMIN_VERB(job_slots, R_ADMIN, "Job Slots", "Open Job slot management panel", AD
 
 ADMIN_VERB(mcdb, R_BAN, "Open MCDB", "Opens the MCDB in your browser", ADMIN_CATEGORY_MAIN)
 	if(!CONFIG_GET(string/dburl))
-		to_chat(user, span_warning("Database URL not set."))
+		to_chat(user, span_warning("数据库URL未设置."))
 		return
 
 	if(alert("This will open the MCDB in your browser. Are you sure?", "MCDB", "Yes", "No") != "Yes")
@@ -1122,7 +1122,7 @@ ADMIN_VERB(toggle_admin_tads, R_FUN, "Toggle Tadpole Restrictions", "Toggles abi
 			if(tomob.mind == ghost.mind)
 				ghost.mind = null
 
-	message_admins(span_adminnotice("[key_name_admin(usr)] has put [frommob.key] in control of [tomob.name]."))
+	message_admins(span_adminnotice("[key_name_admin(usr)]已将[tomob.name]的控制权交给了[frommob.key]."))
 	log_admin("[key_name(usr)] stuffed [frommob.key] into [tomob.name].")
 
 	tomob.ckey = frommob.ckey
@@ -1141,10 +1141,10 @@ ADMIN_VERB(mass_replace, R_SPAWN, "Mass replace atom", "Mass replace an atom", A
 
 	if(current_caller && current_caller != ckey)
 		if(!GLOB.AdminProcCallSpamPrevention[ckey])
-			to_chat(usr, span_adminnotice("Another set of admin called procs are still running, your proc will be run after theirs finish."))
+			to_chat(usr, span_adminnotice("另一组管理员调用的进程仍在运行,你的进程将在它们完成后运行."))
 			GLOB.AdminProcCallSpamPrevention[ckey] = TRUE
 			UNTIL(!GLOB.AdminProcCaller)
-			to_chat(usr, span_adminnotice("Running your proc"))
+			to_chat(usr, span_adminnotice("正在运行你的进程"))
 			GLOB.AdminProcCallSpamPrevention -= ckey
 		else
 			UNTIL(!GLOB.AdminProcCaller)
@@ -1165,7 +1165,7 @@ ADMIN_VERB(mass_replace, R_SPAWN, "Mass replace atom", "Mass replace an atom", A
 	message_admins(afterlogging)
 
 ADMIN_VERB_AND_CONTEXT_MENU(admin_smite, R_ADMIN|R_FUN, "Smite", "Smite a player with divine power.", ADMIN_CATEGORY_FUN, mob/living/target in world)
-	var/punishment = tgui_input_list(user, "Choose a punishment", "DIVINE SMITING", GLOB.smites, timeout = 0)
+	var/punishment = tgui_input_list(user, "选择一种惩罚", "神圣制裁", GLOB.smites, timeout = 0)
 
 	if(QDELETED(target) || !punishment)
 		return
@@ -1186,15 +1186,15 @@ ADMIN_VERB_AND_CONTEXT_MENU(admin_smite, R_ADMIN|R_FUN, "Smite", "Smite a player
 ADMIN_VERB_AND_CONTEXT_MENU(show_traitor_panel, R_ADMIN, "Show Objective Panel", "Show a mobs objective panel.", ADMIN_CATEGORY_FUN, mob/target_mob in GLOB.mob_list)
 	var/datum/mind/target_mind = target_mob.mind
 	if(!target_mind)
-		to_chat(user, "This mob has no mind!", confidential = TRUE)
+		to_chat(user, "该生物没有意识!", confidential = TRUE)
 		return
 	if(!istype(target_mob) && !istype(target_mind))
-		to_chat(user, "This can only be used on instances of type /mob and /mind", confidential = TRUE)
+		to_chat(user, "这只能用于/mob和/mind类型的实例", confidential = TRUE)
 		return
 	target_mind.traitor_panel()
 
 ADMIN_VERB(set_xeno_stat_buffs, R_ADMIN, "Set Xeno Buffs", "Allows you to change stats for all xenos. It is a multiplicator buff, so input 100 to put everything back to normal", ADMIN_CATEGORY_MAIN)
-	var/multiplicator_buff_wanted = tgui_input_number(user, "Input the factor in percentage that will multiply xeno stat", "100 is normal stat, 200 is doubling health, regen and melee attack")
+	var/multiplicator_buff_wanted = tgui_input_number(user, "输入将乘以异形属性的百分比系数", "100为正常属性,200为生命值、再生和近战攻击翻倍")
 
 	if(!multiplicator_buff_wanted)
 		return
@@ -1206,7 +1206,7 @@ ADMIN_VERB(set_xeno_stat_buffs, R_ADMIN, "Set Xeno Buffs", "Allows you to change
 	message_admins(logging)
 
 ADMIN_VERB(cmd_admin_create_predator_report, R_ADMIN, "Report: Yautja AI", "Create a predator ship AI report", ADMIN_CATEGORY_MAIN)
-	var/input = tgui_input_text(user, "This is a message from the predator ship's AI. Check with online staff before you send this.", "What?", timeout = 0)
+	var/input = tgui_input_text(user, "这是来自掠食者飞船AI的消息.在发送前请与在线工作人员确认.", "什么?", timeout = 0)
 	if(!input)
 		return FALSE
 	yautja_announcement(span_yautjaboldbig(input))

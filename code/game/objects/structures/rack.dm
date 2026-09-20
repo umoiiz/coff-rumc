@@ -1,6 +1,6 @@
 /obj/structure/rack
-	name = "rack"
-	desc = "A bunch of metal shelves stacked on top of eachother. Excellent for storage purposes, less so as cover."
+	name = "货架"
+	desc = "一堆金属架子叠在一起。非常适合用于储存,作为掩体就不太行了。"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "rack"
 	density = TRUE
@@ -53,7 +53,7 @@
 		return
 	var/mob/living/carbon/xenomorph/M = O
 	if(!M.stat) //No dead xenos jumpin on the bed~
-		visible_message(span_danger("[O] plows straight through [src]!"))
+		visible_message(span_danger("[O]径直冲过[src]!"))
 		deconstruct(FALSE)
 
 /obj/structure/rack/deconstruct(disassembled = TRUE, mob/living/blame_mob)

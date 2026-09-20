@@ -6,8 +6,8 @@
 	var/skill_threshold = SKILL_MEDICAL_EXPERT
 
 /obj/item/tool/research/xeno_analyzer
-	name = "xenomorph analyzer"
-	desc = "A tool for analyzing xenomorphs for research material. Just click on a xenomorph. Can be used to befriend Newt."
+	name = "异形分析仪"
+	desc = "一种用于分析异形以获取研究材料的工具. 只需点击异形即可. 可用于与纽特交朋友."
 	icon = 'icons/obj/items/surgery_tools.dmi'
 	icon_state = "predator_bonesaw"
 	///List of rewards for each xeno tier
@@ -37,24 +37,24 @@
 
 	var/list/xeno_rewards = xeno_tier_rewards[target_xeno.tier]
 	if(!xeno_rewards)
-		balloon_alert(user, "Can't research")
+		balloon_alert(user, "无法研究")
 		return ..()
 
 	if(HAS_TRAIT(target_xeno, TRAIT_RESEARCHED))
-		balloon_alert(user, "Already probed")
+		balloon_alert(user, "已探测过")
 		return ..()
 
 	if(user.skills.getRating(SKILL_MEDICAL) < SKILL_MEDICAL_EXPERT)
-		user.balloon_alert_to_viewers("Tries to find weak point on [target_xeno]")
+		user.balloon_alert_to_viewers("试图在[target_xeno]身上寻找弱点")
 		var/fumbling_time = 15 SECONDS - 2 SECONDS * user.skills.getRating(SKILL_MEDICAL)
 		if(!do_after(user, fumbling_time, NONE, src, BUSY_ICON_UNSKILLED))
 			return ..()
-	user.balloon_alert_to_viewers("Begins cutting [target_xeno]")
+	user.balloon_alert_to_viewers("开始切割[target_xeno]")
 	if(!do_after(user, 5 SECONDS, NONE, src, BUSY_ICON_FRIENDLY))
 		return ..()
 
 	if(HAS_TRAIT(target_xeno, TRAIT_RESEARCHED))
-		balloon_alert(user, "Already probed")
+		balloon_alert(user, "已探测过")
 		return ..()
 
 	var/reward_typepath = pick(xeno_rewards)
@@ -64,21 +64,21 @@
 	return ..()
 
 /obj/item/tool/research/excavation_tool
-	name = "subterrain scanner and excavator"
-	desc = "A tool for locating and uncovering underground resources."
+	name = "地下扫描仪与挖掘机"
+	desc = "一种用于定位和发掘地下资源的工具."
 	icon = 'icons/obj/items/surgery_tools.dmi'
 	icon_state = "alien_drill"
 
 /obj/item/tool/research/excavation_tool/examine(mob/user)
 	. = ..()
-	. += span_danger("Use In-Hand when near an excavation site to start escavating it.")
+	. += span_danger("在挖掘点附近时在手中使用以开始挖掘.")
 
 /obj/item/tool/research/excavation_tool/attack_self(mob/user)
 	. = ..()
 	if(user.skills.getRating(skill_type) < skill_threshold)
-		balloon_alert(user, "Not skilled enough")
+		balloon_alert(user, "技能不足")
 		return
-	balloon_alert_to_viewers("Escavating...")
+	balloon_alert_to_viewers("挖掘中...")
 	if(!do_after(user, 10 SECONDS, NONE, user.loc, BUSY_ICON_GENERIC, BUSY_ICON_GENERIC, PROGRESS_BRASS))
 		return
 
@@ -86,7 +86,7 @@
 		if(!spawner_to_check.rewards_typepath) // excavate only those that are set up
 			continue
 		spawner_to_check.excavate_site()
-		balloon_alert(user, "Found it!")
+		balloon_alert(user, "找到了!")
 		return
 
-	balloon_alert(user, "Nothing to escavate!")
+	balloon_alert(user, "没有可挖掘的东西!")

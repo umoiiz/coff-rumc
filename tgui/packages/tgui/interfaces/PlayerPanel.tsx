@@ -153,7 +153,7 @@ export const PlayerPanel = (props) => {
                     disabled={!data.has_client || !hasPermission(data, 'access_playtimes')}
                     onClick={() => act('access_playtimes')}
                   >
-                    Playtime
+                    游戏时长
                   </Button>
                 </Stack.Item>
                 <Stack.Item>
@@ -162,7 +162,7 @@ export const PlayerPanel = (props) => {
                     disabled={!hasPermission(data, 'individual_logs')}
                     onClick={() => act('individual_logs')}
                   >
-                    Logs
+                    日志
                   </Button>
                 </Stack.Item>
               </Stack>
@@ -182,7 +182,7 @@ export const PlayerPanel = (props) => {
                       disabled={!hasPermission(data, 'private_message')}
                       onClick={() => act('private_message')}
                     >
-                      PM
+                      私信
                     </Button>
                     <Button
                       ml={1}
@@ -190,7 +190,7 @@ export const PlayerPanel = (props) => {
                       disabled={!hasPermission(data, 'subtle_message')}
                       onClick={() => act('subtle_message')}
                     >
-                      Subtle
+                      微妙
                     </Button>
                   </Stack.Item>
                 </Stack>
@@ -271,7 +271,7 @@ const GeneralActions = (props) => {
 
   return (
     <>
-      <Section title="Damage">
+      <Section title="伤害">
         <Stack align="right" fill>
           <Button.Confirm
             width="100%"
@@ -306,7 +306,7 @@ const GeneralActions = (props) => {
         </Stack>
       </Section>
 
-      <Section title="Teleportation">
+      <Section title="传送">
         <Stack align="right" fill>
           <Button.Confirm
             width="100%"
@@ -322,7 +322,7 @@ const GeneralActions = (props) => {
             disabled={!hasPermission(data, 'jump_to')}
             onClick={() => act('jump_to')}
           >
-            Jump To
+            跳转至
           </Button>
           <Button
             width="100%"
@@ -330,12 +330,12 @@ const GeneralActions = (props) => {
             disabled={!hasPermission(data, 'get_mob')}
             onClick={() => act('get_mob')}
           >
-            Get Mob
+            获取生物
           </Button>
         </Stack>
       </Section>
 
-      <Section title="Miscellaneous">
+      <Section title="杂项">
         <Stack align="right" fill>
           <Button.Checkbox
             width="100%"
@@ -413,7 +413,7 @@ const PunishmentActions = (props) => {
 
   return (
     <>
-      <Section title="Banishment">
+      <Section title="放逐">
         <Stack align="right" fill>
           <Button.Confirm
             width="100%"
@@ -436,7 +436,7 @@ const PunishmentActions = (props) => {
         </Stack>
       </Section>
 
-      <Section title="Record-keeping">
+      <Section title="记录保存">
         <Stack align="right" fill>
           <Button
             width="100%"
@@ -445,7 +445,7 @@ const PunishmentActions = (props) => {
             disabled={!hasPermission(data, 'show_notes')}
             onClick={() => act('show_notes')}
           >
-            Check Notes
+            查看备注
           </Button>
           <Button
             width="100%"
@@ -454,7 +454,7 @@ const PunishmentActions = (props) => {
             disabled={!hasPermission(data, 'add_note')}
             onClick={() => act('add_note')}
           >
-            Add Note
+            添加备注
           </Button>
         </Stack>
         <Stack align="right" fill mt={1}>
@@ -464,7 +464,7 @@ const PunishmentActions = (props) => {
             disabled={!has_client || !hasPermission(data, 'related_accounts_cid')}
             onClick={() => act('related_accounts_cid')}
           >
-            CID Related Accounts
+            CID关联账户
           </Button>
           <Button
             width="100%"
@@ -472,7 +472,7 @@ const PunishmentActions = (props) => {
             disabled={!has_client || !hasPermission(data, 'related_accounts_ip')}
             onClick={() => act('related_accounts_ip')}
           >
-            IP Related Accounts
+            IP关联账户
           </Button>
         </Stack>
         {!!data.centcom_ban_db_enabled && (
@@ -484,14 +484,14 @@ const PunishmentActions = (props) => {
               disabled={!hasPermission(data, 'centcom_lookup')}
               onClick={() => act('centcom_lookup')}
             >
-              CentCom Ban Lookup
+              中央指挥部封禁查询
             </Button>
           </Stack>
         )}
       </Section>
 
       {!!has_client && (
-        <Section title="Mute">
+        <Section title="禁言">
           <Stack align="right" fill wrap>
             {glob_mute_bits.map((bit, i) => {
               const isMuted = !!(client_muted && client_muted & bit.bitflag);
@@ -551,7 +551,7 @@ const FunActions = (props) => {
   return (
     <>
       {hasPermission(data, 'mob_narrate') && (
-        <Section title="Narrate">
+        <Section title="叙述">
           <Stack align="right" fill>
             <Stack.Item width="100px" align="left" color="label">
               Narrate:
@@ -570,7 +570,7 @@ const FunActions = (props) => {
 
       {hasPermission(data, 'mob_explode') && (
         <Section
-          title="Explosion"
+          title="爆炸"
           buttons={
             <Button
               ml={1}
@@ -593,7 +593,7 @@ const FunActions = (props) => {
                 }
               >
                 <Box height="100%" pt={2} pb={2} textAlign="center">
-                  Detonate
+                  引爆
                 </Box>
               </Button.Confirm>
             </Stack.Item>
@@ -634,7 +634,7 @@ const AntagActions = (props) => {
   );
 
   return (
-    <Section title="Xenomorph">
+    <Section title="异形">
       <Stack align="right" fill>
         <Stack.Item grow>
           <Dropdown
@@ -656,7 +656,7 @@ const AntagActions = (props) => {
               })
             }
           >
-            Change Hive
+            更换巢穴
           </Button>
         </Stack.Item>
       </Stack>
@@ -681,7 +681,7 @@ const PhysicalActions = (props) => {
 
   return (
     <>
-      <Section title="Status Flags">
+      <Section title="状态标记">
         <Stack align="right" fill wrap>
           {Object.keys(glob_status_flags).map((val, i) => (
             <Button.Checkbox
@@ -706,7 +706,7 @@ const PhysicalActions = (props) => {
 
       {!!is_human && (
         <Section
-          title="Limbs"
+          title="肢体"
           buttons={
             <Stack align="right" fill>
               {limbNames.map((val, index) => (
@@ -748,7 +748,7 @@ const PhysicalActions = (props) => {
         </Section>
       )}
 
-      <Section title="Equipment">
+      <Section title="装备">
         <Stack align="right" fill>
           <Button
             width="100%"
@@ -757,7 +757,7 @@ const PhysicalActions = (props) => {
             disabled={!hasPermission(data, 'select_equipment')}
             onClick={() => act('select_equipment')}
           >
-            Select Equipment
+            选择装备
           </Button>
           <Button.Confirm
             width="100%"
@@ -771,7 +771,7 @@ const PhysicalActions = (props) => {
         </Stack>
       </Section>
 
-      <Section title="Game">
+      <Section title="游戏">
         <Stack align="right" fill>
           <Button.Confirm
             width="100%"
@@ -827,7 +827,7 @@ const PhysicalActions = (props) => {
               disabled={!hasPermission(data, 'rank_and_equipment')}
               onClick={() => act('rank_and_equipment')}
             >
-              Rank and Equipment
+              军衔与装备
             </Button>
             <Button
               width="100%"
@@ -836,7 +836,7 @@ const PhysicalActions = (props) => {
               disabled={!hasPermission(data, 'edit_appearance')}
               onClick={() => act('edit_appearance')}
             >
-              Edit Appearance
+              编辑外观
             </Button>
             <Button.Confirm
               width="100%"

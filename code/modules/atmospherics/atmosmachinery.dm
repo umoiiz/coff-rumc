@@ -82,7 +82,7 @@
 	if((vent_movement & VENTCRAWL_ENTRANCE_ALLOWED) && isliving(user))
 		var/mob/living/L = user
 		if(HAS_TRAIT(L, TRAIT_CAN_VENTCRAWL))
-			. += span_notice("Alt-click to crawl through it.")
+			. += span_notice("按住Alt点击以爬过它.")
 /**
  * Called on getting crushed by the shuttle
  */
@@ -280,17 +280,17 @@
 
 	var/turf/T = get_turf(src)
 	if (level==1 && isturf(T) && T.intact_tile)
-		to_chat(user, span_warning("You must remove the plating first!"))
+		to_chat(user, span_warning("你必须先移除装甲板!"))
 		return TRUE
-	to_chat(user, span_notice("You begin to unfasten \the [src]..."))
+	to_chat(user, span_notice("你开始松开\the [src]..."))
 
 	if(!do_after(user, 2 SECONDS, NONE, src, BUSY_ICON_BUILD))
 		return TRUE
 
 	user.visible_message( \
 		"[user] unfastens \the [src].", \
-		span_notice("You unfasten \the [src]."), \
-		span_italics("You hear ratchet."))
+		span_notice("你松开了\the [src]."), \
+		span_italics("你听到了棘轮声."))
 	deconstruct(TRUE)
 	return TRUE
 

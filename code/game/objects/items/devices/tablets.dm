@@ -1,6 +1,6 @@
 /obj/item/hud_tablet
-	name = "hud tablet"
-	desc = "A tablet with a live feed to a number of headset cameras"
+	name = "全息平板"
+	desc = "一台可实时接收多个头盔摄像头画面的平板"
 	icon_state = "req_tablet_off"
 	equip_slot_flags = ITEM_SLOT_POCKET
 	w_class = WEIGHT_CLASS_SMALL
@@ -90,7 +90,7 @@
 
 /obj/item/hud_tablet/interact(mob/user)
 	if(!allowed(user))
-		to_chat(user, span_warning("Access denied, unauthorized user."))
+		to_chat(user, span_warning("访问被拒绝,未授权用户."))
 		return TRUE
 	return ..()
 
@@ -184,52 +184,52 @@
 	cam_screen.show_camera(visible_turfs, size_x, size_y)
 
 /obj/item/hud_tablet/alpha
-	name = "alpha hud tablet"
+	name = "阿尔法全息平板"
 	network = list("alpha")
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_ALPHA)
 
 /obj/item/hud_tablet/bravo
-	name = "bravo hud tablet"
+	name = "布拉沃全息平板"
 	network = list("bravo")
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_BRAVO)
 
 /obj/item/hud_tablet/charlie
-	name = "charlie hud tablet"
+	name = "查理全息平板"
 	network = list("charlie")
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_CHARLIE)
 
 /obj/item/hud_tablet/delta
-	name = "delta hud tablet"
+	name = "德尔塔全息平板"
 	network = list("delta")
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DELTA)
 
 /obj/item/hud_tablet/leadership
-	name = "captain's hud tablet"
+	name = "队长全息平板"
 	network = list("marinesl", "marine", "marinemainship")
 	req_access = list(ACCESS_MARINE_BRIDGE, ACCESS_MARINE_LEADER, ACCESS_MARINE_CAPTAIN)
 	max_view_dist = WORLD_VIEW_NUM
 
 /obj/item/hud_tablet/fieldcommand
-	name = "field commander's hud tablet"
+	name = "战地指挥官全息平板"
 	network = list("marinesl", "marine")
 	req_access = list(ACCESS_MARINE_BRIDGE, ACCESS_MARINE_LEADER)
 	max_view_dist = WORLD_VIEW_NUM
 
 /obj/item/hud_tablet/pilot
-	name = "pilot officers's hud tablet"
+	name = "飞行员军官全息平板"
 	network = list("dropship1")
 	req_access = list(ACCESS_MARINE_PILOT, ACCESS_MARINE_DROPSHIP)
 	max_view_dist = WORLD_VIEW_NUM
 
 /obj/item/hud_tablet/transportofficer
-	name = "transport officer's hud tablet"
+	name = "运输军官全息平板"
 	network = list("dropship2")
 	req_access = list(ACCESS_MARINE_PILOT, ACCESS_MARINE_TADPOLE)
 	max_view_dist = WORLD_VIEW_NUM
 
 /obj/item/hud_tablet/artillery
-	name = "artillery impact hud tablet"
-	desc = "A handy tablet with a live feed to several TGMC satellites. Provides a view of all artillery on the battlefield. Transmits a video of the impact site whenever a shot is fired, so that hits may be observed by the loader or spotter."
+	name = "炮击落点全息平板"
+	desc = "一台便捷的平板,可实时接收多颗TGMC卫星的画面.可查看战场上所有火炮的情况.每次开火时都会传输落点视频,以便装填手或观察员确认命中情况."
 	network = list("terragovartillery") //This shows cameras of all mortars, so don't add this to HvH
 	req_access = list()
 	max_view_dist = WORLD_VIEW_NUM

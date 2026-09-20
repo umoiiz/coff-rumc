@@ -19,7 +19,7 @@
 	if(controlling)
 		return
 	var/list/cameras = get_camera_list()
-	var/camera = tgui_input_list(src, "Choose which camera you want to view", "Cameras", cameras)
+	var/camera = tgui_input_list(src, "选择你想查看的摄像头", "摄像头", cameras)
 	switchCamera(cameras[camera])
 
 
@@ -89,11 +89,11 @@
 	tracking = TRUE
 
 	if(!target || !target.can_track(src))
-		to_chat(src, span_warning("Target is not near any active cameras."))
+		to_chat(src, span_warning("目标不在任何活动摄像头附近."))
 		cameraFollow = null
 		return
 
-	to_chat(src, span_notice("Now tracking [target.get_visible_name()] on camera."))
+	to_chat(src, span_notice("正在摄像头中追踪[target.get_visible_name()]."))
 
 	INVOKE_ASYNC(src, PROC_REF(start_tracking), target)
 
@@ -106,11 +106,11 @@
 		if(!target.can_track(src))
 			tracking = TRUE
 			if(!cameraticks)
-				to_chat(src, span_warning("Target is not near any active cameras. Attempting to reacquire..."))
+				to_chat(src, span_warning("目标不在任何活动摄像头附近. 正在尝试重新获取..."))
 			cameraticks++
 			if(cameraticks > 9)
 				cameraFollow = null
-				to_chat(src, span_warning("Unable to reacquire, cancelling track..."))
+				to_chat(src, span_warning("无法重新获取, 取消追踪..."))
 				tracking = FALSE
 				return
 			else

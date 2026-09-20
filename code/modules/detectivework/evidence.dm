@@ -1,8 +1,8 @@
 //CONTAINS: Evidence bags and fingerprint cards
 
 /obj/item/evidencebag
-	name = "evidence bag"
-	desc = "An empty evidence bag."
+	name = "证物袋"
+	desc = "一个空的证物袋."
 	icon = 'icons/obj/items/storage/misc.dmi'
 	icon_state = "evidenceobj"
 	worn_icon_state = ""
@@ -42,18 +42,18 @@
 		return
 
 	if(istype(I, /obj/item/evidencebag))
-		to_chat(user, span_notice("You find putting an evidence bag in another evidence bag to be slightly absurd."))
+		to_chat(user, span_notice("你觉得把证物袋放进另一个证物袋里有点荒谬."))
 		return
 
 	if(I.w_class > 3)
-		to_chat(user, span_notice("[I] won't fit in [src]."))
+		to_chat(user, span_notice("[I]放不进[src]."))
 		return
 
 	if(length(contents))
-		to_chat(user, span_notice("[src] already has something inside it."))
+		to_chat(user, span_notice("[src]里面已经有东西了."))
 		return
 
-	user.visible_message("[user] puts [I] into [src]", "You put [I] inside [src].",\
+	user.visible_message("[user]将[I]放入[src]", "你将[I]放入[src].",\
 	"You hear a rustle as someone puts something into a plastic bag.")
 
 	icon_state = "evidence"
@@ -78,7 +78,7 @@
 /obj/item/evidencebag/attack_self(mob/user as mob)
 	if(length(contents))
 		var/obj/item/I = contents[1]
-		user.visible_message("[user] takes [I] out of [src]", "You take [I] out of [src].",\
+		user.visible_message("[user]将[I]从[src]中取出", "你将[I]从[src]中取出.",\
 		"You hear someone rustle around in a plastic bag, and remove something.")
 		overlays.Cut()	//remove the overlays
 
@@ -89,7 +89,7 @@
 		icon_state = "evidenceobj"
 		desc = "An empty evidence bag."
 	else
-		to_chat(user, "[src] is empty.")
+		to_chat(user, "[src]是空的.")
 		icon_state = "evidenceobj"
 
 
@@ -98,14 +98,14 @@
 	. += stored_item?.examine(user)
 
 /obj/item/storage/box/evidence
-	name = "evidence bag box"
-	desc = "A box claiming to contain evidence bags."
+	name = "证物袋盒"
+	desc = "一个声称装有证物袋的盒子."
 	spawn_type = /obj/item/evidencebag
 	spawn_number = 6
 
 /obj/item/f_card
-	name = "finger print card"
-	desc = "Used to take fingerprints."
+	name = "指纹卡"
+	desc = "用于采集指纹."
 	icon = 'icons/obj/items/card.dmi'
 	icon_state = "fingerprint0"
 	var/amount = 10
@@ -121,8 +121,8 @@
 
 
 /obj/item/fcardholder
-	name = "fingerprint card case"
-	desc = "Apply finger print card."
+	name = "指纹卡盒"
+	desc = "使用指纹卡."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "fcardholder0"
 	worn_icon_list = list(

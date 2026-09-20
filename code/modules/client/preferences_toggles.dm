@@ -5,7 +5,7 @@
 	prefs.toggles_chat ^= CHAT_STATISTICS
 	prefs.save_preferences()
 
-	to_chat(src, span_notice("At the end of the round you will [(prefs.toggles_chat & CHAT_STATISTICS) ? "see all statistics" : "not see any statistics"]."))
+	to_chat(src, span_notice("回合结束时你将[(prefs.toggles_chat & CHAT_STATISTICS) ? "see all statistics" : "not see any statistics"]."))
 
 /client/verb/toggle_ghost_ears()
 	set category = "Preferences.Chat"
@@ -14,7 +14,7 @@
 	prefs.toggles_chat ^= CHAT_GHOSTEARS
 	prefs.save_preferences()
 
-	to_chat(src, span_notice("As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTEARS) ? "see all speech in the world" : "only see speech from nearby mobs"]."))
+	to_chat(src, span_notice("作为幽灵,你现在将[(prefs.toggles_chat & CHAT_GHOSTEARS) ? "see all speech in the world" : "only see speech from nearby mobs"]."))
 
 /client/verb/middle_mousetoggle()
 	set name = "Toggle Middle/Shift Clicking"
@@ -23,7 +23,7 @@
 	prefs.toggles_gameplay ^= MIDDLESHIFTCLICKING
 	prefs.save_preferences()
 
-	to_chat(src, span_notice("The selected special ability will now be activated with [(prefs.toggles_gameplay & MIDDLESHIFTCLICKING) ? "middle button" : "shift"] clicking."))
+	to_chat(src, span_notice("选定的特殊能力现在将通过[(prefs.toggles_gameplay & MIDDLESHIFTCLICKING) ? "middle button" : "shift"]点击激活."))
 
 	prefs.save_preferences()
 
@@ -34,7 +34,7 @@
 	prefs.toggles_chat ^= CHAT_GHOSTSIGHT
 	prefs.save_preferences()
 
-	to_chat(src, span_notice("As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTSIGHT) ? "see all emotes in the world" : "only see emotes from nearby mobs"]."))
+	to_chat(src, span_notice("作为幽灵,你现在将[(prefs.toggles_chat & CHAT_GHOSTSIGHT) ? "see all emotes in the world" : "only see emotes from nearby mobs"]."))
 
 /client/verb/toggle_ghost_radio()
 	set category = "Preferences.Chat"
@@ -43,7 +43,7 @@
 	prefs.toggles_chat ^= CHAT_GHOSTRADIO
 	prefs.save_preferences()
 
-	to_chat(src, span_notice("As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTRADIO) ? "hear all radio chat in the world" : "only hear from nearby speakers"]."))
+	to_chat(src, span_notice("作为幽灵,你现在将[(prefs.toggles_chat & CHAT_GHOSTRADIO) ? "hear all radio chat in the world" : "only hear from nearby speakers"]."))
 
 /client/proc/toggle_ghost_speaker()
 	set category = "Preferences.Chat"
@@ -52,7 +52,7 @@
 	prefs.toggles_chat ^= CHAT_RADIO
 	prefs.save_preferences()
 
-	to_chat(usr, span_notice("You will [(prefs.toggles_chat & CHAT_RADIO) ? "now" : "no longer"] see radio chatter from radios or speakers."))
+	to_chat(usr, span_notice("你将[(prefs.toggles_chat & CHAT_RADIO) ? "now" : "no longer"]看到来自无线电或扬声器的无线电通讯."))
 
 /client/verb/toggle_ghost_hivemind()
 	set category = "Preferences.Chat"
@@ -61,7 +61,7 @@
 	prefs.toggles_chat ^= CHAT_GHOSTHIVEMIND
 	prefs.save_preferences()
 
-	to_chat(src, span_notice("As a ghost, you will [(prefs.toggles_chat & CHAT_GHOSTHIVEMIND) ? "now see chatter from the Xenomorph Hivemind" : "no longer see chatter from the Xenomorph Hivemind"]."))
+	to_chat(src, span_notice("作为幽灵,你现在将[(prefs.toggles_chat & CHAT_GHOSTHIVEMIND) ? "now see chatter from the Xenomorph Hivemind" : "no longer see chatter from the Xenomorph Hivemind"]."))
 
 /client/verb/toggle_deadchat_self()
 	set category = "Preferences.Chat"
@@ -70,7 +70,7 @@
 	prefs.toggles_chat ^= CHAT_DEAD
 	prefs.save_preferences()
 
-	to_chat(src, span_notice("You will [(prefs.toggles_chat & CHAT_DEAD) ? "now" : "no longer"] see deadchat."))
+	to_chat(src, span_notice("你将[(prefs.toggles_chat & CHAT_DEAD) ? "now" : "no longer"]看到死亡聊天."))
 
 /client/verb/toggle_radial_medical()
 	set category = "Preferences"
@@ -79,7 +79,7 @@
 	prefs.toggles_gameplay ^= RADIAL_MEDICAL
 	prefs.save_preferences()
 
-	to_chat(src, span_notice("You will [(prefs.toggles_gameplay & RADIAL_MEDICAL) ? "now" : "no longer"] use the radial menu for medical purposes."))
+	to_chat(src, span_notice("你将[(prefs.toggles_gameplay & RADIAL_MEDICAL) ? "now" : "no longer"]使用医疗用途的径向菜单."))
 
 /client/verb/toggle_radial_stacks()
 	set category = "Preferences"
@@ -88,7 +88,7 @@
 	prefs.toggles_gameplay ^= RADIAL_STACKS
 	prefs.save_preferences()
 
-	to_chat(src, span_notice("You will [(prefs.toggles_gameplay & RADIAL_STACKS) ? "now" : "no longer"] use the radial menu when interacting with material stacks."))
+	to_chat(src, span_notice("你将[(prefs.toggles_gameplay & RADIAL_STACKS) ? "now" : "no longer"]在与材料堆交互时使用径向菜单."))
 
 /client/verb/toggle_ooc_self()
 	set category = "Preferences.Chat"
@@ -97,7 +97,7 @@
 	prefs.toggles_chat ^= CHAT_OOC
 	prefs.save_preferences()
 
-	to_chat(src, span_notice("You will [(prefs.toggles_chat & CHAT_OOC) ? "now" : "no longer"] see messages on the OOC channel."))
+	to_chat(src, span_notice("你将[(prefs.toggles_chat & CHAT_OOC) ? "now" : "no longer"]看到OOC频道的消息."))
 
 /client/verb/toggle_looc_self()
 	set category = "Preferences.Chat"
@@ -106,33 +106,33 @@
 	prefs.toggles_chat ^= CHAT_LOOC
 	prefs.save_preferences()
 
-	to_chat(src, span_notice("You will [(prefs.toggles_chat & CHAT_LOOC) ? "now" : "no longer"] see messages on the LOOC channel."))
+	to_chat(src, span_notice("你将[(prefs.toggles_chat & CHAT_LOOC) ? "now" : "no longer"]看到LOOC频道的消息."))
 
 /client/verb/toggle_ooc_country_flag()
 	set category = "Preferences.Chat"
 	set name = "Toggle OOC Country Flag"
 
 	if(!(CONFIG_GET(flag/ooc_country_flags)))
-		to_chat(src, span_warning("OOC country flags are disabled on this server."))
+		to_chat(src, span_warning("本服务器已禁用OOC国旗."))
 		return
 
 	prefs.show_ooc_country_flag = !prefs.show_ooc_country_flag
 	prefs.save_preferences()
 
-	to_chat(src, span_notice("Your country flag will [(prefs.show_ooc_country_flag) ? "now" : "no longer"] appear before your name in OOC chat."))
+	to_chat(src, span_notice("你的国旗将[(prefs.show_ooc_country_flag) ? "now" : "no longer"]出现在OOC聊天中你的名字前."))
 
 /client/verb/toggle_special()
 	set category = "Preferences"
 	set name = "Toggle Special Roles"
 
-	var/role = tgui_input_list(usr, "Select a role to toggle", "Toggle Special Roles", BE_SPECIAL_FLAGS)
+	var/role = tgui_input_list(usr, "选择一个要切换的角色", "切换特殊角色", BE_SPECIAL_FLAGS)
 	var/role_flag = BE_SPECIAL_FLAGS[role]
 	if(!role_flag)
 		return
 	prefs.be_special ^= role_flag
 	prefs.save_character()
 
-	to_chat(src, span_notice("You will [(prefs.be_special & role_flag) ? "now" : "no longer"] be considered for [role] events (where possible)."))
+	to_chat(src, span_notice("你将[(prefs.be_special & role_flag) ? "now" : "no longer"]被考虑参与[role]事件 (在可能的情况下)."))
 
 /client/verb/setup_character()
 	set category = "Preferences"
@@ -148,14 +148,14 @@ GLOBAL_LIST_INIT(ghost_forms, list("Default" = GHOST_DEFAULT_FORM, "Ghost Ian 1"
 							"Mellow" = "ghost_mellow", "Rainbow" = "ghost_rainbow", "Camo" = "ghost_camo", "Fire" = "ghost_fire", "Cat" = "catghost"))
 
 /client/proc/pick_form()
-	var/new_form = tgui_input_list(src, "Choose your ghostly form:", "Ghost Customization", GLOB.ghost_forms)
+	var/new_form = tgui_input_list(src, "选择你的幽灵形态:", "幽灵自定义", GLOB.ghost_forms)
 	if(!new_form)
 		return
 
 	prefs.ghost_form = GLOB.ghost_forms[new_form]
 	prefs.save_preferences()
 
-	to_chat(src, span_notice("You will use the [new_form] ghost form when starting as an observer."))
+	to_chat(src, span_notice("你将以观察者身份开始时使用[new_form]幽灵形态."))
 
 	if(!isobserver(mob))
 		return
@@ -166,14 +166,14 @@ GLOBAL_LIST_INIT(ghost_forms, list("Default" = GHOST_DEFAULT_FORM, "Ghost Ian 1"
 GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE, GHOST_ORBIT_TRIANGLE, GHOST_ORBIT_SQUARE, GHOST_ORBIT_HEXAGON, GHOST_ORBIT_PENTAGON))
 
 /client/proc/pick_ghost_orbit()
-	var/new_orbit = tgui_input_list(src, "Choose your ghostly orbit:", "Ghost Customization", GLOB.ghost_orbits)
+	var/new_orbit = tgui_input_list(src, "选择你的幽灵环绕:", "幽灵自定义", GLOB.ghost_orbits)
 	if(!new_orbit)
 		return
 
 	prefs.ghost_orbit = new_orbit
 	prefs.save_preferences()
 
-	to_chat(src, span_notice("You will use the [new_orbit] as a ghost."))
+	to_chat(src, span_notice("你将使用[new_orbit]作为幽灵."))
 
 	if(!isobserver(mob))
 		return
@@ -184,14 +184,14 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE, GHOST_ORBIT_TRIANGLE, GH
 GLOBAL_LIST_INIT(ghost_others_options, list(GHOST_OTHERS_SIMPLE, GHOST_OTHERS_DEFAULT_SPRITE, GHOST_OTHERS_THEIR_SETTING))
 
 /client/proc/pick_ghost_other_form()
-	var/new_others = tgui_input_list(src, "Choose how you see other observers:", "Ghost Customization", GLOB.ghost_others_options)
+	var/new_others = tgui_input_list(src, "选择你如何看待其他观察者:", "幽灵自定义", GLOB.ghost_others_options)
 	if(!new_others)
 		return
 
 	prefs.ghost_others = new_others
 	prefs.save_preferences()
 
-	to_chat(src, span_notice("You will now see people who started as an observer as [new_others]."))
+	to_chat(src, span_notice("你现在将把以观察者身份开始的人视为[new_others]."))
 
 	if(!isobserver(mob))
 		return
@@ -204,7 +204,7 @@ GLOBAL_LIST_INIT(ghost_others_options, list(GHOST_OTHERS_SIMPLE, GHOST_OTHERS_DE
 	set name = "Ghost Customization"
 	set desc = "Customize your ghastly appearance."
 
-	switch(tgui_alert(src, "Which setting do you want to change?", "Ghost Customization", list("Ghost Form", "Ghost Orbit", "Ghosts of others")))
+	switch(tgui_alert(src, "你想更改哪个设置?", "幽灵自定义", list("Ghost Form", "Ghost Orbit", "Ghosts of others")))
 		if("Ghost Form")
 			pick_form()
 		if("Ghost Orbit")
@@ -218,7 +218,7 @@ GLOBAL_LIST_INIT(ghost_others_options, list(GHOST_OTHERS_SIMPLE, GHOST_OTHERS_DE
 	set desc = "Announces when a player spawns for the first time."
 
 	TOGGLE_BITFIELD(prefs.toggles_deadchat, DISABLE_ARRIVALRATTLE)
-	to_chat(usr, span_notice("New spawn announcements have been [(prefs.toggles_deadchat & DISABLE_ARRIVALRATTLE) ? "disabled" : "enabled"]."))
+	to_chat(usr, span_notice("新生成公告已[(prefs.toggles_deadchat & DISABLE_ARRIVALRATTLE) ? "disabled" : "enabled"]."))
 
 /client/verb/toggle_deadchat_deathrattle()
 	set category = "Preferences.Chat"
@@ -226,4 +226,4 @@ GLOBAL_LIST_INIT(ghost_others_options, list(GHOST_OTHERS_SIMPLE, GHOST_OTHERS_DE
 	set desc = "Announces when a player dies."
 
 	TOGGLE_BITFIELD(prefs.toggles_deadchat, DISABLE_DEATHRATTLE)
-	to_chat(usr, span_notice("Death announcements have been [(prefs.toggles_deadchat & DISABLE_DEATHRATTLE) ? "disabled" : "enabled"]."))
+	to_chat(usr, span_notice("死亡公告已[(prefs.toggles_deadchat & DISABLE_DEATHRATTLE) ? "disabled" : "enabled"]."))

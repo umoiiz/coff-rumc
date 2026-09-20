@@ -1,6 +1,6 @@
 /obj/item/binoculars/fire_support
-	name = "pair of tactical binoculars"
-	desc = "A pair of binoculars, used to mark targets for airstrikes and cruise missiles. Unique action to toggle mode. Ctrl+Click when using to target something."
+	name = "战术双筒望远镜"
+	desc = "一副双筒望远镜,用于为空袭和巡航导弹标记目标。独特动作可切换模式。使用时按住Ctrl点击以瞄准某个目标。"
 	icon_state = "range_finders"
 	w_class = WEIGHT_CLASS_SMALL
 	///lase effect
@@ -33,10 +33,10 @@
 	. = ..()
 	if(!mode)
 		return
-	. += span_boldnotice("They are currently set to [mode.name] mode: [mode.uses == -1 ? "unlimited" : "[mode.uses]"] uses remaining.")
+	. += span_boldnotice("它们目前设置为 [mode.name] 模式:剩余 [mode.uses == -1 ? "unlimited" : "[mode.uses]"] 次使用。")
 	if(!mode.cooldown_timer)
 		return
-	. += span_warning("Available in [round(timeleft(mode.cooldown_timer) MILLISECONDS)] seconds.")
+	. += span_warning("[round(timeleft(mode.cooldown_timer) MILLISECONDS)] 秒后可用。")
 
 /obj/item/binoculars/fire_support/Destroy()
 	unset_target()
@@ -105,37 +105,37 @@
 		if(mode_list[option].name != mode_selected)
 			continue
 		mode = mode_list[option]
-		user.balloon_alert(user, "[mode_selected] mode")
+		user.balloon_alert(user, "[mode_selected] 模式")
 	update_icon()
 
 ///lases a target and calls fire support on it
 /obj/item/binoculars/fire_support/proc/acquire_target(atom/target, mob/living/carbon/human/user)
 	set waitfor = 0
 	if(user.do_actions)
-		balloon_alert_to_viewers("Busy")
+		balloon_alert_to_viewers("忙碌")
 		return
 	if(is_mainship_level(user.z))
-		user.balloon_alert(user, "Can't use here")
+		user.balloon_alert(user, "无法在此使用")
 		return
 	if(faction && user.faction != faction)
-		balloon_alert_to_viewers("Security locks engaged")
+		balloon_alert_to_viewers("安全锁已启用")
 		return
 	if(laser_overlay)
-		to_chat(user, span_warning("You're already targeting something."))
+		to_chat(user, span_warning("你已经在瞄准某个目标了。"))
 		return
 	if(!bino_checks(target, user))
 		return
 	if(!can_see_target(target, user))
-		balloon_alert_to_viewers("No clear view")
+		balloon_alert_to_viewers("视野不清晰")
 		return
 
 	playsound(src, 'sound/effects/nightvision.ogg', 35)
-	to_chat(user, span_notice("INITIATING LASER TARGETING. Stand still."))
+	to_chat(user, span_notice("正在启动激光瞄准。请保持静止。"))
 	target_atom = target
 	laser_overlay = image('icons/obj/items/projectiles.dmi', icon_state = "sniper_laser", layer =-LASER_LAYER)
 	target_atom.apply_fire_support_laser(laser_overlay)
 	if(!do_after(user, target_acquisition_delay, NONE, user, BUSY_ICON_HOSTILE, extra_checks = CALLBACK(src, PROC_REF(can_see_target), target, user)))
-		to_chat(user, span_danger("You lose sight of your target!"))
+		to_chat(user, span_danger("你失去了目标的视野!"))
 		playsound(user,'sound/machines/click.ogg', 25, 1)
 		unset_target()
 		return
@@ -149,23 +149,23 @@
 ///Internal bino checks, mainly around firemode
 /obj/item/binoculars/fire_support/proc/bino_checks(atom/target, mob/living/user)
 	if(!mode)
-		balloon_alert_to_viewers("Select a mode!")
+		balloon_alert_to_viewers("选择一个模式!")
 		return FALSE
 	if(!(mode.fire_support_flags & FIRESUPPORT_AVAILABLE))
-		balloon_alert_to_viewers("[mode.name] unavailable")
+		balloon_alert_to_viewers("[mode.name] 不可用")
 		return FALSE
 	if(!mode.uses)
-		balloon_alert_to_viewers("[mode.name] expended")
+		balloon_alert_to_viewers("[mode.name] 已耗尽")
 		return FALSE
 	if(mode.cooldown_timer)
-		balloon_alert_to_viewers("On cooldown")
+		balloon_alert_to_viewers("冷却中")
 		return FALSE
 	var/area/targ_area = get_area(target)
 	if(isspacearea(targ_area))
-		to_chat(user, span_warning("Cannot fire into space."))
+		to_chat(user, span_warning("无法向太空开火。"))
 		return FALSE
 	if(targ_area.ceiling >= CEILING_UNDERGROUND)
-		to_chat(user, span_warning("DEPTH WARNING: Target too deep for ordnance."))
+		to_chat(user, span_warning("深度警告:目标太深,无法使用弹药。"))
 		return FALSE
 	return TRUE
 
@@ -190,7 +190,7 @@
 ///Acquires coords of a target turf
 /obj/item/binoculars/fire_support/proc/acquire_coordinates(atom/A, mob/living/carbon/human/user)
 	var/turf/target_turf = get_turf(A)
-	to_chat(user, span_notice("COORDINATES: LONGITUDE [target_turf.x]. LATITUDE [target_turf.y]."))
+	to_chat(user, span_notice("坐标:经度 [target_turf.x]。纬度 [target_turf.y]。"))
 	playsound(src, 'sound/effects/binoctarget.ogg', 35)
 
 /obj/item/binoculars/fire_support/campaign

@@ -121,7 +121,7 @@
 
 /datum/action/toggle_seethrough
 	name = "Toggle Seethrough"
-	desc = "Allows you to see behind your massive body and click through it."
+	desc = "允许你看到巨大身躯后方并透过它点击."
 	action_icon = 'icons/Xeno/actions/general.dmi'
 	action_icon_state = "xenohide"
 	background_icon = 'icons/Xeno/actions/_actions.dmi'

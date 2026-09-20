@@ -1,6 +1,6 @@
 /obj/item/explosive/plastique
-	name = "plastic explosives"
-	desc = "Used to put holes in specific areas without too much extra hole."
+	name = "塑性炸药"
+	desc = "用于在特定区域炸出孔洞,而不会造成过多额外破坏."
 	gender = PLURAL
 	icon = 'icons/obj/det.dmi'
 	icon_state = "plastic-explosive"
@@ -34,11 +34,11 @@
 
 /obj/item/explosive/plastique/attack_self(mob/user)
 	. = ..()
-	var/newtime = tgui_input_number(usr, "Please set the timer.", "Timer", 10, 60, 10)
+	var/newtime = tgui_input_number(usr, "请设置计时器.", "计时器", 10, 60, 10)
 	if(!newtime)
 		return
 	timer = newtime
-	to_chat(user, "Timer set for [timer] seconds.")
+	to_chat(user, "计时器已设置为[timer]秒.")
 
 /obj/item/explosive/plastique/afterattack(atom/target, mob/user, flag)
 	if(!flag)
@@ -54,8 +54,8 @@
 			to_chat(user, "[span_warning("[W] is much too tough for you to do anything to it with [src]")].")
 			return FALSE
 
-	user.visible_message(span_warning("[user] is trying to plant [name] on [target]!"),
-	span_warning("You are trying to plant [name] on [target]!"))
+	user.visible_message(span_warning("[user]正试图将[name]安放在[target]上!"),
+	span_warning("你正试图将[name]安放在[target]上!"))
 
 	if(!do_after(user, 2 SECONDS, NONE, target, BUSY_ICON_HOSTILE))
 		return
@@ -93,8 +93,8 @@
 
 	log_bomber(user, "planted", src, "on [target] with a [timer] second fuse", message_admins = TRUE)
 
-	user.visible_message(span_warning("[user] plants [name] on [target]!"),
-	span_warning("You plant [name] on [target]! Timer counting down from [timer]."))
+	user.visible_message(span_warning("[user]将[name]安放在[target]上!"),
+	span_warning("你将[name]安放在[target]上!计时器从[timer]开始倒计时."))
 
 	plant_target = target
 	if(ismovableatom(plant_target))
@@ -109,7 +109,7 @@
 
 /obj/item/explosive/plastique/attack_hand(mob/living/user)
 	if(armed)
-		to_chat(user, span_warning("Disarm [src] first to remove it!"))
+		to_chat(user, span_warning("先解除[src]才能将其移除!"))
 		return
 	return ..()
 
@@ -132,8 +132,8 @@
 	pixel_x = 0
 	deltimer(detonation_pending)
 
-	user.visible_message(span_warning("[user] disarmed [src] on [plant_target]!"),
-	span_warning("You disarmed [src] on [plant_target]!"))
+	user.visible_message(span_warning("[user]解除了[plant_target]上的[src]!"),
+	span_warning("你解除了[plant_target]上的[src]!"))
 
 	if(ismob(plant_target))
 		log_combat(user, plant_target, "removed [src] from")
@@ -174,8 +174,8 @@
 	ex_act(EXPLODE_DEVASTATE)
 
 /obj/item/explosive/plastique/genghis_charge
-	name = "EX-62 Genghis incendiary charge"
-	desc = "A specialized device for incineration of bulk organic matter, patented Thermal Memory ensuring that all ignition proceeds safely away from the user. Will not attach to plants due to environmental concerns."
+	name = "EX-62成吉思汗燃烧弹"
+	desc = "一种用于焚烧大量有机物的专用装置,已获专利的热记忆功能确保所有点火过程都安全地远离使用者.出于环保考虑,不会附着到植物上."
 	icon_state = "genghis-charge"
 
 /obj/item/explosive/plastique/genghis_charge/afterattack(atom/target, mob/user, flag)
@@ -183,7 +183,7 @@
 		return ..()
 	if(istype(target, /obj/structure/mineral_door/resin))
 		return ..()
-	balloon_alert(user, "Insufficient organic matter!")
+	balloon_alert(user, "有机物不足!")
 
 /obj/item/explosive/plastique/genghis_charge/detonate()
 	var/turf/flame_target = get_turf(plant_target)
@@ -239,8 +239,8 @@
 ////////////////////////////////////////////////
 
 /obj/item/explosive/plastique/trench
-	name = "Trench charge"
-	desc = "Used for fast trench excavation. Since you have no idea what a trench is, you can probably use this thing to dig a hole in a rock."
+	name = "堑壕炸药"
+	desc = "用于快速挖掘堑壕.既然你根本不知道堑壕是什么,你大概可以用这东西在岩石上炸个洞."
 
 /obj/item/explosive/plastique/trench/afterattack(atom/target, mob/user, flag)
 	if(!flag)
@@ -250,8 +250,8 @@
 	if((target.resistance_flags & INDESTRUCTIBLE) || (target.resistance_flags & PLASMACUTTER_IMMUNE))
 		return FALSE
 
-	user.visible_message(span_warning("[user] is trying to plant [name] on [target]!"),
-	span_warning("You are trying to plant [name] on [target]!"))
+	user.visible_message(span_warning("[user]正试图将[name]安放在[target]上!"),
+	span_warning("你正试图将[name]安放在[target]上!"))
 
 	if(!do_after(user, 2 SECONDS, NONE, target, BUSY_ICON_HOSTILE))
 		return
@@ -289,8 +289,8 @@
 
 	log_bomber(user, "planted", src, "on [target] with a [timer] second fuse", message_admins = TRUE)
 
-	user.visible_message(span_warning("[user] plants [name] on [target]!"),
-	span_warning("You plant [name] on [target]! Timer counting down from [timer]."))
+	user.visible_message(span_warning("[user]将[name]安放在[target]上!"),
+	span_warning("你将[name]安放在[target]上!计时器从[timer]开始倒计时."))
 
 	plant_target = target
 	if(ismovableatom(plant_target))

@@ -21,7 +21,7 @@
 
 /datum/outfit/quick/beginner/engineer/builder
 	name = "Engineer Standard"
-	desc = "Born to build. Equipped with a metric ton of metal, you can be certain that a lack of barricades is not a possibility with you around."
+	desc = "为建造而生. 配备了成吨的金属, 你可以确信只要有你在, 就不会缺少路障."
 
 	suit_store = /obj/item/weapon/gun/smg/vector/beginner
 	wear_suit = /obj/item/clothing/suit/modular/xenonauten/heavy/mimirengi
@@ -50,7 +50,7 @@
 
 /datum/outfit/quick/beginner/engineer/burnitall
 	name = "Flamethrower"
-	desc = "For those who truly love to watch the world burn. Equipped with a laser and a flamethrower, you can be certain that none of your enemies will be left un-burnt."
+	desc = "献给那些真正喜欢看世界燃烧的人. 配备了激光和火焰喷射器, 你可以确信你的敌人没有一个能不被烧到."
 
 	suit_store = /obj/item/weapon/gun/energy/lasgun/lasrifle/standard_marine_carbine/beginner
 	wear_suit = /obj/item/clothing/suit/modular/xenonauten/engineer
@@ -82,7 +82,7 @@
 
 /datum/outfit/quick/beginner/engineer/pcenjoyer
 	name = "Plasma Cutter"
-	desc = "For the open-air enjoyers. Equipped with a plasma cutter, you will be able to cut down all types of walls and obstacles that dare exist within your vicinity."
+	desc = "献给露天爱好者. 配备了等离子切割器, 你将能够砍倒所有胆敢存在于你附近的墙壁和障碍物."
 
 	suit_store = /obj/item/tool/pickaxe/plasmacutter
 	wear_suit = /obj/item/clothing/suit/modular/xenonauten/engineer

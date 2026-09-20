@@ -7,7 +7,7 @@
 
 /obj/machinery/computer/telecomms/monitor
 	name = "telecommunications monitoring console"
-	desc = "Monitors the details of the telecommunications network it's synced with."
+	desc = "监控与其同步的电信网络的详细信息."
 	icon_state = "computer"
 	screen_overlay = "comm_monitor"
 

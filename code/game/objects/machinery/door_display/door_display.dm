@@ -10,7 +10,7 @@
 	name = "Door Display"
 	icon = 'icons/obj/status_display.dmi'
 	icon_state = "frame"
-	desc = "A remote control for a door."
+	desc = "一扇门的遥控器."
 	anchored = TRUE
 	density = FALSE
 	var/open = FALSE		// If door is open.
@@ -158,7 +158,7 @@
 
 	for(var/obj/machinery/flasher/F in targets)
 		if(F.last_flash + 150 > world.time)
-			data += span_linkoff("Flash Charging")
+			data += span_linkoff("闪光充能")
 		else
 			data += "<a href='byond://?src=[text_ref(src)];flasher=1'>Activate Flash</a>"
 

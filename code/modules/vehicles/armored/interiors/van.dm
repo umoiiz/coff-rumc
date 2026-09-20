@@ -2,7 +2,7 @@
 
 /turf/closed/interior/van
 	name = "van interior wall"
-	desc = "An interior wall."
+	desc = "内部墙壁."
 	icon = 'icons/obj/vehicles/interiors/van.dmi'
 	icon_state = "van_right_1"
 	density = TRUE

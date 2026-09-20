@@ -2,8 +2,8 @@
 
 
 /obj/item/clothing/suit/storage/marine
-	name = "\improper M3 pattern marine armor"
-	desc = "A standard TerraGov Marine Corps M3 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
+	name = "\improper M3型陆战队装甲"
+	desc = "一件标准的泰拉政府陆战队M3型胸甲.保护胸部免受弹道弹药,刃器和事故伤害.上面绑着一个小皮革袋用于有限存储."
 	icon = 'icons/obj/clothing/suits/marine_armor.dmi'
 	icon_state = ""
 	worn_icon_state = "armor"
@@ -75,7 +75,7 @@
 
 /obj/item/clothing/suit/storage/marine/attack_self(mob/user)
 	if(!isturf(user.loc))
-		to_chat(user, span_warning("You cannot turn the light on while in [user.loc]."))
+		to_chat(user, span_warning("[user.loc]时你无法打开灯光."))
 		return
 	if(TIMER_COOLDOWN_RUNNING(src, COOLDOWN_ARMOR_LIGHT))
 		return
@@ -95,8 +95,8 @@
 	return TRUE //only give action button when armor is worn.
 
 /obj/item/clothing/suit/storage/marine/mech_pilot
-	name = "\improper PAS-13 pattern mech pilot armor"
-	desc = "A somewhat sparsely armored but robust armored vest, still in use despite the rise of exoskeleton armor due to ease of use and manufacturing. While the suit is a bit more encumbering to wear with the mech pilot uniform, it offers the them a degree of protection that they otherwise do not enjoy outside their mech."
+	name = "\improper PAS-13型机甲驾驶员装甲"
+	desc = "一件装甲略显稀疏但坚固的装甲背心,尽管外骨骼装甲兴起,但由于易于使用和制造仍在使用.虽然穿着机甲驾驶员制服时这套服装略显笨重,但它为他们在机甲外提供了原本没有的一定程度保护."
 	icon_state = "mech_pilot_suit"
 	worn_icon_state = "mech_pilot_suit"
 	slowdown = SLOWDOWN_ARMOR_LIGHT
@@ -104,8 +104,8 @@
 	item_map_variant_flags = NONE
 
 /obj/item/clothing/suit/storage/marine/assault_crewman
-	name = "\improper PAS-73 pattern tanker armor"
-	desc = "A somewhat sparsely armored but robust armored vest. Used by tankers, mostly to absorb bumps in the road as they drive over enemies."
+	name = "\improper PAS-73型坦克手装甲"
+	desc = "一件装甲略显稀疏但坚固的装甲背心.坦克手使用,主要用于在碾过敌人时吸收路面颠簸."
 	icon_state = "assault_crewman_suit"
 	worn_icon_state = "assault_crewman_suit"
 	slowdown = SLOWDOWN_ARMOR_LIGHT
@@ -113,8 +113,8 @@
 	item_map_variant_flags = NONE
 
 /obj/item/clothing/suit/storage/marine/transport_crewman
-	name = "\improper PAS-74 pattern transport armor"
-	desc = "A somewhat sparsely armored but robust armored vest. Used by transport crewmen so that they can pretend that they may survive when their vehicle is overrun."
+	name = "\improper PAS-74型运输装甲"
+	desc = "一件装甲略显稀疏但坚固的装甲背心.运输船员使用,以便在车辆被攻占时假装自己可能存活."
 	icon_state = "transport_crewman_suit"
 	worn_icon_state = "transport_crewman_suit"
 	slowdown = SLOWDOWN_ARMOR_LIGHT
@@ -122,8 +122,8 @@
 	item_map_variant_flags = NONE
 
 /obj/item/clothing/suit/storage/marine/riot
-	name = "\improper M5 riot control armor"
-	desc = "A heavily modified suit of M2 MP Armor used to supress riots from buckethead marines and their guns. Slows you down a lot."
+	name = "\improper M5防暴装甲"
+	desc = "一套经过大幅改装的M2宪兵装甲,用于镇压铁桶头陆战队员及其枪械引发的暴乱.会大幅降低你的移动速度."
 	icon_state = "marine_riot"
 	slowdown = 1.3
 	soft_armor = list(MELEE = 65, BULLET = 110, LASER = 110, ENERGY = 10, BOMB = 60, BIO = 50, FIRE = 50, ACID = 30)
@@ -142,8 +142,8 @@
 
 
 /obj/item/clothing/suit/storage/marine/specialist
-	name = "\improper B18 defensive armor"
-	desc = "A heavy, rugged set of armor plates for when you really, really need to not die horribly. Slows you down though.\nHas an automated diagnostics and medical system for keeping its wearer alive."
+	name = "\improper B18防御装甲"
+	desc = "一套沉重而坚固的装甲板,适合在你真的、真的不想惨死的时候使用.不过会降低你的移动速度.\nHas一套自动诊断与医疗系统,用于维持穿戴者的生命."
 	icon_state = "xarmor"
 	soft_armor = list(MELEE = 75, BULLET = 80, LASER = 80, ENERGY = 85, BOMB = 85, BIO = 70, FIRE = 85, ACID = 70)
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
@@ -167,8 +167,8 @@
 	item_flags = NONE
 
 /obj/item/clothing/suit/storage/marine/B17
-	name = "\improper B17 defensive armor"
-	desc = "The older brother of the B18. Practically an armored EOD suit made for use by close quarter explosive experts."
+	name = "\improper B17防御装甲"
+	desc = "B18的老大哥.实际上是一套为近身爆炸物专家使用而打造的装甲排爆服."
 	icon_state = "grenadier"
 	soft_armor = list(MELEE = 75, BULLET = 75, LASER = 50, ENERGY = 55, BOMB = 100, BIO = 55, FIRE = 75, ACID = 65)
 	max_heat_protection_temperature = HEAVYARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
@@ -191,15 +191,15 @@
 ////////////////////////////////
 
 /obj/item/clothing/suit/storage/marine/ship_tech
-	name = "\improper PAS-09 pattern technician armor"
-	desc = "A somewhat outdated but robust armored vest, still in use despite the rise of exoskeleton armor due to ease of use and manufacturing. It offers more protection against the exotic dangers that technicians face."
+	name = "\improper PAS-09型技术员装甲"
+	desc = "一件略显过时但坚固耐用的装甲背心,尽管外骨骼装甲已经兴起,但由于易于使用和制造而仍在使用.它对技术员面临的各种特殊危险提供更多防护."
 	icon_state = "tanker"
 	soft_armor = list(MELEE = 40, BULLET = 55, LASER = 60, ENERGY = 45, BOMB = 60, BIO = 45, FIRE = 45, ACID = 65)
 	item_map_variant_flags = NONE
 
 /obj/item/clothing/suit/storage/marine/officer
-	name = "\improper PAS-N3 pattern officer armor"
-	desc = "A well-crafted suit of a Navy Personal Armor System typically found in the hands of higher-ranking officers. Useful for letting your men know who is in charge when taking to the field."
+	name = "\improper PAS-N3型军官装甲"
+	desc = "一套做工精良的海军个人装甲系统,通常出现在高级军官手中.在亲临战场时,能有效让部下知道谁才是长官."
 	icon_state = "officer"
 	soft_armor = list(MELEE = 40, BULLET = 60, LASER = 60, ENERGY = 45, BOMB = 45, BIO = 45, FIRE = 45, ACID = 50)
 	slowdown = 0.5
@@ -224,8 +224,8 @@
 	)
 
 /obj/item/clothing/suit/storage/marine/officer/req
-	name = "\improper PAS-N2 pattern MA armor"
-	desc = "A standard TerraGov Navy N2 Personal Armor System. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
+	name = "\improper PAS-N2型MA装甲"
+	desc = "一套标准的TerraGov海军N2个人装甲系统.保护胸部免受弹道、利器和意外伤害.上面绑着一个小皮革袋,用于有限的储物."
 	icon_state = "mp"
 
 /*=============================PMCS==================================*/
@@ -240,8 +240,8 @@
 	armor_features_flags = ARMOR_LAMP_OVERLAY
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc
-	name = "\improper M4 pattern PMC armor"
-	desc = "A common armor vest that is designed for high-profile security operators and corporate mercenaries in mind."
+	name = "\improper M4型PMC装甲"
+	desc = "一件常见的装甲背心,专为高知名度安保操作员和企业雇佣兵设计."
 	icon_state = "pmc_armor"
 	soft_armor = list(MELEE = 55, BULLET = 70, LASER = 60, ENERGY = 55, BOMB = 50, BIO = 15, FIRE = 38, ACID = 45)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
@@ -262,22 +262,22 @@
 	item_map_variant_flags = NONE
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/leader
-	name = "\improper M4 pattern PMC leader armor"
-	desc = "A modification of the M4 body armor, it is designed for high-profile security operators and corporate mercenaries in mind. This particular suit looks like it belongs to a high-ranking officer."
+	name = "\improper M4型PMC队长装甲"
+	desc = "M4防弹装甲的改装版,专为高知名度安保操作员和企业雇佣兵设计.这套装甲看起来属于一名高级军官."
 	icon_state = "officer_armor"
 	soft_armor = list(MELEE = 60, BULLET = 75, LASER = 65, ENERGY = 65, BOMB = 60, BIO = 50, FIRE = 50, ACID = 45)
 
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/sniper
-	name = "\improper M4 pattern PMC sniper armor"
+	name = "\improper M4型PMC狙击手装甲"
 	icon_state = "pmc_sniper"
 	soft_armor = list(MELEE = 55, BULLET = 65, LASER = 55, ENERGY = 60, BOMB = 75, BIO = 10, FIRE = 60, ACID = 60)
 	inventory_flags = BLOCKSHARPOBJ
 	inv_hide_flags = HIDELOWHAIR
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/gunner
-	name = "\improper PMC gunner armor"
-	desc = "A modification of the standard M4 body armor. Hooked up with harnesses and straps allowing the user to carry a smartgun."
+	name = "\improper PMC机枪手装甲"
+	desc = "标准M4防弹装甲的改装版.配有背带和绑带,允许使用者携带智能机枪."
 	icon_state = "pmc_heavyarmor"
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 	soft_armor = list(MELEE = 65, BULLET = 80, LASER = 70, ENERGY = 70, BOMB = 80, BIO = 30, FIRE = 65, ACID = 65)
@@ -285,8 +285,8 @@
 
 /*===========================Death Commando============================*/
 /obj/item/clothing/suit/storage/marine/veteran/pmc/commando
-	name = "\improper PMC commando armor"
-	desc = "A heavily armored suit built by who-knows-what for elite operations. It is a fully self-contained system and is heavily corrosion resistant."
+	name = "\improper PMC突击队装甲"
+	desc = "一套由不知何方打造的重型装甲,用于精英行动.它是一个完全自给自足的系统,并且具有极强的抗腐蚀性."
 	icon_state = "commando_armor"
 	soft_armor = list(MELEE = 90, BULLET = 120, LASER = 200, ENERGY = 100, BOMB = 100, BIO = 100, FIRE = 100, ACID = 100)
 	attachments_by_slot = list(ATTACHMENT_SLOT_STORAGE)
@@ -302,8 +302,8 @@
 /*===========================I.o.M================================*/
 
 /obj/item/clothing/suit/storage/marine/imperial
-	name = "\improper Imperial Guard flak armour"
-	desc = "A cheap, mass produced armour worn by the Imperial Guard, which are also cheap and mass produced. You can make out what appears to be <i>Cadia stands</i> carved into the armour."
+	name = "\improper 帝国卫队激光甲"
+	desc = "一套廉价、大规模生产的装甲,由同样廉价且大规模生产的帝国卫队穿戴.你可以辨认出装甲上刻着似乎是<i>Cadia屹立不倒</i>的字样."
 	icon = 'icons/obj/clothing/suits/ert_suits.dmi'
 	worn_icon_list = list(
 		slot_wear_suit_str = 'icons/mob/clothing/suits/ert_suits.dmi',
@@ -316,35 +316,35 @@
 
 /obj/item/clothing/suit/storage/marine/imperial/sergeant
 	// SL armour, better than flak, covers more
-	name = "\improper Imperial Guard sergeant armour"
-	desc = "A body armour that offers much better protection than the flak armour."
+	name = "\improper 帝国卫队中士装甲"
+	desc = "一套比激光甲提供好得多防护的防弹装甲."
 	icon_state = "guardSLarmor"
 	soft_armor = list(MELEE = 85, BULLET = 85, LASER = 85, ENERGY = 85, BOMB = 85, BIO = 25, FIRE = 85, ACID = 85)
 	light_range = 6 // better light
 
 /obj/item/clothing/suit/storage/marine/imperial/medicae
-	name = "\improper Imperial Guard medicae armour"
-	desc = "An armour worn by the medicae of the Imperial Guard."
+	name = "\improper 帝国卫队医疗兵装甲"
+	desc = "一套由帝国卫队医疗兵穿戴的装甲."
 	icon_state = "guardmedicarmor"
 
 /obj/item/clothing/suit/storage/marine/imperial/sergeant/veteran
-	name = "\improper Imperial Guard carapace armour"
-	desc = "A heavy full body armour that protects the wearer a lot more than the flak armour, also slows down considerably."
+	name = "\improper 帝国卫队甲壳装甲"
+	desc = "一套沉重的全身装甲,比激光甲为穿戴者提供多得多的防护,但也会大幅降低移动速度."
 	icon_state = "guardvetarmor"
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 	soft_armor = list(MELEE = 90, BULLET = 90, LASER = 90, ENERGY = 90, BOMB = 90, BIO = 30, FIRE = 90, ACID = 90)
 
 /obj/item/clothing/suit/storage/marine/imperial/power
 	// Should this maybe require recharging?
-	name = "\improper salvaged Space Marine power armour"
-	desc = "A power armour that was once broken, is functional once again. However this version isn't as powerful as the real power armour."
+	name = "\improper 回收的星际战士动力装甲"
+	desc = "一套曾经损坏的动力装甲,如今再次可以运作.不过这个版本不如真正的动力装甲那么强大."
 	//icon_state
 	soft_armor = list(MELEE = 75, BULLET = 60, LASER = 55, ENERGY = 40, BOMB = 45, BIO = 15, FIRE = 40, ACID = 40)
 	light_range = 6
 
 /obj/item/clothing/suit/storage/marine/imperial/commissar
-	name = "\improper commissar coat"
-	desc = "A armored coat worn by commissars of the Imperial Army."
+	name = "\improper 政委大衣"
+	desc = "一件由帝国陆军政委穿戴的装甲大衣."
 	icon_state = "commissar_coat"
 	worn_icon_state = "commissar_coat"
 	soft_armor = list(MELEE = 75, BULLET = 60, LASER = 55, ENERGY = 40, BOMB = 45, BIO = 15, FIRE = 40, ACID = 40)
@@ -403,7 +403,7 @@
 
 /obj/item/clothing/suit/storage/faction/attack_self(mob/user)
 	if(!isturf(user.loc))
-		to_chat(user, span_warning("You cannot turn the light on while in [user.loc]."))
+		to_chat(user, span_warning("你在[user.loc]中时无法打开灯光."))
 		return
 
 	if(TIMER_COOLDOWN_RUNNING(src, COOLDOWN_ARMOR_LIGHT))
@@ -422,8 +422,8 @@
 	return TRUE //only give action button when armor is worn.
 
 /obj/item/clothing/suit/storage/faction/upp
-	name = "\improper UM5 personal armor"
-	desc = "Standard body armor of the USL pirates, the UM5 (United Medium MK5) is a medium body armor, roughly on par with the venerable M3 pattern body armor in service with the TGMC."
+	name = "\improper UM5个人装甲"
+	desc = "USL海盗的标准防弹装甲,UM5(联合中型MK5)是一套中型防弹装甲,大致与TGMC现役的M3型防弹装甲相当."
 	icon_state = "upp_armor"
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
 	armor_protection_flags = CHEST|GROIN|ARMS|LEGS|FEET|HANDS
@@ -435,8 +435,8 @@
 
 
 /obj/item/clothing/suit/storage/faction/upp/commando
-	name = "\improper UM5CU personal armor"
-	desc = "A modification of the UM5, designed for stealth operations."
+	name = "\improper UM5CU个人装甲"
+	desc = "UM5的改装版,专为潜行行动设计."
 	icon_state = "upp_armor_commando"
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 
@@ -445,8 +445,8 @@
 	soft_armor = list(MELEE = 55, BULLET = 75, LASER = 75, ENERGY = 60, BOMB = 60, BIO = 45, FIRE = 60, ACID = 65)
 
 /obj/item/clothing/suit/storage/faction/upp/heavy
-	name = "\improper UH7 heavy plated armor"
-	desc = "An extremely heavy duty set of body armor in service with the USL pirates, the UH7 (United Heavy MK7) is known for being a rugged set of armor, capable of taking immesnse punishment."
+	name = "\improper UH7重型板甲"
+	desc = "一套USL海盗现役的极其重型的防弹装甲,UH7(联合重型MK7)以坚固耐用著称,能够承受巨大的打击."
 	icon_state = "upp_armor_heavy"
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 	soft_armor = list(MELEE = 65, BULLET = 65, LASER = 65, ENERGY = 60, BOMB = 60, BIO = 10, FIRE = 60, ACID = 60)
@@ -456,8 +456,8 @@
 	soft_armor = list(MELEE = 60, BULLET = 80, LASER = 80, ENERGY = 65, BOMB = 60, BIO = 60, FIRE = 60, ACID = 70)
 
 /obj/item/clothing/suit/storage/marine/smartgunner/upp
-	name = "\improper UH7 heavy plated armor"
-	desc = "An extremely heavy duty set of body armor in service with the USL pirates, the UH7 (United Heavy MK7) is known for being a rugged set of armor, capable of taking immesnse punishment."
+	name = "\improper UH7重型板甲"
+	desc = "一套USL海盗现役的极其重型的防弹装甲,UH7(联合重型MK7)以坚固耐用著称,能够承受巨大的打击."
 	icon_state = "upp_armor_heavy"
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 	soft_armor = list(MELEE = 65, BULLET = 65, LASER = 65, ENERGY = 60, BOMB = 60, BIO = 10, FIRE = 60, ACID = 60)
@@ -469,8 +469,8 @@
 //===========================FREELANCER================================
 
 /obj/item/clothing/suit/storage/faction/freelancer
-	name = "\improper freelancer cuirass"
-	desc = "A armored protective chestplate scrapped together from various plates. It keeps up remarkably well, as the craftsmanship is solid, and the design mirrors such armors in the UPP and the TGMC."
+	name = "\improper 自由佣兵胸甲"
+	desc = "一件由各种装甲板拼凑而成的装甲护胸.它保持得异常完好,因为工艺扎实,而且设计模仿了UPP和TGMC中的此类装甲."
 	icon_state = "freelancer_armor"
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	armor_protection_flags = CHEST|GROIN|ARMS|LEGS|FEET|HANDS
@@ -542,8 +542,8 @@
 
 //this one is for CLF
 /obj/item/clothing/suit/storage/faction/militia
-	name = "\improper colonial militia hauberk"
-	desc = "The hauberk of a colonist militia member, created from boiled leather and some modern armored plates. While primitive compared to most modern suits of armor, it gives the wearer almost perfect mobility, which suits the needs of the local colonists. "
+	name = "\improper 殖民地民兵锁子甲"
+	desc = "一件殖民地民兵成员穿的锁子甲,由煮硬的皮革和一些现代装甲板制成.虽然与大多数现代装甲相比显得原始,但它赋予穿戴者几乎完美的机动性,正好满足当地殖民者的需求."
 	icon_state = "rebel_armor"
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 	armor_protection_flags = CHEST|GROIN|ARMS|LEGS|FEET|HANDS
@@ -568,8 +568,8 @@
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/suit/storage/CMB
-	name = "\improper CMB jacket"
-	desc = "A green jacket worn by crew on the Colonial Marshals."
+	name = "\improper CMB夹克"
+	desc = "一件由殖民地法警人员穿戴的绿色夹克."
 	icon_state = "CMB_jacket"
 	blood_overlay_type = "coat"
 	soft_armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 20, BOMB = 10, BIO = 10, FIRE = 10, ACID = 10)
@@ -582,8 +582,8 @@
 	)
 
 /obj/item/clothing/suit/storage/RO
-	name = "\improper RO jacket"
-	desc = "A green jacket worn by TGMC personnel. The back has the flag of the TerraGov on it."
+	name = "\improper RO夹克"
+	desc = "一件由TGMC人员穿戴的绿色夹克.背面印有TerraGov的旗帜."
 	icon_state = "RO_jacket"
 	blood_overlay_type = "coat"
 	armor_protection_flags = CHEST|GROIN|ARMS|LEGS|FEET|HANDS
@@ -593,8 +593,8 @@
 /*===========================HELGHAST - MERCENARY================================*/
 
 /obj/item/clothing/suit/storage/marine/veteran/mercenary
-	name = "\improper K12 ceramic plated armor"
-	desc = "A set of grey, heavy ceramic armor with dark blue highlights. It is the standard uniform of a unknown mercenary group working in the sector"
+	name = "\improper K12陶瓷板甲"
+	desc = "一套灰色重型陶瓷装甲,带有深蓝色点缀.这是在该星区活动的一个未知雇佣兵组织的标准制服"
 	icon_state = "mercenary_heavy_armor"
 	soft_armor = list(MELEE = 75, BULLET = 62, LASER = 42, ENERGY = 38, BOMB = 40, BIO = 15, FIRE = 38, ACID = 38)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
@@ -614,8 +614,8 @@
 	)
 
 /obj/item/clothing/suit/storage/marine/veteran/mercenary/miner
-	name = "\improper Y8 armored miner vest"
-	desc = "A set of beige, light armor built for protection while mining. It is a specialized uniform of a unknown mercenary group working in the sector"
+	name = "\improper Y8装甲矿工背心"
+	desc = "一套米色轻型装甲,为采矿时的防护而打造.这是在该星区活动的一个未知雇佣兵组织的专用制服"
 	icon_state = "mercenary_miner_armor"
 	soft_armor = list(MELEE = 50, BULLET = 42, LASER = 42, ENERGY = 38, BOMB = 25, BIO = 15, FIRE = 38, ACID = 38)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
@@ -635,8 +635,8 @@
 	)
 
 /obj/item/clothing/suit/storage/marine/veteran/mercenary/engineer
-	name = "\improper Z7 armored engineer vest"
-	desc = "A set of blue armor with yellow highlights built for protection while building in highly dangerous environments. It is a specialized uniform of a unknown mercenary group working in the sector"
+	name = "\improper Z7装甲工程师背心"
+	desc = "一套蓝色装甲,带有黄色点缀,为在高度危险环境中建造时的防护而打造.这是在该星区活动的一个未知雇佣兵组织的专用制服"
 	icon_state = "mercenary_engineer_armor"
 	soft_armor = list(MELEE = 55, BULLET = 52, LASER = 42, ENERGY = 38, BOMB = 30, BIO = 15, FIRE = 38, ACID = 38)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
@@ -656,8 +656,8 @@
 	)
 
 /obj/item/clothing/suit/storage/marine/som
-	name = "\improper S12 hauberk"
-	desc = "A heavily modified piece of mining equipment remade for general purpose combat use. It's light but practically gives no armor."
+	name = "\improper S12锁子甲"
+	desc = "一件经过大幅改装的采矿装备,被改造用于通用战斗用途.它很轻,但几乎不提供任何防护."
 	icon = 'icons/obj/clothing/suits/ert_suits.dmi'
 	worn_icon_list = list(
 		slot_wear_suit_str = 'icons/mob/clothing/suits/ert_suits.dmi',
@@ -672,8 +672,8 @@
 	item_map_variant_flags = NONE
 
 /obj/item/clothing/suit/storage/marine/som/veteran
-	name = "\improper S12 combat Hauberk"
-	desc = "A heavily modified piece of mining equipment remade for general purpose combat use. Seems to have been modifed much further than other pieces like it. Heavier but tougher because of it."
+	name = "\improper S12战斗锁子甲"
+	desc = "一件经过大幅改装的采矿装备,被改造用于通用战斗用途.似乎比其他同类装备经过了更多改装.因此更重但也更坚固."
 	icon_state = "som_armor_veteran"
 	worn_icon_state = "som_armor_veteran"
 	slowdown = SLOWDOWN_ARMOR_HEAVY
@@ -681,8 +681,8 @@
 	soft_armor = list(MELEE = 65, BULLET = 70, LASER = 70, ENERGY = 55, BOMB = 55, BIO = 55, FIRE = 55, ACID = 60)
 
 /obj/item/clothing/suit/storage/marine/som/leader
-	name = "\improper S13 leader hauberk"
-	desc = "A heavily modified modified piece of mining equipment remade for general purpose combat use. Modified extensively than other pieces like it but heavier because of it."
+	name = "\improper S13队长锁子甲"
+	desc = "一件经过大幅改装的采矿装备,被改造用于通用战斗用途.比同类装备经过了更广泛的改装,但因此也更重."
 	icon_state = "som_armor_leader"
 	worn_icon_state = "som_armor_leader"
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
@@ -690,8 +690,8 @@
 	soft_armor = list(MELEE = 55, BULLET = 50, LASER = 40, ENERGY = 55, BOMB = 55, BIO = 55, FIRE = 55, ACID = 60)
 
 /obj/item/clothing/suit/storage/marine/icc
-	name = "\improper Modelle/16 combat armor"
-	desc = "A piece of ICC body armor, worn durning boarding actions by personnel in close quarters, as most ICC personnel serve dual purpose roles as ad-hoc marines, due to personnel shortages. Protects well from most sources, particularly explosions."
+	name = "\improper Modelle/16战斗装甲"
+	desc = "一件ICC防弹装甲,由人员在近距离登舰行动中穿戴,因为由于人员短缺,大多数ICC人员都兼任临时陆战队员.对大多数伤害来源防护良好,尤其是爆炸."
 	icon = 'icons/obj/clothing/suits/ert_suits.dmi'
 	worn_icon_list = list(
 		slot_wear_suit_str = 'icons/mob/clothing/suits/ert_suits.dmi',
@@ -707,22 +707,22 @@
 	item_map_variant_flags = NONE
 
 /obj/item/clothing/suit/storage/marine/icc/guard
-	name = "\improper Modelle/19 combat armor"
-	desc = "A piece of ICCGF body armor, worn by specialized infantry. Most Infantry actions in the ICC forces are done by adhoc personnel due to constant shortages of manpower, however most real Infantry divisions are of high quality, and are better known as 'Guardsmen'.  Protects well from most sources, and will entirely protect from explosions."
+	name = "\improper Modelle/19战斗装甲"
+	desc = "一件ICCGF防弹装甲,由专业步兵穿戴.由于持续的人力短缺,ICC部队中的大多数步兵行动都由临时人员执行,不过大多数真正的步兵师素质都很高,更常被称为\"卫兵\".对大多数伤害来源防护良好,并能完全防护爆炸."
 	icon_state = "icc_guard"
 	soft_armor = list(MELEE = 60, BULLET = 65, LASER = 40, ENERGY = 60, BOMB = 85, BIO = 10, FIRE = 55, ACID = 40)
 
 /obj/item/clothing/suit/storage/marine/icc/guard/heavy
-	name = "\improper Modelle/22 'Cuirassier' combat armor"
-	desc = "A piece of ICCGF body armor, worn by specialized infantry. Most Infantry actions in the ICC forces are done by adhoc personnel due to constant shortages of manpower, however most real Infantry divisions are of high quality, and are better known as 'Guardsmen'.  Protects well from most sources, and will entirely protect from explosions."
+	name = "\improper Modelle/22\"胸甲骑兵\"战斗装甲"
+	desc = "一件ICCGF防弹装甲,由专业步兵穿戴.由于持续的人力短缺,ICC部队中的大多数步兵行动都由临时人员执行,不过大多数真正的步兵师素质都很高,更常被称为\"卫兵\".对大多数伤害来源防护良好,并能完全防护爆炸."
 	icon_state = "icc_guard_heavy"
 	soft_armor = list(MELEE = 70, BULLET = 75, LASER = 40, ENERGY = 60, BOMB = 90, BIO = 10, FIRE = 55, ACID = 40)
 
 //===========================SPEC OPS================================
 
 /obj/item/clothing/suit/storage/marine/specops
-	name = "Ballistic vest"
-	desc = "Civilian type armor, made to combat both melee and projectiles."
+	name = "防弹背心"
+	desc = "民用型装甲,用于对抗近战和投射物."
 	icon = 'icons/mob/clothing/suits/ert_suits.dmi'
 	worn_icon_list = list(
 		slot_wear_suit_str = 'icons/mob/clothing/suits/ert_suits.dmi',
@@ -735,18 +735,18 @@
 	item_map_variant_flags = NONE
 
 /obj/item/clothing/suit/storage/marine/specops/support
-	name = "Ballistic vest"
-	desc = "Civilian type armor, made to combat both melee and projectiles."
+	name = "防弹背心"
+	desc = "民用型装甲,用于对抗近战和投射物."
 	icon_state = "specops_vest_support"
 
 /obj/item/clothing/suit/storage/marine/specops/medic
-	name = "Ballistic vest"
-	desc = "Civilian type armor, made to combat both melee and projectiles."
+	name = "防弹背心"
+	desc = "民用型装甲,用于对抗近战和投射物."
 	icon_state = "specops_vest_medic"
 
 /obj/item/clothing/suit/storage/marine/specops/leader
-	name = "Ballistic vest"
-	desc = "Civilian type armor, made to combat both melee and projectiles. Comes with tactical elbow pads."
+	name = "防弹背心"
+	desc = "民用型护甲,专为同时抵御近战和弹射物而设计.附带战术护肘."
 	icon_state = "specops_vest_leader"
 	soft_armor = list(MELEE = 50, BULLET = 50, LASER = 40, ENERGY = 35, BOMB = 30, BIO = 5, FIRE = 25, ACID = 30)
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
@@ -754,8 +754,8 @@
 //===========================V.S.D================================
 
 /obj/item/clothing/suit/storage/marine/vsd
-	name = "Crasher multi-threat light ballistic armor"
-	desc = "The Vyacheslav Security Detail's main body armor. Protects the user from most bullet calibers."
+	name = "Crasher多威胁轻型防弹护甲"
+	desc = "维亚切斯拉夫安保部门的主力护甲.保护使用者免受大多数口径子弹的伤害."
 	icon = 'icons/obj/clothing/suits/ert_suits.dmi'
 	worn_icon_list = list(
 		slot_wear_suit_str = 'icons/mob/clothing/suits/ert_suits.dmi',
@@ -768,50 +768,50 @@
 	armor_features_flags = NONE
 
 /obj/item/clothing/suit/storage/marine/vsd/desert
-	name = "Crasher multi-threat light ballistic armor"
+	name = "Crasher多威胁轻型防弹护甲"
 	icon_state = "vsd_main_larmor_d"
 	worn_icon_state = "vsd_main_larmor_d"
 
 /obj/item/clothing/suit/storage/marine/vsd/secondary
-	name = "Crasher multi-threat light ballistic armor"
+	name = "Crasher多威胁轻型防弹护甲"
 	icon_state = "vsd_secondary_larmor"
 	worn_icon_state = "vsd_secondary_larmor"
 
 
 /obj/item/clothing/suit/storage/marine/vsd/marmor
-	name = "Crasher multi-threat medium-set ballistic armor"
-	desc = "The Vyacheslav Security Detail's uncommon use body armor, used usually by engineers. Protects the user from most bullet calibers."
+	name = "Crasher多威胁中型防弹护甲"
+	desc = "维亚切斯拉夫安保部门不常使用的护甲,通常由工程师穿着.保护使用者免受大多数口径子弹的伤害."
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
 	icon_state = "vsd_marmor"
 	worn_icon_state = "vsd_marmor"
 	soft_armor = list(MELEE = 40, BULLET = 70, LASER = 20, ENERGY = 15, BOMB = 40, BIO = 10, FIRE = 25, ACID = 30)
 
 /obj/item/clothing/suit/storage/marine/vsd/marmor/desert
-	name = "Crasher multi-threat medium-set ballistic armor"
+	name = "Crasher多威胁中型防弹护甲"
 	icon_state = "vsd_marmor_d"
 	worn_icon_state = "vsd_marmor_d"
 
 /obj/item/clothing/suit/storage/marine/vsd/marmor/upp
-	name = "Crasher multi-threat medium-set ballistic armor"
+	name = "Crasher多威胁中型防弹护甲"
 	icon_state = "vsd_marmor_upp"
 	worn_icon_state = "vsd_marmor_upp"
 
 /obj/item/clothing/suit/storage/marine/vsd/harmor
-	name = "Crasher multi-threat heavy-set ballistic armor"
-	desc = "The Vyacheslav Security Detail's leader set of armor, rarely given to the grunts. Protects the user from most bullet calibers."
+	name = "Crasher多威胁重型防弹护甲"
+	desc = "维亚切斯拉夫安保部门队长的护甲套装,很少发放给普通士兵.保护使用者免受大多数口径子弹的伤害."
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 	icon_state = "vsd_harmor"
 	worn_icon_state = "vsd_harmor"
 	soft_armor = list(MELEE = 45, BULLET = 75, LASER = 20, ENERGY = 15, BOMB = 45, BIO = 10, FIRE = 25, ACID = 30)
 
 /obj/item/clothing/suit/storage/marine/vsd/harmor/upp
-	name = "Crasher multi-threat heavy-set ballistic armor"
+	name = "Crasher多威胁重型防弹护甲"
 	icon_state = "vsd_harmor_upp"
 	worn_icon_state = "vsd_harmor_upp"
 
 /obj/item/clothing/suit/storage/marine/vsd/juggernaut
-	name = "Crasher multi-threat 'Juggernaut' set ballistic armor"
-	desc = "The Vyacheslav Security Detail's juggernaut set, given to the best and trusted veterans. Protects the user from almost all bullet calibers."
+	name = "Crasher多威胁'主宰'套装防弹护甲"
+	desc = "维亚切斯拉夫安保部门的主宰套装,发放给最优秀且值得信赖的老兵.保护使用者免受几乎所有口径子弹的伤害."
 	icon = 'icons/obj/clothing/suits/ert_suits.dmi'
 	slowdown = SLOWDOWN_ARMOR_VERY_HEAVY
 	icon_state = "vsd_juggernaut_one"
@@ -819,8 +819,8 @@
 	soft_armor = list(MELEE = 50, BULLET = 90, LASER = 20, ENERGY = 15, BOMB = 50, BIO = 10, FIRE = 25, ACID = 30)
 
 /obj/item/clothing/suit/storage/marine/vsd/eod
-	name = "Crasher multi-threat 'Syndicate' set ballistic armor"
-	desc = "The Vyacheslav Security Detail's syndicate given set. Protects the user from almost all bullet calibers. A sticker on the inside reads 'EXPERIMENTAL: courtesy of the Syndicate'."
+	name = "Crasher多威胁'辛迪加'套装防弹护甲"
+	desc = "维亚切斯拉夫安保部门的辛迪加配发套装.保护使用者免受几乎所有口径子弹的伤害.内侧贴纸上写着'实验性:由辛迪加提供'."
 	icon = 'icons/obj/clothing/suits/ert_suits.dmi'
 	slowdown = SLOWDOWN_ARMOR_VERY_HEAVY
 	icon_state = "vsd_juggernaut_two"

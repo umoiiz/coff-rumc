@@ -28,7 +28,7 @@
 		extensions += "[i]"
 	var/regex/valid_ext = new("\\.([extensions])$", "i")
 	if( !fexists(path) || !(valid_ext.Find(path)) )
-		to_chat(src, "<font color='red'>Error: browse_files(): File not found/Invalid file([path]).</font>")
+		to_chat(src, "<font color='red'>错误: browse_files(): 文件未找到/无效文件([path]).</font>")
 		return
 	return path
 #define FTPDELAY 200	//200 tick delay to discourage spam
@@ -40,7 +40,7 @@
 /client/proc/file_spam_check()
 	var/time_to_wait = GLOB.fileaccess_timer - world.time
 	if(time_to_wait > 0)
-		to_chat(src, "<font color='red'>Error: file_spam_check(): Spam. Please wait [DisplayTimeText(time_to_wait)].</font>")
+		to_chat(src, "<font color='red'>错误: file_spam_check(): 刷屏. 请等待 [DisplayTimeText(time_to_wait)].</font>")
 		return TRUE
 	var/delay = FTPDELAY
 	if(holder)

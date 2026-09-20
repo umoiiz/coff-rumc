@@ -1,6 +1,6 @@
 /obj/item/loot_box
-	name = "Blackmarket loot box"
-	desc = "A box of loot, what could be inside?"
+	name = "黑市战利品箱"
+	desc = "一箱战利品, 里面会是什么呢?"
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "lootbox"
 	worn_icon_state = "lootbox"
@@ -33,7 +33,7 @@
 		if(isitem(loot_pick))
 			user.put_in_hands(loot_pick)
 		if(!iseffect(loot_pick))
-			user.visible_message("[user] pulled a [loot_pick.name] out of the [src]!")
+			user.visible_message("[user]从[src]里抽出了[loot_pick.name]!")
 		rolls --
 	qdel(src)
 
@@ -76,8 +76,8 @@
 
 //Supply drop boxes
 /obj/item/loot_box/supply_drop
-	name = "supply drop"
-	desc = "A TGMC-marked box full of valuable military tactical equipment."
+	name = "补给空投"
+	desc = "一个标有TGMC的箱子, 装满了珍贵的军用战术装备."
 	icon = 'icons/obj/items/items.dmi'
 	w_class = WEIGHT_CLASS_GIGANTIC
 	slowdown = 1 //You won't be running off with this
@@ -113,8 +113,8 @@
 	)
 
 /obj/item/loot_box/supply_drop/som
-	name = "supply drop"
-	desc = "A rugged box composed of valuable SOM military materiel."
+	name = "补给空投"
+	desc = "一个坚固的箱子, 装有珍贵的SOM军用物资."
 	icon = 'icons/obj/items/items.dmi'
 	w_class = WEIGHT_CLASS_GIGANTIC
 	rolls = 4
@@ -164,7 +164,7 @@
 	//If we have a candidate, transfer it over.
 	if(picked)
 		picked.mind.transfer_to(new_xeno, TRUE)
-		to_chat(new_xeno, span_xenoannounce("The Queen Mother has hurled us through Bluespace, we live for the hive!"))
+		to_chat(new_xeno, span_xenoannounce("女王母亲已把我们抛过蓝空间, 我们为蜂巢而活!"))
 		new_xeno << sound('sound/effects/alien/newlarva.ogg')
 	return INITIALIZE_HINT_QDEL
 
@@ -400,8 +400,8 @@
 
 // 150 to 200 points of value packs, spend 100 points get 150 to 200 in value, basically. Ideally, commons are variety packs, uncommons maybe shake up the round a bit, rares a bit more. Legendaries make the round go wacko. You get a crate of stuff dropped on spawn.
 /obj/item/loot_box/tgmclootbox
-	name = "TGMC pack box"
-	desc = "A box of gear sent over by the TGMC on request, nobody knows what's in it. You just know it'll probably be good."
+	name = "TGMC装备箱"
+	desc = "一个应请求由TGMC送来的装备箱, 没人知道里面是什么. 你只知道它大概会不错."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "lootbox"
 	worn_icon_state = "lootbox"
@@ -435,8 +435,8 @@
 // Boxes the lootbox uses.
 
 /obj/item/storage/box/crate/loot
-	name = "\improper generic equipment"
-	desc = "A large case containing some kind of equipment. Drag this sprite into you to open it up!\nNOTE: You cannot put items back inside this case."
+	name = "\improper 通用装备"
+	desc = "一个装有某种装备的大箱子. 把这个图标拖到你身上来打开它!\nNOTE: 你无法把物品放回这个箱子里."
 	icon_state = "smartgun_case"
 	w_class = WEIGHT_CLASS_HUGE
 
@@ -452,8 +452,8 @@
 // Crate for lootboxes. Use for large items.
 
 /obj/structure/closet/crate/loot
-	name = "\improper generic equipment"
-	desc = "A large crate containing some kind of equipment."
+	name = "\improper 通用装备"
+	desc = "一个装有某种装备的大板条箱."
 	icon = 'icons/obj/structures/crates.dmi'
 	icon_state = "closed_basic"
 	icon_opened = "open_basic"

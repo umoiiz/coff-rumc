@@ -86,7 +86,7 @@
 	if(limb_status & LIMB_DESTROYED)
 		return FALSE
 	if(!silent)
-		owner.visible_message(span_danger("\The [embedding] sticks in the wound!"))
+		owner.visible_message(span_danger("\The [embedding] 卡在伤口里!"))
 	implants += embedding
 	if(embedding.embedding.embedded_flags & EMBEDDED_CAN_BE_YANKED_OUT)
 		add_verb(owner, /mob/living/proc/yank_out_object)
@@ -124,11 +124,11 @@
 
 	switch(rand(1,3))
 		if(1)
-			. =span_warning("A spike of pain jolts your [display_name] as you bump [embedded] inside.")
+			. =span_warning("当你把 [embedded] 撞进体内时,一阵剧痛刺痛了你的 [display_name]。")
 		if(2)
-			. =span_warning("Your movement jostles [embedded] in your [display_name] painfully.")
+			. =span_warning("你的移动使 [embedded] 在你的 [display_name] 中痛苦地晃动。")
 		if(3)
-			. =span_warning("[embedded] in your [display_name] twists painfully as you move.")
+			. =span_warning("当你移动时,你 [display_name] 中的 [embedded] 痛苦地扭动。")
 	to_chat(owner, .)
 
 	take_damage_limb(embedded.embedding.embed_limb_damage)
@@ -140,8 +140,8 @@
 	if(prob(embedded.embedding.embedded_fall_chance))
 		take_damage_limb(embedded.embedding.embed_limb_damage * embedded.embedding.embedded_fall_dmg_multiplier)
 		UPDATEHEALTH(owner)
-		owner.visible_message(span_danger("[embedded] falls out of [owner]'s [display_name]!"),
-			span_userdanger("[embedded] falls out of your [display_name]!"))
+		owner.visible_message(span_danger("[embedded] 从 [owner] 的 [display_name] 中掉出来了!"),
+			span_userdanger("[embedded] 从你的 [display_name] 中掉出来了!"))
 		embedded.unembed_ourself()
 
 
@@ -162,11 +162,11 @@
 		return
 
 	if(user.stat != CONSCIOUS)
-		to_chat(user, "You are unconcious and cannot do that!")
+		to_chat(user, "你处于昏迷状态,无法这样做!")
 		return
 
 	if(user.restrained())
-		balloon_alert(user, "can't, restrained")
+		balloon_alert(user, "不能,被束缚")
 		return
 
 	var/self
@@ -184,21 +184,21 @@
 	if(!length(valid_objects))
 		CRASH("yank_out_object called for empty valid_objects, lenght of embedded_objects is [length(embedded_objects)]")
 
-	var/obj/item/selection = tgui_input_list(user, "What do you want to yank out?", "Embedded objects", valid_objects)
+	var/obj/item/selection = tgui_input_list(user, "你想拔出什么?", "嵌入的物体", valid_objects)
 
 	if(user.get_active_held_item())
-		balloon_alert(user, "cannot, no empty hands")
+		balloon_alert(user, "不能,没有空手")
 		return FALSE
 
-	balloon_alert(user, "attempts to grip [selection]")
+	balloon_alert(user, "试图抓住 [selection]")
 
 	if(!do_after(user, selection.embedding.embedded_unsafe_removal_time, NONE, src, BUSY_ICON_GENERIC) || QDELETED(selection) || !(selection in embedded_objects))
 		return
 
 	if(self)
-		balloon_alert_to_viewers("rips [selection] out of [user.p_their()] body")
+		balloon_alert_to_viewers("将 [selection] 从 [user.p_their()] 的身体中拔出")
 	else
-		balloon_alert_to_viewers("rips [selection] out of [src]'s body")
+		balloon_alert_to_viewers("将 [selection] 从 [src] 的身体中拔出")
 /*
 	handle_yank_out_damage()
 */

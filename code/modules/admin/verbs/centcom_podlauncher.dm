@@ -129,7 +129,7 @@ ADMIN_VERB(centcom_podlauncher, R_FUN, "Config/Launch Supplypod", "Configure and
 				turfs.Add(T) //Fill a list with turfs in the area
 			var/turf/T = SAFEPICK(turfs) //Only teleport if the list isn't empty
 			if(!T) //If the list is empty, error and cancel
-				to_chat(M, "Nowhere to jump to!")
+				to_chat(M, "没有可跳转的地方!")
 				return
 			M.forceMove(T) //Perform the actual teleport
 			log_admin("[key_name(usr)] jumped to [AREACOORD(A)]")
@@ -138,7 +138,7 @@ ADMIN_VERB(centcom_podlauncher, R_FUN, "Config/Launch Supplypod", "Configure and
 		if("teleportBack") //After teleporting to centcom, this button allows the user to teleport to the last spot they were at.
 			var/mob/M = holder.mob
 			if (!oldTurf) //If theres no turf to go back to, error and cancel
-				to_chat(M, "Nowhere to jump to!")
+				to_chat(M, "没有可跳转的地方!")
 				return
 			M.forceMove(oldTurf) //Perform the actual teleport
 			log_admin("[key_name(usr)] jumped to [AREACOORD(oldTurf)]")
@@ -173,10 +173,10 @@ ADMIN_VERB(centcom_podlauncher, R_FUN, "Config/Launch Supplypod", "Configure and
 				temp_pod.explosion_power = 0
 				temp_pod.explosion_falloff = 0
 				return
-			var/input_severity = tgui_input_number(usr, "Explosion Severity:", "Drop Bomb", 500, EXPLOSION_MAX_POWER, 1)
+			var/input_severity = tgui_input_number(usr, "爆炸强度:", "投放炸弹", 500, EXPLOSION_MAX_POWER, 1)
 			if(isnull(input_severity))
 				return
-			var/input_falloff = tgui_input_number(usr, "Explosion Falloff:", "Drop Bomb", 50, EXPLOSION_MAX_POWER, 1)
+			var/input_falloff = tgui_input_number(usr, "爆炸衰减:", "投放炸弹", 50, EXPLOSION_MAX_POWER, 1)
 			if(isnull(input_falloff))
 				return
 
@@ -199,7 +199,7 @@ ADMIN_VERB(centcom_podlauncher, R_FUN, "Config/Launch Supplypod", "Configure and
 				damageChoice = 0
 				temp_pod.damage = 0
 				return
-			var/damageInput = tgui_input_number(usr, "How much damage to deal", "Enter the amount of brute damage dealt by getting hit", 0)
+			var/damageInput = tgui_input_number(usr, "造成多少伤害", "输入被击中时造成的钝击伤害量", 0)
 			if (isnull(damageInput))
 				return
 			if (!isnum(damageInput)) //Sanitize the input for damage to deal.s
@@ -223,10 +223,10 @@ ADMIN_VERB(centcom_podlauncher, R_FUN, "Config/Launch Supplypod", "Configure and
 				temp_pod.adminNamed = FALSE
 				temp_pod.setStyle(temp_pod.style) //This resets the name of the pod based on it's current style (see supplypod/setStyle() proc)
 				return
-			var/nameInput= tgui_input_text(usr, "Custom name", "Enter a custom name", GLOB.pod_styles[temp_pod.style][POD_NAME], encode = FALSE) //Gather input for name and desc
+			var/nameInput= tgui_input_text(usr, "自定义名称", "输入自定义名称", GLOB.pod_styles[temp_pod.style][POD_NAME], encode = FALSE) //Gather input for name and desc
 			if (isnull(nameInput))
 				return
-			var/descInput = tgui_input_text(usr, "Custom description", "Enter a custom desc", GLOB.pod_styles[temp_pod.style][POD_DESC], encode = FALSE) //The POD_STYLES is used to get the name, desc, or icon state based on the pod's style
+			var/descInput = tgui_input_text(usr, "自定义描述", "输入自定义描述", GLOB.pod_styles[temp_pod.style][POD_DESC], encode = FALSE) //The POD_STYLES is used to get the name, desc, or icon state based on the pod's style
 			if (isnull(descInput))
 				return
 			temp_pod.name = nameInput
@@ -280,7 +280,7 @@ ADMIN_VERB(centcom_podlauncher, R_FUN, "Config/Launch Supplypod", "Configure and
 			if (temp_pod.fallDuration != initial(temp_pod.fallDuration)) //If the landing delay has already been changed when we push the "change value" button, then set it to default
 				temp_pod.fallDuration = initial(temp_pod.fallDuration)
 				return
-			var/timeInput = tgui_input_number(usr, "Enter the duration of the pod's falling animation, in seconds", "Delay Time",  initial(temp_pod.fallDuration) * 0.1)
+			var/timeInput = tgui_input_number(usr, "输入投放舱下落动画的持续时间,单位为秒", "延迟时间",  initial(temp_pod.fallDuration) * 0.1)
 			if (isnull(timeInput))
 				return
 			if (!isnum(timeInput)) //Sanitize input, if it doesnt check out, error and set to default
@@ -292,7 +292,7 @@ ADMIN_VERB(centcom_podlauncher, R_FUN, "Config/Launch Supplypod", "Configure and
 			if (temp_pod.landingDelay != initial(temp_pod.landingDelay)) //If the landing delay has already been changed when we push the "change value" button, then set it to default
 				temp_pod.landingDelay = initial(temp_pod.landingDelay)
 				return
-			var/timeInput = tgui_input_number(usr, "Enter the time it takes for the pod to land, in seconds", "Delay Time", initial(temp_pod.landingDelay) * 0.1)
+			var/timeInput = tgui_input_number(usr, "输入投放舱着陆所需的时间,单位为秒", "延迟时间", initial(temp_pod.landingDelay) * 0.1)
 			if (isnull(timeInput))
 				return
 			if (!isnum(timeInput)) //Sanitize input, if it doesnt check out, error and set to default
@@ -304,7 +304,7 @@ ADMIN_VERB(centcom_podlauncher, R_FUN, "Config/Launch Supplypod", "Configure and
 			if (temp_pod.openingDelay != initial(temp_pod.openingDelay)) //If the opening delay has already been changed when we push the "change value" button, then set it to default
 				temp_pod.openingDelay = initial(temp_pod.openingDelay)
 				return
-			var/timeInput = tgui_input_number(usr, "Enter the time it takes for the pod to open after landing, in seconds", "Delay Time", initial(temp_pod.openingDelay) * 0.1)
+			var/timeInput = tgui_input_number(usr, "输入投放舱着陆后开启所需的时间,单位为秒", "延迟时间", initial(temp_pod.openingDelay) * 0.1)
 			if (isnull(timeInput))
 				return
 			if (!isnum(timeInput)) //Sanitize input
@@ -316,7 +316,7 @@ ADMIN_VERB(centcom_podlauncher, R_FUN, "Config/Launch Supplypod", "Configure and
 			if (temp_pod.departureDelay != initial(temp_pod.departureDelay)) //If the departure delay has already been changed when we push the "change value" button, then set it to default
 				temp_pod.departureDelay = initial(temp_pod.departureDelay)
 				return
-			var/timeInput = tgui_input_number(usr, "Enter the time it takes for the pod to leave after opening, in seconds", "Delay Time", initial(temp_pod.departureDelay) * 0.1)
+			var/timeInput = tgui_input_number(usr, "输入投放舱开启后离开所需的时间,单位为秒", "延迟时间", initial(temp_pod.departureDelay) * 0.1)
 			if (isnull(timeInput))
 				return
 			if (!isnum(timeInput))
@@ -334,7 +334,7 @@ ADMIN_VERB(centcom_podlauncher, R_FUN, "Config/Launch Supplypod", "Configure and
 			var/soundInput = input(holder, "Please pick a sound file to play when the pod lands! NOTICE: Take a note of exactly how long the sound is.", "Pick a Sound File") as null|sound
 			if (isnull(soundInput))
 				return
-			var/timeInput = tgui_input_number(holder, "What is the exact length of the sound file, in seconds. This number will be used to line the sound up so that it finishes right as the pod lands!", "Pick a Sound File", 0.3)
+			var/timeInput = tgui_input_number(holder, "声音文件的确切长度是多少,单位为秒.此数值将用于对齐声音,使其在投放舱着陆时正好播放完毕!", "选择声音文件", 0.3)
 			if (isnull(timeInput))
 				return
 			if (!isnum(timeInput))
@@ -442,7 +442,7 @@ ADMIN_VERB(centcom_podlauncher, R_FUN, "Config/Launch Supplypod", "Configure and
 			else
 				return //if target is null and we don't have a specific target, cancel
 			if (effectAnnounce)
-				to_chat(GLOB.observer_list, "A special package is being launched at the station!")
+				to_chat(GLOB.observer_list, "一个特殊包裹正被发射至空间站!")
 			var/list/bouttaDie = list()
 			for (var/mob/living/M in target)
 				bouttaDie.Add(M)
@@ -467,7 +467,7 @@ ADMIN_VERB(centcom_podlauncher, R_FUN, "Config/Launch Supplypod", "Configure and
 
 /datum/centcom_podlauncher/proc/createOrderedArea(area/A) //This assumes the area passed in is a continuous square
 	if (isnull(A)) //If theres no supplypod bay mapped into centcom, throw an error
-		to_chat(holder.mob, "No /area/centcom/supplypod/loading/one (or /two or /three or /four) in the world! You can make one yourself (then refresh) for now, but yell at a mapper to fix this, today!")
+		to_chat(holder.mob, "世界中不存在 /area/centcom/supplypod/loading/one (或 /two 或 /three 或 /four)! 你可以暂时自己创建一个(然后刷新),但今天就去催地图制作者修复这个问题!")
 		CRASH("No /area/centcom/supplypod/loading/one (or /two or /three or /four) has been mapped into the centcom z-level!")
 	orderedArea = list()
 	if (A.has_contained_turfs()) //Go through the area passed into the proc, and figure out the top left and bottom right corners by calculating max and min values

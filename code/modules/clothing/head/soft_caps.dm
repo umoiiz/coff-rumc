@@ -1,6 +1,6 @@
 /obj/item/clothing/head/soft
-	name = "cargo cap"
-	desc = "It's a baseball hat in a tasteless yellow color."
+	name = "货运帽"
+	desc = "一顶品味低下的黄色棒球帽."
 	icon_state = "cargosoft"
 	worn_icon_state = "cargosoft"
 	inventory_flags = COVEREYES
@@ -23,50 +23,50 @@
 		src.flipped = !src.flipped
 		if(src.flipped)
 			icon_state = "[cap_color]soft_flipped"
-			to_chat(usr, "You flip the hat backwards.")
+			to_chat(usr, "你把帽子反戴.")
 		else
 			icon_state = "[cap_color]soft"
-			to_chat(usr, "You flip the hat back in normal position.")
+			to_chat(usr, "你把帽子转回正常位置.")
 		update_clothing_icon()	//so our mob-overlays update
 
 /obj/item/clothing/head/soft/red
-	name = "red cap"
-	desc = "It's a baseball hat in a tasteless red color."
+	name = "红帽"
+	desc = "一顶品味低下的红色棒球帽."
 	icon_state = "redsoft"
 	cap_color = "red"
 
 /obj/item/clothing/head/soft/blue
-	name = "blue cap"
-	desc = "It's a baseball hat in a tasteless blue color."
+	name = "蓝帽"
+	desc = "一顶品味低下的蓝色棒球帽."
 	icon_state = "bluesoft"
 	cap_color = "blue"
 
 /obj/item/clothing/head/soft/grey
-	name = "grey cap"
-	desc = "It's a baseball hat in a tasteful grey color."
+	name = "灰帽"
+	desc = "一顶品味高雅的灰色棒球帽."
 	icon_state = "greysoft"
 	cap_color = "grey"
 
 /obj/item/clothing/head/soft/mime
-	name = "white cap"
-	desc = "It's a baseball hat in a tasteless white color."
+	name = "白帽"
+	desc = "一顶品味低下的白色棒球帽."
 	icon_state = "mimesoft"
 	cap_color = "mime"
 
 /obj/item/clothing/head/soft/purple
-	name = "purple cap"
-	desc = "It's a baseball hat in a tasteless purple color."
+	name = "紫帽"
+	desc = "一顶品味低下的紫色棒球帽."
 	icon_state = "purplesoft"
 	cap_color = "purple"
 
 /obj/item/clothing/head/soft/sec
-	name = "security cap"
-	desc = "It's baseball hat in tasteful red color."
+	name = "安保帽"
+	desc = "一顶品味高雅的红色棒球帽."
 	icon_state = "secsoft"
 	cap_color = "sec"
 
 /obj/item/clothing/head/soft/sec/corp
-	name = "corporate security cap"
-	desc = "It's baseball hat in corporate colors."
+	name = "企业安保帽"
+	desc = "一顶企业配色的棒球帽."
 	icon_state = "corpsoft"
 	cap_color = "corp"

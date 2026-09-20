@@ -1,6 +1,6 @@
 /obj/item/spacecash
-	name = "0 rubles"
-	desc = "You have no rubles."
+	name = "0卢布"
+	desc = "您没有卢布."
 	gender = PLURAL
 	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = ""
@@ -37,12 +37,12 @@
 			h_user.temporarilyRemoveItemFromInventory(src)
 			h_user.temporarilyRemoveItemFromInventory(bundle)
 			h_user.put_in_hands(bundle)
-		to_chat(user, span_notice("You add [worth] rubles worth of money to the bundles.<br>It holds [bundle.worth] rubles now."))
+		to_chat(user, span_notice("你向钱捆中加入了价值[worth]卢布的钱.<br>现在里面装有[bundle.worth]卢布."))
 		qdel(src)
 
 /obj/item/spacecash/bundle
-	name = "stack of rubles"
-	desc = "They are worth 0 rubles."
+	name = "一叠卢布"
+	desc = "它们价值0卢布."
 	worth = 0
 
 /obj/item/spacecash/bundle/update_desc(updates)
@@ -67,7 +67,7 @@
 
 /obj/item/spacecash/bundle/attack_self(mob/user)
 	var/oldloc = loc
-	var/amount = tgui_input_number(user, "How many rubles do you want to take? (0 to [worth])", "Take Money", 20, worth)
+	var/amount = tgui_input_number(user, "您想取多少卢布? (0到[worth])", "取钱", 20, worth)
 	if(amount == 0)
 		return 0
 	if(gc_destroyed || loc != oldloc)
@@ -116,12 +116,12 @@
 		human_user.put_in_hands(bundle)
 
 /obj/item/spacecash/ewallet
-	name = "\improper Nanotrasen cash card"
+	name = "\improper Nanotrasen现金卡"
 	icon_state = "efundcard"
-	desc = "A Nanotrasen backed cash card that holds an amount of money."
+	desc = "一张由Nanotrasen支持的现金卡, 存有一定金额的钱."
 	var/owner_name = "" //So the ATM can set it so the EFTPOS can put a valid name on transactions.
 
 /obj/item/spacecash/ewallet/examine(mob/user)
 	. = ..()
 	if(user == loc)
-		. += span_notice("Charge card's owner: [owner_name]. Rubles remaining: [worth].")
+		. += span_notice("充值卡所有者: [owner_name]. 剩余卢布: [worth].")

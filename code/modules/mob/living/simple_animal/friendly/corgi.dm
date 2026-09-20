@@ -1,7 +1,7 @@
 /mob/living/simple_animal/corgi
 	name = "\improper corgi"
 	real_name = "corgi"
-	desc = "It's a corgi."
+	desc = "这是一只柯基."
 	icon = 'icons/mob/pets.dmi'
 	icon_state = "corgi"
 	icon_living = "corgi"
@@ -19,7 +19,7 @@
 /mob/living/simple_animal/corgi/german_shepherd
 	name = "\improper german shepherd"
 	real_name = "german shepherd"
-	desc = "It's a german shepherd."
+	desc = "这是一只德国牧羊犬."
 	icon = 'icons/mob/pets.dmi'
 	icon_state = "german_shep"
 	icon_living = "german_shep"
@@ -30,7 +30,7 @@
 	name = "Ranger"
 	real_name = "Ranger"
 	gender = MALE
-	desc = "That's Ranger, your friendly and fierce k9. He has seen the terror of Xenomorphs, so it's best to be nice to him. <b>RANGER LEAD THE WAY</b>!"
+	desc = "那是兰杰, 你友好而凶猛的警犬. 他见过异形的恐怖, 所以最好对他好一点. <b>兰杰带路</b>!"
 	icon_state = "ranger"
 	icon_living = "ranger"
 	icon_dead = "ranger_dead"
@@ -41,7 +41,7 @@
 /mob/living/simple_animal/corgi/bullterrier
 	name = "\improper bull terrier"
 	real_name = "bull terrier"
-	desc = "It's a bull terrier. Is that the Target dog?"
+	desc = "这是一只牛头梗. 那是塔吉特狗吗?"
 	icon = 'icons/mob/pets.dmi'
 	icon_state = "bullterrier"
 	icon_living = "bullterrier"
@@ -51,7 +51,7 @@
 /mob/living/simple_animal/corgi/walten
 	name = "Walten Clements"
 	gender = MALE
-	desc = "Sir, this is chief Walten Clements. He resides in medbay as this is also his realms. His minions wear scrubs for bacterial control, and they pay him in pets and treats. Do not be concern if he gets COPD as he is kept in a healthy diet full of black coffee and an exercise regimen with plenty of cardio and stretching. His daily concern is accounting; his supply of treats must be met with acute attention. Good day to you, marine."
+	desc = "长官, 这是首席沃尔滕·克莱门茨. 他住在医疗舱, 因为这里也是他的领地. 他的手下穿着手术服以控制细菌, 他们用抚摸和零食来孝敬他. 不要担心他会得慢性阻塞性肺病, 因为他保持着健康的饮食, 充满黑咖啡, 还有大量的有氧运动和伸展运动. 他每天关心的是账目; 他的零食供应必须得到密切关注. 祝你愉快, 陆战队员."
 	icon = 'icons/mob/pets.dmi'
 	icon_state = "walten"
 	icon_living = "walten"
@@ -61,7 +61,7 @@
 
 /mob/living/simple_animal/corgi/exoticcorgi
 	name = "Exotic Corgi"
-	desc = "As cute as it is colorful!"
+	desc = "和它多彩的外表一样可爱!"
 	icon_state = "corgigrey"
 	icon_living = "corgigrey"
 	icon_dead = "corgigrey_dead"
@@ -77,7 +77,7 @@
 	name = "Ian"
 	real_name = "Ian"
 	gender = MALE
-	desc = "It's the HoP's beloved corgi."
+	desc = "这是HoP心爱的柯基."
 	response_help = "pets"
 	response_disarm = "bops"
 	response_harm = "kicks"
@@ -85,7 +85,7 @@
 
 /mob/living/simple_animal/corgi/narsie
 	name = "Nars-Ian"
-	desc = "Ia! Ia!"
+	desc = "咿呀! 咿呀!"
 	icon_state = "narsian"
 	icon_living = "narsian"
 	icon_dead = "narsian_dead"
@@ -97,7 +97,7 @@
 		if(P == src || !prob(5))
 			continue
 
-		visible_message(span_warning("[src] devours [P]!"), \
+		visible_message(span_warning("[src]吞噬了[P]!"), \
 		"<span class='cult big bold'>DELICIOUS SOULS</span>")
 		playsound(src, 'sound/effects/phasein.ogg', 75, TRUE)
 		P.gib()
@@ -106,7 +106,7 @@
 /mob/living/simple_animal/corgi/puppy
 	name = "\improper corgi puppy"
 	real_name = "corgi"
-	desc = "It's a corgi puppy!"
+	desc = "这是一只柯基幼犬!"
 	icon_state = "puppy"
 	icon_living = "puppy"
 	icon_dead = "puppy_dead"
@@ -119,13 +119,13 @@
 /mob/living/simple_animal/corgi/puppy/mrwiggles
 	name = "Mr. Wiggles"
 	real_name = "Mr. Wiggles"
-	desc = "It's Mr. Wiggles!"
+	desc = "这是扭扭先生!"
 
 
 /mob/living/simple_animal/corgi/puppy/void
 	name = "\improper void puppy"
 	real_name = "voidy"
-	desc = "A corgi puppy that has been infused with deep space energy. It's staring back..."
+	desc = "一只被注入了深空能量的柯基幼犬. 它正盯着你看..."
 	icon_state = "void_puppy"
 	icon_living = "void_puppy"
 	icon_dead = "void_puppy_dead"
@@ -135,7 +135,7 @@
 	name = "Lisa"
 	real_name = "Lisa"
 	gender = FEMALE
-	desc = "She's tearing you apart."
+	desc = "她正在把你撕碎."
 	icon_state = "lisa"
 	icon_living = "lisa"
 	icon_dead = "lisa_dead"

@@ -1,6 +1,6 @@
 /obj/item/tweezers
-	name = "medical tweezers"
-	desc = "Medical tweezers intended to remove shrapnel from patients."
+	name = "医用镊子"
+	desc = "用于从伤员体内取出弹片的医用镊子."
 	icon = 'icons/obj/items/surgery_tools.dmi'
 	icon_state = "tweezers"
 	worn_icon_state = "tweezers"
@@ -13,7 +13,7 @@
 
 /obj/item/tweezers_advanced
 	name = "\improper ESR-12"
-	desc = "The Energised Shrapnel Removal tool is designed to rapidly remove large quantities of shrapnel from a victim's body. Extremely painful."
+	desc = "能量弹片取出工具,旨在快速从伤者体内取出大量弹片.极其痛苦."
 	icon = 'icons/obj/items/surgery_tools.dmi'
 	icon_state = "tweezers_advanced"
 	worn_icon_state = "tweezers_advanced"

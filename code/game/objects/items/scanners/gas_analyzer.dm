@@ -1,6 +1,6 @@
 /obj/item/tool/analyzer
-	desc = "A hand-held environmental scanner which reports current gas levels."
-	name = "analyzer"
+	desc = "一个手持式环境扫描仪,可报告当前气体水平."
+	name = "分析仪"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "atmos"
 	worn_icon_state = "analyzer"
@@ -23,7 +23,7 @@
 	var/datum/weather/ongoing_weather = null
 
 	if(!user_area.outside)
-		to_chat(user, span_warning("[src]'s barometer function won't work indoors!"))
+		to_chat(user, span_warning("[src]的气压计功能在室内无法工作!"))
 		return
 
 	for(var/V in SSweather.processing)
@@ -34,16 +34,16 @@
 
 	if(ongoing_weather)
 		if((ongoing_weather.stage == MAIN_STAGE) || (ongoing_weather.stage == WIND_DOWN_STAGE))
-			to_chat(user, span_warning("[src]'s barometer function can't trace anything while the storm is [ongoing_weather.stage == MAIN_STAGE ? "already here!" : "winding down."]"))
+			to_chat(user, span_warning("[src]的气压计功能在风暴[ongoing_weather.stage == MAIN_STAGE ? "already here!" : "winding down."]时无法追踪任何东西"))
 			return
 
-		to_chat(user, span_notice("The next [ongoing_weather] will hit in [(ongoing_weather.next_hit_time - world.time)/10] Seconds."))
+		to_chat(user, span_notice("下一场[ongoing_weather]将在[(ongoing_weather.next_hit_time - world.time)/10]秒后袭来."))
 		if(ongoing_weather.aesthetic)
-			to_chat(user, span_warning("[src]'s barometer function says that the next storm will breeze on by."))
+			to_chat(user, span_warning("[src]的气压计功能显示下一场风暴将轻轻掠过."))
 	else
 		var/next_hit = SSweather.next_hit_by_zlevel["[T.z]"]
 		var/fixed = next_hit ? timeleft(next_hit) : -1
 		if(fixed < 0)
-			to_chat(user, span_warning("[src]'s barometer function was unable to trace any weather patterns."))
+			to_chat(user, span_warning("[src]的气压计功能无法追踪任何天气模式."))
 		else
-			to_chat(user, span_warning("[src]'s barometer function says a storm will land in approximately [fixed/10] Seconds]."))
+			to_chat(user, span_warning("[src]的气压计功能显示一场风暴将在大约[fixed/10]秒后登陆\]."))

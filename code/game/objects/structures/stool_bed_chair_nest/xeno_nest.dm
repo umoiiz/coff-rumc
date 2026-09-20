@@ -4,7 +4,7 @@
 ///Alium nests. Essentially beds with an unbuckle delay that only aliums can buckle mobs to.
 /obj/structure/bed/nest
 	name = ALIEN_NEST
-	desc = "It's a gruesome pile of thick, sticky resin shaped like a nest."
+	desc = "这是一堆可怕的,厚实粘稠的树脂,形状像一个巢穴."
 	icon = 'icons/Xeno/Effects.dmi'
 	icon_state = "nest"
 	hit_sound = SFX_ALIEN_RESIN_BREAK
@@ -19,7 +19,7 @@
 	if(!ismob(grab.grabbed_thing))
 		return
 	var/mob/grabbed_mob = grab.grabbed_thing
-	to_chat(user, span_notice("You place [grabbed_mob] on [src]."))
+	to_chat(user, span_notice("你把[grabbed_mob]放在[src]上."))
 	grabbed_mob.forceMove(loc)
 	return TRUE
 
@@ -27,50 +27,50 @@
 	if(xeno_attacker.status_flags & INCORPOREAL)
 		return
 
-	xeno_attacker.visible_message(span_xenonotice("\The [xeno_attacker] starts tearing down \the [src]!"), \
-	span_xenonotice("We start to tear down \the [src]."))
+	xeno_attacker.visible_message(span_xenonotice("\The [xeno_attacker]开始拆除\the [src]!"), \
+	span_xenonotice("我们开始拆除\the [src]."))
 	if(!do_after(xeno_attacker, 4 SECONDS, NONE, xeno_attacker, BUSY_ICON_GENERIC))
 		return
 	if(!istype(src)) // Prevent jumping to other turfs if do_after completes with the wall already gone
 		return
 	xeno_attacker.do_attack_animation(src, ATTACK_EFFECT_CLAW)
-	xeno_attacker.visible_message(span_xenonotice("\The [xeno_attacker] tears down \the [src]!"), \
-	span_xenonotice("We tear down \the [src]."))
+	xeno_attacker.visible_message(span_xenonotice("\The [xeno_attacker]拆除了\the [src]!"), \
+	span_xenonotice("我们拆除了\the [src]."))
 	playsound(src, SFX_ALIEN_RESIN_BREAK, 25)
 	take_damage(max_integrity) // Ensure its destroyed
 
 /obj/structure/bed/nest/user_buckle_mob(mob/living/buckling_mob, mob/user, check_loc = TRUE, silent)
 	if(isxenohivemind(user))
-		to_chat(user, span_warning("We lack limbs to do that."))
+		to_chat(user, span_warning("我们缺少肢体来做这件事."))
 		return FALSE
 	if(user.incapacitated() || !in_range(user, src) || buckling_mob.buckled)
 		return FALSE
 	if(!isxeno(user))
-		to_chat(user, span_warning("Gross! You're not touching that stuff."))
+		to_chat(user, span_warning("恶心!你才不会碰那东西."))
 		return FALSE
 	if(LAZYLEN(buckled_mobs))
-		to_chat(user, span_warning("There's already someone in [src]."))
+		to_chat(user, span_warning("[src]里已经有人了."))
 		return FALSE
 	if(ishuman(buckling_mob))
 		var/mob/living/carbon/human/H = buckling_mob
 		if(TIMER_COOLDOWN_RUNNING(H, COOLDOWN_NEST))
-			to_chat(user, span_warning("[H] was recently unbuckled. Wait a bit."))
+			to_chat(user, span_warning("[H]最近刚解开安全带.等一会儿."))
 			return FALSE
 
-	user.visible_message(span_warning("[user] pins [buckling_mob] into [src], preparing the securing resin."),
-	span_warning("[user] pins [buckling_mob] into [src], preparing the securing resin."))
+	user.visible_message(span_warning("[user]把[buckling_mob]钉入[src],准备用树脂固定."),
+	span_warning("[user]把[buckling_mob]钉入[src],准备用树脂固定."))
 
 	if(!do_after(user, 1 SECONDS, NONE, buckling_mob, BUSY_ICON_HOSTILE))
 		return FALSE
 	if(QDELETED(src))
 		return FALSE
 	if(LAZYLEN(buckled_mobs))
-		to_chat(user, span_warning("There's already someone in [src]."))
+		to_chat(user, span_warning("[src]里已经有人了."))
 		return FALSE
 
-	buckling_mob.visible_message(span_xenonotice("[user] secretes a thick, vile resin, securing [buckling_mob] into [src]!"),
-		span_xenonotice("[user] drenches you in a foul-smelling resin, trapping you in [src]!"),
-		span_notice("You hear squelching."))
+	buckling_mob.visible_message(span_xenonotice("[user]分泌出厚实恶心的树脂,把[buckling_mob]固定在[src]中!"),
+		span_xenonotice("[user]用散发着恶臭的树脂把你浸透,把你困在[src]中!"),
+		span_notice("你听到黏糊糊的声音."))
 	playsound(loc, SFX_ALIEN_RESIN_MOVE, 50)
 
 	silent = TRUE
@@ -80,31 +80,31 @@
 	if(buckled_mob != user)
 		if(user.incapacitated())
 			return FALSE
-		buckled_mob.visible_message(span_notice("\The [user] pulls \the [buckled_mob] free from \the [src]!"),
-			span_notice("\The [user] pulls you free from \the [src]."),
-			span_notice("You hear squelching."))
+		buckled_mob.visible_message(span_notice("\The [user]把\the [buckled_mob]从\the [src]中拉了出来!"),
+			span_notice("\The [user]把你从\the [src]中拉了出来."),
+			span_notice("你听到黏糊糊的声音."))
 		playsound(loc, SFX_ALIEN_RESIN_MOVE, 50)
 		silent = TRUE
 		return ..()
 	if(force_nest)
-		to_chat(buckled_mob, span_warning("Nest to thick, you can't resist."))
+		to_chat(buckled_mob, span_warning("巢穴太厚实了,你无法抵抗."))
 		return FALSE
 	if(buckled_mob.incapacitated(TRUE))
-		to_chat(buckled_mob, span_warning("You're currently unable to try that."))
+		to_chat(buckled_mob, span_warning("你目前无法尝试那个."))
 		return FALSE
 	if(!resisting_time)
 		resisting_time = world.time
-		buckled_mob.visible_message(span_warning("\The [buckled_mob] struggles to break free of \the [src]."),
-			span_warning("You struggle to break free from \the [src]."),
-			span_notice("You hear squelching."))
+		buckled_mob.visible_message(span_warning("\The [buckled_mob]挣扎着想要挣脱\the [src]."),
+			span_warning("你挣扎着想要从\the [src]中挣脱."),
+			span_notice("你听到黏糊糊的声音."))
 		addtimer(CALLBACK(src, PROC_REF(unbuckle_time_message), user), NEST_RESIST_TIME)
 		return FALSE
 	if(resisting_time + NEST_RESIST_TIME > world.time)
-		to_chat(buckled_mob, span_warning("You're already trying to free yourself. Give it some time."))
+		to_chat(buckled_mob, span_warning("你已经在尝试挣脱了.再等一会儿."))
 		return FALSE
-	buckled_mob.visible_message(span_danger("\The [buckled_mob] breaks free from \the [src]!"),
-		span_danger("You pull yourself free from \the [src]!"),
-		span_notice("You hear squelching."))
+	buckled_mob.visible_message(span_danger("\The [buckled_mob]从\the [src]中挣脱了!"),
+		span_danger("你从\the [src]中挣脱了出来!"),
+		span_notice("你听到黏糊糊的声音."))
 	silent = TRUE
 	return ..()
 
@@ -113,7 +113,7 @@
 		return //Time has passed, conditions may have changed.
 	if(resisting_time + NEST_RESIST_TIME > world.time)
 		return //We've been freed and re-nested.
-	to_chat(user, span_danger("You are ready to break free! Resist once more to free yourself!"))
+	to_chat(user, span_danger("你已经准备好挣脱了!再抵抗一次就能脱身!"))
 
 /obj/structure/bed/nest/post_buckle_mob(mob/living/buckling_mob)
 	. = ..()

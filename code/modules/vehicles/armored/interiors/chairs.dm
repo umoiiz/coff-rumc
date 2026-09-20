@@ -1,5 +1,5 @@
 /obj/structure/bed/chair/loader_seat
-	name = "loader seat"
+	name = "装填手座位"
 	icon = 'icons/obj/armored/3x3/tank_interior.dmi'
 	icon_state = "vehicle_chair"
 	resistance_flags = RESIST_ALL
@@ -12,7 +12,7 @@
 		. += mutable_appearance(icon, "[icon_state]_occupied", ABOVE_MOB_LAYER)
 
 /obj/structure/bed/chair/loader_seat/som
-	name = "loader seat"
+	name = "装填手座位"
 	icon = 'icons/obj/armored/3x4/som_interior_small_props.dmi'
 	icon_state = "chair"
 	dir = NORTH
@@ -25,7 +25,7 @@
 	return
 
 /obj/structure/bed/chair/vehicle_crew
-	name = "driver seat"
+	name = "驾驶员座位"
 	icon = 'icons/obj/armored/3x3/tank_interior.dmi'
 	icon_state = "vehicle_chair"
 	resistance_flags = RESIST_ALL
@@ -59,7 +59,7 @@
 	if(buckling_mob.skills.getRating(SKILL_LARGE_VEHICLE) < skill_req)
 		return FALSE
 	if(SEND_SIGNAL(buckling_mob, COMSIG_ITEM_ZOOM) & COMSIG_ITEM_ALREADY_ZOOMED)
-		to_chat(buckling_mob, span_warning("You can't see the controls!"))
+		to_chat(buckling_mob, span_warning("你看不到控制装置!"))
 		return FALSE
 	return ..()
 
@@ -86,7 +86,7 @@
 	return owner.relaymove(arglist(args))
 
 /obj/structure/bed/chair/vehicle_crew/driver
-	name = "driver seat"
+	name = "驾驶员座位"
 	buckling_x = 12
 	control_flags = VEHICLE_CONTROL_DRIVE|VEHICLE_CONTROL_SETTINGS
 
@@ -104,14 +104,14 @@
 	buckled_mob.update_sight()
 
 /obj/structure/bed/chair/vehicle_crew/gunner
-	name = "gunner seat"
+	name = "炮手座位"
 	control_flags = VEHICLE_CONTROL_MELEE|VEHICLE_CONTROL_EQUIPMENT
 
 /obj/structure/bed/chair/vehicle_crew/gunner/get_vis_range_mod()
 	return 4
 
 /obj/structure/bed/chair/vehicle_crew/driver_gunner
-	name = "apc commander seat"
+	name = "装甲运兵车车长座位"
 	skill_req = SKILL_LARGE_VEHICLE_EXPERIENCED
 	control_flags = VEHICLE_CONTROL_MELEE|VEHICLE_CONTROL_EQUIPMENT|VEHICLE_CONTROL_DRIVE|VEHICLE_CONTROL_SETTINGS
 

@@ -72,7 +72,7 @@
 	if(isliving(user))
 		var/mob/living/L = user
 		if(CHECK_BITFIELD(L.status_flags, INCORPOREAL)) // Mobs that can walk through walls cannot grasp items to strip
-			to_chat(user, span_warning("You can't interact with the physical plane while you are incorporeal!"))
+			to_chat(user, span_warning("你在无形状态下无法与物质位面互动!"))
 			return FALSE
 		return TRUE
 	else
@@ -91,7 +91,7 @@
 	if(!equipping)
 		return
 	if(HAS_TRAIT(equipping, TRAIT_NODROP))
-		to_chat(user, span_warning("You can't put [equipping] on [source], it's stuck to your hand!"))
+		to_chat(user, span_warning("你无法将[equipping]放在[source]上,它粘在你手上了!"))
 		return FALSE
 	//This is important due to the fact otherwise it will be equipped without a proper existing icon, because it's forced on through the strip menu
 	//if(ismonkey(source)) //Todo delete this if monkeys arent strippable
@@ -103,12 +103,12 @@
 /datum/strippable_item/proc/start_equip(atom/source, obj/item/equipping, mob/user)
 	if(isclothing(source))
 		source.visible_message(
-			span_notice("[user] tries to put [equipping] on [source]."),
-			span_notice("[user] tries to put [equipping] on you."),
+			span_notice("[user]试图将[equipping]放在[source]上."),
+			span_notice("[user]试图将[equipping]放在你身上."),
 			ignored_mob = user
 		)
 
-	to_chat(user, span_notice("You try to put [equipping] on [source]..."))
+	to_chat(user, span_notice("你试图将[equipping]放在[source]上..."))
 
 	var/log = "[key_name(source)] is having [equipping] put on them by [key_name(user)]"
 	source.log_message(log, LOG_ATTACK, color="red")
@@ -149,12 +149,12 @@
 		return FALSE
 
 	source.visible_message(
-		span_warning("[user] tries to remove [source]'s [item.name]."),
-		span_userdanger("[user] tries to remove your [item.name]."),
+		span_warning("[user]试图取下[source]的[item.name]."),
+		span_userdanger("[user]试图取下你的[item.name]."),
 		ignored_mob = user,
 	)
 
-	to_chat(user, span_danger("You try to remove [source]'s [item.name]..."))
+	to_chat(user, span_danger("你试图取下[source]的[item.name]..."))
 	source.log_message("[key_name(source)] is being stripped of [item.name] by [key_name(user)]", LOG_ATTACK, color="red")
 	user.log_message("[key_name(source)] is being stripped of [item.name] by [key_name(user)]", LOG_ATTACK, color="red", log_globally=FALSE)
 	item.add_fingerprint(user, "stripping")
@@ -208,7 +208,7 @@
 		return FALSE
 
 	if(!equipping.mob_can_equip(source, item_slot, warning = TRUE, override_nodrop = FALSE, bitslot = TRUE))
-		to_chat(user, span_warning("\The [equipping] doesn't fit in that place!"))
+		to_chat(user, span_warning("\The [equipping]放不进那个位置!"))
 		return FALSE
 
 	return TRUE

@@ -44,26 +44,26 @@ export function PatientBasics() {
       buttons={
         <Button
           icon="info"
-          tooltip="For information on something, hover over it - nearly every element has a tooltip. Additionally, situational advice will appear under Treatment Advice."
+          tooltip="要了解某事物的信息,请将鼠标悬停在其上 - 几乎每个元素都有工具提示.此外,情境建议会显示在治疗建议下方."
           color="transparent"
           mt={
             // with the "hackerman" theme, the buttons have this ugly outline that messes with the section titlebar, let's fix that
             accessible_theme && species.is_robotic_species ? '-5px' : '0px'
           }
         >
-          Information
+          信息
         </Button>
       }
     >
       {!!hugged && (
         <NoticeBox danger>
-          Patient has been implanted with an alien embryo!
+          患者已被植入异形胚胎!
         </NoticeBox>
       )}
       {!!ssd && <NoticeBox>{ssd}</NoticeBox>}
       <LabeledList>
         <LabeledList.Item
-          label="Health"
+          label="健康"
           tooltip={`
             How healthy the patient is.${
               !!species.is_robotic_species &&
@@ -88,7 +88,7 @@ export function PatientBasics() {
           )}
         </LabeledList.Item>
         {!!dead && (
-          <LabeledList.Item label="Revivable">
+          <LabeledList.Item label="可复苏">
             <Box color={REVIVABLE_STATES_TO_COLORS[revivable_status]} bold>
               {revivable_status}
               {!!revivable_reason && ` (${revivable_reason})`}
@@ -96,43 +96,43 @@ export function PatientBasics() {
           </LabeledList.Item>
         )}
         <LabeledList.Item
-          label="Damage"
-          tooltip="Unique damage types. Each one has a tooltip describing how it is sustained, and possible treatments."
+          label="伤害"
+          tooltip="独特的伤害类型.每种都有工具提示,描述其如何产生以及可能的治疗方法."
         >
           <MedDamageType
-            name="Brute"
+            name="钝击"
             color={COLOR_BRUTE}
             damage={total_brute}
             tooltip={
               species.is_robotic_species
-                ? 'Brute. Sustained from sources of physical trauma such as melee combat, firefights, etc. Repaired with a blowtorch or robotic cradle.'
-                : 'Brute. Sustained from sources of physical trauma such as melee combat, firefights, etc. Treated with Bicaridine or advanced trauma kits.'
+                ? '钝击.由物理创伤来源造成,例如近战、交火等.用喷灯或机器人摇篮修复.'
+                : '钝击.由物理创伤来源造成,例如近战、交火等.用双卡因或高级创伤包治疗.'
             }
             noPadding
           />
           <MedDamageType
-            name="Burn"
+            name="烧伤"
             color={COLOR_BURN}
             damage={total_burn}
             tooltip={
               species.is_robotic_species
-                ? 'Burn. Sustained from sources of burning such as energy weapons, acid, fire, etc. Repaired with cable coils or a robotic cradle.'
-                : 'Burn. Sustained from sources of burning such as overheating, energy weapons, acid, fire, etc. Treated with Kelotane or advanced burn kits.'
+                ? '烧伤.由灼烧来源造成,例如能量武器、酸液、火焰等.用电缆线圈或机器人摇篮修复.'
+                : '烧伤.由过热、能量武器、酸液、火焰等造成.用凯洛坦或高级烧伤包治疗.'
             }
           />
           {!species.is_robotic_species && (
             <>
               <MedDamageType
-                name="Tox"
+                name="毒素"
                 color="green"
                 damage={total_tox}
-                tooltip="Toxin. Sustained from chemicals or organ damage. Treated with Dylovene."
+                tooltip="毒素.由化学物质或器官损伤造成.用迪洛文治疗."
               />
               <MedDamageType
-                name="Oxy"
+                name="缺氧"
                 color="blue"
                 damage={total_oxy}
-                tooltip="Oxyloss. Sustained from being in critical condition, organ damage or extreme exhaustion. Treated with CPR, Dexalin/Dexalin Plus or decreases on its own if the patient isn't in critical condition."
+                tooltip="缺氧.由处于危急状态、器官损伤或极度疲惫造成.用心肺复苏、地塞林/地塞林+治疗,或者如果患者不处于危急状态则会自行减少."
               />
             </>
           )}
@@ -143,27 +143,27 @@ export function PatientBasics() {
               damage={total_clone}
               tooltip={
                 species.is_robotic_species
-                  ? 'Integrity Damage. Sustained from xenomorph psychic draining. Treated with a robotic cradle.'
-                  : 'Cloneloss. Sustained from xenomorph psychic draining or special chemicals. Treated with cryogenics or sleep.'
+                  ? '完整度损伤.由异形精神吸取造成.用机器人摇篮治疗.'
+                  : '克隆损失.由异形精神吸取或特殊化学物质造成.用冷冻或睡眠治疗.'
               }
             />
           )}
           {!!species.is_robotic_species && (
             <>
               <MedDamageType
-                name="Tox"
-                tooltip="Robotic species cannot build up toxins."
+                name="毒素"
+                tooltip="机械种族无法积累毒素."
                 disabled
               />
               <MedDamageType
-                name="Oxy"
-                tooltip="Robotic species do not suffocate."
+                name="缺氧"
+                tooltip="机械种族不会窒息."
                 disabled
               />
               {!!species.is_synthetic && (
                 <MedDamageType
-                  name="Clone"
-                  tooltip="Synthetics do not suffer cellular damage or long term integrity loss."
+                  name="克隆"
+                  tooltip="合成体不会遭受细胞损伤或长期完整度损失."
                   disabled
                 />
               )}

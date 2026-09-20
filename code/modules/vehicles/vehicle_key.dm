@@ -1,14 +1,14 @@
 /obj/item/key
-	name = "key"
-	desc = "A small grey key."
+	name = "钥匙"
+	desc = "一把灰色的小钥匙。"
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "key"
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/key/atv
-	name = "ATV key"
-	desc = "A small grey key for starting and operating ATVs."
+	name = "全地形车钥匙"
+	desc = "一把用于启动和操作全地形车的灰色小钥匙。"
 
 /obj/item/key/security
-	desc = "A keyring with a small steel key, and a rubber stun baton accessory."
+	desc = "一个钥匙环,上面有一把钢制小钥匙,以及一个橡胶电击棍挂件。"
 	icon_state = "keysec"

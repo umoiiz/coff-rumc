@@ -1,6 +1,6 @@
 /obj/structure/barricade/snow
-	name = "snow barricade"
-	desc = "A mound of snow shaped into a sloped wall. Statistically better than thin air as cover."
+	name = "雪路障"
+	desc = "一堆雪堆成的斜坡墙.从数据上看比薄空气更适合当掩体."
 	icon_state = "snow_0"
 	icon = 'icons/obj/structures/barricades/sandbag.dmi'
 	barricade_type = "snow"
@@ -24,10 +24,10 @@
 		return
 
 	if(LAZYACCESS(user.do_actions, src))
-		balloon_alert(user, "Already shoveling")
+		balloon_alert(user, "已在铲除")
 		return
 
-	user.visible_message("[user] starts clearing out \the [src].", "You start removing \the [src].")
+	user.visible_message("[user]开始清除\the [src].", "你开始移除\the [src].")
 
 	if(!do_after(user, ET.shovelspeed, NONE, src, BUSY_ICON_BUILD))
 		return

@@ -1,6 +1,6 @@
 /obj/effect/ai_node/spawner/zombie
 	name = "tunnel"
-	desc = "It reeks of rotten flesh and has stains of old blood and scratches."
+	desc = "它散发着腐肉的恶臭,带有陈旧的血迹和抓痕."
 	icon = 'icons/Xeno/Effects.dmi'
 	icon_state = "hole"
 	invisibility = 0
@@ -47,7 +47,7 @@
 
 /obj/effect/ai_node/spawner/zombie/examine(mob/user)
 	. = ..()
-	. += span_notice("It seems like you could collapse it with a plastique explosive.")
+	. += span_notice("看起来你可以用塑胶炸药把它炸塌.")
 
 ///Called by a proximity alert, spawns defenders when a threat is detected
 /obj/effect/ai_node/spawner/zombie/proc/spawn_defenders()

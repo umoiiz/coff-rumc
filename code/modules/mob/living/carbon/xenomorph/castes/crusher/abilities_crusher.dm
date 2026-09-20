@@ -3,7 +3,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/stomp
 	name = "Stomp"
-	desc = "Knocks all adjacent targets away and down. Deals extra damage if on the same turf with the target. "
+	desc = "击退并击倒所有相邻目标. 与目标处于同一格时造成额外伤害."
 	action_icon_state = "stomp"
 	action_icon = 'icons/Xeno/actions/crusher.dmi'
 	ability_cost = 100
@@ -19,8 +19,8 @@
 	SSblackbox.record_feedback(FEEDBACK_TALLY, "round_statistics", 1, "crusher_stomps")
 
 	playsound(xeno_owner.loc, 'sound/effects/bang.ogg', 25, 0)
-	xeno_owner.visible_message(span_xenodanger("[xeno_owner] smashes into the ground!"), \
-	span_xenodanger("We smash into the ground!"))
+	xeno_owner.visible_message(span_xenodanger("[xeno_owner]砸向地面!"), \
+	span_xenodanger("我们砸向地面!"))
 	xeno_owner.create_stomp() //Adds the visual effect. Wom wom wom
 
 	for(var/mob/living/M in range(1, get_turf(xeno_owner)))
@@ -33,12 +33,12 @@
 			SSblackbox.record_feedback(FEEDBACK_TALLY, "round_statistics", 1, "crusher_stomp_victims")
 			M.take_overall_damage(damage, BRUTE, MELEE, updating_health = TRUE, penetration = 100, max_limbs = 3)
 			M.Paralyze(3 SECONDS)
-			to_chat(M, span_userdanger("You are stomped on by [xeno_owner]!"))
+			to_chat(M, span_userdanger("你被[xeno_owner]踩踏!"))
 			shake_camera(M, 3, 3)
 		else
 			step_away(M, xeno_owner, 1) //Knock away
 			shake_camera(M, 2, 2)
-			to_chat(M, span_userdanger("You reel from the shockwave of [xeno_owner]'s stomp!"))
+			to_chat(M, span_userdanger("你被[xeno_owner]踩踏产生的冲击波震得摇晃!"))
 			M.take_overall_damage(damage * 0.5, BRUTE, MELEE, updating_health = TRUE, max_limbs = 3)
 			M.Paralyze(0.5 SECONDS)
 
@@ -61,7 +61,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/cresttoss
 	name = "Crest Toss Away"
-	desc = "Fling an adjacent target away from you. Shares the cooldown with the Crest Toss Behind!"
+	desc = "将一个相邻目标从你身边甩飞. 与头冠后甩共享冷却时间!"
 	action_icon_state = "cresttoss_away"
 	action_icon = 'icons/Xeno/actions/crusher.dmi'
 	ability_cost = 75
@@ -74,7 +74,7 @@
 	var/ability_for_cooldown = /datum/action/ability/activable/xeno/cresttoss/behind
 
 /datum/action/ability/activable/xeno/cresttoss/on_cooldown_finish()
-	to_chat(xeno_owner, span_xenowarning("<b>We can now crest toss again.</b>"))
+	to_chat(xeno_owner, span_xenowarning("<b>我们现在可以再次头冠后甩了.</b>"))
 	playsound(xeno_owner, 'sound/effects/alien/newlarva.ogg', 50, 0, 1)
 	return ..()
 
@@ -103,10 +103,10 @@
 
 	if(!xeno_owner.issamexenohive(A)) //xenos should be able to fling xenos into xeno passable areas!
 		for(var/obj/effect/forcefield/fog/fog in throw_origin)
-			A.balloon_alert(xeno_owner, "Cannot, fog")
+			A.balloon_alert(xeno_owner, "不行, 雾")
 			return fail_activate()
 	if(A.move_resist >= MOVE_FORCE_OVERPOWERING)
-		A.balloon_alert(xeno_owner, "Too heavy!")
+		A.balloon_alert(xeno_owner, "太重了!")
 		return fail_activate()
 	if(isliving(A))
 		var/mob/living/L = A
@@ -131,8 +131,8 @@
 
 	xeno_owner.icon_state = "Crusher Charging"  //Momentarily lower the crest for visual effect
 
-	xeno_owner.visible_message(span_xenowarning("\The [xeno_owner] flings [A] away with its crest[big_mob_message]!"), \
-	span_xenowarning("We fling [A] away with our crest[big_mob_message]!"))
+	xeno_owner.visible_message(span_xenowarning("\The [xeno_owner]用头冠将[A]甩飞[big_mob_message]!"), \
+	span_xenowarning("我们用头冠将[A]甩飞[big_mob_message]!"))
 
 	succeed_activate()
 
@@ -156,7 +156,7 @@
 
 /datum/action/ability/activable/xeno/cresttoss/behind
 	name = "Crest Toss Behind"
-	desc = "Fling an adjacent target behind you. Also works over barricades. Shares the cooldown with the Crest Toss Away!"
+	desc = "将一个相邻目标甩到你身后. 在路障上方也有效. 与头冠前甩共享冷却时间!"
 	action_icon_state = "cresttoss_behind"
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_CRESTTOSS_BEHIND,
@@ -183,7 +183,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/advance
 	name = "Rapid Advance"
-	desc = "Charges up the crushers charge in place, then unleashes the full bulk of the crusher at the target location. Does not crush in diagonal directions."
+	desc = "原地蓄力碾压者的冲锋, 然后向目标位置释放碾压者的全部冲量. 不会在斜向碾压."
 	action_icon_state = "crest_defense"
 	action_icon = 'icons/Xeno/actions/defender.dmi'
 	ability_cost = 175
@@ -195,7 +195,7 @@
 	var/advance_range = 7
 
 /datum/action/ability/activable/xeno/advance/on_cooldown_finish()
-	to_chat(owner, span_xenowarning("<b>We can now rapidly charge forward again.</b>"))
+	to_chat(owner, span_xenowarning("<b>我们现在可以再次快速向前冲锋了.</b>"))
 	playsound(owner, 'sound/effects/alien/newlarva.ogg', 50, 0, 1)
 	return ..()
 
@@ -249,7 +249,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/regenerate_skin/crusher
 	name = "Regenerate Armor"
-	desc = "Regenerate your hard exoskeleton armor, removing all sunder."
+	desc = "再生你的坚硬外骨骼护甲, 移除所有破损."
 	action_icon_state = "regenerate_skin"
 	action_icon = 'icons/Xeno/actions/defender.dmi'
 	use_state_flags = ABILITY_TARGET_SELF|ABILITY_IGNORE_SELECTED_ABILITY
@@ -261,7 +261,7 @@
 	)
 
 /datum/action/ability/xeno_action/regenerate_skin/crusher/on_cooldown_finish()
-	to_chat(xeno_owner, span_notice("We feel we are ready to shred our armor and grow another."))
+	to_chat(xeno_owner, span_notice("我们感觉已准备好蜕去护甲并长出新的."))
 	return ..()
 
 /datum/action/ability/xeno_action/regenerate_skin/crusher/action_activate()
@@ -269,12 +269,12 @@
 		return fail_activate()
 
 	if(xeno_owner.on_fire)
-		to_chat(xeno_owner, span_xenowarning("We can't use that while on fire."))
+		to_chat(xeno_owner, span_xenowarning("着火时无法使用该能力."))
 		return fail_activate()
 
 	xeno_owner.emote("roar")
-	xeno_owner.visible_message(span_warning("The armor on \the [xeno_owner] shreds and a new layer can be seen in it's place!"),
-		span_notice("We shed our armor, showing the fresh new layer underneath!"))
+	xeno_owner.visible_message(span_warning("\the [xeno_owner]的护甲碎裂, 可以看到新的护甲层取而代之!"),
+		span_notice("我们蜕去护甲, 露出下方崭新的护甲层!"))
 
 	xeno_owner.do_jitter_animation(1000)
 	xeno_owner.adjust_sunder(-50)

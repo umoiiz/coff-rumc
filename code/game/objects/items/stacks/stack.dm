@@ -202,7 +202,7 @@
 		if(!SSticker.round_start_time || (world.time - SSticker.round_start_time) < 10 MINUTES)
 			building_time = 0
 	if(building_time)
-		balloon_alert_to_viewers("building [recipe.title]")
+		balloon_alert_to_viewers("正在建造[recipe.title]")
 		if(!do_after(user, building_time, NONE, src, (building_time > recipe.time ? BUSY_ICON_UNSKILLED : BUSY_ICON_BUILD)))
 			return
 		if(!building_checks(user, recipe, multiplier))
@@ -247,32 +247,32 @@
 
 /obj/item/stack/proc/building_checks(mob/builder, datum/stack_recipe/recipe, multiplier)
 	if (get_amount() < recipe.req_amount * multiplier)
-		builder.balloon_alert(builder, "not enough material!")
+		builder.balloon_alert(builder, "材料不足!")
 		return FALSE
 	var/turf/dest_turf = get_turf(builder)
 
 	if((recipe.crafting_flags & CRAFT_ONE_PER_TURF) && (locate(recipe.result_type) in dest_turf))
-		builder.balloon_alert(builder, "already one here!")
+		builder.balloon_alert(builder, "这里已经有一个了!")
 		return FALSE
 
 	if(recipe.crafting_flags & CRAFT_CHECK_DIRECTION)
 		if(!valid_build_direction(dest_turf, builder.dir, is_fulltile = (recipe.crafting_flags & CRAFT_IS_FULLTILE)))
-			builder.balloon_alert(builder, "won't fit here!")
+			builder.balloon_alert(builder, "这里放不下!")
 			return FALSE
 
 	if(recipe.crafting_flags & CRAFT_ON_SOLID_GROUND)
 		if(!isopenturf(dest_turf))
-			builder.balloon_alert(builder, "cannot be made on a wall!")
+			builder.balloon_alert(builder, "不能建在墙上!")
 			return FALSE
 		var/turf/open/open_turf = dest_turf
 		if(!open_turf.allow_construction)
-			builder.balloon_alert(builder, "cant build here!")
+			builder.balloon_alert(builder, "不能在这里建造!")
 			return FALSE
 
 	if(recipe.crafting_flags & CRAFT_CHECK_DENSITY)
 		for(var/obj/object in dest_turf)
 			if(object.density && !(object.obj_flags & IGNORE_DENSITY) || object.obj_flags & BLOCKS_CONSTRUCTION)
-				builder.balloon_alert(builder, "something is in the way!")
+				builder.balloon_alert(builder, "有东西挡住了!")
 				return FALSE
 
 	if(recipe.placement_checks & STACK_CHECK_CARDINALS)
@@ -280,13 +280,13 @@
 		for(var/direction in GLOB.cardinals)
 			nearby_turf = get_step(dest_turf, direction)
 			if(locate(recipe.result_type) in nearby_turf)
-				to_chat(builder, span_warning("\The [recipe.title] must not be built directly adjacent to another!"))
-				builder.balloon_alert(builder, "can't be adjacent to another!")
+				to_chat(builder, span_warning("\The [recipe.title]不能直接建在另一个旁边!"))
+				builder.balloon_alert(builder, "不能建在另一个旁边!")
 				return FALSE
 
 	if(recipe.placement_checks & STACK_CHECK_ADJACENT)
 		if(locate(recipe.result_type) in range(1, dest_turf))
-			builder.balloon_alert(builder, "can't be near another!")
+			builder.balloon_alert(builder, "不能建在另一个附近!")
 			return FALSE
 
 	return TRUE
@@ -353,12 +353,12 @@
 		return ..()
 	if(!can_interact(user))
 		return ..() //Alt click on turf if not human or too far away.
-	var/stackmaterial = tgui_input_number(user, "How many sheets do you wish to take out of this stack ?)", max_value = get_amount())
+	var/stackmaterial = tgui_input_number(user, "你想从这堆中取出多少张?)", max_value = get_amount())
 	stackmaterial = min(get_amount(), stackmaterial) //The amount could have changed since the input started.
 	if(stackmaterial < 1 || !can_interact(user)) //In case we were transformed or moved away since the input started.
 		return
 	change_stack(user, stackmaterial)
-	to_chat(user, span_notice("You take [stackmaterial] sheets out of the stack"))
+	to_chat(user, span_notice("你从堆中取出[stackmaterial]张"))
 
 /obj/item/stack/proc/change_stack(mob/user, new_amount)
 	if(amount < 1 || amount < new_amount)
@@ -372,7 +372,7 @@
 	if(istype(I, merge_type))
 		var/obj/item/stack/S = I
 		if(merge(S))
-			to_chat(user, span_notice("Your [S.name] stack now contains [S.get_amount()] [S.singular_name]\s."))
+			to_chat(user, span_notice("你的[S.name]堆现在包含[S.get_amount()][S.singular_name]\s ."))
 		return
 	return ..()
 

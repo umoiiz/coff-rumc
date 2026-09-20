@@ -28,7 +28,7 @@
 	if(current_version < 39)
 		key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key)
 		parent.set_macros()
-		to_chat(parent, span_userdanger("Empty keybindings, setting to default"))
+		to_chat(parent, span_userdanger("按键绑定为空,正在设置为默认值"))
 
 	// Add missing keybindings for T L O M for when they were removed as defaults
 	if(current_version < 42)
@@ -45,7 +45,7 @@
 			if(!(kb_path in key_bindings[key]))
 				key_bindings[key] += list(kb_path)
 
-		to_chat(parent, span_userdanger("Forced keybindings for say (T), me (M), ooc (O), looc (L) have been applied."))
+		to_chat(parent, span_userdanger("已强制应用说(T)、我(M)、ooc (O)、looc (L)的按键绑定."))
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -279,7 +279,7 @@
 	try
 		WRITE_FILE(S["savefile_write_test"], "lebowskilebowski")
 	catch
-		to_chat(parent, span_warning("Writing to the savefile failed, please try again."))
+		to_chat(parent, span_warning("写入存档文件失败,请重试."))
 		return FALSE
 
 	WRITE_FILE(S["version"], savefile_version)
@@ -633,7 +633,7 @@
 	try
 		WRITE_FILE(S["savefile_write_test"], "lebowskilebowski")
 	catch
-		to_chat(parent, span_warning("Writing to the savefile failed, please try again."))
+		to_chat(parent, span_warning("写入存档文件失败,请重试."))
 		return FALSE
 
 	be_special = sanitize_integer(be_special, NONE, MAX_BITFLAG, initial(be_special))

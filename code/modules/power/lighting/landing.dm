@@ -2,7 +2,7 @@
 	name = "landing light"
 	icon = 'icons/obj/landinglights.dmi'
 	icon_state = "landingstripe"
-	desc = "A landing light, if it's flashing stay clear!"
+	desc = "一个着陆灯,如果它在闪烁就离远点!"
 	anchored = TRUE
 	density = FALSE
 	layer = LOWER_RUNE_LAYER

@@ -12,7 +12,7 @@
 
 /obj/machinery/atmospherics/components/binary/pumpv
 	name = "gas pump"
-	desc = "A pump that moves gas by pressure."
+	desc = "一个通过压力移动气体的泵."
 	icon_state = "pump_map-2"
 	can_unwrench = FALSE
 	shift_underlay_only = FALSE
@@ -26,7 +26,7 @@
 /obj/machinery/atmospherics/components/binary/pump/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational())
-		to_chat(user, span_warning("You cannot unwrench [src], turn it off first!"))
+		to_chat(user, span_warning("你无法松开[src], 先把它关掉!"))
 		return FALSE
 
 

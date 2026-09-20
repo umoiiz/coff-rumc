@@ -25,7 +25,7 @@
 		return
 	if(H.bodytemperature < 400 && H.fire_stacks < 0)
 		return
-	to_chat(H, span_danger("Your precious wings burn to a crisp!"))
+	to_chat(H, span_danger("你珍贵的翅膀被烧成了焦炭!"))
 	H.moth_wings = "Burnt Off"
 	H.update_body()
 

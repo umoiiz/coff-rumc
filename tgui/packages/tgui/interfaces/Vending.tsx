@@ -71,7 +71,7 @@ export const Vending = (props) => {
       {showDesc ? (
         <Modal width="400px">
           <Box>{showDesc}</Box>
-          <Button content="Dismiss" onClick={() => setShowDesc(null)} />
+          <Button content="解散" onClick={() => setShowDesc(null)} />
         </Modal>
       ) : (
         currently_vending && (
@@ -82,7 +82,7 @@ export const Vending = (props) => {
       )}
       <Window.Content scrollable>
         <Section
-          title="Select an item"
+          title="选择一个物品"
           buttons={
             <>
               <Button
@@ -90,12 +90,12 @@ export const Vending = (props) => {
                 selected={showEmpty}
                 onClick={() => setShowEmpty(!showEmpty)}
               >
-                Show sold-out items
+                显示售罄物品
               </Button>
               <Button
                 icon="truck-loading"
                 color="good"
-                tooltip="Stock all loose items in the outlet back into the vending machine"
+                tooltip="将售货点内所有散落物品重新存入自动售货机"
                 onClick={() => act('vacuum')}
               />
             </>
@@ -148,13 +148,13 @@ const Buying = (props: BuyingModalProps) => {
   return (
     <Section title={'You have selected ' + vending.product_name}>
       <Box>
-        Please swipe your ID to pay for the article.
+        请刷您的ID以支付该物品.
         <Divider />
         <Button onClick={() => act('swipe')} icon="id-card" ml="6px">
-          Swipe
+          刷卡
         </Button>
         <Button onClick={() => act('cancel_buying')} icon="times">
-          Cancel
+          取消
         </Button>
       </Box>
     </Section>
@@ -211,7 +211,7 @@ const ProductEntry = (props: VendingProductEntryProps) => {
             disabled={!stock}
           >
             <Box color={product_color} bold>
-              Vend
+              售出
             </Box>
           </Button>
         </>
@@ -239,7 +239,7 @@ const Products = (props) => {
     <Section>
       <LabeledList>
         {displayed_records.length === 0 ? (
-          <Box color="red">No product loaded!</Box>
+          <Box color="red">未装载产品!</Box>
         ) : (
           displayed_records
             .filter((record) => !record.tab || record.tab === selectedTab)
@@ -311,7 +311,7 @@ const Premium = (props) => {
       buttons={
         coin && (
           <Button icon="donate" onClick={() => act('remove_coin')}>
-            Remove
+            移除
           </Button>
         )
       }

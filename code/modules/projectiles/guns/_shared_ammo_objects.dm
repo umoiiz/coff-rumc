@@ -6,7 +6,7 @@
 // Base type , meant to be overridden
 /obj/fire
 	name = "fire"
-	desc = "Ouch!"
+	desc = "哎哟!"
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/effects/fire.dmi'

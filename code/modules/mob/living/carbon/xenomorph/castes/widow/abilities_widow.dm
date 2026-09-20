@@ -4,7 +4,7 @@
 
 /datum/action/ability/activable/xeno/leash_ball
 	name = "Leash Ball"
-	desc = "Spit a huge web ball that snares groups of targets for a brief while."
+	desc = "吐出一个巨大的网球,短暂地束缚成组的目标。"
 	action_icon_state = "leash_ball"
 	action_icon = 'icons/Xeno/actions/widow.dmi'
 	ability_cost = 75
@@ -28,8 +28,8 @@
 	add_cooldown()
 
 /obj/structure/xeno/aoe_leash
-	name = "Snaring Web"
-	desc = "Sticky and icky. Destroy it when you are stuck!"
+	name = "束缚网"
+	desc = "黏糊糊的。当你被粘住时摧毁它!"
 	icon_state = "aoe_leash"
 	icon = 'icons/Xeno/Effects.dmi'
 	destroy_sound = 'sound/effects/alien/resin_break1.ogg'
@@ -88,13 +88,13 @@
 /obj/structure/xeno/aoe_leash/attack_alien(mob/living/carbon/xenomorph/xeno_attacker, damage_amount = xeno_attacker.xeno_caste.melee_damage, damage_type = BRUTE, armor_type = MELEE, effects = TRUE, armor_penetration, isrightclick = FALSE)
 	if(xeno_attacker.status_flags & INCORPOREAL)
 		return
-	xeno_attacker.visible_message(span_xenonotice("\The [xeno_attacker] starts tearing down \the [src]!"), \
-	span_xenonotice("We start to tear down \the [src]."))
+	xeno_attacker.visible_message(span_xenonotice("\The [xeno_attacker]开始拆除\the [src]!"), \
+	span_xenonotice("我们开始拆除\the [src]。"))
 	if(!do_after(xeno_attacker, 1 SECONDS, NONE, xeno_attacker, BUSY_ICON_GENERIC) || QDELETED(src))
 		return
 	xeno_attacker.do_attack_animation(src, ATTACK_EFFECT_CLAW)
-	xeno_attacker.visible_message(span_xenonotice("\The [xeno_attacker] tears down \the [src]!"), \
-	span_xenonotice("We tear down \the [src]."))
+	xeno_attacker.visible_message(span_xenonotice("\The [xeno_attacker]拆除了\the [src]!"), \
+	span_xenonotice("我们拆除了\the [src]。"))
 	playsound(src, destroy_sound, 25)
 	take_damage(max_integrity)
 
@@ -104,7 +104,7 @@
 
 /datum/action/ability/xeno_action/create_spiderling
 	name = "Birth Spiderling"
-	desc = "Give birth to a spiderling after a short charge-up. The spiderlings will follow you until death. You can only deploy 5 spiderlings at one time."
+	desc = "短暂蓄力后产下一只小蜘蛛。小蜘蛛会跟随你直到死亡。你一次只能部署5只小蜘蛛。"
 	action_icon_state = "spawn_spiderling"
 	action_icon = 'icons/Xeno/actions/widow.dmi'
 	ability_cost = 80
@@ -165,7 +165,7 @@
 		return fail_activate()
 
 	if(length(spiderlings) >= xeno_owner.xeno_caste.max_spiderlings)
-		xeno_owner.balloon_alert(xeno_owner, "Max Spiderlings")
+		xeno_owner.balloon_alert(xeno_owner, "小蜘蛛已达上限")
 		return fail_activate()
 
 	if(!do_after(owner, 1.5 SECONDS, IGNORE_LOC_CHANGE, owner, BUSY_ICON_DANGER))
@@ -198,7 +198,7 @@
 
 /datum/action/ability/xeno_action/burrow
 	name = "Burrow"
-	desc = "Burrow into the ground, allowing you and your active spiderlings to hide in plain sight. You cannot use abilities, attack nor move while burrowed. Use the ability again to unburrow if you're already burrowed."
+	desc = "钻入地面,让你和你的活跃小蜘蛛隐藏在明处。钻地期间你无法使用技能、攻击或移动。如果你已经钻地,再次使用该技能可钻出地面。"
 	action_icon_state = "burrow"
 	action_icon = 'icons/Xeno/actions/widow.dmi'
 	ability_cost = 0
@@ -224,7 +224,7 @@
 /datum/action/ability/xeno_action/burrow/proc/xeno_burrow()
 	SIGNAL_HANDLER
 	if(!HAS_TRAIT(xeno_owner, TRAIT_BURROWED))
-		to_chat(xeno_owner, span_xenowarning("We start burrowing into the ground..."))
+		to_chat(xeno_owner, span_xenowarning("我们开始钻入地面..."))
 		INVOKE_ASYNC(src, PROC_REF(xeno_burrow_doafter))
 		return
 	UnregisterSignal(xeno_owner, COMSIG_XENOMORPH_TAKING_DAMAGE)
@@ -245,7 +245,7 @@
 /datum/action/ability/xeno_action/burrow/proc/xeno_burrow_doafter()
 	if(!do_after(owner, 3 SECONDS, NONE, null, BUSY_ICON_DANGER))
 		return
-	to_chat(owner, span_xenowarning("We are now burrowed, hidden in plain sight and ready to strike."))
+	to_chat(owner, span_xenowarning("我们现在已钻地,隐藏在明处并准备出击。"))
 	// This part here actually burrows the xeno
 	owner.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	owner.density = FALSE
@@ -267,7 +267,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/attach_spiderlings
 	name = "Attach Spiderlings"
-	desc = "Attach your current spiderlings to you "
+	desc = "将你当前的小蜘蛛附着到你身上"
 	action_icon_state = "attach_spiderling"
 	action_icon = 'icons/Xeno/actions/widow.dmi'
 	ability_cost = 0
@@ -288,7 +288,7 @@
 		return
 	var/datum/action/ability/xeno_action/create_spiderling/create_spiderling_action = xeno_owner.actions_by_path[/datum/action/ability/xeno_action/create_spiderling]
 	if(!(length(create_spiderling_action.spiderlings)))
-		xeno_owner.balloon_alert(xeno_owner, "No spiderlings")
+		xeno_owner.balloon_alert(xeno_owner, "没有小蜘蛛")
 		return fail_activate()
 	var/list/mob/living/carbon/xenomorph/spiderling/remaining_spiderlings = create_spiderling_action.spiderlings.Copy()
 	// First make the spiderlings stop what they are doing and return to the widow
@@ -317,7 +317,7 @@
 
 /datum/action/ability/activable/xeno/web_spit
 	name = "Web Spit"
-	desc = "Stun and blind the target with a web projectile"
+	desc = "用网弹击晕并致盲目标"
 	action_icon_state = "web_projectile"
 	action_icon = 'icons/Xeno/actions/widow.dmi'
 	ability_cost = 100
@@ -342,7 +342,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/widow_unleash
 	name = "Unleash Spiderlings"
-	desc = "Send out your spiderlings to attack nearby humans"
+	desc = "派出你的小蜘蛛攻击附近的人类"
 	action_icon_state = "unleash"
 	action_icon = 'icons/Xeno/actions/widow.dmi'
 	keybinding_signals = list(
@@ -351,16 +351,16 @@
 
 /datum/action/ability/xeno_action/widow_unleash/action_activate(mob/living/victim)
 	if(SEND_SIGNAL(owner, COMSIG_SPIDERLING_CHANGE_ALL_ORDER, SPIDERLING_ATTACK))
-		owner.balloon_alert(owner, "attacking")
+		owner.balloon_alert(owner, "攻击中")
 	else
-		owner.balloon_alert(owner, "fail")
+		owner.balloon_alert(owner, "失败")
 
 // ***************************************
 // *********** Recall spiderlings
 // ***************************************
 /datum/action/ability/xeno_action/widow_recall
 	name = "Recall Spiderlings"
-	desc = "Recall your siderlings to follow you once more"
+	desc = "召回你的小蜘蛛再次跟随你"
 	action_icon_state = "recall"
 	action_icon = 'icons/Xeno/actions/widow.dmi'
 	keybinding_signals = list(
@@ -369,13 +369,13 @@
 
 /datum/action/ability/xeno_action/widow_recall/action_activate(mob/living/victim)
 	if(SEND_SIGNAL(owner, COMSIG_SPIDERLING_CHANGE_ALL_ORDER, SPIDERLING_RECALL))
-		owner.balloon_alert(owner, "recalling")
+		owner.balloon_alert(owner, "召回中")
 	else
-		owner.balloon_alert(owner, "fail")
+		owner.balloon_alert(owner, "失败")
 
 /datum/action/ability/xeno_action/spider_venom
 	name = "Widow's Poison"
-	desc = "Poison your target with incapacitating venom"
+	desc = "用麻痹毒液使目标中毒"
 	ability_cost = 0
 	cooldown_duration = 0
 	keybind_flags = ABILITY_USE_STAGGERED | ABILITY_IGNORE_SELECTED_ABILITY

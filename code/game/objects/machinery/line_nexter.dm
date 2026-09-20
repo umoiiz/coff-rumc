@@ -1,7 +1,7 @@
 
 /obj/machinery/line_nexter
 	name = "Turnstile"
-	desc = "a one way barrier combined with a bar to pull people out of line."
+	desc = "一种单向屏障,结合一根横杆用于将人从队列中拉出。"
 	icon = 'icons/obj/structures/barricades/misc.dmi'
 	density = TRUE
 	icon_state = "turnstile"

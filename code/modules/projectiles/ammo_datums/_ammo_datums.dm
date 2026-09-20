@@ -129,15 +129,15 @@
 	if(isxeno(victim))
 		var/mob/living/carbon/xenomorph/xeno_victim = victim
 		if(xeno_victim.fortify) //If we're fortified we don't give a shit about staggerstun.
-			impact_message += span_xenodanger("Your fortified stance braces you against the impact.")
+			impact_message += span_xenodanger("你的防御姿态让你稳住了身形,抵御了冲击。")
 			return
 
 		if(xeno_victim.endure) //Endure allows us to ignore staggerstun.
-			impact_message += span_xenodanger("You endure the impact from [proj], shrugging off its effects.")
+			impact_message += span_xenodanger("你承受住了来自[proj]的冲击,对其效果毫不在意。")
 			return
 
 		if(xeno_victim.crest_defense) //Crest defense halves all effects, and protects us from the stun.
-			impact_message += span_xenodanger("Your crest protects you against some of the impact.")
+			impact_message += span_xenodanger("你的头冠为你抵挡了部分冲击。")
 			slowdown *= 0.5
 			stagger *= 0.5
 			stun = 0
@@ -160,26 +160,26 @@
 
 		if(knockback)
 			if(isxeno(victim))
-				impact_message += span_xenodanger("The blast knocks you off your feet!")
+				impact_message += span_xenodanger("爆炸将你掀翻在地!")
 			else
-				impact_message += span_userdanger("The blast knocks you off your feet!")
+				impact_message += span_userdanger("爆炸将你掀翻在地!")
 			victim.knockback(proj, knockback, 5)
 
 	//Check for and apply soft CC
 	if(iscarbon(victim))
 		var/mob/living/carbon/carbon_victim = victim
 		#if DEBUG_STAGGER_SLOWDOWN
-		to_chat(world, span_debuginfo("Damage: Initial stagger is: <b>[carbon_victim.AmountStaggered()]</b>"))
+		to_chat(world, span_debuginfo("伤害: 初始硬直为: <b>[carbon_victim.AmountStaggered()]</b>"))
 		#endif
 		if(!HAS_TRAIT(carbon_victim, TRAIT_STAGGER_RESISTANT)) //Some mobs like the Queen are immune to projectile stagger
 			carbon_victim.Stagger(stagger)
 		#if DEBUG_STAGGER_SLOWDOWN
-		to_chat(world, span_debuginfo("Damage: Final stagger is: <b>[carbon_victim.AmountStaggered()]</b>"))
-		to_chat(world, span_debuginfo("Damage: Initial slowdown is: <b>[carbon_victim.slowdown]</b>"))
+		to_chat(world, span_debuginfo("伤害: 最终硬直为: <b>[carbon_victim.AmountStaggered()]</b>"))
+		to_chat(world, span_debuginfo("伤害: 初始减速为: <b>[carbon_victim.slowdown]</b>"))
 		#endif
 		carbon_victim.add_slowdown(slowdown)
 		#if DEBUG_STAGGER_SLOWDOWN
-		to_chat(world, span_debuginfo("Damage: Final slowdown is: <b>[carbon_victim.slowdown]</b>"))
+		to_chat(world, span_debuginfo("伤害: 最终减速为: <b>[carbon_victim.slowdown]</b>"))
 		#endif
 	to_chat(victim, "[impact_message]") //Summarize all the bad shit that happened
 
@@ -189,8 +189,8 @@
 	for(var/mob/living/carbon/victim in orange(1, target))
 		if(proj.firer == victim)
 			continue
-		victim.visible_message(span_danger("[victim] is hit by backlash from \a [proj.name]!"),
-			isxeno(victim) ? span_xenodanger("We are hit by backlash from \a </b>[proj.name]</b>!") : span_userdanger("You are hit by backlash from \a </b>[proj.name]</b>!"))
+		victim.visible_message(span_danger("[victim]被\a [proj.name]的反冲击中!"),
+			isxeno(victim) ? span_xenodanger("我们被\a </b>[proj.name]</b>的反冲击中!") : span_userdanger("你被\a </b>[proj.name]</b>的反冲击中!"))
 		victim.apply_damage(proj.damage * airburst_multiplier, proj.ammo.damage_type, blocked = armor_type, updating_health = TRUE)
 
 ///handles the probability of a projectile hit to trigger fire_burst, based off actual damage done
@@ -213,10 +213,10 @@
 		CRASH("fire_burst() error: target [isnull(target) ? "null" : target] | proj [isnull(proj) ? "null" : proj]")
 	for(var/mob/living/carbon/victim in range(1, target))
 		if(victim == target)
-			victim.visible_message(span_danger("[victim] bursts into flames as they are deflagrated by \a [proj.name]!"))
+			victim.visible_message(span_danger("[victim]被\a [proj.name]引爆,瞬间燃起火焰!"))
 		else
-			victim.visible_message(span_danger("[victim] is scorched by [target] as they burst into flames!"),
-				isxeno(victim) ? span_xenodanger("We are scorched by [target] as they burst into flames!") : span_userdanger("you are scorched by [target] as they burst into flames!"))
+			victim.visible_message(span_danger("[victim]被[target]烧焦,瞬间燃起火焰!"),
+				isxeno(victim) ? span_xenodanger("我们被[target]烧焦,瞬间燃起火焰!") : span_userdanger("你被[target]烧焦,瞬间燃起火焰!"))
 		//Damages the victims, inflicts brief stagger+slow, and ignites
 		victim.apply_damage(fire_burst_damage, BURN, blocked = FIRE, updating_health = TRUE)
 

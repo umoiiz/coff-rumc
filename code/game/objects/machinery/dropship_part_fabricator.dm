@@ -1,6 +1,6 @@
 /obj/machinery/dropship_part_fabricator
 	name = "dropship part fabricator"
-	desc = "A large automated 3D printer for producing new dropship parts."
+	desc = "一台用于生产新运输机部件的大型自动化3D打印机."
 	density = TRUE
 	anchored = TRUE
 	use_power = IDLE_POWER_USE
@@ -80,11 +80,11 @@
 		return
 
 	if(SSpoints.dropship_points < cost) //We'll check for points again here in case queue has taken too many points
-		balloon_alert_to_viewers("Not enough points")
+		balloon_alert_to_viewers("点数不足")
 		next_queue()
 		return
 
-	balloon_alert_to_viewers("Printing...")
+	balloon_alert_to_viewers("打印中...")
 	playsound(src, 'sound/machines/dropship_fabricator.ogg', 55)
 	printing = part_type
 	SSpoints.dropship_points -= cost
@@ -136,7 +136,7 @@
 		return TRUE
 
 	//There's nothing left, finish up queue
-	balloon_alert_to_viewers("Printing complete!")
+	balloon_alert_to_viewers("打印完成!")
 	playsound(src,'sound/machines/ping.ogg', 40, FALSE)
 	printing = null
 	busy = FALSE
@@ -150,7 +150,7 @@
 	switch(action)
 		if("clear")
 			queue = list()
-			balloon_alert_to_viewers("Entire queue cleared")
+			balloon_alert_to_viewers("整个队列已清空")
 			. = TRUE
 
 		if("build")
@@ -159,11 +159,11 @@
 				return
 
 			if(SSpoints.dropship_points < get_cost(build_type))
-				balloon_alert(usr, "Not enough points")
+				balloon_alert(usr, "点数不足")
 				return
 
 			if(busy)
-				balloon_alert(usr, "Part added to queue")
+				balloon_alert(usr, "部件已加入队列")
 				queue.Add(list(list(build_type, usr)))
 				. = TRUE
 				return
@@ -173,16 +173,16 @@
 
 /obj/machinery/dropship_part_fabricator/attack_powerloader(mob/living/user, obj/item/powerloader_clamp/attached_clamp)
 	if(busy)
-		balloon_alert(user, "Busy!")
+		balloon_alert(user, "忙碌中!")
 		playsound(src, 'sound/machines/buzz-two.ogg', 40, 1)
 		return
 	if(istype(attached_clamp.loaded, /obj/structure/dropship_equipment/cas))
 		var/obj/structure/dropship_equipment/equipment = attached_clamp.loaded
 		if(!equipment.point_cost)
-			balloon_alert(user, "Worthless!")
+			balloon_alert(user, "毫无价值!")
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 40, 1)
 			return
-		balloon_alert(user, "Recycled for [equipment.point_cost]")
+		balloon_alert(user, "回收获得[equipment.point_cost]")
 		SSpoints.dropship_points += equipment.point_cost
 		equipment.moveToNullspace()
 		qdel(equipment)
@@ -192,14 +192,14 @@
 	if(istype(attached_clamp.loaded, /obj/structure/ship_ammo/cas))
 		var/obj/structure/ship_ammo/ammo = attached_clamp.loaded
 		if(!ammo.point_cost)
-			balloon_alert(user, "Worthless!")
+			balloon_alert(user, "毫无价值!")
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 40, 1)
 			return
 		if(ammo.max_ammo_count != ammo.ammo_count)
-			balloon_alert(user, "Not full!")
+			balloon_alert(user, "未装满!")
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 40, 1)
 			return
-		balloon_alert(user, "Recycled for [ammo.point_cost]")
+		balloon_alert(user, "回收获得[ammo.point_cost]")
 		SSpoints.dropship_points += ammo.point_cost
 		ammo.moveToNullspace()
 		qdel(ammo)

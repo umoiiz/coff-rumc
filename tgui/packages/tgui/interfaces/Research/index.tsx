@@ -31,7 +31,7 @@ export const Research = (props) => {
           style={{
             margin: '0.2em',
           }}
-          content={anchored ? 'Release' : 'Lock'}
+          content={anchored ? '释放' : '锁定'}
           disabled={researching}
           icon={anchored ? 'lock' : 'lock-open'}
           onClick={() => act('switch_anchored')}
@@ -42,7 +42,7 @@ export const Research = (props) => {
         {init_resource ? (
           constructResourceInfo(init_resource, act, researching)
         ) : (
-          <Section title="Base resource">{'No resource inserted'}</Section>
+          <Section title="基础资源">{'No resource inserted'}</Section>
         )}
         {init_resource ? (
           init_resource.rewards.length > 0 ? (
@@ -70,7 +70,7 @@ const constructResourceInfo = (
       <Flex direction="row">
         <Flex.Item basis="auto">
           <Button
-            content="Research item"
+            content="研究物品"
             disabled={researching}
             icon="prescription-bottle"
             onClick={() => act('start_research')}
@@ -106,7 +106,7 @@ const RarityInfo = (rewards_list: RewardTier[]) => {
   rewards_list = objectToArray(rewards_list);
 
   return (
-    <Section title="Reward tiers info and possible rewards" p="5px">
+    <Section title="奖励等级信息及可能奖励" p="5px">
       {rewards_list.map((tier) => constructTierInfo(tier))}
     </Section>
   );

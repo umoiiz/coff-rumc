@@ -33,15 +33,15 @@
 	switch(state)
 		if(GRAB_PASSIVE)
 			damage += base_damage
-			grabbed_mob.visible_message(span_warning("[user] slams [grabbed_mob] against [src]!"))
+			grabbed_mob.visible_message(span_warning("[user] 将 [grabbed_mob] 猛撞向 [src]!"))
 			log_combat(user, grabbed_mob, "slammed", "", "against [src]")
 		if(GRAB_AGGRESSIVE)
 			damage += base_damage * 1.5
-			grabbed_mob.visible_message(span_danger("[user] bashes [grabbed_mob] against [src]!"))
+			grabbed_mob.visible_message(span_danger("[user] 将 [grabbed_mob] 猛击向 [src]!"))
 			log_combat(user, grabbed_mob, "bashed", "", "against [src]")
 		if(GRAB_NECK)
 			damage += base_damage * 2
-			grabbed_mob.visible_message(span_danger("<big>[user] crushes [grabbed_mob] against [src]!</big>"))
+			grabbed_mob.visible_message(span_danger("<big>[user] 将 [grabbed_mob] 碾压向 [src]!</big>"))
 			log_combat(user, grabbed_mob, "crushed", "", "against [src]")
 	grabbed_mob.apply_damage(damage, blocked = MELEE, updating_health = TRUE)
 	apply_damage(damage, blocked = MELEE, updating_health = TRUE)
@@ -72,7 +72,7 @@
 		O.stop_throw()
 		apply_damage(O.throwforce*(speed * 0.2), O.damtype, BODY_ZONE_CHEST, MELEE, is_sharp(O), has_edge(O), TRUE, O.penetration)
 
-	visible_message(span_warning("[src] has been hit by [AM]."), null, null, 5)
+	visible_message(span_warning("[src] 被 [AM] 击中了."), null, null, 5)
 	if(ismob(AM.thrower))
 		var/mob/M = AM.thrower
 		if(M.client)
@@ -85,7 +85,7 @@
 		if(W.sharp && prob(W.embedding.embed_chance))
 			W.embed_into(src)
 	if(AM.throw_source)
-		visible_message(span_warning("[src] staggers under the impact!"),span_warning("You stagger under the impact!"), null, 5)
+		visible_message(span_warning("[src] 在冲击下踉跄!"),span_warning("你在冲击下踉跄!"), null, 5)
 		src.throw_at(get_edge_target_turf(src, get_dir(AM.throw_source, src)), 1, speed * 0.5)
 
 /mob/living/turf_collision(turf/T, speed)
@@ -119,8 +119,8 @@
 	if(fire_stacks > 0 && !on_fire)
 		on_fire = TRUE
 		RegisterSignal(src, COMSIG_LIVING_DO_RESIST, PROC_REF(resist_fire))
-		to_chat(src, span_danger("You are on fire! Use Resist to put yourself out!"))
-		visible_message(span_danger("[src] bursts into flames!"), isxeno(src) ? span_xenodanger("You burst into flames!") : span_userdanger("You burst into flames!"))
+		to_chat(src, span_danger("你着火了! 使用抵抗来扑灭自己!"))
+		visible_message(span_danger("[src] 突然燃烧起来!"), isxeno(src) ? span_xenodanger("你突然燃烧起来!") : span_userdanger("你突然燃烧起来!"))
 		update_fire()
 		SEND_SIGNAL(src, COMSIG_LIVING_IGNITED, fire_stacks)
 		return TRUE
@@ -196,7 +196,7 @@
 	if(pass_flags & PASS_FIRE)
 		return FALSE
 	if(hard_armor.getRating(FIRE) >= 100)
-		to_chat(src, span_warning("You are untouched by the flames."))
+		to_chat(src, span_warning("你未受火焰波及."))
 		return FALSE
 
 	. = TRUE
@@ -209,7 +209,7 @@
 			apply_status_effect(STATUS_EFFECT_MELTING, 2)
 
 	take_overall_damage(rand(10, burn_level), BURN, FIRE, updating_health = TRUE, max_limbs = 4)
-	to_chat(src, span_warning("You are burned!"))
+	to_chat(src, span_warning("你被烧伤了!"))
 
 	adjust_fire_stacks(burn_level)
 	if(on_fire || !fire_stacks)
@@ -222,15 +222,15 @@
 	fire_stacks = max(fire_stacks - rand(3, 6), 0)
 	var/turf/T = get_turf(src)
 	if(istype(T, /turf/open/floor/plating/ground/snow))
-		visible_message(span_danger("[src] rolls in the snow, putting themselves out!"), \
-		span_notice("You extinguish yourself in the snow!"), null, 5)
+		visible_message(span_danger("[src] 在雪地中翻滚, 扑灭了自己身上的火!"), \
+		span_notice("你在雪地中扑灭了自己!"), null, 5)
 		ExtinguishMob()
 	else
-		visible_message(span_danger("[src] rolls on the floor, trying to put themselves out!"), \
-		span_notice("You stop, drop, and roll!"), null, 5)
+		visible_message(span_danger("[src] 在地板上翻滚, 试图扑灭自己身上的火!"), \
+		span_notice("你停下, 倒下, 翻滚!"), null, 5)
 		if(fire_stacks <= 0)
-			visible_message(span_danger("[src] has successfully extinguished themselves!"), \
-			span_notice("You extinguish yourself."), null, 5)
+			visible_message(span_danger("[src] 成功扑灭了自己身上的火!"), \
+			span_notice("你扑灭了自己."), null, 5)
 			ExtinguishMob()
 	Paralyze(3 SECONDS)
 
@@ -262,10 +262,10 @@
 		ExtinguishMob()
 	if(CHECK_BITFIELD(S.smoke_traits, SMOKE_BLISTERING))
 		adjust_fire_loss(15 * bio_protection)
-		to_chat(src, span_danger("It feels as if you've been dumped into an open fire!"))
+		to_chat(src, span_danger("感觉就像你被扔进了一堆明火里!"))
 	if(CHECK_BITFIELD(S.smoke_traits, SMOKE_XENO_ACID))
 		if(prob(25 * acid_protection))
-			to_chat(src, span_danger("Your skin feels like it is melting away!"))
+			to_chat(src, span_danger("你的皮肤感觉像是在融化!"))
 		adjust_fire_loss(max(S.strength * rand(20, 23) * acid_protection - acid_hard_protection), 0)
 	if(CHECK_BITFIELD(S.smoke_traits, SMOKE_XENO_TOXIC))
 		if(HAS_TRAIT(src, TRAIT_INTOXICATION_IMMUNE))
@@ -306,15 +306,15 @@
 	add_slowdown(rad_strength * 0.5)
 	blur_eyes(rad_strength) //adds a visual indicator that you've just been irradiated
 	adjust_radiation(rad_strength * 20) //Radiation status effect, duration is in deciseconds
-	to_chat(src, span_warning("Your body tingles as you suddenly feel the strength drain from your body!"))
+	to_chat(src, span_warning("你的身体刺痛, 你突然感到力量从身体中流失!"))
 
 /mob/living/pre_crush_act(mob/living/carbon/xenomorph/charger, datum/action/ability/xeno_action/ready_charge/charge_datum)
 	return (stat == DEAD ? 0 : CHARGE_SPEED(charge_datum) * charge_datum.crush_living_damage)
 
 /mob/living/post_crush_act(mob/living/carbon/xenomorph/charger, datum/action/ability/xeno_action/ready_charge/charge_datum)
 	if(density && ((mob_size == charger.mob_size && charger.is_charging <= CHARGE_MAX) || mob_size > charger.mob_size))
-		charger.visible_message(span_danger("[charger] rams into [src] and skids to a halt!"),
-		span_xenowarning("We ram into [src] and skid to a halt!"))
+		charger.visible_message(span_danger("[charger] 撞上 [src] 并滑行停下!"),
+		span_xenowarning("我们撞上 [src] 并滑行停下!"))
 		charge_datum.do_stop_momentum(FALSE)
 		step(src, charger.dir)
 		return PRECRUSH_STOPPED
@@ -327,8 +327,8 @@
 
 	if(anchored)
 		charge_datum.do_stop_momentum(FALSE)
-		charger.visible_message(span_danger("[charger] rams into [src] and skids to a halt!"),
-			span_xenowarning("We ram into [src] and skid to a halt!"))
+		charger.visible_message(span_danger("[charger] 撞上 [src] 并滑行停下!"),
+			span_xenowarning("我们撞上 [src] 并滑行停下!"))
 		return PRECRUSH_STOPPED
 
 	switch(charge_datum.charge_type)
@@ -346,8 +346,8 @@
 			if(destination != loc)
 				throw_at(destination, fling_dist, 1, charger, TRUE)
 
-			charger.visible_message(span_danger("[charger] rams [src]!"),
-			span_xenodanger("We ram [src]!"))
+			charger.visible_message(span_danger("[charger] 撞击 [src]!"),
+			span_xenodanger("我们撞击 [src]!"))
 			charge_datum.speed_down(1) //Lose one turf worth of speed.
 			GLOB.round_statistics.bull_crush_hit++
 			SSblackbox.record_feedback(FEEDBACK_TALLY, "round_statistics", 1, "bull_crush_hit")
@@ -361,8 +361,8 @@
 				var/turf/destination = get_step(loc, charger.dir)
 				if(destination)
 					throw_at(destination, 1, 1, charger, FALSE)
-				charger.visible_message(span_danger("[charger] gores [src]!"),
-					span_xenowarning("We gore [src] and skid to a halt!"))
+				charger.visible_message(span_danger("[charger] 用角刺穿 [src]!"),
+					span_xenowarning("我们用角刺穿 [src] 并滑行停下!"))
 				GLOB.round_statistics.bull_gore_hit++
 				SSblackbox.record_feedback(FEEDBACK_TALLY, "round_statistics", 1, "bull_gore_hit")
 
@@ -380,8 +380,8 @@
 			if(destination != loc)
 				throw_at(destination, fling_dist, 1, charger, TRUE)
 
-			charger.visible_message(span_danger("[charger] rams into [src] and flings [p_them()] away!"),
-				span_xenowarning("We ram into [src] and skid to a halt!"))
+			charger.visible_message(span_danger("[charger] 撞上 [src] 并将 [p_them()] 甩飞出去!"),
+				span_xenowarning("我们撞上 [src] 并滑行停下!"))
 			GLOB.round_statistics.bull_headbutt_hit++
 			SSblackbox.record_feedback(FEEDBACK_TALLY, "round_statistics", 1, "bull_headbutt_hit")
 

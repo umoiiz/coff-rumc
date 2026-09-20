@@ -5,7 +5,7 @@
 	icon_state = "manifold4w-2"
 
 	name = "4-way pipe manifold"
-	desc = "A manifold composed of regular pipes."
+	desc = "由普通管道组成的分歧管."
 
 	initialize_directions = NORTH|SOUTH|EAST|WEST
 

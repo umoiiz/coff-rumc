@@ -77,7 +77,7 @@
 		if(living_jumper.incapacitated())
 			return FALSE
 		if(stamina_cost && (living_jumper.get_stamina_loss() > -stamina_cost))
-			to_chat(living_jumper, span_warning("Catch your breath!"))
+			to_chat(living_jumper, span_warning("喘口气!"))
 			return FALSE
 	return TRUE
 

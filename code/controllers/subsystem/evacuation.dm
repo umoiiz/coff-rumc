@@ -87,8 +87,8 @@ SUBSYSTEM_DEF(evacuation)
 	var/sec_level_changed = SSsecurity_level.set_level(SEC_LEVEL_DELTA, FALSE) // TRUE if we weren't already on Delta alert
 	priority_announce(
 		type = ANNOUNCEMENT_PRIORITY,
-		title = "[sec_level_changed ? "Объявлена чрезвычайная ситуация Код Дельта. " : ""]Запуск капсул состоится через [EVACUATION_AUTOMATIC_DEPARTURE/600] минут.",
-		message = "Процесс экстренной эвакуации был запущен. Пожалуйста, проследуйте к спасательным капсулам.[sec_level_changed ? "\n\nКонтроль над ситуацией утерян. Всему персоналу приготовиться к неминуемуму. Это НЕ учебная тревога." : ""]",
+		title = "[sec_level_changed ? "Объявлена чрезвычайная ситуация Код Дельта. " : ""]逃生舱将在 [EVACUATION_AUTOMATIC_DEPARTURE/600] 分钟后发射.",
+		message = "紧急撤离程序已启动. 请前往逃生舱.[sec_level_changed ? "\n\nКонтроль над ситуацией утерян. Всему персоналу приготовиться к неминуемуму. Это НЕ учебная тревога." : ""]",
 		sound = 'sound/AI/evacuate.ogg',
 		color_override = sec_level_changed ? "purple" : "orange"
 	)
@@ -102,7 +102,7 @@ SUBSYSTEM_DEF(evacuation)
 	if(evac_status != EVACUATION_STATUS_INITIATING)
 		return FALSE
 	evac_status = EVACUATION_STATUS_IN_PROGRESS
-	priority_announce("Приказ об эвакуации подтвержден. Запуск спасательных капсул.", title = "Экстренная Активация", type = ANNOUNCEMENT_PRIORITY, sound = 'sound/AI/evacuation_confirmed.ogg', color_override = "orange")
+	priority_announce("撤离命令已确认. 发射逃生舱.", title = "紧急激活", type = ANNOUNCEMENT_PRIORITY, sound = 'sound/AI/evacuation_confirmed.ogg', color_override = "orange")
 	return TRUE
 
 /datum/controller/subsystem/evacuation/proc/cancel_evacuation()
@@ -111,7 +111,7 @@ SUBSYSTEM_DEF(evacuation)
 	GLOB.enter_allowed = TRUE
 	evac_time = null
 	evac_status = EVACUATION_STATUS_STANDING_BY
-	priority_announce("Процесс эвакуации был отменен. Произвожу восстановление первичных систем...", title = "Экстренная Эвакуация", type = ANNOUNCEMENT_PRIORITY, sound = 'sound/AI/evacuate_cancelled.ogg', color_override = "orange")
+	priority_announce("撤离程序已取消. 正在恢复主系统...", title = "紧急撤离", type = ANNOUNCEMENT_PRIORITY, sound = 'sound/AI/evacuate_cancelled.ogg', color_override = "orange")
 	for(var/obj/docking_port/mobile/escape_pod/pod AS in pod_list)
 		pod.unprep_for_launch()
 	return TRUE
@@ -125,7 +125,7 @@ SUBSYSTEM_DEF(evacuation)
 			. = "NOW"
 
 /datum/controller/subsystem/evacuation/proc/announce_evac_completion()
-	priority_announce("Эвакуация завершена. Оставшемуся экипажу требуется завершить миссию.", title = "Эвакуация Завершена", type = ANNOUNCEMENT_PRIORITY, sound = 'sound/AI/evacuation_complete.ogg', color_override = "orange")
+	priority_announce("撤离已完成. 剩余船员需要完成任务.", title = "撤离完成", type = ANNOUNCEMENT_PRIORITY, sound = 'sound/AI/evacuation_complete.ogg', color_override = "orange")
 	evac_status = EVACUATION_STATUS_COMPLETE
 
 /datum/controller/subsystem/evacuation/proc/enable_self_destruct(override)
@@ -148,7 +148,7 @@ SUBSYSTEM_DEF(evacuation)
 	for(i in SSevacuation.dest_rods)
 		I = i
 		if(I.active_state == SELF_DESTRUCT_MACHINE_ARMED && !override)
-			dest_master.visible_message(span_warning("WARNING: Unable to cancel detonation. Please disarm all control rods."))
+			dest_master.visible_message(span_warning("警告: 无法取消引爆. 请解除所有控制棒."))
 			return FALSE
 
 	dest_status = NUKE_EXPLOSION_INACTIVE
@@ -158,7 +158,7 @@ SUBSYSTEM_DEF(evacuation)
 			I.toggle(TRUE)
 	dest_master.toggle(TRUE)
 	dest_index = 1
-	priority_announce("Протокол самоуничтожения деактивирован. Перезапуск систем.", title = "Протокол Самоуничтожения", type = ANNOUNCEMENT_PRIORITY, sound = 'sound/AI/selfdestruct_deactivated.ogg', color_override = "purple")
+	priority_announce("自毁协议已停用. 正在重启系统.", title = "自毁协议", type = ANNOUNCEMENT_PRIORITY, sound = 'sound/AI/selfdestruct_deactivated.ogg', color_override = "purple")
 	if(evac_status == EVACUATION_STATUS_STANDING_BY)
 		SSsecurity_level.set_level(SEC_LEVEL_RED, TRUE)
 	for(var/obj/machinery/floor_warn_light/self_destruct/light AS in alarm_lights)
@@ -173,10 +173,10 @@ SUBSYSTEM_DEF(evacuation)
 	for(var/i in dest_rods)
 		I = i
 		if(I.active_state != SELF_DESTRUCT_MACHINE_ARMED && !override)
-			dest_master.visible_message(span_warning("WARNING: Unable to trigger detonation. Please arm all control rods."))
+			dest_master.visible_message(span_warning("警告: 无法触发引爆. 请激活所有控制棒."))
 			return FALSE
 
-	priority_announce("ТРЕВОГА. ТРЕВОГА. ПРОТОКОЛ САМОУНИЧТОЖЕНИЯ ЗАВЕРШЕН. ТРЕВОГА. ТРЕВОГА. ДЕТОНАЦИЯ.", title = "Протокол Самоуничтожения", type = ANNOUNCEMENT_PRIORITY, color_override = "purple")
+	priority_announce("警报. 警报. 自毁协议已完成. 警报. 警报. 引爆.", title = "自毁协议", type = ANNOUNCEMENT_PRIORITY, color_override = "purple")
 	GLOB.enter_allowed = FALSE
 	dest_status = NUKE_EXPLOSION_IN_PROGRESS
 	playsound(dest_master, 'sound/machines/alarm.ogg', 75, 0, 30)

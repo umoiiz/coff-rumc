@@ -1,8 +1,8 @@
 /obj/structure/showcase
-	name = "Showcase"
+	name = "展示"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "showcase_1"
-	desc = "A stand with the empty body of a cyborg bolted to it."
+	desc = "一个支架,上面用螺栓固定着一具空荡的赛博格躯体."
 	density = TRUE
 	anchored = TRUE
 	coverage = 15
@@ -16,11 +16,11 @@
 
 /obj/structure/showcase/four
 	icon_state = "showcase_4"
-	desc = "A stand with the empty shell of a mech bolted to it."
+	desc = "一个支架,上面用螺栓固定着一具空荡的机甲外壳."
 
 /obj/structure/showcase/five
 	icon_state = "showcase_5"
-	desc = "A stand with the empty shell of a mech bolted to it."
+	desc = "一个支架,上面用螺栓固定着一具空荡的机甲外壳."
 
 /obj/structure/showcase/six
 	icon_state = "showcase_6"
@@ -30,16 +30,16 @@
 
 /obj/machinery/showcase/mulebot
 	name = "Mulebot"
-	desc = "A Multiple Utility Load Effector bot."
+	desc = "一台多功能通用装载效应机器人."
 	icon_state = "mulebot0"
 
 /obj/structure/showcase/yaut
-	name = "alien sarcophagus"
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it."
+	name = "异形石棺"
+	desc = "一座古老而布满灰尘的坟墓,上面刻着奇怪的外星文字.最好别碰它."
 	icon_state = "yaut"
 
 /obj/structure/monorail
-	name = "monorail track"
+	name = "单轨轨道"
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "monorail"
 	density = FALSE
@@ -47,8 +47,8 @@
 	layer = LOW_OBJ_LAYER
 
 /obj/structure/mopbucket
-	name = "mop bucket"
-	desc = "Fill it with water, but don't forget a mop!"
+	name = "拖把桶"
+	desc = "把它装满水,但别忘了拿拖把!"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "mopbucket"
 	anchored = FALSE
@@ -69,18 +69,18 @@
 
 	if(istype(I, /obj/item/tool/mop))
 		if(reagents.total_volume < 1)
-			to_chat(user, span_warning("[src] is out of water!"))
+			to_chat(user, span_warning("[src]没水了!"))
 			return
 
 		reagents.trans_to(I, 5)
-		to_chat(user, span_notice("You wet [I] in [src]."))
+		to_chat(user, span_notice("你把[I]浸入[src]中."))
 		playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 
 /obj/structure/shipmast
-	name = "Ships Mast"
+	name = "船桅"
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "shipmast" //Thank you to Spyroshark and Arachnidnexus
-	desc = "A piece of old earth that was. The plaque reads<br><br><span class='name'>HMS Victory Sailed 1765 to 1922.</span><br><span class='name'>Relaunched 2393.</span><br><span class='name'>On loan from the First Sea Lord.</span><br><br>"
+	desc = "昔日旧地球的一件遗物.铭牌上写着<br><br><span class='name'>皇家海军胜利号,1765年至1922年服役.</span><br><span class='name'>2393年重新下水.</span><br><span class='name'>由第一海务大臣出借.</span><br><br>"
 	layer = ABOVE_MOB_LAYER
 	density = TRUE
 	anchored = TRUE
@@ -91,23 +91,23 @@
 		return
 	switch(user.a_intent)
 		if(INTENT_HELP)
-			visible_message("[usr] rubs the [src] for good luck.")
+			visible_message("[usr]抚摸[src]以求好运.")
 		if(INTENT_DISARM)
-			visible_message("[usr] pushes the [src]. It's surprisingly solid.")
+			visible_message("[usr]推了推[src].它出奇地坚固.")
 		if(INTENT_GRAB)
-			visible_message("[usr] hugs the [src].")
+			visible_message("[usr]拥抱了[src].")
 		if(INTENT_HARM)
-			visible_message("[usr] punches the [src] while letting out a muttered curse.")
+			visible_message("[usr]一边低声咒骂一边猛击[src].")
 
 //ICE COLONY RESEARCH DECORATION-----------------------//
 //Most of icons made by ~Morrinn
 /obj/structure/xenoautopsy
-	name = "Research thingies"
+	name = "研究玩意儿"
 	icon = 'icons/obj/alien_autopsy.dmi'
 	icon_state = "jarshelf_9"
 
 /obj/structure/xenoautopsy/jar_shelf
-	name = "jar shelf"
+	name = "罐子架"
 	icon_state = "jarshelf_0"
 	var/randomise = 1 //Random icon
 
@@ -117,9 +117,9 @@
 		icon_state = "jarshelf_[rand(0,9)]"
 
 /obj/structure/xenoautopsy/tank
-	name = "cryo tank"
+	name = "低温休眠舱"
 	icon_state = "tank_empty"
-	desc = "It is empty."
+	desc = "它是空的."
 	density = TRUE
 	max_integrity = 100
 	resistance_flags = UNACIDABLE
@@ -150,24 +150,24 @@
 		new occupant(loc)
 
 /obj/structure/xenoautopsy/tank/escaped
-	name = "broken cryo tank"
+	name = "损坏的低温休眠舱"
 	icon_state = "tank_escaped"
-	desc = "Something broke it..."
+	desc = "有什么东西把它弄坏了..."
 	broken_state = null
 
 /obj/structure/xenoautopsy/tank/broken
 	icon_state = "tank_broken"
-	desc = "Something broke it..."
+	desc = "有什么东西把它弄坏了..."
 	broken_state = null
 
 /obj/structure/xenoautopsy/tank/alien
 	icon_state = "tank_alien"
-	desc = "There is something big inside..."
+	desc = "里面有个很大的东西..."
 	occupant = /obj/item/alien_embryo
 
 /obj/structure/xenoautopsy/tank/hugger
 	icon_state = "tank_hugger"
-	desc = "There is something spider-like inside..."
+	desc = "里面有个蜘蛛状的东西..."
 	occupant = /obj/item/clothing/mask/facehugger
 	var/mob/living/carbon/xenomorph/facehugger/mob_occupant =  /mob/living/carbon/xenomorph/facehugger/ai
 
@@ -177,15 +177,15 @@
 
 /obj/structure/xenoautopsy/tank/larva
 	icon_state = "tank_larva"
-	desc = "There is something worm-like inside..."
+	desc = "里面有个蠕虫状的东西..."
 	occupant = /obj/item/alien_embryo
 	broken_state = /obj/structure/xenoautopsy/tank/broken
 
 /obj/item/alienjar
-	name = "sample jar"
+	name = "样本罐"
 	icon = 'icons/obj/alien_autopsy.dmi'
 	icon_state = "jar_sample"
-	desc = "Used to store organic samples inside for preservation."
+	desc = "用于在里面储存有机样本以作保存."
 
 /obj/item/alienjar/Initialize(mapload)
 	. = ..()
@@ -199,9 +199,9 @@
 //stairs
 
 /obj/structure/stairs
-	name = "Stairs"
+	name = "楼梯"
 	icon = 'icons/obj/structures/stairs.dmi'
-	desc = "Stairs.  You walk up and down them."
+	desc = "楼梯.你在上面走上走下."
 	icon_state = "rampbottom"
 	plane = FLOOR_PLANE // we want this to render below walls if we place them on top
 	layer = LOWER_RUNE_LAYER
@@ -305,8 +305,8 @@
 	icon_state = "staircorners_seamless"
 
 /obj/structure/plasticflaps //HOW DO YOU CALL THOSE THINGS ANYWAY
-	name = "\improper plastic flaps"
-	desc = "Completely impassable - or are they?"
+	name = "\improper 塑料帘"
+	desc = "完全无法通过 - 真的吗?"
 	icon = 'icons/obj/stationobjs.dmi' //Change this.
 	icon_state = "plasticflaps"
 	density = TRUE
@@ -340,11 +340,11 @@
 	return ..()
 
 /obj/structure/plasticflaps/mining //A specific type for mining that doesn't allow airflow because of them damn crates
-	name = "\improper Airtight plastic flaps"
-	desc = "Heavy duty, airtight, plastic flaps."
+	name = "\improper 气密塑料帘"
+	desc = "重型,气密,塑料帘."
 
 /obj/structure/plasticflaps/sturdy //Anti-unga flaps
-	desc = "Plastic flaps for transporting supplies."
+	desc = "用于运输物资的塑料帘."
 	obj_flags = null
 	resistance_flags = XENO_DAMAGEABLE
 
@@ -352,20 +352,20 @@
 	//Magmoor Cryopods
 
 /obj/structure/cryopods
-	name = "hypersleep chamber"
+	name = "超睡眠舱"
 	icon = 'icons/obj/machines/cryogenics.dmi'
 	icon_state = "body_scanner"
-	desc = "A large automated capsule with LED displays intended to put anyone inside into 'hypersleep'."
+	desc = "一个带有LED显示屏的大型自动化胶囊舱,旨在让里面的任何人进入\"超睡眠\"状态."
 	density = TRUE
 	anchored = TRUE
 	coverage = 15
 	resistance_flags = XENO_DAMAGEABLE
 
 /obj/structure/tankholder
-	name = "tank holder"
+	name = "储罐架"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "holder"
-	desc = "A metallic frame that can hold tanks and extinguishers."
+	desc = "一个可以放置储罐和灭火器的金属框架."
 	density = TRUE
 	anchored = TRUE
 	coverage = 15
@@ -403,13 +403,13 @@
 	color = "#6b675e"
 
 /obj/structure/showcase/yautja
-	name = "Radar Console"
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds."
+	name = "雷达控制台"
+	desc = "一台配备雷达的控制台,猎手用它来探测装备和良好的狩猎场."
 	icon = 'icons/obj/machines/yautja_machines.dmi'
 	icon_state = "terminal"
 
 /obj/structure/showcase/yautja/alt
-	name = "alien sarcophagus"
+	name = "异形石棺"
 	icon = 'icons/obj/stationobjs.dmi'
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it."
+	desc = "一座古老而布满灰尘的坟墓,上面刻着奇怪的外星文字.最好别碰它."
 	icon_state = "yaut"

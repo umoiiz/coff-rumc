@@ -158,7 +158,7 @@
 	unset_interaction()
 
 	if(isturf(loc) && (QDELETED(eyeobj) || !eyeobj.loc))
-		to_chat(src, "ERROR: Eyeobj not found. Creating new eye...")
+		to_chat(src, "错误: 未找到视线实体. 正在创建新的视线...")
 		create_eye()
 
 	eyeobj?.setLoc(loc)

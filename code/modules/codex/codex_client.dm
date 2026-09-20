@@ -8,16 +8,16 @@
 		return
 
 	if(codex_on_cooldown || !mob.can_use_codex())
-		to_chat(src, span_warning("You cannot perform codex actions currently."))
+		to_chat(src, span_warning("你当前无法执行图鉴操作."))
 		return
 
 	if(!searching)
-		searching = tgui_input_text(usr, "Enter a search string.", "Codex Search", encode = FALSE)
+		searching = tgui_input_text(usr, "输入搜索字符串.", "图鉴搜索", encode = FALSE)
 		if(!searching)
 			return
 
 	if(codex_on_cooldown || !mob.can_use_codex())
-		to_chat(src, span_warning("You cannot perform codex actions currently."))
+		to_chat(src, span_warning("你当前无法执行图鉴操作."))
 		return
 
 	codex_on_cooldown = TRUE
@@ -41,7 +41,7 @@
 			popup.set_content(jointext(codex_data, null))
 			popup.open()
 		else
-			to_chat(src, span_notice("The codex reports <b>no matches</b> for '[searching]'."))
+			to_chat(src, span_notice("图鉴报告'[searching]'<b>没有匹配项</b>."))
 
 /client/verb/list_codex_entries()
 
@@ -53,12 +53,12 @@
 		return
 
 	if(codex_on_cooldown || !mob.can_use_codex())
-		to_chat(src, span_warning("You cannot perform codex actions currently."))
+		to_chat(src, span_warning("你当前无法执行图鉴操作."))
 		return
 	codex_on_cooldown = TRUE
 	addtimer(VARSET_CALLBACK(src, codex_on_cooldown, FALSE), 10 SECONDS)
 
-	to_chat(mob, span_notice("The codex forwards you an index file."))
+	to_chat(mob, span_notice("图鉴向你转发了一个索引文件."))
 
 	var/datum/browser/popup = new(mob, "codex-index", "Codex Index")
 	var/list/codex_data = list("<h2>Codex Entries</h2>")

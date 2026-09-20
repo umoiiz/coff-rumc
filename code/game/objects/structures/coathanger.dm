@@ -1,6 +1,6 @@
 /obj/structure/coatrack
-	name = "coat rack"
-	desc = "Rack that holds coats."
+	name = "衣帽架"
+	desc = "用来挂外套的架子."
 	icon = 'icons/obj/structures/misc.dmi'
 	icon_state = "coatrack0"
 	coverage = 5
@@ -16,7 +16,7 @@
 
 /obj/structure/coatrack/attack_hand(mob/living/user)
 	if(coat)
-		user.visible_message("[user] takes [coat] off \the [src].", "You take [coat] off the \the [src]")
+		user.visible_message("[user]从\the [src]上取下了[coat].", "你从\the [src]上取下了[coat]")
 		if(!user.put_in_active_hand(coat))
 			coat.loc = get_turf(user)
 		coat = null
@@ -28,10 +28,10 @@
 		return
 
 	if(!(I.type in allowed) || coat)
-		to_chat(user, span_notice("You cannot hang [I] on [src]"))
+		to_chat(user, span_notice("你无法把[I]挂在[src]上"))
 		return
 
-	user.visible_message("[user] hangs [I] on \the [src].", "You hang [I] on the \the [src]")
+	user.visible_message("[user]把[I]挂在了\the [src]上.", "你把[I]挂在\the [src]上")
 	coat = I
 	user.drop_held_item(src)
 	coat.forceMove(src)
@@ -43,7 +43,7 @@
 		return
 	for(var/T in allowed)
 		if(istype(AM,T))
-			src.visible_message("[AM] lands on \the [src].")
+			src.visible_message("[AM]落在\the [src]上.")
 			coat = AM
 			coat.forceMove(src)
 			update_icon()

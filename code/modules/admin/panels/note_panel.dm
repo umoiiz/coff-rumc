@@ -3,7 +3,7 @@ ADMIN_VERB(note_panel, R_BAN, "Note Panel", "View a players notes panel", ADMIN_
 
 /proc/create_message(type, target_key, admin_ckey, text, timestamp, server, secret, logged = 1, browse, expiry, note_severity)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法建立数据库连接."))
 		return
 	if(!type)
 		return
@@ -70,7 +70,7 @@ ADMIN_VERB(note_panel, R_BAN, "Note Panel", "View a players notes panel", ADMIN_
 			if(query_validate_expire_time.NextRow())
 				var/checktime = text2num(query_validate_expire_time.item[1])
 				if(!checktime)
-					to_chat(usr, "Datetime entered is improperly formatted or not later than current server time.")
+					to_chat(usr, "输入的日期时间格式不正确或未晚于当前服务器时间.")
 					qdel(query_validate_expire_time)
 					return
 				expiry = query_validate_expire_time.item[1]
@@ -128,7 +128,7 @@ ADMIN_VERB(note_panel, R_BAN, "Note Panel", "View a players notes panel", ADMIN_
 
 /proc/delete_message(message_id, logged = 1, browse)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法建立数据库连接."))
 		return
 	message_id = text2num(message_id)
 	if(!message_id)
@@ -172,7 +172,7 @@ ADMIN_VERB(note_panel, R_BAN, "Note Panel", "View a players notes panel", ADMIN_
 
 /proc/edit_message(message_id, browse)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法建立数据库连接."))
 		return
 	message_id = text2num(message_id)
 	if(!message_id)
@@ -223,7 +223,7 @@ ADMIN_VERB(note_panel, R_BAN, "Note Panel", "View a players notes panel", ADMIN_
 
 /proc/edit_message_expiry(message_id, browse)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法建立数据库连接."))
 		return
 	message_id = text2num(message_id)
 	if(!message_id)
@@ -267,7 +267,7 @@ ADMIN_VERB(note_panel, R_BAN, "Note Panel", "View a players notes panel", ADMIN_
 			if(query_validate_expire_time_edit.NextRow())
 				var/checktime = text2num(query_validate_expire_time_edit.item[1])
 				if(!checktime)
-					to_chat(usr, "Datetime entered is improperly formatted or not later than current server time.")
+					to_chat(usr, "输入的日期时间格式不正确或未晚于当前服务器时间.")
 					qdel(query_validate_expire_time_edit)
 					qdel(query_find_edit_expiry_message)
 					return
@@ -295,7 +295,7 @@ ADMIN_VERB(note_panel, R_BAN, "Note Panel", "View a players notes panel", ADMIN_
 
 /proc/edit_message_severity(message_id)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法建立数据库连接."))
 		return
 	message_id = text2num(message_id)
 	if(!message_id)
@@ -347,7 +347,7 @@ ADMIN_VERB(note_panel, R_BAN, "Note Panel", "View a players notes panel", ADMIN_
 
 /proc/toggle_message_secrecy(message_id)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法建立数据库连接."))
 		return
 	message_id = text2num(message_id)
 	if(!message_id)
@@ -392,7 +392,7 @@ ADMIN_VERB(note_panel, R_BAN, "Note Panel", "View a players notes panel", ADMIN_
 
 /proc/browse_messages(type, target_ckey, index, linkless = FALSE, filter, agegate = FALSE)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法建立数据库连接."))
 		return
 
 	//Needs to be requested before url retrieval since you can view your notes before SSassets finishes initialization
@@ -653,7 +653,7 @@ ADMIN_VERB(note_panel, R_BAN, "Note Panel", "View a players notes panel", ADMIN_
 
 /proc/get_message_output(type, target_ckey)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."))
+		to_chat(usr, span_danger("无法建立数据库连接."))
 		return
 	if(!type)
 		return

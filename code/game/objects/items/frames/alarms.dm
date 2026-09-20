@@ -4,8 +4,8 @@ Handheld fire alarm frame, for placing on walls
 Code shamelessly copied from apc_frame
 */
 /obj/item/frame/fire_alarm
-	name = "fire alarm frame"
-	desc = "Used for building Fire Alarms"
+	name = "火灾警报器框架"
+	desc = "用于建造火灾警报器"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "fire_bitem"
 	atom_flags = CONDUCT
@@ -26,14 +26,14 @@ Code shamelessly copied from apc_frame
 	var/turf/loc = get_turf(user)
 	var/area/A = loc.loc
 	if(!isfloorturf(loc))
-		loc.balloon_alert(user, "bad spot")
+		loc.balloon_alert(user, "位置不佳")
 		return
 	if(A.requires_power == 0 || A.name == "Space")
-		loc.balloon_alert(user, "bad area")
+		loc.balloon_alert(user, "区域不佳")
 		return
 
 	if(gotwallitem(loc, ndir))
-		loc.balloon_alert(user, "already occupied")
+		loc.balloon_alert(user, "已被占用")
 		return
 
 	new /obj/machinery/firealarm(loc, ndir, 1)

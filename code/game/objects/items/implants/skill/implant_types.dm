@@ -1,12 +1,12 @@
 /obj/item/implant/skill/combat
-	name = "Combat implant"
-	desc = "An implant from a line of implants that enhances combat skills"
+	name = "战斗植入物"
+	desc = "一系列提升战斗技能的植入物之一"
 	icon_state = "combat_implant"
 	allowed_limbs = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM)
 
 /obj/item/implant/skill/combat/firearms
-	name = "aiming support implant system"
-	desc = "Integrated aiming support system! Update weapons skills!"
+	name = "瞄准辅助植入系统"
+	desc = "集成瞄准辅助系统! 更新武器技能!"
 	firearms = 1
 	pistols = 1
 	shotguns = 1
@@ -23,57 +23,57 @@
 	)
 
 /obj/item/implant/skill/combat/melee
-	name = "close combat codex implant system"
-	desc = "Integrated hit support system! Update melee skills!"
+	name = "近战格斗法典植入系统"
+	desc = "集成打击辅助系统! 更新近战技能!"
 	melee_weapons = 1
 	max_skills = list(SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED)
 
 /obj/item/implant/skill/codex
-	name = "CODEX implant"
-	desc = "Implant from a line of implants that increases basic knowledge"
+	name = "CODEX植入物"
+	desc = "一系列增加基础知识的植入物之一"
 	icon_state = "support_implant"
 	allowed_limbs = list(BODY_ZONE_CHEST, BODY_ZONE_PRECISE_GROIN)
 
 /obj/item/implant/skill/codex/medical
-	name = "medtech implant system"
-	desc = "A compact device that electro-shakes you every time you apply bandages counterclockwise, right next to your heart! Update medical skills!"
+	name = "医疗技术植入系统"
+	desc = "一个紧凑的装置, 每次你逆时针缠绷带时都会在你心脏旁边电击你! 更新医疗技能!"
 	medical = 1
 	max_skills = list(SKILL_MEDICAL = SKILL_MEDICAL_COMPETENT)
 
 /obj/item/implant/skill/codex/surgery
-	name = "surgery assisting system"
-	desc = "Compensates for hand trembling from Parkinson's syndrome, thanks to the reliable suspension of the shoulder joints! Update surgery skills!"
+	name = "手术辅助系统"
+	desc = "得益于可靠的肩关节悬吊, 补偿帕金森综合征引起的手部颤抖! 更新手术技能!"
 	surgery = 1
 	max_skills = list(SKILL_SURGERY = SKILL_SURGERY_PROFESSIONAL)
 
 /obj/item/implant/skill/codex/engineer
-	name = "engineering implants system"
-	desc = "Working with welding has become much easier! Update engineering skills!"
+	name = "工程植入系统"
+	desc = "焊接工作变得容易多了! 更新工程技能!"
 	engineer = 1
 	max_skills = list(SKILL_ENGINEER = SKILL_ENGINEER_EXPERT)
 
 /obj/item/implant/skill/codex/construct
-	name = "construct implants system"
-	desc = "Working with welding has become much easier! Update construct skills!"
+	name = "建造植入系统"
+	desc = "焊接工作变得容易多了! 更新建造技能!"
 	construction = 1
 	max_skills = list(SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_EXPERT)
 
 /obj/item/implant/skill/tactical
-	name = "Tactics implant"
-	desc = "An implant from the line of implants that increases knowledge of battle tactics"
+	name = "战术植入物"
+	desc = "一系列增加战斗战术知识的植入物之一"
 	icon_state = "skill_implant"
 	allowed_limbs = list(BODY_ZONE_HEAD)
 
 /obj/item/implant/skill/tactical/leadership
-	name = "command protocols 'Graiyor' codex"
-	desc = "Uploading knowledge of advanced mnemonics of inspiration and persuasion to the brain so that people around go under bullets even more willingly! Update leadership skills!"
+	name = "指挥协议 'Graiyor' 法典"
+	desc = "将高级激励和说服助记术的知识上传至大脑, 让周围的人更加心甘情愿地挡子弹! 更新领导技能!"
 	icon_state = "leadership_implant"
 	leadership = 1
 	max_skills = list(SKILL_LEADERSHIP = SKILL_LEAD_SUPER)
 
 /obj/item/implant/hud/medical
-	name = "Medical HUD implant"
-	desc = "A specialized microchip that connects to the optic nerve and projects a medical scanner HUD directly into the user's vision."
+	name = "医疗HUD植入物"
+	desc = "一种专用微芯片, 连接到视神经并将医疗扫描仪HUD直接投射到使用者的视野中."
 	icon_state = "skill_implant"
 	allowed_limbs = list(BODY_ZONE_HEAD)
 

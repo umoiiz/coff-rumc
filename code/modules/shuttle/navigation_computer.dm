@@ -1,6 +1,6 @@
 /obj/machinery/computer/camera_advanced/shuttle_docker
 	name = "navigation computer"
-	desc = "Used to designate a precise transit location for a spacecraft."
+	desc = "用于为航天器指定精确的传送位置."
 	jump_action = null
 
 	/// Action of rotating the shuttle around its center
@@ -71,10 +71,10 @@
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/attack_hand(mob/user)
 	if(jammed)
-		to_chat(user, span_warning("You can only see static on the console."))
+		to_chat(user, span_warning("你只能在控制台上看到静电."))
 		return
 	if(!shuttle_port && !SSshuttle.getShuttle(shuttle_id))
-		to_chat(user,span_warning("Warning: Shuttle connection severed!"))
+		to_chat(user,span_warning("警告:穿梭机连接已切断!"))
 		return
 	return ..()
 
@@ -159,23 +159,23 @@
 	var/mob/camera/aiEye/remote/shuttle_docker/the_eye = eyeobj
 	var/landing_clear = checkLandingSpot()
 	if(designate_time && (landing_clear != SHUTTLE_DOCKER_BLOCKED))
-		to_chat(current_user, span_warning("Targeting transit location, please wait [DisplayTimeText(designate_time)]..."))
+		to_chat(current_user, span_warning("正在定位传送位置,请稍候[DisplayTimeText(designate_time)]..."))
 		designating_target_loc = the_eye.loc
 		var/wait_completed = do_after(current_user, designate_time, NONE, designating_target_loc, extra_checks = CALLBACK(src, PROC_REF(canDesignateTarget)))
 		designating_target_loc = null
 		if(!current_user)
 			return
 		if(!wait_completed)
-			to_chat(current_user, span_warning("Operation aborted."))
+			to_chat(current_user, span_warning("操作已中止."))
 			return
 		landing_clear = checkLandingSpot()
 
 	if(landing_clear != SHUTTLE_DOCKER_LANDING_CLEAR)
 		switch(landing_clear)
 			if(SHUTTLE_DOCKER_BLOCKED)
-				to_chat(current_user, span_warning("Invalid transit location."))
+				to_chat(current_user, span_warning("无效的传送位置."))
 			if(SHUTTLE_DOCKER_BLOCKED_BY_HIDDEN_PORT)
-				to_chat(current_user, span_warning("Unknown object detected in landing zone. Please designate another location."))
+				to_chat(current_user, span_warning("在着陆区检测到未知物体.请指定另一个位置."))
 		return
 
 	/// Create one use port that deleted after fly off, to not lose information that is needed to properly fly off.
@@ -215,7 +215,7 @@
 
 	if(current_user.client)
 		current_user.client.images += the_eye.placed_images
-		to_chat(current_user, span_notice("Transit location designated."))
+		to_chat(current_user, span_notice("传送位置已指定."))
 	return TRUE
 
 /// Checks if we are able to designate the target location
@@ -430,7 +430,7 @@
 			L["([length(L)])[S.name]"] = S
 
 	playsound(console, 'sound/machines/terminal_prompt.ogg', 25, FALSE)
-	var/selected = tgui_input_list(usr, "Choose location to jump to", "Locations", sortList(L))
+	var/selected = tgui_input_list(usr, "选择要跳跃到的位置", "位置", sortList(L))
 	if(QDELETED(src) || QDELETED(target) || !isliving(target))
 		return
 	playsound(src, SFX_TERMINAL_TYPE, 25, FALSE)
@@ -442,6 +442,6 @@
 		return
 	playsound(console, 'sound/machines/terminal_prompt_confirm.ogg', 25, FALSE)
 	remote_eye.setLoc(T)
-	to_chat(target, span_notice("Jumped to [selected]."))
+	to_chat(target, span_notice("已跳跃至[selected]."))
 	C.overlay_fullscreen("flash", /atom/movable/screen/fullscreen/flash/noise)
 	C.clear_fullscreen("flash", 3)

@@ -1,6 +1,6 @@
 /obj/vehicle/sealed/armored/multitile/van
 	name = "\improper VAN - Darkholme"
-	desc = "A rather old hunk of metal with four wheels, you know what to do. Entrance on the back and sides."
+	desc = "一辆相当老旧的四轮金属疙瘩,你知道该怎么做.入口在后部和两侧."
 	icon = 'icons/obj/armored/2x3/van.dmi'
 	icon_state = "van"
 	damage_icon_path = 'icons/obj/armored/2x3/van_damage_overlay.dmi'

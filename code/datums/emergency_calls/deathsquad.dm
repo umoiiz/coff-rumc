@@ -5,13 +5,13 @@
 
 
 /datum/emergency_call/deathsquad/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>You are part of an elite offshore Nanotrasen unit whose background remain classified.</b>")
-	to_chat(H, "<B>Though rumors say that [pick("you work for a death squad group assigned in", "you were modified to not feel any emotions in a research lab of", "you were a soldier who was affected by PTSD after an operation in", "you were an product of a classified genetics research in", "you were an experimental soldier in the depths of", "left for dead and later recovered in", "listed as KIA but remained alive during a botchered operation in", 5;"raised literally from the depths of hell itself. Only until you were recovered in", 5;"raised literally from the Higher Power. But realized you were in")] [pick(10;"Mars", 10;"Earth's moon, Luna", 10;"Earth", 10;"a space station", "a war-ridden outpost", "a jungle", "a defunct TGMC-NT station", "a desert planet", "an icey colony", "a frozen cave system", "a molten planet", "a digsite", "a research outpost")].</B>")
-	to_chat(H, "<B>Nevertheless, you deny all of those rumors and kept your real identity hidden.</b>")
+	to_chat(H, "<B>你是一个精英离岸Nanotrasen单位的成员,其背景仍然保密.</b>")
+	to_chat(H, "<B>尽管有传言说[pick("you work for a death squad group assigned in", "you were modified to not feel any emotions in a research lab of", "you were a soldier who was affected by PTSD after an operation in", "you were an product of a classified genetics research in", "you were an experimental soldier in the depths of", "left for dead and later recovered in", "listed as KIA but remained alive during a botchered operation in", 5;"raised literally from the depths of hell itself. Only until you were recovered in", 5;"raised literally from the Higher Power. But realized you were in")][pick(10;"Mars", 10;"Earth's moon, Luna", 10;"Earth", 10;"a space station", "a war-ridden outpost", "a jungle", "a defunct TGMC-NT station", "a desert planet", "an icey colony", "a frozen cave system", "a molten planet", "a digsite", "a research outpost")].</B>")
+	to_chat(H, "<B>尽管如此,你否认所有那些传言,并隐藏了你的真实身份.</b>")
 	to_chat(H, "")
-	to_chat(H, "<B>Today, you and your squadmates are sent by Nanotrasen to the TGMC vessel, [SSmapping.configs[SHIP_MAP].map_name], after a long period of [pick("cryostasis", "rest and relaxation")].</b>")
-	to_chat(H, "<B>You must sweep and terminate who are involved in the TGMC vessel, [SSmapping.configs[SHIP_MAP].map_name]...</b>")
-	to_chat(H, "<B>Follow any orders directly from Nanotrasen Central Command.</b>")
+	to_chat(H, "<B>今天,你和你的队友被Nanotrasen派往TGMC舰船[SSmapping.configs[SHIP_MAP].map_name],经过长时间的[pick("cryostasis", "rest and relaxation")].</b>")
+	to_chat(H, "<B>你必须清扫并消灭参与TGMC舰船[SSmapping.configs[SHIP_MAP].map_name]的人员...</b>")
+	to_chat(H, "<B>遵循Nanotrasen中央司令部的任何直接命令.</b>")
 
 
 /datum/emergency_call/deathsquad/create_member(datum/mind/M)

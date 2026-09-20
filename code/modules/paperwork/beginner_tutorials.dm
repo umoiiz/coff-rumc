@@ -1,7 +1,7 @@
 //Each beginner loadout in quick_load_beginners.dm has a instruction pamphlet.
 
 /obj/item/paper/tutorial/beginner_rifleman
-	name = "Rifleman Tutorial"
+	name = "步枪兵教程"
 	info = {"As a rifleman, you are suited for virtually all theatres of combat. Your AR-12 assault rifle is accurate and effective at all ranges, and its powerful underbarrel grenade launcher poses even further danger to mid-range threats. Inside your backpack is a box of flares to refill your flare pouch, gauze and ointment for brute (slashes) and burn (acid) wounds respectively, and backup magazines for your AR 12. Your belt contains backup magazines for your AR-12, while your body armor contains additional grenades to reload your underbarrel grenade launcher with. Your left pocket contains a flare gun holster and several flares. Your right pocket contains a first aid kit, complete with Bicaridine (which heals brute damage), Kelotane (which heals burn damage), Tramadol (which is a painkiller), Tricordrazine (which heals all damage, but slowly), and Dylovene (which heals toxin, or poison damage), as well as splints and inaprovaline. Your boots contain a MRE, in case you get hungry, and a standard issue combat knife for clearing weeds or breaking things.<BR>
 	<BR>
 	Try to spend as much time as possible near other marines - being alone is very dangerous. Your versatility is an immense strength and makes you the ideal battle buddy for virtually any other marine. You can easily work with a shotgunner to clear close quarters areas, or perhaps with a machine gunner to hold a fortified position, or even take point in front of a marksman. When not in immediate danger, use your flare gun to keep your surroundings lit, as your and your fellow marines' lives may very well depend on it.<BR>
@@ -21,7 +21,7 @@
 	Because your AR-12 can effectively engage at all ranges, your optimal range is whatever your opponent's optimal range isn't. Try keeping the distance from ferocious melee enemies, while getting too close for comfort with squishier ranged ones."}
 
 /obj/item/paper/tutorial/beginner_machinegunner
-	name = "Machinergunner Tutorial"
+	name = "机枪手教程"
 	info = {"As a machinegunner, you are the backbone of a marine force. While you possess heavy armor reinforced with Tyr-pattern plating (strengthening its defense even further against melee attacks), your slow move speed and the unwieldy nature of your MG-60 machine gun means you should not be spearheading any pushes. Your backpack contains several additional box magazines, allowing you to carry almost two THOUSAND rounds on your person at any time. Your left pouch contains a first aid kit, complete with Bicaridine (which heals brute damage), Kelotane (which heals burn damage), Tramadol (which is a painkiller), Tricordrazine (which heals all damage, but slowly), and Dylovene (which heals toxin, or poison damage), as well as splints and inaprovaline. Your right pocket contains a flare gun holster and several flares. Your suit storage contains two plasma pistols, which are low in damage but can start fires. Your webbing contains an MRE to eat and both gauze and ointment, Your boots contain a MRE for further eating, and a standard issue combat knife for clearing weeds or breaking things.<BR>
 	<BR>
 	Your full strength is hard to utilize on your own or in the very front of battle. Your ideal positions are either safely behind a barricade guarding a front or flank from assault, or behind your fellow marines, shooting over them with aim mode to protect them from enemies. Keep in mind that your heavy armor and weapon means you move rather slowly - so if you get the order to leave a position, get moving early to avoid being left behind.<BR>
@@ -45,7 +45,7 @@
 	The more bullets you shoot, the better a marine you are. It's actually that simple."}
 
 /obj/item/paper/tutorial/beginner_marksman
-	name = "Marksman Tutorial"
+	name = "射手教程"
 	info = {"As a marksman, you are a master of precision and range, and should utilize both of these advantages as much as possible. Your DMR-37 is incredibly accurate at long ranges and packs a devastating punch. Due to your ability to engage at long range - and conversely, your inability to engage properly at short range - you should be staying as far from conflict as possible while still remaining in your rifle's effective range. Your backpack and both of your pouches contain spare magazines for your DMR. Your backpack also contains an MRE to eat, and both gauze and ointment for treating injuries. Your armor contains Bicaridine (which heals brute damage), Kelotane (which heals burn damage), Tramadol (which is a painkiller), Tricordrazine (which heals all damage, but slowly), and an inaprovaline injector for helping other marines in critical condition. Your webbing contains the MK88 Mod 4, a fully automatic handgun for self-defense, as well as spare magazines for it. Your boots contain a MRE to eat, and survival knife for clearing weeds and breaking things.<BR>
 	<BR>
 	With your DMR, aim to support other marines from afar using your scope and aim mode. Your range means that many xenomorphs might not realize you're watching over an area until you're already shooting at them - use this to your advantage. Your rate of fire is relatively slow compared to automatic weapons, so make each of your shots count.<BR>
@@ -65,7 +65,7 @@
 	Do not attempt to use your DMR at too close of a range, as marksman weapons have a chance to miss against enemies that are near you. Instead, try switching to your 88 Mod 4, your fully automatic handgun that's much more effective at close range."}
 
 /obj/item/paper/tutorial/beginner_shotgunner
-	name = "Shotgunner Tutorial"
+	name = "霰弹枪手教程"
 	info = {"As a shotgunner, you are the spearhead of the marine force. Your semiautomatic SH-39 fires slugs that will devastate any target at short to medium range, dealing heavy damage as well as leaving them stunned and staggered. Your role is to be at the front of any marine push, side by side with your fellow marines as you charge into danger. Your shotgun shell rig on your belt, as well as your backpack, hold many additional slugs to reload your shotgun with. Your backpack also contains an MRE to eat, and both gauze and ointment for treating injuries, as well as inaprovaline. Your left pouch contains a first aid kit, complete with Bicaridine (which heals brute damage), Kelotane (which heals burn damage), Tramadol (which is a painkiller), Tricordrazine (which heals all damage, but slowly), and Dylovene (which heals toxin, or poison damage), as well as splints and inaprovaline. Your right pocket contains a flare gun holster and several flares. Your webbing contains a plasma pistol, a low damage sidearm that starts fires wherever it hits. Your suit storage contains boxes of additional flares. Your boots contain a MRE to eat, and a combat knife for clearing weeds and breaking things.<BR>
 	<BR>
 	You should be close to the enemy constantly to take full advantage of your shotgun. This does not mean you should run off alone, as this is a good way to get yourself killed; rather, be in front of other marines, clearing away enemies to allow them to safely advance and cover you.<BR>
@@ -93,7 +93,7 @@
 	You have incredibly high per-shot damage. Waiting a little bit to allow a xenomorph to get closer before opening fire can lure it into a false sense of safety, potentially scoring you a kill."}
 
 /obj/item/paper/tutorial/beginner_shocktrooper
-	name = "Shocktrooper Tutorial"
+	name = "突击兵教程"
 	info = {"As a shock trooper, you are a versatile yet powerful frontliner, and aim to change up tactics often to gain the advantage. You use the multimodal laser rifle, an experimental battery-powered weapon with an underbarrel flamethrower. Your belt contains spare energy cells for your laser rifle. Your right pocket and body armor contain a powerpack each- effectively bulkier versions of energy cells. Your body armor also contains a box of flares. Your left pocket contains a flare gun holster and several flares. Your backpack contains a large amount of miniature fuel tanks for use with your underbarrel flamethrower, as well as an inaprovaline autoinjector. Your webbing contains Bicaridine (which heals brute damage), Kelotane (which heals burn damage), Tramadol (which is a painkiller), Tricordrazine (which heals all damage, but slowly), and gauze and ointment, which also heal brute and burn damage respectively. Your boots contains a MRE, in case you get hungry.<BR>
 	<BR>
 	Switching between the different modes of your laser rifle is key to mastery on the battlefield. Like other frontliners, you aim to lead the push into enemy territory, clearing the path forward and facing xenomorphs head-on.<BR>
@@ -113,7 +113,7 @@
 	Laser weapons, unlike traditional ballistics, can fire through windows unimpeded. Use this with stronger windows, such as ballistic glass, to attack the enemy without them being able to attack you back."}
 
 /obj/item/paper/tutorial/beginner_hazmat
-	name = "Hazmat Tutorial"
+	name = "防化兵教程"
 	info = {"As a HAZMAT, you excel in situations too dangerous for other marines. Your Mimir type armor grants you complete immunity to toxic gas, from acid to neurotoxin. It also provides an increased resistance against acid in general, for dealing with ranged xenomorphs. Your AR-11 is somewhat unwieldy and inaccurate, but packs both potent bursts and an impressive 70-round magazine. Your backpack, left pouch, and suit storage are all filled with spare magazines for your AR-11. Your right pouch contains a first aid kit, complete with Bicaridine (which heals brute damage), Kelotane (which heals burn damage), Tramadol (which is a painkiller), Tricordrazine (which heals all damage, but slowly), and Dylovene (which heals toxin, or poison damage), as well as splints and inaprovaline. Your webbing contains flares for lighting areas, gauze and ointment for treating wounds, and a miniature fire extinguisher. Your boots contain a MRE, for when you get hungry.<BR>
 	<BR>
 	Unlike other marines, you have no reason to fear toxic gas - and thanks to your tactical sensor, you pose quite a threat to xenomorphs while in it. Hide in smoke and use your sensor to fire at xenomorphs that can't see you back. In the absence of smoke, your AR-11 is still quite powerful, and can be used in many situations, though its inaccuracy makes it somewhat less potent at longer ranges.<BR>
@@ -135,7 +135,7 @@
 	While you're no machinegunner, you have over 700 rounds on you. Don't be afraid to shoot at anything that blips on your tactical sensor (as long as there aren't friendlies in the way!)"}
 
 /obj/item/paper/tutorial/beginner_cqc
-	name = "CQC Tutorial"
+	name = "近战教程"
 	info = {"As a CQC marine, you are incredibly mobile, and should be using and abusing your speed to dart in and out of danger. You are effective both spearheading the assault and pushing into flanks. Your AR-18 carbine isn't the most dangerous rifle, nor does it have a particularly high magazine size, but it's incredibly lightweight compared to almost any other weapon, and its relative accuracy and stability even while moving and high fire rate allow it to pose a surprise threat to almost any xenomorphs. Your belt, body armor, and backpack all contain spare magazines for your AR-18. Your backpack also contains an MRE (in case you get hungry) as well as gauze and ointment to treat injuries with. Your left pocket contains a flare gun and several flares. Your right pouch contains a first aid kit, complete with Bicaridine (which heals brute damage), Kelotane (which heals burn damage), Tramadol (which is a painkiller), Tricordrazine (which heals all damage, but slowly), and Dylovene (which heals toxin, or poison damage), as well as splints and inaprovaline. Your webbing contains gauze and ointment for healing, an MRE for eating, and two boxes of flares. Your boots contain a MRE for eating, and a combat knife for clearing weeds and breaking things.<BR>
 	<BR>
 	Your speed is your greatest strength. You should be using it to rush into combat and chase after already injured enemies, only to rapidly retreat before things turn south. You're ideal at scouting locations, quickly reinforcing threatened positions, and overall being everywhere at once.<BR>
@@ -155,7 +155,7 @@
 	While your rifle runs out of ammo quickly, its rapid fire four round bursts deal impressive damage. Combined with your speed, you are the master of ambushing."}
 
 /obj/item/paper/tutorial/builder
-	name = "Builder Tutorial"
+	name = "建造者教程"
 	info = {"The builder loadout is designed around you establishing defenses, barricades made from metal, plasteel or sandbags. You are the frontline, without you marines will be exposed to attacks from any and all directions. Use your quicker build speed and tools to aid and repair barricades, and fix APCs for generating the nuclear disks to win the round! Your loadout contains materials, a MG42 Light machine gun for self defense and suppression, and a radiopack for ordering more material to entrench and establish a fortified defensive position.<BR>
 	<BR>
 	<b>TIPS</b><BR>
@@ -169,7 +169,7 @@
 	BKTT is an acronym that is used to describe the combination of Bicaridine, Kelotane, Tricordizine, and Tramadol used as an all-rounder combat medicine mix for any situation that heals all different types of damage. Make sure not to take more than two of each pill at a time - medicine takes a while to process through your system, and too many at once risks a dangerous overdose. Your gauze and ointment are body-part specific, unlike medication, but once you start applying one, you will keep applying it to all body parts that require treatment as long as you hold still. Your splints are used to alleviate the effects of bone fractures, by applying them to a fractured limb. Your inaprovaline autoinjector is not to be applied to yourself - rather, it should be applied to an alive marine that is so heavily injured they are unconscious on the ground (referred to as "critical condition") to rescue them from that state. You can remove pills from their packets directly by right clicking on the packet, even while it's in storage."}
 
 /obj/item/paper/tutorial/flamer
-	name = "Flamer Tutorial"
+	name = "喷火兵教程"
 	info = {"As a flamethrower specialist your job is to burn, burn some more and BURN again. You are equipped with a flamethrower bag that refills your flamethrower everytime you insert it back into the bag, and also have a lascarbine for more practical and pragmatic self defense. Also comes with a large box of claymore anti-personnel mines, and some general materials for helping fortify positions.<BR>
 	<BR>
 	<b>TIPS</b><BR>
@@ -183,7 +183,7 @@
 	BKTT is an acronym that is used to describe the combination of Bicaridine, Kelotane, Tricordizine, and Tramadol used as an all-rounder combat medicine mix for any situation that heals all different types of damage. Make sure not to take more than two of each pill at a time - medicine takes a while to process through your system, and too many at once risks a dangerous overdose. Your gauze and ointment are body-part specific, unlike medication, but once you start applying one, you will keep applying it to all body parts that require treatment as long as you hold still. Your splints are used to alleviate the effects of bone fractures, by applying them to a fractured limb. Your inaprovaline autoinjector is not to be applied to yourself - rather, it should be applied to an alive marine that is so heavily injured they are unconscious on the ground (referred to as "critical condition") to rescue them from that state. You can remove pills from their packets directly by right clicking on the packet, even while it's in storage."}
 
 /obj/item/paper/tutorial/plasmacutter
-	name = "PlasmaCutter Tutorial"
+	name = "等离子切割器教程"
 	info = {"Tired of watching marines endlessly pour into a maze or terribly held choke point? This is the class for you then! With your plasma cutter you will be able to easily delete resin walls from existence, and carve through metal, reinforced or even solid rock walls! With this kit you'll be able to widen choke points and eradicate mazes with ease. This loadout also comes with a few materials for defenses and a R44 Revolver for self defense in your welderpack.<BR>
 	<BR>
 	<b>TIPS</b><BR>
@@ -197,7 +197,7 @@
 	BKTT is an acronym that is used to describe the combination of Bicaridine, Kelotane, Tricordizine, and Tramadol used as an all-rounder combat medicine mix for any situation that heals all different types of damage. Make sure not to take more than two of each pill at a time - medicine takes a while to process through your system, and too many at once risks a dangerous overdose. Your gauze and ointment are body-part specific, unlike medication, but once you start applying one, you will keep applying it to all body parts that require treatment as long as you hold still. Your splints are used to alleviate the effects of bone fractures, by applying them to a fractured limb. Your inaprovaline autoinjector is not to be applied to yourself - rather, it should be applied to an alive marine that is so heavily injured they are unconscious on the ground (referred to as "critical condition") to rescue them from that state. You can remove pills from their packets directly by right clicking on the packet, even while it's in storage."}
 
 /obj/item/paper/tutorial/lifesaver
-	name = "Lifesaver Tutorial"
+	name = "救命恩人教程"
 	info = {"As the lifesaver, you are a MEDIC first and foremost. You should be prioritizing healing marines over trying to fight xenomorphs yourself. Your belt contains many pill bottles - examine them to find out what they do with shift click, and draw from them with right click. Your belt also contains splints, which are used on fractured bones, and a medical analyzer, which will tell you exactly what's wrong with a person. Avoid giving someone more than one pill of a given medicine at a time; many pills overdose at three, and some at two, and some marines might go and take a pill themselves, so one is safest. In your armor storage are an assortment of autoinjectors. Combat injectors should be used on marines in active danger, quick clot plus helps deal with internal bleeding, peridaxon plus heals organs, and dexalin plus helps with deoxygenation. Your right pouch contains three stacks of trauma and burn kits, which will cause a body part they're applied to to heal brute or burn damage over time respectively. It also contains a hypospray full of meraderm, a medicine mixture that heals both brute and burn damage quickly. Your webbing contains oxycodone, a painkiller, nanoblood, a blood replacement, a stasis bag to hold patients you aren't actively treating in to prevent their condition from worsening, tweezers to remove shrapnel, a roller bed to roll around patients with, and a medivac to evacuate patients. Your boots and helmet contain food.<BR>
 	<BR>
 	Stay away from the frontlines - let patients come to (or be dragged to) you instead of putting yourself in danger. Try to remain in a safe location, as xenomorphs do not obey the Geneva convention and will in fact deliberately target you and your patients as often as possible.<BR>
@@ -223,7 +223,7 @@
 	You can use meralyne and dermaline at the same time as Bicaridine and kelotane, for an accelerated healing rate."}
 
 /obj/item/paper/tutorial/hypobelt
-	name = "Hypobelt Tutorial"
+	name = "注射腰带教程"
 	info = {"As the hypobelt medic, you are the master of rapid healing. Your belt is full of hyposprays which instantly apply a dose of medicine when you click a marine with them. Examine them with shift click to read their labels to find out what they do. Avoid injecting someone more than once or twice with the same medicine to prevent an overdose! Your pouch contains three stacks of trauma and burn kits, which will cause a body part they're applied to to heal brute or burn damage over time respectively. It also contains a hypospray full of meraderm, a medicine mixture that heals both brute and burn damage quickly. These hyposprays can be refilled by the bottles in the syringe cases of your belt. Your webbing is filled with splints for treating fractures. Your body armor contains oxycodone, a painkiller, a stasis bag to hold patients you aren't actively treating in to prevent their condition from worsening, tweezers to remove shrapnel, a roller bed to roll around patients with, and a medivac to evacuate patients. Your boots and helmet contain food.<BR>
 	<BR>
 	Your light armor and quick injectors make you adept at rapidly getting marines back into the action. However, take care to avoid danger; xenomorphs WILL target you, and you will go down fast without proper protection.<BR>
@@ -247,7 +247,7 @@
 	You can reload your shotgun by grabbing a handful of slugs from your backpack and clicking your shotgun with them."}
 
 /obj/item/paper/tutorial/smartmachinegunner
-	name = "Smartmachinegunner Tutorial"
+	name = "智能机枪手教程"
 	info = {"As the smartmachinegunner, you are the very backbone of your squad, and should be behind another marine or three at all times. Your SG-29 is capable of firing directly through your teammates without risk of harm, so staying safe and behind your allies is essential to gaining full value out of it. Your backpack and body armor contain both fire extinguishers and spare ammo, with your backpack also containing a plasma pistol to start fires with. Your left pouch contains a flare gun holster and several flares.  Your right pouch contains a first aid kit, complete with Bicaridine (which heals brute damage), Kelotane (which heals burn damage), Tramadol (which is a painkiller), Tricordrazine (which heals all damage, but slowly), and Dylovene (which heals toxin, or poison damage), as well as splints and inaprovaline. Your webbing contains flares for creating lights and gauze and ointment for treating injuries. Your helmet and boots contain food, in case you get hungry.<BR>
 	<BR>
 	You should NEVER be at the front of a group of marines. Aim to provide covering fire for those who are in front, and let them protect you in turn by, well, being in front of you. Remember that your SG-29 fires through marines, so you don't need to worry about friendly fire.<BR>
@@ -279,7 +279,7 @@
 	You are the most mobile among smartgunners - use this to your advantage. You are the best at providing cover fire for a mobile squad."}
 
 /obj/item/paper/tutorial/smartminigunner
-	name = "Smartminigunner Tutorial"
+	name = "智能迷你机枪手教程"
 	info = {"As the smartminigunner, you are the very embodiment of BRRT. With your huge SG-85 smart minigun, you can fire ten rounds per second for one hundred straight seconds, providing powerful covering fire for other marines. No enemy wants to get stuck in your line of fire. Instead of a backpack you carry a back mounted powerpack that feeds and powers your SG-85. In your body armor are two bins to refill your powerpack with.  Your left pouch contains a flare gun holster and several flares.  Your right pouch contains a first aid kit, complete with Bicaridine (which heals brute damage), Kelotane (which heals burn damage), Tramadol (which is a painkiller), Tricordrazine (which heals all damage, but slowly), and Dylovene (which heals toxin, or poison damage), as well as splints and inaprovaline. Your webbing contains flares for creating lights and gauze and ointment for treating injuries. Your helmet and boots contain food, in case you get hungry.<BR>
 	<BR>
 	Your minigun boasts both high levels of armor piercing and the ability to shoot through allies - use both to your advantage. Note that the heavy nature of your minigun and your brief windup before you can fire means you're best positioned defensively, firing at the toughest targets within range.<BR>
@@ -306,7 +306,7 @@
 	Your minigun boasts an incredibly high amount of armor piercing. Aim for particularly durable targets, like Crushers and Kings, as you'll likely do a lot more damage."}
 
 /obj/item/paper/tutorial/robot_laser_rifleman
-	name = "Robot Laser Rifleman"
+	name = "机器人激光步枪兵"
 	info = {"As a robot, you are immune to most traumas and toxins, but unable to run, which decreases your potential speed. Use either the instruments in your webbing, on the uniform, to repair yourself or autorepair ability. Welders are used to repair brute damage, cable coils for the burn damage, but the soldering tool is universal, so don't loose it!<BR>
 	<BR>
 	Your weapon is called Laser Rifle, it uses laser batteries from your belt to shoot. Red batteries are self-recharging, at the cost of decreased charge amount. Use laser powerpack cell, from your suit storage, to quickly recharge spent laser batteries.<BR>
@@ -324,7 +324,7 @@
 	Your tools pouch can be used for the sake of helping your fellow engineers with repairing barricades, generators or something similar."}
 
 /obj/item/paper/tutorial/robot_laser_machinegunner
-	name = "Robot Laser Machinegunner"
+	name = "机器人激光机枪手"
 	info = {"As a robot, you are immune to most traumas and toxins, but unable to run, which decreases your potential speed. Use either the instruments in your webbing, on the uniform, to repair yourself or autorepair ability. Welders are used to repair brute damage, cable coils for the burn damage, but the soldering tool is universal, so don't loose it!<BR>
 	<BR>
 	Your weapon is called Laser Machine Gun, it uses charge from laser batteries or powerpacks. Attack it your back powerpack for nearly infinite power-source for your weapon, as it recharges by the time by itself.<BR>
@@ -342,7 +342,7 @@
 	Your tools pouch can be used for the sake of helping your fellow engineers with repairing barricades, generators or something similar."}
 
 /obj/item/paper/tutorial/robot_laser_sniper
-	name = "Robot Laser Sniper"
+	name = "机器人激光狙击手"
 	info = {"As a robot, you are immune to most traumas and toxins, but unable to run, which decreases your potential speed. Use either the instruments in your webbing, on the uniform, to repair yourself or autorepair ability. Welders are used to repair brute damage, cable coils for the burn damage, but the soldering tool is universal, so don't loose it!<BR>
 	<BR>
 	Your weapon is called Laser Sniper Rifle, it uses charge from laser batteries or powerpacks. Attack it your back powerpack for nearly infinite power-source for your weapon, as it recharges by the time by itself.<BR>

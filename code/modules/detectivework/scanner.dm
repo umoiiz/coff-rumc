@@ -1,6 +1,6 @@
 /obj/item/detective_scanner
-	name = "forensic scanner"
-	desc = "Used to scan objects for DNA and fingerprints."
+	name = "法医扫描仪"
+	desc = "用于扫描物体上的DNA和指纹."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "forensic1"
 	var/list/stored = list()
@@ -15,7 +15,7 @@
 	equip_slot_flags = ITEM_SLOT_BELT
 
 /obj/item/detective_scanner/attack(mob/living/carbon/human/M as mob, mob/user as mob)
-	to_chat(user, span_warning("This device is non-functional."))
+	to_chat(user, span_warning("该设备无法使用."))
 
 /obj/item/detective_scanner/afterattack(atom/A as obj|turf, mob/user, proximity)
-	to_chat(user, span_warning("This device is non-functional."))
+	to_chat(user, span_warning("该设备无法使用."))

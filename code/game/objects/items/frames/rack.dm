@@ -1,6 +1,6 @@
 /obj/item/frame/rack
-	name = "rack parts"
-	desc = "A kit for a storage rack with multiple metal shelves. Relatively cheap, useful for mass storage. Some assembly required."
+	name = "货架零件"
+	desc = "一套带有多层金属搁板的储物货架组件. 相对便宜,适合大量存储. 需要一些组装."
 	icon = 'icons/obj/items/items.dmi'
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/equipment/engineering_left.dmi',
@@ -17,11 +17,11 @@
 
 /obj/item/frame/rack/attack_self(mob/user as mob)
 	if(locate(/obj/structure/table) in user.loc || locate(/obj/structure/barricade) in user.loc)
-		to_chat(user, span_warning("There is already a structure here."))
+		to_chat(user, span_warning("此处已有结构."))
 		return
 
 	if(locate(/obj/structure/rack) in user.loc)
-		to_chat(user, span_warning("There already is a rack here."))
+		to_chat(user, span_warning("此处已有货架."))
 		return
 
 	new /obj/structure/rack(user.loc)

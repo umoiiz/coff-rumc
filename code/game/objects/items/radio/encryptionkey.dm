@@ -3,8 +3,8 @@
 GLOBAL_LIST_EMPTY_TYPED(custom_updating_encryptkeys, /obj/item/encryptionkey)
 
 /obj/item/encryptionkey
-	name = "Standard Encryption Key"
-	desc = "An encryption key for a radio headset."
+	name = "标准加密钥匙"
+	desc = "无线电耳机的加密钥匙."
 	icon = 'icons/obj/items/radio.dmi'
 	icon_state = "cypherkey"
 	worn_icon_state = ""
@@ -24,27 +24,27 @@ GLOBAL_LIST_EMPTY_TYPED(custom_updating_encryptkeys, /obj/item/encryptionkey)
 	GLOB.custom_updating_encryptkeys -= src
 
 /obj/item/encryptionkey/engi
-	name = "Engineering Radio Encryption Key"
+	name = "工程无线电加密钥匙"
 	icon_state = "eng_cypherkey"
 	channels = list(RADIO_CHANNEL_ENGINEERING = TRUE,RADIO_CHANNEL_CAS = TRUE)
 
 /obj/item/encryptionkey/cas
-	name = "Fire support radio encryption key"
+	name = "火力支援无线电加密钥匙"
 	icon_state = "sec_cypherkey"
 	channels = list(RADIO_CHANNEL_CAS = TRUE)
 
 /obj/item/encryptionkey/med
-	name = "Medical Radio Encryption Key"
+	name = "医疗无线电加密钥匙"
 	icon_state = "med_cypherkey"
 	channels = list(RADIO_CHANNEL_MEDICAL = TRUE, RADIO_CHANNEL_REQUISITIONS = TRUE)
 
 /obj/item/encryptionkey/cas
-	name = "\improper fire support specialist radio encryption key"
+	name = "\improper 火力支援专家无线电加密钥匙"
 	icon_state = "rob_cypherkey"
 	channels = list(RADIO_CHANNEL_CAS = TRUE)
 
 /obj/item/encryptionkey/mcom
-	name = "\improper Marine Command radio encryption key"
+	name = "\improper 陆战队指挥部无线电加密钥匙"
 	icon_state = "cap_cypherkey"
 	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_CAS = TRUE, RADIO_CHANNEL_ALPHA = TRUE, RADIO_CHANNEL_BRAVO = TRUE, RADIO_CHANNEL_CHARLIE = TRUE, RADIO_CHANNEL_DELTA = TRUE, RADIO_CHANNEL_ENGINEERING = TRUE, RADIO_CHANNEL_MEDICAL = TRUE, RADIO_CHANNEL_REQUISITIONS = TRUE)
 	custom_squad_factions = ENCRYPT_CUSTOM_TERRAGOV
@@ -54,97 +54,97 @@ GLOBAL_LIST_EMPTY_TYPED(custom_updating_encryptkeys, /obj/item/encryptionkey)
 
 
 /obj/item/encryptionkey/squadlead
-	name = "\improper Squad Leader encryption key"
+	name = "\improper 小队队长加密钥匙"
 	icon_state = "hop_cypherkey"
 	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_CAS = TRUE)
 
 /obj/item/encryptionkey/alpha
-	name = "\improper Alpha Squad radio encryption key"
+	name = "\improper 阿尔法小队无线电加密钥匙"
 	icon_state = "eng_cypherkey"
 	channels = list(RADIO_CHANNEL_ALPHA = TRUE)
 
 /obj/item/encryptionkey/bravo
-	name = "\improper Bravo Squad radio encryption key"
+	name = "\improper 布拉沃小队无线电加密钥匙"
 	icon_state = "cypherkey"
 	channels = list(RADIO_CHANNEL_BRAVO = TRUE)
 
 /obj/item/encryptionkey/charlie
-	name = "\improper Charlie Squad radio encryption key"
+	name = "\improper 查理小队无线电加密钥匙"
 	icon_state = "sci_cypherkey"
 	channels = list(RADIO_CHANNEL_CHARLIE = TRUE)
 
 /obj/item/encryptionkey/delta
-	name = "\improper Delta Squad radio encryption key"
+	name = "\improper 德尔塔小队无线电加密钥匙"
 	icon_state = "hos_cypherkey"
 	channels = list(RADIO_CHANNEL_DELTA = TRUE)
 
 /obj/item/encryptionkey/general
-	name = "\improper General radio encryption key"
+	name = "\improper 通用无线电加密钥匙"
 	icon_state = "cypherkey"
 	channels = list(RADIO_CHANNEL_COMMON = TRUE, RADIO_CHANNEL_REQUISITIONS = TRUE)
 
 //ERT
 /obj/item/encryptionkey/dutch
-	name = "\improper Colonist encryption key"
+	name = "\improper 殖民者加密钥匙"
 	channels = list(RADIO_CHANNEL_COLONIST = TRUE)
 	independent = TRUE
 
 
 /obj/item/encryptionkey/PMC
-	name = "\improper Nanotrasen encryption key"
+	name = "\improper 纳米传讯加密钥匙"
 	channels = list(RADIO_CHANNEL_PMC = TRUE)
 	independent = TRUE
 
 
 /obj/item/encryptionkey/usl
-	name = "\improper USL encryption key"
+	name = "\improper USL加密钥匙"
 	channels = list(RADIO_CHANNEL_USL = TRUE)
 	independent = TRUE
 
 
 /obj/item/encryptionkey/commando
-	name = "\improper NT commando encryption key"
+	name = "\improper NT突击队加密钥匙"
 	channels = list(RADIO_CHANNEL_DEATHSQUAD = TRUE)
 	independent = TRUE
 
 
 /obj/item/encryptionkey/imperial
-	name = "\improper Imperial encryption key"
+	name = "\improper 帝国加密钥匙"
 	channels = list(RADIO_CHANNEL_IMPERIAL = TRUE)
 	independent = TRUE
 
 
 /obj/item/encryptionkey/som
-	name = "\improper Sons of Mars encryption key"
+	name = "\improper 火星之子加密钥匙"
 	channels = list(RADIO_CHANNEL_SOM = TRUE)
 	independent = TRUE
 
 /obj/item/encryptionkey/icc
-	name = "\improper ICC encryption key"
+	name = "\improper ICC加密钥匙"
 	channels = list(RADIO_CHANNEL_ICC = TRUE)
 	independent = TRUE
 
 /obj/item/encryptionkey/retired
-	name = "\improper retirement home encryption key"
+	name = "\improper 养老院加密钥匙"
 	channels = list(RADIO_CHANNEL_RETIRED = TRUE)
 	independent = TRUE
 
 /obj/item/encryptionkey/sectoid
-	name = "\improper alien encryption key"
+	name = "\improper 异形加密钥匙"
 	channels = list(RADIO_CHANNEL_SECTOID = TRUE)
 	independent = TRUE
 
 /obj/item/encryptionkey/echo
-	name = "\improper Echo Task Force encryption key"
+	name = "\improper 回声特遣队加密钥匙"
 	channels = list(RADIO_CHANNEL_ECHO = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_CAS = TRUE, RADIO_CHANNEL_ALPHA = TRUE, RADIO_CHANNEL_BRAVO = TRUE, RADIO_CHANNEL_CHARLIE = TRUE, RADIO_CHANNEL_DELTA = TRUE, RADIO_CHANNEL_ENGINEERING = TRUE, RADIO_CHANNEL_MEDICAL = TRUE, RADIO_CHANNEL_REQUISITIONS = TRUE)
 	independent = TRUE
 
 /obj/item/encryptionkey/vsd
-	name = "\improper Security Detail encryption key"
+	name = "\improper 安保分队加密钥匙"
 	channels = list(RADIO_CHANNEL_VSD = TRUE)
 	independent = TRUE
 
 /obj/item/encryptionkey/erp
-	name = "\improper Pranksters encryption key"
+	name = "\improper 恶作剧者加密钥匙"
 	channels = list(RADIO_CHANNEL_ERP = TRUE)
 	independent = TRUE

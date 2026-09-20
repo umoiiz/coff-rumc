@@ -39,7 +39,7 @@
 		return
 	var/mob/living/bumper = parent
 	if(!silent_activation)
-		bumper.balloon_alert(bumper, "Will now [should_enable ? "attack" : "push"] enemies in your way.")
+		bumper.balloon_alert(bumper, "现在将[should_enable ? "attack" : "push"]挡在你路上的敌人.")
 	toggle_action?.attacking = active
 	toggle_action?.update_button_icon()
 	if(should_enable)

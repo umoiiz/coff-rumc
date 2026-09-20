@@ -30,7 +30,7 @@
 
 /datum/outfit/quick/tgmc/smartgunner/sg29
 	name = "SG29 Smart Machinegunner"
-	desc = "A gun smarter than the average bear, or marine. Equipped with an SG-29 smart machine gun and heavy armor upgraded with a 'Tyr' extra armor mdule, the SG is responsible for providing mobile, accurate firesupport thanks to your IFF ammunition."
+	desc = "一把比普通熊,或者说陆战队员更聪明的枪.配备一支SG-29智能机枪以及升级有'提尔'额外护甲模块的重型护甲,SG凭借你的敌我识别弹药负责提供机动,精准的火力支援."
 
 	suit_store = /obj/item/weapon/gun/rifle/sg29/patrol
 
@@ -45,7 +45,7 @@
 
 /datum/outfit/quick/tgmc/smartgunner/minigun_sg
 	name = "SG85 Smart Machinegunner"
-	desc = "More bullets than sense. Equipped with an SG-85 smart gatling gun, an MP-19 sidearm, heavy armor upgraded with a 'Tyr' extra armor mdule and a whole lot of bullets. For when you want to unleash a firehose of firepower. Try not to run out of ammo."
+	desc = "子弹比脑子还多.配备一支SG-85智能加特林机枪,一支MP-19副武器,升级有'提尔'额外护甲模块的重型护甲以及一大堆子弹.当你想要倾泻如消防水管般的火力时使用.尽量不要把弹药打光."
 
 	belt = /obj/item/storage/belt/sparepouch
 	suit_store = /obj/item/weapon/gun/minigun/smart_minigun/motion_detector
@@ -62,7 +62,7 @@
 
 /datum/outfit/quick/tgmc/smartgunner/sg62
 	name = "SG62 Smart Machinegunner"
-	desc = "Flexibility and precision. Equipped with an SG-62 smart target rifle and heavy armor upgraded with a 'Tyr' extra armor mdule. The integrated spotting rifle comes with a variety of flexible ammo types, which combined with high damage, penetration and IFF, makes for a dangerous support loadout."
+	desc = "灵活与精准.配备一支SG-62智能目标步枪以及升级有'提尔'额外护甲模块的重型护甲.集成的观测步枪带有多种灵活的弹药类型,结合高伤害,穿透力和敌我识别,构成一套危险的支持装备."
 
 	belt = /obj/item/storage/belt/marine/sg62
 	suit_store = /obj/item/weapon/gun/rifle/sg62/motion

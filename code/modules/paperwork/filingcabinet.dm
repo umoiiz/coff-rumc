@@ -1,6 +1,6 @@
 /obj/structure/filingcabinet
-	name = "filing cabinet"
-	desc = "A large cabinet with drawers."
+	name = "档案柜"
+	desc = "一个带抽屉的大柜子."
 	icon = 'icons/obj/structures/misc.dmi'
 	icon_state = "filingcabinet"
 	density = TRUE
@@ -10,7 +10,7 @@
 	soft_armor = list(MELEE = 0, BULLET = 60, LASER = 60, ENERGY = 60, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 
 /obj/structure/filingcabinet/chestdrawer
-	name = "chest drawer"
+	name = "胸部抽屉"
 	icon_state = "chestdrawer"
 
 /obj/structure/filingcabinet/filingcabinet	//not changing the path to avoid unecessary map issues, but please don't name stuff like this in the future -Pete
@@ -31,27 +31,27 @@
 		if(!user.transferItemToLoc(I, src))
 			return
 
-		to_chat(user, span_notice("You put [I] in [src]."))
+		to_chat(user, span_notice("你把[I]放进[src]."))
 		icon_state = "[initial(icon_state)]-open"
 		sleep(0.5 SECONDS)
 		icon_state = initial(icon_state)
 		updateUsrDialog()
 	else
-		to_chat(user, span_notice("You can't put [I] in [src]!"))
+		to_chat(user, span_notice("你无法把[I]放进[src]!"))
 
 /obj/structure/filingcabinet/wrench_act(mob/living/user, obj/item/I)
 	. = ..()
 
 	anchored = !anchored
 	playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
-	to_chat(user, span_notice("You [anchored ? "wrench" : "unwrench"] \the [src]."))
+	to_chat(user, span_notice("你[anchored ? "wrench" : "unwrench"]\the [src]."))
 
 /obj/structure/filingcabinet/attack_hand(mob/living/user)
 	. = ..()
 	if(.)
 		return
 	if(length(contents) <= 0)
-		to_chat(user, span_notice("\The [src] is empty."))
+		to_chat(user, span_notice("\The [src]是空的."))
 		return
 
 	user.set_interaction(src)

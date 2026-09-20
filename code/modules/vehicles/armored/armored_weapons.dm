@@ -1,6 +1,6 @@
 /obj/item/armored_weapon
-	name = "\improper LTB main battle tank cannon"
-	desc = "A TGMC vehicle's main turret cannon. It fires 86mm rocket propelled shells"
+	name = "\improper LTB主战坦克炮"
+	desc = "一种TGMC载具的主炮塔炮.它发射86毫米火箭推进炮弹"
 	icon = 'icons/obj/armored/hardpoint_modules.dmi'
 	icon_state = "ltb_cannon"
 	///owner this is attached to
@@ -319,8 +319,8 @@
 	forceMove(moveto)
 
 /obj/item/armored_weapon/secondary_weapon
-	name = "secondary cupola minigun"
-	desc = "A robotically controlled minigun that spews lead."
+	name = "副炮塔机枪"
+	desc = "一种机器人控制的机枪,倾泻铅弹."
 	icon_state = "cupola"
 	fire_sound = 'sound/weapons/guns/fire/tank_minigun_loop.ogg'
 	interior_fire_sound = null
@@ -336,8 +336,8 @@
 	hud_state_empty = "rifle_empty"
 
 /obj/item/armored_weapon/ltaap
-	name = "\improper LTA-AP chaingun"
-	desc = "A hefty, large caliber chaingun"
+	name = "\improper LTA-AP链炮"
+	desc = "一种沉重的大口径链炮"
 	icon_state = "ltaap_chaingun"
 	fire_sound = 'sound/weapons/guns/fire/tank_minigun_loop.ogg'
 	interior_fire_sound = null
@@ -352,8 +352,8 @@
 	hud_state_empty = "rifle_empty"
 
 /obj/item/armored_weapon/tank_autocannon
-	name = "\improper Bushwhacker Autocannon"
-	desc = "A Bushwhacker 30mm Autocannon for vehicular use."
+	name = "\improper Bushwhacker自动炮"
+	desc = "一种用于载具的Bushwhacker 30毫米自动炮."
 	icon_state = "tank_autocannon"
 	interior_fire_sound = null
 	fire_sound = SFX_AC_FIRE
@@ -366,8 +366,8 @@
 	hud_state_empty = "rifle_empty"
 
 /obj/item/armored_weapon/apc_cannon
-	name = "\improper MKV-7 utility payload launcher"
-	desc = "A double barrelled cannon which can rapidly deploy utility packages to the battlefield."
+	name = "\improper MKV-7通用载荷发射器"
+	desc = "一种双管炮,可以快速向战场部署通用载荷包."
 	icon_state = "APC uninstalled dualcannon"
 	fire_sound = 'sound/weapons/guns/fire/tank_smokelauncher.ogg'
 	interior_fire_sound = null
@@ -380,8 +380,8 @@
 	hud_state_empty = "grenade_empty"
 
 /obj/item/armored_weapon/secondary_flamer
-	name = "\improper OMR Mk.3 secondary flamer"
-	desc = "A large, vehicle mounted flamer. This one is capable of spraying it's payload due to a less solid mix."
+	name = "\improper OMR Mk.3副火焰喷射器"
+	desc = "一种大型载具安装式火焰喷射器.由于混合物较不粘稠,这个能够喷洒其载荷."
 	icon_state = "sflamer"
 	fire_sound = SFX_GUN_FLAMETHROWER
 	interior_fire_sound = null
@@ -397,8 +397,8 @@
 	hud_state_empty = "flame_empty"
 
 /obj/item/armored_weapon/tow
-	name = "\improper TOW-III launcher"
-	desc = "A single-shot, homing, vehicle-mounted TOW-III launcher designed for precision strikes against armored targets. Equipped with IFF."
+	name = "\improper TOW-III发射器"
+	desc = "一种单发,寻的,载具安装式TOW-III发射器,设计用于对装甲目标进行精确打击.配备有IFF."
 	icon_state = "seeker"
 	fire_sound = SFX_RPG_FIRE
 	interior_fire_sound = null
@@ -413,8 +413,8 @@
 	hud_state_empty = "rocket_empty"
 
 /obj/item/armored_weapon/microrocket_pod
-	name = "microrocket pod"
-	desc = "A TGMC secondary vehicle-mounted multiple launch rocket system with a total of 6 homing microrockets. Capable of unleashing its entire payload in rapid succession."
+	name = "微型火箭吊舱"
+	desc = "一种TGMC副载具安装式多管火箭系统,共有6枚寻的微型火箭.能够快速连续发射其全部载荷."
 	icon_state = "secondary_rocket_multiple"
 	fire_sound = 'sound/weapons/guns/fire/launcher.ogg'
 	interior_fire_sound = null
@@ -431,7 +431,7 @@
 
 /obj/item/armored_weapon/bfg
 	name = "\improper BFG 9500"
-	desc = "A crackling energy weapon, a slightly scaled up model of the classic BFG 9000. Point at people who killed your rabbit."
+	desc = "一种噼啪作响的能量武器,是经典BFG 9000的略微放大版.指向那些杀了你兔子的人."
 	icon_state = "bfg"
 	fire_sound = 'sound/weapons/guns/fire/tank_bfg.ogg'
 	interior_fire_sound = 'sound/vehicles/weapons/particle_fire_interior.ogg'
@@ -445,8 +445,8 @@
 
 // Recon tank
 /obj/item/armored_weapon/lvrt_sarden
-	name = "\improper EM-2600 'SARDEN' Autocannon"
-	desc = "A 30mm Autocannon for the LVRT 'Fallow'. A surprisingly powerful autocannon. Sadly, beltfeeding system was lost in the slew of budget cuts related to the system. It is loaded with 4 round clips."
+	name = "\improper EM-2600 'SARDEN'自动炮"
+	desc = "一种用于LVRT 'Fallow'的30毫米自动炮.一种出乎意料的强大自动炮.遗憾的是,弹链供弹系统在与该系统相关的一系列预算削减中丢失了.它装有4发弹夹."
 	icon_state = "lvrt_autocannon"
 	fire_sound = SFX_AC_FIRE
 	interior_fire_sound = null
@@ -459,8 +459,8 @@
 	hud_state_empty = "rifle_empty"
 
 /obj/item/armored_weapon/lvrt_cannon
-	name = "\improper EM-2500 Low Velocity Cannon"
-	desc = "A 76mm low velocity cannon for the LVRT 'Fallow'. It has slow travel speed and solid explosive performance. It is loaded with 76mm shells."
+	name = "\improper EM-2500低速炮"
+	desc = "一种用于LVRT 'Fallow'的76毫米低速炮.它的飞行速度慢,爆炸性能扎实.它装有76毫米炮弹."
 	icon_state = "lvrt_cannon"
 	fire_sound = SFX_AC_FIRE
 	interior_fire_sound = null
@@ -472,8 +472,8 @@
 	hud_state_empty = "rifle_empty"
 
 /obj/item/armored_weapon/lvrt_flamer
-	name = "\improper EM-2400 Low Impulse Flamer"
-	desc = "A 40mm low impulse flamer for the LVRT 'Fallow'. With it's special design, fires globes of fire to small area. Was made to counter soft organic structers. Utilizing special high-combustion fuel mix."
+	name = "\improper EM-2400低脉冲火焰喷射器"
+	desc = "一种用于LVRT 'Fallow'的40毫米低脉冲火焰喷射器.凭借其特殊设计,向小区域发射火球.被制造用于对抗柔软有机结构.使用特殊的高燃烧燃料混合物."
 	icon_state = "lvrt_flamer"
 	fire_sound = SFX_AC_FIRE
 	interior_fire_sound = null
@@ -487,8 +487,8 @@
 // tgmc coax
 
 /obj/item/armored_weapon/coaxial
-	name = "EM-94 Coaxial Chain gun (10x26mm)"
-	desc = "A beltfed coaxial that spews lead. Requires the Barrel shroud and power system of a vehicle to use in any way shape and form. Can use either standard MG-60 Boxes or vehicle specific boxes."
+	name = "EM-94同轴链炮(10x26毫米)"
+	desc = "一种弹链供弹的同轴武器,倾泻铅弹.需要载具的枪管护罩和动力系统才能以任何形式使用.可以使用标准MG-60弹箱或载具专用弹箱."
 	icon_state = "lvrt_coax"
 	fire_sound = 'sound/weapons/guns/fire/tgmc/kinetic/gun_mg60.ogg'
 	armored_weapon_flags = MODULE_SECONDARY|MODULE_FIXED_FIRE_ARC

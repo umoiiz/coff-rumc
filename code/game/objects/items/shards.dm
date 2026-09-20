@@ -1,10 +1,10 @@
 /obj/item/shard
-	name = "glass shard"
+	name = "玻璃碎片"
 	icon = 'icons/obj/items/shards.dmi'
 	icon_state = ""
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 1
-	desc = "Could probably be used as ... a throwing weapon?"
+	desc = "大概可以用作...投掷武器?"
 	w_class = WEIGHT_CLASS_TINY
 	force = 5
 	throwforce = 8
@@ -67,7 +67,7 @@
 		if(G.amount >= G.max_amount)
 			continue
 		G.attackby(NG, user)
-		to_chat(user, "You add the newly-formed glass to the stack. It now contains [NG.amount] sheets.")
+		to_chat(user, "你将新形成的玻璃加入堆中。现在它包含[NG.amount]片。")
 	qdel(src)
 
 /obj/item/shard/proc/on_cross(datum/source, atom/movable/AM, oldloc, oldlocs)
@@ -84,13 +84,13 @@
 
 	pick(playsound(loc, 'sound/effects/shard1.ogg', 35, TRUE), playsound(loc, 'sound/effects/shard2.ogg', 35, TRUE), playsound(loc, 'sound/effects/shard3.ogg', 35, TRUE), playsound(loc, 'sound/effects/shard4.ogg', 35, TRUE), playsound(loc, 'sound/effects/shard5.ogg', 35, TRUE))
 	if(prob(20))
-		to_chat(M, span_danger("[isxeno(M) ? "We" : "You"] step on \the [src], shattering it!"))
+		to_chat(M, span_danger("[isxeno(M) ? "We" : "You"]踩到了\the [src],将其踩碎!"))
 		qdel(src)
 		return
 
 	if(M.buckled)
 		return
-	to_chat(M, span_danger("[isxeno(M) ? "We" : "You"] step on \the [src]!"))
+	to_chat(M, span_danger("[isxeno(M) ? "We" : "You"]踩到了\the [src]!"))
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
@@ -114,10 +114,10 @@
 // Shrapnel
 
 /obj/item/shard/shrapnel
-	name = "shrapnel"
+	name = "弹片"
 	icon = 'icons/obj/items/shards.dmi'
 	icon_state = "shrapnel"
-	desc = "A bunch of tiny bits of shattered metal."
+	desc = "一堆破碎金属的细小碎片。"
 	source_sheet_type = null
 	embedding = list("embedded_flags" = EMBEDDED_DEL_ON_HOLDER_DEL, "embed_chance" = 0, "embedded_fall_chance" = 0)
 	var/damage_on_move = 0.5
@@ -130,28 +130,28 @@
 		desc += new_desc
 
 /obj/item/shard/shrapnel/bone_chips
-	name = "bone shrapnel chips"
-	desc = "It looks like it came from a prehistoric animal."
+	name = "骨制弹片碎屑"
+	desc = "看起来它来自一种史前动物。"
 	icon_state = "bonechips"
 	gender = PLURAL
 	damage_on_move = 0.6
 	shardsize = FALSE
 
 /obj/item/shard/shrapnel/bone_chips/human
-	name = "human bone fragments"
-	desc = "Oh god, their bits are everywhere!"
+	name = "人类骨骼碎片"
+	desc = "天哪,他们的碎片到处都是!"
 	icon_state = "humanbonechips"
 	shardsize = FALSE
 
 /obj/item/shard/shrapnel/bone_chips/xeno
-	name = "alien bone fragments"
-	desc = "Sharp, jagged fragments of alien bone. Looks like the previous owner exploded violently..."
+	name = "异形骨骼碎片"
+	desc = "尖锐、参差不齐的异形骨骼碎片。看起来之前的主人猛烈爆炸了..."
 	icon_state = "alienbonechips"
 	shardsize = FALSE
 
 /obj/item/shard/phoron
-	name = "phoron shard"
-	desc = "A shard of phoron glass. Considerably tougher then normal glass shards. Apparently not tough enough to be a window."
+	name = "phoron碎片"
+	desc = "一块phoron玻璃碎片。比普通玻璃碎片坚固得多。显然还不够坚固到能当窗户。"
 	force = 8
 	throwforce = 15
 	icon_state = "phoron"

@@ -1,9 +1,9 @@
 /obj/effect/countdown
 	name = "countdown"
-	desc = "We're leaving together\n\
-		But still it's farewell\n\
-		And maybe we'll come back\n\
-		To Earth, who can tell?"
+	desc = "我们一同离去\n\
+		但这仍是告别\n\
+		也许我们会回来\n\
+		回到地球,谁能说得准?"
 
 	invisibility = INVISIBILITY_OBSERVER
 	anchored = TRUE

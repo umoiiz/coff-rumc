@@ -39,8 +39,8 @@
 		return
 
 	if(target_hands_needed && !equip_buckle_inhands(potential_rider, target_hands_needed, target_movable)) // can be either 1 (cyborg riding) or 2 (human piggybacking) hands
-		potential_rider.visible_message(span_warning("[potential_rider] can't get a grip on [target_movable] because [potential_rider.p_their()] hands are full!"),
-			span_warning("You can't get a grip on [target_movable] because your hands are full!"))
+		potential_rider.visible_message(span_warning("[potential_rider]无法抓住[target_movable],因为[potential_rider.p_their()]的手占满了!"),
+			span_warning("你无法抓住[target_movable],因为你的手占满了!"))
 		return COMPONENT_BLOCK_BUCKLE
 /*
 	if((ride_check_flags & RIDER_NEEDS_LEGS) && HAS_TRAIT(potential_rider, TRAIT_FLOORED))
@@ -54,8 +54,8 @@
 	// need to see if !equip_buckle_inhands() checks are enough to skip any needed incapac/restrain checks
 	// CARRIER_NEEDS_ARM shouldn't apply if the ridden isn't even a living mob
 	if(hands_needed && !equip_buckle_inhands(target_living, hands_needed, target_living, potential_rider))
-		target_living.visible_message(span_warning("[target_living] can't get a grip on [potential_rider] because [target_living.p_their()] hands are full!"),
-			span_warning("You can't get a grip on [potential_rider] because your hands are full!"))
+		target_living.visible_message(span_warning("[target_living]无法抓住[potential_rider],因为[target_living.p_their()]的手占满了!"),
+			span_warning("你无法抓住[potential_rider],因为你的手占满了!"))
 		return COMPONENT_BLOCK_BUCKLE
 
 /datum/element/ridable/proc/on_buckle(atom/movable/target_movable, mob/living/potential_rider, force = FALSE, check_loc, lying_buckle, hands_needed, target_hands_needed, silent)
@@ -103,7 +103,7 @@
 	return TRUE
 
 /obj/item/riding_offhand
-	name = "offhand"
+	name = "副手"
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "offhand"
 	w_class = WEIGHT_CLASS_HUGE

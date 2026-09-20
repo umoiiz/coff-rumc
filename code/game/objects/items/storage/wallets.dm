@@ -1,6 +1,6 @@
 /obj/item/storage/wallet
-	name = "wallet"
-	desc = "It can hold a few small and personal things."
+	name = "钱包"
+	desc = "它可以装一些小的私人物品."
 	icon_state = "wallet"
 	icon = 'icons/obj/items/storage/wallet.dmi'
 	w_class = WEIGHT_CLASS_TINY

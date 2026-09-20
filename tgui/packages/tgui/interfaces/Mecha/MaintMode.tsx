@@ -196,7 +196,7 @@ const AccessPanel = (props) => {
             <Button
               fluid
               bold
-              content="Remove requirements"
+              content="移除需求"
               textAlign="center"
               fontSize="200%"
               lineHeight={1.25}
@@ -208,7 +208,7 @@ const AccessPanel = (props) => {
             <Button
               fluid
               bold
-              content="Add all from ID"
+              content="从ID添加全部"
               textAlign="center"
               fontSize="200%"
               lineHeight={1.25}
@@ -228,7 +228,7 @@ const AccessPanel = (props) => {
               <Button
                 fluid
                 bold
-                content="Del"
+                content="删除"
                 textAlign="center"
                 fontSize="200%"
                 lineHeight={1.25}
@@ -251,7 +251,7 @@ const AccessPanel = (props) => {
               <Button
                 fluid
                 bold
-                content="Add"
+                content="添加"
                 textAlign="center"
                 fontSize="200%"
                 lineHeight={1.25}

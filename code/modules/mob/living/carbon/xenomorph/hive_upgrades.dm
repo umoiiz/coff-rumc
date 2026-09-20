@@ -106,7 +106,7 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 	times_bought++
 	/*RUTGMC EDIT begin */
 	if(buyer.status_flags & INCORPOREAL)
-		to_chat(buyer, span_xenowarning("You can't build in this form!"))
+		to_chat(buyer, span_xenowarning("你无法以这种形态建造!"))
 		return FALSE
 	/*RUTGMC EDIT end*/
 	return TRUE
@@ -123,11 +123,11 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 	if((upgrade_flags & UPGRADE_FLAG_ONETIME) && times_bought)
 		return FALSE
 	if(buyer.status_flags & INCORPOREAL)
-		to_chat(buyer, span_xenowarning("You can't build in this form!"))
+		to_chat(buyer, span_xenowarning("你无法以这种形态建造!"))
 		return FALSE
 	if(SSpoints.xeno_points_by_hive[buyer.hivenumber] < psypoint_cost)
 		if(!silent)
-			to_chat(buyer, span_xenowarning("You need [psypoint_cost-SSpoints.xeno_points_by_hive[buyer.hivenumber]] more points to request this blessing!"))
+			to_chat(buyer, span_xenowarning("你需要[psypoint_cost-SSpoints.xeno_points_by_hive[buyer.hivenumber]]更多点数来请求这个祝福!"))
 		return FALSE
 	return TRUE
 
@@ -148,14 +148,14 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 
 	if(!buildloc.is_weedable())
 		if(!silent)
-			to_chat(buyer, span_warning("We can't do that here."))
+			to_chat(buyer, span_warning("我们无法在此处这样做。"))
 		return FALSE
 
 	var/obj/alien/weeds/alien_weeds = locate() in buildloc
 
 	if(!alien_weeds)
 		if(!silent)
-			to_chat(buyer, span_warning("We can only shape on weeds. We must find some resin before we start building!"))
+			to_chat(buyer, span_warning("我们只能在杂草上塑形。在开始建造之前,我们必须找到一些树脂!"))
 		return FALSE
 
 	if(!buildloc.check_alien_construction(buyer, silent, building_type) || !buildloc.check_disallow_alien_fortification(buyer, silent))
@@ -169,14 +169,14 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 		return FALSE
 
 	var/atom/built = new building_type(get_turf(buyer), buyer.hivenumber)
-	to_chat(buyer, span_notice("We build [built] for [psypoint_cost] psy points."))
+	to_chat(buyer, span_notice("我们花费[psypoint_cost]灵能点建造[built]。"))
 	log_game("[buyer] has built \a [built] in [AREACOORD(built)], spending [psypoint_cost] psy points in the process")
 	xeno_message("[buyer] has built \a [built] at [get_area(built)]!", "xenoannounce", 5, buyer.hivenumber)
 	return ..()
 
 /datum/hive_upgrade/building/silo
 	name = "Larva Silo"
-	desc = "Constructs a silo that generates xeno larvas over time."
+	desc = "建造一个卵仓,随时间生成异形幼虫。"
 	psypoint_cost = SILO_PRICE
 	icon = "silo"
 	gamemode_flags = ABILITY_DISTRESS
@@ -193,38 +193,38 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 
 	if(buildloc.density)
 		if(!silent)
-			to_chat(buyer, span_xenowarning("You cannot build in a dense location!"))
+			to_chat(buyer, span_xenowarning("你无法在密集位置建造!"))
 		return FALSE
 
 	for(var/hive in GLOB.xeno_resin_silos_by_hive)
 		for(var/silo in hive)
 			if(get_dist(silo, buyer) < 15)
-				to_chat(buyer, span_xenowarning("Another silo is too close!"))
+				to_chat(buyer, span_xenowarning("另一个卵仓太近了!"))
 				return FALSE
 
 	var/max_silo = SSticker.mode.max_silo_ammount
 	if(length(GLOB.xeno_resin_silos_by_hive[buyer.hivenumber]) >= max_silo)
 		if(!silent)
-			to_chat(buyer, span_xenowarning("Hive cannot support more than [max_silo] active silos!"))
+			to_chat(buyer, span_xenowarning("蜂巢无法支持超过[max_silo]个活跃卵仓!"))
 		return FALSE
 
 /datum/hive_upgrade/building/evotower
 	name = "Evolution Tower"
-	desc = "Constructs a tower that increases the rate of evolution point generation by 1.5 per tower."
+	desc = "建造一座塔,使进化点生成速率每座塔增加1.5。"
 	psypoint_cost = 300
 	icon = "evotower"
 	building_type = /obj/structure/xeno/evotower
 
 /datum/hive_upgrade/building/psychictower
 	name = "Psychic Relay"
-	desc = "Constructs a tower that increases the number of available slots of higher tier castes."
+	desc = "建造一座塔,增加更高等级种姓的可用槽位数量。"
 	psypoint_cost = 300
 	icon = "maturitytower"
 	building_type = /obj/structure/xeno/psychictower
 
 /datum/hive_upgrade/building/pherotower
 	name = "Pheromone Tower"
-	desc = "Constructs a tower that emanates a selectable type of pheromone."
+	desc = "建造一座塔,散发一种可选择的费洛蒙。"
 	psypoint_cost = 150
 	icon = "pherotower"
 	building_type = /obj/structure/xeno/pherotower
@@ -232,7 +232,7 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 
 /datum/hive_upgrade/building/spawner
 	name = "Spawner"
-	desc = "Constructs a spawner that spawns minions over time."
+	desc = "建造一个生成器,随时间生成仆从。"
 	psypoint_cost = 600
 	icon = "spawner"
 	building_type = /obj/structure/xeno/spawner
@@ -242,7 +242,7 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 
 /datum/hive_upgrade/defence/turret
 	name = "Acid Turret"
-	desc = "Places a acid spitting resin turret under you. Must be at least 6 tiles away from other turrets, not near fog, and on a weeded area."
+	desc = "在你下方放置一个酸液喷射树脂炮塔。必须距离其他炮塔至少6格,不能靠近迷雾,且位于杂草区域。"
 	icon = "acidturret"
 	psypoint_cost = 80
 	gamemode_flags = ABILITY_DISTRESS|ABILITY_CRASH
@@ -259,7 +259,7 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 	var/mob/living/carbon/xenomorph/blocker = locate() in T
 	if(blocker && blocker != buyer && blocker.stat != DEAD)
 		if(!silent)
-			to_chat(buyer, span_xenowarning("You cannot build with [blocker] in the way!"))
+			to_chat(buyer, span_xenowarning("[blocker]挡路了,你无法建造!"))
 		return FALSE
 
 	if(!T.is_weedable())
@@ -267,7 +267,7 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 
 	if(!buyer.loc_weeds_type)
 		if(!silent)
-			to_chat(buyer, span_xenowarning("No weeds here!"))
+			to_chat(buyer, span_xenowarning("这里没有杂草!"))
 		return FALSE
 
 	if(!T.check_alien_construction(buyer, silent, /obj/structure/xeno/turret) || !T.check_disallow_alien_fortification(buyer))
@@ -276,7 +276,7 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 	for(var/obj/structure/xeno/turret/turret AS in GLOB.xeno_resin_turrets_by_hive[blocker.hivenumber])
 		if(get_dist(turret, buyer) < 6)
 			if(!silent)
-				to_chat(buyer, span_xenowarning("Another turret is too close!"))
+				to_chat(buyer, span_xenowarning("另一个炮塔太近了!"))
 			return FALSE
 
 	return TRUE
@@ -288,7 +288,7 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 	if(!can_buy(buyer, FALSE))
 		return FALSE
 
-	to_chat(buyer, span_xenowarning("We build a new acid turret, spending [psypoint_cost] psychic points in the process"))
+	to_chat(buyer, span_xenowarning("我们建造了一个新的酸液炮塔,在此过程中花费了[psypoint_cost]灵能点。"))
 	new turret_type(get_turf(buyer), buyer.hivenumber)
 
 	log_game("[buyer] built a turret in [AREACOORD(buyer)], spending [psypoint_cost] psy points in the process")
@@ -298,7 +298,7 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 
 /datum/hive_upgrade/defence/turret/sticky
 	name = "Sticky Resin Turret"
-	desc = "Places a sticky spit spitting resin turret under you. Must be at least 6 tiles away from other turrets, not near fog, and on a weeded area."
+	desc = "在你下方放置一个粘性唾液喷射树脂炮塔。必须距离其他炮塔至少6格,不能靠近迷雾,且位于杂草区域。"
 	icon = "resinturret"
 	psypoint_cost = 50
 	turret_type = /obj/structure/xeno/turret/sticky
@@ -314,36 +314,36 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 	. = ..()
 	if(!isxenoqueen(buyer) && !isxenoshrike(buyer) && !isxenoking(buyer))
 		if(!silent)
-			to_chat(buyer, span_xenonotice("You must be a ruler to buy this!"))
+			to_chat(buyer, span_xenonotice("你必须是统治者才能购买这个!"))
 		return FALSE
 
 /datum/hive_upgrade/primordial/tier_four
 	name = PRIMORDIAL_TIER_FOUR
-	desc = "Unlocks the primordial upgrade for the last tier xenomorphs."
+	desc = "解锁最高等级异形的原始升级。"
 	psypoint_cost = 800
 	icon = "primo_t4"
 
 /datum/hive_upgrade/primordial/tier_three
 	name = PRIMORDIAL_TIER_THREE
-	desc = "Unlocks the primordial upgrade for the third tier xenomorphs."
+	desc = "解锁第三等级异形的原始升级。"
 	psypoint_cost = 1000
 	icon = "primo_t3"
 
 /datum/hive_upgrade/primordial/tier_two
 	name = PRIMORDIAL_TIER_TWO
-	desc = "Unlocks the primordial upgrade for the second tier xenomorphs."
+	desc = "解锁第二等级异形的原始升级。"
 	psypoint_cost = 800
 	icon = "primo_t2"
 
 /datum/hive_upgrade/primordial/tier_one
 	name = PRIMORDIAL_TIER_ONE
-	desc = "Unlocks the primordial upgrade for the first tier xenomorphs."
+	desc = "解锁第一等级异形的原始升级。"
 	psypoint_cost = 600
 	icon = "primo_t1"
 
 /datum/hive_upgrade/defence/oblivion
 	name = "Oblivion"
-	desc = "Destroy a single human corpse beneath you, by gibbing it."
+	desc = "摧毁你下方的一具人类尸体,将其碎尸。"
 	icon = "oblivion"
 	psypoint_cost = 500
 	gamemode_flags = ABILITY_DISTRESS|ABILITY_CRASH
@@ -358,7 +358,7 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 		return TRUE
 
 	if(!silent)
-		to_chat(buyer, span_xenowarning("You need someone dead to destroy!"))
+		to_chat(buyer, span_xenowarning("你需要有死者才能摧毁!"))
 	return FALSE
 
 /datum/hive_upgrade/defence/oblivion/on_buy(mob/living/carbon/xenomorph/buyer)
@@ -369,7 +369,7 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 		if(gibbed_human.stat != DEAD)
 			continue
 		xeno_message("[buyer] sent [gibbed_human] into oblivion!", "xenoannounce", 5, buyer.hivenumber)
-		to_chat(buyer, span_xenowarning("WE HAVE SENT THE [gibbed_human] INTO OBLIVION!"))
+		to_chat(buyer, span_xenowarning("我们已将[gibbed_human]送入湮灭!"))
 		gibbed_human.gib()
 		log_game("[buyer] sent [gibbed_human] into oblivion, spending [psypoint_cost] psy points in the process.")
 		break
@@ -377,7 +377,7 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 
 /datum/hive_upgrade/building/nest // shitcode
 	name = "Thick nest"
-	desc = "A very thick nest, oozing with a thick sticky substance. Becomes avalaible upon infecting a Predator."
+	desc = "一个非常厚实的巢穴,渗出浓稠的粘性物质。感染铁血战士后可用。"
 	psypoint_cost = 0
 	icon = "nest"
 	building_type = /obj/structure/xeno/thick_nest
@@ -388,6 +388,6 @@ GLOBAL_LIST_INIT(tier_to_primo_upgrade, list(
 	if(!.)
 		return
 	if(length(buyer.hive.thick_nests) >= buyer.hive.max_thick_nests)
-		to_chat(buyer, span_xenowarning("You cannot build any more thick nests!"))
+		to_chat(buyer, span_xenowarning("你不能再建造更多的厚巢穴了!"))
 		return FALSE
 	return .

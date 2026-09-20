@@ -8,7 +8,7 @@
 	icon = 'icons/obj/structures/comm_tower2.dmi'
 	icon_state = "comm_tower"
 	name = "TC-4T telecommunications tower"
-	desc = "A portable compact TC-4T telecommunications tower. Used to set up subspace communications lines between planetary and extra-planetary locations."
+	desc = "一座便携式紧凑型TC-4T电信塔. 用于建立行星与行星外地点之间的子空间通信线路."
 	density = TRUE
 	use_power = NO_POWER_USE
 	idle_power_usage = 0
@@ -59,24 +59,24 @@
 	if(tower_status != TOWER_BROKEN)
 		return
 	if(!I.remove_fuel(1, user))
-		to_chat(user, span_warning("You need more welding fuel to complete this task."))
+		to_chat(user, span_warning("你需要更多焊接燃料才能完成这项任务."))
 		return FALSE
 	if(user.skills.getRating(SKILL_ENGINEER) < SKILL_ENGINEER_ENGI)
-		user.visible_message(span_notice("[user] fumbles around figuring out [src]'s internals."),
-		span_notice("You fumble around figuring out [src]'s internals."))
+		user.visible_message(span_notice("[user]摸索着研究[src]的内部结构."),
+		span_notice("你摸索着研究[src]的内部结构."))
 		var/fumbling_time = 10 SECONDS - 2 SECONDS * user.skills.getRating(SKILL_ENGINEER)
 		if(!do_after(user, fumbling_time, NONE, src, BUSY_ICON_UNSKILLED, extra_checks = CALLBACK(I, TYPE_PROC_REF(/obj/item/tool/weldingtool, isOn))))
 			return FALSE
-	user.visible_message(span_notice("[user] starts welding [src]'s internal damage."),
-	span_notice("You start welding [src]'s internal damage."))
+	user.visible_message(span_notice("[user]开始焊接[src]的内部损伤."),
+	span_notice("你开始焊接[src]的内部损伤."))
 	if(!I.use_tool(src, user, 20 SECONDS, 1, 25, null, BUSY_ICON_BUILD))
 		return FALSE
 	if(tower_status != TOWER_BROKEN )
 		return FALSE
 	tower_integrity = max_tower_integrity
 	set_tower_status()
-	user.visible_message(span_notice("[user] welds [src]'s internal damage."),
-	span_notice("You weld [src]'s internal damage."))
+	user.visible_message(span_notice("[user]焊接了[src]的内部损伤."),
+	span_notice("你焊接了[src]的内部损伤."))
 	return TRUE
 
 /obj/machinery/telecomms/relay/preset/tower/examine(mob/user)
@@ -86,15 +86,15 @@
 
 	switch(tower_status)
 		if(TOWER_ON)
-			. += span_info("It's on")
+			. += span_info("它开着")
 		if(TOWER_OFF)
-			. += span_info("It's off")
+			. += span_info("它关着")
 		if(TOWER_BROKEN)
-			. += span_info("It's lightly damaged, and you can see internal workings. Use a blowtorch to repair it.")
+			. += span_info("它受到轻微损坏,你可以看到内部结构. 使用喷灯来修复它.")
 
 /obj/machinery/telecomms/relay/preset/tower/attack_hand(mob/living/user)
 	if(tower_status == TOWER_BROKEN)
-		to_chat(user, span_warning("[src] is too damaged!"))
+		to_chat(user, span_warning("[src]损坏太严重了!"))
 		return
 
 	on = !on
@@ -114,7 +114,7 @@
 		return
 	while(tower_status != TOWER_BROKEN)
 		if(X.do_actions)
-			return balloon_alert(X, "busy")
+			return balloon_alert(X, "忙碌")
 		if(!do_after(X, 3 SECONDS, NONE, src, BUSY_ICON_DANGER, BUSY_ICON_HOSTILE))
 			return
 		if(tower_integrity <= 50)
@@ -123,8 +123,8 @@
 			on = FALSE
 			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_TELETOWER)
 		X.do_attack_animation(src, ATTACK_EFFECT_CLAW)
-		X.visible_message(span_danger("[X] slashes \the [src]!"), \
-		span_danger("We slash \the [src]!"), null, 5)
+		X.visible_message(span_danger("[X]劈砍了\the [src]!"), \
+		span_danger("我们劈砍了\the [src]!"), null, 5)
 		playsound(loc, SFX_ALIEN_CLAW_METAL, 25, TRUE)
 		tower_integrity -= 25
 		set_tower_status()

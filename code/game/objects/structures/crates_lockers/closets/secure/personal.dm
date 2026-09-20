@@ -1,6 +1,6 @@
 /obj/structure/closet/secure_closet/personal
-	desc = "It's a secure locker for personnel. The first card swiped gains control."
-	name = "personal closet"
+	desc = "这是一个供人员使用的安全储物柜. 第一张刷过的卡获得控制权."
+	name = "个人储物柜"
 	req_access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/closet/secure_closet/personal/Initialize(mapload)
@@ -11,10 +11,10 @@
 		new /obj/item/storage/backpack/satchel/norm(src)
 
 /obj/structure/closet/secure_closet/personal/patient
-	name = "Patient's Closet"
+	name = "病人的储物柜"
 
 /obj/structure/closet/secure_closet/personal/morgue
-	name = "Morgue Closet"
+	name = "停尸间储物柜"
 
 /obj/structure/closet/secure_closet/personal/patient/PopulateContents()
 	new /obj/item/clothing/under/color/white( src )

@@ -2,8 +2,8 @@
 #define CLOAK_IMPLANT_COOLDOWN_TIME 50 SECONDS
 
 /obj/item/implant/cloak
-	name = "cloak implant"
-	desc = "A top of the line nanotrasen implant, designed for infiltration."
+	name = "隐形植入体"
+	desc = "一种最先进的纳米塔森植入体,专为渗透设计."
 	icon_state = "gripper"
 	cooldown_time = 0
 	var/deactivation_timer
@@ -34,7 +34,7 @@
 	if(implant_owner.do_actions)
 		return FALSE
 	if(HAS_TRAIT(implant_owner, TRAIT_STEALTH))
-		to_chat(implant_owner, span_warning("WARNING. Implant activation failed; Error code 518: Subject already cloaked."))
+		to_chat(implant_owner, span_warning("警告. 植入体激活失败; 错误代码518: 目标已处于隐形状态."))
 		return FALSE
 	INVOKE_ASYNC(src, PROC_REF(stealth_user))
 
@@ -43,7 +43,7 @@
 	apply_wibbly_filters(implant_owner)
 	playsound(implant_owner, 'sound/effects/seedling_chargeup.ogg', 100, TRUE)
 	if(!do_after(implant_owner, 3 SECONDS, IGNORE_HELD_ITEM, implant_owner))
-		to_chat(implant_owner, span_warning("WARNING. Implant activation failed; Error code 423: Subject cancelled activation."))
+		to_chat(implant_owner, span_warning("警告. 植入体激活失败; 错误代码423: 目标取消了激活."))
 		remove_wibbly_filters(implant_owner)
 		return
 	remove_wibbly_filters(implant_owner)
@@ -59,7 +59,7 @@
 		deltimer(deactivation_timer)
 		deactivation_timer = null
 	playsound(implant_owner, 'sound/effects/pred_cloakoff.ogg', 60, TRUE)
-	to_chat(implant_owner, span_warning("[src] deactivates!"))
+	to_chat(implant_owner, span_warning("[src]已停用!"))
 	implant_owner.alpha = initial(implant_owner.alpha)
 	REMOVE_TRAIT(implant_owner, TRAIT_STEALTH, TRAIT_STEALTH)
 	S_TIMER_COOLDOWN_START(src, COOLDOWN_CLOAK_IMPLANT, CLOAK_IMPLANT_COOLDOWN_TIME)

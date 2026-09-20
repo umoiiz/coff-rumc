@@ -1,7 +1,7 @@
 
 /obj/machinery/computer/station_alert
 	name = "Station Alert Computer"
-	desc = "Used to access the station's automated alert system."
+	desc = "用于访问空间站的自动警报系统."
 	icon_state = "computer_small"
 	screen_overlay = "atmos"
 	circuit = /obj/item/circuitboard/computer/stationalert

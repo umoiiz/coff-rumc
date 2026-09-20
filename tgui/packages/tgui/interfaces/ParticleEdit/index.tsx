@@ -77,18 +77,18 @@ export const ParticleEdit = (props) => {
                   <Button
                     icon={'question'}
                     onClick={() => setDesc('generator')}
-                    tooltip={'Generator information'}
+                    tooltip={'生成器信息'}
                   />
                   <Button
                     icon={'sync'}
                     onClick={() => act('new_type')}
-                    tooltip={'Change type'}
+                    tooltip={'更改类型'}
                   />
                   <Button
                     icon={'x'}
                     color={'red'}
                     onClick={() => act('delete_and_close')}
-                    tooltip={'Delete and close UI'}
+                    tooltip={'删除并关闭界面'}
                   />
                 </>
               }
