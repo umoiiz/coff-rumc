@@ -101,27 +101,27 @@
 	var/datum/emergency_call/distress = SSticker?.mode?.picked_call //Just to simplify things a bit
 
 	if(is_banned_from(usr.ckey, ROLE_ERT))
-		to_chat(usr, span_danger("Вы были ограничены в этой роли!"))
+		to_chat(usr, span_danger("你在这个角色中受到了限制!"))
 		return
 
 	if(!istype(distress) || !SSticker.mode.waiting_for_candidates || distress.mob_max < 1)
-		to_chat(usr, span_warning("Отсутствуют сигналы бедствия нуждающиеся в кандидатах. Вы будете оповещены, если что-то изменится."))
+		to_chat(usr, span_warning("没有需要候选人的求救信号.如果有任何变化,你会收到通知."))
 		return
 
 	var/deathtime = world.time - GLOB.key_to_time_of_role_death[key]
 
 	if(deathtime < 600 && !check_other_rights(usr.client, R_ADMIN, FALSE)) //They have ghosted after the announcement.
-		to_chat(usr, span_warning("Вы слишком недавно стали призраком. Попробуйте еще раз позже."))
+		to_chat(usr, span_warning("你成为幽灵的时间太短了.请稍后再试."))
 		return
 
 	if(usr.mind in distress.candidates)
-		to_chat(usr, span_warning("Вы уже один из кандидатов. Ждите высадки."))
+		to_chat(usr, span_warning("你已经是候选人之一了.等待部署."))
 		return
 
 	if(distress.add_candidate(usr))
-		to_chat(usr, span_boldnotice("Теперь вы кандидат в команду экстренного реагирования! Если кандидатов будет достаточно, вас могут выбрать в команду."))
+		to_chat(usr, span_boldnotice("现在你是紧急响应团队的候选人!如果候选人数足够,你可能会被选入团队."))
 	else
-		to_chat(usr, span_warning("Что-то пошло не так при добавлении вас в список кандидатов!"))
+		to_chat(usr, span_warning("将你加入候选人列表时出了点问题!"))
 
 /datum/emergency_call/proc/reset()
 	if(candidate_timer)
@@ -152,7 +152,7 @@
 	message_admins("Distress beacon: '[name]' activated. Looking for candidates.")
 
 	if(announce)
-		priority_announce("Сигнал бедствия запущен. Ожидание ответа...", title = "Сигнал Бедствия", type = ANNOUNCEMENT_PRIORITY, sound = 'sound/AI/distressbeacon.ogg', color_override = "orange")
+		priority_announce("求救信号已启动.等待回应...", title = "求救信号", type = ANNOUNCEMENT_PRIORITY, sound = 'sound/AI/distressbeacon.ogg', color_override = "orange")
 
 	SSticker.mode.on_distress_cooldown = TRUE
 
@@ -170,11 +170,11 @@
 			continue
 		if(M.current) //If they still have a body
 			if(!isaghost(M.current) && M.current.stat != DEAD) // and not dead or admin ghosting,
-				to_chat(M.current, span_warning("Вы не были выбраны в команду спасения, потому что вы не мертвы."))
+				to_chat(M.current, span_warning("你没有被选入救援团队,因为你没有死亡."))
 				continue
 		if(name == "Xenomorphs" && is_banned_from(ckey(M.key), ROLE_XENOMORPH))
 			if(M.current)
-				to_chat(M, span_warning("Вас не выбрали для участия в операции бедствия, потому что вам забанили роль Xenomorph."))
+				to_chat(M, span_warning("你没有被选中参与求救行动,因为你被封禁了Xenomorph角色."))
 			continue
 		valid_candidates += M
 
@@ -187,7 +187,7 @@
 		candidates.Cut()
 
 		if(announce)
-			priority_announce("Ответа на сигнал бедствия не поступило. Системы запуска заняты перекалибровкой.", "Сигнал Бедствия", sound = 'sound/AI/distressbeacon_none.ogg')
+			priority_announce("求救信号没有得到回应.发射系统正忙于重新校准.", "求救信号", sound = 'sound/AI/distressbeacon_none.ogg')
 
 		SSticker.mode.picked_call = null
 		SSticker.mode.on_distress_cooldown = TRUE
@@ -204,14 +204,14 @@
 
 		for(var/datum/mind/M in valid_candidates)
 			if(M.current)
-				to_chat(M.current, span_warning("Вас не выбрали в команду. Повезет в следующий раз!"))
+				to_chat(M.current, span_warning("你没有被选入团队.下次好运!"))
 		message_admins("Distress beacon: [length(valid_candidates)] valid candidates were not selected.")
 	else
 		picked_candidates = valid_candidates // save some time
 		message_admins("Distress beacon: All valid candidates were selected.")
 
 	if(announce)
-		priority_announce(dispatch_message, "Сигнал Бедствия", sound = 'sound/AI/distressreceived.ogg')
+		priority_announce(dispatch_message, "求救信号", sound = 'sound/AI/distressreceived.ogg')
 
 	message_admins("Distress beacon: [name] finalized, starting spawns.")
 

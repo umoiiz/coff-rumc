@@ -28,7 +28,7 @@ export const CrewManifest = () => {
     return (
       <Window width={650} height={800}>
         <Window.Content>
-          <Section>No crew manifest available.</Section>
+          <Section>无可用船员名单.</Section>
         </Window.Content>
       </Window>
     );

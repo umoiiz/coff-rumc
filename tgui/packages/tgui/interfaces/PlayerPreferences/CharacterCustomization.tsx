@@ -44,45 +44,45 @@ export const CharacterCustomization = (props) => {
   };
   const genders = ['male', 'female', 'plural', 'neuter'];
   const genderToName = {
-    male: 'Male',
-    female: 'Female',
-    neuter: 'Object',
-    plural: 'Other',
+    male: '男性',
+    female: '女性',
+    neuter: '物体',
+    plural: '其他',
   };
   return (
     <>
-      <Section title="Profile">
+      <Section title="档案">
         <Flex>
           <Flex.Item>
             <LabeledList>
               <TextFieldPreference
-                label={'Full Name'}
+                label={'全名'}
                 action={'name_real'}
                 value={'real_name'}
                 extra={
                   <Box as="span">
                     <Button onClick={() => act('randomize_name')}>
-                      Randomize
+                      随机
                     </Button>
                     <Button.Checkbox
                       inline
-                      content="Always Random"
+                      content="始终随机"
                       checked={random_name === 1}
                       onClick={() => act('toggle_always_random')}
                     />
                   </Box>
                 }
               />
-              <TextFieldPreference label={'Xenomorph'} value={'xeno_name'} />
+              <TextFieldPreference label={'异形'} value={'xeno_name'} />
               <TextFieldPreference
-                label={'Squad Robot Name'}
+                label={'小队机器人名称'}
                 value={'squad_robot_name'}
               />
               <TextFieldPreference
-                label={'Synthetic Name'}
+                label={'合成人名称'}
                 value={'synthetic_name'}
               />
-              <TextFieldPreference label={'AI Name'} value={'ai_name'} />
+              <TextFieldPreference label={'AI名称'} value={'ai_name'} />
             </LabeledList>
           </Flex.Item>
           <Flex.Item>
@@ -91,18 +91,18 @@ export const CharacterCustomization = (props) => {
         </Flex>
       </Section>
       <Section
-        title="Body"
+        title="身体"
         buttons={
           <Button color="bad" icon="power-off" onClick={() => act('random')}>
-            Randomize everything
+            全部随机
           </Button>
         }
       >
         <Flex>
           <Flex.Item>
             <LabeledList>
-              <TextFieldPreference label={'Age'} value={'age'} />
-              <LabeledList.Item label={'Gender'}>
+              <TextFieldPreference label={'年龄'} value={'age'} />
+              <LabeledList.Item label={'性别'}>
                 {genders.map((thisgender) => (
                   <Button.Checkbox
                     inline
@@ -116,12 +116,12 @@ export const CharacterCustomization = (props) => {
                 ))}
               </LabeledList.Item>
               <SelectFieldPreference
-                label={'Hair style'}
+                label={'发型'}
                 value={'h_style'}
                 action={'hairstyle'}
               />
               <TextFieldPreference
-                label={'Hair Color'}
+                label={'发色'}
                 value={rgbToHex(r_hair, g_hair, b_hair)}
                 noAction
                 extra={
@@ -132,12 +132,12 @@ export const CharacterCustomization = (props) => {
                 }
               />
               <SelectFieldPreference
-                label={'Hair gradient style'}
+                label={'渐变发型'}
                 value={'grad_style'}
                 action={'grad_style'}
               />
               <TextFieldPreference
-                label={'Gradient Color'}
+                label={'渐变色'}
                 value={rgbToHex(r_grad, g_grad, b_grad)}
                 noAction
                 extra={
@@ -148,7 +148,7 @@ export const CharacterCustomization = (props) => {
                 }
               />
               <TextFieldPreference
-                label={'Eye Color'}
+                label={'眼睛颜色'}
                 value={rgbToHex(r_eyes, g_eyes, b_eyes)}
                 noAction
                 extra={
@@ -159,19 +159,19 @@ export const CharacterCustomization = (props) => {
                 }
               />
               <ToggleFieldPreference
-                label={'Eye sight'}
+                label={'视力'}
                 value={'good_eyesight'}
-                leftLabel={'Good'}
-                rightLabel={'Bad'}
+                leftLabel={'良好'}
+                rightLabel={'差'}
                 action={'toggle_eyesight'}
               />
               <SelectFieldPreference
-                label={'Facial hair'}
+                label={'面部毛发'}
                 value={'f_style'}
                 action={'facial_style'}
               />
               <TextFieldPreference
-                label={'Facial Hair Color'}
+                label={'面部毛发颜色'}
                 value={rgbToHex(r_facial, g_facial, b_facial)}
                 noAction
                 extra={
@@ -189,41 +189,41 @@ export const CharacterCustomization = (props) => {
           <Flex.Item>
             <LabeledList>
               <SelectFieldPreference
-                label={'Species'}
+                label={'种族'}
                 value={'species'}
                 action={'species'}
               />
               <SelectFieldPreference
-                label={'Synth type'}
+                label={'合成人类型'}
                 value={'synthetic_type'}
                 action={'synthetic_type'}
               />
               <SelectFieldPreference
-                label={'Ethnicity'}
+                label={'民族'}
                 value={'ethnicity'}
                 action={'ethnicity'}
               />
               <SelectFieldPreference
-                label={'Robot model'}
+                label={'机器人型号'}
                 value={'squad_robot_type'}
                 action={'squad_robot_type'}
               />
               <SelectFieldPreference
-                label={'Citizenship'}
+                label={'国籍'}
                 value={'citizenship'}
                 action={'citizenship'}
               />
               <SelectFieldPreference
-                label={'Religion'}
+                label={'宗教'}
                 value={'religion'}
                 action={'religion'}
               />
               <SelectFieldPreference
-                label={'TTS voice'}
+                label={'TTS语音'}
                 value={'tts_voice'}
                 action={'tts_voice'}
               />
-              <TextFieldPreference label={'TTS pitch'} value={'tts_pitch'} />
+              <TextFieldPreference label={'TTS音调'} value={'tts_pitch'} />
             </LabeledList>
           </Flex.Item>
         </Flex>

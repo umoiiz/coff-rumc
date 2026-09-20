@@ -1,5 +1,5 @@
 /obj/item/reagent_containers/pill
-	name = "pill"
+	name = "药丸"
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "pill1"
 	worn_icon_state = "pill"
@@ -28,10 +28,10 @@
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if(H.species.species_flags & ROBOTIC_LIMBS)
-				to_chat(H, span_warning("You can't eat pills."))
+				to_chat(H, span_warning("你不能吃药丸。"))
 				return
 
-		to_chat(M, span_green("You swallow [src]."))
+		to_chat(M, span_green("你吞下了[src]。"))
 		M.dropItemToGround(src) //icon update
 		if(reagents.total_volume)
 			record_reagent_consumption(reagents.total_volume, reagents.reagent_list, user)
@@ -45,10 +45,10 @@
 
 		var/mob/living/carbon/human/H = M
 		if(H.species.species_flags & ROBOTIC_LIMBS)
-			to_chat(user, span_warning("They have a monitor for a head, where do you think you're going to put that?"))
+			to_chat(user, span_warning("他们的头是个显示器,你觉得你能把那东西放哪儿?"))
 			return
 
-		user.visible_message(span_green("[user] attempts to force [M] to swallow [src]."))
+		user.visible_message(span_green("[user]试图强迫[M]吞下[src]。"))
 
 		var/ingestion_time = max(1 SECONDS, 3 SECONDS - 1 SECONDS * user.skills.getRating(SKILL_MEDICAL))
 
@@ -56,7 +56,7 @@
 			return
 
 		user.dropItemToGround(src) //icon update
-		visible_message(span_green("[user] forces [M] to swallow [src]."))
+		visible_message(span_green("[user]强迫[M]吞下[src]。"))
 		var/rgt_list_text = get_reagent_list_text()
 
 		log_combat(user, M, "fed", src, "Reagents: [rgt_list_text]")
@@ -79,7 +79,7 @@
 
 	if(target.is_refillable())
 		if(target.reagents.holder_full())
-			to_chat(user, span_warning("[target] is full."))
+			to_chat(user, span_warning("[target]是满的。"))
 			return
 
 		var/obj/item/reagent_containers/R = null
@@ -91,19 +91,19 @@
 
 		if(target.is_drainable() && !target.reagents.total_volume)
 			if(!R || !liquidate)
-				to_chat(user, span_warning("[target] is empty! There's nothing to dissolve [src] in."))
+				to_chat(user, span_warning("[target]是空的!没有东西可以溶解[src]。"))
 				return
-			to_chat(user, span_notice("[target]'s liquifier instantly reprocesses [src] upon insertion."))
+			to_chat(user, span_notice("[target]的液化器在[src]插入后立即将其重新处理。"))
 
 		if(!R || !liquidate)
-			to_chat(user, span_notice("You dissolve the pill in [target]."))
+			to_chat(user, span_notice("你把药丸溶解在[target]里。"))
 
 		var/rgt_list_text = get_reagent_list_text()
 
 		log_combat(user, target, "spiked", src, "Reagents: [rgt_list_text]")
 
 		reagents.trans_to(target, reagents.total_volume)
-		visible_message(span_warning("[user] puts something in \the [target]."), null, null, 2)
+		visible_message(span_warning("[user]把某样东西放进了\the [target]。"), null, null, 2)
 
 		QDEL_IN(src, 5)
 
@@ -123,7 +123,7 @@
 	pill_id = 2
 
 /obj/item/reagent_containers/pill/cyanide
-	desc = "A cyanide pill. Don't swallow this!"
+	desc = "一颗氰化物药丸。别吞下去!"
 	pill_desc = null//so even non medics can see what this pill is.
 	list_reagents = list(/datum/reagent/toxin/cyanide = 50)
 	pill_id = 2

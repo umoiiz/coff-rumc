@@ -13,7 +13,7 @@
 /datum/emote/living/carbon/xenomorph/growl
 	key = "growl"
 	key_third_person = "growls"
-	message = "growls!"
+	message = "咆哮!"
 	emote_type = EMOTE_AUDIBLE
 	predalien_sound = 'sound/voice/alien/predalien/growl.ogg'
 	sound = 'sound/voice/alien/growl1.ogg'
@@ -37,7 +37,7 @@
 /datum/emote/living/carbon/xenomorph/hiss
 	key = "hiss"
 	key_third_person = "hisses"
-	message = "hisses!"
+	message = "嘶嘶叫!"
 	emote_type = EMOTE_AUDIBLE
 	predalien_sound = 'sound/voice/alien/predalien/hiss.ogg'
 	sound = 'sound/voice/alien/hiss1.ogg'
@@ -61,7 +61,7 @@
 /datum/emote/living/carbon/xenomorph/needhelp
 	key = "needhelp"
 	key_third_person = "needshelp"
-	message = "needs help!"
+	message = "需要帮助!"
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/voice/alien/help1.ogg'
 
@@ -79,7 +79,7 @@
 /datum/emote/living/carbon/xenomorph/roar
 	key = "roar"
 	key_third_person = "roars"
-	message = "roars!"
+	message = "吼叫!"
 	emote_type = EMOTE_AUDIBLE
 	predalien_sound = 'sound/voice/alien/predalien/roar.ogg'
 	sound = 'sound/voice/alien/roar1.ogg'
@@ -118,7 +118,7 @@
 /datum/emote/living/carbon/xenomorph/tail
 	key = "tail"
 	key_third_person = "tailsweeps"
-	message = "swipes its tail."
+	message = "甩动尾巴."
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/effects/alien/tail_swipe1.ogg'
 

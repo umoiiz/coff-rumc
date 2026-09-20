@@ -150,7 +150,7 @@
 			return
 		qdel(A)
 	else if(isliving(A)) //Hacked it up so it just deletes it
-		to_chat(A, span_danger("You get lost into the depths of space, never to be seen again."))
+		to_chat(A, span_danger("你迷失在太空深处,再也无法被找到."))
 		qdel(A)
 
 /obj/effect/step_trigger/teleporter/random/Initialize(mapload)
@@ -170,7 +170,7 @@
 /obj/effect/step_trigger/teleporter/yautja_ship/Trigger(atom/movable/A)
 	var/turf/destination
 	if(length(GLOB.yautja_teleports)) //We have some possible locations.
-		var/pick = tgui_input_list(usr, "Where do you want to go today?", "Locations", GLOB.yautja_teleport_descs) //Pick one of them in the list.)
+		var/pick = tgui_input_list(usr, "你今天想去哪里?", "地点", GLOB.yautja_teleport_descs) //Pick one of them in the list.)
 		destination = GLOB.yautja_teleport_descs[pick]
 	if(!destination || (A.loc != loc))
 		return

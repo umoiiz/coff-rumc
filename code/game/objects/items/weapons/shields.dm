@@ -1,5 +1,5 @@
 /obj/item/weapon/shield
-	name = "shield"
+	name = "盾牌"
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/equipment/shields_left.dmi',
 		slot_r_hand_str = 'icons/mob/inhands/equipment/shields_right.dmi',
@@ -37,8 +37,8 @@
 	AddComponent(/datum/component/stun_mitigation)
 
 /obj/item/weapon/shield/riot
-	name = "riot shield"
-	desc = "A shield adept at blocking blunt objects from connecting with the torso of the shield wielder."
+	name = "防暴盾"
+	desc = "一面擅长阻挡钝器击中持盾者躯干的盾牌."
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "riot"
 	max_integrity = 200
@@ -61,19 +61,19 @@
 	. = ..()
 	var/health_status = (obj_integrity-integrity_failure) * 100 / (max_integrity-integrity_failure)
 	if(integrity_failure && obj_integrity <= integrity_failure)
-		. += span_notice("It's completely broken, with gaping holes everywhere!")
+		. += span_notice("它完全损坏了,到处都是破洞!")
 		return
 	switch(health_status)
 		if(0 to 20)
-			. += span_notice("It's falling apart under its own weight!")
+			. += span_notice("它快要在自身重量下散架了!")
 		if(20 to 40)
-			. += span_notice("It's barely holding its shape.")
+			. += span_notice("它勉强维持着形状.")
 		if(40 to 60)
-			. += span_notice("It's still holding up.")
+			. += span_notice("它仍然撑得住.")
 		if(60 to 80)
-			. += span_notice("It's slightly damaged.")
+			. += span_notice("它轻微受损.")
 		if(80 to 100)
-			. += span_notice("It's in perfect condition.")
+			. += span_notice("它完好无损.")
 
 /obj/item/weapon/shield/riot/attackby(obj/item/I, mob/user, params)
 	. = ..()
@@ -86,10 +86,10 @@
 			return
 
 		if(metal_sheets.get_amount() < 1)
-			to_chat(user, span_warning("You need one metal sheet to restore the structural integrity of [src]."))
+			to_chat(user, span_warning("你需要一块金属板来恢复[src]的结构完整性."))
 			return
 
-		visible_message(span_notice("[user] begins to restore the structural integrity of [src]."))
+		visible_message(span_notice("[user]开始恢复[src]的结构完整性."))
 
 		if(!do_after(user, 2 SECONDS, NONE, src, BUSY_ICON_FRIENDLY) || obj_integrity >= max_integrity)
 			return
@@ -98,21 +98,21 @@
 			return
 
 		repair_damage(max_integrity * 0.2, user)
-		visible_message(span_notice("[user] restores the structural integrity of [src]."))
+		visible_message(span_notice("[user]恢复了[src]的结构完整性."))
 
 	else if(istype(I, /obj/item/weapon) && world.time >= cooldown)
-		user.visible_message(span_warning("[user] bashes [src] with [I]!"))
+		user.visible_message(span_warning("[user]用[I]猛击[src]!"))
 		playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
 		cooldown = world.time + 2.5 SECONDS
 
 /obj/item/weapon/shield/riot/welder_act(mob/living/user, obj/item/I)
 	. = welder_repair_act(user, I, max_integrity * 0.15, 4 SECONDS, integrity_failure / max_integrity, SKILL_ENGINEER_METAL)
 	if(. == BELOW_INTEGRITY_THRESHOLD)
-		balloon_alert(user, "Too damaged. Use metal sheets.")
+		balloon_alert(user, "损坏太严重.请使用金属板.")
 
 /obj/item/weapon/shield/riot/marine
-	name = "\improper TL-172 defensive shield"
-	desc = "A heavy shield adept at blocking blunt or sharp objects from connecting with the shield wielder. Looks very robust."
+	name = "\improper TL-172防御盾"
+	desc = "一面擅长阻挡钝器或利器击中持盾者的重型盾牌.看起来非常坚固."
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "marine_shield"
 	equip_slot_flags = ITEM_SLOT_BACK
@@ -146,16 +146,16 @@
 	icon_state = "riot_metal"
 
 /obj/item/weapon/shield/riot/marine/som
-	name = "\improper S-144 boarding shield"
-	desc = "A robust, heavy shield designed to be shot instead of the person holding it. Commonly employed by the SOM during boarding actions and other close quarter combat scenarios. This one has a SOM flag emblazoned on the front."
+	name = "\improper S-144登舰盾"
+	desc = "一面坚固的重型盾牌,设计用来替持盾者挡子弹.通常被SOM在登舰行动和其他近距离战斗场景中使用.这面盾牌正面印有SOM旗帜."
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "som_shield"
 	soft_armor = list(MELEE = 35, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = 30, BIO = 50, FIRE = 0, ACID = 15)
 
 //A shield that can be deployed as a barricade
 /obj/item/weapon/shield/riot/marine/deployable
-	name = "\improper TL-182 deployable shield"
-	desc = "A compact shield adept at blocking blunt or sharp objects from connecting with the shield wielder. Can be deployed as a barricade."
+	name = "\improper TL-182可部署盾"
+	desc = "一面擅长阻挡钝器或利器击中持盾者的紧凑盾牌.可作为路障部署."
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "folding_shield"
 	equip_slot_flags = ITEM_SLOT_BACK
@@ -183,8 +183,8 @@
 	AddComponent(/datum/component/shield, SHIELD_PARENT_INTEGRITY, list(MELEE = 40, BULLET = 35, LASER = 35, ENERGY = 35, BOMB = 40, BIO = 15, FIRE = 30, ACID = 35))
 
 /obj/item/weapon/shield/energy
-	name = "energy combat shield"
-	desc = "A shield capable of stopping most projectile and melee attacks. It can be retracted, expanded, and stored anywhere."
+	name = "能量战斗盾"
+	desc = "一面能够阻挡大多数投射物和近战攻击的盾牌.它可以收缩、展开,并存放在任何地方."
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "eshield0" // eshield1 for expanded
 	atom_flags = CONDUCT|NOBLOODY
@@ -206,19 +206,19 @@
 		force = on_force
 		w_class = WEIGHT_CLASS_BULKY
 		playsound(user, 'sound/weapons/saberon.ogg', 25, TRUE)
-		to_chat(user, span_notice("[src] is now active."))
+		to_chat(user, span_notice("[src]现已激活."))
 	else
 		force = initial(force)
 		w_class = WEIGHT_CLASS_SMALL
 		playsound(user, 'sound/weapons/saberoff.ogg', 25, TRUE)
-		to_chat(user, span_notice("[src] can now be concealed."))
+		to_chat(user, span_notice("[src]现在可以隐藏了."))
 	add_fingerprint(user, "turned [active ? "on" : "off"]")
 
 //Special attack
 /datum/action/ability/activable/weapon_skill/shield_bash
 	name = "Shield bash"
 	action_icon_state = "shield_bash"
-	desc = "A powerful blow that hits foes in the direction you are facing. Causes knockback and stagger."
+	desc = "一次强力的打击,击中你面朝方向的敌人.造成击退和硬直."
 	ability_cost = 5
 	cooldown_duration = 6 SECONDS
 	use_state_flags = ABILITY_USE_STAGGERED
@@ -244,7 +244,7 @@
 	add_cooldown()
 	var/mob/living/carbon/carbon_owner = owner
 	carbon_owner.face_atom(A)
-	carbon_owner.visible_message(span_danger("[carbon_owner] slams their shield forwards!"))
+	carbon_owner.visible_message(span_danger("[carbon_owner]向前猛撞他们的盾牌!"))
 	playsound(carbon_owner, 'sound/effects/alien/tail_swipe2.ogg', 30, 1)
 	var/hit_something = FALSE
 	for(var/mob/living/victim in get_step(carbon_owner, angle_to_dir(Get_Angle(carbon_owner, A))))

@@ -1,6 +1,6 @@
 /obj/structure/xeno/acidwell
-	name = "acid well"
-	desc = "An acid well. It stores acid to put out fires."
+	name = "酸液井"
+	desc = "一个酸液井.它储存酸液用于灭火."
 	icon = 'icons/Xeno/acid_well.dmi'
 	icon_state = "well"
 	density = FALSE
@@ -58,7 +58,7 @@
 	if(!QDELETED(creator) && creator.stat == CONSCIOUS && creator.z == z)
 		var/area/A = get_area(src)
 		if(A)
-			to_chat(creator, span_xenoannounce("You sense your acid well at [A.name] has been destroyed!") )
+			to_chat(creator, span_xenoannounce("你感应到你在[A.name]的酸液井已被摧毁!") )
 
 	if((damage_amount || damage_flag) && charges > 0) //Spawn the gas only if we actually get destroyed by damage
 		var/datum/effect_system/smoke_spread/xeno/acid/extuingishing/A = new(get_turf(src))
@@ -70,10 +70,10 @@
 	. = ..()
 	if(!isxeno(user) && !isobserver(user))
 		return
-	. += span_xenonotice("An acid well made by [creator]. It currently has <b>[charges]/[XENO_ACID_WELL_MAX_CHARGES] charges</b>.")
+	. += span_xenonotice("一个由[creator]制造的酸液井.它当前有<b>[charges]/[XENO_ACID_WELL_MAX_CHARGES]次充能</b>.")
 
 /obj/structure/xeno/acidwell/deconstruct(disassembled = TRUE, mob/living/blame_mob)
-	visible_message(span_danger("[src] suddenly collapses!") )
+	visible_message(span_danger("[src]突然坍塌了!") )
 	return ..()
 
 /obj/structure/xeno/acidwell/update_icon()
@@ -115,44 +115,44 @@
 
 /obj/structure/xeno/acidwell/attack_alien(mob/living/carbon/xenomorph/xeno_attacker, damage_amount = xeno_attacker.xeno_caste.melee_damage, damage_type = BRUTE, damage_flag = MELEE, effects = TRUE, armor_penetration = xeno_attacker.xeno_caste.melee_ap, isrightclick = FALSE)
 	if(xeno_attacker.a_intent == INTENT_HARM && (CHECK_BITFIELD(xeno_attacker.xeno_caste.caste_flags, CASTE_IS_BUILDER) || xeno_attacker == creator) ) //If we're a builder caste or the creator and we're on harm intent, deconstruct it.
-		balloon_alert(xeno_attacker, "Removing...")
+		balloon_alert(xeno_attacker, "正在移除...")
 		if(!do_after(xeno_attacker, XENO_ACID_WELL_FILL_TIME, IGNORE_HELD_ITEM, src, BUSY_ICON_HOSTILE))
-			balloon_alert(xeno_attacker, "Stopped removing")
+			balloon_alert(xeno_attacker, "已停止移除")
 			return
 		playsound(src, SFX_ALIEN_RESIN_BREAK, 25)
 		deconstruct(TRUE, xeno_attacker)
 		return
 
 	if(charges >= XENO_ACID_WELL_MAX_CHARGES)
-		balloon_alert(xeno_attacker, "Already full")
+		balloon_alert(xeno_attacker, "已满")
 		return
 	if(charging)
-		balloon_alert(xeno_attacker, "Already being filled")
+		balloon_alert(xeno_attacker, "已在填充中")
 		return
 
 	if(xeno_attacker.plasma_stored < XENO_ACID_WELL_FILL_COST) //You need to have enough plasma to attempt to fill the well
-		balloon_alert(xeno_attacker, "Need [XENO_ACID_WELL_FILL_COST - xeno_attacker.plasma_stored] more plasma")
+		balloon_alert(xeno_attacker, "需要[XENO_ACID_WELL_FILL_COST - xeno_attacker.plasma_stored]更多等离子体")
 		return
 
 	charging = TRUE
 
-	balloon_alert(xeno_attacker, "Refilling...")
+	balloon_alert(xeno_attacker, "正在重新填充...")
 	if(!do_after(xeno_attacker, XENO_ACID_WELL_FILL_TIME, IGNORE_HELD_ITEM, src, BUSY_ICON_BUILD))
 		charging = FALSE
-		balloon_alert(xeno_attacker, "Aborted refilling")
+		balloon_alert(xeno_attacker, "已中止重新填充")
 		return
 
 	if(xeno_attacker.plasma_stored < XENO_ACID_WELL_FILL_COST)
 		charging = FALSE
-		balloon_alert(xeno_attacker, "Need [XENO_ACID_WELL_FILL_COST - xeno_attacker.plasma_stored] more plasma")
+		balloon_alert(xeno_attacker, "需要[XENO_ACID_WELL_FILL_COST - xeno_attacker.plasma_stored]更多等离子体")
 		return
 
 	xeno_attacker.plasma_stored -= XENO_ACID_WELL_FILL_COST
 	charges++
 	charging = FALSE
 	update_icon()
-	balloon_alert(xeno_attacker, "Now has [charges] / [XENO_ACID_WELL_MAX_CHARGES] charges")
-	to_chat(xeno_attacker,span_xenonotice("We add acid to [src]. It is currently has <b>[charges] / [XENO_ACID_WELL_MAX_CHARGES] charges</b>.") )
+	balloon_alert(xeno_attacker, "现在有[charges] / [XENO_ACID_WELL_MAX_CHARGES]发充能")
+	to_chat(xeno_attacker,span_xenonotice("我们向[src]添加酸液. 它当前有<b>[charges] / [XENO_ACID_WELL_MAX_CHARGES]发充能</b>.") )
 
 /obj/structure/xeno/acidwell/proc/on_cross(datum/source, atom/movable/A, oldloc, oldlocs)
 	SIGNAL_HANDLER
@@ -178,7 +178,7 @@
 		if(sticky_bomb.stuck_to == stepper)
 			sticky_bomb.clean_refs()
 			sticky_bomb.forceMove(loc) // i'm not sure if this is even needed, but just to prevent possible bugs
-			visible_message(span_danger("[src] sizzles as [sticky_bomb] melts down in the acid."))
+			visible_message(span_danger("[src]嘶嘶作响, [sticky_bomb]在酸液中溶解."))
 			qdel(sticky_bomb)
 			charges_used ++
 
@@ -191,8 +191,8 @@
 		stepper.next_move_slowdown += charges * 2 //Acid spray has slow down so this should too; scales with charges, Min 2 slowdown, Max 10
 		stepper.apply_damage(charges * 10, BURN, BODY_ZONE_PRECISE_L_FOOT, ACID,  penetration = 33 - 20 * H.get_permeability_protection()) //Wearing mimir MK1/2 will soften damage from wells by reducing AP
 		stepper.apply_damage(charges * 10, BURN, BODY_ZONE_PRECISE_R_FOOT, ACID,  penetration = 33 - 20 * H.get_permeability_protection()) //without providing full protection against them
-		stepper.visible_message(span_danger("[stepper] is immersed in [src]'s acid!") , \
-		span_danger("We are immersed in [src]'s acid!") , null, 5)
+		stepper.visible_message(span_danger("[stepper]浸没在[src]的酸液中!") , \
+		span_danger("我们浸没在[src]的酸液中!") , null, 5)
 		playsound(stepper, 'sound/bullets/acid_impact1.ogg', 10 * charges)
 		new /obj/effect/temp_visual/acid_bath(get_turf(stepper))
 		charges_used = charges //humans stepping on it empties it out

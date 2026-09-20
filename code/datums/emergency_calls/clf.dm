@@ -8,9 +8,9 @@
 
 
 /datum/emergency_call/clf/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>You grew up [pick("on the TGMC prison station","in the LV-624 jungle","on a desert planet","on an icy colony")] to a[pick(50;" poor", 15;" well-off", 35;"n average")] family.</B>")
-	to_chat(H, "<B>You joined the CLF because [pick(20;"you harbor a strong hatred for the oppressive TerraGov",5;"you are good at killing, and in times like these this is the place to be", 10;"your militia was absorbed into the CLF")] and you are considered a terrorist by the TGMC.</B>")
-	to_chat(H, "<B>Assault the TGMC, and sabotage as much as you can. Ensure any survivors escape in your custody.</b>")
+	to_chat(H, "<B>你在[pick("on the TGMC prison station","in the LV-624 jungle","on a desert planet","on an icy colony")]长大,出身于一个[pick(50;" poor", 15;" well-off", 35;"n average")]家庭.</B>")
+	to_chat(H, "<B>你加入了CLF,因为[pick(20;"you harbor a strong hatred for the oppressive TerraGov",5;"you are good at killing, and in times like these this is the place to be", 10;"your militia was absorbed into the CLF")],你被TGMC视为恐怖分子.</B>")
+	to_chat(H, "<B>突袭TGMC,并尽可能进行破坏.确保任何幸存者在你的监管下逃脱.</b>")
 
 
 /datum/emergency_call/clf/create_member(datum/mind/M)
@@ -33,21 +33,21 @@
 		leader = H
 		var/datum/job/J = SSjob.GetJobType(/datum/job/clf/leader)
 		H.apply_assigned_role_to_spawn(J)
-		to_chat(H, span_notice("You are a leader of the local resistance group, the Colonial Liberation Front."))
+		to_chat(H, span_notice("你是当地抵抗组织殖民解放阵线的领袖."))
 		return
 	if(medics < max_medics)
 		var/datum/job/J = SSjob.GetJobType(/datum/job/clf/medic)
 		H.apply_assigned_role_to_spawn(J)
-		to_chat(H, span_notice("You are a medic of the local resistance group, the Colonial Liberation Front."))
+		to_chat(H, span_notice("你是当地抵抗组织殖民解放阵线的医疗兵."))
 		medics++
 		return
 	if(max_specialists > 0)
 		var/datum/job/J = SSjob.GetJobType(/datum/job/clf/specialist)
 		H.apply_assigned_role_to_spawn(J)
-		to_chat(H, span_notice("You are a specialist of the local resistance group, the Colonial Liberation Front. Use your special weaponry to lead your group to victory!"))
+		to_chat(H, span_notice("你是当地抵抗组织殖民解放阵线的专家.使用你的特殊武器带领你的队伍走向胜利!"))
 		max_specialists --
 		return
 
 	var/datum/job/J = SSjob.GetJobType(/datum/job/clf/standard)
 	H.apply_assigned_role_to_spawn(J)
-	to_chat(H, span_notice("You are a member of the local resistance group, the Colonial Liberation Front."))
+	to_chat(H, span_notice("你是当地抵抗组织殖民解放阵线的成员."))

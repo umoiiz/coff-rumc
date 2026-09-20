@@ -1,7 +1,7 @@
 //An item thats meant to be a template for quickly deploying stuff like barricades
 /obj/item/quikdeploy
-	name = "QuikDeploy System"
-	desc = "This is a QuikDeploy system, allows for extremely fast placement of various objects."
+	name = "快速部署系统"
+	desc = "这是一个快速部署系统,可以极快地放置各种物体。"
 	icon = 'icons/obj/items/quikdeploy_cade.dmi'
 	w_class = WEIGHT_CLASS_SMALL //While this is small, normal 50 stacks of metal is NORMAL so this is a bit on the bad space to cade ratio
 	var/delay = 0 //Delay on deploying the thing
@@ -12,9 +12,9 @@
 	. += "This QuikDeploy system seems to deploy a [thing_to_deploy.name]."
 
 /obj/item/quikdeploy/attack_self(mob/user)
-	balloon_alert_to_viewers("Starts to deploy barricade")
+	balloon_alert_to_viewers("开始部署路障")
 	if(!do_after(usr, delay, NONE, src, BUSY_ICON_BUILD))
-		to_chat(user, span_warning("You decide against deploying something here."))
+		to_chat(user, span_warning("你决定不在这里部署任何东西。"))
 		return
 	if(can_place(user)) //can_place() handles sending the error and success messages to the user
 		var/obj/O = new thing_to_deploy(get_turf(user))
@@ -24,7 +24,7 @@
 
 /obj/item/quikdeploy/proc/can_place(mob/user)
 	if(isnull(thing_to_deploy)) //Spaghetti or wrong type spawned
-		to_chat(user, span_warning("This thing doesn't actually really do anything! Complain to whoever gave you this"))
+		to_chat(user, span_warning("这东西实际上真的没什么用!去找给你这个的人抱怨吧"))
 		return FALSE
 	return TRUE
 
@@ -40,25 +40,25 @@
 
 	var/turf/mystery_turf = user.loc
 	if(!isopenturf(mystery_turf))
-		balloon_alert(user, "Can't build here")
+		balloon_alert(user, "无法在此建造")
 		return FALSE
 
 	var/turf/open/placement_loc = mystery_turf
 	if(placement_loc.density || !placement_loc.allow_construction) //We shouldn't be building here.
-		balloon_alert(user, "Can't build here")
+		balloon_alert(user, "无法在此建造")
 		return FALSE
 
 	for(var/obj/thing in user.loc)
 		if(!thing.density) //not dense, move on
 			continue
 		if(!(thing.atom_flags & ON_BORDER)) //dense and non-directional, end
-			balloon_alert(user, "No space")
+			balloon_alert(user, "没有空间")
 			return FALSE
 		if(thing.dir != user.dir)
 			continue
-		balloon_alert(user, "No space")
+		balloon_alert(user, "没有空间")
 		return FALSE
-	balloon_alert_to_viewers("Places barricade")
+	balloon_alert_to_viewers("放置路障")
 	return TRUE
 
 /obj/item/quikdeploy/cade/plasteel

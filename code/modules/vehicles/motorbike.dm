@@ -3,7 +3,7 @@
 #define LOW_FUEL_LEFT_MESSAGE 100
 /obj/vehicle/ridden/motorbike
 	name = "all-terrain motorbike"
-	desc = "An all-terrain vehicle built for traversing rough terrain with ease. \"TGMC CAVALRY\" is stamped on the side of the engine."
+	desc = "一辆全地形载具,专为轻松穿越崎岖地形而设计.引擎侧面印有\"TGMC骑兵\"."
 	icon_state = "motorbike"
 	max_integrity = 200
 	soft_armor = list(MELEE = 0, BULLET = 30, LASER = 30, ENERGY = 0, BOMB = 30, FIRE = 0, ACID = 0)
@@ -65,7 +65,7 @@
 /obj/vehicle/ridden/motorbike/relaymove(mob/living/user, direction)
 	if(fuel_count <= 0)
 		if(TIMER_COOLDOWN_FINISHED(src, COOLDOWN_BIKE_FUEL_MESSAGE))
-			to_chat(user, span_warning("There is no fuel left!"))
+			to_chat(user, span_warning("没有燃料了!"))
 			TIMER_COOLDOWN_START(src, COOLDOWN_BIKE_FUEL_MESSAGE, 1 SECONDS)
 		return FALSE
 	return ..()
@@ -77,7 +77,7 @@
 	fuel_count--
 	if(fuel_count == LOW_FUEL_LEFT_MESSAGE)
 		for(var/mob/rider AS in buckled_mobs)
-			balloon_alert(rider, "[fuel_count/fuel_max*100]% fuel left")
+			balloon_alert(rider, "剩余[fuel_count/fuel_max*100]%燃料")
 
 	if(COOLDOWN_FINISHED(src, enginesound_cooldown))
 		COOLDOWN_START(src, enginesound_cooldown, 20)
@@ -89,10 +89,10 @@
 	if(istype(I, /obj/item/reagent_containers/jerrycan))
 		var/obj/item/reagent_containers/jerrycan/gascan = I
 		if(gascan.reagents.total_volume == 0)
-			balloon_alert(user, "Out of fuel!")
+			balloon_alert(user, "燃料耗尽!")
 			return
 		if(fuel_count >= fuel_max)
-			balloon_alert(user, "Already full!")
+			balloon_alert(user, "已经满了!")
 			return
 
 		var/fuel_transfer_amount = min(gascan.fuel_usage*2, gascan.reagents.total_volume)
@@ -103,12 +103,12 @@
 		return TRUE
 	if(istype(I, /obj/item/sidecar))
 		if(user.do_actions)
-			balloon_alert(user, "Already busy!")
+			balloon_alert(user, "已经在忙了!")
 			return FALSE
 		if(LAZYLEN(buckled_mobs))
-			balloon_alert(user, "There is a rider already!")
+			balloon_alert(user, "已经有一个骑乘者了!")
 			return TRUE
-		balloon_alert(user, "You start attaching the sidecar...")
+		balloon_alert(user, "你开始安装边车...")
 		if(!do_after(user, 3 SECONDS, NONE, src))
 			return TRUE
 		user.temporarilyRemoveItemFromInventory(I)
@@ -140,13 +140,13 @@
 
 /obj/vehicle/ridden/motorbike/wrench_act(mob/living/user, obj/item/I)
 	if(!attached_sidecar)
-		balloon_alert(user, "No sidecar attached!")
+		balloon_alert(user, "没有安装边车!")
 		return TRUE
 	if(LAZYLEN(buckled_mobs))
-		balloon_alert(user, "Someone is riding this!")
+		balloon_alert(user, "有人正骑在上面!")
 		return TRUE
 	if(user.do_actions)
-		balloon_alert(user, "Already busy!")
+		balloon_alert(user, "已经在忙了!")
 		return FALSE
 	if(!do_after(user, 3 SECONDS, NONE, src))
 		return TRUE
@@ -163,7 +163,7 @@
 	pixel_x = initial(pixel_x)
 	add_overlay(motorbike_cover)
 	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
-	balloon_alert(user, "You dettach the sidecar!")
+	balloon_alert(user, "你拆下了边车!")
 	return TRUE
 
 /obj/vehicle/ridden/motorbike/obj_break()
@@ -189,16 +189,16 @@
 
 //internal storage
 /obj/item/vehicle_module/storage/motorbike
-	name = "internal storage"
-	desc = "A set of handy compartments to store things in."
+	name = "内部储物"
+	desc = "一组方便存放物品的隔间."
 	storage_type = /datum/storage/internal/motorbike_pack
 
 /**
  * Sidecar that when attached lets you put two people on the bike
  */
 /obj/item/sidecar
-	name = "motorbike sidecar"
-	desc = "A detached sidecar for TGMC motorbikes, which can be attached to them, allowing a second passenger. Use a wrench to dettach the sidecar."
+	name = "摩托车边车"
+	desc = "一个用于TGMC摩托车的可拆卸边车,可以安装到摩托车上,允许搭载第二名乘客.使用扳手拆下边车."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "sidecar"
 

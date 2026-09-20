@@ -162,7 +162,7 @@ GLOBAL_LIST_INIT(surgery_steps, init_surgery())
 		if(!affected)
 			return TRUE
 		if(affected.in_surgery_op) //two surgeons can't work on same limb at same time
-			to_chat(user, span_warning("You can't operate on the patient's [affected.display_name] while it's already being operated on."))
+			to_chat(user, span_warning("你不能对病人的[affected.display_name]进行手术,因为它已经在接受手术了."))
 			return TRUE
 
 		switch(surgery_step.can_use(user, M, user.zone_selected, tool, affected))
@@ -172,8 +172,8 @@ GLOBAL_LIST_INIT(surgery_steps, init_surgery())
 				return TRUE
 
 		if(user.skills.getRating(SKILL_SURGERY) < surgery_step.surgery_skill_required)
-			user.visible_message(span_notice("[user] fumbles around figuring out how to operate [M]."),
-			span_notice("You fumble around figuring out how to operate [M]."))
+			user.visible_message(span_notice("[user]摸索着弄清楚如何操作[M]."),
+			span_notice("你摸索着弄清楚如何操作[M]."))
 			var/fumbling_time = max(0, SKILL_TASK_FORMIDABLE - ( 8 SECONDS * user.skills.getRating(SKILL_SURGERY) )) // 20 secs non-trained, 12 amateur, 4 trained, 0 prof
 			if(fumbling_time && !do_after(user, fumbling_time, NONE, M, BUSY_ICON_UNSKILLED))
 				return TRUE
@@ -213,19 +213,19 @@ GLOBAL_LIST_INIT(surgery_steps, init_surgery())
 				surgery_step.end_step(user, M, user.zone_selected, tool, affected) //Finish successfully
 				surgery_step.play_success_sound(user, M, user.zone_selected, tool, affected)
 			else
-				to_chat(user, span_warning("For some reason the surgery you were doing stopped being possible."))
+				to_chat(user, span_warning("由于某种原因,你正在进行的手术无法继续了."))
 
 		else if((tool in user.contents) && user.Adjacent(M)) //Or
 			if(M.stat == CONSCIOUS) //If not on anesthetics or not unconsious, warn player
 				if(!CHECK_BITFIELD(M.species.species_flags, NO_PAIN))
 					M.emote("pain")
-					to_chat(user, span_danger("[M] moved during the surgery! Use anesthetics!"))
+					to_chat(user, span_danger("[M]在手术过程中动了!使用麻醉剂!"))
 				else
-					to_chat(user, span_danger("[M] moved during the surgery!"))
+					to_chat(user, span_danger("[M]在手术过程中动了!"))
 			surgery_step.fail_step(user, M, user.zone_selected, tool, affected) //Malpractice
 			surgery_step.play_failure_sound(user, M, user.zone_selected, tool, affected)
 		else //This failing silently was a pain.
-			to_chat(user, span_warning("You must remain close to your patient to conduct surgery."))
+			to_chat(user, span_warning("你必须保持在病人附近才能进行手术."))
 			surgery_step.play_failure_sound(user, M, user.zone_selected, tool, affected)
 		affected.in_surgery_op = FALSE
 		return TRUE			   //Don't want to do weapony things after surgery

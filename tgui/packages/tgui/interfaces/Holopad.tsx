@@ -43,7 +43,7 @@ export const Holopad = (props) => {
             <Button
               lineHeight="40px"
               icon="times"
-              content="Hang Up"
+              content="挂断"
               color="bad"
               onClick={() => act('hang_up')}
             />
@@ -63,12 +63,12 @@ const HolopadContent = (props) => {
 
   return (
     <Section
-      title="Holopad"
+      title="全息通讯板"
       buttons={
         <Button
           icon="bell"
           content={
-            on_cooldown ? "AI's Presence Requested" : "Request AI's Presence"
+            on_cooldown ? "已请求AI接入" : "请求AI接入"
           }
           disabled={!on_network || !!on_cooldown}
           onClick={() => act('AIrequest')}
@@ -76,10 +76,10 @@ const HolopadContent = (props) => {
       }
     >
       <LabeledList>
-        <LabeledList.Item label="Communicator">
+        <LabeledList.Item label="通讯器">
           <Button
             icon="phone-alt"
-            content="Call Holopad"
+            content="呼叫全息通讯板"
             disabled={!on_network}
             onClick={() => act('holocall')}
           />
@@ -110,7 +110,7 @@ const HolopadContent = (props) => {
           <LabeledList.Item key="reject">
             <Button
               icon="phone-slash"
-              content="Reject incoming call(s)"
+              content="拒绝来电"
               color="bad"
               onClick={() => act('rejectall')}
             />

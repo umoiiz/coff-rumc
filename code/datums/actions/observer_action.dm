@@ -35,11 +35,11 @@
 	var/mob/dead/observer/dead_owner = owner
 
 	if(!GLOB.ssd_posses_allowed)
-		to_chat(owner, span_warning("Taking over SSD mobs is currently disabled."))
+		to_chat(owner, span_warning("目前禁止接管SSD生物."))
 		return
 
 	if(GLOB.key_to_time_of_death[owner.key] + TIME_BEFORE_TAKING_BODY > world.time && !dead_owner.started_as_observer)
-		to_chat(owner, span_warning("You died too recently to be able to take a new mob."))
+		to_chat(owner, span_warning("你死亡时间过短,无法接管新生物."))
 		return
 
 	var/list/mob/living/free_ssd_mobs = list()
@@ -49,17 +49,17 @@
 		free_ssd_mobs += ssd_mob
 
 	if(!length(free_ssd_mobs))
-		to_chat(owner, span_warning("There aren't any SSD mobs."))
+		to_chat(owner, span_warning("没有任何SSD生物."))
 		return FALSE
 
-	var/mob/living/new_mob = tgui_input_list(owner, "Pick a mob", "Available Mobs", free_ssd_mobs)
+	var/mob/living/new_mob = tgui_input_list(owner, "选择一个生物", "可用生物", free_ssd_mobs)
 	if(!istype(new_mob) || !owner.client)
 		return FALSE
 
 	if(new_mob.stat == DEAD)
-		to_chat(owner, span_warning("You cannot join if the mob is dead."))
+		to_chat(owner, span_warning("如果该生物已死亡,你无法加入."))
 		return FALSE
-	if(tgui_alert(owner, "Are you sure you want to take " + new_mob.real_name +" ("+new_mob.job.title+")?", "Take SSD mob", list("Yes", "No",)) != "Yes")
+	if(tgui_alert(owner, "Are you sure you want to take " + new_mob.real_name +" ("+new_mob.job.title+")?", "接管SSD生物", list("Yes", "No",)) != "Yes")
 		return
 	if(isxeno(new_mob))
 		var/mob/living/carbon/xenomorph/ssd_xeno = new_mob
@@ -68,30 +68,30 @@
 			return
 
 	if(HAS_TRAIT(new_mob, TRAIT_POSSESSING))
-		to_chat(owner, span_warning("That mob is currently possessing a different mob."))
+		to_chat(owner, span_warning("该生物当前正控制着另一个生物."))
 		return FALSE
 
 	if(new_mob.client)
-		to_chat(owner, span_warning("That mob has been occupied."))
+		to_chat(owner, span_warning("该生物已被占用."))
 		return FALSE
 
 	if(new_mob.afk_status == MOB_RECENTLY_DISCONNECTED) //We do not want to occupy them if they've only been gone for a little bit.
-		to_chat(owner, span_warning("That player hasn't been away long enough. Please wait [round(timeleft(new_mob.afk_timer_id) * 0.1)] second\s longer."))
+		to_chat(owner, span_warning("该玩家离开的时间还不够长.请再等待[round(timeleft(new_mob.afk_timer_id) * 0.1)]秒\s ."))
 		return FALSE
 
 	if(is_banned_from(owner.ckey, new_mob?.job?.title))
-		to_chat(owner, span_warning("You are jobbaned from the [new_mob?.job.title] role."))
+		to_chat(owner, span_warning("你被禁止担任[new_mob?.job.title]职位."))
 		return
 
 	if(!ishuman(new_mob))
-		message_admins(span_adminnotice("[owner.key] took control of [new_mob.name] as [new_mob.p_they()] was ssd."))
+		message_admins(span_adminnotice("[owner.key]接管了[new_mob.name],因为[new_mob.p_they()]处于SSD状态."))
 		log_admin("[owner.key] took control of [new_mob.name] as [new_mob.p_they()] was ssd.")
 		new_mob.transfer_mob(owner)
 		return
 	if(CONFIG_GET(flag/prevent_dupe_names) && GLOB.real_names_joined.Find(owner.client.prefs.real_name))
-		to_chat(usr, span_warning("Someone has already joined the round with this character name. Please pick another."))
+		to_chat(usr, span_warning("已经有人使用此角色名加入了本回合.请选择另一个."))
 		return
-	message_admins(span_adminnotice("[owner.key] took control of [new_mob.name] as [new_mob.p_they()] was ssd."))
+	message_admins(span_adminnotice("[owner.key]接管了[new_mob.name],因为[new_mob.p_they()]处于SSD状态."))
 	log_admin("[owner.key] took control of [new_mob.name] as [new_mob.p_they()] was ssd.")
 	new_mob.transfer_mob(owner)
 	var/mob/living/carbon/human/H = new_mob
@@ -108,7 +108,7 @@
 /datum/action/observer_action/respawn/action_activate()
 	var/datum/game_mode/mode = SSticker.mode
 	if(!mode)
-		to_chat(usr, span_warning("The round isn't ready yet!"))
+		to_chat(usr, span_warning("回合尚未准备就绪!"))
 		return
 
 	mode.player_respawn(owner)
@@ -121,7 +121,7 @@
 /datum/action/observer_action/find_facehugger_spawn/action_activate()
 	var/mob/dead/observer/dead_owner = owner
 	if(GLOB.key_to_time_of_death[owner.key] + TIME_BEFORE_TAKING_BODY > world.time && !dead_owner.started_as_observer)
-		to_chat(owner, span_warning("You died too recently to be able to take a new mob."))
+		to_chat(owner, span_warning("你死亡时间过短,无法接管新生物."))
 		return
 
 	var/list/spawn_point = list()
@@ -179,10 +179,10 @@
 		spawn_point[name] = potential_egg
 
 	if(!length_char(spawn_point))
-		to_chat(owner, span_warning("There are no spawn points for facehugger on your Z-level."))
+		to_chat(owner, span_warning("你所在Z层级没有抱脸虫的生成点."))
 		return
 
-	var/selected = tgui_input_list(usr, "Please select a spawn point:", "Spawn as Facehugger", spawn_point)
+	var/selected = tgui_input_list(usr, "请选择一个生成点:", "作为抱脸虫生成", spawn_point)
 	if(!selected)
 		return
 
@@ -214,7 +214,7 @@
 /datum/action/observer_action/join_predator/action_activate()
 	var/mob/dead/observer/activator = owner
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
-		to_chat(activator, span_warning("The game hasn't started yet!"))
+		to_chat(activator, span_warning("游戏尚未开始!"))
 		return
 
 	if(SSticker.mode.check_predator_late_join(activator))

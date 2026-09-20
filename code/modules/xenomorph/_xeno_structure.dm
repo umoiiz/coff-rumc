@@ -45,7 +45,7 @@
 	take_damage(severity * 0.8, BRUTE, BOMB)
 
 /obj/structure/xeno/attack_hand(mob/living/user)
-	balloon_alert(user, "You only scrape at it")
+	balloon_alert(user, "你只是在它上面刮擦")
 	return TRUE
 
 /obj/structure/xeno/fire_act(burn_level, flame_color)
@@ -97,12 +97,12 @@
 		damage_alert()
 
 /obj/structure/xeno/attack_alien(mob/living/carbon/xenomorph/xeno_attacker, damage_amount, damage_type, damage_flag, effects, armor_penetration, isrightclick)
-	if(!(HAS_TRAIT(xeno_attacker, TRAIT_VALHALLA_XENO) && xeno_attacker.a_intent == INTENT_HARM && (tgui_alert(xeno_attacker, "Are you sure you want to tear down [src]?", "Tear down [src]?", list("Yes","No"))) == "Yes"))
+	if(!(HAS_TRAIT(xeno_attacker, TRAIT_VALHALLA_XENO) && xeno_attacker.a_intent == INTENT_HARM && (tgui_alert(xeno_attacker, "你确定要拆解[src]吗?", "拆解[src]?", list("Yes","No"))) == "Yes"))
 		return ..()
 	if(!do_after(xeno_attacker, 3 SECONDS, NONE, src))
 		return
 	xeno_attacker.do_attack_animation(src, ATTACK_EFFECT_CLAW)
-	balloon_alert_to_viewers("\The [xeno_attacker] tears down \the [src]!", "We tear down \the [src].")
+	balloon_alert_to_viewers("\The [xeno_attacker]拆解了\the [src]!", "我们拆解了\the [src].")
 	playsound(src, SFX_ALIEN_RESIN_BREAK, 25)
 	take_damage(max_integrity) // Ensure its destroyed
 

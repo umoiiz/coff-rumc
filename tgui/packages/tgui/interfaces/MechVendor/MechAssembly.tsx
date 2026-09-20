@@ -115,7 +115,7 @@ const BodypartPicker = (props: BodypartPickerData) => {
       <Stack vertical>
         <Stack.Item mt={0}>
           <Button
-            content="Select"
+            content="选择"
             fluid
             textAlign={'center'}
             mb={1}
@@ -155,7 +155,7 @@ const BodypartPicker = (props: BodypartPickerData) => {
               }}
               onClick={() => act('rotate_doll')}
             >
-              Rotate
+              旋转
             </Button>
           )}
         </Stack.Item>
@@ -212,7 +212,7 @@ export const MechAssembly = (props) => {
               <Box key={index}>{reason}</Box>
             ))}
           </Box>
-          <Button onClick={() => setFailReason('')}>Close</Button>
+          <Button onClick={() => setFailReason('')}>关闭</Button>
         </Modal>
       )}
       <Stack fill>
@@ -289,7 +289,7 @@ export const MechAssembly = (props) => {
                   })
                 }
               >
-                Medium
+                中
               </Button>
               <Button
                 content={

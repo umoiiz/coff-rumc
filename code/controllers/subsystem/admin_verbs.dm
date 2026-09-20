@@ -107,7 +107,7 @@ SUBSYSTEM_DEF(admin_verbs)
 		CRASH("Attempted to dynamically invoke admin verb '[verb_type]' that doesn't exist.")
 
 	if(!admin.holder.check_for_rights(verb_singleton.permissions))
-		to_chat(admin, span_adminnotice("You lack the permissions to do this."))
+		to_chat(admin, span_adminnotice("你没有执行此操作的权限."))
 		return
 
 	var/old_usr = usr
@@ -125,7 +125,7 @@ SUBSYSTEM_DEF(admin_verbs)
 		return
 
 	if(!isnull(admins_pending_subsytem_init)) // if the list exists we are still initializing
-		to_chat(admin, span_big(span_green("Admin Verbs are still initializing. Please wait and you will be automatically assigned your verbs when it is complete.")))
+		to_chat(admin, span_big(span_green("管理员指令仍在初始化中. 请稍候, 完成后你将自动获得你的指令.")))
 		admins_pending_subsytem_init |= list(admin.ckey)
 		return
 

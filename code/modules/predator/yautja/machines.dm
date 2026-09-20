@@ -1,6 +1,6 @@
 /obj/machinery/prop/yautja/bubbler
 	name = "yautja cauldron"
-	desc = "A large, black machine emitting an ominous hum with an attached pot of boiling fluid. Bits of what appears to be leftover lard and balls of hair can be seen floating inside of it."
+	desc = "一台巨大的黑色机器, 发出不祥的嗡鸣声, 附带着一锅沸腾的液体. 可以看到里面漂浮着似乎是残余猪油和毛球的碎块."
 	icon = 'icons/obj/machines/yautja_machines.dmi'
 	icon_state = "vat"
 	density = TRUE
@@ -8,40 +8,40 @@
 /obj/machinery/prop/yautja/bubbler/examine(mob/living/user)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		. += span_notice("You can use this machine to clean the skin off limbs, and turn them into bones for your armor.")
-		. += span_notice("You first need to find a limb. Then you use a ceremonial dagger to prepare it.")
-		. += span_notice("After preparing the limb, you put it into the cauldron, removing the flesh, leaving you with a bone.")
-		. += span_notice("You will then clean and polish the resulting bones with a polishing rag, making it ready to be attached to your armor.")
+		. += span_notice("你可以用这台机器清除肢体上的皮肤, 将它们变成骨骼用于你的护甲.")
+		. += span_notice("你首先需要找到一条肢体. 然后你用一把仪式匕首来准备它.")
+		. += span_notice("准备好肢体后, 你把它放进大锅里, 去除血肉, 留下骨骼.")
+		. += span_notice("然后你会用一块抛光布清洁并打磨得到的骨骼, 使其准备好附着到你的护甲上.")
 
 /obj/machinery/prop/yautja/bubbler/attackby(obj/potential_limb, mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, span_notice("You have no idea what this does, and you figure it is not time to find out."))
+		to_chat(user, span_notice("你不知道这是做什么的, 你觉得现在不是弄清楚的时候."))
 		return
 
 	if(!istype(potential_limb, /obj/item/limb))
-		to_chat(user, span_notice("You cannot put this in [src]."))
+		to_chat(user, span_notice("你不能把这个放进[src]."))
 		return
 	var/obj/item/limb/current_limb = potential_limb
 
 	if(!current_limb.flayed)
-		to_chat(user, span_notice("This limb is not ready."))
+		to_chat(user, span_notice("这条肢体还没准备好."))
 		return
 	icon_state = "vat_boiling"
-	to_chat(user, span_warning("You place [current_limb] in and start the cauldron."))
+	to_chat(user, span_warning("你把[current_limb]放进去并启动了大锅."))
 	if(!do_after(user, 15 SECONDS, NONE, current_limb, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE))
-		to_chat(user, span_notice("You pull [current_limb] back out of the cauldron."))
+		to_chat(user, span_notice("你把[current_limb]从大锅里拉了出来."))
 		icon_state = initial(icon_state)
 		return
 	icon_state = initial(icon_state)
 
 	var/obj/item/armor_module/limb/skeleton/new_bone = new current_limb.bone_type(get_turf(src))
 	if(istype(new_bone, /obj/item/armor_module/limb/skeleton/head))
-		new_bone.desc = span_notice("This skull used to be [current_limb.name].")
+		new_bone.desc = span_notice("这个头骨曾经是[current_limb.name].")
 	qdel(current_limb)
 
 /obj/machinery/microwave/yautja
 	name = "alien microwave"
-	desc = "Dark alloy sinister machine that heats up cold food."
+	desc = "加热冷食的暗合金邪恶机器."
 	icon = 'icons/obj/machines/yautja_machines.dmi'
 
 /obj/machinery/processor/yautja
@@ -50,7 +50,7 @@
 
 /obj/machinery/grill/yautja
 	name = "alien grill"
-	desc = "For grilling the most delicious prey."
+	desc = "用来烤制最美味猎物的烤架."
 	icon = 'icons/obj/machines/yautja_machines.dmi'
 
 /obj/machinery/griddle/yautja
@@ -101,16 +101,16 @@
 	RegisterSignal(SSdcs, COMSIG_GLOB_YAUTJA_ARMORY_OPENED, PROC_REF(open))
 
 /obj/structure/closet/coffin/predator
-	name = "strange coffin"
-	desc = "It's a burial receptacle for the dearly departed. Seems to have weird markings on the side..?"
+	name = "奇怪的棺材"
+	desc = "这是为逝去的亲人所准备的安葬容器. 侧面似乎有奇怪的标记..?"
 	icon = 'icons/obj/structures/closet.dmi'
 	icon_state = "pred_coffin"
 	icon_closed = "pred_coffin"
 	icon_opened = "pred_coffin_open"
 
 /obj/structure/bed/chair/hunter
-	name = "hunter chair"
-	desc = "An exquisitely crafted chair for a large humanoid hunter."
+	name = "猎手座椅"
+	desc = "一把为大型人形猎手精心制作的椅子."
 	icon = 'icons/obj/hunter/chair.dmi'
 	icon_state = "chair"
 	color = rgb(255,255,255)

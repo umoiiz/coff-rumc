@@ -4,8 +4,8 @@
 #define STATE_FINISHED 4
 
 /obj/item/frame/camera
-	name = "camera assembly"
-	desc = "The basic construction for cameras."
+	name = "摄像头组件"
+	desc = "摄像头的基本构造."
 	icon = 'icons/obj/machines/camera.dmi'
 	icon_state = "cameracase"
 
@@ -19,10 +19,10 @@
 
 	var/turf/loc = get_turf(user)
 	if(!isfloorturf(loc))
-		loc.balloon_alert(user, "bad spot")
+		loc.balloon_alert(user, "坏点")
 		return
 
-	user.balloon_alert_to_viewers("attaching")
+	user.balloon_alert_to_viewers("正在连接")
 	playsound(loc, 'sound/machines/click.ogg', 15, 1)
 	var/constrdir = REVERSE_DIR(user.dir)
 	var/constrloc = user.loc
@@ -32,14 +32,14 @@
 
 	new /obj/structure/camera_assembly(constrloc, constrdir)
 
-	user.visible_message("[user] attaches [src] to the wall.", \
+	user.visible_message("[user]将[src]连接到墙上.", \
 		"You attach [src] to the wall.")
 
 	qdel(src)
 
 /obj/structure/camera_assembly
-	name = "camera assembly"
-	desc = "The basic construction for cameras."
+	name = "摄像头组件"
+	desc = "摄像头的基本构造."
 	icon = 'icons/obj/machines/camera.dmi'
 	icon_state = "camera_assembly"
 	max_integrity = 150
@@ -50,13 +50,13 @@
 
 	switch(state)
 		if(STATE_WRENCHED)
-			. += span_info("You can secure it in place with a <b>welder</b>, or removed with a <b>wrench</b>.")
+			. += span_info("你可以用<b>焊接器</b>将其固定到位, 或用<b>扳手</b>将其移除.")
 		if(STATE_WELDED)
-			. += span_info("You can add <b>wires</b> to it, or <b>unweld</b> it from the wall.")
+			. += span_info("你可以给它添加<b>电线</b>, 或用<b>拆焊</b>将其从墙上取下.")
 		if(STATE_WIRED)
-			. += span_info("You can complete it with a <b>screwdriver</b>, or <b>unwire</b> it to start removal.")
+			. += span_info("你可以用<b>螺丝刀</b>完成它, 或用<b>拆线</b>开始移除.")
 		if(STATE_FINISHED)
-			. += span_boldwarning("You shouldn't be seeing this, tell a coder!")
+			. += span_boldwarning("你不应该看到这个, 告诉程序员!")
 
 
 /obj/structure/camera_assembly/Initialize(mapload, newDir)
@@ -85,9 +85,9 @@
 			return
 		var/obj/item/stack/cable_coil/C = I
 		if(!C.use(2))
-			to_chat(user, span_warning("You need two lengths of cable to wire a camera!"))
+			to_chat(user, span_warning("你需要两段电缆才能给摄像头接线!"))
 			return
-		to_chat(user, span_notice("You add wires to [src]."))
+		to_chat(user, span_notice("你给[src]添加了电线."))
 		state = STATE_WIRED
 
 /obj/structure/camera_assembly/welder_act(mob/living/user, obj/item/I)
@@ -96,13 +96,13 @@
 		if(STATE_WRENCHED)
 			if(!weld(I, user))
 				return
-			to_chat(user, span_notice("You weld [src] securely into place."))
+			to_chat(user, span_notice("你将[src]牢固地焊接到位."))
 			anchored = TRUE
 			state = STATE_WELDED
 		if(STATE_WELDED)
 			if(!weld(I, user))
 				return
-			to_chat(user, span_notice("You unweld [src] from its place."))
+			to_chat(user, span_notice("你从原位拆焊了[src]."))
 			anchored = TRUE
 			state = STATE_WRENCHED
 
@@ -117,11 +117,11 @@
 	tool.play_tool_sound(src)
 	var/input = stripped_input(user, "Which networks would you like to connect this camera to? Separate networks with a comma. No Spaces!\nFor example: marinemainship, marine, dropship1, dropship2", "Set Network", "marinemainship")
 	if(!input)
-		to_chat(user, span_warning("No network entered."))
+		to_chat(user, span_warning("未输入网络."))
 		return
 	var/list/tempnetwork = splittext(input, ",")
 	if(!length(tempnetwork))
-		to_chat(user, span_warning("Invalid network entry."))
+		to_chat(user, span_warning("无效的网络输入."))
 		return
 	for(var/i in tempnetwork)
 		tempnetwork -= i
@@ -138,7 +138,7 @@
 
 	new /obj/item/stack/cable_coil(drop_location(), 2)
 	I.play_tool_sound(src)
-	to_chat(user, span_notice("You cut the wires from the circuits."))
+	to_chat(user, span_notice("你切断了电路上的电线."))
 	state = STATE_WELDED
 	return TRUE
 
@@ -146,7 +146,7 @@
 	if(state != STATE_WRENCHED)
 		return FALSE
 	I.play_tool_sound(src)
-	to_chat(user, span_notice("You detach [src] from its place."))
+	to_chat(user, span_notice("你从原位拆下了[src]."))
 	new /obj/item/frame/camera(drop_location())
 
 	qdel(src)
@@ -155,7 +155,7 @@
 /obj/structure/camera_assembly/proc/weld(obj/item/tool/weldingtool/W, mob/living/user)
 	if(!W.tool_start_check(user, amount = 3))
 		return FALSE
-	to_chat(user, span_notice("You start to weld [src]..."))
+	to_chat(user, span_notice("你开始焊接[src]..."))
 	if(W.use_tool(src, user, 20, amount = 3, volume = 50))
 		return TRUE
 	return FALSE

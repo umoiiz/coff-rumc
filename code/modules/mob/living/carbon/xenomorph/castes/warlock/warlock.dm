@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/warlock
 	caste_base_type = /datum/xeno_caste/warlock
 	name = "Warlock"
-	desc = "A large, physically frail creature. It hovers in the air and seems to buzz with psychic power."
+	desc = "一个体型庞大、身体虚弱的生物。它悬浮在空中,似乎散发着灵能。"
 	icon = 'icons/Xeno/castes/warlock/basic.dmi'
 	icon_state = "Warlock Walking"
 	effects_icon = 'icons/Xeno/castes/warlock/effects.dmi'

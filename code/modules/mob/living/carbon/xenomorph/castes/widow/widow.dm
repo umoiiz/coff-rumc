@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/widow
 	caste_base_type = /datum/xeno_caste/widow
 	name = "Widow"
-	desc = "A large arachnid xenomorph, with fangs ready to bear and crawling with many little spiderlings ready to grow."
+	desc = "一种大型蛛形异形,獠牙蓄势待发,身上爬满许多准备成长的小蜘蛛。"
 	icon = 'icons/Xeno/castes/widow/basic.dmi'
 	effects_icon = 'icons/Xeno/castes/widow/effects.dmi'
 	icon_state = "Widow Walking"

@@ -2,7 +2,7 @@
 //machineryness
 
 /obj/structure/mineral_door
-	name = "mineral door"
+	name = "矿物门"
 	density = TRUE
 	opacity = TRUE
 	allow_pass_flags = NONE
@@ -162,47 +162,47 @@
 		toggle_state(charger)
 	if(density)
 		return PRECRUSH_STOPPED
-	charger.visible_message(span_danger("[charger] slams [src] open!"),
-	span_xenowarning("We slam [src] open!"))
+	charger.visible_message(span_danger("[charger]猛地把[src]撞开!"),
+	span_xenowarning("我们猛地把[src]撞开!"))
 	return PRECRUSH_PLOWED
 
 /obj/structure/mineral_door/iron
-	name = "iron door"
+	name = "铁门"
 	material_type = /obj/item/stack/sheet/metal
 	base_icon_state = "metal"
 	max_integrity = 500
 
 /obj/structure/mineral_door/silver
-	name = "silver door"
+	name = "银门"
 	material_type = /obj/item/stack/sheet/mineral/silver
 	base_icon_state = "silver"
 	icon_state = "silver"
 	max_integrity = 500
 
 /obj/structure/mineral_door/gold
-	name = "gold door"
+	name = "金门"
 	material_type = /obj/item/stack/sheet/mineral/gold
 	base_icon_state = "gold"
 	icon_state = "gold"
 	max_integrity = 250
 
 /obj/structure/mineral_door/uranium
-	name = "uranium door"
+	name = "铀门"
 	material_type = /obj/item/stack/sheet/mineral/uranium
 	base_icon_state = "uranium"
 	icon_state = "uranium"
 	max_integrity = 500
 
 /obj/structure/mineral_door/sandstone
-	name = "sandstone door"
+	name = "砂岩门"
 	material_type = /obj/item/stack/sheet/mineral/sandstone
 	base_icon_state = "sandstone"
 	icon_state = "sandstone"
 	max_integrity = 100
 
 /obj/structure/mineral_door/transparent
-	name = "generic transparent door"
-	desc = "You shouldn't be seeing this."
+	name = "通用透明门"
+	desc = "你不该看到这个."
 	opacity = FALSE
 
 /obj/structure/mineral_door/transparent/toggle_state()
@@ -210,7 +210,7 @@
 	opacity = FALSE
 
 /obj/structure/mineral_door/transparent/phoron
-	name = "phoron door"
+	name = "福龙门"
 	material_type = /obj/item/stack/sheet/mineral/phoron
 	base_icon_state = "phoron"
 	icon_state = "phoron"
@@ -222,7 +222,7 @@
 		if(WT.remove_fuel(0, user))
 			var/turf/T = get_turf(src)
 			T.ignite(25, 25)
-			visible_message(span_danger("[src] suddenly combusts!"))
+			visible_message(span_danger("[src]突然燃烧起来!"))
 	return ..()
 
 /obj/structure/mineral_door/transparent/phoron/fire_act(burn_level, flame_color)
@@ -231,14 +231,14 @@
 		T.ignite(25, 25)
 
 /obj/structure/mineral_door/transparent/diamond
-	name = "diamond door"
+	name = "钻石门"
 	material_type = /obj/item/stack/sheet/mineral/diamond
 	base_icon_state = "diamond"
 	icon_state = "diamond"
 	max_integrity = 1000
 
 /obj/structure/mineral_door/wood
-	name = "wooden door"
+	name = "木门"
 	material_type = /obj/item/stack/sheet/wood
 	base_icon_state = "wood"
 	icon_state = "wood"

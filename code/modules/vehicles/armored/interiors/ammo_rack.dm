@@ -32,7 +32,7 @@
 		. += image(icon, src, bottommost.icon_state + "_" + "[thirds]") // "ltb_3"/"ltb_2"/"ltb_1"
 
 /obj/structure/ammo_rack/primary
-	name = "primary ammo rack"
+	name = "主弹药架"
 	icon_state = "primaryrack"
 	storage_type = /datum/storage/tank/ammorack_primary
 
@@ -41,7 +41,7 @@
 	. += image(icon, src, "primaryrack_overlay")
 
 /obj/structure/ammo_rack/secondary
-	name = "secondary ammo rack"
+	name = "副弹药架"
 	icon_state = "secondaryrack"
 	storage_type = /datum/storage/tank/ammorack_secondary
 

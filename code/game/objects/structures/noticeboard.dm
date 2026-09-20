@@ -1,6 +1,6 @@
 /obj/structure/noticeboard
-	name = "notice board"
-	desc = "A board for pinning important notices upon."
+	name = "公告板"
+	desc = "一块用于钉重要通知的板子."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "nboard00"
 	density = FALSE
@@ -24,14 +24,14 @@
 
 	if(istype(I, /obj/item/paper))
 		if(notices >= 5)
-			to_chat(user, span_notice("You reach to pin your paper to the board but hesitate. You are certain your paper will not be seen among the many others already attached."))
+			to_chat(user, span_notice("你伸手想把纸钉到公告板上,却犹豫了.你确信你的纸不会被看到,因为上面已经贴满了许多其他的纸."))
 			return
 
 		user.drop_held_item()
 		I.forceMove(src)
 		notices++
 		icon_state = "nboard0[notices]"	//update sprite
-		to_chat(user, span_notice("You pin the paper to the noticeboard."))
+		to_chat(user, span_notice("你把纸钉到了公告板上."))
 
 /obj/structure/noticeboard/interact(mob/user)
 	. = ..()
@@ -67,7 +67,7 @@
 				if(istype(usr.l_hand, /obj/item/tool/pen)) //check other hand for pen
 					P.attackby(usr.l_hand, usr)
 				else
-					to_chat(usr, span_notice("You'll need something to write with!"))
+					to_chat(usr, span_notice("你需要有东西来写字!"))
 
 	if(href_list["read"])
 		var/obj/item/paper/P = locate(href_list["read"])

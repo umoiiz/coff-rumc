@@ -126,5 +126,5 @@
 
 /datum/ammo/bullet/pistol/mankey/on_hit_mob(mob/target_mob, atom/movable/projectile/proj)
 	if(!target_mob.stat && !ismonkey(target_mob))
-		proj.visible_message(span_danger("The [src] chimpers furiously!"))
+		proj.visible_message(span_danger("[src]愤怒地吱吱叫!"))
 		new /mob/living/carbon/human/species/monkey(proj.loc)

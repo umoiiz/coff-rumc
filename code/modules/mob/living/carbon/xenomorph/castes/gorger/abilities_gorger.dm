@@ -3,7 +3,7 @@
 /////////////////////////////////
 /datum/action/ability/activable/xeno/devour
 	name = "Devour"
-	desc = "Devour your victim to be able to carry it faster."
+	desc = "吞噬你的受害者,以便能更快地搬运它。"
 	action_icon_state = "abduct"
 	action_icon = 'icons/Xeno/actions/gorger.dmi'
 	use_state_flags = ABILITY_USE_STAGGERED|ABILITY_USE_FORTIFIED|ABILITY_USE_CRESTED //can't use while staggered, defender fortified or crest down
@@ -19,7 +19,7 @@
 		return
 	if(!ishuman(target) || issynth(target))
 		if(!silent)
-			to_chat(owner, span_warning("That wouldn't taste very good."))
+			to_chat(owner, span_warning("那尝起来不会很好吃。"))
 		return FALSE
 	var/mob/living/carbon/human/victim = target
 	if(owner.do_actions) //can't use if busy
@@ -28,23 +28,23 @@
 		return FALSE
 	if(!HAS_TRAIT(victim, TRAIT_UNDEFIBBABLE))
 		if(!silent)
-			to_chat(owner, span_warning("This creature is struggling too much for us to devour it."))
+			to_chat(owner, span_warning("这只生物挣扎得太厉害,我们无法吞噬它。"))
 		return FALSE
 	if(victim.buckled)
 		if(!silent)
-			to_chat(owner, span_warning("[victim] is buckled to something."))
+			to_chat(owner, span_warning("[victim]被扣在了什么东西上。"))
 		return FALSE
 	if(xeno_owner.eaten_mob)
 		if(!silent)
-			to_chat(xeno_owner, span_warning("You have already swallowed one."))
+			to_chat(xeno_owner, span_warning("你已经吞下了一个。"))
 		return FALSE
 	if(xeno_owner.on_fire)
 		if(!silent)
-			to_chat(xeno_owner, span_warning("We're too busy being on fire to do this!"))
+			to_chat(xeno_owner, span_warning("我们正忙着着火,做不了这个!"))
 		return FALSE
 	for(var/obj/effect/forcefield/fog in range(1, xeno_owner))
 		if(!silent)
-			to_chat(xeno_owner, span_warning("We are too close to the fog."))
+			to_chat(xeno_owner, span_warning("我们离迷雾太近了。"))
 		return FALSE
 
 /datum/action/ability/activable/xeno/devour/action_activate()
@@ -55,7 +55,7 @@
 	var/channel = SSsounds.random_available_channel()
 	playsound(xeno_owner, 'sound/vore/escape.ogg', 40, channel = channel)
 	if(!do_after(xeno_owner, GORGER_REGURGITATE_DELAY, IGNORE_HELD_ITEM, null, BUSY_ICON_DANGER))
-		to_chat(owner, span_warning("We moved too soon!"))
+		to_chat(owner, span_warning("我们行动得太早了!"))
 		xeno_owner.stop_sound_channel(channel)
 		return
 	xeno_owner.eject_victim()
@@ -63,14 +63,14 @@
 /datum/action/ability/activable/xeno/devour/use_ability(atom/target)
 	var/mob/living/carbon/human/victim = target
 	xeno_owner.face_atom(victim)
-	xeno_owner.visible_message(span_danger("[xeno_owner] starts to devour [victim]!"), span_danger("We start to devour [victim]!"), null, 5)
+	xeno_owner.visible_message(span_danger("[xeno_owner]开始吞噬[victim]!"), span_danger("我们开始吞噬[victim]!"), null, 5)
 	var/channel = SSsounds.random_available_channel()
 	playsound(xeno_owner, 'sound/vore/struggle.ogg', 40, channel = channel)
 	if(!do_after(xeno_owner, GORGER_DEVOUR_DELAY, IGNORE_HELD_ITEM, victim, BUSY_ICON_DANGER, extra_checks = CALLBACK(owner, TYPE_PROC_REF(/mob, break_do_after_checks), list("health" = xeno_owner.health))))
-		to_chat(owner, span_warning("We stop devouring \the [victim]. They probably tasted gross anyways."))
+		to_chat(owner, span_warning("我们停止吞噬\the [victim]。反正它们大概尝起来很恶心。"))
 		xeno_owner.stop_sound_channel(channel)
 		return
-	owner.visible_message(span_warning("[xeno_owner] devours [victim]!"), span_warning("We devour [victim]!"), null, 5)
+	owner.visible_message(span_warning("[xeno_owner]吞噬了[victim]!"), span_warning("我们吞噬了[victim]!"), null, 5)
 	victim.forceMove(xeno_owner)
 	xeno_owner.eaten_mob = victim
 	add_cooldown()
@@ -83,7 +83,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/drain
 	name = "Drain"
-	desc = "Hold a marine for some time and drain their blood, while healing. You can't attack during this time and can be shot by the marine. When used on a dead human, you heal, or gain overheal, gradually and don't gain blood."
+	desc = "抓住一名陆战队员一段时间并吸取其血液,同时进行治疗。在此期间你无法攻击,并且可能被该陆战队员射击。对已死亡的人类使用时,你会逐渐治疗或获得过量治疗,且不会获得血液。"
 	action_icon_state = "drain"
 	action_icon = 'icons/Xeno/actions/gorger.dmi'
 	use_state_flags = ABILITY_KEYBIND_USE_ABILITY
@@ -98,13 +98,13 @@
 	. = ..()
 	if(!ishuman(target) || issynth(target))
 		if(!silent)
-			to_chat(owner, span_xenowarning("We can't drain this!"))
+			to_chat(owner, span_xenowarning("我们无法吸取这个!"))
 		return FALSE
 
 	var/mob/living/carbon/human/target_human = target
 	if(!xeno_owner.Adjacent(target_human))
 		if(!silent)
-			to_chat(xeno_owner, span_notice("We need to be next to our meal."))
+			to_chat(xeno_owner, span_notice("我们需要紧挨着我们的美餐。"))
 		return FALSE
 
 	if(target_human.stat == DEAD)
@@ -117,7 +117,7 @@
 
 	if(xeno_owner.plasma_stored >= xeno_owner.xeno_caste.plasma_max)
 		if(!silent)
-			to_chat(xeno_owner, span_xenowarning("No need, we feel sated for now..."))
+			to_chat(xeno_owner, span_xenowarning("没必要,我们现在感觉很饱..."))
 		return FALSE
 
 /datum/action/ability/activable/xeno/drain/use_ability(mob/living/carbon/human/target_human)
@@ -127,7 +127,7 @@
 			overheal_gain = xeno_owner.heal_wounds(2.2)
 			xeno_owner.adjust_overheal(overheal_gain)
 			xeno_owner.adjust_sunder(-2.5)
-		to_chat(xeno_owner, span_notice("We feel fully restored."))
+		to_chat(xeno_owner, span_notice("我们感觉完全恢复了。"))
 		return
 	xeno_owner.face_atom(target_human)
 	xeno_owner.emote("roar")
@@ -140,7 +140,7 @@
 		target_human.adjust_blood_volume(-15)
 
 		xeno_owner.do_attack_animation(target_human, ATTACK_EFFECT_REDSTAB)
-		xeno_owner.visible_message(target_human, span_danger("[xeno_owner] stabs its tail into [target_human]!"))
+		xeno_owner.visible_message(target_human, span_danger("[xeno_owner]将尾巴刺入[target_human]!"))
 		playsound(target_human, SFX_ALIEN_CLAW_FLESH, 25, TRUE)
 		target_human.emote("scream")
 		target_human.apply_damage(damage = 4, damagetype = BRUTE, def_zone = BODY_ZONE_HEAD, blocked = 0, sharp = TRUE, edge = FALSE, updating_health = TRUE)
@@ -167,7 +167,7 @@
 
 /datum/action/ability/activable/xeno/transfusion
 	name = "Transfusion"
-	desc = "Restores some of the health of another xenomorph, or overheals, at the cost of blood."
+	desc = "恢复另一只异形的一部分生命值,或进行过量治疗,代价是血液。"
 	action_icon_state = "transfusion"
 	action_icon = 'icons/Xeno/actions/gorger.dmi'
 	//When used on self, drains blood continuosly, slows you down and reduces damage taken, while restoring health over time.
@@ -188,7 +188,7 @@
 
 	if(!isxeno(target))
 		if(!silent)
-			to_chat(owner, span_notice("We can only restore familiar biological lifeforms."))
+			to_chat(owner, span_notice("我们只能恢复熟悉的生物生命形式。"))
 		return FALSE
 
 	var/mob/living/carbon/xenomorph/target_xeno = target
@@ -197,11 +197,11 @@
 		return FALSE
 	if(!line_of_sight(owner, target_xeno, 3) || get_dist(owner, target_xeno) > 3)
 		if(!silent)
-			to_chat(owner, span_notice("It is beyond our reach, we must be close and our way must be clear."))
+			to_chat(owner, span_notice("它超出了我们的触及范围,我们必须靠近,且我们的路径必须畅通。"))
 		return FALSE
 	if(target_xeno.stat == DEAD)
 		if(!silent)
-			to_chat(owner, span_notice("We can only help living sisters."))
+			to_chat(owner, span_notice("我们只能帮助活着的姐妹。"))
 		return FALSE
 	target_health = target_xeno.health
 	var/datum/beam/transfuse_beam = owner.beam(target_xeno, icon_state= "lichbeam", beam_type = /obj/effect/ebeam/essence_link)
@@ -229,7 +229,7 @@
 	target_xeno.adjust_overheal(heal_amount)
 	new /obj/effect/temp_visual/healing(get_turf(target_xeno))
 	if(target_xeno.overheal)
-		target_xeno.balloon_alert(xeno_owner, "Overheal: [target_xeno.overheal]/[target_xeno.xeno_caste.overheal_max]")
+		target_xeno.balloon_alert(xeno_owner, "过量治疗:[target_xeno.overheal]/[target_xeno.xeno_caste.overheal_max]")
 	add_cooldown()
 	succeed_activate()
 
@@ -251,7 +251,7 @@
 #define REJUVENATE_MISCLICK_CD "rejuvenate_misclick"
 /datum/action/ability/activable/xeno/rejuvenate
 	name = "Rejuvenate"
-	desc = "Drains blood continuosly, slows you down and reduces damage taken, while restoring some health over time. Cancel by activating again."
+	desc = "持续吸取血液,减慢你的速度并减少受到的伤害,同时随时间恢复一部分生命值。再次激活可取消。"
 	action_icon_state = "rejuvenation"
 	action_icon = 'icons/Xeno/actions/gorger.dmi'
 	cooldown_duration = 4 SECONDS
@@ -277,7 +277,7 @@
 		add_cooldown()
 		return
 	xeno_owner.apply_status_effect(STATUS_EFFECT_XENO_REJUVENATE, GORGER_REJUVENATE_DURATION, xeno_owner.maxHealth * GORGER_REJUVENATE_THRESHOLD)
-	to_chat(xeno_owner, span_notice("We tap into our reserves for nourishment, our carapace thickening."))
+	to_chat(xeno_owner, span_notice("我们动用储备来滋养自身,我们的甲壳变厚了。"))
 	succeed_activate()
 	TIMER_COOLDOWN_START(xeno_owner, REJUVENATE_MISCLICK_CD, 1 SECONDS)
 
@@ -291,7 +291,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/psychic_link
 	name = "Psychic Link"
-	desc = "Link to a xenomorph and take some damage in their place."
+	desc = "与一只异形建立链接,并代替它承受一部分伤害。"
 	action_icon_state = "psychic_link"
 	action_icon = 'icons/Xeno/actions/gorger.dmi'
 	cooldown_duration = 15 SECONDS
@@ -311,44 +311,44 @@
 		return
 	if(apply_psychic_link_timer)
 		if(!silent)
-			owner.balloon_alert(owner, "cancelled")
+			owner.balloon_alert(owner, "已取消")
 		link_cleanup()
 		return FALSE
 	if(owner.do_actions)
 		return FALSE
 	if(!isxeno(target))
 		if(!silent)
-			to_chat(owner, span_notice("We can only link to familiar biological lifeforms."))
+			to_chat(owner, span_notice("我们只能与熟悉的生物生命形式建立链接。"))
 		return FALSE
 	if(xeno_owner.health <= xeno_owner.maxHealth * GORGER_PSYCHIC_LINK_MIN_HEALTH)
 		if(!silent)
-			to_chat(owner, span_notice("You are too hurt to link."))
+			to_chat(owner, span_notice("你伤得太重,无法建立链接。"))
 		return FALSE
 	if(!line_of_sight(owner, target, GORGER_PSYCHIC_LINK_RANGE))
 		if(!silent)
-			to_chat(owner, span_notice("It is beyond our reach, we must be close and our way must be clear."))
+			to_chat(owner, span_notice("它超出了我们的触及范围,我们必须靠近,且我们的路径必须畅通。"))
 		return FALSE
 	return TRUE
 
 /datum/action/ability/activable/xeno/psychic_link/use_ability(atom/target)
 	apply_psychic_link_timer = addtimer(CALLBACK(src, PROC_REF(apply_psychic_link), target), GORGER_PSYCHIC_LINK_CHANNEL, TIMER_UNIQUE|TIMER_STOPPABLE)
 	target_overlay = new (target, BUSY_ICON_MEDICAL)
-	owner.balloon_alert(owner, "linking...")
+	owner.balloon_alert(owner, "正在建立链接...")
 
 ///Activates the link
 /datum/action/ability/activable/xeno/psychic_link/proc/apply_psychic_link(atom/target)
 	link_cleanup()
 	if(HAS_TRAIT(owner, TRAIT_PSY_LINKED) || HAS_TRAIT(target, TRAIT_PSY_LINKED))
-		owner.balloon_alert(owner, "removing link...")
+		owner.balloon_alert(owner, "正在移除链接...")
 		if(do_after(owner, 1 SECONDS, NONE, target, BUSY_ICON_FRIENDLY, BUSY_ICON_FRIENDLY))
-			to_chat(owner, span_notice("Cancelled link to [target]."))
+			to_chat(owner, span_notice("已取消与[target]的链接。"))
 			cancel_psychic_link()
 		return
 
 	var/psychic_link = xeno_owner.apply_status_effect(STATUS_EFFECT_XENO_PSYCHIC_LINK, -1, target, GORGER_PSYCHIC_LINK_RANGE, GORGER_PSYCHIC_LINK_REDIRECT, xeno_owner.maxHealth * GORGER_PSYCHIC_LINK_MIN_HEALTH, TRUE)
 	RegisterSignal(psychic_link, COMSIG_XENO_PSYCHIC_LINK_REMOVED, PROC_REF(status_removed))
-	target.balloon_alert(xeno_owner, "link successul")
-	xeno_owner.balloon_alert(target, "linked to [xeno_owner]")
+	target.balloon_alert(xeno_owner, "链接成功")
+	xeno_owner.balloon_alert(target, "已链接至[xeno_owner]")
 	succeed_activate()
 
 ///Removes the status effect on unrest
@@ -375,7 +375,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/carnage
 	name = "Carnage"
-	desc = "Enter a state of thirst, gaining movement and healing on your next attack, scaling with missing blood. If your blood is below a certain %, you also knockdown your victim and drain some blood, during which you can't move."
+	desc = "进入口渴状态,在下一次攻击时获得移动和治疗效果,效果随缺失的血液量而提升。如果你的血液低于某个百分比,你还会击倒你的受害者并吸取一部分血液,在此期间你无法移动。"
 	action_icon_state = "carnage"
 	action_icon = 'icons/Xeno/actions/gorger.dmi'
 	cooldown_duration = 15 SECONDS
@@ -421,7 +421,7 @@
 
 /datum/action/ability/activable/xeno/oppose
 	name = "Oppose"
-	desc = "Violently suffuse the ground with stored blood. A marine on your tile is staggered and injured, ajacent marines are staggered, and any nearby xenos are healed, including you."
+	desc = "猛烈地将储存的血液灌注到地面。位于你所在格子的陆战队员会被踉跄并受伤,相邻的陆战队员会被踉跄,而附近任何异形都会被治疗,包括你自己。"
 	action_icon_state = "stomp"
 	action_icon = 'icons/Xeno/actions/crusher.dmi'
 	cooldown_duration = 30 SECONDS
@@ -437,8 +437,8 @@
 	succeed_activate()
 
 	playsound(xeno_owner.loc, 'sound/effects/bang.ogg', 25, 0)
-	xeno_owner.visible_message(span_xenodanger("[xeno_owner] smashes her fists into the ground!"), \
-	span_xenodanger("We smash our fists into the ground!"))
+	xeno_owner.visible_message(span_xenodanger("[xeno_owner]将她的双拳砸向地面!"), \
+	span_xenodanger("我们将双拳砸向地面!"))
 
 	xeno_owner.create_stomp() //Adds the visual effects. Wom wom wom
 	new /obj/effect/temp_visual/oppose_shatter(get_turf(xeno_owner)) //shatter displays stagger range
@@ -463,13 +463,13 @@
 				personal_statistics.heals++
 		else if(distance == 0) //if we're right on top of them, they take actual damage
 			M.take_overall_damage(20, BRUTE, MELEE, updating_health = TRUE, max_limbs = 3)
-			to_chat(M, span_userdanger("[xeno_owner] slams her fists into you, crushing you to the ground!"))
+			to_chat(M, span_userdanger("[xeno_owner]将她的双拳猛砸向你,将你压倒在地!"))
 			M.adjust_stagger(2 SECONDS)
 			M.adjust_slowdown(3)
 			shake_camera(M, 3, 3)
 		else if(distance == 1) //marines will only be staggerslowed if they're one tile away from you
 			shake_camera(M, 2, 2)
-			to_chat(M, span_userdanger("Blood shatters the ground around you!"))
+			to_chat(M, span_userdanger("血液震碎了你周围的地面!"))
 			M.adjust_stagger(2 SECONDS)
 			M.adjust_slowdown(3)
 
@@ -489,7 +489,7 @@
 
 /datum/action/ability/activable/xeno/feast
 	name = "Feast"
-	desc = "Enter a state of rejuvenation. During this time you use a small amount of blood and heal. You can cancel this early."
+	desc = "进入返老还童状态。在此期间你消耗少量血液并进行治疗。你可以提前取消。"
 	action_icon_state = "feast"
 	action_icon = 'icons/Xeno/actions/gorger.dmi'
 	cooldown_duration = 30 SECONDS
@@ -508,18 +508,18 @@
 		return TRUE
 	if(xeno_owner.plasma_stored < xeno_owner.xeno_caste.feast_plasma_drain * 10)
 		if(!silent)
-			to_chat(xeno_owner, span_notice("Not enough to begin a feast. We need [xeno_owner.xeno_caste.feast_plasma_drain * 10] blood."))
+			to_chat(xeno_owner, span_notice("不足以开始一场盛宴。我们需要[xeno_owner.xeno_caste.feast_plasma_drain * 10]血液。"))
 		return FALSE
 
 /datum/action/ability/activable/xeno/feast/use_ability(atom/A)
 	. = ..()
 	if(xeno_owner.has_status_effect(STATUS_EFFECT_XENO_FEAST))
-		to_chat(xeno_owner, span_notice("We decide to end our feast early..."))
+		to_chat(xeno_owner, span_notice("我们决定提前结束我们的盛宴..."))
 		xeno_owner.remove_status_effect(STATUS_EFFECT_XENO_FEAST)
 		return
 
 	xeno_owner.emote("roar")
-	xeno_owner.visible_message(xeno_owner, span_notice("[xeno_owner] begins to overflow with vitality!"))
+	xeno_owner.visible_message(xeno_owner, span_notice("[xeno_owner]开始涌出生命力!"))
 	xeno_owner.apply_status_effect(STATUS_EFFECT_XENO_FEAST, GORGER_FEAST_DURATION, xeno_owner.xeno_caste.feast_plasma_drain)
 	TIMER_COOLDOWN_START(src, FEAST_MISCLICK_CD, 2 SECONDS)
 	add_cooldown()

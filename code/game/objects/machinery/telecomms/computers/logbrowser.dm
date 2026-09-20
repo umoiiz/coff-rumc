@@ -1,6 +1,6 @@
 /obj/machinery/computer/telecomms/server
 	name = "telecommunications server monitoring console"
-	desc = "Has full access to all details and record of the telecommunications network it's monitoring."
+	desc = "拥有对其所监控的电信网络所有细节和记录的完全访问权限."
 
 	icon_state = "computer"
 	screen_overlay = "comm_logs"
@@ -144,7 +144,7 @@
 
 	else if(href_list["delete"])
 		if(!allowed(usr))
-			to_chat(usr, span_danger("ACCESS DENIED."))
+			to_chat(usr, span_danger("访问被拒绝."))
 			return
 
 		if(SelectedServer)

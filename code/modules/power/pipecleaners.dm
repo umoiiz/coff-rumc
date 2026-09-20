@@ -37,8 +37,8 @@ By design, d1 is the smallest direction and d2 is the highest
 */
 
 /obj/structure/pipe_cleaner
-	name = "pipe cleaner"
-	desc = "A bendable piece of wire covered in fuzz. Fun for arts and crafts!"
+	name = "扭扭棒"
+	desc = "一根覆盖着绒毛的可弯曲金属丝.做手工很有趣!"
 	icon = 'icons/obj/power_cond/pipe_cleaner.dmi'
 	icon_state = "0-1"
 	layer = WIRE_LAYER //Above hidden pipes, GAS_PIPE_HIDDEN_LAYER
@@ -141,12 +141,12 @@ By design, d1 is the smallest direction and d2 is the highest
 	else if(istype(W, /obj/item/stack/pipe_cleaner_coil))
 		var/obj/item/stack/pipe_cleaner_coil/coil = W
 		if (coil.get_amount() < 1)
-			to_chat(user, span_warning("Not enough pipe cleaner!"))
+			to_chat(user, span_warning("扭扭棒不够了!"))
 			return
 		coil.pipe_cleaner_join(src, user)
 
 /obj/structure/pipe_cleaner/proc/cut_pipe_cleaner(mob/user)
-	user.visible_message(span_notice("[user] pulls up the pipe cleaner."), span_notice("You pull up the pipe cleaner."))
+	user.visible_message(span_notice("[user]拉起了扭扭棒."), span_notice("你拉起了扭扭棒."))
 	stored.add_fingerprint(user)
 	log_game("[src] was pulled up by [key_name(usr)] in [AREACOORD(src)]")
 	deconstruct()
@@ -174,8 +174,8 @@ By design, d1 is the smallest direction and d2 is the highest
 ////////////////////////////////
 
 /obj/item/stack/pipe_cleaner_coil
-	name = "pipe cleaner coil"
-	desc = "A coil of pipe cleaners. Good for arts and crafts, not to build with."
+	name = "扭扭棒线圈"
+	desc = "一卷扭扭棒.适合做手工,不适合用来建造."
 	gender = NEUTER //That's a pipe_cleaner coil sounds better than that's some pipe_cleaner coils
 	icon = 'icons/obj/power.dmi'
 	icon_state = "pipecleaner"
@@ -256,15 +256,15 @@ By design, d1 is the smallest direction and d2 is the highest
 		return
 
 	if(!isturf(T) || !T.can_have_cabling())
-		to_chat(user, span_warning("You can only lay pipe cleaners on a solid floor!"))
+		to_chat(user, span_warning("你只能在坚固的地板上铺设扭扭棒!"))
 		return
 
 	if(get_amount() < 1) // Out of pipe_cleaner
-		to_chat(user, span_warning("There is no pipe cleaner left!"))
+		to_chat(user, span_warning("没有剩余的扭扭棒了!"))
 		return
 
 	if(get_dist(T,user) > 1) // Too far
-		to_chat(user, span_warning("You can't lay pipe cleaner at a place that far away!"))
+		to_chat(user, span_warning("你不能在那么远的地方铺设扭扭棒!"))
 		return
 
 	var/dirn
@@ -278,7 +278,7 @@ By design, d1 is the smallest direction and d2 is the highest
 
 	for(var/obj/structure/pipe_cleaner/LC in T)
 		if(LC.d2 == dirn && LC.d1 == 0)
-			to_chat(user, span_warning("There's already a pipe leaner at that position!"))
+			to_chat(user, span_warning("那个位置已经有扭扭棒了!"))
 			return
 
 	var/obj/structure/pipe_cleaner/C = get_new_pipe_cleaner(T)
@@ -306,7 +306,7 @@ By design, d1 is the smallest direction and d2 is the highest
 		return
 
 	if(get_dist(C, user) > 1)		// make sure it's close enough
-		to_chat(user, span_warning("You can't lay pipe cleaner at a place that far away!"))
+		to_chat(user, span_warning("你不能在那么远的地方铺设扭扭棒!"))
 		return
 
 
@@ -322,7 +322,7 @@ By design, d1 is the smallest direction and d2 is the highest
 	if((C.d1 == dirn || C.d2 == dirn) && !forceddir)
 		if(!U.can_have_cabling())						//checking if it's a plating or catwalk
 			if (showerror)
-				to_chat(user, span_warning("You can only lay pipe cleaners on catwalks and plating!"))
+				to_chat(user, span_warning("你只能在栈道和地板上铺设扭扭棒!"))
 			return
 		else
 			// pipe_cleaner is pointing at us, we're standing on an open tile
@@ -333,7 +333,7 @@ By design, d1 is the smallest direction and d2 is the highest
 			for(var/obj/structure/pipe_cleaner/LC in U)		// check to make sure there's not a pipe_cleaner there already
 				if(LC.d1 == fdirn || LC.d2 == fdirn)
 					if (showerror)
-						to_chat(user, span_warning("There's already a pipe cleaner at that position!"))
+						to_chat(user, span_warning("那个位置已经有扭扭棒了!"))
 					return
 
 			var/obj/structure/pipe_cleaner/NC = get_new_pipe_cleaner(U)
@@ -363,7 +363,7 @@ By design, d1 is the smallest direction and d2 is the highest
 				continue
 			if((LC.d1 == nd1 && LC.d2 == nd2) || (LC.d1 == nd2 && LC.d2 == nd1) )	// make sure no pipe_cleaner matches either direction
 				if (showerror)
-					to_chat(user, span_warning("There's already a pipe cleaner at that position!"))
+					to_chat(user, span_warning("那个位置已经有扭扭棒了!"))
 
 				return
 

@@ -104,7 +104,7 @@ export const TramControl = (props) => {
                     })
                   }
                 >
-                  Send Tram
+                  发送电车
                 </Button>
               </Stack.Item>
             </Stack>

@@ -30,7 +30,7 @@
 
 /// Allows us to change the way the selected build mode functions.
 /datum/buildmode_mode/proc/change_settings(client/user)
-	to_chat(user, span_warning("There is no configuration available for this mode"))
+	to_chat(user, span_warning("此模式没有可用的配置"))
 
 /// Called whenever the user clicks on something with build mode active.
 /datum/buildmode_mode/proc/handle_click(client/user, params, object)
@@ -57,7 +57,7 @@
 /datum/buildmode_mode/selection/handle_click(client/user, params, object)
 	var/list/modifiers = params2list(params)
 	if(!LAZYACCESS(modifiers, LEFT_CLICK))
-		to_chat(user, span_notice("Region selection canceled!"))
+		to_chat(user, span_notice("区域选择已取消!"))
 		deselect_region()
 		return
 
@@ -67,7 +67,7 @@
 
 	if(corner_a && !corner_b)
 		corner_b = apply_overlay_image(get_turf(object), AREASELECT_CORNER_B)
-		to_chat(user, span_boldwarning("Region selected, if you're happy with your selection left click again, otherwise right click."))
+		to_chat(user, span_boldwarning("区域已选择, 如果你对选择满意请再次左键点击, 否则右键点击."))
 		return
 
 	handle_selected_area(user, params)

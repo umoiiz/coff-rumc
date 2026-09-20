@@ -1,6 +1,6 @@
 /obj/item/circuitboard
 	w_class = WEIGHT_CLASS_TINY
-	name = "Circuit board"
+	name = "电路板"
 	icon = 'icons/obj/items/circuitboards.dmi'
 	icon_state = "id_mod"
 	worn_icon_list = list(
@@ -27,30 +27,30 @@
 
 
 /obj/item/circuitboard/aicore
-	name = "Circuit board (AI Core)"
+	name = "电路板 (AI核心)"
 
 
 /obj/item/circuitboard/firealarm
-	name = "fire alarm electronics"
+	name = "火警电子元件"
 	icon_state = "door_electronics"
-	desc = "A circuit. It has a label on it, it says \"Can handle heat levels up to 40 degrees celsius!\""
+	desc = "一块电路. 上面有个标签, 写着\"可承受高达40摄氏度的温度!\""
 
 
 /obj/item/circuitboard/apc
-	name = "power control module"
+	name = "电源控制模块"
 	icon_state = "power_mod"
-	desc = "Heavy-duty power control circuit for APC contstruction."
+	desc = "用于APC建造的重型电源控制电路."
 
 
 // Tracker Electronic
 /obj/item/circuitboard/solar_tracker
-	name = "tracker electronics"
+	name = "追踪器电子元件"
 	icon_state = "door_electronics"
 
 
 /obj/item/circuitboard/airlock
-	name = "airlock electronics"
-	desc = "Required in the construction of an airlock."
+	name = "气闸电子元件"
+	desc = "建造气闸所需."
 	icon_state = "door_electronics"
 	req_access = list(ACCESS_CIVILIAN_ENGINEERING)
 	var/list/conf_access = null
@@ -144,5 +144,5 @@
 
 
 /obj/item/circuitboard/airlock/secure
-	name = "secure airlock electronics"
-	desc = "designed to be somewhat more resistant to hacking than standard electronics."
+	name = "安全气闸电子元件"
+	desc = "设计上比标准电子元件更抗黑客攻击."

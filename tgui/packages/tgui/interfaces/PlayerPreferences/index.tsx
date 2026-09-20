@@ -76,7 +76,7 @@ export const PlayerPreferences = (props) => {
           </Flex.Item>
           <Flex.Item grow={1} basis={0}>
             {affectsSave ? (
-              <Section title="Save slot" buttons={saveSlots}>
+              <Section title="保存槽位" buttons={saveSlots}>
                 <CurrentTab />
               </Section>
             ) : (
@@ -98,49 +98,49 @@ const NavigationSelector = (props) => {
         selected={tabIndex === 1}
         onClick={() => act('tab_change', { tabIndex: 1 })}
       >
-        Character Customization
+        角色自定义
       </Tabs.Tab>
       <Tabs.Tab
         selected={tabIndex === 2}
         onClick={() => act('tab_change', { tabIndex: 2 })}
       >
-        Predator Customization
+        铁血战士自定义
       </Tabs.Tab>
       <Tabs.Tab
         selected={tabIndex === 3}
         onClick={() => act('tab_change', { tabIndex: 3 })}
       >
-        Background Information
+        背景信息
       </Tabs.Tab>
       <Tabs.Tab
         selected={tabIndex === 4}
         onClick={() => act('tab_change', { tabIndex: 4 })}
       >
-        Gear Customization
+        装备定制
       </Tabs.Tab>
       <Tabs.Tab
         selected={tabIndex === 5}
         onClick={() => act('tab_change', { tabIndex: 5 })}
       >
-        Job Preferences
+        职业偏好
       </Tabs.Tab>
       <Tabs.Tab
         selected={tabIndex === 6}
         onClick={() => act('tab_change', { tabIndex: 6 })}
       >
-        Game Settings
+        游戏设置
       </Tabs.Tab>
       <Tabs.Tab
         selected={tabIndex === 7}
         onClick={() => act('tab_change', { tabIndex: 7 })}
       >
-        Keybindings
+        按键绑定
       </Tabs.Tab>
       <Tabs.Tab
         selected={tabIndex === 8}
         onClick={() => act('tab_change', { tabIndex: 8 })}
       >
-        Draw Order
+        绘制顺序
       </Tabs.Tab>
     </Tabs>
   );

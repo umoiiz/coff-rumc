@@ -132,7 +132,7 @@ ADMIN_VERB(edit_admin_permissions, R_PERMISSIONS, "Permissions Panel", "Edit adm
 		log_admin("[key_name(usr)] attempted to edit admin permissions without sufficient rights.")
 		return
 	if(IsAdminAdvancedProcCall())
-		to_chat(usr, span_adminprefix("Admin Edit blocked: Advanced ProcCall detected."))
+		to_chat(usr, span_adminprefix("管理员编辑被阻止:检测到高级ProcCall."))
 		return
 	var/datum/asset/permissions_assets = get_asset_datum(/datum/asset/simple/permissions)
 	permissions_assets.send(usr.client)
@@ -147,19 +147,19 @@ ADMIN_VERB(edit_admin_permissions, R_PERMISSIONS, "Permissions Panel", "Edit adm
 		skip = TRUE
 	if(!CONFIG_GET(flag/admin_legacy_system) && CONFIG_GET(flag/protect_legacy_admins) && task == "rank")
 		if(new_admin_ckey in GLOB.protected_admins)
-			to_chat(usr, span_adminprefix("Editing the rank of this admin is blocked by server configuration."))
+			to_chat(usr, span_adminprefix("编辑此管理员的等级被服务器配置阻止."))
 			return
 	if(!CONFIG_GET(flag/admin_legacy_system) && CONFIG_GET(flag/protect_legacy_ranks) && task == "permissions")
 		if(D.rank in GLOB.protected_ranks)
-			to_chat(usr, span_adminprefix("Editing the flags of this rank is blocked by server configuration."))
+			to_chat(usr, span_adminprefix("编辑此等级的权限标志被服务器配置阻止."))
 			return
 	if(CONFIG_GET(flag/load_legacy_ranks_only) && (task == "add" || task == "rank" || task == "permissions"))
-		to_chat(usr, span_adminprefix("Database rank loading is disabled, only temporary changes can be made to a rank's permissions and permanently creating a new rank is blocked."))
+		to_chat(usr, span_adminprefix("数据库等级加载已禁用,只能对等级的权限进行临时更改,永久创建新等级被阻止."))
 		legacy_only = TRUE
 	if(check_rights(R_DBRANKS, FALSE))
 		if(!skip)
 			if(!SSdbcore.Connect())
-				to_chat(usr, span_danger("Unable to connect to database, changes are temporary only."))
+				to_chat(usr, span_danger("无法连接到数据库,更改仅为临时."))
 				use_db = FALSE
 			else
 				use_db = alert("Permanent changes are saved to the database for future rounds, temporary changes will affect only the current round", "Permanent or Temporary?", "Permanent", "Temporary", "Cancel")
@@ -210,7 +210,7 @@ ADMIN_VERB(edit_admin_permissions, R_PERMISSIONS, "Permissions Panel", "Edit adm
 	if(!.)
 		return FALSE
 	if(!admin_ckey && (. in (GLOB.admin_datums+GLOB.deadmins)))
-		to_chat(usr, span_danger("[admin_key] is already an admin."))
+		to_chat(usr, span_danger("[admin_key]已经是管理员."))
 		return FALSE
 	if(use_db)
 		//if an admin exists without a datum they won't be caught by the above
@@ -223,7 +223,7 @@ ADMIN_VERB(edit_admin_permissions, R_PERMISSIONS, "Permissions Panel", "Edit adm
 			return FALSE
 		if(query_admin_in_db.NextRow())
 			qdel(query_admin_in_db)
-			to_chat(usr, span_danger("[admin_key] already listed in admin database. Check the Management tab if they don't appear in the list of admins."))
+			to_chat(usr, span_danger("[admin_key]已在管理员数据库中列出.如果未出现在管理员列表中,请检查管理选项卡."))
 			return FALSE
 		qdel(query_admin_in_db)
 		var/datum/db_query/query_add_admin = SSdbcore.NewQuery(
@@ -461,13 +461,13 @@ ADMIN_VERB(edit_admin_permissions, R_PERMISSIONS, "Permissions Panel", "Edit adm
 		return
 	for(var/datum/admin_rank/R in GLOB.admin_ranks)
 		if(R.name == admin_rank && (!(R.rights & usr.client.holder.rank.can_edit_rights) == R.rights))
-			to_chat(usr, span_adminprefix("You don't have edit rights to all the rights this rank has, rank deletion not permitted."))
+			to_chat(usr, span_adminprefix("你无权编辑此等级拥有的所有权限,不允许删除等级."))
 			return
 	if(!CONFIG_GET(flag/admin_legacy_system) && CONFIG_GET(flag/protect_legacy_ranks) && (admin_rank in GLOB.protected_ranks))
-		to_chat(usr, span_adminprefix("Deletion of protected ranks is not permitted, it must be removed from admin_ranks.txt."))
+		to_chat(usr, span_adminprefix("不允许删除受保护的等级,必须从admin_ranks.txt中移除."))
 		return
 	if(CONFIG_GET(flag/load_legacy_ranks_only))
-		to_chat(usr, span_adminprefix("Rank deletion not permitted while database rank loading is disabled."))
+		to_chat(usr, span_adminprefix("数据库等级加载已禁用时不允许删除等级."))
 		return
 	var/datum/db_query/query_admins_with_rank = SSdbcore.NewQuery(
 		"SELECT 1 FROM [format_table_name("admin")] WHERE `rank` = :admin_rank",
@@ -478,7 +478,7 @@ ADMIN_VERB(edit_admin_permissions, R_PERMISSIONS, "Permissions Panel", "Edit adm
 		return
 	if(query_admins_with_rank.NextRow())
 		qdel(query_admins_with_rank)
-		to_chat(usr, span_danger("Error: Rank deletion attempted while rank still used; Tell a coder, this shouldn't happen."))
+		to_chat(usr, span_danger("错误:等级仍在使用时尝试删除等级;请告知程序员,这不应发生."))
 		return
 	qdel(query_admins_with_rank)
 	if(alert("Are you sure you want to remove [admin_rank]?","Confirm Removal","Do it","Cancel") == "Do it")
@@ -515,4 +515,4 @@ ADMIN_VERB(edit_admin_permissions, R_PERMISSIONS, "Permissions Panel", "Edit adm
 		qdel(query_sync_lastadminrank)
 		return
 	qdel(query_sync_lastadminrank)
-	to_chat(usr, span_admin("Sync of [admin_key] successful."))
+	to_chat(usr, span_admin("[admin_key]同步成功."))

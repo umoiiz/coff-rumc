@@ -48,7 +48,7 @@
 /datum/action/innate/order/proc/send_order(atom/target, datum/squad/squad, faction = FACTION_TERRAGOV)
 	if(!can_use_action())
 		return
-	to_chat(owner ,span_ordercic("Вы приказали морпехам [verb_name] [get_area(target.loc)]!"))
+	to_chat(owner ,span_ordercic("你命令陆战队员[verb_name][get_area(target.loc)]!"))
 	owner.playsound_local(owner, 'sound/effects/CIC_order.ogg', 10, 1)
 	if(visual_type)
 		target = get_turf(target)
@@ -96,12 +96,12 @@
 	var/atom/movable/screen/arrow/arrow_hud = new arrow_type
 	arrow_hud.add_hud(src, target)
 	playsound_local(src, 'sound/effects/CIC_order.ogg', 20, 1)
-	to_chat(src,span_ordercic("Командование приказывает вам [verb_name] [get_area(get_turf(target))]!"))
+	to_chat(src,span_ordercic("指挥部命令你[verb_name][get_area(get_turf(target))]!"))
 
 /datum/action/innate/order/attack_order
 	name = "Send Attack Order"
 	action_icon_state = "attack"
-	verb_name = "<font color='#d93b29'>АТАКОВАТЬ</font>"
+	verb_name = "<font color='#d93b29'>进攻</font>"
 	arrow_type = /atom/movable/screen/arrow/attack_order_arrow
 	visual_type = /obj/effect/temp_visual/order/attack_order
 
@@ -120,13 +120,13 @@
 /datum/action/innate/order/attack_order/personal/action_activate()
 	var/mob/living/carbon/human/human = owner
 	if(send_order(human, human.assigned_squad, human.faction))
-		var/message = pick(";ДОБЕЙТЕ ВЫЖИВШИХ!", ";РАЗОТРИТЕ ИХ В ПЫЛЬ!", ";НАКОРМИТЕ ИХ СВИНЦОМ!", ";ВПЕРЁД! В РУКОПАШНУЮ!", ";АТАКОВАТЬ!", ";В АТАКУ!", ";ПЕРЕБЕЙТЕ ИХ!")
+		var/message = pick(";干掉幸存者!", ";把他们碾成粉末!", ";喂他们吃子弹!", ";前进!肉搏战!", ";攻击!", ";冲锋!", ";消灭他们!")
 		owner.say(message)
 
 /datum/action/innate/order/defend_order
 	name = "Send Defend Order"
 	action_icon_state = "defend"
-	verb_name = "<font color='#24e324'>ОБОРОНЯТЬ</font>"
+	verb_name = "<font color='#24e324'>防守</font>"
 	arrow_type = /atom/movable/screen/arrow/defend_order_arrow
 	visual_type = /obj/effect/temp_visual/order/defend_order
 
@@ -144,13 +144,13 @@
 /datum/action/innate/order/defend_order/personal/action_activate()
 	var/mob/living/carbon/human/human = owner
 	if(send_order(human, human.assigned_squad, human.faction))
-		var/message = pick(";ПРИГНИТЕСЬ!", ";ДЕРЖИМ ЛИНИЮ!", ";ДЕРЖИМ ПОЗИЦИЮ!", ";НИ ШАГУ НАЗАД!", ";СТОЯТЬ И СРАЖАТЬСЯ!", ";В УКРЫТИЕ!", ";ЗАЩИЩАЙТЕ ПОЗИЦИЮ!", ";ПРИГОТОВИТЬСЯ К УДАРУ!", ";ДЕРЖИТЕСЬ!", ";ОНИ ИДУТ!", ";НЕ АТАКОВАТЬ! ЗАЩИЩАТЬСЯ!")
+		var/message = pick(";蹲下!", ";守住防线!", ";守住阵地!", ";一步也不许后退!", ";坚守并战斗!", ";进入掩体!", ";保卫阵地!", ";准备迎接冲击!", ";坚持住!", ";他们来了!", ";不要攻击!防守!")
 		owner.say(message)
 
 /datum/action/innate/order/retreat_order
 	name = "Send Retreat Order"
 	action_icon_state = "retreat"
-	verb_name = "<font color='#e024e3'>ОТСТУПАТЬ</font> из"
+	verb_name = "<font color='#e024e3'>撤退</font> 从"
 	visual_type = /obj/effect/temp_visual/order/retreat_order
 
 /datum/action/innate/order/retreat_order/personal
@@ -167,7 +167,7 @@
 /datum/action/innate/order/retreat_order/personal/action_activate()
 	var/mob/living/carbon/human/human = owner
 	if(send_order(human, human.assigned_squad, human.faction))
-		var/message = pick(";НАЗАД! НАЗАД!", ";ТАКТИЧЕСКОЕ ОТСТУПЛЕНИЕ!", ";НЕ УМРИТЕ! УБЕГАЕМ!", ";БЕГИ ПОКА МОЖЕШЬ!", ";ОТСТУПАЕМ! ПОВТОРЯЮ, ОТСТУПАЕМ!", ";ОТСТУПАЕМ! УХОДИМ!")
+		var/message = pick(";撤退!撤退!", ";战术撤退!", ";别送死!快跑!", ";能跑就跑!", ";撤退!重复,撤退!", ";撤退!撤离!")
 		owner.say(message)
 
 //placeholder, this will end up being split by faction somehow
@@ -176,7 +176,7 @@ GLOBAL_VAR(human_ai_goal)
 /datum/action/innate/order/rally_order
 	name = "Send Rally Order"
 	action_icon_state = "rally"
-	verb_name = "<font color='#e3dd24'>СОБРАТЬСЯ</font> в"
+	verb_name = "<font color='#e3dd24'>集合</font> 于"
 	arrow_type = /atom/movable/screen/arrow/rally_order_arrow
 	visual_type = /obj/effect/temp_visual/order/rally_order
 
@@ -199,7 +199,7 @@ GLOBAL_VAR(human_ai_goal)
 	var/mob/living/carbon/human/human = owner
 	if(!send_order(human, human.assigned_squad, human.faction))
 		return
-	var/message = pick("ВСЕ КО МНЕ!", "ПЕРЕГРУППИРОВАТЬСЯ!", "ВСЕМ ЗА МНОЙ!", "СОБРАТЬСЯ ВОЗЛЕ МЕНЯ!")
+	var/message = pick("所有人到我这里来!", "重新集结!", "所有人跟我来!", "在我附近集合!")
 	owner.say(message)
 
 	QDEL_IN(new /obj/effect/ai_node/goal(get_turf(owner), owner, owner.faction), CIC_ORDER_COOLDOWN * 2)

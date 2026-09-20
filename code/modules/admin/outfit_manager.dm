@@ -56,7 +56,7 @@
 		if("load")
 			owner.holder.load_outfit(owner.mob)
 		if("copy")
-			var/datum/outfit/outfit = tgui_input_list(owner, "Pick an outfit to copy from", "Outfit Manager", subtypesof(/datum/outfit))
+			var/datum/outfit/outfit = tgui_input_list(owner, "选择要复制的装备", "装备管理器", subtypesof(/datum/outfit))
 			if(isnull(outfit))
 				return
 			if(!ispath(outfit))

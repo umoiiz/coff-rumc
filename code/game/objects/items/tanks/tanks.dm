@@ -1,5 +1,5 @@
 /obj/item/tank
-	name = "tank"
+	name = "罐子"
 	icon = 'icons/obj/items/tank.dmi'
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/equipment/tanks_left.dmi',

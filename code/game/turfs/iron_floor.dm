@@ -3,7 +3,7 @@
 
 /turf/open/floor/iron/examine(mob/user)
 	. = ..()
-	. += span_notice("There's a <b>small crack</b> on the edge of it.")
+	. += span_notice("它的边缘有一道<b>小裂缝</b>.")
 
 /turf/open/floor/iron/edge
 	icon_state = "floor_edge"
@@ -204,7 +204,7 @@
 
 /turf/open/floor/iron/goonplaque
 	name = "commemorative plaque"
-	desc = "\"This is a plaque in honour of our comrades on the G4407 Stations. Hopefully TG4407 model can live up to your fame and fortune.\" Scratched in beneath that is a crude image of a meteor and a spaceman. The spaceman is laughing. The meteor is exploding."
+	desc = "\"这是一块纪念我们G4407空间站战友的牌匾.希望TG4407型号能不负你们的声名与财富.\" 在其下方刻着一个粗糙的陨石和太空人的图像.太空人在大笑.陨石在爆炸."
 	icon_state = "plaque"
 
 /turf/open/floor/iron/stairs
@@ -224,15 +224,15 @@
 
 /turf/open/floor/iron/bluespace
 	icon_state = "bluespace"
-	desc = "Sadly, these don't seem to make you faster..."
+	desc = "遗憾的是,这些似乎并不能让你跑得更快..."
 
 /turf/open/floor/iron/sepia
 	icon_state = "sepia"
-	desc = "Well, the flow of time is normal on these tiles, weird."
+	desc = "好吧,这些地砖上的时间流速是正常的,真奇怪."
 
 /turf/open/floor/glass
 	name = "glass floor"
-	desc = "Don't jump on it, or do, I'm not your mom."
+	desc = "别跳上去,或者跳吧,我又不是你妈."
 	icon = 'icons/turf/floors/glass.dmi'
 	icon_state = "glass-0"
 	base_icon_state = "glass"
@@ -242,7 +242,7 @@
 
 /turf/open/floor/glass/reinforced
 	name = "reinforced glass floor"
-	desc = "Do jump on it, it can take it."
+	desc = "尽管跳上去,它承受得住."
 	icon = 'icons/turf/floors/reinf_glass.dmi'
 	icon_state = "reinf_glass-0"
 	base_icon_state = "reinf_glass"
@@ -252,14 +252,14 @@
 
 /turf/open/floor/glass/plasma
 	name = "plasma glass floor"
-	desc = "Studies by the Nanotrasen Materials Safety Division have not yet determined if this is safe to jump on, do so at your own risk."
+	desc = "纳米传讯材料安全部门的研究尚未确定跳上去是否安全,请自行承担风险."
 	icon = 'icons/turf/floors/plasma_glass.dmi'
 	icon_state = "plasma_glass-0"
 	base_icon_state = "plasma_glass"
 
 /turf/open/floor/glass/reinforced/plasma
 	name = "reinforced plasma glass floor"
-	desc = "Do jump on it, jump on it while in a mecha, it can take it."
+	desc = "尽管跳上去,穿着机甲跳上去,它承受得住."
 	icon = 'icons/turf/floors/reinf_plasma_glass.dmi'
 	icon_state = "reinf_plasma_glass-0"
 	base_icon_state = "reinf_plasma_glass"

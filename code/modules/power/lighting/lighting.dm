@@ -3,7 +3,7 @@
 
 /obj/machinery/light
 	name = "light fixture"
-	desc = "A lighting fixture."
+	desc = "一个照明灯具."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "tube_empty"
 	base_icon_state = "tube"
@@ -147,16 +147,16 @@
 
 	if(istype(I, /obj/item/light_bulb))
 		if(status != LIGHT_EMPTY)
-			to_chat(user, "There is a [fitting] already inserted.")
+			to_chat(user, "里面已经插了一个[fitting].")
 			return
 
 		var/obj/item/light_bulb/L = I
 		if(!istype(L, light_type))
-			to_chat(user, "This type of light requires a [fitting].")
+			to_chat(user, "这种灯需要[fitting].")
 			return
 
 		status = L.status
-		to_chat(user, "You insert \the [L].")
+		to_chat(user, "你插入了\the [L].")
 		switchcount = L.switchcount
 		rigged = L.rigged
 		brightness = L.brightness
@@ -172,7 +172,7 @@
 		return
 
 	if(status == LIGHT_EMPTY && has_power() && (I.atom_flags & CONDUCT))
-		to_chat(user, "You stick \the [I] into the light socket!")
+		to_chat(user, "你把\the [I]插进了灯座!")
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread(src)
 		s.set_up(3, 1, loc)
 		s.start()
@@ -187,7 +187,7 @@
 		return
 	if(!prob(1 + I.force * 5))
 		return
-	visible_message("[user] smashed the light!", "You hit the light, and it smashes!")
+	visible_message("[user]打碎了灯!", "你打中了灯,它碎了!")
 	if(light_on && (I.atom_flags & CONDUCT) && prob(12))
 		electrocute_mob(user, get_area(src), src, 0.3)
 	broken()
@@ -196,12 +196,12 @@
 	if(user.a_intent == INTENT_HARM)
 		return FALSE
 	if(status != LIGHT_EMPTY)
-		balloon_alert(user, "Remove bulb first")
+		balloon_alert(user, "先移除灯泡")
 		return TRUE
 
 	playsound(loc, 'sound/items/screwdriver.ogg', 25, 1)
-	user.visible_message("[user] opens [src]'s casing.", \
-		"You open [src]'s casing.", "You hear a noise.")
+	user.visible_message("[user]打开了[src]的外壳.", \
+		"You open [src]'s casing.", "你听到一声响动.")
 	var/obj/machinery/light_construct/newlight
 	switch(fitting)
 		if("bulb")
@@ -225,8 +225,8 @@
 	if(status == LIGHT_BROKEN)
 		return FALSE
 	xeno_attacker.do_attack_animation(src, ATTACK_EFFECT_SMASH)
-	xeno_attacker.visible_message(span_danger("\The [xeno_attacker] smashes [src]!"), \
-	span_danger("We smash [src]!"), null, 5)
+	xeno_attacker.visible_message(span_danger("\The [xeno_attacker]打碎了[src]!"), \
+	span_danger("我们打碎了[src]!"), null, 5)
 	broken()
 
 /obj/machinery/light/attack_hand(mob/living/user)
@@ -234,13 +234,13 @@
 	if(.)
 		return
 	if(status == LIGHT_EMPTY)
-		to_chat(user, "There is no [fitting] in this light.")
+		to_chat(user, "这盏灯里没有[fitting].")
 		return
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
-			visible_message(span_warning("[user] smashed the light!"), null, "You hear a tinkle of breaking glass")
+			visible_message(span_warning("[user]打碎了灯!"), null, "你听到玻璃碎裂的叮当声")
 			broken()
 			return
 
@@ -260,12 +260,12 @@
 			prot = 1
 
 		if(prot > 0 || isrobot(H) || (limb_check.limb_status & LIMB_ROBOT))
-			to_chat(user, "You remove the light [fitting].")
+			to_chat(user, "你取下了灯[fitting].")
 		else
-			to_chat(user, "You try to remove the light [fitting], but it's too hot and you don't want to burn your hand.")
+			to_chat(user, "你试图取下灯[fitting],但它太烫了,你不想烫伤手.")
 			return				// if burned, don't remove the light
 	else
-		to_chat(user, "You remove the light [fitting].")
+		to_chat(user, "你取下了灯[fitting].")
 
 	// create a light tube/bulb item and put it in the user's hand
 	var/obj/item/light_bulb/L = new light_type()
@@ -480,12 +480,12 @@
 	base_icon_state = "bulb"
 	fitting = "bulb"
 	brightness = 4
-	desc = "A small lighting fixture."
+	desc = "一个小型照明灯具."
 	light_type = /obj/item/light_bulb/bulb
 
 /obj/machinery/light/floor
 	name = "floor light fixture"
-	desc = "A small lighting fixture."
+	desc = "一个小型照明灯具."
 	icon_state = "floortube_empty"
 	base_icon_state = "floortube"
 	brightness = 6
@@ -507,7 +507,7 @@
 	base_icon_state = "bulb"
 	fitting = "bulb"
 	brightness = 4
-	desc = "A small lighting fixture."
+	desc = "一个小型照明灯具."
 	light_type = /obj/item/light_bulb/bulb
 
 /obj/machinery/light/spot

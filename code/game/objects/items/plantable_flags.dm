@@ -10,8 +10,8 @@
 #define LOST_FLAG_AURA_STRENGTH -2
 
 /obj/item/plantable_flag
-	name = "\improper TerraGov flag"
-	desc = "A flag bearing the symbol of TerraGov. It flutters in the breeze heroically. This one looks ready to be planted into the ground."
+	name = "\improper 地球联合政府旗帜"
+	desc = "一面印有地球联合政府标志的旗帜.它在微风中英勇地飘扬.这面看起来可以插到地上."
 	icon = 'icons/obj/items/flags/plantable_flag_large.dmi'
 	icon_state = "flag_tgmc"
 	inhand_x_dimension = 64
@@ -93,11 +93,11 @@
 ///Waves the flag around heroically
 /obj/item/plantable_flag/proc/lift_flag(mob/user)
 	if(TIMER_COOLDOWN_RUNNING(user, COOLDOWN_WHISTLE_WARCRY))
-		user.balloon_alert(user, "On cooldown")
+		user.balloon_alert(user, "冷却中")
 		return
 
 	TIMER_COOLDOWN_START(user, COOLDOWN_WHISTLE_WARCRY, 1 MINUTES)
-	user.visible_message(span_warning("[user] lifts up [src] triumphantly!"))
+	user.visible_message(span_warning("[user]胜利地举起了[src]!"))
 	playsound(get_turf(src), 'sound/items/plantable_flag/flag_raised.ogg', 75)
 	addtimer(CALLBACK(src, PROC_REF(do_warcry), user), 1 SECONDS)
 
@@ -110,14 +110,14 @@
 		CHECK_TICK
 
 /obj/item/plantable_flag/som
-	name = "\improper SOM flag"
-	desc = "A flag bearing the symbol of the Sons of Mars. It flutters in the breeze heroically. This one looks ready to be planted into the ground."
+	name = "\improper 火星之子旗帜"
+	desc = "一面印有火星之子标志的旗帜.它在微风中英勇地飘扬.这面看起来可以插到地上."
 	icon_state = "flag_som"
 	faction = FACTION_SOM
 
 /obj/structure/plantable_flag
-	name = "flag"
-	desc = "A flag of something. This one looks like you could dismantle it."
+	name = "旗帜"
+	desc = "某物的旗帜.这面看起来可以拆卸."
 	icon = 'icons/obj/items/flags/plantable_flag_large.dmi'
 	pixel_x = 9
 	pixel_y = 12

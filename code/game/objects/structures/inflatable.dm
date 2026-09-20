@@ -1,6 +1,6 @@
 /obj/item/inflatable
-	name = "generic inflatable"
-	desc = "You shouldn't be seeing this."
+	name = "通用充气物"
+	desc = "你不应该看到这个."
 	icon = 'icons/obj/inflatable.dmi'
 	hit_sound = 'sound/effects/Glasshit_old.ogg'
 	w_class = WEIGHT_CLASS_NORMAL
@@ -9,30 +9,30 @@
 
 /obj/item/inflatable/attack_self(mob/user)
 	. = ..()
-	balloon_alert(user, "Inflating...")
+	balloon_alert(user, "充气中...")
 	if(!do_after(user, 3 SECONDS, NONE, src))
-		balloon_alert(user, "Interrupted!")
+		balloon_alert(user, "被打断!")
 		return
 	playsound(loc, 'sound/items/zip.ogg', 25, 1)
-	to_chat(user, span_notice("You inflate [src]."))
+	to_chat(user, span_notice("你给[src]充气."))
 	new inflatable_type(get_turf(user))
 	qdel(src)
 
 /obj/item/inflatable/wall
-	name = "inflatable wall"
-	desc = "A folded membrane which rapidly expands into a large cubical shape on activation."
+	name = "充气墙"
+	desc = "一种折叠膜,激活后会迅速膨胀成大型立方体形状."
 	icon_state = "folded_wall"
 	inflatable_type = /obj/structure/inflatable/wall
 
 /obj/item/inflatable/door
-	name = "inflatable door"
-	desc = "A folded membrane which rapidly expands into a simple door on activation."
+	name = "充气门"
+	desc = "一种折叠膜,激活后会迅速膨胀成一扇简易门."
 	icon_state = "folded_door"
 	inflatable_type = /obj/structure/inflatable/door
 
 /obj/structure/inflatable
-	name = "generic inflatable"
-	desc = "You shouldn't be seeing this."
+	name = "通用充气物"
+	desc = "你不应该看到这个."
 	density = TRUE
 	allow_pass_flags = NONE
 	icon = 'icons/obj/inflatable.dmi'
@@ -62,7 +62,7 @@
 	if(.)
 		return
 	if(can_puncture(I))
-		visible_message(span_danger("[user] pierces [src] with [I]!"))
+		visible_message(span_danger("[user]用[I]刺穿了[src]!"))
 		deflate(TRUE)
 
 ///Handles the structure deflating
@@ -72,7 +72,7 @@
 		return
 	deflated = TRUE
 	playsound(loc, 'sound/machines/hiss.ogg', 25, 1)
-	visible_message("[src] [violent ? "rapidly" : "slowly"] deflates!")
+	visible_message("[src][violent ? "rapidly" : "slowly"]放气了!")
 	flick("wall_[violent ? "popping" : "deflating"]", src)
 	addtimer(CALLBACK(src, PROC_REF(post_deflate), violent), violent ? 1 SECONDS : 5 SECONDS)
 
@@ -93,34 +93,34 @@
 		return
 
 	if(!deflated)
-		balloon_alert(usr, "Deflating...")
+		balloon_alert(usr, "放气中...")
 		deflate(FALSE)
 	else
-		balloon_alert(usr, "Already deflated.")
+		balloon_alert(usr, "已经放气了.")
 
 /obj/structure/inflatable/wall
-	name = "inflatable wall"
-	desc = "An inflated membrane. Do not puncture."
+	name = "充气墙"
+	desc = "一面充气膜.请勿刺破."
 	icon_state = "wall"
 	inflatable_item = /obj/item/inflatable/wall
 	popped_variant = /obj/structure/inflatable/popped
 
 /obj/structure/inflatable/popped
-	name = "popped inflatable wall"
-	desc = "It used to be an inflatable wall, now it's just a mess of plastic."
+	name = "破裂的充气墙"
+	desc = "它曾经是一面充气墙,现在只是一堆破烂塑料."
 	density = FALSE
 	anchored = TRUE
 	deflated = TRUE
 	icon_state = "wall_popped"
 
 /obj/structure/inflatable/popped/door
-	name = "popped inflatable door"
-	desc = "This used to be an inflatable door, now it's just a mess of plastic."
+	name = "破裂的充气门"
+	desc = "它曾经是一扇充气门,现在只是一堆破烂塑料."
 	icon_state = "door_popped"
 
 //TODO make this not copypasta. A simple door component maybe.
 /obj/structure/inflatable/door
-	name = "inflatable door"
+	name = "充气门"
 	icon_state = "door_closed"
 	inflatable_item = /obj/item/inflatable/door
 	popped_variant = /obj/structure/inflatable/popped/door

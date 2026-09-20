@@ -36,7 +36,7 @@
 				if(user_unbuckle_mob(buckled_mobs[1], user))
 					return TRUE
 			else
-				var/unbuckled = tgui_input_list(user, "Who do you wish to unbuckle?", "Unbuckle Who?", sortNames(buckled_mobs))
+				var/unbuckled = tgui_input_list(user, "你想解开谁的扣带?", "解开谁的扣带?", sortNames(buckled_mobs))
 				if(!unbuckled)
 					return
 				if(user_unbuckle_mob(unbuckled, user))

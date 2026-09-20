@@ -1,6 +1,6 @@
 /obj/structure/janitorialcart
-	name = "janitorial cart"
-	desc = "The ultimate in janitorial carts! Has space for water, mops, signs, trash bags, and more!"
+	name = "清洁工推车"
+	desc = "清洁工推车的终极之选!有空间放水、拖把、标志牌、垃圾袋等等!"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "cart"
 	anchored = FALSE
@@ -43,16 +43,16 @@
 		I.forceMove(src)
 		update_icon()
 		updateUsrDialog()
-		to_chat(user, span_notice("You put [I] into [src]."))
+		to_chat(user, span_notice("你把[I]放进[src]."))
 
 	else if(istype(I, /obj/item/tool/mop))
 		if(I.reagents.total_volume < I.reagents.maximum_volume && mybucket)	//if it's not completely soaked we assume they want to wet it, otherwise store it
 			if(mybucket.reagents.total_volume < 1)
-				to_chat(user, "[mybucket] is out of water!</span>")
+				to_chat(user, "[mybucket]没水了!</span>")
 				return
 
 			mybucket.reagents.trans_to(I, 5)	//
-			to_chat(user, span_notice("You wet [I] in [mybucket]."))
+			to_chat(user, span_notice("你在[mybucket]里浸湿了[I]."))
 			playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 
 		else if(!mymop)
@@ -61,7 +61,7 @@
 			I.forceMove(src)
 			update_icon()
 			updateUsrDialog()
-			to_chat(user, span_notice("You put [I] into [src]."))
+			to_chat(user, span_notice("你把[I]放进[src]."))
 
 	else if(istype(I, /obj/item/reagent_containers/spray) && !myspray)
 		user.drop_held_item()
@@ -69,7 +69,7 @@
 		I.forceMove(src)
 		update_icon()
 		updateUsrDialog()
-		to_chat(user, span_notice("You put [I] into [src]."))
+		to_chat(user, span_notice("你把[I]放进[src]."))
 
 	else if(istype(I, /obj/item/lightreplacer) && !myreplacer)
 		user.drop_held_item()
@@ -77,11 +77,11 @@
 		I.forceMove(src)
 		update_icon()
 		updateUsrDialog()
-		to_chat(user, span_notice("You put [I] into [src]."))
+		to_chat(user, span_notice("你把[I]放进[src]."))
 
 	else if(istype(I, /obj/item/tool/wet_sign))
 		if(signs >= 4)
-			to_chat(user, span_notice("[src] can't hold any more signs."))
+			to_chat(user, span_notice("[src]不能再放更多标志牌了."))
 			return
 
 		user.drop_held_item()
@@ -89,7 +89,7 @@
 		signs++
 		update_icon()
 		updateUsrDialog()
-		to_chat(user, span_notice("You put [I] into [src]."))
+		to_chat(user, span_notice("你把[I]放进[src]."))
 
 	else if(istype(I, /obj/item/reagent_containers/glass/bucket/janibucket))
 		user.drop_held_item()
@@ -97,7 +97,7 @@
 		I.forceMove(src)
 		update_icon()
 		updateUsrDialog()
-		to_chat(user, span_notice("You put [I] into [src]."))
+		to_chat(user, span_notice("你把[I]放进[src]."))
 		return TRUE
 
 	else if(mybag)
@@ -133,34 +133,34 @@
 	if(href_list["garbage"])
 		if(mybag)
 			user.put_in_hands(mybag)
-			to_chat(user, span_notice("You take [mybag] from [src]."))
+			to_chat(user, span_notice("你从[src]取出[mybag]."))
 			mybag = null
 	if(href_list["mop"])
 		if(mymop)
 			user.put_in_hands(mymop)
-			to_chat(user, span_notice("You take [mymop] from [src]."))
+			to_chat(user, span_notice("你从[src]取出[mymop]."))
 			mymop = null
 	if(href_list["spray"])
 		if(myspray)
 			user.put_in_hands(myspray)
-			to_chat(user, span_notice("You take [myspray] from [src]."))
+			to_chat(user, span_notice("你从[src]取出[myspray]."))
 			myspray = null
 	if(href_list["replacer"])
 		if(myreplacer)
 			user.put_in_hands(myreplacer)
-			to_chat(user, span_notice("You take [myreplacer] from [src]."))
+			to_chat(user, span_notice("你从[src]取出[myreplacer]."))
 			myreplacer = null
 	if(href_list["bucket"])
 		if(mybucket)
 			user.put_in_hands(mybucket)
-			to_chat(user, span_notice("You take [mybucket] from [src]."))
+			to_chat(user, span_notice("你从[src]取出[mybucket]."))
 			mybucket = null
 	if(href_list["sign"])
 		if(signs)
 			var/obj/item/tool/wet_sign/Sign = locate() in src
 			if(Sign)
 				user.put_in_hands(Sign)
-				to_chat(user, span_notice("You take \a [Sign] from [src]."))
+				to_chat(user, span_notice("你从[src]取出\a [Sign]."))
 				signs--
 			else
 				warning("[src] signs ([signs]) didn't match contents")

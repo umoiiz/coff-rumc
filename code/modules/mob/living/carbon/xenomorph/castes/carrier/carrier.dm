@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/carrier
 	caste_base_type = /datum/xeno_caste/carrier
 	name = "Carrier"
-	desc = "A strange-looking alien creature. It carries a number of scuttling jointed crablike creatures."
+	desc = "一种外表奇特的异形生物. 它携带着许多爬行的蟹状节肢生物."
 	icon = 'icons/Xeno/castes/carrier/basic.dmi' //They are now like, 2x2
 	icon_state = "Carrier Walking"
 	effects_icon = 'icons/Xeno/castes/carrier/effects.dmi'
@@ -83,17 +83,17 @@
 //Sentient facehugger can climb on the carrier
 /mob/living/carbon/xenomorph/carrier/attack_facehugger(mob/living/carbon/xenomorph/facehugger/F, damage_amount, damage_type, damage_flag, effects, armor_penetration, isrightclick)
 	. = ..()
-	if(tgui_alert(F, "Do you want to climb on the carrier?", "Climb on the carrier", list("Yes", "No")) != "Yes")
+	if(tgui_alert(F, "你想爬上这只运载者吗?", "爬上运载者", list("Yes", "No")) != "Yes")
 		return
 	if(huggers >= xeno_caste.huggers_max)
-		balloon_alert(F, "The carrier has no space")
+		balloon_alert(F, "运载者没有空间了")
 		return
 	if(F.health < F.maxHealth)
-		balloon_alert(F, "You're too damaged!")
+		balloon_alert(F, "你受伤太重了!")
 		return
 
 	huggers++
-	F.visible_message(span_xenowarning("[F] climb on the [src]."),span_xenonotice("You climb on the [src]."))
+	F.visible_message(span_xenowarning("[F] 爬上了 [src]."),span_xenonotice("你爬上了 [src]."))
 	F.ghostize()
 	F.death(deathmessage = "climb on the carrier", silent = TRUE)
 	qdel(F)

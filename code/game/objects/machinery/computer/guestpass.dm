@@ -2,8 +2,8 @@
 //Guest pass ////////////////////////////////
 /////////////////////////////////////////////
 /obj/item/card/id/guest
-	name = "guest pass"
-	desc = "Allows temporary access to station areas. It looks like its broken."
+	name = "访客通行证"
+	desc = "允许临时进入站点区域. 它看起来已经坏了."
 	icon_state = "guest"
 
 	var/reason = "NOT SPECIFIED"

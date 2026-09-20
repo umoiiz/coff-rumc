@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/predalien
 	caste_base_type = /datum/xeno_caste/predalien
 	name = "Abomination" //snowflake name
-	desc = "A strange looking creature with fleshy strands on its head. It appears like a mixture of armor and flesh, smooth, but well carapaced."
+	desc = "一种奇怪的生物,头部有肉质的条状物.它看起来像是护甲与血肉的混合体,光滑,但甲壳坚固."
 	icon = 'icons/Xeno/castes/predalien/praetorian.dmi'
 	icon_state = "Predalien Walking"
 	effects_icon = 'icons/Xeno/castes/predalien/praetorian_effects.dmi'
@@ -42,11 +42,11 @@
 
 	to_chat(src, {"
 		<span class='role_body'>|______________________|</span>
-		<span class='role_header'>You are a predator-alien hybrid!</span>
-		<span class='role_body'>You are a very powerful xenomorph creature that was born of a Yautja warrior body.
-		You are stronger, faster, and smarter than a regular xenomorph, but you must still listen to the hive ruler.
-		You have a degree of freedom to where you can hunt and claim the heads of the hive's enemies, so check your verbs.
-		Your health meter will not regenerate normally, so kill and die for the hive!</span>
+		<span class='role_header'>你是一个掠食者-异形混种!</span>
+		<span class='role_body'>你是一个非常强大的异形生物,诞生自一个亚乌查战士的身体.
+		你比普通异形更强壮,更快速,更聪明,但你仍然必须听从巢穴统治者的命令.
+		你拥有一定程度的自由,可以去狩猎并夺取巢穴敌人的首级,所以查看你的指令.
+		你的生命值不会正常再生,所以为巢穴杀戮和赴死吧!</span>
 		<span class='role_body'>|______________________|</span>
 	"})
 	emote("roar")

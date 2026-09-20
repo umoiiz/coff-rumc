@@ -2,7 +2,7 @@
 //The one that works safely.
 /obj/machinery/power/smes/batteryrack
 	name = "power cell rack PSU"
-	desc = "A rack of power cells working as a PSU."
+	desc = "一个用作电源的电池架."
 	charge = 0 //you dont really want to make a potato PSU which already is overloaded
 	input_level = 0
 	output_level = 0
@@ -16,7 +16,7 @@
 	// Starts fully charged, as it's used in substations. This replaces Engineering SMESs round start charge.
 /obj/machinery/power/smes/batteryrack/substation
 	name = "Substation PSU"
-	desc = "A rack of power cells working as a PSU. This one seems to be equipped for higher power loads."
+	desc = "一个用作电源的电池架. 这个似乎配备了更高功率负载的装备."
 	output_level = 150000
 	input_level = 150000
 
@@ -92,11 +92,11 @@
 
 	if(iscrowbar(I))
 		if(charge >= (capacity * 0.01))
-			to_chat(user, span_warning("Better let [src] discharge before dismantling it."))
+			to_chat(user, span_warning("最好让[src]放电后再拆卸."))
 			return
 
 		if(outputting || input_attempt)
-			to_chat(user, span_warning("Turn off the [src] before dismantling it."))
+			to_chat(user, span_warning("在拆卸[src]之前先将其关闭."))
 			return
 
 		playsound(get_turf(src), 'sound/items/crowbar.ogg', 25, 1)
@@ -109,11 +109,11 @@
 
 	else if((istype(I, /obj/item/stock_parts/capacitor) && (capacitors_amount < 5)) || (istype(I, /obj/item/cell) && (cells_amount < 5)))
 		if(charge >= (capacity * 0.01))
-			to_chat(user, span_warning("Better let [src] discharge before putting your hand inside it."))
+			to_chat(user, span_warning("最好让[src]放电后再把手伸进去."))
 			return
 
 		if(outputting || input_attempt)
-			to_chat(user, span_warning("Turn off the [src] before dismantling it."))
+			to_chat(user, span_warning("在拆卸[src]之前先将其关闭."))
 			return
 
 		if(!user.transferItemToLoc(I, src))
@@ -121,12 +121,12 @@
 
 		component_parts += I
 		RefreshParts()
-		to_chat(user, span_notice("You upgrade the [src] with [I]."))
+		to_chat(user, span_notice("你用[I]升级了[src]."))
 
 //The shitty one that will blow up.
 /obj/machinery/power/smes/batteryrack/makeshift
 	name = "makeshift PSU"
-	desc = "A rack of batteries connected by a mess of wires posing as a PSU."
+	desc = "一个由一堆乱糟糟的电线连接而成, 充当电源的电池架."
 	var/overcharge_percent = 0
 
 /obj/machinery/power/smes/batteryrack/makeshift/add_parts()

@@ -50,7 +50,7 @@
 	if(!bypass_vendor_check && seller && !buy_item_in_vendor(item_type, seller, user))
 		return
 	if(!text2path("[item_type]"))
-		to_chat(user, span_warning("[item_type] in your loadout is an invalid item, it has probably been changed or removed."))
+		to_chat(user, span_warning("你配装中的 [item_type] 是无效物品, 它可能已被更改或移除."))
 		return
 	var/obj/item/item = new item_type(master)
 	if(item.greyscale_config)

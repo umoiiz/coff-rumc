@@ -5,8 +5,8 @@
 
 ///parent type
 /obj/item/clothing/mask/gas/yautja
-	name = "alien mask"
-	desc = "A beautifully designed metallic face mask, both ornate and functional."
+	name = "异形面具"
+	desc = "一个设计精美的金属面罩, 既华丽又实用."
 
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	worn_icon_list = list(
@@ -86,19 +86,19 @@
 
 /obj/item/clothing/mask/gas/yautja/proc/togglesight(mob/living/carbon/human/M)
 	if(!HAS_TRAIT(M, TRAIT_YAUTJA_TECH) && !M.hunter_data.thralled)
-		to_chat(M, span_warning("You have no idea how to work this thing!"))
+		to_chat(M, span_warning("你完全不知道这东西怎么用!"))
 		return
 	if(src != M.wear_mask) //sanity
-		to_chat(M, span_warning("You must wear \the [src]!"))
+		to_chat(M, span_warning("你必须佩戴\the [src]!"))
 		return
 	var/obj/item/clothing/gloves/yautja/Y = M.gloves //Doesn't actually reduce power, but needs the bracers anyway.
 	if(!Y || !istype(Y))
-		to_chat(M, span_warning("You must be wearing your bracers, as they have the power source."))
+		to_chat(M, span_warning("你必须佩戴你的护腕, 因为它们有电源."))
 		return
 	var/obj/item/G = M.glasses
 	if(G)
 		if(!istype(G,/obj/item/clothing/glasses/night/yautja) && !istype(G,/obj/item/clothing/glasses/meson/yautja) && !istype(G,/obj/item/clothing/glasses/thermal/yautja))
-			to_chat(M, span_warning("You need to remove your glasses first. Why are you even wearing these?"))
+			to_chat(M, span_warning("你需要先摘下你的眼镜. 你到底为什么要戴这些?"))
 			return
 		M.transferItemToLoc(G, src, TRUE)
 	switch_vision_mode()
@@ -119,15 +119,15 @@
 	switch(current_goggles)
 		if(VISION_MODE_NVG)
 			user.equip_to_slot_if_possible(glasses["nvg"], SLOT_GLASSES, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE)
-			to_chat(user, span_notice("Low-light vision module: activated."))
+			to_chat(user, span_notice("微光视觉模块: 已激活."))
 		if(VISION_MODE_THERMAL)
 			user.equip_to_slot_if_possible(glasses["thermal"], SLOT_GLASSES, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE)
-			to_chat(user, span_notice("Thermal vision module: activated."))
+			to_chat(user, span_notice("热成像视觉模块: 已激活."))
 		if(VISION_MODE_MESON)
 			user.equip_to_slot_if_possible(glasses["meson"], SLOT_GLASSES, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE)
-			to_chat(user, span_notice("Material vision module: activated."))
+			to_chat(user, span_notice("材质视觉模块: 已激活."))
 		if(VISION_MODE_OFF)
-			to_chat(user, span_notice("You deactivate your visor."))
+			to_chat(user, span_notice("你关闭了你的面罩."))
 
 	playsound(src, 'sound/effects/pred_vision.ogg', 15, 1)
 	user.update_inv_glasses()
@@ -172,8 +172,8 @@
 	..()
 
 /obj/item/clothing/mask/gas/yautja/thrall
-	name = "alien mask"
-	desc = "A simplistic metallic face mask with advanced capabilities."
+	name = "异形面具"
+	desc = "一个具有先进功能的简易金属面罩."
 	icon_state = "thrall_mask"
 	worn_icon_state = "thrall_mask"
 	icon = 'icons/obj/hunter/thrall_gear.dmi'
@@ -188,8 +188,8 @@
 	..()
 
 /obj/item/clothing/mask/gas/yautja/hunter
-	name = "clan mask"
-	desc = "A beautifully designed metallic face mask, both ornate and functional."
+	name = "氏族面具"
+	desc = "一个设计精美的金属面罩, 既华丽又实用."
 
 	soft_armor = list(MELEE = 20, BULLET = 30, LASER = 25, ENERGY = 25, BOMB = 30, BIO = 25, FIRE = 25, ACID = 25)
 	eye_protection = 2
@@ -203,13 +203,13 @@
 /obj/item/clothing/mask/gas/yautja/hunter/togglesight()
 	set category = "Yautja"
 	if(!isyautja(usr))
-		to_chat(usr, span_warning("You have no idea how to work this thing!"))
+		to_chat(usr, span_warning("你完全不知道这东西怎么用!"))
 		return
 	..()
 
 /obj/item/clothing/mask/gas/yautja/damaged
-	name = "ancient alien mask"
-	desc = "A beautifully designed metallic face mask, both ornate and functional. This one seems to be old and degraded."
+	name = "远古异形面具"
+	desc = "一个设计精美的金属面罩, 既华丽又实用. 这个似乎已经老旧且退化了."
 
 /obj/item/clothing/mask/gas/yautja/damaged/switch_vision_mode()
 	switch(current_goggles)
@@ -222,9 +222,9 @@
 	switch(current_goggles)
 		if(VISION_MODE_NVG)
 			user.equip_to_slot_if_possible(glasses["nvg"], SLOT_GLASSES, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE)
-			to_chat(user, span_notice("You activate your visor."))
+			to_chat(user, span_notice("你激活了你的面罩."))
 		if(VISION_MODE_OFF)
-			to_chat(user, span_notice("You deactivate your visor."))
+			to_chat(user, span_notice("你关闭了你的面罩."))
 
 	playsound(src, 'sound/effects/pred_vision.ogg', 15, 1)
 	user.update_inv_glasses()
@@ -237,8 +237,8 @@
 
 //flavor, not a subtype
 /obj/item/clothing/mask/yautja_flavor
-	name = "alien stone mask"
-	desc = "A beautifully designed face mask, ornate but non-functional and made entirely of stone."
+	name = "异形石面具"
+	desc = "一个设计精美的面罩, 华丽但无功能, 完全由石头制成."
 
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	worn_icon_list = list(

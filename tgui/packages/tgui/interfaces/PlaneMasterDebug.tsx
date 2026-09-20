@@ -498,7 +498,7 @@ class PlaneMaster extends Component<PlaneMasterProps> {
           <Button
             ml={2}
             icon="pager"
-            tooltip="Inspect and edit this plane"
+            tooltip="检查并编辑此飞行器"
             onClick={() => setReadPlane(our_plane.our_ref)}
           />
         </Box>
@@ -545,7 +545,7 @@ class PlaneMaster extends Component<PlaneMasterProps> {
                       setCurrentPlane(our_plane);
                     }}
                     right="-4px"
-                    tooltip="Connect to another plane"
+                    tooltip="连接到另一架飞行器"
                   />
                 </Stack.Item>
               </Stack>
@@ -699,7 +699,7 @@ const PlaneWindow = (props) => {
         </>
       }
     >
-      <Section title="Information">
+      <Section title="信息">
         <Box dangerouslySetInnerHTML={doc_html} />
         <LabeledList>
           <LabeledList.Divider />
@@ -707,7 +707,7 @@ const PlaneWindow = (props) => {
             content="Any atoms in the world with the same plane will be drawn to this plane master"
             position="right"
           >
-            <LabeledList.Item label="Plane">
+            <LabeledList.Item label="平面">
               {workingPlane.plane}
             </LabeledList.Item>
           </Tooltip>
@@ -715,7 +715,7 @@ const PlaneWindow = (props) => {
             content="You can think of this as the 'layer' this plane is on. We make duplicates of each plane for each layer, so we can make multiz work"
             position="right"
           >
-            <LabeledList.Item label="Offset">
+            <LabeledList.Item label="偏移">
               {workingPlane.offset}
             </LabeledList.Item>
           </Tooltip>
@@ -723,7 +723,7 @@ const PlaneWindow = (props) => {
             content="Render targets can be used to either reference or draw existing drawn items on the map. For plane masters, we use these for either relays (the blue lines), or filters (the pink ones)"
             position="right"
           >
-            <LabeledList.Item label="Render Target">
+            <LabeledList.Item label="渲染目标">
               {workingPlane.render_target || '""'}
             </LabeledList.Item>
           </Tooltip>
@@ -731,7 +731,7 @@ const PlaneWindow = (props) => {
             content="Defines how this plane draws to the things it is relay'd onto. Check the byond ref for more details"
             position="right"
           >
-            <LabeledList.Item label="Blend Mode">
+            <LabeledList.Item label="混合模式">
               {workingPlane.blend_mode}
             </LabeledList.Item>
           </Tooltip>
@@ -739,42 +739,42 @@ const PlaneWindow = (props) => {
             content="If this is 1, the plane master is being forced to hide from its mob. This is most often done as an optimization tactic, since some planes only rarely need to be used"
             position="right"
           >
-            <LabeledList.Item label="Forced Hidden">
+            <LabeledList.Item label="强制隐藏">
               {workingPlane.intended_hidden}
             </LabeledList.Item>
           </Tooltip>
         </LabeledList>
       </Section>
-      <Section title="Visuals">
+      <Section title="视觉效果">
         <Button
-          tooltip="Open this plane's VV menu"
+          tooltip="打开此平面的VV菜单"
           onClick={() =>
             act('vv_plane', {
               edit: workingPlane.our_ref,
             })
           }
         >
-          View Variables
+          查看变量
         </Button>
         <Button
-          tooltip="Apply and edit effects over the whole plane"
+          tooltip="对整个平面应用和编辑效果"
           onClick={() =>
             act('edit_filters', {
               edit: workingPlane.our_ref,
             })
           }
         >
-          Edit Filters
+          编辑过滤器
         </Button>
         <Button
-          tooltip="Modify how different color components map to the final plane"
+          tooltip="修改不同颜色分量如何映射到最终平面"
           onClick={() =>
             act('edit_color_matrix', {
               edit: workingPlane.our_ref,
             })
           }
         >
-          Edit Color Matrix
+          编辑颜色矩阵
         </Button>
         <Slider
           value={workingPlane.alpha}
@@ -805,7 +805,7 @@ const InfoButton = (props) => {
       position={no_position ? '' : 'absolute'}
       icon="exclamation"
       onClick={() => setShowInfo(true)}
-      tooltip="Info about what this window is/why it exists"
+      tooltip="关于此窗口是什么/为什么存在的信息"
     />
   );
 };
@@ -825,7 +825,7 @@ const MobResetButton = (props): any => {
       color="bad"
       icon="power-off"
       onClick={() => act('reset_mob')}
-      tooltip="Reset our focused mob to your active mob"
+      tooltip="将我们聚焦的生物重置为你活跃的生物"
     />
   );
 };
@@ -844,8 +844,8 @@ const ToggleMirror = (props) => {
       icon="eye"
       onClick={() => act('toggle_mirroring')}
       tooltip={
-        (tracking_active ? 'Disables' : 'Enables') +
-        " seeing 'through' the edited mob's eyes, for debugging and such"
+        (tracking_active ? '禁用' : '启用') +
+        "透过被编辑生物的视角进行观察,用于调试等"
       }
     />
   );
@@ -868,7 +868,7 @@ const VVButton = (props) => {
       position={no_position ? '' : 'absolute'}
       icon="pen"
       onClick={() => act('vv_mob')}
-      tooltip="View the variables of our currently focused mob"
+      tooltip="查看我们当前聚焦的生物的变量"
     />
   );
 };
@@ -908,7 +908,7 @@ const RebuildButton = (props) => {
       position={no_position ? '' : 'absolute'}
       icon="recycle"
       onClick={() => act('rebuild')}
-      tooltip="Rebuilds ALL plane masters. Kinda laggy, but useful"
+      tooltip="重建所有平面主控。有点卡顿,但很有用"
     />
   );
 };
@@ -960,12 +960,12 @@ const AddModal = (props) => {
                 setShowAdd(false);
               }}
             >
-              Confirm
+              确认
             </Button>
           </Stack.Item>
           <Stack.Item>
             <Button color="bad" onClick={() => setShowAdd(false)}>
-              Cancel
+              取消
             </Button>
           </Stack.Item>
         </Stack>
@@ -991,45 +991,45 @@ const InfoModal = (props) => {
       <Section
         fill
         scrollable
-        title="Information Panel"
+        title="信息面板"
         buttons={
           <Button
             icon="times"
-            tooltip="Close"
+            tooltip="关闭"
             onClick={() => setShowInfo(false)}
           />
         }
       >
         <Box dangerouslySetInnerHTML={display} />
         <h3>What is all this?</h3>
-        This UI exists to help visualize plane masters, the backbone of our
-        rendering system. <br />
-        It also provices some tools for editing and messing with them. <br />
+        此UI存在是为了帮助可视化平面主控,这是我们的
+        渲染系统的骨干。 <br />
+        它还提供了一些编辑和摆弄它们的工具。 <br />
         <br />
         <h3>How to use this UI</h3> <br />
-        This UI exists primarially as a visualizer, mostly because this info is
-        quite obscure, and I want it to be easier to understand.
+        此UI主要作为可视化工具存在,主要是因为这些信息
+        相当晦涩,我希望它更容易理解。
         <br />
         <br />
-        That said, it also supports editing plane masters, adding and removing
-        relays, and provides easy access to color matrix/filter/alpha/vv
-        editing. <br />
+        话虽如此,它也支持编辑平面主控,添加和移除
+        中继,并提供对颜色矩阵/过滤器/alpha/vv
+        编辑的便捷访问。 <br />
         <br />
         To start off with, each little circle represents a{' '}
-        <code>render_target</code> based connection.
+        <code>render_target</code> 基于的连接。
         <br />
-        Blue nodes are relays, so drawing one plane onto another. Purple ones
-        are filter based connections. <br />
-        You can tell where a node starts and ends based on the side of the plane
-        it&apos;s on. <br />
+        蓝色节点是中继,因此将一个平面绘制到另一个平面上。紫色节点
+        是基于过滤器的连接。 <br />
+        你可以根据平面
+        它所在的一侧来判断节点的起点和终点。 <br />
         <br />
-        Adding a new relay is simple, you just need to hit the + button, and
-        select a plane by name to relay onto. <br />
+        添加新中继很简单,你只需点击+按钮,然后
+        按名称选择一个平面来中继到其上。 <br />
         <br />
-        Each plane can be viewed more closely by clicking the little button in
-        it&apos;s top right corner. This opens a sidebar, and displays a lot of
-        more general info about the plane and its purpose, alongside exposing
-        some useful buttons and interesting values. <br />
+        每个平面都可以通过点击它右上角的小按钮
+        来更仔细地查看。这会打开一个侧边栏,并显示大量
+        关于该平面及其用途的更多一般信息,同时暴露
+        一些有用的按钮和有趣的值。 <br />
         <br />
         Planes are aligned based off their initial setup. If you end up breaking
         things byond repair, or just want to reset things, you can hit the
@@ -1037,79 +1037,79 @@ const InfoModal = (props) => {
         <br />
         <br />
         <h3>What is a plane master?</h3>
-        You can think of a plane master as a way to group a set of objects onto
-        one rendering slate. <br />
-        It is per client too, which makes it quite powerful. This is done using
-        the <code>plane</code> variable of <code>/atom</code>. <br />
+        你可以把平面主控想象成一种将一组对象分组到
+        一个渲染画布上的方法。 <br />
+        它也是每个客户端独立的,这使得它相当强大。这是通过使用
+        这个 来实现的。<code>plane</code> 变量 <code>/atom</code>. <br />
         <br />
         We first create an atom with an appearance flag that contains{' '}
-        <code>PLANE_MASTER</code> and give it a <code>plane</code> value. <br />
-        Then we mirror the same <code>plane</code> value on all the atoms we
-        want to render in this group.
+        <code>PLANE_MASTER</code> 并给它一个 <code>plane</code> 值。 <br />
+        然后我们镜像相同的 <code>plane</code> 值到我们
+        想要在此组中渲染的所有原子上。
         <br />
         <br />
-        Finally, we place the <code>PLANE_MASTER</code>&apos;d atom in the
-        relevent client&apos;s screen contents. <br />
-        That sets up the bare minimum.
+        最后,我们放置 <code>PLANE_MASTER</code>将atom放入
+        相关客户端的屏幕内容中。 <br />
+        这就设置了最低限度的配置。
         <br />
         <br />
-        It is worth noting that the <code>plane</code> var does not only effect
-        this rendering grouping behavior. <br />
-        It also effects the layering of objects on the map. <br />
+        值得注意的是 <code>plane</code> 变量不仅影响
+        这种渲染分组行为。 <br />
+        它还影响地图上物体的分层。 <br />
         <br />
-        For this reason, there are some effects that are pretty much impossible
-        with planes. <br />
-        Masking one thing while also drawing that thing in the correct order
-        with other objects on the map is a good example of this.
+        因此,有些效果几乎不可能
+        用平面来实现。 <br />
+        在按正确顺序与其他地图上物体一起绘制那个物体的同时遮罩它,
+        就是一个很好的例子。
         <br />
-        It <b>is</b> possible to do, but it&apos;s quite disruptive.
+        它 <b>is</b> 是可能的,但这会相当具有破坏性。
         <br />
         <br />
-        Normally, planes will just group, apply an effect, and then draw
-        directly to the game.
+        通常,平面只会进行分组,应用效果,然后直接绘制
+        到游戏中。
         <br />
-        What if we wanted to draw <b>planes</b> onto other planes then? <br />
+        如果我们想要绘制 <b>planes</b> 到其他平面上呢? <br />
         <br />
         <h3>Render Targets and Relays</h3>
         <br />
-        Rendering one thing onto another is actually not that complex. <br />
-        We can set the <code>render_target</code> variable of an atom to relay
-        it to some <code>render_source</code>.<br />
+        将一个物体渲染到另一个物体上其实并不那么复杂。 <br />
+        我们可以设置 <code>render_target</code> 原子的变量来将其
+        中继到某个 <code>render_source</code>.<br />
         <br />
-        If that <code>render_target</code> is preceeded by *, it will
+        如果那个 <code>render_target</code> 前面带有*,它会
         <b>not</b> be drawn to the actual client view, and instead just relayed.{' '}
         <br />
         <br />
         Ok so we can relay a plane master onto some other atom, but how do we
         get it on another plane master? We can&apos;t just draw it with{' '}
-        <code>render_source</code>, since we might want to relay more then one
-        plane master.
+        <code>render_source</code>,因为我们可能想要中继不止一个
+        平面主控。
         <br />
         <br />
-        Why not relay it to another atom then? and then well, set that
-        atom&apos;s <code>plane</code> var to the plane master we want? <br />
+        那为什么不把它中继到另一个原子呢?然后,嗯,设置那个
+        原子的 <code>plane</code> 变量为我们想要的平面主控? <br />
         <br />
-        That ends up being about what we do. <br />
-        It&apos;s worth noting that render sources are often used by filters,
-        normally to apply some displacement or mask.
+        这最终就是我们要做的事情。 <br />
+        值得注意的是,渲染源经常被过滤器使用,
+        通常用于应用一些位移或遮罩。
         <br />
         <br />
         <h3>Applying effects</h3> <br />
-        Ok so we can group and relay planes, but what can we actually do with
-        that? <br />
+        好吧,我们可以分组和中继平面,但我们实际上能用
+        它做什么? <br />
         <br />
-        Lots of stuff it turns out. Filters are quite powerful, and we use them
-        quite a bit. <br />
-        You can use filters to mask one plane with another, or use one plane as
-        a distortion source for another. <br />
+        事实证明有很多东西。过滤器相当强大,我们使用它们
+        相当频繁。 <br />
+        你可以使用过滤器用一个平面遮罩另一个平面,或者用一个平面作为
+        另一个平面的扭曲源。 <br />
         <br />
-        Can do more basic stuff too, setting a plane&apos;s color matrix can be
-        quite powerful. <br />
+        还可以做更基本的事情,设置平面的颜色矩阵可以
+        相当强大。 <br />
         Even just setting alpha to show and hide things can be quite useful.{' '}
         <br />
         <br />
-        I won&apos;t get into every effect we do here, you can learn more about
-        each plane by clicking on the little button in their top right. <br />
+        我不会在这里详述我们做的每一种效果,你可以通过点击每个平面右上角的小按钮来了解更多关于
+        它的信息。 <br />
         <br />
       </Section>
     </Modal>

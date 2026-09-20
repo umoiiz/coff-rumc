@@ -4,7 +4,7 @@
 
 /obj/machinery/computer/crew
 	name = "crew monitoring computer"
-	desc = "Used to monitor active health sensors built into most of the crew's uniforms."
+	desc = "用于监控大多数船员制服内置的主动生命体征传感器."
 	icon_state = "computer"
 	screen_overlay = "crew"
 	use_power = IDLE_POWER_USE

@@ -87,9 +87,9 @@ const PollListView = () => {
   const { polls = [], is_admin } = data;
 
   return (
-    <Section title="Active Polls">
+    <Section title="活跃投票">
       {polls.length === 0 && (
-        <Box color="label">No polls are currently available.</Box>
+        <Box color="label">当前没有可用的投票.</Box>
       )}
       <Stack vertical>
         {polls.map((poll) => (
@@ -115,7 +115,7 @@ const PollListView = () => {
       </Stack>
       {!!is_admin && (
         <Box mt={2} fontSize="0.8em" color="label">
-          Poll creation/editing is still managed from the admin panel.
+          投票的创建/编辑仍在管理面板中进行管理.
         </Box>
       )}
     </Section>
@@ -131,13 +131,13 @@ const PollDetailView = (props: { readonly poll: PollDetail }) => {
       title={poll.question}
       buttons={
         <Button icon="arrow-left" onClick={() => act('back')}>
-          Back
+          返回
         </Button>
       }
     >
       {!!poll.subtitle && <Box mb={1}>{poll.subtitle}</Box>}
       <Box fontSize="0.85em" color="label" mb={2}>
-        Runs from <b>{poll.start_datetime}</b> until <b>{poll.end_datetime}</b>
+        运行自 <b>{poll.start_datetime}</b> 直到 <b>{poll.end_datetime}</b>
         {!!poll.allow_revoting && ' • Revoting is enabled'}
       </Box>
       {poll.poll_type === 'OPTION' && <OptionPoll poll={poll} />}
@@ -245,7 +245,7 @@ const MultiPoll = (props: { readonly poll: PollDetail }) => {
       {locked && (
         <Stack.Item>
           <Box color="good" fontSize="0.85em">
-            You already voted on this poll.
+            你已经在此投票中投过票了.
           </Box>
         </Stack.Item>
       )}
@@ -312,7 +312,7 @@ const RatingPoll = (props: { readonly poll: PollDetail }) => {
       {locked && (
         <Stack.Item>
           <Box color="good" fontSize="0.85em">
-            You already submitted ratings for this poll.
+            你已经为此投票提交过评分了.
           </Box>
         </Stack.Item>
       )}
@@ -358,7 +358,7 @@ const TextPoll = (props: { readonly poll: PollDetail }) => {
       {locked && (
         <Stack.Item>
           <Box color="good" fontSize="0.85em">
-            You already responded to this poll.
+            你已经回应过此投票了.
           </Box>
         </Stack.Item>
       )}

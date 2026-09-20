@@ -53,7 +53,7 @@
 ///Initiates fire support proc chain
 /datum/fire_support/proc/initiate_fire_support(turf/target_turf, mob/user)
 	if(!uses || !(fire_support_flags & FIRESUPPORT_AVAILABLE))
-		to_chat(user, span_notice("FIRE SUPPORT UNAVAILABLE"))
+		to_chat(user, span_notice("火力支援不可用"))
 		return
 	uses --
 	addtimer(CALLBACK(src, PROC_REF(start_fire_support), target_turf), delay_to_impact)

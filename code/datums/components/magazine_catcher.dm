@@ -61,6 +61,6 @@
 	var/datum/component/magazine_catcher/comp = GetComponent(/datum/component/magazine_catcher)
 	comp.auto_catch = !comp.auto_catch
 	if(!comp.auto_catch)
-		to_chat(usr, span_notice("Auto catching disabled."))
+		to_chat(usr, span_notice("自动接住已禁用."))
 	else
-		to_chat(usr, span_notice("Auto catching enabled."))
+		to_chat(usr, span_notice("自动接住已启用."))

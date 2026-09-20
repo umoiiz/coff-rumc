@@ -1,6 +1,6 @@
 /obj/vehicle/sealed/armored/multitile/mrap
 	name = "\improper MRAP - Sambar"
-	desc = "An unarmed MRAP designed to transport troops across the battlefield quickly and safely."
+	desc = "一种无武装的防雷伏击车,旨在快速安全地在战场上运送部队."
 	icon = 'icons/obj/armored/2x3/apc.dmi'
 	icon_state = "apc"
 	damage_icon_path = 'icons/obj/armored/2x3/apc_damage_overlay.dmi'

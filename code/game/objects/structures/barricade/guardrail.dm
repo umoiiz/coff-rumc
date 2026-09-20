@@ -1,6 +1,6 @@
 /obj/structure/barricade/guardrail
-	name = "guard rail"
-	desc = "A short wall made of rails to prevent entry into dangerous areas."
+	name = "护栏"
+	desc = "由栏杆组成的矮墙,用于阻止进入危险区域."
 	icon_state = "railing_0"
 	coverage = 25
 	max_integrity = 150

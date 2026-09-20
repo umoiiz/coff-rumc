@@ -1,6 +1,6 @@
 /obj/machinery/practice/medical/surgery
 	name = "Practice Button (Surgery)"
-	desc = "A button used to simulate situations for training purposes."
+	desc = "一个用于模拟训练场景的按钮."
 	icon = 'icons/obj/machines/buttons.dmi'
 	icon_state = "door"
 	resistance_flags = RESIST_ALL
@@ -21,15 +21,15 @@
 
 /obj/machinery/practice/medical/surgery/attack_hand(mob/living/user)
 	if(user.a_intent == INTENT_HARM)
-		to_chat(user, span_warning("You are unable to damage the button."))
+		to_chat(user, span_warning("你无法损坏这个按钮."))
 		return
-	var/choice = tgui_input_list(user, "What surgery would you like to simulate?", "Surgery Dummy", list("Basic dummy", "Larval host", "Broken bones", "Missing limbs", "Damaged organs"), "Basic dummy", 0)
+	var/choice = tgui_input_list(user, "你想模拟哪种手术?", "手术假人", list("Basic dummy", "Larval host", "Broken bones", "Missing limbs", "Damaged organs"), "Basic dummy", 0)
 	if(!choice)
-		to_chat(user, span_notice("You must select a surgery to start the simulation."))
+		to_chat(user, span_notice("你必须选择一种手术才能开始模拟."))
 		return
 	if(!isnull(humanspawned))
 		QDEL_NULL(humanspawned)
-		visible_message(span_notice("The dummy vanishes suddenly!"))
+		visible_message(span_notice("假人突然消失了!"))
 	switch(choice)
 		if("Basic dummy")
 			humanspawned = new /mob/living/carbon/human(get_turf(src))

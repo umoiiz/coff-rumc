@@ -1,5 +1,5 @@
 /obj/structure/reagent_dispensers
-	name = "dispenser"
+	name = "分配器"
 	desc = "..."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "watertank"
@@ -29,7 +29,7 @@
 	. = ..()
 	if(!possible_transfer_amounts)
 		return
-	var/result = tgui_input_list(user, "Amount per transfer from this:","[src]", possible_transfer_amounts)
+	var/result = tgui_input_list(user, "每次从中转移的数量:","[src]", possible_transfer_amounts)
 	if(result)
 		amount_per_transfer_from_this = result
 
@@ -52,8 +52,8 @@
 
 //Dispensers
 /obj/structure/reagent_dispensers/watertank
-	name = "watertank"
-	desc = "A watertank"
+	name = "水箱"
+	desc = "水箱"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "watertank"
 	amount_per_transfer_from_this = 10
@@ -64,8 +64,8 @@
 	icon_state = "watertank"
 
 /obj/structure/reagent_dispensers/fueltank
-	name = "fueltank"
-	desc = "A fueltank"
+	name = "燃料箱"
+	desc = "一个燃料箱"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "weldtank"
 	list_reagents = list(/datum/reagent/fuel = 1000)
@@ -89,9 +89,9 @@
 	if(user != loc)
 		return
 	if(modded)
-		. += span_warning("Fuel faucet is wrenched open, leaking the fuel!")
+		. += span_warning("燃料阀门被扳开,燃料正在泄漏!")
 	if(rig)
-		. += span_notice("There is some kind of device rigged to the tank.")
+		. += span_notice("油箱上装有某种装置.")
 
 /obj/structure/reagent_dispensers/fueltank/attack_hand(mob/living/user)
 	. = ..()
@@ -99,16 +99,16 @@
 		return
 	if(!rig)
 		return
-	user.visible_message("[user] begins to detach [rig] from \the [src].", "You begin to detach [rig] from \the [src]...")
+	user.visible_message("[user]开始从\the [src]上卸下[rig].", "你开始从\the [src]上卸下[rig]...")
 	if(!do_after(user, 2 SECONDS, NONE, src, BUSY_ICON_GENERIC))
 		return
-	user.visible_message(span_notice("[user] detaches [rig] from \the [src]."), span_notice("You detach [rig] from \the [src]."))
+	user.visible_message(span_notice("[user]从\the [src]上卸下了[rig]."), span_notice("你从\the [src]上卸下了[rig]."))
 	rig.forceMove(get_turf(user))
 	rig = null
 	cut_overlays()
 
 /obj/structure/reagent_dispensers/fueltank/wrench_act(mob/living/user, obj/item/I)
-	user.visible_message("[user] wrenches [src]'s faucet [modded ? "closed" : "open"].", \
+	user.visible_message("[user]扳开了[src]的阀门[modded ? "closed" : "open"].", \
 	"You wrench [src]'s faucet [modded ? "closed" : "open"]")
 	modded = !modded
 	log_attack("[key_name(user)] has wrenched [src] [modded ? "closed" : "open"] in [AREACOORD(user)]")
@@ -121,19 +121,19 @@
 	var/obj/item/tool/weldingtool/W = I
 	if(!W.welding)
 		if(W.reagents.has_reagent(/datum/reagent/fuel, W.max_fuel))
-			balloon_alert(user, "already full!")
+			balloon_alert(user, "已经满了!")
 			return
 		if(!reagents.has_reagent(/datum/reagent/fuel, 1))
-			balloon_alert(user, "no valid fuel")
+			balloon_alert(user, "没有可用的燃料")
 			return
 		reagents.trans_to(W, W.max_fuel)
 		W.weld_tick = 0
-		user.visible_message(span_notice("[user] refills [W]."), span_notice("You refill [W]."))
+		user.visible_message(span_notice("[user]为[W]补充了燃料."), span_notice("你为[W]补充了燃料."))
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		return
 	log_bomber(user, "triggered a fueltank explosion with", src, "using a welder")
-	var/self_message = user.a_intent != INTENT_HARM ? span_danger("You begin welding on the fueltank, and in a last moment of lucidity realize this might not have been the smartest thing you've ever done.") : span_danger("[src] catastrophically explodes in a wave of flames as you begin to weld it.")
-	user.visible_message(span_warning("[user] catastrophically fails at refilling \his [W.name]!"), self_message)
+	var/self_message = user.a_intent != INTENT_HARM ? span_danger("你开始在燃料箱上焊接,在最后一丝清醒中意识到这可能不是你做过的最明智的事.") : span_danger("当你开始焊接时,[src]在火焰中灾难性地爆炸了.")
+	user.visible_message(span_warning("[user]在为\his [W.name]补充燃料时灾难性地失败了!"), self_message)
 	explode()
 	return TRUE
 
@@ -145,14 +145,14 @@
 	if(!istype(I, /obj/item/assembly_holder))
 		return
 	if(rig)
-		to_chat(user, span_warning("There is another device in the way."))
+		to_chat(user, span_warning("有另一个装置挡住了路."))
 		return
 
-	user.visible_message("[user] begins rigging [I] to \the [src].", "You begin rigging [I] to \the [src]")
+	user.visible_message("[user]开始将[I]安装到\the [src]上.", "你开始将[I]安装到\the [src]上")
 	if(!do_after(user, 2 SECONDS, NONE, src, BUSY_ICON_HOSTILE) || rig)
 		return
 
-	user.visible_message(span_notice("[user] rigs [I] to \the [src]."), span_notice("You rig [I] to \the [src]."))
+	user.visible_message(span_notice("[user]将[I]安装到了\the [src]上."), span_notice("你将[I]安装到了\the [src]上."))
 	rig = I
 	user.transferItemToLoc(I, src)
 
@@ -210,14 +210,14 @@
 	playsound(src, 'sound/effects/glob.ogg', 25, 1)
 
 /obj/structure/reagent_dispensers/fueltank/barrel
-	name = "red barrel"
-	desc = "A red fuel barrel"
+	name = "红色油桶"
+	desc = "一个红色燃料桶"
 	icon = 'icons/obj/structures/crates.dmi'
 	icon_state = "barrel_red"
 
 /obj/structure/reagent_dispensers/fueltank/xfuel
-	name = "X-fueltank"
-	desc = "A tank filled with extremely dangerous Fuel type X. There are numerous no smoking signs on every side of the tank."
+	name = "X型燃料箱"
+	desc = "一个装满了极其危险的X型燃料的箱子.箱子的每一面都有许多禁止吸烟的标志."
 	icon_state = "xweldtank"
 	list_reagents = list(/datum/reagent/fuel/xfuel = 1000)
 
@@ -234,8 +234,8 @@
 	qdel(src)
 
 /obj/structure/reagent_dispensers/fueltank/gfuel
-	name = "G-fueltank"
-	desc = "A tank filled with extremely dangerous plasma Fuel. There are numerous no smoking signs on every side of the tank."
+	name = "G型燃料箱"
+	desc = "一个装满了极其危险的等离子燃料的箱子.箱子的每一面都有许多禁止吸烟的标志."
 	icon_state = "gweldtank"
 	list_reagents = list(/datum/reagent/fuel/gfuel = 1000)
 
@@ -252,8 +252,8 @@
 	qdel(src)
 
 /obj/structure/reagent_dispensers/water_cooler
-	name = "water cooler"
-	desc = "A machine that dispenses water to drink."
+	name = "饮水机"
+	desc = "一台分配饮用水的机器."
 	amount_per_transfer_from_this = 5
 	icon = 'icons/obj/machines/vending.dmi'
 	icon_state = "water_cooler"
@@ -264,8 +264,8 @@
 	coverage = 20
 
 /obj/structure/reagent_dispensers/beerkeg
-	name = "beer keg"
-	desc = "A beer keg"
+	name = "啤酒桶"
+	desc = "一个啤酒桶"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "beertankTEMP"
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer = 1000)
@@ -294,14 +294,14 @@
 			pixel_x += 32
 
 /obj/structure/reagent_dispensers/wallmounted/peppertank
-	name = "pepper spray refiller"
-	desc = "Refill pepper spray canisters."
+	name = "胡椒喷雾补充器"
+	desc = "补充胡椒喷雾罐."
 	icon_state = "peppertank"
 	amount_per_transfer_from_this = 45
 	list_reagents = list(/datum/reagent/consumable/capsaicin/condensed = 1000)
 
 /obj/structure/reagent_dispensers/wallmounted/virusfood
-	name = "virus food dispenser"
-	desc = "A dispenser of virus food."
+	name = "病毒食物分配器"
+	desc = "一台病毒食物分配器."
 	icon_state = "virusfoodtank"
 	list_reagents = list(/datum/reagent/consumable/virus_food = 1000)

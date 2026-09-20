@@ -16,8 +16,8 @@ GLOBAL_LIST_INIT(pod_styles, list(\
 ))
 
 /obj/structure/closet/supplypod
-	name = "supply pod"
-	desc = "A Nanotrasen supply drop pod."
+	name = "补给舱"
+	desc = "一个纳米传讯补给空投舱."
 	icon = 'icons/obj/supplypods.dmi'
 	icon_state = "supplypod"
 	pixel_x = -16
@@ -224,7 +224,7 @@ GLOBAL_LIST_INIT(pod_styles, list(\
 	pixel_x = -16
 	pixel_y = -5
 	pixel_z = 200
-	desc = "Get out of the way!"
+	desc = "快让开!"
 	layer = FLY_LAYER
 	icon_state = ""
 
@@ -248,7 +248,7 @@ GLOBAL_LIST_INIT(pod_styles, list(\
 
 /obj/effect/DPtarget
 	name = "Landing Zone Indicator"
-	desc = "A holographic projection designating the landing zone of something. It's probably best to stand back."
+	desc = "一个标示某物着陆点的全息投影. 最好还是站远点."
 	icon = 'icons/mob/actions.dmi'
 	icon_state = "sniper_zoom"
 	var/obj/effect/temp_visual/fallingPod

@@ -39,7 +39,7 @@
 /datum/glass_style/drinking_glass/water
 	required_drink_type = /datum/reagent/water
 	name = "glass of water"
-	desc = "The father of all refreshments."
+	desc = "所有提神饮料之父."
 	icon_state = "glass_clear"
 
 /datum/reagent/water/reaction_turf(turf/T, volume)
@@ -79,7 +79,7 @@
 /datum/reagent/water/overdose_process(mob/living/L, metabolism)
 	if(prob(10))
 		L.adjust_stamina_loss(50*effect_str)
-		to_chat(L, span_warning("You cramp up! Too much water!"))
+		to_chat(L, span_warning("你抽筋了! 水太多了!"))
 
 /datum/reagent/water/holywater
 	name = "Holy Water"
@@ -90,7 +90,7 @@
 /datum/glass_style/drinking_glass/holywater
 	required_drink_type = /datum/reagent/water/holywater
 	name = "glass of holy water"
-	desc = "A glass of holy water."
+	desc = "一杯圣水."
 	icon_state = "glass_clear"
 
 /datum/reagent/lube
@@ -640,7 +640,7 @@
 			if(C.species.species_flags & NO_PAIN)
 				return
 		if(show_message)
-			to_chat(L, span_warning("Your open wounds feel like they're on fire!"))
+			to_chat(L, span_warning("你的开放伤口感觉像着了火!"))
 		L.emote(pick("scream","pain","moan"))
 		L.flash_pain()
 		L.reagent_shock_modifier -= PAIN_REDUCTION_MEDIUM

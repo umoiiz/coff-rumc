@@ -1,7 +1,7 @@
 /datum/language/russian
-	name = "Russian"
-	desc = "An East Slavic language from Earth."
-	speech_verb = "says"
+	name = "俄语"
+	desc = "来自地球的一种东斯拉夫语言."
+	speech_verb = "说道"
 	key = "3"
 
 	//TODO: load this from /strings/

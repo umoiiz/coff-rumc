@@ -29,10 +29,10 @@
 	if(!broken && !burnt)
 		return
 	if(!(welder.use(1)))
-		to_chat(user, span_warning("You need more welding fuel to complete this task."))
+		to_chat(user, span_warning("你需要更多焊接燃料来完成这项任务."))
 		return
 
-	to_chat(user, span_warning("You fix some dents on the broken plating."))
+	to_chat(user, span_warning("你修复了破损装甲板上的一些凹痕."))
 	playsound(src, 'sound/items/welder.ogg', 25, 1)
 	burnt = FALSE
 	broken = FALSE

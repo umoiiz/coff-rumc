@@ -66,13 +66,13 @@ export const PowerMonitor = () => {
       <Window.Content scrollable>
         {!attached ? (
           <Section>
-            <Box color="bad">No connection</Box>
+            <Box color="bad">无连接</Box>
           </Section>
         ) : (
           <>
             <Section>
               <LabeledList>
-                <LabeledList.Item label="Supply">
+                <LabeledList.Item label="供应">
                   <ProgressBar
                     value={supply}
                     minValue={0}
@@ -82,7 +82,7 @@ export const PowerMonitor = () => {
                     {supply_text}
                   </ProgressBar>
                 </LabeledList.Item>
-                <LabeledList.Item label="Draw">
+                <LabeledList.Item label="抽取">
                   <ProgressBar
                     value={demand}
                     minValue={0}
@@ -97,7 +97,7 @@ export const PowerMonitor = () => {
             <Section>
               <Box mb={1}>
                 <Box inline mr={2} color="label">
-                  Sort by:
+                  排序方式:
                 </Box>
                 <Button.Checkbox
                   checked={sortByField === 'name'}

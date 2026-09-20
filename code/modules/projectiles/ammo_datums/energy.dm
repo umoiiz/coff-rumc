@@ -660,7 +660,7 @@
 		if(get_dist_euclidean(proj.starting_turf, vehicle_target) <= PLASMA_CANNON_STAGGERSTUN_RANGE) //staggerstun will fail on tank occupants if we just use staggerstun
 			for(var/mob/living/living_victim AS in vehicle_target.occupants)
 				living_victim.Stagger(PLASMA_CANNON_STAGGER_DURATION)
-				to_chat(living_victim, "You are knocked about by the impact, staggering you!")
+				to_chat(living_victim, "你被冲击撞得东倒西歪,踉跄不止!")
 	proj.damage *= damage_mult
 
 /datum/ammo/energy/plasma/cannon_heavy/on_hit_turf(turf/target_turf, atom/movable/projectile/proj)

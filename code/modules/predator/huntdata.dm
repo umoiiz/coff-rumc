@@ -70,7 +70,7 @@
 		var/honor_value = max(owner.life_kills_total + owner.life_value, owner.default_honor_value)
 		if(src in hunter.hunter_data.targets)
 			honor_value += 3
-		to_chat(hunter, span_yautjabold("You killed your Prey"))
+		to_chat(hunter, span_yautjabold("你杀死了你的猎物"))
 		INVOKE_ASYNC(hunter.client, TYPE_PROC_REF(/client, add_honor), honor_value + 1)
 		if(hunted)
 			hunter.hunter_data.prey = null
@@ -78,13 +78,13 @@
 			hunted = FALSE
 	else
 		if(hunter)
-			to_chat(hunter, span_yautjabold("Your Prey has been killed!"))
+			to_chat(hunter, span_yautjabold("你的猎物已被杀死!"))
 			hunter = null
 			hunted = FALSE
 			hunter.hunter_data.prey = null
 			owner.hud_set_hunter()
 		if(targeted)
-			to_chat(targeted, span_yautjabold("Your Target has been killed!"))
+			to_chat(targeted, span_yautjabold("你的目标已被杀死!"))
 			automatic_target = FALSE
 			target_completed = FALSE
 			targeted.hunter_data.targets -= src
@@ -144,7 +144,7 @@
 	if(hunted)
 		if(hunter)
 			hunter.hunter_data.prey = null
-			to_chat(hunter, span_yautjabold("Your Prey has been utterly destroyed!"))
+			to_chat(hunter, span_yautjabold("你的猎物已被彻底摧毁!"))
 			hunter = null
 		hunted = FALSE
 
@@ -156,7 +156,7 @@
 	if(thralled)
 		if(thralled_set)
 			thralled_set.hunter_data.thrall = null
-			to_chat(thralled_set, span_yautjabold("Your Thrall has been utterly destroyed!"))
+			to_chat(thralled_set, span_yautjabold("你的奴仆已被彻底摧毁!"))
 			message_all_yautja("[thralled_set.real_name]'s Thrall, [owner.real_name], has been utterly destroyed!")
 			thralled_set = null
 		thralled = FALSE

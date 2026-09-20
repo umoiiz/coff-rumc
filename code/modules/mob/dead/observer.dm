@@ -8,7 +8,7 @@
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
-		to_chat(src, span_warning("The game hasn't started yet!"))
+		to_chat(src, span_warning("游戏尚未开始!"))
 		return
 
 	var/list/hellhound_mob_list = list() // the list we'll be choosing from
@@ -17,7 +17,7 @@
 			continue
 		hellhound_mob_list[Hellhound.name] = Hellhound
 
-	var/choice = tgui_input_list(usr, "Pick a Hellhound:", "Join as Hellhound", hellhound_mob_list)
+	var/choice = tgui_input_list(usr, "选择一只地狱犬:", "作为地狱犬加入", hellhound_mob_list)
 	if(!choice)
 		return
 
@@ -26,11 +26,11 @@
 		return
 
 	if(QDELETED(Hellhound) || Hellhound.client)
-		to_chat(src, span_warning("Something went wrong."))
+		to_chat(src, span_warning("出了点问题."))
 		return
 
 	if(Hellhound.stat == DEAD)
-		to_chat(src, span_warning("That Hellhound has died."))
+		to_chat(src, span_warning("那只地狱犬已经死亡."))
 		return
 
 	current_mob.mind.transfer_to(Hellhound, TRUE)
@@ -45,7 +45,7 @@
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
-		to_chat(src, span_warning("The game hasn't started yet!"))
+		to_chat(src, span_warning("游戏尚未开始!"))
 		return
 
 	if(SSticker.mode.check_predator_late_join(src))

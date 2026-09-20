@@ -1,27 +1,27 @@
 /obj/item/clothing/head/helmet/space/tgmc
-	name = "\improper TGMC Compression Helmet"
-	desc = "A high tech, TGMC designed, dark red space suit helmet. Used for maintenance in space."
+	name = "\improper TGMC压缩头盔"
+	desc = "一顶高科技的,TGMC设计的暗红色太空服头盔.用于太空维护作业."
 	icon_state = "void_helm"
 	anti_hug = 3
 
 /obj/item/clothing/suit/space/tgmc
-	name = "\improper TGMC Compression Suit"
+	name = "\improper TGMC压缩防护服"
 	icon_state = "void"
-	desc = "A high tech, TGMC designed, dark red Space suit. Used for maintenance in space."
+	desc = "一套高科技的,TGMC设计的暗红色太空服.用于太空维护作业."
 	slowdown = 1
 
 //space santa
 /obj/item/clothing/head/helmet/space/santahat
-	name = "Santa's hat"
-	desc = "Ho ho ho. Merrry X-mas!"
+	name = "圣诞帽"
+	desc = "吼吼吼.圣诞快乐!"
 	icon_state = "santahat"
 	inventory_flags = BLOCKSHARPOBJ
 	inv_hide_flags = HIDEEYES
 	armor_protection_flags = HEAD
 
 /obj/item/clothing/suit/space/santa
-	name = "Santa's suit"
-	desc = "Festive!"
+	name = "圣诞服"
+	desc = "节日气息!"
 	icon_state = "santa"
 	slowdown = 0
 	allowed = list(/obj/item) //for stuffing exta special presents

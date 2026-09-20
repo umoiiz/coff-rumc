@@ -97,7 +97,7 @@ const Upgrades = (props: { selectedCategory: string | null }) => {
     <Section>
       <LabeledList>
         {upgrades.length === 0 ? (
-          <Box color="bad">No upgrades available!</Box>
+          <Box color="bad">无可用升级!</Box>
         ) : (
           upgrades
             .filter((record) => record.category === selectedCategory)
@@ -146,11 +146,11 @@ const UpgradeEntry = (props: UpgradeEntryProps) => {
       buttons={
         <Button
           mr={1}
-          tooltip={upgrade_cost + ' points'}
+          tooltip={upgrade_cost + ' 点数'}
           disabled={upgrade_cost > psy_points}
           onClick={() => act('buy', { buyname: upgrade_name })}
         >
-          Claim Blessing
+          领取祝福
         </Button>
       }
     >

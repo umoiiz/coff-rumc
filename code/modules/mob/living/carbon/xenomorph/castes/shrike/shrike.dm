@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/shrike
 	caste_base_type = /datum/xeno_caste/shrike
 	name = "Shrike"
-	desc = "A large, lanky alien creature. It seems psychically unstable."
+	desc = "一种体型修长的大型异形生物.它似乎灵能不稳定."
 	icon = 'icons/Xeno/castes/shrike/basic.dmi'
 	icon_state = "Shrike Walking"
 	effects_icon = 'icons/Xeno/castes/shrike/effects.dmi'

@@ -77,7 +77,7 @@
 	burst(TRUE)
 
 /obj/alien/egg/facehugger
-	desc = "It looks like a weird egg"
+	desc = "它看起来像个奇怪的蛋"
 	name = "facehugger egg"
 	icon_state = "egg_hugger"
 	density = FALSE
@@ -126,18 +126,18 @@
 /obj/alien/egg/facehugger/attack_facehugger(mob/living/carbon/xenomorph/facehugger/F, isrightclick = FALSE)
 	. = ..()
 
-	if(tgui_alert(F, "Do you want to get into the egg?", "Get inside the egg", list("Yes", "No")) != "Yes")
+	if(tgui_alert(F, "你想进入这个蛋吗?", "进入蛋内", list("Yes", "No")) != "Yes")
 		return
 
 	if(F.health < F.maxHealth)
-		balloon_alert(F, "You're too damaged!")
+		balloon_alert(F, "你伤得太重了!")
 		return
 
 	if(!insert_new_hugger(new /obj/item/clothing/mask/facehugger/larval()))
-		F.balloon_alert(F, span_xenowarning("We can't use this egg"))
+		F.balloon_alert(F, span_xenowarning("我们无法使用这个蛋"))
 		return
 
-	F.visible_message(span_xenowarning("[F] slides back into [src]."),span_xenonotice("You slide back into [src]."))
+	F.visible_message(span_xenowarning("[F] 滑回 [src]."),span_xenonotice("你滑回 [src]."))
 	F.ghostize()
 	F.death(deathmessage = "get inside the egg", silent = TRUE)
 	qdel(F)
@@ -180,19 +180,19 @@
 
 	if(!issamexenohive(xenomorph))
 		xenomorph.do_attack_animation(src, ATTACK_EFFECT_SMASH)
-		xenomorph.visible_message(span_xenowarning("[xenomorph] crushes \the [src]."), span_xenowarning("We crush \the [src]."))
+		xenomorph.visible_message(span_xenowarning("[xenomorph] 碾碎 \the [src]."), span_xenowarning("我们碾碎 \the [src]."))
 		burst(TRUE)
 		return
 
 	switch(maturity_stage)
 		if(1)
-			to_chat(xenomorph, span_xenowarning("The child is not developed yet."))
+			to_chat(xenomorph, span_xenowarning("幼体尚未发育完全."))
 		if(2)
-			to_chat(xenomorph, span_xenonotice("We retrieve the child."))
+			to_chat(xenomorph, span_xenonotice("我们取出幼体."))
 			burst(FALSE)
 		if(3, 4)
-			xenomorph.visible_message(span_xenonotice("\The [xenomorph] clears the hatched egg."), \
-			span_xenonotice("We clear the hatched egg."))
+			xenomorph.visible_message(span_xenonotice("\The [xenomorph] 清理了孵化的蛋."), \
+			span_xenonotice("我们清理了孵化的蛋."))
 			playsound(loc, SFX_ALIEN_RESIN_BREAK, 25)
 			qdel(src)
 
@@ -209,20 +209,20 @@
 /obj/alien/egg/facehugger/proc/insert_new_hugger(obj/item/clothing/mask/facehugger/facehugger, mob/user)
 	if(facehugger.stat == DEAD)
 		if(user)
-			to_chat(user, span_xenowarning("This child is dead."))
+			to_chat(user, span_xenowarning("这个幼体已经死了."))
 		return FALSE
 
 	if(maturity_stage != stage_ready_to_burst + 1)
 		if(user)
-			to_chat(user, span_xenowarning("This egg is not usable."))
+			to_chat(user, span_xenowarning("这个蛋无法使用."))
 		return FALSE
 
 	if(hugger_type)
 		if(user)
-			to_chat(user, span_xenowarning("This one is occupied with a child."))
+			to_chat(user, span_xenowarning("这个蛋里已有幼体."))
 		return FALSE
 	if(user)
-		user.visible_message(span_xenowarning("[user] slides [facehugger] back into [src]."),span_xenonotice("You place the child into [src]."))
+		user.visible_message(span_xenowarning("[user] 将 [facehugger] 滑回 [src]."),span_xenonotice("你将幼体放入 [src]."))
 	hugger_type = facehugger.type
 	qdel(facehugger)
 	advance_maturity(stage_ready_to_burst)
@@ -235,7 +235,7 @@
 	return
 
 /obj/alien/egg/gas
-	desc = "It looks like a suspiciously weird egg"
+	desc = "它看起来像个可疑的怪蛋"
 	name = "gas egg"
 	icon = 'icons/Xeno/Effects.dmi'
 	icon_state = "egg_gas"
@@ -290,14 +290,14 @@
 
 /obj/alien/egg/gas/attack_alien(mob/living/carbon/xenomorph/xenomorph, damage_amount = xenomorph.xeno_caste.melee_damage, damage_type = BRUTE, damage_flag = MELEE, effects = TRUE, armor_penetration = 0, isrightclick = FALSE)
 	if(maturity_stage > stage_ready_to_burst)
-		xenomorph.visible_message(span_xenonotice("\The [xenomorph] clears the hatched egg."), \
-		span_xenonotice("We clear the broken egg."))
+		xenomorph.visible_message(span_xenonotice("\The [xenomorph] 清理了孵化的蛋."), \
+		span_xenonotice("我们清理了破碎的蛋."))
 		playsound(loc, SFX_ALIEN_RESIN_BREAK, 25)
 		qdel(src)
 
 	if(!issamexenohive(xenomorph) || xenomorph.a_intent != INTENT_HELP)
 		xenomorph.do_attack_animation(src, ATTACK_EFFECT_SMASH)
-		xenomorph.visible_message(span_xenowarning("[xenomorph] crushes \the [src]."), span_xenowarning("We crush \the [src]."))
+		xenomorph.visible_message(span_xenowarning("[xenomorph] 碾碎 \the [src]."), span_xenowarning("我们碾碎 \the [src]."))
 		burst(TRUE)
 		return
-	to_chat(xenomorph, span_warning("That egg is filled with gas and has no child to retrieve."))
+	to_chat(xenomorph, span_warning("那个蛋充满了气体,没有幼体可取."))

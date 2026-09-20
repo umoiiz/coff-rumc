@@ -28,7 +28,7 @@
 ///sets the target for this event, and notifies the hive
 /datum/round_event/supply_drop/proc/set_target(turf/target_turf)
 	var/supplying_faction = pick(SSticker.mode.factions)
-	priority_announce("Союзный груз прибудет через [drop_delay / 600] минут. Место посадки - [target_turf.loc].", "Статус Тактического Блюспейс Сканера", sound = 'sound/AI/sup_drop.ogg', receivers = (GLOB.alive_human_list_faction[supplying_faction] + GLOB.observer_list))
+	priority_announce("联盟货物将在[drop_delay / 600]分钟后抵达. 着陆地点 - [target_turf.loc].", "战术蓝空间扫描器状态", sound = 'sound/AI/sup_drop.ogg', receivers = (GLOB.alive_human_list_faction[supplying_faction] + GLOB.observer_list))
 	addtimer(CALLBACK(src, PROC_REF(alert_hostiles), target_turf, supplying_faction), alert_delay)
 	addtimer(CALLBACK(src, PROC_REF(drop_supplies), target_turf, supplying_faction), drop_delay)
 
@@ -39,12 +39,12 @@
 		if(alerted_human.faction == supplying_faction)
 			humans_to_alert -= alerted_human
 
-	priority_announce("На подходе груз [supplying_faction]. Прибудет через [(drop_delay - alert_delay) / 600] минут. Место - [target_turf.loc].", "Статус Тактического Блюспейс Сканера", sound = 'sound/AI/sup_drop_enemy.ogg', receivers = (humans_to_alert + GLOB.observer_list))
+	priority_announce("货物[supplying_faction]正在接近. 将在[(drop_delay - alert_delay) / 600]分钟后抵达. 地点 - [target_turf.loc].", "战术蓝空间扫描器状态", sound = 'sound/AI/sup_drop_enemy.ogg', receivers = (humans_to_alert + GLOB.observer_list))
 
 
 ///deploys the actual supply drop
 /datum/round_event/supply_drop/proc/drop_supplies(turf/target_turf, faction)
-	priority_announce("Обнаружена поставка от [faction] в [target_turf.loc].", "Статус Тактического Блюспейс Сканера", sound = 'sound/AI/sup_drop_act.ogg', receivers = (GLOB.alive_human_list + GLOB.observer_list))
+	priority_announce("在[target_turf.loc]发现了来自[faction]的补给.", "战术蓝空间扫描器状态", sound = 'sound/AI/sup_drop_act.ogg', receivers = (GLOB.alive_human_list + GLOB.observer_list))
 	new /obj/item/explosive/grenade/flare/on(target_turf)
 	switch(faction)
 		if(FACTION_SOM)

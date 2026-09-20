@@ -62,7 +62,7 @@
 	files[fresh.uid] = fresh
 
 /obj/machinery/computer/forensic_scanning/proc/process_card(obj/item/f_card/card)
-		to_chat(usr, span_warning("Fingerprints are currently unavailable."))
+		to_chat(usr, span_warning("指纹当前不可用."))
 		return 0
 
 //Takes a list of forensic records, with key being reference to object, and updates internal database.
@@ -218,10 +218,10 @@
 				screen = "details"
 				current = files[href_list["identifier"]]
 			else
-				to_chat(usr, "<spawn class='warning'>No record found.</span>")
+				to_chat(usr, "<spawn class='warning'>未找到记录.</span>")
 		if("delete")
 			if(href_list["identifier"])
-				if(tgui_alert(usr, "Are you sure you want to delete this record?", "Record deletion", list("Yes", "No")) == "Yes")
+				if(tgui_alert(usr, "你确定要删除此记录吗?", "记录删除", list("Yes", "No")) == "Yes")
 					files.Remove(href_list["identifier"])
 					if(current && current.uid == href_list["identifier"])
 						current = null
@@ -249,7 +249,7 @@
 						M.drop_held_item()
 						I.loc = src
 				else
-					to_chat(usr, "<spawn class='warning'>Invalid object, rejected.</span>")
+					to_chat(usr, "<spawn class='warning'>无效物体, 已拒绝.</span>")
 		if("scan")
 			if(scanning)
 				scan_progress = 10
@@ -264,7 +264,7 @@
 					M.drop_held_item()
 					qdel(I)
 			else
-				to_chat(usr, "<spawn class='warning'>Invalid fingerprint card, rejected.</span>")
+				to_chat(usr, "<spawn class='warning'>无效指纹卡, 已拒绝.</span>")
 		if("print")
 			if(current)
 				var/obj/item/paper/P = new(loc)
@@ -292,7 +292,7 @@
 			updateUsrDialog()
 		if(scan_progress == 0)
 			scan_progress = -1
-			visible_message("Scan complete.")
+			visible_message("扫描完成.")
 			var/datum/data/record/forensic/fresh = new(scanning)
 			add_record(fresh)
 			stop_processing()

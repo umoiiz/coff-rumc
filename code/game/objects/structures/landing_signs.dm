@@ -1,6 +1,6 @@
 /obj/structure/lazarus_sign
-	name = "Lazarus Landing Sign"
-	desc = "A large sign reading 'lazarus landing por-' the rest of it is smeared in blood."
+	name = "拉撒路着陆点标牌"
+	desc = "一块大标牌,上面写着'拉撒路着陆点',其余部分被鲜血涂抹."
 	icon = 'icons/obj/landing_signs.dmi'
 	icon_state = "laz_sign"
 	bound_width = 64
@@ -9,8 +9,8 @@
 	coverage = 15
 
 /obj/structure/solaris_sign
-	name = "Solaris Ridge Sign"
-	desc = "A large sign that reads 'Solaris Ridge -', the rest of it is scraped away."
+	name = "索拉里斯山脊标牌"
+	desc = "一块大标牌,上面写着'索拉里斯山脊 -',其余部分被刮掉了."
 	icon = 'icons/obj/landing_signs.dmi'
 	icon_state = "red_sign"
 	bound_width = 64
@@ -18,8 +18,8 @@
 	density = TRUE
 
 /obj/structure/kutjevo_sign
-	name = "Kutjevo Sign"
-	desc = "A large sign that reads 'Kutjevo pop-', the rest of it is obscured by claw marks."
+	name = "库特耶沃标牌"
+	desc = "一块大标牌,上面写着'库特耶沃人口-',其余部分被爪痕遮挡."
 	icon = 'icons/obj/landing_signs.dmi'
 	icon_state = "kut_sign"
 	bound_width = 64
@@ -32,24 +32,24 @@
 	overlays += image(icon, src, "kut_sign_top", layer = ABOVE_ALL_MOB_LAYER, pixel_x = 32)
 
 /obj/structure/prison_sign
-	name = "UA Prison Docking Sign"
-	desc = "A large sign that reads 'UA Prison Docking -', the rest of it is obscured by claw marks."
+	name = "UA监狱对接标牌"
+	desc = "一块大标牌,上面写着'UA监狱对接 -',其余部分被爪痕遮挡."
 	icon = 'icons/obj/landing_signs.dmi'
 	icon_state = "prison_sign"
 	bound_width = 64
 	bound_height = 64
 
 /obj/structure/ice_sign
-	name = "Shiva's Ice Landing Sign"
-	desc = "A large sign that reads 'Shiva's Ice L-nding -', bullet holes and torn metal obscuring the rest.'"
+	name = "湿婆之冰着陆点标牌"
+	desc = "一块大标牌,上面写着'湿婆之冰着陆点 -',弹孔和撕裂的金属遮挡了其余部分."
 	icon = 'icons/obj/landing_signs.dmi'
 	icon_state = "ice_sign"
 	bound_width = 64
 	bound_height = 64
 
 /obj/structure/dam_sign
-	name = "Chigusa landing sign"
-	desc = "A large sign that reads 'Chigusa mining colony', with half the sign written in japanese.."
+	name = "千草着陆点标牌"
+	desc = "一块大标牌,上面写着'千草采矿殖民地',标牌有一半是用日文写的."
 	icon = 'icons/obj/landing_signs.dmi'
 	icon_state = "dam_sign"
 	bound_width = 64
@@ -57,12 +57,12 @@
 	coverage = 15
 
 /obj/structure/dam_sign/damaged
-	desc = "A large sign that reads 'Chigusa mining col-', with the rest being obscured by what looks to be tried blood, and damage."
+	desc = "一块大标牌,上面写着'千草采矿殖民-',其余部分被看起来像是干涸的血迹和损坏所遮挡."
 	icon_state = "dam_sign"
 
 /obj/structure/tachi_sign
-	name = "Tachi Base sign"
-	desc = "A large sign that reads 'Tachi Base located at the planet of Ceres V' with a flag of the Sons of Mars."
+	name = "太刀基地标牌"
+	desc = "一块大标牌,上面写着'太刀基地位于谷神星V行星',并带有一面火星之子旗帜."
 	icon = 'icons/obj/landing_signs.dmi'
 	icon_state = "tachi_sign"
 	bound_width = 64
@@ -70,8 +70,8 @@
 	coverage = 15
 
 /obj/structure/roci_sign
-	name = "Rocinante Base sign"
-	desc = "A large sign that reads 'Rocinante Base' with a flag of the Sons of Mars."
+	name = "罗西南特基地标牌"
+	desc = "一块大标牌,上面写着'罗西南特基地',并带有一面火星之子旗帜."
 	icon = 'icons/obj/landing_signs.dmi'
 	icon_state = "roci_sign"
 	bound_width = 64

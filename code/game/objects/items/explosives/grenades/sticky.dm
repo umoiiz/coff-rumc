@@ -1,6 +1,6 @@
 /obj/item/explosive/grenade/sticky
-	name = "\improper M40 adhesive charge grenade"
-	desc = "Designed for use against various fast moving drones, this grenade will adhere to its target before detonating. It's fuse is set to 5 seconds."
+	name = "\improper M40粘性炸药榴弹"
+	desc = "专为对抗各种高速移动无人机而设计,这种榴弹会在引爆前粘附于目标.其引信设定为5秒."
 	icon_state = "grenade_sticky"
 	worn_icon_state = "grenade_sticky"
 	det_time = 5 SECONDS
@@ -61,8 +61,8 @@
 	RegisterSignal(stuck_to, COMSIG_QDELETING, PROC_REF(clean_refs))
 
 /obj/item/explosive/grenade/sticky/trailblazer
-	name = "\improper M45 Trailblazer grenade"
-	desc = "Capsule based grenade that sticks to sufficiently hard surfaces, causing a trail of air combustable gel to form. It is set to detonate in 5 seconds."
+	name = "\improper M45开拓者榴弹"
+	desc = "基于胶囊的榴弹,会粘附于足够坚硬的表面,形成一道空气可燃凝胶轨迹.设定为5秒后引爆."
 	icon_state = "grenade_sticky_fire"
 	worn_icon_state = "grenade_sticky_fire"
 	det_time = 5 SECONDS
@@ -100,8 +100,8 @@
 	return ..()
 
 /obj/item/explosive/grenade/sticky/trailblazer/phosphorus
-	name = "\improper M45 Phosphorus trailblazer grenade"
-	desc = "Capsule based grenade that sticks to sufficiently hard surfaces, causing a trail of air combustable gel to form. But with phosphorus. It is set to detonate in 5 seconds."
+	name = "\improper M45白磷开拓者榴弹"
+	desc = "基于胶囊的榴弹,会粘附于足够坚硬的表面,形成一道空气可燃凝胶轨迹.但带有白磷.设定为5秒后引爆."
 	icon_state = "grenade_sticky_phosphorus"
 	worn_icon_state = "grenade_sticky_phosphorus"
 	icon_state_mini = "grenade_trailblazer_phosphorus"
@@ -124,8 +124,8 @@
 	qdel(src)
 
 /obj/item/explosive/grenade/sticky/cloaker
-	name = "\improper M45 Cloaker grenade"
-	desc = "Capsule based grenade that sticks to sufficiently hard surfaces, causing a trail of air combustable gel to form. This one creates cloaking smoke! It is set to detonate in 5 seconds."
+	name = "\improper M45隐形榴弹"
+	desc = "基于胶囊的榴弹,会粘附于足够坚硬的表面,形成一道空气可燃凝胶轨迹.这一种会制造隐形烟雾!设定为5秒后引爆."
 	icon_state = "grenade_sticky_cloak"
 	worn_icon_state = "grenade_sticky_cloak"
 	det_time = 5 SECONDS
@@ -164,8 +164,8 @@
 	return ..()
 
 /obj/item/explosive/grenade/sticky/cloaker/tangle
-	name = "\improper M45-T Tanglefoot grenade"
-	desc = "Capsule based grenade that sticks to sufficiently hard surfaces, causing a trail of air combustable gel to form. This one creates tanglefoot smoke! It is set to detonate in 5 seconds."
+	name = "\improper M45-T缠足草榴弹"
+	desc = "基于胶囊的榴弹,会粘附于足够坚硬的表面,形成一道空气可燃凝胶轨迹.这一种会制造缠足草烟雾!设定为5秒后引爆."
 	icon_state = "grenade_sticky_pgas"
 	worn_icon_state = "grenade_sticky_pgas"
 	det_time = 5 SECONDS

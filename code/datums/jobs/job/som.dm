@@ -21,8 +21,8 @@
 		human_spawn.set_nutrition(250)
 	if(!human_spawn.assigned_squad)
 		CRASH("after_spawn called for a marine without an assigned_squad")
-	to_chat(M, {"\nYou have been assigned to: <b><font size=3 color=[human_spawn.assigned_squad.color]>[lowertext(human_spawn.assigned_squad.name)] squad</font></b>.
-Make your way to the cafeteria for some post-cryosleep chow, and then get equipped in your squad's prep room."})
+	to_chat(M, {"\nYou已被分配到:<b><font size=3 color=[human_spawn.assigned_squad.color]>[lowertext(human_spawn.assigned_squad.name)]小队</font></b>.
+前往食堂吃些低温休眠后的食物,然后到你的小队准备室领取装备."})
 
 /datum/job/som/squad/equip_spawning_squad(mob/living/carbon/human/new_character, datum/squad/assigned_squad, client/player)
 	if(!assigned_squad)
@@ -78,8 +78,8 @@ Make your way to the cafeteria for some post-cryosleep chow, and then get equipp
 
 /datum/job/som/squad/standard/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"\nYou are a rank-and-file soldier of the Sons of Mars, and that is your strength.
-What you lack alone, you gain standing shoulder to shoulder with the men and women of the SOM. For Mars!"})
+	to_chat(M, {"\nYou是火星之子的普通士兵,这就是你的力量.
+你独自一人所缺乏的,能在与SOM的男女并肩作战中获得.为了火星!"})
 
 /datum/job/som/squad/engineer
 	paygrade = "SOM_E3"
@@ -127,8 +127,8 @@ What you lack alone, you gain standing shoulder to shoulder with the men and wom
 
 /datum/job/som/squad/engineer/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"\nYou have the equipment and skill to build fortifications, reroute power lines, and bunker down.
-Your squaddies will look to you when it comes to construction in the field of battle."})
+	to_chat(M, {"\nYou拥有建造防御工事,改接电力线路和固守阵地的装备与技能.
+在战场建设方面,你的小队队员会指望你."})
 
 /datum/job/som/squad/medic
 	paygrade = "SOM_E3"
@@ -176,8 +176,8 @@ Your squaddies will look to you when it comes to construction in the field of ba
 
 /datum/job/som/squad/medic/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"\nYou must tend the wounds of your squad mates and make sure they are healthy and active.
-You may not be a fully-fledged doctor, but you stand between life and death when it matters."})
+	to_chat(M, {"\nYou必须照料小队战友的伤口,确保他们健康且活跃.
+你可能不是一名正式医生,但在关键时刻你站在生死之间."})
 
 /datum/job/som/squad/veteran
 	paygrade = "SOM_S1"
@@ -222,7 +222,7 @@ You may not be a fully-fledged doctor, but you stand between life and death when
 
 /datum/job/som/squad/veteran/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"\nYou are the a Veteran among the SOM. With your long experience (and better training and equipment), your job is to provide special weapons support to bolster the line."})
+	to_chat(M, {"\nYou是SOM中的一名老兵.凭借你的长期经验(以及更好的训练和装备),你的职责是提供特殊武器支援以巩固战线."})
 
 /datum/job/som/squad/leader
 	req_admin_notify = TRUE
@@ -280,5 +280,5 @@ You may not be a fully-fledged doctor, but you stand between life and death when
 
 /datum/job/som/squad/leader/radio_help_message(mob/M)
 	. = ..()
-	to_chat(M, {"\nYou are responsible for the men and women of your squad. Make sure they are on task, working together, and communicating.
-You are also in charge of communicating with command and letting them know about the situation first hand. Keep out of harm's way."})
+	to_chat(M, {"\nYou负责你小队的男女队员.确保他们各司其职,协同合作并保持沟通.
+你还负责与指挥部沟通,让他们第一时间了解情况.远离危险."})

@@ -127,8 +127,8 @@ export const ListInputModal = (props: ListInputModalProps) => {
           selected
           tooltip={
             searchBarVisible
-              ? 'Search Mode. Type to search or use arrow keys to select manually.'
-              : 'Hotkey Mode. Type a letter to jump to the first match. Enter to select.'
+              ? '搜索模式. 输入以搜索或使用方向键手动选择.'
+              : '热键模式. 输入一个字母跳转到第一个匹配项. 回车选择.'
           }
           tooltipPosition="left"
           onClick={() => onSearchBarToggle()}

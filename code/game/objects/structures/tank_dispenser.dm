@@ -1,6 +1,6 @@
 /obj/structure/dispenser
-	name = "tank storage unit"
-	desc = "A simple yet bulky storage device for gas tanks. Has room for up to ten oxygen tanks, and ten phoron tanks."
+	name = "储罐单元"
+	desc = "一个简单但笨重的储气罐储存装置. 最多可容纳十个氧气罐和十个phoron罐."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "dispenser"
 	density = TRUE
@@ -54,27 +54,27 @@
 
 	if(istype(I, /obj/item/tank/oxygen) || istype(I, /obj/item/tank/air) || istype(I, /obj/item/tank/anesthetic))
 		if(oxygentanks >= 10)
-			to_chat(user, span_notice("[src] is full."))
+			to_chat(user, span_notice("[src]已满."))
 			return
 
 		user.drop_held_item()
 		I.forceMove(src)
 		oxytanks += I
 		oxygentanks++
-		to_chat(user, span_notice("You put [I] in [src]."))
+		to_chat(user, span_notice("你把[I]放入了[src]."))
 		if(oxygentanks < 5)
 			update_icon()
 
 	else if(istype(I, /obj/item/tank/phoron))
 		if(phorontanks >= 10)
-			to_chat(user, span_notice("[src] is full."))
+			to_chat(user, span_notice("[src]已满."))
 			return
 
 		user.drop_held_item()
 		I.forceMove(src)
 		platanks += I
 		phorontanks++
-		to_chat(user, span_notice("You put [I] in [src]."))
+		to_chat(user, span_notice("你把[I]放入了[src]."))
 		if(oxygentanks < 6)
 			update_icon()
 
@@ -92,7 +92,7 @@
 			else
 				O = new /obj/item/tank/oxygen(loc)
 			O.loc = loc
-			to_chat(usr, span_notice("You take [O] out of [src]."))
+			to_chat(usr, span_notice("你从[src]中取出了[O]."))
 			oxygentanks--
 			update_icon()
 	if(href_list["phoron"])
@@ -104,7 +104,7 @@
 			else
 				P = new /obj/item/tank/phoron(loc)
 			P.loc = loc
-			to_chat(usr, span_notice("You take [P] out of [src]."))
+			to_chat(usr, span_notice("你从[src]中取出了[P]."))
 			phorontanks--
 			update_icon()
 	updateUsrDialog()

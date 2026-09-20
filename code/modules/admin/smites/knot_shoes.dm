@@ -5,19 +5,19 @@
 /datum/smite/knot_shoes/effect(client/user, mob/living/carbon/human/target)
 	. = ..()
 	if (!ishuman(target))
-		to_chat(user, span_warning("This creature does not have any shoes. Aborting."), confidential = TRUE)
+		to_chat(user, span_warning("这个生物没有穿任何鞋子. 正在中止."), confidential = TRUE)
 		return
 	var/obj/item/clothing/shoes/sick_kicks = target.shoes //our target's shoes
 	if (!sick_kicks?.can_be_tied)
-		to_chat(user, span_warning("[target] does not have knottable shoes!"), confidential = TRUE)
+		to_chat(user, span_warning("[target] 没有可系结的鞋子!"), confidential = TRUE)
 		return
 	if (sick_kicks.tied == SHOES_TIED) //if tied knot the shoes of our victim
 		sick_kicks.adjust_laces(SHOES_KNOTTED)
 	else //If we're already knotted, revert them back to being tied. Marines aren't smart enough to unknot their own shoes without divine intervention.
-		if (tgui_alert(usr, "Unknot the shoes of [target]?", "Continue?", list("Yes", "No")) != "Yes")
+		if (tgui_alert(usr, "解开 [target] 的鞋带?", "继续?", list("Yes", "No")) != "Yes")
 			return
 		sick_kicks.adjust_laces(SHOES_TIED)
-		to_chat(target, span_warning("Your knotted shoelaces unravel again as a divine force washes over them."), confidential = TRUE)
+		to_chat(target, span_warning("一股神圣的力量拂过, 你系结的鞋带再次散开了."), confidential = TRUE)
 
 /obj/item/clothing/shoes/proc/adjust_laces(state, mob/user) //adjust the state of target shoes to be tied/untied
 	if(!can_be_tied)
@@ -38,4 +38,4 @@
 		our_guy.Paralyze(1 SECONDS)
 		our_guy.Knockdown(2 SECONDS)
 		our_guy.adjust_stamina_loss(10) //smacking into the ground drains energy
-		our_guy.visible_message(span_danger("[our_guy] trips on [our_guy.p_their()] knotted shoelaces and falls! What a klutz!"), span_userdanger("You trip on your knotted shoelaces and smack into the ground!"))
+		our_guy.visible_message(span_danger("[our_guy] 被 [our_guy.p_their()] 系结的鞋带绊倒并摔倒了! 真是个笨蛋!"), span_userdanger("你被自己系结的鞋带绊倒, 狠狠摔在地上!"))

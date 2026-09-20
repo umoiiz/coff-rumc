@@ -147,13 +147,13 @@
 			return
 
 		if(!M.can_launch)
-			to_chat(usr, span_warning("Evacuation is not enabled!"))
+			to_chat(usr, span_warning("撤离未启用!"))
 			return
 		if(SSevacuation.evac_time + EVACUATION_MANUAL_DEPARTURE - world.time > 0)
-			to_chat(usr, span_warning("The escape pod is not fully refueled yet!"))
+			to_chat(usr, span_warning("逃生舱尚未完全加注燃料!"))
 			return
 
-		to_chat(usr, span_userdanger("You slam your fist down on the launch button!"))
+		to_chat(usr, span_userdanger("你一拳砸在发射按钮上!"))
 		M.launch(TRUE)
 
 //=========================================================================================

@@ -6,7 +6,7 @@
 /datum/keybinding/client/get_help
 	hotkey_keys = list("F1")
 	name = "get_help"
-	full_name = "Get Help"
+	full_name = "获取帮助"
 	description = "Ask an admin or mentor for help."
 	keybind_signal = COMSIG_KB_CLIENT_GETHELP_DOWN
 
@@ -21,7 +21,7 @@
 /datum/keybinding/client/screenshot
 	hotkey_keys = list("F2")
 	name = "screenshot"
-	full_name = "Screenshot"
+	full_name = "截图"
 	description = "Take a screenshot."
 	keybind_signal = COMSIG_KB_CLIENT_SCREENSHOT_DOWN
 
@@ -36,7 +36,7 @@
 /datum/keybinding/client/minimal_hud
 	hotkey_keys = list("F12")
 	name = "minimal_hud"
-	full_name = "Minimal HUD"
+	full_name = "极简HUD"
 	description = "Hide most HUD features"
 	keybind_signal = COMSIG_KB_CLIENT_MINIMALHUD_DOWN
 
@@ -50,7 +50,7 @@
 /datum/keybinding/client/fullscreen
 	hotkey_keys = list("F11")
 	name = "fullscreen"
-	full_name = "Fullscreen"
+	full_name = "全屏"
 	description = "Swap to fullscreen."
 	keybind_signal = COMSIG_KB_CLIENT_FULLSCREEN_DOWN
 

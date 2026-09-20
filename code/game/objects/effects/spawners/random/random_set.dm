@@ -2,7 +2,7 @@
 
 /obj/effect/spawner/random_set
 	name = "Random Object"
-	desc = "This item type is used to spawn random objects at round-start"
+	desc = "此物品类型用于在回合开始时生成随机物体"
 	icon = 'icons/effects/landmarks_static.dmi'
 	icon_state = "random_loot"
 	/// this variable determines the likelyhood that this random object will not spawn anything

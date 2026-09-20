@@ -8,7 +8,7 @@
 
 /obj/machinery/disposal
 	name = "disposal unit"
-	desc = "A pneumatic waste disposal unit."
+	desc = "一个气动废物处理装置。"
 	icon = 'icons/obj/pipes/disposal.dmi'
 	icon_state = "disposal"
 	anchored = TRUE
@@ -85,15 +85,15 @@
 
 	if(istype(I, /obj/item/storage/bag/trash))
 		var/obj/item/storage/bag/trash/T = I
-		to_chat(user, span_notice("You empty the bag into [src]."))
+		to_chat(user, span_notice("你将袋子倒入[src]。"))
 		for(var/obj/item/O in T.contents)
 			T.storage_datum.remove_from_storage(O, src, user)
 		T.update_icon()
 		update()
 
 	else if(user.transferItemToLoc(I, src))
-		user.visible_message(span_notice("[user] places [I] into [src]."),
-		span_notice("You place [I] into [src]."))
+		user.visible_message(span_notice("[user]将[I]放入[src]。"),
+		span_notice("你将[I]放入[src]。"))
 	update()
 
 /obj/machinery/disposal/grab_interact(obj/item/grab/grab, mob/user, base_damage, is_sharp)
@@ -103,15 +103,15 @@
 		return
 
 	var/mob/living/grabbed_mob = grab.grabbed_thing
-	user.visible_message(span_warning("[user] starts putting [grabbed_mob] into [src]."),
-	span_warning("You start putting [grabbed_mob] into [src]."))
+	user.visible_message(span_warning("[user]开始将[grabbed_mob]放入[src]。"),
+	span_warning("你开始将[grabbed_mob]放入[src]。"))
 
 	if(!do_after(user, 2 SECONDS, NONE, src, BUSY_ICON_HOSTILE) || grab.grabbed_thing != grabbed_mob)
 		return
 
 	grabbed_mob.forceMove(src)
-	user.visible_message(span_warning("[user] puts [grabbed_mob] into [src]."),
-	span_warning("[user] puts [grabbed_mob] into [src]."))
+	user.visible_message(span_warning("[user]将[grabbed_mob]放入[src]。"),
+	span_warning("[user]将[grabbed_mob]放入[src]。"))
 	log_combat(user, grabbed_mob, "placed", addition = "into disposals")
 	message_admins("[ADMIN_TPMONTY(usr)] placed [ADMIN_TPMONTY(grabbed_mob)] in a disposals unit.")
 	flush()
@@ -122,17 +122,17 @@
 	if(mode > 0)
 		return
 	if(length(contents))
-		to_chat(user, span_warning("Eject the contents first!"))
+		to_chat(user, span_warning("请先弹出内容物!"))
 		return
 	if(mode == 0) //It's off but still not unscrewed
 		mode = -1 //Set it to doubleoff
 		playsound(loc, 'sound/items/screwdriver.ogg', 25, 1)
-		to_chat(user, span_notice("You remove the screws around the power connection."))
+		to_chat(user, span_notice("你卸下了电源接口周围的螺丝。"))
 		return
 	else if(mode == -1)
 		mode = 0
 		playsound(loc, 'sound/items/screwdriver.ogg', 25, 1)
-		to_chat(user, span_notice("You attach the screws around the power connection."))
+		to_chat(user, span_notice("你装上了电源接口周围的螺丝。"))
 		return
 
 /obj/machinery/disposal/welder_act(mob/living/user, obj/item/I)
@@ -140,17 +140,17 @@
 	if(mode != -1)
 		return
 	if(length(contents))
-		to_chat(user, span_warning("Eject the contents first!"))
+		to_chat(user, span_warning("请先弹出内容物!"))
 		return
 	var/obj/item/tool/weldingtool/W = I
 	if(!W.remove_fuel(0, user))
-		to_chat(user, span_warning("You need more welding fuel to complete this task."))
+		to_chat(user, span_warning("你需要更多焊接燃料来完成此任务。"))
 		return
 	playsound(loc, 'sound/items/welder2.ogg', 25, 1)
-	to_chat(user, span_notice("You start slicing the floorweld off the disposal unit."))
+	to_chat(user, span_notice("你开始从处理单元上切下地板焊。"))
 	if(!do_after(user, 20, NONE, src, BUSY_ICON_BUILD, extra_checks = CALLBACK(W, TYPE_PROC_REF(/obj/item/tool/weldingtool, isOn))))
 		return
-	to_chat(user, span_notice("You sliced the floorweld off the disposal unit."))
+	to_chat(user, span_notice("你从处理单元上切下了地板焊。"))
 	var/obj/structure/disposalconstruct/C = new(loc)
 	C.ptype = 6 //6 = disposal unit
 	C.anchored = TRUE
@@ -172,19 +172,19 @@
 		return //Animals cannot put mobs other than themselves into disposal
 
 	if(target == user)
-		visible_message(span_notice("[user] starts climbing into the disposal."))
+		visible_message(span_notice("[user]开始爬入处理单元。"))
 	else
-		visible_message(span_warning("[user] starts stuffing [target] into the disposal."))
+		visible_message(span_warning("[user]开始将[target]塞入处理单元。"))
 
 	if(!do_after(user, 4 SECONDS, IGNORE_HELD_ITEM, target, BUSY_ICON_HOSTILE))
 		return
 
 	if(target == user)
-		user.visible_message(span_notice("[user] climbs into [src]."),
-		span_notice("You climb into [src]."))
+		user.visible_message(span_notice("[user]爬入[src]。"),
+		span_notice("你爬入[src]。"))
 	else
-		user.visible_message(span_danger("[user] stuffs [target] into [src]!"),
-		span_warning("You stuff [target] into [src]!"))
+		user.visible_message(span_danger("[user]将[target]塞入[src]!"),
+		span_warning("你将[target]塞入[src]!"))
 
 		log_combat(user, target, "placed", addition="into disposals")
 		message_admins("[ADMIN_TPMONTY(usr)] placed [ADMIN_TPMONTY(target)] in a disposals unit.")
@@ -214,8 +214,8 @@
 		var/mob/living/L = user
 		L.Stun(4 SECONDS)
 	if(!user.lying_angle)
-		user.visible_message(span_warning("[user] suddenly climbs out of [src]!"),
-		span_warning("You climb out of [src] and get your bearings!"))
+		user.visible_message(span_warning("[user]突然从[src]中爬出!"),
+		span_warning("你从[src]中爬出并辨明了方向!"))
 		update()
 
 
@@ -224,7 +224,7 @@
 	if(!.)
 		return FALSE
 	if(user?.loc == src)
-		to_chat(usr, span_warning("You cannot reach the controls from inside."))
+		to_chat(usr, span_warning("你无法从内部够到控制装置。"))
 		return FALSE
 
 	return TRUE
@@ -251,7 +251,7 @@
 		return
 
 	if(ui.user.loc == src)
-		to_chat(ui.user, span_warning("You cannot reach the controls from inside."))
+		to_chat(ui.user, span_warning("你无法从内部够到控制装置。"))
 		return
 
 	if(flushing)
@@ -282,7 +282,7 @@
 			return TRUE
 		if("eject")
 			if(mode == -1)
-				to_chat(ui.user, span_warning("The disposal unit's power is disabled."))
+				to_chat(ui.user, span_warning("处理单元的电源已禁用。"))
 				return
 			eject()
 			return TRUE
@@ -295,8 +295,8 @@
 		if(isliving(AM))
 			var/mob/M = AM
 			if(!M.lying_angle)
-				M.visible_message(span_warning("[M] is suddenly pushed out of [src]!"),
-				span_warning("You get pushed out of [src] and get your bearings!"))
+				M.visible_message(span_warning("[M]突然被推出[src]!"),
+				span_warning("你被推出[src]并辨明了方向!"))
 			if(isliving(M))
 				var/mob/living/L = M
 				L.Stun(4 SECONDS)
@@ -414,9 +414,9 @@
 		var/obj/item/I = mover
 		if(prob(75))
 			I.loc = src
-			visible_message(span_notice("[I] lands into [src]."))
+			visible_message(span_notice("[I]落入[src]。"))
 		else
-			visible_message(span_warning("[I] bounces off of [src]'s rim!"))
+			visible_message(span_warning("[I]从[src]的边缘弹开!"))
 		return FALSE
 	return ..()
 
@@ -563,8 +563,8 @@
 //Disposal pipes
 /obj/structure/disposalpipe
 	icon = 'icons/obj/pipes/disposal.dmi'
-	name = "disposal pipe"
-	desc = "An underfloor disposal pipe."
+	name = "处理管道"
+	desc = "一条地板下的处理管道。"
 	anchored = TRUE
 	density = FALSE
 
@@ -698,18 +698,18 @@
 	if(T.intact_tile)
 		return //Prevent interaction with T-scanner revealed pipes
 	if(!W.remove_fuel(0, user))
-		to_chat(user, span_warning("You need more welding fuel to cut [src]."))
+		to_chat(user, span_warning("你需要更多焊接燃料来切割[src]。"))
 		return
 
 	playsound(loc, 'sound/items/welder2.ogg', 25, 1)
 	//Check if anything changed over 2 seconds
 	var/turf/uloc = user.loc
 	var/atom/wloc = W.loc
-	user.visible_message(span_notice("[user] starts slicing [src]."),
-	span_notice("You start slicing [src]."))
+	user.visible_message(span_notice("[user]开始切割[src]。"),
+	span_notice("你开始切割[src]。"))
 	sleep(3 SECONDS)
 	if(!W.isOn() || user.loc != uloc || wloc != W.loc)
-		to_chat(user, span_warning("You must stay still while welding [src]."))
+		to_chat(user, span_warning("焊接[src]时你必须保持不动。"))
 		return
 	welded()
 
@@ -964,7 +964,7 @@
 			return mask & (~setbit)
 
 /obj/structure/disposalpipe/tagger
-	name = "package tagger"
+	name = "包裹贴标机"
 	icon_state = "pipe-tagger"
 	var/sort_tag = ""
 	var/partial = 0
@@ -1002,7 +1002,7 @@
 
 		sort_tag = O.currTag
 		playsound(loc, 'sound/machines/twobeep.ogg', 25, 1)
-		to_chat(user, span_notice("Changed tag to '[sort_tag]'."))
+		to_chat(user, span_notice("已将标签更改为'[sort_tag]'。"))
 		updatename()
 		updatedesc()
 
@@ -1015,15 +1015,15 @@
 	return ..()
 
 /obj/structure/disposalpipe/tagger/partial //Needs two passes to tag
-	name = "partial package tagger"
+	name = "部分包裹贴标机"
 	icon_state = "pipe-tagger-partial"
 	partial = 1
 
 //A three-way junction that sorts objects
 /obj/structure/disposalpipe/sortjunction
-	name = "sorting junction"
+	name = "分拣接口"
 	icon_state = "pipe-j1s"
-	desc = "An underfloor disposal pipe with a package sorting mechanism."
+	desc = "一条带有包裹分拣机制的地板下处理管道。"
 	var/sortType = ""
 	var/posdir = 0
 	var/negdir = 0
@@ -1074,7 +1074,7 @@
 
 		sortType = O.currTag
 		playsound(loc, 'sound/machines/twobeep.ogg', 25, 1)
-		to_chat(user, span_notice("Changed filter to '[sortType]'."))
+		to_chat(user, span_notice("已将过滤器更改为'[sortType]'。"))
 		updatename()
 		updatedesc()
 
@@ -1111,16 +1111,16 @@
 
 //A three-way junction that filters all wrapped and tagged items
 /obj/structure/disposalpipe/sortjunction/wildcard
-	name = "wildcard sorting junction"
-	desc = "An underfloor disposal pipe which filters all wrapped and tagged items."
+	name = "通配分拣接口"
+	desc = "一条过滤所有已包装和已贴标物品的地板下处理管道。"
 
 /obj/structure/disposalpipe/sortjunction/wildcard/divert_check(checkTag)
 	return checkTag != ""
 
 //Junction that filters all untagged items
 /obj/structure/disposalpipe/sortjunction/untagged
-	name = "untagged sorting junction"
-	desc = "An underfloor disposal pipe which filters all untagged items."
+	name = "未贴标分拣接口"
+	desc = "一条过滤所有未贴标物品的地板下处理管道。"
 
 /obj/structure/disposalpipe/sortjunction/untagged/divert_check(checkTag)
 	return checkTag == ""
@@ -1184,18 +1184,18 @@
 		return //Prevent interaction with T-scanner revealed pipes
 
 	if(!W.remove_fuel(0, user))
-		to_chat(user, span_warning("You need more welding fuel to cut the pipe."))
+		to_chat(user, span_warning("你需要更多焊接燃料来切割管道。"))
 		return
 
 	playsound(loc, 'sound/items/welder2.ogg', 25, 1)
 	//Check if anything changed over 2 seconds
 	var/turf/uloc = user.loc
 	var/atom/wloc = W.loc
-	user.visible_message(span_notice("[user] starts slicing [src]."),
-	span_notice("You start slicing [src]."))
+	user.visible_message(span_notice("[user]开始切割[src]。"),
+	span_notice("你开始切割[src]。"))
 	sleep(3 SECONDS)
 	if(!W.isOn() || user.loc != uloc && wloc != W.loc)
-		to_chat(user, span_warning("You must stay still while welding the pipe."))
+		to_chat(user, span_warning("焊接管道时你必须保持不动。"))
 		return
 
 	welded()
@@ -1227,7 +1227,7 @@
 /obj/structure/disposalpipe/broken
 	icon_state = "pipe-b"
 	dpdir = 0 //Broken pipes have dpdir = 0 so they're not found as 'real' pipes i.e. will be treated as an empty turf
-	desc = "A broken piece of disposal pipe."
+	desc = "一块破损的处理管道。"
 
 /obj/structure/disposalpipe/broken/Initialize(mapload)
 	. = ..()
@@ -1237,7 +1237,7 @@
 /obj/structure/disposalpipe/water_pipe
 	icon_state = "water_pipe"
 	dpdir = 0 //Makes this not a real pipe
-	desc = "A inlet or outlet for fluids."
+	desc = "流体的入口或出口。"
 
 //Called when welded, for broken pipe, remove and turn into scrap
 /obj/structure/disposalpipe/broken/welded()
@@ -1245,8 +1245,8 @@
 
 //The disposal outlet machine
 /obj/structure/disposaloutlet
-	name = "disposal outlet"
-	desc = "An outlet for the pneumatic disposal system."
+	name = "处理出口"
+	desc = "气动处理系统的出口。"
 	icon = 'icons/obj/pipes/disposal.dmi'
 	icon_state = "outlet"
 	density = TRUE
@@ -1284,10 +1284,10 @@
 	mode = !mode
 	if(mode)
 		playsound(loc, 'sound/items/screwdriver.ogg', 25, 1)
-		to_chat(user, span_notice("You remove the screws around the power connection."))
+		to_chat(user, span_notice("你卸下了电源接口周围的螺丝。"))
 	else
 		playsound(loc, 'sound/items/screwdriver.ogg', 25, 1)
-		to_chat(user, span_notice("You attach the screws around the power connection."))
+		to_chat(user, span_notice("你装上了电源接口周围的螺丝。"))
 
 /obj/structure/disposaloutlet/welder_act(mob/living/user, obj/item/I)
 	. = ..()
@@ -1296,16 +1296,16 @@
 		return
 	var/obj/item/tool/weldingtool/W = I
 	if(!W.remove_fuel(0, user))
-		to_chat(user, span_warning("You need more welding fuel to complete this task."))
+		to_chat(user, span_warning("你需要更多焊接燃料来完成此任务。"))
 		return
 
 	playsound(loc, 'sound/items/welder2.ogg', 25, 1)
-	to_chat(user, span_notice("You start slicing the floorweld off the disposal outlet."))
+	to_chat(user, span_notice("你开始从处理出口上切下地板焊。"))
 
 	if(!do_after(user, 2 SECONDS, NONE, src, BUSY_ICON_BUILD, extra_checks = CALLBACK(W, TYPE_PROC_REF(/obj/item/tool/weldingtool, isOn))))
 		return
 
-	to_chat(user, span_notice("You sliced the floorweld off the disposal outlet."))
+	to_chat(user, span_notice("你从处理出口上切下了地板焊。"))
 	var/obj/structure/disposalconstruct/C = new(loc)
 	C.ptype = 7 //7 = outlet
 	C.update()
@@ -1314,8 +1314,8 @@
 	qdel(src)
 
 /obj/structure/disposaloutlet/retrieval
-	name = "retrieval outlet"
-	desc = "An outlet for the pneumatic disposal system."
+	name = "回收出口"
+	desc = "气动处理系统的出口。"
 	resistance_flags = UNACIDABLE
 
 /obj/structure/disposaloutlet/retrieval/attackby(obj/item/I, mob/user, params)

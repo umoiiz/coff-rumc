@@ -18,7 +18,7 @@
 		enterer.forceMove(door.get_enter_location())
 		enterer.setDir(EAST)
 		return ..()
-	to_chat(enterer, span_userdanger("AN ERROR OCCURED PUTTING YOU INTO AN INTERIOR"))
+	to_chat(enterer, span_userdanger("将你放入内部空间时发生错误"))
 	stack_trace("a [enterer.type] could not find a door when entering an interior")
 	enterer.forceMove(pick(loaded_turfs))
 	return ..()
@@ -128,7 +128,7 @@
 		if(isitem(dropping))
 			user.temporarilyRemoveItemFromInventory(dropping)
 		dropping.forceMove(owner.exit_location(dropping))
-		user.balloon_alert(user, "item thrown outside")
+		user.balloon_alert(user, "物品被扔到外面")
 		return
 	return ..()
 
@@ -140,7 +140,7 @@
 	if(is_type_in_typecache(grab.grabbed_thing.type, owner.easy_load_list))
 		if(isitem(grab.grabbed_thing.type))
 			user.temporarilyRemoveItemFromInventory(grab.grabbed_thing)
-		user.balloon_alert(user, "item thrown outside")
+		user.balloon_alert(user, "物品被扔到外面")
 		grab.grabbed_thing.forceMove(owner.exit_location(grab.grabbed_thing))
 		return
 	return ..()

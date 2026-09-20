@@ -60,7 +60,7 @@
 
 	if((atom_flags & ON_BORDER))
 		if(user_turf != destination_turf && user_turf != get_step(destination_turf, dir))
-			to_chat(user, span_warning("You need to be up against [src] to leap over."))
+			to_chat(user, span_warning("你需要靠着[src]才能翻越过去。"))
 			return
 		if(user_turf == destination_turf)
 			destination_turf = get_step(destination_turf, dir) //we're moving from the objects turf to the one its facing
@@ -74,7 +74,7 @@
 			if(structure.allow_pass_flags & PASS_WALKOVER)
 				continue
 		if(object.density && (!(object.atom_flags & ON_BORDER) || object.dir & get_dir(src,user)))
-			to_chat(user, span_warning("There's \a [object.name] in the way."))
+			to_chat(user, span_warning("有\a [object.name]挡在路上。"))
 			return
 
 	for(var/obj/object in user_turf.contents)
@@ -83,7 +83,7 @@
 			if(structure.allow_pass_flags & PASS_WALKOVER)
 				continue
 		if(object.density && (object.atom_flags & ON_BORDER) && object.dir & get_dir(user, src))
-			to_chat(user, span_warning("There's \a [object.name] in the way."))
+			to_chat(user, span_warning("有\a [object.name]挡在路上。"))
 			return
 
 	return destination_turf
@@ -93,7 +93,7 @@
 	if(user.do_actions || !can_climb(user))
 		return
 
-	user.visible_message(span_warning("[user] starts [atom_flags & ON_BORDER ? "leaping over" : "climbing onto"] \the [src]!"))
+	user.visible_message(span_warning("[user]开始[atom_flags & ON_BORDER ? "leaping over" : "climbing onto"]\the [src]!"))
 
 	if(!do_after(user, climb_delay, IGNORE_HELD_ITEM, src, BUSY_ICON_GENERIC))
 		return
@@ -113,14 +113,14 @@
 		if(M.lying_angle)
 			return //No spamming this on people.
 		M.Paralyze(2 SECONDS)
-		to_chat(M, span_warning("You topple as \the [src] moves under you!"))
+		to_chat(M, span_warning("当\the [src]在你身下移动时,你摔倒了!"))
 
 		if(!prob(25))
 			return
 
 		var/damage = rand(15,30)
 		if(!ishuman(M))
-			to_chat(M, span_danger("You land heavily!"))
+			to_chat(M, span_danger("你重重地落地!"))
 			M.apply_damage(damage, BRUTE, updating_health = TRUE)
 			return
 
@@ -140,10 +140,10 @@
 				affecting = H.get_limb("head")
 
 		if(affecting)
-			to_chat(M, span_danger("You land heavily on your [affecting.display_name]!"))
+			to_chat(M, span_danger("你重重地落在你的[affecting.display_name]上!"))
 			affecting.take_damage_limb(damage, updating_health = TRUE)
 		else
-			to_chat(H, span_danger("You land heavily!"))
+			to_chat(H, span_danger("你重重地落地!"))
 			H.apply_damage(damage, BRUTE, updating_health = TRUE)
 
 /obj/structure/can_interact(mob/user)

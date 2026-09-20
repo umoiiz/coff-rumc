@@ -42,41 +42,41 @@
 	if(!chassis.is_equipment_controller(owner))
 		choices += ARMOR_GUNNER
 	choices += ARMOR_PASSENGER
-	var/choice = tgui_input_list(owner, "Select a seat", chassis.name, choices)
+	var/choice = tgui_input_list(owner, "选择座位", chassis.name, choices)
 	if(!choice)
 		return
 	if(!transfer_checks(choice))
 		return
-	chassis.balloon_alert(owner, "moving to other seat...")
+	chassis.balloon_alert(owner, "正在移动到其他座位...")
 	if(!do_after(owner, chassis.enter_delay, target = chassis, extra_checks=CALLBACK(src, PROC_REF(transfer_checks), choice)))
-		chassis.balloon_alert(owner, "interrupted!")
+		chassis.balloon_alert(owner, "被打断了!")
 		return
 	chassis.remove_control_flags(owner, VEHICLE_CONTROL_MELEE|VEHICLE_CONTROL_EQUIPMENT|VEHICLE_CONTROL_DRIVE|VEHICLE_CONTROL_SETTINGS)
 	switch(choice)
 		if(ARMOR_GUNNER)
-			chassis.balloon_alert(owner, "controlling gunner seat")
+			chassis.balloon_alert(owner, "控制炮手座位")
 			chassis.add_control_flags(owner, VEHICLE_CONTROL_MELEE|VEHICLE_CONTROL_EQUIPMENT)
 		if(ARMOR_DRIVER)
-			chassis.balloon_alert(owner, "controlling pilot seat")
+			chassis.balloon_alert(owner, "控制驾驶员座位")
 			chassis.add_control_flags(owner, VEHICLE_CONTROL_DRIVE|VEHICLE_CONTROL_SETTINGS)
 		if(ARMOR_PASSENGER)
-			chassis.balloon_alert(owner, "entered passenger seat")
+			chassis.balloon_alert(owner, "进入乘客座位")
 
 ///checks if owner can still transfer
 /datum/action/vehicle/sealed/armored/swap_seat/proc/transfer_checks(choice)
 	if(!owner || !chassis || !(owner in chassis.occupants))
 		return FALSE
 	if(length(chassis.occupants) >= chassis.max_occupants)
-		chassis.balloon_alert(owner, "other seats occupied!")
+		chassis.balloon_alert(owner, "其他座位已被占用!")
 		return FALSE
 	switch(choice)
 		if(ARMOR_GUNNER)
 			if(length(chassis.return_controllers_with_flag(VEHICLE_CONTROL_EQUIPMENT)) >= 1)
-				chassis.balloon_alert(owner, "gunner occupied!")
+				chassis.balloon_alert(owner, "炮手座位已被占用!")
 				return FALSE
 		if(ARMOR_DRIVER)
 			if(chassis.driver_amount() >= chassis.max_drivers)
-				chassis.balloon_alert(owner, "driver occupied!")
+				chassis.balloon_alert(owner, "驾驶员座位已被占用!")
 				return FALSE
 	return TRUE
 
@@ -93,7 +93,7 @@
 		return
 
 	if(!(chassis.armored_flags & ARMORED_HAS_HEADLIGHTS))
-		chassis.balloon_alert(owner, "the vehicle's lights are broken!")
+		chassis.balloon_alert(owner, "载具的灯光损坏了!")
 		return
 	chassis.armored_flags ^= ARMORED_LIGHTS_ON
 	if(chassis.armored_flags & ARMORED_LIGHTS_ON)
@@ -101,7 +101,7 @@
 	else
 		action_icon_state = "mech_lights_off"
 	chassis.set_light_on(chassis.armored_flags & ARMORED_LIGHTS_ON)
-	chassis.balloon_alert(owner, "toggled lights [chassis.armored_flags & ARMORED_LIGHTS_ON ? "on":"off"]")
+	chassis.balloon_alert(owner, "切换灯光 [chassis.armored_flags & ARMORED_LIGHTS_ON ? "on":"off"]")
 	playsound(chassis,'sound/mecha/brass_skewer.ogg', 40, TRUE)
 	chassis.log_message("Toggled lights [(chassis.armored_flags & ARMORED_LIGHTS_ON)?"on":"off"].", LOG_MECHA)
 	update_button_icon()
@@ -119,7 +119,7 @@
 	chassis.zoom_mode = !chassis.zoom_mode
 	action_icon_state = "mech_zoom_[chassis.zoom_mode ? "on" : "off"]"
 	chassis.log_message("Toggled zoom mode.", LOG_MECHA)
-	to_chat(owner, "<font color='[chassis.zoom_mode?"blue":"red"]'>Zoom mode [chassis.zoom_mode?"en":"dis"]abled.</font>")
+	to_chat(owner, "<font color='[chassis.zoom_mode?"blue":"red"]'>缩放模式已[chassis.zoom_mode?"en":"dis"]用.</font>")
 	if(chassis.zoom_mode)
 		owner.client.view_size.add(3)
 		SEND_SOUND(owner, sound('sound/mecha/imag_enh.ogg', volume=50))
@@ -147,7 +147,7 @@
 	if(TIMER_COOLDOWN_RUNNING(chassis, COOLDOWN_ARMORED_HORN))
 		return
 
-	chassis.visible_message("[chassis] honks its horn!")
+	chassis.visible_message("[chassis]鸣笛!")
 	playsound(chassis.loc, 'sound/vehicles/horns/armored_horn.ogg', 70)
 	TIMER_COOLDOWN_START(chassis, COOLDOWN_ARMORED_HORN, 15 SECONDS) //To keep people's eardrums intact
 
@@ -168,7 +168,7 @@
 	strafe = !strafe
 
 	for(var/occupant in occupants)
-		balloon_alert(occupant, "Strafing mode [strafe?"on":"off"].")
+		balloon_alert(occupant, "扫射模式[strafe?"on":"off"].")
 		var/datum/action/action = LAZYACCESSASSOC(occupant_actions, occupant, /datum/action/vehicle/sealed/armored/strafe)
 		action?.update_button_icon()
 
@@ -193,7 +193,7 @@
 		return
 
 	shots_remaining --
-	chassis.visible_message("[chassis] pops smoke!")
+	chassis.visible_message("[chassis]释放烟雾!")
 	playsound(chassis.loc, 'sound/weapons/guns/fire/grenadelauncher.ogg', 80, TRUE)
 	TIMER_COOLDOWN_START(chassis, COOLDOWN_ARMORED_SMOKE, 2 SECONDS)
 
@@ -237,10 +237,10 @@
 	if(!owner || !chassis || !(owner in chassis.occupants))
 		return
 	if(!COOLDOWN_FINISHED(src, tesla_cooldown))
-		chassis.balloon_alert(owner, "wait [DisplayTimeText(COOLDOWN_TIMELEFT(src, tesla_cooldown))]!")
+		chassis.balloon_alert(owner, "等待[DisplayTimeText(COOLDOWN_TIMELEFT(src, tesla_cooldown))]!")
 		return
 
-	chassis.visible_message("[chassis] becomes electrified!")
+	chassis.visible_message("[chassis]通电了!")
 	playsound(chassis.loc, 'sound/magic/lightningshock.ogg', 100, TRUE)
 	COOLDOWN_START(src, tesla_cooldown, 30 SECONDS)
 	chassis.add_filter("vehicle_tesla", 1, outline_filter(1, COLOR_PULSE_BLUE))

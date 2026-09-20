@@ -31,8 +31,8 @@
 	xenorespawn_time = 1 MINUTES
 
 /datum/game_mode/extended/announce()
-	to_chat(world, "<b>The current game mode is - Extended Role-Playing!</b>")
-	to_chat(world, "<b>Just have fun and role-play!</b>")
+	to_chat(world, "<b>当前游戏模式是 - 扩展角色扮演!</b>")
+	to_chat(world, "<b>尽情享受并角色扮演吧!</b>")
 
 /datum/game_mode/extended/check_finished()
 	if(!round_finished)

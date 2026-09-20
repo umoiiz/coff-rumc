@@ -10,7 +10,7 @@
 /obj/machinery/telecomms/hub
 	name = "telecommunication hub"
 	icon_state = "hub"
-	desc = "A mighty piece of hardware used to send/receive massive amounts of data."
+	desc = "一台用于发送/接收海量数据的强大硬件."
 	telecomms_type = /obj/machinery/telecomms/hub
 	density = TRUE
 	use_power = IDLE_POWER_USE

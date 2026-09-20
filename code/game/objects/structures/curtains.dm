@@ -2,7 +2,7 @@
 
 /obj/structure/curtain
 	icon = 'icons/obj/structures/curtain.dmi'
-	name = "curtain"
+	name = "帘子"
 	icon_state = "medicalcurtain"
 	///used to reset curtain back to default state when closing
 	var/initial_icon_state = "medicalcurtain"
@@ -26,8 +26,8 @@
 	if(!do_after(attackingxeno, XENO_CURTAIN_PULL_DELAY, NONE, src, BUSY_ICON_FRIENDLY))
 		return
 	attackingxeno.do_attack_animation(src, ATTACK_EFFECT_CLAW)
-	attackingxeno.visible_message(span_danger("\The [attackingxeno] pulls [src] down and slices it apart!"), \
-	span_danger("You pull the [src] down and rip it to shreds!"), null, 5)
+	attackingxeno.visible_message(span_danger("\The [attackingxeno]把[src]拉下来并切成碎片!"), \
+	span_danger("你把[src]拉下来撕成碎片!"), null, 5)
 	qdel(src)
 
 /obj/structure/curtain/proc/toggle()
@@ -40,43 +40,43 @@
 		layer = OBJ_LAYER
 
 /obj/structure/curtain/shower
-	name = "shower curtain"
+	name = "浴帘"
 	color = "#ACD1E9"
 	alpha = 200
 
 /obj/structure/curtain/black
-	name = "black curtain"
+	name = "黑帘"
 	color = "#222222"
 
 /obj/structure/curtain/medical
-	name = "plastic curtain"
+	name = "塑料帘"
 	color = "#B8F5E3"
 	alpha = 200
 
 /obj/structure/curtain/temple
-	name = "fabric curtain"
+	name = "布帘"
 	color = "#690000"
 	icon_state = "fabric_curtain"
 	initial_icon_state = "fabric_curtain"
 	alpha = 230
 
 /obj/structure/curtain/open/shower
-	name = "shower curtain"
+	name = "浴帘"
 	color = "#ACD1E9"
 	alpha = 200
 
 /obj/structure/curtain/open/black
-	name = "black curtain"
+	name = "黑帘"
 	color = "#222222"
 
 /obj/structure/curtain/open/temple
-	name = "black curtain"
+	name = "黑帘"
 	color = "#690000"
 	icon_state = "fabric_curtain_open"
 	alpha = 230
 
 /obj/structure/curtain/open/medical
-	name = "plastic curtain"
+	name = "塑料帘"
 	color = "#B8F5E3"
 	alpha = 200
 

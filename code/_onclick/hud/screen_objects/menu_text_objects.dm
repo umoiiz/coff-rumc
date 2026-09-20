@@ -64,13 +64,13 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/text/lobby)
 
 /atom/movable/screen/text/lobby/clickable/Click()
 	if(!(atom_flags & INITIALIZED)) //yes this can happen, fuck me
-		to_chat(usr, span_warning("The game is still setting up, please try again later."))
+		to_chat(usr, span_warning("游戏仍在设置中, 请稍后再试."))
 		return
 	var/mob/new_player/player = usr
 	player.playsound_local(player, 'sound/effects/UI/click.ogg', 45)
 
 /atom/movable/screen/text/lobby/clickable/setup_character
-	maptext = span_lobbytext("ПЕРСОНАЖ")
+	maptext = span_lobbytext("角色")
 	icon_state = "setup"
 	///Bool, whether we registered to listen for charachter updates already
 	var/registered = FALSE
@@ -90,7 +90,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/text/lobby)
 	registered = TRUE
 
 /atom/movable/screen/text/lobby/clickable/join_game
-	maptext = span_lobbytext("ПРИСОЕДИНИТЬСЯ")
+	maptext = span_lobbytext("加入")
 	icon_state = "join"
 
 /atom/movable/screen/text/lobby/clickable/join_game/Initialize(mapload, datum/hud/hud_owner)
@@ -100,13 +100,13 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/text/lobby)
 /atom/movable/screen/text/lobby/clickable/join_game/update_text()
 	switch(SSticker?.current_state)
 		if(GAME_STATE_PREGAME, GAME_STATE_STARTUP)
-			maptext = span_lobbytext("ПРИСОЕДИНИТЬСЯ \[Раунд не начат\]")
+			maptext = span_lobbytext("加入 \[回合未开始\]")
 			icon_state = "join"
 		if(GAME_STATE_SETTING_UP)
-			maptext = span_lobbytext("ПРИСОЕДИНИТЬСЯ \[Загрузка\]")
+			maptext = span_lobbytext("加入 \[加载中\]")
 			icon_state = "join"
 		else
-			maptext = span_lobbytext("ПРИСОЕДИНИТЬСЯ")
+			maptext = span_lobbytext("加入")
 			icon_state = "join"
 
 /atom/movable/screen/text/lobby/clickable/join_game/Click()
@@ -115,7 +115,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/text/lobby)
 	player.attempt_late_join()
 
 /atom/movable/screen/text/lobby/clickable/ready
-	maptext = span_lobbytext("ВЫ: НЕ ГОТОВЫ")
+	maptext = span_lobbytext("你: 未准备")
 	icon_state = "unready"
 
 /atom/movable/screen/text/lobby/clickable/ready/Initialize(mapload, datum/hud/hud_owner)
@@ -125,14 +125,14 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/text/lobby)
 /atom/movable/screen/text/lobby/clickable/ready/update_text()
 	switch(SSticker?.current_state)
 		if(GAME_STATE_PLAYING)
-			maptext = span_lobbytext("РАУНД ДЛИТСЯ [gameTimestamp(format = "hh:mm", wtime = world.time - SSticker.round_start_time)]")
+			maptext = span_lobbytext("回合持续 [gameTimestamp(format = "hh:mm", wtime = world.time - SSticker.round_start_time)]")
 			icon_state = "loading"
 		if(GAME_STATE_FINISHED)
-			maptext = span_lobbytext("РАУНД ОКОНЧЕН")
+			maptext = span_lobbytext("回合结束")
 			icon_state = "loading"
 		else
 			var/mob/new_player/player = hud.mymob
-			maptext = span_lobbytext("ВЫ: [player.ready ? "" : "НЕ "]ГОТОВЫ")
+			maptext = span_lobbytext("你: [player.ready ? "" : "НЕ "]已准备")
 
 /atom/movable/screen/text/lobby/clickable/ready/Click()
 	. = ..()
@@ -154,7 +154,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/text/lobby)
 	icon_state = player.ready ? "ready" : "unready"
 
 /atom/movable/screen/text/lobby/clickable/observe
-	maptext = span_lobbytext("НАБЛЮДАТЬ")
+	maptext = span_lobbytext("观察")
 	icon_state = "observe"
 
 /atom/movable/screen/text/lobby/clickable/observe/Click()
@@ -163,7 +163,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/text/lobby)
 	player.try_to_observe()
 
 /atom/movable/screen/text/lobby/clickable/m_manifest
-	maptext = span_lobbytext("МАНИФЕСТ МОРПЕХОВ")
+	maptext = span_lobbytext("陆战队名单")
 	icon_state = "manifest"
 
 /atom/movable/screen/text/lobby/clickable/m_manifest/Click()
@@ -172,7 +172,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/text/lobby)
 	player.view_manifest()
 
 /atom/movable/screen/text/lobby/clickable/x_manifest
-	maptext = span_lobbytext("МАНИФЕСТ КСЕНОМОРФОВ")
+	maptext = span_lobbytext("异形名单")
 	icon_state = "manifest_xeno"
 
 /atom/movable/screen/text/lobby/clickable/x_manifest/update_text()
@@ -183,7 +183,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/text/lobby)
 		if(hive)
 			queue_len = LAZYLEN(hive.candidates)
 
-		maptext = span_lobbytext("МАНИФЕСТ КСЕНОМОРФОВ<br>ОЧЕРЕДЬ НА ЛЯРВУ: [queue_len]")
+		maptext = span_lobbytext("异形名单<br>幼虫队列: [queue_len]")
 
 /atom/movable/screen/text/lobby/clickable/x_manifest/Click()
 	. = ..()
@@ -191,7 +191,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/text/lobby)
 	player.view_xeno_manifest()
 
 /atom/movable/screen/text/lobby/clickable/background
-	maptext = span_lobbytext("ПРЕДЫСТОРИЯ")
+	maptext = span_lobbytext("背景故事")
 	icon_state = "background"
 
 /atom/movable/screen/text/lobby/clickable/background/Click()
@@ -200,7 +200,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/text/lobby)
 	player.view_lore()
 
 /atom/movable/screen/text/lobby/clickable/changelog
-	maptext = span_lobbytext("ЛОГ ИЗМЕНЕНИЙ")
+	maptext = span_lobbytext("更新日志")
 	icon_state = "changelog"
 
 /atom/movable/screen/text/lobby/clickable/changelog/Click()
@@ -208,7 +208,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/text/lobby)
 	hud.mymob.client?.changes()
 
 /atom/movable/screen/text/lobby/clickable/polls
-	maptext = span_lobbytext("POLLS")
+	maptext = span_lobbytext("投票")
 	icon_state = "poll"
 
 /atom/movable/screen/text/lobby/clickable/polls/update_text()
@@ -219,9 +219,9 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/text/lobby)
 	var/mob/new_player/player = hud.mymob
 	var/hasnewpolls = player.check_playerpolls()
 	if(isnull(hasnewpolls))
-		maptext = span_lobbytext("НЕТ БАЗЫ ДАННЫХ!")
+		maptext = span_lobbytext("没有数据库!")
 		return
-	maptext = span_lobbytext("ПОКАЗАТЬ ОПРОСЫ[hasnewpolls ? " (NEW!)" : ""]")
+	maptext = span_lobbytext("显示投票[hasnewpolls ? " (NEW!)" : ""]")
 
 /atom/movable/screen/text/lobby/clickable/polls/Click()
 	. = ..()

@@ -156,7 +156,7 @@ const SleeperControls = () => {
   const { hasOccupant, dialysis, stasis, occupant } = data;
   const dialysisDisabled = !hasOccupant || !occupant?.totalreagents;
   return (
-    <Section title="Console Controls">
+    <Section title="控制台控制">
       <Flex>
         <Flex.Item grow>
           <Button
@@ -187,12 +187,12 @@ const SleeperControls = () => {
             icon="user-slash"
             onClick={() => act('ejectify')}
           >
-            Eject Patient
+            弹出患者
           </Button>
         </Flex.Item>
       </Flex>
       {!!hasOccupant && dialysisDisabled && (
-        <NoticeBox info>Occupant has no chemicals to remove!</NoticeBox>
+        <NoticeBox info>乘员没有可清除的化学物质!</NoticeBox>
       )}
     </Section>
   );
@@ -203,10 +203,10 @@ const SleeperOccupant = () => {
   const occupant = data.occupant!;
   const status = STAT_LABELS[occupant.stat] || STAT_LABELS[0];
   return (
-    <Section title="Occupant">
+    <Section title="乘员">
       <LabeledList>
-        <LabeledList.Item label="Name">{occupant.name}</LabeledList.Item>
-        <LabeledList.Item label="Health">
+        <LabeledList.Item label="名称">{occupant.name}</LabeledList.Item>
+        <LabeledList.Item label="健康">
           <ProgressBar
             value={occupant.health / occupant.maxHealth}
             ranges={{
@@ -218,10 +218,10 @@ const SleeperOccupant = () => {
             {round(occupant.health, 0)}
           </ProgressBar>
         </LabeledList.Item>
-        <LabeledList.Item label="Status" color={status[0]}>
+        <LabeledList.Item label="状态" color={status[0]}>
           {status[1]}
         </LabeledList.Item>
-        <LabeledList.Item label="Temperature">
+        <LabeledList.Item label="温度">
           <ProgressBar
             value={occupant.bodyTemperature / 1000}
             color={TEMP_COLORS[occupant.temperatureSuitability + 3]}
@@ -232,7 +232,7 @@ const SleeperOccupant = () => {
         </LabeledList.Item>
         {!!occupant.hasBlood && (
           <>
-            <LabeledList.Item label="Blood Level">
+            <LabeledList.Item label="血液水平">
               <ProgressBar
                 value={occupant.bloodLevel / occupant.bloodMax}
                 ranges={{
@@ -245,7 +245,7 @@ const SleeperOccupant = () => {
               </ProgressBar>
             </LabeledList.Item>
             <LabeledList.Item
-              label="Pulse"
+              label="脉搏"
               color={occupant.pulse_bad ? 'bad' : 'good'}
             >
               {occupant.pulse} BPM
@@ -261,7 +261,7 @@ const SleeperDamage = () => {
   const { data } = useBackend<Data>();
   const occupant = data.occupant!;
   return (
-    <Section title="Occupant Damage">
+    <Section title="乘员损伤">
       <LabeledList>
         {DAMAGES.map(([label, key]) => (
           <LabeledList.Item key={key} label={label}>
@@ -279,7 +279,7 @@ const SleeperChemicals = () => {
   const { act, data } = useBackend<Data>();
   const { chemicals, maxchem, amounts } = data;
   return (
-    <Section title="Occupant Chemicals">
+    <Section title="乘员化学物质">
       <LabeledList>
         {chemicals.map((chem) => {
           let barColor = '';

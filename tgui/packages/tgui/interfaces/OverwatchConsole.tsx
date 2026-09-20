@@ -129,9 +129,9 @@ export const OverwatchConsole = () => {
 const LoginPanel = () => {
   const { act } = useBackend<Data>();
   return (
-    <Section title="Operator">
+    <Section title="操作员">
       <Button fluid icon="sign-in-alt" onClick={() => act('claim')}>
-        Claim Overwatch
+        接管督战
       </Button>
     </Section>
   );
@@ -144,7 +144,7 @@ const OperatorHeader = () => {
       title={`Operator: ${data.operator}`}
       buttons={
         <Button icon="sign-out-alt" color="bad" onClick={() => act('logout')}>
-          Stop Overwatch
+          停止督战
         </Button>
       }
     />
@@ -159,9 +159,9 @@ const PickSquadPanel = () => {
         <OperatorHeader />
       </Stack.Item>
       <Stack.Item>
-        <Section title="Select Squad">
+        <Section title="选择小队">
           {!data.squads?.length && (
-            <NoticeBox>No active squads available.</NoticeBox>
+            <NoticeBox>没有可用的小队.</NoticeBox>
           )}
           {data.squads?.map((squad) => (
             <Button
@@ -194,14 +194,14 @@ const SquadPanel = () => {
           buttons={
             isMilitary ? (
               <Button icon="bullhorn" onClick={() => act('message')}>
-                Message Squad
+                发送小队消息
               </Button>
             ) : undefined
           }
         >
           <LabeledList>
             <LabeledList.Item
-              label="Squad Leader"
+              label="小队长"
               buttons={
                 <>
                   {!!squad.leader_ref && (
@@ -214,11 +214,11 @@ const SquadPanel = () => {
                       {squad.leader}
                     </Button>
                   )}
-                  {!squad.leader && <Box color="bad">NONE</Box>}
+                  {!squad.leader && <Box color="bad">无</Box>}
                   {isMilitary && (
                     <>
                       {!!squad.leader && (
-                        <Button onClick={() => act('sl_message')}>MSG</Button>
+                        <Button onClick={() => act('sl_message')}>消息</Button>
                       )}
                       <Button onClick={() => act('change_lead')}>
                         {squad.leader
@@ -235,23 +235,23 @@ const SquadPanel = () => {
             {isMilitary && (
               <>
                 <LabeledList.Item
-                  label="Primary Objective"
+                  label="主要目标"
                   buttons={
-                    <Button onClick={() => act('set_primary')}>Set</Button>
+                    <Button onClick={() => act('set_primary')}>设置</Button>
                   }
                 >
                   {squad.primary_objective || (
-                    <Box color="bad">NONE!</Box>
+                    <Box color="bad">无!</Box>
                   )}
                 </LabeledList.Item>
                 <LabeledList.Item
-                  label="Secondary Objective"
+                  label="次要目标"
                   buttons={
-                    <Button onClick={() => act('set_secondary')}>Set</Button>
+                    <Button onClick={() => act('set_secondary')}>设置</Button>
                   }
                 >
                   {squad.secondary_objective || (
-                    <Box color="bad">NONE!</Box>
+                    <Box color="bad">无!</Box>
                   )}
                 </LabeledList.Item>
               </>
@@ -260,13 +260,13 @@ const SquadPanel = () => {
           {isMilitary && (
             <Box mt={1}>
               <Button fluid onClick={() => act('squad_transfer')}>
-                Transfer a marine to another squad
+                将一名陆战队员转移到其他小队
               </Button>
             </Box>
           )}
           <Box mt={1}>
             <Button fluid icon="desktop" onClick={() => act('monitor')}>
-              Squad Monitor
+              小队监控
             </Button>
           </Box>
         </Section>
@@ -288,7 +288,7 @@ const MainPanel = () => {
         <OperatorHeader />
       </Stack.Item>
       <Stack.Item>
-        <Section title="Squads">
+        <Section title="小队">
           {data.squads?.map((squad) => (
             <Section
               key={squad.id}
@@ -300,21 +300,21 @@ const MainPanel = () => {
                       act('message', { squad_id: squad.id })
                     }
                   >
-                    Message Squad
+                    发送小队消息
                   </Button>
                   <Button
                     onClick={() =>
                       act('monitor', { squad_id: squad.id })
                     }
                   >
-                    Monitor
+                    监控
                   </Button>
                 </>
               }
             >
               <LabeledList>
                 <LabeledList.Item
-                  label="Leader"
+                  label="队长"
                   buttons={
                     !!squad.leader_ref && (
                       <>
@@ -324,24 +324,24 @@ const MainPanel = () => {
                             act('jump', { target: squad.leader_ref })
                           }
                         >
-                          Cam
+                          摄像头
                         </Button>
                         <Button
                           onClick={() =>
                             act('sl_message', { squad_id: squad.id })
                           }
                         >
-                          MSG
+                          消息
                         </Button>
                       </>
                     )
                   }
                 >
-                  {squad.leader || <Box color="bad">NONE</Box>}
+                  {squad.leader || <Box color="bad">无</Box>}
                 </LabeledList.Item>
-                <LabeledList.Item label="Squad Overwatch">
+                <LabeledList.Item label="小队督战">
                   {squad.overwatch_officer || (
-                    <Box color="bad">NONE</Box>
+                    <Box color="bad">无</Box>
                   )}
                 </LabeledList.Item>
               </LabeledList>
@@ -379,9 +379,9 @@ const MonitorPanel = () => {
           <OperatorHeader />
         </Stack.Item>
         <Stack.Item>
-          <NoticeBox>No squad selected.</NoticeBox>
+          <NoticeBox>未选择小队.</NoticeBox>
           <Button fluid onClick={() => act('back')}>
-            Back
+            返回
           </Button>
         </Stack.Item>
       </Stack>
@@ -398,45 +398,45 @@ const MonitorPanel = () => {
           title={`${data.current_squad?.name || 'Squad'} Monitor`}
           buttons={
             <Button icon="arrow-left" onClick={() => act('back')}>
-              Back
+              返回
             </Button>
           }
         >
           <LabeledList>
-            <LabeledList.Item label="Squad Overwatch">
-              {monitor.overwatch_officer || <Box color="bad">NONE</Box>}
+            <LabeledList.Item label="小队督战">
+              {monitor.overwatch_officer || <Box color="bad">无</Box>}
             </LabeledList.Item>
-            <LabeledList.Item label="Squad Leader">
+            <LabeledList.Item label="小队长">
               {monitor.leader_count ? (
                 'Deployed'
               ) : (
-                <Box color="bad">No Squad Leader Deployed!</Box>
+                <Box color="bad">未部署小队长!</Box>
               )}
             </LabeledList.Item>
             <LabeledList.Item label={monitor.smart_label}>
               {monitor.smart_count} Deployed
             </LabeledList.Item>
-            <LabeledList.Item label="Corpsmen / Engineers">
+            <LabeledList.Item label="医护兵 / 工程师">
               {monitor.medic_count} / {monitor.engi_count} Deployed
             </LabeledList.Item>
-            <LabeledList.Item label="Marines">
+            <LabeledList.Item label="陆战队员">
               {monitor.marine_count} Deployed
             </LabeledList.Item>
-            <LabeledList.Item label="Total / Alive">
+            <LabeledList.Item label="总数 / 存活">
               {monitor.total_deployed} / {monitor.living_count}
             </LabeledList.Item>
-            <LabeledList.Item label="Primary">
-              {monitor.primary_objective || <Box color="bad">NONE!</Box>}
+            <LabeledList.Item label="主要">
+              {monitor.primary_objective || <Box color="bad">无!</Box>}
             </LabeledList.Item>
-            <LabeledList.Item label="Secondary">
-              {monitor.secondary_objective || <Box color="bad">NONE!</Box>}
+            <LabeledList.Item label="次要">
+              {monitor.secondary_objective || <Box color="bad">无!</Box>}
             </LabeledList.Item>
           </LabeledList>
         </Section>
       </Stack.Item>
       <Stack.Item>
         <Section
-          title="Marines"
+          title="陆战队员"
           buttons={
             <>
               <Button onClick={() => act('toggle_sort')}>
@@ -497,19 +497,19 @@ const FireSupportPanel = () => {
   return (
     <Stack vertical>
       <Stack.Item>
-        <Section title="Orbital Bombardment Control">
+        <Section title="轨道轰炸控制">
           <LabeledList>
-            <LabeledList.Item label="Current Cannon Status">
+            <LabeledList.Item label="当前火炮状态">
               <Box color={fs.ob_ready ? 'good' : 'bad'}>{fs.ob_status}</Box>
             </LabeledList.Item>
-            <LabeledList.Item label="Selected Target">
-              {fs.selected_target || <Box color="average">None</Box>}
+            <LabeledList.Item label="选定目标">
+              {fs.selected_target || <Box color="average">无</Box>}
             </LabeledList.Item>
           </LabeledList>
           <Box mt={1} mb={0.5} bold>
             {squadPrefix}Laser Targets:
           </Box>
-          {!fs.ob_lasers?.length && <Box color="average">None</Box>}
+          {!fs.ob_lasers?.length && <Box color="average">无</Box>}
           {fs.ob_lasers?.map((target) => (
             <Button
               key={target.ref}
@@ -520,10 +520,10 @@ const FireSupportPanel = () => {
             </Button>
           ))}
           <Box mt={1} mb={0.5} bold>
-            Beacon Targets:
+            信标目标:
           </Box>
           {!fs.beacons?.length && (
-            <Box color="average">None transmitting</Box>
+            <Box color="average">无信号传输</Box>
           )}
           {fs.beacons?.map((beacon) => (
             <Button
@@ -548,21 +548,21 @@ const FireSupportPanel = () => {
         </Section>
       </Stack.Item>
       <Stack.Item>
-        <Section title="Rail Gun Control">
+        <Section title="电磁炮控制">
           <LabeledList>
-            <LabeledList.Item label="Current Rail Gun Status">
+            <LabeledList.Item label="当前电磁炮状态">
               <Box color={fs.rail_ready ? 'good' : 'average'}>
                 {fs.rail_status}
               </Box>
             </LabeledList.Item>
-            <LabeledList.Item label="Selected Target">
-              {fs.selected_target || <Box color="average">None</Box>}
+            <LabeledList.Item label="选定目标">
+              {fs.selected_target || <Box color="average">无</Box>}
             </LabeledList.Item>
           </LabeledList>
           <Box mt={1} mb={0.5} bold>
             {squadPrefix}Laser Targets:
           </Box>
-          {!fs.rail_lasers?.length && <Box color="average">None</Box>}
+          {!fs.rail_lasers?.length && <Box color="average">无</Box>}
           {fs.rail_lasers?.map((target) => (
             <Button
               key={target.ref}

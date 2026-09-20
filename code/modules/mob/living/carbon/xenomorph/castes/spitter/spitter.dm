@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/spitter
 	caste_base_type = /datum/xeno_caste/spitter
 	name = "Spitter"
-	desc = "A gross, oozing alien of some kind."
+	desc = "某种恶心的、渗着黏液的外星生物."
 	icon = 'icons/Xeno/castes/spitter/basic.dmi'
 	icon_state = "Spitter Walking"
 	effects_icon = 'icons/Xeno/castes/spitter/effects.dmi'
@@ -20,7 +20,7 @@
 	caste_base_type = /datum/xeno_caste/spitter/globadier
 	icon = 'icons/Xeno/castes/spitter/globadier.dmi'
 	skins = null
-	desc = "A disformed spitter. Carries some form of acid on its back"
+	desc = "一只畸形的喷吐者.背上携带着某种酸液"
 
 /mob/living/carbon/xenomorph/spitter/primordial
 	upgrade = XENO_UPGRADE_PRIMO

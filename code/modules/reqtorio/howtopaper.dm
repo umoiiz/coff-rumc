@@ -1,5 +1,5 @@
 /obj/item/paper/factoryhowto
-	name = "Factory instructional pamphlet"
+	name = "工厂说明手册"
 	info = {"Greetings, future Nanotrasen affiliate! This paper intends to be your manual for your brand new purchased Reqtorio system. <br>
 	<br>
 	Step one is to aquire conveyors and a conveyor switch to turn them on. You can link these together by clicking on the conveyor stack with the switch,

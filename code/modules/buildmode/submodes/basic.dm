@@ -22,12 +22,12 @@
 				window = new /obj/structure/window/reinforced(get_turf(object))
 				window.setDir(BM.build_dir)
 			log_admin("Build Mode: [key_name(user)] built a window at [AREACOORD(object)]")
-			to_chat(user, span_notice("Success."))
+			to_chat(user, span_notice("成功."))
 			return
 
 		if(LAZYACCESS(modifiers, ALT_CLICK))
 			log_admin("Build Mode: [key_name(user)] built an airlock at [AREACOORD(object)]")
-			to_chat(user, span_notice("Success."))
+			to_chat(user, span_notice("成功."))
 			new /obj/machinery/door/airlock(get_turf(object))
 			return
 
@@ -39,7 +39,7 @@
 		else if(iswallturf(object))
 			T.PlaceOnTop(/turf/closed/wall/r_wall)
 		log_admin("Build Mode: [key_name(user)] built [T] at [AREACOORD(T)]")
-		to_chat(user, span_notice("Success."))
+		to_chat(user, span_notice("成功."))
 		return
 
 	if(isturf(object))
@@ -49,4 +49,4 @@
 		qdel(object)
 
 	log_admin("Build Mode: [key_name(user)] deleted [object] at [AREACOORD(object)]")
-	to_chat(user, span_notice("Success."))
+	to_chat(user, span_notice("成功."))

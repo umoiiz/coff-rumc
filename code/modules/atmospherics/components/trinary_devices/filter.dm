@@ -1,6 +1,6 @@
 /obj/machinery/atmospherics/components/trinary/filter
 	name = "gas filter"
-	desc = "Very useful for filtering gasses."
+	desc = "对过滤气体非常有用."
 	icon_state = "filter_off"
 	density = FALSE
 	can_unwrench = FALSE
@@ -42,7 +42,7 @@
 /obj/machinery/atmospherics/components/trinary/filter/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational())
-		to_chat(user, span_warning("You cannot unwrench [src], turn it off first!"))
+		to_chat(user, span_warning("你无法松开[src], 先把它关掉!"))
 		return FALSE
 
 // mapping

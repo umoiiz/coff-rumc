@@ -5,7 +5,7 @@
 	name = "Fire Charge"
 	action_icon_state = "fireslash"
 	action_icon = 'icons/Xeno/actions/pyrogen.dmi'
-	desc = "Charge up to 3 tiles, attacking any organic you come across. Extinguishes the target if they were set on fire, but deals extra damage and restores plasma depending on how many fire stacks they have."
+	desc = "冲锋最多3格, 攻击你遇到的任何有机体. 如果目标着火了则将其扑灭, 但会根据其身上的火焰层数造成额外伤害并恢复等离子体."
 	cooldown_duration = 12 SECONDS
 	ability_cost = 75
 	keybinding_signals = list(
@@ -92,7 +92,7 @@
 	name = "Fireball"
 	action_icon_state = "fireball"
 	action_icon = 'icons/Xeno/actions/pyrogen.dmi'
-	desc = "Release a fireball that explodes in a 3x3 area on contact."
+	desc = "释放一个火球, 接触时在3x3区域内爆炸."
 	ability_cost = 200
 	cooldown_duration = 15 SECONDS
 	keybinding_signals = list(
@@ -148,7 +148,7 @@
 	name = "Fire Storm"
 	action_icon_state = "whirlwind"
 	action_icon = 'icons/Xeno/actions/pyrogen.dmi'
-	desc = "Unleash a fiery tornado that goes in a straight line which will set fire around it randomly as it goes. Harms marines that directly touch it."
+	desc = "释放一个沿直线前进的火焰龙卷风, 在前进时随机点燃周围区域. 会伤害直接接触它的陆战队员."
 	target_flags = ABILITY_TURF_TARGET
 	ability_cost = 300
 	cooldown_duration = 12 SECONDS
@@ -199,7 +199,7 @@
 	name = "Inferno"
 	action_icon_state = "inferno"
 	action_icon = 'icons/Xeno/actions/pyrogen.dmi'
-	desc = "After a short cast time, release a burst of fire in a 5x5 radius. All tiles are set on fire. Humans are set on fire and burnt."
+	desc = "短暂施法后, 在5x5半径内释放一阵火焰爆发. 所有区域都会被点燃. 人类会被点燃并烧伤."
 	ability_cost = 125
 	cooldown_duration = 18 SECONDS
 	keybinding_signals = list(
@@ -245,7 +245,7 @@
 	name = "Infernal Trigger"
 	action_icon_state = "infernaltrigger"
 	action_icon = 'icons/Xeno/actions/pyrogen.dmi'
-	desc = "Causes a chosen target's flame to burst outwardly. The severity of the damage is based on how badly they were on fire. In addition, the area adjacent to them is set on fire."
+	desc = "使选定目标的火焰向外爆发. 伤害的严重程度取决于其着火的程度. 此外, 其相邻区域也会被点燃."
 	target_flags = ABILITY_MOB_TARGET
 	ability_cost = 100
 	cooldown_duration = 6 SECONDS
@@ -259,20 +259,20 @@
 		return FALSE
 	if(!ishuman(A))
 		if(!silent)
-			xeno_owner.balloon_alert(owner, "not a human")
+			xeno_owner.balloon_alert(owner, "不是人类")
 		return FALSE
 	var/mob/living/carbon/human/human_target = A
 	if(human_target.stat == DEAD)
 		if(!silent)
-			xeno_owner.balloon_alert(owner, "already dead")
+			xeno_owner.balloon_alert(owner, "已经死亡")
 		return FALSE
 	if(!human_target.has_status_effect(STATUS_EFFECT_MELTING_FIRE))
 		if(!silent)
-			xeno_owner.balloon_alert(owner, "not on fire")
+			xeno_owner.balloon_alert(owner, "未着火")
 		return FALSE
 	if(!line_of_sight(xeno_owner, human_target, 9))
 		if(!silent)
-			xeno_owner.balloon_alert(owner, "can't directly see")
+			xeno_owner.balloon_alert(owner, "无法直接看见")
 		return FALSE
 
 /datum/action/ability/activable/xeno/infernal_trigger/use_ability(atom/target)
@@ -307,7 +307,7 @@
 // Firestorm's Firenado
 /obj/effect/xenomorph/firenado
 	name = "Plasma Whirlwind"
-	desc = "A glowing whirlwind of... cold plasma? Seems to \"burn\" "
+	desc = "一个...冷等离子体的发光旋风? 似乎会\"灼烧\""
 	icon = 'icons/effects/64x64.dmi'
 	icon_state = "whirlwind"
 	anchored = TRUE

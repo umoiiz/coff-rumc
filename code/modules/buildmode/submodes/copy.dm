@@ -18,12 +18,12 @@
 
 	if(!LAZYACCESS(modifiers, LEFT_CLICK))
 		if(ismovable(object)) // No copying turfs for now.
-			to_chat(user, span_notice("[object] set as template."))
+			to_chat(user, span_notice("[object]已设为模板."))
 			stored = object
 		return
 
 	if(!stored)
-		to_chat(user, span_warning("Nothing set as a copy target."))
+		to_chat(user, span_warning("未设置复制目标."))
 		return
 
 	var/turf/T = get_turf(object)

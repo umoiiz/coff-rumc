@@ -1,6 +1,6 @@
 /obj/machinery/power/generator
 	name = "thermoelectric generator"
-	desc = "It's a high efficiency thermoelectric generator."
+	desc = "这是一台高效热电发电机."
 	icon_state = "teg"
 	density = TRUE
 	anchored = FALSE
@@ -74,7 +74,7 @@
 /obj/machinery/power/generator/wrench_act(mob/living/user, obj/item/I)
 	. = ..()
 	anchored = !anchored
-	to_chat(user, span_notice("You [anchored ? "secure" : "unsecure"] the bolts holding [src] to the floor."))
+	to_chat(user, span_notice("你[anchored ? "secure" : "unsecure"]了将[src]固定在地板上的螺栓."))
 	use_power = anchored
 	reconnect()
 

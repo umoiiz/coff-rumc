@@ -1,6 +1,6 @@
 /obj/structure/fence
-	name = "fence"
-	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	name = "围栏"
+	desc = "一张拉在两根柱子之间的大型金属网.旨在作为一种廉价的区域分隔方式,同时允许人透过它看到另一边."
 	icon = 'icons/obj/smooth_objects/fence.dmi'
 	base_icon_state = "fence"
 	icon_state = "fence-icon"
@@ -28,8 +28,8 @@
 
 	if(istype(I, /obj/item/stack/rods) && obj_integrity < max_integrity)
 		if(user.skills.getRating(SKILL_CONSTRUCTION) < SKILL_CONSTRUCTION_PLASTEEL)
-			user.visible_message(span_notice("[user] fumbles around figuring out how to fix [src]'s wiring."),
-			span_notice("You fumble around figuring out how to fix [src]'s wiring."))
+			user.visible_message(span_notice("[user]笨手笨脚地摸索着如何修复[src]的线路."),
+			span_notice("你笨手笨脚地摸索着如何修复[src]的线路."))
 			var/fumbling_time = 10 SECONDS - 2 SECONDS * user.skills.getRating(SKILL_CONSTRUCTION)
 			if(!do_after(user, fumbling_time, NONE, src, BUSY_ICON_UNSKILLED))
 				return
@@ -40,18 +40,18 @@
 			amount_needed = 4
 
 		if(R.amount < amount_needed)
-			to_chat(user, span_warning("You need more metal rods to repair [src]."))
+			to_chat(user, span_warning("你需要更多金属杆来修复[src]."))
 			return
 
-		user.visible_message(span_notice("[user] starts repairing [src] with [R]."),
-		span_notice("You start repairing [src] with [R]"))
+		user.visible_message(span_notice("[user]开始用[R]修复[src]."),
+		span_notice("你开始用[R]修复[src]"))
 		playsound(loc, 'sound/items/wirecutter.ogg', 25, 1)
 
 		if(!do_after(user, 30, NONE, src, BUSY_ICON_FRIENDLY))
 			return
 
 		if(R.amount < amount_needed)
-			to_chat(user, span_warning("You need more metal rods to repair [src]."))
+			to_chat(user, span_warning("你需要更多金属杆来修复[src]."))
 			return
 
 		R.use(amount_needed)
@@ -60,8 +60,8 @@
 		density = TRUE
 		icon = 'icons/obj/smooth_objects/fence.dmi'
 		playsound(loc, 'sound/items/wirecutter.ogg', 25, 1)
-		user.visible_message(span_notice("[user] repairs [src] with [R]."),
-		span_notice("You repair [src] with [R]"))
+		user.visible_message(span_notice("[user]用[R]修复了[src]."),
+		span_notice("你用[R]修复了[src]"))
 
 /obj/structure/fence/grab_interact(obj/item/grab/grab, mob/user, base_damage = BASE_OBJ_SLAM_DAMAGE, is_sharp = FALSE)
 	if(!isliving(grab.grabbed_thing))
@@ -74,17 +74,17 @@
 	switch(state)
 		if(GRAB_PASSIVE)
 			damage += BASE_OBJ_SLAM_DAMAGE
-			grabbed_mob.visible_message(span_warning("[user] slams [grabbed_mob] against \the [src]!"))
+			grabbed_mob.visible_message(span_warning("[user]将[grabbed_mob]猛撞在\the [src]上!"))
 			log_combat(user, grabbed_mob, "slammed", "", "against \the [src]")
 		if(GRAB_AGGRESSIVE)
 			damage += BASE_OBJ_SLAM_DAMAGE * 1.5
-			grabbed_mob.visible_message(span_danger("[user] bashes [grabbed_mob] against \the [src]!"))
+			grabbed_mob.visible_message(span_danger("[user]将[grabbed_mob]猛击在\the [src]上!"))
 			log_combat(user, grabbed_mob, "bashed", "", "against \the [src]")
 			if(prob(50))
 				grabbed_mob.Paralyze(2 SECONDS)
 		if(GRAB_NECK)
 			damage += BASE_OBJ_SLAM_DAMAGE * 2
-			grabbed_mob.visible_message(span_danger("<big>[user] crushes [grabbed_mob] against \the [src]!</big>"))
+			grabbed_mob.visible_message(span_danger("<big>[user]将[grabbed_mob]碾碎在\the [src]上!</big>"))
 			log_combat(user, grabbed_mob, "crushed", "", "against \the [src]")
 			grabbed_mob.Paralyze(2 SECONDS)
 	grabbed_mob.apply_damage(damage, blocked = MELEE, updating_health = TRUE)
@@ -95,14 +95,14 @@
 	. = ..()
 	if(cut)
 		return
-	user.visible_message(span_notice("[user] starts cutting through [src] with [I]."),
-	span_notice("You start cutting through [src] with [I]"))
+	user.visible_message(span_notice("[user]开始用[I]切开[src]."),
+	span_notice("你开始用[I]切开[src]"))
 	playsound(loc, 'sound/items/wirecutter.ogg', 25, 1)
 	if(!do_after(user, 2 SECONDS, NONE, src, BUSY_ICON_BUILD))
 		return
 	playsound(loc, 'sound/items/wirecutter.ogg', 25, 1)
-	user.visible_message(span_notice("[user] cuts through [src] with [I]."),
-	span_notice("You cut through [src] with [I]"))
+	user.visible_message(span_notice("[user]用[I]切开了[src]."),
+	span_notice("你用[I]切开了[src]"))
 	deconstruct(TRUE)
 
 /obj/structure/fence/deconstruct(disassembled = TRUE, mob/living/blame_mob)

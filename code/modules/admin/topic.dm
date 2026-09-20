@@ -29,7 +29,7 @@
 		var/ahelp_ref = href_list["ahelp"]
 		var/datum/admin_help/AH = locate(ahelp_ref)
 		if(!AH)
-			to_chat(usr, span_warning("Ticket [ahelp_ref] has been deleted!"))
+			to_chat(usr, span_warning("工单[ahelp_ref]已被删除!"))
 			return
 
 		AH.Action(href_list["ahelp_action"])
@@ -64,10 +64,10 @@
 					status = "Dead"
 			health = "Oxy: [L.get_oxy_loss()]  Tox: [L.get_tox_loss()]  Fire: [L.get_fire_loss()]  Brute: [L.get_brute_loss()]  Clone: [L.get_clone_loss()]  Brain: [L.get_brain_loss()]  Stamina: [L.get_stamina_loss()]"
 
-		to_chat(usr, {"<span class='notice'><hr><b>Info about [M.real_name]:</b>
-Type: [M.type] | Gender: [M.gender] |[job ? " Job: [job.title]" : ""]
-Location: [AREACOORD(M.loc)]
-Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
+		to_chat(usr, {"<span class='notice'><hr><b>关于[M.real_name]的信息:</b>
+类型: [M.type] | 性别: [M.gender] |[job ? " Job: [job.title]" : ""]
+位置: [AREACOORD(M.loc)]
+状态: [status ? status : "Unknown"] | 伤害: [health ? health : "None"]
 [span_admin("<span class='message'>[ADMIN_FULLMONTY(M)]")]</span><hr></span>"})
 
 
@@ -101,7 +101,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 			return
 
 		if(!CONFIG_GET(string/centcom_ban_db))
-			to_chat(usr, span_warning("Centcom Galactic Ban DB is disabled!"))
+			to_chat(usr, span_warning("中央指挥部银河封禁数据库已禁用!"))
 			return
 
 		var/ckey = href_list["centcomlookup"]
@@ -264,28 +264,28 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 			if("gethumans")
 				log_admin("[key_name(usr)] mass-teleported all humans.")
 				message_admins("[ADMIN_TPMONTY(usr)] mass-teleported all humans.")
-				to_chat(GLOB.alive_human_list, span_userdanger("[key_name_admin(usr, FALSE)] mass-teleported all humans."))
+				to_chat(GLOB.alive_human_list, span_userdanger("[key_name_admin(usr, FALSE)]已集体传送所有人类."))
 				for(var/i in GLOB.alive_human_list)
 					var/mob/M = i
 					M.forceMove(T)
 			if("getxenos")
 				log_admin("[key_name(usr)] mass-teleported all Xenos.")
 				message_admins("[ADMIN_TPMONTY(usr)] mass-teleported all Xenos.")
-				to_chat(GLOB.xeno_mob_list, span_userdanger("[key_name_admin(usr, FALSE)] mass-teleported all xenos."))
+				to_chat(GLOB.xeno_mob_list, span_userdanger("[key_name_admin(usr, FALSE)]已集体传送所有异形."))
 				for(var/i in GLOB.xeno_mob_list)
 					var/mob/M = i
 					M.forceMove(T)
 			if("getall")
 				log_admin("[key_name(usr)] mass-teleported everyone.")
 				message_admins("[ADMIN_TPMONTY(usr)] mass-teleported everyone.")
-				to_chat(GLOB.mob_living_list, span_userdanger("[key_name_admin(usr, FALSE)] mass-teleported everyone."))
+				to_chat(GLOB.mob_living_list, span_userdanger("[key_name_admin(usr, FALSE)]已集体传送所有人."))
 				for(var/i in GLOB.mob_living_list)
 					var/mob/M = i
 					M.forceMove(T)
 			if("rejuvall")
 				log_admin("[key_name(usr)] mass-rejuvenated cliented mobs.")
 				message_admins("[ADMIN_TPMONTY(usr)] mass-rejuvenated cliented mobs.")
-				to_chat(GLOB.mob_living_list, span_userdanger("[key_name_admin(usr, FALSE)] mass-rejuvenated everyone."))
+				to_chat(GLOB.mob_living_list, span_userdanger("[key_name_admin(usr, FALSE)]已集体恢复所有人."))
 				for(var/i in GLOB.mob_living_list)
 					var/mob/living/L = i
 					if(!L.client)
@@ -301,7 +301,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		var/datum/round_event/event = E.run_event()
 		if(event.announce_when > 0)
 			event.processing = FALSE
-			var/prompt = tgui_alert(usr, "Would you like to alert the crew?", "Alert", list("Yes", "No"), 0)
+			var/prompt = tgui_alert(usr, "是否要通知全体船员?", "通知", list("Yes", "No"), 0)
 			if(!prompt)
 				event.kill()
 				return
@@ -323,12 +323,12 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		if(ismob(M))
 			if(!check_if_greater_rights_than(M.client))
 				return
-			if(tgui_alert(usr, "Are you sure you want to kick [key_name(M)]?", "Warning", list("Yes", "No"), 0) != "Yes")
+			if(tgui_alert(usr, "你确定要踢出[key_name(M)]吗?", "警告", list("Yes", "No"), 0) != "Yes")
 				return
 			if(!M?.client)
-				to_chat(usr, span_warning("Error: [M] no longer has a client!"))
+				to_chat(usr, span_warning("错误: [M]不再拥有客户端!"))
 				return
-			to_chat_immediate(M, span_danger("You have been kicked from the server by [usr.client.holder.fakekey ? "an Administrator" : "[usr.client.key]"]."))
+			to_chat_immediate(M, span_danger("你已被[usr.client.holder.fakekey ? "an Administrator" : "[usr.client.key]"]踢出服务器."))
 			qdel(M.client)
 
 			log_admin_private("[key_name(usr)] kicked [key_name(M)].")
@@ -370,14 +370,14 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 			return
 
 		var/delmob
-		var/delmob_prompt = tgui_alert(usr, "Delete old mob?", "Message", list("Yes", "No"), 0)
+		var/delmob_prompt = tgui_alert(usr, "删除旧生物?", "消息", list("Yes", "No"), 0)
 		if(!delmob_prompt)
 			return
 		if(delmob_prompt == "Yes")
 			delmob = TRUE
 
 		var/turf/location
-		var/loc_prompt = tgui_alert(usr, "Teleport to your location?", "Message", list("Yes", "No"), 0)
+		var/loc_prompt = tgui_alert(usr, "传送到你的位置?", "消息", list("Yes", "No"), 0)
 		if(!loc_prompt)
 			return
 		if(loc_prompt == "Yes")
@@ -503,7 +503,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		if(!istype(L))
 			return
 
-		if(tgui_alert(usr, "Are you sure you want to rejuvenate [L]?", "Rejuvenate", list("Yes", "No"), 0) != "Yes")
+		if(tgui_alert(usr, "你确定要恢复[L]吗?", "恢复", list("Yes", "No"), 0) != "Yes")
 			return
 
 		L.revive(TRUE)
@@ -552,12 +552,12 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 			H.update_inv_l_hand()
 		else
 			if(isobserver(M))
-				if(tgui_alert(usr, "Are you sure you want to spawn the cookie at observer location [AREACOORD(M.loc)]?", "Confirmation", list("Yes", "No"), 0) != "Yes")
+				if(tgui_alert(usr, "你确定要在观察者位置[AREACOORD(M.loc)]生成饼干吗?", "确认", list("Yes", "No"), 0) != "Yes")
 					return
 			var/turf/T = get_turf(M)
 			new /obj/item/reagent_containers/food/snacks/cookie(T)
 
-		to_chat(M, span_boldnotice("Your prayers have been answered!! You received the best cookie!"))
+		to_chat(M, span_boldnotice("你的祈祷得到了回应!! 你收到了最好的饼干!"))
 
 		log_admin("[key_name(M)] got their cookie, spawned by [key_name(usr)]")
 		message_admins("[ADMIN_TPMONTY(M)] got their cookie, spawned by [ADMIN_TPMONTY(usr)].")
@@ -574,19 +574,19 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 			H.update_inv_r_hand()
 			H.update_inv_l_hand()
 		else if(isobserver(M))
-			if(tgui_alert(usr, "Are you sure you want to spawn the fortune cookie at observer location [AREACOORD(M.loc)]?", "Confirmation", list("Yes", "No"), 0) != "Yes")
+			if(tgui_alert(usr, "你确定要在观察者位置[AREACOORD(M.loc)]生成幸运饼干吗?", "确认", list("Yes", "No"), 0) != "Yes")
 				return
 			var/turf/T = get_turf(M)
 			new /obj/item/reagent_containers/food/snacks/fortunecookie(T)
 		else if(isxeno(M))
-			if(tgui_alert(usr, "Are you sure you want to tell the Xeno a Xeno tip?", "Confirmation", list("Yes", "No"), 0) != "Yes")
+			if(tgui_alert(usr, "你确定要告诉异形一条异形提示吗?", "确认", list("Yes", "No"), 0) != "Yes")
 				return
 			to_chat(M, span_tip("[pick(SSstrings.get_list_from_file("tips/xeno"))]"))
 
 		if(isxeno(M))
-			to_chat(M, span_boldnotice("Your prayers have been answered!! Hope the advice helped."))
+			to_chat(M, span_boldnotice("你的祈祷得到了回应!! 希望这条建议有所帮助."))
 		else
-			to_chat(M, span_boldnotice("Your prayers have been answered!! You received the best fortune cookie!"))
+			to_chat(M, span_boldnotice("你的祈祷得到了回应!! 你收到了最好的幸运饼干!"))
 
 		log_admin("[key_name(M)] got their fortune cookie, spawned by [key_name(usr)]")
 		message_admins("[ADMIN_TPMONTY(M)] got their fortune cookie, spawned by [ADMIN_TPMONTY(usr)].")
@@ -595,14 +595,14 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		if(!check_rights(R_ADMIN))
 			return
 
-		var/message = tgui_input_text(owner, "As well as a popup, they'll also be sent a message to reply to. What do you want that to be?", "Message", timeout = 0)
+		var/message = tgui_input_text(owner, "除了弹窗之外,还会向他们发送一条消息以供回复. 你希望这条消息是什么?", "消息", timeout = 0)
 		if(!message)
-			to_chat(owner, span_notice("Popup cancelled."))
+			to_chat(owner, span_notice("弹窗已取消."))
 			return
 
 		var/client/target = locate(href_list["adminpopup"])
 		if(!istype(target))
-			to_chat(owner, span_notice("The mob doesn't exist anymore!"))
+			to_chat(owner, span_notice("该生物已不存在!"))
 			return
 
 		give_admin_popup(target, owner, message)
@@ -613,7 +613,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 
 		var/mob/living/carbon/human/H = locate(href_list["adminsmite"]) in GLOB.mob_list
 		if(!H || !istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "这只能用于/mob/living/carbon/human类型的实例")
 			return
 
 		SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/aghost)
@@ -623,14 +623,14 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 			return
 
 		if(!SSticker.HasRoundStarted())
-			to_chat(usr, "The game hasn't started yet!")
+			to_chat(usr, "游戏尚未开始!")
 			return
 
 		var/mob/M = locate(href_list["traitor"])
 		if(!ismob(M))
 			var/datum/mind/D = M
 			if(!istype(D))
-				to_chat(usr, "This can only be used on instances of type /mob and /mind", confidential = TRUE)
+				to_chat(usr, "这只能用于/mob和/mind类型的实例", confidential = TRUE)
 				return
 			else
 				D.traitor_panel()
@@ -641,11 +641,11 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		if(!istype(H))
 			return
 
-		var/input = tgui_input_text(usr, "Please enter a message to reply to [key_name(H)].", "Outgoing message from TGMC", timeout = 0)
+		var/input = tgui_input_text(usr, "请输入要回复给[key_name(H)]的消息.", "来自TGMC的传出消息", timeout = 0)
 		if(!input)
 			return
 
-		to_chat(H, span_boldnotice("Please stand by for a message from TGMC:<br/>[input]"))
+		to_chat(H, span_boldnotice("请等待来自TGMC的消息:<br/>[input]"))
 		var/sound/S = sound('sound/effects/sos-morse-code.ogg', channel = CHANNEL_ADMIN)
 		SEND_SOUND(H, S)
 
@@ -659,7 +659,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 			return
 
 		SSticker.mode.distress_cancelled = TRUE
-		priority_announce("Сигнал бедствия заблокирован. Пусковые трубы перекалибруются.", "Сигнал Бедствия", sound = 'sound/AI/distressbeaconlocked.ogg')
+		priority_announce("求救信号已封锁. 发射管正在重新校准.", "求救信号", sound = 'sound/AI/distressbeaconlocked.ogg')
 		log_admin("[key_name(usr)] has denied a distress beacon, requested by [key_name(M)]")
 		message_admins("[ADMIN_TPMONTY(usr)] has denied a distress beacon, requested by [ADMIN_TPMONTY(M)]")
 
@@ -676,7 +676,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		for(var/datum/emergency_call/E in SSticker.mode.all_calls) //Loop through all potential candidates
 			valid_calls.Add(E)
 
-		var/chosen_call = tgui_input_list(usr, "Select a distress to send", "Emergency Response", valid_calls, "Random", 0)
+		var/chosen_call = tgui_input_list(usr, "选择要发送的求救信号", "紧急响应", valid_calls, "Random", 0)
 
 		if(chosen_call == "Random")
 			SSticker.mode.activate_distress()
@@ -694,7 +694,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		if(!ismob(M))
 			return
 
-		if(tgui_alert(usr, "Do you want to send [key_name(M)] to the Thunderdome?", "Confirmation", list("Yes", "No"), 0) != "Yes")
+		if(tgui_alert(usr, "你想将[key_name(M)]送往雷霆穹顶吗?", "确认", list("Yes", "No"), 0) != "Yes")
 			return
 
 		if(ishuman(M))
@@ -706,7 +706,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 
 		M.forceMove(pick(GLOB.tdome1))
 
-		to_chat(M, span_boldnotice("You have been sent to the Thunderdome!"))
+		to_chat(M, span_boldnotice("你已被送往雷霆穹顶!"))
 
 		log_admin("[key_name(usr)] has sent [key_name(M)] to the thunderdome.")
 		message_admins("[ADMIN_TPMONTY(usr)] has sent [ADMIN_TPMONTY(M)] to the thunderdome.")
@@ -720,7 +720,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		if(!istype(L) || isobserver(L))
 			return
 
-		if(tgui_alert("Are you sure you want to gib [L]?", "Warning", list("Yes", "No"), 0) != "Yes")
+		if(tgui_alert("Are you sure you want to gib [L]?", "警告", list("Yes", "No"), 0) != "Yes")
 			return
 
 		log_admin("[key_name(usr)] has gibbed [key_name(L)].")
@@ -735,10 +735,10 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		var/mob/M = locate(href_list["lobby"])
 
 		if(!M.client)
-			to_chat(usr, span_warning("[M] doesn't seem to have an active client."))
+			to_chat(usr, span_warning("[M]似乎没有活跃的客户端."))
 			return
 
-		if(tgui_alert(usr, "Send [key_name(M)] back to Lobby?", "Send to Lobby", list("Yes", "No"), 0) != "Yes")
+		if(tgui_alert(usr, "将[key_name(M)]送回大厅?", "送回大厅", list("Yes", "No"), 0) != "Yes")
 			return
 
 		log_admin("[key_name(usr)] has sent [key_name(M)] back to the lobby.")
@@ -761,18 +761,18 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		if(!istype(L))
 			return
 
-		if(tgui_alert(usr, "Cryo [key_name(L)]?", "Cryosleep", list("Yes", "No"), 0) != "Yes")
+		if(tgui_alert(usr, "冷冻[key_name(L)]?", "冷冻睡眠", list("Yes", "No"), 0) != "Yes")
 			return
 
 		var/client/C = L.client
-		if(C && tgui_alert(usr, "They have a client attached, are you sure?", "Cryosleep", list("Yes", "No"), 0) != "Yes")
+		if(C && tgui_alert(usr, "他们已连接客户端, 你确定吗?", "低温休眠", list("Yes", "No"), 0) != "Yes")
 			return
 
 		var/old_name = L.real_name
 		L.despawn()
 
 		var/lobby
-		if(C?.mob?.mind && tgui_alert(usr, "Do you also want to send them to the lobby?", "Cryosleep", list("Yes", "No"), 0) == "Yes")
+		if(C?.mob?.mind && tgui_alert(usr, "你也想把他们送到大厅吗?", "低温休眠", list("Yes", "No"), 0) == "Yes")
 			lobby = TRUE
 			var/mob/new_player/NP = new()
 			var/mob/N = C.mob
@@ -822,26 +822,26 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 
 		var/atom/target
 
-		switch(tgui_input_list(usr, "Where do you want to send it to?", "Send Mob", list("Area", "Mob", "Key", "Coords"), timeout = 0))
+		switch(tgui_input_list(usr, "你想把它送到哪里?", "发送生物", list("Area", "Mob", "Key", "Coords"), timeout = 0))
 			if("Area")
-				var/area/A = tgui_input_list(usr, "Pick an area.", "Pick an area", get_sorted_areas(), timeout = 0)
+				var/area/A = tgui_input_list(usr, "选择一个区域.", "选择一个区域", get_sorted_areas(), timeout = 0)
 				if(!A || !M)
 					return
 				target = pick(get_area_turfs(A))
 			if("Mob")
-				var/mob/N = tgui_input_list(usr, "Pick a mob.", "Pick a mob", sortList(GLOB.mob_list), timeout = 0)
+				var/mob/N = tgui_input_list(usr, "选择一个生物.", "选择一个生物", sortList(GLOB.mob_list), timeout = 0)
 				if(!N || !M)
 					return
 				target = N.loc
 			if("Key")
-				var/client/C = tgui_input_list(usr, "Pick a key.", "Pick a key", sortKey(GLOB.clients), timeout = 0)
+				var/client/C = tgui_input_list(usr, "选择一个按键.", "选择一个按键", sortKey(GLOB.clients), timeout = 0)
 				if(!C || !M)
 					return
 				target = C.mob.loc
 			if("Coords")
-				var/X = tgui_input_number(usr, "Select coordinate X", "Coordinate X", 1, 255, 1, 0)
-				var/Y = tgui_input_number(usr, "Select coordinate Y", "Coordinate Y", 1, 255, 1, 0)
-				var/Z = tgui_input_number(usr, "Select coordinate Z", "Coordinate Z", 1, 10, 1, 0)
+				var/X = tgui_input_number(usr, "选择 X 坐标", "X 坐标", 1, 255, 1, 0)
+				var/Y = tgui_input_number(usr, "选择 Y 坐标", "Y 坐标", 1, 255, 1, 0)
+				var/Z = tgui_input_number(usr, "选择 Z 坐标", "Z 坐标", 1, 10, 1, 0)
 				if(isnull(X) || isnull(Y) || isnull(Z) || !M)
 					return
 				target = locate(X, Y, Z)
@@ -881,7 +881,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 			return
 
 		if(F.marked)
-			switch(tgui_alert(usr, "This fax has already been marked by [F.marked], do you want to replace them?", "Warning", list("Replace", "Unmark"), 0))
+			switch(tgui_alert(usr, "这份传真已被 [F.marked] 标记, 你想替换他们吗?", "警告", list("Replace", "Unmark"), 0))
 				if("Replace")
 					F.marked = usr.client.key
 					message_staff("[key_name_admin(usr)] has re-marked a fax from [key_name_admin(F.sender)].")
@@ -908,7 +908,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 				return
 
 			if(F.marked && F.marked != usr.client.key)
-				to_chat(usr, span_warning("This fax has already been marked by [F.marked], please unmark it to be able to proceed."))
+				to_chat(usr, span_warning("这份传真已被 [F.marked] 标记, 请取消标记以继续."))
 				return
 			else if(!F.marked)
 				F.marked = usr.client.key
@@ -996,7 +996,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		browser.set_content(fax_message)
 		browser.open()
 
-		if(tgui_alert(usr, "Send this fax?", "Confirmation", list("Yes", "No"), 0) != "Yes")
+		if(tgui_alert(usr, "发送这份传真?", "确认", list("Yes", "No"), 0) != "Yes")
 			browser.close()
 			return
 
@@ -1056,7 +1056,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 			message_admins("[ADMIN_TPMONTY(usr)] set the mode for next round to: [new_mode].")
 		else
 			GLOB.master_mode = new_mode
-			to_chat(world, span_boldnotice("The mode is now: [GLOB.master_mode]."))
+			to_chat(world, span_boldnotice("当前模式为: [GLOB.master_mode]."))
 			world.save_mode(GLOB.master_mode)
 			log_admin("[key_name(usr)] set the mode to: [GLOB.master_mode].")
 			message_admins("[ADMIN_TPMONTY(usr)] set the mode to: [GLOB.master_mode].")
@@ -1073,14 +1073,14 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		switch(href_list["evac_authority"])
 			if("init_evac")
 				if(!SSevacuation.initiate_evacuation(TRUE))
-					to_chat(usr, span_warning("You are unable to initiate an evacuation right now!"))
+					to_chat(usr, span_warning("你现在无法启动撤离!"))
 					return
 				log_admin("[key_name(usr)] called an evacuation.")
 				message_admins("[ADMIN_TPMONTY(usr)] called an evacuation.")
 
 			if("cancel_evac")
 				if(!SSevacuation.cancel_evacuation())
-					to_chat(usr, span_warning("You are unable to cancel an evacuation right now!"))
+					to_chat(usr, span_warning("你现在无法取消撤离!"))
 					return
 
 				log_admin("[key_name(usr)] canceled an evacuation.")
@@ -1093,7 +1093,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 
 			if("force_evac")
 				if(!SSevacuation.begin_launch())
-					to_chat(usr, span_warning("You are unable to launch the pods directly right now!"))
+					to_chat(usr, span_warning("你现在无法直接发射逃生舱!"))
 					return
 
 				log_admin("[key_name(usr)] force-launched the escape pods.")
@@ -1101,7 +1101,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 
 			if("init_dest")
 				if(!SSevacuation.enable_self_destruct(TRUE))
-					to_chat(usr, span_warning("You are unable to authorize the self-destruct right now!"))
+					to_chat(usr, span_warning("你现在无法授权自毁!"))
 					return
 
 				log_admin("[key_name(usr)] force-enabled the self-destruct system.")
@@ -1109,18 +1109,18 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 
 			if("cancel_dest")
 				if(!SSevacuation.cancel_self_destruct(TRUE))
-					to_chat(usr, span_warning("You are unable to cancel the self-destruct right now!"))
+					to_chat(usr, span_warning("你现在无法取消自毁!"))
 					return
 
 				log_admin("[key_name(usr)] canceled the self-destruct system.")
 				message_admins("[ADMIN_TPMONTY(usr)] canceled the self-destruct system.")
 
 			if("use_dest")
-				if(tgui_alert(usr, "Are you sure you want to destroy the [SSmapping.configs[SHIP_MAP].map_name] right now?", "Self-Destruct", list("Yes", "No"), 0) != "Yes")
+				if(tgui_alert(usr, "你确定现在要摧毁 [SSmapping.configs[SHIP_MAP].map_name] 吗?", "自毁", list("Yes", "No"), 0) != "Yes")
 					return
 
 				if(!SSevacuation.initiate_self_destruct(TRUE))
-					to_chat(usr, span_warning("You are unable to trigger the self-destruct right now!"))
+					to_chat(usr, span_warning("你现在无法触发自毁!"))
 					return
 
 				log_admin("[key_name(usr)] forced the self-destruct system, destroying the [SSmapping.configs[SHIP_MAP].map_name].")
@@ -1138,7 +1138,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		var/mob/living/carbon/victim = locate(href_list["victim"])
 		if(!istype(bracer))
 			return
-		if(tgui_alert(usr, "Are you sure you want to cancel this pred SD?", "Cancel?", list("Yes", "No"), 0) != "Yes")
+		if(tgui_alert(usr, "你确定要取消这次掠食者自毁吗?", "取消?", list("Yes", "No"), 0) != "Yes")
 			return
 		bracer.exploding = FALSE
 		message_admins("[src.owner] has cancelled the predator self-destruct sequence [victim ? "of [victim] ([victim.key])":""].")
@@ -1166,10 +1166,10 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 			paths += path
 
 		if(!paths)
-			to_chat(usr, span_warning("The path list you sent is empty."))
+			to_chat(usr, span_warning("你发送的路径列表为空."))
 			return
 		if(length(paths) > 5)
-			to_chat(usr, span_warning("Select fewer object types, (max 5)."))
+			to_chat(usr, span_warning("选择更少的对象类型, (最多 5 个)."))
 			return
 
 		var/list/offset = splittext(href_list["offset"],",")
@@ -1192,7 +1192,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		switch(where)
 			if("inhand")
 				if(!iscarbon(usr))
-					to_chat(usr, "Can only spawn in hand when you're a carbon mob.")
+					to_chat(usr, "只有当你是一个碳基生物时才能生成在手中.")
 					where = "onfloor"
 				target = usr
 
@@ -1204,10 +1204,10 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 						target = locate(loc.x + X, loc.y + Y, loc.z + Z)
 			if("inmarked")
 				if(!marked_datum)
-					to_chat(usr, span_warning("You don't have any object marked. Abandoning spawn."))
+					to_chat(usr, span_warning("你没有标记任何对象. 放弃生成."))
 					return
 				else if(!istype(marked_datum, /atom))
-					to_chat(usr, span_warning("The object you have marked cannot be used as a target. Target must be of type /atom."))
+					to_chat(usr, span_warning("你标记的对象不能用作目标. 目标必须是 /atom 类型."))
 					return
 				else
 					target = marked_datum
@@ -1254,7 +1254,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 	else if(href_list["viewruntime"])
 		var/datum/error_viewer/error_viewer = locate(href_list["viewruntime"])
 		if(!istype(error_viewer))
-			to_chat(usr, span_warning("That runtime viewer no longer exists."))
+			to_chat(usr, span_warning("该运行时查看器已不存在."))
 			return
 
 		if(href_list["viewruntime_backto"])
@@ -1303,7 +1303,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 	else if(href_list["deletemessage"])
 		if(!check_rights(R_BAN))
 			return
-		if(tgui_alert(usr, "Delete message/note?", "Confirmation", list("Yes", "No"), 0) != "Yes")
+		if(tgui_alert(usr, "删除消息/备注?", "确认", list("Yes", "No"), 0) != "Yes")
 			return
 		var/message_id = href_list["deletemessage"]
 		delete_message(message_id)
@@ -1311,7 +1311,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 	else if(href_list["deletemessageempty"])
 		if(!check_rights(R_BAN))
 			return
-		if(tgui_alert(usr, "Delete message/note?", "Confirmation", list("Yes", "No"), 0) != "Yes")
+		if(tgui_alert(usr, "删除消息/备注?", "确认", list("Yes", "No"), 0) != "Yes")
 			return
 		var/message_id = href_list["deletemessageempty"]
 		delete_message(message_id, browse = TRUE)
@@ -1485,7 +1485,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 
 		var/datum/job/job = SSjob.name_occupations[slot]
 		if(!(job.job_flags & (JOB_FLAG_LATEJOINABLE|JOB_FLAG_ROUNDSTARTJOINABLE)))
-			to_chat(usr, span_warning("Job is not joinable."))
+			to_chat(usr, span_warning("该职位不可加入."))
 			return
 		job.add_job_positions(1)
 
@@ -1502,7 +1502,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 
 		var/datum/job/J = SSjob.name_occupations[slot]
 		if(J.current_positions >= J.total_positions)
-			to_chat(usr, span_warning("Filling would cause an overflow. Please add more slots first."))
+			to_chat(usr, span_warning("填充将导致溢出. 请先添加更多槽位."))
 			return
 		J.occupy_job_positions(1)
 
@@ -1519,7 +1519,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 
 		var/datum/job/J = SSjob.name_occupations[slot]
 		if(J.current_positions <= 0)
-			to_chat(usr, span_warning("Cannot free more job slots."))
+			to_chat(usr, span_warning("无法释放更多职位槽位."))
 			return
 		J.free_job_positions(1)
 
@@ -1536,10 +1536,10 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 
 		var/datum/job/job = SSjob.name_occupations[slot]
 		if(!(job.job_flags & (JOB_FLAG_LATEJOINABLE|JOB_FLAG_ROUNDSTARTJOINABLE)))
-			to_chat(usr, span_warning("Job is not joinable."))
+			to_chat(usr, span_warning("该职位不可加入."))
 			return
 		if(job.total_positions <= 0 || job.total_positions <= job.current_positions)
-			to_chat(usr, span_warning("Cannot remove more job slots."))
+			to_chat(usr, span_warning("无法移除更多职位槽位."))
 			return
 		job.remove_job_positions(1)
 
@@ -1557,7 +1557,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 
 		var/datum/job/job = SSjob.name_occupations[slot]
 		if(!(job.job_flags & (JOB_FLAG_LATEJOINABLE|JOB_FLAG_ROUNDSTARTJOINABLE)))
-			to_chat(usr, span_warning("Job is not joinable."))
+			to_chat(usr, span_warning("该职位不可加入."))
 			return
 		job.set_job_positions(0)
 
@@ -1591,7 +1591,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 
 		var/datum/job/job = SSjob.name_occupations[slot]
 		if(!(job.job_flags & (JOB_FLAG_LATEJOINABLE|JOB_FLAG_ROUNDSTARTJOINABLE)))
-			to_chat(usr, span_warning("Job is not joinable."))
+			to_chat(usr, span_warning("该职位不可加入."))
 			return
 		job.set_job_positions(-1)
 
@@ -1640,7 +1640,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		var/mob/living/carbon/human/H = locate(href_list["rankequip"]) in GLOB.human_mob_list
 
 		if(!istype(H))
-			to_chat(usr, span_warning("Target is no longer valid."))
+			to_chat(usr, span_warning("目标不再有效."))
 			return
 
 		SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/rank_and_equipment, H)
@@ -1653,7 +1653,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		var/mob/living/carbon/human/H = locate(href_list["editappearance"]) in GLOB.human_mob_list
 
 		if(!istype(H))
-			to_chat(usr, span_warning("Target is no longer valid."))
+			to_chat(usr, span_warning("目标不再有效."))
 			return
 
 		SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/edit_appearance, H)
@@ -1666,7 +1666,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		var/mob/living/L = locate(href_list["sleep"]) in GLOB.mob_living_list
 
 		if(!istype(L))
-			to_chat(usr, span_warning("Target is no longer valid."))
+			to_chat(usr, span_warning("目标不再有效."))
 			return
 		SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/toggle_sleep, L)
 
@@ -1677,7 +1677,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		var/mob/living/L = locate(href_list["offer"]) in GLOB.mob_living_list
 
 		if(!istype(L))
-			to_chat(usr, span_warning("Target is no longer valid."))
+			to_chat(usr, span_warning("目标不再有效."))
 			return
 		SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/offer, L)
 
@@ -1689,7 +1689,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		var/mob/living/L = locate(href_list["give"]) in GLOB.mob_living_list
 
 		if(!istype(L))
-			to_chat(usr, span_warning("Target is no longer valid."))
+			to_chat(usr, span_warning("目标不再有效."))
 			return
 
 		SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/give_mob, L)
@@ -1703,7 +1703,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		var/client/C = M.client
 
 		if(!istype(C))
-			to_chat(usr, span_warning("Target is no longer valid."))
+			to_chat(usr, span_warning("目标不再有效."))
 			return
 
 		new /datum/job_report_menu(C, usr)
@@ -1715,7 +1715,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 
 		var/mob/living/carbon/human/H = locate(href_list["randomname"]) in GLOB.human_mob_list
 		if(!istype(H))
-			to_chat(usr, span_warning("Target is no longer valid."))
+			to_chat(usr, span_warning("目标不再有效."))
 			return
 
 		var/oldname = H.real_name
@@ -1732,7 +1732,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 
 		var/mob/living/L = locate(href_list["checkcontents"]) in GLOB.mob_living_list
 		if(!istype(L))
-			to_chat(usr, span_warning("Target is no longer valid."))
+			to_chat(usr, span_warning("目标不再有效."))
 			return
 
 		var/dat
@@ -1755,7 +1755,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 
 		var/mob/living/carbon/human/H = locate(href_list["mob"]) in GLOB.human_mob_list
 		if(!istype(H))
-			to_chat(usr, span_warning("Target is no longer valid."))
+			to_chat(usr, span_warning("目标不再有效."))
 			return
 
 		var/change
@@ -1847,7 +1847,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 
 		var/mob/living/carbon/human/H = locate(href_list["mob"]) in GLOB.human_mob_list
 		if(!istype(H))
-			to_chat(usr, span_warning("Target is no longer valid."))
+			to_chat(usr, span_warning("目标不再有效."))
 			return
 
 		var/change
@@ -1860,7 +1860,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 					return
 				H.mind_initialize()
 			if("rank")
-				change = tgui_input_list(usr, "Select a rank.", "Edit Rank", sortList(SSjob.name_occupations))
+				change = tgui_input_list(usr, "选择一个军衔.", "编辑军衔", sortList(SSjob.name_occupations))
 				if(!change || !istype(H))
 					return
 				var/datum/job/J = SSjob.GetJob(change)
@@ -1881,7 +1881,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 				for(var/i in skilltypes)
 					var/datum/skills/S = i
 					skillnames[initial(S.name)] = S
-				var/newskillset = tgui_input_list(usr, "Select a skillset.", "Edit Rank", sortList(skillnames))
+				var/newskillset = tgui_input_list(usr, "选择一套技能组.", "编辑军衔", sortList(skillnames))
 				if(!newskillset)
 					return
 				var/pickedtype = skillnames[newskillset]
@@ -1890,14 +1890,14 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 				change = initial(S.name)
 				H.set_skills(getSkillsType(pickedtype))
 			if("commstitle")
-				change = tgui_input_text(usr, "Input a comms title - \[Requisitions (Title)\]", "Edit Rank")
+				change = tgui_input_text(usr, "输入通讯头衔 - \[Requisitions (Title)\]", "编辑军衔")
 				if(!change || !istype(H) || !H.mind)
 					return
 				previous = H.comm_title
 				H.comm_title = change
 			if("chattitle")
 				var/obj/item/card/id/C = locate(href_list["id"]) in GLOB.id_card_list
-				change = tgui_input_text(usr, "Input a chat title - Title Jane Doe screams!", "Edit Rank")
+				change = tgui_input_text(usr, "输入聊天头衔 - Title Jane Doe screams!", "编辑军衔")
 				if(isnull(change) || !istype(H) || !istype(C))
 					return
 				previous = C.paygrade
@@ -1905,7 +1905,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 				C.update_label()
 			if("idtitle")
 				var/obj/item/card/id/C = locate(href_list["id"]) in GLOB.id_card_list
-				change = tgui_input_text(usr, "Input an ID title - Jane Doe (Title)", "Edit Rank")
+				change = tgui_input_text(usr, "输入 ID 头衔 - Jane Doe (Title)", "编辑军衔")
 				if(isnull(change) || !istype(H) || !istype(C))
 					return
 				previous = C.assignment
@@ -1913,7 +1913,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 				C.update_label()
 			if("idname")
 				var/obj/item/card/id/C = locate(href_list["id"]) in GLOB.id_card_list
-				change = tgui_input_text(usr, "Input an ID name - Jane Doe (Title)", "Edit Rank")
+				change = tgui_input_text(usr, "输入 ID 名称 - Jane Doe (Title)", "编辑军衔")
 				if(isnull(change) || !istype(H) || !istype(C))
 					return
 				previous = C.registered_name
@@ -1921,7 +1921,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 				C.update_label()
 			if("access")
 				var/obj/item/card/id/C = locate(href_list["id"]) in GLOB.id_card_list
-				change = tgui_input_list(usr, "Choose the new access.", "Edit Rank", sortList(SSjob.name_occupations))
+				change = tgui_input_list(usr, "选择新的权限.", "编辑军衔", sortList(SSjob.name_occupations))
 				if(!change || !istype(H) || !istype(C))
 					return
 				var/datum/job/J = SSjob.name_occupations[change]
@@ -1933,11 +1933,11 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 				H.equip_to_slot_or_del(new /obj/item/card/id(H), SLOT_WEAR_ID)
 			if("squad")
 				previous = H.assigned_squad
-				change = tgui_input_list(usr, "Choose the marine's new squad.", "Change Squad", SSjob.squads)
+				change = tgui_input_list(usr, "选择陆战队员的新小队.", "更改小队", SSjob.squads)
 				if(!change || !istype(H))
 					return
 				if(!ismarinejob(H.job))
-					to_chat(usr, span_warning("Only marine jobs may be part of squads."))
+					to_chat(usr, span_warning("只有陆战队职位可以加入小队."))
 					return
 				H.change_squad(change)
 			if("equipment")
@@ -1950,7 +1950,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 				var/list/picker = sortList(job_outfits)
 				picker.Insert(1, "{Naked}")
 
-				var/dresscode = tgui_input_list(usr, "Select job equipment", "Select Equipment",  picker, "{Naked}", 0)
+				var/dresscode = tgui_input_list(usr, "选择职位装备", "选择装备",  picker, "{Naked}", 0)
 
 				if(dresscode != "{Naked}")
 					dresscode = job_outfits[dresscode]
@@ -1986,7 +1986,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 
 		var/mob/living/carbon/xenomorph/X = locate(href_list["mob"]) in GLOB.xeno_mob_list
 		if(!istype(X))
-			to_chat(usr, span_warning("Target is no longer valid."))
+			to_chat(usr, span_warning("目标已不再有效."))
 			return
 
 		var/change
@@ -2008,7 +2008,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 					return
 
 				if(!istype(X) || X.hivenumber != previous)
-					to_chat(usr, span_warning("Target is no longer valid."))
+					to_chat(usr, span_warning("目标已不再有效."))
 					return
 
 				X.transfer_to_hive(change)
@@ -2021,7 +2021,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 					return
 
 				if(!istype(X))
-					to_chat(usr, span_warning("Target is no longer valid."))
+					to_chat(usr, span_warning("目标已不再有效."))
 					return
 
 				X.nicknumber = change
@@ -2035,7 +2035,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 					return
 
 				if(!istype(X))
-					to_chat(usr, span_warning("Target is no longer valid."))
+					to_chat(usr, span_warning("目标已不再有效."))
 					return
 
 				X.upgrade_xeno(change)
@@ -2048,7 +2048,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 	else if(href_list["adminapproval"])
 		var/approval_id = href_list["adminapproval"] // Already text at this point
 		if(GLOB.admin_approvals[approval_id] != -1)
-			to_chat(usr, span_warning("That approval has already been answered with '[GLOB.admin_approvals[approval_id]]'"))
+			to_chat(usr, span_warning("该审批已以'[GLOB.admin_approvals[approval_id]]'答复."))
 			return
 		GLOB.admin_approvals[approval_id] = href_list["option"]
 		log_admin("[key_name(usr)] answered '[href_list["option"]]' to the admin approval ([approval_id]).")
@@ -2121,9 +2121,9 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 			return
 		var/mob/living/carbon/xenomorph/target = locate(href_list["target"])
 		if(!HAS_TRAIT(target, TRAIT_BANISHED))
-			to_chat(usr, span_warning("Target already is unbanished."))
+			to_chat(usr, span_warning("目标已处于非放逐状态."))
 			return
-		if(tgui_alert(usr, "Are you sure you want to unbanish [target]?", "Unbanishing", list("Yes","No"), 0) != "Yes")
+		if(tgui_alert(usr, "你确定要放逐[target]吗?", "正在放逐", list("Yes","No"), 0) != "Yes")
 			return
 		var/reason = stripped_input(src.owner, "Provide a reason for unbunish this xenomorph, [target]", default = "I will not allow meaningless death in my hive!")
 		REMOVE_TRAIT(target, TRAIT_BANISHED, TRAIT_BANISHED)

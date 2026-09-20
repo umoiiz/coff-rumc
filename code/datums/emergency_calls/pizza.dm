@@ -4,9 +4,9 @@
 	base_probability = 0
 
 /datum/emergency_call/pizza/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>You are a pizza deliverer who's employed by the Zippy Pizza Corporation.</b>")
-	to_chat(H, "<B>Your job is to deliver your pizzas. You're PRETTY sure this is the right place...</b>")
-	to_chat(H, "<B>Make sure you collect a tip.</b>")
+	to_chat(H, "<B>你是一个受雇于Zippy Pizza Corporation的披萨配送员.</b>")
+	to_chat(H, "<B>你的工作是配送你的披萨.你非常确定这是正确的地方...</b>")
+	to_chat(H, "<B>确保你收下小费。</b>")
 
 /datum/emergency_call/pizza/create_member(datum/mind/M)
 	. = ..()

@@ -1,5 +1,5 @@
 /obj/structure/closet/secure_closet/freezer
-	name = "Fridge"
+	name = "冰箱"
 	icon_state = "fridge1"
 	icon_closed = "fridge"
 	icon_locked = "fridge1"
@@ -21,7 +21,7 @@
 		icon_state = icon_closed
 
 /obj/structure/closet/secure_closet/freezer/kitchen
-	name = "Kitchen Cabinet"
+	name = "厨房橱柜"
 	req_access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/closet/secure_closet/freezer/kitchen/Initialize(mapload)
@@ -47,7 +47,7 @@
 		new /obj/item/storage/fancy/egg_box(src)
 
 /obj/structure/closet/secure_closet/freezer/money
-	name = "Freezer"
+	name = "冷冻柜"
 	req_access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/closet/secure_closet/freezer/money/Initialize(mapload)

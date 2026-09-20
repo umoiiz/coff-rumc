@@ -35,13 +35,13 @@ export const KeycardAuth = () => {
         <Section>
           {!!waiting && (
             <Box>
-              Waiting for confirmation on a second device...
+              正在等待第二台设备的确认...
             </Box>
           )}
           {!waiting && !!auth_required && (
             <Box>
               <Box mb={1}>
-                Swipe your ID to authorize: <b>{event}</b>
+                刷卡以授权: <b>{event}</b>
               </Box>
               <Button
                 icon="check-square"
@@ -51,10 +51,10 @@ export const KeycardAuth = () => {
                 fluid
                 onClick={() => act('auth_swipe')}
               >
-                Authorize
+                授权
               </Button>
               <Button fluid mt={1} onClick={() => act('reset')}>
-                Back
+                返回
               </Button>
             </Box>
           )}
@@ -89,7 +89,7 @@ export const KeycardAuth = () => {
                     })
                   }
                 >
-                  Grant Emergency Maintenance Access
+                  授予紧急维护权限
                 </Button>
               </Stack.Item>
               <Stack.Item>
@@ -103,7 +103,7 @@ export const KeycardAuth = () => {
                     })
                   }
                 >
-                  Revoke Emergency Maintenance Access
+                  撤销紧急维护权限
                 </Button>
               </Stack.Item>
             </Stack>

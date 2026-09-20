@@ -19,7 +19,7 @@ GLOBAL_DATUM_INIT(alamo_state, /datum/ui_state/alamo_state, new)
 
 	var/obj/O = src_object
 	if(!O?.allowed(src)) //No access? No ui!
-		to_chat(src, span_warning("Access Denied!"))
+		to_chat(src, span_warning("拒绝访问!"))
 		return UI_CLOSE
 	. = min(., UI_INTERACTIVE)
 

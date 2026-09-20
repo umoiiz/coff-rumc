@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/beetle
 	caste_base_type = /datum/xeno_caste/beetle
 	name = "Beetle"
-	desc = "A bulky, six-legged alien with a horn. Its carapace seems quite durable."
+	desc = "一个笨重的、六条腿的、长着角的异形.它的甲壳看起来相当耐用."
 	icon = 'icons/Xeno/castes/beetle/basic.dmi'
 	icon_state = "Beetle Walking"
 	effects_icon = 'icons/Xeno/castes/beetle/effects.dmi'

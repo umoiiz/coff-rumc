@@ -57,14 +57,14 @@
 	if(istype(O,/obj/item/paper))
 		var/obj/item/paper/paperaffected = O
 		paperaffected.clearpaper()
-		to_chat(usr, span_warning("The [name] dissolves the ink on the paper."))
+		to_chat(usr, span_warning("[name]溶解了纸上的墨水。"))
 	if(istype(O,/obj/item/book))
 		if(volume > 5)
 			var/obj/item/book/affectedbook = O
 			affectedbook.dat = null
-			to_chat(usr, span_warning("The [name] dissolves the ink on the book."))
+			to_chat(usr, span_warning("[name]溶解了书上的墨水。"))
 		else
-			to_chat(usr, span_warning("[O]'s ink is smeared by [name], but doesn't wash away!"))
+			to_chat(usr, span_warning("[O]的墨水被[name]抹花了,但没有被洗掉!"))
 
 /datum/reagent/consumable/ethanol/reaction_mob(mob/living/L, method = TOUCH, volume, show_message = TRUE, touch_protection = 0)
 	. = ..()
@@ -337,7 +337,7 @@
 				var/datum/internal_organ/heart/E = H.get_organ_slot(ORGAN_SLOT_HEART)
 				if(istype(E))
 					if(H.species.species_flags ~! NO_PAIN)
-						to_chat(H, span_danger("You clutch for a moment as you feel a scorching pain covering your abdomen!"))
+						to_chat(H, span_danger("你蜷缩了一瞬,因为灼烧般的剧痛覆盖了你的腹部!"))
 						H.Stun(6 SECONDS)
 					E.take_damage(20)
 	return ..()

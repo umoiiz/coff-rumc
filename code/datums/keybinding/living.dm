@@ -6,7 +6,7 @@
 /datum/keybinding/living/resist
 	hotkey_keys = list("B")
 	name = "resist"
-	full_name = "Resist"
+	full_name = "抵抗"
 	description = "Break free of your current state. Handcuffs, on fire, being trapped in an alien nest? Resist!"
 	keybind_signal = COMSIG_KB_LIVING_RESIST_DOWN
 
@@ -21,7 +21,7 @@
 /datum/keybinding/living/attempt_jump
 	hotkey_keys = list("V")
 	name = "Jump"
-	full_name = "Jump"
+	full_name = "跳跃"
 	description = "Jumps, if your mob is capable of doing so."
 	keybind_signal = COMSIG_KB_LIVING_JUMP_DOWN
 

@@ -187,8 +187,8 @@
 
 		if(!prob((chance * 2) - 20))
 			continue
-		victim.visible_message(span_danger("\The [victim] is scalded with hissing green blood!"), \
-		span_danger("You are splattered with sizzling blood! IT BURNS!"))
+		victim.visible_message(span_danger("\The [victim] 被嘶嘶作响的绿色血液烫伤!"), \
+		span_danger("你被滋滋作响的血液溅到! 好烫!"))
 		if(victim.stat == CONSCIOUS && !(victim.species.species_flags & NO_PAIN))
 			victim.emote("scream")
 		victim.take_overall_damage(rand(5, 15), BURN, ACID, updating_health = TRUE)

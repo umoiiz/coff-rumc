@@ -1,6 +1,6 @@
 /obj/item/bedsheet
-	name = "bedsheet"
-	desc = "A surprisingly soft linen bedsheet."
+	name = "床单"
+	desc = "一张出奇柔软的亚麻床单."
 	icon = 'icons/obj/items/bedsheets.dmi'
 	icon_state = "sheet"
 	worn_icon_list = list(
@@ -70,14 +70,14 @@
 	icon_state = "sheetbrown"
 
 /obj/item/bedsheet/pred
-	name = "Hunter Nav Console"
-	desc = "A console used by the Hunters for navigation purposes."
+	name = "猎人导航控制台"
+	desc = "猎人用于导航目的的控制台."
 	icon = 'icons/obj/machines/yautja_machines.dmi'
 	icon_state = "cameras"
 
 /obj/structure/bedsheetbin
-	name = "linen bin"
-	desc = "A linen bin. It looks rather cosy."
+	name = "亚麻箱"
+	desc = "一个亚麻箱. 它看起来相当舒适."
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "linenbin-full"
 	anchored = TRUE
@@ -113,13 +113,13 @@
 		if(!user.drop_held_item())
 			return
 		if(amount+1 > 20) //no more than 20 per bin
-			to_chat(user, span_notice("[src] is too full!"))
+			to_chat(user, span_notice("[src]太满了!"))
 			return
 
 		I.forceMove(src)
 		sheets += I
 		amount++
-		to_chat(user, span_notice("You put [I] in [src]."))
+		to_chat(user, span_notice("你把[I]放进了[src]."))
 
 	else if(amount && !hidden && I.w_class < 4)	//make sure there's sheets to hide it among, make sure nothing else is hidden in there.
 		if(!user.drop_held_item())
@@ -127,7 +127,7 @@
 
 		I.forceMove(src)
 		hidden = I
-		to_chat(user, span_notice("You hide [I] among the sheets."))
+		to_chat(user, span_notice("你把[I]藏在了床单之间."))
 
 /obj/structure/bedsheetbin/attack_hand(mob/living/user)
 	. = ..()
@@ -146,9 +146,9 @@
 
 		B.loc = user.loc
 		user.put_in_hands(B)
-		to_chat(user, span_notice("You take [B] out of [src]."))
+		to_chat(user, span_notice("你把[B]从[src]中取了出来."))
 
 		if(hidden)
 			hidden.loc = user.loc
-			to_chat(user, span_notice("[hidden] falls out of [B]!"))
+			to_chat(user, span_notice("[hidden]从[B]中掉了出来!"))
 			hidden = null

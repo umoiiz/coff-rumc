@@ -5,7 +5,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/call_of_the_burrowed
 	name = "Call of the Burrowed"
-	desc = "Attempts to summon all currently burrowed larva."
+	desc = "尝试召唤所有当前埋藏的幼虫."
 	action_icon = 'icons/Xeno/actions/general.dmi'
 	action_icon_state = "larva_growth"
 	ability_cost = 400
@@ -17,18 +17,18 @@
 
 /datum/action/ability/xeno_action/call_of_the_burrowed/action_activate()
 	if(!isnormalhive(xeno_owner.hive))
-		to_chat(xeno_owner, span_warning("Burrowed larva? What a strange concept... It's not for our hive."))
+		to_chat(xeno_owner, span_warning("埋藏的幼虫? 真是个奇怪的概念... 那不是给我们巢穴用的."))
 		return FALSE
 	var/datum/job/xeno_job = SSjob.GetJobType(/datum/job/xenomorph)
 	var/stored_larva = xeno_job.total_positions - xeno_job.current_positions
 	if(!stored_larva)
-		to_chat(xeno_owner, span_warning("Our hive currently has no burrowed to call forth!"))
+		to_chat(xeno_owner, span_warning("我们巢穴当前没有可召唤的埋藏幼虫!"))
 		return FALSE
 
 	playsound(xeno_owner,'sound/magic/invoke_general.ogg', 75, TRUE)
 	new /obj/effect/temp_visual/telekinesis(get_turf(xeno_owner))
-	xeno_owner.visible_message(span_xenowarning("A strange buzzing hum starts to emanate from \the [xeno_owner]!"), \
-	span_xenodanger("We call forth the larvas to rise from their slumber!"))
+	xeno_owner.visible_message(span_xenowarning("一阵奇怪的嗡鸣声开始从\the [xeno_owner]发出!"), \
+	span_xenodanger("我们召唤幼虫从沉睡中苏醒!"))
 
 	if(stored_larva)
 		RegisterSignals(xeno_owner.hive, list(COMSIG_HIVE_XENO_MOTHER_PRE_CHECK, COMSIG_HIVE_XENO_MOTHER_CHECK), PROC_REF(is_burrowed_larva_host))
@@ -55,7 +55,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/psychic_grab
 	name = "Psychic Grab"
-	desc = "Attracts the target to the owner of the ability."
+	desc = "将目标吸引到技能拥有者身边."
 	action_icon_state = "grab"
 	action_icon = 'icons/Xeno/actions/shrike.dmi'
 	cooldown_duration = 12 SECONDS
@@ -66,7 +66,7 @@
 	target_flags = ABILITY_MOB_TARGET
 
 /datum/action/ability/activable/xeno/psychic_grab/on_cooldown_finish()
-	to_chat(owner, span_notice("We gather enough mental strength to grab something again."))
+	to_chat(owner, span_notice("我们聚集了足够的精神力量,可以再次抓取某物."))
 	return ..()
 
 /datum/action/ability/activable/xeno/psychic_grab/can_use_ability(atom/target, silent = FALSE, override_flags)
@@ -80,7 +80,7 @@
 	var/max_dist = 5
 	if(!line_of_sight(owner, target, max_dist))
 		if(!silent)
-			to_chat(owner, span_warning("We must get closer to grab, our mind cannot reach this far."))
+			to_chat(owner, span_warning("我们必须靠近才能抓取,我们的心灵无法触及这么远."))
 		return FALSE
 	if(ishuman(target))
 		var/mob/living/carbon/human/victim = target
@@ -92,10 +92,10 @@
 /datum/action/ability/activable/xeno/psychic_grab/use_ability(atom/target)
 	var/mob/living/victim = target
 
-	owner.visible_message(span_xenowarning("A strange and violent psychic aura is suddenly emitted from \the [owner]!"), \
-	span_xenowarning("We are rapidly attracting [victim] with the power of our mind!"))
-	victim.visible_message(span_xenowarning("[victim] is rapidly attracting away by an unseen force!"), \
-	span_xenowarning("You are rapidly attracting to the side by an unseen force!"))
+	owner.visible_message(span_xenowarning("一股奇异而暴烈的灵能光环突然从\the [owner]散发出来!"), \
+	span_xenowarning("我们正用心灵力量迅速吸引[victim]!"))
+	victim.visible_message(span_xenowarning("[victim]正被一股看不见的力量迅速吸走!"), \
+	span_xenowarning("你正被一股看不见的力量迅速拉向一侧!"))
 	playsound(owner,'sound/effects/magic.ogg', 75, 1)
 	playsound(victim,'sound/weapons/alien_claw_block.ogg', 75, 1)
 	succeed_activate()
@@ -113,7 +113,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/psychic_fling
 	name = "Psychic Fling"
-	desc = "Sends an enemy or an item flying. A close ranged ability."
+	desc = "将一名敌人或一件物品击飞. 近距离技能."
 	action_icon_state = "fling"
 	action_icon = 'icons/Xeno/actions/shrike.dmi'
 	cooldown_duration = 12 SECONDS
@@ -124,7 +124,7 @@
 	target_flags = ABILITY_MOB_TARGET
 
 /datum/action/ability/activable/xeno/psychic_fling/on_cooldown_finish()
-	to_chat(owner, span_notice("We gather enough mental strength to fling something again."))
+	to_chat(owner, span_notice("我们聚集了足够的精神力量,可以再次投掷某物."))
 	return ..()
 
 /datum/action/ability/activable/xeno/psychic_fling/can_use_ability(atom/movable/target, silent = FALSE, override_flags)
@@ -140,7 +140,7 @@
 	var/max_dist = 3 //the distance only goes to 3 now, since this is more of a utility then an attack.
 	if(!line_of_sight(owner, target, max_dist))
 		if(!silent)
-			to_chat(owner, span_warning("We must get closer to fling, our mind cannot reach this far."))
+			to_chat(owner, span_warning("我们必须靠近才能投掷,我们的心灵无法触及这么远."))
 		return FALSE
 	if(ishuman(target))
 		var/mob/living/carbon/human/victim = target
@@ -154,10 +154,10 @@
 	GLOB.round_statistics.psychic_flings++
 	SSblackbox.record_feedback(FEEDBACK_TALLY, "round_statistics", 1, "psychic_flings")
 
-	owner.visible_message(span_xenowarning("A strange and violent psychic aura is suddenly emitted from \the [owner]!"), \
-	span_xenowarning("We violently fling [victim] with the power of our mind!"))
-	victim.visible_message(span_xenowarning("[victim] is violently flung away by an unseen force!"), \
-	span_xenowarning("You are violently flung to the side by an unseen force!"))
+	owner.visible_message(span_xenowarning("一股奇异而暴烈的灵能光环突然从\the [owner]散发出来!"), \
+	span_xenowarning("我们用心灵力量猛烈投掷[victim]!"))
+	victim.visible_message(span_xenowarning("[victim]被一股无形的力量猛烈地甩飞了!"), \
+	span_xenowarning("你被一股无形的力量猛烈地甩向一侧!"))
 	playsound(owner,'sound/effects/magic.ogg', 75, 1)
 	playsound(victim,'sound/weapons/alien_claw_block.ogg', 75, 1)
 
@@ -184,7 +184,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/unrelenting_force
 	name = "Unrelenting Force"
-	desc = "Unleashes our raw psychic power, pushing aside anyone who stands in our path."
+	desc = "释放我们原始的灵能,推开任何挡在我们路上的人."
 	action_icon_state = "screech"
 	action_icon = 'icons/Xeno/actions/queen.dmi'
 	cooldown_duration = 20 SECONDS
@@ -196,7 +196,7 @@
 	)
 
 /datum/action/ability/activable/xeno/unrelenting_force/on_cooldown_finish()
-	to_chat(owner, span_notice("Our mind is ready to unleash another blast of force."))
+	to_chat(owner, span_notice("我们的心灵已准备好释放另一波力量冲击."))
 	return ..()
 
 /datum/action/ability/activable/xeno/unrelenting_force/use_ability(atom/target)
@@ -246,8 +246,8 @@
 			throwlocation = get_step(throwlocation, owner.dir)
 		affected.throw_at(throwlocation, 6, 1, owner, TRUE)
 
-	owner.visible_message(span_xenowarning("[owner] sends out a huge blast of psychic energy!"), \
-	span_xenowarning("We send out a huge blast of psychic energy!"))
+	owner.visible_message(span_xenowarning("[owner]释放出一股巨大的灵能冲击!"), \
+	span_xenowarning("我们释放出一股巨大的灵能冲击!"))
 
 	playsound(owner,'sound/effects/bamf.ogg', 75, TRUE)
 	playsound(owner, SFX_ALIEN_ROAR, 50)
@@ -257,7 +257,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/psychic_cure
 	name = "Psychic Cure"
-	desc = "Heal and remove debuffs from a target."
+	desc = "治疗并移除目标身上的负面效果."
 	action_icon_state = "heal_xeno"
 	action_icon = 'icons/Xeno/actions/drone.dmi'
 	cooldown_duration = 1 MINUTES
@@ -269,7 +269,7 @@
 	var/heal_range = SHRIKE_HEAL_RANGE
 
 /datum/action/ability/activable/xeno/psychic_cure/on_cooldown_finish()
-	to_chat(owner, span_notice("We gather enough mental strength to cure sisters again."))
+	to_chat(owner, span_notice("我们聚集了足够的精神力量,再次治愈姐妹们."))
 	return ..()
 
 /datum/action/ability/activable/xeno/psychic_cure/can_use_ability(atom/target, silent = FALSE, override_flags)
@@ -283,7 +283,7 @@
 	var/mob/living/carbon/xenomorph/patient = target
 	if(!CHECK_BITFIELD(use_state_flags|override_flags, ABILITY_IGNORE_DEAD_TARGET) && patient.stat == DEAD)
 		if(!silent)
-			to_chat(owner, span_warning("It's too late. This sister won't be coming back."))
+			to_chat(owner, span_warning("太迟了.这位姐妹回不来了."))
 		return FALSE
 	if(!check_distance(patient, silent))
 		return FALSE
@@ -292,11 +292,11 @@
 	var/dist = get_dist(owner, target)
 	if(dist > heal_range)
 		if(!silent)
-			to_chat(owner, span_warning("Too far for our reach... We need to be [dist - heal_range] steps closer!"))
+			to_chat(owner, span_warning("超出我们的触及范围...我们需要再靠近[dist - heal_range]步!"))
 		return FALSE
 	else if(!line_of_sight(owner, target, heal_range))
 		if(!silent)
-			to_chat(owner, span_warning("We can't focus properly without a clear line of sight!"))
+			to_chat(owner, span_warning("没有清晰的视线,我们无法正常集中精神!"))
 		return FALSE
 	return TRUE
 
@@ -313,10 +313,10 @@
 		personal_statistics.heals++
 	GLOB.round_statistics.psychic_cures++
 	SSblackbox.record_feedback(FEEDBACK_TALLY, "round_statistics", 1, "psychic_cures")
-	owner.visible_message(span_xenowarning("A strange psychic aura is suddenly emitted from \the [owner]!"), \
-	span_xenowarning("We cure [target] with the power of our mind!"))
-	target.visible_message(span_xenowarning("[target] suddenly shimmers in a chill light."), \
-	span_xenowarning("We feel a sudden soothing chill."))
+	owner.visible_message(span_xenowarning("一股奇怪的灵能光环突然从\the [owner]身上散发出来!"), \
+	span_xenowarning("我们用心灵的力量治愈了[target]!"))
+	target.visible_message(span_xenowarning("[target]突然闪烁着寒冷的光芒."), \
+	span_xenowarning("我们感到一阵突如其来的舒缓寒意."))
 
 	playsound(target,'sound/effects/magic.ogg', 75, 1)
 	new /obj/effect/temp_visual/telekinesis(get_turf(target))
@@ -343,7 +343,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/place_acidwell
 	name = "Place acid well"
-	desc = "Place an acid well that can put out fires and destroy sticky grenades."
+	desc = "放置一个酸液池,可以扑灭火焰并摧毁粘性手雷."
 	action_icon_state = "place_trap"
 	action_icon = 'icons/Xeno/actions/construction.dmi'
 	ability_cost = 200
@@ -358,12 +358,12 @@
 	var/turf/T = get_turf(owner)
 	if(!T || !T.is_weedable() || T.density)
 		if(!silent)
-			to_chat(owner, span_warning("We can't do that here."))
+			to_chat(owner, span_warning("我们无法在这里这么做."))
 		return FALSE
 
 	if(!xeno_owner.loc_weeds_type)
 		if(!silent)
-			to_chat(owner, span_warning("We can only shape on weeds. We must find some resin before we start building!"))
+			to_chat(owner, span_warning("我们只能在杂草上塑形.在开始建造之前,我们必须先找到一些树脂!"))
 		return FALSE
 
 	if(!T.check_alien_construction(owner, silent, /obj/structure/xeno/acidwell))
@@ -376,7 +376,7 @@
 	var/turf/T = get_turf(owner)
 
 	for(var/obj/structure/xeno/acidwell/well in range(1, T))
-		owner.balloon_alert(owner, span_notice("Another acid well is too close!"))
+		owner.balloon_alert(owner, span_notice("另一个酸液池太近了!"))
 		return
 
 	if(!do_after(owner, 0.5 SECONDS, NONE, T, BUSY_ICON_BUILD))
@@ -386,7 +386,7 @@
 	new /obj/structure/xeno/acidwell(T, owner)
 
 	succeed_activate()
-	to_chat(owner, span_xenonotice("We place an acid well; it can be filled with more acid."))
+	to_chat(owner, span_xenonotice("我们放置了一个酸液池;它可以被填充更多酸液."))
 	GLOB.round_statistics.xeno_acid_wells++
 	SSblackbox.record_feedback(FEEDBACK_TALLY, "round_statistics", 1, "xeno_acid_wells")
 	owner.record_traps_created()
@@ -401,7 +401,7 @@
 
 /datum/action/ability/activable/xeno/psychic_vortex
 	name = "Pyschic vortex"
-	desc = "Channel a sizable vortex of psychic energy, drawing in nearby enemies."
+	desc = "引导一个相当大的灵能漩涡,将附近的敌人吸入."
 	action_icon_state = "vortex"
 	action_icon = 'icons/Xeno/actions/shrike.dmi'
 	ability_cost = 600
@@ -416,7 +416,7 @@
 	var/channel_particle = /particles/warlock_charge
 
 /datum/action/ability/activable/xeno/psychic_vortex/on_cooldown_finish()
-	to_chat(owner, span_notice("Our mind is ready to unleash another chaotic vortex of energy."))
+	to_chat(owner, span_notice("我们的心灵已准备好释放另一个混沌的能量漩涡."))
 	return ..()
 
 /datum/action/ability/activable/xeno/psychic_vortex/use_ability(atom/target)

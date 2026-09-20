@@ -1,6 +1,6 @@
 /obj/item/rsp
-	name = "\improper Rapid-Seed-Producer (RSP)"
-	desc = "A device used to rapidly deploy seeds."
+	name = "\improper 快速种子生产器(RSP)"
+	desc = "一种用于快速部署种子的装置。"
 	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "rcp"
 	opacity = FALSE

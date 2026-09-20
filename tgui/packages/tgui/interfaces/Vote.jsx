@@ -28,12 +28,12 @@ export const Vote = (props) => {
       <Window.Content>
         <Stack fill vertical>
           {!!lower_admin && (
-            <Section title="Admin Options">
+            <Section title="管理员选项">
               <VoteOptions />
               <VotersList />
             </Section>
           )}
-          <Section title="Start Voting">
+          <Section title="开始投票">
             <StartVoteOptions />
           </Section>
           <ChoicesPanel />
@@ -64,7 +64,7 @@ const StartVoteOptions = (props) => {
                   disabled={vote_happening || !allow_vote_groundmap}
                   onClick={() => act('groundmap')}
                 >
-                  Ground Map
+                  地面地图
                 </Button>
               </Stack.Item>
               <Stack.Item>
@@ -72,7 +72,7 @@ const StartVoteOptions = (props) => {
                   disabled={vote_happening || !allow_vote_shipmap}
                   onClick={() => act('shipmap')}
                 >
-                  Ship Map
+                  飞船地图
                 </Button>
               </Stack.Item>
               <Stack.Item>
@@ -80,7 +80,7 @@ const StartVoteOptions = (props) => {
                   disabled={vote_happening || !allow_vote_restart}
                   onClick={() => act('restart')}
                 >
-                  Restart
+                  重启
                 </Button>
               </Stack.Item>
               <Stack.Item>
@@ -88,7 +88,7 @@ const StartVoteOptions = (props) => {
                   disabled={vote_happening || !allow_vote_mode}
                   onClick={() => act('gamemode')}
                 >
-                  Gamemode
+                  游戏模式
                 </Button>
               </Stack.Item>
             </Stack>
@@ -169,7 +169,7 @@ const VoteOptions = (props) => {
           </Stack.Item>
           <Stack.Item>
             <Button disabled={!upper_admin} onClick={() => act('custom')}>
-              Create Custom Vote
+              创建自定义投票
             </Button>
           </Stack.Item>
         </Stack>
@@ -203,7 +203,7 @@ const ChoicesPanel = (props) => {
 
   return (
     <Stack.Item grow>
-      <Section fill scrollable title="Choices">
+      <Section fill scrollable title="选项">
         {choices.length !== 0 ? (
           <LabeledList>
             {choices.map((choice, i) => (
@@ -222,7 +222,7 @@ const ChoicesPanel = (props) => {
                         act('vote', { index: choice.num_index });
                       }}
                     >
-                      Vote
+                      投票
                     </Button>
                   }
                 >
@@ -241,7 +241,7 @@ const ChoicesPanel = (props) => {
             ))}
           </LabeledList>
         ) : (
-          <NoticeBox>No choices available!</NoticeBox>
+          <NoticeBox>没有可用选项!</NoticeBox>
         )}
       </Section>
     </Stack.Item>
@@ -260,7 +260,7 @@ const TimePanel = (props) => {
           <Box fontSize={1.5}>Time Remaining: {time_remaining || 0}s</Box>
           {!!upper_admin && (
             <Button color="red" onClick={() => act('cancel')}>
-              Cancel Vote
+              取消投票
             </Button>
           )}
         </Stack>

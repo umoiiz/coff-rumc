@@ -79,7 +79,7 @@ export function ControllerContent(props) {
                   <Button
                     disabled={!inDeciseconds}
                     selected={state.smallValues}
-                    tooltip="Hide values under 1"
+                    tooltip="隐藏低于1的数值"
                     icon={state.smallValues ? 'eye-slash' : 'eye'}
                     onClick={() =>
                       dispatch({
@@ -88,11 +88,11 @@ export function ControllerContent(props) {
                       })
                     }
                   >
-                    Small
+                    小
                   </Button>
                   <Button
                     icon={state.inactive ? 'eye-slash' : 'eye'}
-                    tooltip="Hide offline/paused"
+                    tooltip="隐藏离线/暂停"
                     selected={state.inactive}
                     onClick={() =>
                       dispatch({
@@ -101,7 +101,7 @@ export function ControllerContent(props) {
                       })
                     }
                   >
-                    Inactive
+                    非活动
                   </Button>
                 </Stack.Item>
               </Stack>
@@ -126,7 +126,7 @@ export function ControllerContent(props) {
                       })
                     }
                   >
-                    Ascending
+                    升序
                   </Button>
                   <Button
                     selected={!state.ascending}
@@ -137,7 +137,7 @@ export function ControllerContent(props) {
                       })
                     }
                   >
-                    Descending
+                    降序
                   </Button>
                 </Stack.Item>
               </Stack>

@@ -13,11 +13,11 @@
 	if(!message)
 		return
 	if(TIMER_COOLDOWN_RUNNING(user, "custom_emotes[id]"))
-		user.balloon_alert(user, "You used that emote too recently")
+		user.balloon_alert(user, "你最近使用过该表情动作")
 		return
 	TIMER_COOLDOWN_START(user, "custom_emotes[id]", cooldown)
 	if(user.stat > CONSCIOUS)
-		to_chat(user, span_notice("You cannot use that emote while unconscious."))
+		to_chat(user, span_notice("你在昏迷状态下无法使用该表情动作。"))
 		return
 	if(spoken_emote)
 		user.say(message)

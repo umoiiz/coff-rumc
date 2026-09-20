@@ -5,9 +5,9 @@
 	alignement_factor = 0
 
 /datum/emergency_call/vsd/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>You are a member of the Syndicate's personal guns. The Vyacheslav Security Detail. You are here to take down this corporate scum by any means necessary. Kill anything in your path.</b>")
-	to_chat(H, "<B>You are equipped with Ballistic Armor to counter some of TerraGov's weaponry. Jaeger's armor has a weakness, aim for the head and just below that chest plate. Jaeger has a weakness to 5.56.</b>")
-	to_chat(H, "<B>A TerraGov vessel has entered Syndicate and I.C.C. airspace. You're here to take down the ship. Goodluck.</b>")
+	to_chat(H, "<B>你是辛迪加私人武装的成员. 维亚切斯拉夫安保小队. 你来此是为了不惜一切代价铲除这些企业渣滓. 杀掉挡路的一切.</b>")
+	to_chat(H, "<B>你装备了防弹装甲以对抗部分地球政府的武器. 猎人的装甲有弱点,瞄准头部以及胸甲正下方. 猎人对5.56口径有弱点.</b>")
+	to_chat(H, "<B>一艘地球政府舰船进入了辛迪加和I.C.C.领空. 你来此是为了击落这艘船. 祝你好运.</b>")
 	to_chat(H, "")
 
 /datum/emergency_call/vsd/create_member(datum/mind/M)
@@ -30,13 +30,13 @@
 		leader = H
 		var/datum/job/J = SSjob.GetJobType(/datum/job/vsd/leader)
 		H.apply_assigned_role_to_spawn(J)
-		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are the leader of the Vyacheslav 'Death Squad' group. Lead your men to victory, leave no trace. Hoorah!</notice></p>")
+		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>你是维亚切斯拉夫'死亡小队'的队长. 带领你的手下走向胜利,不留痕迹. 呼啦!</notice></p>")
 		return
 
 	if(medics < max_medics)
 		var/datum/job/J = SSjob.GetJobType(/datum/job/vsd/medic)
 		H.apply_assigned_role_to_spawn(J)
-		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are the lifeline of the group. You are equiped to treat yourself and others, take much care with your comrades. Hoorah!</notice></p>")
+		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>你是小队的生命线. 你装备齐全,可以治疗自己和他人,请多加照顾你的战友. 呼啦!</notice></p>")
 		medics++
 		return
 
@@ -48,4 +48,4 @@
 
 	var/datum/job/J = SSjob.GetJobType(/datum/job/vsd/standard)
 	H.apply_assigned_role_to_spawn(J)
-	to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are a trained Vyacheslav operative. You are no disposable. You are trained in every way possible to counter TGMC's weaponries. We will not accept any casualties here. Good luck grunt, Hoorah!</notice></p>")
+	to_chat(H, "<p style='font-size:1.5em'><span class='notice'>你是一名训练有素的维亚切斯拉夫特工. 你不是可消耗品. 你受过各种训练以对抗TGMC的武器. 我们在这里不接受任何伤亡. 祝你好运,新兵,呼啦!</notice></p>")

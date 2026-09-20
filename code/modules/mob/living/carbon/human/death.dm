@@ -8,9 +8,9 @@
 		if(prob(100 - E.get_damage()))
 			// Override the current limb status
 			E.drop_limb(silent = TRUE)
-	visible_message(span_warning("[name] explodes violently into a bloody mess!"),
-		span_userdanger("<b>You explode violently into a bloody mess!</b>"),
-		span_warning("You hear a terrible sound of breaking bones and ripping flesh!"), 3)
+	visible_message(span_warning("[name]猛烈炸开,变成一团血肉模糊的惨状!"),
+		span_userdanger("<b>你猛烈炸开,变成一团血肉模糊的惨状!</b>"),
+		span_warning("你听到骨头断裂和皮肉撕裂的可怕声响!"), 3)
 	return ..()
 
 /mob/living/carbon/human/gib_animation()

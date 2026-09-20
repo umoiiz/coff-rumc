@@ -18,8 +18,8 @@
 // If it's part of a robot module, it will charge when the Robot is inside a Recharge Station.
 
 /obj/item/lightreplacer
-	name = "light replacer"
-	desc = "A device to automatically replace lights. Refill with working lightbulbs."
+	name = "灯泡替换器"
+	desc = "一种自动替换灯泡的装置. 用可用的灯泡补充."
 
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "lightreplacer0"
@@ -56,33 +56,33 @@
 	if(istype(I, /obj/item/stack/sheet/glass))
 		var/obj/item/stack/sheet/glass/G = I
 		if(uses >= max_uses)
-			to_chat(user, span_warning("[src] is full."))
+			to_chat(user, span_warning("[src]已装满."))
 			return
 
 		if(!G.use(1))
-			to_chat(user, span_warning("You need one sheet of glass to replace lights."))
+			to_chat(user, span_warning("你需要一块玻璃来替换灯泡."))
 			return
 
 		AddUses(5)
-		to_chat(user, span_notice("You insert a piece of glass into \the [src]. You have [uses] lights remaining."))
+		to_chat(user, span_notice("你把一块玻璃插入\the [src]. 你还剩[uses]个灯泡."))
 
 	else if(istype(I, /obj/item/light_bulb))
 		var/obj/item/light_bulb/L = I
 		if(L.status)
-			to_chat(user, "You need a working light.")
+			to_chat(user, "你需要一个可用的灯泡.")
 			return
 
 		if(uses >= max_uses)
-			to_chat(user, span_warning("[src] is full."))
+			to_chat(user, span_warning("[src]已装满."))
 			return
 
 		AddUses(1)
-		to_chat(user, "You insert \the [L] into \the [src]. You have [uses] lights remaining.")
+		to_chat(user, "你把\the [L]插入\the [src]. 你还剩[uses]个灯泡.")
 		user.drop_held_item()
 		qdel(L)
 
 /obj/item/lightreplacer/attack_self(mob/user)
-	to_chat(usr, "It has [uses] lights remaining.")
+	to_chat(usr, "它还剩[uses]个灯泡.")
 
 /obj/item/lightreplacer/proc/Use(mob/user)
 	playsound(src.loc, 'sound/machines/click.ogg', 25, 1)
@@ -101,7 +101,7 @@
 
 /obj/item/lightreplacer/proc/ReplaceLight(obj/machinery/light/target, mob/living/U)
 	if(target.status == LIGHT_OK)
-		to_chat(U, "There is a working [target.fitting] already inserted.")
+		to_chat(U, "里面已经插着一个可用的[target.fitting].")
 		return
 
 	if(uses <= 0)
@@ -109,7 +109,7 @@
 		return
 	if(!Use(U))
 		return
-	to_chat(U, span_notice("You replace the [target.fitting] with the [src]."))
+	to_chat(U, span_notice("你用[src]替换了[target.fitting]."))
 	if(target.status != LIGHT_EMPTY)
 		var/obj/item/light_bulb/L1 = new target.light_type(target.loc)
 		L1.status = target.status

@@ -38,7 +38,7 @@
 					set_ear_damage(deaf = 1)
 					if(!alert)//Sounds an alarm, but only once per 'level'
 						emote("alarm")
-						to_chat(src, span_warning("Major electrical distruption detected: System rebooting."))
+						to_chat(src, span_warning("检测到重大电力中断:系统正在重启."))
 						alert = 1
 					if(prob(75))
 						emp_damage -= 1
@@ -52,7 +52,7 @@
 					ear_damage = 1
 					if(!alert)
 						emote("alert")
-						to_chat(src, span_warning("Primary systems are now online."))
+						to_chat(src, span_warning("主系统现已上线."))
 						alert = 1
 					if(prob(50))
 						emp_damage -= 1
@@ -64,13 +64,13 @@
 				if(2 to 9)//Low level of EMP damage, has few effects(handled elsewhere)
 					if(!alert)
 						emote("notice")
-						to_chat(src, span_warning("System reboot nearly complete."))
+						to_chat(src, span_warning("系统重启即将完成."))
 						alert = 1
 					if(prob(25))
 						emp_damage -= 1
 				if(1)
 					alert = 0
-					to_chat(src, span_warning("All systems restored."))
+					to_chat(src, span_warning("所有系统已恢复."))
 					emp_damage -= 1
 
 	return 1

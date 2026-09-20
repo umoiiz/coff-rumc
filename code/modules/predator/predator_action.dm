@@ -17,7 +17,7 @@
 
 /datum/action/predator_action/mark_for_hunt
 	name = "Mark for Hunt"
-	desc = "Find your next hunting prey."
+	desc = "寻找你的下一个狩猎目标."
 	action_icon_state = "prey_choice"
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_PRED_MARK_HUNT,
@@ -32,7 +32,7 @@
 
 /datum/action/predator_action/mark_panel
 	name = "Mark Panel"
-	desc = "Panel for marking anything be it prey, gear carrier, thralls or honorable warriors."
+	desc = "用于标记任何事物的面板,无论是猎物、装备携带者、奴仆还是可敬的战士."
 	action_icon_state = "prey_hunt"
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_PRED_MARK_PANEL,
@@ -57,7 +57,7 @@
 
 /datum/action/predator_action/mask/zoom
 	name = "Toggle Mask Zoom"
-	desc = "Toggles the mask magnification lens to see further."
+	desc = "切换面具放大镜片以看得更远."
 	action_icon_state = "zoom"
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_PRED_ZOOM,
@@ -74,7 +74,7 @@
 
 /datum/action/predator_action/mask/togglesight
 	name = "Toggle Mask Visors"
-	desc = "Switch between optical imaging, thermal and meson visions."
+	desc = "在光学成像、热成像和介子视觉之间切换."
 	action_icon_state = "eye"
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_PRED_TOGGLESIGHT,
@@ -128,7 +128,7 @@
 
 /datum/action/predator_action/bracer/pred_buy
 	name = "Claim Equipment"
-	desc = "Choose equipment for your hunt."
+	desc = "为你的狩猎选择装备."
 	action_icon_state = "equipment_selection"
 
 /datum/action/predator_action/bracer/pred_buy/action_activate()
@@ -141,7 +141,7 @@
 
 /datum/action/predator_action/bracer/yank_combistick
 	name = "Yank combi-stick"
-	desc = "Pull combi-stick chain to return it. Requires bracer linking before usage."
+	desc = "拉动组合棍链条将其收回. 使用前需要护腕链接."
 	action_icon_state = "combistick"
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_PRED_COMBISTICK,
@@ -166,7 +166,7 @@
 
 /datum/action/predator_action/bracer/call_disc
 	name = "Call Smart-Disc"
-	desc = "Calls back the smart disk into your hand. Requires bracer linking before usage."
+	desc = "将智能飞盘召回手中. 使用前需要护腕链接."
 	action_icon_state = "disc"
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_PRED_SMART_DISC,
@@ -191,7 +191,7 @@
 
 /datum/action/predator_action/bracer/translate
 	name = "Translator"
-	desc = "Translates your speech to any known language."
+	desc = "将你的言语翻译成任何已知语言."
 	action_icon_state = "translator"
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_PRED_TRANSLATOR,
@@ -207,7 +207,7 @@
 
 /datum/action/predator_action/bracer/injectors
 	name = "Create Stabilising Crystal"
-	desc = "Synthesize a thwei filled healing crystal, do not use more than one in a row."
+	desc = "合成一个充满thwei的治疗水晶, 不要连续使用超过一个."
 	action_icon_state = "crystal"
 	power_to_drain = 1000
 	keybinding_signals = list(
@@ -233,7 +233,7 @@
 
 /datum/action/predator_action/bracer/wristblades
 	name = "Use Wrist Blades"
-	desc = "Activates integrated razorsharp blades from your forearm."
+	desc = "从你的前臂激活内置的锋利刀刃."
 	action_icon_state = "blades"
 	action_type = ACTION_SELECT
 	power_to_drain = 50
@@ -252,7 +252,7 @@
 
 /datum/action/predator_action/bracer/caster
 	name = "Use Plasma Caster"
-	desc = "Activates your shoulder mounted plasma caster, use middle mouse button on target to auto aim plasma caster on it."
+	desc = "激活你肩部安装的等离子炮, 对目标使用鼠标中键以自动瞄准等离子炮."
 	action_icon_state = "plasmacannon"
 	action_type = ACTION_SELECT
 	power_to_drain = 50
@@ -271,7 +271,7 @@
 
 /datum/action/predator_action/bracer/cloaker
 	name = "Toggle Cloaking Device"
-	desc = "Turn on your stealth cloaking device, turns off after teleporting."
+	desc = "开启你的隐形装置, 传送后关闭."
 	action_icon_state = "cloack"
 	action_type = ACTION_SELECT
 	keybinding_signals = list(
@@ -288,7 +288,7 @@
 
 /datum/action/predator_action/bracer/activate_suicide
 	name = "Final Countdown (!)"
-	desc = "Self destruct sequence, size of explosion can be changed on RMB."
+	desc = "自毁序列, 爆炸范围可通过右键更改."
 	action_icon_state = "selfdestruct"
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_PRED_SD,

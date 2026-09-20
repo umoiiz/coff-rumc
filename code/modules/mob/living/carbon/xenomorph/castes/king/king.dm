@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/king
 	caste_base_type = /datum/xeno_caste/king
 	name = "King"
-	desc = "A primordial creature, evolved to smash the hardiest of defences and hunt the hardiest of prey."
+	desc = "一种原始生物,进化来粉碎最坚固的防御并猎杀最顽强的猎物."
 	icon = 'icons/Xeno/castes/king/basic.dmi'
 	icon_state = "King Walking"
 	effects_icon = 'icons/Xeno/castes/king/effects.dmi'

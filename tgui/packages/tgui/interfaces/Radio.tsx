@@ -61,7 +61,7 @@ export const Radio = (props) => {
       <Window.Content>
         <Section>
           <LabeledList>
-            <LabeledList.Item label="Frequency">
+            <LabeledList.Item label="频率">
               {freqlock ? (
                 <Box inline color="light-gray">
                   {toFixed(frequency / 10, 1)} kHz
@@ -84,7 +84,7 @@ export const Radio = (props) => {
                 />
               )}
             </LabeledList.Item>
-            <LabeledList.Item label="Audio">
+            <LabeledList.Item label="音频">
               <Button
                 textAlign="center"
                 width="37px"
@@ -121,10 +121,10 @@ export const Radio = (props) => {
               )}
             </LabeledList.Item>
             {!!subspace && (
-              <LabeledList.Item label="Channels">
+              <LabeledList.Item label="频道">
                 {radioChannels.length === 0 && (
                   <Box inline color="bad">
-                    No encryption keys installed.
+                    未安装加密密钥.
                   </Box>
                 )}
                 {radioChannels.map((channel) => (
@@ -148,7 +148,7 @@ export const Radio = (props) => {
               </LabeledList.Item>
             )}
             {!!headset && (
-              <LabeledList.Item label="Squad HUD">
+              <LabeledList.Item label="小队HUD">
                 <Button
                   selected={!!headsetHudOn}
                   onClick={() => act('headset_hud')}

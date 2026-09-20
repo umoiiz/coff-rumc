@@ -23,27 +23,27 @@ export const ShowDesc = (props) => {
         title={'Var Details'}
         buttons={
           VarExplanation[desc].dataunit ? (
-            <Button content="Dismiss" onClick={() => setDesc('')} />
+            <Button content="关闭" onClick={() => setDesc('')} />
           ) : (
             <>
               <Button
-                content="Motion basics"
+                content="运动基础"
                 selected={desc === 'motion'}
                 onClick={() => setDesc('motion')}
               />
               <Button
-                content="Rand types"
+                content="随机类型"
                 selected={desc === 'randtypes'}
                 onClick={() => setDesc('randtypes')}
               />
               <Button
-                content="Generator types"
+                content="生成器类型"
                 selected={desc === 'gentypes'}
                 onClick={() => setDesc('gentypes')}
               />
               <Button
                 icon="x"
-                tooltip={'Dismiss'}
+                tooltip={'关闭'}
                 color={'red'}
                 onClick={() => setDesc('')}
               />
@@ -426,6 +426,6 @@ const VarExplanation = {
   },
 
   generator: {
-    desc: <Box>Please select a topic</Box>,
+    desc: <Box>请选择一个主题</Box>,
   },
 };

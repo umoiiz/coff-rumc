@@ -1,6 +1,6 @@
 /obj/alien/resin/resin_growth
 	name = GROWTH_WALL
-	desc = "Some sort of resin growth. Looks incredibly fragile"
+	desc = "某种树脂增生.看起来极其脆弱"
 	icon_state = "growth_wall"
 	density = FALSE
 	opacity = FALSE

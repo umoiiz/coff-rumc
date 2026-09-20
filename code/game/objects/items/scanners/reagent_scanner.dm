@@ -1,6 +1,6 @@
 /obj/item/reagent_scanner
-	name = "reagent scanner"
-	desc = "A hand-held reagent scanner which identifies chemical agents."
+	name = "试剂扫描仪"
+	desc = "一个手持式试剂扫描仪,可识别化学试剂."
 	icon_state = "spectrometer"
 	icon = 'icons/obj/device.dmi'
 	worn_icon_state = "analyzer"
@@ -21,15 +21,15 @@
 	if(!istype(O))
 		return
 	if(!O.reagents || !length(O.reagents.reagent_list))
-		to_chat(user, span_notice("No chemical agents found in [O]"))
+		to_chat(user, span_notice("在[O]中未发现化学试剂"))
 		return
 	var/dat = ""
 	var/one_percent = O.reagents.total_volume / 100
 	for (var/datum/reagent/R in O.reagents.reagent_list)
 		dat += "\n \t [span_notice("[R.name][details ? ": [R.volume / one_percent]%" : ""]")]"
-	to_chat(user, span_notice("Chemicals found: [dat]"))
+	to_chat(user, span_notice("发现化学物质:[dat]"))
 
 /obj/item/reagent_scanner/adv
-	name = "advanced reagent scanner"
+	name = "高级试剂扫描仪"
 	icon_state = "adv_spectrometer"
 	details = TRUE

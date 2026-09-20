@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/blood
-	name = "BloodPack"
-	desc = "Contains blood used for transfusion."
+	name = "血包"
+	desc = "含有用于输血的血."
 	icon = 'icons/obj/items/bloodpack.dmi'
 	icon_state = "empty"
 	volume = 200
@@ -49,6 +49,6 @@
 	blood_type = "O-"
 
 /obj/item/reagent_containers/blood/empty
-	name = "Empty BloodPack"
-	desc = "Seems pretty useless... Maybe if there were a way to fill it?"
+	name = "空的血袋"
+	desc = "看起来没什么用... 也许有办法把它装满?"
 	icon_state = "empty"

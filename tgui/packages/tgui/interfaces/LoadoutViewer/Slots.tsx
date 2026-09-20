@@ -23,7 +23,7 @@ export const SlotSelector = (props: LoadoutSlotData) => {
   }
 
   return (
-    <Section title="Slot Selector" textAlign="center">
+    <Section title="槽位选择器" textAlign="center">
       <Flex>
         <Flex.Item grow={1}>
           <div> </div>

@@ -2,8 +2,8 @@
 	var/force_nest = FALSE
 
 /obj/structure/bed/nest/structure
-	name = "thick alien nest"
-	desc = "A very thick nest, oozing with a thick sticky substance."
+	name = "厚实异形巢穴"
+	desc = "一个非常厚实的巢穴, 渗出浓稠的粘性物质."
 	force_nest = TRUE
 	var/obj/structure/xeno/thick_nest/linked_structure
 
@@ -21,13 +21,13 @@
 
 /obj/structure/bed/nest/structure/attack_hand(mob/user)
 	if(!isxeno(user))
-		to_chat(user, span_notice("The sticky resin is too strong for you to do anything to this nest"))
+		to_chat(user, span_notice("粘性树脂太坚固了, 你无法对这个巢穴做任何事"))
 		return FALSE
 	. = ..()
 
 /obj/structure/xeno/thick_nest
-	name = "thick resin nest"
-	desc = "A very thick nest, oozing with a thick sticky substance."
+	name = "厚实树脂巢穴"
+	desc = "一个非常厚实的巢穴, 渗出浓稠的粘性物质."
 	pixel_x = -8
 	pixel_y = -8
 	max_integrity = 400

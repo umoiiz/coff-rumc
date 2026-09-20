@@ -1,6 +1,6 @@
 /obj/effect/acid_hole
 	name = "hole"
-	desc = "What could have done this? Something agile enough could probably climb through."
+	desc = "是什么造成了这个?足够敏捷的东西或许能爬过去。"
 	icon = 'icons/obj/smooth_objects/acid-hole.dmi'
 	icon_state = "acid-hole-0"
 	smoothing_flags = SMOOTH_BITMASK
@@ -82,28 +82,28 @@
 	var/turf/T = get_step(src, crawl_dir)
 
 	if (!T || T.density)
-		to_chat(user, "This hole leads nowhere!")
+		to_chat(user, "这个洞不通向任何地方!")
 		return
 
 	if(entrance_dir)
 		if(!step(user, entrance_dir))
-			to_chat(user, span_warning("You can't reach the hole's entrance."))
+			to_chat(user, span_warning("你够不到洞的入口。"))
 			return
 
 	for(var/obj/O in T)
 		if(!O.CanPass(user, user.loc))
-			to_chat(user, span_warning("The hole's exit is blocked by something!"))
+			to_chat(user, span_warning("洞的出口被什么东西堵住了!"))
 			return
 
 	for(var/obj/machinery/door/poddoor/timed_late/containment/shutter in get_turf(src))
 		if(shutter.density)
-			to_chat(user, span_warning("You can't reach the hole's entrance under the shutters."))
+			to_chat(user, span_warning("在百叶窗下你够不到洞的入口。"))
 			return
 
 	if(user.do_actions)
 		return
 
-	to_chat(user, span_notice("You start crawling through the hole."))
+	to_chat(user, span_notice("你开始爬过这个洞。"))
 
 	if(do_after(user, 15, IGNORE_HELD_ITEM, src, BUSY_ICON_HOSTILE) && !T.density && !user.lying_angle && !user.buckled)
 		for(var/obj/O in T)
@@ -111,7 +111,7 @@
 				return
 		if(user.pulling)
 			user.stop_pulling()
-			to_chat(user, span_warning("You release what you're pulling to fit into the tunnel!"))
+			to_chat(user, span_warning("你松开了正在拉的东西以便挤进隧道!"))
 		user.forceMove(T)
 
 //Throwing Shiet
@@ -134,20 +134,20 @@
 		var/obj/item/explosive/grenade/G = I
 
 		if(issynth(user) && G.dangerous && !CONFIG_GET(flag/allow_synthetic_gun_use))
-			to_chat(user, span_warning("Your programming prevents you from doing this."))
+			to_chat(user, span_warning("你的程序设定阻止你这么做。"))
 			return
 
 		if(!T || T.density)
-			to_chat(user, span_warning("This hole leads nowhere!"))
+			to_chat(user, span_warning("这个洞不通向任何地方!"))
 			return
 
-		to_chat(user, span_notice("You take the position to throw [G]."))
+		to_chat(user, span_notice("你摆好姿势准备投掷[G]。"))
 
 		if(!do_after(user, 10, NONE, src, BUSY_ICON_HOSTILE) || !T || T.density)
 			return
 
-		user.visible_message(span_warning("[user] throws [G] through [src]!"), \
-							span_warning("You throw [G] through [src]"))
+		user.visible_message(span_warning("[user]将[G]穿过[src]投掷过去!"), \
+							span_warning("你将[G]穿过[src]投掷过去"))
 		user.drop_held_item()
 		G.forceMove(T)
 		G.setDir(pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
@@ -160,16 +160,16 @@
 		var/obj/item/flashlight/F = I
 
 		if(!T || T.density)
-			to_chat(user, span_warning("This hole leads nowhere!"))
+			to_chat(user, span_warning("这个洞不通向任何地方!"))
 			return
 
-		to_chat(user, span_notice("You take the position to throw [F]."))
+		to_chat(user, span_notice("你摆好姿势准备投掷[F]。"))
 
 		if(!do_after(user, 10, NONE, src, BUSY_ICON_GENERIC) || !T || T.density)
 			return
 
-		user.visible_message(span_warning("[user] throws [F] through [src]!"), \
-							span_warning("You throw [F] through [src]"))
+		user.visible_message(span_warning("[user]将[F]穿过[src]投掷过去!"), \
+							span_warning("你将[F]穿过[src]投掷过去"))
 		user.drop_held_item()
 		F.forceMove(T)
 		F.setDir(pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))

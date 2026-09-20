@@ -8,7 +8,7 @@
 
 /obj/machinery/holopad
 	name = "holopad"
-	desc = "It's a floor-mounted device for projecting holographic images."
+	desc = "这是一个安装在地板上的设备,用于投射全息影像。"
 	icon_state = "holopad0"
 	layer = MAP_SWITCH(LOWER_RUNE_LAYER, LOW_OBJ_LAYER)
 	plane = MAP_SWITCH(FLOOR_PLANE, GAME_PLANE)
@@ -76,7 +76,7 @@
 /obj/machinery/holopad/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Current projection range: <b>[holo_range]</b> units.")
+		. += span_notice("状态显示为:当前投射范围:<b>[holo_range]</b>单位。")
 
 
 /obj/machinery/holopad/ui_interact(mob/user, datum/tgui/ui)
@@ -116,23 +116,23 @@
 				return
 			if(last_request + 200 < world.time)
 				last_request = world.time
-				to_chat(ui.user, span_info("You requested an AI's presence."))
+				to_chat(ui.user, span_info("你请求了AI的到场。"))
 				var/area/area = get_area(src)
 				for(var/mob/living/silicon/ai/AI as anything in GLOB.ai_list)
 					if(!AI.client)
 						continue
-					to_chat(AI, span_info("Your presence is requested at <a href='byond://?src=[REF(AI)];jumptoholopad=[REF(src)]'>\the [area]</a>."))
+					to_chat(AI, span_info("你被请求前往<a href='byond://?src=[REF(AI)];jumptoholopad=[REF(src)]'>\the [area]</a>。"))
 					playsound(AI, 'sound/machines/two_tones_beep.ogg', 30, 1)
 					SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HOLOPAD_AI_CALLED, src)
 			else
-				to_chat(ui.user, span_info("A request for AI presence was already sent recently."))
+				to_chat(ui.user, span_info("最近已经发送过一次AI到场请求了。"))
 			return TRUE
 
 		if("holocall")
 			if(outgoing_call)
 				return
 			if(ui.user.loc != loc)
-				to_chat(ui.user, span_warning("You must stand on the holopad to make a call!"))
+				to_chat(ui.user, span_warning("你必须站在全息垫上才能发起呼叫!"))
 				return
 			var/list/callnames = list()
 			for(var/obj/machinery/holopad/I as anything in holopads)
@@ -140,7 +140,7 @@
 				if(A)
 					LAZYADD(callnames[A], I)
 			callnames -= get_area(src)
-			var/result = tgui_input_list(ui.user, "Choose an area to call", "Holocall", callnames)
+			var/result = tgui_input_list(ui.user, "选择一个区域进行呼叫", "全息呼叫", callnames)
 			if(QDELETED(ui.user) || !result || outgoing_call)
 				return
 			if(ui.user.loc == loc)
@@ -238,7 +238,7 @@
 			for(var/mob/living/silicon/ai/AI AS in GLOB.ai_list)
 				if(!AI.client)
 					continue
-				to_chat(AI, span_info("Your presence is requested at <a href='byond://?src=[REF(AI)];jumptoholopad=[REF(src)]'>\the [area]</a>."))
+				to_chat(AI, span_info("你被请求前往<a href='byond://?src=[REF(AI)];jumptoholopad=[REF(src)]'>\the [area]</a>。"))
 				playsound(AI, 'sound/machines/two_tones_beep.ogg', 30, 1)
 				SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HOLOPAD_AI_CALLED, src)
 		else
@@ -259,7 +259,7 @@
 					LAZYADD(callnames[A], I)
 			callnames -= get_area(src)
 
-			var/result = tgui_input_list(usr, "Choose an area to call", "Holocall", callnames)
+			var/result = tgui_input_list(usr, "选择一个区域进行呼叫", "全息呼叫", callnames)
 			if(QDELETED(usr) || !result || outgoing_call)
 				return
 
@@ -352,7 +352,7 @@
 
 	if(is_operational() && (!AI || AI.eyeobj.loc == loc))//If the projector has power and client eye is on it
 		if (AI && istype(AI.current, /obj/machinery/holopad))
-			to_chat(user, "[span_danger("ERROR:")] \black Image feed in progress.")
+			to_chat(user, "[span_danger("ERROR:")] \black 图像传输中。")
 			return
 
 		var/obj/effect/overlay/holo_pad_hologram/Hologram = new(loc)//Spawn a blank effect at the location.
@@ -376,11 +376,11 @@
 		move_hologram()
 
 		set_holo(user, Hologram)
-		visible_message(span_notice("A holographic image of [user] flickers to life before your eyes!"))
+		visible_message(span_notice("[user]的全息影像在你眼前闪烁显现!"))
 
 		return Hologram
 	else
-		to_chat(user, "[span_danger("ERROR:")] Unable to project hologram.")
+		to_chat(user, "[span_danger("ERROR:")] 无法投射全息影像。")
 
 /*This is the proc for special two-way communication between AI and holopad/people talking near holopad.
 For the other part of the code, check silicon say.dm. Particularly robot talk.*/

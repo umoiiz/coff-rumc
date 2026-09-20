@@ -76,7 +76,7 @@
 		return
 
 	if(get_self_acid())
-		balloon_alert(user, "It's melting!")
+		balloon_alert(user, "它正在融化!")
 		return
 
 	reload(user, I)
@@ -84,11 +84,11 @@
 ///Reloads the internal_item
 /obj/machinery/deployable/mounted/proc/reload(mob/user, ammo_magazine)
 	if(HAS_TRAIT(src, TRAIT_GUN_RELOADING))
-		to_chat(user, span_warning("The weapon is already being reloaded!"))
+		to_chat(user, span_warning("该武器已经在重新装弹了!"))
 		return
 
 	if(user.do_actions)
-		to_chat(user, span_warning("You are busy doing something else!"))
+		to_chat(user, span_warning("你正忙着做其他事情!"))
 		return
 
 	ADD_TRAIT(src, TRAIT_GUN_RELOADING, GUN_TRAIT)
@@ -113,18 +113,18 @@
 		return TRUE
 	var/mob/living/carbon/human/human_user = user
 	if(get_step(src, REVERSE_DIR(dir)) != human_user.loc) //cant man the gun from the barrels side
-		to_chat(human_user, span_warning("You should be behind [src] to man it!"))
+		to_chat(human_user, span_warning("你应该在[src]后面才能操作它!"))
 		return TRUE
 	if(operator) //If there is already a operator then they're manning it.
 		if(!operator.interactee)
 			stack_trace("/obj/machinery/deployable/mounted/interact(mob/user) called by user [human_user] with an operator with a null interactee: [operator].")
 			operator = null //this shouldn't happen, but just in case
-		to_chat(human_user, span_warning("Someone's already controlling it."))
+		to_chat(human_user, span_warning("已经有人在操作它了."))
 		return TRUE
 	if(human_user.interactee) //Make sure we're not manning two guns at once, tentacle arms.
 		human_user.unset_interaction()
 	if(issynth(human_user) && !CONFIG_GET(flag/allow_synthetic_gun_use))
-		to_chat(human_user, span_warning("Your programming restricts operating heavy weaponry."))
+		to_chat(human_user, span_warning("你的程序限制你操作重型武器."))
 		return TRUE
 
 	density = FALSE
@@ -136,7 +136,7 @@
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, TRUE, 7)
 	do_attack_animation(src, ATTACK_EFFECT_GRAB)
 	visible_message("[icon2html(src, viewers(src))] [span_notice("[human_user] mans the [src]!")]",
-		span_notice("You man the gun!"))
+		span_notice("你操作了该枪!"))
 
 	return ..()
 
@@ -220,7 +220,7 @@
 		operator.unset_interaction()
 		return FALSE
 	if(operator.get_active_held_item())
-		to_chat(operator, span_warning("You need a free hand to shoot the [src]."))
+		to_chat(operator, span_warning("你需要空出一只手来射击[src]。"))
 		return FALSE
 	var/atom/target = object
 
@@ -235,22 +235,22 @@
 	//we can only fire in a 90 degree cone
 	if((dir & angle) && target.loc != loc && target.loc != operator.loc)
 		if(CHECK_BITFIELD(gun.deploy_flags, DEPLOYED_ANCHORED_FIRING_ONLY) && !anchored)
-			to_chat(operator, "[src] cannot be fired without it being anchored.")
+			to_chat(operator, "[src]未固定时无法开火。")
 			return FALSE
 		operator.setDir(dir)
 		gun?.set_target(target)
 		update_appearance()
 		return TRUE
 	if(CHECK_BITFIELD(gun?.deploy_flags, DEPLOYED_NO_ROTATE))
-		to_chat(operator, "This one is anchored in place and cannot be rotated.")
+		to_chat(operator, "这个已固定到位,无法旋转。")
 		return FALSE
 
 	if(CHECK_BITFIELD(gun?.deploy_flags, DEPLOYED_NO_ROTATE_ANCHORED) && anchored)
-		to_chat(operator, "[src] cannot be rotated while anchored.")
+		to_chat(operator, "[src]固定时无法旋转。")
 		return FALSE
 
 	if(!TIMER_COOLDOWN_FINISHED(src, COOLDOWN_MOUNTED_GUN_ROTATE))
-		to_chat(operator, span_warning("[src] cannot be rotated so violently."))
+		to_chat(operator, span_warning("[src]无法如此剧烈地旋转。"))
 		stop_fire()
 		return FALSE
 
@@ -258,7 +258,7 @@
 	var/left = leftright[1] - 1
 	var/right = leftright[2] + 1
 	if(!(left == (angle-1)) && !(right == (angle+1)))
-		to_chat(operator, span_warning("[src] cannot be rotated so violently."))
+		to_chat(operator, span_warning("[src]无法如此剧烈地旋转。"))
 		stop_fire()
 		return FALSE
 	var/mob/living/carbon/human/user = operator
@@ -277,7 +277,7 @@
 	setDir(angle)
 	user.set_interaction(src)
 	playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
-	operator.visible_message("[operator] rotates the [src].", "You rotate [src].")
+	operator.visible_message("[operator]旋转了[src]。", "你旋转了[src]。")
 	TIMER_COOLDOWN_START(src, COOLDOWN_MOUNTED_GUN_ROTATE, 0.75 SECONDS)
 	update_pixels(user, TRUE)
 
@@ -341,15 +341,15 @@
 		return
 
 	if(anchor_time)
-		balloon_alert(user, "You begin [anchored ? "unanchoring" : "anchoring"] [src]")
+		balloon_alert(user, "你开始[anchored ? "unanchoring" : "anchoring"][src]")
 		if(!do_after(user, anchor_time, NONE, src))
-			balloon_alert(user, "Interrupted!")
+			balloon_alert(user, "被打断了!")
 			return
 
 	anchored = !anchored
 	update_icon()
 
-	balloon_alert(user, "You [anchored ? "anchor" : "unanchor"] [src]")
+	balloon_alert(user, "你[anchored ? "anchor" : "unanchor"][src]")
 
 /obj/machinery/deployable/mounted/moveable/fast
 	drag_delay = 1

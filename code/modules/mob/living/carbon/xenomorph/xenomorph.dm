@@ -330,7 +330,7 @@
 		return FALSE //to stop xeno from pulling marines on roller beds.
 	if(ishuman(L))
 		if(L.stat == DEAD) //Can't drag dead human bodies.
-			to_chat(usr, span_xenowarning("This looks gross, better not touch it."))
+			to_chat(usr, span_xenowarning("这看起来真恶心,最好别碰它."))
 			return FALSE
 		if(L != pulling)
 			pull_speed += XENO_DEADHUMAN_DRAG_SLOWDOWN
@@ -352,13 +352,13 @@
 		return TRUE
 	H.Paralyze(rand(xeno_caste.tacklemin,xeno_caste.tacklemax) * 20)
 	playsound(H.loc, 'sound/weapons/pierce.ogg', 25, 1)
-	H.visible_message(span_warning("[H] tried to pull [src] but instead gets a tail swipe to the head!"))
+	H.visible_message(span_warning("[H]试图拉扯[src],但反而被尾巴扫中了头部!"))
 	H.stop_pulling()
 	return FALSE
 
 /mob/living/carbon/xenomorph/resist_grab()
 	if(pulledby.grab_state)
-		visible_message(span_danger("[src] has broken free of [pulledby]'s grip!"), null, null, 5)
+		visible_message(span_danger("[src]挣脱了[pulledby]的抓握!"), null, null, 5)
 	pulledby.stop_pulling()
 	. = 1
 
@@ -453,7 +453,7 @@
 
 ///Kick the player from this mob, replace it by a more competent ai
 /mob/living/carbon/xenomorph/proc/replace_by_ai()
-	to_chat(src, span_warning("Sorry, your skill level was deemed too low by our automatic skill check system. Your body has as such been given to a more capable brain, our state of the art AI technology piece. Do not hesitate to take back your body after you've improved!"))
+	to_chat(src, span_warning("抱歉,我们的自动技能检查系统认为你的技能水平太低.因此你的身体已被交给一个更有能力的大脑,我们最先进的人工智能技术产物.在你提升之后,请随时取回你的身体!"))
 	ghostize(TRUE)//Can take back its body
 	GLOB.offered_mob_list -= src
 	AddComponent(/datum/component/ai_controller, /datum/ai_behavior/xeno)
@@ -504,11 +504,11 @@ Returns TRUE when loc_weeds_type changes. Returns FALSE when it doesn’t change
 
 	if(resting)
 		if(!COOLDOWN_FINISHED(src, xeno_resting_cooldown))
-			balloon_alert(src, "Too soon!")
+			balloon_alert(src, "太早了!")
 			return
 
 	if(!COOLDOWN_FINISHED(src, xeno_unresting_cooldown))
-		balloon_alert(src, "Wait a bit!")
+		balloon_alert(src, "再等一会儿!")
 		return
 	return ..()
 
@@ -607,9 +607,9 @@ Returns TRUE when loc_weeds_type changes. Returns FALSE when it doesn’t change
 /mob/living/carbon/xenomorph/proc/carry_target(mob/living/carbon/target, target_mounting = FALSE)
 	if(incapacitated(restrained_flags = RESTRAINED_NECKGRAB))
 		if(target_mounting)
-			to_chat(target, span_xenowarning("You cannot mount [src]!"))
+			to_chat(target, span_xenowarning("你无法骑乘[src]!"))
 			return
-		to_chat(src, span_xenowarning("[target] cannot mount you!"))
+		to_chat(src, span_xenowarning("[target]无法骑乘你!"))
 		return
 	visible_message(span_notice("[target_mounting ? "[target] starts to mount on [src]" : "[src] starts hoisting [target] onto [p_their()] back..."]"),
 	span_notice("[target_mounting ? "[target] starts to mount on your back" : "You start to lift [target] onto your back..."]"))
@@ -659,7 +659,7 @@ Returns TRUE when loc_weeds_type changes. Returns FALSE when it doesn’t change
 
 	if(href_list[VV_HK_SET_XENO_SKIN])
 		if(!length(skins))
-			to_chat(usr, span_notice("This caste doesn't have any skins!"))
+			to_chat(usr, span_notice("这个种姓没有任何皮肤!"))
 			return
 
 		var/datum/xenomorph_skin/selection
@@ -667,9 +667,9 @@ Returns TRUE when loc_weeds_type changes. Returns FALSE when it doesn’t change
 		for(var/datum/xenomorph_skin/our_skin as anything in skins)
 			available_skins[our_skin.name] = our_skin
 		if(length(available_skins) < 2)
-			to_chat(usr, span_notice("There aren't any skins that you can access!"))
+			to_chat(usr, span_notice("没有任何你可以访问的皮肤!"))
 			return
-		var/answer = tgui_input_list(usr, "Choose a setting appearance", "Choose a setting appearance", available_skins)
+		var/answer = tgui_input_list(usr, "选择一种设置外观", "选择一种设置外观", available_skins)
 		selection = available_skins[answer]
 
 		if(!selection)

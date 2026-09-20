@@ -5,8 +5,8 @@
 */
 
 /obj/item/tool/multitool
-	name = "multitool"
-	desc = "Used for pulsing wires to test which to cut. Not recommended by doctors."
+	name = "多功能工具"
+	desc = "用于脉冲导线以测试该剪哪根. 医生不建议这样做."
 	icon_state = "multitool"
 	atom_flags = CONDUCT
 	force = 5
@@ -14,7 +14,7 @@
 	throwforce = 5
 	throw_range = 15
 	throw_speed = 3
-	desc = "You can use this on airlocks or APCs to try to hack them without cutting wires."
+	desc = "你可以用这个对准气闸或 APC, 尝试在不切断导线的情况下入侵它们."
 	tool_behaviour = TOOL_MULTITOOL
 
 	var/obj/machinery/telecomms/buffer // simple machine buffer for device linkage
@@ -28,14 +28,14 @@
 	var/area/current_area = get_area(src)
 	var/atom/area_apc = current_area ? current_area.get_apc() : null
 	if(!area_apc)
-		to_chat(user, span_warning("ERROR: Could not locate local APC."))
-		user.balloon_alert(user, "could not locate!")
+		to_chat(user, span_warning("错误: 无法定位本地 APC."))
+		user.balloon_alert(user, "无法定位!")
 		return
 
 	var/dist = get_dist(src, area_apc)
 	var/direction = angle_to_dir(Get_Angle(get_turf(src), get_turf(area_apc)))
-	to_chat(user, span_notice("The local APC is located at [span_bold("[dist] units [dir2text(direction)]")]."))
-	user.balloon_alert(user, "[dist] units [dir2text(direction)]")
+	to_chat(user, span_notice("本地 APC 位于 [span_bold("[dist] units [dir2text(direction)]")]."))
+	user.balloon_alert(user, "[dist] 单位 [dir2text(direction)]")
 
 	//Create the appearance so we have something to apply the filter to.
 	var/mutable_appearance/apc_appearance = new(area_apc)

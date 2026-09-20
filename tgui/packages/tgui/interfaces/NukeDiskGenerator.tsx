@@ -35,14 +35,14 @@ export const NukeDiskGenerator = (props) => {
   return (
     <Window title="Nuke Disk Generator" width={450} height={250}>
       <Window.Content>
-        <Section title="Запустить генерацию">
+        <Section title="启动生成">
           <Stack fill vertical>
             <Stack.Item>
               <NoticeBox>{flavor_text}</NoticeBox>
             </Stack.Item>
             <Stack.Item>
               <Box width="100%" textAlign="center">
-                Прогресс генерации:
+                生成进度:
                 <ProgressBar value={progress} color={color} />
               </Box>
             </Stack.Item>
@@ -64,7 +64,7 @@ export const NukeDiskGenerator = (props) => {
                   <NoticeBox>{message}</NoticeBox>
                 )}
                 <Button disabled={running} onClick={() => act('run_program')}>
-                  Запустить генерацию
+                  启动生成
                 </Button>
               </Box>
             </Stack.Item>

@@ -180,7 +180,7 @@
 	UnregisterSignal(wearer, COMSIG_HUMAN_DAMAGE_TAKEN)
 	STOP_PROCESSING(SSobj, src)
 	if(!silent)
-		wearer.balloon_alert(wearer, "Automedical suite deactivates")
+		wearer.balloon_alert(wearer, "自动医疗套件已停用")
 		playsound(parent,'sound/voice/b18/deactivate.ogg', 15, 0, 1)
 
 /**
@@ -196,7 +196,7 @@
 	RegisterSignal(wearer, COMSIG_HUMAN_DAMAGE_TAKEN, PROC_REF(damage_taken))
 	START_PROCESSING(SSobj, src)
 	if(!silent)
-		wearer.balloon_alert(wearer, "Automedical suite activates")
+		wearer.balloon_alert(wearer, "自动医疗套件已激活")
 		playsound(parent,'sound/voice/b18/activate.ogg', 15, 0, 1)
 
 /**
@@ -261,7 +261,7 @@
 
 	if(burns || brute || oxy || tox || pain)
 		playsound(parent,'sound/items/hypospray.ogg', 25, 0, 1)
-		to_chat(wearer, span_notice("[icon2html(parent, wearer)] beeps:</br>[burns][brute][oxy][tox][pain]Estimated [chem_cooldown/600] minute replenishment time for each dosage."))
+		to_chat(wearer, span_notice("[icon2html(parent, wearer)]发出哔声:</br>[burns][brute][oxy][tox][pain]预计每剂补充时间为[chem_cooldown/600]分钟."))
 
 /**
 	Plays a sound and message to the user informing the user chemicals are ready again
@@ -276,7 +276,7 @@
 	if(!istype(H))
 		return
 
-	to_chat(H, span_notice("[I] beeps: [message] reservoir replenished."))
+	to_chat(H, span_notice("[I]发出哔声: [message]储液罐已补充."))
 
 /**
 	Add the actions to the user

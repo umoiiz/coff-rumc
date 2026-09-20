@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/dragon
 	caste_base_type = /datum/xeno_caste/dragon
 	name = "Dragon"
-	desc = "A massive, ancient beast with scales that shimmer like polished armor. The fiercest and most formidable creature."
+	desc = "一只巨大而古老的野兽,鳞片如抛光盔甲般闪耀。最凶猛、最令人畏惧的生物。"
 	icon = 'icons/Xeno/castes/dragon/dragon.dmi'
 	effects_icon = 'icons/Xeno/castes/dragon/dragon.dmi' // Позже закинуть в отдельный .dmi
 	icon_state = "Dragon Walking"

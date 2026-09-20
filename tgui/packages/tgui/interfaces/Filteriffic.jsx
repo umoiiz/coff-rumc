@@ -66,7 +66,7 @@ const FilterFloatEntry = (props) => {
         }
       />
       <Box inline ml={2} mr={1}>
-        Step:
+        步骤:
       </Box>
       <NumberInput
         value={step}
@@ -209,7 +209,7 @@ const FilterDataEntry = (props) => {
       {filterEntryTypes[filterEntryMap[name]] || 'Not Found (This is an error)'}{' '}
       {!hasValue && (
         <Box inline color="average">
-          (Default)
+          (默认)
         </Box>
       )}
     </LabeledList.Item>
@@ -297,15 +297,15 @@ export const Filteriffic = (props) => {
     <Window title="Filteriffic" width={500} height={500}>
       <Window.Content scrollable>
         <NoticeBox danger>
-          DO NOT MESS WITH EXISTING FILTERS IF YOU DO NOT KNOW THE CONSEQUENCES.
-          YOU HAVE BEEN WARNED.
+          如果你不知道后果,请勿乱动现有过滤器.
+          你已被警告.
         </NoticeBox>
         <Section
           title={
             hiddenSecret ? (
               <>
                 <Box mr={0.5} inline>
-                  MASS EDIT:
+                  批量编辑:
                 </Box>
                 <Input
                   value={massApplyPath}
@@ -341,7 +341,7 @@ export const Filteriffic = (props) => {
           }
         >
           {!hasFilters ? (
-            <Box>No filters</Box>
+            <Box>无过滤器</Box>
           ) : (
             map(filters, (entry, key) => (
               <FilterEntry filterDataEntry={entry} name={key} key={key} />

@@ -1,6 +1,6 @@
 /obj/item/ammo_magazine
-	name = "generic ammo"
-	desc = "A box of ammo."
+	name = "通用弹药"
+	desc = "一盒弹药."
 	icon = 'icons/obj/items/ammo/magazine.dmi'
 	worn_icon_state = "ammo_mag" //PLACEHOLDER. This ensures the mag doesn't use the icon state instead.
 	worn_icon_list = list(
@@ -93,7 +93,7 @@
 	if(user.get_inactive_held_item() != src || !CHECK_BITFIELD(magazine_flags, MAGAZINE_REFILLABLE))
 		return ..()
 	if(current_rounds <= 0)
-		to_chat(user, span_notice("[src] is empty. There is nothing to grab."))
+		to_chat(user, span_notice("[src]是空的.没有东西可拿."))
 		return
 	create_handful(user)
 
@@ -114,7 +114,7 @@
 		return
 
 	if(src != user.get_inactive_held_item() && !CHECK_BITFIELD(magazine_flags, MAGAZINE_HANDFUL)) //It has to be held.
-		to_chat(user, span_notice("Try holding [src] before you attempt to restock it."))
+		to_chat(user, span_notice("尝试补充弹药前,请先握住[src]."))
 		return
 
 	var/obj/item/ammo_magazine/mag = I
@@ -124,7 +124,7 @@
 		if(current_rounds == 0)
 			transfer_ammo(mag, user, amount_to_transfer, TRUE)
 			return
-		to_chat(user, span_notice("Those aren't the same rounds. Better not mix them up."))
+		to_chat(user, span_notice("那些不是同一种弹药.最好别混在一起."))
 		return
 
 	transfer_ammo(mag, user, amount_to_transfer)
@@ -154,23 +154,23 @@
 /obj/item/ammo_magazine/proc/can_transfer_ammo(obj/item/ammo_magazine/source, mob/user, transfer_amount = 1, silent = FALSE)
 	if(current_rounds >= max_rounds) //Does the mag actually need reloading?
 		if(!silent)
-			to_chat(user, span_notice("[src] is already full."))
+			to_chat(user, span_notice("[src]已经满了."))
 		return FALSE
 
 	if(source.caliber != caliber) //Are they the same caliber?
 		if(!silent)
-			to_chat(user, span_notice("The rounds don't match up. Better not mix them up."))
+			to_chat(user, span_notice("弹药不匹配.最好别混在一起."))
 		return FALSE
 
 	if(!source.current_rounds)
 		if(!silent)
-			to_chat(user, span_warning("\The [source] is empty."))
+			to_chat(user, span_warning("\The [source]是空的."))
 		return FALSE
 
 	//using handfuls; and filling internal mags has no delay.
 	if(fill_delay)
 		if(!silent)
-			to_chat(user, span_notice("You start refilling [src] with [source]."))
+			to_chat(user, span_notice("你开始用[source]补充[src]."))
 		if(!do_after(user, fill_delay, NONE, src, BUSY_ICON_GENERIC))
 			return FALSE
 	return TRUE
@@ -180,7 +180,7 @@
 	if(!can_transfer_ammo(source, user, transfer_amount))
 		return
 
-	to_chat(user, span_notice("You refill [src] with [source]."))
+	to_chat(user, span_notice("你用[source]补充了[src]."))
 
 	var/amount_difference = clamp(min(transfer_amount, max_rounds - current_rounds), 0, source.current_rounds)
 	source.current_rounds -= amount_difference
@@ -234,7 +234,7 @@
 
 	if(user)
 		user.put_in_hands(new_handful)
-		to_chat(user, span_notice("You grab <b>[rounds]</b> round\s from [src]."))
+		to_chat(user, span_notice("你从[src]中取出<b>[rounds]</b>发\s 弹药."))
 		update_icon() //Update the other one.
 		if(current_rounds <= 0 && CHECK_BITFIELD(magazine_flags, MAGAZINE_HANDFUL))
 			user.temporarilyRemoveItemFromInventory(src)

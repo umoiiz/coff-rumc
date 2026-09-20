@@ -1,6 +1,6 @@
 /obj/machinery/computer/supplycomp
 	name = "ASRS console"
-	desc = "A console for an Automated Storage and Retrieval System"
+	desc = "自动存储与检索系统控制台"
 	icon = 'icons/obj/machines/computer.dmi'
 	icon_state = "computer"
 	screen_overlay = "supply"
@@ -15,7 +15,7 @@
 
 /obj/machinery/computer/supplycomp/crash
 	req_access = list() //So marines can access cargo stuff without relying on synth spawn
-	desc = "A console for an Automated Storage and Retrieval System. This version somehow does not require special access."
+	desc = "自动化存取系统的控制台. 这个版本不知为何不需要特殊权限."
 	resistance_flags = RESIST_ALL
 
 /obj/machinery/computer/supplycomp/interact(mob/user)

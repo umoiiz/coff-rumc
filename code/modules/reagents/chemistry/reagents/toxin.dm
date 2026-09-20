@@ -351,29 +351,29 @@
 		if(H.head)
 			if(prob(meltprob) && !CHECK_BITFIELD(H.head.resistance_flags, RESIST_ALL))
 				if(show_message)
-					to_chat(H, span_danger("Your headgear melts away but protects you from the acid!"))
+					to_chat(H, span_danger("你的头具融化了, 但保护你免受酸的伤害!"))
 				qdel(H.head)
 				H.update_inv_head(0)
 				H.update_hair(0)
 			else if(show_message)
-				to_chat(H, span_warning("Your headgear protects you from the acid."))
+				to_chat(H, span_warning("你的头具保护你免受酸的伤害."))
 			return
 
 		if(H.wear_mask)
 			if(prob(meltprob) && !CHECK_BITFIELD(H.wear_mask.resistance_flags, RESIST_ALL))
 				if(show_message)
-					to_chat(H, span_danger("Your mask melts away but protects you from the acid!"))
+					to_chat(H, span_danger("你的面罩融化了, 但保护你免受酸的伤害!"))
 				qdel(H.wear_mask)
 				H.update_inv_wear_mask(0)
 				H.update_hair(0)
 			else if(show_message)
-				to_chat(H, span_warning("Your mask protects you from the acid."))
+				to_chat(H, span_warning("你的面罩保护你免受酸的伤害."))
 			return
 
 		if(H.glasses) //Doesn't protect you from the acid but can melt anyways!
 			if(prob(meltprob) && !CHECK_BITFIELD(H.glasses.resistance_flags, RESIST_ALL))
 				if(show_message)
-					to_chat(H, span_danger("Your glasses melts away!"))
+					to_chat(H, span_danger("你的眼镜融化了!"))
 				qdel(H.glasses)
 				H.update_inv_glasses(0)
 
@@ -397,7 +397,7 @@
 		if(!CHECK_BITFIELD(O.resistance_flags, RESIST_ALL))
 			var/obj/effect/decal/cleanable/molten_item/I = new/obj/effect/decal/cleanable/molten_item(O.loc)
 			I.desc = "Looks like this was \an [O] some time ago."
-			O.visible_message(span_warning("\the [O] melts."), null, 5)
+			O.visible_message(span_warning("\the [O]融化了."), null, 5)
 			qdel(O)
 
 /datum/reagent/toxin/acid/polyacid
@@ -420,7 +420,7 @@
 	reagent_ui_priority = REAGENT_UI_IMMEDIATE
 
 /datum/reagent/toxin/nanites/on_mob_add(mob/living/L, metabolism)
-	to_chat(L, span_userdanger("Your body begins to twist and deform! Get out of the razorburn!"))
+	to_chat(L, span_userdanger("你的身体开始扭曲变形! 快离开剃刀灼伤区域!"))
 	return ..()
 
 /datum/reagent/toxin/nanites/on_mob_life(mob/living/L, metabolism)
@@ -432,7 +432,7 @@
 		holder.remove_reagent(/datum/reagent/toxin/nanites, (current_cycle * 0.2) - 1)
 	if(volume > 100)
 		var/turf/location = get_turf(holder.my_atom)
-		location.visible_message(span_danger("Holy shit! They just exploded into a ball of razorwire! Dear god!"))
+		location.visible_message(span_danger("我靠! 它们刚刚爆炸成了一团剃刀铁丝网! 天哪!"))
 		L.gib()
 		new /obj/structure/razorwire(location)
 	return ..()
@@ -509,13 +509,13 @@
 	switch(slowdown_multiplier) //Description varies in severity and probability with the multiplier
 		if(0 to 1)
 			if(prob(10))
-				to_chat(L, span_warning("You feel your legs tense up.") )
+				to_chat(L, span_warning("你感觉双腿绷紧。") )
 		if(2 to 3.9)
 			if(prob(20))
-				to_chat(L, span_warning("You feel your legs go numb.") )
+				to_chat(L, span_warning("你感觉双腿发麻。") )
 		if(4 to INFINITY)
 			if(prob(30))
-				to_chat(L, span_danger("You can barely feel your legs!") )
+				to_chat(L, span_danger("你几乎感觉不到自己的腿了!") )
 
 	L.add_movespeed_modifier(MOVESPEED_ID_XENO_HEMODILE, TRUE, 0, NONE, TRUE, 1.5 * slowdown_multiplier)
 
@@ -539,7 +539,7 @@
 
 /datum/reagent/toxin/xeno_transvitox/on_mob_life(mob/living/L, metabolism)
 	if(prob(10))
-		to_chat(L, span_warning("You notice your wounds crusting over with disgusting green ichor.") )
+		to_chat(L, span_warning("你注意到伤口上结着令人作呕的绿色脓液。") )
 
 	var/tox_cap_multiplier = 0.5 //Because transvitox is obviously in blood already
 
@@ -628,10 +628,10 @@
 /datum/reagent/toxin/xeno_ozelomelyn/on_mob_life(mob/living/L, metabolism)
 	if(L.get_tox_loss() < 40) // if our toxloss is below 40
 		if(prob(15))
-			to_chat(L, span_warning("Your veins feel like water and you can feel a growing itchy feeling in them!") )
+			to_chat(L, span_warning("你的血管感觉像水一样,你能感觉到里面越来越痒!") )
 		return ..()
 	if(prob(15))
-		to_chat(L, span_warning("Your veins feel like water..") )
+		to_chat(L, span_warning("你的血管感觉像水一样..") )
 		return ..()
 
 /datum/reagent/zombium
@@ -747,7 +747,7 @@
 		if(TIMER_COOLDOWN_RUNNING(L, name) || L.stat == DEAD)
 			return
 		if(L.health < -85)
-			to_chat(L, span_userdanger("You feel a weird sensation from the nest jelly!"))
+			to_chat(L, span_userdanger("你从巢穴凝胶中感到一种奇怪的感觉!"))
 			L.adjust_oxy_loss(-L.get_oxy_loss())
 			L.adjust_oxy_loss(-2*effect_str)
 			L.adjust_brute_loss(-L.get_brute_loss(TRUE) * 0.40)

@@ -14,9 +14,9 @@ export const SelfDestruct = (props) => {
   return (
     <Window width={470} height={290}>
       <Window.Content>
-        <Section title="Overview">
+        <Section title="概览">
           <LabeledList>
-            <LabeledList.Item label="STATUS:">
+            <LabeledList.Item label="状态:">
               {(dest_status === 0 && <span className="idle">DISARMED</span>) ||
                 (dest_status === 1 && (
                   <span className="average">AWAITING INPUT</span>
@@ -29,7 +29,7 @@ export const SelfDestruct = (props) => {
         </Section>
 
         {dest_status === 2 && (
-          <Section title="Time To Detonation">
+          <Section title="引爆倒计时">
             <ProgressBar
               value={detonation_pcent}
               ranges={{
@@ -39,18 +39,18 @@ export const SelfDestruct = (props) => {
               }}
             />
             <LabeledList>
-              <LabeledList.Item label="Time Left: ">
+              <LabeledList.Item label="剩余时间: ">
                 {detonation_time}
               </LabeledList.Item>
             </LabeledList>
           </Section>
         )}
 
-        <Section title="Control">
+        <Section title="控制">
           {(dest_status === 1 && (
             <Button
               icon="exclamation-triangle"
-              content="ACTIVATE SYSTEM"
+              content="激活系统"
               color="yellow"
               onClick={() => act('dest_start')}
             />
@@ -59,13 +59,13 @@ export const SelfDestruct = (props) => {
               <>
                 <Button
                   icon="exclamation-triangle"
-                  content="INITIATE"
+                  content="启动"
                   color="red"
                   onClick={() => act('dest_trigger')}
                 />
                 <Button
                   icon="exclamation-triangle"
-                  content="CANCEL"
+                  content="取消"
                   color="yellow"
                   onClick={() => act('dest_cancel')}
                 />

@@ -120,9 +120,9 @@ export const CommunicationsConsole = () => {
 const LoginPage = () => {
   const { act } = useBackend<Data>();
   return (
-    <Section title="Authentication">
+    <Section title="身份验证">
       <Button fluid icon="sign-in-alt" onClick={() => act('login')}>
-        LOG IN
+        登录
       </Button>
     </Section>
   );
@@ -132,7 +132,7 @@ const MainMenuButton = () => {
   const { act } = useBackend<Data>();
   return (
     <Button fluid icon="arrow-left" onClick={() => act('main')}>
-      Main Menu
+      主菜单
     </Button>
   );
 };
@@ -204,10 +204,10 @@ const MainPage = () => {
     <Stack vertical>
       <Stack.Item>
         <Section
-          title="Ship Control"
+          title="舰船控制"
           buttons={
             <Button icon="sign-out-alt" onClick={() => act('logout')}>
-              LOG OUT
+              登出
             </Button>
           }
         >
@@ -224,12 +224,12 @@ const MainPage = () => {
             </Flex.Item>
             <Flex.Item>
               <Button fluid icon="tv" onClick={() => act('status')}>
-                Set status display
+                设置状态显示
               </Button>
             </Flex.Item>
             <Flex.Item>
               <Button fluid icon="envelope" onClick={() => act('messagelist')}>
-                Message list
+                消息列表
               </Button>
             </Flex.Item>
           </Flex>
@@ -238,7 +238,7 @@ const MainPage = () => {
 
       {authenticated >= 2 && (
         <Stack.Item>
-          <Section title="Command">
+          <Section title="指挥">
             <Flex direction="column">
               <Flex.Item>
                 {!canAnnounce ? (
@@ -251,14 +251,14 @@ const MainPage = () => {
                     icon="bullhorn"
                     onClick={() => act('announce')}
                   >
-                    Make an announcement
+                    发布公告
                   </Button>
                 )}
               </Flex.Item>
               <Flex.Item>
                 {!admins_online ? (
                   <Button color="bad" fluid icon="ban">
-                    TGMC communication offline
+                    TGMC通讯离线
                   </Button>
                 ) : !canCentral ? (
                   <Button color="bad" fluid icon="ban">
@@ -270,13 +270,13 @@ const MainPage = () => {
                     icon="paper-plane"
                     onClick={() => act('messageTGMC')}
                   >
-                    Send a message to TGMC
+                    向TGMC发送消息
                   </Button>
                 )}
               </Flex.Item>
               <Flex.Item>
                 <Button fluid icon="medal" onClick={() => act('award')}>
-                  Award a medal
+                  授予勋章
                 </Button>
               </Flex.Item>
             </Flex>
@@ -286,7 +286,7 @@ const MainPage = () => {
 
       {authenticated >= 2 && (
         <Stack.Item>
-          <Section title="Emergency measures">
+          <Section title="紧急措施">
             {alert_level < SEC_LEVEL_RED && (
               <NoticeBox color="bad" textAlign="center">
                 The ship must be under red alert in order to enact evacuation
@@ -333,12 +333,12 @@ const MainPage = () => {
             )}
             {evac_status === EVAC_IN_PROGRESS && (
               <NoticeBox color="good" textAlign="center">
-                Escape pods launching.
+                逃生舱发射中.
               </NoticeBox>
             )}
             {evac_status === EVAC_COMPLETE && (
               <NoticeBox color="good" textAlign="center">
-                Evacuation complete.
+                撤离完成.
               </NoticeBox>
             )}
             {!!ert_allowed &&
@@ -349,7 +349,7 @@ const MainPage = () => {
                   fluid
                   icon="ban"
                 >
-                  Distress Beacon disabled
+                  求救信标已禁用
                 </Button>
               ) : (
                 <Button.Confirm
@@ -385,7 +385,7 @@ const MainPage = () => {
                           act('delmessage', { number: entry.number })
                         }
                       >
-                        Delete
+                        删除
                       </Button>
                     }
                   >
@@ -413,9 +413,9 @@ const AlertPage = () => {
   } = data;
 
   return (
-    <Section title="Change alert level" buttons={<MainMenuButton />}>
+    <Section title="更改警戒等级" buttons={<MainMenuButton />}>
       <Box mb={1}>
-        Current alert level: <b>{alert_level_text}</b>
+        当前警戒等级: <b>{alert_level_text}</b>
       </Box>
       {!!state_of_emergency && (
         <>
@@ -429,19 +429,19 @@ const AlertPage = () => {
           )}
           {evac_status === EVAC_INITIATING && (
             <NoticeBox color="bad">
-              Evacuation initiated. Evacuate or rescind evacuation orders.
+              撤离已启动. 请撤离或撤销撤离命令.
             </NoticeBox>
           )}
           {evac_status === EVAC_IN_PROGRESS && (
-            <NoticeBox color="bad">Evacuation in progress.</NoticeBox>
+            <NoticeBox color="bad">撤离进行中.</NoticeBox>
           )}
           {evac_status === EVAC_COMPLETE && (
-            <NoticeBox color="bad">Evacuation complete.</NoticeBox>
+            <NoticeBox color="bad">撤离完成.</NoticeBox>
           )}
         </>
       )}
       {!!cannot_switch_alert && (
-        <NoticeBox>Alert level cannot be changed right now.</NoticeBox>
+        <NoticeBox>当前无法更改警戒等级.</NoticeBox>
       )}
       {!cannot_switch_alert &&
         available_alert_levels.map((level) => (
@@ -464,20 +464,20 @@ const ConfirmAlertPage = () => {
   const { alert_level_text, tmp_alertlevel_text } = data;
 
   return (
-    <Section title="Confirm alert change" buttons={<MainMenuButton />}>
+    <Section title="确认警戒变更" buttons={<MainMenuButton />}>
       <LabeledList>
-        <LabeledList.Item label="Current alert level">
+        <LabeledList.Item label="当前警戒等级">
           {alert_level_text}
         </LabeledList.Item>
-        <LabeledList.Item label="Confirm the change to">
+        <LabeledList.Item label="确认变更为">
           {tmp_alertlevel_text}
         </LabeledList.Item>
       </LabeledList>
       <Box mt={1} mb={1}>
-        Swipe ID to confirm change.
+        刷卡以确认变更.
       </Box>
       <Button fluid icon="id-card" onClick={() => act('swipeidseclevel')}>
-        Swipe ID
+        刷卡
       </Button>
     </Section>
   );
@@ -488,7 +488,7 @@ const StatusPage = () => {
   const { stat_msg1, stat_msg2 } = data;
 
   return (
-    <Section title="Set Status Displays" buttons={<MainMenuButton />}>
+    <Section title="设置状态显示" buttons={<MainMenuButton />}>
       <Flex direction="column">
         <Flex.Item>
           <Button
@@ -496,7 +496,7 @@ const StatusPage = () => {
             icon="ban"
             onClick={() => act('setstat', { statdisp: 'blank' })}
           >
-            Clear
+            清除
           </Button>
         </Flex.Item>
         <Flex.Item>
@@ -505,7 +505,7 @@ const StatusPage = () => {
             icon="clock"
             onClick={() => act('setstat', { statdisp: 'time' })}
           >
-            Station Time
+            空间站时间
           </Button>
         </Flex.Item>
         <Flex.Item>
@@ -514,7 +514,7 @@ const StatusPage = () => {
             icon="shuttle-space"
             onClick={() => act('setstat', { statdisp: 'shuttle' })}
           >
-            Shuttle ETA
+            穿梭机预计到达时间
           </Button>
         </Flex.Item>
         <Flex.Item>
@@ -523,24 +523,24 @@ const StatusPage = () => {
             icon="comment"
             onClick={() => act('setstat', { statdisp: 'message' })}
           >
-            Message
+            消息
           </Button>
         </Flex.Item>
       </Flex>
       <LabeledList>
-        <LabeledList.Item label="Line 1">
+        <LabeledList.Item label="第一行">
           <Button onClick={() => act('setmsg1')}>
             {stat_msg1 || '(none)'}
           </Button>
         </LabeledList.Item>
-        <LabeledList.Item label="Line 2">
+        <LabeledList.Item label="第二行">
           <Button onClick={() => act('setmsg2')}>
             {stat_msg2 || '(none)'}
           </Button>
         </LabeledList.Item>
       </LabeledList>
       <Box mt={1} mb={1}>
-        Alert:
+        警戒:
       </Box>
       <Flex>
         <Flex.Item grow>
@@ -550,7 +550,7 @@ const StatusPage = () => {
               act('setstat', { statdisp: 'alert', alert: 'default' })
             }
           >
-            None
+            无
           </Button>
         </Flex.Item>
         <Flex.Item grow>
@@ -561,7 +561,7 @@ const StatusPage = () => {
               act('setstat', { statdisp: 'alert', alert: 'redalert' })
             }
           >
-            Red Alert
+            红色警戒
           </Button>
         </Flex.Item>
         <Flex.Item grow>
@@ -571,7 +571,7 @@ const StatusPage = () => {
               act('setstat', { statdisp: 'alert', alert: 'lockdown' })
             }
           >
-            Lockdown
+            封锁
           </Button>
         </Flex.Item>
         <Flex.Item grow>
@@ -582,7 +582,7 @@ const StatusPage = () => {
               act('setstat', { statdisp: 'alert', alert: 'biohazard' })
             }
           >
-            Biohazard
+            生物危害
           </Button>
         </Flex.Item>
       </Flex>
@@ -595,8 +595,8 @@ const MessagesPage = () => {
   const { messages } = data;
 
   return (
-    <Section title="Messages" buttons={<MainMenuButton />}>
-      {!messages && <NoticeBox>No messages.</NoticeBox>}
+    <Section title="消息" buttons={<MainMenuButton />}>
+      {!messages && <NoticeBox>没有消息.</NoticeBox>}
       {messages?.map((entry) => (
         <Button
           key={entry.number}
@@ -618,8 +618,8 @@ const ViewMessagePage = () => {
 
   if (!current_message) {
     return (
-      <Section title="Message" buttons={<MainMenuButton />}>
-        <NoticeBox>Message not found.</NoticeBox>
+      <Section title="消息" buttons={<MainMenuButton />}>
+        <NoticeBox>未找到消息.</NoticeBox>
       </Section>
     );
   }
@@ -649,7 +649,7 @@ const ViewMessagePage = () => {
           icon="list"
           onClick={() => act('messagelist')}
         >
-          Back to list
+          返回列表
         </Button>
       </Box>
     </Section>

@@ -10,8 +10,8 @@ Goodbye, man. We'll miss you.
 This memorial has been designed for him and any future contributors to perish.
 */
 /obj/structure/prop/mainship/arc
-	name = "Tomb of the Unknown Contributor"
-	desc = "Here rests an unknown contributor\nUnknown by name or rank\nWhose PRs will not be forgotten"
+	name = "无名贡献者之墓"
+	desc = "此处安息着一位无名贡献者\nUnknown无论姓名或军衔\nWhosePR将不会被遗忘"
 	icon = 'icons/obj/structures/memorial.dmi'
 	icon_state = "memorial"
 	density = TRUE
@@ -20,8 +20,8 @@ This memorial has been designed for him and any future contributors to perish.
 	resistance_flags = RESIST_ALL
 
 /obj/structure/prop/mainship/valmoric
-	name = "Tomb of the Unknown Soldier"
-	desc = "<i>HERE RESTS IN\nHONORED GLORY\nA SOLDIER\nKNOWN BUT TO GOD</i>"
+	name = "无名战士之墓"
+	desc = "<i>此处安息\nHONORED荣耀\nA战士\nKNOWN但归于上帝</i>"
 	icon = 'icons/obj/structures/memorial.dmi'
 	icon_state = "memorial2"
 	density = TRUE

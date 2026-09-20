@@ -1,6 +1,6 @@
 /obj/item/explosive/grenade/smokebomb
-	name = "\improper M40 HSDP smoke grenade"
-	desc = "The M40 HSDP is a small, but powerful smoke grenade. Based off the same platform as the M40 HEDP. It is set to detonate in 2 seconds."
+	name = "\improper M40 HSDP烟雾弹"
+	desc = "M40 HSDP是一种小巧但威力强大的烟雾弹.基于与M40 HEDP相同的平台.设定为2秒后引爆."
 	icon_state = "grenade_smoke"
 	worn_icon_state = "grenade_smoke"
 	det_time = 2 SECONDS
@@ -23,8 +23,8 @@
 	qdel(src)
 
 /obj/item/explosive/grenade/smokebomb/som
-	name = "\improper S30-S smoke grenade"
-	desc = "The S30-S is a small, but powerful smoke grenade. Based off the S30 platform shared by most SOM grenades. It is set to detonate in 2 seconds."
+	name = "\improper S30-S烟雾弹"
+	desc = "S30-S是一种小巧但威力强大的烟雾弹.基于大多数SOM榴弹共用的S30平台.设定为2秒后引爆."
 	icon_state = "grenade_smoke_som"
 	worn_icon_state = "grenade_smoke_som"
 	overlay_type = "cyan"
@@ -33,8 +33,8 @@
 
 //neuro xeno nade
 /obj/item/explosive/grenade/smokebomb/neuro
-	name = "\improper M40-N Neurotoxin smoke grenade"
-	desc = "A smoke grenade containing a concentrated neurotoxin developed by Nanotrasen, supposedly derived from xenomorphs. Banned in some sectors as a chemical weapon, but classed as a less lethal riot control tool by the TGMC."
+	name = "\improper M40-N神经毒素烟雾弹"
+	desc = "一种含有Nanotrasen研发的浓缩神经毒素的烟雾弹,据称源自异形.在某些星区被作为化学武器禁用,但被TGMC归类为较低致命性的防暴工具."
 	icon_state = "grenade_neuro"
 	worn_icon_state = "grenade_neuro"
 	hud_state = "grenade_neuro"
@@ -45,8 +45,8 @@
 	overlay_type = "orange"
 
 /obj/item/explosive/grenade/smokebomb/acid
-	name = "\improper M40-A Acid smoke grenade"
-	desc = "A grenade set to release a cloud of extremely acidic smoke developed by Nanotrasen, supposedly derived from xenomorphs. Has a shiny acid resistant shell. Its use is considered a warcrime under several treaties, none of which Terra Gov is a signatory to."
+	name = "\improper M40-A酸性烟雾弹"
+	desc = "一种设定为释放由Nanotrasen研发的极酸性烟雾云的榴弹,据称源自异形.具有闪亮的耐酸外壳.其使用在若干条约下被视为战争罪,而Terra Gov并非其中任何条约的签署国."
 	icon_state = "grenade_acid"
 	worn_icon_state = "grenade_acid"
 	hud_state = "grenade_acid"
@@ -57,8 +57,8 @@
 	overlay_type = "aqua"
 
 /obj/item/explosive/grenade/smokebomb/satrapine
-	name = "satrapine smoke grenade"
-	desc = "A smoke grenade containing a nerve agent that can debilitate victims with severe pain, while purging common painkillers. Employed heavily by the SOM."
+	name = "萨特拉平烟雾弹"
+	desc = "一种含有神经毒剂的烟雾弹,可使受害者陷入剧痛而丧失行动能力,同时清除常见的止痛药.被SOM大量使用."
 	icon_state = "grenade_nerve"
 	worn_icon_state = "grenade_nerve"
 	hud_state = "grenade_nerve"
@@ -75,8 +75,8 @@
 	user?.record_war_crime()
 
 /obj/item/explosive/grenade/smokebomb/cloak
-	name = "\improper M40-2 SCDP smoke grenade"
-	desc = "A sophisticated version of the M40 HSDP with a slighty improved smoke screen payload. It's set to detonate in 2 seconds."
+	name = "\improper M40-2 SCDP烟雾弹"
+	desc = "M40 HSDP的精良版本,烟雾幕载荷略有改进.设定为2秒后引爆."
 	icon_state = "grenade_cloak"
 	worn_icon_state = "grenade_cloak"
 	hud_state = "grenade_hide"
@@ -85,15 +85,15 @@
 	overlay_type = "green"
 
 /obj/item/explosive/grenade/smokebomb/cloak/agls
-	name = "\improper AGLS-37 SCDP smoke grenade"
-	desc = "A small tiny smart grenade, it is about to blow up in your face, unless you found it inert. Otherwise a pretty normal grenade, other than it is somehow in a primeable state."
+	name = "\improper AGLS-37 SCDP烟雾弹"
+	desc = "一种小巧的智能榴弹,它即将在你脸上炸开,除非你发现它是未激活的.除此之外是一种相当普通的榴弹,只是不知为何处于可引爆状态."
 	icon_state = "agls_cloak"
 	smokeradius = 3
 	overlay_type = "green"
 
 /obj/item/explosive/grenade/smokebomb/drain
-	name = "\improper M40-T smoke grenade"
-	desc = "The M40-T is a small, but powerful Tanglefoot grenade, designed to remove plasma with minimal side effects. Based off the same platform as the M40 HEDP. It is set to detonate in 6 seconds."
+	name = "\improper M40-T烟雾弹"
+	desc = "M40-T是一种小巧但威力强大的缠足草榴弹,旨在以最小的副作用清除等离子体.基于与M40 HEDP相同的平台.设定为6秒后引爆."
 	icon_state = "grenade_pgas"
 	worn_icon_state = "grenade_pgas"
 	hud_state = "grenade_drain"
@@ -104,8 +104,8 @@
 	overlay_type = "purple"
 
 /obj/item/explosive/grenade/smokebomb/antigas
-	name = "\improper M40-AG smoke grenade"
-	desc = "A gas grenade originally designed to remove any contaminants in the air for the purpose of cleaning, now repurposed to remove hostile gases."
+	name = "\improper M40-AG烟雾弹"
+	desc = "一种最初为清洁目的而设计用于清除空气中任何污染物的毒气榴弹,现被改用于清除有害气体."
 	icon_state = "grenade_agas"
 	worn_icon_state = "grenade_agas"
 	hud_state = "grenade_antigas"
@@ -116,15 +116,15 @@
 	overlay_type = "white"
 
 /obj/item/explosive/grenade/smokebomb/drain/agls
-	name = "\improper AGLS-T smoke grenade"
-	desc = "A small tiny smart grenade, it is about to blow up in your face, unless you found it inert. Otherwise a pretty normal grenade, other than it is somehow in a primeable state."
+	name = "\improper AGLS-T烟雾弹"
+	desc = "一种小巧的智能榴弹,它即将在你脸上炸开,除非你发现它是未激活的.除此之外是一种相当普通的榴弹,只是不知为何处于可引爆状态."
 	icon_state = "agls_pgas"
 	det_time = 1 SECONDS
 	smokeradius = 2
 
 /obj/item/explosive/grenade/smokebomb/drain/pellet
-	name = "tanglefoot emitting system pellet"
-	desc = "A small pellet dropped from the sky. Emits tanglefoot on a landing position."
+	name = "缠足草释放系统弹丸"
+	desc = "一枚从天而降的小弹丸.在落点释放缠足草."
 	icon_state = "pellet_pgas"
 	det_time = 2 SECONDS
 	smokeradius = 10

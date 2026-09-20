@@ -1,6 +1,6 @@
 /obj/structure/closet/coffin
-	name = "coffin"
-	desc = "It's a burial receptacle for the dearly departed."
+	name = "棺材"
+	desc = "这是一个为逝者准备的安葬容器."
 	icon_state = "coffin"
 	icon_closed = "coffin"
 	icon_opened = "coffin_open"

@@ -37,7 +37,7 @@ export const InterfaceLockNoticeBox = (props) => {
               m={0}
               color={locked ? 'red' : 'green'}
               icon={locked ? 'lock' : 'unlock'}
-              content={locked ? 'Locked' : 'Unlocked'}
+              content={locked ? '已锁定' : '已解锁'}
               disabled={preventLocking}
               onClick={() => {
                 if (onLockStatusChange) {

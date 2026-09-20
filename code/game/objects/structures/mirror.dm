@@ -1,6 +1,6 @@
 /obj/structure/mirror
-	name = "mirror"
-	desc = "Mirror mirror on the wall, who's the most robust of them all?"
+	name = "镜子"
+	desc = "魔镜魔镜告诉我,谁才是最硬核的那个?"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "mirror"
 	hit_sound = 'sound/effects/Glasshit.ogg'
@@ -51,7 +51,7 @@
 			else
 				species_facial_hair = GLOB.facial_hair_styles_list
 
-			var/new_style = tgui_input_list(user, "Select a facial hair style", "Grooming", species_facial_hair)
+			var/new_style = tgui_input_list(user, "选择一种胡须样式", "仪容", species_facial_hair)
 			if(userloc != H.loc)
 				return	//no tele-grooming
 			if(new_style)
@@ -67,7 +67,7 @@
 		else
 			species_hair = GLOB.hair_styles_list
 
-		var/new_style = tgui_input_list(user, "Select a hair style", "Grooming", species_hair)
+		var/new_style = tgui_input_list(user, "选择一种发型", "梳洗", species_hair)
 		if(userloc != H.loc)
 			return	//no tele-grooming
 		if(new_style)

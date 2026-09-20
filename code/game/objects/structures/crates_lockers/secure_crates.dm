@@ -1,6 +1,6 @@
 /obj/structure/closet/crate/secure
-	desc = "A secure crate."
-	name = "Secure crate"
+	desc = "一个安全的箱子."
+	name = "安全的箱子"
 	icon_state = "secure_locked_basic"
 	icon_opened = "secure_open_basic"
 	icon_closed = "secure_locked_basic"
@@ -71,16 +71,16 @@
 //------------------------------------
 
 /obj/structure/closet/crate/secure/ammo
-	name = "secure ammunitions crate"
-	desc = "A secure ammunitions crate"
+	name = "安全的弹药箱"
+	desc = "一个安全的弹药箱"
 	icon_state = "secure_locked_ammo"
 	icon_opened = "secure_open_ammo"
 	icon_locked = "secure_locked_ammo"
 	icon_unlocked = "secure_unlocked_ammo"
 
 /obj/structure/closet/crate/secure/explosives
-	name = "explosives crate"
-	desc = "A explosives crate"
+	name = "炸药箱"
+	desc = "一个炸药箱"
 	icon_state = "secure_locked_explosives"
 	icon_opened = "secure_open_explosives"
 	icon_locked = "secure_locked_explosives"
@@ -89,46 +89,46 @@
 // Needs to be converted to new system that does not use overlays
 // using default secure crate for now
 /obj/structure/closet/crate/secure/phoron
-	name = "phoron crate"
-	desc = "A secure phoron crate."
+	name = "phoron箱"
+	desc = "一个安全的phoron箱."
 
 // Needs to be converted to new system that does not use overlays
 // using Wayland crate for now
 /obj/structure/closet/crate/secure/gear
-	name = "gear crate"
-	desc = "A secure gear crate."
+	name = "装备箱"
+	desc = "一个安全的装备箱."
 	icon_state = "secure_locked_nanotrasen"
 	icon_opened = "secure_open_nanotrasen"
 	icon_locked = "secure_locked_nanotrasen"
 	icon_unlocked = "secure_unlocked_nanotrasen"
 
 /obj/structure/closet/crate/secure/hydrosec
-	name = "secure hydroponics crate"
-	desc = "A crate with a lock on it, painted in the scheme of the station's botanists."
+	name = "安全的水培箱"
+	desc = "一个上锁的箱子,涂有空间站植物学家的配色."
 	icon_state = "secure_locked_hydro"
 	icon_opened = "secure_open_hydro"
 	icon_locked = "secure_locked_hydro"
 	icon_unlocked = "secure_unlocked_hydro"
 
 /obj/structure/closet/crate/secure/surgery
-	name = "surgery crate"
-	desc = "A surgery crate."
+	name = "手术箱"
+	desc = "一个手术箱."
 	icon_state = "secure_locked_surgery"
 	icon_opened = "secure_open_surgery"
 	icon_locked = "secure_locked_surgery"
 	icon_unlocked = "secure_unlocked_surgery"
 
 /obj/structure/closet/crate/secure/weapon
-	name = "weapons crate"
-	desc = "A secure weapons crate."
+	name = "武器箱"
+	desc = "一个安全的武器箱."
 	icon_state = "secure_locked_weapons"
 	icon_opened = "secure_open_weapons"
 	icon_locked = "secure_locked_weapons"
 	icon_unlocked = "secure_unlocked_weapons"
 
 /obj/structure/closet/crate/secure/nanotrasen
-	name = "secure Nanotrasen crate"
-	desc = "A secure crate with a Nanotrasen insignia on it."
+	name = "安全的Nanotrasen箱"
+	desc = "一个带有Nanotrasen标志的安全箱子."
 	icon_state = "secure_locked_nanotrasen"
 	icon_opened = "secure_open_nanotrasen"
 	icon_locked = "secure_locked_nanotrasen"

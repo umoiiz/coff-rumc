@@ -43,7 +43,7 @@
 		H.apply_effect(4 SECONDS, EFFECT_STUTTER) // Added flavor
 		H.take_overall_damage(rand(melting_min_damage, melting_max_damage), BURN, updating_health = TRUE, max_limbs = 1) // Melting!!!
 		if(prob(12))
-			H.visible_message(span_boldwarning("[H] shudders violently and shoots out sparks!"), span_warning("Critical damage sustained. Internal temperature regulation systems offline. Shutdown imminent. <b>Estimated integrity: [round(H.health)]%.</b>"))
+			H.visible_message(span_boldwarning("[H]剧烈颤抖并迸出火花!"), span_warning("遭受严重损伤。内部温度调节系统离线。即将关机。<b>预计完整度:[round(H.health)]%。</b>"))
 			do_sparks(4, TRUE, H)
 
 /datum/species/synthetic/on_species_gain(mob/living/carbon/human/H, datum/species/old_species)
@@ -62,7 +62,7 @@
 				. = "Anna"
 			else
 				. = "Jeri"
-		to_chat(prefs.parent, span_warning("You forgot to set your synthetic name in your preferences. Please do so next time."))
+		to_chat(prefs.parent, span_warning("你忘记在偏好设置中设置你的合成人名称了. 请在下次设置."))
 
 /datum/species/synthetic/post_species_loss(mob/living/carbon/human/H)
 	. = ..()

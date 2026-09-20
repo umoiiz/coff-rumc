@@ -12,7 +12,7 @@
 	set category = "IC"
 
 	if(is_blind(src))
-		to_chat(src, span_warning("Something is there, but you can't see it!"))
+		to_chat(src, span_warning("那里有东西, 但你看不见它!"))
 		return
 
 	face_atom(examinify)
@@ -66,7 +66,7 @@
 	if(mind)
 		mind.show_memory(src)
 	else
-		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
+		to_chat(src, "游戏似乎弄丢了你的意识数据, 所以我们无法向你显示你的笔记.")
 
 /mob/verb/add_memory(msg as message)
 	set name = "Add Note"
@@ -80,7 +80,7 @@
 
 		mind.store_memory(msg)
 	else
-		to_chat(src, "You don't have a mind datum for some reason, so you can't add a note to it.")
+		to_chat(src, "由于某种原因你没有意识数据, 所以你无法向其添加笔记.")
 
 
 /mob/verb/respawn()
@@ -88,15 +88,15 @@
 	set category = "OOC.Ghost"
 
 	if(!GLOB.respawn_allowed && !check_rights(R_ADMIN, FALSE))
-		to_chat(usr, span_notice("Respawn is disabled."))
+		to_chat(usr, span_notice("重生已禁用."))
 		return
 	if(stat != DEAD)
-		to_chat(usr, span_boldnotice("You must be dead to use this!"))
+		to_chat(usr, span_boldnotice("你必须处于死亡状态才能使用此功能!"))
 		return
 
 	if(DEATHTIME_CHECK(usr))
 		if(check_other_rights(usr.client, R_ADMIN, FALSE))
-			if(tgui_alert(usr, "You wouldn't normally qualify for this respawn. Are you sure you want to bypass it with your admin powers?", "Bypass Respawn", list("Yes", "No"), 0) != "Yes")
+			if(tgui_alert(usr, "你通常没有资格进行此次重生. 你确定要用你的管理员权限绕过它吗?", "绕过重生", list("Yes", "No"), 0) != "Yes")
 				DEATHTIME_MESSAGE(usr)
 				return
 			var/admin_message = "[key_name(usr)] used his admin power to bypass respawn before his timer was over"
@@ -106,7 +106,7 @@
 			DEATHTIME_MESSAGE(usr)
 			return
 
-	to_chat(usr, span_notice("You can respawn now, enjoy your new life!<br><b>Make sure to play a different character, and please roleplay correctly.</b>"))
+	to_chat(usr, span_notice("你现在可以重生了, 享受你的新生命吧!<br><b>请确保扮演不同的角色, 并请正确进行角色扮演.</b>"))
 	GLOB.round_statistics.total_human_respawns++
 	SSblackbox.record_feedback(FEEDBACK_TALLY, "round_statistics", 1, "total_human_respawns")
 
@@ -133,7 +133,7 @@
 	if(isliving(usr))
 		liver = usr
 		if(liver.health >= liver.get_crit_threshold())
-			to_chat(src, span_notice("You can only use this when you're dead or crit."))
+			to_chat(src, span_notice("你只能在死亡或濒死状态下使用此功能."))
 			return
 
 	if(usr)
@@ -236,7 +236,7 @@
 	if(isliving(usr))
 		liver = usr
 		if(liver.health >= liver.health_threshold_crit)
-			to_chat(src, span_notice("You can only use this when you're dead or crit."))
+			to_chat(src, span_notice("你只能在死亡或濒死状态下使用此功能."))
 			return
 
 	if(usr)

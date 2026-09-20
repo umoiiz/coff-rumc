@@ -25,7 +25,7 @@ export function PatientOrgans() {
   const { data } = useBackend<MedScannerData>();
   const { damaged_organs = {} } = data;
   return (
-    <Section title="Organs Damaged">
+    <Section title="器官受损">
       <Stack vertical>
         {Object.values(damaged_organs).map((organ) => {
           // this will be accessed constantly, may aswell have this as a shorthand

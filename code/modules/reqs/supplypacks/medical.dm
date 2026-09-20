@@ -1,9 +1,9 @@
 /datum/supply_packs/medical
-	group = "Medical"
+	group = "医疗"
 	containertype = /obj/structure/closet/crate/medical
 
 /datum/supply_packs/medical/advanced_medical
-	name = "Emergency medical supplies"
+	name = "应急医疗用品"
 	contains = list(
 		/obj/item/storage/pouch/medical_injectors/medic,
 		/obj/item/storage/pouch/medical_injectors/medic,
@@ -15,28 +15,28 @@
 	cost = 300
 
 /datum/supply_packs/medical/Sulfasalazine
-	name = "Sulfasalazine autoinjector"
+	name = "柳氮磺吡啶自动注射器"
 	contains = list(
 		/obj/item/reagent_containers/hypospray/autoinjector/sulfasalazine,
 	)
 	cost = 250
 
 /datum/supply_packs/medical/biomass
-	name = "Biomass beaker"
+	name = "生物质烧杯"
 	contains = list(
 		/obj/item/reagent_containers/glass/beaker/biomass,
 	)
 	cost = 150
 
 /datum/supply_packs/medical/Medical_hud
-	name = "Healthmate medical hud"
+	name = "健康伴侣医疗HUD"
 	contains = list(
 		/obj/item/clothing/glasses/hud/health,
 	)
 	cost = 20
 
 /datum/supply_packs/medical/medical
-	name = "Pills and chemicals"
+	name = "药丸和化学品"
 	contains = list(
 		/obj/item/storage/box/autoinjectors,
 		/obj/item/storage/box/syringes,
@@ -60,23 +60,23 @@
 	cost = 100
 
 /datum/supply_packs/medical/firstaid
-	name = "Advanced first aid kit"
+	name = "高级急救包"
 	contains = list(/obj/item/storage/firstaid/adv)
 	cost = 50
 
 /datum/supply_packs/medical/bodybag
-	name = "Body bags"
+	name = "裹尸袋"
 	notes = "Contains 7 bodybags"
 	contains = list(/obj/item/storage/box/bodybags)
 	cost = 50
 
 /datum/supply_packs/medical/cryobag
-	name = "Stasis bag"
+	name = "停滞袋"
 	contains = list(/obj/item/bodybag/cryobag)
 	cost = 50
 
 /datum/supply_packs/medical/surgery
-	name = "Surgical equipment"
+	name = "手术设备"
 	contains = list(
 		/obj/item/storage/surgical_tray,
 		/obj/item/clothing/mask/breath/medical,
@@ -87,21 +87,21 @@
 	containertype = /obj/structure/closet/crate/secure/surgery
 
 /datum/supply_packs/medical/hypospray
-	name = "Advanced hypospray"
+	name = "高级喷雾注射器"
 	contains = list(/obj/item/reagent_containers/hypospray/advanced)
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure/surgery
 	access = ACCESS_MARINE_MEDBAY
 
 /datum/supply_packs/medical/hypospray
-	name = "Advanced big hypospray"
+	name = "高级大型喷雾注射器"
 	contains = list(/obj/item/reagent_containers/hypospray/advanced/big)
 	cost = 120 //just a little over the regular hypo.
 	containertype = /obj/structure/closet/crate/secure/surgery
 	access = ACCESS_MARINE_MEDBAY
 
 /datum/supply_packs/medical/medvac
-	name = "MEDEVAC system"
+	name = "医疗后送系统"
 	contains = list(
 		/obj/item/roller/medevac,
 		/obj/item/medevac_beacon,
@@ -111,7 +111,7 @@
 	access = ACCESS_MARINE_MEDBAY
 
 /datum/supply_packs/medical/lemolime
-	name = "Lemoline bottle"
+	name = "Lemoline瓶"
 	notes = "Contains 1 bottle of lemoline with 30 units each."
 	contains = list(
 		/obj/item/reagent_containers/glass/bottle/lemoline/doctor,
@@ -119,7 +119,7 @@
 	cost = 80
 
 /datum/supply_packs/medical/advancedKits
-	name = "Advanced medical packs"
+	name = "高级医疗包"
 	notes = "Contains 5 advanced packs of each type and 5 splints."
 	contains = list(
 		/obj/item/stack/medical/heal_pack/advanced/bruise_pack,
@@ -143,7 +143,7 @@
 	access = ACCESS_MARINE_MEDBAY
 
 /datum/supply_packs/medical/tweezers
-	name = "Tweezers"
+	name = "镊子"
 	notes = "contains a pair of tweezers."
 	contains = list(/obj/item/tweezers)
 	cost = 125
@@ -151,7 +151,7 @@
 	access = ACCESS_MARINE_MEDBAY
 
 /datum/supply_packs/medical/tweezers_advanced
-	name = "Advanced Tweezers"
+	name = "高级镊子"
 	notes = "contains advanced tweezers."
 	contains = list(/obj/item/tweezers_advanced)
 	cost = 250
@@ -159,13 +159,13 @@
 	access = ACCESS_MARINE_MEDBAY
 
 /datum/supply_packs/medical/implanter
-	name = "Implanter"
+	name = "植入器"
 	notes = "contains an implanter for reinsertion of the implant."
 	contains = list(/obj/item/implanter/skill/cargo)
 	cost = 90
 
 /datum/supply_packs/medical/defibrillator_gloves
-	name = "Advanced defibrillator medical gloves"
+	name = "高级除颤器医疗手套"
 	notes = "contains advanced defibrillator medical gloves."
 	contains = list(/obj/item/clothing/gloves/defibrillator)
 	cost = 120
@@ -173,7 +173,7 @@
 	access = ACCESS_MARINE_MEDBAY
 
 /datum/supply_packs/medical/defibrillator_compact
-	name = "Compact Defibrillator"
+	name = "紧凑型除颤器"
 	notes = "contains compact defibrillator"
 	contains = list(/obj/item/defibrillator/compact)
 	cost = 120
@@ -181,7 +181,7 @@
 	access = ACCESS_MARINE_MEDBAY
 
 /datum/supply_packs/medical/healthanalyzer_gloves
-	name = "Health scanner gloves"
+	name = "健康扫描手套"
 	notes = "contains health scanner gloves."
 	contains = list(/obj/item/clothing/gloves/healthanalyzer)
 	cost = 60
@@ -189,14 +189,14 @@
 	access = ACCESS_MARINE_MEDBAY
 
 /datum/supply_packs/medical/deployable_optable
-	name = "Deployable operating table"
+	name = "可部署手术台"
 	notes = "Contains an operating table that can be transported and deployed for medical procedures."
 	contains = list(/obj/item/deployable_optable)
 	cost = 200
 	containertype = /obj/structure/closet/crate/secure/surgery
 
 /datum/supply_packs/medical/advanced_medical_kits
-	name = "Advanced medical kits"
+	name = "高级医疗套件"
 	notes = "contains pair advanced medical kits from medical vendors."
 	contains = list(/obj/item/stack/medical/heal_pack/advanced/bruise_combat_pack, /obj/item/stack/medical/heal_pack/advanced/burn_combat_pack)
 	cost = 120
@@ -204,7 +204,7 @@
 	access = ACCESS_MARINE_MEDBAY
 
 /datum/supply_packs/medical/combat_medicine
-	name = "Battleground medicine"
+	name = "战场药物"
 	notes = "contains 4 hypospray with MD, many injectors peri and quick, neuraline, nanopaste."
 	contains = list(
 		/obj/item/reagent_containers/hypospray/advanced/meraderm,
@@ -239,7 +239,7 @@
 	cost = 300
 
 /datum/supply_packs/medical/cryomix
-	name = "Cryo beaker"
+	name = "低温烧杯"
 	notes = "contains cryomix beaker"
 	contains = list (
 		/obj/item/reagent_containers/glass/beaker/cryomix,
@@ -247,7 +247,7 @@
 	cost = 250
 
 /datum/supply_packs/medical/combat_robot_medicine
-	name = "Combat repairing for robots"
+	name = "机器人战斗维修"
 	notes = "contains 5 nanopaste for robots or technic."
 	contains = list(
 		/obj/item/stack/nanopaste,
@@ -259,13 +259,13 @@
 	cost = 230
 
 /datum/supply_packs/medical/soldering_tool
-	name = "Soldering tool"
+	name = "焊接工具"
 	notes = "contains 1 soldering tool for repair robots."
 	contains = list(/obj/item/tool/surgery/solderingtool)
 	cost = 30
 
 /datum/supply_packs/medical/nanoblood_hypo
-	name = "Nanoblood hypospray"
+	name = "纳米血液喷雾器"
 	notes = "contains 2 hypo with nanoblood."
 	contains = list(
 		/obj/item/reagent_containers/hypospray/advanced/nanoblood,
@@ -276,7 +276,7 @@
 	access = ACCESS_MARINE_MEDBAY
 
 /datum/supply_packs/medical/meraderm_pills
-	name = "Meraderm pill bottle"
+	name = "Meraderm药瓶"
 	notes = "contains meralyne and dermaline pill bottle."
 	contains = list(
 		/obj/item/storage/pill_bottle/dermaline,
@@ -285,7 +285,7 @@
 	cost = 250
 
 /datum/supply_packs/medical/bs_beakers
-	name = "Bluespace beakers"
+	name = "蓝空间烧杯"
 	notes = "contains two BS beakers."
 	contains = list(
 		/obj/item/reagent_containers/glass/beaker/bluespace,
@@ -294,13 +294,13 @@
 	cost = 50
 
 /datum/supply_packs/medical/bktt_dispenser
-	name = "BKTT Dispenser"
+	name = "BKTT分配器"
 	notes = "contains one BKTT dispenser."
 	contains = list(/obj/item/storage/reagent_tank/bktt)
 	cost = 120
 
 /datum/supply_packs/medical/antitox_kit
-	name = "Anti-toxin pill bottles kit"
+	name = "抗毒素药瓶套件"
 	notes = "contains some things against toxins."
 	contains = list(
 		/obj/item/storage/pill_bottle/hypervene,
@@ -310,7 +310,7 @@
 	cost = 20
 
 /datum/supply_packs/medical/imialky_kit
-	name = "ImiAlky pill bottles kit"
+	name = "ImiAlky药瓶套件"
 	notes = "contains pill bottles imialky."
 	contains = list(
 		/obj/item/storage/pill_bottle/imialky,
@@ -319,7 +319,7 @@
 	cost = 30
 
 /datum/supply_packs/medical/quick_peri_kit
-	name = "QuickPeri autoinjector kit"
+	name = "QuickPeri自动注射器套件"
 	notes = "contains quick-clot and peri injectors."
 	contains = list(
 		/obj/item/reagent_containers/hypospray/autoinjector/quickclot,
@@ -328,25 +328,25 @@
 	cost = 30
 
 /datum/supply_packs/medical/russian_red_bottle
-	name = "Russian Red pill bottle"
+	name = "俄罗斯红药瓶"
 	notes = "contains one pill bottle red russian."
 	contains = list(/obj/item/storage/pill_bottle/russian_red)
 	cost = 250
 
 /datum/supply_packs/medical/synaptizine_injector
-	name = "synaptizine auto injector"
+	name = "synaptizine自动注射器"
 	notes = "contains synaptizine auto injector."
 	contains = list(/obj/item/reagent_containers/hypospray/autoinjector/synaptizine)
 	cost = 30
 
 /datum/supply_packs/medical/oxycodone_injector
-	name = "Oxycodone auto injector"
+	name = "Oxycodone自动注射器"
 	notes = "contains oxycodone auto injector."
 	contains = list(/obj/item/reagent_containers/hypospray/autoinjector/oxycodone)
 	cost = 20
 
 /datum/supply_packs/medical/neuraline_kit
-	name ="Large neuraline autoinjector kit"
+	name ="大型neuraline自动注射器套件"
 	notes = "contains five neuraline injectors"
 	contains = list(
 		/obj/item/reagent_containers/hypospray/autoinjector/neuraline,
@@ -358,13 +358,13 @@
 	cost = 250
 
 /datum/supply_packs/medical/neuraline_kit_injector
-	name ="Neuraline autoinjector"
+	name ="Neuraline自动注射器"
 	notes = "contains one neuraline injector"
 	contains = list(/obj/item/reagent_containers/hypospray/autoinjector/neuraline)
 	cost = 70
 
 /datum/supply_packs/medical/bktt_kit
-	name = "BKTT pill bottles kit"
+	name = "BKTT药瓶套件"
 	notes = "contains pill bottles BKTT."
 	contains = list(
 		/obj/item/storage/pill_bottle/bicaridine,
@@ -375,7 +375,7 @@
 	cost = 20
 
 /datum/supply_packs/medical/medicine_defibrillator
-	name = "Medical defibrillator"
+	name = "医疗除颤器"
 	notes = "contains medical defibrillator."
 	contains = list(/obj/item/defibrillator)
 	cost = 50
@@ -383,36 +383,36 @@
 	access = ACCESS_MARINE_MEDBAY
 
 /datum/supply_packs/medical/t312case
-	name = "R-312 'Albedo' revolver bundle"
+	name = "R-312'Albedo'左轮手枪捆绑包"
 	contains = list(/obj/item/storage/briefcase/t312)
 	cost = 500
 
 /datum/supply_packs/medical/t312
-	name = "R-312 'Albedo' revolver"
+	name = "R-312'Albedo'左轮手枪"
 	contains = list(/obj/item/attachable/lace/t500, /obj/item/weapon/gun/revolver/t312)
 	cost = 150
 
 /datum/supply_packs/medical/t312_adr
-	name = "R-312 adrenaline ammo"
+	name = "R-312肾上腺素弹药"
 	contains = list(/obj/item/ammo_magazine/packet/t312/med/adrenaline, /obj/item/ammo_magazine/revolver/t312/med/adrenaline)
 	cost = 50
 
 /datum/supply_packs/medical/t312_rr
-	name = "R-312 russian red ammo"
+	name = "R-312俄罗斯红弹药"
 	contains = list(/obj/item/ammo_magazine/packet/t312/med/rr, /obj/item/ammo_magazine/revolver/t312/med/rr)
 	cost = 150
 
 /datum/supply_packs/medical/t312_md
-	name = "R-312 meraderm ammo"
+	name = "R-312 meraderm弹药"
 	contains = list(/obj/item/ammo_magazine/packet/t312/med/md, /obj/item/ammo_magazine/revolver/t312/med/md)
 	cost = 100
 
 /datum/supply_packs/medical/t312_neu
-	name = "R-312 neuraline ammo"
+	name = "R-312 neuraline弹药"
 	contains = list(/obj/item/ammo_magazine/packet/t312/med/neu, /obj/item/ammo_magazine/revolver/t312/med/neu)
 	cost = 200
 
 /datum/supply_packs/medical/t312_medkit
-	name = "BMSS medkit pouch"
+	name = "BMSS医疗包袋"
 	contains = list(/obj/item/storage/pouch/medkit/t312)
 	cost = 10

@@ -7,21 +7,21 @@
 //Put any props that don't function properly, they could function in the future but for now are for looks. This system could be expanded for other maps too. ~Art
 
 /obj/item/prop/mainship
-	name = "GENERIC SHIP PROP"
-	desc = "THIS SHOULDN'T BE VISIBLE, AHELP 'ART-P03' IF SEEN IN ROUND WITH LOCATION"
+	name = "通用舰船道具"
+	desc = "这不应可见,若在回合中看到请用AHELP报告'ART-P03'"
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "hangarbox"
 
 /obj/machinery/prop/mainship
 	name = "GENERIC SHIP PROP"
-	desc = "THIS SHOULDN'T BE VISIBLE, AHELP 'ART-P01' IF SEEN IN ROUND WITH LOCATION"
+	desc = "这不应可见,若在回合中看到请用AHELP报告'ART-P01'"
 	coverage = 15
 
 /obj/machinery/prop/mainship/hangar/dropship_part_fabricator
 
 /obj/machinery/prop/computer
 	name = "systems computer"
-	desc = "A small computer hooked up into the ship's systems."
+	desc = "一台接入舰船系统的小型计算机."
 
 	density = FALSE
 	anchored = TRUE
@@ -80,13 +80,13 @@
 
 /obj/machinery/prop/computer/PC
 	name = "personal desktop"
-	desc = "A small computer hooked up into the ship's computer network."
+	desc = "一台接入舰船计算机网络的小型计算机."
 	icon_state = "terminal"
 	screen_overlay = "terminal1"
 
 /obj/machinery/prop/computer/aiupload
 	name = "\improper AI upload console"
-	desc = "Used to upload laws to the AI."
+	desc = "用于向AI上传法则."
 
 	icon_state = "computer"
 	screen_overlay = "aiupload"
@@ -98,52 +98,52 @@
 	broken_icon = "computer_blue_broken"
 
 /obj/structure/prop/mainship/massdiver
-	name = "mass driver"
-	desc = "The finest in spring-loaded piston toy technology, now on a space station near you."
+	name = "质量驱动器"
+	desc = "最精良的弹簧活塞玩具技术,现在就在你附近的太空站上."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "mass_driver"
 
 /obj/structure/prop/mainship/shieldwall
-	name = "shield wall generator"
-	desc = "A shield generator."
+	name = "护盾墙发生器"
+	desc = "一台护盾发生器."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "shield_wall_gen"
 
 /obj/structure/prop/mainship/dnascanner
-	name = "\improper DNA scanner"
-	desc = "It scans DNA structures."
+	name = "\improper DNA扫描仪"
+	desc = "它扫描DNA结构."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "scanner"
 
 /obj/structure/prop/mainship/gateway
-	name = "gateway"
-	desc = "A mysterious gateway built by unknown hands, it allows for faster than light travel to far-flung locations."
+	name = "星门"
+	desc = "一座由未知之手建造的神秘星门,它允许超光速旅行至遥远的地点."
 	icon = 'icons/obj/gateway.dmi'
 	icon_state = "portal_frame"
 
 /obj/structure/prop/mainship/gravitygenerator
-	name = "gravitational generator"
-	desc = "A device which produces a graviton field when set up."
+	name = "引力发生器"
+	desc = "一种设置后能产生引力子场的装置."
 	icon = 'icons/obj/gravity_generator.dmi'
 	icon_state = "on_8"
 
 /obj/structure/prop/mainship/holobarrier
-	name = "\improper Engineering holobarrier"
-	desc = "A wonder of subsidized corporate design, this holographic barrier is almost entirely resistant to atmos loss and degradation by melee or ballistic damage. It's also made of space asbestos and is illegal under the new Geneva conventions."
+	name = "\improper 工程全息屏障"
+	desc = "企业补贴设计的奇迹,这种全息屏障几乎完全抵抗大气泄漏以及近战或弹道伤害造成的损耗.它还是由太空石棉制成的,根据新的日内瓦公约属于非法."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "holosign_engi"
 	density = TRUE
 	resistance_flags = RESIST_ALL
 
 /obj/structure/prop/mainship/holobarrier/passthrough
-	name = "\improper pressure-sealed holobarrier"
+	name = "\improper 压力密封全息屏障"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "shield-blue"
 	density = FALSE
 
 /obj/structure/prop/mainship/deadai
-	name = "\improper deactivated AI"
-	desc = "A standard silicon unit assigned to manage the research duties of NT stations. This one is completely deactivated."
+	name = "\improper 已停用的AI"
+	desc = "一个标准硅基单元,被指派管理NT站的研究任务.这一个已完全停用."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "ai_dead"
 	density = TRUE
@@ -169,8 +169,8 @@
 	)
 
 /obj/structure/prop/mainship/weapon_recharger
-	name = "recharger"
-	desc = "A charging dock for energy based weaponry, PDAs, and other devices. A small blinking light indicates that this recharger isn't functional."
+	name = "充电器"
+	desc = "用于能量武器,PDA和其他设备的充电座.一盏闪烁的小灯表明此充电器无法使用."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "weapon_recharger"
 	density = FALSE
@@ -179,13 +179,13 @@
 /obj/machinery/prop/r_n_d/protolathe
 	name = "protolathe"
 	icon = 'icons/obj/machines/research.dmi'
-	desc = "Protolathe, used to be used to print tools and such."
+	desc = "原型车床,曾用于打印工具等物品."
 	icon_state = "protolathe"
 
 /obj/machinery/prop/computer/rdconsole
 	name = "\improper R&D console"
 	icon = 'icons/obj/machines/computer.dmi'
-	desc = "A research console."
+	desc = "一台研究控制台."
 	icon_state = "computer"
 	screen_overlay = "rdcomp"
 	broken_icon = "computer_blue_broken"
@@ -193,26 +193,26 @@
 /obj/machinery/prop/r_n_d/server
 	name = "\improper R&D server"
 	icon = 'icons/obj/machines/research.dmi'
-	desc = "A research server."
+	desc = "一个研究服务器."
 	icon_state = "server"
 
 /obj/machinery/prop/computer/rdservercontrol
 	name = "\improper R&D server controller"
 	icon = 'icons/obj/machines/computer.dmi'
-	desc = "Oversees all research."
+	desc = "监管所有研究."
 	icon_state = "computer"
 	screen_overlay = "rdcomp"
 	broken_icon = "computer_blue_broken"
 
 /obj/machinery/prop/computer/communications
 	name = "communications console"
-	desc = "This can be used for various important functions."
+	desc = "可用于各种重要功能."
 	screen_overlay = "comm"
 	icon = 'icons/obj/machines/computer.dmi'
 
 /obj/machinery/prop/computer/crew
 	name = "crew monitoring computer"
-	desc = "Used to monitor active health sensors built into most of the crew's uniforms."
+	desc = "用于监控大多数船员制服内置的活跃生命体征传感器."
 	icon_state = "computer"
 	screen_overlay = "crew"
 	icon = 'icons/obj/machines/computer.dmi'
@@ -220,75 +220,75 @@
 /obj/machinery/prop/r_n_d/server/alt
 	name = "alternate R&D server"
 	icon = 'icons/obj/machines/research.dmi'
-	desc = "A research server."
+	desc = "一个研究服务器."
 	icon_state = "server_alt"
 //End RND props
 
 //Nonpower using props
 
 /obj/structure/prop/mainship
-	name = "GENERIC SHIP PROP"
-	desc = "THIS SHOULDN'T BE VISIBLE, AHELP 'ART-P02' IF SEEN IN ROUND WITH LOCATION"
+	name = "通用舰船道具"
+	desc = "这不应该可见,如果在本局游戏中看到请使用AHELP报告'ART-P02'及位置"
 	density = TRUE
 	coverage = 15
 
 /obj/machinery/prop/autolathe
 	name = "\improper autolathe"
-	desc = "It used to produce items using metal and glass."
+	desc = "它曾用于使用金属和玻璃生产物品."
 	icon_state = "autolathe"
 	coverage = 30
 	density = TRUE
 	anchored = TRUE
 
 /obj/structure/prop/mainship/minigun_crate
-	name = "30mm ammo crate"
-	desc = "A crate full of 30mm bullets used on one of the weapon pod types for the dropship. Moving this will require some sort of lifter."
+	name = "30毫米弹药箱"
+	desc = "一个装满30毫米子弹的箱子,用于某种型号的运输机武器吊舱.移动它需要某种起重设备."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "30mm_crate"
 
 
 /obj/structure/prop/mainship/mission_planning_system
-	name = "\improper MPS IV computer"
-	desc = "The Mission Planning System IV (MPS IV), a enhancement in mission planning and charting for dropship pilots across the UPP. Fully capable of customizing their flight paths and loadouts to suit their combat needs."
+	name = "\improper MPS IV计算机"
+	desc = "任务规划系统IV(MPS IV),为全UPP的运输机飞行员提供任务规划和制图的增强功能.完全能够自定义他们的飞行路径和装备配置以满足其作战需求."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "mps"
 
 /obj/structure/prop/mainship/mapping_computer
-	name = "\improper CMPS II computer"
-	desc = "The Common Mapping Production System version II allows for sensory imput from satellites and ship systems to derive planetary maps in a standardized fashion for all UPP pilots."
+	name = "\improper CMPS II计算机"
+	desc = "通用制图生产系统第二版允许来自卫星和舰船系统的传感输入,以标准化方式为所有UPP飞行员生成行星地图."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "mapping_comp"
 
 /obj/structure/prop/mainship/sensor_computer1
-	name = "sensor computer"
-	desc = "The IBM series 10 computer retrofitted to work as a sensor computer for the ship. While somewhat dated it still serves its purpose."
+	name = "传感器计算机"
+	desc = "IBM 10系列计算机,经改装用作舰船的传感器计算机.虽然有些过时,但仍能发挥作用."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "sensor_comp1"
 
 /obj/structure/prop/mainship/sensor_computer1/sd
-	name = "self destruct status computer"
+	name = "自毁状态计算机"
 
 /obj/structure/prop/mainship/sensor_computer2
-	name = "sensor computer"
-	desc = "The IBM series 10 computer retrofitted to work as a sensor computer for the ship. While somewhat dated it still serves its purpose."
+	name = "传感器计算机"
+	desc = "IBM 10系列计算机,经改装用作舰船的传感器计算机.虽然有些过时,但仍能发挥作用."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "sensor_comp2"
 
 /obj/structure/prop/mainship/sensor_computer2/sd
-	name = "self destruct regulator"
+	name = "自毁调节器"
 
 /obj/structure/prop/mainship/sensor_computer3
-	name = "sensor computer"
-	desc = "The IBM series 10 computer retrofitted to work as a sensor computer for the ship. While somewhat dated it still serves its purpose."
+	name = "传感器计算机"
+	desc = "IBM 10系列计算机,经改装用作舰船的传感器计算机.虽然有些过时,但仍能发挥作用."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "sensor_comp3"
 
 /obj/structure/prop/mainship/sensor_computer3/sd
-	name = "tempature regulator"
+	name = "温度调节器"
 
 /obj/structure/prop/mainship/missile_tube
-	name = "\improper Mk 33 ASAT launcher system"
-	desc = "Cold launch tubes that can fire a few varieties of missiles out of them The most common being the ASAAR-21 Rapier IV missile used against satellites and other spacecraft and the BGM-227 Sledgehammer missile which is used for ground attack."
+	name = "\improper Mk 33反卫星发射系统"
+	desc = "冷发射管,可发射多种类型的导弹,最常见的是用于对付卫星和其他航天器的ASAAR-21'刺剑IV'导弹,以及用于对地攻击的BGM-227'大锤'导弹."
 	icon = 'icons/obj/structures/mainship_props96.dmi'
 	icon_state = "missiletubenorth"
 	bound_width = 32
@@ -300,8 +300,8 @@
 	icon_state = "missiletubesouth"
 
 /obj/structure/prop/mainship/ship_memorial
-	name = "slab of victory"
-	desc = "A ship memorial dedicated to the triumphs of the UPP and the fallen marines of this ship. On the left there are grand tales of victory etched into the slab. On the right there is a list of famous marines who have fallen in combat serving the UPP."
+	name = "胜利石板"
+	desc = "一座舰船纪念碑,献给UPP的胜利以及本舰阵亡的陆战队员.左侧刻着辉煌的胜利故事.右侧列着在战斗中为UPP服役而阵亡的著名陆战队员名单."
 	icon = 'icons/obj/structures/mainship_props64.dmi'
 	icon_state = "ship_memorial"
 	bound_width = 64
@@ -315,7 +315,7 @@
 		return ..()
 	var/obj/item/card/id/dogtag/D = I
 	if(D.registered_name)
-		to_chat(user, span_notice("You add [D] to [src]."))
+		to_chat(user, span_notice("你将[D]添加到[src]."))
 		LAZYADD(fallen_list, D.registered_name)
 		qdel(D)
 	return TRUE
@@ -332,15 +332,15 @@
 		. += "[span_notice("To our fallen marines:")] <b>[faltext]</b>."
 
 /obj/structure/prop/mainship/particle_cannon
-	name = "\improper 75cm/140 Mark 74 General Atomics railgun"
-	desc = "The Mark 74 Railgun is top of the line for space based weaponry. Capable of firing a round with a diameter of 3/4ths of a meter at 24 kilometers per second. It also is capable of using a variety of round types which can be interchanged at anytime with its newly designed feed system."
+	name = "\improper 75厘米/140 Mark 74通用原子公司轨道炮"
+	desc = "Mark 74轨道炮是太空武器的顶尖之作.能够以每秒24公里的速度发射直径四分之三米的炮弹.它还能使用多种类型的炮弹,通过其新设计的供弹系统可随时更换."
 	icon = 'icons/obj/machines/artillery.dmi'
 	icon_state = "1"
 	resistance_flags = UNACIDABLE
 
 /obj/structure/prop/mainship/name_stencil
-	name = "\improper The UPP, a UPP-Class Marine Carrier Arsenal Ship"
-	desc = "The name of the ship stenciled on the hull."
+	name = "\improper UPP,UPP级陆战航母武库舰"
+	desc = "船体上印着的舰船名称."
 	icon = 'icons/obj/structures/mainship_props64.dmi'
 	icon_state = "UPP1"
 	density = FALSE
@@ -360,8 +360,8 @@
 	name = SSmapping.configs[SHIP_MAP].map_name
 
 /obj/structure/prop/mainship/hangar_stencil
-	name = "floor"
-	desc = "A large number stenciled on the hangar floor used to designate which dropship it is."
+	name = "地板"
+	desc = "机库地板上印着的大数字,用于标示是哪架运输机."
 	icon = 'icons/obj/structures/mainship_props96.dmi'
 	icon_state = "dropship1"
 	density = FALSE
@@ -373,15 +373,15 @@
 	icon_state = "dropship2"
 
 /obj/structure/prop/mainship/brokengen //all the aesthetics of having a generator without any of the function
-	name = "\improper G-11 geothermal generator"
-	desc = "A thermoelectric generator sitting atop a plasma-filled borehole. The powercell is missing and strange lines of text scroll by on its status panel, you get the feeling there's no fixing it."
+	name = "\improper G-11地热发电机"
+	desc = "一台热电发电机,坐落在一个充满等离子体的钻孔上方.能量电池不见了,状态面板上滚动着奇怪的文字,你感觉这东西修不好了."
 	icon = 'icons/turf/geothermal.dmi'
 	icon_state = "destroyedgen"
 	resistance_flags = RESIST_ALL //normal generators can't be destroyed, so for appearances our fake ones can't be destroyed either.
 
 /obj/structure/prop/mainship/cannon_cables
-	name = "\improper Cannon cables"
-	desc = "Some large cables."
+	name = "\improper 加农炮电缆"
+	desc = "一些粗大的电缆."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "cannon_cables"
 	density = FALSE
@@ -389,8 +389,8 @@
 	layer = BELOW_OBJ_LAYER
 
 /obj/structure/prop/mainship/supermatter //functionally inert, but will consume mobs and objects
-	name = "supermatter crystal"
-	desc = "A strangely translucent and iridescent crystal."
+	name = "超物质晶体"
+	desc = "一块奇异的半透明虹彩晶体."
 	icon = 'icons/obj/structures/mainship_props64.dmi'
 	icon_state = "darkmatter"
 	layer = BELOW_OBJ_LAYER
@@ -406,12 +406,12 @@
 
 /obj/structure/prop/mainship/supermatter/Bumped(atom/movable/hit_object)
 	if(isliving(hit_object)) //living objects get a nifty message about heat
-		hit_object.visible_message(span_danger("\The [hit_object] slams into \the [src] inducing a resonance... [hit_object.p_their()] body starts to glow and burst into flames before flashing into dust!"),
-			span_userdanger("You slam into \the [src] as your ears are filled with unearthly ringing. Your last thought is \"Oh, fuck.\""),
-			span_hear("You hear an unearthly noise as a wave of heat washes over you."))
+		hit_object.visible_message(span_danger("\The [hit_object]猛撞进\the [src],引发了一场共振...[hit_object.p_their()]身体开始发光并燃烧起来,随后化为尘埃!"),
+			span_userdanger("你猛撞进\the [src],耳边充满了诡异的鸣响.你最后的念头是\"哦,操.\""),
+			span_hear("你听到一阵诡异的噪音,一股热浪席卷了你."))
 	else if(isobj(hit_object) && !iseffect(hit_object))
-		hit_object.visible_message(span_danger("\The [hit_object] smacks into \the [src] and rapidly flashes to ash."), null,
-			span_hear("You hear a loud crack as you are washed with a wave of heat."))
+		hit_object.visible_message(span_danger("\The [hit_object]猛击进\the [src]并迅速化为灰烬."), null,
+			span_hear("你听到一声巨响,一股热浪席卷了你."))
 	else
 		return
 
@@ -419,16 +419,16 @@
 	consume(hit_object) //all bumped objects get consume() called on them
 
 /obj/structure/prop/mainship/radiationcollector
-	name = "Radiation Collector Array"
-	desc = "A device which uses radiation and plasma to produce power."
+	name = "辐射收集阵列"
+	desc = "一种利用辐射和等离子体产生能量的装置."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "radcollector"
 	layer = BELOW_OBJ_LAYER
 	resistance_flags = RESIST_ALL
 
 /obj/structure/prop/mainship/invincibleshutter
-	name = "\improper heavy shutters"
-	desc = "A heavy set of blast resistant shutters."
+	name = "\improper 重型百叶窗"
+	desc = "一组重型防爆百叶窗."
 	icon = 'icons/obj/doors/mainship/blastdoors_shutters.dmi'
 	icon_state = "shutter1"
 	density = TRUE
@@ -439,35 +439,35 @@
 	opacity = TRUE
 
 /obj/structure/prop/mainship/doorblocker //doors that exist only to block access, used mostly for valhalla omegastation
-	name = "\improper Barred Airlock"
+	name = "\improper 栅栏气闸"
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	resistance_flags = RESIST_ALL
 	allow_pass_flags = NONE
-	desc = "It opens and closes."
+	desc = "它会打开和关闭."
 	opacity = TRUE
 
 /obj/structure/prop/mainship/doorblocker/maint
-	name = "\improper Maintenance Hatch"
+	name = "\improper 维护舱口"
 	icon_state = "maint_locked"
 
 /obj/structure/prop/mainship/doorblocker/external
-	name = "\improper External Airlock"
+	name = "\improper 外部气闸"
 	icon_state = "exit_locked"
 
 /obj/structure/prop/mainship/doorblocker/engi
-	name = "\improper External Airlock"
+	name = "\improper 外部气闸"
 	icon_state = "engi_locked"
 
 /obj/structure/prop/mainship/doorblocker/evac
-	name = "\improper Evacuation Airlock"
+	name = "\improper 撤离气闸"
 	icon_state = "secure_locked"
 
 /obj/structure/prop/mainship/doorblocker/command
-	name = "\improper Command Airlock"
+	name = "\improper 指挥气闸"
 	icon_state = "command_locked"
 
 /obj/structure/prop/mainship/doorblocker/patrol_base
-	name = "\improper Main Airlock"
+	name = "\improper 主气闸"
 	icon_state = "command_locked"
 
 /obj/structure/prop/mainship/doorblocker/patrol_base/som
@@ -480,76 +480,76 @@
 	icon_state = "secure_wide_right_locked"
 
 /obj/structure/prop/mainship/telecomms
-	name = "subspace broadcaster"
-	desc = "A mighty piece of hardware used to broadcast processed subspace signals."
+	name = "子空间广播器"
+	desc = "一台强大的硬件设备,用于广播处理过的子空间信号."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "broadcaster_send"
 
 /obj/structure/prop/mainship/telecomms/hub
-	name = "subspace broadcaster"
-	desc = "A mighty piece of hardware used to send/receive massive amounts of data."
+	name = "子空间广播器"
+	desc = "一台强大的硬件设备,用于发送/接收大量数据."
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "hub"
 
 /obj/structure/prop/mainship/telecomms/processor
-	name = "processor unit"
-	desc = "This machine is used to process large quantities of information."
+	name = "处理器单元"
+	desc = "这台机器用于处理大量信息."
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "processor"
 
 /obj/structure/prop/mainship/telecomms/bus
-	name = "bus mainframe"
-	desc = "A mighty piece of hardware used to send massive amounts of data quickly."
+	name = "总线主机"
+	desc = "一台强大的硬件设备,用于快速发送大量数据."
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "bus"
 
 /obj/structure/prop/mainship/telecomms/broadcaster
-	name = "subspace broadcaster"
-	desc = "This machine has a dish-like shape and green lights. It is designed to detect and process subspace radio activity."
+	name = "子空间广播器"
+	desc = "这台机器呈碟形,带有绿色指示灯.它被设计用于探测和处理子空间无线电活动."
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "broadcaster"
 
 /obj/structure/prop/mainship/telecomms/receiver
-	name = "subspace receiver"
-	desc = "A dish-shaped machine used to broadcast processed subspace signals."
+	name = "子空间接收器"
+	desc = "一台碟形机器,用于广播处理过的子空间信号."
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "broadcast receiver"
 
 /obj/structure/prop/mainship/telecomms/relay
-	name = "telecomms relay"
-	desc = "A mighty piece of hardware used to send massive amounts of data far away."
+	name = "电信中继器"
+	desc = "一台强大的硬件设备,用于将大量数据发送到很远的地方."
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "relay"
 
 /obj/structure/prop/mainship/suit_storage_prop
-	name = "Suit Storage Unit"
-	desc = "An industrial U-Stor-It Storage unit designed to accomodate all kinds of space suits. Its on-board equipment also allows the user to decontaminate the contents through a UV-ray purging cycle. There's a warning label dangling from the control pad, reading \"STRICTLY NO BIOLOGICALS IN THE CONFINES OF THE UNIT\". This one appears to be magnetically locked."
+	name = "宇航服储存单元"
+	desc = "一个工业级U-Stor-It储存单元,设计用于容纳各种宇航服.其内置设备还允许用户通过紫外线净化循环对内容物进行消毒.控制面板上悬挂着一个警告标签,上面写着\"严禁在单元范围内放置生物制品\".这个似乎被磁力锁住了."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "suitstorageclose"
 
 /obj/structure/prop/mainship/protolathe
-	name = "Suit Storage Unit"
-	desc = "A giant machine for processing data and producing department specific tools. A small warning light labeled 'server connection' is flashing red"
+	name = "宇航服储存单元"
+	desc = "一台用于处理数据和生产部门专用工具的巨型机器.一个标有'服务器连接'的小警告灯正在闪烁红光"
 	icon = 'icons/obj/machines/research.dmi'
 	icon_state = "protolathe"
 
 /obj/structure/prop/mainship/protolathe/engi
-	name = "Engineering Protolathe"
+	name = "工程原型机"
 
 /obj/structure/prop/mainship/protolathe/sci
-	name = "Research Protolathe"
+	name = "研究原型机"
 
 /obj/structure/prop/mainship/protolathe/medical
-	name = "Medical Protolathe"
+	name = "医疗原型机"
 
 /obj/structure/prop/mainship/protolathe/security
-	name = "Security Protolathe"
+	name = "安保原型机"
 
 /obj/structure/prop/mainship/protolathe/service
-	name = "Service Protolathe"
+	name = "服务原型机"
 
 /obj/structure/prop/mainship/protolathe/cargo
-	name = "Cargo Protolathe"
+	name = "货运原型机"
 
 /obj/structure/prop/mainship/cannon_cables/ex_act()
 	return
@@ -558,38 +558,38 @@
 	icon = 'icons/obj/machines/research.dmi'
 
 /obj/structure/prop/mainship/research/circuit_imprinter
-	name = "Circuit Imprinter"
+	name = "电路印刷机"
 	icon_state = "circuit_imprinter"
-	desc = "Manufactures circuit boards for the construction of machines."
+	desc = "制造用于建造机器的电路板."
 
 /obj/structure/prop/mainship/research/mechafab
 	icon_state = "mechfab1"
-	name = "Exosuit Fabricator"
-	desc = "Nothing is being built."
+	name = "外骨骼制造机"
+	desc = "未在建造任何东西."
 
 /obj/structure/prop/mainship/research/destructive_analyzer
-	name = "Destructive Analyzer"
-	desc = "Learn science by destroying things!"
+	name = "破坏性分析仪"
+	desc = "通过摧毁东西来学习科学!"
 	icon_state = "d_analyzer"
 
 /obj/structure/prop/mainship/research/tdoppler
-	name = "tachyon-doppler array"
-	desc = "A highly precise directional sensor array which measures the release of quants from decaying tachyons. The doppler shifting of the mirror-image formed by these quants can reveal the size, location and temporal affects of energetic disturbances within a large radius ahead of the array.\n"
+	name = "快子多普勒阵列"
+	desc = "一种高精度定向传感器阵列,用于测量衰变快子释放的量子.这些量子形成的镜像的多普勒频移可以揭示阵列前方大范围内能量扰动的大小,位置和时间影响.\n"
 	icon_state = "tdoppler"
 
 /obj/structure/prop/mainship/research/explosivecompressor
-	name = "anomaly refinery"
-	desc = "An advanced machine capable of implosion-compressing raw anomaly cores into finished artifacts. Also equipped with state of the art bomb prediction software."
+	name = "异常精炼机"
+	desc = "一种先进的机器,能够将原始异常核心内爆压缩为成品神器.还配备了最先进的炸弹预测软件."
 	icon_state = "explosive_compressor"
 
 /obj/structure/prop/mainship/research/tankcompressor
-	name = "Tank Compressor"
-	desc = "Heavy duty shielded air compressor designed to pressurize tanks above the safe limit."
+	name = "储罐压缩机"
+	desc = "重型屏蔽空气压缩机,设计用于将储罐加压至安全限值以上."
 	icon_state = "tank_compressor-open"
 
 /obj/structure/prop/mainship/generator
-	name = "field generator"
-	desc = "A large thermal battery that projects a high amount of energy when powered."
+	name = "力场发生器"
+	desc = "一种大型热能电池,通电时能投射大量能量."
 	icon = 'icons/obj/machines/field_generator.dmi'
 	icon_state = "Field_Gen"
 	anchored = FALSE
@@ -599,33 +599,33 @@
 	resistance_flags = RESIST_ALL
 
 /obj/structure/prop/mainship/generator/shieldgen
-	name = "anti-breach shielding projector"
-	desc = "Used to seal minor hull breaches."
+	name = "防破口护盾投射器"
+	desc = "用于封堵小型船体破口."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "shieldoff"
 
 /obj/structure/prop/mainship/generator/tesla_coil
-	name = "tesla coil"
-	desc = "For the union!"
+	name = "特斯拉线圈"
+	desc = "为了联盟!"
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "coil_open0"
 
 /obj/structure/prop/mainship/generator/ground_rod
-	name = "grounding rod"
-	desc = "Keeps an area from being fried by Edison's Bane, does not work against handheld Tesla cannons commonly issued by paramilitaries."
+	name = "接地棒"
+	desc = "防止区域被爱迪生之祸烤焦,对准军事组织常配发的便携式特斯拉炮无效."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "grounding_rod_open0"
 
 /obj/structure/prop/mainship/cannon_cable_connector
-	name = "\improper Cannon cable connector"
-	desc = "A connector for the large cannon cables."
+	name = "\improper 加农炮电缆连接器"
+	desc = "大型加农炮电缆的连接器."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "cannon_cable_connector"
 	density = TRUE
 
 /obj/structure/prop/mainship/reflector
-	name = "\improper reflector"
-	desc = "An angled mirror for reflecting laser beams."
+	name = "\improper 反射镜"
+	desc = "用于反射激光束的斜角镜."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "reflector_prop"
 	density = TRUE
@@ -636,16 +636,16 @@
 	return
 
 /obj/structure/prop/mainship/prop_sec
-	name = "Security Officer"
-	desc = "A NT security officer guarding the perimeter. They look rather busy and pays no attention to you."
+	name = "安保军官"
+	desc = "一名守卫周边的NT安保军官.他们看起来相当忙碌,没有注意到你."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "secprop"
 	resistance_flags = RESIST_ALL
 	density = TRUE
 
 /obj/structure/prop/mainship/prop_so
-	name = "Officer"
-	desc = "A staff officer in charge of the ongoing operation, either too busy operating the observation consoles or simply looking at you and your comrades and hoping that you will succeed, that being said, it's best to leave them be."
+	name = "军官"
+	desc = "一名负责当前行动的参谋军官,要么忙于操作观察控制台,要么只是看着你和你的战友,希望你们能成功,话虽如此,最好还是别打扰他们."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "officerprop"
 	resistance_flags = RESIST_ALL
@@ -655,16 +655,16 @@
 	icon_state = "officersomprop"
 
 /obj/structure/prop/mainship/prop_tech
-	name = "Technician"
-	desc = "A hard working technician maintaining the vehicles of the base, as well as the base itself. They seem to be very busy investigating something right now."
+	name = "技术员"
+	desc = "一名辛勤工作的技术员,负责维护基地的载具以及基地本身.他们现在似乎正忙着调查什么."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "techieprop"
 	resistance_flags = RESIST_ALL
 	density = TRUE
 
 /obj/structure/prop/mainship/prop_tech/som
-	name = "SOM technician"
-	desc = "A hard working SOM technician maintaining the vehicles of the base, as well as the base itself. They seem to be very busy investigating something right now."
+	name = "SOM技术员"
+	desc = "一名辛勤工作的SOM技术员,负责维护基地的载具以及基地本身.他们现在似乎正忙着调查什么."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "SOM_technician"
 
@@ -672,36 +672,36 @@
 	icon_state = "SOM_technician_2"
 
 /obj/structure/prop/mainship/prop_sominf
-	name = "SOM Infantry"
-	desc = "Standard Sons of Mars infantry with a V-31 assault rifle on hand. While their face is obscured by the visor, it feels like you should keep going instead of loitering around."
+	name = "SOM步兵"
+	desc = "标准火星之子步兵,手持V-31突击步枪.虽然他们的脸被面罩遮住,但感觉你应该继续前进而不是闲逛."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "som_inf"
 	resistance_flags = RESIST_ALL
 	density = TRUE
 
 /obj/structure/prop/mainship/prop_sominf/heavy
-	name = "SOM heavy infantry"
-	desc = "Heavy Sons of Mars infantry with a VX-32 charger on hand. While their face is obscured by the visor, it feels like you should keep going instead of loitering around."
+	name = "SOM重装步兵"
+	desc = "火星之子重装步兵,手持VX-32充能枪.虽然他们的脸被面罩遮住,但感觉你应该继续前进而不是闲逛."
 	icon_state = "SOM_heavy_armed"
 
 /obj/structure/prop/mainship/prop_sominf/heavy/unarmed
-	name = "SOM heavy infantry"
-	desc = "Heavy Sons of Mars infantry. Better leave them to whatever it is they're doing"
+	name = "SOM重装步兵"
+	desc = "火星之子重装步兵.最好别管他们在做什么."
 	icon_state = "SOM_heavy"
 
 /obj/structure/prop/mainship/prop_sominf/lorica
-	name = "SOM heavy infantry"
-	desc = "Sons of Mars infantry in heavy duty Lorica armor, with a VX-32 charger on hand. They don't look like they're messing around."
+	name = "SOM重装步兵"
+	desc = "身穿重型洛里卡装甲的火星之子步兵,手持VX-32充能枪.他们看起来可不是在闹着玩."
 	icon_state = "lorica_armed"
 
 /obj/structure/prop/mainship/prop_sominf/lorica/unarmed
-	name = "SOM heavy infantry"
-	desc = "Sons of Mars infantry in heavy duty Lorica armor. They look pretty tough."
+	name = "SOM重装步兵"
+	desc = "身穿重型洛里卡装甲的火星之子步兵.他们看起来相当强悍."
 	icon_state = "lorica"
 
 /obj/structure/prop/mainship/som_scientist
-	name = "SOM scientist"
-	desc = "A hard working SOM scientist type. They look like they're doing something important."
+	name = "SOM科学家"
+	desc = "一名辛勤工作的SOM科学家.他们看起来正在做重要的事情."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "SOM_scientist"
 	resistance_flags = RESIST_ALL
@@ -711,21 +711,21 @@
 	icon_state = "SOM_scientist_2"
 
 /obj/structure/prop/templedoor
-	name = "Strange Temple"
+	name = "奇异神殿"
 	icon = 'icons/obj/doors/Doorsand.dmi'
 	icon_state = "door_open"
 	density = FALSE
 
 /obj/structure/prop/oresilo
-	name = "ore silo"
-	desc = "An all-in-one bluespace storage and transmission system for the colony's mineral distribution needs. This one appears to be deactivated."
+	name = "矿石筒仓"
+	desc = "一种一体化蓝空间存储与传输系统,满足殖民地的矿物分配需求.这个似乎已停用."
 	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "silo"
 	density = TRUE
 
 /obj/structure/prop/mainship/propcarp
-	name = "space carp"
-	desc = "A ferocious, fang-bearing creature that resembles a fish."
+	name = "太空鲤鱼"
+	desc = "一种凶猛的,长着尖牙的生物,外形类似鱼."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "carpprop"
 	density = TRUE
@@ -753,23 +753,23 @@
 		//remember that each carp must have at least 2 free spaces around them per carp, or they'll glitch into walls and/or each other
 
 /obj/structure/prop/mainship/aislipprop
-	name = "foam dispenser"
-	desc = "A remotely-activatable dispenser for crowd-controlling foam."
+	name = "泡沫喷射器"
+	desc = "一种可远程激活的喷射器,用于喷射人群控制泡沫."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "aislipper"
 	density = FALSE
 	resistance_flags = RESIST_ALL
 
 /obj/structure/prop/mainship/turretprop
-	name = "laser turret"
-	desc = "A point-defense laser turret supplied by NanoTrasen. This one looks inactive"
+	name = "激光炮塔"
+	desc = "一种由纳米传讯提供的点防御激光炮塔.这个看起来未激活."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "turretprop"
 	resistance_flags = RESIST_ALL
 
 /obj/structure/prop/mainship/tubeprop
-	name = "pneumatic tube"
-	desc = "A pneumatic tube commonly used for transportation on NanoTrasen research stations."
+	name = "气动管道"
+	desc = "一种常用于纳米传讯研究站运输的气动管道."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "tubepropstraight"
 	resistance_flags = RESIST_ALL
@@ -797,8 +797,8 @@
 	icon_state = "tubecurved"
 
 /obj/structure/prop/mainship/meterprop/
-	name = "meter"
-	desc = "That's a gas flow meter. It measures something."
+	name = "流量计"
+	desc = "那是个气体流量计.它测量某种东西."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "propmeterempty"
 	resistance_flags = RESIST_ALL
@@ -814,11 +814,11 @@
 
 /obj/structure/prop/mainship/meterprop/random/examine(mob/user)
 	. = ..()
-	. += span_notice("The pressure gauge reads [kpa] kPa; [kelvin] K ([kelvin - 273.15]°C)") //output fake kelvin and celsius on examine
+	. += span_notice("压力表读数为[kpa] kPa; [kelvin] K ([kelvin - 273.15]°C)") //output fake kelvin and celsius on examine
 
 /obj/structure/prop/mainship/meterprop/empty/examine(mob/user)
 	. = ..()
-	. += span_notice("The pressure gauge reads 0 kPa; 0 K (-273.15°C)") //output fake kelvin and celsius on examine
+	. += span_notice("压力表读数为0 kPa; 0 K (-273.15°C)") //output fake kelvin and celsius on examine
 
 /obj/structure/prop/mainship/meterprop/random/Initialize(mapload)
 	. = ..()
@@ -826,22 +826,22 @@
 	kelvin = randfloat(10.3, 28.4)
 
 /obj/structure/prop/mainship/pipeprop //does not init and so doesn't generate lag at all
-	name = "pipe"
-	desc = "A one meter section of regular pipe."
+	name = "管道"
+	desc = "一米长的常规管道."
 	icon = 'icons/obj/atmospherics/pipes/simple.dmi'
 	icon_state = "pipe11-2"
 	density = FALSE
 	layer = GAS_PIPE_VISIBLE_LAYER
 
 /obj/structure/prop/mainship/pipeprop/manifold
-	name = "pipe manifold"
-	desc = "A manifold composed of regular pipes."
+	name = "管道歧管"
+	desc = "由常规管道组成的歧管."
 	icon = 'icons/obj/atmospherics/pipes/manifold.dmi'
 	icon_state = "manifold-2"
 
 /obj/structure/prop/mainship/pipeprop/pump
-	name = "pipe manifold"
-	desc = "A pump that moves gas by pressure."
+	name = "管道歧管"
+	desc = "一种通过压力输送气体的泵."
 	icon = 'icons/obj/atmospherics/components/binary_devices.dmi'
 	icon_state = "pump_map-2"
 
@@ -850,8 +850,8 @@
 	layer = GAS_PUMP_LAYER
 
 /obj/structure/prop/mainship/halfbuilt_mech
-	name = "half-assembled mech"
-	desc = "A half-assembled mech. It's missing limbs and the maintenance ports are open. You probably shouldn't screw with it."
+	name = "半组装的机甲"
+	desc = "一台半组装的机甲.它缺少肢体,维护端口敞开着.你最好别乱动它."
 	icon_state = ""
 	pixel_x = -16
 	/// selected parts you want displayed. remove parts if you dont want them
@@ -880,7 +880,7 @@
 	overlays = new_overlays
 
 /obj/structure/prop/mainship/halfbuilt_mech/legs
-	desc = "Leg."
+	desc = "腿部."
 	selected_parts = list(
 		MECH_GREY_LEGS = MECH_RECON,
 	)
@@ -894,8 +894,8 @@
 	)
 
 /obj/structure/prop/mainship/halfbuilt_mech/vanguard_finished
-	name = "Vanguard mech"
-	desc = "An advanced vanguard chassis mech. It's a recent advancement in military hardware only been in service for a short time and not in mass production yet."
+	name = "先锋机甲"
+	desc = "一种先进的前卫底盘机甲.这是军事硬件领域的最新进展,服役时间尚短,尚未投入量产."
 	selected_parts = list(
 		MECH_GREY_TORSO = MECH_VANGUARD,
 		MECH_GREY_HEAD = MECH_VANGUARD,
@@ -905,22 +905,22 @@
 	)
 
 /obj/structure/prop/mainship/chimney
-	name = "fireplace"
-	desc = "A large stone brick fireplace."
+	name = "壁炉"
+	desc = "一座大型石砖壁炉."
 	icon = 'icons/obj/structures/mainship_props64.dmi'
 	icon_state = "fireplace"
 
 //items props
 
 /obj/item/prop
-	name = "GENERIC SHIP PROP"
-	desc = "THIS SHOULDN'T BE VISIBLE, AHELP 'ART-P03' IF SEEN IN ROUND WITH LOCATION"
+	name = "通用飞船道具"
+	desc = "这不应可见,若在回合中看到请报告位置并输入AHELP 'ART-P03'"
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "hangarbox"
 
 /obj/item/prop/aimodule
-	name = "AI module"
-	desc = "An AI Module for programming laws to an AI."
+	name = "AI模块"
+	desc = "用于为AI编写法则的AI模块."
 	icon_state = "std_mod"
 
 /obj/item/prop/aimodule/Initialize(mapload)
@@ -954,8 +954,8 @@
 	)
 
 /obj/item/prop/aicard
-	name = "intelliCard"
-	desc = "A storage device for AIs. Patent pending."
+	name = "智能卡"
+	desc = "用于存储AI的存储设备.专利申请中."
 	icon_state = "aicard"
 
 /obj/item/prop/aicard/Initialize(mapload)
@@ -964,14 +964,14 @@
 		icon_state = "aicard-404"
 
 /obj/item/prop/dogtag
-	name = "John Doe" //generic name
-	desc = "The remains of a marine long dead, you hope they found peace."
+	name = "无名氏" //generic name
+	desc = "一名早已死去的陆战队员的遗骸,你希望他们已得到安息."
 	icon = 'icons/obj/items/card.dmi'
 	icon_state = "dogtag"
 
 /obj/item/prop/dogtag/pfcjim
-	name = "PFC Jim's dog tag"
-	desc = "Whoever PFC Jim is, you hope made it out alive."
+	name = "一等兵吉姆的狗牌"
+	desc = "无论一等兵吉姆是谁,你希望他活着逃了出来."
 	icon = 'icons/obj/items/card.dmi'
 	icon_state = "dogtag"
 
@@ -982,9 +982,9 @@
 ///BROKEN MARINE VENDOR PROPS
 
 /obj/structure/prop/brokenvendor
-	name = "\improper Broken vendor"
+	name = "\improper 损坏的售货机"
 	icon = 'icons/obj/structures/mainship_props.dmi'
-	desc = "The insides of this vendor are visible and rusted through, you get the feeling there's no fixing this machine."
+	desc = "这台售货机的内部裸露在外且锈迹斑斑,你感觉这台机器已经无法修复了."
 	density = TRUE
 	resistance_flags = XENO_DAMAGEABLE
 
@@ -992,28 +992,28 @@
 	icon_state = "marinearmory-broken"
 
 /obj/structure/prop/brokenvendor/brokenuniformvendor
-	name = "\improper Broken automated uniform closet"
+	name = "\improper 损坏的自动制服柜"
 	icon_state = "marineuniform-broken"
 
 /obj/structure/prop/brokenvendor/brokenuniformvendor/specialist
-	name = "\improper Broken specialist equipment rack"
+	name = "\improper 损坏的专家装备架"
 	icon_state = "specialist-broken"
-	desc = "You study the rusted hulk in vain trying to determine what this vendor was before realizing that it's hopeless."
+	desc = "你徒劳地研究着这具锈蚀的残骸,试图辨认这台售货机原本是什么,最终意识到这毫无希望."
 
 /obj/structure/prop/brokenvendor/brokenspecialistvendor/sg
-	name = "\improper Broken automated smart gunner closet"
+	name = "\improper 损坏的自动智能枪手柜"
 	icon_state = "marineuniform-broken"
 
 /obj/structure/prop/brokenvendor/brokenspecialistvendor/leader
-	name = "\improper Broken automated leader closet"
+	name = "\improper 损坏的自动队长柜"
 	icon_state = "marineuniform-broken"
 
 /obj/structure/prop/brokenvendor/brokenspecialistvendor/corpsman
-	name = "\improper Broken automated corpsman closet"
+	name = "\improper 损坏的自动医护兵柜"
 	icon_state = "marineuniform-broken"
 
 /obj/structure/prop/brokenvendor/brokenspecialistvendor/engineer
-	name = "\improper Broken automated engineer closet"
+	name = "\improper 损坏的自动工程师柜"
 	icon_state = "marineuniform-broken"
 
 /obj/structure/prop/brokenvendor/brokenmarinemedvendor
@@ -1029,11 +1029,11 @@
 	icon_state = "engivend-broken"
 
 /obj/structure/prop/brokenvendor/surplusclothes
-	name = "\improper Broken surplus clothes vendor"
+	name = "\improper 损坏的剩余衣物售货机"
 	icon_state = "surplus_clothes-broken"
 
 /obj/structure/prop/brokenvendor/surplusarmor
-	name = "\improper Broken armor clothes vendor"
+	name = "\improper 损坏的护甲衣物售货机"
 	icon_state = "surplus_armor-broken"
 
 ///BROKEN VEHICLE PROPS
@@ -1047,8 +1047,8 @@
 	soft_armor = list(MELEE = 0, BULLET = 50, LASER = 50, ENERGY = 65, BOMB = 30, BIO = 100, FIRE = 75, ACID = 0)
 
 /obj/structure/prop/vehicle/van
-	name = "van"
-	desc = "An old van, seems to be broken down."
+	name = "厢式货车"
+	desc = "一辆旧厢式货车,似乎已经抛锚了."
 	icon_state = "van"
 	bound_height = 32
 	bound_width = 64
@@ -1063,8 +1063,8 @@
 	icon_state = "van_wrecked"
 
 /obj/structure/prop/vehicle/truck
-	name = "truck"
-	desc = "An old truck, seems to be broken down."
+	name = "卡车"
+	desc = "一辆旧卡车,似乎已经抛锚了."
 	icon_state = "truck"
 	bound_height = 32
 	bound_width = 64
@@ -1098,8 +1098,8 @@
 	icon_state = "truck_cargo_snow"
 
 /obj/structure/prop/vehicle/crane
-	name = "crane"
-	desc = "An old crane, seems to be broken down."
+	name = "起重机"
+	desc = "一台旧起重机,似乎已经抛锚了."
 	icon_state = "crane"
 	bound_height = 64
 	bound_width = 64
@@ -1119,8 +1119,8 @@
 	max_integrity = 400
 
 /obj/structure/prop/vehicle/crawler
-	name = "crawler"
-	desc = "An old crawler, seems to be broken down."
+	name = "履带车"
+	desc = "一辆旧履带车,似乎已经抛锚了."
 	icon_state = "crawler"
 	bound_height = 32
 	bound_width = 64
@@ -1142,8 +1142,8 @@
 	icon_state = "crawler_cargo"
 
 /obj/structure/prop/vehicle/big_truck
-	name = "military truck"
-	desc = "A military truck, made for transporting equipment or personnel in bulk."
+	name = "军用卡车"
+	desc = "一辆军用卡车,用于批量运输装备或人员."
 	icon = 'icons/obj/vehicles/large_truck.dmi'
 	icon_state = "truck"
 	bound_height = 128
@@ -1206,8 +1206,8 @@
 
 
 /obj/structure/prop/vehicle/tank
-	name = "Decommissioned TAV - Rhino"
-	desc = "A decomissioned tank, all methods of propulsion have been disabled and the entrances sealed."
+	name = "退役TAV - 犀牛"
+	desc = "一辆退役坦克,所有推进方式均已禁用,入口已封闭."
 	icon = 'icons/obj/structures/tank_prop_north_south.dmi'
 	icon_state = "tank_complete"
 	bound_height = 128
@@ -1221,8 +1221,8 @@
 	bound_width = 96
 
 /obj/structure/prop/vehicle/tank/north/base
-	name = "Decommissioned TAV - Rhino"
-	desc = "The base of a decomissioned tank."
+	name = "退役TAV - 犀牛"
+	desc = "一辆退役坦克的底座."
 	icon_state = "tank_base"
 
 /obj/structure/prop/vehicle/tank/north/altnorth
@@ -1235,14 +1235,14 @@
 	bound_width = 128
 
 /obj/structure/prop/vehicle/tank/east/base
-	name = "Decommissioned TAV - Rhino"
-	desc = "The base of a decomissioned tank."
+	name = "退役TAV - 犀牛"
+	desc = "一辆退役坦克的底座."
 	icon_state = "tank_base"
 
 /obj/structure/prop/vehicle/tank/east/turret
 	icon_state = "turret_viper"
 	layer = TANK_TURRET_LAYER
-	desc = "The turret of a decomissioned tank."
+	desc = "一辆退役坦克的炮塔."
 
 /obj/structure/prop/vehicle/tank/east/turret/complete
 	icon_state = "turret_complete"
@@ -1250,7 +1250,7 @@
 /obj/structure/prop/vehicle/tank/east/turretalt
 	icon_state = "turret_cobra"
 	layer = TANK_TURRET_LAYER
-	desc = "The turret of a decomissioned tank."
+	desc = "一辆退役坦克的炮塔."
 
 /obj/structure/prop/vehicle/tank/east/barrel
 	icon_state = "ltb_cannon_0"
@@ -1370,7 +1370,7 @@
 /obj/structure/prop/vehicle/tank/north/turret
 	icon_state = "turret_viper"
 	layer = TANK_TURRET_LAYER
-	desc = "The turret of a decomissioned tank."
+	desc = "一辆退役坦克的炮塔."
 
 /obj/structure/prop/vehicle/tank/north/turret/complete
 	icon_state = "turret_complete"
@@ -1378,7 +1378,7 @@
 /obj/structure/prop/vehicle/tank/north/turretalt
 	icon_state = "turret_cobra"
 	layer = TANK_TURRET_LAYER
-	desc = "The turret of a decomissioned tank."
+	desc = "一辆退役坦克的炮塔."
 
 /obj/structure/prop/vehicle/tank/north/barrel
 	icon_state = "ltb_cannon_0"
@@ -1495,8 +1495,8 @@
 	icon_state = "snowplow_1"
 
 /obj/structure/prop/vehicle/apc
-	name = "Decommissioned TAV - Athena"
-	desc = "A decomissioned APC, all methods of propulsion have been disabled and the entrances sealed."
+	name = "退役TAV - 雅典娜"
+	desc = "一辆退役装甲运兵车,所有推进方式均已禁用,入口已封闭."
 	icon = 'icons/obj/structures/apc_prop.dmi'
 	icon_state = "apc_base"
 	bound_height = 128
@@ -1595,43 +1595,43 @@
 	icon_state = "emptyfuelcell"
 
 /obj/structure/prop/mainship/gelida/propplaceholder
-	name = "prop placeholder"
-	desc = "Somebody fucked up, ping the map creator on Discord with the location of this object."
+	name = "道具占位符"
+	desc = "有人搞砸了,请在Discord上联系地图作者并告知此物件的位置."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "placeholderprop"
 
 /obj/structure/prop/mainship/gelida/smallwire
-	name = "small wire"
-	desc = "A small patch of wiring used for cordoning off areas."
+	name = "细铁丝"
+	desc = "一小段用于封锁区域的铁丝."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "small_wire"
 	density = FALSE
 
 /obj/structure/prop/mainship/gelida/lightstick
-	name = "light stick"
-	desc = "A post with an empty bulb at the top, used for lighting areas of dense snow."
+	name = "灯柱"
+	desc = "一根顶部带有空灯泡的柱子,用于照亮积雪密集的区域."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "lightstick_spoke1"
 	density = FALSE
 
 /obj/structure/prop/mainship/gelida/planterbox
-	name = "plant box"
-	desc = "A metallic box used for holding growing plants, this one is empty."
+	name = "种植箱"
+	desc = "一个用于盛放生长植物的金属箱,这个是空的."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "planter_box_empty"
 	layer = BELOW_OBJ_LAYER
 
 /obj/structure/prop/mainship/gelida/planterboxsoil
-	name = "plant box"
-	desc = "A metallic box used for holding growing plants, this one is filled with soil."
+	name = "种植箱"
+	desc = "一个用于盛放生长植物的金属箱,这个装满了土壤."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "planter_box_soil"
 	layer = BELOW_OBJ_LAYER
 
 /obj/structure/prop/mainship/gelida/planterboxsoil/nondense
 	density = FALSE
-	name = "catwalk"
-	desc = "A floor you can walk on. This one comes with gaps to see the space underneath."
+	name = "栈桥"
+	desc = "一种可以行走的地板.这种带有间隙,可以看到下方的空间."
 
 /obj/structure/prop/mainship/gelida/planterboxsoilgrid
 	icon = 'icons/obj/structures/mainship_props.dmi'
@@ -1640,37 +1640,37 @@
 
 /obj/structure/prop/mainship/gelida/planterboxsoilgrid/nondense
 	density = FALSE
-	name = "catwalk"
-	desc = "A floor you can walk on. This one comes with gaps to see the space underneath."
+	name = "栈桥"
+	desc = "一种可以行走的地板.这种带有间隙,可以看到下方的空间."
 
 /obj/structure/prop/mainship/gelida/propserver
-	name = "colony research server"
-	desc = "This machine sits quietly, you can see a warning light faintly shining on its diagnostic panel."
+	name = "殖民地研究服务器"
+	desc = "这台机器静静地立着,你可以看到其诊断面板上有一盏警示灯微弱地闪烁着."
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "comm_server_off"
 
 /obj/structure/prop/mainship/gelida/propserveralt
-	name = "colony research server"
-	desc = "This machine sits quietly, you can see a warning light faintly shining on its diagnostic panel."
+	name = "殖民地研究服务器"
+	desc = "这台机器静静地立着,你可以看到其诊断面板上有一盏警示灯微弱地闪烁着."
 	icon = 'icons/obj/machines/research.dmi'
 	icon_state = "server_alt"
 
 /obj/structure/prop/mainship/gelida/barrier
-	name = "security barrier"
-	desc = "A deployable barrier used by security forces to cordone off an area."
+	name = "安保屏障"
+	desc = "一种可部署的屏障,由安保部队用于封锁区域."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "barrier0"
 
 /obj/structure/prop/mainship/gelida/heavycablenode
-	name = "heavy cable node"
-	desc = "A heavy cable node used for linking high performance cables between buildings."
+	name = "重型电缆节点"
+	desc = "一种重型电缆节点,用于在建筑之间连接高性能电缆."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "node"
 	density = FALSE
 
 /obj/structure/prop/mainship/gelida/powerconnector
-	name = "heavy cable power connector"
-	desc = "A heavy cable node used for connecting high performance cables between buildings."
+	name = "重型电缆电源连接器"
+	desc = "一种重型电缆节点,用于在建筑之间连接高性能电缆."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "powerconnector"
 	layer = RUNE_LAYER
@@ -1678,8 +1678,8 @@
 	density = FALSE
 
 /obj/structure/prop/mainship/gelida/powerccable
-	name = "heavy cable wiring"
-	desc = "A heavy cable wire used rapid data transfer between buildings."
+	name = "重型电缆线路"
+	desc = "一种重型电缆线,用于在建筑之间进行快速数据传输."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "powercableheavy"
 	layer = RUNE_LAYER
@@ -1687,8 +1687,8 @@
 	density = FALSE
 
 /obj/structure/prop/mainship/gelida/powercconnectortwoside
-	name = "heavy cable wiring"
-	desc = "A heavy cable wire used rapid data transfer between buildings."
+	name = "重型电缆线路"
+	desc = "一种重型电缆线,用于在建筑之间进行快速数据传输."
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "powerconnectortwoside"
 	layer = RUNE_LAYER
@@ -1696,8 +1696,8 @@
 	density = FALSE
 
 /obj/structure/prop/mainship/gelida/powercconnectortwosidealt
-	name = "heavy cable wiring"
-	desc = "A heavy cable wire used rapid data transfer between buildings."
+	name = "重型电缆线路"
+	desc = "一根用于建筑间快速数据传输的重型线缆。"
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "powerconnectortwosidealt"
 	layer = RUNE_LAYER
@@ -1705,8 +1705,8 @@
 	density = FALSE
 
 /obj/structure/prop/mainship/gelida/powercconnectorthreeside
-	name = "heavy cable wiring"
-	desc = "A heavy cable wire used rapid data transfer between buildings."
+	name = "重型线缆"
+	desc = "一根用于建筑间快速数据传输的重型线缆。"
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "powerconnectorthreeside"
 	layer = RUNE_LAYER
@@ -1714,8 +1714,8 @@
 	density = FALSE
 
 /obj/structure/prop/mainship/gelida/powercconnectorfourside
-	name = "heavy cable wiring"
-	desc = "A heavy cable wire used rapid data transfer between buildings."
+	name = "重型线缆"
+	desc = "一根用于建筑间快速数据传输的重型线缆。"
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "powerconnectorfourside"
 	layer = RUNE_LAYER
@@ -1723,43 +1723,43 @@
 	density = FALSE
 
 /obj/structure/prop/mainship/gelida/rails
-	name = "minecart rails"
-	desc = "Metal rails used for guiding a minecart."
+	name = "矿车轨道"
+	desc = "用于引导矿车的金属轨道。"
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "rail"
 	layer = BELOW_TABLE_LAYER
 	density = FALSE
 
 /obj/structure/prop/mainship/gelida/railbumper
-	name = "minecart rail bumper"
-	desc = "A metal bumper designed to catch out of control minecarts."
+	name = "矿车轨道缓冲器"
+	desc = "一个用于拦截失控矿车的金属缓冲器。"
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "rail_bumpers"
 	layer = BELOW_TABLE_LAYER
 	density = FALSE
 
 /obj/structure/prop/mainship/gelida/register
-	name = "register"
-	desc = "An antique cash register, it accepts only hard currency, not spacecredits."
+	name = "收银机"
+	desc = "一台古董收银机,它只接受硬通货,不接受太空信用点。"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "register_static"
 	density = FALSE
 
 /obj/structure/prop/mainship/gelida/propladder
-	name = "ladder"
-	desc = "The ladder sways precariously, its connection to the upper floor severed by a large chunk of sharp metal."
+	name = "梯子"
+	desc = "梯子摇摇欲坠,它与上层的连接被一大块锋利的金属切断了。"
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "ladder11"
 
 /obj/structure/prop/mainship/gelida/miner
-	name = "miner"
-	desc = "The machine stands inert, waiting for the command to begin extracting natural resources from the earth below."
+	name = "采矿机"
+	desc = "机器静止不动,等待指令开始从地下开采自然资源。"
 	icon = 'icons/obj/structures/mainship_props96.dmi'
 	icon_state = "thumper"
 
 /obj/structure/prop/radio_prop
-	name = "radio"
-	desc = "A standard military radio."
+	name = "无线电"
+	desc = "一台标准军用无线电。"
 	icon = 'icons/obj/items/radio.dmi'
 	icon_state = "beacon"
 	var/datum/looping_sound/radio/chatter_loop
@@ -1774,8 +1774,8 @@
 	return ..()
 
 /obj/structure/prop/mainship/railing
-	name = "railing"
-	desc = "Basic railing meant to protect idiots like you from falling."
+	name = "栏杆"
+	desc = "用于保护像你这样的白痴免于坠落的普通栏杆。"
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	max_integrity = 50
 	resistance_flags = XENO_DAMAGEABLE
@@ -1794,25 +1794,25 @@
 	AddElement(/datum/element/connect_loc, connections)
 
 /obj/structure/prop/mainship/railing/corner
-	name = "railing"
-	desc = "Basic railing meant to protect idiots like you from falling."
+	name = "栏杆"
+	desc = "用于保护像你这样的白痴免于坠落的普通栏杆。"
 	density = FALSE
 	icon_state = "railing_corner"
 
 /obj/structure/prop/mainship/solar
-	name = "Solar Array"
-	desc = "A solar panel. Generates electricity when in contact with sunlight."
+	name = "太阳能阵列"
+	desc = "一块太阳能板。接触阳光时发电。"
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "sp_base"
 
 /obj/structure/prop/mainship/solar/tracker
-	name = "solar tracker"
-	desc = "A solar directional tracker."
+	name = "太阳追踪器"
+	desc = "一个太阳能方向追踪器。"
 	icon_state = "tracker_base"
 
 /obj/structure/prop/vehicle/som_mech
-	name = "Marauder assault mech"
-	desc = "A heavily armed mech used by the SOM to spearhead an assault, this one seems to be non-functional."
+	name = "掠夺者突击机甲"
+	desc = "一种由SOM使用的重装武装机甲,用于带头突击,这台似乎已经无法运作。"
 	icon = 'icons/obj/structures/mech_prop.dmi'
 	icon_state = "som_mech"
 	coverage = 70
@@ -1823,20 +1823,20 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/machine_frame3
-	name = "machine frame"
-	desc = "That's a constructable machine frame."
+	name = "机器框架"
+	desc = "那是一个可建造的机器框架。"
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "box_2"
 
 /obj/structure/prop/keycardauth
-	name = "Keycard Authentication Device"
-	desc = "This device is used to trigger station functions, which require more than one ID card to authenticate."
+	name = "钥匙卡认证装置"
+	desc = "该装置用于触发需要不止一张ID卡认证的空间站功能。"
 	icon = 'icons/obj/monitors.dmi'
 	icon_state = "auth_off"
 
 /obj/structure/prop/turbine
-	name = "power turbine"
-	desc = "A gigantic turbine that runs on who knows what. It could probably be turned on by someone with the correct know-how."
+	name = "动力涡轮机"
+	desc = "一台靠谁知道什么东西运转的巨型涡轮机。大概懂行的人能把它启动起来。"
 	icon = 'icons/obj/structures/mainship_props96.dmi'
 	icon_state = "biomass_turbine"
 	density = TRUE
@@ -1846,9 +1846,9 @@
 //USE THESE SPARINGLY OUTSIDE OF TG THEMED MAPS OR I'LL BREAK YOUR KNEECAPS
 
 /obj/structure/prop/tgbrokenvendor
-	name = "\improper Broken vendor"
+	name = "\improper 损坏的售货机"
 	icon = 'icons/obj/tg_vending_props.dmi'
-	desc = "The insides of this vendor are visible and rusted through, you get the feeling there's no fixing this machine."
+	desc = "这台售货机的内部暴露在外且锈穿了,你感觉这台机器已经没救了。"
 	density = TRUE
 	///var to control vendor appearance, can be vendor_broken, vendor_working or vendor_blank
 	var/vendorstate = VENDOR_BROKEN
@@ -2036,8 +2036,8 @@
 	icon_state = "modularpc"
 
 /obj/structure/prop/camera
-	name = "broken security camera"
-	desc = "It's used to monitor rooms."
+	name = "损坏的监控摄像头"
+	desc = "它用于监视房间。"
 	icon = 'icons/obj/machines/monitors.dmi'
 	icon_state = "camera_icon"
 	layer = WALL_OBJ_LAYER
@@ -2049,7 +2049,7 @@
 
 /obj/machinery/prop/computer/tadpole
 	name = "Tadpole navigation computer"
-	desc = "Used to designate a precise transit location for the Tadpole."
+	desc = "用于为蝌蚪号指定精确的运输地点。"
 	icon_state = "shuttlecomputer"
 	screen_overlay = "shuttlecomputer_screen"
 	resistance_flags = RESIST_ALL
@@ -2058,8 +2058,8 @@
 	icon = 'icons/obj/machines/computer.dmi'
 
 /obj/structure/prop/computer/broken
-	name = "broken computer"
-	desc = "A busted PC, the internals look fried, there's no fixing this one."
+	name = "损坏的电脑"
+	desc = "一台坏掉的PC,内部看起来烧毁了,这台已经没救了。"
 	icon = 'icons/obj/machines/computer.dmi'
 	icon_state = "broken_computer1"
 	resistance_flags = XENO_DAMAGEABLE
@@ -2122,14 +2122,14 @@
 
 /obj/machinery/computer/solars
 	name = "Port Quarter Solar Control"
-	desc = "A controller for solar panel arrays."
+	desc = "一个太阳能板阵列的控制器。"
 	icon_state = "computer"
 	screen_overlay = "solar"
 	broken_icon = "computer_blue_broken"
 
 /obj/machinery/filtration_pipes
 	name = "Disinfection Filter"
-	desc = "A water filter specifically designed to separate micro-organisms, such as viruses and bacteria, from water."
+	desc = "一种专为从水中分离微生物,如病毒和细菌,而设计的水过滤器。"
 	icon = 'icons/obj/structures/pipe_multiple.dmi'
 	icon_state = "solo_tank_water"
 	layer = ABOVE_TREE_LAYER
@@ -2162,14 +2162,14 @@
 	. += image(icon, src, "disinfectiontop", layer = ABOVE_TREE_LAYER, pixel_y = 63)
 
 /obj/structure/prop/mainship/errorprop
-	name = "ERROR"
-	desc = "If you see this object in game you should ahelp, something has broken."
+	name = "错误"
+	desc = "如果你在游戏中看到这个物体,你应该ahelp,有东西出故障了。"
 	icon = 'icons/obj/structures/mainship_props.dmi'
 	icon_state = "error"
 
 /obj/prop/mainship/prop/news_tv
 	name = "TV"
-	desc = "Suprisingly still relevant, this one is set to the news channel."
+	desc = "令人惊讶的是仍然有用,这台设定为新闻频道。"
 	icon = 'icons/obj/status_display.dmi'
 	icon_state = "news"
 	density = FALSE
@@ -2225,8 +2225,8 @@
 		Shipyard work more attractive to young adults than office work? More and more young adults are flocking to shipyard and space related work as they want an escape from the monotony and rat race of the office world, here we are at New Malay Shipyards with Austin Li a 20 year old who gave up his managerial position for shipyard work 'I wanted to just escape from the boredom, feel challenged and accomplished from the work i do and i found that in shipyard work, it's a tough job and the pay is not as good but nothing beats the view from up here and the feeling of freedom from zero g, atleast thats my perspective. Sorry i gotta get to my EVA mech now, work calls."
 
 /obj/structure/prop/coagulation_arm
-	name = "coagulation arm"
-	desc = "An axel with four sides, made to spin to help filter the water."
+	name = "混凝臂"
+	desc = "一根四面轴,用于旋转以帮助过滤水。"
 	icon = 'icons/obj/structures/coagulation_arm.dmi'
 	icon_state = "arm"
 	anchored = TRUE
@@ -2236,8 +2236,8 @@
 	max_integrity = 1000
 
 /obj/structure/prop/filtration_exit
-	name = "Waste Exit Pipe"
-	desc = "This machine separates the leftover waste from the purification processes to be discarded into space, recycled for supplies, or used for research."
+	name = "废物排出管"
+	desc = "这台机器将净化过程中剩余的废物分离出来,以便丢弃到太空、回收为补给品或用于研究。"
 	icon = 'icons/obj/structures/waste_pipe.dmi'
 	icon_state = "pipe"
 	anchored = TRUE
@@ -2247,8 +2247,8 @@
 	resistance_flags = RESIST_ALL
 
 /obj/structure/prop/golden_sclupture
-	name = "Golden Sclupture"
-	desc = "A large sculpture made of gold depicting three members of Bravo Squad. The engraved inscription reads 'SKIBIDI LORDS 15.11'"
+	name = "金色雕塑"
+	desc = "一座由黄金制成的大型雕塑,描绘了Bravo小队的三个成员。刻上的铭文写着'SKIBIDI LORDS 15.11'"
 	icon = 'icons/obj/structures/goldensculpture.dmi'
 	icon_state = "golden"
 	anchored = TRUE

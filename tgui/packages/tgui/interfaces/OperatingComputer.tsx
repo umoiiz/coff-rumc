@@ -44,9 +44,9 @@ export const OperatingComputer = (props) => {
     <Window width={350} height={330} title="Operating Computer">
       <Window.Content scrollable>
         {!hasTable ? (
-          <NoticeBox>No operating table detected.</NoticeBox>
+          <NoticeBox>未检测到手术台.</NoticeBox>
         ) : !patient ? (
-          <NoticeBox>No Patient Detected</NoticeBox>
+          <NoticeBox>未检测到患者</NoticeBox>
         ) : (
           <PatientState />
         )}
@@ -61,17 +61,17 @@ const PatientState = (props) => {
   const status = STAT_LABELS[patient.stat] || STAT_LABELS[0];
 
   return (
-    <Section title="Patient Information">
+    <Section title="患者信息">
       <LabeledList>
-        <LabeledList.Item label="Name">{patient.name}</LabeledList.Item>
-        <LabeledList.Item label="Age">{patient.age}</LabeledList.Item>
-        <LabeledList.Item label="Blood Type">
+        <LabeledList.Item label="姓名">{patient.name}</LabeledList.Item>
+        <LabeledList.Item label="年龄">{patient.age}</LabeledList.Item>
+        <LabeledList.Item label="血型">
           {patient.blood_type || 'Unknown'}
         </LabeledList.Item>
-        <LabeledList.Item label="Status" color={status[0]}>
+        <LabeledList.Item label="状态" color={status[0]}>
           {status[1]}
         </LabeledList.Item>
-        <LabeledList.Item label="Health">
+        <LabeledList.Item label="健康">
           <ProgressBar
             value={patient.health}
             minValue={-patient.maxHealth}
@@ -88,7 +88,7 @@ const PatientState = (props) => {
             </ProgressBar>
           </LabeledList.Item>
         ))}
-        <LabeledList.Item label="Heartbeat Rate">
+        <LabeledList.Item label="心率">
           {patient.pulse} BPM
         </LabeledList.Item>
       </LabeledList>

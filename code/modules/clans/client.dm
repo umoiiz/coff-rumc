@@ -69,12 +69,12 @@
 	if(!(clan_info.item[3] & CLAN_PERMISSION_ADMIN_MANAGER))
 		return
 
-	var/input = tgui_input_text(src, "Set name to clan", "Clan Name")
+	var/input = tgui_input_text(src, "将名称设为氏族", "氏族名称")
 
 	if(!input)
 		return
 
-	to_chat(src, span_notice("Made a new clan called: [input]"))
+	to_chat(src, span_notice("创建了一个新氏族: [input]"))
 
 	create_new_clan(input)
 
@@ -83,7 +83,7 @@
 	set category = "OOC"
 
 	if(!istype(clan_info))
-		to_chat(src, span_warning("You don't have a yautja whitelist!"))
+		to_chat(src, span_warning("你没有yautja白名单!"))
 		return
 
 	if(!has_clan_permission(CLAN_PERMISSION_VIEW))
@@ -103,10 +103,10 @@
 
 		clans += list("People without clans" = null)
 
-		var/input = tgui_input_list(src, "Choose the clan to view", "View clan", clans)
+		var/input = tgui_input_list(src, "选择要查看的氏族", "查看氏族", clans)
 
 		if(!input)
-			to_chat(src, span_warning("Couldn't find any clans for you to view!"))
+			to_chat(src, span_warning("找不到任何可供你查看的氏族!"))
 			return
 
 		clan_to_get = clans[input]
@@ -117,7 +117,7 @@
 			"People without clans" = null
 		)
 
-		var/input = tgui_input_list(src, "Choose the clan to view", "View clan", options)
+		var/input = tgui_input_list(src, "选择要查看的氏族", "查看氏族", options)
 
 		if(!input)
 			return
@@ -133,19 +133,19 @@
 /client/proc/has_clan_permission(permission_flag, clan_id, warn = TRUE)
 	if(!update_clan_info() || !istype(clan_info) || length(clan_info.item) != 5)
 		if(warn)
-			to_chat(src, "You do not have a yautja whitelist!")
+			to_chat(src, "你没有yautja白名单!")
 		return FALSE
 
 	if(clan_id)
 		if(clan_id != clan_info.item[4])
 			if(warn)
-				to_chat(src, "You do not have permission to perform actions on this clan!")
+				to_chat(src, "你没有权限对该氏族执行操作!")
 			return FALSE
 
 
 	if(!(clan_info.item[3] & permission_flag))
 		if(warn)
-			to_chat(src, "You do not have the necessary permissions to perform this action!")
+			to_chat(src, "你没有执行此操作所需的权限!")
 		return FALSE
 
 	return TRUE

@@ -37,7 +37,7 @@
 	var/turf/spawn_point = SAFEPICK(SSpredships.get_clan_spawnpoints(clan_id))
 	if(!isturf(spawn_point))
 		//log_debug("Failed to find spawn point for new_predator ship in transform_predator - clan_id=[clan_id]")
-		to_chat(player, span_warning("Unable to setup spawn location - you might want to tell someone about this."))
+		to_chat(player, span_warning("无法设置出生地点 - 你可能需要告诉某人这件事."))
 		return
 
 	if(SSticker.mode)
@@ -70,7 +70,7 @@
 	return title
 
 /datum/job/predator/announce(mob/new_predator)
-	to_chat(new_predator, span_notice("You are <B>Yautja</b>, a great and noble predator!"))
-	to_chat(new_predator, span_notice("Your job is to first study your opponents. A hunt cannot commence unless intelligence is gathered."))
-	to_chat(new_predator, span_notice("Hunt at your discretion, yet be observant rather than violent."))
+	to_chat(new_predator, span_notice("你是 <B>Yautja</b>, 一位伟大而高贵的掠食者!"))
+	to_chat(new_predator, span_notice("你的工作是首先研究你的对手. 除非收集到情报, 否则狩猎无法开始."))
+	to_chat(new_predator, span_notice("自行决定何时狩猎, 但要善于观察而非暴力."))
 	log_admin("([new_predator.key]) joined as Yautja, [new_predator.real_name].")

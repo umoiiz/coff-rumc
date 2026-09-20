@@ -34,9 +34,9 @@
 		reagents.add_reagent(rid,max(1,rtotal))
 
 /obj/item/grown/log
-	name = "towercap"
-	name = "tower-cap log"
-	desc = "It's better than bad, it's good!"
+	name = "高塔帽"
+	name = "高塔帽原木"
+	desc = "它比坏更好, 它是好的!"
 	icon = 'icons/obj/items/harvest.dmi'
 	icon_state = "logs"
 	force = 5
@@ -55,15 +55,15 @@
 	if(I.sharp != IS_SHARP_ITEM_BIG)
 		return
 
-	user.show_message(span_notice("You make planks out of \the [src]!"), 1)
+	user.show_message(span_notice("你用\the [src]做成了木板!"), 1)
 	var/obj/item/stack/sheet/wood/NG = new(user.loc, 2)
 	NG.add_to_stacks(user)
 	qdel(src)
 
 /obj/item/grown/sunflower // FLOWER POWER!
 	plantname = "sunflowers"
-	name = "sunflower"
-	desc = "It's beautiful! A certain person might beat you to death if you trample these."
+	name = "向日葵"
+	desc = "真漂亮! 要是踩到这些, 某人可能会把你打死."
 	icon = 'icons/obj/items/harvest.dmi'
 	icon_state = "sunflower"
 	damtype = BURN
@@ -75,14 +75,14 @@
 	throw_range = 3
 
 /obj/item/grown/sunflower/attack(mob/M as mob, mob/user as mob)
-	to_chat(M, "<font color='green'><b> [user] smacks you with a sunflower!</font><font color='yellow'><b>FLOWER POWER<b></font>")
-	to_chat(user, "<font color='green'> Your sunflower's </font><font color='yellow'><b>FLOWER POWER</b></font><font color='green'> strikes [M]</font>")
+	to_chat(M, "<font color='green'><b>[user]用向日葵狠狠抽了你一下!</font><font color='yellow'><b>花之力量<b></font>")
+	to_chat(user, "<font color='green'>你的向日葵的</font><font color='yellow'><b>花之力量</b></font><font color='green'>击中了[M]</font>")
 
 /obj/item/grown/nettle // -- Skie
 	plantname = "nettle"
-	desc = "It's probably <B>not</B> wise to touch it with bare hands..."
+	desc = "徒手去碰它大概<B>不</B>太明智..."
 	icon = 'icons/obj/items/weapons.dmi'
-	name = "nettle"
+	name = "荨麻"
 	icon_state = "nettle"
 	damtype = BURN
 	force = 15
@@ -101,7 +101,7 @@
 
 /obj/item/grown/nettle/pickup(mob/living/carbon/human/user as mob)
 	if(istype(user) && !user.gloves)
-		to_chat(user, span_warning("The nettle burns your bare hand!"))
+		to_chat(user, span_warning("荨麻灼伤了你的手!"))
 		if(ishuman(user))
 			var/organ = ((user.hand ? "l_":"r_") + "arm")
 			var/datum/limb/affecting = user.get_limb(organ)
@@ -122,21 +122,21 @@
 
 	if(force <= 0)
 		if(user)
-			to_chat(user, "All the leaves have fallen off \the [src] from violent whacking.")
+			to_chat(user, "\the [src]的叶子全被猛抽打落了.")
 			user.temporarilyRemoveItemFromInventory(src)
 		qdel(src)
 
 /obj/item/grown/nettle/death // -- Skie
 	plantname = "deathnettle"
-	desc = "The <span class='warning'> glowing \black nettle incites <span class='warning'><B>rage</B>\black in you just from looking at it!</span>"
-	name = "deathnettle"
+	desc = "光是看着<span class='warning'>发光的\black 荨麻, 就激起了你心中的<span class='warning'><B>怒火</B>\black !</span>"
+	name = "死亡荨麻"
 	icon_state = "deathnettle"
 	potency_divisior = 2.5
 
 /obj/item/grown/nettle/death/pickup(mob/living/carbon/human/user as mob)
 	if(..() && prob(50))
 		user.Unconscious(10 SECONDS)
-		to_chat(user, span_warning("You are stunned by the deathnettle when you try picking it up!"))
+		to_chat(user, span_warning("你试图捡起死亡荨麻时被它击晕了!"))
 
 /obj/item/grown/nettle/attack(mob/living/carbon/M as mob, mob/user as mob)
 	if(!..())
@@ -147,7 +147,7 @@
 	if(!..())
 		return
 	if(isliving(M))
-		to_chat(M, span_warning("You are stunned by the powerful acid of the deathnettle!"))
+		to_chat(M, span_warning("你被死亡荨麻的强酸击晕了!"))
 
 		log_combat(user, M, "hit", src)
 
@@ -158,8 +158,8 @@
 		M.drop_held_item()
 
 /obj/item/corncob
-	name = "corn cob"
-	desc = "A reminder of meals gone by."
+	name = "玉米棒"
+	desc = "往昔餐食的纪念."
 	icon = 'icons/obj/items/harvest.dmi'
 	icon_state = "corncob"
 	worn_icon_state = "corncob"
@@ -171,6 +171,6 @@
 	. = ..()
 
 	if(I.sharp == IS_SHARP_ITEM_ACCURATE)
-		to_chat(user, span_notice("You use [I] to fashion a pipe out of the corn cob!"))
+		to_chat(user, span_notice("你用[I]把玉米棒做成了一个烟斗!"))
 		new /obj/item/clothing/mask/cigarette/pipe/cobpipe(user.loc)
 		qdel(src)

@@ -38,12 +38,12 @@ GLOBAL_LIST_EMPTY(faxes)
 			if(check_other_rights(C, R_ADMIN, FALSE))
 				to_chat(C,
 					type = MESSAGE_TYPE_STAFFLOG,
-					html = span_notice("<b><font color='#1F66A0'>FAX: </font>[ADMIN_FULLMONTY(sender)]:</b> Addressed to: [department][SM?.department ? " | From: [SM.department]" : ""] | Titled: [title] <b>(<a href='byond://?src=[REF(C.holder)];[HrefToken(TRUE)];faxreply=[REF(F)]]'>REPLY</a>) (<a href='byond://?src=[REF(C.holder)];[HrefToken(TRUE)];faxview=[REF(F)]'>VIEW</a>) (<a href='byond://?src=[REF(C.holder)];[HrefToken(TRUE)];faxmark=[REF(F)]]'>MARK</a>)</b>"))
+					html = span_notice("<b><font color='#1F66A0'>传真: </font>[ADMIN_FULLMONTY(sender)]:</b> 收件人: [department][SM?.department ? " | From: [SM.department]" : ""] | 标题: [title] <b>(<a href='byond://?src=[REF(C.holder)];[HrefToken(TRUE)];faxreply=[REF(F)]]'>回复</a>) (<a href='byond://?src=[REF(C.holder)];[HrefToken(TRUE)];faxview=[REF(F)]'>查看</a>) (<a href='byond://?src=[REF(C.holder)];[HrefToken(TRUE)];faxmark=[REF(F)]]'>标记</a>)</b>"))
 				C << 'sound/effects/sos-morse-code.ogg'
 			else
 				to_chat(C,
 					type = MESSAGE_TYPE_STAFFLOG,
-					html = span_notice("<b><font color='#1F66A0'>FAX: </font>[key_name(sender)]:</b> Addressed to: [department][SM?.department ? " | From: [SM.department]" : ""] | Titled: [title] <b>(<a href='byond://?src=[REF(C.holder)];[HrefToken(TRUE)];faxreply=[REF(F)]]'>REPLY</a>) (<a href='byond://?src=[REF(C.holder)];[HrefToken(TRUE)];faxview=[REF(F)]'>VIEW</a>) (<a href='byond://?src=[REF(C.holder)];[HrefToken(TRUE)];faxmark=[REF(F)]]'>MARK</a>)</b>"))
+					html = span_notice("<b><font color='#1F66A0'>传真: </font>[key_name(sender)]:</b> 收件人: [department][SM?.department ? " | From: [SM.department]" : ""] | 标题: [title] <b>(<a href='byond://?src=[REF(C.holder)];[HrefToken(TRUE)];faxreply=[REF(F)]]'>回复</a>) (<a href='byond://?src=[REF(C.holder)];[HrefToken(TRUE)];faxview=[REF(F)]'>查看</a>) (<a href='byond://?src=[REF(C.holder)];[HrefToken(TRUE)];faxmark=[REF(F)]]'>标记</a>)</b>"))
 				C << 'sound/effects/sos-morse-code.ogg'
 
 	for(var/obj/machinery/faxmachine/FM AS in GLOB.faxmachines)

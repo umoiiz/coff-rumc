@@ -1,11 +1,11 @@
 /obj/item/circuitboard/computer/intel_computer
-	name = "circuit board (intel computer)"
+	name = "电路板 (情报计算机)"
 	build_path = /obj/machinery/computer/intel_computer
 
 
 /obj/machinery/computer/intel_computer
 	name = "Intelligence computer"
-	desc = "A computer used to access the colonies central database. TGMC Intel division will occasionally request remote data retrieval from these computers"
+	desc = "一台用于访问殖民地中央数据库的计算机. TGMC情报部门偶尔会要求从这些计算机远程检索数据"
 	icon_state = "intel_computer"
 	screen_overlay = "intel_computer_screen"
 	circuit = /obj/item/circuitboard/computer/intel_computer
@@ -48,7 +48,7 @@
 	if (machine_stat & NOPOWER)
 		printing = FALSE
 		update_minimap_icon()
-		visible_message("<b>[src]</b> shuts down as it loses power. Any running programs will now exit.")
+		visible_message("<b>[src]</b>因断电而关闭. 任何正在运行的程序现在都将退出.")
 		if(progress >= 50)
 			progress = 50
 		else
@@ -62,7 +62,7 @@
 		printing_complete = TRUE
 		SSpoints.supply_points[faction] += supply_reward
 		SSpoints.dropship_points += dropship_reward
-		priority_announce("Получена секретная передача из [get_area(src)]. Бонус доставлен в виде [supply_reward] очков Карго и [dropship_reward] очков шаттла.", title = "Отдел Разведки UPP", sound = 'sound/AI/bonus_climed.ogg')
+		priority_announce("收到来自[get_area(src)]的秘密传输. 奖励已送达,包括[supply_reward]点货运点和[dropship_reward]点穿梭机点数.", title = "UPP情报部门", sound = 'sound/AI/bonus_climed.ogg')
 		SSminimaps.remove_marker(src)
 
 /obj/machinery/computer/intel_computer/Destroy()
@@ -71,7 +71,7 @@
 
 /obj/machinery/computer/intel_computer/interact(mob/user)
 	if(!active)
-		to_chat(user, span_notice("This terminal has nothing of use on it."))
+		to_chat(user, span_notice("这个终端上没有任何有用的东西."))
 		return
 	return ..()
 

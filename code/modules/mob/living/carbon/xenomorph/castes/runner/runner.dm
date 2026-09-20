@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/runner
 	caste_base_type = /datum/xeno_caste/runner
 	name = "Runner"
-	desc = "A small red alien that looks like it could run fairly quickly..."
+	desc = "一只看起来能跑得相当快的小型红色异形..."
 	icon = 'icons/Xeno/castes/runner/basic.dmi' //They are now like, 2x1 or something
 	effects_icon = 'icons/Xeno/castes/runner/basic_effects.dmi'
 	icon_state = "Runner Walking"
@@ -34,7 +34,7 @@
 	if(!ishuman(over))
 		return
 	if(!back)
-		balloon_alert(over,"This runner isn't wearing a saddle!")
+		balloon_alert(over,"这只奔跑者没有佩戴鞍具!")
 		return
 	if(!do_after(over, 3 SECONDS, NONE, src))
 		return

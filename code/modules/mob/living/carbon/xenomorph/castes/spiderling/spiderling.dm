@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/spiderling
 	caste_base_type = /datum/xeno_caste/spiderling
 	name = "Spiderling"
-	desc = "A widow spawn, it chitters angrily without any sense of self-preservation, only to obey the widow's will."
+	desc = "一只寡妇产卵,它愤怒地吱吱叫,毫无自我保护意识,只服从寡妇的意志."
 	icon = 'icons/Xeno/Effects.dmi'
 	icon_state = "Spiderling Running"
 	health = 150

@@ -1,6 +1,6 @@
 /obj/machinery/light_construct
 	name = "light fixture frame"
-	desc = "A light fixture under construction."
+	desc = "一个建造中的灯具."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "tube-construct-stage1"
 	anchored = TRUE
@@ -47,7 +47,7 @@
 			if("bulb")
 				icon_state = "bulb-construct-stage2"
 		stage = 2
-		user.visible_message("[user] adds wires to [src].", \
+		user.visible_message("[user]给[src]接上了电线.", \
 			"You add wires to [src].")
 
 /obj/machinery/light_construct/wrench_act(mob/living/user, obj/item/I)
@@ -55,19 +55,19 @@
 	switch(stage)
 		if(1)
 			playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
-			to_chat(user, "You begin deconstructing [src].")
+			to_chat(user, "你开始拆解[src].")
 			if(!do_after(usr, 30, NONE, src, BUSY_ICON_BUILD))
 				return
 			new /obj/item/stack/sheet/metal(get_turf(loc), sheets_refunded)
-			user.visible_message("[user] deconstructs [src].", \
-				"You deconstruct [src].", "You hear a noise.")
+			user.visible_message("[user]拆解了[src].", \
+				"You deconstruct [src].", "你听到一声响动.")
 			playsound(loc, 'sound/items/deconstruct.ogg', 25, 1)
 			qdel(src)
 		if(2)
-			to_chat(user, "You have to remove the wires first.")
+			to_chat(user, "你必须先移除电线.")
 			return
 		if(3)
-			to_chat(user, "You have to unscrew the case first.")
+			to_chat(user, "你必须先拧开外壳.")
 			return
 
 /obj/machinery/light_construct/wirecutter_act(mob/living/user, obj/item/I)
@@ -81,8 +81,8 @@
 		if("bulb")
 			icon_state = "bulb-construct-stage1"
 	new /obj/item/stack/cable_coil(get_turf(loc), 1, "red")
-	user.visible_message("[user.name] removes the wiring from [src].", \
-		"You remove the wiring from [src].", "You hear a noise.")
+	user.visible_message("[user.name]从[src]上移除了电线.", \
+		"You remove the wiring from [src].", "你听到一声响动.")
 	playsound(loc, 'sound/items/wirecutter.ogg', 25, 1)
 
 /obj/machinery/light_construct/screwdriver_act(mob/living/user, obj/item/I)
@@ -97,8 +97,8 @@
 			icon_state = "bulb-empty"
 
 	stage = 3
-	user.visible_message("[user] closes [src]'s casing.", \
-		"You close [src]'s casing.", "You hear a noise.")
+	user.visible_message("[user]合上了[src]的外壳.", \
+		"You close [src]'s casing.", "你听到一声响动.")
 	playsound(loc, 'sound/items/screwdriver.ogg', 25, 1)
 
 	var/obj/machinery/light/newlight
@@ -113,7 +113,7 @@
 
 /obj/machinery/light_construct/small
 	name = "small light fixture frame"
-	desc = "A small light fixture under construction."
+	desc = "一个建造中的小型灯具."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "bulb-construct-stage1"
 	anchored = TRUE

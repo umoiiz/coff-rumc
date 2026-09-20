@@ -47,7 +47,7 @@
 
 /obj/machinery/scoreboard_button
 	name = "scoreboard button"
-	desc = "A remote control button to reset a scoreboard."
+	desc = "一个用于重置计分板的遥控按钮."
 	icon = 'icons/obj/machines/buttons.dmi'
 	icon_state = "launcher"
 	anchored = TRUE

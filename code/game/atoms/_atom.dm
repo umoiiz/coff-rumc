@@ -290,7 +290,7 @@ directive is properly returned.
 /atom/proc/relaymove(mob/living/user, direct)
 	if(COOLDOWN_FINISHED(src, buckle_message_cooldown))
 		COOLDOWN_START(src, buckle_message_cooldown, 2.5 SECONDS)
-		balloon_alert(user, "Can't move while buckled!")
+		balloon_alert(user, "系紧时无法移动!")
 	return
 
 /**
@@ -624,7 +624,7 @@ directive is properly returned.
 							if(ID == chosen_id)
 								valid_id = TRUE
 						if(!valid_id)
-							to_chat(usr, span_warning("A reagent with that ID doesn't exist!"))
+							to_chat(usr, span_warning("不存在该ID的试剂!"))
 				if("Choose ID")
 					chosen_id = input(usr, "Choose a reagent to add.", "Add Reagent") as null|anything in reagent_options
 			if(chosen_id)
@@ -709,7 +709,7 @@ directive is properly returned.
 /atom/proc/multitool_check_buffer(user, obj/item/I, silent = FALSE)
 	if(!istype(I, /obj/item/tool/multitool))
 		if(user && !silent)
-			to_chat(user, span_warning("[I] has no data buffer!"))
+			to_chat(user, span_warning("[I]没有数据缓冲区!"))
 		return FALSE
 	return TRUE
 
@@ -734,7 +734,7 @@ directive is properly returned.
 /atom/proc/fulton_act(mob/living/user, obj/item/I)
 	if(!isturf(loc))
 		return FALSE //Storage screens, worn containers, anything we want to be able to interact otherwise.
-	to_chat(user, span_warning("Cannot extract [src]."))
+	to_chat(user, span_warning("无法提取[src]."))
 	return TRUE
 
 ///This proc is called on atoms when they are loaded into a shuttle
@@ -969,7 +969,7 @@ directive is properly returned.
 
 ///What happens when with atom is melted by acid
 /atom/proc/do_acid_melt()
-	visible_message(span_xenodanger("[src] collapses under its own weight into a puddle of goop and undigested debris!"))
+	visible_message(span_xenodanger("[src]在自身重量下坍塌成一滩黏液和未消化的残骸!"))
 	playsound(src, SFX_ACID_HIT, 25)
 
 ///Anything called here will have failed CanPass(), so it's likely dense.

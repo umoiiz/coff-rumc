@@ -26,14 +26,14 @@
 
 		var/mob/M = locate(href_list["rename"]) in GLOB.mob_list
 		if(!istype(M))
-			to_chat(usr, "This can only be used on instances of type /mob", confidential = TRUE)
+			to_chat(usr, "此项只能用于/mob类型的实例", confidential = TRUE)
 			return
 
 		var/new_name = stripped_input(usr,"What would you like to name this mob?","Input a name",M.real_name,MAX_NAME_LEN)
 
 		// If the new name is something that would be restricted by IC chat filters,
 		// give the admin a warning but allow them to do it anyway if they want.
-		if(is_ic_filtered(new_name) || is_soft_ic_filtered(new_name) && tgui_alert(usr, "Your selected name contains words restricted by IC chat filters. Confirm this new name?", "IC Chat Filter Conflict", list("Confirm", "Cancel")) == "Cancel")
+		if(is_ic_filtered(new_name) || is_soft_ic_filtered(new_name) && tgui_alert(usr, "你选择的名称包含被IC聊天过滤器限制的词语.确认使用此新名称?", "IC聊天过滤器冲突", list("Confirm", "Cancel")) == "Cancel")
 			return
 
 		if( !new_name || !M )
@@ -50,7 +50,7 @@
 
 		var/atom/A = locate(href_list["rotatedatum"])
 		if(!istype(A))
-			to_chat(usr, "This can only be done to instances of type /atom", confidential = TRUE)
+			to_chat(usr, "此项只能对/atom类型的实例执行", confidential = TRUE)
 			return
 
 		switch(href_list["rotatedir"])
@@ -77,7 +77,7 @@
 			return
 
 		if(!L)
-			to_chat(usr, "Mob doesn't exist anymore", confidential = TRUE)
+			to_chat(usr, "生物已不存在", confidential = TRUE)
 			return
 
 		var/newamt
@@ -101,7 +101,7 @@
 				L.adjust_stamina_loss(amount)
 				newamt = L.get_stamina_loss()
 			else
-				to_chat(usr, "You caused an error. DEBUG: Text:[Text] Mob:[L]", confidential = TRUE)
+				to_chat(usr, "你引发了一个错误.DEBUG:文本:[Text] 生物:[L]", confidential = TRUE)
 				return
 
 		if(amount != 0)

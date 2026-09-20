@@ -126,7 +126,7 @@ export const Autodoc = () => {
 const SettingsPanel = () => {
   const { act, data } = useBackend<Data>();
   return (
-    <Section title="Console Settings">
+    <Section title="控制台设置">
       <Flex>
         <Flex.Item grow>
           <Button
@@ -183,10 +183,10 @@ const OccupantPanel = () => {
   const status = STAT_LABELS[occupant.stat] || STAT_LABELS[0];
 
   return (
-    <Section title="Occupant Statistics">
+    <Section title="乘员统计">
       <LabeledList>
-        <LabeledList.Item label="Name">{occupant.name}</LabeledList.Item>
-        <LabeledList.Item label="Health %">
+        <LabeledList.Item label="名称">{occupant.name}</LabeledList.Item>
+        <LabeledList.Item label="生命值 %">
           <ProgressBar
             value={occupant.health_ratio}
             ranges={{
@@ -198,13 +198,13 @@ const OccupantPanel = () => {
             {round(occupant.health, 0)} ({status[1]})
           </ProgressBar>
         </LabeledList.Item>
-        <LabeledList.Item label="Pulse, bpm" color={occupant.pulse_bad ? 'bad' : 'good'}>
+        <LabeledList.Item label="脉搏, bpm" color={occupant.pulse_bad ? 'bad' : 'good'}>
           {occupant.pulse}
         </LabeledList.Item>
-        <LabeledList.Item label="Status" color={status[0]}>
+        <LabeledList.Item label="状态" color={status[0]}>
           {status[1]}
         </LabeledList.Item>
-        <LabeledList.Item label="Med-Pod Status" color={data.surgery ? 'bad' : 'good'}>
+        <LabeledList.Item label="医疗舱状态" color={data.surgery ? 'bad' : 'good'}>
           {data.surgery
             ? 'SURGERY IN PROGRESS: MANUAL EJECTION ONLY BY TRAINED OPERATORS!'
             : 'Not in surgery'}
@@ -225,7 +225,7 @@ const DamagePanel = () => {
   ] as const;
 
   return (
-    <Section title="Damage Profile">
+    <Section title="损伤概况">
       <LabeledList>
         {rows.map(([label, value]) => (
           <LabeledList.Item key={label} label={label}>
@@ -250,13 +250,13 @@ const QueuePanel = () => {
   const { data } = useBackend<Data>();
 
   return (
-    <Section title="Surgery Queue">
+    <Section title="手术队列">
       {!!data.automaticmode &&
         (data.auto_ready ? (
-          <NoticeBox success>Automatic Mode Ready.</NoticeBox>
+          <NoticeBox success>自动模式就绪.</NoticeBox>
         ) : (
           <NoticeBox danger>
-            Automatic Mode Unavailable, Scan Patient First.
+            自动模式不可用, 请先扫描患者.
           </NoticeBox>
         ))}
       {!data.automaticmode &&
@@ -265,7 +265,7 @@ const QueuePanel = () => {
             <Box key={`${entry}-${index}`}>{entry}</Box>
           ))
         ) : (
-          <Box color="label">Queue empty.</Box>
+          <Box color="label">队列为空.</Box>
         ))}
     </Section>
   );
@@ -284,7 +284,7 @@ const ControlsPanel = () => {
             disabled={!!data.surgery}
             onClick={() => act('surgery')}
           >
-            Begin Surgery Queue
+            开始手术队列
           </Button>
         </Flex.Item>
         <Flex.Item grow>
@@ -294,7 +294,7 @@ const ControlsPanel = () => {
             disabled={!!data.surgery || !!data.automaticmode}
             onClick={() => act('clear')}
           >
-            Clear Surgery Queue
+            清除手术队列
           </Button>
         </Flex.Item>
         <Flex.Item grow>
@@ -304,7 +304,7 @@ const ControlsPanel = () => {
             color={data.surgery ? 'bad' : undefined}
             onClick={() => act('ejectify')}
           >
-            Eject Patient
+            弹出患者
           </Button>
         </Flex.Item>
       </Flex>
@@ -322,7 +322,7 @@ const ManualSurgeriesPanel = () => {
   if (data.automaticmode) {
     return (
       <NoticeBox>
-        Manual Surgery Interface Unavailable, Automatic Mode Engaged.
+        手动手术界面不可用, 自动模式已启用.
       </NoticeBox>
     );
   }
@@ -330,7 +330,7 @@ const ManualSurgeriesPanel = () => {
   return (
     <Stack vertical>
       <Stack.Item>
-        <Section title="Trauma Surgeries">
+        <Section title="创伤手术">
           <Flex>
             <Flex.Item grow>
               <SurgeryButton
@@ -350,7 +350,7 @@ const ManualSurgeriesPanel = () => {
         </Section>
       </Stack.Item>
       <Stack.Item>
-        <Section title="Orthopedic Surgeries">
+        <Section title="骨科手术">
           <Flex wrap>
             <Flex.Item basis="50%" grow>
               <SurgeryButton
@@ -380,7 +380,7 @@ const ManualSurgeriesPanel = () => {
         </Section>
       </Stack.Item>
       <Stack.Item>
-        <Section title="Organ Surgeries">
+        <Section title="器官手术">
           <Flex wrap>
             <Flex.Item basis="50%" grow>
               <SurgeryButton
@@ -404,7 +404,7 @@ const ManualSurgeriesPanel = () => {
         </Section>
       </Stack.Item>
       <Stack.Item>
-        <Section title="Hematology Treatments">
+        <Section title="血液学治疗">
           <Flex wrap>
             <Flex.Item basis="50%" grow>
               <SurgeryButton
@@ -443,7 +443,7 @@ const ManualSurgeriesPanel = () => {
         </Section>
       </Stack.Item>
       <Stack.Item>
-        <Section title="Special Surgeries">
+        <Section title="特殊手术">
           <Flex>
             <Flex.Item grow>
               <SurgeryButton

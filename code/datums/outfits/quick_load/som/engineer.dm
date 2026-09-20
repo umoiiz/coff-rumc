@@ -29,7 +29,7 @@
 
 /datum/outfit/quick/som/engineer/standard_assaultrifle
 	name = "V-31 Engineer"
-	desc = "Battlefield engineer; building up and tearing down. Equipped with a V-31 assault rifle with integrated 'micro grenade' rail launcher, medium armor, a deployable COPE sentry and a selection of explosives. Has a variety of supplies and equipment to build, repair or apply demolitions in the field. A valuable support asset to a well rounded combat force. The rail launcher fires grenades that must arm mid flight, so are ineffective at close ranges, but add significant tactical options at medium range."
+	desc = "战场工程师;建造与拆除.配备一支V-31突击步枪,集成'微型榴弹'轨道发射器,中型护甲,一个可部署的COPE哨戒炮以及多种爆炸物.拥有各种补给和装备,可在战场上建造,维修或实施爆破.对于一支全面发展的战斗部队来说,是宝贵的支援资产.轨道发射器发射的榴弹必须在飞行途中解除保险,因此在近距离无效,但在中距离可提供重要的战术选择."
 
 	suit_store = /obj/item/weapon/gun/rifle/som/standard
 	belt = /obj/item/storage/belt/marine/som/som_rifle
@@ -55,7 +55,7 @@
 
 /datum/outfit/quick/som/engineer/mpi
 	name = "MPI-KM Engineer"
-	desc = "Battlefield engineer; building up and tearing down. Equipped with an MPI_KM assault rifle, medium armor, a deployable COPE sentry and a selection of explosives. Has a variety of supplies and equipment to build, repair or apply demolitions in the field. A valuable support asset to a well rounded combat force. An old weapon that was a common sight during the original Martian rebellion, the MPI's good stopping power, reliability and a healthy dose of nostalgia means it is still seen in use by some among the SOM despite its age."
+	desc = "战场工程师;建造与拆除.配备一支MPI_KM突击步枪,中型护甲,一个可部署的COPE哨戒炮以及多种爆炸物.拥有各种补给和装备,可在战场上建造,维修或实施爆破.对于一支全面发展的战斗部队来说,是宝贵的支援资产.一种在最初的火星叛乱期间常见的旧式武器,MPI良好的停止作用,可靠性以及恰到好处的怀旧感意味着尽管它已经老旧,在SOM中仍有人使用."
 
 	suit_store = /obj/item/weapon/gun/rifle/mpi_km/black/magharness
 	belt = /obj/item/storage/belt/marine/som/mpi_black
@@ -80,7 +80,7 @@
 
 /datum/outfit/quick/som/engineer/standard_carbine
 	name = "V-34 Engineer"
-	desc = "Battlefield engineer; building up and tearing down. Equipped with a V-34 carbine, medium armor, a deployable COPE sentry and a selection of explosives. Has a variety of supplies and equipment to build, repair or apply demolitions in the field. A valuable support asset to a well rounded combat force. The V-34 is a modern update of an old weapon that was a common sight during the original Martian rebellion. Very reliable and excellent stopping power in a small, lightweight package. Brought into service as a much cheaper alternative to the VX-32."
+	desc = "战场工程师;建造与拆除.配备一支V-34卡宾枪,中型护甲,一个可部署的COPE哨戒炮以及多种爆炸物.拥有各种补给和装备,可在战场上建造,维修或实施爆破.对于一支全面发展的战斗部队来说,是宝贵的支援资产.V-34是一种在最初的火星叛乱期间常见的旧式武器的现代化改进型.非常可靠,在小型轻量化的包装中拥有出色的停止作用.作为VX-32的廉价得多的替代品而投入使用."
 
 	suit_store = /obj/item/weapon/gun/rifle/som_carbine/black/standard
 	belt = /obj/item/storage/belt/marine/som/carbine_black
@@ -105,7 +105,7 @@
 
 /datum/outfit/quick/som/engineer/standard_smg
 	name = "V-21 Engineer"
-	desc = "Battlefield engineer; building up and tearing down. Equipped with a V-21 submachine gun with variable firerate allowing for extreme rates of fire when properly wielded, medium armor, a deployable COPE sentry and a selection of explosives. Has a variety of supplies and equipment to build, repair or apply demolitions in the field. A valuable support asset to a well rounded combat force. "
+	desc = "战场工程师;建造与拆除.配备一支V-21冲锋枪,可变射速,在正确使用时能实现极高的射速,中型护甲,一个可部署的COPE哨戒炮以及多种爆炸物.拥有各种补给和装备,可在战场上建造,维修或实施爆破.对于一支全面发展的战斗部队来说,是宝贵的支援资产."
 
 	suit_store = /obj/item/weapon/gun/smg/som/support
 	belt = /obj/item/storage/belt/marine/som/som_smg
@@ -131,7 +131,7 @@
 
 /datum/outfit/quick/som/engineer/standard_shotgun
 	name = "V-51 Engineer"
-	desc = "Battlefield engineer; building up and tearing down. Equipped with a V-51 semi-automatic shotgun, medium armor, a deployable COPE sentry and a selection of explosives. Has a variety of supplies and equipment to build, repair or apply demolitions in the field. A valuable support asset to a well rounded combat force. "
+	desc = "战场工程师;建造与拆除.配备一支V-51半自动霰弹枪,中型护甲,一个可部署的COPE哨戒炮以及多种爆炸物.拥有各种补给和装备,可在战场上建造,维修或实施爆破.对于一支全面发展的战斗部队来说,是宝贵的支援资产."
 
 	belt = /obj/item/storage/belt/shotgun/som/flechette
 	suit_store = /obj/item/weapon/gun/shotgun/som/support

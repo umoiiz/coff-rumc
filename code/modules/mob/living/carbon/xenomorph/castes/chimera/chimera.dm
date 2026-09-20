@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/chimera
 	caste_base_type = /datum/xeno_caste/chimera
 	name = "Chimera"
-	desc = "A slim, deadly alien creature. It has two additional arms with mantis blades."
+	desc = "一种纤细而致命的异形生物. 它有两条额外的手臂, 上面长着螳螂刀."
 	icon = 'icons/Xeno/castes/chimera/basic.dmi'
 	icon_state = "Chimera Walking"
 	effects_icon = 'icons/Xeno/castes/chimera/effects.dmi'

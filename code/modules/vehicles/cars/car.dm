@@ -22,7 +22,7 @@
 		return FALSE
 	if((car_traits & CAN_KIDNAP) && isliving(dropping) && M != dropping)
 		var/mob/living/kidnapped = dropping
-		kidnapped.visible_message(span_warning("[M] starts forcing [kidnapped] into [src]!"))
+		kidnapped.visible_message(span_warning("[M] 开始将 [kidnapped] 强行塞进 [src]!"))
 		mob_try_forced_enter(M, kidnapped)
 	return ..()
 
@@ -30,10 +30,10 @@
 	if(M != user || !(LAZYACCESS(occupants, M) & VEHICLE_CONTROL_KIDNAPPED))
 		mob_exit(M, silent)
 		return TRUE
-	to_chat(user, span_notice("You push against the back of \the [src]'s trunk to try and get out."))
+	to_chat(user, span_notice("你推着 \the [src] 的后备箱后部,试图从里面出去."))
 	if(!do_after(user, escape_time, target = src))
 		return FALSE
-	to_chat(user,span_danger("[user] gets out of [src]."))
+	to_chat(user,span_danger("[user] 从 [src] 中出来了."))
 	mob_exit(M, silent)
 	return TRUE
 
@@ -41,14 +41,14 @@
 	. = ..()
 	if(!(car_traits & CAN_KIDNAP))
 		return
-	to_chat(user, span_notice("You start opening [src]'s trunk."))
+	to_chat(user, span_notice("你开始打开 [src] 的后备箱."))
 	if(!do_after(user, 30))
 		return
 	if(return_amount_of_controllers_with_flag(VEHICLE_CONTROL_KIDNAPPED))
-		to_chat(user, span_notice("The people stuck in [src]'s trunk all come tumbling out."))
+		to_chat(user, span_notice("被困在 [src] 后备箱里的人全都滚了出来."))
 		dump_specific_mobs(VEHICLE_CONTROL_KIDNAPPED)
 		return
-	to_chat(user, span_notice("It seems [src]'s trunk was empty."))
+	to_chat(user, span_notice("看起来 [src] 的后备箱是空的."))
 
 ///attempts to force a mob into the car
 /obj/vehicle/sealed/car/proc/mob_try_forced_enter(mob/forcer, mob/kidnapped, silent = FALSE)
@@ -67,7 +67,7 @@
 ///Proc called when someone is forcefully stuffedd into a car
 /obj/vehicle/sealed/car/proc/mob_forced_enter(mob/kidnapped, silent = FALSE)
 	if(!silent)
-		kidnapped.visible_message(span_warning("[kidnapped] is forced into \the [src]!"))
+		kidnapped.visible_message(span_warning("[kidnapped] 被强行塞进 \the [src]!"))
 	kidnapped.forceMove(src)
 	add_occupant(kidnapped, VEHICLE_CONTROL_KIDNAPPED)
 

@@ -27,7 +27,7 @@
 		ghostize(TRUE)
 		return
 
-	if(tgui_alert(src, "Are you sure you want to ghost?\n(You are alive, as much as a head can be. If you ghost, you won't be able to chat when you return unless someone revives you.)", "Ghost", list("Yes", "No")) != "Yes")
+	if(tgui_alert(src, "你确定要幽灵化吗?\n(你还活着,就一颗头而言算是活着.如果你幽灵化,你回来时将无法聊天,除非有人复活你.)", "幽灵化", list("Yes", "No")) != "Yes")
 		return
 
 	death()

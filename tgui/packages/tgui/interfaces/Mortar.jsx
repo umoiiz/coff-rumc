@@ -81,7 +81,7 @@ export const Mortar = (props) => {
           <Flex.Item>
             <Flex direction="row">
               <Button
-                content="Save 1:"
+                content="存档 1:"
                 inline
                 onClick={() =>
                   act('change_saved_coord_one', {
@@ -90,7 +90,7 @@ export const Mortar = (props) => {
                 }
               />
               <Button
-                content="Save 2:"
+                content="存档 2:"
                 inline
                 onClick={() =>
                   act('change_saved_coord_two', {
@@ -99,7 +99,7 @@ export const Mortar = (props) => {
                 }
               />
               <Button
-                content="Save 3:"
+                content="存档 3:"
                 inline
                 onClick={() =>
                   act('change_saved_coord_three', {
@@ -109,7 +109,7 @@ export const Mortar = (props) => {
               />
               <Button
                 icon="map"
-                tooltip="Minimap Targetting"
+                tooltip="小地图瞄准"
                 inline
                 onClick={() => act('open_map')}
               />
@@ -120,7 +120,7 @@ export const Mortar = (props) => {
               <Table.Row>
                 <Table.Cell>
                   <Button
-                    content="Select:"
+                    content="选择:"
                     onClick={() => act('set_saved_coord_one')}
                   />
                 </Table.Cell>
@@ -147,7 +147,7 @@ export const Mortar = (props) => {
               <Table.Row>
                 <Table.Cell>
                   <Button
-                    content="Select:"
+                    content="选择:"
                     onClick={() => act('set_saved_coord_two')}
                   />
                 </Table.Cell>
@@ -174,7 +174,7 @@ export const Mortar = (props) => {
               <Table.Row>
                 <Table.Cell>
                   <Button
-                    content="Select:"
+                    content="选择:"
                     onClick={() => act('set_saved_coord_three')}
                   />
                 </Table.Cell>

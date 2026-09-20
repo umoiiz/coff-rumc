@@ -4,9 +4,9 @@
 	alignement_factor = 1
 
 /datum/emergency_call/gta/ballas/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>You rep the Ballas — purple runs deep in your veins and your bandana.</B>")
-	to_chat(H, "<B>Word on the street is something went down near [SSmapping.configs[SHIP_MAP].map_name]. Time to show up, take what's yours, and remind everyone who runs these blocks.</B>")
-	to_chat(H, "<B>Stick with your set. Don't let Grove or the corps get in your way.</B>")
+	to_chat(H, "<B>你代表Ballas——紫色深深流淌在你的血管和你的头巾中.</B>")
+	to_chat(H, "<B>街上的消息是[SSmapping.configs[SHIP_MAP].map_name]附近出事了.是时候现身,拿走属于你的东西,并提醒所有人谁掌管这些街区.</B>")
+	to_chat(H, "<B>和你的帮派待在一起.别让Grove或公司挡你的路.</B>")
 
 /datum/emergency_call/gta/ballas/create_member(datum/mind/M)
 	. = ..()
@@ -33,7 +33,7 @@
 		return
 	var/datum/job/J = SSjob.GetJobType(/datum/job/gta/ert/ballas/standard)
 	H.apply_assigned_role_to_spawn(J)
-	to_chat(H, span_danger("You are a Ballas gang member rolling on the distress signal."))
+	to_chat(H, span_danger("你是Ballas帮派成员,正在响应求救信号."))
 
 /datum/emergency_call/gta/grove
 	name = "Grove Street Families"
@@ -41,9 +41,9 @@
 	alignement_factor = 1
 
 /datum/emergency_call/gta/grove/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>You are Grove Street — green rag, loyal crew, and a long feud with the Ballas.</B>")
-	to_chat(H, "<B>Chaos near [SSmapping.configs[SHIP_MAP].map_name] means opportunity. Roll up with your homies and set things straight.</B>")
-	to_chat(H, "<B>Grove Street, home. At least it was before all this.</B>")
+	to_chat(H, "<B>你是Grove Street——绿色头巾,忠诚的团队,以及与Ballas的长期恩怨.</B>")
+	to_chat(H, "<B>[SSmapping.configs[SHIP_MAP].map_name]附近的混乱意味着机会.和你的兄弟们一起出动,把事情摆平.</B>")
+	to_chat(H, "<B>Grove Street,家.至少在这一切之前是.</B>")
 
 /datum/emergency_call/gta/grove/create_member(datum/mind/M)
 	. = ..()
@@ -70,4 +70,4 @@
 		return
 	var/datum/job/J = SSjob.GetJobType(/datum/job/gta/ert/grove/standard)
 	H.apply_assigned_role_to_spawn(J)
-	to_chat(H, span_danger("You are a Grove Street gang member rolling on the distress signal."))
+	to_chat(H, span_danger("你是Grove Street帮派成员,正在响应求救信号."))

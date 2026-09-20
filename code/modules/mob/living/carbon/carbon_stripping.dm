@@ -48,7 +48,7 @@
 	var/mob/mob_source = source
 
 	if(!mob_source.can_put_in_hand(equipping, hand_index))
-		to_chat(user, span_warning("[mob_source] can't hold [equipping] right now!"))
+		to_chat(user, span_warning("[mob_source]现在无法握住[equipping]!"))
 		return FALSE
 
 	return TRUE
@@ -139,18 +139,18 @@
 		return
 
 	if(length(user.do_actions))
-		user.balloon_alert(user, "Busy!")
+		user.balloon_alert(user, "忙碌!")
 		return
 
 	var/strapped = HAS_TRAIT_FROM(item, TRAIT_NODROP, STRAPPABLE_ITEM_TRAIT)
-	user.balloon_alert_to_viewers("[strapped ? "Loosening" : "Tightening"] strap...")
+	user.balloon_alert_to_viewers("[strapped ? "Loosening" : "Tightening"]系紧...")
 
 	if(!do_after(user, 3 SECONDS, NONE, source, BUSY_ICON_FRIENDLY))
 		return
 
 	if(!strapped)
 		ADD_TRAIT(item, TRAIT_NODROP, STRAPPABLE_ITEM_TRAIT)
-		user.balloon_alert_to_viewers("Tightened strap")
+		user.balloon_alert_to_viewers("系紧了绑带")
 	else
 		REMOVE_TRAIT(item, TRAIT_NODROP, STRAPPABLE_ITEM_TRAIT)
-		user.balloon_alert_to_viewers("Loosened strap")
+		user.balloon_alert_to_viewers("松开了绑带")

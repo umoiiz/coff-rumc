@@ -10,7 +10,7 @@
 /obj/machinery/telecomms/bus
 	name = "bus mainframe"
 	icon_state = "bus"
-	desc = "A mighty piece of hardware used to send massive amounts of data quickly."
+	desc = "一台用于快速发送海量数据的强大硬件."
 	telecomms_type = /obj/machinery/telecomms/bus
 	density = TRUE
 	use_power = IDLE_POWER_USE

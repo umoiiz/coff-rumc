@@ -1,6 +1,6 @@
 /obj/item/matter_ammo_box
-	name = "medium matter ammo box"
-	desc = "A large matter storage box that can convert stored matter into various types of ammunition. It comes with a leather strap for easy carrying."
+	name = "中型物质弹药箱"
+	desc = "一个大型物质储存箱,可将储存的物质转化为各种类型的弹药.它配有一条皮带,便于携带."
 	w_class = WEIGHT_CLASS_HUGE
 	icon = 'icons/obj/items/ammo/box.dmi'
 	icon_state = "matter_ammo_box"
@@ -38,23 +38,23 @@
 
 	// Check if box needs to be on ground
 	if(requires_ground && !isturf(loc))
-		to_chat(user, span_warning("[src] must be on the ground to be used."))
+		to_chat(user, span_warning("[src]必须放在地上才能使用."))
 		return
 
 	if(!matter_amount)
-		to_chat(user, span_warning("[src] is empty."))
+		to_chat(user, span_warning("[src]是空的."))
 		return
 
 	if(istype(I, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/ammo_magazine = I
 
 		if(!ammo_magazine.default_ammo || ammo_magazine.default_ammo.matter_cost <= 0)
-			to_chat(user, span_warning("This ammunition type cannot be converted to matter."))
+			to_chat(user, span_warning("这种弹药类型无法转化为物质."))
 			return
 
 		if(ammo_magazine.magazine_flags & MAGAZINE_REFILLABLE)
 			if(ammo_magazine.current_rounds == ammo_magazine.max_rounds)
-				to_chat(user, span_warning("[ammo_magazine] is already full."))
+				to_chat(user, span_warning("[ammo_magazine]已经满了."))
 				return
 
 			// Add use delay if configured
@@ -71,13 +71,13 @@
 			update_icon()
 
 			if(ammo_magazine.current_rounds == ammo_magazine.max_rounds)
-				to_chat(user, span_notice("You refill [ammo_magazine] using [matter_used] matter units."))
+				to_chat(user, span_notice("你使用[matter_used]物质单位补充了[ammo_magazine]."))
 			else
-				to_chat(user, span_notice("You add [rounds_to_add] rounds to [ammo_magazine] using [matter_used] matter units."))
+				to_chat(user, span_notice("你使用[matter_used]物质单位向[ammo_magazine]添加了[rounds_to_add]发子弹."))
 
 		else if(ammo_magazine.magazine_flags & MAGAZINE_HANDFUL)
 			if(matter_amount == max_matter_amount)
-				to_chat(user, span_warning("[src] is full!"))
+				to_chat(user, span_warning("[src]已满!"))
 				return
 
 			playsound(loc, 'sound/weapons/guns/interact/revolver_load.ogg', 25, 1)
@@ -89,7 +89,7 @@
 			ammo_magazine.update_icon()
 			update_icon()
 
-			to_chat(user, span_notice("You convert [ammo_magazine] into [matter_gained] matter units."))
+			to_chat(user, span_notice("你将[ammo_magazine]转化为[matter_gained]物质单位."))
 
 			if(ammo_magazine.current_rounds <= 0)
 				user.temporarilyRemoveItemFromInventory(ammo_magazine)
@@ -99,7 +99,7 @@
 		var/obj/item/matter_ammo_box/other_box = I
 
 		if(other_box.matter_amount >= other_box.max_matter_amount)
-			to_chat(user, span_warning("[other_box] is full."))
+			to_chat(user, span_warning("[other_box]已满."))
 			return
 
 		if(!do_after(user, 5 SECONDS, NONE, src, BUSY_ICON_GENERIC))
@@ -109,13 +109,13 @@
 		other_box.matter_amount += transfer_amount
 		matter_amount -= transfer_amount
 		playsound(loc, 'sound/weapons/guns/interact/revolver_load.ogg', 25, 1)
-		to_chat(user, span_notice("You transfer [transfer_amount] matter units from [src] to [other_box]."))
+		to_chat(user, span_notice("你从[src]向[other_box]转移了[transfer_amount]物质单位."))
 		other_box.update_icon()
 		update_icon()
 
 /obj/item/matter_ammo_box/examine(mob/user, distance, infix, suffix)
 	. = ..()
-	. += span_notice("Left click [src] [requires_ground ? "on the ground" : ""] with ammo box or packet, magazine, matter box to restore ammo.")
+	. += span_notice("用弹药箱或弹药包、弹匣、物质箱左键点击[src][requires_ground ? "on the ground" : ""]以补充弹药.")
 
 //explosion when using flamer procs.
 /obj/item/matter_ammo_box/fire_act(burn_level, flame_color)
@@ -136,8 +136,8 @@
 	user.dropItemToGround(src)
 
 /obj/item/matter_ammo_box/light
-	name = "lightweight matter ammo box"
-	desc = "A compact matter storage box that can convert stored matter into various types of ammunition. It's designed for quick field use. It comes with a leather strap for easy carrying."
+	name = "轻型物质弹药箱"
+	desc = "一个紧凑的物质储存箱,可将储存的物质转化为各种类型的弹药.它专为快速野战使用而设计.它配有一条皮带,便于携带."
 	icon_state = "light_matter_ammo_box"
 	base_icon_state = "light_matter_ammo_box"
 	matter_amount = 3000
@@ -146,8 +146,8 @@
 	use_delay = 0
 
 /obj/item/matter_ammo_box/big
-	name = "big matter ammo box"
-	desc = "A massive matter storage box that can convert stored matter into various types of ammunition."
+	name = "大型物质弹药箱"
+	desc = "一个巨大的物质储存箱,可将储存的物质转化为各种类型的弹药."
 	icon_state = "big_matter_ammo_box"
 	base_icon_state = "big_matter_ammo_box"
 	equip_slot_flags = NONE // Cannot be carried on the back
@@ -156,8 +156,8 @@
 	use_delay = 0.5 SECONDS
 
 /obj/item/matter_ammo_box/giant
-	name = "giant matter ammo box"
-	desc = "A massive matter storage box that can convert stored matter into various types of ammunition. It's too large to be carried on one's back and must be deployed in place."
+	name = "巨型物质弹药箱"
+	desc = "一个巨大的物质储存箱,可将储存的物质转化为各种类型的弹药.它太大,无法背在身上,必须就地部署."
 	icon_state = "giant_matter_ammo_box"
 	base_icon_state = "giant_matter_ammo_box"
 	equip_slot_flags = NONE // Cannot be carried on the back
@@ -171,6 +171,6 @@
 //just grab it
 /obj/item/matter_ammo_box/giant/attack_hand(mob/user)
 	if(isliving(user))
-		to_chat(user, span_warning("[src] is too heavy to carry! You need to drag it."))
+		to_chat(user, span_warning("[src]太重了,无法携带!你需要拖拽它."))
 		return
 	return ..()

@@ -87,7 +87,7 @@
 
 	GLOB.start_squad_landmarks_list = null
 
-	GLOB.all_supply_groups -= "Factory" // In ideal world, we just balance factories out
+	GLOB.all_supply_groups -= "工厂" // In ideal world, we just balance factories out
 
 	for(var/obj/machinery/telecomms/relay/preset/telecomms/relay AS in GLOB.ground_telecomms_relay)
 		qdel(relay) // so there's no double intercomms, hacky, but i don't know a better way.
@@ -124,8 +124,8 @@
 			X.evolution_stored = X.xeno_caste.evolution_threshold //Immediate roundstart evo for larva.
 
 /datum/game_mode/infestation/crash/announce()
-	to_chat(world, span_round_header("The current map is - [SSmapping.configs[GROUND_MAP].map_name]!"))
-	priority_announce("Высадка запланирована через 10 минут. Приготовьтесь к посадке. Предварительное сканирование показывает наличие агрессивных форм биологической жизни. Ваша следующая миссия - заполучить коды доступа и активировать ядерную боеголовку.", title = "Доброе утро, товарищи!", type = ANNOUNCEMENT_PRIORITY, sound = 'sound/AI/crash_start.ogg', color_override = "red")
+	to_chat(world, span_round_header("当前地图是 - [SSmapping.configs[GROUND_MAP].map_name]!"))
+	priority_announce("登陆计划在10分钟后进行. 准备降落. 初步扫描显示存在具有攻击性的生物生命形式. 你的下一个任务是获取访问代码并激活核弹头.", title = "早上好,同志们!", type = ANNOUNCEMENT_PRIORITY, sound = 'sound/AI/crash_start.ogg', color_override = "red")
 
 /datum/game_mode/infestation/crash/process()
 	. = ..()
@@ -188,7 +188,7 @@
 		addtimer(VARSET_CALLBACK(src, marines_evac, CRASH_EVAC_COMPLETED), 10 SECONDS)
 
 /datum/game_mode/infestation/crash/can_summon_dropship(mob/user)
-	to_chat(src, span_warning("This power doesn't work in this gamemode."))
+	to_chat(src, span_warning("此能力在此游戏模式中无效."))
 	return FALSE
 
 /datum/game_mode/infestation/crash/proc/consolidate_squads()
@@ -294,7 +294,7 @@
 					if(marine.ckey == mar_ckey && marine.stat != DEAD && marine.assigned_squad != S)
 						marine.assigned_squad.remove_from_squad(marine)
 						S.insert_into_squad(marine, give_radio = TRUE, radio_from = S)
-						to_chat(marine, span_notice("Ваш командир прибыл! Вы переведены обратно в отряд [S.name]."))
+						to_chat(marine, span_notice("你们的指挥官到了! 你已被调回[S.name]小队."))
 						break
 				orphan_marines_cache -= mar_ckey
 
@@ -318,7 +318,7 @@
 				orphan_marines_cache[H.ckey] = S
 				S.remove_from_squad(H)
 				target_squad.insert_into_squad(H, give_radio = TRUE, radio_from = S)
-				to_chat(H, span_warning("В вашем изначальном отряде нет командования. Вы прикомандированы к отряду [target_squad.name]."))
+				to_chat(H, span_warning("你原先的小队没有指挥人员. 你已被配属到[target_squad.name]小队."))
 
 /// Adds more xeno job slots if needed.
 /datum/game_mode/infestation/crash/proc/balance_scales()

@@ -164,7 +164,7 @@ GLOBAL_LIST_EMPTY(escape_menus)
 // Временно завёз с новотг
 /datum/escape_menu/proc/player_view_ticket(datum/admin_help/ticket)
 	if(!ticket)
-		to_chat(client, span_warning("You have not had an ahelp ticket this round."))
+		to_chat(client, span_warning("您本轮没有提交过管理员求助工单."))
 		return
 	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Player Ticket</title></head>")
 	dat += "<b>State: "
@@ -200,7 +200,7 @@ GLOBAL_LIST_EMPTY(escape_menus)
 	switch(action)
 		if("opened")
 			if(!version_warned && client.byond_build < 1680)
-				to_chat(client, span_warning("Ваша версия BYOND не достаточно новая для корректного отображения меню, пожалуйста обновитесь до версии 516.1680 или выше."))
+				to_chat(client, span_warning("您的BYOND版本不够新, 无法正确显示菜单, 请更新至516.1680或更高版本."))
 				version_warned = TRUE
 
 			START_PROCESSING(SSescape_menu, src)
@@ -230,12 +230,12 @@ GLOBAL_LIST_EMPTY(escape_menus)
 			if(length(prev_tickets))
 				player_view_ticket(prev_tickets[length(prev_tickets)])
 			else
-				to_chat(client, span_warning("Открытых тикетов не найдено."))
+				to_chat(client, span_warning("未找到已开启的工单."))
 		if("pray")
 			winset(client, null, "command=Pray")
 		if("see_notes")
 			if(!CONFIG_GET(flag/see_own_notes))
-				to_chat(client.mob, span_notice("Кажется у вас нет прав на просмотр своих заметок."))
+				to_chat(client.mob, span_notice("您似乎没有权限查看自己的备注."))
 				return TRUE
 			browse_messages(null, client.ckey, null, TRUE)
 		if("ghost")
@@ -267,6 +267,6 @@ GLOBAL_LIST_EMPTY(escape_menus)
 			else
 				LAZYADD(client.prefs.ignoring, ckey)
 			client.prefs.save_preferences()
-			to_chat(client, span_notice("[ckey] has been [(ckey in client.prefs.ignoring) ? "" : "un"]ignored in OOC."))
+			to_chat(client, span_notice("[ckey] 已在OOC中被[(ckey in client.prefs.ignoring) ? "" : "un"]忽略."))
 
 	return TRUE

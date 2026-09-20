@@ -1,13 +1,13 @@
 ADMIN_VERB(restart, R_SERVER, "Restart", "Restarts the server after a short pause.", ADMIN_CATEGORY_ROUND)
-	if(SSticker.admin_delay_notice && tgui_alert(usr, "Are you sure? An admin has already delayed the round end for the following reason: [SSticker.admin_delay_notice]", "Confirmation", list("Yes", "No"), 0) != "Yes")
+	if(SSticker.admin_delay_notice && tgui_alert(usr, "你确定吗?一名管理员已经因以下原因延迟了回合结束:[SSticker.admin_delay_notice]", "确认", list("Yes", "No"), 0) != "Yes")
 		return
 
-	if(tgui_alert(usr, "Restart the game world?", "Restart", list("Yes", "No"), 0) != "Yes")
+	if(tgui_alert(usr, "重启游戏世界?", "重启", list("Yes", "No"), 0) != "Yes")
 		return
 
 	var/message = FALSE
 	if(CONFIG_GET(string/restart_message))
-		switch(tgui_alert(usr, "Send the new round message?", "Message", list("Yes", "No"), 0))
+		switch(tgui_alert(usr, "发送新回合消息?", "消息", list("Yes", "No"), 0))
 			if("Yes")
 				message = TRUE
 			if("No")
@@ -15,7 +15,7 @@ ADMIN_VERB(restart, R_SERVER, "Restart", "Restarts the server after a short paus
 			else
 				return
 
-	to_chat(world, span_danger("Restarting world!</span> <span class='notice'>Initiated by: [user.ckey]"))
+	to_chat(world, span_danger("正在重启世界!</span> <span class='notice'>由以下人员发起: [user.ckey]"))
 
 	log_admin("[key_name(user)] initiated a restart.")
 	message_admins("[ADMIN_TPMONTY(user.mob)] initiated a restart.")
@@ -29,11 +29,11 @@ ADMIN_VERB(shutdown_server, R_SERVER, "Shutdown Server", "Shuts the server down.
 	var/static/timeouts = list()
 	var/waitforroundend = FALSE
 	if(!CONFIG_GET(flag/allow_shutdown))
-		to_chat(usr, span_danger("This has not been enabled by the server operator."))
+		to_chat(usr, span_danger("服务器操作员尚未启用此功能."))
 		return
 
 	if(shuttingdown)
-		if(tgui_alert(usr, "Are you use you want to cancel the shutdown initiated by [shuttingdown]?", "Cancel the shutdown?", list("Yes", "No"), 0) != "Yes")
+		if(tgui_alert(usr, "你确定要取消由 [shuttingdown] 发起的关闭吗?", "取消关闭?", list("Yes", "No"), 0) != "Yes")
 			return
 		message_admins("[ADMIN_TPMONTY(user.mob)] Cancelled the server shutdown that [shuttingdown] started.")
 		timeouts[shuttingdown] = world.time
@@ -41,26 +41,26 @@ ADMIN_VERB(shutdown_server, R_SERVER, "Shutdown Server", "Shuts the server down.
 		return
 
 	if(timeouts[user.ckey] && timeouts[user.ckey] + 2 MINUTES > world.time)
-		to_chat(user, span_danger("You must wait 2 minutes after your shutdown attempt is aborted before you can try again."))
+		to_chat(user, span_danger("在你的关闭尝试被中止后,你必须等待 2 分钟才能再次尝试."))
 		return
 
-	if(tgui_alert(usr, "Are you sure you want to shutdown the server? Only somebody with remote access to the server can turn it back on.", "Shutdown Server?", list("Shutdown Server", "Cancel"), 0) != "Shutdown Server")
+	if(tgui_alert(usr, "你确定要关闭服务器吗? 只有拥有服务器远程访问权限的人才能重新开启它.", "关闭服务器?", list("Shutdown Server", "Cancel"), 0) != "Shutdown Server")
 		return
 
 	if(!SSticker)
-		if(tgui_alert(usr, "The game ticker does not exist, normal checks will be bypassed.", "Continue Shutting Down Server?", list("Continue", "Cancel"), 0) != "Continue")
+		if(tgui_alert(usr, "游戏计时器不存在,将绕过正常检查.", "继续关闭服务器?", list("Continue", "Cancel"), 0) != "Continue")
 			return
 	else
 		var/required_state_message = "The server must be in either pre-game and the start must be delayed or already started with the end delayed to shutdown the server."
 		if((SSticker.current_state == GAME_STATE_PREGAME && SSticker.time_left > 0) || (SSticker.current_state != GAME_STATE_PREGAME && !SSticker.delay_end))
-			to_chat(user, span_danger("[required_state_message] The round start/end is not delayed."))
+			to_chat(user, span_danger("[required_state_message] 回合开始/结束未被延迟."))
 			return
 		if(SSticker.current_state == GAME_STATE_PLAYING || SSticker.current_state == GAME_STATE_SETTING_UP)
-			if(tgui_alert(usr, "The round is currently in progress, continue with shutdown?", "Continue Shutting Down Server?", list("Continue", "Cancel"), 0) != "Continue")
+			if(tgui_alert(usr, "当前回合正在进行中,要继续关闭吗?", "继续关闭服务器?", list("Continue", "Cancel"), 0) != "Continue")
 				return
 			waitforroundend = TRUE
 
-	to_chat(user, span_danger("Alert: Delayed confirmation required. You will be asked to confirm again in 30 seconds."))
+	to_chat(user, span_danger("警报: 需要延迟确认. 你将在 30 秒后被要求再次确认."))
 	message_admins("[ADMIN_TPMONTY(user.mob)] initiated the shutdown process. You may abort this by pressing the shutdown server button again.")
 	shuttingdown = user.ckey
 
@@ -74,22 +74,22 @@ ADMIN_VERB(shutdown_server, R_SERVER, "Shutdown Server", "Shuts the server down.
 		shuttingdown = null
 		return
 
-	if(tgui_alert(user, "ARE YOU SURE YOU WANT TO SHUTDOWN THE SERVER? ONLY SOMEBODY WITH REMOTE ACCESS TO THE SERVER CAN TURN IT BACK ON.", "Shutdown Server?", list("Yes!", "Cancel."), 0) != "Yes!")
+	if(tgui_alert(user, "你确定要关闭服务器吗? 只有拥有服务器远程访问权限的人才能重新开启它.", "关闭服务器?", list("Yes!", "Cancel."), 0) != "Yes!")
 		message_admins("[ADMIN_TPMONTY(user.mob)] decided against shutting down the server.")
 		shuttingdown = null
 		return
-	to_chat(world, span_danger("Server shutting down [waitforroundend ? "after this round" : "in 30 seconds!"]</span> <span class='notice'>Initiated by: [usr.key]"))
+	to_chat(world, span_danger("服务器正在关闭 [waitforroundend ? "after this round" : "in 30 seconds!"]</span> <span class='notice'>由以下人员发起: [usr.key]"))
 	message_admins("[ADMIN_TPMONTY(user.mob)] is shutting down the server[waitforroundend ? " after this round" : ""]. You may abort this by pressing the shutdown server button again within 30 seconds.")
 
 	sleep(31 SECONDS) //to give the admins that final second to hit the confirm button on the cancel prompt.
 	if(!shuttingdown)
-		to_chat(world, span_notice("Server shutdown was aborted"))
+		to_chat(world, span_notice("服务器关闭已中止"))
 		return
 
 	if(shuttingdown != user.ckey) //somebody cancelled but then somebody started again.
 		return
 
-	to_chat(world, span_danger("Server shutting down[waitforroundend ? " after this round. " : ""].</span> <span class='notice'>Initiated by: [shuttingdown]"))
+	to_chat(world, span_danger("服务器正在关闭[waitforroundend ? " after this round. " : ""].</span> <span class='notice'>由以下人员发起: [shuttingdown]"))
 	log_admin("Server shutting down[waitforroundend ? " after this round" : ""]. Initiated by: [shuttingdown]")
 	if(GLOB.tgs)
 		var/datum/tgs_api/TA = GLOB.tgs
@@ -121,9 +121,9 @@ ADMIN_VERB(toggle_ooc, R_SERVER, "Toggle OOC", "Toggles OOC for non-admins.", AD
 	GLOB.ooc_allowed = !GLOB.ooc_allowed
 
 	if(GLOB.ooc_allowed)
-		to_chat(world, span_boldnotice("The OOC channel has been globally enabled!"))
+		to_chat(world, span_boldnotice("OOC 频道已在全局启用!"))
 	else
-		to_chat(world, span_boldnotice("The OOC channel has been globally disabled!"))
+		to_chat(world, span_boldnotice("OOC 频道已在全局禁用!"))
 
 	log_admin("[key_name(user)] [GLOB.ooc_allowed ? "enabled" : "disabled"] OOC.")
 	message_admins("[ADMIN_TPMONTY(user.mob)] [GLOB.ooc_allowed ? "enabled" : "disabled"] OOC.")
@@ -131,10 +131,10 @@ ADMIN_VERB(toggle_ooc, R_SERVER, "Toggle OOC", "Toggles OOC for non-admins.", AD
 ADMIN_VERB(toggle_looc, R_SERVER, "Toggle LOOC", "Toggles LOOC for non-admins.", ADMIN_CATEGORY_CHAT)
 	if(CONFIG_GET(flag/looc_enabled))
 		CONFIG_SET(flag/looc_enabled, FALSE)
-		to_chat(world, span_boldnotice("LOOC channel has been disabled!"))
+		to_chat(world, span_boldnotice("LOOC 频道已禁用!"))
 	else
 		CONFIG_SET(flag/looc_enabled, TRUE)
-		to_chat(world, span_boldnotice("LOOC channel has been enabled!"))
+		to_chat(world, span_boldnotice("LOOC 频道已启用!"))
 
 	log_admin("[key_name(user)] has [CONFIG_GET(flag/looc_enabled) ? "enabled" : "disabled"] LOOC.")
 	message_admins("[ADMIN_TPMONTY(user.mob)] has [CONFIG_GET(flag/looc_enabled) ? "enabled" : "disabled"] LOOC.")
@@ -143,9 +143,9 @@ ADMIN_VERB(toggle_deadchat, R_SERVER, "Toggle Deadchat", "Toggles deadchat for n
 	GLOB.dsay_allowed = !GLOB.dsay_allowed
 
 	if(GLOB.dsay_allowed)
-		to_chat(world, span_boldnotice("Deadchat has been globally enabled!"))
+		to_chat(world, span_boldnotice("死者聊天已在全局启用!"))
 	else
-		to_chat(world, span_boldnotice("Deadchat has been globally disabled!"))
+		to_chat(world, span_boldnotice("死者聊天已在全局禁用!"))
 
 	log_admin("[key_name(user)] [GLOB.dsay_allowed ? "enabled" : "disabled"] deadchat.")
 	message_admins("[ADMIN_TPMONTY(user.mob)] [GLOB.dsay_allowed ? "enabled" : "disabled"] deadchat.")
@@ -154,16 +154,16 @@ ADMIN_VERB(toggle_deadooc, R_SERVER, "Toggle Dead OOC", "Toggles OOC for dead no
 	GLOB.dooc_allowed = !GLOB.dooc_allowed
 
 	if(GLOB.dooc_allowed)
-		to_chat(world, span_boldnotice("Dead player OOC has been globally enabled!"))
+		to_chat(world, span_boldnotice("死亡玩家 OOC 已在全局启用!"))
 	else
-		to_chat(world, span_boldnotice("Dead player OOC has been globally disabled!"))
+		to_chat(world, span_boldnotice("死亡玩家 OOC 已在全局禁用!"))
 
 	log_admin("[key_name(user)] [GLOB.dooc_allowed ? "enabled" : "disabled"] dead player OOC.")
 	message_admins("[ADMIN_TPMONTY(user.mob)] [GLOB.dooc_allowed ? "enabled" : "disabled"] dead player OOC.")
 
 ADMIN_VERB(start, R_SERVER, "Start Round", "Starts the round early.", ADMIN_CATEGORY_ROUND)
 	if(SSticker.current_state != GAME_STATE_STARTUP && SSticker.current_state != GAME_STATE_PREGAME)
-		to_chat(user, span_warning("The round has already started."))
+		to_chat(user, span_warning("回合已经开始."))
 		return
 
 	if(SSticker.start_immediately)
@@ -175,13 +175,13 @@ ADMIN_VERB(start, R_SERVER, "Start Round", "Starts the round early.", ADMIN_CATE
 	var/msg = "has started the round early."
 
 	if(SSticker.setup_failed)
-		if(tgui_alert(user, "Previous setup failed. Would you like to try again, bypassing the checks? Win condition checking will also be paused.", "Start Round", list("Yes", "No"),  0) != "Yes")
+		if(tgui_alert(user, "之前的设置失败. 你是否想绕过检查再试一次? 胜利条件检查也将暂停.", "开始回合", list("Yes", "No"),  0) != "Yes")
 			return
 		msg += " Bypassing roundstart checks."
 		SSticker.bypass_checks = TRUE
 		SSticker.roundend_check_paused = TRUE
 
-	else if(tgui_alert(user, "Are you sure you want to start the round early?", "Start Round", list("Yes", "No"), 0) != "Yes")
+	else if(tgui_alert(user, "你确定要提前开始回合吗?", "开始回合", list("Yes", "No"), 0) != "Yes")
 		return
 
 	if(SSticker.current_state == GAME_STATE_STARTUP)
@@ -195,9 +195,9 @@ ADMIN_VERB(toggle_join, R_SERVER, "Toggle Joining", "Players can still log into 
 	GLOB.enter_allowed = !GLOB.enter_allowed
 
 	if(GLOB.enter_allowed)
-		to_chat(world, span_boldnotice("New players may now join the game."))
+		to_chat(world, span_boldnotice("新玩家现在可以加入游戏."))
 	else
-		to_chat(world, span_boldnotice("New players may no longer join the game."))
+		to_chat(world, span_boldnotice("新玩家不能再加入游戏."))
 
 	log_admin("[key_name(user)] [GLOB.enter_allowed ? "enabled" : "disabled"] new player joining.")
 	message_admins("[ADMIN_TPMONTY(user.mob)] [GLOB.enter_allowed ? "enabled" : "disabled"] new player joining.")
@@ -206,15 +206,15 @@ ADMIN_VERB(toggle_respawn, R_SERVER, "Toggle Respawn", "Allows players to respaw
 	GLOB.respawn_allowed = !GLOB.respawn_allowed
 
 	if(GLOB.respawn_allowed)
-		to_chat(world, span_boldnotice("You may now respawn."))
+		to_chat(world, span_boldnotice("你现在可以重生."))
 	else
-		to_chat(world, span_boldnotice("You may no longer respawn."))
+		to_chat(world, span_boldnotice("你不能再重生."))
 
 	log_admin("[key_name(user)] [GLOB.respawn_allowed ? "enabled" : "disabled"] respawning.")
 	message_admins("[ADMIN_TPMONTY(user.mob)] [GLOB.respawn_allowed ? "enabled" : "disabled"] respawning.")
 
 ADMIN_VERB(set_respawn_time, R_SERVER, "Set Respawn Timer", "Sets the global respawn timer.", ADMIN_CATEGORY_SERVER)
-	var/time = tgui_input_number(user, "How many ticks should the timer be?")
+	var/time = tgui_input_number(user, "计时器应设置为多少个 tick?")
 	if(time < 0)
 		return
 
@@ -227,15 +227,15 @@ ADMIN_VERB(end_round, R_SERVER, "End Round", "Immediately ends the round, be ver
 	if(!SSticker?.mode)
 		return
 
-	if(tgui_alert(user, "Are you sure you want to end the round?", "End Round", list("Yes", "No"), 0) != "Yes")
+	if(tgui_alert(user, "你确定要结束回合吗?", "结束回合", list("Yes", "No"), 0) != "Yes")
 		return
 
-	var/winstate = tgui_input_list(user, "What do you want the round end state to be?", "End Round", SSticker.mode.round_end_states + list("Custom", "Admin Intervention"), timeout = 0)
+	var/winstate = tgui_input_list(user, "你希望回合结束状态是什么?", "结束回合", SSticker.mode.round_end_states + list("Custom", "Admin Intervention"), timeout = 0)
 	if(!winstate)
 		return
 
 	if(winstate == "Custom")
-		winstate = tgui_input_text(user, "Please enter a custom round end state.", "End Round", timeout = 0)
+		winstate = tgui_input_text(user, "请输入自定义回合结束状态.", "结束回合", timeout = 0)
 		if(!winstate)
 			return
 
@@ -249,7 +249,7 @@ ADMIN_VERB(delay_start, R_SERVER, "Delay Round Start", "Delay the start of the r
 	if(!SSticker)
 		return
 
-	var/newtime = tgui_input_number(usr, "Set a new time in seconds. Set -1 for indefinite delay.", "Set Delay", round(SSticker.GetTimeLeft()), 9999, -1, 0)
+	var/newtime = tgui_input_number(usr, "以秒为单位设置新时间. 设置为 -1 表示无限期延迟.", "设置延迟", round(SSticker.GetTimeLeft()), 9999, -1, 0)
 	if(SSticker.current_state > GAME_STATE_PREGAME)
 		return
 	if(isnull(newtime))
@@ -258,11 +258,11 @@ ADMIN_VERB(delay_start, R_SERVER, "Delay Round Start", "Delay the start of the r
 	newtime = newtime * 10
 	SSticker.SetTimeLeft(newtime)
 	if(newtime < 0)
-		to_chat(world, span_boldnotice("The game start has been delayed."))
+		to_chat(world, span_boldnotice("游戏开始已被延迟."))
 		log_admin("[key_name(user)] delayed the round start.")
 		message_admins("[ADMIN_TPMONTY(user.mob)] delayed the round start.")
 	else
-		to_chat(world, span_boldnotice("The game will start in [DisplayTimeText(newtime)]."))
+		to_chat(world, span_boldnotice("游戏将在 [DisplayTimeText(newtime)] 后开始."))
 		log_admin("[key_name(user)] set the pre-game delay to [DisplayTimeText(newtime)].")
 		message_admins("[ADMIN_TPMONTY(user.mob)] set the pre-game delay to [DisplayTimeText(newtime)].")
 
@@ -271,15 +271,15 @@ ADMIN_VERB(delay_end, R_SERVER, "Delay Round End", "Delay the round end", ADMIN_
 		return
 
 	if(SSticker.admin_delay_notice)
-		if(tgui_alert(usr, "Do you want to remove the round end delay?", "Delay Round End", list("Yes", "No"), 0) != "Yes")
+		if(tgui_alert(usr, "你想移除回合结束延迟吗?", "延迟回合结束", list("Yes", "No"), 0) != "Yes")
 			return
 		SSticker.admin_delay_notice = null
 	else
-		var/reason = tgui_input_text(usr, "Enter a reason for delaying the round end", "Round Delay Reason", timeout = 0)
+		var/reason = tgui_input_text(usr, "输入延迟回合结束的原因", "回合延迟原因", timeout = 0)
 		if(!reason)
 			return
 		if(SSticker.admin_delay_notice)
-			to_chat(user, span_warning("Someone already delayed the round end meanwhile."))
+			to_chat(user, span_warning("在此期间已经有人延迟了回合结束."))
 			return
 		SSticker.admin_delay_notice = reason
 
@@ -344,13 +344,13 @@ ADMIN_VERB(change_ground_map, R_SERVER, "Change Ground Map", "Change Ground Map 
 
 		maprotatechoices[mapname] = VM
 
-	var/chosenmap = tgui_input_list(user, "Choose a ground map to change to", "Change Ground Map", maprotatechoices, timeout = 0)
+	var/chosenmap = tgui_input_list(user, "选择要更改到的地面地图", "更改地面地图", maprotatechoices, timeout = 0)
 	if(!chosenmap)
 		return
 
 	var/datum/map_config/VM = maprotatechoices[chosenmap]
 	if(!SSmapping.changemap(VM, GROUND_MAP))
-		to_chat(user, span_warning("Failed to change the ground map."))
+		to_chat(user, span_warning("更改地面地图失败."))
 		return
 
 	log_admin("[key_name(user)] changed the map to [VM.map_name].")
@@ -358,7 +358,7 @@ ADMIN_VERB(change_ground_map, R_SERVER, "Change Ground Map", "Change Ground Map 
 
 ADMIN_VERB(panic_bunker, R_SERVER, "Toggle Panic Bunker", "Toggle new players being permitted to join the server.", ADMIN_CATEGORY_SERVER)
 	if(!CONFIG_GET(flag/sql_enabled))
-		to_chat(user, span_adminnotice("The Database is not enabled!"))
+		to_chat(user, span_adminnotice("数据库未启用!"))
 		return
 
 	CONFIG_SET(flag/panic_bunker, !CONFIG_GET(flag/panic_bunker))
@@ -374,7 +374,7 @@ ADMIN_VERB(mode_check, R_SERVER, "Toggle Mode Check", "Toggle checking if the ro
 
 ADMIN_VERB(toggle_cdn, R_SERVER, "Toggle CDN", "Toggle the Content Delivery Network for asset download.", ADMIN_CATEGORY_SERVER)
 	var/static/admin_disabled_cdn_transport = null
-	if(tgui_alert(usr, "Are you sure you want to toggle the CDN asset transport?", "Confirm", list("Yes", "No"), 0) != "Yes")
+	if(tgui_alert(usr, "你确定要切换 CDN 资源传输吗?", "确认", list("Yes", "No"), 0) != "Yes")
 		return
 	var/current_transport = CONFIG_GET(string/asset_transport)
 	if(!current_transport || current_transport == "simple")
@@ -385,7 +385,7 @@ ADMIN_VERB(toggle_cdn, R_SERVER, "Toggle CDN", "Toggle the Content Delivery Netw
 			message_admins("[key_name_admin(user)] re-enabled the CDN asset transport")
 			log_admin("[key_name(user)] re-enabled the CDN asset transport")
 		else
-			to_chat(user, span_adminnotice("The CDN is not enabled!"))
+			to_chat(user, span_adminnotice("CDN 未启用!"))
 			if (alert(user, "The CDN asset transport is not enabled! If you having issues with assets you can also try disabling filename mutations.", "The CDN asset transport is not enabled!", "Try disabling filename mutations", "Nevermind") == "Try disabling filename mutations")
 				SSassets.transport.dont_mutate_filenames = !SSassets.transport.dont_mutate_filenames
 				message_admins("[key_name_admin(user)] [(SSassets.transport.dont_mutate_filenames ? "disabled" : "re-enabled")] asset filename transforms")
@@ -413,7 +413,7 @@ ADMIN_VERB(toggle_sdd_possesion, R_SERVER, "Toggle taking over SSD mobs", "Allow
 ADMIN_VERB(force_predator_round, R_SERVER, "Toggle Predator Round", "Force-toggle a predator round for the round type. Only works on maps that support Predator spawns.", ADMIN_CATEGORY_ROUND)
 	var/datum/game_mode/predator_round = SSticker.mode
 	if(!predator_round)
-		to_chat(usr, span_adminnotice("Wait until round start!"))
+		to_chat(usr, span_adminnotice("等到回合开始!"))
 		return
 
 	if(alert("Are you sure you want to force-toggle a predator round? Predators currently: [(predator_round.round_type_flags & MODE_PREDATOR) ? "Enabled" : "Disabled"]",, "Yes", "No") != "Yes")

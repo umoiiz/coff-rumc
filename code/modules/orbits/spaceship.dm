@@ -46,7 +46,7 @@ GLOBAL_VAR_INIT(current_orbit,STANDARD_ORBIT)
 	//keep this? make it hackable so regular marines can run?
 	TOGGLE_BITFIELD(machine_stat, PANEL_OPEN)
 	update_icon()
-	to_chat(user, "The wires have been [CHECK_BITFIELD(machine_stat, PANEL_OPEN) ? "exposed" : "unexposed"]")
+	to_chat(user, "线路已被[CHECK_BITFIELD(machine_stat, PANEL_OPEN) ? "exposed" : "unexposed"]")
 
 
 /obj/machinery/computer/navigation/Initialize(mapload) //need anything special?
@@ -144,7 +144,7 @@ GLOBAL_VAR_INIT(current_orbit,STANDARD_ORBIT)
 			if(!authenticated)
 				return FALSE
 			if(get_power_amount() < REQUIRED_POWER_AMOUNT)
-				to_chat(user, span_warning("Insufficient power reserves to change orbit."))
+				to_chat(user, span_warning("电力储备不足, 无法改变轨道."))
 				return FALSE
 			do_orbit_checks("UP")
 			TIMER_COOLDOWN_START(src, COOLDOWN_ORBIT_CHANGE, 1 MINUTES)
@@ -154,7 +154,7 @@ GLOBAL_VAR_INIT(current_orbit,STANDARD_ORBIT)
 			if(!authenticated)
 				return FALSE
 			if(get_power_amount() < REQUIRED_POWER_AMOUNT)
-				to_chat(user, span_warning("Insufficient power reserves to change orbit."))
+				to_chat(user, span_warning("电力储备不足, 无法改变轨道."))
 				return FALSE
 			do_orbit_checks("DOWN")
 			TIMER_COOLDOWN_START(src, COOLDOWN_ORBIT_CHANGE, 1 MINUTES)
@@ -175,19 +175,19 @@ GLOBAL_VAR_INIT(current_orbit,STANDARD_ORBIT)
 /obj/machinery/computer/navigation/proc/can_change_orbit(current_orbit, direction, silent = FALSE)
 	if(changing_orbit)
 		if(!silent)
-			to_chat(usr, span_warning("The ship is currently changing orbit."))
+			to_chat(usr, span_warning("飞船正在改变轨道."))
 		return FALSE
 	if(direction == "UP" && current_orbit == HIGH_ORBIT)
 		if(!silent)
-			to_chat(usr, span_warning("The ship is already at the highest orbit!"))
+			to_chat(usr, span_warning("飞船已处于最高轨道!"))
 		return FALSE
 	if(direction == "DOWN" && current_orbit == LOW_ORBIT)
 		if(!silent)
-			to_chat(usr, span_warning("The ship is already at the lowest orbit!"))
+			to_chat(usr, span_warning("飞船已处于最低轨道!"))
 		return FALSE
 	if(TIMER_COOLDOWN_RUNNING(src, COOLDOWN_ORBIT_CHANGE))
 		if(!silent)
-			to_chat(usr, span_warning("The ship is currently recalculating based on previous selection."))
+			to_chat(usr, span_warning("飞船正在根据之前的选择重新计算."))
 		return FALSE
 	return TRUE
 
@@ -230,10 +230,10 @@ GLOBAL_VAR_INIT(current_orbit,STANDARD_ORBIT)
 		if(!is_mainship_level(M.z))
 			continue
 		if(M.buckled)
-			to_chat(M, span_warning("You are jolted against [M.buckled]!"))
+			to_chat(M, span_warning("你被猛烈撞向[M.buckled]!"))
 			shake_camera(M, 3, 1)
 		else
-			to_chat(M, span_warning("The floor jolts under your feet!"))
+			to_chat(M, span_warning("脚下的地板猛烈震动!"))
 			shake_camera(M, 10, 1)
 			M.Knockdown(0.3 SECONDS)
 		CHECK_TICK

@@ -2,7 +2,7 @@
 
 /obj/effect/decal/cleanable/blood
 	name = "blood"
-	desc = "It's thick and gooey. Perhaps it's the chef's cooking?"
+	desc = "它又稠又黏.也许这是厨师的料理?"
 	gender = PLURAL
 	density = FALSE
 	anchored = TRUE
@@ -100,7 +100,7 @@
 
 	var/taken = rand(1,amount)
 	amount -= taken
-	to_chat(H, span_notice("You get some of \the [src] on your hands."))
+	to_chat(H, span_notice("你手上沾到了一些\the [src]."))
 
 	H.add_blood(basecolor)
 	H.bloody_hands += taken
@@ -112,7 +112,7 @@
 
 /obj/effect/decal/cleanable/blood/drip
 	name = "drips of blood"
-	desc = "Some small drips of blood."
+	desc = "几小滴血."
 	gender = PLURAL
 	icon = 'icons/effects/drip.dmi'
 	icon_state = "1"
@@ -125,7 +125,7 @@
 
 /obj/effect/decal/cleanable/blood/drip/tracking_fluid
 	name = "tracking fluid"
-	desc = "Tracking fluid from a tracking round."
+	desc = "追踪弹的追踪液."
 	basecolor = "#00FFFF"
 	layer = BELOW_OBJ_LAYER
 
@@ -137,7 +137,7 @@
 
 /obj/effect/decal/cleanable/blood/writing
 	icon_state = "tracks"
-	desc = "It looks like a writing in blood."
+	desc = "它看起来像是用血写的字."
 	gender = NEUTER
 	random_icon_states = list("writing1","writing2","writing3","writing4","writing5")
 	amount = 0
@@ -158,7 +158,7 @@
 
 /obj/effect/decal/cleanable/blood/gibs
 	name = "gibs"
-	desc = "They look bloody and gruesome."
+	desc = "它们看起来血淋淋的,很可怕."
 	gender = PLURAL
 	density = FALSE
 	anchored = TRUE
@@ -217,7 +217,7 @@
 
 /obj/effect/decal/cleanable/mucus
 	name = "mucus"
-	desc = "Disgusting mucus."
+	desc = "恶心的黏液."
 	gender = PLURAL
 	density = FALSE
 	anchored = TRUE

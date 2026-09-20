@@ -35,7 +35,7 @@
 
 /datum/outfit/quick/tgmc/corpsman/ar12
 	name = "AR-12 Corpsman"
-	desc = "Keeping everone else in the fight. Armed with an AR-12 assault rifle with underbarrel grenade launcher, an impressive array of tools for healing your team, and a 'Mimir' biological protection module to allow you to continue operating in hazardous environments. With medivacs out of the question, you are the only thing standing between your buddies and an early grave."
+	desc = "让其他所有人继续战斗.配备一支AR-12突击步枪,带有下挂式榴弹发射器,一套令人印象深刻的治疗队友的工具,以及一个'密米尔'生物防护模块,让你能在危险环境中继续作战.在医疗后送不可能的情况下,你是你的战友和早逝之间唯一的屏障."
 
 	suit_store = /obj/item/weapon/gun/rifle/ar12/medic
 
@@ -54,7 +54,7 @@
 
 /datum/outfit/quick/tgmc/corpsman/smg90
 	name = "SMG-90 Corpsman"
-	desc = "Keeping everone else in the fight. Armed with an SMG-90 submachine gun to maintain good mobility, an impressive array of tools for healing your team, and a 'Mimir' biological protection module to allow you to continue operating in hazardous environments. With medivacs out of the question, you are the only thing standing between your buddies and an early grave."
+	desc = "让其他所有人继续战斗.配备一支SMG-90冲锋枪以保持良好机动性,一套令人印象深刻的治疗队友的工具,以及一个'密米尔'生物防护模块,让你能在危险环境中继续作战.在医疗后送不可能的情况下,你是你的战友和早逝之间唯一的屏障."
 
 	suit_store = /obj/item/weapon/gun/smg/smg90/tactical
 
@@ -73,7 +73,7 @@
 
 /datum/outfit/quick/tgmc/corpsman/ar21
 	name = "AR-21 Corpsman"
-	desc = "Keeping everone else in the fight. Armed with an AR-21 skirmish rifle with underbarrel grenade launcher, an impressive array of tools for healing your team, and a 'Mimir' biological protection module to allow you to continue operating in hazardous environments. With medivacs out of the question, you are the only thing standing between your buddies and an early grave."
+	desc = "让其他所有人继续战斗.配备一支AR-21散兵步枪,带有下挂式榴弹发射器,一套令人印象深刻的治疗队友的工具,以及一个'密米尔'生物防护模块,让你能在危险环境中继续作战.在医疗后送不可能的情况下,你是你的战友和早逝之间唯一的屏障."
 
 	suit_store = /obj/item/weapon/gun/rifle/ar21/standard
 
@@ -91,7 +91,7 @@
 
 /datum/outfit/quick/tgmc/corpsman/auto_shotgun
 	name = "SH-15 Corpsman"
-	desc = "Keeping everone else in the fight. Armed with a SH-15 auto shotgun with underbarrel grenade launcher, an impressive array of tools for healing your team, and a 'Mimir' biological protection module to allow you to continue operating in hazardous environments. With medivacs out of the question, you are the only thing standing between your buddies and an early grave."
+	desc = "让其他所有人继续战斗.配备一支SH-15自动霰弹枪,带有下挂式榴弹发射器,一套令人印象深刻的治疗队友的工具,以及一个'密米尔'生物防护模块,让你能在危险环境中继续作战.在医疗后送不可能的情况下,你是你的战友和早逝之间唯一的屏障."
 
 	suit_store = /obj/item/weapon/gun/rifle/sh15/engineer
 
@@ -112,7 +112,7 @@
 
 /datum/outfit/quick/tgmc/corpsman/laser_medic
 	name = "Laser Rifle Corpsman"
-	desc = "Keeping everone else in the fight. Armed with an laser rifle with miniflamer, an impressive array of tools for healing your team, and a 'Mimir' biological protection module to allow you to continue operating in hazardous environments. With medivacs out of the question, you are the only thing standing between your buddies and an early grave."
+	desc = "让其他所有人继续战斗.配备一支带有微型火焰器的激光步枪,一套令人印象深刻的治疗队友的工具,以及一个'密米尔'生物防护模块,让你能在危险环境中继续作战.在医疗后送不可能的情况下,你是你的战友和早逝之间唯一的屏障."
 
 	suit_store = /obj/item/weapon/gun/energy/lasgun/lasrifle/standard_marine_rifle/medic
 
@@ -128,7 +128,7 @@
 
 /datum/outfit/quick/tgmc/corpsman/laser_carbine
 	name = "Laser Carbine Corpsman"
-	desc = "Keeping everone else in the fight. Armed with an laser carbine with underbarrel grenade launcher, an impressive array of tools for healing your team, and a 'Mimir' biological protection module to allow you to continue operating in hazardous environments. With medivacs out of the question, you are the only thing standing between your buddies and an early grave."
+	desc = "让其他所有人继续战斗.配备一支带有下挂式榴弹发射器的激光卡宾枪,一套令人印象深刻的治疗队友的工具,以及一个'密米尔'生物防护模块,让你能在危险环境中继续作战.在医疗后送不可能的情况下,你是你的战友和早逝之间唯一的屏障."
 
 	suit_store = /obj/item/weapon/gun/energy/lasgun/lasrifle/standard_marine_carbine/scout
 

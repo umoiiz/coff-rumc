@@ -1,6 +1,6 @@
 /obj/machinery/computer/secure_data
 	name = "Security Records"
-	desc = "Used to view and edit personnel's security records"
+	desc = "用于查看和编辑人员的安全记录"
 	icon_state = "computer_small"
 	screen_overlay = "security"
 	broken_icon = "computer_small_red_broken"
@@ -29,13 +29,13 @@
 		return
 
 	if(scan)
-		to_chat(usr, "You remove \the [scan] from \the [src].")
+		to_chat(usr, "你从\the [src]中移除了\the [scan].")
 		scan.loc = get_turf(src)
 		if(!usr.get_active_held_item() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(scan)
 		scan = null
 	else
-		to_chat(usr, "There is nothing to remove from the console.")
+		to_chat(usr, "控制台上没有可移除的内容.")
 
 /obj/machinery/computer/secure_data/attackby(obj/item/I, mob/user, params)
 	. = ..()
@@ -47,7 +47,7 @@
 			return
 		I.forceMove(src)
 		scan = I
-		to_chat(user, "You insert [I].")
+		to_chat(user, "你插入了[I].")
 
 /obj/machinery/computer/secure_data/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -173,7 +173,7 @@
 				return FALSE
 			var/datum/data/record/R = find_general_record(id)
 			if(!R)
-				to_chat(ui.user, span_warning("Record not found."))
+				to_chat(ui.user, span_warning("未找到记录."))
 				return FALSE
 			active1 = R
 			active2 = find_security_record_for(R)
@@ -197,7 +197,7 @@
 					active1 = R
 					active2 = find_security_record_for(R)
 					return TRUE
-			to_chat(ui.user, span_warning("Could not locate record [params["value"]]."))
+			to_chat(ui.user, span_warning("无法定位记录[params["value"]]."))
 			return TRUE
 
 		if("set_field")
@@ -255,7 +255,7 @@
 				GLOB.datacore.security -= R
 				qdel(R)
 			active2 = null
-			to_chat(ui.user, span_notice("All security records deleted."))
+			to_chat(ui.user, span_notice("所有安全记录已删除."))
 			return TRUE
 
 		if("print_record")

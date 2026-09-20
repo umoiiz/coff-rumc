@@ -22,15 +22,15 @@
 
 /datum/buildmode_mode/proccall/handle_click(client/user, params, datum/object)
 	if(!proc_name || !proc_args)
-		tgui_alert(user, "Undefined ProcCall or arguments.")
+		tgui_alert(user, "未定义的ProcCall或参数.")
 		return
 
 	if(!hascall(object, proc_name))
-		to_chat(user, span_warning("Error: callproc_datum(): type [object.type] has no proc named [proc_name]."), confidential = TRUE)
+		to_chat(user, span_warning("错误: callproc_datum(): 类型[object.type]没有名为[proc_name]的proc."), confidential = TRUE)
 		return
 
 	if(!is_valid_src(object))
-		to_chat(user, span_warning("Error: callproc_datum(): owner of proc no longer exists."), confidential = TRUE)
+		to_chat(user, span_warning("错误: callproc_datum(): proc的所有者已不存在."), confidential = TRUE)
 		return
 
 

@@ -1,6 +1,6 @@
 /obj/item/restraints/handcuffs
-	name = "handcuffs"
-	desc = "Use this to keep prisoners in line."
+	name = "手铐"
+	desc = "用它来管束囚犯."
 	gender = PLURAL
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "handcuff"
@@ -19,7 +19,7 @@
 	if(!istype(C))
 		return ..()
 	if (!ishuman(user))
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("你没有足够的灵巧度来做这个!"))
 		return
 	if(!C.handcuffed)
 		place_handcuffs(C, user)
@@ -35,12 +35,12 @@
 	var/mob/living/carbon/human/H = target
 
 	if (!H.has_limb_for_slot(SLOT_HANDCUFFED))
-		to_chat(user, span_warning("\The [H] needs at least two wrists before you can cuff them together!"))
+		to_chat(user, span_warning("\The [H]至少需要两只手腕才能铐在一起!"))
 		return
 
 	log_combat(user, H, "handcuffed", src, addition="(attempt)")
 
-	user.visible_message(span_notice("[user] tries to put [src] on [H]."))
+	user.visible_message(span_notice("[user]试图把[src]戴在[H]上."))
 	if(do_after(user, cuff_delay, NONE, H, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE, extra_checks = CALLBACK(user, TYPE_PROC_REF(/datum, Adjacent), H)) && !H.handcuffed)
 		if(H.has_limb_for_slot(SLOT_HANDCUFFED))
 			user.dropItemToGround(src)
@@ -48,8 +48,8 @@
 			return TRUE
 
 /obj/item/restraints/handcuffs/zip
-	name = "zip cuffs"
-	desc = "Single-use plastic zip tie handcuffs."
+	name = "扎带手铐"
+	desc = "一次性塑料扎带手铐."
 	w_class = WEIGHT_CLASS_TINY
 	icon_state = "cuff_zip"
 	breakouttime = 1 MINUTES
@@ -63,8 +63,8 @@
 	item_flags |= DELONDROP
 
 /obj/item/restraints/handcuffs/cable
-	name = "cable restraints"
-	desc = "Looks like some cables tied together. Could be used to tie something up."
+	name = "线缆束缚具"
+	desc = "看起来是一些绑在一起的缆绳. 可以用来捆绑东西."
 	icon_state = "cuff_white"
 	breakouttime = 30 SECONDS
 	cuff_sound = 'sound/weapons/cablecuff.ogg'
@@ -105,6 +105,6 @@
 
 		var/obj/item/weapon/wirerod/W = new
 		user.put_in_hands(W)
-		to_chat(user, span_notice("You wrap the cable restraint around the top of the rod."))
+		to_chat(user, span_notice("你把缆绳束缚装置缠绕在杆子顶部."))
 		qdel(src)
 		update_icon()

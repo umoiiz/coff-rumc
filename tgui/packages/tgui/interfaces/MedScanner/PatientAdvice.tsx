@@ -9,7 +9,7 @@ export function PatientAdvice() {
   const { advice, species, accessible_theme } = data;
   if (!advice) return;
   return (
-    <Section title="Treatment Advice">
+    <Section title="治疗建议">
       <Stack vertical>
         {advice.map((advice) => (
           <Stack.Item key={advice.advice}>

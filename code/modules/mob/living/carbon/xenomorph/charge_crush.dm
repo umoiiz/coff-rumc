@@ -1,6 +1,6 @@
 /datum/action/ability/xeno_action/ready_charge
 	name = "Toggle Charging"
-	desc = "Toggles the movement-based charge on and off."
+	desc = "切换基于移动的冲锋."
 	action_icon_state = "ready_charge"
 	action_icon = 'icons/Xeno/actions/crusher.dmi'
 	keybinding_signals = list(KEYBINDING_NORMAL = COMSIG_XENOABILITY_TOGGLE_CHARGE)
@@ -62,14 +62,14 @@
 	RegisterSignal(xeno_owner, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_dir_change), override = TRUE)
 	set_toggle(TRUE)
 	if(verbose)
-		to_chat(xeno_owner, span_xenonotice("We will charge when moving, now."))
+		to_chat(xeno_owner, span_xenonotice("我们现在移动时会冲锋."))
 
 /datum/action/ability/xeno_action/ready_charge/proc/charge_off(verbose = TRUE)
 	if(xeno_owner.is_charging != CHARGE_OFF)
 		do_stop_momentum()
 	UnregisterSignal(xeno_owner, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_DIR_CHANGE))
 	if(verbose)
-		to_chat(xeno_owner, span_xenonotice("We will no longer charge when moving."))
+		to_chat(xeno_owner, span_xenonotice("我们移动时不再冲锋."))
 	set_toggle(FALSE)
 	valid_steps_taken = 0
 	charge_ability_on = FALSE
@@ -123,8 +123,8 @@
 
 /datum/action/ability/xeno_action/ready_charge/proc/do_stop_momentum(message = TRUE)
 	if(message && valid_steps_taken >= steps_for_charge) //Message now happens without a stun condition
-		xeno_owner.visible_message(span_danger("[xeno_owner] skids to a halt!"),
-		span_xenowarning("We skid to a halt."), null, 5)
+		xeno_owner.visible_message(span_danger("[xeno_owner] 急刹停下!"),
+		span_xenowarning("我们急刹停下."), null, 5)
 	valid_steps_taken = 0
 	next_move_limit = 0
 	lastturf = null
@@ -192,8 +192,8 @@
 						continue
 					if(victim.pass_flags & PASS_THROW) // if the mob is being thrown by us EXPLICITLY, we don't deal x2 damage
 						continue
-					xeno_owner.visible_message(span_danger("[xeno_owner] runs [victim] over!"),
-						span_danger("We run [victim] over!"), null, 5)
+					xeno_owner.visible_message(span_danger("[xeno_owner] 碾过 [victim]!"),
+						span_danger("我们碾过 [victim]!"), null, 5)
 					victim.apply_damage(CHARGE_SPEED(src) * 40, BRUTE, BODY_ZONE_CHEST, MELEE, updating_health = TRUE, penetration = 30)
 					animation_flash_color(victim)
 			if(CHARGE_BULL, CHARGE_BULL_HEADBUTT, CHARGE_BULL_GORE) //Xeno Bull
@@ -258,8 +258,8 @@
 			//There is a chance to do enough damage here to gib certain mobs. Better update immediately.
 			crushed_living.apply_damage(precrush * 1.7, BRUTE, BODY_ZONE_CHEST, MELEE, updating_health = TRUE, penetration = 15)
 			if(QDELETED(crushed_living))
-				xeno_owner.visible_message(span_danger("[xeno_owner] annihilates [preserved_name]!"),
-				span_xenodanger("We annihilate [preserved_name]!"))
+				xeno_owner.visible_message(span_danger("[xeno_owner] 歼灭 [preserved_name]!"),
+				span_xenodanger("我们歼灭 [preserved_name]!"))
 				return COMPONENT_MOVABLE_PREBUMP_PLOWED
 
 		return precrush2signal(crushed_living.post_crush_act(xeno_owner, src))
@@ -275,8 +275,8 @@
 			obj_damage_mult = 5
 		crushed_obj.take_damage(precrush * obj_damage_mult, BRUTE, MELEE)
 		if(QDELETED(crushed_obj))
-			xeno_owner.visible_message(span_danger("[xeno_owner] crushes [preserved_name]!"),
-			span_xenodanger("We crush [preserved_name]!"))
+			xeno_owner.visible_message(span_danger("[xeno_owner] 碾碎 [preserved_name]!"),
+			span_xenodanger("我们碾碎 [preserved_name]!"))
 			if(crushed_behavior & STOP_CRUSHER_ON_DEL)
 				return COMPONENT_MOVABLE_PREBUMP_STOPPED
 			else
@@ -292,12 +292,12 @@
 		else
 			crushed_turf.ex_act(precrush * rand(50, 100))
 		if(QDELETED(crushed_turf))
-			xeno_owner.visible_message(span_danger("[xeno_owner] plows straight through [preserved_name]!"),
-			span_xenowarning("We plow straight through [preserved_name]!"))
+			xeno_owner.visible_message(span_danger("[xeno_owner] 径直冲过 [preserved_name]!"),
+			span_xenowarning("我们径直冲过 [preserved_name]!"))
 			return COMPONENT_MOVABLE_PREBUMP_PLOWED
 
-		xeno_owner.visible_message(span_danger("[xeno_owner] rams into [crushed_turf] and skids to a halt!"),
-		span_xenowarning("We ram into [crushed_turf] and skid to a halt!"))
+		xeno_owner.visible_message(span_danger("[xeno_owner] 撞上 [crushed_turf] 并急刹停下!"),
+		span_xenowarning("我们撞上 [crushed_turf] 并急刹停下!"))
 		do_stop_momentum(FALSE)
 		return COMPONENT_MOVABLE_PREBUMP_STOPPED
 
@@ -331,14 +331,14 @@
 		if(CHARGE_BULL)
 			charge_type = CHARGE_BULL
 			crush_sound = initial(crush_sound)
-			to_chat(owner, span_notice("Now charging normally."))
+			to_chat(owner, span_notice("现在正常冲锋."))
 		if(CHARGE_BULL_HEADBUTT)
 			charge_type = CHARGE_BULL_HEADBUTT
-			to_chat(owner, span_notice("Now headbutting on impact."))
+			to_chat(owner, span_notice("现在撞击时用头撞."))
 		if(CHARGE_BULL_GORE)
 			charge_type = CHARGE_BULL_GORE
 			crush_sound = SFX_ALIEN_TAIL_ATTACK
-			to_chat(owner, span_notice("Now goring on impact."))
+			to_chat(owner, span_notice("现在撞击时用角刺."))
 
 /datum/action/ability/xeno_action/ready_charge/bull_charge/on_xeno_upgrade()
 	agile_charge = (xeno_owner.upgrade == XENO_UPGRADE_PRIMO)

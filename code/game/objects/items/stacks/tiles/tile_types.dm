@@ -1,7 +1,7 @@
 /obj/item/stack/tile
-	name = "floor tile"
+	name = "地砖"
 	singular_name = "floor tile"
-	desc = "Those could work as a pretty decent throwing weapon"
+	desc = "这些可以当作相当不错的投掷武器"
 	icon_state = "tile"
 	w_class = WEIGHT_CLASS_NORMAL
 	force = 1
@@ -53,30 +53,30 @@
 	turf_type = /turf/open/floor/sandstone/runed
 
 /obj/item/stack/tile/grass
-	name = "grass tile"
+	name = "草皮"
 	singular_name = "grass floor tile"
-	desc = "A patch of grass like they often use on golf courses."
+	desc = "一块像高尔夫球场常用的那种草皮."
 	icon_state = "tile_grass"
 	turf_type = /turf/open/floor/grass
 
 /obj/item/stack/tile/wood
-	name = "wood floor tile"
+	name = "木地板砖"
 	singular_name = "wood floor tile"
-	desc = "An easy to fit wooden floor tile."
+	desc = "一块易于安装的木地板砖."
 	icon_state = "tile-wood"
 	turf_type = /turf/open/floor/wood
 
 /obj/item/stack/tile/carpet
-	name = "carpet"
+	name = "地毯"
 	singular_name = "carpet"
-	desc = "A piece of carpet. It is the same size as a normal floor tile!"
+	desc = "一块地毯. 它和普通地砖一样大!"
 	icon_state = "tile-carpet"
 	turf_type = /turf/open/floor/carpet
 
 /obj/item/stack/tile/light
-	name = "light tile"
+	name = "发光地砖"
 	singular_name = "light floor tile"
-	desc = "A floor tile, made out off glass. It produces light."
+	desc = "一块由玻璃制成的地砖. 它会发光."
 	icon_state = "tile_e"
 	force = 3
 	throwforce = 5

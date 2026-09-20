@@ -1,7 +1,7 @@
 //Flame thrower.
 /obj/item/ammo_magazine/flamer_tank
-	name = "incinerator tank"
-	desc = "A fuel tank of usually ultra thick napthal, a sticky combustable liquid chemical, for use in the FL-240 incinerator unit. Handle with care."
+	name = "燃烧器燃料罐"
+	desc = "一个通常装有超浓稠凝固汽油的燃料罐,这是一种粘性可燃液体化学品,用于FL-240燃烧器单元。小心处理。"
 	icon_state = "flametank"
 	icon = 'icons/obj/items/ammo/flamer.dmi'
 	max_rounds = 50 //Per turf.
@@ -17,8 +17,8 @@
 	var/dispenser_type = /obj/structure/reagent_dispensers/fueltank
 
 /obj/item/ammo_magazine/flamer_tank/mini
-	name = "mini incinerator tank"
-	desc = "A fuel tank of usually ultra thick napthal, a sticky combustable liquid chemical, for use in the underail incinerator unit. Handle with care."
+	name = "微型燃烧器燃料罐"
+	desc = "一个通常装有超浓稠凝固汽油的燃料罐,这是一种粘性可燃液体化学品,用于下挂式燃烧器单元。小心处理。"
 	icon_state = "flametank_mini"
 	reload_delay = 0 SECONDS
 	w_class = WEIGHT_CLASS_SMALL
@@ -31,17 +31,17 @@
 	if(!istype(target, /obj/structure/reagent_dispensers) || get_dist(user, target) > 1)
 		return ..()
 	if(!dispenser_type)
-		to_chat(user, span_warning("This isn't refillable!"))
+		to_chat(user, span_warning("这无法重新装填!"))
 		return ..()
 	if(!istype(target, dispenser_type))
-		to_chat(user, span_warning("Not the right kind of tank!"))
+		to_chat(user, span_warning("不是正确的燃料罐类型!"))
 		return ..()
 	if(current_rounds >= max_rounds)
-		to_chat(user, span_warning("[src] is already full."))
+		to_chat(user, span_warning("[src]已经满了。"))
 		return ..()
 	var/obj/structure/reagent_dispensers/dispenser = target
 	if(dispenser.reagents.total_volume == 0)
-		to_chat(user, span_warning("This tank is empty!"))
+		to_chat(user, span_warning("这个燃料罐是空的!"))
 		return..()
 
 	//Reworked and much simpler equation; fuel capacity minus the current amount, with a check for insufficient fuel
@@ -49,12 +49,12 @@
 	dispenser.reagents.remove_any(liquid_transfer_amount)
 	current_rounds += liquid_transfer_amount
 	playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
-	to_chat(user, span_notice("You refill [src] with [lowertext(caliber)]."))
+	to_chat(user, span_notice("你用[lowertext(caliber)]重新装填了[src]。"))
 	update_icon()
 
 /obj/item/ammo_magazine/flamer_tank/large	// Extra thicc tank
-	name = "large flamerthrower tank"
-	desc = "A large fuel tank of ultra thick napthal, a sticky combustable liquid chemical, for use in the FL-84 flamethrower."
+	name = "大型火焰喷射器燃料罐"
+	desc = "一个装有超浓稠凝固汽油的大型燃料罐,这是一种粘性可燃液体化学品,用于FL-84火焰喷射器。"
 	icon_state = "flametank_large"
 	max_rounds = 75
 	current_rounds = 75
@@ -62,8 +62,8 @@
 	icon_state_mini = "tank_orange"
 
 /obj/item/ammo_magazine/flamer_tank/large/som
-	name = "large flamerthrower tank"
-	desc = "A large fuel tank of ultra thick napthal, a sticky combustable liquid chemical, for use in the V-62 flamethrower."
+	name = "大型火焰喷射器燃料罐"
+	desc = "一个装有超浓稠凝固汽油的大型燃料罐,这是一种粘性可燃液体化学品,用于V-62火焰喷射器。"
 	icon_state = "flametank_som"
 	max_rounds = 75
 	current_rounds = 75
@@ -71,16 +71,16 @@
 	icon_state_mini = "tank_red"
 
 /obj/item/ammo_magazine/flamer_tank/large/X
-	name = "large flamethrower tank (X)"
-	desc = "A large fuel tank of ultra thick napthal fuel type X, a sticky combustable liquid chemical that burns extremely hot, for use in the FL-84 flamethrower. Handle with care."
+	name = "大型火焰喷射器燃料罐(X)"
+	desc = "一个装有超浓稠X型凝固汽油燃料的大型燃料罐,这是一种燃烧温度极高的粘性可燃液体化学品,用于FL-84火焰喷射器。小心处理。"
 	icon_state = "flametank_large_blue"
 	default_ammo = /datum/ammo/flamethrower/blue
 	icon_state_mini = "tank_blue"
 	dispenser_type = /obj/structure/reagent_dispensers/fueltank/xfuel
 
 /obj/item/ammo_magazine/flamer_tank/mini/X
-	name = "mini incinerator tank (X)"
-	desc = "A large fuel tank of ultra thick napthal fuel type X, a sticky combustable liquid chemical that burns extremely hot, for use in the underail incinerator unit. Handle with care."
+	name = "微型燃烧器燃料罐(X)"
+	desc = "一个装有超浓稠X型凝固汽油燃料的大型燃料罐,这是一种燃烧温度极高的粘性可燃液体化学品,用于下挂式燃烧器单元。小心处理。"
 	icon_state = "flametank_mini_blue"
 	default_ammo = /datum/ammo/flamethrower/blue
 	reload_delay = 0 SECONDS
@@ -91,16 +91,16 @@
 	dispenser_type = /obj/structure/reagent_dispensers/fueltank/xfuel
 
 /obj/item/ammo_magazine/flamer_tank/large/G
-	name = "large flamethrower tank (G)"
-	desc = "A large fuel tank of ultra thick plasma Fuel type G, a sticky combustable liquid chemical, for use in the FL-84 flamethrower. Handle with care."
+	name = "大型火焰喷射器燃料罐(G)"
+	desc = "一个装有超浓稠G型等离子燃料的大型燃料罐,这是一种粘性可燃液体化学品,用于FL-84火焰喷射器。小心处理。"
 	icon_state = "flametank_large_green"
 	default_ammo = /datum/ammo/flamethrower/green
 	icon_state_mini = "tank_green"
 	dispenser_type = /obj/structure/reagent_dispensers/fueltank/gfuel
 
 /obj/item/ammo_magazine/flamer_tank/mini/G
-	name = "mini incinerator tank (G)"
-	desc = "A large fuel tank of ultra thick plasma Fuel type G, a sticky combustable liquid chemical that burns extremely hot, for use in the underail incinerator unit. Handle with care."
+	name = "微型燃烧器燃料罐(G)"
+	desc = "一个装有超浓稠G型等离子燃料的大型燃料罐,这是一种燃烧温度极高的粘性可燃液体化学品,用于下挂式燃烧器单元。小心处理。"
 	icon_state = "flametank_mini_green"
 	default_ammo = /datum/ammo/flamethrower/green
 	reload_delay = 0 SECONDS
@@ -111,15 +111,15 @@
 	dispenser_type = /obj/structure/reagent_dispensers/fueltank/gfuel
 
 /obj/item/ammo_magazine/flamer_tank/large/X/deathsquad
-	name = "Gargantuan flamethrower X-tank"
-	desc = "Using Bluespace technology, Nanotrasen has managed to fit in way more x-fuel than you would ever hope to need in a single lifetime into this specialized tank."
+	name = "巨型火焰喷射器X燃料罐"
+	desc = "利用蓝空间技术,Nanotrasen成功地将远超你一生所需用量的X燃料装入了这个专用燃料罐中。"
 	max_rounds = 225
 	current_rounds = 225
 	reload_delay = 2 SECONDS
 
 /obj/item/ammo_magazine/flamer_tank/backtank
-	name = "backpack fuel tank"
-	desc = "A specialized fuel tank for use with the FL-84 flamethrower and FL-240 incinerator unit."
+	name = "背包燃料罐"
+	desc = "一种专用燃料罐,用于FL-84火焰喷射器和FL-240燃烧器单元。"
 	icon_state = "flamethrower_tank"
 	equip_slot_flags = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
@@ -133,22 +133,22 @@
 	default_ammo = /datum/ammo/flamethrower
 
 /obj/item/ammo_magazine/flamer_tank/backtank/X
-	name = "backpack fuel tank (X)"
-	desc = "A specialized fuel tank of ultra thick napthal type X for use with the FL-84 flamethrower and FL-240 incinerator unit."
+	name = "背包燃料罐(X)"
+	desc = "一种装有超浓稠X型凝固汽油的专用燃料罐,用于FL-84火焰喷射器和FL-240燃烧器单元。"
 	icon_state = "x_flamethrower_tank"
 	default_ammo = /datum/ammo/flamethrower/blue
 	dispenser_type = /obj/structure/reagent_dispensers/fueltank/xfuel
 
 /obj/item/ammo_magazine/flamer_tank/backtank/G
-	name = "backpack fuel tank (G)"
-	desc = "A specialized fuel tank of plasma type G for use with the FL-84 flamethrower and FL-240 incinerator unit."
+	name = "背包燃料罐(G)"
+	desc = "G型等离子专用燃料罐,用于FL-84火焰喷射器和FL-240焚烧器."
 	icon_state = "g_flamethrower_tank"
 	default_ammo = /datum/ammo/flamethrower/green
 	dispenser_type = /obj/structure/reagent_dispensers/fueltank/gfuel
 
 /obj/item/ammo_magazine/flamer_tank/water
-	name = "pressurized water tank"
-	desc = "A cannister of water for use with the FL-84's underslung extinguisher. Can be refilled by hand."
+	name = "加压水箱"
+	desc = "FL-84下挂式灭火器的水箱.可手动补充."
 	icon_state = "watertank"
 	max_rounds = 200
 	current_rounds = 200
@@ -163,8 +163,8 @@
 
 //The engineer pyro bag internal fuel tank
 /obj/item/ammo_magazine/flamer_tank/internal
-	name = "internal fuel tank"
-	desc = "A large fuel tank of ultra thick napthal, a sticky combustable liquid chemical, you shouldn't see this though."
+	name = "内置燃料罐"
+	desc = "一大罐超浓稠环烷,一种黏稠的可燃液体化学物质,不过你不该看到这个."
 	icon_state = ""
 	max_rounds = 280
 	current_rounds = 280

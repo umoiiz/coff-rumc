@@ -1,6 +1,6 @@
 /obj/item/storage/box/crate
-	name = "crate"
-	desc = "It's just an ordinary wooden crate."
+	name = "板条箱"
+	desc = "这只是一个普通的木制板条箱."
 	icon = 'icons/obj/items/storage/box.dmi'
 	icon_state = "case"
 
@@ -13,8 +13,8 @@
 	icon_state = length(contents) ? initial(icon_state) : "empty_case"
 
 /obj/item/storage/box/crate/m42c_system
-	name = "\improper antimaterial scoped rifle system (recon set)"
-	desc = "A large case containing your very own long-range sniper rifle. Drag this sprite into you to open it up!\nNOTE: You cannot put items back inside this case."
+	name = "\improper 反器材瞄准镜步枪系统(侦察套装)"
+	desc = "一个大箱子,里面装着你自己的远程狙击步枪.将此图标拖到你自己身上以打开它!\nNOTE:你无法将物品放回此箱子内."
 	icon_state = "sniper_case"
 	w_class = WEIGHT_CLASS_HUGE
 	slowdown = 1
@@ -40,8 +40,8 @@
 	new /obj/item/bodybag/tarp(src)
 
 /obj/item/storage/box/crate/m42c_system_Jungle
-	name = "\improper antimaterial scoped rifle system (marksman set)"
-	desc = "A large case containing your very own long-range sniper rifle. Drag this sprite into you to open it up!\nNOTE: You cannot put items back inside this case."
+	name = "\improper 反器材瞄准镜步枪系统(精确射手套装)"
+	desc = "一个大箱子,里面装着你自己的远程狙击步枪.将此图标拖到你自己身上以打开它!\nNOTE:你无法将物品放回此箱子内."
 	icon_state = "sniper_case"
 	w_class = WEIGHT_CLASS_HUGE
 	slowdown = 1
@@ -69,8 +69,8 @@
 		new /obj/item/bodybag/tarp(src)
 
 /obj/item/storage/box/crate/sentry
-	name = "\improper ST-571 sentry crate"
-	desc = "A large case containing all you need to set up an automated sentry."
+	name = "\improper ST-571哨戒炮箱"
+	desc = "一个大箱子,包含设置自动哨戒炮所需的一切."
 	icon_state = "sentry_case"
 	w_class = WEIGHT_CLASS_HUGE
 	storage_type = /datum/storage/box/crate/sentry

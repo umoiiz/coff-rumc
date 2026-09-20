@@ -296,7 +296,7 @@ export const PersonalCrafting = (props) => {
                         );
                       }}
                     >
-                      Category
+                      类别
                     </Tabs.Tab>
                     {mode === MODE.cooking && (
                       <Tabs.Tab
@@ -314,7 +314,7 @@ export const PersonalCrafting = (props) => {
                           );
                         }}
                       >
-                        Type
+                        类型
                       </Tabs.Tab>
                     )}
                     <Tabs.Tab
@@ -542,7 +542,7 @@ export const PersonalCrafting = (props) => {
                   )
               ) : (
                 <NoticeBox m={1} p={1}>
-                  No recipes found.
+                  未找到配方.
                 </NoticeBox>
               )}
               {recipes.length > displayLimit && (
@@ -715,7 +715,7 @@ const RecipeContentCompact = ({ item, craftable, busy, mode }) => {
                     my={0.3}
                     lineHeight={2.5}
                     align="center"
-                    content="Make"
+                    content="制作"
                     disabled={!craftable || busy}
                     icon={
                       busy
@@ -738,7 +738,7 @@ const RecipeContentCompact = ({ item, craftable, busy, mode }) => {
                       width={'32px'}
                       align="center"
                       tooltip={
-                        'Repeat this craft until you run out of ingredients.'
+                        '重复此制作直到材料耗尽.'
                       }
                       tooltipPosition={'top'}
                       disabled={!craftable || busy}
@@ -875,7 +875,7 @@ const RecipeContent = ({ item, craftable, busy, mode, diet }) => {
                         <Button
                           lineHeight={2.5}
                           align="center"
-                          content="Make"
+                          content="制作"
                           fluid
                           disabled={!craftable || busy}
                           icon={
@@ -900,7 +900,7 @@ const RecipeContent = ({ item, craftable, busy, mode, diet }) => {
                             lineHeight={2.5}
                             align="center"
                             tooltip={
-                              'Repeat this craft until you run out of ingredients.'
+                              '重复此制作直到材料耗尽.'
                             }
                             tooltipPosition={'top'}
                             disabled={!craftable || busy}

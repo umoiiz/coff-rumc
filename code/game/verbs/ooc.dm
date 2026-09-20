@@ -17,7 +17,7 @@
 	if(!mob)
 		return
 	if(IsGuestKey(key))
-		to_chat(src, "Guests may not use OOC.")
+		to_chat(src, "访客不能使用OOC.")
 		return
 
 	msg = copytext_char(sanitize(msg), 1, MAX_MESSAGE_LEN)
@@ -30,29 +30,29 @@
 	msg = emoji_parse(msg)
 
 	if(!(prefs.toggles_chat & CHAT_OOC))
-		to_chat(src, span_warning("You have OOC muted."))
+		to_chat(src, span_warning("你已屏蔽OOC."))
 		return
 
 	if(!check_rights(R_ADMIN, FALSE))
 		if(!GLOB.ooc_allowed)
-			to_chat(src, span_warning("OOC is globally muted"))
+			to_chat(src, span_warning("OOC已被全局屏蔽"))
 			return
 		if(!GLOB.dooc_allowed && (mob.stat == DEAD))
-			to_chat(usr, span_warning("OOC for dead mobs has been turned off."))
+			to_chat(usr, span_warning("死亡角色的OOC已被关闭."))
 			return
 		if(prefs.muted & MUTE_OOC)
-			to_chat(src, span_warning("You cannot use OOC (muted)."))
+			to_chat(src, span_warning("你无法使用OOC(已屏蔽)."))
 			return
 		if(handle_spam_prevention(msg, MUTE_OOC))
 			return
 		if(findtext(msg, "byond://"))
-			to_chat(src, span_danger("Advertising other servers is not allowed."))
+			to_chat(src, span_danger("不允许宣传其他服务器."))
 			log_admin_private("[key_name(usr)] has attempted to advertise in OOC: [msg]")
 			message_admins("[ADMIN_TPMONTY(usr)] has attempted to advertise in OOC: [msg]")
 			return
 
 	if(is_banned_from(ckey, "OOC"))
-		to_chat(src, span_warning("You have been banned from OOC."))
+		to_chat(src, span_warning("你已被禁止使用OOC."))
 		return
 
 	var/list/filter_result = is_ooc_filtered(msg)
@@ -66,7 +66,7 @@
 	var/list/soft_filter_result = filter_result || is_soft_ooc_filtered(msg)
 
 	if(soft_filter_result)
-		if(tgui_alert(usr,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to say it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr,"你的消息包含\"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\",你确定要说出来吗?", "软屏蔽词", list("Yes", "No")) != "Yes")
 			return
 		message_admins("[ADMIN_LOOKUPFLW(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[msg]\"")
 		log_admin_private("[key_name(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[msg]\"")
@@ -161,13 +161,13 @@
 	if(!mob)
 		return
 	if(IsGuestKey(key))
-		to_chat(src, "Guests may not use XOOC.")
+		to_chat(src, "访客不能使用XOOC.")
 		return
 	if(mob.stat == DEAD && !admin)
-		to_chat(src, span_warning("You must be alive to use XOOC."))
+		to_chat(src, span_warning("你必须活着才能使用XOOC."))
 		return
 	if(!(mob in GLOB.xeno_mob_list) && !admin)
-		to_chat(src, span_warning("You must be a xeno to use XOOC."))
+		to_chat(src, span_warning("你必须是异形才能使用XOOC."))
 		return
 
 	msg = copytext_char(sanitize(msg), 1, MAX_MESSAGE_LEN)
@@ -180,20 +180,20 @@
 	msg = emoji_parse(msg)
 
 	if(!(prefs.toggles_chat & CHAT_OOC))
-		to_chat(src, span_warning("You have OOC muted."))
+		to_chat(src, span_warning("你已屏蔽OOC."))
 		return
 
 	if(!check_rights(R_ADMIN, FALSE))
 		if(!GLOB.ooc_allowed)
-			to_chat(src, span_warning("OOC is globally muted"))
+			to_chat(src, span_warning("OOC已被全局屏蔽"))
 			return
 		if(prefs.muted & MUTE_OOC)
-			to_chat(src, span_warning("You cannot use OOC (muted)."))
+			to_chat(src, span_warning("你无法使用OOC(已屏蔽)."))
 			return
 		if(handle_spam_prevention(msg, MUTE_OOC))
 			return
 		if(findtext(msg, "byond://"))
-			to_chat(src, span_danger("Advertising other servers is not allowed."))
+			to_chat(src, span_danger("不允许宣传其他服务器."))
 			log_admin_private("[key_name(usr)] has attempted to advertise in OOC: [msg]")
 			message_admins("[ADMIN_TPMONTY(usr)] has attempted to advertise in OOC: [msg]")
 			return
@@ -209,13 +209,13 @@
 	var/list/soft_filter_result = filter_result || is_soft_ooc_filtered(msg)
 
 	if(soft_filter_result)
-		if(tgui_alert(usr,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to say it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr,"你的消息包含\"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\",你确定要说出来吗?", "软屏蔽词", list("Yes", "No")) != "Yes")
 			return
 		message_admins("[ADMIN_LOOKUPFLW(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[msg]\"")
 		log_admin_private("[key_name(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[msg]\"")
 
 	if(is_banned_from(ckey, "OOC"))
-		to_chat(src, span_warning("You have been banned from OOC."))
+		to_chat(src, span_warning("你已被禁止使用OOC."))
 		return
 
 	mob.log_talk(msg, LOG_XOOC)
@@ -267,13 +267,13 @@
 	if(!mob)
 		return
 	if(IsGuestKey(key))
-		to_chat(src, "Guests may not use MOOC.")
+		to_chat(src, "访客不能使用MOOC.")
 		return
 	if(mob.stat == DEAD && !admin)
-		to_chat(src, span_warning("You must be alive to use MOOC."))
+		to_chat(src, span_warning("你必须活着才能使用MOOC."))
 		return
 	if(!((mob in GLOB.human_mob_list) || (mob in GLOB.ai_list)) && !admin)
-		to_chat(src, span_warning("You must be a human to use MOOC."))
+		to_chat(src, span_warning("你必须是人类才能使用MOOC."))
 		return
 
 	msg = copytext_char(sanitize(msg), 1, MAX_MESSAGE_LEN)
@@ -286,26 +286,26 @@
 	msg = emoji_parse(msg)
 
 	if(!(prefs.toggles_chat & CHAT_OOC))
-		to_chat(src, span_warning("You have OOC muted."))
+		to_chat(src, span_warning("你已屏蔽OOC."))
 		return
 
 	if(!check_rights(R_ADMIN, FALSE))
 		if(!GLOB.ooc_allowed)
-			to_chat(src, span_warning("OOC is globally muted"))
+			to_chat(src, span_warning("OOC已被全局屏蔽"))
 			return
 		if(prefs.muted & MUTE_OOC)
-			to_chat(src, span_warning("You cannot use OOC (muted)."))
+			to_chat(src, span_warning("你无法使用OOC(已屏蔽)."))
 			return
 		if(handle_spam_prevention(msg, MUTE_OOC))
 			return
 		if(findtext(msg, "byond://"))
-			to_chat(src, span_danger("Advertising other servers is not allowed."))
+			to_chat(src, span_danger("不允许宣传其他服务器."))
 			log_admin_private("[key_name(usr)] has attempted to advertise in OOC: [msg]")
 			message_admins("[ADMIN_TPMONTY(usr)] has attempted to advertise in OOC: [msg]")
 			return
 
 	if(is_banned_from(ckey, "OOC"))
-		to_chat(src, span_warning("You have been banned from OOC."))
+		to_chat(src, span_warning("你已被禁止使用OOC."))
 		return
 
 	var/list/filter_result = is_ooc_filtered(msg)
@@ -319,7 +319,7 @@
 	var/list/soft_filter_result = filter_result || is_soft_ooc_filtered(msg)
 
 	if(soft_filter_result)
-		if(tgui_alert(usr,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to say it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr,"你的消息包含\"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\",你确定要说出来吗?", "软屏蔽词", list("Yes", "No")) != "Yes")
 			return
 		message_admins("[ADMIN_LOOKUPFLW(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[msg]\"")
 		log_admin_private("[key_name(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[msg]\"")
@@ -375,11 +375,11 @@
 		return
 
 	if(mob.stat == DEAD && !admin)
-		to_chat(src, span_warning("You must be alive to use LOOC."))
+		to_chat(src, span_warning("你必须活着才能使用LOOC."))
 		return
 
 	if(IsGuestKey(key))
-		to_chat(src, "Guests may not use LOOC.")
+		to_chat(src, "访客不能使用LOOC.")
 		return
 
 	msg = copytext_char(sanitize(msg), 1, MAX_MESSAGE_LEN)
@@ -388,20 +388,20 @@
 		return
 
 	if(!(prefs.toggles_chat & CHAT_LOOC))
-		to_chat(src, span_warning("You have LOOC muted."))
+		to_chat(src, span_warning("你已屏蔽LOOC."))
 		return
 
 	if(!admin)
 		if(!CONFIG_GET(flag/looc_enabled))
-			to_chat(src, span_warning("LOOC is globally muted"))
+			to_chat(src, span_warning("LOOC已被全局屏蔽"))
 			return
 		if(prefs.muted & MUTE_LOOC)
-			to_chat(src, span_warning("You cannot use LOOC (muted)."))
+			to_chat(src, span_warning("你无法使用LOOC(已屏蔽)."))
 			return
 		if(handle_spam_prevention(msg, MUTE_LOOC))
 			return
 		if(findtext(msg, "byond://"))
-			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
+			to_chat(src, "<B>不允许宣传其他服务器.</B>")
 			log_admin_private("[key_name(usr)] has attempted to advertise in LOOC: [msg]")
 			message_admins("[ADMIN_TPMONTY(usr)] has attempted to advertise in LOOC: [msg]")
 			return
@@ -417,13 +417,13 @@
 	var/list/soft_filter_result = filter_result || is_soft_ooc_filtered(msg)
 
 	if(soft_filter_result)
-		if(tgui_alert(usr,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to say it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr,"你的消息包含\"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\",你确定要说出来吗?", "软屏蔽词", list("Yes", "No")) != "Yes")
 			return
 		message_admins("[ADMIN_LOOKUPFLW(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[msg]\"")
 		log_admin_private("[key_name(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[msg]\"")
 
 	if(is_banned_from(ckey, "LOOC"))
-		to_chat(src, span_warning("You have been banned from LOOC."))
+		to_chat(src, span_warning("你已被禁止使用LOOC."))
 		return
 
 	mob.log_talk(msg, LOG_LOOC)
@@ -462,7 +462,7 @@
 	if(GLOB.motd)
 		to_chat(src, span_motd("[GLOB.motd]"))
 	else
-		to_chat(src, span_warning("The motd is not set in the server configuration."))
+		to_chat(src, span_warning("服务器配置中未设置motd."))
 
 
 /client/verb/stop_sounds()
@@ -476,11 +476,11 @@
 
 /client/verb/tracked_playtime()
 	set category = "OOC"
-	set name = "View Tracked Playtime"
+	set name = "View-查询游戏时长"
 	set desc = "View the amount of playtime for roles the server has tracked."
 
 	if(!CONFIG_GET(flag/use_exp_tracking))
-		to_chat(usr, span_notice("Sorry, tracking is currently disabled."))
+		to_chat(usr, span_notice("抱歉,追踪功能当前已禁用."))
 		return
 
 	new /datum/job_report_menu(src, usr)
@@ -491,7 +491,7 @@
 	set name = "View Admin Remarks"
 
 	if(!CONFIG_GET(flag/see_own_notes))
-		to_chat(usr, span_notice("Sorry, that function is not enabled on this server."))
+		to_chat(usr, span_notice("抱歉,该功能在此服务器上未启用."))
 		return
 
 	browse_messages(null, ckey, null, TRUE)
@@ -618,7 +618,7 @@
 /client/verb/display_ping(time as num)
 	set instant = TRUE
 	set name = ".display_ping"
-	to_chat(src, span_notice("Round trip ping took [round(pingfromtime(time), 1)]ms"))
+	to_chat(src, span_notice("往返延迟为[round(pingfromtime(time), 1)]毫秒"))
 
 
 /client/verb/ping()
@@ -661,12 +661,12 @@
 			players[displayed_key] = displayed_key
 
 	if(!length(players))
-		to_chat(src, span_infoplain("There are no other players you can ignore!"))
+		to_chat(src, span_infoplain("没有其他玩家可以屏蔽!"))
 		return
 
 	players = sort_list(players)
 
-	var/selection = tgui_input_list(src, "Select a player", "Ignore", players)
+	var/selection = tgui_input_list(src, "选择一名玩家", "屏蔽", players)
 
 	if(isnull(selection) || !(selection in players))
 		return
@@ -674,13 +674,13 @@
 	selection = players[selection]
 
 	if(selection in prefs.ignoring)
-		to_chat(src, span_infoplain("You are already ignoring [selection]!"))
+		to_chat(src, span_infoplain("你已经在屏蔽[selection]了!"))
 		return
 
 	prefs.ignoring.Add(selection)
 	prefs.save_preferences()
 
-	to_chat(src, span_infoplain("You are now ignoring [selection] on the OOC channel."))
+	to_chat(src, span_infoplain("你正在OOC频道忽略[selection]。"))
 
 /client/verb/select_unignore()
 	set name = "Unignore"
@@ -688,19 +688,19 @@
 	set desc = "Stop ignoring a player's messages on the OOC channel"
 
 	if(!length(prefs.ignoring))
-		to_chat(src, span_infoplain("You haven't ignored any players!"))
+		to_chat(src, span_infoplain("你没有忽略任何玩家!"))
 		return
 
-	var/selection = tgui_input_list(src, "Select a player", "Unignore", prefs.ignoring)
+	var/selection = tgui_input_list(src, "选择一名玩家", "取消忽略", prefs.ignoring)
 
 	if(isnull(selection))
 		return
 
 	if(!(selection in prefs.ignoring))
-		to_chat(src, span_infoplain("You are not ignoring [selection]!"))
+		to_chat(src, span_infoplain("你没有忽略[selection]!"))
 		return
 
 	prefs.ignoring.Remove(selection)
 	prefs.save_preferences()
 
-	to_chat(src, span_infoplain("You are no longer ignoring [selection] on the OOC channel."))
+	to_chat(src, span_infoplain("你不再在OOC频道忽略[selection]。"))

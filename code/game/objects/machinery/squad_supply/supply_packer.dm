@@ -1,5 +1,5 @@
 /obj/structure/largecrate/packed
-	name = "supplies crate"
+	name = "补给箱"
 	icon_state = "secure_crate"
 	// This will contain all the item names inside the packed crate
 	var/list/manifest = list("This crate contains:")

@@ -8,7 +8,7 @@
 /obj/machinery/telecomms/relay
 	name = "telecommunication relay"
 	icon_state = "relay"
-	desc = "A mighty piece of hardware used to send massive amounts of data far away."
+	desc = "一台用于向远方发送海量数据的强大硬件."
 	telecomms_type = /obj/machinery/telecomms/relay
 	density = TRUE
 	use_power = IDLE_POWER_USE

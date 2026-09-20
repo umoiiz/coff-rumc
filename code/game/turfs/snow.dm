@@ -40,21 +40,21 @@
 
 	if(M.a_intent == INTENT_GRAB)
 		if(!slayer)
-			to_chat(M, span_warning("There is nothing to clear out!"))
+			to_chat(M, span_warning("没有什么需要清理的!"))
 			return FALSE
 
-		M.visible_message(span_notice("\The [M] starts clearing out \the [src]."), \
-		span_notice("We start clearing out \the [src]."), null, 5)
+		M.visible_message(span_notice("\The [M]开始清理\the [src]."), \
+		span_notice("我们开始清理\the [src]."), null, 5)
 		playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
 		if(!do_after(M, 0.5 SECONDS, IGNORE_HELD_ITEM, src, BUSY_ICON_BUILD))
 			return FALSE
 
 		if(!slayer)
-			to_chat(M, span_warning("There is nothing to clear out!"))
+			to_chat(M, span_warning("没有什么需要清理的!"))
 			return
 
-		M.visible_message(span_notice("\The [M] clears out \the [src]."), \
-		span_notice("We clear out \the [src]."), null, 5)
+		M.visible_message(span_notice("\The [M]清理了\the [src]."), \
+		span_notice("我们清理了\the [src]."), null, 5)
 		slayer = 0
 		update_appearance()
 		update_sides()
@@ -68,14 +68,14 @@
 	if(istype(I, /obj/item/lightstick))
 		var/obj/item/lightstick/L = I
 		if(locate(/obj/item/lightstick) in get_turf(src))
-			to_chat(user, "There's already a [L.name] at this position!")
+			to_chat(user, "这个位置已经有一个[L.name]了!")
 			return
 
-		to_chat(user, "Now planting \the [L].")
+		to_chat(user, "正在种植\the [L].")
 		if(!do_after(user, 2 SECONDS, NONE, src, BUSY_ICON_BUILD))
 			return
 
-		user.visible_message(span_notice("[user.name] planted \the [L] into [src]."))
+		user.visible_message(span_notice("[user.name]将\the [L]种入了[src]."))
 		L.anchored = TRUE
 		L.icon_state = "lightstick_[L.s_color][L.anchored]"
 		user.drop_held_item()
@@ -181,12 +181,12 @@
 		if(prob(50))
 			src.slayer -= 1
 			update_icon(TRUE, FALSE)
-	user.balloon_alert(user, "You scoop up some snow and make a snowball!")
+	user.balloon_alert(user, "你捧起一些雪,做了一个雪球!")
 
 //SNOW BALL
 /obj/item/snowball
-	name = "snowball"
-	desc = "Get ready for a snowball fight!"
+	name = "雪球"
+	desc = "准备好打雪仗吧!"
 	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "snowball"
 

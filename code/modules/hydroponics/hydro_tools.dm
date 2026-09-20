@@ -1,11 +1,11 @@
 //Analyzer, pestkillers, weedkillers, nutrients, hatchets, cutters.
 
 /obj/item/tool/wirecutters/clippers
-	name = "plant clippers"
-	desc = "A tool used to take samples from plants."
+	name = "植物剪"
+	desc = "用于从植物上取样的工具."
 
 /obj/item/tool/analyzer/plant_analyzer
-	name = "plant analyzer"
+	name = "植物分析仪"
 	icon_state = "hydro"
 	worn_icon_state = "analyzer"
 
@@ -14,8 +14,8 @@
 // *************************************
 
 /obj/item/reagent_containers/glass/fertilizer
-	name = "fertilizer bottle"
-	desc = "A small glass bottle. Can hold up to 10 units."
+	name = "肥料瓶"
+	desc = "一个小玻璃瓶. 最多可容纳10单位."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle16"
 	possible_transfer_amounts = null
@@ -37,16 +37,16 @@
 		reagents.add_reagent(fertilizer,10)
 
 /obj/item/reagent_containers/glass/fertilizer/ez
-	name = "bottle of E-Z-Nutrient"
+	name = "E-Z营养液瓶"
 	icon_state = "bottle16"
 	fertilizer = /datum/reagent/toxin/fertilizer/eznutrient
 
 /obj/item/reagent_containers/glass/fertilizer/l4z
-	name = "bottle of Left 4 Zed"
+	name = "Left 4 Zed瓶"
 	icon_state = "bottle18"
 	fertilizer = /datum/reagent/toxin/fertilizer/left4zed
 
 /obj/item/reagent_containers/glass/fertilizer/rh
-	name = "bottle of Robust Harvest"
+	name = "强效丰收瓶"
 	icon_state = "bottle15"
 	fertilizer = /datum/reagent/toxin/fertilizer/robustharvest

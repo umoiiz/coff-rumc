@@ -21,28 +21,28 @@ export const Hypospray = (props) => {
       <Section fill>
         <Box>
           <Button m={2} onClick={() => act('ActivateAutolabeler')}>
-            Activate Autolabeler
+            激活自动贴标器
           </Button>
           <Box ml={2}>
             <b>Current label: </b>
             {CurrentLabel}
           </Box>
           <Button m={2} onClick={() => act('ActivateTagger')}>
-            Activate Tagger
+            激活标记器
           </Button>
           <Box ml={2}>
             <b>Current tag: </b>
             {CurrentTag}
           </Box>
           <Button m={2} onClick={() => act('ToggleMode')}>
-            Toggle Mode
+            切换模式
           </Button>
           <Box ml={2}>
             <b>Current mode: </b>
             {InjectMode ? 'Injecting' : 'Drawing'}
           </Box>
           <Button m={2} onClick={() => act('SetTransferAmount')}>
-            Set Transfer Amount
+            设置传输量
           </Button>
           <Box ml={2}>
             <b>Current transfer amount: </b>
@@ -51,14 +51,14 @@ export const Hypospray = (props) => {
           {IsAdvanced ? (
             <Box>
               <Button m={2} onClick={() => act('DisplayReagentContent')}>
-                Display Reagent Content
+                显示试剂含量
               </Button>
             </Box>
           ) : (
             <Box />
           )}
           <Button color={'red'} m={2} onClick={() => act('EmptyHypospray')}>
-            Empty Hypospray
+            清空注射器
           </Button>
         </Box>
       </Section>

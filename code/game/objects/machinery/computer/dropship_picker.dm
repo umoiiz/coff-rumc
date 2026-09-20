@@ -1,7 +1,7 @@
 
 /obj/machinery/computer/dropship_picker
 	name = "dropship picker"
-	desc = "A computer that lets you choose the model of the tadpole.."
+	desc = "一台让你选择蝌蚪型号的计算机.."
 	density = TRUE
 	icon_state = "computer"
 	screen_overlay = "computer_generic"
@@ -18,7 +18,7 @@
 
 /obj/machinery/computer/dropship_picker/attack_hand(mob/user)
 	if(dropship_selected)
-		balloon_alert(user, "model has already been chosen!")
+		balloon_alert(user, "型号已经选定!")
 		return FALSE
 	return ..()
 
@@ -90,7 +90,7 @@
 			var/obj/docking_port/mobile/shuttle = SSshuttle.action_load(template)
 			SSshuttle.moveShuttleQuickToDock(template.shuttle_id, dock_id)
 			shuttle.setTimer(0)
-			balloon_alert(usr, "shuttle selected, locking")
+			balloon_alert(usr, "穿梭机已选定,锁定中")
 			ui.close()
 			log_game("[key_name(usr)] has picked the tadpole")
 	return TRUE

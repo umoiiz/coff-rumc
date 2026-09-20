@@ -1,6 +1,6 @@
 /obj/item/gift
-	name = "gift"
-	desc = "Presents!"
+	name = "礼物"
+	desc = "礼物!"
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "gift1"
 	worn_icon_state = "gift1"
@@ -57,8 +57,8 @@
 	qdel(src)
 
 /obj/item/gift/marine
-	name = "Present"
-	desc = "One, standard issue TGMC Present"
+	name = "礼物"
+	desc = "一个标准配发的TGMC礼物"
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "gift1"
 	worn_icon_state = "gift1"
@@ -91,16 +91,16 @@
 
 	switch(fancy_type)
 		if(1)
-			gift_message = span_notice("It's a brand new, un-restricted, THERMOBARIC ROCKET LAUNCHER!  What are the chances?")
+			gift_message = span_notice("这是一具全新的,不受限制的热压火箭发射器!这运气也太好了吧?")
 			gift_type = /obj/item/weapon/gun/launcher/rocket/m57a4/xmas
 		if(10)
-			gift_message = span_notice("It's a brand new, un-restricted, ANTI-MATERIAL SNIPER RIFLE!  What are the chances?")
+			gift_message = span_notice("这是一把全新的,不受限制的反器材狙击步枪!这运气也太好了吧?")
 			gift_type = /obj/item/weapon/gun/rifle/sniper/elite/xmas
 		if(20)
-			gift_message = span_notice("Just what the fuck is it?")
+			gift_message = span_notice("这他妈到底是什么?")
 			gift_type = /obj/item/clothing/mask/facehugger/lamarr
 		else
-			gift_message = span_notice("It's a REAL gift!")
+			gift_message = span_notice("这是一份真正的礼物!")
 			gift_type = pick(
 			/obj/item/weapon/gun/revolver/mateba,
 			/obj/item/weapon/gun/pistol/heavy,
@@ -123,7 +123,7 @@
 /obj/item/weapon/gun/launcher/rocket/m57a4/xmas/able_to_fire(mob/living/user)
 	var/turf/current_turf = get_turf(user)
 	if(is_mainship_level(current_turf.z))
-		balloon_alert(user, "Can't fire")
+		balloon_alert(user, "无法开火")
 		return FALSE
 	return TRUE
 
@@ -136,12 +136,12 @@
 /obj/effect/spresent/relaymove(mob/user)
 	if(user.stat != CONSCIOUS)
 		return
-	to_chat(user, span_notice("You can't move."))
+	to_chat(user, span_notice("你无法移动."))
 
 /obj/effect/spresent/wirecutter_act(mob/living/user, obj/item/I)
 	. = ..()
 
-	to_chat(user, span_notice("You cut open the present."))
+	to_chat(user, span_notice("你切开了礼物."))
 
 	for(var/mob/M in src) //Should only be one but whatever.
 		M.forceMove(loc)
@@ -151,8 +151,8 @@
 	qdel(src)
 
 /obj/item/wrapping_paper
-	name = "wrapping paper"
-	desc = "You can use this to wrap items in."
+	name = "包装纸"
+	desc = "你可以用它来包裹物品."
 	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "wrap_paper"
 	var/amount = 20
@@ -165,20 +165,20 @@
 	var/a_used = 2 ** (w_class - 1)
 
 	if(!(locate(/obj/structure/table) in loc))
-		to_chat(user, span_notice("You must put the paper on a table!"))
+		to_chat(user, span_notice("你必须把纸放在桌子上!"))
 		return
 
 	if(I.w_class >= WEIGHT_CLASS_BULKY)
-		to_chat(user, span_notice("The object is far too large!"))
+		to_chat(user, span_notice("这个物体太大了!"))
 		return
 
 
 	if(!iswirecutter(user.l_hand) && !iswirecutter(user.r_hand))
-		to_chat(user, span_notice("You need scissors!"))
+		to_chat(user, span_notice("你需要剪刀!"))
 		return
 
 	if(amount < a_used)
-		to_chat(user, span_notice("You need more paper!"))
+		to_chat(user, span_notice("你需要更多纸!"))
 		return
 
 	if(istype(I, /obj/item/smallDelivery) || istype(I, /obj/item/gift)) //No gift wrapping gifts!
@@ -210,11 +210,11 @@
 	var/mob/living/carbon/human/H = target
 
 	if(!istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket) && H.stat == CONSCIOUS)
-		to_chat(user, "They are moving around too much. A straightjacket would help.")
+		to_chat(user, "他们动得太厉害了.一件拘束衣会有帮助.")
 		return
 
 	if(amount <= 2)
-		to_chat(user, span_notice("You need more paper."))
+		to_chat(user, span_notice("你需要更多纸."))
 		return
 
 	var/obj/effect/spresent/present = new(H.loc)

@@ -60,7 +60,7 @@
 
 /obj/effect/overlay/temp/point
 	name = "arrow"
-	desc = "It's an arrow hanging in mid-air. There may be a wizard about."
+	desc = "这是一支悬在半空中的箭。可能有个巫师在附近。"
 	icon = 'icons/mob/screen/generic.dmi'
 	icon_state = "arrow"
 	plane = POINT_PLANE
@@ -132,7 +132,7 @@
 /obj/effect/overlay/temp/laser_target/examine(user)
 	. = ..()
 	if(ishuman(user))
-		. += span_danger("It's a laser to designate artillery targets, get away from it!")
+		. += span_danger("这是一个用于指定炮击目标的激光,离它远点!")
 
 /obj/effect/overlay/temp/laser_target/cas
 	icon_state = "laser_target_coordinate"
@@ -150,7 +150,7 @@
 /obj/effect/overlay/temp/laser_target/cas/examine(user)
 	. = ..()
 	if(ishuman(user))
-		. += span_danger("It's a laser to designate CAS targets, get away from it!")
+		. += span_danger("这是一个用于指定近距离空中支援目标的激光,离它远点!")
 
 /obj/effect/overlay/temp/laser_target/ob //This is a subtype of CAS so that CIC gets cameras on the lase
 	icon_state = "laser_target2"

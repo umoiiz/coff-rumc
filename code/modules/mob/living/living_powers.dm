@@ -12,7 +12,7 @@
 
 	if (layer != BELOW_TABLE_LAYER)
 		layer = BELOW_TABLE_LAYER
-		to_chat(src, span_notice("You are now hiding."))
+		to_chat(src, span_notice("你现在正在躲藏."))
 		return
 	layer = MOB_LAYER
-	to_chat(src, span_notice("You have stopped hiding."))
+	to_chat(src, span_notice("你已经停止躲藏."))

@@ -1,6 +1,6 @@
 /obj/machinery/vending/tool
-	name = "YouTool"
-	desc = "Tools for tools."
+	name = "你工具"
+	desc = "给工具用的工具."
 	icon_state = "tool"
 	icon_deny = "tool-deny"
 	icon_vend = "tool-vend"

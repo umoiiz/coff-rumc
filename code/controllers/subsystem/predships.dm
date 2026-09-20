@@ -189,7 +189,7 @@ SUBSYSTEM_DEF(predships)
 
 
 			log_admin("[key_name_admin(user)] has set the name of [db_query.item[2]] to [input].")
-			to_chat(user, span_notice("Set the name of [db_query.item[2]] to [input]."))
+			to_chat(user, span_notice("将 [db_query.item[2]] 的名称设置为 [input]."))
 
 			db_query.sql = "UPDATE [format_table_name("clan")] SET name = :name WHERE id = :clan_id"
 			db_query.arguments = list("clan_id" = clan_id, "name" = trim(input))
@@ -211,7 +211,7 @@ SUBSYSTEM_DEF(predships)
 				return
 
 			log_admin("[key_name_admin(user)] has set the description of [db_query.item[2]].")
-			to_chat(user, span_notice("Set the description of [db_query.item[2]]."))
+			to_chat(user, span_notice("设置 [db_query.item[2]] 的描述."))
 
 			db_query.sql = "UPDATE [format_table_name("clan")] SET description = :description WHERE id = :clan_id"
 			db_query.arguments = list("clan_id" = clan_id, "description" = trim(input))
@@ -233,7 +233,7 @@ SUBSYSTEM_DEF(predships)
 				return
 
 			log_admin("[key_name_admin(user)] has set the color of [db_query.item[2]] to [color].")
-			to_chat(user, span_notice("Set the name of [db_query.item[2]] to [color]."))
+			to_chat(user, span_notice("将 [db_query.item[2]] 的名称设置为 [color]."))
 
 			db_query.sql = "UPDATE [format_table_name("clan")] SET color = :color WHERE id = :clan_id"
 			db_query.arguments = list("clan_id" = clan_id, "color" = color)
@@ -248,13 +248,13 @@ SUBSYSTEM_DEF(predships)
 			if(!user.client.has_clan_permission(CLAN_PERMISSION_ADMIN_MANAGER))
 				return
 
-			var/input = tgui_input_number(user, "Input the new honor", "Set Honor", db_query.item[4])
+			var/input = tgui_input_number(user, "输入新的荣誉", "设置荣誉", db_query.item[4])
 
 			if((!input && input != 0) || input == db_query.item[4])
 				return
 
 			log_admin("[key_name_admin(user)] has set the honor of clan [db_query.item[2]] from [db_query.item[4]] to [input].")
-			to_chat(user, span_notice("Set the honor of [db_query.item[2]] from [db_query.item[4]] to [input]."))
+			to_chat(user, span_notice("将 [db_query.item[2]] 的荣誉从 [db_query.item[4]] 设置为 [input]."))
 
 			db_query.sql = "UPDATE [format_table_name("clan")] SET honor = :honor WHERE id = :clan_id"
 			db_query.arguments = list("clan_id" = clan_id, "honor" = input)
@@ -272,11 +272,11 @@ SUBSYSTEM_DEF(predships)
 			var/input = input(user, "Please input the name of the clan to proceed.", "Delete Clan") as text|null
 
 			if(input != db_query.item[2])
-				to_chat(user, "You have decided not to delete [db_query.item[2]].")
+				to_chat(user, "你已决定不删除 [db_query.item[2]].")
 				return
 
 			log_admin("[key_name_admin(user)] has deleted the clan [db_query.item[2]].")
-			to_chat(user, span_notice("You have deleted [db_query.item[2]]."))
+			to_chat(user, span_notice("你已删除 [db_query.item[2]]."))
 
 			db_query.sql = "UPDATE [format_table_name("clan_player")] SET clan_id = 0 WHERE clan_id = :clan_id"
 			db_query.arguments = list("clan_id" = clan_id)
@@ -299,7 +299,7 @@ SUBSYSTEM_DEF(predships)
 				player_rank = 999
 
 			if((db_query.item[3] & CLAN_PERMISSION_ADMIN_MANAGER) || player_rank <= db_query.item[2])
-				to_chat(user, span_danger("You can't target this person!"))
+				to_chat(user, span_danger("你无法以此人为目标!"))
 				return
 
 			if(!user.client.has_clan_permission(CLAN_PERMISSION_ADMIN_MANAGER))
@@ -311,7 +311,7 @@ SUBSYSTEM_DEF(predships)
 				return
 
 			log_admin("[key_name_admin(user)] has purged [db_query.item[1]]'s clan profile.")
-			to_chat(user, span_notice("You have purged [db_query.item[1]]'s clan profile."))
+			to_chat(user, span_notice("你已清除 [db_query.item[1]] 的战队档案."))
 
 			db_query.sql = "DELETE FROM [format_table_name("clan_player")] WHERE byond_ckey = :byond_ckey"
 			db_query.arguments = list("byond_ckey" = params["ckey"])
@@ -328,7 +328,7 @@ SUBSYSTEM_DEF(predships)
 				player_rank = 999
 
 			if((db_query.item[3] & CLAN_PERMISSION_ADMIN_MANAGER) || player_rank <= db_query.item[2])
-				to_chat(user, span_danger("You can't target this person!"))
+				to_chat(user, span_danger("你无法以此人为目标!"))
 				return
 
 			if(!user.client.has_clan_permission(CLAN_PERMISSION_ADMIN_MOVE))
@@ -354,13 +354,13 @@ SUBSYSTEM_DEF(predships)
 			if(db_query.item[4])
 				clans += list("Remove from clan")
 
-			var/input = tgui_input_list(user, "Choose the clan to put them in", "Change player's clan", clans)
+			var/input = tgui_input_list(user, "选择要将其放入的战队", "更改玩家的战队", clans)
 
 			if(!input)
 				return
 
 			if(input == "Remove from clan" && db_query.item[4])
-				to_chat(user, span_notice("Removed [db_query.item[1]] from their clan."))
+				to_chat(user, span_notice("已将 [db_query.item[1]] 移出其战队."))
 				log_admin("[key_name_admin(user)] has removed [db_query.item[1]] from their current clan.")
 
 				db_query.sql = "UPDATE [format_table_name("clan_player")] SET clan_rank = :clan_rank, clan_id = 0 WHERE byond_ckey = :byond_ckey"
@@ -368,7 +368,7 @@ SUBSYSTEM_DEF(predships)
 				db_query.Execute()
 
 			else if(input == "Remove from Ancient")
-				to_chat(user, span_notice("Removed [db_query.item[1]] from ancient."))
+				to_chat(user, span_notice("已将 [db_query.item[1]] 移出元老."))
 				log_admin("[key_name_admin(user)] has removed [db_query.item[1]] from ancient.")
 
 				db_query.sql = "UPDATE [format_table_name("clan_player")] SET clan_rank = :clan_rank, permissions = :permissions WHERE byond_ckey = :byond_ckey"
@@ -376,7 +376,7 @@ SUBSYSTEM_DEF(predships)
 				db_query.Execute()
 
 			else if(input == "Make Ancient" && is_clan_manager)
-				to_chat(user, span_notice("Made [db_query.item[1]] an ancient."))
+				to_chat(user, span_notice("已将 [db_query.item[1]] 设为元老."))
 				log_admin("[key_name_admin(user)] has made [db_query.item[1]] an ancient.")
 
 				db_query.sql = "UPDATE [format_table_name("clan_player")] SET clan_rank = :clan_rank, permissions = :permissions WHERE byond_ckey = :byond_ckey"
@@ -384,7 +384,7 @@ SUBSYSTEM_DEF(predships)
 				db_query.Execute()
 
 			else
-				to_chat(user, span_notice("Moved [db_query.item[1]] to [input]."))
+				to_chat(user, span_notice("已将 [db_query.item[1]] 移至 [input]."))
 				log_admin("[key_name_admin(user)] has moved [db_query.item[1]] to clan [input].")
 
 				if(!(db_query.item[3] & CLAN_PERMISSION_ADMIN_ANCIENT))
@@ -407,11 +407,11 @@ SUBSYSTEM_DEF(predships)
 				player_rank = 999
 
 			if((db_query.item[3] & CLAN_PERMISSION_ADMIN_MANAGER) || player_rank <= db_query.item[2])
-				to_chat(user, span_danger("You can't target this person!"))
+				to_chat(user, span_danger("你无法以此人为目标!"))
 				return
 
 			if(!db_query.item[4])
-				to_chat(user, span_warning("This player doesn't belong to a clan!"))
+				to_chat(user, span_warning("此玩家不属于任何战队!"))
 				return
 
 			var/list/datum/yautja_rank/ranks = GLOB.clan_ranks.Copy()
@@ -419,7 +419,7 @@ SUBSYSTEM_DEF(predships)
 
 			var/datum/yautja_rank/chosen_rank
 			if(user.client.has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY, warn = FALSE))
-				var/input = tgui_input_list(user, "Select the rank to change this user to.", "Select Rank", ranks)
+				var/input = tgui_input_list(user, "选择要更改此用户为的军衔.", "选择军衔", ranks)
 
 				if(!input)
 					return
@@ -431,7 +431,7 @@ SUBSYSTEM_DEF(predships)
 					if(!user.client.has_clan_permission(ranks[rank].permission_required, warn = FALSE))
 						ranks -= rank
 
-				var/input = tgui_input_list(user, "Select the rank to change this user to.", "Select Rank", ranks)
+				var/input = tgui_input_list(user, "选择要更改此用户为的军衔.", "选择军衔", ranks)
 
 				if(!input)
 					return
@@ -447,7 +447,7 @@ SUBSYSTEM_DEF(predships)
 					switch(chosen_rank.limit_type)
 						if(CLAN_LIMIT_NUMBER)
 							if(players_in_rank >= chosen_rank.limit)
-								to_chat(user, span_danger("This slot is full! (Maximum of [chosen_rank.limit] slots)"))
+								to_chat(user, span_danger("此位置已满! (最多 [chosen_rank.limit] 个位置)"))
 								return
 						if(CLAN_LIMIT_SIZE)
 							db_query.sql = "SELECT byond_ckey, clan_rank, permissions, clan_id, honor FROM [format_table_name("clan_player")] WHERE clan_id = :clan_id"
@@ -456,7 +456,7 @@ SUBSYSTEM_DEF(predships)
 							var/available_slots = length(db_query.rows) / chosen_rank.limit
 
 							if(players_in_rank >= available_slots)
-								to_chat(user, span_danger("This slot is full! (Maximum of [chosen_rank.limit] per player in the clan, currently [available_slots])"))
+								to_chat(user, span_danger("此位置已满! (战队中每名玩家最多 [chosen_rank.limit] 个, 当前为 [available_slots])"))
 								return
 
 
@@ -467,7 +467,7 @@ SUBSYSTEM_DEF(predships)
 				return
 
 			log_admin("[key_name_admin(user)] has set the rank of [db_query.item[1]] to [chosen_rank.name] for their clan.")
-			to_chat(user, span_notice("Set [db_query.item[1]]'s rank to [chosen_rank.name]"))
+			to_chat(user, span_notice("将 [db_query.item[1]] 的军衔设置为 [chosen_rank.name]"))
 
 			db_query.sql = "UPDATE [format_table_name("clan_player")] SET clan_rank = :clan_rank, permissions = :permissions WHERE byond_ckey = :byond_ckey"
 			db_query.arguments = list("byond_ckey" = params["ckey"], "clan_rank" = GLOB.clan_ranks_ordered[chosen_rank.name], "permissions" = chosen_rank.permissions)

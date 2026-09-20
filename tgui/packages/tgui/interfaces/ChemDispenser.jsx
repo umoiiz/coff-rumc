@@ -28,18 +28,18 @@ export const ChemDispenser = (props) => {
     <Window width={565} height={620}>
       <Window.Content scrollable>
         <Section
-          title="Status"
+          title="状态"
           buttons={
             recording && (
               <Box inline mx={1} color="red">
                 <Icon name="circle" mr={1} />
-                Recording
+                录制中
               </Box>
             )
           }
         >
           <LabeledList>
-            <LabeledList.Item label="Energy">
+            <LabeledList.Item label="能量">
               <ProgressBar value={data.energy / data.maxEnergy}>
                 {toFixed(data.energy) + ' units'}
               </ProgressBar>
@@ -47,14 +47,14 @@ export const ChemDispenser = (props) => {
           </LabeledList>
         </Section>
         <Section
-          title="Recipes"
+          title="配方"
           buttons={
             <>
               {!recording && (
                 <Box inline mx={1}>
                   <Button
                     color={data.clearingRecipe ? 'red' : 'transparent'}
-                    content="Clear recipes"
+                    content="清除配方"
                     onClick={() => act('clear_recipes')}
                   />
                 </Box>
@@ -63,7 +63,7 @@ export const ChemDispenser = (props) => {
                 <Button
                   icon="circle"
                   disabled={!data.isBeakerLoaded}
-                  content="Record"
+                  content="录制"
                   onClick={() => act('record_recipe')}
                 />
               )}
@@ -71,7 +71,7 @@ export const ChemDispenser = (props) => {
                 <Button
                   icon="ban"
                   color="transparent"
-                  content="Discard"
+                  content="丢弃"
                   onClick={() => act('cancel_recording')}
                 />
               )}
@@ -79,7 +79,7 @@ export const ChemDispenser = (props) => {
                 <Button
                   icon="save"
                   color="green"
-                  content="Save"
+                  content="保存"
                   onClick={() => act('save_recording')}
                 />
               )}
@@ -101,11 +101,11 @@ export const ChemDispenser = (props) => {
                 }
               />
             ))}
-            {recipes.length === 0 && <Box color="light-gray">No recipes.</Box>}
+            {recipes.length === 0 && <Box color="light-gray">没有配方.</Box>}
           </Box>
         </Section>
         <Section
-          title="Dispense"
+          title="分配"
           buttons={beakerTransferAmounts.map((amount) => (
             <Button
               key={amount}
@@ -138,7 +138,7 @@ export const ChemDispenser = (props) => {
           </Box>
         </Section>
         <Section
-          title="Beaker"
+          title="烧杯"
           buttons={beakerTransferAmounts.map((amount) => (
             <Button
               key={amount}
@@ -151,12 +151,12 @@ export const ChemDispenser = (props) => {
         >
           <LabeledList>
             <LabeledList.Item
-              label="Beaker"
+              label="烧杯"
               buttons={
                 !!data.isBeakerLoaded && (
                   <Button
                     icon="eject"
-                    content="Eject"
+                    content="弹出"
                     disabled={!data.isBeakerLoaded}
                     onClick={() => act('eject')}
                   />
@@ -175,7 +175,7 @@ export const ChemDispenser = (props) => {
                 )) ||
                 'No beaker'}
             </LabeledList.Item>
-            <LabeledList.Item label="Contents">
+            <LabeledList.Item label="内容物">
               <Box color="label">
                 {(!data.isBeakerLoaded && !recording && 'N/A') ||
                   (beakerContents.length === 0 && 'Nothing')}

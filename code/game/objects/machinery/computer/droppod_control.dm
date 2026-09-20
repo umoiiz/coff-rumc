@@ -1,6 +1,6 @@
 /obj/machinery/computer/droppod_control
 	name = "Droppod launch computer"
-	desc = "A computer managing the ships drop pods."
+	desc = "一台管理飞船投放舱的计算机."
 	icon = 'icons/obj/machines/computer.dmi'
 	icon_state = "terminal"
 	screen_overlay = "terminal1"
@@ -25,7 +25,7 @@
 		if("launchall")
 			#ifndef TESTING
 			if(world.time < SSticker.round_start_time + SSticker.mode.deploy_time_lock)
-				to_chat(usr, span_notice("Unable to launch drop pods, the ship has not yet reached the combat area."))
+				to_chat(usr, span_notice("无法发射投放舱,飞船尚未抵达战斗区域."))
 				return
 			#endif
 			log_game("[usr] has dropped all currently linked droppods, total:[LAZYLEN(linked_pods)]")

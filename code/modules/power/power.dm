@@ -335,7 +335,7 @@
 	playsound_z(3, 'sound/effects/powerloss.ogg')
 
 	if(announce)
-		priority_announce("В системе питания судна обнаружена аномальная активность. В качестве меры предосторожности питание будет отключено на неопределенный срок.", "Критический Сбой Питания", sound = 'sound/AI/poweroff.ogg')
+		priority_announce("在飞船电力系统中检测到异常活动.作为预防措施,电力将被无限期切断.", "电力严重故障", sound = 'sound/AI/poweroff.ogg')
 
 /proc/power_restore(announce = TRUE)
 	var/list/skipped_areas = list(/area/turret_protected/ai)
@@ -356,7 +356,7 @@
 		C.cell.charge = C.cell.maxcharge
 
 	if(announce)
-		priority_announce("Питание восстановлено. Причина: Неизвестно.", "Восстановление Питания", sound = 'sound/AI/poweron.ogg')
+		priority_announce("电力已恢复.原因:未知.", "电力恢复", sound = 'sound/AI/poweron.ogg')
 
 /proc/power_restore_quick(announce = TRUE)
 	for(var/obj/machinery/power/smes/S in GLOB.machines)
@@ -369,7 +369,7 @@
 		S.power_change()
 
 	if(announce)
-		priority_announce("Питание восстановлено. Причина: Неизвестно.", "Восстановление Питания", sound = 'sound/AI/poweron.ogg')
+		priority_announce("电力已恢复.原因:未知.", "电力恢复", sound = 'sound/AI/poweron.ogg')
 
 /proc/power_restore_everything(announce = TRUE)
 	for(var/obj/machinery/power/smes/S in GLOB.machines)
@@ -385,4 +385,4 @@
 		C.cell.charge = C.cell.maxcharge
 
 	if(announce)
-		priority_announce("Питание восстановлено. Причина: Неизвестно.", "Восстановление Питания", sound = 'sound/AI/poweron.ogg')
+		priority_announce("电力已恢复.原因:未知.", "电力恢复", sound = 'sound/AI/poweron.ogg')

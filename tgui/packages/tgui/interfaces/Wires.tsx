@@ -77,7 +77,7 @@ const WireMap = (props) => {
           buttons={
             <>
               <Button
-                content={wire.cut ? 'Mend' : 'Cut'}
+                content={wire.cut ? '修复' : '切割'}
                 onClick={() =>
                   act('cut', {
                     wire: wire.color,
@@ -85,7 +85,7 @@ const WireMap = (props) => {
                 }
               />
               <Button
-                content="Pulse"
+                content="脉冲"
                 onClick={() =>
                   act('pulse', {
                     wire: wire.color,
@@ -93,7 +93,7 @@ const WireMap = (props) => {
                 }
               />
               <Button
-                content={wire.attached ? 'Detach' : 'Attach'}
+                content={wire.attached ? '分离' : '连接'}
                 onClick={() =>
                   act('attach', {
                     wire: wire.color,

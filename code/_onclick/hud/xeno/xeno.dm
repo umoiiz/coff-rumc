@@ -50,7 +50,7 @@
 
 /atom/movable/screen/alien/evolvehud
 	name = "Evolve Status"
-	desc = "Click for evolve panel."
+	desc = "点击打开进化面板."
 	icon_state = "evolve_empty"
 	screen_loc = ui_evolvehud
 

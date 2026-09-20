@@ -44,19 +44,19 @@
 
 /datum/storage/box/visual/open(mob/user)
 	if(!parent_box.deployed)
-		user.balloon_alert(user, "deploy first.")
+		user.balloon_alert(user, "先展开.")
 		return FALSE
 	return ..()
 
 /datum/storage/box/visual/attempt_draw_object(mob/living/user, start_from_left)
 	if(!parent_box.deployed)
-		user.balloon_alert(user, "deploy first.")
+		user.balloon_alert(user, "先展开.")
 		return FALSE
 	return ..()
 
 /datum/storage/box/visual/can_be_inserted(obj/item/item_to_insert, mob/user, warning)
 	if(!parent_box.deployed)
-		user.balloon_alert(user, "deploy first.")
+		user.balloon_alert(user, "先展开.")
 		return FALSE
 	return ..()
 

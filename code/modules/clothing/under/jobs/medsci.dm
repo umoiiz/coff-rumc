@@ -1,30 +1,30 @@
 /obj/item/clothing/under/rank/research_director
-	desc = "It's a jumpsuit worn by those with the know-how to achieve the position of \"Research Director\". Its fabric provides minor protection from biological contaminants."
-	name = "research director's jumpsuit"
+	desc = "这是一件由那些具备能力达到\"研究主管\"职位的人穿着的连体服. 它的面料提供轻微的生物污染物防护."
+	name = "研究主管的连体服"
 	icon_state = "director"
 	worn_icon_state = "g_suit"
 
 /obj/item/clothing/under/rank/research_director/rdalt
-	desc = "A simple blue utilitarian jumpsuit that serves as the standard issue service uniform of support synthetics onboard TGMC facilities."
-	name = "synthetic service uniform"
+	desc = "一件简单的蓝色实用连体服, 是TGMC设施上支援合成体的标准配发服务制服."
+	name = "合成体服务制服"
 	icon_state = "rdalt"
 
 /obj/item/clothing/under/rank/research_director/dress_rd
-	name = "research director dress uniform"
-	desc = "Feminine fashion for the style concious RD. Its fabric provides minor protection from biological contaminants."
+	name = "研究主管礼服制服"
+	desc = "为注重风格的研究主管设计的女性时装. 它的面料提供轻微的生物污染物防护."
 	icon_state = "dress_rd"
 	armor_protection_flags = CHEST|GROIN|ARMS
 
 /obj/item/clothing/under/rank/scientist
-	desc = "It's made of a special fiber that provides minor protection against small explosions. It has markings that denote the wearer as a scientist."
-	name = "scientist's jumpsuit"
+	desc = "它由一种特殊纤维制成, 可提供轻微的小型爆炸防护. 它带有标记, 表明穿戴者是科学家."
+	name = "科学家的连体服"
 	icon_state = "science"
 	worn_icon_state = "w_suit"
 	permeability_coefficient = 0.50
 
 /obj/item/clothing/under/rank/chemist
-	desc = "It's made of a special fiber that gives special protection against biohazards. It has a chemist rank stripe on it."
-	name = "chemist's jumpsuit"
+	desc = "它由一种特殊纤维制成, 可提供对生物危害的特殊防护. 它上面有化学家等级条纹."
+	name = "化学家的连体服"
 	icon_state = "chemistry"
 	worn_icon_state = "w_suit"
 	permeability_coefficient = 0.50
@@ -33,52 +33,52 @@
 * Medical
 */
 /obj/item/clothing/under/rank/chief_medical_officer
-	desc = "It's a jumpsuit worn by those with the experience to be \"Chief Medical Officer\". It provides minor biological protection."
-	name = "chief medical officer's jumpsuit"
+	desc = "这是一件由那些具备经验成为\"首席医疗官\"的人穿着的连体服. 它提供轻微的生物防护."
+	name = "首席医疗官的连体服"
 	icon_state = "cmo"
 	worn_icon_state = "w_suit"
 	permeability_coefficient = 0.50
 
 /obj/item/clothing/under/rank/geneticist
-	desc = "It's made of a special fiber that gives special protection against biohazards. It has a genetics rank stripe on it."
-	name = "geneticist's jumpsuit"
+	desc = "它由一种特殊纤维制成, 可提供对生物危害的特殊防护. 它上面有遗传学家等级条纹."
+	name = "遗传学家的连体服"
 	icon_state = "genetics"
 	worn_icon_state = "w_suit"
 	permeability_coefficient = 0.50
 
 /obj/item/clothing/under/rank/virologist
-	desc = "It's made of a special fiber that gives special protection against biohazards. It has a virologist rank stripe on it."
-	name = "virologist's jumpsuit"
+	desc = "它由一种特殊纤维制成, 可提供对生物危害的特殊防护. 它上面有病毒学家等级条纹."
+	name = "病毒学家的连体服"
 	icon_state = "virology"
 	worn_icon_state = "w_suit"
 	permeability_coefficient = 0.50
 
 /obj/item/clothing/under/rank/medical
-	desc = "It's made of a special fiber that provides minor protection against biohazards. It has a cross on the chest denoting that the wearer is trained medical personnel."
-	name = "medical doctor's jumpsuit"
+	desc = "它由一种特殊纤维制成, 可提供轻微的生物危害防护. 它胸前有一个十字, 表明穿戴者是受过训练的医疗人员."
+	name = "医生的连体服"
 	icon_state = "medical"
 	worn_icon_state = "w_suit"
 	permeability_coefficient = 0.50
 
 /obj/item/clothing/under/rank/medical/blue
-	name = "blue medical scrubs"
-	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in baby blue."
+	name = "蓝色医疗手术服"
+	desc = "它由一种特殊纤维制成, 可提供轻微的生物危害防护. 这件是浅蓝色的."
 	icon_state = "scrubsblue"
 	adjustment_variants = list(
 		"Half" = "_h",
 	)
 
 /obj/item/clothing/under/rank/medical/green
-	name = "green medical scrubs"
-	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in dark green."
+	name = "绿色医疗手术服"
+	desc = "它由一种特殊纤维制成, 可提供轻微的生物危害防护. 这件是深绿色的."
 	icon_state = "scrubsgreen"
 	adjustment_variants = list(
 		"Half" = "_h",
 	)
 
 /obj/item/clothing/under/rank/medical/purple
-	name = "purple medical scrubs"
-	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in deep purple."
+	name = "紫色医疗手术服"
+	desc = "它由一种特殊纤维制成, 可提供轻微的生物危害防护. 这件是深紫色的."
 	icon_state = "scrubspurple"
 	adjustment_variants = list(
 		"Half" = "_h",

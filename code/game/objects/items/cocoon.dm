@@ -1,6 +1,6 @@
 /obj/structure/cocoon
-	name = "resin cocoon"
-	desc = "A slimy-looking cocoon made out of resin. It is vibrating."
+	name = "树脂茧"
+	desc = "一个由树脂制成的黏糊糊的茧.它正在震动."
 	icon = 'icons/obj/cocoon.dmi'
 	icon_state = "xeno_cocoon"
 	density = FALSE
@@ -37,7 +37,7 @@
 /obj/structure/cocoon/examine(mob/user, distance, infix, suffix)
 	. = ..()
 	if(anchored && victim && ishuman(user))
-		. += span_notice("There seems to be someone inside it. You think you can open it with a sharp object.")
+		. += span_notice("里面似乎有人.你觉得可以用尖锐物体把它打开.")
 
 /obj/structure/cocoon/process()
 	SSpoints.add_psy_points(hivenumber, COCOON_PSY_POINTS_REWARD)

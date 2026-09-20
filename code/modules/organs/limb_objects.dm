@@ -42,79 +42,79 @@
 	transform = turn(transform, rand(70,130))
 
 /obj/item/limb/l_arm
-	name = "left arm"
+	name = "左臂"
 	icon_state = "l_arm"
 	bone_type = /obj/item/armor_module/limb/skeleton/l_arm
 
 /obj/item/limb/l_arm/robotic
-	name = "robotic left arm"
+	name = "机械左臂"
 	icon = 'icons/mob/human_races/r_robot.dmi'
 
 /obj/item/limb/l_foot
-	name = "left foot"
+	name = "左脚"
 	icon_state = "l_foot"
 	bone_type = /obj/item/armor_module/limb/skeleton/l_foot
 
 /obj/item/limb/l_foot/robotic
-	name = "robotic left foot"
+	name = "机械左脚"
 	icon = 'icons/mob/human_races/r_robot.dmi'
 
 /obj/item/limb/l_hand
-	name = "left hand"
+	name = "左手"
 	icon_state = "l_hand"
 	bone_type = /obj/item/armor_module/limb/skeleton/l_hand
 
 /obj/item/limb/l_hand/robotic
-	name = "robotic left hand"
+	name = "机械左手"
 	icon = 'icons/mob/human_races/r_robot.dmi'
 
 /obj/item/limb/l_leg
-	name = "left leg"
+	name = "左腿"
 	icon_state = "l_leg"
 	bone_type = /obj/item/armor_module/limb/skeleton/l_leg
 
 /obj/item/limb/l_leg/robotic
-	name = "robotic left leg"
+	name = "机械左腿"
 	icon = 'icons/mob/human_races/r_robot.dmi'
 
 /obj/item/limb/r_arm
-	name = "right arm"
+	name = "右臂"
 	icon_state = "r_arm"
 	bone_type = /obj/item/armor_module/limb/skeleton/r_arm
 
 /obj/item/limb/r_arm/robotic
-	name = "robotic right arm"
+	name = "机械右臂"
 	icon = 'icons/mob/human_races/r_robot.dmi'
 
 /obj/item/limb/r_foot
-	name = "right foot"
+	name = "右脚"
 	icon_state = "r_foot"
 	bone_type = /obj/item/armor_module/limb/skeleton/r_foot
 
 /obj/item/limb/r_foot/robotic
-	name = "robotic right foot"
+	name = "机械右脚"
 	icon = 'icons/mob/human_races/r_robot.dmi'
 
 /obj/item/limb/r_hand
-	name = "right hand"
+	name = "右手"
 	icon_state = "r_hand"
 	bone_type = /obj/item/armor_module/limb/skeleton/r_hand
 
 /obj/item/limb/r_hand/robotic
-	name = "robotic right hand"
+	name = "机械右手"
 	icon = 'icons/mob/human_races/r_robot.dmi'
 
 /obj/item/limb/r_leg
-	name = "right leg"
+	name = "右腿"
 	icon_state = "r_leg"
 	bone_type = /obj/item/armor_module/limb/skeleton/r_leg
 
 /obj/item/limb/r_leg/robotic
-	name = "robotic right leg"
+	name = "机械右腿"
 	icon = 'icons/mob/human_races/r_robot.dmi'
 
 /obj/item/limb/head
-	name = "head"
+	name = "头部"
 	icon_state = "head_m"
 	resistance_flags = UNACIDABLE
 	bone_type = /obj/item/armor_module/limb/skeleton/head

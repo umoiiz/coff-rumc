@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/hunter
 	caste_base_type = /datum/xeno_caste/hunter
 	name = "Hunter"
-	desc = "A beefy, fast alien with sharp claws."
+	desc = "一个强壮,快速的异形,拥有锋利的爪子."
 	icon = 'icons/Xeno/castes/hunter/basic.dmi'
 	icon_state = "Hunter Running"
 	effects_icon = 'icons/Xeno/castes/hunter/effects.dmi'

@@ -61,7 +61,7 @@ GLOBAL_DATUM_INIT(eord_menu, /datum/eord_menu, new)
 	var/mob/living/liver = user
 	var/crit_threshold = xeno ? liver.health_threshold_crit : liver.get_crit_threshold()
 	if(liver.health >= crit_threshold)
-		to_chat(user, span_notice("Это доступно только когда вы мёртвы или в критическом состоянии."))
+		to_chat(user, span_notice("这只能在死亡或濒死状态下使用."))
 		return FALSE
 	return TRUE
 

@@ -3,7 +3,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/tail_sweep
 	name = "Tail Sweep"
-	desc = "Hit all adjacent units around you, knocking them away and down."
+	desc = "击中你周围所有相邻单位, 将其击退并击倒."
 	action_icon_state = "tail_sweep"
 	action_icon = 'icons/Xeno/actions/defender.dmi'
 	ability_cost = 35
@@ -27,14 +27,14 @@
 /datum/action/ability/xeno_action/tail_sweep/can_use_action(silent, override_flags)
 	. = ..()
 	if(xeno_owner.crest_defense && xeno_owner.plasma_stored < (ability_cost * 2))
-		to_chat(xeno_owner, span_xenowarning("We don't have enough plasma, we need [(ability_cost * 2) - xeno_owner.plasma_stored] more plasma!"))
+		to_chat(xeno_owner, span_xenowarning("我们的等离子体不够, 还需要[(ability_cost * 2) - xeno_owner.plasma_stored]点等离子体!"))
 		return FALSE
 
 /datum/action/ability/xeno_action/tail_sweep/action_activate()
 	GLOB.round_statistics.defender_tail_sweeps++
 	SSblackbox.record_feedback(FEEDBACK_TALLY, "round_statistics", 1, "defender_tail_sweeps")
-	xeno_owner.visible_message(span_xenowarning("\The [xeno_owner] sweeps its tail in a wide circle!"), \
-	span_xenowarning("We sweep our tail in a wide circle!"))
+	xeno_owner.visible_message(span_xenowarning("\The [xeno_owner]大幅环形扫动尾巴!"), \
+	span_xenowarning("我们大幅环形扫动尾巴!"))
 
 	xeno_owner.add_filter("defender_tail_sweep", 2, gauss_blur_filter(1)) //Add cool SFX
 	xeno_owner.spin(4, 1)
@@ -73,7 +73,7 @@
 		SSblackbox.record_feedback(FEEDBACK_TALLY, "round_statistics", 1, "defender_tail_sweep_hits")
 		shake_camera(H, 2, 1)
 
-		to_chat(H, span_xenowarning("We are struck by \the [xeno_owner]'s tail sweep!"))
+		to_chat(H, span_xenowarning("我们被\the [xeno_owner]的扫尾击中!"))
 		playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)
 
 	addtimer(CALLBACK(xeno_owner, TYPE_PROC_REF(/datum, remove_filter), "defender_tail_sweep"), 0.5 SECONDS) //Remove cool SFX
@@ -83,7 +83,7 @@
 	add_cooldown()
 
 /datum/action/ability/xeno_action/tail_sweep/on_cooldown_finish()
-	to_chat(xeno_owner, span_notice("We gather enough strength to tail sweep again."))
+	to_chat(xeno_owner, span_notice("我们积蓄了足够的力量再次扫尾."))
 	owner.playsound_local(owner, 'sound/effects/alien/newlarva.ogg', 25, 0, 1)
 	return ..()
 
@@ -106,7 +106,7 @@
 // ***************************************
 /datum/action/ability/activable/xeno/charge/forward_charge
 	name = "Forward Charge"
-	desc = "Charge up to 4 tiles and knockdown any targets in our way."
+	desc = "冲锋最多4格并击倒沿途所有目标."
 	action_icon_state = "pounce"
 	action_icon = 'icons/Xeno/actions/runner.dmi'
 	cooldown_duration = 10 SECONDS
@@ -131,10 +131,10 @@
 
 		fortify_action.set_fortify(FALSE, TRUE)
 		fortify_action.add_cooldown()
-		to_chat(xeno_owner, span_xenowarning("We rapidly untuck ourselves, preparing to surge forward."))
+		to_chat(xeno_owner, span_xenowarning("我们迅速解除蜷缩, 准备向前猛冲."))
 
-	xeno_owner.visible_message(span_danger("[xeno_owner] charges towards \the [A]!"), \
-	span_danger("We charge towards \the [A]!") )
+	xeno_owner.visible_message(span_danger("[xeno_owner]向\the [A]冲锋!"), \
+	span_danger("我们向\the [A]冲锋!") )
 	xeno_owner.emote("roar")
 	succeed_activate()
 
@@ -177,7 +177,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/toggle_crest_defense
 	name = "Toggle Crest Defense"
-	desc = "Increase your resistance to projectiles at the cost of move speed. Can use abilities while in Crest Defense."
+	desc = "以移动速度为代价提高你对投射物的抗性. 在头冠防御状态下可以使用能力."
 	action_icon_state = "crest_defense"
 	action_icon = 'icons/Xeno/actions/defender.dmi'
 	use_state_flags = ABILITY_USE_FORTIFIED|ABILITY_USE_CRESTED // duh
@@ -201,7 +201,7 @@
 		last_crest_bonus = xeno_owner.xeno_caste.crest_defense_armor
 
 /datum/action/ability/xeno_action/toggle_crest_defense/on_cooldown_finish()
-	to_chat(xeno_owner, span_notice("We can [xeno_owner.crest_defense ? "raise" : "lower"] our crest."))
+	to_chat(xeno_owner, span_notice("我们可以[xeno_owner.crest_defense ? "raise" : "lower"]我们的头冠."))
 	return ..()
 
 /datum/action/ability/xeno_action/toggle_crest_defense/action_activate()
@@ -214,11 +214,11 @@
 	if(xeno_owner.fortify)
 		var/datum/action/ability/xeno_action/fortify/FT = xeno_owner.actions_by_path[/datum/action/ability/xeno_action/fortify]
 		if(FT.cooldown_timer)
-			to_chat(xeno_owner, span_xenowarning("We cannot yet untuck ourselves!"))
+			to_chat(xeno_owner, span_xenowarning("我们还不能解除蜷缩!"))
 			return fail_activate()
 		FT.set_fortify(FALSE, TRUE)
 		FT.add_cooldown()
-		to_chat(xeno_owner, span_xenowarning("We carefully untuck, keeping our crest lowered."))
+		to_chat(xeno_owner, span_xenowarning("我们小心地解除蜷缩, 保持头冠低垂."))
 
 	set_crest_defense(TRUE, was_fortified)
 	add_cooldown()
@@ -227,7 +227,7 @@
 /datum/action/ability/xeno_action/toggle_crest_defense/proc/set_crest_defense(on, silent = FALSE)
 	if(on)
 		if(!silent)
-			to_chat(xeno_owner, span_xenowarning("We tuck ourselves into a defensive stance."))
+			to_chat(xeno_owner, span_xenowarning("我们蜷缩成防御姿态."))
 		GLOB.round_statistics.defender_crest_lowerings++
 		SSblackbox.record_feedback(FEEDBACK_TALLY, "round_statistics", 1, "defender_crest_lowerings")
 		ADD_TRAIT(xeno_owner, TRAIT_STAGGERIMMUNE, CREST_DEFENSE_TRAIT) //Can now endure impacts/damages that would make lesser xenos flinch
@@ -236,7 +236,7 @@
 		xeno_owner.add_movespeed_modifier(MOVESPEED_ID_CRESTDEFENSE, TRUE, 0, NONE, TRUE, xeno_owner.xeno_caste.crest_defense_slowdown)
 	else
 		if(!silent)
-			to_chat(xeno_owner, span_xenowarning("We raise our crest."))
+			to_chat(xeno_owner, span_xenowarning("我们抬起我们的头冠."))
 		GLOB.round_statistics.defender_crest_raises++
 		SSblackbox.record_feedback(FEEDBACK_TALLY, "round_statistics", 1, "defender_crest_raises")
 		REMOVE_TRAIT(xeno_owner, TRAIT_STAGGERIMMUNE, CREST_DEFENSE_TRAIT)
@@ -252,7 +252,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/fortify
 	name = "Fortify"
-	desc = "Plant yourself for a large defensive boost."
+	desc = "扎稳脚跟以获得大幅防御加成."
 	action_icon_state = "fortify"
 	action_icon = 'icons/Xeno/actions/defender.dmi'
 	use_state_flags = ABILITY_USE_FORTIFIED|ABILITY_USE_CRESTED // duh
@@ -285,7 +285,7 @@
 		last_fortify_bonus = xeno_owner.xeno_caste.fortify_armor
 
 /datum/action/ability/xeno_action/fortify/on_cooldown_finish()
-	to_chat(xeno_owner, span_notice("We can [xeno_owner.fortify ? "stand up" : "fortify"] again."))
+	to_chat(xeno_owner, span_notice("我们可以再次[xeno_owner.fortify ? "stand up" : "fortify"]了."))
 	return ..()
 
 /datum/action/ability/xeno_action/fortify/action_activate()
@@ -298,11 +298,11 @@
 	if(xeno_owner.crest_defense)
 		var/datum/action/ability/xeno_action/toggle_crest_defense/CD = xeno_owner.actions_by_path[/datum/action/ability/xeno_action/toggle_crest_defense]
 		if(CD.cooldown_timer)
-			to_chat(xeno_owner, span_xenowarning("We cannot yet transition to a defensive stance!"))
+			to_chat(xeno_owner, span_xenowarning("我们还不能转入防御姿态!"))
 			return fail_activate()
 		CD.set_crest_defense(FALSE, TRUE)
 		CD.add_cooldown()
-		to_chat(xeno_owner, span_xenowarning("We tuck our lowered crest into ourselves."))
+		to_chat(xeno_owner, span_xenowarning("我们将低垂的头冠缩回体内."))
 
 	var/datum/action/ability/activable/xeno/charge/forward_charge/combo_cooldown = xeno_owner.actions_by_path[/datum/action/ability/activable/xeno/charge/forward_charge]
 	combo_cooldown?.add_cooldown(cooldown_duration)
@@ -321,13 +321,13 @@
 			ADD_TRAIT(xeno_owner, TRAIT_IMMOBILE, FORTIFY_TRAIT)
 		ADD_TRAIT(xeno_owner, TRAIT_STOPS_TANK_COLLISION, FORTIFY_TRAIT)
 		if(!silent)
-			to_chat(xeno_owner, span_xenowarning("We tuck ourselves into a defensive stance."))
+			to_chat(xeno_owner, span_xenowarning("我们蜷缩成防御姿态."))
 		xeno_owner.soft_armor = xeno_owner.soft_armor.modifyAllRatings(last_fortify_bonus)
 		xeno_owner.soft_armor = xeno_owner.soft_armor.modifyRating(BOMB = last_fortify_bonus) //double bomb bonus for explosion immunity
 		owner.drop_all_held_items() // drop items (hugger/jelly)
 	else
 		if(!silent)
-			to_chat(xeno_owner, span_xenowarning("We resume our normal stance."))
+			to_chat(xeno_owner, span_xenowarning("我们恢复正常姿态."))
 		xeno_owner.soft_armor = xeno_owner.soft_armor.modifyAllRatings(-last_fortify_bonus)
 		xeno_owner.soft_armor = xeno_owner.soft_armor.modifyRating(BOMB = -last_fortify_bonus)
 		if(move_on_fortifed)
@@ -353,7 +353,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/regenerate_skin
 	name = "Regenerate Skin"
-	desc = "Regenerate your hard exoskeleton skin, restoring some health and removing all sunder."
+	desc = "再生你的坚硬外骨骼皮肤, 恢复部分生命值并移除所有破损."
 	action_icon_state = "regenerate_skin"
 	action_icon = 'icons/Xeno/actions/defender.dmi'
 	use_state_flags = ABILITY_USE_FORTIFIED|ABILITY_USE_CRESTED|ABILITY_TARGET_SELF|ABILITY_IGNORE_SELECTED_ABILITY|ABILITY_KEYBIND_USE_ABILITY
@@ -365,7 +365,7 @@
 	)
 
 /datum/action/ability/xeno_action/regenerate_skin/on_cooldown_finish()
-	to_chat(xeno_owner, span_notice("We feel we are ready to shred our skin and grow another."))
+	to_chat(xeno_owner, span_notice("我们感觉已准备好蜕去皮肤并长出新的."))
 	return ..()
 
 /datum/action/ability/xeno_action/regenerate_skin/action_activate()
@@ -373,12 +373,12 @@
 		return fail_activate()
 
 	if(xeno_owner.on_fire)
-		to_chat(xeno_owner, span_xenowarning("We can't use that while on fire."))
+		to_chat(xeno_owner, span_xenowarning("着火时无法使用该能力."))
 		return fail_activate()
 
 	xeno_owner.emote("roar")
-	xeno_owner.visible_message(span_warning("The skin on \the [xeno_owner] shreds and a new layer can be seen in it's place!"),
-		span_notice("We shed our skin, showing the fresh new layer underneath!"))
+	xeno_owner.visible_message(span_warning("\the [xeno_owner]的皮肤碎裂, 可以看到新的皮肤层取而代之!"),
+		span_notice("我们蜕去皮肤, 露出下方崭新的皮肤层!"))
 
 	xeno_owner.do_jitter_animation(1000)
 	xeno_owner.set_sunder(0)
@@ -392,7 +392,7 @@
 // ***************************************
 /datum/action/ability/xeno_action/centrifugal_force
 	name = "Centrifugal force"
-	desc = "Rapidly spin and hit all adjacent humans around you, knocking them away and down. Uses double plasma when crest is active."
+	desc = "快速旋转并击中你周围所有相邻人类, 将其击退并击倒. 头冠激活时消耗双倍等离子体."
 	action_icon_state = "centrifugal_force"
 	action_icon = 'icons/Xeno/actions/defender.dmi'
 	ability_cost = 15
@@ -412,7 +412,7 @@
 		return TRUE
 	. = ..()
 	if(xeno_owner.crest_defense && xeno_owner.plasma_stored < (ability_cost * 2))
-		to_chat(xeno_owner, span_xenowarning("We don't have enough plasma, we need [(ability_cost * 2) - xeno_owner.plasma_stored] more plasma!"))
+		to_chat(xeno_owner, span_xenowarning("我们的等离子体不够, 还需要[(ability_cost * 2) - xeno_owner.plasma_stored]点等离子体!"))
 		return FALSE
 
 /datum/action/ability/xeno_action/centrifugal_force/action_activate()
@@ -423,8 +423,8 @@
 		return fail_activate()
 	if(!do_after(owner, 0.5 SECONDS, NONE, owner, BUSY_ICON_DANGER, extra_checks = CALLBACK(src, PROC_REF(can_use_action), FALSE, ABILITY_USE_BUSY)))
 		return fail_activate()
-	owner.visible_message(span_xenowarning("\The [owner] starts swinging its tail in a circle!"), \
-		span_xenowarning("We start swinging our tail in a wide circle!"))
+	owner.visible_message(span_xenowarning("\The [owner]开始环形扫动尾巴!"), \
+		span_xenowarning("我们开始大幅环形扫动尾巴!"))
 	do_spin() //kick it off
 
 	spin_loop_timer = addtimer(CALLBACK(src, PROC_REF(do_spin)), 5, TIMER_STOPPABLE)
@@ -461,7 +461,7 @@
 		slapped.Paralyze(0.3 SECONDS)
 		shake_camera(slapped, 2, 1)
 
-		to_chat(slapped, span_xenowarning("We are struck by \the [xeno_owner]'s flying tail!"))
+		to_chat(slapped, span_xenowarning("我们被\the [xeno_owner]的飞旋尾巴击中!"))
 		playsound(slapped, 'sound/weapons/alien_claw_block.ogg', 50, 1)
 
 	succeed_activate(xeno_owner.crest_defense ? ability_cost * 2 : ability_cost)
@@ -488,7 +488,7 @@
 
 /datum/action/ability/activable/xeno/headbutt
 	name = "Headbutt"
-	desc = "Headbutts into the designated target."
+	desc = "用头撞向指定目标."
 	action_icon_state = "headbutt"
 	action_icon = 'icons/Xeno/actions/defender.dmi'
 	cooldown_duration = 5 SECONDS
@@ -501,7 +501,7 @@
 	var/base_damage = 30
 
 /datum/action/ability/activable/xeno/headbutt/on_cooldown_finish()
-	to_chat(owner, span_notice("We gather enough strength to headbutt again."))
+	to_chat(owner, span_notice("我们积蓄了足够的力量再次头撞."))
 	return ..()
 
 /datum/action/ability/activable/xeno/headbutt/can_use_ability(atom/target, silent = FALSE, override_flags)
@@ -515,7 +515,7 @@
 	var/max_dist = 2 - (xeno_owner.crest_defense)
 	if(!line_of_sight(owner, target, max_dist))
 		if(!silent)
-			to_chat(owner, span_warning("We must get closer to headbutt"))
+			to_chat(owner, span_warning("我们必须靠近才能头撞"))
 		return FALSE
 	if(ishuman(target))
 		var/mob/living/carbon/human/victim = target
@@ -535,8 +535,8 @@
 		succeed_activate()
 		return
 
-	owner.visible_message(span_xenowarning("[owner] rams [victim] with its armored crest!"), \
-	span_xenowarning("We ram [victim] with our armored crest!"))
+	owner.visible_message(span_xenowarning("[owner]用装甲头冠猛撞[victim]!"), \
+	span_xenowarning("我们用装甲头冠猛撞[victim]!"))
 
 	victim.apply_damage(headbutt_damage, BRUTE, BODY_ZONE_CHEST, MELEE)
 
@@ -561,7 +561,7 @@
 
 /datum/action/ability/xeno_action/soak
 	name = "soak"
-	desc = "When activated tracks damaged taken for 6 seconds, once the amount of damage reaches 140, the Defender is healed by 80. If the damage threshold is not reached, nothing happens."
+	desc = "激活后追踪6秒内受到的伤害, 一旦伤害量达到140, 防御者恢复80点生命值. 如果未达到伤害阈值, 则不会发生任何事."
 	action_icon_state = "soak"
 	action_icon = 'icons/Xeno/actions/defender.dmi'
 	cooldown_duration = 17 SECONDS
@@ -583,8 +583,8 @@
 	RegisterSignal(xeno_owner, COMSIG_XENOMORPH_TAKING_DAMAGE, PROC_REF(damage_accumulate))
 	addtimer(CALLBACK(src, PROC_REF(stop_accumulating)), 6 SECONDS)
 
-	xeno_owner.balloon_alert(xeno_owner, "begins to tank incoming damage!")
-	to_chat(xeno_owner, span_xenonotice("We begin to tank incoming damage!"))
+	xeno_owner.balloon_alert(xeno_owner, "开始承受来袭伤害!")
+	to_chat(xeno_owner, span_xenonotice("我们开始承受来袭伤害!"))
 
 	xeno_owner.add_filter("steelcrest_enraging", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
 
@@ -604,15 +604,15 @@
 	UnregisterSignal(owner, COMSIG_XENOMORPH_TAKING_DAMAGE)
 
 	damage_accumulated = 0
-	to_chat(owner, span_xenonotice("We stop taking incoming damage."))
+	to_chat(owner, span_xenonotice("我们停止承受来袭伤害."))
 	owner.remove_filter("steelcrest_enraging")
 
 /datum/action/ability/xeno_action/soak/proc/enraged(mob/living/carbon/xenomorph/enraged_mob)
 	enraged_mob.remove_filter("steelcrest_enraging")
 	enraged_mob.add_filter("steelcrest_enraged", 1, list("type" = "outline", "color" = "#ad1313", "size" = 1))
 
-	enraged_mob.visible_message(span_warning("[enraged_mob] gets enraged after being damaged enough!"), \
-	span_warning("We feel enraged after taking in oncoming damage!"))
+	enraged_mob.visible_message(span_warning("[enraged_mob]在受到足够伤害后陷入狂怒!"), \
+	span_warning("我们在承受来袭伤害后感到狂怒!"))
 	enraged_mob.emote("roar") // reeeeeeeeeee
 
 	enraged_mob.heal_xeno_damage(heal_amount, FALSE)

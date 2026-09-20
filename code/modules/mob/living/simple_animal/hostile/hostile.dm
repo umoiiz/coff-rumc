@@ -365,7 +365,7 @@
 /mob/living/simple_animal/hostile/proc/OpenFire(atom/A)
 	if(CheckFriendlyFire(A))
 		return
-	visible_message(span_danger("<b>[src]</b> [ranged_message] at [A]!"))
+	visible_message(span_danger("<b>[src]</b> [ranged_message]了[A]!"))
 
 
 	if(rapid > 1)

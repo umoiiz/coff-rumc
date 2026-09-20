@@ -10,7 +10,7 @@ GLOBAL_LIST_INIT(designator_mode_image_list, list(
 
 /datum/action/ability/activable/build_designator
 	name = "Interact Designator"
-	desc = "Order your underlings around."
+	desc = "指挥你的下属."
 	action_icon_state = "interact_designator"
 	action_icon = 'icons/mob/actions.dmi'
 	use_state_flags = ABILITY_TARGET_SELF

@@ -1,6 +1,6 @@
 /obj/machinery/computer/marine_card
 	name = "Identification Computer"
-	desc = "You can use this to change ID's."
+	desc = "你可以用这个来更改ID."
 	icon_state = "computer_small"
 	screen_overlay = "id"
 	req_access = list(ACCESS_MARINE_LOGISTICS)
@@ -22,7 +22,7 @@
 		var/obj/item/card/id/idcard = I
 		if(ACCESS_MARINE_LOGISTICS in idcard.access)
 			if(scan && modify)
-				to_chat(user, "Both slots are full already. Remove a card first.")
+				to_chat(user, "两个插槽都已满. 请先移除一张卡.")
 				return
 			if(!scan)
 				user.drop_held_item()
@@ -34,7 +34,7 @@
 				modify = idcard
 		else
 			if(modify)
-				to_chat(user, "The modifying slot is full already. Remove a card first.")
+				to_chat(user, "修改插槽已满. 请先移除一张卡.")
 				return
 			user.drop_held_item()
 			idcard.forceMove(src)
@@ -118,7 +118,7 @@
 					authenticated = 1
 					. = TRUE
 			else if((!(authenticated) && (issilicon(user))) && (!modify))
-				to_chat(user, "You can't modify an ID without an ID inserted to modify. Once one is in the modify slot on the computer, you can log in.")
+				to_chat(user, "如果没有插入要修改的ID,你就无法修改ID. 一旦有一张卡插入计算机上的修改插槽,你就可以登录.")
 
 		if("PRG_logout")
 			authenticated = 0
@@ -190,7 +190,7 @@
 						modify.registered_name = temp_name
 						. = TRUE
 					else
-						visible_message(span_notice("[src] buzzes rudely."))
+						visible_message(span_notice("[src]无礼地嗡嗡作响."))
 
 		if("PRG_account")
 			if(authenticated && modify)
@@ -220,11 +220,11 @@
 							break
 
 					if(!jobdatum)
-						to_chat(user, span_warning("No log exists for this job."))
+						to_chat(user, span_warning("此职位没有日志."))
 						return FALSE
 
 					if(!modify)
-						to_chat(user, span_warning("No card to modify!"))
+						to_chat(user, span_warning("没有可修改的卡!"))
 						return FALSE
 
 					modify.access = jobdatum.get_access()
@@ -305,7 +305,7 @@
 
 /obj/machinery/computer/squad_changer
 	name = "Squad Distribution Computer"
-	desc = "You can use this to change someone's squad."
+	desc = "你可以用这个来更改某人的小队."
 	icon_state = "computer_small"
 	screen_overlay = "guest"
 	req_access = list(ACCESS_MARINE_LOGISTICS)
@@ -322,7 +322,7 @@
 	if(istype(I, /obj/item/card/id))
 		var/obj/item/card/id/idcard = I
 		if(modify)
-			to_chat(user, "Remove the inserted card first.")
+			to_chat(user, "请先移除已插入的卡.")
 			return
 
 		user.drop_held_item()
@@ -374,10 +374,10 @@
 
 		if("PRG_squad")
 			if(!allowed(user))
-				to_chat(user, span_warning("You don't have sufficient access to use this console."))
+				to_chat(user, span_warning("你没有足够的权限使用此控制台."))
 				return FALSE
 			if(!modify)
-				to_chat(user, span_warning("You need to insert a card to modify."))
+				to_chat(user, span_warning("你需要插入一张卡才能进行修改."))
 				return FALSE
 			var/squad_name = params["name"]
 			var/datum/squad/selected
@@ -388,12 +388,12 @@
 			for(var/datum/squad/old_squad AS in SSjob.squads)
 				if(findtext(modify.assignment, old_squad.name))
 					modify.access -= old_squad.access
-					to_chat(user, "Old squad access removed.")
+					to_chat(user, "旧小队权限已移除.")
 			if(selected)
 				modify.assignment = "[selected.name] [modify.rank]"
 				modify.access += selected.access
-				to_chat(user, "[selected.name] Squad added to card.")
+				to_chat(user, "[selected.name]小队已添加到卡片.")
 			else
-				to_chat(user, "No squad selected.")
+				to_chat(user, "未选择小队.")
 			modify.name = "[modify.registered_name]'s ID Card ([modify.assignment])"
 			. = TRUE

@@ -42,7 +42,7 @@
 		mini.give_action(src)
 
 	if(length(GLOB.offered_mob_list))
-		to_chat(src, span_boldnotice("There's mobs available for taking! Ghost > Take Offered Mob"))
+		to_chat(src, span_boldnotice("有可用的生物可供接管! 幽灵 > 接管提供的生物"))
 
 	if(SSticker.mode && SSticker.mode.round_type_flags & MODE_PREDATOR)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
@@ -51,9 +51,9 @@
 /mob/dead/observer/proc/revived_while_away()
 	SIGNAL_HANDLER
 	to_chat(src, assemble_alert(
-		title = "Revived",
-		subtitle = "You were revived while disconnected.",
-		message = "Someone resuscitated you while you were disconnected. [isnull(can_reenter_corpse) ? "You're currently unable to re-enter your body." : "You will re-enter your body in a few seconds."]",
+		title = "已复活",
+		subtitle = "你在断线期间被复活了.",
+		message = "你在断线期间被某人复苏了. [isnull(can_reenter_corpse) ? "You're currently unable to re-enter your body." : "You will re-enter your body in a few seconds."]",
 		color_override = "red"
 	))
 	if(!isnull(can_reenter_corpse))

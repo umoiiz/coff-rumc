@@ -14,7 +14,7 @@
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/minidropship
 	name = "Tadpole navigation computer"
-	desc = "Used to designate a precise transit location for the Tadpole."
+	desc = "用于为蝌蚪指定精确的传送位置."
 	icon_state = "shuttlecomputer"
 	screen_overlay = "shuttlecomputer_screen"
 	req_access = list(ACCESS_MARINE_TADPOLE)
@@ -123,11 +123,11 @@
 	shuttle_port = SSshuttle.getShuttle(shuttle_id)
 	#ifndef TESTING
 	if(!(shuttle_port.shuttle_flags & GAMEMODE_IMMUNE) && world.time < SSticker.round_start_time + SSticker.mode.deploy_time_lock)
-		to_chat(ui_user, span_warning("The mothership is too far away from the theatre of operation, we cannot take off."))
+		to_chat(ui_user, span_warning("母舰距离作战区域太远,我们无法起飞."))
 		return
 	#endif
 	if(TIMER_COOLDOWN_RUNNING(src, COOLDOWN_TADPOLE_LAUNCHING))
-		to_chat(ui_user, span_warning("The dropship's engines are not ready yet"))
+		to_chat(ui_user, span_warning("运输机的引擎尚未准备好"))
 		return
 	TIMER_COOLDOWN_START(src, COOLDOWN_TADPOLE_LAUNCHING, launching_delay) // To stop spamming
 	shuttle_port.shuttle_computer = src
@@ -158,7 +158,7 @@
 /// Toggle the vision between small nightvision and turf vision
 /obj/machinery/computer/camera_advanced/shuttle_docker/minidropship/proc/toggle_nvg()
 	if(!check_hovering_spot(eyeobj?.loc))
-		to_chat(ui_user, span_warning("Can't toggle night vision mode in caves!"))
+		to_chat(ui_user, span_warning("无法在洞穴中切换夜视模式!"))
 		return
 	nvg_vision_mode = !nvg_vision_mode
 	ui_user?.update_sight()
@@ -169,19 +169,19 @@
 		return
 	if(xeno_attacker.status_flags & INCORPOREAL)
 		return
-	xeno_attacker.visible_message("[xeno_attacker] begins to slash delicately at the computer",
-	"We start slashing delicately at the computer. This will take a while.")
+	xeno_attacker.visible_message("[xeno_attacker]开始精细地切割电脑",
+	"我们开始精细地切割电脑.这需要一些时间.")
 	if(!do_after(xeno_attacker, 10 SECONDS, NONE, src, BUSY_ICON_DANGER, BUSY_ICON_HOSTILE))
 		return
-	visible_message("The inner wiring is visible, it can be slashed!")
-	xeno_attacker.visible_message("[xeno_attacker] continue to slash at the computer",
-	"We continue slashing at the computer. If we stop now we will have to start all over again.")
+	visible_message("内部线路可见,可以切割!")
+	xeno_attacker.visible_message("[xeno_attacker]继续切割电脑",
+	"我们继续切割电脑.如果我们现在停下,就必须从头再来.")
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()
 	if(!do_after(xeno_attacker, 10 SECONDS, NONE, src, BUSY_ICON_DANGER, BUSY_ICON_HOSTILE))
 		return
-	visible_message("The wiring is destroyed, nobody will be able to repair this computer!")
+	visible_message("线路已被摧毁,没人能修复这台电脑了!")
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MINI_DROPSHIP_DESTROYED, src)
 	var/datum/effect_system/spark_spread/s2 = new /datum/effect_system/spark_spread
 	s2.set_up(3, 1, src)
@@ -191,7 +191,7 @@
 	clean_ui_user()
 
 	if(fly_state == SHUTTLE_IN_ATMOSPHERE && last_valid_ground_port)
-		visible_message("Autopilot detects loss of helm control. INITIATING EMERGENCY LANDING!")
+		visible_message("自动驾驶检测到舵控丢失.正在启动紧急着陆!")
 		shuttle_port.callTime = SHUTTLE_LANDING_CALLTIME
 		next_fly_state = SHUTTLE_ON_GROUND
 		shuttle_port.set_mode(SHUTTLE_CALL)
@@ -200,11 +200,11 @@
 
 	if(next_fly_state == SHUTTLE_IN_ATMOSPHERE)
 		shuttle_port.set_idle() // don't go up with a broken console, cencel spooling
-		visible_message("Autopilot detects loss of helm control. Halting take off!")
+		visible_message("自动驾驶检测到舵控丢失.正在停止起飞!")
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/minidropship/can_interact(mob/user)
 	if(machine_stat & BROKEN)
-		to_chat(user, span_warning("The [src] blinks and lets out a crackling noise. Its broken!"))
+		to_chat(user, span_warning("[src]闪烁并发出噼啪声.它坏了!"))
 		return
 	return ..()
 
@@ -273,13 +273,13 @@
 	var/mob/camera/aiEye/remote/remote_eye = C.remote_control
 	var/obj/machinery/computer/camera_advanced/shuttle_docker/minidropship/origin = remote_eye.origin
 	if(origin.shuttle_port.mode != SHUTTLE_IDLE)
-		to_chat(owner, span_warning("The shuttle is not ready to land yet!"))
+		to_chat(owner, span_warning("穿梭机尚未准备好着陆!"))
 		return
 	if(!origin.placeLandingSpot(target))
-		to_chat(owner, span_warning("You cannot land here."))
+		to_chat(owner, span_warning("你无法在这里着陆."))
 		return
 	if(is_ground_level(origin.z)) //Safety check to prevent instant transmission
-		to_chat(owner, span_warning("The shuttle can't move while docked on the planet"))
+		to_chat(owner, span_warning("穿梭机停靠在地面时无法移动"))
 		return
 	var/area/landing_area = get_area(remote_eye)
 	if(!(landing_area.area_flags & MARINE_BASE))

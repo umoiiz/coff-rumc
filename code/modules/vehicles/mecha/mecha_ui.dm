@@ -152,11 +152,11 @@
 	//usr is in occupants
 	switch(action)
 		if("changename")
-			var/userinput = tgui_input_text(usr, "Choose a new exosuit name", "Rename exosuit", max_length = MAX_NAME_LEN)
+			var/userinput = tgui_input_text(usr, "选择一个新的外骨骼名称", "重命名外骨骼", max_length = MAX_NAME_LEN)
 			if(!userinput)
 				return
 			if(is_ic_filtered(userinput) || NON_ASCII_CHECK(userinput))
-				tgui_alert(usr, "You cannot set a name that contains a word prohibited in IC chat!")
+				tgui_alert(usr, "你不能设置包含IC聊天中禁用词的名称!")
 				return
 			name = userinput
 		if("toggle_safety")

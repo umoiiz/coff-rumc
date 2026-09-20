@@ -2,7 +2,7 @@
 	if(lying_angle)
 		return FALSE
 	if(isclosedturf(get_turf(src)) && !iswallturf(A))	//If we are on a closed turf (e.g. in a wall) we can't attack anything, except walls (or well, resin walls really) so we can't make ourselves be stuck.
-		balloon_alert(src, "Cannot reach")
+		balloon_alert(src, "无法触及")
 		return FALSE
 	if(!(isopenturf(A) || istype(A, /obj/alien/weeds))) //We don't care about open turfs; they don't trigger our melee click cooldown
 		changeNext_move(xeno_caste ? xeno_caste.attack_delay : CLICK_CD_MELEE)
@@ -25,8 +25,8 @@
 
 			do_attack_animation(target_turf)
 			playsound(target_turf, 'sound/effects/alien/tail_swipe2.ogg', 45, 1) //SFX
-			visible_message(span_danger("\The [src] pats at the fire!"), \
-			span_danger("We pat the fire!"))
+			visible_message(span_danger("\The [src] 正在灭火!"), \
+			span_danger("我们在灭火!"))
 			changeNext_move(CLICK_CD_MELEE)
 			return
 
@@ -61,7 +61,7 @@
 	if(lying_angle)
 		return FALSE
 	if(isclosedturf(get_turf(src)) && !iswallturf(A))	//If we are on a closed turf (e.g. in a wall) we can't attack anything, except walls (or well, resin walls really) so we can't make ourselves be stuck.
-		balloon_alert(src, "Cannot reach")
+		balloon_alert(src, "无法触及")
 		return FALSE
 	if(!(isopenturf(A) || istype(A, /obj/alien/weeds))) //We don't care about open turfs; they don't trigger our melee click cooldown
 		changeNext_move(xeno_caste ? xeno_caste.attack_delay : CLICK_CD_MELEE)

@@ -3,7 +3,7 @@
 #define DISINFECT (1<<2)
 
 /obj/item/stack/medical
-	name = "medical pack"
+	name = "医疗包"
 	singular_name = "medical pack"
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/equipment/medical_left.dmi',
@@ -31,29 +31,29 @@
 		return
 
 	if(!ishuman(M))
-		M.balloon_alert(user, "not a human")
+		M.balloon_alert(user, "不是人类")
 		return FALSE
 	var/mob/living/carbon/human/target = M
 
 	if(!ishuman(user))
-		target.balloon_alert(user, "not dextrous enough")
+		target.balloon_alert(user, "不够灵巧")
 		return FALSE
 
 	if(user.do_actions)
-		target.balloon_alert(user, "already busy")
+		target.balloon_alert(user, "已经忙碌")
 		return
 
 	var/datum/limb/affecting = user?.client?.prefs?.toggles_gameplay & RADIAL_MEDICAL ? radial_medical(target, user) : target.get_limb(user.zone_selected)
 	if(!user.get_active_held_item(src))
 		return
 	if(HAS_TRAIT(target, TRAIT_FOREIGN_BIO) && !alien)
-		to_chat(user, span_warning("\The [src] is incompatible with the biology of [target]!"))
+		to_chat(user, span_warning("\The [src]与[target]的生理结构不兼容!"))
 		return TRUE
 	if(!affecting)
 		return FALSE
 
 	if(!can_affect_limb(affecting))
-		target.balloon_alert(user, "Limb is [affecting.limb_status & LIMB_ROBOT ? "robotic": "organic"]!")
+		target.balloon_alert(user, "肢体是[affecting.limb_status & LIMB_ROBOT ? "robotic": "organic"]!")
 		return FALSE
 
 	return affecting
@@ -63,7 +63,7 @@
 	return !(affecting.limb_status & LIMB_ROBOT)
 
 /obj/item/stack/medical/heal_pack
-	name = "platonic gauze"
+	name = "柏拉图式纱布"
 	amount = 40
 	max_amount = 40
 	///How much brute damage this pack heals when applied to a limb
@@ -83,7 +83,7 @@
 	var/mob/living/carbon/human/patient = M //If we've got to this point, the parent proc already checked they're human
 
 	if(affecting.limb_status & LIMB_DESTROYED)
-		patient.balloon_alert(user, "limb destroyed")
+		patient.balloon_alert(user, "肢体已毁")
 		return FALSE
 
 	var/unskilled_penalty = (user.skills.getRating(SKILL_MEDICAL) < skill_level_needed) ? 0.5 : 1
@@ -91,7 +91,7 @@
 	patient_limbs -= affecting
 	while(affecting && amount)
 		if(!do_after(user, SKILL_TASK_VERY_EASY / (unskilled_penalty ** 2), NONE, patient, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL, extra_checks = CALLBACK(src, PROC_REF(can_affect_limb), affecting)))
-			patient.balloon_alert(user, "Stopped tending")
+			patient.balloon_alert(user, "停止护理")
 			return FALSE
 		var/affected = heal_limb(affecting, unskilled_penalty)
 		if(affected)
@@ -106,7 +106,7 @@
 				break
 			if(!length(patient_limbs))
 				break
-	patient.balloon_alert(user, "Finished tending")
+	patient.balloon_alert(user, "完成护理")
 	return TRUE
 
 /// return TRUE if a given limb can be healed by src, FALSE otherwise
@@ -143,29 +143,29 @@
 ///Purely visual, generates the success/failure messages for using a health pack
 /obj/item/stack/medical/heal_pack/proc/generate_treatment_messages(mob/user, mob/patient, datum/limb/target_limb, success)
 	if(!success)
-		to_chat(user, span_warning("The wounds on [patient]'s [target_limb.display_name] have already been treated."))
+		to_chat(user, span_warning("[patient]的[target_limb.display_name]上的伤口已经处理过了."))
 		return
-	user.visible_message(span_green("[user] treats the wounds on [patient]'s [target_limb.display_name] with [src]."),
-	span_green("You treat the wounds on [patient]'s [target_limb.display_name] with [src].") )
+	user.visible_message(span_green("[user]用[src]处理了[patient]的[target_limb.display_name]上的伤口."),
+	span_green("你用[src]处理了[patient]的[target_limb.display_name]上的伤口.") )
 
 /obj/item/stack/medical/heal_pack/gauze
-	name = "roll of gauze"
+	name = "纱布卷"
 	singular_name = "medical gauze"
-	desc = "Some sterile gauze to wrap around bloody stumps."
+	desc = "一些无菌纱布,用于包裹血淋淋的残肢."
 	icon_state = "brutepack"
 	heal_brute = 3
 	heal_flags = BANDAGE
 
 /obj/item/stack/medical/heal_pack/gauze/generate_treatment_messages(mob/user, mob/patient, datum/limb/target_limb, success)
 	if(!success)
-		to_chat(user, span_warning("The wounds on [patient]'s [target_limb.display_name] have already been treated."))
+		to_chat(user, span_warning("[patient]的[target_limb.display_name]上的伤口已经处理过了."))
 		return
-	user.visible_message(span_green("[user] bandages [patient]'s [target_limb.display_name]."),
-		span_green("You bandage [patient]'s [target_limb.display_name].") )
+	user.visible_message(span_green("[user]包扎了[patient]的[target_limb.display_name]."),
+		span_green("你包扎了[patient]的[target_limb.display_name].") )
 
 /obj/item/stack/medical/heal_pack/ointment
-	name = "ointment"
-	desc = "Used to treat burns, infected wounds, and relieve itching in unusual places."
+	name = "药膏"
+	desc = "用于治疗烧伤、感染伤口,以及缓解特殊部位的瘙痒。"
 	gender = PLURAL
 	singular_name = "ointment"
 	icon_state = "ointment"
@@ -174,15 +174,15 @@
 
 /obj/item/stack/medical/heal_pack/ointment/generate_treatment_messages(mob/user, mob/patient, datum/limb/target_limb, success)
 	if(!success)
-		to_chat(user, span_warning("The wounds on [patient]'s [target_limb.display_name] have already been treated."))
+		to_chat(user, span_warning("[patient]的[target_limb.display_name]上的伤口已经处理过了。"))
 		return
-	user.visible_message(span_green("[user] salves wounds on [patient]'s [target_limb.display_name]."),
-	span_green("You salve wounds on [patient]'s [target_limb.display_name]."))
+	user.visible_message(span_green("[user]为[patient]的[target_limb.display_name]涂抹药膏。"),
+	span_green("你为[patient]的[target_limb.display_name]涂抹药膏。"))
 
 /obj/item/stack/medical/heal_pack/gauze/sectoid
-	name = "\improper healing resin pack"
+	name = "\improper 的治疗树脂包"
 	singular_name = "healing resin pack"
-	desc = "A strange tool filled with a sticky, alien resin. It seems it is meant for covering wounds."
+	desc = "一个装满黏稠异形树脂的奇怪工具。似乎是用来覆盖伤口的。"
 	icon = 'icons/obj/items/surgery_tools.dmi'
 	icon_state = "predator_fixovein"
 	heal_brute = 20
@@ -197,38 +197,38 @@
 	unskilled_delay = SKILL_TASK_EASY
 
 /obj/item/stack/medical/heal_pack/advanced/bruise_pack
-	name = "advanced trauma kit"
+	name = "高级创伤包"
 	singular_name = "advanced trauma kit"
-	desc = "An advanced trauma kit for severe injuries."
+	desc = "用于严重伤势的高级创伤包。"
 	icon_state = "traumakit"
 	heal_brute = 12
 	heal_flags = BANDAGE | DISINFECT
 
 /obj/item/stack/medical/heal_pack/advanced/bruise_pack/generate_treatment_messages(mob/user, mob/patient, datum/limb/target_limb, success)
 	if(!success)
-		to_chat(user, span_warning("The wounds on [patient]'s [target_limb.display_name] have already been treated."))
+		to_chat(user, span_warning("[patient]的[target_limb.display_name]上的伤口已经处理过了。"))
 		return
-	user.visible_message(span_green("[user] cleans [patient]'s [target_limb.display_name] and seals its wounds with bioglue."),
-		span_green("You clean and seal all the wounds on [patient]'s [target_limb.display_name]."))
+	user.visible_message(span_green("[user]清理[patient]的[target_limb.display_name]并用生物胶封闭伤口。"),
+		span_green("你清理并封闭[patient]的[target_limb.display_name]上的所有伤口。"))
 
 /obj/item/stack/medical/heal_pack/advanced/burn_pack
-	name = "advanced burn kit"
+	name = "高级烧伤包"
 	singular_name = "advanced burn kit"
-	desc = "An advanced treatment kit for severe burns."
+	desc = "用于严重烧伤的高级治疗包。"
 	icon_state = "burnkit"
 	heal_burn = 12
 	heal_flags = SALVE | DISINFECT
 
 /obj/item/stack/medical/heal_pack/advanced/burn_pack/generate_treatment_messages(mob/user, mob/patient, datum/limb/target_limb, success)
 	if(!success)
-		to_chat(user, span_warning("The wounds on [patient]'s [target_limb.display_name] have already been treated."))
+		to_chat(user, span_warning("[patient]的[target_limb.display_name]上的伤口已经处理过了。"))
 		return
-	user.visible_message(span_green("[user] covers the wounds on [patient]'s [target_limb.display_name] with regenerative membrane."),
-	span_green("You cover the wounds on [patient]'s [target_limb.display_name] with regenerative membrane."))
+	user.visible_message(span_green("[user]用再生膜覆盖[patient]的[target_limb.display_name]上的伤口。"),
+	span_green("你用再生膜覆盖[patient]的[target_limb.display_name]上的伤口。"))
 
 /obj/item/stack/medical/splint
-	name = "medical splints"
-	desc = "Used to stabilize broken bones."
+	name = "医用夹板"
+	desc = "用于固定骨折。"
 	singular_name = "medical splint"
 	icon_state = "splint"
 	amount = 5
@@ -246,14 +246,14 @@
 
 	if(user.skills.getRating(SKILL_MEDICAL) < skill_level_needed)
 		if(user.do_actions)
-			M.balloon_alert(user, "already busy")
+			M.balloon_alert(user, "已经忙着了")
 			return FALSE
 		if(!do_after(user, unskilled_delay, NONE, M, BUSY_ICON_UNSKILLED, BUSY_ICON_MEDICAL))
 			return FALSE
 
 	var/datum/limb/affecting = .
 	if(M == user && ((!user.hand && affecting.body_part == ARM_RIGHT) || (user.hand && affecting.body_part == ARM_LEFT)))
-		user.balloon_alert(user, "You are using that arm!")
+		user.balloon_alert(user, "你正在使用那条手臂!")
 		return
 	if(affecting.apply_splints(src, user == M ? (applied_splint_health*max(user.skills.getRating(SKILL_MEDICAL) - 1, 0)) : applied_splint_health*user.skills.getRating(SKILL_MEDICAL), user, M))
 		use(1)
@@ -261,18 +261,18 @@
 	return FALSE
 
 /obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator
-	name = "mending herbs"
+	name = "疗伤草药"
 	singular_name = "mending herb"
-	desc = "A poultice made of soft leaves that is rubbed on bruises."
+	desc = "由柔软叶片制成的药膏,用于涂抹瘀伤。"
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "brute_herbs"
 	heal_brute = 15
 	alien = TRUE
 
 /obj/item/stack/medical/heal_pack/ointment/predator
-	name = "soothing herbs"
+	name = "舒缓草药"
 	singular_name = "soothing herb"
-	desc = "A poultice made of cold, blue petals that is rubbed on burns."
+	desc = "由冰凉的蓝色花瓣制成的药膏,用于涂抹烧伤。"
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "burn_herbs"
 	heal_burn = 15
@@ -297,9 +297,9 @@
 	return FALSE
 
 /obj/item/stack/medical/heal_pack/advanced/bruise_combat_pack
-	name = "combat trauma kit"
+	name = "战斗创伤包"
 	singular_name = "combat trauma kit"
-	desc = "An expensive huge kit for prolonged combat conditions. Has more space and better medicine compared to a regular one."
+	desc = "用于长时间战斗环境的昂贵大型医疗包。相比普通医疗包有更多空间和更好的药品。"
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/equipment/medical_left.dmi',
 		slot_r_hand_str = 'icons/mob/inhands/equipment/medical_right.dmi',
@@ -315,15 +315,15 @@
 
 /obj/item/stack/medical/heal_pack/advanced/bruise_combat_pack/generate_treatment_messages(mob/user, mob/patient, datum/limb/target_limb, success)
 	if(!success)
-		to_chat(user, span_warning("The wounds on [patient]'s [target_limb.display_name] have already been treated."))
+		to_chat(user, span_warning("[patient]的[target_limb.display_name]上的伤口已经处理过了。"))
 		return
-	user.visible_message(span_notice("[user] cleans [patient]'s [target_limb.display_name] and seals its wounds with bioglue."),
-		span_notice("You clean and seal all the wounds on [patient]'s [target_limb.display_name]."))
+	user.visible_message(span_notice("[user]清理[patient]的[target_limb.display_name]并用生物胶封闭伤口。"),
+		span_notice("你清理并封闭[patient]的[target_limb.display_name]上的所有伤口。"))
 
 /obj/item/stack/medical/heal_pack/advanced/burn_combat_pack
-	name = "combat burn kit"
+	name = "战斗烧伤包"
 	singular_name = "combat burn kit"
-	desc = "An expensive huge kit for prolonged combat conditions. Has more space and better medicine compared to a regular one."
+	desc = "用于长时间战斗环境的昂贵大型医疗包。相比普通医疗包有更多空间和更好的药品。"
 	icon = 'icons/obj/stack_objects.dmi'
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/equipment/medical_left.dmi',
@@ -340,24 +340,24 @@
 
 /obj/item/stack/medical/heal_pack/advanced/burn_combat_pack/generate_treatment_messages(mob/user, mob/patient, datum/limb/target_limb, success)
 	if(!success)
-		to_chat(user, span_warning("The wounds on [patient]'s [target_limb.display_name] have already been treated."))
+		to_chat(user, span_warning("[patient]的[target_limb.display_name]上的伤口已经处理过了。"))
 		return
-	user.visible_message(span_notice("[user] covers the wounds on [patient]'s [target_limb.display_name] with regenerative membrane."),
-	span_notice("You cover the wounds on [patient]'s [target_limb.display_name] with regenerative membrane."))
+	user.visible_message(span_notice("[user]用再生膜覆盖[patient]的[target_limb.display_name]上的伤口。"),
+	span_notice("你用再生膜覆盖[patient]的[target_limb.display_name]上的伤口。"))
 
 /obj/item/stack/medical/heal_pack/advanced/bruise_pack/predator
-	name = "mending herbs"
+	name = "疗伤草药"
 	singular_name = "mending herb"
-	desc = "A poultice made of soft leaves that is rubbed on bruises."
+	desc = "由柔软叶片制成的药膏,用于涂抹瘀伤。"
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "brute_herbs"
 	heal_brute = 15
 	alien = TRUE
 
 /obj/item/stack/medical/heal_pack/ointment/predator
-	name = "soothing herbs"
+	name = "舒缓草药"
 	singular_name = "soothing herb"
-	desc = "A poultice made of cold, blue petals that is rubbed on burns."
+	desc = "由冰凉的蓝色花瓣制成的药膏,用于涂抹烧伤。"
 	icon = 'icons/obj/hunter/pred_gear.dmi'
 	icon_state = "burn_herbs"
 	heal_burn = 15

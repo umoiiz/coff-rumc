@@ -1,6 +1,6 @@
 /obj/item/assembly/timer
-	name = "timer"
-	desc = "Used to time things. Works well with contraptions which has to count down. Tick tock."
+	name = "定时器"
+	desc = "用于计时. 与需要倒计时的装置配合良好. 滴答滴答."
 	icon_state = "timer"
 	attachable = TRUE
 	interaction_flags = INTERACT_REQUIRES_DEXTERITY
@@ -21,7 +21,7 @@
 
 /obj/item/assembly/timer/examine(mob/user)
 	. = ..()
-	. += span_notice("The timer is [timing ? "counting down from [time]":"set for [time] seconds"].")
+	. += span_notice("定时器为[timing ? "counting down from [time]":"set for [time] seconds"].")
 
 /obj/item/assembly/timer/activate()
 	. = ..()
@@ -45,7 +45,7 @@
 	if(!secured || next_activate > world.time)
 		return FALSE
 	pulse(FALSE)
-	audible_message("[icon2html(src, hearers(src))] *beep* *beep* *beep*", null, hearing_range)
+	audible_message("[icon2html(src, hearers(src))] *哔* *哔* *哔*", null, hearing_range)
 	for(var/CHM in get_hearers_in_view(hearing_range, src))
 		if(ismob(CHM))
 			var/mob/LM = CHM

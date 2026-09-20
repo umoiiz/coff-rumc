@@ -25,17 +25,17 @@
 	. = ..()
 	var/obj/item/teleporter_kit/kit = get_internal_item()
 	if(!kit?.cell)
-		. += span_notice("It currently lacks a power cell.")
+		. += span_notice("它目前缺少电池.")
 	else
 		var/charges_left = round(kit.cell.charge / TELEPORTING_COST)
 		if(charges_left <= 0)
-			. += span_notice("It doesn't have any charge for the teleportations left!")
+			. += span_notice("它已经没有剩余电量用于传送了!")
 		else
-			. += span_notice("It has charge left for [charges_left] teleportations.")
+			. += span_notice("它还剩余[charges_left]次传送的电量.")
 	if(kit?.linked_teleporter)
-		. += span_notice("It is currently linked to a Teleporter #[kit.linked_teleporter.self_tele_tag] at [get_area(kit.linked_teleporter)].")
+		. += span_notice("它目前与位于[get_area(kit.linked_teleporter)]的传送器#[kit.linked_teleporter.self_tele_tag]相连.")
 	else
-		. += span_notice("It isn't linked to any other teleporter.")
+		. += span_notice("它没有与任何其他传送器相连.")
 
 /obj/machinery/deployable/teleporter/Initialize(mapload)
 	. = ..()
@@ -48,31 +48,31 @@
 		CRASH("A teleporter didn't have an internal item, or it was of the wrong type.")
 
 	if(!powered() && (!kit.cell || kit.cell.charge < TELEPORTING_COST))
-		to_chat(user, span_warning("A red light flashes on \the [src]. It seems it doesn't have enough power."))
+		to_chat(user, span_warning("\the [src]上红灯闪烁. 似乎电量不足."))
 		playsound(loc,'sound/machines/buzz-two.ogg', 25, FALSE)
 		return
 
 	if(!COOLDOWN_FINISHED(kit, teleport_cooldown))
-		to_chat(user, span_warning("\The [src] is still recharging! It will be ready in [round(COOLDOWN_TIMELEFT(kit, teleport_cooldown) * 0.1)] seconds."))
+		to_chat(user, span_warning("\The [src]仍在充能! 它将在[round(COOLDOWN_TIMELEFT(kit, teleport_cooldown) * 0.1)]秒后准备就绪."))
 		return
 
 	if(!kit.linked_teleporter)
-		to_chat(user, span_warning("\The [src] is not linked to any other teleporter."))
+		to_chat(user, span_warning("\The [src]没有与任何其他传送器相连."))
 		return
 
 	if(!istype(kit.linked_teleporter.loc, /obj/machinery/deployable/teleporter))
-		to_chat(user, span_warning("The other teleporter is not deployed!"))
+		to_chat(user, span_warning("另一个传送器尚未部署!"))
 		return
 
 	var/obj/machinery/deployable/teleporter/deployed_linked_teleporter = kit.linked_teleporter.loc
 	var/obj/item/teleporter_kit/linked_kit = deployed_linked_teleporter.get_internal_item()
 
 	if(deployed_linked_teleporter.z != z)
-		to_chat(user, span_warning("[src] and [deployed_linked_teleporter] are too far apart!"))
+		to_chat(user, span_warning("[src]和[deployed_linked_teleporter]相距太远!"))
 		return
 
 	if(!deployed_linked_teleporter.powered() && (!linked_kit?.cell || linked_kit.cell.charge < TELEPORTING_COST))
-		to_chat(user, span_warning("[deployed_linked_teleporter] is not powered!"))
+		to_chat(user, span_warning("[deployed_linked_teleporter]没有通电!"))
 		return
 
 	var/list/atom/movable/teleporting = list()
@@ -83,7 +83,7 @@
 			teleporting += thing
 
 	if(!length(teleporting))
-		to_chat(user, span_warning("No teleportable content was detected on [src]!"))
+		to_chat(user, span_warning("在[src]上未检测到可传送的内容!"))
 		return
 
 	do_sparks(5, TRUE, src)
@@ -94,14 +94,14 @@
 		use_power(TELEPORTING_COST * 100)
 	else
 		kit.cell.charge -= TELEPORTING_COST
-		balloon_alert_to_viewers("internal charge used")
+		balloon_alert_to_viewers("已使用内部电量")
 		playsound(src, 'sound/machines/twobeep.ogg', 15, 1)
 	update_icon()
 	if(deployed_linked_teleporter.powered())
 		deployed_linked_teleporter.use_power(TELEPORTING_COST * 100)
 	else
 		linked_kit.cell.charge -= TELEPORTING_COST
-		deployed_linked_teleporter.balloon_alert_to_viewers("internal charge used")
+		deployed_linked_teleporter.balloon_alert_to_viewers("已使用内部电量")
 		playsound(deployed_linked_teleporter, 'sound/machines/twobeep.ogg', 15, 1)
 	deployed_linked_teleporter.update_icon()
 	for(var/atom/movable/thing_to_teleport AS in teleporting)
@@ -122,12 +122,12 @@
 	if(!istype(kit))
 		CRASH("A teleporter didn't have an internal item, or it was of the wrong type.")
 	if(!kit.cell)
-		to_chat(user, span_warning("There is no cell to remove!"))
+		to_chat(user, span_warning("没有电池可移除!"))
 		return
 	if(!do_after(user, 2 SECONDS, NONE, src))
 		return FALSE
 	playsound(loc, 'sound/items/crowbar.ogg', 25, 1)
-	to_chat(user , span_notice("You remove [kit.cell] from \the [src]."))
+	to_chat(user , span_notice("你从\the [src]中取出了[kit.cell]."))
 	user.put_in_hands(kit.cell)
 	kit.cell = null
 	update_icon()
@@ -141,9 +141,9 @@
 
 	if(istype(I, /obj/item/teleporter_kit))
 		if(kit.linked_teleporter)
-			balloon_alert(user, "The teleporter is already linked with another!")
+			balloon_alert(user, "该传送器已与另一个相连!")
 			return
-		balloon_alert(user, "You link both teleporters to each others.")
+		balloon_alert(user, "你将两个传送器互相连接.")
 
 		var/obj/item/teleporter_kit/gadget = I
 		kit.set_linked_teleporter(gadget)
@@ -152,7 +152,7 @@
 	if(!istype(I, /obj/item/cell))
 		return FALSE
 	if(kit?.cell)
-		to_chat(user , span_warning("There is already a cell inside, use a crowbar to remove it."))
+		to_chat(user , span_warning("里面已经有一个电池了,用撬棍把它取出来."))
 		return FALSE
 	if(!do_after(user, 2 SECONDS, NONE, src))
 		return FALSE
@@ -175,8 +175,8 @@
 	return 4 SECONDS
 
 /obj/item/teleporter_kit
-	name = "\improper ASRS Bluespace teleporter"
-	desc = "A bluespace telepad for moving personnel and equipment across small distances to another prelinked teleporter. If area is unpowered, used built-in cell to provide teleportations."
+	name = "\improper ASRS 蓝空间传送器"
+	desc = "一种蓝空间传送垫,用于将人员和设备短距离移动到另一个预先链接的传送器.如果区域断电,则使用内置电池提供传送."
 	icon = 'icons/obj/machines/teleporter.dmi'
 	icon_state = "teleporter"
 
@@ -212,7 +212,7 @@
 
 /obj/item/teleporter_kit/examine(mob/user)
 	. = ..()
-	. += span_notice("Ctrl+Click on a tile to deploy, use a wrench to undeploy, use a crowbar to remove the power cell.")
+	. += span_notice("按住 Ctrl 并点击地砖进行部署,使用扳手取消部署,使用撬棍取出电池.")
 
 ///Link the two teleporters
 /obj/item/teleporter_kit/proc/set_linked_teleporter(obj/item/teleporter_kit/link_teleport)
@@ -230,12 +230,12 @@
 
 	var/obj/item/teleporter_kit/gadget = I
 	if(linked_teleporter)
-		balloon_alert(user, "The teleporter is already linked with another!")
+		balloon_alert(user, "传送器已经与另一个传送器链接了!")
 		return
 	if(linked_teleporter == src)
-		balloon_alert(user, "You can't link the teleporter with itself!")
+		balloon_alert(user, "你不能将传送器与自身链接!")
 		return
-	balloon_alert(user, "You link both teleporters to each others.")
+	balloon_alert(user, "你将两个传送器互相链接.")
 
 	set_linked_teleporter(gadget)
 	gadget.set_linked_teleporter(src)
@@ -250,7 +250,7 @@
 
 /obj/effect/teleporter_linker
 	name = "\improper ASRS bluespace teleporters"
-	desc = "Two bluespace telepads for moving personnel and equipment across small distances to another prelinked teleporter."
+	desc = "两个蓝空间传送垫,用于将人员和设备短距离移动到另一个预先链接的传送器."
 
 /obj/effect/teleporter_linker/Initialize(mapload)
 	. = ..()

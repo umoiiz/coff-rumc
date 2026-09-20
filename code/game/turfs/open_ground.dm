@@ -53,7 +53,7 @@
 	var/vines_spawn = TRUE
 	var/plants_spawn = FALSE
 	name = "wet grass"
-	desc = "Thick, long wet grass"
+	desc = "厚实,长而潮湿的草"
 	icon = 'icons/turf/jungle.dmi'
 	icon_state = "grass1"
 	var/icon_spawn_state = "grass1"
@@ -115,7 +115,7 @@
 /turf/open/ground/jungle/path
 	vines_spawn = FALSE
 	name = "dirt"
-	desc = "it is very dirty."
+	desc = "它非常脏."
 	icon = 'icons/turf/jungle.dmi'
 	icon_state = "grass_path"
 	icon_spawn_state = "dirt"

@@ -4,7 +4,7 @@
 	name = "Backhand"
 	action_icon_state = "backhand"
 	action_icon = 'icons/Xeno/actions/dragon.dmi'
-	desc = "Deal high damage, a knockback, and stun to marines in front of you. Vehicles and mechas take more damage, but are not knocked back nor stunned. If you are grabbing a marine, deal an incredible amount of damage to that marine after a windup."
+	desc = "对你前方的陆战队员造成高额伤害、击退和眩晕。载具和机甲受到更多伤害,但不会被击退或眩晕。如果你正抓取一名陆战队员,在蓄力后对该陆战队员造成极其巨大的伤害。"
 	cooldown_duration = 18 SECONDS
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_BACKHAND,
@@ -25,7 +25,7 @@
 /datum/action/ability/activable/xeno/backhand/can_use_ability(atom/A, silent, override_flags)
 	if(xeno_owner.status_flags & INCORPOREAL)
 		if(!silent)
-			xeno_owner.balloon_alert(xeno_owner, "cannot while flying!")
+			xeno_owner.balloon_alert(xeno_owner, "飞行时无法使用!")
 		return FALSE
 	return ..()
 
@@ -108,12 +108,12 @@
 	xeno_owner.face_atom(grabbed_human)
 	xeno_owner.set_move_resist(MOVE_FORCE_OVERPOWERING)
 	xeno_owner.add_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_IMMOBILE), DRAGON_ABILITY_TRAIT)
-	xeno_owner.visible_message(span_danger("[xeno_owner] lifts [grabbed_human] into the air and gets ready to slam!"))
+	xeno_owner.visible_message(span_danger("[xeno_owner]将[grabbed_human]举到空中并准备猛砸!"))
 	if(do_after(xeno_owner, DRAGON_GRABBED_ABILITY_TIME, IGNORE_HELD_ITEM, xeno_owner, BUSY_ICON_DANGER, extra_checks = CALLBACK(src, PROC_REF(grab_extra_check))))
 		xeno_owner.face_atom(grabbed_human)
 		new /obj/effect/temp_visual/dragon/directional/backhand_slam(get_step(xeno_owner, grabbed_human), xeno_owner.dir)
 		xeno_owner.stop_pulling()
-		xeno_owner.visible_message(span_danger("[xeno_owner] slams [grabbed_human] into the ground!"))
+		xeno_owner.visible_message(span_danger("[xeno_owner]将[grabbed_human]猛砸向地面!"))
 		grabbed_human.emote("scream")
 		grabbed_human.Shake(duration = 0.5 SECONDS) // Must stop pulling first for Shake to work.
 		playsound(xeno_owner, 'sound/effects/alien/behemoth/seismic_fracture_explosion.ogg', 50, 1)
@@ -162,7 +162,7 @@
 	name = "Fly"
 	action_icon_state = "fly"
 	action_icon = 'icons/Xeno/actions/dragon.dmi'
-	desc = "After a long cast time, fly into the air. If you're already flying, land with a delay. Landing causes nearby marines to take lots of damage with vehicles taking up to 3x as much."
+	desc = "经过较长的施法时间后,飞向空中。如果你已经在飞行,则延迟着陆。着陆会对附近的陆战队员造成大量伤害,载具受到的伤害最多可达3倍。"
 	cooldown_duration = 120 SECONDS
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_FLY,
@@ -175,7 +175,7 @@
 	if(xeno_owner.status_flags & INCORPOREAL)
 		if(COOLDOWN_TIMELEFT(src, animation_cooldown))
 			if(!silent)
-				xeno_owner.balloon_alert(xeno_owner, "already landing!")
+				xeno_owner.balloon_alert(xeno_owner, "已经在着陆了!")
 			return FALSE
 		var/list/mob/living/carbon/xenomorph/nearby_xenos = cheap_get_xenos_near(xeno_owner, 7)
 		var/found_los_xenos = FALSE
@@ -191,13 +191,13 @@
 		if(!weeds_found && !found_los_xenos)
 			if(!silent)
 				if(nearby_xenos.len > 1)
-					xeno_owner.balloon_alert(xeno_owner, "no friendlies in sight!")
+					xeno_owner.balloon_alert(xeno_owner, "视野内没有友军!")
 				else
-					xeno_owner.balloon_alert(xeno_owner, "no weeds!")
+					xeno_owner.balloon_alert(xeno_owner, "没有杂草!")
 			return FALSE
 	if(COOLDOWN_TIMELEFT(src, animation_cooldown))
 		if(!silent)
-			xeno_owner.balloon_alert(xeno_owner, "already lifting!")
+			xeno_owner.balloon_alert(xeno_owner, "已经在升空了!")
 		return FALSE
 	return ..()
 
@@ -352,7 +352,7 @@
 	name = "Dragon Breath"
 	action_icon_state = "dragon_breath"
 	action_icon = 'icons/Xeno/actions/dragon.dmi'
-	desc = "After a windup, continuously blast fire in a cardinal direction. If you are grabbing a marine, deal an incredible amount of damage and knock them back instead."
+	desc = "经过蓄力后,朝一个基本方向持续喷射火焰。如果你正抓取一名陆战队员,则改为对其造成极其巨大的伤害并将其击退。"
 	cooldown_duration = 30 SECONDS
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_DRAGON_BREATH,
@@ -399,13 +399,13 @@
 	switch(fire_choice)
 		if(DRAGON_BREATH_MELTING)
 			selected_typepath = /obj/fire/melting_fire
-			to_chat(owner, span_xenonotice("Our breath will spew melting fire."))
+			to_chat(owner, span_xenonotice("我们的吐息将喷出熔化之焰。"))
 		if(DRAGON_BREATH_SHATTERING)
 			selected_typepath = /obj/fire/melting_fire/shattering
-			to_chat(owner, span_xenonotice("Our breath will spew shattering fire."))
+			to_chat(owner, span_xenonotice("我们的吐息将喷出碎裂之焰。"))
 		if(DRAGON_BREATH_MELTING_ACID)
 			selected_typepath = /obj/fire/melting_fire/melting_acid
-			to_chat(owner, span_xenonotice("Our breath will spew acidic fire."))
+			to_chat(owner, span_xenonotice("我们的吐息将喷出酸性之焰。"))
 
 /datum/action/ability/activable/xeno/backhand/dragon_breath/get_damage()
 	return 20 * xeno_owner.xeno_melee_damage_modifier
@@ -414,12 +414,12 @@
 	xeno_owner.face_atom(grabbed_human)
 	xeno_owner.set_move_resist(MOVE_FORCE_OVERPOWERING)
 	xeno_owner.add_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_IMMOBILE), DRAGON_ABILITY_TRAIT)
-	xeno_owner.visible_message(span_danger("[xeno_owner] inhales and turns their sights to [grabbed_human]..."))
+	xeno_owner.visible_message(span_danger("[xeno_owner]吸气并将目光转向[grabbed_human]..."))
 	if(do_after(xeno_owner, DRAGON_GRABBED_ABILITY_TIME, IGNORE_HELD_ITEM, xeno_owner, BUSY_ICON_DANGER, extra_checks = CALLBACK(src, PROC_REF(grab_extra_check))))
 		xeno_owner.stop_pulling()
 		grabbed_human.emote("scream")
 		grabbed_human.Shake(duration = 0.5 SECONDS) // Must stop pulling first for Shake to work.
-		xeno_owner.visible_message(span_danger("[xeno_owner] exhales a massive fireball right ontop of [grabbed_human]!"))
+		xeno_owner.visible_message(span_danger("[xeno_owner]在[grabbed_human]正上方呼出一个巨大的火球!"))
 		playsound(get_turf(xeno_owner), 'sound/effects/alien/fireball.ogg', 50, 1)
 		var/obj/effect/temp_visual/dragon/grab_fire/visual_grab_fire = new(get_turf(grabbed_human))
 		var/obj/effect/temp_visual/xeno_fireball_explosion/visual_fireball_explosion = new(get_turf(grabbed_human))
@@ -569,7 +569,7 @@
 	name = "Wind Current"
 	action_icon_state = "wind_current"
 	action_icon = 'icons/Xeno/actions/dragon.dmi'
-	desc = "After a short windup, deal high damage and a knockback to marines in a cone in front of you. This also clear any gas."
+	desc = "经过短暂蓄力后,对你前方锥形范围内的陆战队员造成高额伤害和击退。这也会清除任何气体。"
 	cooldown_duration = 20 SECONDS
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_WIND_CURRENT,
@@ -578,7 +578,7 @@
 /datum/action/ability/activable/xeno/wind_current/can_use_ability(atom/A, silent, override_flags)
 	if(xeno_owner.status_flags & INCORPOREAL)
 		if(!silent)
-			xeno_owner.balloon_alert(xeno_owner, "cannot while flying!")
+			xeno_owner.balloon_alert(xeno_owner, "飞行时无法使用!")
 		return FALSE
 	return ..()
 
@@ -603,8 +603,8 @@
 		return
 
 	new /obj/effect/temp_visual/dragon/wind_current(get_turf(xeno_owner))
-	xeno_owner.visible_message(span_danger("\The [xeno_owner] flaps their wings!"), \
-		span_danger("We flap our wings!"), null, 5)
+	xeno_owner.visible_message(span_danger("\The [xeno_owner]拍动翅膀!"), \
+		span_danger("我们拍动翅膀!"), null, 5)
 
 	var/damage = 55 * xeno_owner.xeno_melee_damage_modifier
 	var/list/mob/living/living_to_knockback = list()
@@ -664,7 +664,7 @@
 	name = "Grab"
 	action_icon_state = "grab"
 	action_icon = 'icons/Xeno/actions/dragon.dmi'
-	desc = "After a windup, drag a marine in front of you and initiate a passive grab allowing you to drag them as you move. They are unable to move on their volition, but are fully capable of fighting back. Your grab automatically breaks if you stop grabbing or take too much damage."
+	desc = "经过蓄力后,将一名陆战队员拖到你面前并开始被动抓取,允许你在移动时拖拽他们。他们无法自主移动,但完全有能力反击。如果你停止抓取或受到过多伤害,你的抓取会自动中断。"
 	cooldown_duration = 20 SECONDS
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_GRAB,
@@ -683,11 +683,11 @@
 /datum/action/ability/activable/xeno/grab/can_use_ability(atom/target, silent, override_flags)
 	if(xeno_owner.status_flags & INCORPOREAL)
 		if(!silent)
-			xeno_owner.balloon_alert(xeno_owner, "cannot while flying!")
+			xeno_owner.balloon_alert(xeno_owner, "飞行时无法使用!")
 		return FALSE
 	if(grabbed_human)
 		if(!silent)
-			xeno_owner.balloon_alert(xeno_owner, "already grabbing someone!")
+			xeno_owner.balloon_alert(xeno_owner, "已经在抓取某人了!")
 		return FALSE
 	return ..()
 
@@ -809,7 +809,7 @@
 	name = "Scorched Land"
 	action_icon_state = "scorched_land"
 	action_icon = 'icons/Xeno/actions/dragon.dmi'
-	desc = "While flying, breath fire downward from the sky in a long line where you're facing."
+	desc = "飞行时,从天空朝你面朝的方向沿一条长线向下喷火。"
 	cooldown_duration = 150 SECONDS
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_SCORCHED_LAND,
@@ -820,7 +820,7 @@
 /datum/action/ability/activable/xeno/scorched_land/can_use_ability(atom/A, silent, override_flags)
 	if(!(xeno_owner.status_flags & INCORPOREAL))
 		if(!silent)
-			xeno_owner.balloon_alert(xeno_owner, "cannot while landed!")
+			xeno_owner.balloon_alert(xeno_owner, "着陆时无法使用!")
 		return FALSE
 	var/list/mob/living/carbon/xenomorph/nearby_xenos = cheap_get_xenos_near(xeno_owner, 7)
 	var/found_los_xenos = FALSE
@@ -836,9 +836,9 @@
 	if(!weeds_found && !found_los_xenos)
 		if(!silent)
 			if(nearby_xenos.len > 1)
-				xeno_owner.balloon_alert(xeno_owner, "no friendlies in sight!")
+				xeno_owner.balloon_alert(xeno_owner, "视野内没有友军!")
 			else
-				xeno_owner.balloon_alert(xeno_owner, "no weeds!")
+				xeno_owner.balloon_alert(xeno_owner, "没有杂草!")
 		return FALSE
 	return ..()
 

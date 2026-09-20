@@ -135,6 +135,6 @@
 	incoming_stuns[2] = 0
 	incoming_stuns[3] += max_hardstun //stagger
 	incoming_stuns[4] += max_hardstun //slowdown
-	to_chat(affected, span_avoidharm("\The [parent_item.name] absorbs the impact!"))
+	to_chat(affected, span_avoidharm("\The [parent_item.name]吸收了冲击!"))
 	return TRUE
 

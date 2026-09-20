@@ -19,14 +19,14 @@
 
 	var/mob/living/carbon/human/H = user
 	if(!H.w_uniform)
-		to_chat(H, span_warning("You need to be wearing somethng under this to be able to equip it."))
+		to_chat(H, span_warning("你需要在这件衣服里面穿点东西才能装备它."))
 		return FALSE
 
 //armored vest
 
 /obj/item/clothing/suit/armor/vest
-	name = "armored vest"
-	desc = "An armored vest that protects against some damage."
+	name = "防弹背心"
+	desc = "一件能抵御部分伤害的防弹背心."
 	icon_state = "armor"
 	worn_icon_state = "armor"
 	blood_overlay_type = "armor"
@@ -43,30 +43,30 @@
 	)
 
 /obj/item/clothing/suit/armor/vest/admiral
-	name = "admiral's jacket"
-	desc = "An armoured jacket with gold regalia"
+	name = "海军上将夹克"
+	desc = "一件带有金色饰章的装甲夹克"
 	icon_state = "admiral_jacket"
 	worn_icon_state = "admiral_jacket"
 	armor_protection_flags = CHEST|GROIN|ARMS
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/clothing/suit/armor/vest/security
-	name = "security armor"
-	desc = "An armored vest that protects against some damage."
+	name = "安保装甲"
+	desc = "一件能抵御部分伤害的装甲背心."
 	icon_state = "armorsec"
 	worn_icon_state = "armorsec"
 	slowdown = SLOWDOWN_ARMOR_MEDIUM //prevents powergaming marine by swapping armor.
 
 /obj/item/clothing/suit/armor/vest/warden
-	name = "Warden's jacket"
-	desc = "An armoured jacket with silver rank pips and livery."
+	name = "典狱长夹克"
+	desc = "一件带有银色军衔徽章和制服的装甲夹克."
 	icon_state = "warden_jacket"
 	worn_icon_state = "warden_jacket"
 	armor_protection_flags = CHEST|GROIN|ARMS
 
 /obj/item/clothing/suit/armor/bulletproof
-	name = "bulletproof vest"
-	desc = "A vest that excels in protecting the wearer against high-velocity solid projectiles."
+	name = "防弹背心"
+	desc = "一件擅长保护穿戴者抵御高速实弹射弹的背心."
 	icon_state = "bulletproof"
 	worn_icon_state = "bulletproof"
 	blood_overlay_type = "armor"
@@ -86,12 +86,12 @@
 	)
 
 /obj/item/clothing/suit/armor/bulletproof/mp
-	name = "security bulletproof vest"
+	name = "安保防弹背心"
 	soft_armor = list(MELEE = 35, BULLET = 95, LASER = 95, ENERGY = 0, BOMB = 30, BIO = 95, FIRE = 0, ACID = 15)
 
 /obj/item/clothing/suit/armor/riot
-	name = "riot suit"
-	desc = "A suit of armor with heavy padding to protect against melee attacks. Looks like it might impair movement."
+	name = "防暴服"
+	desc = "一套带有厚重衬垫以抵御近战攻击的装甲.看起来可能会影响行动."
 	icon_state = "riot"
 	worn_icon_state = "swat"
 	armor_protection_flags = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -106,8 +106,8 @@
 	unequip_delay_self = 20
 
 /obj/item/clothing/suit/armor/swat
-	name = "swat suit"
-	desc = "A heavily armored suit that protects against moderate damage. Used in special operations."
+	name = "特警服"
+	desc = "一套能抵御中等伤害的重型装甲.用于特种作战."
 	icon_state = "deathsquad"
 	worn_icon_state = "swat"
 	gas_transfer_coefficient = 0.01
@@ -124,8 +124,8 @@
 	siemens_coefficient = 0.6
 
 /obj/item/clothing/suit/armor/det_suit
-	name = "armor"
-	desc = "An armored vest with a detective's badge on it."
+	name = "装甲"
+	desc = "一件带有侦探徽章的装甲背心."
 	icon_state = "detective-armor"
 	worn_icon_state = "detective-armor"
 	blood_overlay_type = "armor"
@@ -134,8 +134,8 @@
 	soft_armor = list(MELEE = 50, BULLET = 15, LASER = 50, ENERGY = 10, BOMB = 25, BIO = 0, FIRE = 10, ACID = 10)
 
 /obj/item/clothing/suit/armor/rugged
-	name = "rugged armor"
-	desc = "A suit of armor used by workers in dangerous environments."
+	name = "坚固装甲"
+	desc = "一套工人在危险环境中使用的装甲."
 	icon_state = "swatarmor"
 	worn_icon_state = "swatarmor"
 	armor_protection_flags = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -148,8 +148,8 @@
 	starting_attachments = list(/obj/item/armor_module/storage/pocket)
 
 /obj/item/clothing/suit/armor/patrol
-	name = "Security Patrol Armor"
-	desc = "A lightweight suit of armor used by security officers on patrol. While it is more advanced than kevlar, it is heavier and will slightly slow the wearer down."
+	name = "安保巡逻装甲"
+	desc = "一套安保人员在巡逻时使用的轻型装甲.虽然比凯夫拉更先进,但更重,会略微减慢穿戴者的速度."
 	icon_state = "security_patrol"
 	worn_icon_state = "security_patrol"
 	blood_overlay_type = "coat"
@@ -163,8 +163,8 @@
 	unequip_delay_self = 20
 
 /obj/item/clothing/suit/armor/sectoid
-	name = "psionic field"
-	desc = "A field of invisible energy, it protects the wearer but prevents any clothing from being worn."
+	name = "灵能场"
+	desc = "一片无形的能量场,它能保护穿戴者,但会阻止穿戴任何衣物."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "shield-blue"
 	item_flags = DELONDROP
@@ -177,7 +177,7 @@
 	ADD_TRAIT(src, TRAIT_NODROP, SECTOID_TRAIT)
 
 /obj/item/clothing/suit/armor/sectoid/shield
-	name = "powerful psionic field"
+	name = "强力灵能场"
 	armor_protection_flags = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	soft_armor = list(MELEE = 55, BULLET = 55, LASER = 35, ENERGY = 20, BOMB = 40, BIO = 40, FIRE = 40, ACID = 40)
 
@@ -187,8 +187,8 @@
 
 //All of the armor below is mostly unused
 /obj/item/clothing/suit/armor/centcom
-	name = "Cent. Com. armor"
-	desc = "A suit that protects against some damage."
+	name = "中央指挥部装甲"
+	desc = "一套能抵御部分伤害的装甲."
 	icon_state = "centcom"
 	worn_icon_state = "centcom"
 	w_class = WEIGHT_CLASS_BULKY//bulky item
@@ -205,22 +205,22 @@
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 
 /obj/item/clothing/suit/armor/tdome/red
-	name = "Thunderdome suit (red)"
-	desc = "Reddish armor."
+	name = "雷霆穹顶服(红色)"
+	desc = "偏红色的装甲."
 	icon_state = "tdred"
 	worn_icon_state = "tdred"
 	siemens_coefficient = 1
 
 /obj/item/clothing/suit/armor/tdome/green
-	name = "Thunderdome suit (green)"
-	desc = "Pukish armor."
+	name = "雷霆穹顶服(绿色)"
+	desc = "令人作呕的装甲."
 	icon_state = "tdgreen"
 	worn_icon_state = "tdgreen"
 	siemens_coefficient = 1
 
 /obj/item/clothing/suit/armor/hos
-	name = "armored coat"
-	desc = "A greatcoat enhanced with a special alloy for some protection and style."
+	name = "装甲大衣"
+	desc = "一件用特殊合金强化的厚大衣,提供一些防护和风格."
 	icon_state = "hos"
 	worn_icon_state = "hos"
 	armor_protection_flags = CHEST|GROIN|ARMS|LEGS
@@ -231,8 +231,8 @@
 	siemens_coefficient = 0.6
 
 /obj/item/clothing/suit/armor/hos/jensen
-	name = "armored trenchcoat"
-	desc = "A trenchcoat augmented with a special alloy for some protection and style."
+	name = "装甲风衣"
+	desc = "一件用特殊合金强化的风衣,提供一些防护和风格."
 	icon_state = "jensencoat"
 	worn_icon_state = "jensencoat"
 	inv_hide_flags = NONE

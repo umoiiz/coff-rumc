@@ -1,6 +1,6 @@
 /obj/item/clothing/tie
-	name = "tie"
-	desc = "A neosilk clip-on tie."
+	name = "领带"
+	desc = "一条新丝质夹扣领带."
 	icon = 'icons/obj/clothing/ties.dmi'
 	icon_state = "bluetie"
 	equip_slot_flags = NONE
@@ -11,21 +11,21 @@
 	AddElement(/datum/element/attachment, ATTACHMENT_SLOT_UNIFORM_TIE, 'icons/obj/clothing/ties_overlay.dmi', attach_features_flags = (ATTACH_REMOVABLE|ATTACH_APPLY_ON_MOB), attach_delay = 1.5 SECONDS, detach_delay = 1.5 SECONDS, mob_overlay_icon = 'icons/mob/ties.dmi')
 
 /obj/item/clothing/tie/blue
-	name = "blue tie"
+	name = "蓝色领带"
 	icon_state = "bluetie"
 
 /obj/item/clothing/tie/red
-	name = "red tie"
+	name = "红色领带"
 	icon_state = "redtie"
 
 /obj/item/clothing/tie/horrible
-	name = "horrible tie"
-	desc = "A neosilk clip-on tie. This one is disgusting."
+	name = "恶心领带"
+	desc = "一条新丝质夹扣领带.这条真恶心."
 	icon_state = "horribletie"
 
 /obj/item/clothing/tie/stethoscope
-	name = "stethoscope"
-	desc = "An outdated medical apparatus for listening to the sounds of the human body. It also makes you look like you know what you're doing."
+	name = "听诊器"
+	desc = "一种过时的医疗器具,用于聆听人体的声音.它还能让你看起来像知道自己在做什么."
 	icon_state = "stethoscope"
 
 /obj/item/clothing/tie/stethoscope/attack(mob/living/carbon/human/M, mob/living/user)
@@ -52,14 +52,14 @@
 						else
 							sound_strength = "hear a weak"
 
-				user.visible_message("[user] places [src] against [M]'s [body_part] and listens attentively.", "You place [src] against [M.p_their()] [body_part]. You [sound_strength] [sound].")
+				user.visible_message("[user]将[src]贴在[M]的[body_part]上并仔细聆听.", "你将[src]贴在[M.p_their()]的[body_part]上.你[sound_strength][sound].")
 				return
 	return ..(M, user)
 
 //Medals
 /obj/item/clothing/tie/medal
-	name = "bronze medal"
-	desc = "A bronze medal."
+	name = "铜质奖章"
+	desc = "一枚铜质奖章."
 	icon_state = "bronze"
 	/// Name of the person this is awarded to.
 	var/recipient_name
@@ -71,46 +71,46 @@
 	. += "Awarded to: \'[recipient_rank] [recipient_name]\'. The citation reads \'[medal_citation]\'."
 
 /obj/item/clothing/tie/medal/conduct
-	name = "distinguished conduct medal"
-	desc = "A bronze medal awarded for distinguished conduct. Whilst a great honor, this is the most basic award given by the TGMC"
+	name = "杰出行为奖章"
+	desc = "一枚因杰出行为而授予的铜质奖章.虽然是一项巨大的荣誉,但这是TGMC颁发的最基本的奖项."
 
 /obj/item/clothing/tie/medal/bronze_heart
-	name = "bronze heart medal"
-	desc = "A bronze heart-shaped medal awarded for sacrifice. It is often awarded posthumously or for severe injury in the line of duty."
+	name = "铜心奖章"
+	desc = "一枚因牺牲而授予的铜质心形奖章.它通常被追授,或因在执行任务中受重伤而授予."
 	icon_state = "bronze_heart"
 
 /obj/item/clothing/tie/medal/silver
-	name = "silver medal"
-	desc = "A silver medal."
+	name = "银质奖章"
+	desc = "一枚银质奖章."
 	icon_state = "silver"
 
 /obj/item/clothing/tie/medal/silver/valor
-	name = "medal of valor"
-	desc = "A silver medal awarded for acts of exceptional valor."
+	name = "英勇奖章"
+	desc = "一枚因非凡英勇行为而授予的银质奖章."
 
 /obj/item/clothing/tie/medal/gold
-	name = "gold medal"
-	desc = "A prestigious golden medal."
+	name = "金质奖章"
+	desc = "一枚享有声望的金质奖章."
 	icon_state = "gold"
 
 /obj/item/clothing/tie/medal/gold/captain
-	name = "medal of captaincy"
-	desc = "A golden medal awarded exclusively to those promoted to the rank of captain. It signifies the codified responsibilities of a captain to TGMC, and their undisputable authority over their crew."
+	name = "队长奖章"
+	desc = "一枚专门授予晋升至队长军衔者的金质奖章.它象征着队长对TGMC的法定职责,以及对其船员无可争议的权威."
 
 /obj/item/clothing/tie/medal/gold/heroism
-	name = "medal of exceptional heroism"
-	desc = "An extremely rare golden medal awarded only by the TGMC. To recieve such a medal is the highest honor and as such, very few exist."
+	name = "非凡英雄主义奖章"
+	desc = "一枚极其罕见的金质奖章,仅由TGMC颁发.获得这样的奖章是最高荣誉,因此现存极少."
 
 /obj/item/clothing/tie/medal/letter/commendation
-	name = "letter of commendation"
-	desc = "A letter printed on cardstock often filled with praise for the person it is intended for."
+	name = "嘉奖信"
+	desc = "一封印在卡纸上的信,通常写满了对收信人的赞扬."
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "commendation"
 
 //Armbands
 /obj/item/clothing/tie/armband
-	name = "red armband"
-	desc = "A fancy red armband!"
+	name = "红色臂章"
+	desc = "一个花哨的红色臂章!"
 	icon_state = "red"
 
 /*
@@ -120,8 +120,8 @@
 
 /obj/item/clothing/tie/holobadge
 
-	name = "holobadge"
-	desc = "This glowing blue badge marks the holder as THE LAW."
+	name = "全息徽章"
+	desc = "这枚发着蓝光的徽章表明持有者是法律本身."
 	icon_state = "holobadge"
 	equip_slot_flags = ITEM_SLOT_BELT
 	var/stored_name = null
@@ -132,10 +132,10 @@
 
 /obj/item/clothing/tie/holobadge/attack_self(mob/user as mob)
 	if(!stored_name)
-		to_chat(user, "Waving around a badge before swiping an ID would be pretty pointless.")
+		to_chat(user, "在刷卡前挥舞徽章毫无意义.")
 		return
 	if(isliving(user))
-		user.visible_message(span_warning("[user] displays [user.p_their()] TGMC Internal Security Legal Authorization Badge.\nIt reads: [stored_name], TGMC Security."),span_warning("You display your TGMC Internal Security Legal Authorization Badge.\nIt reads: [stored_name], TGMC Security."))
+		user.visible_message(span_warning("[user]显示[user.p_their()]TGMC内部安全合法授权徽章.\nIt写着:[stored_name],TGMC安保部."),span_warning("你展示了你的TGMC内部安全合法授权徽章.\nIt写着:[stored_name],TGMC安保部."))
 
 /obj/item/clothing/tie/holobadge/attackby(obj/item/I, mob/user, params)
 	. = ..()
@@ -146,14 +146,14 @@
 		var/obj/item/card/id/id_card = I
 
 		if(!(ACCESS_MARINE_BRIG in id_card.access))
-			to_chat(user, "[src] rejects your insufficient access rights.")
+			to_chat(user, "[src]拒绝了你的访问权限,权限不足.")
 			return
 
-		to_chat(user, "You imprint your ID details onto the badge.")
+		to_chat(user, "你将你的身份信息印在徽章上.")
 		stored_name = id_card.registered_name
 		name = "holobadge ([stored_name])"
 		desc = "This glowing blue badge marks [stored_name] as THE LAW."
 
 /obj/item/clothing/tie/holobadge/attack(mob/living/carbon/human/M, mob/living/user)
 	if(isliving(user))
-		user.visible_message(span_warning("[user] invades [M]'s personal space, thrusting [src] into [M.p_their()] face insistently."), span_warning("You invade [M]'s personal space, thrusting [src] into [M.p_their()] face insistently. You are the law."))
+		user.visible_message(span_warning("[user]侵入了[M]的私人空间,将[src]强行怼到[M.p_their()]脸上."), span_warning("你侵入了[M]的私人空间,将[src]强行怼到[M.p_their()]脸上.你就是法律."))

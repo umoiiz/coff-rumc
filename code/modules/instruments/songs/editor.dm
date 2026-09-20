@@ -103,12 +103,12 @@
 		else
 			tempo = sanitize_tempo(5) // default 120 BPM
 		if(length(lines) > MUSIC_MAXLINES)
-			to_chat(usr, "Too many lines!")
+			to_chat(usr, "行数过多!")
 			lines.Cut(MUSIC_MAXLINES + 1)
 		var/linenum = 1
 		for(var/l in lines)
 			if(length_char(l) > MUSIC_MAXLINECHARS)
-				to_chat(usr, "Line [linenum] too long!")
+				to_chat(usr, "第[linenum]行过长!")
 				lines.Remove(l)
 			else
 				linenum++
@@ -224,11 +224,11 @@
 			var/datum/instrument/I = SSinstruments.get_instrument(i)
 			if(I)
 				LAZYSET(categories[I.category || "ERROR CATEGORY"], I.name, I.id)
-		var/cat = tgui_input_list(usr, "Select Category", "Instrument Category", categories)
+		var/cat = tgui_input_list(usr, "选择类别", "乐器类别", categories)
 		if(!cat)
 			return
 		var/list/instruments = categories[cat]
-		var/choice = tgui_input_list(usr, "Select Instrument", "Instrument Selection", instruments)
+		var/choice = tgui_input_list(usr, "选择乐器", "乐器选择", instruments)
 		if(!choice)
 			return
 		choice = instruments[choice]		//get id
@@ -241,7 +241,7 @@
 			note_shift = clamp(amount, note_shift_min, note_shift_max)
 
 	else if(href_list["setsustainmode"])
-		var/choice = tgui_input_list(usr, "Choose a sustain mode", "Sustain Mode", list("Linear", "Exponential"))
+		var/choice = tgui_input_list(usr, "选择延音模式", "延音模式", list("Linear", "Exponential"))
 		switch(choice)
 			if("Linear")
 				sustain_mode = SUSTAIN_LINEAR

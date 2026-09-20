@@ -154,7 +154,7 @@
 
 /datum/chemical_reaction/foam/on_reaction(datum/reagents/holder, created_volume)
 	var/turf/location = get_turf(holder.get_holder())
-	location.visible_message(span_warning("The solution spews out foam!"))
+	location.visible_message(span_warning("溶液喷出泡沫!"))
 	var/datum/effect_system/foam_spread/s = new()
 	s.set_up(created_volume, location, holder, NONE)
 	s.start()
@@ -168,7 +168,7 @@
 
 /datum/chemical_reaction/metalfoam/on_reaction(datum/reagents/holder, created_volume)
 	var/turf/location = get_turf(holder.get_holder())
-	location.visible_message(span_warning("The solution spews out a metalic foam!"))
+	location.visible_message(span_warning("溶液喷出金属泡沫!"))
 
 	var/datum/effect_system/foam_spread/s = new()
 	s.set_up(created_volume, location, holder, METAL_FOAM)
@@ -183,7 +183,7 @@
 
 /datum/chemical_reaction/ironfoam/on_reaction(datum/reagents/holder, created_volume)
 	var/turf/location = get_turf(holder.get_holder())
-	location.visible_message(span_warning("The solution spews out a metallic foam!"))
+	location.visible_message(span_warning("溶液喷出金属泡沫!"))
 	var/datum/effect_system/foam_spread/s = new()
 	s.set_up(created_volume, location, holder, METAL_FOAM)
 	s.start()
@@ -196,7 +196,7 @@
 
 /datum/chemical_reaction/razorburn/on_reaction(datum/reagents/holder, created_volume)
 	var/turf/location = get_turf(holder.get_holder())
-	location.visible_message(span_danger("The solution spews out a dense, ground-hugging gas! Get away!"))
+	location.visible_message(span_danger("溶液喷出浓密的贴地气体!快跑!"))
 	var/datum/effect_system/foam_spread/s = new()
 	s.set_up(created_volume, location, holder, RAZOR_FOAM)
 	s.start()

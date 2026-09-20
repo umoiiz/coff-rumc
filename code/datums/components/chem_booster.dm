@@ -151,7 +151,7 @@
 ///Adds additional text for the component when examining the item it is attached to
 /datum/component/chem_booster/proc/examine(datum/source, mob/user, list/examine_text)
 	SIGNAL_HANDLER
-	examine_text += span_notice("The chemical system currently holds [resource_storage_current]u of green blood. Its enhancement level is set to [boost_amount].")
+	examine_text += span_notice("化学系统当前储存有[resource_storage_current]u的绿血. 其强化等级设置为[boost_amount].")
 	examine_text += get_meds_beaker_contents()
 
 ///Disables active functions and cleans up actions when the suit is unequipped
@@ -190,7 +190,7 @@
 
 /datum/component/chem_booster/process()
 	if(resource_storage_current < resource_drain_amount)
-		to_chat(wearer, span_warning("Insufficient green blood to maintain operation."))
+		to_chat(wearer, span_warning("绿血不足,无法维持运作."))
 		on_off()
 		var/datum/action/chem_booster/power/power_action = wearer.actions_by_path[/datum/action/chem_booster/power]
 		power_action.update_onoff_icon()
@@ -205,10 +205,10 @@
 	if(connected_weapon)
 		wearer.adjust_stamina_loss(-7 * stamina_regen_amp * ((20 - (vali_necro_timer) * 0.1) * 0.05)) //stamina gain scales inversely with passed time, up to 20 seconds
 	if(vali_necro_timer > 10 SECONDS)
-		to_chat(wearer, span_bold("WARNING: You have [(200 - (vali_necro_timer)) * 0.1] seconds before necrotic tissue forms on your limbs."))
+		to_chat(wearer, span_bold("警告: 你还有[(200 - (vali_necro_timer)) * 0.1]秒,之后你的四肢将形成坏死组织."))
 	if(vali_necro_timer > 15 SECONDS)
 		wearer.overlay_fullscreen("degeneration", /atom/movable/screen/fullscreen/animated/infection, 1)
-		to_chat(wearer, span_userdanger("The process of necrosis begins to set in. Turn it off before it's too late!"))
+		to_chat(wearer, span_userdanger("坏死过程开始显现. 在为时已晚之前关掉它!"))
 
 /**
  *	Opens the radial menu with everything
@@ -250,13 +250,13 @@
 	SIGNAL_HANDLER
 	if(!boost_on)
 		if(!COOLDOWN_FINISHED(src, chemboost_activation_cooldown))
-			wearer.balloon_alert(wearer, "You need to wait another [COOLDOWN_TIMELEFT(src, chemboost_activation_cooldown) * 0.10] seconds")
+			wearer.balloon_alert(wearer, "你需要再等待[COOLDOWN_TIMELEFT(src, chemboost_activation_cooldown) * 0.10]秒")
 			return
 		if(resource_storage_current < resource_drain_amount)
-			wearer.balloon_alert(wearer, "Insufficient green blood to begin operation")
+			wearer.balloon_alert(wearer, "绿血不足,无法开始运作")
 			return
 		if(wearer.stat)
-			wearer.balloon_alert(wearer, "Not conscious")
+			wearer.balloon_alert(wearer, "无意识")
 			return
 	boost_on = !boost_on
 	SEND_SIGNAL(src, COMSIG_CHEMSYSTEM_TOGGLED, boost_on)
@@ -274,7 +274,7 @@
 				if(necrotized_counter < 1)
 					break
 		UnregisterSignal(wearer, COMSIG_MOB_DEATH, PROC_REF(on_off))
-		wearer.balloon_alert(wearer, "Halting green blood injection")
+		wearer.balloon_alert(wearer, "正在停止绿血注射")
 		COOLDOWN_START(src, chemboost_activation_cooldown, 10 SECONDS)
 		setup_bonus_effects()
 		return
@@ -283,7 +283,7 @@
 	START_PROCESSING(SSobj, src)
 	RegisterSignal(wearer, COMSIG_MOB_DEATH, PROC_REF(on_off))
 	playsound(get_turf(wearer), 'sound/effects/bubbles.ogg', 30, 1)
-	to_chat(wearer, span_notice("Commensing green blood injection.<b>[(automatic_meds_use && meds_beaker.reagents.total_volume) ? " Adding additional reagents." : ""]</b>"))
+	to_chat(wearer, span_notice("正在开始绿血注射.<b>[(automatic_meds_use && meds_beaker.reagents.total_volume) ? " Adding additional reagents." : ""]</b>"))
 	if(automatic_meds_use)
 		to_chat(wearer, get_meds_beaker_contents())
 		meds_beaker.reagents.trans_to(wearer, 30)
@@ -292,7 +292,7 @@
 ///Updates the boost amount of the suit and effect_str of reagents if component is on. "amount" is the final level you want to set the boost to.
 /datum/component/chem_booster/proc/update_boost(amount)
 	boost_amount = amount
-	wearer?.balloon_alert(wearer, "Enhancement level set to [boost_amount]")
+	wearer?.balloon_alert(wearer, "强化等级设置为[boost_amount]")
 	resource_drain_amount = boost_amount*(3 + boost_amount)
 
 ///Handles Vali stat boosts and any other potential buffs on activation/deactivation
@@ -336,33 +336,33 @@
 		return
 
 	if(wearer.do_actions)
-		wearer.balloon_alert(wearer, "You're already occupied with something")
+		wearer.balloon_alert(wearer, "你已经在忙别的事情了")
 		return
 
 	var/obj/item/held_item = wearer.get_held_item()
 	if(!held_item)
-		wearer.balloon_alert(wearer, "You need to be holding a harvester")
+		wearer.balloon_alert(wearer, "你需要手持收割器")
 		return
 
 	if(!held_item.GetComponent(/datum/component/harvester))
-		wearer.balloon_alert(wearer, "You need to be holding a harvester")
+		wearer.balloon_alert(wearer, "你需要手持收割器")
 		return
 
 	wearer.add_movespeed_modifier(MOVESPEED_ID_CHEM_CONNECT, TRUE, 0, NONE, TRUE, 4)
-	wearer.balloon_alert(wearer, "You begin connecting [held_item]")
+	wearer.balloon_alert(wearer, "你开始连接[held_item]")
 	if(!do_after(wearer, 1 SECONDS, IGNORE_USER_LOC_CHANGE, held_item, BUSY_ICON_FRIENDLY, null, PROGRESS_BRASS))
 		wearer.remove_movespeed_modifier(MOVESPEED_ID_CHEM_CONNECT)
-		wearer.balloon_alert(wearer, "You were interrupted")
+		wearer.balloon_alert(wearer, "你被打断了")
 		return
 
-	wearer.balloon_alert(wearer, "Finished connecting [held_item]")
+	wearer.balloon_alert(wearer, "已完成连接[held_item]")
 	wearer.remove_movespeed_modifier(MOVESPEED_ID_CHEM_CONNECT)
 	manage_weapon_connection(held_item)
 
 ///Handles the setting up and removal of signals and vars related to connecting an item to the suit
 /datum/component/chem_booster/proc/manage_weapon_connection(obj/item/weapon_to_connect)
 	if(connected_weapon)
-		wearer.balloon_alert(wearer, "Disconnected [connected_weapon]")
+		wearer.balloon_alert(wearer, "已断开[connected_weapon]")
 		REMOVE_TRAIT(connected_weapon, TRAIT_NODROP, VALI_TRAIT)
 		UnregisterSignal(connected_weapon, COMSIG_ITEM_ATTACK)
 		UnregisterSignal(connected_weapon, list(COMSIG_ITEM_EQUIPPED_NOT_IN_SLOT, COMSIG_ITEM_DROPPED))
@@ -407,23 +407,23 @@
 		return
 
 	if(resource_storage_current < volume)
-		wearer.balloon_alert(wearer, "Insufficient green blood for extraction")
+		wearer.balloon_alert(wearer, "绿血不足,无法提取")
 		return
 
 	var/obj/item/held_item = wearer.get_held_item()
 	if(!held_item)
-		wearer.balloon_alert(wearer, "You must be holding a glass reagent container")
+		wearer.balloon_alert(wearer, "你必须手持一个玻璃试剂容器")
 		return
 
 	if(!istype(held_item, /obj/item/reagent_containers/glass))
-		wearer.balloon_alert(wearer, "You must be holding a glass reagent container")
+		wearer.balloon_alert(wearer, "你必须手持一个玻璃试剂容器")
 		return
 
 	if((held_item.reagents.maximum_volume-held_item.reagents.total_volume) < volume)
-		wearer.balloon_alert(wearer, "Held container lacks required space for extraction")
+		wearer.balloon_alert(wearer, "手持容器缺少提取所需的空间")
 		return
 
-	wearer.balloon_alert(wearer, "You begin filling [held_item]")
+	wearer.balloon_alert(wearer, "你开始填充[held_item]")
 	if(!do_after(wearer, 1 SECONDS, IGNORE_USER_LOC_CHANGE, held_item, BUSY_ICON_FRIENDLY, null, PROGRESS_BRASS))
 		return
 
@@ -438,25 +438,25 @@
 
 	var/obj/item/held_item = wearer.get_held_item()
 	if((!istype(held_item, /obj/item/reagent_containers) && !meds_beaker.reagents.total_volume))
-		wearer.balloon_alert(wearer, "You must be holding a suitable reagent container")
+		wearer.balloon_alert(wearer, "你必须手持合适的试剂容器")
 		return
 
 	if(!istype(held_item, /obj/item/reagent_containers) && meds_beaker.reagents.total_volume)
-		var/pick = tgui_input_list(wearer, "Automatic reagent injection on system activate:", "Vali system", list("Yes", "No"))
+		var/pick = tgui_input_list(wearer, "系统激活时自动注射试剂:", "Vali系统", list("Yes", "No"))
 		if(pick == "Yes")
 			automatic_meds_use = TRUE
 		else if(pick == "No")
 			automatic_meds_use = FALSE
-		wearer.balloon_alert(wearer, "The chemical system [automatic_meds_use ? "will" : "won't"] inject loaded reagents on activation")
+		wearer.balloon_alert(wearer, "化学系统[automatic_meds_use ? "will" : "won't"]在激活时注射装载的试剂")
 		return
 
 	var/obj/item/reagent_containers/held_beaker = held_item
 	if(!held_beaker.reagents.total_volume && !meds_beaker.reagents.total_volume)
-		wearer.balloon_alert(wearer, "Both the held reagent container and the system's reagent storage are empty")
+		wearer.balloon_alert(wearer, "手持的试剂容器和系统的试剂储存均为空")
 		return
 
 	if(!held_beaker.reagents.total_volume && meds_beaker.reagents.total_volume) //Pills should never be empty so we don't worry about loading into them
-		var/pick = tgui_input_list(wearer, "Unload internal reagent storage into held container:", "Vali system", list("Yes", "No"))
+		var/pick = tgui_input_list(wearer, "将内部试剂储存卸载到手持容器中:", "Vali系统", list("Yes", "No"))
 		if(pick == "Yes")
 			if(!do_after(wearer, 0.5 SECONDS, IGNORE_USER_LOC_CHANGE, held_item, BUSY_ICON_FRIENDLY, null, PROGRESS_BRASS))
 				return
@@ -465,14 +465,14 @@
 		return
 
 	if(meds_beaker.reagents.total_volume >= meds_beaker.volume)
-		wearer.balloon_alert(wearer, "The system's reagent storage is full")
+		wearer.balloon_alert(wearer, "系统的试剂储存已满")
 		return
 
 	if(!do_after(wearer, 0.5 SECONDS, IGNORE_USER_LOC_CHANGE, held_item, BUSY_ICON_FRIENDLY, null, PROGRESS_BRASS))
 		return
 
 	var/trans = held_beaker.reagents.trans_to(meds_beaker, held_beaker.amount_per_transfer_from_this)
-	wearer.balloon_alert(wearer, "Loaded [trans] units")
+	wearer.balloon_alert(wearer, "已装载[trans]单位")
 	to_chat(wearer, get_meds_beaker_contents())
 	if(istype(held_beaker, /obj/item/reagent_containers/pill))
 		qdel(held_beaker)
@@ -480,8 +480,8 @@
 ///Shows the loaded reagents to the person examining the parent/wearer
 /datum/component/chem_booster/proc/get_meds_beaker_contents()
 	if(!meds_beaker.reagents.total_volume)
-		return span_notice("The system's reagent storage is empty.")
-	. = span_notice("The system's reagent storage contains:\n")
+		return span_notice("系统的试剂储存为空.")
+	. = span_notice("系统的试剂储存包含:\n")
 	for(var/datum/reagent/R AS in meds_beaker.reagents.reagent_list)
 		. += span_rose("[R.name] - [R.volume]u\n")
 
@@ -541,7 +541,7 @@
 	//if there's only a tiny amount in the tank, we take only that much.
 	if(drain_value > resource_storage_current)
 		drain_value = resource_storage_current
-	to_chat(wearer, span_danger("Unregistered User accessing green blood reserves!"))
+	to_chat(wearer, span_danger("未注册用户正在访问绿血储备!"))
 	update_resource(-drain_value)
 
 	var/mob/living/carbon/xenomorph/xeno_drainer = drainer

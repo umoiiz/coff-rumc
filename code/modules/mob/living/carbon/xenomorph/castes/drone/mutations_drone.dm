@@ -15,7 +15,7 @@
 
 /datum/xeno_mutation/drone/scout
 	name = "Scout"
-	desc = "Значительный бонус к броне, пока находишься на траве."
+	desc = "站在草丛上时获得显著的护甲加成。"
 	cost = 7.5
 	icon_state = "drone_scout"
 	tier = 1
@@ -26,7 +26,7 @@
 
 /atom/movable/screen/alert/status_effect/drone/scout
 	name = "Scout"
-	desc = "+15 armor while on weeds"
+	desc = "在草丛上时+15护甲"
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/drone/scout
@@ -101,7 +101,7 @@
 
 /datum/xeno_mutation/drone/together_in_claws
 	name = "Together In Claws"
-	desc = "Регенерация 20% от нанесенного урона партнёром."
+	desc = "从伙伴造成的伤害中回复20%。"
 	cost = 5
 	icon_state = "drone_together_in_claws"
 	tier = 1
@@ -112,7 +112,7 @@
 
 /atom/movable/screen/alert/status_effect/drone/together_in_claws
 	name = "Together In Claws"
-	desc = "+20% heal from partner's damage"
+	desc = "从伙伴的伤害中回复20%"
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/drone/together_in_claws
@@ -151,7 +151,7 @@
 
 /datum/xeno_mutation/drone/revenge
 	name = "Revenge"
-	desc = "Если Essence Link прерывается из-за чей-то смерти, выживший получает +100% к урону на 15 секунд."
+	desc = "如果精华链接因某人死亡而中断,幸存者获得+100%伤害,持续15秒。"
 	cost = 5
 	icon_state = "drone_revenge"
 	tier = 1
@@ -162,7 +162,7 @@
 
 /atom/movable/screen/alert/status_effect/drone/revenge
 	name = "Revenge"
-	desc = "+100% damage to survivour if someone dies in link"
+	desc = "如果链接中有人死亡,幸存者获得+100%伤害"
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/drone/revenge
@@ -201,7 +201,7 @@
 
 /datum/xeno_mutation/drone/saving_grace
 	name = "Saving Grace"
-	desc = "Salve Heal не имеет задержки при лечении партнёра."
+	desc = "治疗已链接伙伴时,药膏治疗没有施法时间。"
 	cost = 5
 	icon_state = "drone_saving_grace"
 	tier = 1
@@ -212,7 +212,7 @@
 
 /atom/movable/screen/alert/status_effect/drone/saving_grace
 	name = "Saving Grace"
-	desc = "No cast time for Salve Heal if healing linked partner"
+	desc = "没有施法时间,若治疗已链接伙伴"
 	icon_state = "xenobuff_attack"
 
 /datum/status_effect/drone/saving_grace

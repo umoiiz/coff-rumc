@@ -23,18 +23,18 @@ export function OverviewSection(props) {
   return (
     <Section
       fill
-      title="Master Overview"
+      title="主控概览"
       buttons={
         <>
           <Button
-            tooltip="Fast Update"
+            tooltip="快速更新"
             icon={fast_update ? 'check-square-o' : 'square-o'}
             color={fast_update && 'average'}
             onClick={() => {
               act('toggle_fast_update');
             }}
           >
-            Fast
+            快速
           </Button>
           <Button.Input
             buttonText={`Average: ${(rolling_length / 10).toFixed(2)} Second(s)`}
@@ -51,20 +51,20 @@ export function OverviewSection(props) {
       <Stack fill>
         <Stack.Item grow>
           <LabeledList>
-            <LabeledList.Item label="World Time">
+            <LabeledList.Item label="世界时间">
               {world_time.toFixed(1)}
             </LabeledList.Item>
-            <LabeledList.Item label="Map CPU">
+            <LabeledList.Item label="地图CPU">
               {map_cpu.toFixed(2)}%
             </LabeledList.Item>
           </LabeledList>
         </Stack.Item>
         <Stack.Item grow>
           <LabeledList>
-            <LabeledList.Item label="Overall Avg Usage">
+            <LabeledList.Item label="总体平均占用">
               {avgUsage.toFixed(2)}%
             </LabeledList.Item>
-            <LabeledList.Item label="Overall Overrun">
+            <LabeledList.Item label="总体超时">
               {overallOverrun.toFixed(2)}%
             </LabeledList.Item>
           </LabeledList>

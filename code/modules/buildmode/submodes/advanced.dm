@@ -19,11 +19,11 @@
 	if(!ispath(selected_type))
 		selected_type = pick_closest_path(target_path)
 		if(!selected_type)
-			tgui_alert(user, "No path was selected")
+			tgui_alert(user, "未选择任何路径")
 			return
 		else if(ispath(selected_type, /area))
 			selected_type = null
-			tgui_alert(user, "That path is not allowed.")
+			tgui_alert(user, "该路径不被允许.")
 			return
 	BM.preview_selected_item(selected_type)
 
@@ -34,14 +34,14 @@
 		if(LAZYACCESS(modifiers, ALT_CLICK))
 			if(istype(object, /turf) || istype(object, /obj) || istype(object, /mob))
 				selected_type = object.type
-				to_chat(user, span_notice("[initial(object.name)] ([object.type]) selected."))
+				to_chat(user, span_notice("已选择[initial(object.name)] ([object.type])."))
 				BM.preview_selected_item(selected_type)
 				return
-			to_chat(user, span_notice("[initial(object.name)] is not a turf, object, or mob! Please select again."))
+			to_chat(user, span_notice("[initial(object.name)]不是地格, 物体或生物! 请重新选择."))
 			return
 
 		if(isnull(selected_type))
-			to_chat(user, span_warning("Select object type first."))
+			to_chat(user, span_warning("请先选择物体类型."))
 			return
 
 		if(ispath(selected_type, /turf))
@@ -72,4 +72,4 @@
 		qdel(object)
 
 	log_admin("Build Mode: [key_name(user)] deleted [object] at [AREACOORD(object)]")
-	to_chat(user, span_notice("Success."))
+	to_chat(user, span_notice("成功."))

@@ -393,7 +393,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(
 	var/icon_key = BOILER_GLOB_NEURO
 	///This text will show up when a boiler selects this ammo. Span proc should be applied when this var is used.
 	var/select_text = "We will now fire neurotoxic gas. This is nonlethal."
-	var/danger_message = span_danger("A glob of acid lands with a splat and explodes into noxious fumes!")
+	var/danger_message = span_danger("一团酸液啪嗒一声落地,炸裂成有毒的烟雾!")
 	///On a direct hit, how long is the target paralyzed?
 	var/hit_paralyze_time = 1 SECONDS
 	///On a direct hit, how much do the victim's eyes get blurred?
@@ -498,7 +498,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(
 	select_text = "We will now fire corrosive acid. This is lethal!"
 	ammo_behavior_flags = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_TARGET_TURF
 	armor_type = ACID
-	danger_message = span_danger("A glob of acid lands with a splat and explodes into corrosive bile!")
+	danger_message = span_danger("一团酸液啪嗒一声落地,炸裂成腐蚀性胆汁!")
 	damage = 50
 	damage_type = BURN
 	penetration = 40
@@ -528,7 +528,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(
 	select_text = "We will now fire a pressurized neurotoxic lance. This is barely nonlethal."
 	///As opposed to normal globs, this will pass by the target tile if they hit nothing.
 	ammo_behavior_flags = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_LEAVE_TURF
-	danger_message = span_danger("A pressurized glob of acid lands with a nasty splat and explodes into noxious fumes!")
+	danger_message = span_danger("一团加压酸液发出恶心的啪嗒声落地,炸裂成有毒的烟雾!")
 	max_range = 40
 	damage = 75
 	penetration = 60
@@ -548,7 +548,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(
 	select_text = "We will now fire a pressurized corrosive lance. This lethal!"
 	///As opposed to normal globs, this will pass by the target tile if they hit nothing.
 	ammo_behavior_flags = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_LEAVE_TURF
-	danger_message = span_danger("A pressurized glob of acid lands with a concerning hissing sound and explodes into corrosive bile!")
+	danger_message = span_danger("一团加压酸液发出令人不安的嘶嘶声落地,炸裂成腐蚀性胆汁!")
 	max_range = 40
 	damage = 75
 	penetration = 60

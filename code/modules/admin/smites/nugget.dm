@@ -6,7 +6,7 @@
 	. = ..()
 
 	if (!ishuman(target))
-		to_chat(user, span_warning("This must be used on a human mob."), confidential = TRUE)
+		to_chat(user, span_warning("这必须对人类生物使用."), confidential = TRUE)
 		return
 
 	var/timer = 2 SECONDS

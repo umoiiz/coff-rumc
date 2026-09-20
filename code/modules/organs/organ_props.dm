@@ -1,6 +1,6 @@
 /obj/item/organ
-	name = "organ"
-	desc = "It looks like it probably just plopped out."
+	name = "器官"
+	desc = "看起来它大概只是掉出来了."
 	icon = 'icons/obj/items/organs.dmi'
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/items/bodyparts_left.dmi',
@@ -8,13 +8,13 @@
 	)
 
 /obj/item/organ/heart
-	name = "heart"
+	name = "心脏"
 	icon_state = "heart-on"
 
 /obj/item/organ/heart/examine(mob/user)
 	. = ..()
 	if(iszombiecrashgamemode(SSticker.mode))
-		. += span_notice("It looks like it could be sold to requisitions for supply points.")
+		. += span_notice("看起来它可以卖给补给部门换取补给点数.")
 
 /obj/item/organ/heart/get_export_value()
 	if(iszombiecrashgamemode(SSticker.mode))
@@ -22,32 +22,32 @@
 	return 0
 
 /obj/item/organ/lungs
-	name = "lungs"
+	name = "肺"
 	icon_state = "lungs"
 	gender = PLURAL
 
 /obj/item/organ/kidneys
-	name = "kidneys"
+	name = "肾脏"
 	icon_state = "kidneys"
 	gender = PLURAL
 
 /obj/item/organ/liver
-	name = "liver"
+	name = "肝脏"
 	icon_state = "liver"
 
 /obj/item/organ/appendix
-	name = "appendix"
+	name = "阑尾"
 	icon_state = "appendix"
 
 /obj/item/organ/stomach
-	name = "stomach"
+	name = "胃"
 	icon_state = "stomach"
 
 /obj/item/organ/eyes
-	name = "eyeballs"
+	name = "眼球"
 	icon_state = "eyes"
 	gender = PLURAL
 
 /obj/item/organ/brain
-	name = "brain"
+	name = "大脑"
 	icon_state = "brain2"

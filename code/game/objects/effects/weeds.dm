@@ -10,7 +10,7 @@
 // base weed type
 /obj/alien/weeds
 	name = "weeds"
-	desc = "A layer of oozy slime, it feels slick, but not as slick for you to slip."
+	desc = "一层黏糊糊的软泥,摸起来很滑,但还没滑到会让你摔倒."
 	icon = 'icons/Xeno/weeds.dmi'
 	icon_state = "base"
 	anchored = TRUE
@@ -140,7 +140,7 @@
 
 /obj/alien/weeds/sticky
 	name = "sticky weeds"
-	desc = "A layer of disgusting sticky slime, it feels like it's going to slow your movement down."
+	desc = "一层恶心的黏稠软泥,感觉会让你的行动变慢."
 	color_variant = STICKY_COLOR
 
 /obj/alien/weeds/sticky/Initialize(mapload, obj/alien/weeds/node/node)
@@ -195,7 +195,7 @@
 
 /obj/alien/weeds/resting
 	name = "resting weeds"
-	desc = "This looks almost comfortable."
+	desc = "这看起来几乎还挺舒服的."
 	color_variant = RESTING_COLOR
 	resting_buff = RESTING_BUFF
 
@@ -266,7 +266,7 @@
 // weed node - grows other weeds
 /obj/alien/weeds/node
 	name = WEED
-	desc = "A weird, pulsating purple node."
+	desc = "一个奇怪的、脉动着的紫色节点."
 	max_integrity = 60
 	var/node_icon = "weednode"
 	/// list of all potential turfs that we can expand to
@@ -325,7 +325,7 @@
 //Sticky weed node
 /obj/alien/weeds/node/sticky
 	name = STICKY_WEED
-	desc = "A weird, pulsating blue node."
+	desc = "一个奇怪的、脉动着的蓝色节点."
 	weed_type = /obj/alien/weeds/sticky
 	color_variant = STICKY_COLOR
 	node_icon = "weednodegreen"
@@ -379,7 +379,7 @@
 //Resting weed node
 /obj/alien/weeds/node/resting
 	name = RESTING_WEED
-	desc = "A weird, pulsating pale node."
+	desc = "一个奇怪的、脉动着的苍白节点."
 	weed_type = /obj/alien/weeds/resting
 	color_variant = RESTING_COLOR
 	node_icon = "weednodewhite"

@@ -197,7 +197,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 /// Called when an overdose starts
 /datum/reagent/proc/on_overdose_start(mob/living/L, metabolism)
 	if(prob(30)) //placeholder vague feedback
-		to_chat(L, span_notice("You feel a little nauseous..."))
+		to_chat(L, span_notice("你感到有点恶心..."))
 	log_combat(L, L, "has been overdosed on [name].")
 
 /// Called when an overdose stops
@@ -211,7 +211,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 /// Called when a CRITICAL overdose starts.
 /datum/reagent/proc/on_overdose_crit_start(mob/living/L, metabolism)
 	log_combat(L, L, "has been critically overdosed on [name].")
-	to_chat(L, span_danger("You feel like you took too much of [name]!"))
+	to_chat(L, span_danger("你感觉你摄入了太多[name]!"))
 
 
 /// Called by [/datum/reagents/proc/conditional_update_move]
@@ -237,25 +237,25 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 /// Called when addiction hits stage1, see [/datum/reagents/proc/metabolize]
 /datum/reagent/proc/addiction_act_stage1(mob/living/L, metabolism)
 	if(prob(30))
-		to_chat(L, span_notice("You feel like having some [name] right about now."))
+		to_chat(L, span_notice("你现在感觉想来点[name]."))
 
 
 /// Called when addiction hits stage2, see [/datum/reagents/proc/metabolize]
 /datum/reagent/proc/addiction_act_stage2(mob/living/L, metabolism)
 	if(prob(30))
-		to_chat(L, span_notice("You feel like you need [name]. You just can't get enough."))
+		to_chat(L, span_notice("你感觉你需要[name]. 你就是欲罢不能."))
 
 
 /// Called when addiction hits stage3, see [/datum/reagents/proc/metabolize]
 /datum/reagent/proc/addiction_act_stage3(mob/living/L, metabolism)
 	if(prob(30))
-		to_chat(L, span_danger("You have an intense craving for [name]."))
+		to_chat(L, span_danger("你对[name]有强烈的渴望."))
 
 
 /// Called when addiction hits stage4, see [/datum/reagents/proc/metabolize]
 /datum/reagent/proc/addiction_act_stage4(mob/living/L, metabolism)
 	if(prob(30))
-		to_chat(L, span_danger("You're not feeling good at all! You really need some [name]."))
+		to_chat(L, span_danger("你感觉一点都不好! 你真的需要一些[name]."))
 
 
 ///Convert reagent list to a printable string for logging etc

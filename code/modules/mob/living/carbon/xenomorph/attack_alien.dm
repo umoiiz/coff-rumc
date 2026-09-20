@@ -20,8 +20,8 @@
 /mob/living/carbon/human/attack_alien_grab(mob/living/carbon/xenomorph/X)
 	if(check_shields(COMBAT_TOUCH_ATTACK, X.xeno_caste.melee_damage, MELEE))
 		return ..()
-	X.visible_message(span_danger("\The [X]'s grab is blocked by [src]'s shield!"),
-		span_danger("Our grab was blocked by [src]'s shield!"), null, 5)
+	X.visible_message(span_danger("\The [X]的抓取被[src]的护盾挡住了!"),
+		span_danger("我们的抓取被[src]的护盾挡住了!"), null, 5)
 	playsound(loc, 'sound/weapons/alien_claw_block.ogg', 25, TRUE) //Feedback
 	return FALSE
 
@@ -29,8 +29,8 @@
 	SEND_SIGNAL(src, COMSIG_LIVING_MELEE_ALIEN_DISARMED, X)
 	X.do_attack_animation(src, ATTACK_EFFECT_DISARM2)
 	playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, TRUE)
-	X.visible_message(span_warning("\The [X] shoves [src]!"),
-	span_warning("We shove [src]!"), null, 5)
+	X.visible_message(span_warning("\The [X]推搡了[src]!"),
+	span_warning("我们推搡了[src]!"), null, 5)
 	return TRUE
 
 /mob/living/proc/can_xeno_slash(mob/living/carbon/xenomorph/X)
@@ -88,20 +88,20 @@
 		damage = check_shields(COMBAT_MELEE_ATTACK, damage, MELEE)
 
 	if(!damage)
-		X.visible_message(span_danger("\The [X]'s slash is blocked by [src]'s shield!"),
-			span_danger("Our slash is blocked by [src]'s shield!"), null, COMBAT_MESSAGE_RANGE)
+		X.visible_message(span_danger("\The [X]的挥砍被[src]的护盾挡住了!"),
+			span_danger("我们的挥砍被[src]的护盾挡住了!"), null, COMBAT_MESSAGE_RANGE)
 		return FALSE
 
-	var/attack_message1 = span_danger("\The [X] slashes [src]!")
-	var/attack_message2 = span_danger("We slash [src]!")
+	var/attack_message1 = span_danger("\The [X]挥砍了[src]!")
+	var/attack_message2 = span_danger("我们挥砍了[src]!")
 	var/log = "slashed"
 
 	//Somehow we will deal no damage on this attack
 	if(!damage)
 		playsound(X.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
 		X.do_attack_animation(src)
-		X.visible_message(span_danger("\The [X] lunges at [src]!"), \
-		span_danger("We lunge at [src]!"), null, 5)
+		X.visible_message(span_danger("\The [X]扑向[src]!"), \
+		span_danger("我们扑向[src]!"), null, 5)
 		return FALSE
 
 	var/attack_effect = islist(X.attack_effect) ? pick(X.attack_effect) : X.attack_effect
@@ -155,8 +155,8 @@
 
 /mob/living/carbon/xenomorph/attack_alien_harm(mob/living/carbon/xenomorph/X, dam_bonus, set_location = FALSE, random_location = FALSE, no_head = FALSE, no_crit = FALSE, force_intent = null)
 	if(issamexenohive(X))
-		X.visible_message(span_warning("\The [X] nibbles [src]."),
-		span_warning("We nibble [src]."), null, 5)
+		X.visible_message(span_warning("\The [X]轻咬了[src]。"),
+		span_warning("我们轻咬了[src]。"), null, 5)
 		X.do_attack_animation(src)
 		return FALSE
 	return ..()
@@ -164,7 +164,7 @@
 /mob/living/carbon/human/attack_alien_harm(mob/living/carbon/xenomorph/X, dam_bonus, set_location = FALSE, random_location = FALSE, no_head = FALSE, no_crit = FALSE, force_intent = null)
 
 	if(isnestedhost(src) && stat != DEAD) //No more memeing nested and infected hosts
-		to_chat(X, span_xenodanger("We reconsider our mean-spirited bullying of the pregnant, secured host."))
+		to_chat(X, span_xenodanger("我们重新考虑我们对这个怀孕的、被束缚的宿主的恶意欺凌。"))
 		return FALSE
 
 	if(stat == DEAD)
@@ -174,16 +174,16 @@
 				cam_headset.camera.toggle_cam(null, FALSE)
 				playsound(loc, SFX_ALIEN_CLAW_METAL, 25, 1)
 				X.do_attack_animation(src, ATTACK_EFFECT_CLAW)
-				to_chat(X, span_warning("We disable the creatures hivemind sight apparatus."))
+				to_chat(X, span_warning("我们禁用了这个生物的虫巢意识视觉器官。"))
 				return FALSE
 
 		if(length(static_light_sources) || length(hybrid_light_sources) || length(affected_movable_lights))
 			playsound(loc, SFX_ALIEN_CLAW_METAL, 25, 1)
 			X.do_attack_animation(src, ATTACK_EFFECT_CLAW)
 			disable_lights(sparks = TRUE)
-			to_chat(X, span_warning("We disable whatever annoying lights the dead creature possesses."))
+			to_chat(X, span_warning("我们禁用了这个死去的生物身上那些烦人的灯。"))
 		else
-			to_chat(X, span_warning("[src] is dead, why would we want to touch it?"))
+			to_chat(X, span_warning("[src]已经死了,我们为什么还要碰它?"))
 		return FALSE
 
 	if(check_predator_shields(X, X.xeno_caste.melee_damage * X.xeno_melee_damage_modifier + dam_bonus, dir))
@@ -193,8 +193,8 @@
 
 	if(wear_mask && X.zone_selected == "head" && istype(wear_mask, /obj/item/clothing/mask/gas/yautja) && prob(5))
 		playsound(loc, SFX_ALIEN_CLAW_METAL, 25, 1)
-		X.visible_message(span_danger("The [X] smashes off [src]'s [wear_mask.name]!"), \
-		span_danger("You smash off [src]'s [wear_mask.name]!"), null, 5)
+		X.visible_message(span_danger("[X]砸掉了[src]的[wear_mask.name]!"), \
+		span_danger("你砸掉了[src]的[wear_mask.name]!"), null, 5)
 		dropItemToGround(wear_mask)
 		if(isyautja(src))
 			emote("roar")
@@ -217,10 +217,10 @@
 	switch(xeno_attacker.a_intent)
 		if(INTENT_HELP)
 			if(on_fire)
-				xeno_attacker.visible_message(span_danger("[xeno_attacker] stares at [src]."), span_notice("We stare at the roasting [src], toasty."), null, 5)
+				xeno_attacker.visible_message(span_danger("[xeno_attacker]盯着[src]。"), span_notice("我们盯着烤得暖烘烘的[src]。"), null, 5)
 				return FALSE
-			xeno_attacker.visible_message(span_notice("\The [xeno_attacker] caresses [src] with its scythe-like arm."), \
-			span_notice("We caress [src] with our scythe-like arm."), null, 5)
+			xeno_attacker.visible_message(span_notice("\The [xeno_attacker] 用镰刀般的手臂抚摸 [src]."), \
+			span_notice("我们用镰刀般的手臂抚摸 [src]."), null, 5)
 			return FALSE
 
 		if(INTENT_GRAB)
@@ -231,8 +231,8 @@
 	return FALSE
 
 /mob/living/attack_larva(mob/living/carbon/xenomorph/larva/M)
-	M.visible_message(span_danger("[M] nudges its head against [src]."), \
-	span_danger("We nudge our head against [src]."), null, 5)
+	M.visible_message(span_danger("[M] 用头蹭 [src]."), \
+	span_danger("我们用头蹭 [src]."), null, 5)
 
 /mob/living/attack_facehugger(mob/living/carbon/xenomorph/facehugger/F, damage_amount = F.xeno_caste.melee_damage, damage_type = BRUTE, damage_flag = MELEE, effects = TRUE, armor_penetration = 0, isrightclick = FALSE)
 	if(F.status_flags & INCORPOREAL)
@@ -240,17 +240,17 @@
 	switch(F.a_intent)
 		if(INTENT_HELP, INTENT_GRAB) //Try to hug target if this is a human
 			if(ishuman(src))
-				F.visible_message(null, span_notice("We're starting to climb on [src]"), null, 5)
+				F.visible_message(null, span_notice("我们开始攀爬 [src]"), null, 5)
 				if(!do_after(F, 2 SECONDS, NONE, F, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE, extra_checks = CALLBACK(F, TYPE_PROC_REF(/datum, Adjacent), src)))
-					F.balloon_alert(F, "Climbing interrupted")
+					F.balloon_alert(F, "攀爬被打断")
 					return FALSE
 				F.try_attach(src)
 			else if(on_fire)
-				F.visible_message(span_danger("[F] stares at [src]."), \
-				span_notice("We stare at the roasting [src], toasty."), null, 5)
+				F.visible_message(span_danger("[F] 盯着 [src]."), \
+				span_notice("我们盯着烤得香喷喷的 [src]."), null, 5)
 			else
-				F.visible_message(span_notice("[F] stares at [src]."), \
-				span_notice("We stare at [src]."), null, 5)
+				F.visible_message(span_notice("[F] 盯着 [src]."), \
+				span_notice("我们盯着 [src]."), null, 5)
 			return FALSE
 		if(INTENT_HARM, INTENT_DISARM)
 			return attack_alien_harm(F)

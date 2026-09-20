@@ -3,7 +3,7 @@
 		return FALSE
 
 	if(incapacitated(TRUE))
-		to_chat(src, span_warning("You can't resist in your current state."))
+		to_chat(src, span_warning("以你现在的状态无法抵抗."))
 		return FALSE
 
 	changeNext_move(CLICK_CD_RESIST)

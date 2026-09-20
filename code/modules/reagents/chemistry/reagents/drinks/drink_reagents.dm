@@ -206,7 +206,7 @@
 	L.apply_damage(0.5, TOX)
 	L.jitter(5)
 	if(prob(5) && L.stat != UNCONSCIOUS)
-		to_chat(L, span_warning("You spasm and pass out!"))
+		to_chat(L, span_warning("你一阵痉挛,昏了过去!"))
 		L.Unconscious(10 SECONDS)
 	if(prob(30) && ishuman(L))
 		var/mob/living/carbon/human/H = L

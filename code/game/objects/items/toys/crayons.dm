@@ -43,7 +43,7 @@
 /* A special mime crayon */
 /obj/item/toy/crayon/mime
 	icon_state = "crayonmime"
-	desc = "A very sad-looking crayon."
+	desc = "一支看起来很悲伤的蜡笔。"
 	colour = "#FFFFFF"
 	shadeColour = "#000000"
 	colourName = "mime"
@@ -53,11 +53,11 @@
 	if(colour != "#FFFFFF" && shadeColour != "#000000")
 		colour = "#FFFFFF"
 		shadeColour = "#000000"
-		to_chat(user, "You will now draw in white and black with this crayon.")
+		to_chat(user, "你现在可以用这支蜡笔画白色和黑色。")
 	else
 		colour = "#000000"
 		shadeColour = "#FFFFFF"
-		to_chat(user, "You will now draw in black and white with this crayon.")
+		to_chat(user, "你现在可以用这支蜡笔画黑色和白色。")
 
 
 /* A special rainbow crayon */
@@ -83,28 +83,28 @@
 	if(!CONFIG_GET(flag/fun_allowed))
 		return
 
-	var/drawtype = tgui_input_list(user, "Choose what you'd like to draw.", "Crayon scribbles", list("graffiti","rune","letter"))
+	var/drawtype = tgui_input_list(user, "选择你想画的内容。", "蜡笔涂鸦", list("graffiti","rune","letter"))
 	if(drawtype == "letter")
-		drawtype = tgui_input_list(user, "Choose the letter.", "Crayon scribbles", list("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"))
+		drawtype = tgui_input_list(user, "选择字母。", "蜡笔涂鸦", list("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"))
 
-	user.visible_message("[user] starts drawing something on \the [target.name]")
+	user.visible_message("[user]开始在\the [target.name]上画些什么")
 	if(!instant && !do_after(user, 5 SECONDS, NONE, target, BUSY_ICON_GENERIC))
 		return
 
 	new /obj/effect/decal/cleanable/crayon(target, colour, shadeColour, drawtype)
 	uses--
 	if(uses <= 0)
-		balloon_alert_to_viewers("used up the crayon")
+		balloon_alert_to_viewers("用完了蜡笔")
 		qdel(src)
 
 /obj/item/toy/crayon/attack(mob/living/M, mob/living/user)
 	if(M != user)
 		return ..()
 
-	balloon_alert_to_viewers("takes a bite of \the [src] and swallows it")
+	balloon_alert_to_viewers("咬了一口\the [src]并吞了下去")
 	uses -= 5
 	if(uses <= 0)
-		balloon_alert(user, "eats the whole crayon")
+		balloon_alert(user, "吃掉了整支蜡笔")
 		qdel(src)
 
 	M.adjust_tox_loss(1) // add a little bit of toxic damage

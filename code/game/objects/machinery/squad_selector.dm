@@ -1,6 +1,6 @@
 /obj/machinery/computer/squad_selector
 	name = "squad selection console"
-	desc = "A console for squad management. Allows users to join a squad."
+	desc = "用于小队管理的控制台。允许用户加入小队。"
 	icon = 'icons/obj/machines/computer.dmi'
 	icon_state = "computer"
 	screen_overlay = "syndishuttle"

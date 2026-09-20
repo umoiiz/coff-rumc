@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/ravager
 	caste_base_type = /datum/xeno_caste/ravager
 	name = "Ravager"
-	desc = "A huge, nasty red alien with enormous scythed claws."
+	desc = "一个巨大而凶恶的红色异形,拥有巨大的镰刀状利爪."
 	icon = 'icons/Xeno/castes/ravager/basic.dmi'
 	icon_state = "Ravager Walking"
 	effects_icon = 'icons/Xeno/castes/ravager/effects.dmi'
@@ -48,7 +48,7 @@
 		REMOVE_TRAIT(src, TRAIT_STAGGERIMMUNE, RAGE_TRAIT)
 		UnregisterSignal(src, COMSIG_XENOMORPH_ATTACK_LIVING)
 		playsound_local(src, 'sound/voice/alien/hiss8.ogg', 50)
-		balloon_alert(src, "We are rested enough")
+		balloon_alert(src, "我们休息够了")
 		return
 
 	var/rage_start_hp = maxHealth * RAVAGER_RAGE_MIN_HEALTH_THRESHOLD
@@ -77,7 +77,7 @@
 
 	if((health <= 0) && !on_cooldown && stat == CONSCIOUS)
 		playsound(loc, 'sound/voice/alien/roar2.ogg', clamp(100 * rage_power, 25, 80), 0)
-		balloon_alert(src, "RIP AND TEAR")
+		balloon_alert(src, "撕裂与杀戮")
 		plasma_stored += xeno_caste.plasma_max
 		var/datum/action/ability/xeno_action/charge = actions_by_path[/datum/action/ability/activable/xeno/charge]
 		var/datum/action/ability/xeno_action/ravage = actions_by_path[/datum/action/ability/activable/xeno/ravage]
@@ -130,7 +130,7 @@
 	TIMER_COOLDOWN_START(src, COOLDOWN_RAVAGER_FLAMER_ACT, 1 SECONDS)
 	if(prob(30))
 		emote("roar")
-		to_chat(src, span_xenodanger("The heat of the fire roars in our veins! KILL! CHARGE! DESTROY!"))
+		to_chat(src, span_xenodanger("火焰之热在我们的血管中咆哮! 杀! 冲锋! 毁灭!"))
 
 // ***************************************
 // *********** Ability related

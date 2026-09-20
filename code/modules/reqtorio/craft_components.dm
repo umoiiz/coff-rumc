@@ -1,6 +1,6 @@
 /obj/item/stack/gun_powder
-	name = "gunpowder pile"
-	desc = "Some gunpowder pile."
+	name = "火药堆"
+	desc = "一些火药堆."
 	singular_name = "layer"
 	icon_state = "gun_powder"
 	w_class = WEIGHT_CLASS_HUGE
@@ -14,8 +14,8 @@
 	amount = 25
 
 /obj/item/stack/sheet/composite
-	name = "iron-copper composite"
-	desc = "Composite made of iron and copper plates"
+	name = "铁铜复合材料"
+	desc = "由铁板和铜板制成的复合材料"
 	singular_name = "composite sheet"
 	icon_state = "CuFe_composite"
 	worn_icon_state = "CuFe_composite"
@@ -29,8 +29,8 @@
 	amount = 50
 
 /obj/item/stack/sheet/jeweler_steel
-	name = "jeweler steel"
-	desc = "Jeweler steel, contains precious metals"
+	name = "珠宝钢"
+	desc = "珠宝钢,含有贵金属"
 	singular_name = "steel sheet"
 	icon_state = "jeweler_steel"
 	worn_icon_state = "jeweler_steel"

@@ -909,13 +909,13 @@
 
 /obj/docking_port/mobile/proc/can_move_topic(mob/user)
 	if(mode == SHUTTLE_RECHARGING)
-		to_chat(user, span_warning("The engines are not ready to use yet!"))
+		to_chat(user, span_warning("引擎尚未准备好使用!"))
 		return FALSE
 	if(launch_status == ENDGAME_LAUNCHED)
-		to_chat(user, span_warning("You've already escaped. Never going back to that place again!"))
+		to_chat(user, span_warning("你已经逃走了.再也不会回到那个地方了!"))
 		return FALSE
 	if(mode != SHUTTLE_IDLE)
-		to_chat(user, span_warning("Shuttle already in transit."))
+		to_chat(user, span_warning("穿梭机已在传送中."))
 		return FALSE
 	return TRUE
 

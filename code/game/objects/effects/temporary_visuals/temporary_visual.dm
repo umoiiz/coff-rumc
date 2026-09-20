@@ -67,7 +67,7 @@ GLOBAL_DATUM_INIT(flare_particles, /particles/flare_smoke, new)
 /obj/effect/temp_visual/above_flare/Initialize(mapload)
 	. = ..()
 	particles = GLOB.flare_particles
-	loc.visible_message(span_warning("You see a tiny flash, and then a blindingly bright light from a flare as it lights off in the sky!"))
+	loc.visible_message(span_warning("你看到一道微小的闪光,随后一枚照明弹在天空中点亮,发出令人目眩的强光!"))
 	playsound(loc, 'sound/weapons/guns/fire/flare.ogg', 50, 1, 4)
 	animate(src, time = duration, pixel_y = 0)
 
@@ -106,7 +106,7 @@ GLOBAL_DATUM_INIT(flare_particles, /particles/flare_smoke, new)
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "oppose_shatter"
 	name = "veined terrain"
-	desc = "blood rushes below the ground, forcing it upwards."
+	desc = "血液涌向地下,迫使它向上涌出."
 	layer = BLASTDOOR_LAYER
 	pixel_x = -32
 	pixel_y = -32

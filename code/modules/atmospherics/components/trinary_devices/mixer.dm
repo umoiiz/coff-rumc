@@ -1,6 +1,6 @@
 /obj/machinery/atmospherics/components/trinary/mixer
 	name = "gas mixer"
-	desc = "Very useful for mixing gasses."
+	desc = "对混合气体非常有用."
 	icon_state = "mixer_off"
 	density = FALSE
 	can_unwrench = FALSE
@@ -37,7 +37,7 @@
 /obj/machinery/atmospherics/components/trinary/mixer/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational())
-		to_chat(user, span_warning("You cannot unwrench [src], turn it off first!"))
+		to_chat(user, span_warning("你无法松开[src], 先把它关掉!"))
 		return FALSE
 
 // mapping

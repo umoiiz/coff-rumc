@@ -2,7 +2,7 @@
 	ability_cost = 10
 
 /datum/action/ability/activable/xeno/pounce/panther
-	desc = "Leap at your target, tackling and disarming them. Heals and restores some plasma on succesfull hit."
+	desc = "跃向你的目标,将其扑倒并缴械.成功命中时治疗并恢复一些等离子."
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_PANTHER_POUNCE,
 	)
@@ -20,7 +20,7 @@
 
 /datum/action/ability/xeno_action/tearingtail
 	name = "Tearing tail"
-	desc = "Hit all nearby enemies around you, poisoning them with selected toxin and healing you for each target hit."
+	desc = "打击你周围的所有敌人,用选定的毒素使其中毒,并为你每命中一个目标治疗你."
 	action_icon_state = "tearing_tail"
 	action_icon = 'icons/Xeno/actions/panther.dmi'
 	ability_cost = 35
@@ -49,7 +49,7 @@
 			human_target.reagents.add_reagent(xeno_owner.selected_reagent, PANTHER_TEARING_TAIL_REAGENT_AMOUNT)
 			playsound(human_target, 'sound/effects/spray3.ogg', 15, TRUE)
 		shake_camera(human_target, 2, 1)
-		to_chat(human_target, span_xenowarning("We are hit by \the [xeno_owner]'s tail sweep!"))
+		to_chat(human_target, span_xenowarning("我们被\the [xeno_owner]的尾扫击中!"))
 		playsound(human_target,'sound/weapons/alien_tail_attack.ogg', 50, 1)
 
 	addtimer(CALLBACK(xeno_owner, TYPE_PROC_REF(/datum, remove_filter), "defender_tail_sweep"), 0.5 SECONDS)
@@ -57,7 +57,7 @@
 	add_cooldown()
 
 /datum/action/ability/xeno_action/tearingtail/on_cooldown_finish()
-	to_chat(xeno_owner, span_notice("We gather enough strength to tear the skin again."))
+	to_chat(xeno_owner, span_notice("我们聚集了足够的力量再次撕裂皮肤."))
 	owner.playsound_local(owner, 'sound/effects/alien/newlarva.ogg', 25, 0, 1)
 	return ..()
 
@@ -67,7 +67,7 @@
 
 /datum/action/ability/activable/xeno/adrenalinejump
 	name = "Adrenaline Jump"
-	desc = "Jump from some distance to target, knocking them down and pulling them to you, only works if you are at least from 3 to 8 tiles away from the target."
+	desc = "从一定距离跳向目标,将其击倒并拉向你,只有当你距离目标至少3到8格时才有效."
 	action_icon_state = "adrenaline_jump"
 	action_icon = 'icons/Xeno/actions/panther.dmi'
 	ability_cost = 10
@@ -80,7 +80,7 @@
 	var/atom/lunge_target
 
 /datum/action/ability/activable/xeno/adrenalinejump/on_cooldown_finish()
-	to_chat(owner, span_xenodanger("We ready ourselves to jump again."))
+	to_chat(owner, span_xenodanger("我们准备好再次跳跃."))
 	owner.playsound_local(owner, 'sound/effects/alien/newlarva.ogg', 25, 0, 1)
 	return ..()
 
@@ -91,29 +91,29 @@
 
 	if(get_dist_euclidean_square(A, owner) > 64) //8 tiles range
 		if(!silent)
-			to_chat(owner, span_xenonotice("You are too far!"))
+			to_chat(owner, span_xenonotice("你太远了!"))
 		return FALSE
 
 	if(!line_of_sight(A, owner))
 		if(!silent)
-			owner.balloon_alert(owner, "We need clear jump line!")
+			owner.balloon_alert(owner, "我们需要清晰的跳跃路线!")
 		return FALSE
 
 	if(!isliving(A))
 		if(!silent)
-			to_chat(owner, span_xenodanger("We can't jump at that!"))
+			to_chat(owner, span_xenodanger("我们不能跳向那个!"))
 		return FALSE
 
 	var/mob/living/living_target = A
 	if(living_target.stat == DEAD)
 		if(!silent)
-			to_chat(owner, span_xenodanger("We can't jump at that!"))
+			to_chat(owner, span_xenodanger("我们不能跳向那个!"))
 		return FALSE
 	return TRUE
 
 /datum/action/ability/activable/xeno/adrenalinejump/use_ability(atom/targeted_atom)
-	xeno_owner.visible_message(span_xenowarning("\The [xeno_owner] jump towards [targeted_atom]!"), \
-	span_xenowarning("We jump at [targeted_atom]!"))
+	xeno_owner.visible_message(span_xenowarning("\The [xeno_owner]跳向[targeted_atom]!"), \
+	span_xenowarning("我们跳向[targeted_atom]!"))
 
 	lunge_target = targeted_atom
 
@@ -122,7 +122,7 @@
 	RegisterSignal(xeno_owner, COMSIG_MOVABLE_POST_THROW, PROC_REF(clean_lunge_target))
 
 	if(lunge_target.Adjacent(xeno_owner)) //They're already in range, pat their head, we messed up.
-		to_chat(xeno_owner, span_xenodanger("We lost some of the adrenaline due to failed jump!."))
+		to_chat(xeno_owner, span_xenodanger("由于跳跃失败,我们失去了一些肾上腺素!"))
 		playsound(xeno_owner,'sound/weapons/thudswoosh.ogg', 75, 1)
 		xeno_owner.use_plasma(50, TRUE)
 		clean_lunge_target()
@@ -150,8 +150,8 @@
 
 /datum/action/ability/activable/xeno/adrenalinejump/proc/pantherfling(mob/living/lunge_target)
 	xeno_owner.face_atom(lunge_target)
-	xeno_owner.visible_message(span_xenowarning("\The [xeno_owner] effortlessly trips [lunge_target]!"), \
-	span_xenowarning("We effortlessly trip [lunge_target]!"))
+	xeno_owner.visible_message(span_xenowarning("\The [xeno_owner]轻松绊倒[lunge_target]!"), \
+	span_xenowarning("我们轻松绊倒[lunge_target]!"))
 	playsound(lunge_target,'sound/weapons/alien_claw_block.ogg', 75, 1)
 
 	xeno_owner.do_attack_animation(lunge_target, ATTACK_EFFECT_DISARM2)
@@ -169,7 +169,7 @@
 
 /datum/action/ability/xeno_action/adrenaline_rush
 	name = "Adrenaline rush"
-	desc = "On activation increases movespeed at the cost of 3 adrenaline per tile moved."
+	desc = "激活时提高移动速度,每移动一格消耗3点肾上腺素."
 	action_icon_state = "adrenaline_rush"
 	action_icon = 'icons/Xeno/actions/panther.dmi'
 	ability_cost = 10
@@ -207,7 +207,7 @@
 /datum/action/ability/xeno_action/adrenaline_rush/proc/rush_on_moved(datum/source, atom/oldloc, direction, Forced = FALSE)
 	SIGNAL_HANDLER
 	if(xeno_owner.plasma_stored < 3)
-		xeno_owner.balloon_alert(xeno_owner, "We are too tired to continue")
+		xeno_owner.balloon_alert(xeno_owner, "我们太累了,无法继续")
 		rush_off()
 		return
 	xeno_owner.use_plasma(3)
@@ -218,7 +218,7 @@
 
 /datum/action/ability/xeno_action/evasive_maneuvers
 	name = "Toggle evasive maneuvers"
-	desc = "Toggle evasive action, forcing non-friendly projectiles that would hit you to miss."
+	desc = "切换闪避动作,迫使会命中你的非友方投射物打偏."
 	action_icon_state = "evasive_maneuvers"
 	action_icon = 'icons/Xeno/actions/panther.dmi'
 	ability_cost = 35
@@ -241,7 +241,7 @@
 		return FALSE
 	if(xeno_owner.on_fire)
 		if(!silent)
-			xeno_owner.balloon_alert(xeno_owner, "Can't while on fire!")
+			xeno_owner.balloon_alert(xeno_owner, "着火时无法使用!")
 		return FALSE
 	return TRUE
 
@@ -249,8 +249,8 @@
 	if(evade_active)
 		evasion_deactivate()
 		return TRUE
-	xeno_owner.balloon_alert(xeno_owner, "Begin evasion.")
-	to_chat(xeno_owner, span_userdanger("We take evasive action, making us impossible to hit with projectiles."))
+	xeno_owner.balloon_alert(xeno_owner, "开始闪避.")
+	to_chat(xeno_owner, span_userdanger("我们采取闪避动作,使投射物无法命中我们."))
 	succeed_activate()
 
 	RegisterSignals(xeno_owner, list(
@@ -285,7 +285,7 @@
 		xeno_owner.use_plasma(PANTHER_EVASION_LOW_PLASMADRAIN)
 	//If we have 0 plasma after expending evasion upkeep plasma, end evasion.
 	if(!xeno_owner.plasma_stored)
-		to_chat(xeno_owner, span_xenodanger("We lack sufficient plasma to keep evading."))
+		to_chat(xeno_owner, span_xenodanger("我们没有足够的等离子来维持闪避."))
 		evasion_deactivate()
 
 ///After getting hit with an Evasion disabling debuff, this is where we check to see if evasion is active, and if we actually have debuff stacks
@@ -294,14 +294,14 @@
 
 	if(amount <= 0 || !evade_active) //If evasion isn't active we don't care
 		return
-	to_chat(xeno_owner, span_userdanger("Our movements have been interrupted!"))
+	to_chat(xeno_owner, span_userdanger("我们的动作被打断了!"))
 	xeno_owner.use_plasma(65, TRUE)
 
 ///Where we deactivate evasion and unregister the signals/zero out vars, etc.
 /datum/action/ability/xeno_action/evasive_maneuvers/proc/evasion_deactivate()
 	SIGNAL_HANDLER
 	add_cooldown()
-	to_chat(owner, span_xenodanger("We stop evading."))
+	to_chat(owner, span_xenodanger("我们停止闪避."))
 
 	UnregisterSignal(owner, list(
 		COMSIG_MOVABLE_MOVED,
@@ -321,13 +321,13 @@
 	set_toggle(FALSE)
 	evade_active = FALSE //Evasion is no longer active
 
-	owner.balloon_alert(owner, "Evasion ended")
+	owner.balloon_alert(owner, "闪避结束")
 	owner.playsound_local(owner, 'sound/voice/alien/hiss8.ogg', 50)
 
 #define PANTHER_EVASION_RUN_DELAY 0.5 SECONDS // If the time since the Runner last moved is equal to or greater than this, its Evasion ends.
 
 /datum/action/ability/xeno_action/evasive_maneuvers/on_cooldown_finish()
-	to_chat(owner, span_xenodanger("We are able to take evasive action again."))
+	to_chat(owner, span_xenodanger("我们又能采取闪避动作了."))
 	owner.playsound_local(owner, 'sound/effects/alien/newlarva.ogg', 25, 0, 1)
 	return ..()
 
@@ -372,8 +372,8 @@
 
 ///Handles dodge effects and visuals for the Evasion ability.
 /datum/action/ability/xeno_action/evasive_maneuvers/proc/evasion_dodge_sfx(atom/movable/proj)
-	xeno_owner.visible_message(span_warning("[xeno_owner] effortlessly dodges the [proj.name]!"), \
-	span_xenodanger("We effortlessly dodge the [proj.name]!"))
+	xeno_owner.visible_message(span_warning("[xeno_owner]轻松躲开了[proj.name]!"), \
+	span_xenodanger("我们轻松躲开了[proj.name]!"))
 
 	xeno_owner.add_filter("runner_evasion", 2, gauss_blur_filter(5))
 	addtimer(CALLBACK(xeno_owner, TYPE_PROC_REF(/datum, remove_filter), "runner_evasion"), 0.5 SECONDS)
@@ -390,7 +390,7 @@
 // *********** Select reagent (panther)
 // ***************************************
 /datum/action/ability/xeno_action/select_reagent/panther
-	desc = "Selects which reagent to use for tearing tail. Hemodile slows by 25%, increased to 50% with neurotoxin present, and deals 20% of damage received as stamina damage. Transvitox converts brute/burn damage to toxin based on 40% of damage received up to 45 toxin on target, upon reaching which causes a stun. Neurotoxin deals increasing stamina damage the longer it remains in the victim's system and prevents stamina regeneration. Ozelomelyn purges medical chemicals from humans, while also causing slight intoxication. Sanguinal does damage depending on presence and amount of all previously mentioned reagents, also causes light brute damage and bleeding."
+	desc = "选择用于撕裂尾巴的试剂.血魔碱使目标减速25%,若目标体内存在神经毒素则提升至50%,并将受到伤害的20%转化为耐力伤害.转毒素根据受到伤害的40%将物理/灼烧伤害转化为毒素伤害,最多对目标造成45点毒素,达到上限时使其眩晕.神经毒素在受害者体内停留时间越长,造成的耐力伤害越高,并阻止耐力恢复.奥泽洛梅林清除人类体内的医疗化学物质,同时造成轻微醉酒.血红素根据上述所有试剂的存在与否及数量造成伤害,同时造成轻微物理伤害和流血."
 	keybinding_signals = list(
 		KEYBINDING_NORMAL = COMSIG_XENOABILITY_PANTHER_SELECT_REAGENT,
 		KEYBINDING_ALTERNATE = COMSIG_XENOABILITY_RADIAL_SELECT_REAGENT,

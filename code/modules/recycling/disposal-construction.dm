@@ -3,8 +3,8 @@
 //TODO replace me with tg code?
 /obj/structure/disposalconstruct
 
-	name = "disposal pipe segment"
-	desc = "A huge pipe segment used for constructing disposal systems."
+	name = "处理管道段"
+	desc = "一段用于建造处理系统的大型管道。"
 	icon = 'icons/obj/pipes/disposal.dmi'
 	icon_state = "conpipe-s"
 	anchored = FALSE
@@ -106,7 +106,7 @@
 		return
 
 	if(anchored)
-		to_chat(usr, "You must unfasten the pipe before rotating it.")
+		to_chat(usr, "你必须先松开管道才能旋转它。")
 		return
 
 	setDir(turn(dir, -90))
@@ -120,7 +120,7 @@
 		return
 
 	if(anchored)
-		to_chat(usr, "You must unfasten the pipe before flipping it.")
+		to_chat(usr, "你必须先松开管道才能翻转它。")
 		return
 
 	setDir(REVERSE_DIR(dir))
@@ -198,7 +198,7 @@
 
 	var/turf/T = src.loc
 	if(T.intact_tile)
-		to_chat(user, "You can only attach the [nicetype] if the floor plating is removed.")
+		to_chat(user, "只有在移除地板镀层的情况下才能安装[nicetype]。")
 		return
 
 	var/obj/structure/disposalpipe/CP = locate() in T
@@ -211,15 +211,15 @@
 				density = FALSE
 			else
 				density = TRUE
-			to_chat(user, "You detach the [nicetype] from the underfloor.")
+			to_chat(user, "你从地板下拆下了[nicetype]。")
 		else
 			if(ptype>=6 && ptype <= 8) // Disposal or outlet
 				if(CP) // There's something there
 					if(!istype(CP,/obj/structure/disposalpipe/trunk))
-						to_chat(user, "The [nicetype] requires a trunk underneath it in order to work.")
+						to_chat(user, "[nicetype]下方需要有一个主干才能工作。")
 						return
 				else // Nothing under, fuck.
-					to_chat(user, "The [nicetype] requires a trunk underneath it in order to work.")
+					to_chat(user, "[nicetype]下方需要有一个主干才能工作。")
 					return
 			else
 				if(CP)
@@ -228,7 +228,7 @@
 					if(istype(CP, /obj/structure/disposalpipe/broken))
 						pdir = CP.dir
 					if(pdir & dpdir)
-						to_chat(user, "There is already a [nicetype] at that location.")
+						to_chat(user, "该位置已经有一个[nicetype]了。")
 						return
 
 			anchored = TRUE
@@ -237,7 +237,7 @@
 				density = FALSE
 			else
 				density = TRUE // We don't want disposal bins or outlets to go density 0
-			to_chat(user, "You attach the [nicetype] to the underfloor.")
+			to_chat(user, "你将[nicetype]安装到地板下。")
 		playsound(src.loc, 'sound/items/ratchet.ogg', 25, 1)
 		update()
 
@@ -246,9 +246,9 @@
 			var/obj/item/tool/weldingtool/W = I
 			if(W.remove_fuel(0,user))
 				playsound(src.loc, 'sound/items/welder2.ogg', 25, 1)
-				to_chat(user, "Welding the [nicetype] in place.")
+				to_chat(user, "正在将[nicetype]焊接到位。")
 				if(do_after(user, 20, NONE, src, BUSY_ICON_BUILD, extra_checks = CALLBACK(W, TYPE_PROC_REF(/obj/item/tool/weldingtool, isOn))))
-					to_chat(user, "The [nicetype] has been welded in place!")
+					to_chat(user, "[nicetype]已焊接到位!")
 					update() // TODO: Make this neat
 					if(ispipe) // Pipe
 
@@ -283,8 +283,8 @@
 					qdel(src)
 					return
 			else
-				to_chat(user, "You need more welding fuel to complete this task.")
+				to_chat(user, "你需要更多焊接燃料来完成此任务。")
 				return
 		else
-			to_chat(user, "You need to attach it to the plating first!")
+			to_chat(user, "你需要先将其安装到镀层上!")
 			return

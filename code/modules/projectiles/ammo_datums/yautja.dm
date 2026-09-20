@@ -53,7 +53,7 @@
 	if(istype(C))
 		if(isyautja(C) || ispredalien(C))
 			return
-		to_chat(C, span_danger("An electric shock ripples through your body, freezing you in place!"))
+		to_chat(C, span_danger("一股电流穿过你的全身,将你冻结在原地!"))
 		log_attack("[key_name(C)] was stunned by a high power stun bolt from [key_name(proj.firer)] at [get_area(proj)]")
 
 		if(ishuman(C))
@@ -88,7 +88,7 @@
 	if(istype(C))
 		if(isyautja(C) || ispredalien(C))
 			return
-		to_chat(C, span_danger("An electric shock ripples through your body, freezing you in place!"))
+		to_chat(C, span_danger("一股电流穿过你的全身,将你冻结在原地!"))
 		log_attack("[key_name(C)] was stunned by a high power stun bolt from [key_name(proj.firer)] at [get_area(proj)]")
 
 		if(ishuman(C))
@@ -132,7 +132,7 @@
 			f_stun_time -= 2 SECONDS
 		if(ispredalien(target_mob))
 			continue
-		to_chat(target_mob, span_danger("A powerful electric shock ripples through your body, freezing you in place!"))
+		to_chat(target_mob, span_danger("一股强大的电流穿过你的全身,将你冻结在原地!"))
 		target_mob.apply_effect(f_stun_time, EFFECT_STUN)
 
 		if(ishuman(target_mob))

@@ -8,8 +8,8 @@ Buildable meters
 //...otherwise construction will stop working
 
 /obj/item/pipe
-	name = "pipe"
-	desc = "A pipe."
+	name = "管道"
+	desc = "一根管道."
 	force = 7
 	throwforce = 7
 	icon = 'icons/obj/items/pipe_item.dmi'
@@ -140,12 +140,12 @@ Buildable meters
 	var/flags = initial(fakeA.pipe_flags)
 	for(var/obj/machinery/atmospherics/M in loc)
 		if((M.pipe_flags & flags & PIPING_ONE_PER_TURF))	//Only one dense/requires density object per tile, eg connectors/cryo/heater/coolers.
-			to_chat(user, span_warning("Something is hogging the tile!"))
+			to_chat(user, span_warning("有东西占着这块地砖!"))
 			return TRUE
 		if((M.piping_layer != piping_layer) && !((M.pipe_flags | flags) & PIPING_ALL_LAYER)) //don't continue if either pipe goes across all layers
 			continue
 		if(M.get_init_directions() & SSair.get_init_dirs(pipe_type, fixed_dir()))	// matches at least one direction on either type of pipe
-			to_chat(user, span_warning("There is already a pipe at that location!"))
+			to_chat(user, span_warning("那个位置已经有一根管道了!"))
 			return TRUE
 	// no conflicts found
 
@@ -156,8 +156,8 @@ Buildable meters
 	playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
 	user.visible_message( \
 		"[user] fastens \the [src].", \
-		span_notice("You fasten \the [src]."), \
-		span_italics("You hear ratcheting."))
+		span_notice("你固定了\the [src]."), \
+		span_italics("你听到棘轮转动的声音."))
 
 	qdel(src)
 
@@ -178,8 +178,8 @@ Buildable meters
 	T.flipped = flipped
 
 /obj/item/pipe_meter
-	name = "meter"
-	desc = "A meter that can be laid on pipes."
+	name = "仪表"
+	desc = "一种可以安装在管道上的仪表."
 	icon = 'icons/obj/items/pipe_item.dmi'
 	icon_state = "meter"
 	worn_icon_list = list(
@@ -206,11 +206,11 @@ Buildable meters
 			pipe = P
 			break
 	if(!pipe)
-		to_chat(user, span_warning("You need to fasten it to a pipe!"))
+		to_chat(user, span_warning("你需要把它固定到管道上!"))
 		return TRUE
 	new /obj/machinery/meter(loc, piping_layer)
 	playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
-	to_chat(user, span_notice("You fasten the meter to the pipe."))
+	to_chat(user, span_notice("你把仪表固定到了管道上."))
 	qdel(src)
 
 /obj/item/pipe_meter/screwdriver_act(mob/living/user, obj/item/S)
@@ -219,12 +219,12 @@ Buildable meters
 		return TRUE
 
 	if(!isturf(loc))
-		to_chat(user, span_warning("You need to fasten it to the floor!"))
+		to_chat(user, span_warning("你需要把它固定到地板上!"))
 		return TRUE
 
 	new /obj/machinery/meter/turf(loc, piping_layer)
 	playsound(src.loc, 'sound/items/screwdriver.ogg', 25, 1)
-	to_chat(user, span_notice("You fasten the meter to the [loc.name]."))
+	to_chat(user, span_notice("你把仪表固定到了[loc.name]上."))
 	qdel(src)
 
 /obj/item/pipe_meter/dropped()

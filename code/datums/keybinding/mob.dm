@@ -5,7 +5,7 @@
 /datum/keybinding/mob/stop_pulling
 	hotkey_keys = list("Delete")
 	name = "stop_pulling"
-	full_name = "Stop pulling"
+	full_name = "停止拖拽"
 	description = ""
 	keybind_signal = COMSIG_KB_MOB_STOPPULLING_DOWN
 
@@ -21,7 +21,7 @@
 /datum/keybinding/mob/cycle_intent_right
 	hotkey_keys = list("Northwest") // HOME
 	name = "cycle_intent_right"
-	full_name = "cycle_intent_right"
+	full_name = "循环意图向右"
 	description = ""
 	keybind_signal = COMSIG_KB_MOB_CYCLEINTENTRIGHT_DOWN
 
@@ -36,7 +36,7 @@
 /datum/keybinding/mob/cycle_intent_left
 	hotkey_keys = list("Insert")
 	name = "cycle_intent_left"
-	full_name = "cycle_intent_left"
+	full_name = "循环意图向左"
 	description = ""
 	keybind_signal = COMSIG_KB_MOB_CYCLEINTENTLEFT_DOWN
 
@@ -51,7 +51,7 @@
 /datum/keybinding/mob/swap_hands
 	hotkey_keys = list("X")
 	name = "swap_hands"
-	full_name = "Swap hands"
+	full_name = "交换手"
 	description = ""
 	keybind_signal = COMSIG_KB_MOB_SWAPHANDS_DOWN
 
@@ -80,7 +80,7 @@
 /datum/keybinding/mob/activate_inhand
 	hotkey_keys = list("Z")
 	name = "activate_inhand"
-	full_name = "Activate in-hand"
+	full_name = "激活手中物品"
 	description = "Uses whatever item you have inhand"
 	keybind_signal = COMSIG_KB_MOB_ACTIVATEINHAND_DOWN
 
@@ -95,7 +95,7 @@
 /datum/keybinding/mob/drop_item
 	hotkey_keys = list("Q")
 	name = "drop_item"
-	full_name = "Drop Item"
+	full_name = "丢弃物品"
 	description = ""
 	keybind_signal = COMSIG_KB_MOB_DROPITEM_DOWN
 
@@ -109,7 +109,7 @@
 /datum/keybinding/mob/toggle_move_intent
 	hotkey_keys = list("5")
 	name = "toggle_move_intent"
-	full_name = "Toggle move intent"
+	full_name = "切换移动意图"
 	description = "Cycle to the other move intent."
 	keybind_signal = COMSIG_KB_MOB_TOGGLEMOVEINTENT_DOWN
 
@@ -124,7 +124,7 @@
 /datum/keybinding/mob/target_head_cycle
 	hotkey_keys = list("Numpad8")
 	name = "target_head_cycle"
-	full_name = "Target: Cycle head"
+	full_name = "目标: 循环头部"
 	description = ""
 	keybind_signal = COMSIG_KB_MOB_TARGETCYCLEHEAD_DOWN
 
@@ -138,7 +138,7 @@
 /datum/keybinding/mob/target_r_arm
 	hotkey_keys = list("Numpad4")
 	name = "target_r_arm"
-	full_name = "Target: right arm"
+	full_name = "目标: 右臂"
 	description = ""
 	keybind_signal = COMSIG_KB_MOB_TARGETRIGHTARM_DOWN
 
@@ -152,7 +152,7 @@
 /datum/keybinding/mob/target_body_chest
 	hotkey_keys = list("Numpad5")
 	name = "target_body_chest"
-	full_name = "Target: Body"
+	full_name = "目标: 身体"
 	description = ""
 	keybind_signal = COMSIG_KB_MOB_TARGETBODYCHEST_DOWN
 
@@ -166,7 +166,7 @@
 /datum/keybinding/mob/target_left_arm
 	hotkey_keys = list("Numpad6")
 	name = "target_left_arm"
-	full_name = "Target: left arm"
+	full_name = "目标: 左臂"
 	description = ""
 	keybind_signal = COMSIG_KB_MOB_TARGETLEFTARM_DOWN
 
@@ -180,7 +180,7 @@
 /datum/keybinding/mob/target_right_leg
 	hotkey_keys = list("Numpad1")
 	name = "target_right_leg"
-	full_name = "Target: Right leg"
+	full_name = "目标: 右腿"
 	description = ""
 	keybind_signal = COMSIG_KB_MOB_TARGETRIGHTLEG_DOWN
 
@@ -194,7 +194,7 @@
 /datum/keybinding/mob/target_body_groin
 	hotkey_keys = list("Numpad2")
 	name = "target_body_groin"
-	full_name = "Target: Groin"
+	full_name = "目标: 腹股沟"
 	description = ""
 	keybind_signal = COMSIG_KB_MOB_TARGETBODYGROIN_DOWN
 
@@ -208,7 +208,7 @@
 /datum/keybinding/mob/target_left_leg
 	hotkey_keys = list("Numpad3")
 	name = "target_left_leg"
-	full_name = "Target: left leg"
+	full_name = "目标: 左腿"
 	description = ""
 	keybind_signal = COMSIG_KB_MOB_TARGETLEFTLEG_DOWN
 
@@ -221,19 +221,19 @@
 
 /datum/keybinding/mob/toggle_minimap
 	name = "toggle_minimap"
-	full_name = "Toggle minimap"
+	full_name = "切换小地图"
 	description = "Toggle your character's inherent or headset-based minimap screen"
 	keybind_signal = COMSIG_KB_TOGGLE_MINIMAP
 
 /datum/keybinding/mob/toggle_external_minimap
 	name = "toggle_external_minimap"
-	full_name = "Toggle external minimap"
+	full_name = "切换外部小地图"
 	description = "Toggle external minimap screens received from e.g. consoles or similar objects"
 	keybind_signal = COMSIG_KB_TOGGLE_EXTERNAL_MINIMAP
 
 /datum/keybinding/mob/toggle_self_harm
 	name = "toggle_self_harm"
-	full_name = "Toggle self harm"
+	full_name = "切换自残"
 	description = "Toggle being able to hit yourself"
 	keybind_signal = COMSIG_KB_SELFHARM
 	hotkey_keys = list("0")
@@ -243,12 +243,12 @@
 	if (.)
 		return
 	user.mob.do_self_harm = !user.mob.do_self_harm
-	user.mob.balloon_alert(user.mob, "You can [user.mob.do_self_harm ? "now" : "no longer"] hit yourself")
+	user.mob.balloon_alert(user.mob, "你可以[user.mob.do_self_harm ? "now" : "no longer"]击中自己")
 
 /datum/keybinding/mob/prevent_movement
 	hotkey_keys = list("Ctrl")
 	name = "block_movement"
-	full_name = "Block movement"
+	full_name = "阻止移动"
 	description = "Prevents you from moving"
 	keybind_signal = COMSIG_KB_MOB_BLOCKMOVEMENT_DOWN
 
@@ -267,7 +267,7 @@
 /datum/keybinding/mob/toggle_clickdrag
 	hotkey_keys = list("")
 	name = "toggle_clickdrag"
-	full_name = "Toggle Click-Drag"
+	full_name = "切换点击拖拽"
 	description = "Toggles click-dragging on and off."
 	keybind_signal = COMSIG_KB_MOB_TOGGLE_CLICKDRAG
 
@@ -276,4 +276,4 @@
 	if(.)
 		return
 	user.prefs.toggles_gameplay ^= TOGGLE_CLICKDRAG
-	user.mob.balloon_alert(user.mob, "You can [user.prefs.toggles_gameplay & TOGGLE_CLICKDRAG ? "no longer" : "now"] click-drag")
+	user.mob.balloon_alert(user.mob, "你可以[user.prefs.toggles_gameplay & TOGGLE_CLICKDRAG ? "no longer" : "now"]点击拖拽")

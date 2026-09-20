@@ -1,6 +1,6 @@
 /obj/machinery/cic_maptable
 	name = "map table"
-	desc = "A table that displays a map of the current target location"
+	desc = "一张显示当前目标位置地图的桌子"
 	icon = 'icons/obj/machines/computer.dmi'
 	icon_state = "maptable"
 	interaction_flags = INTERACT_MACHINE_DEFAULT
@@ -85,7 +85,7 @@
 
 /obj/machinery/cic_maptable/droppod_maptable
 	name = "Athena tactical map console"
-	desc = "A map that display the planetside AO, specialized in revealing potential areas to drop pod. This is especially useful to see where the frontlines and marines are at so that anyone droppodding can decide where to land. Pray that your land nav skills are robust to not get lost!"
+	desc = "一张显示行星表面行动区域的地图,专门用于揭示潜在的投放舱投放区域.这对于查看前线和陆战队员的位置特别有用,以便任何投放舱操作员可以决定在哪里着陆.祈祷你的陆地导航技能足够扎实,不会迷路!"
 	icon_state = "droppodtable"
 	screen_overlay = "droppodtable_emissive"
 
@@ -94,7 +94,7 @@
 
 //Exactly the same but you can draw on the map
 /obj/machinery/cic_maptable/drawable
-	desc = "A table that displays a map of the current target location that also allows drawing onto it"
+	desc = "一张显示当前目标位置地图的桌子,还允许在上面绘制标记"
 	/// List of references to the tools we will be using to shape what the map looks like
 	var/list/atom/movable/screen/drawing_tools = list(
 		/atom/movable/screen/minimap_tool/draw_tool/red,
@@ -124,7 +124,7 @@
 
 /obj/machinery/cic_maptable/drawable/examine(mob/user)
 	. = ..()
-	. += span_warning("Note that abuse may result in a command role ban.")
+	. += span_warning("请注意,滥用可能导致指挥角色封禁.")
 
 /obj/machinery/cic_maptable/drawable/interact_checks(mob/user)
 	. = ..()
@@ -138,7 +138,7 @@
 	if(user.skills.getRating(SKILL_LEADERSHIP) < SKILL_LEAD_EXPERT)
 		return
 	if(is_banned_from(user.client.ckey, GLOB.roles_allowed_minimap_draw))
-		to_chat(user, span_boldwarning("You have been banned from a command role. You may not use access draw functions until the ban has been lifted."))
+		to_chat(user, span_boldwarning("你已被禁止担任指挥角色.在封禁解除之前,你无法使用访问绘制功能."))
 		return
 	user.client.screen += drawing_tools
 
@@ -167,7 +167,7 @@
 
 /obj/machinery/cic_maptable/yautja
 	name = "hunter globe"
-	desc = "A globe designed by the hunters to show them the location of prey across the hunting grounds."
+	desc = "一个由猎人们设计的地球仪,用于向他们展示整个狩猎场中猎物的位置."
 	icon = 'icons/obj/machines/yautja_machines.dmi'
 	icon_state = "globe"
 	screen_overlay = ""

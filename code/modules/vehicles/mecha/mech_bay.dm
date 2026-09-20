@@ -1,6 +1,6 @@
 /obj/machinery/mech_bay_recharge_port
 	name = "mech bay power port"
-	desc = "This port recharges a mech's internal power cell."
+	desc = "此端口为机甲的内部电池充电."
 	density = TRUE
 	dir = EAST
 	icon = 'icons/mecha/mech_bay.dmi'
@@ -37,7 +37,7 @@
 /obj/machinery/mech_bay_recharge_port/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Recharge power <b>[siunit(recharge_power, "W", 1)]</b>.")
+		. += span_notice("状态显示为:充能功率 <b>[siunit(recharge_power, "W", 1)]</b>.")
 
 /obj/machinery/mech_bay_recharge_port/process(delta_time)
 	if(machine_stat & NOPOWER || !recharge_console)
@@ -71,7 +71,7 @@
 
 /obj/machinery/computer/mech_bay_power_console
 	name = "mech bay power control console"
-	desc = "Displays the status of mechs connected to the recharge station."
+	desc = "显示连接到充电站的机甲状态."
 	icon = 'icons/obj/machines/computer.dmi'
 	icon_state = "computer"
 	screen_overlay = "recharge_comp"
@@ -156,6 +156,6 @@
 
 /obj/machinery/computer/mecha
 	name = "exosuit control console"
-	desc = "Used to remotely locate or lockdown exosuits."
+	desc = "用于远程定位或锁定外骨骼服."
 	screen_overlay = "mecha"
 	broken_icon = "computer_blue_broken"

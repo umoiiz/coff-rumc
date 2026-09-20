@@ -3,11 +3,11 @@
 
 /obj/machinery/door_control
 	name = "remote door-control"
-	desc = "It controls doors, remotely."
+	desc = "它可以远程控制门."
 	icon = 'icons/obj/machines/buttons.dmi'
 	icon_state = "button"
 	base_icon_state = "button"
-	desc = "A remote control-switch for a door."
+	desc = "一个门的遥控开关."
 	power_channel = ENVIRON
 	anchored = TRUE
 	use_power = IDLE_POWER_USE
@@ -95,14 +95,14 @@
 	if(.)
 		return
 	if(machine_stat & (NOPOWER|BROKEN))
-		to_chat(user, span_warning("[src] doesn't seem to be working."))
+		to_chat(user, span_warning("[src]似乎不工作了."))
 		return
 
 	if(pressed)
 		return
 
 	if(!allowed(user))
-		to_chat(user, span_warning("Access Denied"))
+		to_chat(user, span_warning("访问被拒绝"))
 		flick("[base_icon_state]_denied", src)
 		pressed = TRUE
 		addtimer(VARSET_CALLBACK(src, pressed, FALSE), 0.5 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)

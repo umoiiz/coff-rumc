@@ -1,6 +1,6 @@
 /obj/alien
 	name = "alien thing"
-	desc = "theres something alien about this"
+	desc = "这东西有点异形"
 	icon = 'icons/Xeno/Effects.dmi'
 	hit_sound = SFX_ALIEN_RESIN_BREAK
 	anchored = TRUE

@@ -43,17 +43,17 @@
 /mob/proc/say_dead(message)
 	if(!check_rights(R_ADMIN, FALSE))
 		if(!GLOB.dsay_allowed)
-			to_chat(src, span_warning("Deadchat is globally muted"))
+			to_chat(src, span_warning("死亡聊天已被全局禁言"))
 			return
 		if(client)
 			if(client.prefs.muted & MUTE_DEADCHAT)
-				to_chat(src, span_danger("You cannot talk in deadchat (muted)."))
+				to_chat(src, span_danger("你无法在死亡聊天中发言 (已被禁言)."))
 				return
 			if(client?.prefs && !(client.prefs.toggles_chat & CHAT_DEAD))
-				to_chat(src, span_warning("You have deadchat muted."))
+				to_chat(src, span_warning("你已屏蔽死亡聊天."))
 				return
 			if(is_banned_from(ckey, "Deadchat"))
-				to_chat(src, span_warning("You are banned from deadchat."))
+				to_chat(src, span_warning("你已被禁止使用死亡聊天."))
 				return
 			if(client.handle_spam_prevention(message, MUTE_DEADCHAT))
 				return
@@ -69,7 +69,7 @@
 	var/list/soft_filter_result = filter_result || is_soft_ooc_filtered(message)
 
 	if(soft_filter_result)
-		if(tgui_alert(usr,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to say it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr,"你的消息包含\"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", 你确定要说出它吗?", "软屏蔽词", list("Yes", "No")) != "Yes")
 			log_filter("Soft Deadchat", message, soft_filter_result)
 			return
 		message_admins("[ADMIN_LOOKUPFLW(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[message]\"")

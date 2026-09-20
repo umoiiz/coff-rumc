@@ -30,22 +30,22 @@
 	face_step = 0
 
 /datum/surgery_step/face/cut_face/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message(span_notice("[user] starts to cut open [target]'s face and neck with \the [tool]."), \
-	span_notice("You start to cut open [target]'s face and neck with \the [tool]."))
-	target.balloon_alert_to_viewers("Incising...")
+	user.visible_message(span_notice("[user]开始用\the [tool]切开[target]的脸和脖子."), \
+	span_notice("你开始用\the [tool]切开[target]的脸和脖子."))
+	target.balloon_alert_to_viewers("切开中...")
 	..()
 
 /datum/surgery_step/face/cut_face/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message(span_notice("[user] has cut open [target]'s face and neck with \the [tool].") , \
-	span_notice("You have cut open [target]'s face and neck with \the [tool]."),)
-	target.balloon_alert_to_viewers("Success")
+	user.visible_message(span_notice("[user]用\the [tool]切开了[target]的脸和脖子.") , \
+	span_notice("你用\the [tool]切开了[target]的脸和脖子."),)
+	target.balloon_alert_to_viewers("成功")
 	affected.face_surgery_stage = 1
 	return ..()
 
 /datum/surgery_step/face/cut_face/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message(span_warning("[user]'s hand slips, slicing [target]'s throat wth \the [tool]!") , \
-	span_warning("Your hand slips, slicing [target]'s throat wth \the [tool]!") )
-	target.balloon_alert_to_viewers("Slipped!")
+	user.visible_message(span_warning("[user]的手滑了一下,用\the [tool]切开了[target]的喉咙!") , \
+	span_warning("你的手滑了一下,用\the [tool]切开了[target]的喉咙!") )
+	target.balloon_alert_to_viewers("滑脱了!")
 	affected.createwound(CUT, 60)
 	target.Losebreath(10)
 	target.update_health()
@@ -64,22 +64,22 @@
 	face_step = 1
 
 /datum/surgery_step/face/mend_vocal/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message(span_notice("[user] starts mending [target]'s vocal cords with \the [tool]."), \
-	span_notice("You start mending [target]'s vocal cords with \the [tool]."))
-	target.balloon_alert_to_viewers("Mending vocals...")
+	user.visible_message(span_notice("[user]开始用\the [tool]修复[target]的声带."), \
+	span_notice("你开始用\the [tool]修复[target]的声带."))
+	target.balloon_alert_to_viewers("修复声带中...")
 	..()
 
 /datum/surgery_step/face/mend_vocal/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message(span_notice("[user] mends [target]'s vocal cords with \the [tool]."), \
-	span_notice("You mend [target]'s vocal cords with \the [tool]."))
-	target.balloon_alert_to_viewers("Success")
+	user.visible_message(span_notice("[user]用\the [tool]修复了[target]的声带."), \
+	span_notice("你用\the [tool]修复了[target]的声带."))
+	target.balloon_alert_to_viewers("成功")
 	affected.face_surgery_stage = 2
 	return ..()
 
 /datum/surgery_step/face/mend_vocal/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message(span_warning("[user]'s hand slips, clamping [target]'s trachea shut for a moment with \the [tool]!"), \
-	span_warning("Your hand slips, clamping [user]'s trachea shut for a moment with \the [tool]!"))
-	target.balloon_alert_to_viewers("Slipped!")
+	user.visible_message(span_warning("[user]的手滑了一下,用\the [tool]把[target]的气管夹闭了片刻!"), \
+	span_warning("你的手滑了一下,用\the [tool]把[user]的气管夹闭了片刻!"))
+	target.balloon_alert_to_viewers("滑脱了!")
 	target.Losebreath(10)
 	target.update_health()
 
@@ -96,22 +96,22 @@
 	face_step = 2
 
 /datum/surgery_step/face/fix_face/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message(span_notice("[user] starts pulling the skin on [target]'s face back in place with \the [tool]."), \
-	span_notice("You start pulling the skin on [target]'s face back in place with \the [tool]."))
-	target.balloon_alert_to_viewers("Reshaping...")
+	user.visible_message(span_notice("[user]开始用\the [tool]把[target]脸上的皮肤拉回原位."), \
+	span_notice("你开始用\the [tool]把[target]脸上的皮肤拉回原位."))
+	target.balloon_alert_to_viewers("重塑中...")
 	..()
 
 /datum/surgery_step/face/fix_face/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message(span_notice("[user] pulls the skin on [target]'s face back in place with \the [tool]."),	\
-	span_notice("You pull the skin on [target]'s face back in place with \the [tool]."))
-	target.balloon_alert_to_viewers("Success")
+	user.visible_message(span_notice("[user]用\the [tool]把[target]脸上的皮肤拉回了原位."),	\
+	span_notice("你用\the [tool]把[target]脸上的皮肤拉回了原位."))
+	target.balloon_alert_to_viewers("成功")
 	affected.face_surgery_stage = 3
 	return ..()
 
 /datum/surgery_step/face/fix_face/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message(span_warning("[user]'s hand slips, tearing skin on [target]'s face with \the [tool]!"), \
-	span_warning("Your hand slips, tearing skin on [target]'s face with \the [tool]!"))
-	target.balloon_alert_to_viewers("Slipped!")
+	user.visible_message(span_warning("[user]的手滑了一下,用\the [tool]撕裂了[target]脸上的皮肤!"), \
+	span_warning("你的手滑了一下,用\the [tool]撕裂了[target]脸上的皮肤!"))
+	target.balloon_alert_to_viewers("滑脱了!")
 	target.apply_damage(10, BRUTE, affected, 0, TRUE, updating_health = TRUE)
 
 
@@ -129,15 +129,15 @@
 
 
 /datum/surgery_step/face/cauterize/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message(span_notice("[user] is beginning to cauterize the incision on [target]'s face and neck with \the [tool].") , \
-	span_notice("You are beginning to cauterize the incision on [target]'s face and neck with \the [tool]."))
-	target.balloon_alert_to_viewers("Cauterizing...")
+	user.visible_message(span_notice("[user]开始用\the [tool]烧灼[target]脸和脖子上的切口.") , \
+	span_notice("你开始用\the [tool]烧灼[target]脸和脖子上的切口."))
+	target.balloon_alert_to_viewers("烧灼中...")
 	..()
 
 /datum/surgery_step/face/cauterize/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message(span_notice("[user] cauterizes the incision on [target]'s face and neck with \the [tool]."), \
-	span_notice("You cauterize the incision on [target]'s face and neck with \the [tool]."))
-	target.balloon_alert_to_viewers("Success")
+	user.visible_message(span_notice("[user]用\the [tool]烧灼了[target]脸和脖子上的切口."), \
+	span_notice("你用\the [tool]烧灼了[target]脸和脖子上的切口."))
+	target.balloon_alert_to_viewers("成功")
 	affected.remove_limb_flags(LIMB_BLEEDING)
 	affected.disfigured = 0
 	affected.owner.name = affected.owner.get_visible_name()
@@ -145,7 +145,7 @@
 	return ..()
 
 /datum/surgery_step/face/cauterize/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message(span_warning("[user]'s hand slips, leaving a small burn on [target]'s face with \the [tool]!"), \
-	span_warning("Your hand slips, leaving a small burn on [target]'s face with \the [tool]!"))
-	target.balloon_alert_to_viewers("Slipped!")
+	user.visible_message(span_warning("[user]的手滑了一下,用\the [tool]在[target]脸上留下了一处小烧伤!"), \
+	span_warning("你的手滑了一下,用\the [tool]在[target]脸上留下了一处小烧伤!"))
+	target.balloon_alert_to_viewers("滑脱了!")
 	target.apply_damage(4, BURN, affected, updating_health = TRUE)

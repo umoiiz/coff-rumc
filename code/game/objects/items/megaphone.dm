@@ -1,6 +1,6 @@
 /obj/item/megaphone
-	name = "megaphone"
-	desc = "A device used to project your voice. Loudly."
+	name = "扩音器"
+	desc = "一种用来放大你声音的装置. 很大声."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "megaphone"
 	worn_icon_list = list(
@@ -29,7 +29,7 @@
 	if (user.get_active_held_item() != src)
 		return
 	if(spamcheck > world.time)
-		balloon_alert(user, "cooldown")
+		balloon_alert(user, "冷却")
 		return
 	playsound(loc, 'sound/items/megaphone.ogg', 100, FALSE, TRUE)
 	spamcheck = world.time + 20

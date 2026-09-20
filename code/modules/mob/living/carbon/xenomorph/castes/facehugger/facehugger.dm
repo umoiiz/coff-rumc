@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/facehugger
 	caste_base_type = /datum/xeno_caste/facehugger
 	name = "Facehugger"
-	desc = "This one looks much more active than its fellows"
+	desc = "这只看起来比它的同类活跃得多"
 	icon = 'icons/Xeno/castes/facehugger.dmi'
 	icon_state = "Facehugger Walking"
 	effects_icon = 'icons/Xeno/castes/facehugger.dmi'

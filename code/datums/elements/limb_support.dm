@@ -43,7 +43,7 @@
 
 		if(dropped && (limb.limb_status & LIMB_STABILIZED))
 			limb.limb_status &= ~LIMB_STABILIZED
-			to_chat(injured_mob, span_danger("You feel the pressure from [worn_suit] about your [limb.display_name] release, leaving it unsupported."))
+			to_chat(injured_mob, span_danger("你感觉到[worn_suit]对你[limb.display_name]的压力释放了,使其失去了支撑。"))
 			playsound(worn_suit, 'sound/machines/hiss.ogg', 15, 0, 1)
 			continue
 
@@ -53,7 +53,7 @@
 			else
 				playsound(worn_suit, 'sound/voice/b18/minor_fracture.ogg', 15, 0, 1)
 			limb.limb_status |= LIMB_STABILIZED
-			to_chat(injured_mob, span_notice("<b>You feel [worn_suit] constrict about your [limb.display_name], stabilizing it.</b>"))
+			to_chat(injured_mob, span_notice("<b>你感觉到[worn_suit]缠绕住你的[limb.display_name],将其固定住。</b>"))
 			playsound(worn_suit, 'sound/machines/hydraulics_1.ogg', 15, 0, 1)
 
 		if(!dropped && (limb.limb_status & LIMB_BLEEDING))
