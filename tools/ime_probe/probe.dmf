@@ -1,0 +1,41 @@
+macro "default"
+	elem "down"
+		name = "Any"
+		command = "Probe-Down [[*]]"
+	elem "up"
+		name = "Any+UP"
+		command = "Probe-Up [[*]]"
+window "main"
+	elem "main"
+		type = MAIN
+		size = 1040x740
+		is-default = true
+		macro = "default"
+		title = "BYOND IME probe - isolated local test"
+	elem "map"
+		type = MAP
+		pos = 0,0
+		size = 480x480
+		is-default = true
+	elem "native"
+		type = INPUT
+		pos = 10,500
+		size = 450x36
+		no-command = true
+		on-focus = "Probe-Focus native"
+		on-blur = "Probe-Focus native-blur"
+	elem "output"
+		type = OUTPUT
+		is-default = true
+		pos = 10,550
+		size = 450x160
+	elem "keyfocus"
+		type = BUTTON
+		pos = -2,-2
+		size = 1x1
+		text = "Non-text keyboard focus target"
+	elem "browser"
+		type = BROWSER
+		is-default = true
+		pos = 490,0
+		size = 540x720

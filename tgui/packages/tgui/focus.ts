@@ -7,10 +7,11 @@
  */
 
 /**
- * Moves focus to the BYOND map window.
+ * Returns keyboard focus to gameplay. A non-text native button suspends IME
+ * composition without changing the user's input language for chat inputs.
  */
 export const focusMap = () => {
-  Byond.winset('mapwindow.map', {
+  Byond.winset('mapwindow.keyboard_focus', {
     focus: true,
   });
 };

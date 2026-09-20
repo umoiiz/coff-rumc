@@ -1,3 +1,5 @@
+import { focusMap } from 'tgui/focus';
+
 import { Channel } from './ChannelIterator';
 import { RADIO_PREFIXES, WindowSize } from './constants';
 
@@ -21,9 +23,7 @@ export function windowOpen(channel: Channel, scale: boolean): void {
  */
 export function windowClose(scale: boolean): void {
   setWindowVisibility(false, scale);
-  Byond.winset('map', {
-    focus: true,
-  });
+  focusMap();
   Byond.sendMessage('close');
 }
 

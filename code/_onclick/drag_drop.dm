@@ -32,6 +32,7 @@
 		return TRUE
 
 /client/MouseDown(atom/object, turf/location, control, params)
+	restore_game_keyboard_focus(control)
 	if(!control)
 		return
 	if(QDELETED(object)) //Yep, you can click on qdeleted things before they have time to nullspace. Fun.
@@ -44,6 +45,7 @@
 
 
 /client/MouseUp(atom/object, turf/location, control, params)
+	restore_game_keyboard_focus(control)
 	if(!control)
 		return
 	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEUP, object, location, control, params) & COMSIG_MOB_CLICK_CANCELED)
