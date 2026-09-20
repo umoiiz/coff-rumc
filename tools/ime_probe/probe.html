@@ -1,0 +1,47 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>IME diagnostics</title>
+<style>
+body { font: 14px sans-serif; background: #f4f6fa; margin: 12px; }
+button, textarea { font: inherit; margin: 4px; padding: 8px; }
+textarea { width: 90%; }
+#events { height: 410px; overflow: auto; background: white; white-space: pre-wrap; font: 11px monospace; }
+</style>
+<h2>BYOND 中文模式快捷键诊断</h2>
+<p>比较地图、原生按钮和网页非输入区的按键。此测试不连接游戏服务器。</p>
+<button onclick="send({focus:'map'})">聚焦地图</button>
+<button onclick="send({focus:'native'})">原生输入框</button>
+<button onclick="send({focus:'button'})">原生按钮</button>
+<button onclick="document.activeElement.blur();send({focus:'browser'})">网页非输入区</button>
+<button onclick="send({inspect:'1'})">查询 winget</button>
+<p>网页输入框（比较中/英模式及候选字事件）：</p>
+<textarea id="text" rows="2" placeholder="在此输入拼音"></textarea>
+<button onclick="document.getElementById('events').textContent=''">清空显示</button>
+<div id="events"></div>
+<script>
+function send(params) {
+  location.href = 'byond://?' + Object.keys(params).map(function(k) {
+    return encodeURIComponent(k) + '=' + encodeURIComponent(params[k]);
+  }).join('&');
+}
+function show(value) {
+  var el = document.getElementById('events');
+  el.textContent += JSON.stringify(value) + '\n';
+  el.scrollTop = el.scrollHeight;
+}
+function recordNative(encoded) { show(JSON.parse(encoded)); }
+function deferMapFocus() {
+  show({type:'local-mouse-focus'});
+  setTimeout(function() {
+    location.href = 'byond://winset?command=' + encodeURIComponent('.winset "main.map.focus=true?main.keyfocus.focus=true"');
+  }, 0);
+}
+['keydown','keyup','compositionstart','compositionend','compositionupdate','focusin','focusout'].forEach(function(type) {
+  document.addEventListener(type, function(e) {
+    var value = {type:type, target:e.target.tagName, key:e.key, code:e.code, keyCode:e.keyCode,
+      composing:e.isComposing, dataLength:e.data && e.data.length};
+    show(value);
+    send({event:JSON.stringify(value)});
+  }, true);
+});
+</script>

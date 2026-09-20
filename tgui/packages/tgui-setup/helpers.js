@@ -187,6 +187,16 @@
       command: command,
     });
   };
+  // Dream Seeker focuses the map after running its MouseDown macro. Defer
+  // until the native click finishes, then test focus locally so an intervening
+  // chat input or popup cannot have its focus stolen by the delayed callback.
+  window.focusMapAfterClick = function () {
+    setTimeout(function () {
+      Byond.command(
+        '.winset "mapwindow.map.focus=true?mapwindow.keyboard_focus.focus=true"'
+      );
+    }, 0);
+  };
 
   Byond.winget = function (id, propName) {
     if (id === null) {
