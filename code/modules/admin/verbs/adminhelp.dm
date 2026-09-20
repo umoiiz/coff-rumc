@@ -788,7 +788,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 /client/verb/adminhelp(msg as message)
 	set category = "Admin"
-	set name = "Adminhelp"
+	set name = "请求管理员帮助"
 
 	//handle muting and automuting
 	if(prefs.muted & MUTE_ADMINHELP || is_banned_from(ckey, "Adminhelp"))
@@ -819,7 +819,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 /client/verb/mentorhelp(msg as message)
 	set category = "Admin"
-	set name = "Mentorhelp"
+	set name = "请求导师帮助"
 
 	//handle muting and automuting
 	if(prefs.muted & MUTE_ADMINHELP || is_banned_from(ckey, "Adminhelp"))

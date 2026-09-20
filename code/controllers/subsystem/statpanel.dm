@@ -23,13 +23,13 @@ SUBSYSTEM_DEF(statpanels)
 	if (!resumed)
 		num_fires++
 		global_data = list(
-			"Ground Map: [length(SSmapping.configs) ? SSmapping.configs[GROUND_MAP].map_name : "Loading..."]",
-			"Ship Map: [length(SSmapping.configs) ? SSmapping.configs[SHIP_MAP].map_name : "Loading..."]",
-			"Game Mode: [GLOB.master_mode]",
+			"星球地图: [length(SSmapping.configs) ? SSmapping.configs[GROUND_MAP].map_name : "Loading..."]",
+			"空间站地图: [length(SSmapping.configs) ? SSmapping.configs[SHIP_MAP].map_name : "Loading..."]",
+			"游戏模式: [GLOB.master_mode]",
 			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]",
-			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
-			"Operation Time: [stationTimestamp("hh:mm")]",
-			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)"
+			"服务器时间: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
+			"局内时间: [stationTimestamp("hh:mm")]",
+			"时间膨胀: [round(SStime_track.time_dilation_current,1)]% 平均:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)"
 		)
 
 		src.currentrun = GLOB.clients.Copy()

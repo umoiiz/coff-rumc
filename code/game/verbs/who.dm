@@ -1,5 +1,5 @@
 /client/verb/who()
-	set name = "Who"
+	set name = "玩家列表"
 	set category = "OOC"
 
 	SSwho.who.ui_interact(mob)

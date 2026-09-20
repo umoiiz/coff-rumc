@@ -434,7 +434,7 @@
 		winset(src, "infowindow.changelog", "font-style=;")
 
 /client/verb/hotkeys_help()
-	set name = "Hotkeys"
+	set name = "快捷键设置"
 	set category = "Preferences"
 
 	prefs.tab_index = KEYBIND_SETTINGS

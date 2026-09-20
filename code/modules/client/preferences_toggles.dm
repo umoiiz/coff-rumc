@@ -136,7 +136,7 @@
 
 /client/verb/setup_character()
 	set category = "Preferences"
-	set name = "Game Preferences"
+	set name = "游戏设置"
 	set desc = "Allows you to access the Setup Character screen. Changes to your character won't take effect until next round, but other changes will."
 	prefs.ShowChoices(mob)
 

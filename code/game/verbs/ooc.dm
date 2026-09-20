@@ -476,7 +476,7 @@
 
 /client/verb/tracked_playtime()
 	set category = "OOC"
-	set name = "View Tracked Playtime"
+	set name = "View-查询游戏时长"
 	set desc = "View the amount of playtime for roles the server has tracked."
 
 	if(!CONFIG_GET(flag/use_exp_tracking))
