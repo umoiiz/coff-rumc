@@ -187,15 +187,82 @@
       command: command,
     });
   };
-  // Dream Seeker focuses the map after running its MouseDown macro. Defer
-  // until the native click finishes, then test focus locally so an intervening
-  // chat input or popup cannot have its focus stolen by the delayed callback.
+  var mapFocusGeneration = 0;
+  var mapFocusWatch = null;
+  var isGameplayFocus = function (focus) {
+    return (
+      focus === 'mapwindow.map' ||
+      focus === 'mapwindow.keyboard_focus' ||
+      focus === 'mapwindow'
+    );
+  };
+  var restoreGameplayFocus = function () {
+    Byond.command(
+      '.winset "mapwindow.map.focus=true?mapwindow.keyboard_focus.focus=true"'
+    );
+  };
+
+  // Dream Seeker focuses the map after running its MouseDown macro. Keep a
+  // local watchdog active for the whole mouse hold so the default click,
+  // repeated clicks, and movement-plus-fire all keep the IME off the map.
   window.focusMapAfterClick = function () {
+    var generation = ++mapFocusGeneration;
+    if (mapFocusWatch) {
+      clearInterval(mapFocusWatch);
+    }
+    var startedAt = Date.now();
     setTimeout(function () {
-      Byond.command(
-        '.winset "mapwindow.map.focus=true?mapwindow.keyboard_focus.focus=true"'
-      );
+      if (generation !== mapFocusGeneration) return;
+      Byond.winget(null, 'focus').then(function (focus) {
+        if (generation !== mapFocusGeneration) return;
+        // MouseDown is installed on the default macro, so it can also run
+        // while a browser or native input is being clicked. Start the map
+        // watchdog only after the native event identifies a gameplay focus.
+        if (!isGameplayFocus(focus)) {
+          window.stopMapFocus();
+          return;
+        }
+        restoreGameplayFocus();
+        mapFocusWatch = setInterval(function () {
+          Byond.winget(null, 'focus').then(function (focus) {
+            if (generation !== mapFocusGeneration) return;
+            // A real text/browser focus must win immediately. Only tolerate
+            // an empty transient response while the native map click settles.
+            if (isGameplayFocus(focus)) {
+              restoreGameplayFocus();
+              return;
+            }
+            if (!focus && Date.now() - startedAt <= 250) {
+              restoreGameplayFocus();
+              return;
+            }
+            window.stopMapFocus();
+          });
+        }, 30);
+      }).catch(function () {
+        if (generation === mapFocusGeneration) window.stopMapFocus();
+        });
     }, 0);
+  };
+
+  window.stopMapFocus = function () {
+    var generation = ++mapFocusGeneration;
+    if (mapFocusWatch) {
+      clearInterval(mapFocusWatch);
+      mapFocusWatch = null;
+    }
+    // MouseUp's pass-through action can refocus the map after the macro.
+    // Finish after that native action, unless a new click started meanwhile.
+    setTimeout(function () {
+      if (generation !== mapFocusGeneration) return;
+      // A chat/browser control may have taken focus during the native mouse
+      // release. Re-check before restoring gameplay focus so typing there is
+      // never interrupted by this delayed cleanup.
+      Byond.winget(null, 'focus').then(function (focus) {
+        if (generation !== mapFocusGeneration || !isGameplayFocus(focus)) return;
+        restoreGameplayFocus();
+      });
+    }, 120);
   };
 
   Byond.winget = function (id, propName) {

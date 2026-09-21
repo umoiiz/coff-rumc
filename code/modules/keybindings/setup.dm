@@ -32,7 +32,7 @@
 	// swallow the normal MouseDown/MouseUp handlers (including firing and clicks).
 	if(byond_version > 516 || (byond_version == 516 && byond_build >= 1674))
 		winset(src, "default-game-focus-down", "parent=default;name=MouseDown;command=\".output browseroutput:focusMapAfterClick x\";pass-through=true")
-		winset(src, "default-game-focus-up", "parent=default;name=MouseUp;command=\".winset \\\"mapwindow.map.focus=true?mapwindow.keyboard_focus.focus=true\\\"\";pass-through=true")
+		winset(src, "default-game-focus-up", "parent=default;name=MouseUp;command=\".output browseroutput:stopMapFocus x\";pass-through=true")
 
 	update_special_keybinds()
 	// Registering chat bindings can focus the chat browser. Restore gameplay
