@@ -1193,17 +1193,8 @@ ADMIN_VERB_AND_CONTEXT_MENU(show_traitor_panel, R_ADMIN, "Show Objective Panel",
 		return
 	target_mind.traitor_panel()
 
-ADMIN_VERB(set_xeno_stat_buffs, R_ADMIN, "Set Xeno Buffs", "Allows you to change stats for all xenos. It is a multiplicator buff, so input 100 to put everything back to normal", ADMIN_CATEGORY_MAIN)
-	var/multiplicator_buff_wanted = tgui_input_number(user, "输入将乘以异形属性的百分比系数", "100为正常属性,200为生命值、再生和近战攻击翻倍")
-
-	if(!multiplicator_buff_wanted)
-		return
-	GLOB.xeno_stat_multiplicator_buff = (multiplicator_buff_wanted / 100)
-	SSmonitor.is_automatic_balance_on = FALSE
-	SSmonitor.apply_balance_changes()
-	var/logging = "[usr.ckey] has multiplied all health, melee damage and regen of xeno by [multiplicator_buff_wanted]%"
-	log_admin(logging)
-	message_admins(logging)
+ADMIN_VERB(set_xeno_stat_buffs, R_ADMIN, "Set Xeno Buffs", "Opens the xeno buff control panel", ADMIN_CATEGORY_MAIN)
+	GLOB.xeno_balance_panel.ui_interact(user.mob)
 
 ADMIN_VERB(cmd_admin_create_predator_report, R_ADMIN, "Report: Yautja AI", "Create a predator ship AI report", ADMIN_CATEGORY_MAIN)
 	var/input = tgui_input_text(user, "这是来自掠食者飞船AI的消息.在发送前请与在线工作人员确认.", "什么?", timeout = 0)
