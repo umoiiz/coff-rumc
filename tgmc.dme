@@ -2558,4 +2558,5 @@
 #include "interface\fonts\tiny_unicode.dm"
 #include "interface\fonts\vcr_osd_mono.dm"
 #include "modular-coff\castedatum_limite_nerf.dm"
+#include "modular-coff\translation-completions.dm"
 // END_INCLUDE
