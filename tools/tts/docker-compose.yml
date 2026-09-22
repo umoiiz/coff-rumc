@@ -3,6 +3,9 @@ services:
     container_name: tts
     build: ./tts
     restart: unless-stopped
+    environment:
+      TTS_PROVIDER: ${TTS_PROVIDER:-edge}
+      TTS_SAMPLE_RATE: ${TTS_SAMPLE_RATE:-48000}
     healthcheck:
       test: ["CMD", "curl", "-sf", "http://localhost:5003/health-check"]
       interval: 15s
@@ -21,6 +24,7 @@ services:
     environment:
       TTS_AUTHORIZATION_TOKEN: ${TTS_AUTHORIZATION_TOKEN:-coolio}
       TTS_BACKEND_URL: http://tts:5003
+      TTS_SAMPLE_RATE: ${TTS_SAMPLE_RATE:-48000}
     depends_on:
       tts:
         condition: service_healthy
