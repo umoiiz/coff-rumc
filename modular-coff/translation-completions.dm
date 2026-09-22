@@ -1,0 +1,15 @@
+#define MODE_INFESTATION_X_MAJOR "异形大胜利-Major"
+#define MODE_INFESTATION_M_MAJOR "人类大胜利-Major"
+#define MODE_INFESTATION_X_MINOR "异形小胜利-Minor"
+#define MODE_INFESTATION_M_MINOR "人类小胜利-Minor"
+#define MODE_ZOMBIE_Z_MAJOR "僵尸大胜利-Major"
+#define MODE_ZOMBIE_Z_MINOR "僵尸小胜利-Minor"
+#define MODE_INFESTATION_DRAW_DEATH "平局: 无人生还"
+#define MODE_GENERIC_DRAW_NUKE "平局: 核平"
+
+/obj/machinery/computer/navigation/proc/do_orbit_checks(direction)
+	var/message = "注意. 十秒后[direction == "UP" ? "上升" : "下降"]至下一轨道高度."
+	minor_announce(message, title = "轨道位置更变")
+
+/obj/machinery/computer/navigation/proc/do_change_orbit(current_orbit, direction)
+	var/message = "正在向新轨道位置更变进行发动机点火与稳定."
