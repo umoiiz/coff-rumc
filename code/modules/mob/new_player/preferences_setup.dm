@@ -10,9 +10,11 @@
 	good_eyesight = pick(list(FALSE, TRUE))
 	citizenship = pick(CITIZENSHIP_CHOICES)
 	religion = pick(RELIGION_CHOICES)
-	var/list/male_voices = list("Мужской 1", "Мужской 2")
-	var/list/female_voices = list("Женский 1", "Женский 2", "Женский 3")
-	tts_voice = (gender == MALE) ? pick(male_voices) : pick(female_voices)
+	// Prefer the complete provider catalog; retain the legacy fallback for
+	// character creation before the TTS subsystem has connected.
+	tts_voice = random_tts_voice()
+	if(!tts_voice)
+		tts_voice = (gender == MALE) ? "Мужской 1" : "Женский 1"
 	randomize_hair_color("hair")
 	randomize_hair_color("grad")
 	randomize_hair_color("facial")

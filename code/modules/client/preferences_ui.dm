@@ -288,19 +288,12 @@
 	var/client/current_client = CLIENT_FROM_VAR(usr)
 	var/mob/user = current_client.mob
 
-	var/list/male_voices = list("Мужской 1", "Мужской 2")
-	var/list/female_voices = list("Женский 1", "Женский 2", "Женский 3")
-
 	switch(action)
 		if("changeslot")
 			if(!load_character(text2num(params["changeslot"])))
 				random_character()
 				real_name = random_unique_name(gender)
 				save_character()
-			if(gender == MALE && (tts_voice in female_voices))
-				tts_voice = pick(male_voices)
-			else if(gender == FEMALE && (tts_voice in male_voices))
-				tts_voice = pick(female_voices)
 			update_preview_icon()
 
 		if("tab_change")
@@ -532,10 +525,6 @@
 				f_style = "Shaved"
 			else
 				underwear = 1
-			if(gender == MALE && (tts_voice in female_voices))
-				tts_voice = pick(male_voices)
-			else if(gender == FEMALE && (tts_voice in male_voices))
-				tts_voice = pick(female_voices)
 			update_preview_icon()
 
 
@@ -765,13 +754,9 @@
 				voices = json_decode(text_data)
 			if(!length(voices))
 				return
-			var/list/filtered_voices = list()
-			for(var/v in voices)
-				if(gender == MALE && (v in male_voices))
-					filtered_voices += v
-				else if(gender == FEMALE && (v in female_voices))
-					filtered_voices += v
-			var/choice = tgui_input_list(ui.user, "What do you sound like?", "TTS", filtered_voices)
+			// Voice catalogs are provider-defined and can contain hundreds of
+			// languages. Do not filter them through the old Russian gender lists.
+			var/choice = tgui_input_list(ui.user, "What do you sound like?", "TTS", voices)
 			if(!choice)
 				return
 			tts_voice = choice

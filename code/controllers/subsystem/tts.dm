@@ -67,6 +67,7 @@ SUBSYSTEM_DEF(tts)
 		return FALSE
 	available_speakers = json_decode(response.body)
 	tts_enabled = TRUE
+	log_world("TTS enabled: [length(available_speakers)] voices from [CONFIG_GET(string/tts_http_url)]")
 
 	if(CONFIG_GET(str_list/tts_voice_blacklist))
 		var/list/blacklisted_voices = CONFIG_GET(str_list/tts_voice_blacklist)
@@ -281,6 +282,7 @@ SUBSYSTEM_DEF(tts)
 
 /datum/controller/subsystem/tts/proc/queue_tts_message(datum/target, message, datum/language/language, speaker, filter, list/listeners, local = FALSE, message_range = 7, volume_offset = 0, pitch = 0, special_filters = "", directionality = TRUE)
 	if(!tts_enabled)
+		log_world("TTS request skipped: subsystem is disabled")
 		return
 
 	// TGS updates can clear out the tmp folder, so we need to create the folder again if it no longer exists.
@@ -295,6 +297,9 @@ SUBSYSTEM_DEF(tts)
 
 	var/shell_scrubbed_input = tts_speech_filter(message)
 	shell_scrubbed_input = copytext(shell_scrubbed_input, 1, 300)
+	if(!length(shell_scrubbed_input))
+		log_world("TTS request skipped: empty filtered message")
+		return
 	var/identifier = "[sha1(speaker + filter + num2text(pitch) + special_filters + shell_scrubbed_input)].[world.time]"
 	if(!(speaker in available_speakers))
 		return
@@ -458,6 +463,11 @@ SUBSYSTEM_DEF(tts)
 		if(!(listener.client?.prefs.sound_tts != TTS_SOUND_OFF))
 			continue
 		if(isliving(listener) && (listener.stat >= UNCONSCIOUS || isdeaf(listener)))
+			continue
+		// A null radio frequency and flag set means ordinary local speech.
+		// The checks below are for radio/hivemind TTS preferences.
+		if(isnull(radio_frequency) && isnull(tts_flags))
+			filtered_listeners += listener
 			continue
 		var/listener_prefs = listener?.client?.prefs?.radio_tts_flags
 		if(!listener_prefs)

@@ -222,6 +222,12 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 				continue
 		listening |= player_mob
 
+	// Queue TTS for normal local speech after the same listener set used by
+	// chat. Radio and xeno-specific speech paths keep their existing handling.
+	var/list/tts_listeners = filter_tts_listeners(src, listening)
+	if(length(tts_listeners) && voice)
+		INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, message_raw, message_language || get_default_language(), voice, voice_filter, tts_listeners, FALSE, message_range = message_range, pitch = pitch)
+
 	var/eavesdropping
 	var/eavesrendered
 	if(eavesdrop_range)
