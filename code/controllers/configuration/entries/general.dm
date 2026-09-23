@@ -203,19 +203,19 @@ Administrative related.
 	config_entry_value = "C:\\Program Files (x86)\\TG Station Server\\TGCommandLine.exe"
 
 /datum/config_entry/number/minute_topic_limit
-	config_entry_value = 250
+	config_entry_value = 750
 	min_val = 0
 
 /datum/config_entry/number/second_topic_limit
-	config_entry_value = 15
+	config_entry_value = 45
 	min_val = 0
 
 /datum/config_entry/number/minute_click_limit
-	config_entry_value = 400
+	config_entry_value = 1200
 	min_val = 0
 
 /datum/config_entry/number/second_click_limit
-	config_entry_value = 15
+	config_entry_value = 45
 	min_val = 0
 
 /// Max lines retained per STUI log tab (System Tabbed User Interface).
