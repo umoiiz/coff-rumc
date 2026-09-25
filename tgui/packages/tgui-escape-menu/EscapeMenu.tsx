@@ -1,7 +1,6 @@
 import './styles/main.scss';
 
 import { useEffect, useReducer, useRef } from 'react';
-import { focusMap } from 'tgui/focus';
 
 import { playCloseSounds, playOpenSounds } from './audio';
 import { AdminPage } from './pages/AdminPage';
@@ -134,7 +133,7 @@ function openMenu(dispatch: React.Dispatch<Action>) {
 function closeMenu(dispatch: React.Dispatch<Action>) {
   resizeFrozen = true;
   Byond.winset('mapwindow.escape_menu', { 'is-visible': false });
-  focusMap();
+  Byond.winset('map', { focus: true });
   playCloseSounds();
   sendAction('closed');
   dispatch({ type: 'close' });
@@ -176,7 +175,7 @@ export function EscapeMenu() {
   const handleClose = () => closeMenu(dispatch);
 
   const refocusMap = () => {
-    focusMap();
+    Byond.winset('map', { focus: true });
   };
 
   return (

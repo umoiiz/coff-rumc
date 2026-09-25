@@ -245,8 +245,6 @@
 		. = ..(use_onclose = 1)
 	else
 		var/focusedwindow = winget(user, null, "focus")
-		if(focusedwindow == "mapwindow.map" || focusedwindow == "mapwindow")
-			focusedwindow = "mapwindow.keyboard_focus"
 		. = ..(use_onclose = 1)
 
 		//waits for the window to show up client side before attempting to un-focus it
@@ -256,7 +254,7 @@
 				if(focusedwindow)
 					winset(user, focusedwindow, "focus=true")
 				else
-					winset(user, "mapwindow.keyboard_focus", "focus=true")
+					winset(user, "mapwindow", "focus=true")
 				break
 	if(timeout)
 		addtimer(CALLBACK(src, PROC_REF(close)), timeout)
