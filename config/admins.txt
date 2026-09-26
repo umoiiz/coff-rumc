@@ -1,7 +1,7 @@
 mkinkofji = Badmin
 cofji = Badmin
-karafuto = Host
 otomatic = Admin
 Secai524 = Admin
 mrapple2401 = Admin
+karafuto = Host
 KZXZB = Admin

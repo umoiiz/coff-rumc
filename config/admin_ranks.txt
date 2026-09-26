@@ -8,11 +8,6 @@ Include = EVERYTHING
 Exclude =
 Edit = EVERYTHING
 
-Name = Project Lead
-Include = EVERYTHING
-Exclude =
-Edit = EVERYTHING
-
 Name = Headcoder
 Include = EVERYTHING
 Exclude =

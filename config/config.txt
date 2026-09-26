@@ -5,16 +5,16 @@ $include dbconfig.txt
 $include resources.txt
 
 ## Server name: This appears at the top of the screen in-game.
-SERVER_NAME coff-rutgmc
+SERVER_NAME coff-Ru-TGMC
 
 ## The address shown for the game server in the TGS check command
-# PUBLIC_ADDRESS ss13.example.com:2506
+PUBLIC_ADDRESS s2.ctymc.cn:28025
 
 ## Hosted by name for unix platforms.
-HOSTEDBY coff&meme
+HOSTEDBY coff
 
 ## The title of the main window.
-TITLE coff-rutgmc
+Coff-RU-TGMC
 
 ## Put on byond hub: Uncomment this to put your server on the byond hub.
 #HUB
@@ -57,7 +57,7 @@ ALLOW_SHUTDOWN
 ## 32 bit OS users use: C:\Program Files\TG Station Server\TGCommandLine.exe
 #TGS3_COMMANDLINE_PATH
 
-LOCALHOST_RANK
+#LOCALHOST_RANK
 
 SEE_OWN_NOTES
 
@@ -233,8 +233,8 @@ GUEST_BAN
 CHECK_RANDOMIZER
 
 ## Uncomment these to set a custom respawn timer; the delay is in ticks.
-#MARINE_RESPAWN 18000
-#XENO_RESPAWN 1200
+MARINE_RESPAWN 6000
+XENO_RESPAWN 2200
 
 ## Automatic balance system
 IS_AUTOMATIC_BALANCE_ON

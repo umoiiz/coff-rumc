@@ -17,9 +17,8 @@
 
 #Your_name_here				+All
 
-
-Blundir +yautja +yautjaleader +yautjalegacy
-mkinkofji = +All
-cofji = +All
-karafuto = +All
-kmsbismarck = +All
+cofji +Yautja +YautjaLegacy +YautjaCouncil +YautjaLeader +YautjaCouncilLegacy
+Mkinkofji +Yautja +YautjaLegacy +YautjaCouncil +YautjaLeader +YautjaCouncilLegacy
+karafuto +Yautja +YautjaLegacy +YautjaCouncil +YautjaLeader +YautjaCouncilLegacy
+kmsbismarck +yautja +yautjaleader +yautjalegacy
+krawlerspine +yautja +yautjaleader +yautjalegacy

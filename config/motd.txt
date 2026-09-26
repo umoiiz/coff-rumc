@@ -1,4 +1,20 @@
-<h1>Welcome to the TGMC codebase!</h1>
+			---------------
+<h1>Welcome to Coff-Ru-TGMC Enjoy your stay.</h1>
+			---------------
 
-<i>The MOTD.</i>
-<br><br>
+<br>
+
+<i>如果这是你第一次加入游戏 请查阅咖啡机的小指南.</i><br>
+
+<a href="https://file.garden/aoHGMxzWHEmpGj4L/MCTG" style="color:#b9d18b; text-decoration: none;">小指南</a>
+
+<br>
+			---------------
+<br>
+
+
+
+<i>TGMC-QQ群:1074396373;空间站-QQ群:884013901.</i><br>
+<a href="https://github.com/Falls-dev/TGMC-SS13" style="color:#b9d18b; text-decoration: none;">源码<br></a>
+
+-----------
