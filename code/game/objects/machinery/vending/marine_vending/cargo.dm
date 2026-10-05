@@ -5,6 +5,7 @@
 	icon_vend = "requisitionop-vend"
 	icon_deny = "requisitionop-deny"
 	wrenchable = FALSE
+	isshared = TRUE
 	products = list(
 		"剩余特种装备" = list(
 			/obj/item/pinpointer = 1,

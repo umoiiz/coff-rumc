@@ -1,8 +1,9 @@
 /obj/item/uav_turret
-	name = "轻型无人载具炮塔"
-	desc = "无人载具的炮塔部分."
+	name = "light unmanned vehicle turret"
+	desc = "The turret part of an unmanned vehicle."
 	icon = 'icons/obj/unmanned_vehicles.dmi'
 	icon_state = "light_cannon_obj"
+	w_class = WEIGHT_CLASS_SMALL
 	///Turret type, used for assigning what we do on clicks
 	var/turret_type = TURRET_TYPE_LIGHT
 	///Ammo typepath we use when attached
@@ -20,7 +21,7 @@
 
 
 /obj/item/uav_turret/heavy
-	name = "重型无人载具炮塔"
+	name = "heavy unmanned vehicle turret"
 	icon_state = "heavy_cannon_obj"
 	turret_type = TURRET_TYPE_HEAVY
 	ammo_type = /datum/ammo/bullet/machinegun
@@ -30,7 +31,7 @@
 	magazine_type = /obj/item/ammo_magazine/box12x40mm //I think this is the correct one?
 
 /obj/item/uav_turret/droid
-	name = "机器人能量炮"
+	name = "droid energetic cannon"
 	icon_state = "droidlaser_obj"
 	turret_pattern = PATTERN_DROID
 	turret_type = TURRET_TYPE_DROIDLASER
@@ -40,8 +41,8 @@
 	max_rounds = 300
 
 /obj/item/uav_turret/claw
-	name = "无人载具爪"
-	desc = "小巧但坚固,这个爪模块可卡装在无人载具上.非常适合抓取那些违抗命令者的尸体,携带一次性爆炸载荷,或运送补给."
+	name = "unmanned vehicle claw"
+	desc = "A claw module to attach on the weapon slot of an unmanned vehicle, allowing it to grab and pull objects or mobs. Right-click to shove."
 	icon_state = "claw_obj"
 	turret_type = TURRET_TYPE_CLAW
 	turret_pattern = PATTERN_TRACKED
